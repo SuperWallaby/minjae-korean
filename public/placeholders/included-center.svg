@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(360 260) rotate(90) scale(520 520)">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#F6EFE6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 330) rotate(90) scale(520 520)">
+      <stop offset="0" stop-color="#EFE6DB" stop-opacity="0.90"/>
+      <stop offset="1" stop-color="#F6EFE6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="900" rx="56" fill="#FBF7F1"/>
+  <rect width="1200" height="900" rx="56" fill="url(#g1)"/>
+  <rect width="1200" height="900" rx="56" fill="url(#g2)"/>
+
+  <!-- Minimal UI blocks -->
+  <g transform="translate(110 120)">
+    <rect x="0" y="0" width="980" height="660" rx="36" fill="#ffffff" fill-opacity="0.65" stroke="#E6D9C7" stroke-width="3"/>
+    <rect x="40" y="40" width="420" height="180" rx="26" fill="#EFE6DB"/>
+    <rect x="500" y="40" width="440" height="120" rx="26" fill="#EFE6DB"/>
+    <rect x="500" y="190" width="440" height="290" rx="26" fill="#DCCEBB"/>
+    <rect x="40" y="250" width="420" height="230" rx="26" fill="#CDBDA7"/>
+    <rect x="40" y="510" width="900" height="110" rx="26" fill="#EFE6DB"/>
+
+    <text x="62" y="92" font-family="ui-sans-serif, system-ui, -apple-system" font-size="16" fill="#111827" fill-opacity="0.55">Included (demo)</text>
+    <text x="62" y="132" font-family="ui-sans-serif, system-ui, -apple-system" font-size="26" fill="#111827" fill-opacity="0.90">Notes · Translation · Subtitles</text>
+  </g>
+</svg>
+

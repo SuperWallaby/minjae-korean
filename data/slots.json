@@ -1,0 +1,884 @@
+[
+  {
+    "id": "s-2026-02-09-540",
+    "dateKey": "2026-02-09",
+    "startMin": 540,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-10-540",
+    "dateKey": "2026-02-10",
+    "startMin": 540,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-600",
+    "dateKey": "2026-02-11",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-660",
+    "dateKey": "2026-02-11",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-720",
+    "dateKey": "2026-02-11",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-780",
+    "dateKey": "2026-02-11",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-840",
+    "dateKey": "2026-02-11",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-900",
+    "dateKey": "2026-02-11",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-960",
+    "dateKey": "2026-02-11",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-1020",
+    "dateKey": "2026-02-11",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-1080",
+    "dateKey": "2026-02-11",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-1140",
+    "dateKey": "2026-02-11",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-1200",
+    "dateKey": "2026-02-11",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-11-1260",
+    "dateKey": "2026-02-11",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-600",
+    "dateKey": "2026-02-12",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-660",
+    "dateKey": "2026-02-12",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-720",
+    "dateKey": "2026-02-12",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-780",
+    "dateKey": "2026-02-12",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-840",
+    "dateKey": "2026-02-12",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-900",
+    "dateKey": "2026-02-12",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-960",
+    "dateKey": "2026-02-12",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-1020",
+    "dateKey": "2026-02-12",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-1080",
+    "dateKey": "2026-02-12",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-1140",
+    "dateKey": "2026-02-12",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-1200",
+    "dateKey": "2026-02-12",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-12-1260",
+    "dateKey": "2026-02-12",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-600",
+    "dateKey": "2026-02-13",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 1,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-660",
+    "dateKey": "2026-02-13",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 1,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-720",
+    "dateKey": "2026-02-13",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-780",
+    "dateKey": "2026-02-13",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-840",
+    "dateKey": "2026-02-13",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-900",
+    "dateKey": "2026-02-13",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-960",
+    "dateKey": "2026-02-13",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 1,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-1020",
+    "dateKey": "2026-02-13",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 1,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-1080",
+    "dateKey": "2026-02-13",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-1140",
+    "dateKey": "2026-02-13",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-1200",
+    "dateKey": "2026-02-13",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-13-1260",
+    "dateKey": "2026-02-13",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-600",
+    "dateKey": "2026-02-14",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-660",
+    "dateKey": "2026-02-14",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-720",
+    "dateKey": "2026-02-14",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-780",
+    "dateKey": "2026-02-14",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-840",
+    "dateKey": "2026-02-14",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-900",
+    "dateKey": "2026-02-14",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-960",
+    "dateKey": "2026-02-14",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-1020",
+    "dateKey": "2026-02-14",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-1080",
+    "dateKey": "2026-02-14",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-1140",
+    "dateKey": "2026-02-14",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-1200",
+    "dateKey": "2026-02-14",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-14-1260",
+    "dateKey": "2026-02-14",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-600",
+    "dateKey": "2026-02-15",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-660",
+    "dateKey": "2026-02-15",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-720",
+    "dateKey": "2026-02-15",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-780",
+    "dateKey": "2026-02-15",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-840",
+    "dateKey": "2026-02-15",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-900",
+    "dateKey": "2026-02-15",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-960",
+    "dateKey": "2026-02-15",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-1020",
+    "dateKey": "2026-02-15",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-1080",
+    "dateKey": "2026-02-15",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-1140",
+    "dateKey": "2026-02-15",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-1200",
+    "dateKey": "2026-02-15",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-15-1260",
+    "dateKey": "2026-02-15",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-600",
+    "dateKey": "2026-02-16",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-660",
+    "dateKey": "2026-02-16",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-720",
+    "dateKey": "2026-02-16",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-780",
+    "dateKey": "2026-02-16",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-840",
+    "dateKey": "2026-02-16",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-900",
+    "dateKey": "2026-02-16",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-960",
+    "dateKey": "2026-02-16",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-1020",
+    "dateKey": "2026-02-16",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-1080",
+    "dateKey": "2026-02-16",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-1140",
+    "dateKey": "2026-02-16",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-1200",
+    "dateKey": "2026-02-16",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-16-1260",
+    "dateKey": "2026-02-16",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-600",
+    "dateKey": "2026-02-17",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-660",
+    "dateKey": "2026-02-17",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-720",
+    "dateKey": "2026-02-17",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-780",
+    "dateKey": "2026-02-17",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-840",
+    "dateKey": "2026-02-17",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-900",
+    "dateKey": "2026-02-17",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-960",
+    "dateKey": "2026-02-17",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-1020",
+    "dateKey": "2026-02-17",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-1080",
+    "dateKey": "2026-02-17",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-1140",
+    "dateKey": "2026-02-17",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-1200",
+    "dateKey": "2026-02-17",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-17-1260",
+    "dateKey": "2026-02-17",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-600",
+    "dateKey": "2026-02-18",
+    "startMin": 600,
+    "endMin": 660,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-660",
+    "dateKey": "2026-02-18",
+    "startMin": 660,
+    "endMin": 720,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-720",
+    "dateKey": "2026-02-18",
+    "startMin": 720,
+    "endMin": 780,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-780",
+    "dateKey": "2026-02-18",
+    "startMin": 780,
+    "endMin": 840,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-840",
+    "dateKey": "2026-02-18",
+    "startMin": 840,
+    "endMin": 900,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-900",
+    "dateKey": "2026-02-18",
+    "startMin": 900,
+    "endMin": 960,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-960",
+    "dateKey": "2026-02-18",
+    "startMin": 960,
+    "endMin": 1020,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-1020",
+    "dateKey": "2026-02-18",
+    "startMin": 1020,
+    "endMin": 1080,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-1080",
+    "dateKey": "2026-02-18",
+    "startMin": 1080,
+    "endMin": 1140,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-1140",
+    "dateKey": "2026-02-18",
+    "startMin": 1140,
+    "endMin": 1200,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-1200",
+    "dateKey": "2026-02-18",
+    "startMin": 1200,
+    "endMin": 1260,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  },
+  {
+    "id": "s-2026-02-18-1260",
+    "dateKey": "2026-02-18",
+    "startMin": 1260,
+    "endMin": 1320,
+    "capacity": 1,
+    "bookedCount": 0,
+    "cancelled": false
+  }
+]

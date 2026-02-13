@@ -1,0 +1,42 @@
+[
+  {
+    "id": "mli5uamm-miwm4j",
+    "slotId": "s-2026-02-13-600",
+    "studentId": "stu_mlf9anb0_i7dkns",
+    "name": "Student",
+    "email": "student@example.com",
+    "status": "confirmed",
+    "createdAt": "2026-02-11T15:04:01.870Z",
+    "code": "kaja6a84p"
+  },
+  {
+    "id": "mli9e7b0-c0vyza",
+    "slotId": "s-2026-02-13-660",
+    "studentId": "stu_mlf9anb0_i7dkns",
+    "name": "Always",
+    "email": "student@example.com",
+    "status": "confirmed",
+    "createdAt": "2026-02-11T16:43:29.532Z",
+    "code": "kajathz8i"
+  },
+  {
+    "id": "mlkhwv6v-ew0apl",
+    "slotId": "s-2026-02-13-960",
+    "studentId": "stu_mljm4ej9_t80bj9",
+    "name": "MINJAE KIM",
+    "email": "colton950901@gmail.com",
+    "status": "confirmed",
+    "createdAt": "2026-02-13T06:17:29.575Z",
+    "code": "kajao11xe"
+  },
+  {
+    "id": "mlkhxf85-bi23zk",
+    "slotId": "s-2026-02-13-1020",
+    "studentId": "stu_mljm4ej9_t80bj9",
+    "name": "MINJAE KIM",
+    "email": "colton950901@gmail.com",
+    "status": "confirmed",
+    "createdAt": "2026-02-13T06:17:55.541Z",
+    "code": "kajafvgo7"
+  }
+]

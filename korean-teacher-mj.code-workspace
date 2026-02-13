@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../projects/f-shop"
+		},
+		{
+			"path": "../oracle-vm"
+		}
+	],
+	"settings": {}
+}
