@@ -6,6 +6,38 @@ import Link from "next/link";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
+type BookingRow = {
+  id: string;
+  code?: string;
+  name?: string;
+  email?: string;
+  status?: string;
+};
+
+type SlotRow = {
+  id: string;
+  startMin: number;
+  endMin: number;
+  capacity: number;
+  bookedCount: number;
+  cancelled?: boolean;
+  bookings?: BookingRow[];
+};
+
+type DayRow = { dateKey: string; slots: SlotRow[] };
+
+function isSlotRow(v: unknown): v is SlotRow {
+  if (!v || typeof v !== "object") return false;
+  const o = v as Record<string, unknown>;
+  return (
+    typeof o.id === "string" &&
+    typeof o.startMin === "number" &&
+    typeof o.endMin === "number" &&
+    typeof o.capacity === "number" &&
+    typeof o.bookedCount === "number"
+  );
+}
+
 function minutesToHhmm(min: number) {
   const h = Math.floor(min / 60);
   const m = min % 60;
@@ -24,7 +56,7 @@ export default function AdminCalendarView() {
   const toDateKey = useMemo(() => monthDt.endOf("month").toISODate()!, [monthDt]);
 
   const [loading, setLoading] = useState(false);
-  const [days, setDays] = useState<Array<{ dateKey: string; slots: Array<any> }>>([]);
+  const [days, setDays] = useState<DayRow[]>([]);
   const [selectedDateKey, setSelectedDateKey] = useState<string | null>(null);
 
   useEffect(() => {
@@ -43,7 +75,22 @@ export default function AdminCalendarView() {
           if (!cancelled) setDays([]);
           return;
         }
-        if (!cancelled) setDays(json.data.days ?? []);
+        if (cancelled) return;
+        const raw = (json.data?.days ?? []) as unknown;
+        const nextDays: DayRow[] = Array.isArray(raw)
+          ? raw
+              .map((d) => {
+                if (!d || typeof d !== "object") return null;
+                const o = d as Record<string, unknown>;
+                const dateKey = typeof o.dateKey === "string" ? o.dateKey : "";
+                const slotsRaw = Array.isArray(o.slots) ? o.slots : [];
+                const slots = slotsRaw.filter(isSlotRow);
+                if (!dateKey) return null;
+                return { dateKey, slots };
+              })
+              .filter((v): v is DayRow => Boolean(v))
+          : [];
+        setDays(nextDays);
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -53,18 +100,6 @@ export default function AdminCalendarView() {
       cancelled = true;
     };
   }, [fromDateKey, toDateKey]);
-
-  const monthDays = useMemo(() => {
-    const start = monthDt.startOf("month");
-    const end = monthDt.endOf("month");
-    const list: Array<{ dateKey: string; dt: DateTime }> = [];
-    let cur = start;
-    while (cur <= end) {
-      list.push({ dateKey: cur.toISODate()!, dt: cur });
-      cur = cur.plus({ days: 1 });
-    }
-    return list;
-  }, [monthDt]);
 
   const gridDays = useMemo(() => {
     const start = monthDt.startOf("month");
@@ -86,7 +121,7 @@ export default function AdminCalendarView() {
   }, [monthDt]);
 
   const dayMap = useMemo(() => {
-    const m = new Map<string, { dateKey: string; slots: Array<any> }>();
+    const m = new Map<string, DayRow>();
     for (const d of days) m.set(d.dateKey, d);
     return m;
   }, [days]);
@@ -161,8 +196,11 @@ export default function AdminCalendarView() {
               >
                 <div className="text-xs font-semibold">{item.dt.day}</div>
                 <div className="mt-1 space-y-1">
-                  {visible.map((s: any) => (
-                    <div key={s.id} className={`text-[11px] px-2 py-1 rounded border ${s.cancelled ? "opacity-60 line-through" : ""}`}>
+                  {visible.map((s) => (
+                    <div
+                      key={s.id}
+                      className={`text-[11px] px-2 py-1 rounded border ${s.cancelled ? "opacity-60 line-through" : ""}`}
+                    >
                       {minutesToHhmm(s.startMin)} · {s.bookedCount}/{s.capacity}
                     </div>
                   ))}
@@ -184,7 +222,7 @@ export default function AdminCalendarView() {
               {(dayMap.get(selectedDateKey)?.slots ?? []).length === 0 ? (
                 <div className="text-sm text-muted-foreground">세션 없음</div>
               ) : (
-                (dayMap.get(selectedDateKey)?.slots ?? []).map((s: any) => (
+                (dayMap.get(selectedDateKey)?.slots ?? []).map((s) => (
                   <div key={s.id} className="rounded border p-3">
                     <div className="flex items-center justify-between gap-2">
                       <div className="font-medium">
@@ -228,7 +266,7 @@ export default function AdminCalendarView() {
                         <div className="text-sm text-muted-foreground">예약 없음</div>
                       ) : (
                         <div className="space-y-1">
-                          {(s.bookings ?? []).map((b: any) => (
+                          {(s.bookings ?? []).map((b) => (
                             <div key={b.id} className="flex items-center justify-between gap-3 text-sm">
                               <div className="min-w-0">
                                 <div className="truncate">

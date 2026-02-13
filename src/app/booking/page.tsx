@@ -5,11 +5,10 @@ import * as React from "react";
 import {
   CalendarDays,
   Check,
+  CheckCircle,
   ChevronLeft,
   ChevronRight,
   Clock,
-  Lock,
-  Sparkles,
 } from "lucide-react";
 import { DateTime } from "luxon";
 import { useRouter } from "next/navigation";
@@ -20,7 +19,6 @@ import { Button } from "@/components/ui/Button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -31,7 +29,6 @@ import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import { PhoneInput } from "@/components/ui/PhoneInput";
 import { Input } from "@/components/ui/Input";
-import { CheckCircle } from "lucide-react";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
@@ -54,15 +51,6 @@ function pad2(n: number) {
 function formatWeekdayDate(d: Date) {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][d.getDay()];
   return `${weekday} ${d.getMonth() + 1}/${d.getDate()}`;
-}
-
-function startOfWeekMonday(date: Date) {
-  const d = new Date(date);
-  const day = d.getDay(); // 0 Sun
-  const diff = (day === 0 ? -6 : 1) - day;
-  d.setDate(d.getDate() + diff);
-  d.setHours(0, 0, 0, 0);
-  return d;
 }
 
 function minutesToHhmm(min: number) {
@@ -154,29 +142,6 @@ export default function BookingPage() {
       : creditsRemaining > 0
         ? `Credits ${creditsRemaining}`
         : "Add credits to book";
-
-  const Skeleton = ({ className }: { className: string }) => {
-    return (
-      <div
-        className={cn(
-          "animate-pulse rounded-md bg-black/10 ring-1 ring-black/5 dark:bg-white/10 dark:ring-white/10",
-          className,
-        )}
-      />
-    );
-  };
-
-  function WithLoading({
-    Loading,
-    placeholder,
-    children,
-  }: {
-    Loading: boolean;
-    placeholder: React.ReactNode;
-    children: React.ReactNode;
-  }) {
-    return Loading ? <>{placeholder}</> : <>{children}</>;
-  }
 
   const scrollDesktopGridBy = React.useCallback((dir: -1 | 1) => {
     const el = desktopGridScrollerRef.current;

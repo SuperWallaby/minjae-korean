@@ -42,6 +42,28 @@ type SupportMessage = {
 
 type TypingState = { member: boolean; support: boolean };
 
+type RealtimeChannelLike = {
+  on: (...args: unknown[]) => RealtimeChannelLike;
+  subscribe: (...args: unknown[]) => unknown;
+  send: (...args: unknown[]) => Promise<unknown> | unknown;
+};
+
+type SupabaseLike = {
+  channel: (name: string) => RealtimeChannelLike;
+  removeChannel: (channel: RealtimeChannelLike) => unknown;
+};
+
+function getSupabaseFromModule(mod: unknown): SupabaseLike | null {
+  if (!mod || typeof mod !== "object") return null;
+  if (!("supabase" in mod)) return null;
+  const sb = (mod as { supabase?: unknown }).supabase;
+  if (!sb || typeof sb !== "object") return null;
+  const sbo = sb as Partial<SupabaseLike>;
+  if (typeof sbo.channel !== "function") return null;
+  if (typeof sbo.removeChannel !== "function") return null;
+  return sb as SupabaseLike;
+}
+
 function formatWhen(ts: string) {
   try {
     const d = new Date(ts);
@@ -78,7 +100,7 @@ async function maybeSubscribe(
 ): Promise<null | (() => void)> {
   try {
     const mod = await import("@/lib/supabaseClient");
-    const supabase = (mod as any)?.supabase;
+    const supabase = getSupabaseFromModule(mod);
     if (!supabase) return null;
 
     const channelName = `support_thread_${threadId}`;
@@ -101,7 +123,7 @@ async function maybeSubscribe(
 async function maybeSubscribeInbox(onEvent: () => void): Promise<null | (() => void)> {
   try {
     const mod = await import("@/lib/supabaseClient");
-    const supabase = (mod as any)?.supabase;
+    const supabase = getSupabaseFromModule(mod);
     if (!supabase) return null;
 
     const channel = supabase.channel("support_inbox");
@@ -325,7 +347,7 @@ export default function AdminSupportPage() {
       // Broadcast a lightweight realtime event (if supabase is configured).
       try {
         const mod = await import("@/lib/supabaseClient");
-        const supabase = (mod as any)?.supabase;
+        const supabase = getSupabaseFromModule(mod);
         if (supabase) {
           const ch1 = supabase.channel(`support_thread_${selectedId}`);
           const ch2 = supabase.channel("support_inbox");

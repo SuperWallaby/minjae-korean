@@ -67,29 +67,41 @@ export async function GET(req: NextRequest) {
         grant_type: "authorization_code",
       }).toString(),
     });
-    const tokenJson = await tokenRes.json().catch(() => null) as any;
+    const tokenJson = (await tokenRes.json().catch(() => null)) as unknown;
 
     if (!tokenRes.ok) {
       return NextResponse.redirect(new URL("/login?error=google_token_exchange", req.url));
     }
 
-    const idToken = typeof tokenJson?.id_token === "string" ? tokenJson.id_token : "";
+    const idToken = (() => {
+      if (!tokenJson || typeof tokenJson !== "object") return "";
+      if (!("id_token" in tokenJson)) return "";
+      const v = (tokenJson as { id_token?: unknown }).id_token;
+      return typeof v === "string" ? v : "";
+    })();
     if (!idToken) return NextResponse.redirect(new URL("/login?error=google_no_id_token", req.url));
 
-    const jwks = createRemoteJWKSet(new URL("https://www.googleapis.com/oauth2/v3/certs"));
-    let payload: any;
+    const jwks = createRemoteJWKSet(
+      new URL("https://www.googleapis.com/oauth2/v3/certs"),
+    );
+    let payload: Record<string, unknown> = {};
     try {
-      ({ payload } = await jwtVerify(idToken, jwks, {
-      audience: mustEnv("GOOGLE_CLIENT_ID"),
-      issuer: ["https://accounts.google.com", "accounts.google.com"],
-      }));
-    } catch (e) {
+      const verified = await jwtVerify(idToken, jwks, {
+        audience: mustEnv("GOOGLE_CLIENT_ID"),
+        issuer: ["https://accounts.google.com", "accounts.google.com"],
+      });
+      payload = verified.payload as unknown as Record<string, unknown>;
+    } catch {
       return NextResponse.redirect(new URL("/login?error=google_id_token_verify_failed", req.url));
     }
 
     const sub = typeof payload.sub === "string" ? payload.sub : "";
-    const email = typeof (payload as any).email === "string" ? String((payload as any).email).trim().toLowerCase() : "";
-    const name = typeof (payload as any).name === "string" ? String((payload as any).name).trim() : "Member";
+    const email =
+      typeof payload.email === "string"
+        ? String(payload.email).trim().toLowerCase()
+        : "";
+    const name =
+      typeof payload.name === "string" ? String(payload.name).trim() : "Member";
 
     if (!sub) return NextResponse.redirect(new URL("/login?error=google_bad_sub", req.url));
     if (!email) return NextResponse.redirect(new URL("/login?error=google_no_email", req.url));

@@ -67,10 +67,32 @@ type RealtimeClient = {
   subscribe: (onEvent: () => void) => () => void;
 };
 
+type RealtimeChannelLike = {
+  on: (...args: unknown[]) => RealtimeChannelLike;
+  subscribe: (...args: unknown[]) => unknown;
+  send: (...args: unknown[]) => Promise<unknown> | unknown;
+};
+
+type SupabaseLike = {
+  channel: (name: string) => RealtimeChannelLike;
+  removeChannel: (channel: RealtimeChannelLike) => unknown;
+};
+
+function getSupabaseFromModule(mod: unknown): SupabaseLike | null {
+  if (!mod || typeof mod !== "object") return null;
+  if (!("supabase" in mod)) return null;
+  const sb = (mod as { supabase?: unknown }).supabase;
+  if (!sb || typeof sb !== "object") return null;
+  const sbo = sb as Partial<SupabaseLike>;
+  if (typeof sbo.channel !== "function") return null;
+  if (typeof sbo.removeChannel !== "function") return null;
+  return sb as SupabaseLike;
+}
+
 async function maybeRealtime(threadId: string): Promise<RealtimeClient | null> {
   try {
     const mod = await import("@/lib/supabaseClient");
-    const supabase = (mod as any)?.supabase;
+    const supabase = getSupabaseFromModule(mod);
     if (!supabase) return null;
 
     const channelName = `support_thread_${threadId}`;
@@ -95,10 +117,10 @@ async function maybeRealtime(threadId: string): Promise<RealtimeClient | null> {
   }
 }
 
-async function broadcastRealtime(threadId: string, payload: any) {
+async function broadcastRealtime(threadId: string, payload: unknown) {
   try {
     const mod = await import("@/lib/supabaseClient");
-    const supabase = (mod as any)?.supabase;
+    const supabase = getSupabaseFromModule(mod);
     if (!supabase) return;
     const ch1 = supabase.channel(`support_thread_${threadId}`);
     const ch2 = supabase.channel("support_inbox");

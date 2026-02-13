@@ -1,5 +1,17 @@
 import { NextRequest } from "next/server";
-import { listSlots, listBookings } from "@/lib/db";
+import { listSlots, listBookings, type Booking } from "@/lib/db";
+
+type SlotDTO = {
+  id: string;
+  dateKey: string;
+  startMin: number;
+  endMin: number;
+  capacity: number;
+  cancelled: boolean;
+  notes: string;
+  bookedCount: number;
+  bookings: Booking[];
+};
 
 function isDateKey(s: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(s);
@@ -19,18 +31,18 @@ export async function GET(req: NextRequest) {
     const slots = listSlots().filter((s) => s.dateKey >= fromDateKey && s.dateKey <= toDateKey);
     const bookings = listBookings();
 
-    const bookingsBySlot = new Map<string, Array<any>>();
+    const bookingsBySlot = new Map<string, Booking[]>();
     for (const b of bookings) {
       const list = bookingsBySlot.get(b.slotId) ?? [];
       list.push(b);
       bookingsBySlot.set(b.slotId, list);
     }
 
-    const byDay = new Map<string, Array<any>>();
+    const byDay = new Map<string, SlotDTO[]>();
     for (const s of slots) {
       const bs = bookingsBySlot.get(s.id) ?? [];
       const bookedCount = bs.filter((b) => b.status === "confirmed").length;
-      const dto = {
+      const dto: SlotDTO = {
         id: s.id,
         dateKey: s.dateKey,
         startMin: s.startMin,

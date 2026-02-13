@@ -1,5 +1,4 @@
-import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
@@ -13,13 +12,13 @@ function clearSessionCookie(res: NextResponse) {
   });
 }
 
-export async function POST(_req: NextRequest) {
+export async function POST() {
   const res = NextResponse.json({ ok: true });
   clearSessionCookie(res);
   return res;
 }
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   const res = NextResponse.json({ ok: true });
   clearSessionCookie(res);
   return res;

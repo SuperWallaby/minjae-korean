@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { DateTime } from "luxon";
 
-import { listBookings, listSlots, updateBooking } from "@/lib/db";
+import { listBookings, listSlots, updateBooking, type Booking } from "@/lib/db";
 
 export const runtime = "nodejs";
 
@@ -63,7 +63,7 @@ async function sendResendEmail(args: {
   if (!res.ok) {
     const msg =
       j && typeof j === "object" && "message" in j
-        ? String((j as any).message)
+        ? String((j as { message?: unknown }).message ?? "")
         : `HTTP ${res.status}`;
     throw new Error(`Resend failed: ${msg}`);
   }
@@ -170,7 +170,7 @@ export async function GET(req: NextRequest) {
     const auth = requireAdminKey(req);
     if (!auth.ok) return json(401, { ok: false, error: auth.error });
 
-    const bookings = listBookings();
+    const bookings: Booking[] = listBookings();
     const slots = listSlots();
     const slotById = new Map(slots.map((s) => [s.id, s]));
     const admins = adminEmails();
@@ -196,18 +196,21 @@ export async function GET(req: NextRequest) {
         if (!should) continue;
 
         // Member email
-        const memberField = kind === "24h" ? "reminder24hSentAt" : "reminder30mSentAt";
-        if (isEmail(memberEmail) && !(b as any)[memberField]) {
+        const memberField: "reminder24hSentAt" | "reminder30mSentAt" =
+          kind === "24h" ? "reminder24hSentAt" : "reminder30mSentAt";
+        if (isEmail(memberEmail) && !b[memberField]) {
           const t = template({ kind, name: memberName, bookingKey, timeLabel: label });
           await sendResendEmail({ to: memberEmail, ...t });
-          updateBooking(b.id, { [memberField]: new Date().toISOString() } as any);
+          updateBooking(b.id, { [memberField]: new Date().toISOString() } as Partial<Booking>);
           results.push({ id: b.id, kind, to: memberEmail });
         }
 
         // Admin email(s)
-        const adminField =
+        const adminField:
+          | "reminder24hAdminSentAt"
+          | "reminder30mAdminSentAt" =
           kind === "24h" ? "reminder24hAdminSentAt" : "reminder30mAdminSentAt";
-        if (admins.length > 0 && !(b as any)[adminField]) {
+        if (admins.length > 0 && !b[adminField]) {
           for (const to of admins) {
             const t = adminTemplate({
               kind,
@@ -219,7 +222,7 @@ export async function GET(req: NextRequest) {
             await sendResendEmail({ to, ...t });
             results.push({ id: b.id, kind, to });
           }
-          updateBooking(b.id, { [adminField]: new Date().toISOString() } as any);
+          updateBooking(b.id, { [adminField]: new Date().toISOString() } as Partial<Booking>);
         }
       }
     }

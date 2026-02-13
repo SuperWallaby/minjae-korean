@@ -75,9 +75,10 @@ export function Button({
     <button
       type={type ?? "button"}
       className={mergedClassName}
-      children={children}
       {...props}
-    />
+    >
+      {children}
+    </button>
   );
 }
 

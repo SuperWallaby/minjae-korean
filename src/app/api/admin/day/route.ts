@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { listSlots, listBookings } from "@/lib/db";
+import { listSlots, listBookings, type Booking, type Slot } from "@/lib/db";
 
 function isDateKey(s: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(s);
@@ -16,14 +16,14 @@ export async function GET(req: NextRequest) {
       .filter((s) => s.dateKey === dateKey)
       .sort((a, b) => a.startMin - b.startMin || a.endMin - b.endMin);
     const bookings = listBookings();
-    const bookingsBySlot = new Map<string, Array<any>>();
+    const bookingsBySlot = new Map<string, Booking[]>();
     for (const b of bookings) {
       const list = bookingsBySlot.get(b.slotId) ?? [];
       list.push(b);
       bookingsBySlot.set(b.slotId, list);
     }
 
-    const out = slots.map((s) => {
+    const out = slots.map((s): (Slot & { bookedCount: number; bookings: Booking[] }) => {
       const bs = bookingsBySlot.get(s.id) ?? [];
       const bookedCount = bs.filter((b) => b.status === "confirmed").length;
       return { ...s, bookedCount, bookings: bs };

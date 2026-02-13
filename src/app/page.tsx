@@ -1,16 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  CalendarDays,
-  Captions,
-  FileText,
-  FlaskConical,
-  Languages,
-  MessageCircleMore,
-  Play,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
+import { Suspense } from "react";
 
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
@@ -147,9 +138,11 @@ export default function Home() {
                 <li>• Clear takeaways</li>
               </ul>
               <div className="mt-6">
-                <CheckoutButton product="trial" size="sm" variant="primary" className="font-serif">
-                  Be a member
-                </CheckoutButton>
+                <Suspense fallback={<Button size="sm" disabled>Be a member</Button>}>
+                  <CheckoutButton product="trial" size="sm" variant="primary" className="font-serif">
+                    Be a member
+                  </CheckoutButton>
+                </Suspense>
               </div>
             </div>
 
@@ -175,9 +168,11 @@ export default function Home() {
                 <li>• Keep continuity without pressure</li>
               </ul>
               <div className="mt-6">
-                <CheckoutButton product="single" size="sm" variant="primary" className="font-serif">
-                  Be a member
-                </CheckoutButton>
+                <Suspense fallback={<Button size="sm" disabled>Be a member</Button>}>
+                  <CheckoutButton product="single" size="sm" variant="primary" className="font-serif">
+                    Be a member
+                  </CheckoutButton>
+                </Suspense>
               </div>
             </div>
 
@@ -203,9 +198,11 @@ export default function Home() {
                 <li>• Easier to keep the habit</li>
               </ul>
               <div className="mt-6">
-                <CheckoutButton product="monthly" size="sm" variant="primary" className="font-serif">
-                  Be a member
-                </CheckoutButton>
+                <Suspense fallback={<Button size="sm" disabled>Be a member</Button>}>
+                  <CheckoutButton product="monthly" size="sm" variant="primary" className="font-serif">
+                    Be a member
+                  </CheckoutButton>
+                </Suspense>
               </div>
             </div>
           </div>

@@ -54,7 +54,7 @@ async function sendWithResend(args: {
   if (!res.ok) {
     const msg =
       (json && typeof json === "object" && "message" in json
-        ? String((json as any).message)
+        ? String((json as { message?: unknown }).message ?? "")
         : null) ?? `HTTP ${res.status}`;
     throw new Error(`Resend failed: ${msg}`);
   }

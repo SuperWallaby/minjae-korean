@@ -105,7 +105,31 @@ export default function AccountPage() {
     return email ? `mj_student_id_${email}` : "mj_student_id";
   }, [session.state.user]);
 
-  const [bookings, setBookings] = React.useState<Array<any>>([]);
+  type BookingListItem = {
+    id: string;
+    code?: string;
+    dateKey: string;
+    startMin: number;
+    endMin: number;
+    status: string;
+    cancelled?: boolean;
+  };
+
+  function isBookingListItem(v: unknown): v is BookingListItem {
+    if (!v || typeof v !== "object") return false;
+    const o = v as Record<string, unknown>;
+    return (
+      typeof o.id === "string" &&
+      typeof o.dateKey === "string" &&
+      typeof o.startMin === "number" &&
+      typeof o.endMin === "number" &&
+      typeof o.status === "string" &&
+      (o.code === undefined || typeof o.code === "string") &&
+      (o.cancelled === undefined || typeof o.cancelled === "boolean")
+    );
+  }
+
+  const [bookings, setBookings] = React.useState<BookingListItem[]>([]);
   const [bookingsLoading, setBookingsLoading] = React.useState(false);
   const [bookingActionId, setBookingActionId] = React.useState<string | null>(null);
   const [bookingActionMsg, setBookingActionMsg] = React.useState<string | null>(null);
@@ -194,8 +218,13 @@ export default function AccountPage() {
         : `email=${encodeURIComponent(session.state.user!.email)}`;
       const res = await fetch(`/api/public/bookings?${qs}`, { cache: "no-store" });
       const json = await res.json().catch(() => null);
-      if (res.ok && json?.ok) setBookings(json.data.items ?? []);
-      if (!res.ok || !json?.ok) setBookings([]);
+      if (res.ok && json?.ok) {
+        const raw = (json.data?.items ?? []) as unknown;
+        const next = Array.isArray(raw) ? raw.filter(isBookingListItem) : [];
+        setBookings(next);
+      } else {
+        setBookings([]);
+      }
     } finally {
       setBookingsLoading(false);
     }

@@ -43,8 +43,9 @@ function consumePendingCheckout(): { product: CheckoutProduct; ts: number } | nu
     window.sessionStorage.removeItem(pendingKey);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
-    const product = (parsed as any)?.product;
-    const ts = (parsed as any)?.ts;
+    const obj = parsed && typeof parsed === "object" ? (parsed as Record<string, unknown>) : null;
+    const product = obj?.product;
+    const ts = obj?.ts;
     if ((product !== "trial" && product !== "single" && product !== "monthly") || typeof ts !== "number") return null;
     return { product, ts };
   } catch {

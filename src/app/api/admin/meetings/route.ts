@@ -1,12 +1,10 @@
-import { NextRequest } from "next/server";
-
 import { addBooking, listBookings } from "@/lib/db";
 
 function uid() {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   try {
     const all = listBookings();
     const items = all
@@ -31,7 +29,7 @@ export async function GET(_req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => null);
     const title = typeof body?.title === "string" ? body.title.trim() : "";

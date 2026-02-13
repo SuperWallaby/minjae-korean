@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
 import { findStudentByAuthUserId } from "@/lib/students";
@@ -23,7 +22,7 @@ type SessionClaims = {
   name?: string;
 };
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   try {
     const jar = await cookies();
     const token = jar.get("kaja_session")?.value ?? "";
@@ -39,7 +38,7 @@ export async function GET(_req: NextRequest) {
     let verified;
     try {
       verified = await jwtVerify(token, new TextEncoder().encode(secret));
-    } catch (e) {
+    } catch {
       return new Response(JSON.stringify({ ok: true, user: null }), {
         status: 200,
         headers: { "Content-Type": "application/json" },

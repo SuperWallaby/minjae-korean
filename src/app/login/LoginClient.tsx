@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import * as React from "react";
 
 import { Container } from "@/components/site/Container";
@@ -17,7 +17,6 @@ import { Input } from "@/components/ui/Input";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 
 export function LoginClient() {
-  const router = useRouter();
   const params = useSearchParams();
   const next = params.get("next") || "/account";
   const session = useMockSession();
@@ -57,7 +56,7 @@ export function LoginClient() {
             <div className="grid gap-3">
               <Button asChild className="w-full" size="lg">
                 <Link
-                  href={`/api/auth/google/start?next=${encodeURIComponent(next)}`}
+                  href={`/ /start?next=${encodeURIComponent(next)}`}
                 >
                   Continue with Google
                 </Link>

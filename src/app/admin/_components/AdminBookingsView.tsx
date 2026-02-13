@@ -6,25 +6,43 @@ import Link from "next/link";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
+type BookingItem = {
+  id: string;
+  code?: string;
+  name: string;
+  email?: string;
+  dateKey?: string;
+  startMin?: number;
+  endMin?: number;
+  status: string;
+};
+
+function isBookingItem(v: unknown): v is BookingItem {
+  if (!v || typeof v !== "object") return false;
+  const o = v as Record<string, unknown>;
+  return (
+    typeof o.id === "string" &&
+    typeof o.name === "string" &&
+    typeof o.status === "string" &&
+    (o.code === undefined || typeof o.code === "string") &&
+    (o.email === undefined || typeof o.email === "string") &&
+    (o.dateKey === undefined || typeof o.dateKey === "string") &&
+    (o.startMin === undefined || typeof o.startMin === "number") &&
+    (o.endMin === undefined || typeof o.endMin === "number")
+  );
+}
+
 function minutesToHhmm(min: number) {
   const h = Math.floor(min / 60);
   const m = min % 60;
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 }
 
-function callWindowForBooking(dateKey: string, startMin: number, endMin: number) {
-  const start = DateTime.fromISO(dateKey, { zone: BUSINESS_TIME_ZONE }).startOf("day").plus({ minutes: startMin });
-  const end = DateTime.fromISO(dateKey, { zone: BUSINESS_TIME_ZONE }).startOf("day").plus({ minutes: endMin });
-  const openAt = start.minus({ minutes: 10 });
-  const closeAt = end.plus({ minutes: 10 });
-  return { start, end, openAt, closeAt };
-}
-
 export default function AdminBookingsView() {
   const [q, setQ] = useState("");
   const [dateKey, setDateKey] = useState("");
   const [loading, setLoading] = useState(false);
-  const [items, setItems] = useState<Array<any>>([]);
+  const [items, setItems] = useState<BookingItem[]>([]);
 
   useEffect(() => {
     // simple initial load: today's bookings
@@ -48,7 +66,9 @@ export default function AdminBookingsView() {
         setItems([]);
         return;
       }
-      setItems(json.data.items ?? []);
+      const raw = (json.data?.items ?? []) as unknown;
+      const next = Array.isArray(raw) ? raw.filter(isBookingItem) : [];
+      setItems(next);
     } finally {
       setLoading(false);
     }
@@ -91,7 +111,8 @@ export default function AdminBookingsView() {
                     {b.name} · {b.email}
                   </div>
                   <div className="text-sm">
-                    {b.dateKey} · {minutesToHhmm(b.startMin ?? 0)}–{minutesToHhmm(b.endMin ?? 0)} · 상태: {b.status}
+                    {b.dateKey} · {minutesToHhmm(b.startMin ?? 0)}–
+                    {minutesToHhmm(b.endMin ?? 0)} · 상태: {b.status}
                   </div>
                 </div>
 

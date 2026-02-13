@@ -4,7 +4,6 @@ import Link from "next/link";
 import * as React from "react";
 import { DateTime } from "luxon";
 import {
-  CheckCircle2,
   Clock,
   Video,
   Mic,
@@ -231,8 +230,11 @@ export default function JoinGuidePage() {
       });
       stream.getTracks().forEach((t) => t.stop());
       setPermStatus("granted");
-    } catch (err: any) {
-      const name = err && err.name ? String(err.name) : "";
+    } catch (err: unknown) {
+      const name =
+        err && typeof err === "object" && "name" in err
+          ? String((err as { name?: unknown }).name ?? "")
+          : "";
       if (
         name === "NotAllowedError" ||
         name === "SecurityError" ||
@@ -267,29 +269,6 @@ export default function JoinGuidePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const greeting = React.useMemo(() => {
-    const list = [
-      {
-        ko: "오늘도 만나서 반가워요. 천천히 준비해요.",
-        en: "So glad to see you. Let’s get ready, gently.",
-      },
-      {
-        ko: "잘 오셨어요. 숨 한번, 그리고 시작!",
-        en: "You made it. One breath, then we begin.",
-      },
-      {
-        ko: "괜찮아요. 여기서는 천천히 해도 돼요.",
-        en: "It’s okay to go slow here.",
-      },
-      {
-        ko: "준비가 되면 문이 열릴 거예요 :)",
-        en: "When you’re ready, the door will open :)",
-      },
-    ];
-
-    return list[Math.floor(Math.random() * list.length)] ?? list[0];
-  }, [bookingId]);
-
   function statusLabel(status: string) {
     if (status === "confirmed") return "Confirmed";
     if (status === "cancelled") return "Cancelled";
@@ -315,7 +294,6 @@ export default function JoinGuidePage() {
 
   // Keep status pill neutral (avoid "system-y" colors here).
   const statusPillClass = "border-border bg-card text-primary";
-  const statusIconClass = "text-primary";
 
   const permDotClass =
     permStatus === "granted"

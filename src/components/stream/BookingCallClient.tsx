@@ -11,6 +11,9 @@ import {
   CheckCircle2,
   XCircle,
   AlertCircle,
+  MoreHorizontal,
+  ChevronLeft,
+  MessageSquare,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
@@ -157,6 +160,15 @@ export function BookingCallClient({
   const isOpenMeeting = Boolean(openMeeting);
   const guestsAllowed = Boolean(allowGuests);
 
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const apply = () => setIsMobile(Boolean(mq.matches));
+    apply();
+    mq.addEventListener?.("change", apply);
+    return () => mq.removeEventListener?.("change", apply);
+  }, []);
+
   const localStudentId = React.useMemo(() => {
     try {
       if (typeof window === "undefined") return "";
@@ -266,6 +278,20 @@ export function BookingCallClient({
     () => `mj_call_last_chat_${bookingId}`,
     [bookingId],
   );
+
+  const resumeStorageKey = React.useMemo(
+    () => `mj_call_resume_${bookingId}`,
+    [bookingId],
+  );
+
+  const [mobileComposerOpen, setMobileComposerOpen] = React.useState(false);
+  const [mobileView, setMobileView] = React.useState<"video" | "history">(
+    "video",
+  );
+  const mobileRecentMessages = React.useMemo(
+    () => messages.slice(-3),
+    [messages],
+  );
   const [lastChat, setLastChat] = React.useState<
     Array<{ from: Role; text: string; at: number }>
   >([]);
@@ -282,7 +308,7 @@ export function BookingCallClient({
         parsed && typeof parsed === "object"
           ? (parsed as Record<string, unknown>)
           : null;
-      const items = Array.isArray(obj?.items) ? (obj!.items as any[]) : [];
+      const items = Array.isArray(obj?.items) ? (obj!.items as unknown[]) : [];
       const savedAt =
         typeof obj?.savedAt === "number" ? (obj.savedAt as number) : null;
       const normalized = items
@@ -651,7 +677,7 @@ export function BookingCallClient({
       cancelled = true;
       window.clearInterval(id);
     };
-  }, [bookingId, role]);
+  }, [bookingId, isOpenMeeting, role]);
 
   const joinBlockedByTeacher =
     !isOpenMeeting && role === "student" && !teacherWaiting;
@@ -715,6 +741,30 @@ export function BookingCallClient({
   });
 
   React.useEffect(() => cleanup, [cleanup]);
+
+  const hangUp = useEvent(() => {
+    try {
+      window.sessionStorage.removeItem(resumeStorageKey);
+    } catch {}
+    cleanup();
+  });
+
+  // Persist "in call" intent so refresh can auto-rejoin.
+  React.useEffect(() => {
+    if (phase === "in_call" || phase === "connecting") {
+      try {
+        window.sessionStorage.setItem(
+          resumeStorageKey,
+          JSON.stringify({ at: Date.now() }),
+        );
+      } catch {}
+    }
+    if (phase === "ended") {
+      try {
+        window.sessionStorage.removeItem(resumeStorageKey);
+      } catch {}
+    }
+  }, [phase, resumeStorageKey]);
 
   const sendSignal = useEvent((data: { [k: string]: unknown }) => {
     const channel = channelRef.current;
@@ -842,18 +892,27 @@ export function BookingCallClient({
     }
   });
 
-  const join = async () => {
+  const join = useEvent(async () => {
     setError(null);
     setLoading(true);
     setPhase("connecting");
     turnFallbackAttemptedRef.current = false;
     addLog("Join clicked");
+    try {
+      window.sessionStorage.setItem(
+        resumeStorageKey,
+        JSON.stringify({ at: Date.now() }),
+      );
+    } catch {}
 
     try {
       if (role === "teacher" && teacherKeyRequired && !teacherKey.trim()) {
         addLog("Join blocked: missing partner key");
         setError("Partner key is required.");
         setPhase("lobby");
+        try {
+          window.sessionStorage.removeItem(resumeStorageKey);
+        } catch {}
         return;
       }
 
@@ -870,6 +929,9 @@ export function BookingCallClient({
         addLog(`Session failed: ${resp.error}`);
         setError(resp.error);
         setPhase("lobby");
+        try {
+          window.sessionStorage.removeItem(resumeStorageKey);
+        } catch {}
         return;
       }
       addLog("Session OK");
@@ -902,6 +964,9 @@ export function BookingCallClient({
           console.error("[BookingCall] join getUserMedia error", e);
           setError(err?.message ?? "Permission denied");
           setPhase("lobby");
+          try {
+            window.sessionStorage.removeItem(resumeStorageKey);
+          } catch {}
           return;
         }
       }
@@ -1042,10 +1107,29 @@ export function BookingCallClient({
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
       setPhase("lobby");
+      try {
+        window.sessionStorage.removeItem(resumeStorageKey);
+      } catch {}
     } finally {
       setLoading(false);
     }
-  };
+  });
+
+  const resumeAttemptedRef = React.useRef(false);
+  React.useEffect(() => {
+    if (phase !== "lobby") return;
+    if (resumeAttemptedRef.current) return;
+    if (role === "teacher" && teacherKeyRequired && !teacherKey.trim()) return;
+    try {
+      const raw = window.sessionStorage.getItem(resumeStorageKey);
+      if (!raw) return;
+    } catch {
+      return;
+    }
+    resumeAttemptedRef.current = true;
+    addLog("Auto rejoin: resume flag found (refresh)");
+    void join();
+  }, [addLog, join, phase, resumeStorageKey, role, teacherKey, teacherKeyRequired]);
 
   if (role === "student" && !canProceedStudent) {
     return (
@@ -1072,6 +1156,217 @@ export function BookingCallClient({
             </CardFooter>
           </Card>
         </div>
+      </div>
+    );
+  }
+
+  if (isMobile && phase === "in_call") {
+    return (
+      <div className="fixed inset-0 bg-black text-white">
+        {mobileView === "history" ? (
+          <div className="absolute inset-0 flex flex-col">
+            <div className="flex items-center justify-between px-4 py-3">
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm"
+                onClick={() => setMobileView("video")}
+              >
+                <ChevronLeft className="h-4 w-4" />
+                Back
+              </button>
+              <div className="text-sm font-semibold">Messages</div>
+              <div className="w-[78px]" />
+            </div>
+            <div className="flex-1 overflow-y-auto px-4 pb-4">
+              <div className="space-y-2">
+                {messages.length === 0 ? (
+                  <div className="text-sm text-white/60">
+                    No messages yet.
+                  </div>
+                ) : (
+                  messages.map((m, idx) => (
+                    <div
+                      key={idx}
+                      className={cn(
+                        "max-w-[90%] rounded-2xl px-3 py-2 text-sm",
+                        m.from === role
+                          ? "ml-auto bg-white text-black"
+                          : "bg-white/10 text-white",
+                      )}
+                    >
+                      {m.text}
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+            <form
+              className="flex items-center gap-2 border-t border-white/10 px-4 py-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const text = chatText.trim();
+                if (!text) return;
+                setMessages((prev) => [
+                  ...prev,
+                  { from: role, text, at: Date.now() },
+                ]);
+                setChatText("");
+                sendChat(text);
+              }}
+            >
+              <input
+                value={chatText}
+                onChange={(e) => setChatText(e.target.value)}
+                className="h-11 flex-1 rounded-full border border-white/15 bg-white/5 px-4 text-sm text-white placeholder:text-white/50"
+                placeholder="Message…"
+              />
+              <button
+                type="submit"
+                className="h-11 rounded-full bg-white px-4 text-sm font-semibold text-black"
+              >
+                Send
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div className="absolute inset-0">
+            <button
+              type="button"
+              className="absolute inset-0"
+              onClick={() => setMobileComposerOpen(true)}
+              aria-label="Show message input"
+            />
+            <video
+              ref={remoteRef}
+              autoPlay
+              playsInline
+              className="h-full w-full bg-black object-cover"
+            />
+
+            <div className="absolute bottom-4 right-4 h-[160px] w-[120px] overflow-hidden rounded-2xl border border-white/15 bg-black shadow-[0_18px_60px_rgba(0,0,0,0.55)]">
+              <video
+                ref={localInCallRef}
+                autoPlay
+                muted
+                playsInline
+                className="h-full w-full bg-black object-cover -scale-x-100"
+              />
+            </div>
+
+            <div className="pointer-events-none absolute left-4 right-4 top-4 flex items-center justify-between">
+              <div className="pointer-events-auto flex items-center gap-2">
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
+                  onClick={() => hangUp()}
+                >
+                  Hang up
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
+                  onClick={() => {
+                    setMicOn((v) => {
+                      const next = !v;
+                      for (const t of preview?.getAudioTracks() ?? [])
+                        t.enabled = next;
+                      return next;
+                    });
+                  }}
+                >
+                  <Mic className="h-4 w-4" />
+                  {micOn ? "On" : "Off"}
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
+                  onClick={() => {
+                    setCamOn((v) => {
+                      const next = !v;
+                      for (const t of preview?.getVideoTracks() ?? [])
+                        t.enabled = next;
+                      return next;
+                    });
+                  }}
+                >
+                  <Video className="h-4 w-4" />
+                  {camOn ? "On" : "Off"}
+                </button>
+              </div>
+
+              <div className="pointer-events-auto flex items-center gap-2">
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
+                  onClick={() => setMobileView("history")}
+                >
+                  <MoreHorizontal className="h-4 w-4" />
+                  More
+                </button>
+              </div>
+            </div>
+
+            <div className="pointer-events-none absolute bottom-24 left-4 right-4 space-y-2">
+              {mobileRecentMessages.map((m, idx) => (
+                <div
+                  key={idx}
+                  className={cn(
+                    "rounded-2xl px-3 py-2 text-sm backdrop-blur",
+                    m.from === role
+                      ? "ml-auto w-fit max-w-[85%] bg-white/85 text-black"
+                      : "w-fit max-w-[85%] bg-black/45 text-white ring-1 ring-white/10",
+                  )}
+                >
+                  {m.text}
+                </div>
+              ))}
+            </div>
+
+            {mobileComposerOpen ? (
+              <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/85 px-4 py-3">
+                <form
+                  className="flex items-center gap-2"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const text = chatText.trim();
+                    if (!text) return;
+                    setMessages((prev) => [
+                      ...prev,
+                      { from: role, text, at: Date.now() },
+                    ]);
+                    setChatText("");
+                    sendChat(text);
+                    setMobileComposerOpen(false);
+                  }}
+                >
+                  <div className="flex h-11 flex-1 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4">
+                    <MessageSquare className="h-4 w-4 text-white/70" />
+                    <input
+                      value={chatText}
+                      onChange={(e) => setChatText(e.target.value)}
+                      className="h-full w-full bg-transparent text-sm text-white placeholder:text-white/50 outline-none"
+                      placeholder="Type a message…"
+                      autoFocus
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="h-11 rounded-full bg-white px-4 text-sm font-semibold text-black"
+                  >
+                    Send
+                  </button>
+                </form>
+                <button
+                  type="button"
+                  className="mt-2 w-full text-center text-xs text-white/60"
+                  onClick={() => setMobileComposerOpen(false)}
+                >
+                  Tap to close
+                </button>
+              </div>
+            ) : null}
+          </div>
+        )}
       </div>
     );
   }
@@ -1124,7 +1419,14 @@ export function BookingCallClient({
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" asChild>
-              <Link href={role === "teacher" ? "/admin" : "/account"}>
+              <Link
+                href={role === "teacher" ? "/admin" : "/account"}
+                onClick={() => {
+                  try {
+                    window.sessionStorage.removeItem(resumeStorageKey);
+                  } catch {}
+                }}
+              >
                 Exit
               </Link>
             </Button>
@@ -1511,7 +1813,7 @@ export function BookingCallClient({
                 </div>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                <Button variant="outline" size="sm" onClick={() => cleanup()}>
+                <Button variant="outline" size="sm" onClick={() => hangUp()}>
                   Hang up
                 </Button>
                 <Button

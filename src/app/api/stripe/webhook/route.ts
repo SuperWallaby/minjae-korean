@@ -68,12 +68,15 @@ export async function POST(req: NextRequest) {
       const expiresAt = addDays(purchasedAt, 30);
 
       const stripeCustomerId = typeof full.customer === "string" ? full.customer : undefined;
-      const stripePaymentIntentId =
-        typeof full.payment_intent === "string"
-          ? full.payment_intent
-          : typeof (full.payment_intent as any)?.id === "string"
-            ? (full.payment_intent as any).id
-            : undefined;
+      const stripePaymentIntentId = (() => {
+        const pi = full.payment_intent as unknown;
+        if (typeof pi === "string") return pi;
+        if (pi && typeof pi === "object" && "id" in pi) {
+          const id = (pi as { id?: unknown }).id;
+          if (typeof id === "string") return id;
+        }
+        return undefined;
+      })();
 
       addStripeCreditsByEmail({
         email,

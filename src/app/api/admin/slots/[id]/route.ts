@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { getSlotById, updateSlot, deleteSlot } from "@/lib/db";
+import { updateSlot, deleteSlot } from "@/lib/db";
 
 export async function PATCH(req: NextRequest) {
   try {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
@@ -14,7 +15,9 @@ export default function PaymentCancelPage() {
             No worries—nothing was charged. You can try again anytime.
           </div>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-            <CheckoutButton product="single">Try again</CheckoutButton>
+            <Suspense fallback={<Button disabled>Try again</Button>}>
+              <CheckoutButton product="single">Try again</CheckoutButton>
+            </Suspense>
             <Button asChild variant="outline">
               <Link href="/#ways-to-use">Back</Link>
             </Button>

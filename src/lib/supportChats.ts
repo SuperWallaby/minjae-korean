@@ -153,7 +153,8 @@ export async function patchSupportThread(threadId: string, patch: Partial<Suppor
   const oid = toObjectId(threadId);
   if (!oid) return null;
 
-  const { id: _ignored, ...rest } = patch as any;
+  const rest: Partial<SupportThread> = { ...patch };
+  delete (rest as { id?: unknown }).id;
   await threads.updateOne({ _id: oid }, { $set: rest });
   const next = await threads.findOne({ _id: oid });
   return next ? toThread(next) : null;
