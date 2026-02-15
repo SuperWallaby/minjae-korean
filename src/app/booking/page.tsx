@@ -227,7 +227,9 @@ export default function BookingPage() {
 
   const weekRangeLabel = React.useMemo(() => {
     try {
-      const start = DateTime.fromJSDate(weekStart).setZone(BUSINESS_TIME_ZONE).startOf("day");
+      const start = DateTime.fromJSDate(weekStart)
+        .setZone(BUSINESS_TIME_ZONE)
+        .startOf("day");
       const end = start.plus({ days: 6 });
       if (start.hasSame(end, "year")) {
         return `${start.toFormat("MMM d")} — ${end.toFormat("MMM d")}`;

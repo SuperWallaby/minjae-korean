@@ -19,7 +19,6 @@ import {
 import { Input } from "@/components/ui/Input";
 import { PhoneInput } from "@/components/ui/PhoneInput";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
-import { SkipUpdate } from "@/components/SkipUpdate";
 import { WithLoading } from "@/components/WithLoading";
 
 type Student = {
@@ -713,7 +712,9 @@ export default function AccountPage() {
                         const name = (profileDraft.name ?? "").trim();
                         const email = (profileDraft.email ?? "").trim();
                         const phone = (profileDraft.phone ?? "").trim();
-                        const sessionWish = (profileDraft.sessionWish ?? "").trim();
+                        const sessionWish = (
+                          profileDraft.sessionWish ?? ""
+                        ).trim();
                         // Basic client-side validation
                         if (!name) {
                           setProfileSaveOk(false);
