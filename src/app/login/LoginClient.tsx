@@ -44,11 +44,12 @@ export function LoginClient() {
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(60%_60%_at_50%_0%,color-mix(in_srgb,var(--included-3)_45%,transparent),transparent)]" />
 
           <CardHeader className="mb-2 relative items-center text-center">
-              {/* <ShieldCheck className="size-7 text-foreground/70" /> */}
-              <img src="/signin.png" alt="Kaja Logo" className="w-24 mx-auto" />
+            {/* <ShieldCheck className="size-7 text-foreground/70" /> */}
+            <img src="/signin.webp" alt="Kaja Logo" className="w-24 mx-auto" />
             <CardTitle className="text-2xl mt-4">Welcome to Kaja</CardTitle>
             <CardDescription className="w-full max-w-sm mx-auto text-center">
-              Join as a member, talk with Minjae, book a time, recap notes, and more.
+              Join as a member, talk with Minjae, book a time, recap notes, and
+              more.
             </CardDescription>
           </CardHeader>
 
@@ -86,7 +87,11 @@ export function LoginClient() {
                 onClick={() => void sendLink()}
                 disabled={loading || sent}
               >
-                {sent ? "Login link sent" : loading ? "Sending…" : "Send login link"}
+                {sent
+                  ? "Login link sent"
+                  : loading
+                    ? "Sending…"
+                    : "Send login link"}
               </Button>
 
               {sent ? (
@@ -107,12 +112,18 @@ export function LoginClient() {
             </div>
 
             <div className="mt-6 text-center text-xs text-muted-foreground">
-              By continuing, you agree to our{" "} <br></br>
-              <Link href="/terms" className="text-primary underline underline-offset-4 hover:text-foreground">
+              By continuing, you agree to our <br></br>
+              <Link
+                href="/terms"
+                className="text-primary underline underline-offset-4 hover:text-foreground"
+              >
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link href="/privacy" className="text-primary underline underline-offset-4 hover:text-foreground">
+              <Link
+                href="/privacy"
+                className="text-primary underline underline-offset-4 hover:text-foreground"
+              >
                 Privacy Policy
               </Link>
               .
@@ -123,4 +134,3 @@ export function LoginClient() {
     </div>
   );
 }
-

@@ -40,6 +40,8 @@ export type Student = {
   // This is the preferred key for ownership/entitlements; email is contact info only.
   authUserId?: string;
   phone?: string;
+  // Member's preference for lesson/session style or goals (free-form text).
+  sessionWish?: string;
   createdAt: string;
   updatedAt: string;
   stripeCustomerId?: string;
@@ -103,6 +105,10 @@ export function listStudents(): Student[] {
           ? obj.authUserId.trim()
           : undefined,
       phone: typeof obj.phone === "string" && obj.phone.trim() ? obj.phone.trim() : undefined,
+      sessionWish:
+        typeof obj.sessionWish === "string" && obj.sessionWish.trim()
+          ? obj.sessionWish.trim()
+          : undefined,
       createdAt: typeof obj.createdAt === "string" ? obj.createdAt : new Date().toISOString(),
       updatedAt: typeof obj.updatedAt === "string" ? obj.updatedAt : new Date().toISOString(),
       stripeCustomerId: typeof obj.stripeCustomerId === "string" ? obj.stripeCustomerId : undefined,
@@ -142,6 +148,7 @@ export function createStudent(args: { name: string; email: string; phone?: strin
     email: normalizeEmail(args.email),
     authUserId: undefined,
     phone: (args.phone ?? "").trim() || undefined,
+    sessionWish: undefined,
     createdAt: now,
     updatedAt: now,
     notes: [],
@@ -157,7 +164,9 @@ export function createStudent(args: { name: string; email: string; phone?: strin
 
 export function patchStudent(
   id: string,
-  patch: Partial<Pick<Student, "name" | "email" | "phone" | "adminNote" | "authUserId">>,
+  patch: Partial<
+    Pick<Student, "name" | "email" | "phone" | "adminNote" | "authUserId" | "sessionWish">
+  >,
 ): Student | null {
   const list = listStudents();
   const idx = list.findIndex((s) => s.id === id);
@@ -171,6 +180,9 @@ export function patchStudent(
       ? { authUserId: normalizeAuthUserId(String(patch.authUserId)) || undefined }
       : null),
     ...(patch.phone !== undefined ? { phone: String(patch.phone).trim() || undefined } : null),
+    ...(patch.sessionWish !== undefined
+      ? { sessionWish: String(patch.sessionWish).trim() || undefined }
+      : null),
     ...(patch.adminNote !== undefined ? { adminNote: String(patch.adminNote) } : null),
     updatedAt: new Date().toISOString(),
   };

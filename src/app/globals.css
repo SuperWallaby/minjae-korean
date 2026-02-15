@@ -9,7 +9,10 @@
   --text-primary: #2c2a25;
   --text-secondary: rgba(44, 42, 37, 0.66);
   --accent-muted: #cbbfae;
-  --included-1: #e8dfd3;
+  /* Muted badge background (updated per design) */
+  --included-1: #eddcc5;
+  /* Muted badge foreground (updated per design) */
+  --badge-muted-foreground: #342a1b;
   --included-2: #c3dad0;
   --included-3: #d6d4e3;
   --included-4: color-mix(in srgb, var(--included-2) 55%, var(--included-1));
@@ -17,7 +20,7 @@
   /* Existing app tokens (mapped to requested tokens) */
   --background: var(--bg-canvas);
   --foreground: var(--text-primary);
-  --muted: color-mix(in srgb, var(--bg-card) 72%, var(--bg-canvas));
+  --muted: var(--included-1);
   --muted-foreground: var(--text-secondary);
   --card: var(--bg-card);
   --card-foreground: var(--text-primary);

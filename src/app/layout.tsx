@@ -24,9 +24,11 @@ const SITE_DESCRIPTION =
   "A place to use Korean from real context: read a prompt, talk it through, and keep a simple habit going.";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const METADATA_BASE =
+  process.env.NODE_ENV === "production" ? new URL(SITE_URL) : undefined;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: METADATA_BASE,
   title: {
     default: `${SITE_NAME} | Let’s Talk in Korean`,
     template: `%s | ${SITE_NAME}`,
@@ -35,15 +37,35 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   manifest: "/brand/site.webmanifest",
   icons: {
-    icon: [{ url: "/brand/icon.png", type: "image/png" }],
-    apple: [{ url: "/brand/icon.png" }],
+    icon: [
+      { url: "/brand/favicon.ico", type: "image/x-icon" },
+      {
+        url: "/brand/favicon-32x32.png",
+        type: "image/png",
+        sizes: "32x32",
+      },
+      {
+        url: "/brand/favicon-16x16.png",
+        type: "image/png",
+        sizes: "16x16",
+      },
+      { url: "/brand/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: [{ url: "/brand/favicon.ico", type: "image/x-icon" }],
+    apple: [
+      {
+        url: "/brand/apple-touch-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
   },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Let’s Talk in Korean`,
     description: SITE_DESCRIPTION,
-    images: [{ url: "/brand/og.png" }],
+    images: [{ url: "/brand/og.webp" }],
   },
   twitter: {
     card: "summary_large_image",

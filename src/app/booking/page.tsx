@@ -3,7 +3,6 @@
 import Link from "next/link";
 import * as React from "react";
 import {
-  CalendarDays,
   Check,
   CheckCircle,
   ChevronLeft,
@@ -29,6 +28,7 @@ import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import { PhoneInput } from "@/components/ui/PhoneInput";
 import { Input } from "@/components/ui/Input";
+import Image from "next/image";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
@@ -225,6 +225,19 @@ export default function BookingPage() {
     return `${weekday} ${dt.toFormat("M/d")} · ${dt.toFormat("HH:mm")}`;
   }, [selectedSlot]);
 
+  const weekRangeLabel = React.useMemo(() => {
+    try {
+      const start = DateTime.fromJSDate(weekStart).setZone(BUSINESS_TIME_ZONE).startOf("day");
+      const end = start.plus({ days: 6 });
+      if (start.hasSame(end, "year")) {
+        return `${start.toFormat("MMM d")} — ${end.toFormat("MMM d")}`;
+      }
+      return `${start.toFormat("MMM d, yyyy")} — ${end.toFormat("MMM d, yyyy")}`;
+    } catch {
+      return "";
+    }
+  }, [weekStart]);
+
   async function loadWeekSlots() {
     const startedAt = Date.now();
     setSlotsLoading(true);
@@ -278,9 +291,7 @@ export default function BookingPage() {
       return;
     }
     const u = user;
-    setBookingEmail((prev) =>
-      prev.trim() ? prev : (u.email ?? "").trim(),
-    );
+    setBookingEmail((prev) => (prev.trim() ? prev : (u.email ?? "").trim()));
     let cancelled = false;
     async function loadProfile() {
       setProfileLoading(true);
@@ -458,7 +469,7 @@ export default function BookingPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="mt-2 flex items-center gap-2 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              <CalendarDays className="w-8 h-8" />
+              <img src="/calendar.webp" alt="Time" className="w-8 h-8" />
               Pick a time
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
@@ -519,7 +530,7 @@ export default function BookingPage() {
             <Card>
               <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <CardTitle>Pick a time</CardTitle>
+                  <CardTitle>{weekRangeLabel}</CardTitle>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="hidden md:flex items-center gap-2 mr-1">
@@ -806,7 +817,13 @@ export default function BookingPage() {
                     skip={Boolean(session.state.user && profileLoading)}
                   >
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <img src="/coffeeee.png" className="w-6 -mt-1" />
+                      <Image
+                        width={24}
+                        height={30}
+                        src="/coffeeee.webp"
+                        alt="Coffee"
+                        className="-mt-1"
+                      />
                       {!session.state.user
                         ? "Sign in required"
                         : (profile?.creditsRemaining ?? 0) <= 0
@@ -884,9 +901,12 @@ export default function BookingPage() {
                   <CardTitle>About the Session</CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground">
-                  <img
-                    src="/head.png"
-                    className="inline-block mr-2 -mt-2  w-7 "
+                  <Image
+                    width={28}
+                    height={25}
+                    src="/head.webp"
+                    alt="Head"
+                    className="inline-block mr-2 -mt-2  "
                   />
                   This session focuses on speaking Korean and is best for
                   learners beyond the very beginner level.

@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function Logo({
@@ -18,10 +18,11 @@ export function Logo({
       )}
       aria-label="Minjae Korean home"
     >
-      <img
-        src={mode === "v2" ? "/brand/logo-v2.png" : "/brand/logo.png"}
+      <Image
+        width={71}
+        height={28}
+        src={mode === "v2" ? "/brand/logo-v2.webp" : "/brand/logo.webp"}
         alt="Minjae Korean logo"
-        className="h-7"
       />
     </Link>
   );

@@ -1,12 +1,24 @@
 [
   {
+    "id": "stu_mlnmzuf8_mgxk4w",
+    "name": "kim minjae 123123123",
+    "email": "manager.trbox@gmail.com",
+    "authUserId": "google:117781110068283821995",
+    "createdAt": "2026-02-15T11:03:05.156Z",
+    "updatedAt": "2026-02-15T11:07:35.211Z",
+    "adminNote": "",
+    "notes": [],
+    "payments": [],
+    "credits": []
+  },
+  {
     "id": "stu_mljm4ej9_t80bj9",
     "name": "MINJAE KIM",
     "email": "colton950901@gmail.com",
     "authUserId": "google:114232026682457163705",
     "phone": "+8211052374492",
     "createdAt": "2026-02-12T15:27:33.525Z",
-    "updatedAt": "2026-02-14T11:26:32.394Z",
+    "updatedAt": "2026-02-15T10:00:05.293Z",
     "adminNote": "",
     "notes": [
       {

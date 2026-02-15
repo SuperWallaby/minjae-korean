@@ -19,12 +19,15 @@ import {
 import { Input } from "@/components/ui/Input";
 import { PhoneInput } from "@/components/ui/PhoneInput";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
+import { SkipUpdate } from "@/components/SkipUpdate";
+import { WithLoading } from "@/components/WithLoading";
 
 type Student = {
   id: string;
   name: string;
   email: string;
   phone?: string;
+  sessionWish?: string;
   notes?: Array<{ id: string; body: string; createdAt: string }>;
   payments?: Array<{
     id: string;
@@ -72,13 +75,47 @@ function startsRelativeLabel(dateKey: string, startMin: number) {
     .startOf("day")
     .plus({ minutes: startMin });
   const rel = start.toRelative({ base: DateTime.now().setZone(zone) });
-  return rel ? `Starts ${rel}` : "";
+  if (!rel) return "";
+  const v = String(rel);
+  if (v.endsWith("ago")) {
+    // e.g. "1 day ago" -> "Started 1 day ago"
+    return `Started ${v}`;
+  }
+  // e.g. "in 1 day" -> "Starts in 1 day"
+  return `Starts ${v}`;
+}
+
+function bookingBadge(b: {
+  dateKey?: string;
+  startMin?: number;
+  endMin?: number;
+  status?: string;
+}) {
+  // If the booking has a time and it's already ended, show Past.
+  try {
+    if (b.dateKey && typeof b.endMin === "number") {
+      const end = DateTime.fromISO(b.dateKey, { zone: "Asia/Seoul" })
+        .startOf("day")
+        .plus({ minutes: b.endMin });
+      if (DateTime.now().setZone("Asia/Seoul") > end) {
+        return { text: "Past", variant: "muted" as const, className: "" };
+      }
+    }
+  } catch {
+    // ignore parsing errors
+  }
+  return statusBadge(String(b.status ?? ""));
 }
 
 function statusBadge(status: string) {
   const s = String(status ?? "");
   if (s === "confirmed")
-    return { text: "All set", variant: "default" as const };
+    return {
+      text: "All set",
+      variant: "default" as const,
+      className:
+        "bg-included-2 text-[color-mix(in_srgb,var(--foreground)_82%,var(--included-2)_18%)] ring-1 ring-black/5 dark:ring-white/10",
+    };
   if (s === "cancelled")
     return { text: "Cancelled", variant: "muted" as const };
   if (s === "no_show") return { text: "Missed", variant: "muted" as const };
@@ -91,19 +128,21 @@ export default function AccountPage() {
     "bookings" | "payments" | "notes" | "profile"
   >("bookings");
 
-  const [student, setStudent] = React.useState<Student | null>(null);
-  const [studentLoading, setStudentLoading] = React.useState(false);
+  const student = session.state.student as Student | null;
+  const studentLoading = session.accountLoading;
   const [profileSaving, setProfileSaving] = React.useState(false);
   const [profileSaveMessage, setProfileSaveMessage] = React.useState<
     string | null
   >(null);
   const [profileSaveOk, setProfileSaveOk] = React.useState(false);
-  const studentIdStorageKey = React.useMemo(() => {
-    const authUserId = (session.state.user as { id?: string } | null)?.id ?? "";
-    if (authUserId.trim()) return `mj_student_id_${authUserId.trim()}`;
-    const email = (session.state.user?.email ?? "").trim().toLowerCase();
-    return email ? `mj_student_id_${email}` : "mj_student_id";
-  }, [session.state.user]);
+  const [profileDirty, setProfileDirty] = React.useState(false);
+  const [profileDraft, setProfileDraft] = React.useState<{
+    name: string;
+    email: string;
+    phone: string;
+    sessionWish: string;
+  }>({ name: "", email: "", phone: "", sessionWish: "" });
+  const sessionStudentId = (session.state.user?.studentId ?? "").trim();
 
   type BookingListItem = {
     id: string;
@@ -127,16 +166,21 @@ export default function AccountPage() {
       typeof o.endMin === "number" &&
       typeof o.status === "string" &&
       (o.code === undefined || typeof o.code === "string") &&
-      (o.meetingProvider === undefined || typeof o.meetingProvider === "string") &&
+      (o.meetingProvider === undefined ||
+        typeof o.meetingProvider === "string") &&
       (o.meetUrl === undefined || typeof o.meetUrl === "string") &&
       (o.cancelled === undefined || typeof o.cancelled === "boolean")
     );
   }
 
   const [bookings, setBookings] = React.useState<BookingListItem[]>([]);
-  const [bookingsLoading, setBookingsLoading] = React.useState(false);
-  const [bookingActionId, setBookingActionId] = React.useState<string | null>(null);
-  const [bookingActionMsg, setBookingActionMsg] = React.useState<string | null>(null);
+  const [bookingsLoading, setBookingsLoading] = React.useState(true);
+  const [bookingActionId, setBookingActionId] = React.useState<string | null>(
+    null,
+  );
+  const [bookingActionMsg, setBookingActionMsg] = React.useState<string | null>(
+    null,
+  );
 
   const creditsSummary = React.useMemo(() => {
     const now = Date.now();
@@ -150,77 +194,35 @@ export default function AccountPage() {
 
   React.useEffect(() => {
     if (!session.state.user) {
-      setStudent(null);
       setProfileSaveMessage(null);
       setProfileSaving(false);
+      setProfileSaveOk(false);
+      setProfileDirty(false);
+      setProfileDraft({ name: "", email: "", phone: "", sessionWish: "" });
       return;
     }
-    let cancelled = false;
-    async function load() {
-      setStudentLoading(true);
-      try {
-        const savedId =
-          typeof window !== "undefined"
-            ? (window.localStorage.getItem(studentIdStorageKey) ?? "")
-            : "";
-        const qs = savedId.trim()
-          ? `id=${encodeURIComponent(savedId.trim())}`
-          : `email=${encodeURIComponent(session.state.user!.email)}`;
-        const res = await fetch(`/api/public/students/upsert?${qs}`, {
-          cache: "no-store",
-        });
-        const json = await res.json().catch(() => null);
-        if (cancelled) return;
-        if (res.ok && json?.ok) {
-          const s = (json?.data?.student ?? null) as Student | null;
-          if (s) {
-            setStudent(s);
-            const id = typeof s.id === "string" ? s.id : "";
-            if (id && typeof window !== "undefined")
-              window.localStorage.setItem(studentIdStorageKey, id);
-            return;
-          }
-        }
-
-        // If not found, create a minimal student record so inputs have a stable source of truth.
-        const createRes = await fetch("/api/public/students/upsert", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: session.state.user!.name,
-            email: session.state.user!.email,
-          }),
-        });
-        const createJson = await createRes.json().catch(() => null);
-        if (cancelled) return;
-        if (createRes.ok && createJson?.ok && createJson.data?.student) {
-          const s = createJson.data.student as Student;
-          setStudent(s);
-          const id = typeof s.id === "string" ? s.id : "";
-          if (id && typeof window !== "undefined")
-            window.localStorage.setItem(studentIdStorageKey, id);
-        }
-      } finally {
-        if (!cancelled) setStudentLoading(false);
-      }
-    }
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, [session.state.user, studentIdStorageKey]);
+    if (profileDirty) return;
+    setProfileDraft({
+      name: (student?.name ?? session.state.user.name ?? "").trim(),
+      email: (student?.email ?? session.state.user.email ?? "").trim(),
+      phone: (student?.phone ?? "").trim(),
+      sessionWish: (student?.sessionWish ?? "").trim(),
+    });
+  }, [profileDirty, session.state.user, student?.id]);
 
   // Phone is edited via shared PhoneInput component
 
   const loadBookings = React.useCallback(async () => {
     if (!session.state.user) return;
-    const sid = (student?.id ?? "").trim();
+    const sid = (sessionStudentId || student?.id || "").trim();
     setBookingsLoading(true);
     try {
       const qs = sid
         ? `studentId=${encodeURIComponent(sid)}`
         : `email=${encodeURIComponent(session.state.user!.email)}`;
-      const res = await fetch(`/api/public/bookings?${qs}`, { cache: "no-store" });
+      const res = await fetch(`/api/public/bookings?${qs}`, {
+        cache: "no-store",
+      });
       const json = await res.json().catch(() => null);
       if (res.ok && json?.ok) {
         const raw = (json.data?.items ?? []) as unknown;
@@ -232,11 +234,13 @@ export default function AccountPage() {
     } finally {
       setBookingsLoading(false);
     }
-  }, [session.state.user, student?.id]);
+  }, [session.state.user, sessionStudentId, student?.id]);
 
   React.useEffect(() => {
     void loadBookings();
   }, [loadBookings]);
+
+  if (studentLoading) return null;
 
   if (!session.state.user) {
     return (
@@ -244,7 +248,7 @@ export default function AccountPage() {
         <Container className="max-w-2xl">
           <Card>
             <CardHeader>
-              <CardTitle>My Practice</CardTitle>
+              <CardTitle> Please Signin.</CardTitle>
               <CardDescription>
                 Sign in to manage your profile, bookings, and payments.
               </CardDescription>
@@ -269,9 +273,9 @@ export default function AccountPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              My Practice
+              {!!student?.name ? student.name : "My Practice."}
             </h1>
-            <p className="mt-2 text-sm text-muted-foreground sm:text-base"></p>
+            {/* <p className="mt-2 text-sm text-muted-foreground sm:text-base"></p> */}
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="muted">{session.state.user.email}</Badge>
@@ -322,173 +326,233 @@ export default function AccountPage() {
                       {bookingActionMsg}
                     </div>
                   ) : null}
-                  {bookingsLoading ? (
-                    <div className="text-sm text-muted-foreground">
-                      Loading…
-                    </div>
-                  ) : bookings.length === 0 ? (
-                    <div className="rounded-md border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
-                      No bookings yet.{" "}
-                      <Link
-                        href="/booking"
-                        className="text-foreground underline underline-offset-4"
-                      >
-                        Go to booking
-                      </Link>
-                      .
-                    </div>
-                  ) : (
-                    <div className="space-y-3">
-                      {bookings.map((b) => (
-                        <div
-                          key={b.id}
-                          className="rounded-md border border-border bg-card p-4"
-                        >
-                          <div className="flex items-start justify-between gap-4">
-                            <div>
-                              <div className="text-sm font-semibold">
-                                {b.dateKey} · {minutesToHhmm(b.startMin)}–
-                                {minutesToHhmm(b.endMin)}
+                  <WithLoading
+                    loading={bookingsLoading}
+                    minMs={350}
+                    delayMs={120}
+                    fallback={
+                      <div className="space-y-3">
+                        {Array.from({ length: 3 }).map((_, idx) => (
+                          <div
+                            key={idx}
+                            className="rounded-md border border-border bg-card p-4"
+                          >
+                            <div className="flex items-start justify-between gap-4">
+                              <div className="space-y-2">
+                                <div className="h-4 w-56 rounded bg-muted/40" />
+                                <div className="flex items-center gap-2">
+                                  <div className="h-5 w-16 rounded-full bg-muted/40" />
+                                  <div className="h-3 w-24 rounded bg-muted/40" />
+                                </div>
                               </div>
-                              <div className="mt-1 flex flex-wrap items-center gap-2">
-                                <Badge variant={statusBadge(b.status).variant}>
-                                  {statusBadge(b.status).text}
-                                </Badge>
-                                {b.cancelled && (
-                                  <Badge variant="muted">Cancelled</Badge>
-                                )}
-                                {b.dateKey &&
-                                  typeof b.startMin === "number" && (
-                                    <span className="text-xs text-muted-foreground">
-                                      {startsRelativeLabel(
-                                        b.dateKey,
-                                        b.startMin,
-                                      )}
-                                    </span>
-                                  )}
+                              <div className="flex items-center gap-2">
+                                <div className="h-9 w-24 rounded-full bg-muted/40" />
+                                <div className="h-9 w-28 rounded-full bg-muted/40" />
                               </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              {(() => {
-                                const hasTime =
-                                  Boolean(b.dateKey) &&
-                                  typeof b.startMin === "number" &&
-                                  typeof b.endMin === "number";
-                                const start = hasTime
-                                  ? DateTime.fromISO(b.dateKey, { zone: "Asia/Seoul" })
-                                      .startOf("day")
-                                      .plus({ minutes: b.startMin })
-                                  : null;
-                                const canCancel =
-                                  !b.cancelled &&
-                                  b.status === "confirmed" &&
-                                  Boolean(start) &&
-                                  start!.toMillis() - Date.now() >= 60 * 60 * 1000;
-                                const canJoin =
-                                  !b.cancelled &&
-                                  b.status === "confirmed" &&
-                                  hasTime &&
-                                  (() => {
-                                    const meetUrl = (b.meetUrl ?? "").trim();
-                                    if (meetUrl) return true;
-                                    const provider = (b.meetingProvider ?? "").trim();
-                                    if (provider === "google_meet") return false;
-                                    const w = callWindowForBooking(
-                                      b.dateKey,
-                                      b.startMin,
-                                      b.endMin,
-                                    );
-                                    const now = DateTime.utc();
-                                    return (
-                                      now >= w.openAt.toUTC() &&
-                                      now <= w.closeAt.toUTC()
-                                    );
-                                  })();
-
-                                return (
-                                  <>
-                                    {canCancel ? (
-                                      <Button
-                                        size="sm"
-                                        variant="outline"
-                                        disabled={bookingActionId === b.id}
-                                        onClick={async () => {
-                                          if (!session.state.user) return;
-                                          const ok = window.confirm(
-                                            "Cancel this booking? (Allowed up to 1 hour before the session.)",
-                                          );
-                                          if (!ok) return;
-                                          setBookingActionId(b.id);
-                                          setBookingActionMsg(null);
-                                          try {
-                                            const res = await fetch(
-                                              `/api/public/bookings/${encodeURIComponent(String(b.id))}/cancel`,
-                                              {
-                                                method: "POST",
-                                                headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({
-                                                  studentId: student?.id ?? "",
-                                                  email: session.state.user!.email,
-                                                }),
-                                              },
-                                            );
-                                            const json = await res.json().catch(() => null);
-                                            if (!res.ok || !json?.ok) {
-                                              setBookingActionMsg(json?.error ?? "Cancellation failed.");
-                                              return;
-                                            }
-                                            setBookingActionMsg("Booking cancelled.");
-                                            await loadBookings();
-                                          } catch (e) {
-                                            setBookingActionMsg(
-                                              e instanceof Error ? e.message : "Cancellation failed.",
-                                            );
-                                          } finally {
-                                            setBookingActionId(null);
-                                          }
-                                        }}
-                                      >
-                                        {bookingActionId === b.id ? "Cancelling…" : "Cancel"}
-                                      </Button>
-                                    ) : null}
-
-                                    <Button
-                                      asChild
-                                      size="sm"
-                                      variant="primary"
-                                      disabled={!canJoin}
-                                    >
-                                      {(b.meetUrl ?? "").trim() ? (
-                                        <a
-                                          href={(b.meetUrl ?? "").trim()}
-                                          target="_blank"
-                                          rel="noreferrer"
-                                        >
-                                          Open Google Meet
-                                        </a>
-                                      ) : (b.meetingProvider ?? "").trim() === "google_meet" ? (
-                                        <a
-                                          href={`/join/${encodeURIComponent(String(b.code || b.id))}`}
-                                        >
-                                          Meet link unavailable
-                                        </a>
-                                      ) : (
-                                        <Link
-                                          href={`/call/${encodeURIComponent(String(b.code || b.id))}`}
-                                        >
-                                          Enter lesson
-                                        </Link>
-                                      )}
-                                    </Button>
-                                  </>
-                                );
-                              })()}
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                        ))}
+                      </div>
+                    }
+                  >
+                    {bookings.length === 0 ? (
+                      <div className="rounded-md border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
+                        No bookings yet.{" "}
+                        <Link
+                          href="/booking"
+                          className="text-foreground underline underline-offset-4"
+                        >
+                          Go to booking
+                        </Link>
+                        .
+                      </div>
+                    ) : (
+                      <div className="space-y-3">
+                        {bookings.map((b) => (
+                          <div
+                            key={b.id}
+                            className="rounded-md border border-border bg-card p-4"
+                          >
+                            <div className="flex items-start justify-between gap-4">
+                              <div>
+                                <div className="text-sm font-semibold">
+                                  {b.dateKey} · {minutesToHhmm(b.startMin)}–
+                                  {minutesToHhmm(b.endMin)}
+                                </div>
+                                <div className="mt-1 flex flex-wrap items-center gap-2">
+                                  {(() => {
+                                    const info = bookingBadge(b);
+                                    return (
+                                      <Badge
+                                        variant={info.variant}
+                                        className={info.className}
+                                      >
+                                        {info.text}
+                                      </Badge>
+                                    );
+                                  })()}
+                                  {b.cancelled && (
+                                    <Badge variant="muted">Cancelled</Badge>
+                                  )}
+                                  {b.dateKey &&
+                                    typeof b.startMin === "number" && (
+                                      <span className="text-xs text-muted-foreground">
+                                        {startsRelativeLabel(
+                                          b.dateKey,
+                                          b.startMin,
+                                        )}
+                                      </span>
+                                    )}
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                {(() => {
+                                  const hasTime =
+                                    Boolean(b.dateKey) &&
+                                    typeof b.startMin === "number" &&
+                                    typeof b.endMin === "number";
+                                  const start = hasTime
+                                    ? DateTime.fromISO(b.dateKey, {
+                                        zone: "Asia/Seoul",
+                                      })
+                                        .startOf("day")
+                                        .plus({ minutes: b.startMin })
+                                    : null;
+                                  const canCancel =
+                                    !b.cancelled &&
+                                    b.status === "confirmed" &&
+                                    Boolean(start) &&
+                                    start!.toMillis() - Date.now() >=
+                                      60 * 60 * 1000;
+                                  const canJoin =
+                                    !b.cancelled &&
+                                    b.status === "confirmed" &&
+                                    hasTime &&
+                                    (() => {
+                                      const meetUrl = (b.meetUrl ?? "").trim();
+                                      if (meetUrl) return true;
+                                      const provider = (
+                                        b.meetingProvider ?? ""
+                                      ).trim();
+                                      if (provider === "google_meet")
+                                        return false;
+                                      const w = callWindowForBooking(
+                                        b.dateKey,
+                                        b.startMin,
+                                        b.endMin,
+                                      );
+                                      const now = DateTime.utc();
+                                      return (
+                                        now >= w.openAt.toUTC() &&
+                                        now <= w.closeAt.toUTC()
+                                      );
+                                    })();
+
+                                  return (
+                                    <>
+                                      {canCancel ? (
+                                        <Button
+                                          size="sm"
+                                          variant="outline"
+                                          disabled={bookingActionId === b.id}
+                                          onClick={async () => {
+                                            if (!session.state.user) return;
+                                            const ok = window.confirm(
+                                              "Cancel this booking? (Allowed up to 1 hour before the session.)",
+                                            );
+                                            if (!ok) return;
+                                            setBookingActionId(b.id);
+                                            setBookingActionMsg(null);
+                                            try {
+                                              const res = await fetch(
+                                                `/api/public/bookings/${encodeURIComponent(String(b.id))}/cancel`,
+                                                {
+                                                  method: "POST",
+                                                  headers: {
+                                                    "Content-Type":
+                                                      "application/json",
+                                                  },
+                                                  body: JSON.stringify({
+                                                    studentId: (
+                                                      sessionStudentId ||
+                                                      student?.id ||
+                                                      ""
+                                                    ).trim(),
+                                                    email:
+                                                      session.state.user!.email,
+                                                  }),
+                                                },
+                                              );
+                                              const json = await res
+                                                .json()
+                                                .catch(() => null);
+                                              if (!res.ok || !json?.ok) {
+                                                setBookingActionMsg(
+                                                  json?.error ??
+                                                    "Cancellation failed.",
+                                                );
+                                                return;
+                                              }
+                                              setBookingActionMsg(
+                                                "Booking cancelled.",
+                                              );
+                                              await loadBookings();
+                                            } catch (e) {
+                                              setBookingActionMsg(
+                                                e instanceof Error
+                                                  ? e.message
+                                                  : "Cancellation failed.",
+                                              );
+                                            } finally {
+                                              setBookingActionId(null);
+                                            }
+                                          }}
+                                        >
+                                          {bookingActionId === b.id
+                                            ? "Cancelling…"
+                                            : "Cancel"}
+                                        </Button>
+                                      ) : null}
+
+                                      <Button
+                                        asChild
+                                        size="sm"
+                                        variant="primary"
+                                        disabled={!canJoin}
+                                      >
+                                        {(b.meetUrl ?? "").trim() ? (
+                                          <a
+                                            href={(b.meetUrl ?? "").trim()}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                          >
+                                            Open Google Meet
+                                          </a>
+                                        ) : (b.meetingProvider ?? "").trim() ===
+                                          "google_meet" ? (
+                                          <a
+                                            href={`/join/${encodeURIComponent(String(b.code || b.id))}`}
+                                          >
+                                            Meet link unavailable
+                                          </a>
+                                        ) : (
+                                          <Link
+                                            href={`/call/${encodeURIComponent(String(b.code || b.id))}`}
+                                          >
+                                            Enter lesson
+                                          </Link>
+                                        )}
+                                      </Button>
+                                    </>
+                                  );
+                                })()}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </WithLoading>
                 </CardContent>
               </Card>
             )}
@@ -534,7 +598,6 @@ export default function AccountPage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Talk notes</CardTitle>
-                  <CardDescription>Notes saved by admin.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {studentLoading ? (
@@ -580,59 +643,65 @@ export default function AccountPage() {
                   <label className="grid gap-1">
                     <span className="text-sm text-muted-foreground">Name</span>
                     <Input
-                      value={student?.name ?? session.state.user!.name}
+                      value={profileDraft.name}
                       onChange={(e) => {
+                        setProfileDirty(true);
                         setProfileSaveOk(false);
                         setProfileSaveMessage(null);
-                        setStudent((prev) =>
-                          prev
-                            ? { ...prev, name: e.target.value }
-                            : {
-                                id: "",
-                                name: e.target.value,
-                                email: session.state.user!.email,
-                              },
-                        );
+                        setProfileDraft((prev) => ({
+                          ...prev,
+                          name: e.target.value,
+                        }));
                       }}
                     />
                   </label>
                   <label className="grid gap-1">
                     <span className="text-sm text-muted-foreground">Email</span>
                     <Input
-                      value={student?.email ?? session.state.user!.email}
+                      value={profileDraft.email}
                       onChange={(e) => {
+                        setProfileDirty(true);
                         setProfileSaveOk(false);
                         setProfileSaveMessage(null);
-                        setStudent((prev) =>
-                          prev
-                            ? { ...prev, email: e.target.value }
-                            : {
-                                id: "",
-                                name: session.state.user!.name,
-                                email: e.target.value,
-                              },
-                        );
+                        setProfileDraft((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }));
                       }}
                     />
                   </label>
                   <label className="grid gap-1">
                     <span className="text-sm text-muted-foreground">Phone</span>
                     <PhoneInput
-                      value={(student?.phone ?? "").trim()}
+                      value={profileDraft.phone}
                       disabled={studentLoading}
                       onChange={(full) => {
+                        setProfileDirty(true);
                         setProfileSaveOk(false);
                         setProfileSaveMessage(null);
-                        setStudent((prev) =>
-                          prev
-                            ? { ...prev, phone: full }
-                            : {
-                                id: "",
-                                name: session.state.user!.name,
-                                email: session.state.user!.email,
-                                phone: full,
-                              },
-                        );
+                        setProfileDraft((prev) => ({
+                          ...prev,
+                          phone: full,
+                        }));
+                      }}
+                    />
+                  </label>
+                  <label className="grid gap-1">
+                    <span className="text-sm text-muted-foreground">
+                      어떤 세션을 바라는지
+                    </span>
+                    <textarea
+                      className="min-h-28 w-full resize-y rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                      value={profileDraft.sessionWish}
+                      placeholder="예: 프리토킹 위주, 발음 교정, 업무 한국어, TOPIK 준비, 내가 자주 틀리는 포인트 피드백 등"
+                      onChange={(e) => {
+                        setProfileDirty(true);
+                        setProfileSaveOk(false);
+                        setProfileSaveMessage(null);
+                        setProfileDraft((prev) => ({
+                          ...prev,
+                          sessionWish: e.target.value,
+                        }));
                       }}
                     />
                   </label>
@@ -641,11 +710,10 @@ export default function AccountPage() {
                   <div className="flex items-center gap-3">
                     <Button
                       onClick={async () => {
-                        const s = student;
-                        if (!s) return;
-                        const name = (s.name ?? "").trim();
-                        const email = (s.email ?? "").trim();
-                        const phone = (s.phone ?? "").trim();
+                        const name = (profileDraft.name ?? "").trim();
+                        const email = (profileDraft.email ?? "").trim();
+                        const phone = (profileDraft.phone ?? "").trim();
+                        const sessionWish = (profileDraft.sessionWish ?? "").trim();
                         // Basic client-side validation
                         if (!name) {
                           setProfileSaveOk(false);
@@ -676,37 +744,38 @@ export default function AccountPage() {
                         setProfileSaveMessage(null);
                         setProfileSaveOk(false);
                         try {
+                          const id = (
+                            sessionStudentId ||
+                            student?.id ||
+                            ""
+                          ).trim();
+                          if (!id) {
+                            setProfileSaveOk(false);
+                            setProfileSaveMessage(
+                              "Account is still loading. Please try again.",
+                            );
+                            return;
+                          }
                           const res = await fetch(
                             "/api/public/students/upsert",
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
                               body: JSON.stringify({
-                                id: s.id,
+                                id,
                                 name,
                                 email,
                                 phone,
+                                sessionWish,
                               }),
                             },
                           );
                           const json = await res.json().catch(() => null);
                           if (res.ok && json?.ok) {
-                            setStudent(json.data.student);
-                            try {
-                              const id =
-                                typeof json?.data?.student?.id === "string"
-                                  ? json.data.student.id
-                                  : "";
-                              if (id)
-                                window.localStorage.setItem(
-                                  studentIdStorageKey,
-                                  id,
-                                );
-                            } catch {
-                              // ignore
-                            }
                             setProfileSaveOk(true);
                             setProfileSaveMessage(null);
+                            setProfileDirty(false);
+                            await session.refreshSession();
                           } else {
                             setProfileSaveOk(false);
                             setProfileSaveMessage(
@@ -772,26 +841,17 @@ export default function AccountPage() {
                           <>Available</>
                         )}
                       </div>
-                       
                     </>
                   ) : (
                     <div className="text-sm text-muted-foreground">
                       You don’t have any credits right now. Purchase credits
                       anytime and you’ll be able to book a lesson immediately.
-                      😊
                     </div>
                   )}
-
                   <div className="mt-3 flex flex-col gap-2">
                     <Button asChild className="w-full" variant="outline">
                       <Link href="/#ways-to-use">Get More Credits</Link>
                     </Button>
-                  </div>
-
-                  <div className="mt-3 text-xs text-muted-foreground">
-                    Passes expire 30 days after purchase.
-                    <br />
-                    We use the earliest-expiring credits first.
                   </div>
                 </CardContent>
               </Card>

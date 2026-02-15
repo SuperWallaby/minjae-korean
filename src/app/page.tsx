@@ -23,13 +23,13 @@ export default function Home() {
         <Container className="relative">
           <div className="relative mx-auto max-w-4xl text-center">
             <div className="text-sm font-semibold tracking-wide text-primary">
-             Daily Korean Practice
+              Daily Korean Practice
             </div>
             <h1 className="mt-5 font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-6xl">
-            Talk in Korean with Minjae.
+              Talk in Korean with Minjae.
             </h1>
             <div className="mt-4 text-muted-foreground">
-            A place to speak Korean in real life.
+              A place to speak Korean in real life.
             </div>
 
             {/* keywords hidden for now */}
@@ -59,13 +59,20 @@ export default function Home() {
                 Talk in real life
               </h2>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                Instead of “studying Korean”, be free to talk. <br/>Be freindly with Korean.
+                Instead of “studying Korean”, be free to talk. <br />
+                Be freindly with Korean.
               </p>
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-3xl bg-included-2 p-6">
                   <div className="flex items-center gap-3">
-                      <img src="/talk1.png" alt="Start from a topic" className="size-5 text-black/60" />
-                    <div className="text-sm font-semibold">Start from a topic</div>
+                    <img
+                      src="/talk1.webp"
+                      alt="Start from a topic"
+                      className="size-5 text-black/60"
+                    />
+                    <div className="text-sm font-semibold">
+                      Start from a topic
+                    </div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
                     Minjae will bring up a right topic for you to talk about.
@@ -73,11 +80,18 @@ export default function Home() {
                 </div>
                 <div className="rounded-3xl bg-included-3 p-6">
                   <div className="flex items-center gap-3">
-                      <img src="/pn2.png" alt="Refine it while you talk" className="w-4.5 text-black/60" />
-                    <div className="text-sm font-semibold">Refine it while you talk</div>
+                    <img
+                      src="/pn2.webp"
+                      alt="Refine it while you talk"
+                      className="w-4.5 text-black/60"
+                    />
+                    <div className="text-sm font-semibold">
+                      Refine it while you talk
+                    </div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Small corrections you can reuse immediately, and we practice it together.
+                    Small corrections you can reuse immediately, and we practice
+                    it together.
                   </div>
                 </div>
               </div>
@@ -93,7 +107,10 @@ export default function Home() {
                 />
                 <div className="pointer-events-none absolute inset-0 grid place-items-center">
                   <div className="grid size-16 place-items-center rounded-full bg-white/70 ring-1 ring-black/10 backdrop-blur-sm">
-                    <Play className="size-6 text-foreground/80" fill="currentColor" />
+                    <Play
+                      className="size-6 text-foreground/80"
+                      fill="currentColor"
+                    />
                   </div>
                 </div>
               </div>
@@ -112,25 +129,37 @@ export default function Home() {
             Ways to use Korean
           </h2>
           <p className="mt-3 text-center text-sm text-muted-foreground sm:text-base">
-            Pick a rhythm that fits. The focus stays on using Korean with content.
+            Pick a rhythm that fits. The focus stays on using Korean with
+            content.
           </p>
 
           <div className="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-3">
             <div className="relative overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
               <div className="flex items-center gap-3">
                 <div className="grid px-2 py-1 place-items-center rounded-2xl bg-(--included-1)/60">
-                <img src="/coffeeee.png" alt="First time" className="w-7.5 -mt-0.5 ml-1 " />
+                  <Image
+                    width={30}
+                    height={37.5}
+                    src="/coffeeee.webp"
+                    alt="First time"
+                    className=" -mt-0.5 ml-1 "
+                  />
                 </div>
                 <div className="font-serif text-base font-semibold tracking-tight">
                   First time
                 </div>
               </div>
               <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-3xl font-semibold tracking-tight">$10</span>
-                <span className="text-sm text-muted-foreground">for a first time</span>
+                <span className="text-3xl font-semibold tracking-tight">
+                  $10
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  for a first time
+                </span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A gentle first talk to see how you currently use Korean, and set a simple direction.
+                A gentle first talk to see how you currently use Korean, and set
+                a simple direction.
               </div>
               <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
                 <li>• 50 min (25min * 2 times)</li>
@@ -138,8 +167,19 @@ export default function Home() {
                 <li>• Clear takeaways</li>
               </ul>
               <div className="mt-6">
-                <Suspense fallback={<Button size="sm" disabled>Be a member</Button>}>
-                  <CheckoutButton product="trial" size="sm" variant="primary" className="font-serif">
+                <Suspense
+                  fallback={
+                    <Button size="sm" disabled>
+                      Be a member
+                    </Button>
+                  }
+                >
+                  <CheckoutButton
+                    product="trial"
+                    size="sm"
+                    variant="primary"
+                    className="font-serif"
+                  >
                     Be a member
                   </CheckoutButton>
                 </Suspense>
@@ -149,14 +189,22 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
               <div className="flex items-center gap-3">
                 <div className="grid p-2 place-items-center rounded-2xl bg-(--included-2)/60">
-                  <img src="/cards.png" alt="Flexible" className="w-11 text-foreground/80" />
+                  <Image
+                    width={44}
+                    height={28.15}
+                    src="/cards.webp"
+                    alt="Flexible"
+                    className=" text-foreground/80"
+                  />
                 </div>
                 <div className="font-serif text-base font-semibold tracking-tight">
-                  Flexible 
+                  Flexible
                 </div>
               </div>
               <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-3xl font-semibold tracking-tight">$15</span>
+                <span className="text-3xl font-semibold tracking-tight">
+                  $15
+                </span>
                 <span className="text-sm text-muted-foreground">per time</span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
@@ -168,8 +216,19 @@ export default function Home() {
                 <li>• Keep continuity without pressure</li>
               </ul>
               <div className="mt-6">
-                <Suspense fallback={<Button size="sm" disabled>Be a member</Button>}>
-                  <CheckoutButton product="single" size="sm" variant="primary" className="font-serif">
+                <Suspense
+                  fallback={
+                    <Button size="sm" disabled>
+                      Be a member
+                    </Button>
+                  }
+                >
+                  <CheckoutButton
+                    product="single"
+                    size="sm"
+                    variant="primary"
+                    className="font-serif"
+                  >
                     Be a member
                   </CheckoutButton>
                 </Suspense>
@@ -179,18 +238,27 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
               <div className="flex items-center gap-3">
                 <div className="grid p-2 place-items-center rounded-2xl bg-(--included-3)/60">
-                  <img src="/stars.png" alt="Monthly Rhythm" className="w-8 text-foreground/80" />
+                  <Image
+                    width={35}
+                    height={25}
+                    src="/stars.webp"
+                    alt="Monthly Rhythm"
+                    className="text-foreground/80"
+                  />
                 </div>
                 <div className="font-serif text-base font-semibold tracking-tight">
                   Monthly Rhythm
                 </div>
               </div>
               <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-3xl font-semibold tracking-tight">$98</span>
+                <span className="text-3xl font-semibold tracking-tight">
+                  $98
+                </span>
                 <span className="text-sm text-muted-foreground">8 times</span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A steady routine for continuity. Ideal if you like a simple monthly cadence.
+                A steady routine for continuity. Ideal if you like a simple
+                monthly cadence.
               </div>
               <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
                 <li>• 16 times × 25 min</li>
@@ -198,8 +266,19 @@ export default function Home() {
                 <li>• Easier to keep the habit</li>
               </ul>
               <div className="mt-6">
-                <Suspense fallback={<Button size="sm" disabled>Be a member</Button>}>
-                  <CheckoutButton product="monthly" size="sm" variant="primary" className="font-serif">
+                <Suspense
+                  fallback={
+                    <Button size="sm" disabled>
+                      Be a member
+                    </Button>
+                  }
+                >
+                  <CheckoutButton
+                    product="monthly"
+                    size="sm"
+                    variant="primary"
+                    className="font-serif"
+                  >
                     Be a member
                   </CheckoutButton>
                 </Suspense>
@@ -221,7 +300,8 @@ export default function Home() {
                 Everything is designed to keep momentum.
               </p>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                Support tools are light, fast, and practical—so you can keep talking while still capturing what matters.
+                Support tools are light, fast, and practical—so you can keep
+                talking while still capturing what matters.
               </p>
             </div>
 
@@ -229,7 +309,13 @@ export default function Home() {
               <div className="grid gap-6 lg:col-span-3">
                 <div className="rounded-3xl bg-included-1 p-6">
                   <div className="flex items-center gap-3">
-                      <img src="/note.png" alt="Notes" className="w-9 text-black/60" />
+                    <Image
+                      width={36}
+                      height={37}
+                      src="/note.webp"
+                      alt="Notes"
+                      className=" text-black/60"
+                    />
                     <div className="text-sm font-semibold">Talk notes</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
@@ -238,13 +324,21 @@ export default function Home() {
                 </div>
                 <div className="rounded-3xl bg-included-2 p-6">
                   <div className="flex items-center gap-3">
-                      {/* <Languages className="size-5 text-black/60" /> */}
-                      <img src="/lang.png" alt="Auto translation" className="w-11 text-black/60" />
-                    <div className="text-sm font-semibold">Auto translation</div>
+                    {/* <Languages className="size-5 text-black/60" /> */}
+                    <Image
+                      width={44}
+                      height={35}
+                      src="/lang.webp"
+                      alt="Auto translation"
+                      className="w-11 text-black/60"
+                    />
+                    <div className="text-sm font-semibold">
+                      Auto translation
+                    </div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Quick translations for tricky sentences, so you keep the conversation going without
-                    losing the flow.
+                    Quick translations for tricky sentences, so you keep the
+                    conversation going without losing the flow.
                   </div>
                 </div>
               </div>
@@ -264,22 +358,33 @@ export default function Home() {
               <div className="grid gap-6 lg:col-span-3">
                 <div className="rounded-3xl bg-included-3 p-6">
                   <div className="flex items-center gap-3">
-                      <img src="/head.png" alt="Subtitles" className="w-11 text-black/60" />
+                    <img
+                      src="/head.webp"
+                      alt="Subtitles"
+                      className="w-11 text-black/60"
+                    />
                     <div className="text-sm font-semibold">Subtitles</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Read while you listen—helps you catch pronunciation, rhythm, and small endings
-                    that change meaning.
+                    Read while you listen—helps you catch pronunciation, rhythm,
+                    and small endings that change meaning.
                   </div>
                 </div>
                 <div className="rounded-3xl bg-included-4 p-6">
                   <div className="flex items-center gap-3">
-                      <img src="/edit.png" alt="Corrections" className="w-11 text-black/60" />
+                    <Image
+                      width={44}
+                      height={37}
+                      src="/edit.webp"
+                      alt="Corrections"
+                      className="text-black/60"
+                    />
                     <div className="text-sm font-semibold">Corrections</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Clear, reusable corrections—so the same mistakes don’t come back next week. You’ll
-                    practice the corrected version immediately.
+                    Clear, reusable corrections—so the same mistakes don’t come
+                    back next week. You’ll practice the corrected version
+                    immediately.
                   </div>
                 </div>
               </div>
@@ -303,36 +408,39 @@ export default function Home() {
 
             <div className="lg:col-span-8">
               <div className="border-t border-border/70">
-            {[
-              {
-                q: "What happens in a typical talk?",
-                a: "We start from a topic minjae will bring up, talk it through, and keep the flow. I’ll write small corrections you can reuse immediately, then we end with a simple recap.",
-              },
-              {
-                q: "What level is this for?",
-                a: "This course is suitable for learners who can already speak Korean. You don’t need to be good at Korean, but it’s ideal if you’ve already finished the very beginner level.",
-              },
-              {
-                q: "How do I prepare?",
-                a: "Open your mind and be ready to talk. Minjae will bring up a topic and we will talk about it.",
-              },
-              {
-                q: "Do I get a recap?",
-                a: "Yes. You’ll get a short recap with key phrases, small corrections, and a simple next-step to continue.",
-              },
-            ].map((item) => (
-              <details key={item.q} className="group border-b border-border/70 py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg font-semibold tracking-tight text-foreground">
-                  <span>{item.q}</span>
-                  <span className="text-xl text-muted-foreground transition group-open:rotate-45">
-                    +
-                  </span>
-                </summary>
-                <div className="mt-4 text-base leading-7 text-muted-foreground">
-                  {item.a}
-                </div>
-              </details>
-            ))}
+                {[
+                  {
+                    q: "What happens in a typical talk?",
+                    a: "We start from a topic minjae will bring up, talk it through, and keep the flow. I’ll write small corrections you can reuse immediately, then we end with a simple recap.",
+                  },
+                  {
+                    q: "What level is this for?",
+                    a: "This course is suitable for learners who can already speak Korean. You don’t need to be good at Korean, but it’s ideal if you’ve already finished the very beginner level.",
+                  },
+                  {
+                    q: "How do I prepare?",
+                    a: "Open your mind and be ready to talk. Minjae will bring up a topic and we will talk about it.",
+                  },
+                  {
+                    q: "Do I get a recap?",
+                    a: "Yes. You’ll get a short recap with key phrases, small corrections, and a simple next-step to continue.",
+                  },
+                ].map((item) => (
+                  <details
+                    key={item.q}
+                    className="group border-b border-border/70 py-5"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg font-semibold tracking-tight text-foreground">
+                      <span>{item.q}</span>
+                      <span className="text-xl text-muted-foreground transition group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <div className="mt-4 text-base leading-7 text-muted-foreground">
+                      {item.a}
+                    </div>
+                  </details>
+                ))}
               </div>
             </div>
           </div>
@@ -347,10 +455,16 @@ export default function Home() {
               Just start with today’s Korean.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              No pressure. Pick a time, talk about a topic, and keep the habit going.
+              No pressure. Pick a time, talk about a topic, and keep the habit
+              going.
             </p>
             <div className="mx-auto mt-6 flex flex-row flex-nowrap items-center justify-center gap-3">
-              <Button asChild size="sm" variant="primary" className="w-fit bg-black px-4 text-white hover:bg-black/90">
+              <Button
+                asChild
+                size="sm"
+                variant="primary"
+                className="w-fit bg-black px-4 text-white hover:bg-black/90"
+              >
                 <Link href="/booking">Pick a time</Link>
               </Button>
               <Button
@@ -372,14 +486,19 @@ export default function Home() {
           <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-12">
               <div className="flex items-end justify-end">
-                <Button asChild variant="outline" size="sm" className="inline-flex items-center gap-2">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="inline-flex items-center gap-2"
+                >
                   <Link href="/posts">
                     More <ArrowRight className="size-4" />
                   </Link>
                 </Button>
               </div>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {posts.slice(0, 3).map((p) => (
                   <Link
                     key={p.slug}
@@ -396,7 +515,8 @@ export default function Home() {
                       />
                     </div>
                     <div className="mt-3 text-xs text-muted-foreground">
-                      {new Date(p.dateISO).toLocaleDateString()} · {p.readingTimeMin} min
+                      {new Date(p.dateISO).toLocaleDateString()} ·{" "}
+                      {p.readingTimeMin} min
                     </div>
                     <div className="mt-2 font-serif text-base font-semibold tracking-tight text-foreground">
                       {p.title}

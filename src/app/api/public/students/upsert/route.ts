@@ -17,11 +17,18 @@ export async function POST(req: NextRequest) {
 
     const name = typeof body.name === "string" ? body.name : "Student";
     const phone = typeof body.phone === "string" ? body.phone : undefined;
+    const sessionWish = typeof body.sessionWish === "string" ? body.sessionWish : undefined;
     const id = typeof body.id === "string" ? body.id.trim() : "";
     const authUserId = typeof body.authUserId === "string" ? body.authUserId.trim() : "";
 
     if (id) {
-      const updated = patchStudent(id, { name, email: body.email, phone, ...(authUserId ? { authUserId } : null) });
+      const updated = patchStudent(id, {
+        name,
+        email: body.email,
+        phone,
+        sessionWish,
+        ...(authUserId ? { authUserId } : null),
+      });
       if (!updated) {
         return new Response(JSON.stringify({ ok: false, error: "Student not found" }), { status: 404 });
       }
@@ -34,9 +41,10 @@ export async function POST(req: NextRequest) {
     if (!s0) return new Response(JSON.stringify({ ok: false, error: "Invalid email" }), { status: 400 });
 
     const next =
-      phone !== undefined || typeof body.name === "string"
+      phone !== undefined || sessionWish !== undefined || typeof body.name === "string"
         ? patchStudent(s0.id, {
             phone,
+            sessionWish,
             name,
             email: s0.email,
             ...(authUserId ? { authUserId } : null),
