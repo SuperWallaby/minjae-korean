@@ -7,7 +7,6 @@ import { DateTime } from "luxon";
 import { useRouter } from "next/navigation";
 
 import { Container } from "@/components/site/Container";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import {
   Card,
@@ -150,10 +149,10 @@ export default function BookingPage() {
       phoneCountry: DEFAULT_PHONE_COUNTRY,
       phoneNumber: "",
     });
-  const welcomeName = (profile?.name ?? session.state.user?.name ?? "").trim();
-  const signedLabel = session.state.user
-    ? welcomeName || "Signed in"
-    : "Signed out";
+  // const welcomeName = (profile?.name ?? session.state.user?.name ?? "").trim();
+  // const signedLabel = session.state.user
+  //   ? welcomeName || "Signed in"
+  //   : "Signed out";
   const creditsRemaining = profileLoading
     ? null
     : (profile?.creditsRemaining ?? 0);
@@ -281,8 +280,7 @@ export default function BookingPage() {
       if (!(s.available > 0)) return { ok: false, reason: "Booked" as const };
       if (durationMin === 25) return { ok: true as const, reason: null };
 
-      const next =
-        slotByDateStartMin[dateKey]?.get(s.startMin + 30) ?? null;
+      const next = slotByDateStartMin[dateKey]?.get(s.startMin + 30) ?? null;
       if (!next) return { ok: false, reason: "" as const };
       if (!(next.available > 0)) return { ok: false, reason: "" as const };
       return { ok: true as const, reason: null };
