@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { stripe, siteUrl, stripePrices } from "@/lib/stripe";
-import { getStudentById, hasUsedFirstTrial, findStudentByEmail } from "@/lib/students";
+import { findStudentByEmail, getStudentById, hasUsedFirstTrial } from "@/lib/studentsRepo";
 
 export const runtime = "nodejs";
 
@@ -39,8 +39,8 @@ export async function POST(req: NextRequest) {
     if (resolvedPriceId === prices.firstTrial) {
       const s =
         studentId
-          ? getStudentById(studentId)
-          : findStudentByEmail(email);
+          ? await getStudentById(studentId)
+          : await findStudentByEmail(email);
       if (s && hasUsedFirstTrial(s)) {
         return new Response(
           JSON.stringify({ ok: false, error: "First time offer is available once per account." }),

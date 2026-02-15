@@ -1,10 +1,10 @@
 import { NextRequest } from "next/server";
-import { getStudentById, patchStudent } from "@/lib/students";
+import { getStudentById, patchStudent } from "@/lib/studentsRepo";
 
 export async function GET(req: NextRequest) {
   try {
     const id = req.nextUrl.pathname.split("/").filter(Boolean).pop() ?? "";
-    const s = getStudentById(id);
+    const s = await getStudentById(id);
     if (!s) return new Response(JSON.stringify({ ok: false, error: "Not found" }), { status: 404 });
     return new Response(JSON.stringify({ ok: true, data: { student: s } }), { status: 200 });
   } catch (e) {
@@ -17,7 +17,7 @@ export async function PATCH(req: NextRequest) {
     const id = req.nextUrl.pathname.split("/").filter(Boolean).pop() ?? "";
     const body = await req.json().catch(() => null);
     if (!id || !body) return new Response(JSON.stringify({ ok: false, error: "Invalid" }), { status: 400 });
-    const updated = patchStudent(id, {
+    const updated = await patchStudent(id, {
       name: body.name,
       email: body.email,
       phone: body.phone,

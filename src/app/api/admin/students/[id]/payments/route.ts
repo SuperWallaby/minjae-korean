@@ -1,11 +1,11 @@
 import { NextRequest } from "next/server";
-import { addPayment, deletePayment, getStudentById } from "@/lib/students";
+import { addPayment, deletePayment, getStudentById } from "@/lib/studentsRepo";
 
 export async function GET(req: NextRequest) {
   try {
     const parts = req.nextUrl.pathname.split("/").filter(Boolean);
     const id = parts[parts.indexOf("students") + 1] ?? "";
-    const s = getStudentById(id);
+    const s = await getStudentById(id);
     if (!s) return new Response(JSON.stringify({ ok: false, error: "Not found" }), { status: 404 });
     return new Response(JSON.stringify({ ok: true, data: { payments: s.payments ?? [] } }), { status: 200 });
   } catch (e) {
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     if (!body || typeof body.type !== "string" || typeof body.amount !== "number") {
       return new Response(JSON.stringify({ ok: false, error: "Invalid body" }), { status: 400 });
     }
-    const rec = addPayment(id, {
+    const rec = await addPayment(id, {
       type: body.type,
       amount: body.amount,
       memo: body.memo ?? "",

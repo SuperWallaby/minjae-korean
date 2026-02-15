@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { adjustStudentCreditsById } from "@/lib/students";
+import { adjustStudentCreditsById } from "@/lib/studentsRepo";
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const memo = typeof body?.memo === "string" ? body.memo : "";
     const expiresInDays = body?.expiresInDays;
 
-    const res = adjustStudentCreditsById({
+    const res = await adjustStudentCreditsById({
       studentId: id,
       delta,
       memo,

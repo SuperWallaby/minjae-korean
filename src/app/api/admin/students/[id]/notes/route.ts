@@ -1,11 +1,11 @@
 import { NextRequest } from "next/server";
-import { addStudentNote, deleteStudentNote, getStudentById } from "@/lib/students";
+import { addStudentNote, deleteStudentNote, getStudentById } from "@/lib/studentsRepo";
 
 export async function GET(req: NextRequest) {
   try {
     const parts = req.nextUrl.pathname.split("/").filter(Boolean);
     const id = parts[parts.indexOf("students") + 1] ?? "";
-    const s = getStudentById(id);
+    const s = await getStudentById(id);
     if (!s) return new Response(JSON.stringify({ ok: false, error: "Not found" }), { status: 404 });
     return new Response(JSON.stringify({ ok: true, data: { notes: s.notes ?? [] } }), { status: 200 });
   } catch (e) {
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     if (!body || typeof body.body !== "string" || !body.body.trim()) {
       return new Response(JSON.stringify({ ok: false, error: "Invalid body" }), { status: 400 });
     }
-    const note = addStudentNote(id, body.body);
+    const note = await addStudentNote(id, body.body);
     if (!note) return new Response(JSON.stringify({ ok: false, error: "Not found" }), { status: 404 });
     return new Response(JSON.stringify({ ok: true, data: { note } }), { status: 201 });
   } catch (e) {

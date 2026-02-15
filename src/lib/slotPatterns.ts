@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import type { Slot } from "./db";
+import type { Slot } from "./slotsRepo";
 
 // pattern: map of weekday (0=Sun..6=Sat) -> array of { startMin, endMin }
 export type WeeklyPattern = Record<

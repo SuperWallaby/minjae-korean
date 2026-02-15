@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import * as React from "react";
-import { CalendarDays, CreditCard, FileText, User } from "lucide-react";
+import {
+  CalendarDays,
+  CopyIcon,
+  CreditCard,
+  FileText,
+  User,
+} from "lucide-react";
 import { DateTime } from "luxon";
 
 import { Container } from "@/components/site/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 import {
   Card,
   CardContent,
@@ -17,15 +24,22 @@ import {
   CardTitle,
 } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
-import { PhoneInput } from "@/components/ui/PhoneInput";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { WithLoading } from "@/components/WithLoading";
+import {
+  DEFAULT_PHONE_COUNTRY,
+  formatPhoneFull,
+  parsePhoneParts,
+  PhonePartsInput,
+} from "@/components/ui/PhonePartsInput";
 
 type Student = {
   id: string;
   name: string;
   email: string;
   phone?: string;
+  phoneCountry?: string;
+  phoneNumber?: string;
   sessionWish?: string;
   notes?: Array<{ id: string; body: string; createdAt: string }>;
   payments?: Array<{
@@ -68,20 +82,83 @@ function callWindowForBooking(
   return { start, end, openAt, closeAt };
 }
 
-function startsRelativeLabel(dateKey: string, startMin: number) {
+function startsRelativeLabel(
+  dateKey: string,
+  startMin: number,
+  displayZone: string,
+) {
   const zone = "Asia/Seoul";
-  const start = DateTime.fromISO(dateKey, { zone })
+  const startSeoul = DateTime.fromISO(dateKey, { zone })
     .startOf("day")
     .plus({ minutes: startMin });
-  const rel = start.toRelative({ base: DateTime.now().setZone(zone) });
+  const now = DateTime.now().setZone(displayZone);
+  const start = startSeoul.setZone(displayZone);
+  const diffMs = start.toMillis() - now.toMillis();
+  // Emphasize very near start times.
+  if (diffMs <= 2 * 60 * 1000 && diffMs >= -5 * 60 * 1000) return "Starts now";
+  if (diffMs > 0 && diffMs <= 60 * 60 * 1000) return "Starts soon";
+  const rel = start.toRelative({ base: now });
   if (!rel) return "";
   const v = String(rel);
-  if (v.endsWith("ago")) {
-    // e.g. "1 day ago" -> "Started 1 day ago"
-    return `Started ${v}`;
-  }
-  // e.g. "in 1 day" -> "Starts in 1 day"
+  if (v.endsWith("ago")) return `Started ${v}`;
   return `Starts ${v}`;
+}
+
+function formatBookingTimeLabel(args: {
+  dateKey: string;
+  startMin: number;
+  endMin: number;
+  displayZone: string;
+}) {
+  const { dateKey, startMin, endMin, displayZone } = args;
+  const { startLocal, endLocal } = bookingLocalTimes({
+    dateKey,
+    startMin,
+    endMin,
+    displayZone,
+  });
+  if (!startLocal.isValid || !endLocal.isValid) {
+    return `${dateKey} · ${minutesToHhmm(startMin)}–${minutesToHhmm(endMin)}`;
+  }
+  return `${startLocal.toFormat("ccc, MMM d")} · ${startLocal.toFormat("h:mm")}–${endLocal.toFormat("h:mm a")}`;
+}
+
+function bookingLocalTimes(args: {
+  dateKey: string;
+  startMin: number;
+  endMin: number;
+  displayZone: string;
+}) {
+  const { dateKey, startMin, endMin, displayZone } = args;
+  const startSeoul = DateTime.fromISO(dateKey, { zone: "Asia/Seoul" })
+    .startOf("day")
+    .plus({ minutes: startMin });
+  const endSeoul = DateTime.fromISO(dateKey, { zone: "Asia/Seoul" })
+    .startOf("day")
+    .plus({ minutes: endMin });
+  return {
+    startLocal: startSeoul.setZone(displayZone),
+    endLocal: endSeoul.setZone(displayZone),
+  };
+}
+
+function zoneToCityLabel(tz: string) {
+  if (!tz) return "";
+  // common mapping for nicer labels
+  const map: Record<string, string> = {
+    "Asia/Seoul": "Seoul Time",
+    "Asia/Tokyo": "Tokyo Time",
+    "Asia/Shanghai": "Shanghai Time",
+    "Asia/Hong_Kong": "Hong Kong Time",
+    "America/New_York": "New York Time",
+    "America/Los_Angeles": "Los Angeles Time",
+    "Europe/London": "London Time",
+    "Europe/Paris": "Paris Time",
+  };
+  if (map[tz]) return map[tz];
+  const parts = String(tz).split("/");
+  const city = parts.length > 1 ? parts[1].replace(/_/g, " ") : parts[0];
+  return `${city} Time`;
 }
 
 function bookingBadge(b: {
@@ -126,6 +203,18 @@ export default function AccountPage() {
   const [tab, setTab] = React.useState<
     "bookings" | "payments" | "notes" | "profile"
   >("bookings");
+  const [bookingsView, setBookingsView] = React.useState<"coming" | "finished">(
+    "coming",
+  );
+
+  const displayZone = React.useMemo(() => {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      return typeof tz === "string" && tz.trim() ? tz.trim() : "Asia/Seoul";
+    } catch {
+      return "Asia/Seoul";
+    }
+  }, []);
 
   const student = session.state.student as Student | null;
   const studentLoading = session.accountLoading;
@@ -138,9 +227,16 @@ export default function AccountPage() {
   const [profileDraft, setProfileDraft] = React.useState<{
     name: string;
     email: string;
-    phone: string;
+    phoneCountry: string;
+    phoneNumber: string;
     sessionWish: string;
-  }>({ name: "", email: "", phone: "", sessionWish: "" });
+  }>({
+    name: "",
+    email: "",
+    phoneCountry: DEFAULT_PHONE_COUNTRY,
+    phoneNumber: "",
+    sessionWish: "",
+  });
   const sessionStudentId = (session.state.user?.studentId ?? "").trim();
 
   type BookingListItem = {
@@ -155,22 +251,25 @@ export default function AccountPage() {
     cancelled?: boolean;
   };
 
-  function isBookingListItem(v: unknown): v is BookingListItem {
-    if (!v || typeof v !== "object") return false;
-    const o = v as Record<string, unknown>;
-    return (
-      typeof o.id === "string" &&
-      typeof o.dateKey === "string" &&
-      typeof o.startMin === "number" &&
-      typeof o.endMin === "number" &&
-      typeof o.status === "string" &&
-      (o.code === undefined || typeof o.code === "string") &&
-      (o.meetingProvider === undefined ||
-        typeof o.meetingProvider === "string") &&
-      (o.meetUrl === undefined || typeof o.meetUrl === "string") &&
-      (o.cancelled === undefined || typeof o.cancelled === "boolean")
-    );
-  }
+  const isBookingListItem = React.useCallback(
+    (v: unknown): v is BookingListItem => {
+      if (!v || typeof v !== "object") return false;
+      const o = v as Record<string, unknown>;
+      return (
+        typeof o.id === "string" &&
+        typeof o.dateKey === "string" &&
+        typeof o.startMin === "number" &&
+        typeof o.endMin === "number" &&
+        typeof o.status === "string" &&
+        (o.code === undefined || typeof o.code === "string") &&
+        (o.meetingProvider === undefined ||
+          typeof o.meetingProvider === "string") &&
+        (o.meetUrl === undefined || typeof o.meetUrl === "string") &&
+        (o.cancelled === undefined || typeof o.cancelled === "boolean")
+      );
+    },
+    [],
+  );
 
   const [bookings, setBookings] = React.useState<BookingListItem[]>([]);
   const [bookingsLoading, setBookingsLoading] = React.useState(true);
@@ -180,6 +279,33 @@ export default function AccountPage() {
   const [bookingActionMsg, setBookingActionMsg] = React.useState<string | null>(
     null,
   );
+  const [copiedBookingId, setCopiedBookingId] = React.useState<string | null>(
+    null,
+  );
+  const copyTimerRef = React.useRef<number | null>(null);
+
+  const copyText = React.useCallback(
+    async (bookingId: string, text: string) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setCopiedBookingId(bookingId);
+        if (copyTimerRef.current) window.clearTimeout(copyTimerRef.current);
+        copyTimerRef.current = window.setTimeout(
+          () => setCopiedBookingId(null),
+          1200,
+        );
+      } catch {
+        // ignore
+      }
+    },
+    [],
+  );
+
+  React.useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) window.clearTimeout(copyTimerRef.current);
+    };
+  }, []);
 
   const creditsSummary = React.useMemo(() => {
     const now = Date.now();
@@ -197,17 +323,39 @@ export default function AccountPage() {
       setProfileSaving(false);
       setProfileSaveOk(false);
       setProfileDirty(false);
-      setProfileDraft({ name: "", email: "", phone: "", sessionWish: "" });
+      setProfileDraft({
+        name: "",
+        email: "",
+        phoneCountry: DEFAULT_PHONE_COUNTRY,
+        phoneNumber: "",
+        sessionWish: "",
+      });
       return;
     }
     if (profileDirty) return;
+    const fallbackPhoneParts = parsePhoneParts((student?.phone ?? "").trim());
     setProfileDraft({
       name: (student?.name ?? session.state.user.name ?? "").trim(),
       email: (student?.email ?? session.state.user.email ?? "").trim(),
-      phone: (student?.phone ?? "").trim(),
+      phoneCountry:
+        (student?.phoneCountry ?? "").trim() ||
+        fallbackPhoneParts.country ||
+        DEFAULT_PHONE_COUNTRY,
+      phoneNumber:
+        (student?.phoneNumber ?? "").trim() || fallbackPhoneParts.number,
       sessionWish: (student?.sessionWish ?? "").trim(),
     });
-  }, [profileDirty, session.state.user, student?.id]);
+  }, [
+    profileDirty,
+    session.state.user,
+    student?.id,
+    student?.name,
+    student?.email,
+    student?.phone,
+    student?.phoneCountry,
+    student?.phoneNumber,
+    student?.sessionWish,
+  ]);
 
   // Phone is edited via shared PhoneInput component
 
@@ -233,11 +381,45 @@ export default function AccountPage() {
     } finally {
       setBookingsLoading(false);
     }
-  }, [session.state.user, sessionStudentId, student?.id]);
+  }, [isBookingListItem, session.state.user, sessionStudentId, student?.id]);
 
   React.useEffect(() => {
     void loadBookings();
   }, [loadBookings]);
+
+  const bookingsByView = React.useMemo(() => {
+    const now = DateTime.now().setZone(displayZone);
+    const coming: BookingListItem[] = [];
+    const finished: BookingListItem[] = [];
+    for (const b of bookings) {
+      try {
+        if (!b.dateKey) {
+          coming.push(b);
+          continue;
+        }
+        const { endLocal } = bookingLocalTimes({
+          dateKey: b.dateKey,
+          startMin: b.startMin,
+          endMin: b.endMin,
+          displayZone,
+        });
+        if (!endLocal.isValid) {
+          coming.push(b);
+          continue;
+        }
+        if (endLocal.toMillis() < now.toMillis()) finished.push(b);
+        else coming.push(b);
+      } catch {
+        coming.push(b);
+      }
+    }
+    return { coming, finished };
+  }, [bookings, displayZone]);
+
+  const visibleBookings =
+    bookingsView === "finished"
+      ? bookingsByView.finished
+      : bookingsByView.coming;
 
   if (studentLoading) return null;
 
@@ -267,59 +449,111 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="py-10 sm:py-14">
+    <div className="py-16">
       <Container>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
               {!!student?.name ? student.name : "My Practice."}
             </h1>
             {/* <p className="mt-2 text-sm text-muted-foreground sm:text-base"></p> */}
           </div>
-          <div className="flex flex-wrap items-center gap-2">
+          {/* <div className="flex flex-wrap items-center gap-2">
             <Badge variant="muted">{session.state.user.email}</Badge>
             {session.state.subscriptionPlan && (
               <Badge>Subscription {session.state.subscriptionPlan}</Badge>
             )}
             <Badge variant="muted">{creditsSummary.remaining} credits</Badge>
+          </div> */}
+        </div>
+
+        <div className="mt-6">
+          <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+            <div
+              role="tablist"
+              className="inline-flex w-max items-center gap-1 rounded-xl border border-border bg-muted/20 p-1"
+            >
+              {(
+                [
+                  { id: "bookings", label: "Bookings", Icon: CalendarDays },
+                  { id: "notes", label: "Talk notes", Icon: FileText },
+                  { id: "profile", label: "Profile", Icon: User },
+                  { id: "payments", label: "Payments", Icon: CreditCard },
+                ] as const
+              ).map((t) => {
+                const active = tab === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setTab(t.id)}
+                    className={cn(
+                      "inline-flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition",
+                      active
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-foreground hover:bg-muted/40",
+                    )}
+                  >
+                    <t.Icon className="size-4" />
+                    {t.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-2">
-          <Button
-            variant={tab === "bookings" ? "primary" : "outline"}
-            onClick={() => setTab("bookings")}
-          >
-            <CalendarDays className="size-4" /> Bookings
-          </Button>
-          <Button
-            variant={tab === "payments" ? "primary" : "outline"}
-            onClick={() => setTab("payments")}
-          >
-            <CreditCard className="size-4" /> Payments
-          </Button>
-          <Button
-            variant={tab === "notes" ? "primary" : "outline"}
-            onClick={() => setTab("notes")}
-          >
-            <FileText className="size-4" /> Talk notes
-          </Button>
-          <Button
-            variant={tab === "profile" ? "primary" : "outline"}
-            onClick={() => setTab("profile")}
-          >
-            <User className="size-4" /> Profile
-          </Button>
-        </div>
-
-        <div className="mt-6 grid gap-6 lg:grid-cols-12">
-          <div className="lg:col-span-8">
+        <div className="mt-6 flex flex-col lg:grid lg:items-stretch gap-6 lg:grid-cols-12">
+          <div className="flex flex-col lg:col-span-8 lg:h-full">
             {tab === "bookings" && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>Bookings</CardTitle>
+              <Card className="h-full flex flex-col">
+                <CardHeader className="flex justify-between md:block">
+                  <div className="flex items-center justify-between gap-4">
+                    <CardTitle>Bookings</CardTitle>
+                    <div className="hidden sm:block text-[10px] text-stone-600">
+                      {zoneToCityLabel(displayZone)}
+                    </div>
+                  </div>
+
+                  <div className="mt-3">
+                    <div
+                      role="tablist"
+                      className="inline-flex items-center gap-1 rounded-lg border border-border bg-muted/20 p-1"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={bookingsView === "coming"}
+                        onClick={() => setBookingsView("coming")}
+                        className={cn(
+                          "rounded-md px-3 py-1.5 text-xs font-semibold transition",
+                          bookingsView === "coming"
+                            ? "bg-foreground text-background"
+                            : "text-foreground/80 hover:bg-muted/40",
+                        )}
+                      >
+                        Coming
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={bookingsView === "finished"}
+                        onClick={() => setBookingsView("finished")}
+                        className={cn(
+                          "rounded-md px-3 py-1.5 text-xs font-semibold transition",
+                          bookingsView === "finished"
+                            ? "bg-foreground text-background"
+                            : "text-foreground/80 hover:bg-muted/40",
+                        )}
+                      >
+                        Finished
+                      </button>
+                    </div>
+                  </div>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   {bookingActionMsg ? (
                     <div className="mb-4 rounded-md border border-border bg-muted/30 p-3 text-sm text-muted-foreground">
                       {bookingActionMsg}
@@ -354,57 +588,106 @@ export default function AccountPage() {
                       </div>
                     }
                   >
-                    {bookings.length === 0 ? (
+                    {visibleBookings.length === 0 ? (
                       <div className="rounded-md border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
-                        No bookings yet.{" "}
-                        <Link
-                          href="/booking"
-                          className="text-foreground underline underline-offset-4"
-                        >
-                          Go to booking
-                        </Link>
-                        .
+                        {bookingsView === "finished" ? (
+                          <>No finished sessions yet.</>
+                        ) : (
+                          <>
+                            No upcoming bookings.{" "}
+                            <Link
+                              href="/booking"
+                              className="text-foreground underline underline-offset-4"
+                            >
+                              Go to booking
+                            </Link>
+                            .
+                          </>
+                        )}
                       </div>
                     ) : (
                       <div className="space-y-3">
-                        {bookings.map((b) => (
+                        {visibleBookings.map((b) => (
                           <div
                             key={b.id}
-                            className="rounded-md border border-border bg-card p-4"
+                            className="rounded-xl border border-border bg-card p-4 "
                           >
-                            <div className="flex items-start justify-between gap-4">
-                              <div>
-                                <div className="text-sm font-semibold">
-                                  {b.dateKey} · {minutesToHhmm(b.startMin)}–
-                                  {minutesToHhmm(b.endMin)}
-                                </div>
-                                <div className="mt-1 flex flex-wrap items-center gap-2">
+                            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                              <div className="min-w-0">
+                                {(() => {
+                                  const { startLocal, endLocal } =
+                                    bookingLocalTimes({
+                                      dateKey: b.dateKey,
+                                      startMin: b.startMin,
+                                      endMin: b.endMin,
+                                      displayZone,
+                                    });
+                                  const timeRange =
+                                    startLocal.isValid && endLocal.isValid
+                                      ? `${startLocal.toFormat("h:mm")}–${endLocal.toFormat("h:mm a")}`
+                                      : `${minutesToHhmm(b.startMin)}–${minutesToHhmm(b.endMin)}`;
+                                  const dateLabel = startLocal.isValid
+                                    ? startLocal.toFormat("ccc, MMM d")
+                                    : b.dateKey;
+                                  return (
+                                    <div>
+                                      <div className="text-xl font-semibold tracking-tight text-foreground">
+                                        {timeRange}
+                                      </div>
+                                      <div className=" text-xs text-muted-foreground">
+                                        {dateLabel}
+                                      </div>
+                                    </div>
+                                  );
+                                })()}
+                                <div className="mt-3 flex flex-wrap items-center gap-2">
                                   {(() => {
                                     const info = bookingBadge(b);
                                     return (
                                       <Badge
                                         variant={info.variant}
-                                        className={info.className}
+                                        className={cn(
+                                          "text-[11px] px-2 py-0.5",
+                                          info.className,
+                                        )}
                                       >
                                         {info.text}
                                       </Badge>
                                     );
                                   })()}
                                   {b.cancelled && (
-                                    <Badge variant="muted">Cancelled</Badge>
+                                    <Badge
+                                      variant="muted"
+                                      className="text-[11px] px-2 py-0.5"
+                                    >
+                                      Cancelled
+                                    </Badge>
                                   )}
                                   {b.dateKey &&
-                                    typeof b.startMin === "number" && (
-                                      <span className="text-xs text-muted-foreground">
-                                        {startsRelativeLabel(
-                                          b.dateKey,
-                                          b.startMin,
-                                        )}
-                                      </span>
-                                    )}
+                                    typeof b.startMin === "number" &&
+                                    (() => {
+                                      const v = startsRelativeLabel(
+                                        b.dateKey,
+                                        b.startMin,
+                                        displayZone,
+                                      );
+                                      return (
+                                        <span
+                                          className={cn(
+                                            "text-xs",
+                                            v === "Starts soon" ||
+                                              v === "Starts now"
+                                              ? "text-foreground font-semibold"
+                                              : "text-muted-foreground",
+                                          )}
+                                        >
+                                          {v}
+                                        </span>
+                                      );
+                                    })()}
                                 </div>
                               </div>
-                              <div className="flex items-center gap-2">
+                              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                                 {(() => {
                                   const hasTime =
                                     Boolean(b.dateKey) &&
@@ -417,6 +700,23 @@ export default function AccountPage() {
                                         .startOf("day")
                                         .plus({ minutes: b.startMin })
                                     : null;
+                                  const meetingKey = String(b.code || b.id);
+                                  const provider = String(
+                                    b.meetingProvider ?? "",
+                                  ).trim();
+                                  const meetUrl = (b.meetUrl ?? "").trim();
+                                  const fallbackPath =
+                                    provider === "google_meet"
+                                      ? `/join/${encodeURIComponent(meetingKey)}`
+                                      : `/call/${encodeURIComponent(meetingKey)}`;
+                                  const meetingLink =
+                                    meetUrl ||
+                                    (typeof window === "undefined"
+                                      ? fallbackPath
+                                      : new URL(
+                                          fallbackPath,
+                                          window.location.origin,
+                                        ).toString());
                                   const canCancel =
                                     !b.cancelled &&
                                     b.status === "confirmed" &&
@@ -428,11 +728,7 @@ export default function AccountPage() {
                                     b.status === "confirmed" &&
                                     hasTime &&
                                     (() => {
-                                      const meetUrl = (b.meetUrl ?? "").trim();
                                       if (meetUrl) return true;
-                                      const provider = (
-                                        b.meetingProvider ?? ""
-                                      ).trim();
                                       if (provider === "google_meet")
                                         return false;
                                       const w = callWindowForBooking(
@@ -449,74 +745,101 @@ export default function AccountPage() {
 
                                   return (
                                     <>
-                                      {canCancel ? (
-                                        <Button
-                                          size="sm"
-                                          variant="outline"
-                                          disabled={bookingActionId === b.id}
-                                          onClick={async () => {
-                                            if (!session.state.user) return;
-                                            const ok = window.confirm(
-                                              "Cancel this booking? (Allowed up to 1 hour before the session.)",
-                                            );
-                                            if (!ok) return;
-                                            setBookingActionId(b.id);
-                                            setBookingActionMsg(null);
-                                            try {
-                                              const res = await fetch(
-                                                `/api/public/bookings/${encodeURIComponent(String(b.id))}/cancel`,
-                                                {
-                                                  method: "POST",
-                                                  headers: {
-                                                    "Content-Type":
-                                                      "application/json",
-                                                  },
-                                                  body: JSON.stringify({
-                                                    studentId: (
-                                                      sessionStudentId ||
-                                                      student?.id ||
-                                                      ""
-                                                    ).trim(),
-                                                    email:
-                                                      session.state.user!.email,
-                                                  }),
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="w-full sm:w-auto border-border text-rose-500 hover:bg-red-50/60 active:bg-red-100/70 dark:hover:bg-red-950/20"
+                                        disabled={
+                                          bookingActionId === b.id ||
+                                          b.cancelled ||
+                                          b.status !== "confirmed" ||
+                                          !hasTime ||
+                                          !canCancel
+                                        }
+                                        title={
+                                          canCancel
+                                            ? "Cancel this booking (allowed up to 1 hour before the session)."
+                                            : "Cancellation is allowed up to 1 hour before the session."
+                                        }
+                                        onClick={async () => {
+                                          if (!session.state.user) return;
+                                          if (!canCancel) return;
+                                          const ok = window.confirm(
+                                            "Cancel this booking? (Allowed up to 1 hour before the session.)",
+                                          );
+                                          if (!ok) return;
+                                          setBookingActionId(b.id);
+                                          setBookingActionMsg(null);
+                                          try {
+                                            const res = await fetch(
+                                              `/api/public/bookings/${encodeURIComponent(String(b.id))}/cancel`,
+                                              {
+                                                method: "POST",
+                                                headers: {
+                                                  "Content-Type":
+                                                    "application/json",
                                                 },
-                                              );
-                                              const json = await res
-                                                .json()
-                                                .catch(() => null);
-                                              if (!res.ok || !json?.ok) {
-                                                setBookingActionMsg(
-                                                  json?.error ??
-                                                    "Cancellation failed.",
-                                                );
-                                                return;
-                                              }
+                                                body: JSON.stringify({
+                                                  studentId: (
+                                                    sessionStudentId ||
+                                                    student?.id ||
+                                                    ""
+                                                  ).trim(),
+                                                  email:
+                                                    session.state.user!.email,
+                                                }),
+                                              },
+                                            );
+                                            const json = await res
+                                              .json()
+                                              .catch(() => null);
+                                            if (!res.ok || !json?.ok) {
                                               setBookingActionMsg(
-                                                "Booking cancelled.",
+                                                json?.error ??
+                                                  "Cancellation failed.",
                                               );
-                                              await loadBookings();
-                                            } catch (e) {
-                                              setBookingActionMsg(
-                                                e instanceof Error
-                                                  ? e.message
-                                                  : "Cancellation failed.",
-                                              );
-                                            } finally {
-                                              setBookingActionId(null);
+                                              return;
                                             }
-                                          }}
-                                        >
-                                          {bookingActionId === b.id
-                                            ? "Cancelling…"
-                                            : "Cancel"}
-                                        </Button>
-                                      ) : null}
+                                            setBookingActionMsg(
+                                              "Booking cancelled.",
+                                            );
+                                            await loadBookings();
+                                          } catch (e) {
+                                            setBookingActionMsg(
+                                              e instanceof Error
+                                                ? e.message
+                                                : "Cancellation failed.",
+                                            );
+                                          } finally {
+                                            setBookingActionId(null);
+                                          }
+                                        }}
+                                      >
+                                        {bookingActionId === b.id
+                                          ? "Cancelling…"
+                                          : "Cancel"}
+                                      </Button>
+
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="w-full sm:w-auto"
+                                        onClick={() =>
+                                          void copyText(b.id, meetingLink)
+                                        }
+                                        disabled={!meetingLink}
+                                      >
+                                        {copiedBookingId === b.id
+                                          ? "Copied"
+                                          : "Copy link"}{" "}
+                                        <CopyIcon className="size-4" />
+                                      </Button>
 
                                       <Button
                                         asChild
                                         size="sm"
                                         variant="primary"
+                                        className="w-full sm:w-auto"
                                         disabled={!canJoin}
                                       >
                                         {(b.meetUrl ?? "").trim() ? (
@@ -525,7 +848,7 @@ export default function AccountPage() {
                                             target="_blank"
                                             rel="noreferrer"
                                           >
-                                            Open Google Meet
+                                            Open Meet Link
                                           </a>
                                         ) : (b.meetingProvider ?? "").trim() ===
                                           "google_meet" ? (
@@ -557,11 +880,11 @@ export default function AccountPage() {
             )}
 
             {tab === "payments" && (
-              <Card>
+              <Card className="h-full flex flex-col">
                 <CardHeader>
                   <CardTitle>Payments History</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   {studentLoading ? (
                     <div className="text-sm text-muted-foreground">
                       Loading…
@@ -594,11 +917,11 @@ export default function AccountPage() {
             )}
 
             {tab === "notes" && (
-              <Card>
+              <Card className="h-full flex flex-col">
                 <CardHeader>
                   <CardTitle>Talk notes</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   {studentLoading ? (
                     <div className="text-sm text-muted-foreground">
                       Loading…
@@ -630,7 +953,7 @@ export default function AccountPage() {
             )}
 
             {tab === "profile" && (
-              <Card>
+              <Card className="h-full flex flex-col">
                 <CardHeader>
                   <CardTitle>Profile</CardTitle>
 
@@ -638,7 +961,7 @@ export default function AccountPage() {
                     Manage your basic account info.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="grid gap-3">
+                <CardContent className="grid gap-3 flex-1">
                   <label className="grid gap-1">
                     <span className="text-sm text-muted-foreground">Name</span>
                     <Input
@@ -671,28 +994,31 @@ export default function AccountPage() {
                   </label>
                   <label className="grid gap-1">
                     <span className="text-sm text-muted-foreground">Phone</span>
-                    <PhoneInput
-                      value={profileDraft.phone}
+                    <PhonePartsInput
+                      country={profileDraft.phoneCountry}
+                      number={profileDraft.phoneNumber}
                       disabled={studentLoading}
-                      onChange={(full) => {
+                      onChange={(next) => {
                         setProfileDirty(true);
                         setProfileSaveOk(false);
                         setProfileSaveMessage(null);
                         setProfileDraft((prev) => ({
                           ...prev,
-                          phone: full,
+                          phoneCountry:
+                            next.country.trim() || DEFAULT_PHONE_COUNTRY,
+                          phoneNumber: next.number,
                         }));
                       }}
                     />
                   </label>
-                  <label className="grid gap-1">
-                    <span className="text-sm text-muted-foreground">
-                      어떤 세션을 바라는지
+                  <label className="grid mt-2 gap-1">
+                    <span className="mb-px inline-block text-sm text-muted-foreground">
+                      How would you like your session to be?
                     </span>
                     <textarea
-                      className="min-h-28 w-full resize-y rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground shadow-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                      className="min-h-28 w-full resize-y rounded-md border border-border px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground/60 focus-visible:ring-2 focus-visible:ring-ring"
                       value={profileDraft.sessionWish}
-                      placeholder="예: 프리토킹 위주, 발음 교정, 업무 한국어, TOPIK 준비, 내가 자주 틀리는 포인트 피드백 등"
+                      placeholder="Conversational practice, business Korean, mistake correction."
                       onChange={(e) => {
                         setProfileDirty(true);
                         setProfileSaveOk(false);
@@ -711,7 +1037,12 @@ export default function AccountPage() {
                       onClick={async () => {
                         const name = (profileDraft.name ?? "").trim();
                         const email = (profileDraft.email ?? "").trim();
-                        const phone = (profileDraft.phone ?? "").trim();
+                        const phoneFull = formatPhoneFull({
+                          country:
+                            (profileDraft.phoneCountry ?? "").trim() ||
+                            DEFAULT_PHONE_COUNTRY,
+                          number: profileDraft.phoneNumber ?? "",
+                        });
                         const sessionWish = (
                           profileDraft.sessionWish ?? ""
                         ).trim();
@@ -732,8 +1063,10 @@ export default function AccountPage() {
                           return;
                         }
                         // optional: basic phone check (at least 6 digits)
-                        const digits = phone.replace(/\D/g, "");
-                        if (phone && digits.length < 6) {
+                        const digits = String(
+                          profileDraft.phoneNumber ?? "",
+                        ).replace(/\D/g, "");
+                        if (digits && digits.length < 6) {
                           setProfileSaveOk(false);
                           setProfileSaveMessage(
                             "Please enter a valid phone number.",
@@ -766,7 +1099,11 @@ export default function AccountPage() {
                                 id,
                                 name,
                                 email,
-                                phone,
+                                phone: phoneFull || undefined,
+                                phoneCountry:
+                                  (profileDraft.phoneCountry ?? "").trim() ||
+                                  DEFAULT_PHONE_COUNTRY,
+                                phoneNumber: profileDraft.phoneNumber,
                                 sessionWish,
                               }),
                             },
@@ -819,14 +1156,21 @@ export default function AccountPage() {
           <div className="lg:col-span-4">
             <div className="sticky top-24 space-y-3">
               <Card>
-                <CardContent className="p-4">
+                <CardContent className="pt-6">
                   {creditsSummary.remaining > 0 ? (
                     <>
-                      <div className="text-lg font-semibold tracking-tight">
-                        {creditsSummary.remaining} Credit
-                        {creditsSummary.remaining === 1 ? "" : "s"}
+                      <div className="flex items-end justify-between gap-3">
+                        <div className="flex items-baseline gap-2">
+                          <div className="text-4xl font-semibold tracking-tight text-foreground">
+                            {creditsSummary.remaining}
+                          </div>
+                          <div className="text-sm font-semibold text-muted-foreground">
+                            Credit{creditsSummary.remaining === 1 ? "" : "s"}{" "}
+                            remaining
+                          </div>
+                        </div>
                       </div>
-                      <div className="mt-1 text-sm text-muted-foreground">
+                      <div className="mt-2 text-sm text-foreground/75">
                         {creditsSummary.nextExpiry ? (
                           <>
                             Available until{" "}
@@ -845,8 +1189,9 @@ export default function AccountPage() {
                     </>
                   ) : (
                     <div className="text-sm text-muted-foreground">
-                      You don’t have any credits right now. Purchase credits
-                      anytime and you’ll be able to book a lesson immediately.
+                      You don’t have any credits right now.<br></br>Purchase
+                      credits anytime and you’ll be able to book a session
+                      immediately.
                     </div>
                   )}
                   <div className="mt-3 flex flex-col gap-2">
@@ -866,8 +1211,8 @@ export default function AccountPage() {
                     <Link href="/booking">Pick a time</Link>
                   </Button>
                   <Button
-                    className="w-full"
-                    variant="ghost"
+                    className="w-full border-border/80 bg-muted/10 hover:bg-muted/25"
+                    variant="outline"
                     onClick={() => session.signOut()}
                   >
                     Sign out

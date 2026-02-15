@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { NextRequest } from "next/server";
 
 import { stripe, stripePrices } from "@/lib/stripe";
-import { addStripeCreditsByEmail } from "@/lib/students";
+import { addStripeCreditsByEmail } from "@/lib/studentsRepo";
 
 export const runtime = "nodejs";
 
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
         return undefined;
       })();
 
-      addStripeCreditsByEmail({
+      await addStripeCreditsByEmail({
         email,
         name: full.customer_details?.name ?? undefined,
         stripeCustomerId,

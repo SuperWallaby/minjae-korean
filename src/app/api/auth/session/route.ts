@@ -8,7 +8,7 @@ import {
   type PaymentRecord,
   type Student,
   type StudentNote,
-} from "@/lib/students";
+} from "@/lib/studentsRepo";
 
 export const runtime = "nodejs";
 
@@ -34,6 +34,8 @@ type SessionStudent = {
   name: string;
   email: string;
   phone?: string;
+  phoneCountry?: string;
+  phoneNumber?: string;
   sessionWish?: string;
   notes: Array<Pick<StudentNote, "id" | "body" | "createdAt">>;
   payments: Array<Pick<PaymentRecord, "id" | "type" | "amount" | "createdAt" | "memo">>;
@@ -51,6 +53,8 @@ function toSessionStudent(s: Student): SessionStudent {
     name: (s.name ?? "").trim() || "Student",
     email: (s.email ?? "").trim(),
     phone: (s.phone ?? "").trim() || undefined,
+    phoneCountry: (s.phoneCountry ?? "").trim() || undefined,
+    phoneNumber: (s.phoneNumber ?? "").trim() || undefined,
     sessionWish: (s.sessionWish ?? "").trim() || undefined,
     notes: Array.isArray(s.notes)
       ? s.notes.map((n) => ({
@@ -118,10 +122,11 @@ export async function GET() {
     const payloadEmail = (typeof payload.email === "string" ? payload.email : "").trim();
 
     // Ensure we have a student record for this auth user (preferred key).
+    const existing = await findStudentByAuthUserId(authUserId);
     const s =
-      findStudentByAuthUserId(authUserId) ??
+      existing ??
       (payloadEmail
-        ? upsertStudentByAuthUserId({
+        ? await upsertStudentByAuthUserId({
             authUserId,
             name: payloadName || "Member",
             email: payloadEmail,

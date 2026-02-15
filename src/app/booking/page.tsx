@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
-import {
-  Check,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-} from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import { DateTime } from "luxon";
 import { useRouter } from "next/navigation";
 
@@ -26,9 +20,17 @@ import { Modal } from "@/components/ui/Modal";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
-import { PhoneInput } from "@/components/ui/PhoneInput";
-import { Input } from "@/components/ui/Input";
 import Image from "next/image";
+import {
+  DEFAULT_PHONE_COUNTRY,
+  parsePhoneParts,
+} from "@/components/ui/PhonePartsInput";
+import {
+  ConfirmBookingModal,
+  type ConfirmBookingContact,
+} from "@/components/booking/ConfirmBookingModal";
+import { TopProgressBar } from "@/components/ui/TopProgressBar";
+import { SegmentedToggle } from "@/components/ui/SegmentedToggle";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
@@ -63,14 +65,12 @@ function dateKeyForSeoul(d: Date) {
   return DateTime.fromJSDate(d).setZone(BUSINESS_TIME_ZONE).toISODate()!;
 }
 
-function isEmail(s: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-}
-
 export default function BookingPage() {
   const session = useMockSession();
   const router = useRouter();
   const desktopGridScrollerRef = React.useRef<HTMLDivElement | null>(null);
+  const [durationMin, setDurationMin] = React.useState<25 | 50>(25);
+  const creditsNeeded = durationMin === 50 ? 2 : 1;
   // Show today as the left-most day by default (not week-start)
   const [weekStart, setWeekStart] = React.useState<Date>(() => {
     const d = new Date();
@@ -114,6 +114,24 @@ export default function BookingPage() {
   const [slotsError, setSlotsError] = React.useState<string | null>(null);
   const [slotsSkeletonMinMs] = React.useState(250);
 
+  const slotById = React.useMemo(() => {
+    const m = new Map<string, SlotResponseItem>();
+    for (const list of Object.values(slotsByDateKey)) {
+      for (const s of list) m.set(s.id, s);
+    }
+    return m;
+  }, [slotsByDateKey]);
+
+  const slotByDateStartMin = React.useMemo(() => {
+    const out: Record<string, Map<number, SlotResponseItem>> = {};
+    for (const [dateKey, list] of Object.entries(slotsByDateKey)) {
+      const m = new Map<number, SlotResponseItem>();
+      for (const s of list) m.set(s.startMin, s);
+      out[dateKey] = m;
+    }
+    return out;
+  }, [slotsByDateKey]);
+
   const [gate, setGate] = React.useState<
     "none" | "login" | "pricing" | "confirm"
   >("none");
@@ -125,9 +143,13 @@ export default function BookingPage() {
     nextExpiry?: string;
   } | null>(null);
   const [studentId, setStudentId] = React.useState("");
-  const [bookingName, setBookingName] = React.useState("");
-  const [bookingEmail, setBookingEmail] = React.useState("");
-  const [bookingPhone, setBookingPhone] = React.useState("");
+  const [contactPrefill, setContactPrefill] =
+    React.useState<ConfirmBookingContact>({
+      name: "",
+      email: "",
+      phoneCountry: DEFAULT_PHONE_COUNTRY,
+      phoneNumber: "",
+    });
   const welcomeName = (profile?.name ?? session.state.user?.name ?? "").trim();
   const signedLabel = session.state.user
     ? welcomeName || "Signed in"
@@ -140,7 +162,7 @@ export default function BookingPage() {
     : creditsRemaining == null
       ? "Credits…"
       : creditsRemaining > 0
-        ? `Credits ${creditsRemaining}`
+        ? `${creditsRemaining} credits remaining`
         : "Add credits to book";
 
   const scrollDesktopGridBy = React.useCallback((dir: -1 | 1) => {
@@ -191,9 +213,30 @@ export default function BookingPage() {
     });
   }, [weekStart]);
 
-  const hours = React.useMemo(() => {
+  const dayStartMsByDateKey = React.useMemo(() => {
+    const out: Record<string, number> = {};
+    const keys = new Set<string>([
+      ...Object.keys(slotsByDateKey),
+      ...days.map(dateKeyForSeoul),
+    ]);
+    for (const k of keys) {
+      try {
+        out[k] = DateTime.fromISO(k, { zone: BUSINESS_TIME_ZONE })
+          .startOf("day")
+          .toMillis();
+      } catch {
+        // ignore
+      }
+    }
+    return out;
+  }, [days, slotsByDateKey]);
+
+  const timeRows = React.useMemo(() => {
     const out: number[] = [];
-    for (let h = 9; h <= 22; h++) out.push(h);
+    for (let h = 9; h <= 22; h++) {
+      out.push(h * 60);
+      out.push(h * 60 + 30);
+    }
     return out;
   }, []);
 
@@ -209,9 +252,48 @@ export default function BookingPage() {
 
   const selectedSlot = React.useMemo(() => {
     if (!selectedSlotId) return null;
-    const list = slotsByDateKey[selectedDateKey] ?? [];
-    return list.find((s) => s.id === selectedSlotId) ?? null;
-  }, [selectedDateKey, selectedSlotId, slotsByDateKey]);
+    return slotById.get(selectedSlotId) ?? null;
+  }, [selectedSlotId, slotById]);
+
+  const selectedSlot2 = React.useMemo(() => {
+    if (durationMin !== 50) return null;
+    if (!selectedSlot) return null;
+    const m = slotByDateStartMin[selectedDateKey];
+    return m?.get(selectedSlot.startMin + 30) ?? null;
+  }, [durationMin, selectedDateKey, selectedSlot, slotByDateStartMin]);
+
+  const selectedSlot2Id = selectedSlot2?.id ?? null;
+
+  const bookability = React.useCallback(
+    (
+      s: { dateKey: string; startMin: number; available: number },
+      dateKey: string,
+    ) => {
+      const nowMs = DateTime.now().setZone(BUSINESS_TIME_ZONE).toMillis();
+      const dayStartMs =
+        dayStartMsByDateKey[s.dateKey] ??
+        DateTime.fromISO(s.dateKey, { zone: BUSINESS_TIME_ZONE })
+          .startOf("day")
+          .toMillis();
+      const slotStartMs = dayStartMs + s.startMin * 60 * 1000;
+      const isPast = slotStartMs <= nowMs;
+      if (isPast) return { ok: false, reason: "Ended" as const };
+      if (!(s.available > 0)) return { ok: false, reason: "Booked" as const };
+      if (durationMin === 25) return { ok: true as const, reason: null };
+
+      const next =
+        slotByDateStartMin[dateKey]?.get(s.startMin + 30) ?? null;
+      if (!next) return { ok: false, reason: "" as const };
+      if (!(next.available > 0)) return { ok: false, reason: "" as const };
+      return { ok: true as const, reason: null };
+    },
+    [dayStartMsByDateKey, durationMin, slotByDateStartMin],
+  );
+
+  const selectedOk = React.useMemo(() => {
+    if (!selectedSlot) return false;
+    return bookability(selectedSlot, selectedDateKey).ok;
+  }, [bookability, selectedDateKey, selectedSlot]);
 
   const selectedLabel = React.useMemo(() => {
     if (!selectedSlot) return null;
@@ -220,10 +302,11 @@ export default function BookingPage() {
     }).plus({
       minutes: selectedSlot.startMin,
     });
+    const end = dt.plus({ minutes: durationMin });
     const weekday =
       ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][dt.weekday - 1] ?? "";
-    return `${weekday} ${dt.toFormat("M/d")} · ${dt.toFormat("HH:mm")}`;
-  }, [selectedSlot]);
+    return `${weekday} ${dt.toFormat("M/d")} · ${dt.toFormat("HH:mm")}–${end.toFormat("HH:mm")}`;
+  }, [durationMin, selectedSlot]);
 
   const weekRangeLabel = React.useMemo(() => {
     try {
@@ -287,13 +370,15 @@ export default function BookingPage() {
     if (!user) {
       setProfile(null);
       setStudentId("");
-      setBookingName("");
-      setBookingEmail("");
-      setBookingPhone("");
+      setContactPrefill({
+        name: "",
+        email: "",
+        phoneCountry: DEFAULT_PHONE_COUNTRY,
+        phoneNumber: "",
+      });
       return;
     }
     const u = user;
-    setBookingEmail((prev) => (prev.trim() ? prev : (u.email ?? "").trim()));
     let cancelled = false;
     async function loadProfile() {
       setProfileLoading(true);
@@ -323,6 +408,8 @@ export default function BookingPage() {
               id?: string;
               name?: string;
               phone?: string;
+              phoneCountry?: string;
+              phoneNumber?: string;
               credits?: Array<{ remaining: number; expiresAt: string }>;
             }
           | null
@@ -339,7 +426,15 @@ export default function BookingPage() {
           // ignore
         }
         const name = (s?.name ?? u.name ?? "").trim() || u.name;
-        const phone = (s?.phone ?? "").trim() || "";
+        const phoneFull = (s?.phone ?? "").trim() || "";
+        const phoneParts =
+          (s?.phoneCountry ?? "").trim() || (s?.phoneNumber ?? "").trim()
+            ? {
+                country:
+                  (s?.phoneCountry ?? "").trim() || DEFAULT_PHONE_COUNTRY,
+                number: (s?.phoneNumber ?? "").trim(),
+              }
+            : parsePhoneParts(phoneFull);
         const now = Date.now();
         const active = (s?.credits ?? [])
           .filter(
@@ -353,24 +448,26 @@ export default function BookingPage() {
         const nextExpiry = active[0]?.expiresAt;
         setProfile({
           name,
-          phone: phone || undefined,
+          phone: phoneFull || undefined,
           creditsRemaining,
           nextExpiry,
         });
-        setBookingName(name);
-        setBookingEmail((prev) =>
-          prev.trim() ? prev : (u.email ?? "").trim(),
-        );
-        setBookingPhone(phone);
+        setContactPrefill({
+          name,
+          email: (u.email ?? "").trim(),
+          phoneCountry: phoneParts.country || DEFAULT_PHONE_COUNTRY,
+          phoneNumber: phoneParts.number || "",
+        });
       } catch {
         if (!cancelled) {
           setProfile({ name: u.name, phone: undefined, creditsRemaining: 0 });
           setStudentId("");
-          setBookingName(u.name);
-          setBookingEmail((prev) =>
-            prev.trim() ? prev : (u.email ?? "").trim(),
-          );
-          setBookingPhone("");
+          setContactPrefill({
+            name: (u.name ?? "").trim(),
+            email: (u.email ?? "").trim(),
+            phoneCountry: DEFAULT_PHONE_COUNTRY,
+            phoneNumber: "",
+          });
         }
       } finally {
         if (!cancelled) setProfileLoading(false);
@@ -405,26 +502,31 @@ export default function BookingPage() {
   const tryReserve = () => {
     setSuccess(null);
     if (!selectedSlotId) return;
+    if (!selectedOk) return;
     if (!session.state.user) return setGate("login");
-    if ((profile?.creditsRemaining ?? 0) <= 0) return setGate("pricing");
+    if ((profile?.creditsRemaining ?? 0) < creditsNeeded)
+      return setGate("pricing");
     return setGate("confirm");
   };
 
-  const confirmReserve = async () => {
+  const confirmReserveWithContact = async (c: ConfirmBookingContact) => {
     if (!selectedSlotId || !selectedSlot) return;
+    if (!selectedOk) return;
     const user = session.state.user;
     if (!user) return;
     try {
-      const email = bookingEmail.trim().toLowerCase();
+      const email = (c.email ?? "").trim().toLowerCase();
       const res = await fetch(`/api/public/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           slotId: selectedSlotId,
+          durationMin,
           studentId,
-          name: bookingName.trim() || user.name,
+          name: (c.name ?? "").trim() || user.name,
           email,
-          phone: bookingPhone.trim(),
+          phoneCountry: (c.phoneCountry ?? "").trim() || DEFAULT_PHONE_COUNTRY,
+          phoneNumber: String(c.phoneNumber ?? "").replace(/\D/g, ""),
         }),
       });
       const json = await res.json().catch(() => null);
@@ -443,7 +545,7 @@ export default function BookingPage() {
             .plus({ minutes: selectedSlot.startMin })
             .toUTC()
             .toISO() ?? new Date().toISOString();
-        session.reserveSlot(startISO, 50);
+        session.reserveSlot(startISO, durationMin);
       } catch {
         // ignore
       }
@@ -466,7 +568,8 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="py-10 sm:py-14">
+    <div className={`py-14 ${slotsLoading ? "sm:cursor-wait" : ""}`}>
+      <TopProgressBar active={slotsLoading} />
       <Container>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -480,20 +583,27 @@ export default function BookingPage() {
           </div>
           <SkipUpdate skip={profileLoading || slotsLoading}>
             <div className="flex flex-wrap items-center gap-2">
-              {session.state.subscriptionPlan && (
-                <Badge>
-                  Subscription{" "}
-                  {session.state.subscriptionPlan === "weekly1"
-                    ? "Weekly (1)"
-                    : "Weekly (2)"}
-                </Badge>
-              )}
-              {session.state.passRemaining > 0 && (
-                <Badge variant="muted">
-                  {session.state.passRemaining} passes
-                </Badge>
-              )}
-              <Link
+              <SegmentedToggle
+                size="lg"
+                value={durationMin}
+                options={[
+                  { value: 25, label: "25 min" },
+                  { value: 50, label: "50 min" },
+                ]}
+                onChange={(next) => {
+                  setDurationMin(next);
+                  if (next === 50) {
+                    // If current selection is not eligible for 50, clear it.
+                    if (
+                      selectedSlot &&
+                      !bookability(selectedSlot, selectedDateKey).ok
+                    ) {
+                      setSelectedSlotId(null);
+                    }
+                  }
+                }}
+              />
+              {/* <Link
                 href={session.state.user ? "/account" : "/login?next=/booking"}
                 className="inline-flex"
               >
@@ -503,17 +613,7 @@ export default function BookingPage() {
                 >
                   {signedLabel}
                 </Badge>
-              </Link>
-              {session.state.user && creditsLabel && (
-                <Link href="/account" className="inline-flex">
-                  <Badge
-                    variant={(creditsRemaining ?? 0) > 0 ? "default" : "black"}
-                    className="cursor-pointer hover:opacity-90"
-                  >
-                    {creditsLabel}
-                  </Badge>
-                </Link>
-              )}
+              </Link> */}
             </div>
           </SkipUpdate>
         </div>
@@ -527,7 +627,7 @@ export default function BookingPage() {
           </div>
         )}
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-12">
+        <div className="mt-6 md:mt-8 grid gap-6 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <Card>
               <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -567,127 +667,99 @@ export default function BookingPage() {
               </CardHeader>
               <CardContent>
                 {slotsError && (
-                  <div className="rounded-md border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
+                  <div className="whitespace-nowrap rounded-md border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
                     {slotsError}
                   </div>
                 )}
 
                 {/* Mobile: horizontal day selector + list */}
-                {!slotsLoading && (
-                  <div className="md:hidden">
-                    <div className="grid grid-cols-3 gap-2">
-                      {days.map((d) => {
-                        const dk = dateKeyForSeoul(d);
-                        const slots = slotsByDateKey[dk] ?? [];
-                        const now = DateTime.now().setZone(BUSINESS_TIME_ZONE);
-                        const availableCount = slots.filter((s) => {
-                          if (!(s && typeof s.startMin === "number"))
-                            return false;
-                          const slotStart = DateTime.fromISO(s.dateKey, {
-                            zone: BUSINESS_TIME_ZONE,
-                          })
-                            .startOf("day")
-                            .plus({ minutes: s.startMin });
-                          return (
-                            s.available > 0 &&
-                            slotStart.toMillis() > now.toMillis()
+                <div className="md:hidden">
+                  <div className="grid grid-cols-2 gap-2">
+                    {days.map((d) => {
+                      const dk = dateKeyForSeoul(d);
+                      const selected = selectedDateKey === dk;
+                      return (
+                        <button
+                          key={dk}
+                          type="button"
+                          onClick={() => {
+                            setSelectedDateKey(dk);
+                            setSelectedSlotId(null);
+                          }}
+                          className={cn(
+                            "w-full rounded-xl border px-4 py-3 text-center transition outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                            "bg-white border-border hover:bg-muted/30 text-foreground",
+                            selected
+                              ? "ring-2 ring-primary border-primary"
+                              : "",
+                          )}
+                        >
+                          <div className="text-sm font-semibold">
+                            {formatWeekdayDate(d)}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="mt-4 grid grid-cols-3 gap-2">
+                    {slotsLoading ? (
+                      <div className="text-sm text-muted-foreground">
+                        Loading…
+                      </div>
+                    ) : (slotsByDateKey[selectedDateKey] ?? []).length === 0 ? (
+                      <div className="text-sm whitespace-nowrap text-muted-foreground">
+                        No available slots.
+                      </div>
+                    ) : (
+                      (slotsByDateKey[selectedDateKey] ?? [])
+                        .slice()
+                        .sort((a, b) => a.startMin - b.startMin)
+                        .map((s) => {
+                          const selectedPrimary = selectedSlotId === s.id;
+                          const selectedSecondary = Boolean(
+                            selectedSlot2Id && selectedSlot2Id === s.id,
                           );
-                        }).length;
-                        const selected = selectedDateKey === dk;
-                        return (
-                          <button
-                            key={dk}
-                            type="button"
-                            onClick={() => {
-                              setSelectedDateKey(dk);
-                              setSelectedSlotId(null);
-                            }}
-                            className={cn(
-                              "rounded-xl border px-3 py-3 text-left transition",
-                              selected
-                                ? "bg-primary text-primary-foreground border-primary"
-                                : "bg-white border-border hover:bg-muted/30 text-foreground",
-                            )}
-                          >
-                            <div
+                          const b = bookability(s, selectedDateKey);
+                          const available = b.ok;
+                          return (
+                            <button
+                              key={s.id}
+                              type="button"
+                              disabled={!available}
+                              onClick={() => {
+                                setSuccess(null);
+                                setSelectedSlotId(s.id);
+                              }}
                               className={cn(
-                                "text-xs",
-                                selected
-                                  ? "text-primary-foreground/80"
-                                  : "text-muted-foreground",
+                                "w-full rounded-xl text-center border px-4 py-3  transition outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                                available
+                                  ? "bg-white border-border hover:bg-muted/30 text-foreground"
+                                  : "bg-muted/30 border-border text-muted-foreground cursor-not-allowed",
+                                selectedPrimary
+                                  ? "ring-2 ring-primary border-primary"
+                                  : "",
+                                selectedSecondary && !selectedPrimary
+                                  ? "ring-2 ring-primary/35 border-primary/40 bg-primary/5"
+                                  : "",
                               )}
                             >
-                              {formatWeekdayDate(d)}
-                            </div>
-                            <div className="mt-2 text-xs">
-                              {slotsLoading
-                                ? "Loading…"
-                                : `${availableCount} available`}
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    <div className="mt-4 grid grid-cols-2 gap-2">
-                      {(slotsByDateKey[selectedDateKey] ?? []).length === 0 ? (
-                        <div className="text-sm text-muted-foreground">
-                          No available slots.
-                        </div>
-                      ) : (
-                        (slotsByDateKey[selectedDateKey] ?? [])
-                          .slice()
-                          .sort((a, b) => a.startMin - b.startMin)
-                          .map((s) => {
-                            const selected = selectedSlotId === s.id;
-                            const now =
-                              DateTime.now().setZone(BUSINESS_TIME_ZONE);
-                            const slotStart = DateTime.fromISO(s.dateKey, {
-                              zone: BUSINESS_TIME_ZONE,
-                            })
-                              .startOf("day")
-                              .plus({ minutes: s.startMin });
-                            const isPast =
-                              slotStart.toMillis() <= now.toMillis();
-                            const available = s.available > 0 && !isPast;
-                            return (
-                              <button
-                                key={s.id}
-                                type="button"
-                                disabled={!available}
-                                onClick={() => {
-                                  setSuccess(null);
-                                  setSelectedSlotId(s.id);
-                                }}
-                                className={cn(
-                                  "w-full rounded-xl border px-4 py-3 text-left transition outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                                  available
-                                    ? "bg-white border-border hover:bg-muted/30 text-foreground"
-                                    : "bg-muted/30 border-border text-muted-foreground cursor-not-allowed",
-                                  selected
-                                    ? "ring-2 ring-primary border-primary"
-                                    : "",
-                                )}
-                              >
-                                <div className="flex items-center justify-between gap-3">
-                                  <div className="font-medium text-sm">
-                                    {minutesToHhmm(s.startMin)}
-                                  </div>
-                                  <div className="text-xs text-muted-foreground">
-                                    {isPast
-                                      ? "Ended"
-                                      : available
-                                        ? ``
-                                        : "Booked"}
-                                  </div>
+                              <div className=" flex flex-wrap items-center justify-around gap-1">
+                                <div className="font-medium text-sm">
+                                  {minutesToHhmm(s.startMin)}
                                 </div>
-                              </button>
-                            );
-                          })
-                      )}
-                    </div>
+                                {!available && (
+                                  <div className="text-xs whitespace-nowrap text-muted-foreground">
+                                    {available ? "" : b.reason}
+                                  </div>
+                                )}
+                              </div>
+                            </button>
+                          );
+                        })
+                    )}
                   </div>
-                )}
+                </div>
 
                 {/* Desktop: grid */}
                 <div className="hidden md:block">
@@ -710,7 +782,8 @@ export default function BookingPage() {
                     >
                       <div className="min-w-[1050px]">
                         <div className="grid grid-cols-[92px_repeat(7,1fr)] gap-2">
-                          <div />
+                          {/* Sticky corner so the time column stays readable while scrolling */}
+                          <div className="sticky left-0 z-30 bg-card" />
                           {days.map((d) => (
                             <div
                               key={d.toISOString()}
@@ -723,48 +796,46 @@ export default function BookingPage() {
                             </div>
                           ))}
 
-                          {hours.map((h) => (
-                            <React.Fragment key={h}>
-                              <div className="flex items-center gap-2 px-1 text-sm text-primary">
+                          {timeRows.map((startMin) => (
+                            <React.Fragment key={startMin}>
+                              <div className="sticky left-0 z-20 flex items-center gap-2 px-1 text-sm text-primary bg-card">
                                 <Clock className="size-4" />
-                                {pad2(h)}:00
+                                {minutesToHhmm(startMin)}
                               </div>
                               {days.map((d) => {
                                 const dk = dateKeyForSeoul(d);
-                                const list = slotsByDateKey[dk] ?? [];
                                 const s =
-                                  list.find((x) => x.startMin === h * 60) ??
-                                  null;
-                                const now =
-                                  DateTime.now().setZone(BUSINESS_TIME_ZONE);
-                                const slotStart = s
-                                  ? DateTime.fromISO(s.dateKey, {
-                                      zone: BUSINESS_TIME_ZONE,
-                                    })
-                                      .startOf("day")
-                                      .plus({ minutes: s.startMin })
-                                  : null;
-                                const isPast = slotStart
-                                  ? slotStart.toMillis() <= now.toMillis()
-                                  : false;
-                                const available = Boolean(
-                                  s && s.available > 0 && !isPast,
-                                );
-                                const selected = Boolean(
+                                  slotByDateStartMin[dk]?.get(startMin) ?? null;
+                                const b = s
+                                  ? bookability(s, dk)
+                                  : {
+                                      ok: false as const,
+                                      reason: "—" as const,
+                                    };
+                                const available = Boolean(s && b.ok);
+                                const selectedPrimary = Boolean(
                                   s && selectedSlotId === s.id,
+                                );
+                                const selectedSecondary = Boolean(
+                                  s &&
+                                  selectedSlot2Id &&
+                                  selectedSlot2Id === s.id,
                                 );
 
                                 return (
                                   <button
-                                    key={`${dk}-${h}`}
+                                    key={`${dk}-${startMin}`}
                                     type="button"
                                     className={cn(
                                       "h-11 cursor-pointer rounded-md border text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                                       available
                                         ? "bg-white border-border hover:bg-stone-50 text-foreground"
                                         : "bg-muted/30 border-border text-muted-foreground cursor-not-allowed",
-                                      selected
+                                      selectedPrimary
                                         ? "ring-2 ring-primary border-primary"
+                                        : "",
+                                      selectedSecondary && !selectedPrimary
+                                        ? "ring-2 ring-primary/35 border-primary/40 bg-primary/5"
                                         : "",
                                     )}
                                     disabled={!available}
@@ -775,13 +846,7 @@ export default function BookingPage() {
                                       setSelectedSlotId(s.id);
                                     }}
                                   >
-                                    {s
-                                      ? isPast
-                                        ? "Ended"
-                                        : available
-                                          ? "Pick"
-                                          : "Booked"
-                                      : "—"}
+                                    {s ? (available ? "Pick" : b.reason) : "—"}
                                   </button>
                                 );
                               })}
@@ -828,9 +893,9 @@ export default function BookingPage() {
                       />
                       {!session.state.user
                         ? "Sign in required"
-                        : (profile?.creditsRemaining ?? 0) <= 0
-                          ? "1 credit required"
-                          : "1 credit will be used"}
+                        : (profile?.creditsRemaining ?? 0) < creditsNeeded
+                          ? `${creditsNeeded} credits required`
+                          : `${creditsNeeded} credit${creditsNeeded === 1 ? "" : "s"} will be used`}
                     </div>
                   </SkipUpdate>
 
@@ -848,7 +913,8 @@ export default function BookingPage() {
                               className="rounded-md border border-border bg-card px-3 py-2 text-sm"
                             >
                               <div className="font-medium">
-                                {formatWeekdayDate(d)} {pad2(d.getHours())}:00
+                                {formatWeekdayDate(d)} {pad2(d.getHours())}:
+                                {pad2(d.getMinutes())}
                               </div>
                               <div className="mt-1 text-xs text-muted-foreground">
                                 {b.durationMin} min · booked
@@ -866,7 +932,7 @@ export default function BookingPage() {
                       asChild
                       className="w-full"
                       size="lg"
-                      disabled={!selectedSlotId}
+                      disabled={!selectedSlotId || !selectedOk}
                     >
                       <Link href="/login?next=/booking">Continue</Link>
                     </Button>
@@ -874,7 +940,7 @@ export default function BookingPage() {
                     <Button
                       className="w-full"
                       size="lg"
-                      disabled={!selectedSlotId}
+                      disabled={!selectedSlotId || !selectedOk}
                       onClick={tryReserve}
                     >
                       {selectedLabel ? "Continue" : "Please select a time"}
@@ -886,7 +952,7 @@ export default function BookingPage() {
                     </Button>
                   )}
                   {session.state.user &&
-                    (profile?.creditsRemaining ?? 0) <= 0 && (
+                    (profile?.creditsRemaining ?? 0) < creditsNeeded && (
                       <CheckoutButton
                         product="single"
                         className="w-full -mb-2"
@@ -914,6 +980,14 @@ export default function BookingPage() {
                   learners beyond the very beginner level.
                 </CardContent>
               </Card>
+              {session.state.user && creditsLabel && (
+                <Link
+                  href="/account"
+                  className="w-full text-center text-sm justify-center flex mt-4"
+                >
+                  {creditsLabel}
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -963,91 +1037,16 @@ export default function BookingPage() {
         </div>
       </Modal>
 
-      <Modal
+      <ConfirmBookingModal
         open={gate === "confirm"}
         onClose={() => setGate("none")}
-        title="Confirm time"
-        description="Use this time slot?"
-        footer={
-          <>
-            <Button variant="outline" onClick={() => setGate("none")}>
-              Cancel
-            </Button>
-            <Button
-              onClick={() => {
-                const name = bookingName.trim();
-                if (!name) {
-                  alert("Please enter your name.");
-                  return;
-                }
-                const email = bookingEmail.trim().toLowerCase();
-                if (!email || !isEmail(email)) {
-                  alert("Please enter a valid email address.");
-                  return;
-                }
-                const phone = bookingPhone.trim();
-                const digits = phone.replace(/\\D/g, "");
-                if (phone && digits.length < 6) {
-                  alert("Please enter a valid phone number.");
-                  return;
-                }
-                void confirmReserve();
-              }}
-              disabled={!selectedSlotId}
-            >
-              Confirm
-            </Button>
-          </>
-        }
-      >
-        <div className="space-y-3 text-sm text-muted-foreground">
-          <div>
-            <span className="text-lg font-semibold text-primary">
-              {selectedLabel ?? "-"}
-            </span>
-          </div>
-          <div className="text-sm font-semibold text-foreground">
-            Contact info
-          </div>
-          <div className="mt-2 grid gap-2">
-            <label className="grid gap-1">
-              <span className="text-xs text-muted-foreground">Name</span>
-              <Input
-                value={bookingName}
-                onChange={(e) => setBookingName(e.target.value)}
-                placeholder="Your name"
-                disabled={profileLoading}
-              />
-            </label>
-            <label className="grid gap-1">
-              <span className="text-xs text-muted-foreground">Email</span>
-              <Input
-                value={bookingEmail}
-                onChange={(e) => setBookingEmail(e.target.value)}
-                placeholder="you@example.com"
-                disabled={profileLoading}
-                inputMode="email"
-                autoComplete="email"
-              />
-            </label>
-            <label className="grid gap-1">
-              <span className="text-xs text-muted-foreground">
-                Phone (optional)
-              </span>
-              <PhoneInput
-                value={bookingPhone}
-                disabled={profileLoading}
-                onChange={(next) => setBookingPhone(next)}
-                placeholder="Local number"
-              />
-            </label>
-          </div>
-          <div className="rounded-md border flex items-center gap-2 border-border bg-muted/40 p-3">
-            <CheckCircle strokeWidth={1.5} className="w-4 h-4 " />
-            Cancellations are allowed up to 1 hour before the session.
-          </div>
-        </div>
-      </Modal>
+        selectedLabel={selectedLabel}
+        disabled={!selectedSlotId || !selectedOk || profileLoading}
+        initialContact={contactPrefill}
+        onConfirm={async (c) => {
+          await confirmReserveWithContact(c);
+        }}
+      />
     </div>
   );
 }

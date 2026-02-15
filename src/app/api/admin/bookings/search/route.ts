@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
-import { listBookings, listSlots } from "@/lib/db";
+import { listAllSlots } from "@/lib/slotsRepo";
+import { listAllBookings } from "@/lib/bookingsRepo";
 
 export async function GET(req: NextRequest) {
   try {
@@ -8,16 +9,20 @@ export async function GET(req: NextRequest) {
     const dateKey = (qs.get("dateKey") ?? "").trim();
     const studentId = (qs.get("studentId") ?? "").trim();
 
-    const bookings = listBookings();
-    const slots = listSlots();
+    const bookings = await listAllBookings();
+    const slots = await listAllSlots();
     const slotById = new Map(slots.map((s) => [s.id, s]));
 
     let list = bookings.map((b) => {
       const s = slotById.get(b.slotId) ?? null;
+      const startMin = s?.startMin ?? 0;
+      const endMin = s ? startMin + b.durationMin : 0;
       return {
         id: b.id,
         code: b.code ?? "",
         slotId: b.slotId,
+        slotId2: b.slotId2 ?? "",
+        durationMin: b.durationMin,
         studentId: b.studentId ?? "",
         name: b.name,
         email: b.email ?? "",
@@ -27,8 +32,8 @@ export async function GET(req: NextRequest) {
         meetUrl: b.meetUrl ?? "",
         calendarHtmlLink: b.calendarHtmlLink ?? "",
         dateKey: s?.dateKey ?? "",
-        startMin: s?.startMin ?? 0,
-        endMin: s?.endMin ?? 0,
+        startMin,
+        endMin,
         cancelled: Boolean(s?.cancelled),
       };
     });

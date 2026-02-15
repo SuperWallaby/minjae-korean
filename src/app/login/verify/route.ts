@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify, SignJWT } from "jose";
 import { randomUUID } from "node:crypto";
 
-import { findStudentByEmail, patchStudent, upsertStudentByEmail } from "@/lib/students";
+import { findStudentByEmail, patchStudent, upsertStudentByEmail } from "@/lib/studentsRepo";
 
 export const runtime = "nodejs";
 
@@ -43,15 +43,15 @@ export async function GET(req: NextRequest) {
     }
 
     // Ensure a student exists for this email, and has a stable authUserId.
-    const existing = findStudentByEmail(email);
-    const base = existing ?? upsertStudentByEmail({ name: "Member", email });
+    const existing = await findStudentByEmail(email);
+    const base = existing ?? (await upsertStudentByEmail({ name: "Member", email }));
     if (!base) {
       return NextResponse.redirect(new URL("/login?error=invalid_email", req.url));
     }
     const authUserId =
       (base.authUserId ?? "").trim() || `magic:${randomUUID()}`;
     if ((base.authUserId ?? "").trim() !== authUserId) {
-      patchStudent(base.id, { authUserId });
+      await patchStudent(base.id, { authUserId });
     }
 
     // Create a session JWT stored in httpOnly cookie.

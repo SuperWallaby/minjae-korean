@@ -26,6 +26,7 @@ import {
 import { Badge } from "@/components/ui/Badge";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { cn } from "@/lib/utils";
+import { TopProgressBar } from "@/components/ui/TopProgressBar";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
@@ -52,9 +53,11 @@ function isBookingListItem(v: unknown): v is BookingListItem {
     (o.code === undefined || typeof o.code === "string") &&
     typeof o.status === "string" &&
     typeof o.createdAt === "string" &&
-    (o.meetingProvider === undefined || typeof o.meetingProvider === "string") &&
+    (o.meetingProvider === undefined ||
+      typeof o.meetingProvider === "string") &&
     (o.meetUrl === undefined || typeof o.meetUrl === "string") &&
-    (o.calendarHtmlLink === undefined || typeof o.calendarHtmlLink === "string") &&
+    (o.calendarHtmlLink === undefined ||
+      typeof o.calendarHtmlLink === "string") &&
     typeof o.dateKey === "string" &&
     typeof o.startMin === "number" &&
     typeof o.endMin === "number"
@@ -272,16 +275,16 @@ export default function JoinGuidePage() {
     }
   }, [meetingUrl]);
 
-  // Prompt camera & microphone permission once on page load (best-effort)
+  // Prompt camera & microphone permission once (best-effort) for Kaja lobby only.
   React.useEffect(() => {
     if (typeof window === "undefined") return;
     if (!("mediaDevices" in navigator)) return;
+    if (isGoogleMeet) return;
+    if (!booking) return;
     if (permissionsRequested) return;
     setPermissionsRequested(true);
     void requestPermissions();
-    // run only once
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [booking, isGoogleMeet, permissionsRequested, requestPermissions]);
 
   function statusLabel(status: string) {
     if (status === "confirmed") return "Confirmed";
@@ -315,6 +318,19 @@ export default function JoinGuidePage() {
       : permStatus === "denied"
         ? "bg-red-500"
         : "bg-muted-foreground/40";
+
+  if (session?.accountLoading || loading) {
+    return (
+      <div className={`py-10 sm:py-14 ${loading ? "sm:cursor-wait" : ""}`}>
+        <TopProgressBar active={true} />
+        <Container className="max-w-3xl">
+          <div className="text-center text-sm text-muted-foreground">
+            Loading…
+          </div>
+        </Container>
+      </div>
+    );
+  }
 
   if (!session.state.user) {
     return (
@@ -377,7 +393,9 @@ export default function JoinGuidePage() {
           {/* Link (primary) */}
           <Card className="overflow-hidden">
             <CardHeader>
-              <CardTitle>{isGoogleMeet ? "Google Meet link" : "Meeting link"}</CardTitle>
+              <CardTitle>
+                {isGoogleMeet ? "Google Meet link" : "Meeting link"}
+              </CardTitle>
               <CardDescription>
                 Save this link for your session.
               </CardDescription>
@@ -390,8 +408,8 @@ export default function JoinGuidePage() {
                   </div>
                   {meetUnavailable ? (
                     <div className="mt-1 text-sm text-red-600 dark:text-red-400">
-                      We couldn’t generate your Google Meet link for this booking.
-                      Please contact Minjae or try booking again.
+                      We couldn’t generate your Google Meet link for this
+                      booking. Please contact Minjae or try booking again.
                     </div>
                   ) : (
                     <div
@@ -414,7 +432,8 @@ export default function JoinGuidePage() {
                         "bg-black text-white hover:bg-black/90 active:bg-black/80",
                       )}
                     >
-                      {copied ? "Copied" : "Copy"} <CopyIcon className="size-4" />
+                      {copied ? "Copied" : "Copy"}{" "}
+                      <CopyIcon className="size-4" />
                     </Button>
                     <Button asChild size="sm" variant="outline">
                       <a
@@ -425,7 +444,11 @@ export default function JoinGuidePage() {
                         onClick={(e) => {
                           if (meetUnavailable) e.preventDefault();
                         }}
-                        className={meetUnavailable ? "pointer-events-none opacity-60" : ""}
+                        className={
+                          meetUnavailable
+                            ? "pointer-events-none opacity-60"
+                            : ""
+                        }
                       >
                         Open <ExternalLink className="size-4" />
                       </a>
@@ -478,7 +501,7 @@ export default function JoinGuidePage() {
               <CardTitle>Join the session</CardTitle>
               <CardDescription>
                 {isGoogleMeet
-                  ? "This link is live now. Meet may show “Waiting for host” if Minjae isn’t there yet."
+                  ? "Meet may show “Waiting for host” if Minjae isn’t there yet."
                   : "Your lobby opens 10 minutes before class."}
               </CardDescription>
             </CardHeader>
@@ -503,70 +526,77 @@ export default function JoinGuidePage() {
                 {isGoogleMeet ? "Open Google Meet" : "Enter lobby"}
               </Button>
 
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <span className={cn("size-2 rounded-full", permDotClass)} />
-                    <Video className="size-4" />
-                    Camera
+              {!isGoogleMeet && (
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={cn("size-2 rounded-full", permDotClass)}
+                      />
+                      <Video className="size-4" />
+                      Camera
+                    </div>
+                    <div className="text-xs">
+                      {permStatus === "granted"
+                        ? "Ready"
+                        : permStatus === "denied"
+                          ? "Blocked"
+                          : "Check needed"}
+                    </div>
                   </div>
-                  <div className="text-xs">
-                    {permStatus === "granted"
-                      ? "Ready"
-                      : permStatus === "denied"
-                        ? "Blocked"
-                        : "Check needed"}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={cn("size-2 rounded-full", permDotClass)}
+                      />
+                      <Mic className="size-4" />
+                      Microphone
+                    </div>
+                    <div className="text-xs">
+                      {permStatus === "granted"
+                        ? "Ready"
+                        : permStatus === "denied"
+                          ? "Blocked"
+                          : "Check needed"}
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <span className={cn("size-2 rounded-full", permDotClass)} />
-                    <Mic className="size-4" />
-                    Microphone
+                  <div className="flex flex-col gap-2 border-t border-border pt-3 sm:flex-row sm:items-center sm:justify-between">
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="justify-start px-0"
+                      disabled={permChecking || permStatus === "granted"}
+                      onClick={() => void requestPermissions()}
+                    >
+                      {permStatus === "granted"
+                        ? "Camera & Microphone ready"
+                        : permChecking
+                          ? "Checking…"
+                          : "Check permissions"}
+                    </Button>
+                    {permStatus === "denied" ? (
+                      <div className="text-xs text-muted-foreground">
+                        If it’s blocked, enable Camera & Microphone in your
+                        browser site settings.
+                      </div>
+                    ) : null}
                   </div>
-                  <div className="text-xs">
-                    {permStatus === "granted"
-                      ? "Ready"
-                      : permStatus === "denied"
-                        ? "Blocked"
-                        : "Check needed"}
+                  <div className="border-t border-border pt-2 text-xs text-muted-foreground">
+                    {canEnterLobby
+                      ? "Lobby is open. You can enter now."
+                      : openAt
+                        ? `Lobby opens in ${formatCountdown(openAt.toMillis() - nowMs)}`
+                        : "Lobby opens 10 minutes before class."}
                   </div>
-                </div>
-                <div className="flex flex-col gap-2 border-t border-border pt-3 sm:flex-row sm:items-center sm:justify-between">
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="justify-start px-0"
-                    disabled={permChecking || permStatus === "granted"}
-                    onClick={() => void requestPermissions()}
-                  >
-                    {permStatus === "granted"
-                      ? "Permissions ready"
-                      : permChecking
-                        ? "Checking…"
-                        : "Check permissions"}
-                  </Button>
                   {permStatus === "denied" ? (
-                    <div className="text-xs text-muted-foreground">
-                      If it’s blocked, enable Camera & Microphone in your browser site settings.
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Shield className="size-4" />
+                      Please allow camera & microphone permissions to join
+                      smoothly.
                     </div>
                   ) : null}
                 </div>
-                <div className="border-t border-border pt-2 text-xs text-muted-foreground">
-                  {canEnterLobby
-                    ? "Lobby is open. You can enter now."
-                    : openAt
-                      ? `Lobby opens in ${formatCountdown(openAt.toMillis() - nowMs)}`
-                      : "Lobby opens 10 minutes before class."}
-                </div>
-                {permStatus === "denied" ? (
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Shield className="size-4" />
-                    Please allow camera & microphone permissions to join
-                    smoothly.
-                  </div>
-                ) : null}
-              </div>
+              )}
             </CardContent>
           </Card>
         </div>

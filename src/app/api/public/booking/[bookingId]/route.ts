@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { DateTime } from "luxon";
-import { findBookingByKey, getSlotById } from "@/lib/db";
+import { findBookingByKey } from "@/lib/bookingsRepo";
+import { getSlotById } from "@/lib/slotsRepo";
 
 const ZONE = "Asia/Seoul";
 
@@ -12,12 +13,12 @@ export async function GET(_req: NextRequest, ctx: { params: Promise<{ bookingId:
       return new Response(JSON.stringify({ ok: false, error: "bookingId required" }), { status: 400 });
     }
 
-    const booking = findBookingByKey(bookingId);
+    const booking = await findBookingByKey(bookingId);
     if (!booking) {
       return new Response(JSON.stringify({ ok: false, error: "booking not found" }), { status: 404 });
     }
 
-    const slot = getSlotById(booking.slotId);
+    const slot = booking.slotId ? await getSlotById(booking.slotId) : null;
     if (!slot) {
       return new Response(
         JSON.stringify({ ok: true, startTimeLabel: null, endTimeLabel: null, dateKey: null }),
@@ -26,7 +27,7 @@ export async function GET(_req: NextRequest, ctx: { params: Promise<{ bookingId:
     }
 
     const startDt = DateTime.fromISO(slot.dateKey, { zone: ZONE }).startOf("day").plus({ minutes: slot.startMin });
-    const endDt = DateTime.fromISO(slot.dateKey, { zone: ZONE }).startOf("day").plus({ minutes: slot.endMin });
+    const endDt = startDt.plus({ minutes: booking.durationMin });
     const startTimeLabel = startDt.toFormat("yyyy-MM-dd HH:mm");
     const endTimeLabel = endDt.toFormat("HH:mm");
 

@@ -1,20 +1,11 @@
 import { NextRequest } from "next/server";
-import { createStudent, listStudents } from "@/lib/students";
-import { listBookings } from "@/lib/db";
-import { importStudentsFromBookings } from "@/lib/students";
+import { createStudent, listStudents, upsertStudentByEmail } from "@/lib/studentsRepo";
+import { listAllBookings } from "@/lib/bookingsRepo";
 
 export async function GET(req: NextRequest) {
   try {
     const q = (req.nextUrl.searchParams.get("q") ?? "").trim().toLowerCase();
-    let list = listStudents();
-    if (q) {
-      list = list.filter(
-        (s) =>
-          s.name.toLowerCase().includes(q) ||
-          s.email.toLowerCase().includes(q) ||
-          (s.phone ?? "").toLowerCase().includes(q)
-      );
-    }
+    const list = await listStudents({ q, limit: 2000 });
     return new Response(JSON.stringify({ ok: true, data: { items: list } }), { status: 200 });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: String(e) }), { status: 500 });
@@ -27,7 +18,7 @@ export async function POST(req: NextRequest) {
     if (!body || typeof body.name !== "string" || typeof body.email !== "string") {
       return new Response(JSON.stringify({ ok: false, error: "Invalid body" }), { status: 400 });
     }
-    const s = createStudent({ name: body.name, email: body.email, phone: body.phone });
+    const s = await createStudent({ name: body.name, email: body.email, phone: body.phone });
     return new Response(JSON.stringify({ ok: true, data: { student: s } }), { status: 201 });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: String(e) }), { status: 500 });
@@ -41,9 +32,19 @@ export async function PUT(req: NextRequest) {
     if (body?.action !== "import_from_bookings") {
       return new Response(JSON.stringify({ ok: false, error: "Unknown action" }), { status: 400 });
     }
-    const bookings = listBookings();
-    const res = importStudentsFromBookings(bookings);
-    return new Response(JSON.stringify({ ok: true, data: res }), { status: 200 });
+    const bookings = await listAllBookings(5000);
+    const uniq = new Map<string, { name: string; email: string }>();
+    for (const b of bookings) {
+      const email = (b.email ?? "").trim().toLowerCase();
+      if (!email) continue;
+      if (!uniq.has(email)) uniq.set(email, { email, name: (b.name ?? "").trim() || "Student" });
+    }
+    let createdOrLinked = 0;
+    for (const v of uniq.values()) {
+      const s = await upsertStudentByEmail({ name: v.name, email: v.email });
+      if (s) createdOrLinked++;
+    }
+    return new Response(JSON.stringify({ ok: true, data: { scanned: uniq.size, upserted: createdOrLinked } }), { status: 200 });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: String(e) }), { status: 500 });
   }

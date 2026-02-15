@@ -25,10 +25,11 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
   if (href.startsWith("/#")) {
     // Only use scroll-based active state when we're on the main page.
     // This avoids anchors appearing active on other routes (e.g. /booking).
-    active = pathname === "/" ? activeOverride ?? false : false;
+    active = pathname === "/" ? (activeOverride ?? false) : false;
   } else {
     // Normal page links: match exact pathname or prefix (for subpaths)
-    active = activeOverride ?? (pathname === href || pathname.startsWith(href + "/"));
+    active =
+      activeOverride ?? (pathname === href || pathname.startsWith(href + "/"));
   }
 
   return (
@@ -36,7 +37,8 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
       href={href}
       className={cn(
         "inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        active && "bg-muted text-foreground"
+        "hover:bg-muted/20",
+        active && "bg-muted text-foreground",
       )}
     >
       {label}
@@ -60,10 +62,13 @@ export function SiteNavbar() {
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
+          .sort(
+            (a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0),
+          );
         if (visible[0]?.target?.id) setActiveHash(visible[0].target.id);
       },
-      { rootMargin: "-20% 0px -70% 0px", threshold: [0.08, 0.15, 0.25] }
+      // Include threshold 0 so tall sections still trigger updates.
+      { rootMargin: "-20% 0px -70% 0px", threshold: [0, 0.08, 0.15, 0.25] },
     );
 
     for (const el of elements) obs.observe(el);
@@ -71,7 +76,7 @@ export function SiteNavbar() {
   }, []);
 
   return (
-    <header className="sticky top-5 z-40">
+    <header className="mb-5 sticky top-5 z-40">
       <Container>
         <div className="mx-auto w-fit">
           <div className="rounded-2xl border flex  w-full border-border bg-white px-2 py-2 shadow-(--shadow-navbar) md:rounded-full">
@@ -89,10 +94,7 @@ export function SiteNavbar() {
                     label="Ways to use"
                     activeOverride={activeHash === "ways-to-use"}
                   />
-                  <NavLink
-                    href="/booking"
-                    label="Pick a time"
-                  />
+                  <NavLink href="/booking" label="Pick a time" />
                 </nav>
               </div>
 
@@ -113,14 +115,20 @@ export function SiteNavbar() {
 
                 {state.user ? (
                   <Button variant="secondary" size="sm" asChild>
-                    <Link href="/account" className="inline-flex items-center gap-2">
+                    <Link
+                      href="/account"
+                      className="inline-flex items-center gap-2"
+                    >
                       <UserRound className="size-4" />
                       Account
                     </Link>
                   </Button>
                 ) : (
                   <Button variant="primary" size="sm" asChild>
-                    <Link href="/login" className="inline-flex items-center gap-2">
+                    <Link
+                      href="/login"
+                      className="inline-flex items-center gap-2"
+                    >
                       <UserRound className="size-4" />
                       Sign in
                     </Link>
@@ -136,12 +144,16 @@ export function SiteNavbar() {
                 onClick={() => setMobileOpen((v) => !v)}
                 className={cn(
                   "inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium transition",
-                  "bg-white text-foreground hover:bg-muted/40"
+                  "bg-white text-foreground hover:bg-muted/40",
                 )}
                 aria-expanded={mobileOpen}
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
               >
-                {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+                {mobileOpen ? (
+                  <X className="size-4" />
+                ) : (
+                  <Menu className="size-4" />
+                )}
                 Menu
               </button>
 
@@ -229,4 +241,3 @@ export function SiteNavbar() {
     </header>
   );
 }
-

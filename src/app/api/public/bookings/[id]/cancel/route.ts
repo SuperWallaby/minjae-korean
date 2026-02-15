@@ -1,8 +1,9 @@
 import { NextRequest } from "next/server";
 import { DateTime } from "luxon";
 
-import { listBookings, updateBooking, listSlots, updateSlot } from "@/lib/db";
-import { restoreOneCreditByEmail, restoreOneCreditByStudentId } from "@/lib/students";
+import { getBookingById, patchBooking } from "@/lib/bookingsRepo";
+import { getSlotById, releaseSlot } from "@/lib/slotsRepo";
+import { restoreCreditsByEmail, restoreCreditsByStudentId } from "@/lib/studentsRepo";
 
 export const runtime = "nodejs";
 
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       return new Response(JSON.stringify({ ok: false, error: "studentId or email required" }), { status: 400 });
     }
 
-    const booking = listBookings().find((b) => b.id === id) ?? null;
+    const booking = await getBookingById(id);
     if (!booking) return new Response(JSON.stringify({ ok: false, error: "Not found" }), { status: 404 });
     const ownerOk = studentId
       ? (booking.studentId ?? "") === studentId
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       return new Response(JSON.stringify({ ok: false, error: "Not cancellable" }), { status: 409 });
     }
 
-    const slot = listSlots().find((s) => s.id === booking.slotId) ?? null;
+    const slot = await getSlotById(booking.slotId);
     if (!slot) return new Response(JSON.stringify({ ok: false, error: "Slot not found" }), { status: 404 });
 
     const start = DateTime.fromISO(slot.dateKey, { zone: BUSINESS_TIME_ZONE })
@@ -48,12 +49,14 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       );
     }
 
-    const updated = updateBooking(booking.id, { status: "cancelled" });
+    const updated = await patchBooking(booking.id, { status: "cancelled" });
     if (!updated) return new Response(JSON.stringify({ ok: false, error: "Not found" }), { status: 404 });
 
-    updateSlot(slot.id, { bookedCount: Math.max(0, (slot.bookedCount ?? 0) - 1) });
-    if (studentId) restoreOneCreditByStudentId(studentId);
-    else restoreOneCreditByEmail(email);
+    const credits = booking.durationMin === 50 ? 2 : 1;
+    await releaseSlot(slot.id, 1);
+    if (booking.slotId2) await releaseSlot(booking.slotId2, 1);
+    if (studentId) await restoreCreditsByStudentId(studentId, credits);
+    else await restoreCreditsByEmail(email, credits);
 
     return new Response(JSON.stringify({ ok: true, booking: updated }), { status: 200 });
   } catch (e) {

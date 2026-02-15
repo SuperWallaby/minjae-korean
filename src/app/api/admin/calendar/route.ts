@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
-import { listSlots, listBookings, type Booking } from "@/lib/db";
+import { listSlotsInRange } from "@/lib/slotsRepo";
+import { listBookingsBySlotIds, type Booking } from "@/lib/bookingsRepo";
 
 type SlotDTO = {
   id: string;
@@ -28,14 +29,20 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    const slots = listSlots().filter((s) => s.dateKey >= fromDateKey && s.dateKey <= toDateKey);
-    const bookings = listBookings();
+    const slots = await listSlotsInRange(fromDateKey, toDateKey);
+    const slotIds = slots.map((s) => s.id);
+    const bookings = await listBookingsBySlotIds(slotIds);
 
     const bookingsBySlot = new Map<string, Booking[]>();
     for (const b of bookings) {
-      const list = bookingsBySlot.get(b.slotId) ?? [];
-      list.push(b);
-      bookingsBySlot.set(b.slotId, list);
+      const list1 = bookingsBySlot.get(b.slotId) ?? [];
+      list1.push(b);
+      bookingsBySlot.set(b.slotId, list1);
+      if (b.slotId2) {
+        const list2 = bookingsBySlot.get(b.slotId2) ?? [];
+        list2.push(b);
+        bookingsBySlot.set(b.slotId2, list2);
+      }
     }
 
     const byDay = new Map<string, SlotDTO[]>();

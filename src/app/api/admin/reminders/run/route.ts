@@ -1,7 +1,8 @@
 import { NextRequest } from "next/server";
 import { DateTime } from "luxon";
 
-import { listBookings, listSlots, updateBooking, type Booking } from "@/lib/db";
+import { listAllBookings, patchBooking, type Booking } from "@/lib/bookingsRepo";
+import { getSlotsByIds } from "@/lib/slotsRepo";
 
 export const runtime = "nodejs";
 
@@ -201,9 +202,10 @@ export async function GET(req: NextRequest) {
     const auth = requireAdminKey(req);
     if (!auth.ok) return json(401, { ok: false, error: auth.error });
 
-    const bookings: Booking[] = listBookings();
-    const slots = listSlots();
-    const slotById = new Map(slots.map((s) => [s.id, s]));
+    const bookings: Booking[] = await listAllBookings(5000);
+    const slotIds = Array.from(new Set(bookings.map((b) => b.slotId).filter(Boolean)));
+    const slots = await getSlotsByIds(slotIds);
+    const slotById = new Map(slots.map((s) => [s.id, s] as const));
     const admins = adminEmails();
 
     const nowMs = DateTime.utc().toMillis();
@@ -214,7 +216,7 @@ export async function GET(req: NextRequest) {
       const slot = slotById.get(b.slotId);
       if (!slot) continue;
 
-      const { label, startMs } = fmtSeoul(slot.dateKey, slot.startMin, slot.endMin);
+      const { label, startMs } = fmtSeoul(slot.dateKey, slot.startMin, slot.startMin + b.durationMin);
       const msUntil = startMs - nowMs;
       if (msUntil <= 0) continue;
 
@@ -239,7 +241,7 @@ export async function GET(req: NextRequest) {
             timeLabel: label,
           });
           await sendResendEmail({ to: memberEmail, ...t });
-          updateBooking(b.id, { [memberField]: new Date().toISOString() } as Partial<Booking>);
+          await patchBooking(b.id, { [memberField]: new Date().toISOString() } as Partial<Booking>);
           results.push({ id: b.id, kind, to: memberEmail });
         }
 
@@ -262,7 +264,7 @@ export async function GET(req: NextRequest) {
             await sendResendEmail({ to, ...t });
             results.push({ id: b.id, kind, to });
           }
-          updateBooking(b.id, { [adminField]: new Date().toISOString() } as Partial<Booking>);
+          await patchBooking(b.id, { [adminField]: new Date().toISOString() } as Partial<Booking>);
         }
       }
     }

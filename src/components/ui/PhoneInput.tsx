@@ -61,8 +61,13 @@ export function PhoneInput({
   );
 
   React.useEffect(() => {
-    setParts(splitPhone(value));
-  }, [value]);
+    const parsed = splitPhone(value);
+    // Only sync when external value differs from current internal parts to avoid
+    // overwriting in-progress user input (prevents first-key loss).
+    if (parsed.country !== country || parsed.local !== local) {
+      setParts(parsed);
+    }
+  }, [value, country, local]);
 
   return (
     <div className={cn("flex items-center gap-2", className)}>

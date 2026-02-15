@@ -2,7 +2,8 @@ import { NextRequest } from "next/server";
 import { DateTime } from "luxon";
 import { createHash } from "node:crypto";
 
-import { findBookingByKey, getSlotById } from "@/lib/db";
+import { findBookingByKey } from "@/lib/bookingsRepo";
+import { getSlotById } from "@/lib/slotsRepo";
 
 export const runtime = "nodejs";
 
@@ -81,7 +82,7 @@ export async function POST(req: NextRequest) {
     if (!bookingKey) return json(400, { ok: false, error: "bookingId required" });
     if (role !== "student" && role !== "teacher") return json(400, { ok: false, error: "role invalid" });
 
-    const booking = findBookingByKey(bookingKey);
+    const booking = await findBookingByKey(bookingKey);
     if (!booking) return json(404, { ok: false, error: "booking not found" });
     const bookingId = booking.id; // canonical internal id
     const isOpen = Boolean(booking.open);
@@ -100,11 +101,11 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const slot = getSlotById(booking.slotId);
+    const slot = booking.slotId ? await getSlotById(booking.slotId) : null;
     // Students are time-gated; teachers can always enter (if authorized).
     if (!isOpen && role === "student" && slot) {
       const isDev = process.env.NODE_ENV !== "production";
-      const w = computeJoinWindow(slot);
+      const w = computeJoinWindow({ ...slot, endMin: slot.startMin + booking.durationMin });
       const now = DateTime.utc();
       if (!isDev && (now < w.openAt.toUTC() || now > w.closeAt.toUTC())) {
         return json(403, {

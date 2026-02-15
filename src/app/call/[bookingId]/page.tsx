@@ -1,10 +1,10 @@
 import { BookingCallClient } from "@/components/stream/BookingCallClient";
-import { findBookingByKey } from "@/lib/db";
+import { findBookingByKey } from "@/lib/bookingsRepo";
 import { redirect } from "next/navigation";
 
 export default async function CallPage({ params }: { params: Promise<{ bookingId: string }> }) {
   const { bookingId } = await params;
-  const booking = findBookingByKey(bookingId);
+  const booking = await findBookingByKey(bookingId);
   const meetUrl = (booking?.meetUrl ?? "").trim();
   if (meetUrl) redirect(meetUrl);
   if ((booking?.meetingProvider ?? "") === "google_meet") {

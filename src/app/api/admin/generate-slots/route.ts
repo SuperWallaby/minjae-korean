@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { generateSlotsFromPattern } from "@/lib/slotPatterns";
-import { listSlots, addSlot } from "@/lib/db";
-import { readAdminSettings } from "@/lib/settings";
+import { insertManyIgnoreDuplicates } from "@/lib/slotsRepo";
+import { readAdminSettings } from "@/lib/settingsRepo";
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,22 +9,22 @@ export async function POST(req: NextRequest) {
     if (!body || !body.fromDateKey || !body.toDateKey) {
       return new Response(JSON.stringify({ ok: false, error: "Missing from/to date" }), { status: 400 });
     }
-    const settings = readAdminSettings();
+    const settings = await readAdminSettings();
     const pattern = body.pattern ?? settings.weeklyPattern ?? {};
     const tz = body.tz ?? settings.businessTimeZone ?? "Asia/Seoul";
-    const generated = generateSlotsFromPattern({ pattern, fromDateKey: body.fromDateKey, toDateKey: body.toDateKey, tz });
-    const existing = listSlots();
-    const existingKeys = new Set(existing.map((s) => `${s.dateKey}|${s.startMin}|${s.endMin}`));
-    let added = 0;
-    for (const s of generated) {
-      const key = `${s.dateKey}|${s.startMin}|${s.endMin}`;
-      if (!existingKeys.has(key)) {
-        addSlot(s);
-        existingKeys.add(key);
-        added++;
-      }
-    }
-    return new Response(JSON.stringify({ ok: true, generated: generated.length, added }), { status: 200 });
+    const generated0 = generateSlotsFromPattern({ pattern, fromDateKey: body.fromDateKey, toDateKey: body.toDateKey, tz });
+
+    // Enforce 30-minute grid starts + 25-minute duration.
+    const generated = generated0
+      .filter((s) => Number.isFinite(s.startMin) && s.startMin % 30 === 0)
+      .map((s) => ({
+        ...s,
+        endMin: s.startMin + 25,
+      }))
+      .filter((s) => s.endMin <= 24 * 60);
+
+    const ins = await insertManyIgnoreDuplicates(generated);
+    return new Response(JSON.stringify({ ok: true, generated: generated.length, added: ins.inserted }), { status: 200 });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: String(e) }), { status: 500 });
   }

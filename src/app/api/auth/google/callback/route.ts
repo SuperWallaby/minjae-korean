@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { SignJWT, createRemoteJWKSet, jwtVerify } from "jose";
 
-import { upsertStudentByAuthUserId } from "@/lib/students";
+import { upsertStudentByAuthUserId } from "@/lib/studentsRepo";
 
 export const runtime = "nodejs";
 
@@ -196,7 +196,7 @@ export async function GET(req: NextRequest) {
       authUserIdSuffix: authUserId.slice(-10),
       emailDomain: email.includes("@") ? email.split("@").slice(-1)[0] : "",
     });
-    const student = upsertStudentByAuthUserId({ authUserId, name, email });
+    const student = await upsertStudentByAuthUserId({ authUserId, name, email });
     if (!student) return NextResponse.redirect(new URL("/login?error=student_upsert_failed", req.url));
     log("upsert_student_ok", { tid, studentId: student.id });
 

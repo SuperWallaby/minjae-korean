@@ -1,11 +1,11 @@
 import { NextRequest } from "next/server";
-import { listSlots } from "@/lib/db";
+import { listAllSlots, listSlotsByDateKey } from "@/lib/slotsRepo";
 
 export async function GET(req: NextRequest) {
   try {
     const dateKey = req.nextUrl.searchParams.get("dateKey");
-    const all = listSlots();
-    const filtered = dateKey ? all.filter((s) => s.dateKey === dateKey && !s.cancelled) : all.filter((s) => !s.cancelled);
+    const all = dateKey ? await listSlotsByDateKey(dateKey) : await listAllSlots();
+    const filtered = all.filter((s) => !s.cancelled);
     const mapped = filtered.map((s) => ({
       id: s.id,
       dateKey: s.dateKey,

@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
-import { listSlots, listBookings, type Booking, type Slot } from "@/lib/db";
+import { listSlotsByDateKey, type Slot } from "@/lib/slotsRepo";
+import { listBookingsBySlotIds, type Booking } from "@/lib/bookingsRepo";
 
 function isDateKey(s: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(s);
@@ -12,15 +13,19 @@ export async function GET(req: NextRequest) {
       return new Response(JSON.stringify({ ok: false, error: "Invalid dateKey" }), { status: 400 });
     }
 
-    const slots = listSlots()
-      .filter((s) => s.dateKey === dateKey)
-      .sort((a, b) => a.startMin - b.startMin || a.endMin - b.endMin);
-    const bookings = listBookings();
+    const slots = await listSlotsByDateKey(dateKey);
+    const slotIds = slots.map((s) => s.id);
+    const bookings = await listBookingsBySlotIds(slotIds);
     const bookingsBySlot = new Map<string, Booking[]>();
     for (const b of bookings) {
-      const list = bookingsBySlot.get(b.slotId) ?? [];
-      list.push(b);
-      bookingsBySlot.set(b.slotId, list);
+      const list1 = bookingsBySlot.get(b.slotId) ?? [];
+      list1.push(b);
+      bookingsBySlot.set(b.slotId, list1);
+      if (b.slotId2) {
+        const list2 = bookingsBySlot.get(b.slotId2) ?? [];
+        list2.push(b);
+        bookingsBySlot.set(b.slotId2, list2);
+      }
     }
 
     const out = slots.map((s): (Slot & { bookedCount: number; bookings: Booking[] }) => {

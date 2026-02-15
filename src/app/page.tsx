@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { posts } from "@/lib/posts";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 function postThumb(slug: string) {
   if (slug.includes("freezing")) return "/placeholders/post-1.svg";
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <div className="space-y-24">
       {/* 1) Hero (1 column) */}
-      <section className="pt-16 sm:pt-24">
+      <RevealOnScroll as="section" className="pt-16 sm:pt-24">
         <Container className="relative">
           <div className="relative mx-auto max-w-4xl text-center">
             <div className="text-sm font-semibold tracking-wide text-primary">
@@ -48,10 +49,14 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </RevealOnScroll>
 
       {/* 2) Context-first talking */}
-      <section id="approach" className="scroll-mt-24 py-10 sm:py-16">
+      <RevealOnScroll
+        as="section"
+        id="approach"
+        className="scroll-mt-24 py-10 sm:py-16"
+      >
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="order-2 max-w-xl lg:order-1">
@@ -81,7 +86,7 @@ export default function Home() {
                 <div className="rounded-3xl bg-included-3 p-6">
                   <div className="flex items-center gap-3">
                     <img
-                      src="/pn2.webp"
+                      src="/pen-line.webp"
                       alt="Refine it while you talk"
                       className="w-4.5 text-black/60"
                     />
@@ -117,13 +122,19 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </RevealOnScroll>
 
       {/* 3) Reviews */}
-      <MembersReviewsSection />
+      <RevealOnScroll as="div">
+        <MembersReviewsSection />
+      </RevealOnScroll>
 
       {/* 4) Pricing */}
-      <section id="ways-to-use" className="scroll-mt-24 py-10 sm:py-16">
+      <RevealOnScroll
+        as="section"
+        id="ways-to-use"
+        className="scroll-mt-24 py-10 sm:py-16"
+      >
         <Container>
           <h2 className="text-center font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
             Ways to use Korean
@@ -153,7 +164,7 @@ export default function Home() {
                 <span className="text-3xl font-semibold tracking-tight">
                   $10
                 </span>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-foreground font-semibold">
                   for a first time
                 </span>
               </div>
@@ -162,9 +173,9 @@ export default function Home() {
                 a simple direction.
               </div>
               <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
-                <li>• 50 min (25min * 2 times)</li>
-                <li>• A simple prompt</li>
-                <li>• Clear takeaways</li>
+                <li>• 50 min</li>
+                <li>• Only available for first time.</li>
+                <li>• Pick a time, when you want to talk</li>
               </ul>
               <div className="mt-6">
                 <Suspense
@@ -205,15 +216,18 @@ export default function Home() {
                 <span className="text-3xl font-semibold tracking-tight">
                   $15
                 </span>
-                <span className="text-sm text-muted-foreground">per time</span>
+                <span className="text-sm text-muted-foreground">
+                  50 minutes
+                </span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                Pick a time when it fits—no fixed cadence required.
+                A flexible way to use Korean, purchase more when you want to
+                talk.
               </div>
               <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
-                <li>• 50 min (25min * 2 times)</li>
-                <li>• Use a prompt or bring your own</li>
-                <li>• Keep continuity without pressure</li>
+                <li>• 50 min</li>
+                <li>• Pick a time, when you want to talk</li>
+                <li>• Valid for a month</li>
               </ul>
               <div className="mt-6">
                 <Suspense
@@ -254,16 +268,18 @@ export default function Home() {
                 <span className="text-3xl font-semibold tracking-tight">
                   $98
                 </span>
-                <span className="text-sm text-muted-foreground">8 times</span>
+                <span className="text-sm text-muted-foreground">
+                  16 times × 25 min
+                </span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
                 A steady routine for continuity. Ideal if you like a simple
                 monthly cadence.
               </div>
               <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
-                <li>• 16 times × 25 min</li>
+                <li>• Book a time, when you want to talk</li>
                 <li>• Continuity (same style, same flow)</li>
-                <li>• Easier to keep the habit</li>
+                <li>• Valid for a month</li>
               </ul>
               <div className="mt-6">
                 <Suspense
@@ -286,10 +302,10 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </RevealOnScroll>
 
       {/* 5) Extras */}
-      <section className="py-10 sm:py-16">
+      <RevealOnScroll as="section" className="py-10 sm:py-16">
         <Container>
           <div className="mx-auto max-w-6xl">
             <div className="max-w-2xl">
@@ -319,7 +335,7 @@ export default function Home() {
                     <div className="text-sm font-semibold">Talk notes</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    A clean recap, will be sent to you after the talk. :)
+                    A clean recap, will be sent to you right after the talk.
                   </div>
                 </div>
                 <div className="rounded-3xl bg-included-2 p-6">
@@ -332,13 +348,10 @@ export default function Home() {
                       alt="Auto translation"
                       className="w-11 text-black/60"
                     />
-                    <div className="text-sm font-semibold">
-                      Auto translation
-                    </div>
+                    <div className="text-sm font-semibold">English support</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Quick translations for tricky sentences, so you keep the
-                    conversation going without losing the flow.
+                    When you get stuck, Minjae will help you with English.
                   </div>
                 </div>
               </div>
@@ -366,8 +379,7 @@ export default function Home() {
                     <div className="text-sm font-semibold">Subtitles</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Read while you listen—helps you catch pronunciation, rhythm,
-                    and small endings that change meaning.
+                    Pronunciation and natural phrasing practice while you talk.
                   </div>
                 </div>
                 <div className="rounded-3xl bg-included-4 p-6">
@@ -382,19 +394,18 @@ export default function Home() {
                     <div className="text-sm font-semibold">Corrections</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Clear, reusable corrections—so the same mistakes don’t come
-                    back next week. You’ll practice the corrected version
-                    immediately.
+                    Clear corrections so mistakes don’t repeat. Practice the
+                    better version.
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </Container>
-      </section>
+      </RevealOnScroll>
 
       {/* 6) Q&A */}
-      <section className="py-10 sm:py-16">
+      <RevealOnScroll as="section" className="py-10 sm:py-16">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-4">
@@ -428,15 +439,15 @@ export default function Home() {
                 ].map((item) => (
                   <details
                     key={item.q}
-                    className="group border-b border-border/70 py-5"
+                    className="group border-b border-border/70"
                   >
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg font-semibold tracking-tight text-foreground">
+                    <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg font-semibold tracking-tight text-foreground py-5">
                       <span>{item.q}</span>
                       <span className="text-xl text-muted-foreground transition group-open:rotate-45">
                         +
                       </span>
                     </summary>
-                    <div className="mt-4 text-base leading-7 text-muted-foreground">
+                    <div className="mb-4 text-base leading-7 text-muted-foreground">
                       {item.a}
                     </div>
                   </details>
@@ -445,14 +456,14 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </RevealOnScroll>
 
       {/* 8) CTA */}
-      <section className="py-10 sm:py-14">
+      <RevealOnScroll as="section" className="py-10 sm:py-14">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-5xl">
-              Just start with today’s Korean.
+              Start practicing with Minjae.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
               No pressure. Pick a time, talk about a topic, and keep the habit
@@ -461,7 +472,7 @@ export default function Home() {
             <div className="mx-auto mt-6 flex flex-row flex-nowrap items-center justify-center gap-3">
               <Button
                 asChild
-                size="sm"
+                size="md"
                 variant="primary"
                 className="w-fit bg-black px-4 text-white hover:bg-black/90"
               >
@@ -469,7 +480,7 @@ export default function Home() {
               </Button>
               <Button
                 asChild
-                size="sm"
+                size="md"
                 variant="outline"
                 className="w-fit border-black/25 px-4 text-foreground hover:bg-[color-mix(in_srgb,black_4%,transparent)]"
               >
@@ -478,14 +489,17 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </RevealOnScroll>
 
       {/* 9) Posts */}
-      <section className="bg-included-1 py-12 sm:py-16">
+      <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-12">
-              <div className="flex items-end justify-end">
+              <div className="flex w-full items-end justify-between">
+                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Learn With Kaja News
+                </h2>
                 <Button
                   asChild
                   variant="outline"
@@ -527,7 +541,7 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </RevealOnScroll>
     </div>
   );
 }

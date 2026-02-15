@@ -1,9 +1,9 @@
 import { NextRequest } from "next/server";
-import { readAdminSettings, writeAdminSettings } from "@/lib/settings";
+import { readAdminSettings, writeAdminSettings } from "@/lib/settingsRepo";
 
 export async function GET() {
   try {
-    const settings = readAdminSettings();
+    const settings = await readAdminSettings();
     return new Response(JSON.stringify({ ok: true, data: settings }), { status: 200 });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: String(e) }), { status: 500 });
@@ -39,7 +39,7 @@ export async function PUT(req: NextRequest) {
       weeklyPattern[String(k)] = rows.map((r) => ({ startMin: r.startMin, endMin: r.endMin }));
     }
 
-    writeAdminSettings({ businessTimeZone: tz, weeklyPattern });
+    await writeAdminSettings({ businessTimeZone: tz, weeklyPattern });
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: String(e) }), { status: 500 });
