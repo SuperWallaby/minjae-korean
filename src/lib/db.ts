@@ -23,6 +23,16 @@ export type Booking = {
   email?: string;
   status: "confirmed" | "cancelled" | "no_show";
   createdAt: string;
+  // Meeting provider (Kaja Meet vs Google Meet)
+  meetingProvider?: "kaja" | "google_meet";
+  // Google Meet link (derived from Google Calendar conference data)
+  meetUrl?: string;
+  // Google Calendar bookkeeping
+  calendarEventId?: string;
+  calendarHtmlLink?: string;
+  // Debug/ops fields for Meet creation
+  meetCreatedAt?: string;
+  meetError?: string;
   // Reminder email bookkeeping (ISO timestamps). Used to prevent duplicate sends.
   reminder24hSentAt?: string;
   reminder24hAdminSentAt?: string;
@@ -141,6 +151,14 @@ export function updateBooking(id: string, patch: Partial<Booking>) {
   bookings[idx] = updated;
   saveBookings(bookings);
   return updated;
+}
+
+export function deleteBooking(id: string) {
+  const bookings = listBookings();
+  const next = bookings.filter((b) => b.id !== id);
+  if (next.length === bookings.length) return false;
+  saveBookings(next);
+  return true;
 }
 
 function randomAlnum(len: number) {

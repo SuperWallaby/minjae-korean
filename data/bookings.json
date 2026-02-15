@@ -38,5 +38,50 @@
     "status": "confirmed",
     "createdAt": "2026-02-13T06:17:55.541Z",
     "code": "kajafvgo7"
+  },
+  {
+    "id": "mlky0gy2-ww2a3o",
+    "slotId": "s-2026-02-14-600",
+    "studentId": "stu_mljm4ej9_t80bj9",
+    "name": "MINJAE KIM",
+    "email": "colton950901@gmail.com",
+    "status": "confirmed",
+    "createdAt": "2026-02-13T13:48:11.594Z",
+    "code": "kajaq2te5",
+    "meetingProvider": "google_meet",
+    "meetCreatedAt": "2026-02-13T13:48:12.067Z",
+    "meetError": "Google token error: Unauthorized"
+  },
+  {
+    "id": "mlkysjob-tm0qgi",
+    "slotId": "s-2026-02-14-660",
+    "studentId": "stu_mljm4ej9_t80bj9",
+    "name": "MINJAE KIM",
+    "email": "colton950901@gmail.com",
+    "status": "confirmed",
+    "createdAt": "2026-02-13T14:10:01.499Z",
+    "meetingProvider": "google_meet",
+    "code": "kajabrnb2",
+    "meetUrl": "https://meet.google.com/suv-fnee-qtu",
+    "calendarEventId": "9qntab9h2ebtkmb72jfuh1uo2o",
+    "calendarHtmlLink": "https://www.google.com/calendar/event?eid=OXFudGFiOWgyZWJ0a21iNzJqZnVoMXVvMm8gY29sdG9uOTUwOTAxQG0",
+    "meetCreatedAt": "2026-02-13T14:10:02.989Z",
+    "meetError": ""
+  },
+  {
+    "id": "mlm8e5l6-dfgf86",
+    "slotId": "s-2026-02-14-1260",
+    "studentId": "stu_mljm4ej9_t80bj9",
+    "name": "MINJAE KIM",
+    "email": "colton950901@gmail.com",
+    "status": "confirmed",
+    "createdAt": "2026-02-14T11:26:32.394Z",
+    "meetingProvider": "google_meet",
+    "code": "kajafdv7p",
+    "meetUrl": "https://meet.google.com/qmw-kazr-xbj",
+    "calendarEventId": "6sk6n0g2guo28uo7g0qvrvdof4",
+    "calendarHtmlLink": "https://www.google.com/calendar/event?eid=NnNrNm4wZzJndW8yOHVvN2cwcXZydmRvZjQgY29sdG9uOTUwOTAxQG0",
+    "meetCreatedAt": "2026-02-14T11:26:33.709Z",
+    "meetError": ""
   }
 ]

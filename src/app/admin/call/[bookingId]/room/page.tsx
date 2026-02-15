@@ -2,7 +2,11 @@ import { BookingCallClient } from "@/components/stream/BookingCallClient";
 import { findBookingByKey } from "@/lib/db";
 import { redirect } from "next/navigation";
 
-export default async function CallPage({ params }: { params: Promise<{ bookingId: string }> }) {
+export default async function AdminCallRoomPage({
+  params,
+}: {
+  params: Promise<{ bookingId: string }>;
+}) {
   const { bookingId } = await params;
   const booking = findBookingByKey(bookingId);
   const meetUrl = (booking?.meetUrl ?? "").trim();
@@ -13,20 +17,14 @@ export default async function CallPage({ params }: { params: Promise<{ bookingId
         <div className="mx-auto max-w-lg rounded-2xl border border-border bg-card p-6">
           <div className="text-lg font-semibold">Google Meet link unavailable</div>
           <div className="mt-2 text-sm text-muted-foreground">
-            We couldn’t generate your Google Meet link. Please return to your booking page or contact Minjae.
+            Meet link creation failed for this booking. Check the server env/token and rebook or regenerate.
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
             <a
-              className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white"
-              href={`/join/${encodeURIComponent(String(booking?.code || bookingId))}`}
-            >
-              View booking
-            </a>
-            <a
               className="rounded-full border border-border bg-card px-4 py-2 text-sm"
-              href="/account"
+              href="/admin"
             >
-              Account
+              Back to admin
             </a>
           </div>
         </div>
@@ -34,6 +32,15 @@ export default async function CallPage({ params }: { params: Promise<{ bookingId
     );
   }
   const openMeeting = Boolean(booking?.open);
-  return <BookingCallClient bookingId={bookingId} role="student" openMeeting={openMeeting} allowGuests={openMeeting} />;
+  return (
+    <BookingCallClient
+      bookingId={bookingId}
+      role="teacher"
+      mode="room"
+      teacherKeyRequired={false}
+      openMeeting={openMeeting}
+      allowGuests={openMeeting}
+    />
+  );
 }
 

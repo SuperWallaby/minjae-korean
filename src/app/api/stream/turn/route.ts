@@ -117,8 +117,6 @@ function computeJoinWindow(slot: { dateKey: string; startMin: number; endMin: nu
 
 export async function POST(req: NextRequest) {
   try {
-    const teacherKeySecret = mustEnv("STREAM_TEACHER_KEY");
-
     const body = await req.json().catch(() => null);
     const bookingKey = typeof body?.bookingId === "string" ? body.bookingId.trim() : "";
     const role = (typeof body?.role === "string" ? body.role : "") as Role;
@@ -143,9 +141,6 @@ export async function POST(req: NextRequest) {
           if (!email) return json(400, { ok: false, error: "email required" });
           if (!bookingEmail || bookingEmail !== email) return json(403, { ok: false, error: "not allowed" });
         }
-      } else {
-        const teacherKey = (req.headers.get("x-teacher-key") ?? "").trim();
-        if (!teacherKey || teacherKey !== teacherKeySecret) return json(403, { ok: false, error: "not allowed" });
       }
     }
 

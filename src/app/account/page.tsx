@@ -108,6 +108,8 @@ export default function AccountPage() {
   type BookingListItem = {
     id: string;
     code?: string;
+    meetingProvider?: string;
+    meetUrl?: string;
     dateKey: string;
     startMin: number;
     endMin: number;
@@ -125,6 +127,8 @@ export default function AccountPage() {
       typeof o.endMin === "number" &&
       typeof o.status === "string" &&
       (o.code === undefined || typeof o.code === "string") &&
+      (o.meetingProvider === undefined || typeof o.meetingProvider === "string") &&
+      (o.meetUrl === undefined || typeof o.meetUrl === "string") &&
       (o.cancelled === undefined || typeof o.cancelled === "boolean")
     );
   }
@@ -385,6 +389,10 @@ export default function AccountPage() {
                                   b.status === "confirmed" &&
                                   hasTime &&
                                   (() => {
+                                    const meetUrl = (b.meetUrl ?? "").trim();
+                                    if (meetUrl) return true;
+                                    const provider = (b.meetingProvider ?? "").trim();
+                                    if (provider === "google_meet") return false;
                                     const w = callWindowForBooking(
                                       b.dateKey,
                                       b.startMin,
@@ -450,11 +458,27 @@ export default function AccountPage() {
                                       variant="primary"
                                       disabled={!canJoin}
                                     >
-                                      <Link
-                                        href={`/call/${encodeURIComponent(String(b.code || b.id))}`}
-                                      >
-                                        Enter lesson
-                                      </Link>
+                                      {(b.meetUrl ?? "").trim() ? (
+                                        <a
+                                          href={(b.meetUrl ?? "").trim()}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                        >
+                                          Open Google Meet
+                                        </a>
+                                      ) : (b.meetingProvider ?? "").trim() === "google_meet" ? (
+                                        <a
+                                          href={`/join/${encodeURIComponent(String(b.code || b.id))}`}
+                                        >
+                                          Meet link unavailable
+                                        </a>
+                                      ) : (
+                                        <Link
+                                          href={`/call/${encodeURIComponent(String(b.code || b.id))}`}
+                                        >
+                                          Enter lesson
+                                        </Link>
+                                      )}
                                     </Button>
                                   </>
                                 );

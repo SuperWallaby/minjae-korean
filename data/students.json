@@ -6,7 +6,7 @@
     "authUserId": "google:114232026682457163705",
     "phone": "+8211052374492",
     "createdAt": "2026-02-12T15:27:33.525Z",
-    "updatedAt": "2026-02-13T06:17:55.540Z",
+    "updatedAt": "2026-02-14T11:26:32.394Z",
     "adminNote": "",
     "notes": [
       {
@@ -22,7 +22,7 @@
         "source": "admin",
         "kind": "single_pass",
         "total": 12,
-        "remaining": 10,
+        "remaining": 7,
         "purchasedAt": "2026-02-13T06:12:40.618Z",
         "expiresAt": "2026-03-15T06:12:40.618Z"
       }

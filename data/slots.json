@@ -347,7 +347,7 @@
     "startMin": 600,
     "endMin": 660,
     "capacity": 1,
-    "bookedCount": 0,
+    "bookedCount": 1,
     "cancelled": false
   },
   {
@@ -356,7 +356,7 @@
     "startMin": 660,
     "endMin": 720,
     "capacity": 1,
-    "bookedCount": 0,
+    "bookedCount": 1,
     "cancelled": false
   },
   {
@@ -446,7 +446,7 @@
     "startMin": 1260,
     "endMin": 1320,
     "capacity": 1,
-    "bookedCount": 0,
+    "bookedCount": 1,
     "cancelled": false
   },
   {

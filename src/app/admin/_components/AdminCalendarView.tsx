@@ -273,18 +273,53 @@ export default function AdminCalendarView() {
                                   {b.name} · {b.email} · {b.status}
                                 </div>
                               </div>
-                              <Link
-                                href={`/admin/call/${encodeURIComponent(String(b.code || b.id))}`}
-                                className={`shrink-0 rounded border px-2 py-1 text-xs ${
-                                  b.status === "confirmed"
+                              {(() => {
+                                const canOpen = b.status === "confirmed";
+                                const meetUrl = String((b as { meetUrl?: unknown }).meetUrl ?? "").trim();
+                                const provider = String(
+                                  (b as { meetingProvider?: unknown }).meetingProvider ?? "",
+                                ).trim();
+                                const cls = `shrink-0 rounded border px-2 py-1 text-xs ${
+                                  canOpen
                                     ? "bg-black text-white"
                                     : "pointer-events-none bg-white text-muted-foreground opacity-60"
-                                }`}
-                                aria-disabled={b.status !== "confirmed"}
-                                tabIndex={b.status === "confirmed" ? 0 : -1}
-                              >
-                                Open call
-                              </Link>
+                                }`;
+                                if (meetUrl) {
+                                  return (
+                                    <a
+                                      href={meetUrl}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className={cls}
+                                      aria-disabled={!canOpen}
+                                      tabIndex={canOpen ? 0 : -1}
+                                    >
+                                      Open Meet
+                                    </a>
+                                  );
+                                }
+                                if (provider === "google_meet") {
+                                  return (
+                                    <span
+                                      className={cls}
+                                      aria-disabled="true"
+                                      tabIndex={-1}
+                                    >
+                                      Meet unavailable
+                                    </span>
+                                  );
+                                }
+                                return (
+                                  <Link
+                                    href={`/admin/call/${encodeURIComponent(String(b.code || b.id))}`}
+                                    className={cls}
+                                    aria-disabled={!canOpen}
+                                    tabIndex={canOpen ? 0 : -1}
+                                  >
+                                    Open call
+                                  </Link>
+                                );
+                              })()}
                             </div>
                           ))}
                         </div>

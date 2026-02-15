@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import { DateTime } from "luxon";
-import { SignJWT } from "jose";
-import { createHash, randomUUID } from "node:crypto";
+import { createHash } from "node:crypto";
 
 import { findBookingByKey, getSlotById } from "@/lib/db";
 
@@ -46,9 +45,13 @@ function getStunIceServers(): RTCIceServer[] {
   return [{ urls: ["stun:stun.l.google.com:19302"] }];
 }
 
-function generateChannelName(roomId: string, signalingToken: string): string {
-  // Create a non-guessable channel name: call_{roomId}_{hash(token).slice(0,16)}
-  const hash = createHash("sha256").update(signalingToken).digest("hex").slice(0, 16);
+function generateChannelName(roomId: string, roomToken: string): string {
+  // Create a non-guessable channel name: call_{roomId}_{hash(roomToken).slice(0,16)}
+  // roomToken is deterministic per room + secret, so both peers join the same channel.
+  const hash = createHash("sha256")
+    .update(roomToken)
+    .digest("hex")
+    .slice(0, 16);
   return `call_${roomId}_${hash}`;
 }
 
@@ -68,15 +71,12 @@ function computeJoinWindow(slot: { dateKey: string; startMin: number; endMin: nu
 export async function POST(req: NextRequest) {
   try {
     const jwtSecret = mustEnv("SIGNALING_JWT_SECRET");
-    const teacherKeySecret = mustEnv("STREAM_TEACHER_KEY");
 
     const body = await req.json().catch(() => null);
     const bookingKey = typeof body?.bookingId === "string" ? body.bookingId.trim() : "";
     const role = (typeof body?.role === "string" ? body.role : "") as Role;
     const email = normalizeEmail(body?.email);
     const studentId = normalizeId(body?.studentId);
-    const displayNameInput =
-      typeof body?.displayName === "string" ? body.displayName.trim() : "";
 
     if (!bookingKey) return json(400, { ok: false, error: "bookingId required" });
     if (role !== "student" && role !== "teacher") return json(400, { ok: false, error: "role invalid" });
@@ -97,9 +97,6 @@ export async function POST(req: NextRequest) {
           if (!email) return json(400, { ok: false, error: "email required" });
           if (!bookingEmail || bookingEmail !== email) return json(403, { ok: false, error: "not allowed" });
         }
-      } else {
-        const teacherKey = (req.headers.get("x-teacher-key") ?? "").trim();
-        if (!teacherKey || teacherKey !== teacherKeySecret) return json(403, { ok: false, error: "not allowed" });
       }
     }
 
@@ -119,40 +116,13 @@ export async function POST(req: NextRequest) {
     }
 
     const roomId = `booking-${bookingId}`;
-    const guestId = (() => {
-      try {
-        return randomUUID();
-      } catch {
-        return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
-      }
-    })();
-    const identity =
-      role === "teacher"
-        ? isOpen
-          ? `teacher-${guestId}`
-          : `teacher-${bookingId}`
-        : studentId
-          ? `student-${studentId}`
-          : email
-            ? `student-${email}`
-            : `guest-${guestId}`;
-    const displayName =
-      displayNameInput ||
-      (isOpen
-        ? role === "teacher"
-          ? "Partner"
-          : "Guest"
-        : role === "teacher"
-          ? "Teacher"
-          : booking.name || "Student");
 
-    // Generate signaling token (JWT) for Supabase Realtime channel authentication
-    const signalingToken = await new SignJWT({ roomId, role, displayName })
-      .setProtectedHeader({ alg: "HS256" })
-      .setSubject(identity)
-      .setIssuedAt()
-      .setExpirationTime("10m")
-      .sign(new TextEncoder().encode(jwtSecret));
+    // Deterministic room token shared by both peers (for filtering messages).
+    // Do NOT log this value.
+    const signalingToken = createHash("sha256")
+      .update(`${jwtSecret}:${roomId}`)
+      .digest("hex")
+      .slice(0, 32);
 
     // Generate non-guessable channel name
     const channelName = generateChannelName(roomId, signalingToken);

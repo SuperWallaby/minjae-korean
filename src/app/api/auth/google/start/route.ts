@@ -9,6 +9,15 @@ function mustEnv(name: string) {
   return v;
 }
 
+function resolveSiteUrl(req: NextRequest) {
+  // In development, prefer the actual request origin (e.g. http://localhost:3000)
+  // so redirect_uri + cookies stay on the same host.
+  const origin = req.nextUrl.origin;
+  const isDev = process.env.NODE_ENV !== "production";
+  if (isDev) return origin;
+  return process.env.NEXT_PUBLIC_SITE_URL?.trim() || origin || "http://localhost:3000";
+}
+
 function safeNext(next: string) {
   const v = (next ?? "").trim();
   if (!v) return "/account";
@@ -20,7 +29,7 @@ function safeNext(next: string) {
 export async function GET(req: NextRequest) {
   const next = safeNext(req.nextUrl.searchParams.get("next") ?? "");
   const clientId = mustEnv("GOOGLE_CLIENT_ID");
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+  const siteUrl = resolveSiteUrl(req);
 
   const state = randomUUID();
   const redirectUri = `${siteUrl.replace(/\/$/, "")}/api/auth/google/callback`;

@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import * as React from "react";
+import { useRouter } from "next/navigation";
 
 import {
   Video,
   Mic,
   Volume2,
   ArrowRight,
-  CheckCircle2,
-  XCircle,
-  AlertCircle,
   MoreHorizontal,
   ChevronLeft,
   MessageSquare,
@@ -40,6 +38,7 @@ type Props = {
   teacherKeyRequired?: boolean;
   openMeeting?: boolean;
   allowGuests?: boolean;
+  mode?: "lobby" | "room";
 };
 
 type SessionResponse =
@@ -155,10 +154,12 @@ export function BookingCallClient({
   teacherKeyRequired,
   openMeeting,
   allowGuests,
+  mode = "lobby",
 }: Props) {
   const session = useMockSession();
   const isOpenMeeting = Boolean(openMeeting);
   const guestsAllowed = Boolean(allowGuests);
+  const router = useRouter();
 
   const [isMobile, setIsMobile] = React.useState(false);
   React.useEffect(() => {
@@ -211,6 +212,10 @@ export function BookingCallClient({
   );
   const remoteRef = React.useRef<HTMLVideoElement | null>(null);
   const localInCallRef = React.useRef<HTMLVideoElement | null>(null);
+  const [iceConnectionState, setIceConnectionState] =
+    React.useState<RTCIceConnectionState | null>(null);
+  const [peerConnectionState, setPeerConnectionState] =
+    React.useState<RTCPeerConnectionState | null>(null);
 
   const [messages, setMessages] = React.useState<
     Array<{ from: Role; text: string; at: number }>
@@ -232,6 +237,14 @@ export function BookingCallClient({
     role !== "student" || guestsAllowed || Boolean(session.state.user?.email);
   const studentEmail = session.state.user?.email ?? "";
   const [guestName, setGuestName] = React.useState("");
+
+  const roomHref = React.useMemo(() => {
+    const base =
+      role === "teacher"
+        ? `/admin/call/${encodeURIComponent(bookingId)}`
+        : `/call/${encodeURIComponent(bookingId)}`;
+    return `${base}/room`;
+  }, [bookingId, role]);
 
   React.useEffect(() => {
     if (!guestsAllowed) return;
@@ -279,12 +292,8 @@ export function BookingCallClient({
     [bookingId],
   );
 
-  const resumeStorageKey = React.useMemo(
-    () => `mj_call_resume_${bookingId}`,
-    [bookingId],
-  );
-
   const [mobileComposerOpen, setMobileComposerOpen] = React.useState(false);
+  const [mobileControlsOpen, setMobileControlsOpen] = React.useState(false);
   const [mobileView, setMobileView] = React.useState<"video" | "history">(
     "video",
   );
@@ -613,14 +622,9 @@ export function BookingCallClient({
   );
 
   const postWaitingOnce = React.useCallback(async () => {
-    const key = teacherKey.trim();
-    if (!key) {
-      addLog("Waiting keepalive skipped: missing teacher key");
-      return false;
-    }
     const res = await fetch("/api/stream/waiting", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-teacher-key": key },
+      headers: { "Content-Type": "application/json", ...(teacherKey.trim() ? { "x-teacher-key": teacherKey.trim() } : {}) },
       body: JSON.stringify({ bookingId }),
     });
     const j = await res.json().catch(() => null);
@@ -692,6 +696,30 @@ export function BookingCallClient({
     return "Enter room";
   }, [hasCamera, hasMic, joinBlockedByTeacher, loading]);
 
+  const reconnectNotice = React.useMemo(() => {
+    if (phase !== "in_call") return null;
+    if (
+      peerConnectionState === "disconnected" ||
+      iceConnectionState === "disconnected"
+    ) {
+      return "Connection lost. Reconnecting…";
+    }
+    if (peerConnectionState === "failed" || iceConnectionState === "failed") {
+      return "Connection failed. Reconnecting…";
+    }
+    return null;
+  }, [iceConnectionState, peerConnectionState, phase]);
+
+  const remoteVideoOverlayText = React.useMemo(() => {
+    if (phase !== "in_call") return null;
+    if (!remoteStream) return "Waiting for partner…";
+    const track = remoteStream.getVideoTracks()[0] ?? null;
+    if (!track) return "Partner’s camera is off.";
+    if (track.readyState === "ended") return "Partner’s camera disconnected.";
+    if (!track.enabled) return "Partner’s camera is off.";
+    return null;
+  }, [phase, remoteStream]);
+
   // Ask for permissions immediately on entry (best-effort; some browsers require a click)
   const [autoPermissionAttempted, setAutoPermissionAttempted] =
     React.useState(false);
@@ -709,9 +737,9 @@ export function BookingCallClient({
   }, [preview]);
 
   React.useEffect(() => {
-    if (phase !== "in_call") return;
-    if (localInCallRef.current) localInCallRef.current.srcObject = preview;
-  }, [phase, preview]);
+    if (!localInCallRef.current) return;
+    localInCallRef.current.srcObject = preview;
+  }, [preview, phase]);
 
   React.useEffect(() => {
     if (remoteRef.current) remoteRef.current.srcObject = remoteStream;
@@ -733,38 +761,32 @@ export function BookingCallClient({
       pcRef.current?.close();
     } catch {}
     pcRef.current = null;
+    setIceConnectionState(null);
+    setPeerConnectionState(null);
 
     stopStream(preview);
     setPreview(null);
     stopStream(remoteStream);
     setRemoteStream(null);
+
+    setMobileComposerOpen(false);
+    setMobileControlsOpen(false);
+    setMobileView("video");
   });
 
   React.useEffect(() => cleanup, [cleanup]);
 
   const hangUp = useEvent(() => {
-    try {
-      window.sessionStorage.removeItem(resumeStorageKey);
-    } catch {}
     cleanup();
+    const backTo =
+      role === "teacher"
+        ? `/admin/call/${encodeURIComponent(bookingId)}`
+        : `/call/${encodeURIComponent(bookingId)}`;
+    router.replace(backTo);
   });
 
   // Persist "in call" intent so refresh can auto-rejoin.
-  React.useEffect(() => {
-    if (phase === "in_call" || phase === "connecting") {
-      try {
-        window.sessionStorage.setItem(
-          resumeStorageKey,
-          JSON.stringify({ at: Date.now() }),
-        );
-      } catch {}
-    }
-    if (phase === "ended") {
-      try {
-        window.sessionStorage.removeItem(resumeStorageKey);
-      } catch {}
-    }
-  }, [phase, resumeStorageKey]);
+  // (Deprecated) Previously used for same-URL resume; URL split now handles refresh.
 
   const sendSignal = useEvent((data: { [k: string]: unknown }) => {
     const channel = channelRef.current;
@@ -789,6 +811,8 @@ export function BookingCallClient({
   const makePeerConnection = useEvent((iceServers: RTCIceServer[]) => {
     const pc = new RTCPeerConnection({ iceServers });
     pcRef.current = pc;
+    setIceConnectionState(pc.iceConnectionState);
+    setPeerConnectionState(pc.connectionState);
 
     pc.onicecandidate = (ev) => {
       if (ev.candidate)
@@ -797,7 +821,11 @@ export function BookingCallClient({
 
     pc.ontrack = (ev) => {
       setRemoteStream((prev) => {
-        const next = prev ?? new MediaStream();
+        const base = prev ?? new MediaStream();
+        const existing = base.getTracks();
+        const already = existing.some((t) => t.id === ev.track.id);
+        if (already) return base;
+        const next = new MediaStream(existing);
         next.addTrack(ev.track);
         return next;
       });
@@ -806,6 +834,7 @@ export function BookingCallClient({
     // Monitor ICE connection state for fallback
     pc.oniceconnectionstatechange = () => {
       const state = pc.iceConnectionState;
+      setIceConnectionState(state);
       if (state === "connected" || state === "completed") {
         if (iceFailureTimeoutRef.current) {
           clearTimeout(iceFailureTimeoutRef.current);
@@ -831,6 +860,10 @@ export function BookingCallClient({
           }
         }, 3000);
       }
+    };
+
+    pc.onconnectionstatechange = () => {
+      setPeerConnectionState(pc.connectionState);
     };
 
     return pc;
@@ -898,21 +931,12 @@ export function BookingCallClient({
     setPhase("connecting");
     turnFallbackAttemptedRef.current = false;
     addLog("Join clicked");
-    try {
-      window.sessionStorage.setItem(
-        resumeStorageKey,
-        JSON.stringify({ at: Date.now() }),
-      );
-    } catch {}
 
     try {
       if (role === "teacher" && teacherKeyRequired && !teacherKey.trim()) {
         addLog("Join blocked: missing partner key");
         setError("Partner key is required.");
         setPhase("lobby");
-        try {
-          window.sessionStorage.removeItem(resumeStorageKey);
-        } catch {}
         return;
       }
 
@@ -929,9 +953,6 @@ export function BookingCallClient({
         addLog(`Session failed: ${resp.error}`);
         setError(resp.error);
         setPhase("lobby");
-        try {
-          window.sessionStorage.removeItem(resumeStorageKey);
-        } catch {}
         return;
       }
       addLog("Session OK");
@@ -964,9 +985,6 @@ export function BookingCallClient({
           console.error("[BookingCall] join getUserMedia error", e);
           setError(err?.message ?? "Permission denied");
           setPhase("lobby");
-          try {
-            window.sessionStorage.removeItem(resumeStorageKey);
-          } catch {}
           return;
         }
       }
@@ -1107,29 +1125,34 @@ export function BookingCallClient({
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
       setPhase("lobby");
-      try {
-        window.sessionStorage.removeItem(resumeStorageKey);
-      } catch {}
     } finally {
       setLoading(false);
     }
   });
 
-  const resumeAttemptedRef = React.useRef(false);
+  // Room mode auto-join: wait for prerequisites, then join.
+  const roomJoinAttemptedRef = React.useRef(false);
   React.useEffect(() => {
+    if (mode !== "room") return;
     if (phase !== "lobby") return;
-    if (resumeAttemptedRef.current) return;
+    if (roomJoinAttemptedRef.current) return;
     if (role === "teacher" && teacherKeyRequired && !teacherKey.trim()) return;
-    try {
-      const raw = window.sessionStorage.getItem(resumeStorageKey);
-      if (!raw) return;
-    } catch {
-      return;
-    }
-    resumeAttemptedRef.current = true;
-    addLog("Auto rejoin: resume flag found (refresh)");
+    if (role === "student" && joinBlockedByTeacher) return;
+    if (joinBlockedByMedia) return;
+    roomJoinAttemptedRef.current = true;
+    addLog("Room: auto-joining");
     void join();
-  }, [addLog, join, phase, resumeStorageKey, role, teacherKey, teacherKeyRequired]);
+  }, [
+    addLog,
+    join,
+    joinBlockedByMedia,
+    joinBlockedByTeacher,
+    mode,
+    phase,
+    role,
+    teacherKey,
+    teacherKeyRequired,
+  ]);
 
   if (role === "student" && !canProceedStudent) {
     return (
@@ -1160,9 +1183,89 @@ export function BookingCallClient({
     );
   }
 
+  if (mode === "room" && phase !== "in_call") {
+    const roomStatus = error
+      ? error === "outside join window"
+        ? "The lobby opens 10 minutes before class. Please try again later."
+        : error
+      : joinBlockedByTeacher
+        ? "Waiting for partner…"
+        : joinBlockedByMedia
+          ? "Allow camera and microphone to enter."
+          : loading || phase === "connecting"
+            ? "Connecting…"
+            : "Preparing…";
+    const showRetry = Boolean(error);
+    const showPermissions = Boolean(joinBlockedByMedia);
+    const showSpinner =
+      !error &&
+      !joinBlockedByTeacher &&
+      (!joinBlockedByMedia || loading || phase === "connecting");
+
+    return (
+      <div className="fixed inset-0 z-9999 bg-black text-white">
+        <div className="absolute left-4 top-4">
+          <button
+            type="button"
+            className="rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm"
+            onClick={() => {
+              const backTo =
+                role === "teacher"
+                  ? `/admin/call/${encodeURIComponent(bookingId)}`
+                  : `/call/${encodeURIComponent(bookingId)}`;
+              router.replace(backTo);
+            }}
+          >
+            Back to lobby
+          </button>
+        </div>
+        <div className="flex h-full items-center justify-center px-6 text-center">
+          <div className="max-w-md">
+            {showSpinner ? (
+              <div className="mx-auto mb-5 h-10 w-10 rounded-full border-2 border-white/20 border-t-white/90 animate-spin" />
+            ) : null}
+            <div className="text-xl font-semibold">{roomStatus}</div>
+            <div className="mt-3 text-sm text-white/60">
+              {showPermissions
+                ? "Tap below to trigger the permission prompt."
+                : showRetry
+                  ? "We’ll retry when you’re ready."
+                  : "Please keep this screen open."}
+            </div>
+            {showPermissions ? (
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <button
+                  type="button"
+                  className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black"
+                  onClick={() => void startPreview()}
+                >
+                  Enable camera & mic
+                </button>
+              </div>
+            ) : null}
+            {showRetry ? (
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <button
+                  type="button"
+                  className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm"
+                  onClick={() => {
+                    roomJoinAttemptedRef.current = false;
+                    void join();
+                  }}
+                >
+                  Retry
+                </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (isMobile && phase === "in_call") {
     return (
-      <div className="fixed inset-0 bg-black text-white">
+      <div className="fixed inset-0 z-9999 bg-black text-white">
         {mobileView === "history" ? (
           <div className="absolute inset-0 flex flex-col">
             <div className="flex items-center justify-between px-4 py-3">
@@ -1180,15 +1283,13 @@ export function BookingCallClient({
             <div className="flex-1 overflow-y-auto px-4 pb-4">
               <div className="space-y-2">
                 {messages.length === 0 ? (
-                  <div className="text-sm text-white/60">
-                    No messages yet.
-                  </div>
+                  <div className="text-sm text-white/60">No messages yet.</div>
                 ) : (
                   messages.map((m, idx) => (
                     <div
                       key={idx}
                       className={cn(
-                        "max-w-[90%] rounded-2xl px-3 py-2 text-sm",
+                        "w-fit max-w-[90%] rounded-2xl px-3 py-2 text-sm",
                         m.from === role
                           ? "ml-auto bg-white text-black"
                           : "bg-white/10 text-white",
@@ -1229,13 +1330,14 @@ export function BookingCallClient({
             </form>
           </div>
         ) : (
-          <div className="absolute inset-0">
-            <button
-              type="button"
-              className="absolute inset-0"
-              onClick={() => setMobileComposerOpen(true)}
-              aria-label="Show message input"
-            />
+          <div
+            className="absolute inset-0"
+            onClick={() => {
+              if (mobileComposerOpen) return;
+              setMobileControlsOpen((v) => !v);
+            }}
+            role="presentation"
+          >
             <video
               ref={remoteRef}
               autoPlay
@@ -1243,7 +1345,15 @@ export function BookingCallClient({
               className="h-full w-full bg-black object-cover"
             />
 
-            <div className="absolute bottom-4 right-4 h-[160px] w-[120px] overflow-hidden rounded-2xl border border-white/15 bg-black shadow-[0_18px_60px_rgba(0,0,0,0.55)]">
+            {remoteVideoOverlayText ? (
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-10 text-center">
+                <div className="rounded-2xl border border-white/15 bg-black/45 px-4 py-3 text-sm text-white/85 backdrop-blur">
+                  {remoteVideoOverlayText}
+                </div>
+              </div>
+            ) : null}
+
+            <div className="absolute bottom-24 right-4 h-[160px] w-[120px] overflow-hidden rounded-2xl border border-white/15 bg-black shadow-[0_18px_60px_rgba(0,0,0,0.55)]">
               <video
                 ref={localInCallRef}
                 autoPlay
@@ -1253,58 +1363,13 @@ export function BookingCallClient({
               />
             </div>
 
-            <div className="pointer-events-none absolute left-4 right-4 top-4 flex items-center justify-between">
-              <div className="pointer-events-auto flex items-center gap-2">
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
-                  onClick={() => hangUp()}
-                >
-                  Hang up
-                </button>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
-                  onClick={() => {
-                    setMicOn((v) => {
-                      const next = !v;
-                      for (const t of preview?.getAudioTracks() ?? [])
-                        t.enabled = next;
-                      return next;
-                    });
-                  }}
-                >
-                  <Mic className="h-4 w-4" />
-                  {micOn ? "On" : "Off"}
-                </button>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
-                  onClick={() => {
-                    setCamOn((v) => {
-                      const next = !v;
-                      for (const t of preview?.getVideoTracks() ?? [])
-                        t.enabled = next;
-                      return next;
-                    });
-                  }}
-                >
-                  <Video className="h-4 w-4" />
-                  {camOn ? "On" : "Off"}
-                </button>
+            {reconnectNotice ? (
+              <div className="pointer-events-none absolute left-4 right-4 top-4 flex justify-center">
+                <div className="rounded-full border border-white/15 bg-black/50 px-3 py-2 text-xs text-white/85 backdrop-blur">
+                  {reconnectNotice}
+                </div>
               </div>
-
-              <div className="pointer-events-auto flex items-center gap-2">
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-2 text-sm"
-                  onClick={() => setMobileView("history")}
-                >
-                  <MoreHorizontal className="h-4 w-4" />
-                  More
-                </button>
-              </div>
-            </div>
+            ) : null}
 
             <div className="pointer-events-none absolute bottom-24 left-4 right-4 space-y-2">
               {mobileRecentMessages.map((m, idx) => (
@@ -1322,8 +1387,96 @@ export function BookingCallClient({
               ))}
             </div>
 
+            {!mobileControlsOpen && !mobileComposerOpen ? (
+              <div className="pointer-events-none absolute bottom-8 left-0 right-0 flex justify-center">
+                <div className="rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-[11px] text-white/70 backdrop-blur">
+                  Tap to show controls
+                </div>
+              </div>
+            ) : null}
+
+            <div
+              className={cn(
+                "pointer-events-none absolute bottom-0 left-0 right-0 transition-opacity duration-200",
+                mobileControlsOpen || mobileComposerOpen
+                  ? "opacity-100"
+                  : "opacity-0",
+              )}
+            >
+              <div className="pointer-events-auto mx-auto flex max-w-md items-center justify-between gap-2 px-4 pb-[calc(env(safe-area-inset-bottom)+14px)] pt-3">
+                <button
+                  type="button"
+                  className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-full border border-white/15 bg-black/40 text-sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    hangUp();
+                  }}
+                >
+                  Hang up
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMicOn((v) => {
+                      const next = !v;
+                      for (const t of preview?.getAudioTracks() ?? [])
+                        t.enabled = next;
+                      return next;
+                    });
+                  }}
+                  aria-label={micOn ? "Turn mic off" : "Turn mic on"}
+                >
+                  <Mic className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCamOn((v) => {
+                      const next = !v;
+                      for (const t of preview?.getVideoTracks() ?? [])
+                        t.enabled = next;
+                      return next;
+                    });
+                  }}
+                  aria-label={camOn ? "Turn camera off" : "Turn camera on"}
+                >
+                  <Video className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMobileControlsOpen(true);
+                    setMobileComposerOpen(true);
+                  }}
+                  aria-label="Open chat"
+                >
+                  <MessageSquare className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMobileView("history");
+                  }}
+                  aria-label="Open full chat"
+                >
+                  <MoreHorizontal className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+
             {mobileComposerOpen ? (
-              <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/85 px-4 py-3">
+              <div
+                className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/85 px-4 py-3"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <form
                   className="flex items-center gap-2"
                   onSubmit={(e) => {
@@ -1359,7 +1512,10 @@ export function BookingCallClient({
                 <button
                   type="button"
                   className="mt-2 w-full text-center text-xs text-white/60"
-                  onClick={() => setMobileComposerOpen(false)}
+                  onClick={() => {
+                    setMobileComposerOpen(false);
+                    setMobileControlsOpen(false);
+                  }}
                 >
                   Tap to close
                 </button>
@@ -1419,14 +1575,7 @@ export function BookingCallClient({
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" asChild>
-              <Link
-                href={role === "teacher" ? "/admin" : "/account"}
-                onClick={() => {
-                  try {
-                    window.sessionStorage.removeItem(resumeStorageKey);
-                  } catch {}
-                }}
-              >
+              <Link href={role === "teacher" ? "/admin" : "/account"}>
                 Exit
               </Link>
             </Button>
@@ -1455,7 +1604,7 @@ export function BookingCallClient({
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                {role === "teacher" && !isOpenMeeting ? (
+                {role === "teacher" && !isOpenMeeting && teacherKeyRequired ? (
                   <div className="mb-4 grid gap-3 sm:grid-cols-2">
                     <label className="grid gap-1">
                       <span className="text-sm text-muted-foreground">
@@ -1481,12 +1630,7 @@ export function BookingCallClient({
                             `Partner waiting: ${!waitingEnabled ? "enabled" : "disabled"}`,
                           );
                         }}
-                        disabled={!teacherKey.trim()}
-                        title={
-                          !teacherKey.trim()
-                            ? "Enter partner key first"
-                            : "Toggle waiting status"
-                        }
+                        title="Toggle waiting status"
                       >
                         {waitingEnabled
                           ? "Waiting (sending every 5s)"
@@ -1575,16 +1719,15 @@ export function BookingCallClient({
                         <div className="w-56 text-sm">
                           {hasCamera ? (
                             <span className="flex items-center gap-1 text-green-600">
-                              <CheckCircle2 className="h-4 w-4" /> Camera is on
+                              Camera is on
                             </span>
                           ) : cameraError ? (
                             <span className="flex items-center gap-1 text-red-600">
-                              <XCircle className="h-4 w-4" /> Camera is blocked
+                              Camera is blocked
                             </span>
                           ) : (
                             <span className="flex items-center gap-1 text-muted-foreground">
-                              <AlertCircle className="h-4 w-4" /> Turn on
-                              camera, please
+                              Turn on camera, please
                             </span>
                           )}
                         </div>
@@ -1609,16 +1752,15 @@ export function BookingCallClient({
                         <div className="w-56 text-sm">
                           {hasMic ? (
                             <span className="flex items-center gap-1 text-green-600">
-                              <CheckCircle2 className="h-4 w-4" /> Mic is on
+                              Mic is on
                             </span>
                           ) : micError ? (
                             <span className="flex items-center gap-1 text-red-600">
-                              <XCircle className="h-4 w-4" /> Mic is blocked
+                              Mic is blocked
                             </span>
                           ) : (
                             <span className="flex items-center gap-1 text-muted-foreground">
-                              <AlertCircle className="h-4 w-4" /> Turn on mic,
-                              please
+                              Turn on mic, please
                             </span>
                           )}
                         </div>
@@ -1746,7 +1888,16 @@ export function BookingCallClient({
                           ? "Allow camera and microphone to enter."
                           : "All set. See you inside."}
                   </div>
-                  <Button onClick={() => void join()} disabled={joinDisabled}>
+                  <Button
+                    onClick={() => {
+                      if (mode === "lobby") {
+                        router.push(roomHref);
+                        return;
+                      }
+                      void join();
+                    }}
+                    disabled={joinDisabled}
+                  >
                     <span className="inline-flex items-center gap-2 font-serif">
                       {joinButtonLabel}
                       <ArrowRight className="h-4 w-4" />
@@ -1861,10 +2012,10 @@ export function BookingCallClient({
                       <div
                         key={idx}
                         className={cn(
-                          "max-w-[90%] rounded-2xl px-3 py-2 text-sm",
+                          "w-fit max-w-[90%] rounded-2xl px-3 py-2 text-sm",
                           m.from === role
                             ? "ml-auto bg-primary text-primary-foreground"
-                            : "bg-muted/40",
+                            : "bg-muted text-foreground ring-1 ring-border/60",
                         )}
                       >
                         {m.text}

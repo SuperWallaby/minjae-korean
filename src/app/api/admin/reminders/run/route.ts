@@ -102,17 +102,27 @@ function fmtSeoul(dateKey: string, startMin: number, endMin: number) {
   };
 }
 
-function meetingLinks(bookingKey: string) {
+function meetingLinks(args: {
+  bookingKey: string;
+  meetUrl?: string;
+  meetingProvider?: string;
+}) {
   const base = baseUrl().replace(/\/$/, "");
-  const call = `${base}/call/${encodeURIComponent(bookingKey)}`;
-  const adminCall = `${base}/admin/call/${encodeURIComponent(bookingKey)}`;
-  return { call, adminCall };
+  const callFallback = `${base}/call/${encodeURIComponent(args.bookingKey)}`;
+  const join = `${base}/join/${encodeURIComponent(args.bookingKey)}`;
+  const adminCall = `${base}/admin/call/${encodeURIComponent(args.bookingKey)}`;
+  const meetUrl = (args.meetUrl ?? "").trim();
+  const provider = (args.meetingProvider ?? "").trim();
+  const call = meetUrl ? meetUrl : provider === "google_meet" ? join : callFallback;
+  return { call, adminCall, meetUrl, join, provider };
 }
 
 function template(args: {
   kind: ReminderKind;
   name: string;
   bookingKey: string;
+  meetUrl?: string;
+  meetingProvider?: string;
   timeLabel: string;
 }) {
   const when =
@@ -121,15 +131,30 @@ function template(args: {
     args.kind === "24h"
       ? `Reminder: your Korean session is ${when}`
       : "Reminder: your Korean session starts soon";
-  const { call } = meetingLinks(args.bookingKey);
-  const text = `Hi ${args.name || "there"},\n\nThis is a reminder that your Korean session with Minjae is scheduled ${when}.\n\nTime: ${args.timeLabel}\nLink: ${call}\n\nLobby opens 10 minutes before class.\n\n— Kaja`;
+  const { call, meetUrl, provider } = meetingLinks({
+    bookingKey: args.bookingKey,
+    meetUrl: args.meetUrl,
+    meetingProvider: args.meetingProvider,
+  });
+  const footer = meetUrl
+    ? "Tip: If Minjae isn’t there yet, Google Meet may show “Waiting for host”."
+    : provider === "google_meet"
+      ? "We’re preparing your Google Meet link. If you don’t see it, please contact Minjae."
+      : "Lobby opens 10 minutes before class.";
+  const text = `Hi ${args.name || "there"},\n\nThis is a reminder that your Korean session with Minjae is scheduled ${when}.\n\nTime: ${args.timeLabel}\nLink: ${call}\n\n${footer}\n\n— Kaja`;
   const html = `
   <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.5;">
     <h2 style="margin: 0 0 10px;">See you ${when}</h2>
     <p style="margin: 0 0 14px;">Your Korean session with Minjae is scheduled.</p>
     <p style="margin: 0 0 6px;"><b>Time</b>: ${args.timeLabel}</p>
     <p style="margin: 0 0 18px;"><b>Session link</b>: <a href="${call}">${call}</a></p>
-    <p style="margin: 0; color: #6b7280; font-size: 12px;">Lobby opens 10 minutes before class.</p>
+    <p style="margin: 0; color: #6b7280; font-size: 12px;">${
+      meetUrl
+        ? "Tip: Google Meet may show “Waiting for host” if Minjae isn’t there yet."
+        : provider === "google_meet"
+          ? "We’re preparing your Google Meet link. If you don’t see it, please contact Minjae."
+          : "Lobby opens 10 minutes before class."
+    }</p>
   </div>
   `.trim();
   return { subject, text, html };
@@ -140,9 +165,15 @@ function adminTemplate(args: {
   memberName: string;
   memberEmail: string;
   bookingKey: string;
+  meetUrl?: string;
+  meetingProvider?: string;
   timeLabel: string;
 }) {
-  const { adminCall, call } = meetingLinks(args.bookingKey);
+  const { adminCall, call } = meetingLinks({
+    bookingKey: args.bookingKey,
+    meetUrl: args.meetUrl,
+    meetingProvider: args.meetingProvider,
+  });
   const subject =
     args.kind === "24h"
       ? `Tomorrow: session booked (${args.memberName || "Member"})`
@@ -199,7 +230,14 @@ export async function GET(req: NextRequest) {
         const memberField: "reminder24hSentAt" | "reminder30mSentAt" =
           kind === "24h" ? "reminder24hSentAt" : "reminder30mSentAt";
         if (isEmail(memberEmail) && !b[memberField]) {
-          const t = template({ kind, name: memberName, bookingKey, timeLabel: label });
+          const t = template({
+            kind,
+            name: memberName,
+            bookingKey,
+            meetUrl: b.meetUrl,
+            meetingProvider: b.meetingProvider,
+            timeLabel: label,
+          });
           await sendResendEmail({ to: memberEmail, ...t });
           updateBooking(b.id, { [memberField]: new Date().toISOString() } as Partial<Booking>);
           results.push({ id: b.id, kind, to: memberEmail });
@@ -217,6 +255,8 @@ export async function GET(req: NextRequest) {
               memberName,
               memberEmail: memberEmail || "(missing)",
               bookingKey,
+              meetUrl: b.meetUrl,
+              meetingProvider: b.meetingProvider,
               timeLabel: label,
             });
             await sendResendEmail({ to, ...t });

@@ -34,6 +34,9 @@ type BookingListItem = {
   code?: string;
   status: string;
   createdAt: string;
+  meetingProvider?: string;
+  meetUrl?: string;
+  calendarHtmlLink?: string;
   slotId: string;
   dateKey: string;
   startMin: number;
@@ -49,6 +52,9 @@ function isBookingListItem(v: unknown): v is BookingListItem {
     (o.code === undefined || typeof o.code === "string") &&
     typeof o.status === "string" &&
     typeof o.createdAt === "string" &&
+    (o.meetingProvider === undefined || typeof o.meetingProvider === "string") &&
+    (o.meetUrl === undefined || typeof o.meetUrl === "string") &&
+    (o.calendarHtmlLink === undefined || typeof o.calendarHtmlLink === "string") &&
     typeof o.dateKey === "string" &&
     typeof o.startMin === "number" &&
     typeof o.endMin === "number"
@@ -119,6 +125,9 @@ export default function JoinGuidePage() {
   const [booking, setBooking] = React.useState<{
     id: string;
     code?: string;
+    meetingProvider?: string;
+    meetUrl?: string;
+    calendarHtmlLink?: string;
     dateKey: string;
     startMin: number;
     endMin: number;
@@ -206,10 +215,15 @@ export default function JoinGuidePage() {
   const openAt = startSeoul ? startSeoul.minus({ minutes: 10 }) : null;
   const canEnterLobby = Boolean(openAt && nowMs >= openAt.toMillis());
 
-  const meetingUrl =
+  const callUrl =
     typeof window === "undefined"
       ? `/call/${encodeURIComponent(meetingKey)}`
       : `${window.location.origin}/call/${encodeURIComponent(meetingKey)}`;
+  const provider = (booking?.meetingProvider ?? "").trim();
+  const meetUrl = (booking?.meetUrl ?? "").trim();
+  const isGoogleMeet = provider === "google_meet" || Boolean(meetUrl);
+  const meetUnavailable = isGoogleMeet && !meetUrl;
+  const meetingUrl = meetUnavailable ? "" : meetUrl || callUrl;
 
   const [copied, setCopied] = React.useState(false);
   const [permissionsRequested, setPermissionsRequested] = React.useState(false);
@@ -363,7 +377,7 @@ export default function JoinGuidePage() {
           {/* Link (primary) */}
           <Card className="overflow-hidden">
             <CardHeader>
-              <CardTitle>Meeting link</CardTitle>
+              <CardTitle>{isGoogleMeet ? "Google Meet link" : "Meeting link"}</CardTitle>
               <CardDescription>
                 Save this link for your session.
               </CardDescription>
@@ -372,27 +386,51 @@ export default function JoinGuidePage() {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0">
                   <div className="text-xs text-muted-foreground">
-                    Session link
+                    {isGoogleMeet ? "Meet link" : "Session link"}
                   </div>
-                  <div
-                    className="mt-1 break-all font-mediums text-sm text-foreground/90"
-                    title={meetingUrl}
-                  >
-                    {meetingUrl}
-                  </div>
+                  {meetUnavailable ? (
+                    <div className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      We couldn’t generate your Google Meet link for this booking.
+                      Please contact Minjae or try booking again.
+                    </div>
+                  ) : (
+                    <div
+                      className="mt-1 break-all font-mediums text-sm text-foreground/90"
+                      title={meetingUrl}
+                    >
+                      {meetingUrl}
+                    </div>
+                  )}
                 </div>
                 <div className="shrink-0">
-                  <Button
-                    size="sm"
-                    variant="primary"
-                    onClick={() => void copyMeetingUrl()}
-                    className={cn(
-                      copied ? "bg-primary text-white" : "",
-                      "bg-black text-white hover:bg-black/90 active:bg-black/80",
-                    )}
-                  >
-                    {copied ? "Copied" : "Copy"} <CopyIcon className="size-4" />
-                  </Button>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="sm"
+                      variant="primary"
+                      onClick={() => void copyMeetingUrl()}
+                      disabled={meetUnavailable}
+                      className={cn(
+                        copied ? "bg-primary text-white" : "",
+                        "bg-black text-white hover:bg-black/90 active:bg-black/80",
+                      )}
+                    >
+                      {copied ? "Copied" : "Copy"} <CopyIcon className="size-4" />
+                    </Button>
+                    <Button asChild size="sm" variant="outline">
+                      <a
+                        href={meetingUrl || "#"}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-disabled={meetUnavailable}
+                        onClick={(e) => {
+                          if (meetUnavailable) e.preventDefault();
+                        }}
+                        className={meetUnavailable ? "pointer-events-none opacity-60" : ""}
+                      >
+                        Open <ExternalLink className="size-4" />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -439,19 +477,30 @@ export default function JoinGuidePage() {
             <CardHeader>
               <CardTitle>Join the session</CardTitle>
               <CardDescription>
-                Your lobby opens 10 minutes before class.
+                {isGoogleMeet
+                  ? "This link is live now. Meet may show “Waiting for host” if Minjae isn’t there yet."
+                  : "Your lobby opens 10 minutes before class."}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Button
                 className="w-full"
                 size="lg"
-                disabled={!booking || Boolean(error) || !canEnterLobby}
-                onClick={() =>
-                  router.push(`/call/${encodeURIComponent(meetingKey)}`)
+                disabled={
+                  !booking ||
+                  Boolean(error) ||
+                  meetUnavailable ||
+                  (!isGoogleMeet && !canEnterLobby)
                 }
+                onClick={() => {
+                  if (isGoogleMeet) {
+                    window.location.href = meetUrl;
+                    return;
+                  }
+                  router.push(`/call/${encodeURIComponent(meetingKey)}`);
+                }}
               >
-                Enter lobby
+                {isGoogleMeet ? "Open Google Meet" : "Enter lobby"}
               </Button>
 
               <div className="space-y-2 text-sm text-muted-foreground">

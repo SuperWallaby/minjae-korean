@@ -2,7 +2,11 @@ import { BookingCallClient } from "@/components/stream/BookingCallClient";
 import { findBookingByKey } from "@/lib/db";
 import { redirect } from "next/navigation";
 
-export default async function CallPage({ params }: { params: Promise<{ bookingId: string }> }) {
+export default async function CallRoomPage({
+  params,
+}: {
+  params: Promise<{ bookingId: string }>;
+}) {
   const { bookingId } = await params;
   const booking = findBookingByKey(bookingId);
   const meetUrl = (booking?.meetUrl ?? "").trim();
@@ -34,6 +38,14 @@ export default async function CallPage({ params }: { params: Promise<{ bookingId
     );
   }
   const openMeeting = Boolean(booking?.open);
-  return <BookingCallClient bookingId={bookingId} role="student" openMeeting={openMeeting} allowGuests={openMeeting} />;
+  return (
+    <BookingCallClient
+      bookingId={bookingId}
+      role="student"
+      mode="room"
+      openMeeting={openMeeting}
+      allowGuests={openMeeting}
+    />
+  );
 }
 

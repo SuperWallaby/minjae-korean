@@ -15,6 +15,8 @@ type BookingItem = {
   startMin?: number;
   endMin?: number;
   status: string;
+  meetingProvider?: string;
+  meetUrl?: string;
 };
 
 function isBookingItem(v: unknown): v is BookingItem {
@@ -28,7 +30,9 @@ function isBookingItem(v: unknown): v is BookingItem {
     (o.email === undefined || typeof o.email === "string") &&
     (o.dateKey === undefined || typeof o.dateKey === "string") &&
     (o.startMin === undefined || typeof o.startMin === "number") &&
-    (o.endMin === undefined || typeof o.endMin === "number")
+    (o.endMin === undefined || typeof o.endMin === "number") &&
+    (o.meetingProvider === undefined || typeof o.meetingProvider === "string") &&
+    (o.meetUrl === undefined || typeof o.meetUrl === "string")
   );
 }
 
@@ -118,19 +122,45 @@ export default function AdminBookingsView() {
 
                 {(() => {
                   const canOpen = b.status === "confirmed";
+                  const meetUrl = (b.meetUrl ?? "").trim();
+                  const provider = (b.meetingProvider ?? "").trim();
                   return (
-                    <Link
-                      href={`/admin/call/${encodeURIComponent(String(b.code || b.id))}`}
-                      className={`px-3 py-1 rounded border text-sm ${
-                        canOpen
-                          ? "bg-black text-white"
-                          : "bg-white text-muted-foreground pointer-events-none opacity-60"
-                      }`}
-                      aria-disabled={!canOpen}
-                      tabIndex={canOpen ? 0 : -1}
-                    >
-                      Open call
-                    </Link>
+                    meetUrl ? (
+                      <a
+                        href={meetUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`px-3 py-1 rounded border text-sm ${
+                          canOpen
+                            ? "bg-black text-white"
+                            : "bg-white text-muted-foreground pointer-events-none opacity-60"
+                        }`}
+                        aria-disabled={!canOpen}
+                        tabIndex={canOpen ? 0 : -1}
+                      >
+                        Open Meet
+                      </a>
+                    ) : provider === "google_meet" ? (
+                      <span
+                        className="px-3 py-1 rounded border text-sm bg-white text-muted-foreground opacity-60"
+                        aria-disabled="true"
+                      >
+                        Meet unavailable
+                      </span>
+                    ) : (
+                      <Link
+                        href={`/admin/call/${encodeURIComponent(String(b.code || b.id))}`}
+                        className={`px-3 py-1 rounded border text-sm ${
+                          canOpen
+                            ? "bg-black text-white"
+                            : "bg-white text-muted-foreground pointer-events-none opacity-60"
+                        }`}
+                        aria-disabled={!canOpen}
+                        tabIndex={canOpen ? 0 : -1}
+                      >
+                        Open call
+                      </Link>
+                    )
                   );
                 })()}
               </div>

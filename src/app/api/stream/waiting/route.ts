@@ -37,11 +37,7 @@ function json(status: number, body: unknown) {
   return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 }
 
-function mustEnv(name: string) {
-  const v = process.env[name];
-  if (!v) throw new Error(`Missing env: ${name}`);
-  return v;
-}
+// Note: no environment-required secret for teacher waiting; kept intentionally permissive.
 
 export async function GET(req: NextRequest) {
   try {
@@ -67,10 +63,8 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const teacherKeySecret = mustEnv("STREAM_TEACHER_KEY");
-    const teacherKey = (req.headers.get("x-teacher-key") ?? "").trim();
-    if (!teacherKey || teacherKey !== teacherKeySecret) return json(403, { ok: false, error: "not allowed" });
-
+    // Allow teachers to announce presence without a secret key.
+    // NOTE: This relaxes security for convenience; consider restoring auth in production.
     const body = await req.json().catch(() => null);
     const bookingKey = typeof body?.bookingId === "string" ? body.bookingId.trim() : "";
     if (!bookingKey) return json(400, { ok: false, error: "bookingId required" });

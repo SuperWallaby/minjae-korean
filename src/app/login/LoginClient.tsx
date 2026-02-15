@@ -56,7 +56,7 @@ export function LoginClient() {
             <div className="grid gap-3">
               <Button asChild className="w-full" size="lg">
                 <Link
-                  href={`/ /start?next=${encodeURIComponent(next)}`}
+                  href={`/api/auth/google/start?next=${encodeURIComponent(next)}`}
                 >
                   Continue with Google
                 </Link>
