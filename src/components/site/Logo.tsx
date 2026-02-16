@@ -7,8 +7,13 @@ export function Logo({
   mode = "v2",
 }: {
   className?: string;
-  mode?: "v1" | "v2";
+  mode?: "v1" | "v2" | "footer";
 }) {
+  const map = {
+    v1: "/brand/logo.webp",
+    v2: "/brand/logo-v2.webp",
+    footer: "/brand/logo-for-footer.png",
+  };
   return (
     <Link
       href="/"
@@ -18,12 +23,7 @@ export function Logo({
       )}
       aria-label="Minjae Korean home"
     >
-      <Image
-        width={71}
-        height={28}
-        src={mode === "v2" ? "/brand/logo-v2.webp" : "/brand/logo.webp"}
-        alt="Minjae Korean logo"
-      />
+      <Image width={71} height={28} src={map[mode]} alt="Minjae Korean logo" />
     </Link>
   );
 }

@@ -10,7 +10,7 @@ export type BadgeProps = React.HTMLAttributes<HTMLSpanElement> & {
 
 const variantClass: Record<BadgeVariant, string> = {
   default:
-    "bg-[color-mix(in_srgb,var(--accent-muted)_28%,var(--bg-canvas))] text-foreground",
+    "bg-[color-mix(in_srgb,var(--accent-muted)_54%,var(--bg-canvas))] text-foreground",
   // Use theme variable so color can be managed from globals.css
   muted: "bg-[var(--included-1)] text-[var(--badge-muted-foreground)]",
   outline: "bg-transparent text-muted-foreground",

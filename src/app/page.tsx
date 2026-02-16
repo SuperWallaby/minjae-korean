@@ -429,12 +429,20 @@ export default function Home() {
                     a: "This course is suitable for learners who can already speak Korean. You don’t need to be good at Korean, but it’s ideal if you’ve already finished the very beginner level.",
                   },
                   {
-                    q: "How do I prepare?",
-                    a: "Open your mind and be ready to talk. Minjae will bring up a topic and we will talk about it.",
+                    q: "How to book a time?",
+                    a: "After booking, you’ll get a Google Meet link. Simply join at your scheduled time, and we’ll begin.",
+                  },
+                  {
+                    q: "How long it takes?",
+                    a: "25 or 50 minutes, you can choose the duration when you book a time.",
+                  },
+                  {
+                    q: "What should be prepared for the talk?",
+                    a: "To keep the conversation smooth, you should be able to use very beginner level Korean.",
                   },
                   {
                     q: "Do I get a recap?",
-                    a: "Yes. You’ll get a short recap with key phrases, small corrections, and a simple next-step to continue.",
+                    a: "Yes. You’ll get recap, small corrections, and a simple next-step to continue.",
                   },
                 ].map((item) => (
                   <details

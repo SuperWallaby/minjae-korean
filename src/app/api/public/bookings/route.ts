@@ -142,8 +142,22 @@ export async function POST(req: NextRequest) {
 
       try {
         const calendarId = (process.env.GOOGLE_CALENDAR_ID ?? "primary").trim() || "primary";
-        const summary = `Kaja lesson: ${String(body.name).trim() || "Session"}`;
-        const description = `Booking: ${booking.code ?? booking.id}`;
+        const studentName = String(body.name).trim() || "Student";
+
+        const summary = `🇰🇷 ${studentName} × Minjae · Korean Lesson`;
+
+        const description = `KajaKorean 1:1 Korean Lesson
+
+Teacher: Minjae
+Student: ${studentName}
+Booking Code: ${booking.code ?? booking.id}
+
+Join via Google Meet:
+(Link attached to this event)
+
+Booking ID: ${booking.id}
+`;
+
         const requestId = `kaja-booking-${booking.id}`;
 
         const meet = await createMeetEvent({

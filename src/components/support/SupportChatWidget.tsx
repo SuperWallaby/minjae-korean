@@ -176,6 +176,26 @@ export function SupportChatWidget() {
     }
   }, []);
 
+  // Allow any page to open the support chat via:
+  // window.dispatchEvent(new CustomEvent("mj_support_open", { detail: { text?: string } }))
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onOpen = (e: Event) => {
+      setOpen(true);
+      try {
+        const ce = e as CustomEvent<{ text?: unknown }>;
+        const text = typeof ce?.detail?.text === "string" ? ce.detail.text : "";
+        if (text.trim()) setDraft((prev) => (prev.trim() ? prev : text.trim()));
+      } catch {
+        // ignore
+      }
+    };
+    window.addEventListener("mj_support_open", onOpen as EventListener);
+    return () => {
+      window.removeEventListener("mj_support_open", onOpen as EventListener);
+    };
+  }, []);
+
   React.useEffect(() => {
     const u = session.state.user;
     if (!u) return;

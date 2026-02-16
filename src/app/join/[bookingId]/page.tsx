@@ -10,6 +10,13 @@ import {
   Shield,
   ExternalLink,
   CopyIcon,
+  MessageCircleMore,
+  Phone,
+  Mail,
+  MessageCircle,
+  MessageSquare,
+  Check,
+  Copy,
 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
@@ -229,6 +236,9 @@ export default function JoinGuidePage() {
   const meetingUrl = meetUnavailable ? "" : meetUrl || callUrl;
 
   const [copied, setCopied] = React.useState(false);
+  const [copiedContactKey, setCopiedContactKey] = React.useState<string | null>(
+    null,
+  );
   const [permissionsRequested, setPermissionsRequested] = React.useState(false);
   const [permStatus, setPermStatus] = React.useState<
     "unknown" | "granted" | "denied"
@@ -274,6 +284,90 @@ export default function JoinGuidePage() {
       // ignore
     }
   }, [meetingUrl]);
+
+  const contactMessage = React.useMemo(() => {
+    const who = (session.state.user?.name ?? "").trim();
+    const email = (session.state.user?.email ?? "").trim();
+    const key = String(booking?.code || booking?.id || bookingId || "").trim();
+    const timeLabel =
+      startLocal && endLocal
+        ? startLocal.hasSame(DateTime.now().setZone(displayZone), "day")
+          ? `Today, ${startLocal.toFormat("h:mm a")}–${endLocal.toFormat(
+              "h:mm a",
+            )}`
+          : `${startLocal.toFormat("ccc, MMM d")} · ${startLocal.toFormat(
+              "h:mm a",
+            )}–${endLocal.toFormat("h:mm a")}`
+        : "";
+
+    const lines = [
+      "Hi Minjae — I need help with my booking.",
+      "",
+      key ? `Booking: ${key}` : null,
+      who ? `Name: ${who}` : null,
+      email ? `Email: ${email}` : null,
+      timeLabel ? `Time: ${timeLabel} (${displayZone})` : null,
+      "",
+      "Message:",
+    ].filter(Boolean);
+    return lines.join("\n");
+  }, [
+    booking?.code,
+    booking?.id,
+    bookingId,
+    displayZone,
+    endLocal,
+    session.state.user?.email,
+    session.state.user?.name,
+    startLocal,
+  ]);
+
+  const whatsappHref = React.useMemo(() => {
+    return `https://wa.me/821052374492?text=${encodeURIComponent(
+      contactMessage,
+    )}`;
+  }, [contactMessage]);
+
+  const emailHref = React.useMemo(() => {
+    const key = String(booking?.code || booking?.id || bookingId || "").trim();
+    const subject = key ? `Booking help (${key})` : "Booking help";
+    return `mailto:kaja95@gmail.com?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(contactMessage)}`;
+  }, [booking?.code, booking?.id, bookingId, contactMessage]);
+
+  const smsHref = React.useMemo(() => {
+    // NOTE: sms: URL body support varies by OS; this works on iOS and many Android clients.
+    return `sms:+821052374492?body=${encodeURIComponent(contactMessage)}`;
+  }, [contactMessage]);
+
+  const copyContactText = React.useCallback(
+    async (key: string, text: string) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setCopiedContactKey(key);
+        window.setTimeout(() => setCopiedContactKey(null), 1200);
+      } catch {
+        // ignore
+      }
+    },
+    [],
+  );
+
+  const openDirectChat = React.useCallback(() => {
+    if (typeof window === "undefined") return;
+    try {
+      window.dispatchEvent(
+        new CustomEvent("mj_support_open", {
+          detail: {
+            text: contactMessage,
+          },
+        }),
+      );
+    } catch {
+      // ignore
+    }
+  }, [contactMessage]);
 
   // Prompt camera & microphone permission once (best-effort) for Kaja lobby only.
   React.useEffect(() => {
@@ -466,12 +560,9 @@ export default function JoinGuidePage() {
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge
-                  variant="default"
-                  className="ring-1 ring-black/5 dark:ring-white/10"
-                >
-                  {displayZone} Time
-                </Badge>
+                <div className="text-xs text-muted-foreground">
+                  Times shown in your time ({displayZone})
+                </div>
                 <Badge
                   variant="default"
                   className="ring-1 ring-black/5 dark:ring-white/10"
@@ -486,11 +577,15 @@ export default function JoinGuidePage() {
                   Time
                 </div>
                 <div className="text-right text-sm font-semibold text-foreground">
-                  {startLocal && endLocal
-                    ? `${startLocal.toFormat("ccc, MMM d")} · ${startLocal.toFormat("h:mm a")}–${endLocal.toFormat("h:mm a")}`
-                    : loading
-                      ? "Loading…"
-                      : "—"}
+                  {(() => {
+                    if (!startLocal || !endLocal)
+                      return loading ? "Loading…" : "—";
+                    const nowLocal = DateTime.now().setZone(displayZone);
+                    if (startLocal.hasSame(nowLocal, "day")) {
+                      return `Today, ${startLocal.toFormat("h:mm a")}–${endLocal.toFormat("h:mm a")}`;
+                    }
+                    return `${startLocal.toFormat("ccc, MMM d")} · ${startLocal.toFormat("h:mm a")}–${endLocal.toFormat("h:mm a")}`;
+                  })()}
                 </div>
               </div>
             </CardContent>
@@ -509,6 +604,7 @@ export default function JoinGuidePage() {
               <Button
                 className="w-full"
                 size="lg"
+                variant="gradient"
                 disabled={
                   !booking ||
                   Boolean(error) ||
@@ -597,6 +693,126 @@ export default function JoinGuidePage() {
                   ) : null}
                 </div>
               )}
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-10">
+          <Card className="overflow-hidden">
+            <CardHeader>
+              <CardTitle>Kaja uses Google Meet for sessions</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm text-muted-foreground">
+              {isGoogleMeet ? (
+                <div className="space-y-1">
+                  <div>Sessions are held on Google Meet.</div>
+                  <div className="text-xs sm:hidden">
+                    <span className="font-semibold text-foreground/80">
+                      Mobile users:
+                    </span>{" "}
+                    Downloading the Google Meet app is recommended for the best
+                    experience.
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-1">
+                  <div>Sessions are held in your browser.</div>
+                </div>
+              )}
+              <div className="text-xs">
+                If you have trouble joining, please send me a message via chat.
+                :)
+              </div>
+
+              <div className="border-t border-border pt-4">
+                <div className="text-sm font-semibold text-foreground">
+                  Contact Minjae
+                </div>
+
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="justify-between"
+                    onClick={openDirectChat}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <MessageCircleMore className="size-4" />
+                      Direct Chat
+                    </span>
+                    <ExternalLink className="size-4 opacity-60" />
+                  </Button>
+
+                  <Button asChild variant="outline" className="justify-between">
+                    <a href="tel:+821052374492">
+                      <span className="inline-flex items-center gap-2">
+                        <Phone className="size-4" />
+                        Phone
+                      </span>
+                      <ExternalLink className="size-4 opacity-60" />
+                    </a>
+                  </Button>
+
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="justify-between"
+                    onClick={() => void copyContactText("kakao", "@Kaja")}
+                    title="Copy KakaoTalk ID"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <MessageCircle className="size-4" />
+                      KakaoTalk
+                      <span className="text-xs text-muted-foreground/80">
+                        @Kaja
+                      </span>
+                    </span>
+                    {copiedContactKey === "kakao" ? (
+                      <Check className="size-4 opacity-70" />
+                    ) : (
+                      <Copy className="size-4 opacity-50" />
+                    )}
+                  </Button>
+
+                  <Button asChild variant="outline" className="justify-between">
+                    <a
+                      href={whatsappHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="inline-flex items-center gap-2">
+                        <MessageSquare className="size-4" />
+                        WhatsApp
+                      </span>
+                      <ExternalLink className="size-4 opacity-60" />
+                    </a>
+                  </Button>
+
+                  <Button asChild variant="outline" className="justify-between">
+                    <a href={smsHref}>
+                      <span className="inline-flex items-center gap-2">
+                        <MessageSquare className="size-4" />
+                        SMS
+                      </span>
+                      <ExternalLink className="size-4 opacity-60" />
+                    </a>
+                  </Button>
+
+                  <Button asChild variant="outline" className="justify-between">
+                    <a href={emailHref}>
+                      <span className="inline-flex items-center gap-2">
+                        <Mail className="size-4" />
+                        Email
+                      </span>
+                      <ExternalLink className="size-4 opacity-60" />
+                    </a>
+                  </Button>
+                </div>
+
+                <div className="mt-3 text-xs text-muted-foreground">
+                  *Responses may be delayed during sessions.
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>

@@ -1,42 +1,101 @@
+ "use client";
+
 import Link from "next/link";
-import { Instagram, Youtube, Twitter } from "lucide-react";
+import * as React from "react";
+import {
+  Check,
+  Copy,
+  Instagram,
+  Mail,
+  MessageCircle,
+  MessageSquare,
+  Phone,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 
 import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
 
 export function SiteFooter() {
+  const [copiedKey, setCopiedKey] = React.useState<string | null>(null);
+  const copyTimerRef = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) window.clearTimeout(copyTimerRef.current);
+    };
+  }, []);
+
+  const copyText = React.useCallback(async (key: string, text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedKey(key);
+      if (copyTimerRef.current) window.clearTimeout(copyTimerRef.current);
+      copyTimerRef.current = window.setTimeout(() => setCopiedKey(null), 1200);
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const pillClassName =
+    "inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30";
+
   return (
     <footer className="bg-[#14110d] text-white">
       <Container className="grid gap-8 py-10 md:grid-cols-2 md:items-start">
         <div className="text-sm text-white/70">
-          <Logo
-            mode="v1"
-            className="text-white [&_span:last-child]:text-white/60"
-          />
+          <Logo mode="footer" />
           <div className="mt-3 max-w-sm text-xs leading-6 text-white/60">
-            Real-life Korean practice with Minjae. Join as a member and book a
-            time when it fits.
+            Real life Korean practice with Minjae.
           </div>
 
           <div className="mt-5 grid gap-1 text-xs">
             <div className="font-semibold text-white/80">Contact</div>
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <div className="mt-1 flex flex-wrap items-center gap-2">
               <a
                 href="tel:+821052374492"
-                className="underline underline-offset-4 decoration-white/25 hover:text-white"
+                className={pillClassName}
+                aria-label="Call +82 10 5237 4492"
               >
-                +82 10 5237 4492
+                <Phone className="size-3.5" />
+                <span className="tabular-nums">+82 10 5237 4492</span>
               </a>
-              <span className="text-white/30">•</span>
-              <span>Kakao: @Kaja</span>
-              <span className="text-white/30">•</span>
-              <span>WhatsApp: @kaja</span>
-              <span className="text-white/30">•</span>
+              <button
+                type="button"
+                className={pillClassName}
+                onClick={() => void copyText("kakao", "@Kaja")}
+                title="Copy Kakao ID"
+                aria-label="Copy Kakao ID @Kaja"
+              >
+                <MessageCircle className="size-3.5" />
+                <span>Kakao</span>
+                <span className="text-white/55">@Kaja</span>
+                {copiedKey === "kakao" ? (
+                  <Check className="size-3.5 text-white/90" />
+                ) : (
+                  <Copy className="size-3.5 text-white/55" />
+                )}
+              </button>
+              <a
+                href="https://wa.me/821052374492"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={pillClassName}
+                aria-label="Open WhatsApp chat"
+                title="Open WhatsApp chat"
+              >
+                <MessageSquare className="size-3.5" />
+                <span>WhatsApp</span>
+                <span className="text-white/55">@kaja</span>
+              </a>
               <a
                 href="mailto:kaja95@gmail.com"
-                className="underline underline-offset-4 decoration-white/25 hover:text-white"
+                className={pillClassName}
+                aria-label="Email kaja95@gmail.com"
               >
-                kaja95@gmail.com
+                <Mail className="size-3.5" />
+                <span className="tabular-nums">kaja95@gmail.com</span>
               </a>
             </div>
           </div>

@@ -114,7 +114,12 @@ export function SiteNavbar() {
                 </div>
 
                 {state.user ? (
-                  <Button variant="secondary" size="sm" asChild>
+                  <Button
+                    className="w-[115px]"
+                    variant="secondary"
+                    size="sm"
+                    asChild
+                  >
                     <Link
                       href="/account"
                       className="inline-flex items-center gap-2"
@@ -124,7 +129,12 @@ export function SiteNavbar() {
                     </Link>
                   </Button>
                 ) : (
-                  <Button variant="primary" size="sm" asChild>
+                  <Button
+                    className="w-[115px]"
+                    variant="primary"
+                    size="sm"
+                    asChild
+                  >
                     <Link
                       href="/login"
                       className="inline-flex items-center gap-2"

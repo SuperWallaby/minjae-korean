@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
-import {
-  CalendarDays,
-  CopyIcon,
-  CreditCard,
-  FileText,
-  User,
-} from "lucide-react";
+import { CalendarDays, CreditCard, FileText, User } from "lucide-react";
 import { DateTime } from "luxon";
 
 import { Container } from "@/components/site/Container";
@@ -32,6 +26,9 @@ import {
   parsePhoneParts,
   PhonePartsInput,
 } from "@/components/ui/PhonePartsInput";
+
+import { BookingCard } from "./_components/BookingCard";
+import { bookingLocalTimes, zoneToCityLabel } from "./_components/bookingUtils";
 
 type Student = {
   id: string;
@@ -58,145 +55,6 @@ type Student = {
     total: number;
   }>;
 };
-
-function minutesToHhmm(min: number) {
-  const h = Math.floor(min / 60);
-  const m = min % 60;
-  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
-}
-
-function callWindowForBooking(
-  dateKey: string,
-  startMin: number,
-  endMin: number,
-) {
-  const zone = "Asia/Seoul";
-  const start = DateTime.fromISO(dateKey, { zone })
-    .startOf("day")
-    .plus({ minutes: startMin });
-  const end = DateTime.fromISO(dateKey, { zone })
-    .startOf("day")
-    .plus({ minutes: endMin });
-  const openAt = start.minus({ minutes: 10 });
-  const closeAt = end.plus({ minutes: 10 });
-  return { start, end, openAt, closeAt };
-}
-
-function startsRelativeLabel(
-  dateKey: string,
-  startMin: number,
-  displayZone: string,
-) {
-  const zone = "Asia/Seoul";
-  const startSeoul = DateTime.fromISO(dateKey, { zone })
-    .startOf("day")
-    .plus({ minutes: startMin });
-  const now = DateTime.now().setZone(displayZone);
-  const start = startSeoul.setZone(displayZone);
-  const diffMs = start.toMillis() - now.toMillis();
-  // Emphasize very near start times.
-  if (diffMs <= 2 * 60 * 1000 && diffMs >= -5 * 60 * 1000) return "Starts now";
-  if (diffMs > 0 && diffMs <= 60 * 60 * 1000) return "Starts soon";
-  const rel = start.toRelative({ base: now });
-  if (!rel) return "";
-  const v = String(rel);
-  if (v.endsWith("ago")) return `Started ${v}`;
-  return `Starts ${v}`;
-}
-
-function formatBookingTimeLabel(args: {
-  dateKey: string;
-  startMin: number;
-  endMin: number;
-  displayZone: string;
-}) {
-  const { dateKey, startMin, endMin, displayZone } = args;
-  const { startLocal, endLocal } = bookingLocalTimes({
-    dateKey,
-    startMin,
-    endMin,
-    displayZone,
-  });
-  if (!startLocal.isValid || !endLocal.isValid) {
-    return `${dateKey} · ${minutesToHhmm(startMin)}–${minutesToHhmm(endMin)}`;
-  }
-  return `${startLocal.toFormat("ccc, MMM d")} · ${startLocal.toFormat("h:mm")}–${endLocal.toFormat("h:mm a")}`;
-}
-
-function bookingLocalTimes(args: {
-  dateKey: string;
-  startMin: number;
-  endMin: number;
-  displayZone: string;
-}) {
-  const { dateKey, startMin, endMin, displayZone } = args;
-  const startSeoul = DateTime.fromISO(dateKey, { zone: "Asia/Seoul" })
-    .startOf("day")
-    .plus({ minutes: startMin });
-  const endSeoul = DateTime.fromISO(dateKey, { zone: "Asia/Seoul" })
-    .startOf("day")
-    .plus({ minutes: endMin });
-  return {
-    startLocal: startSeoul.setZone(displayZone),
-    endLocal: endSeoul.setZone(displayZone),
-  };
-}
-
-function zoneToCityLabel(tz: string) {
-  if (!tz) return "";
-  // common mapping for nicer labels
-  const map: Record<string, string> = {
-    "Asia/Seoul": "Seoul Time",
-    "Asia/Tokyo": "Tokyo Time",
-    "Asia/Shanghai": "Shanghai Time",
-    "Asia/Hong_Kong": "Hong Kong Time",
-    "America/New_York": "New York Time",
-    "America/Los_Angeles": "Los Angeles Time",
-    "Europe/London": "London Time",
-    "Europe/Paris": "Paris Time",
-  };
-  if (map[tz]) return map[tz];
-  const parts = String(tz).split("/");
-  const city = parts.length > 1 ? parts[1].replace(/_/g, " ") : parts[0];
-  return `${city} Time`;
-}
-
-function bookingBadge(b: {
-  dateKey?: string;
-  startMin?: number;
-  endMin?: number;
-  status?: string;
-}) {
-  // If the booking has a time and it's already ended, show Past.
-  try {
-    if (b.dateKey && typeof b.endMin === "number") {
-      const end = DateTime.fromISO(b.dateKey, { zone: "Asia/Seoul" })
-        .startOf("day")
-        .plus({ minutes: b.endMin });
-      if (DateTime.now().setZone("Asia/Seoul") > end) {
-        return { text: "Past", variant: "muted" as const, className: "" };
-      }
-    }
-  } catch {
-    // ignore parsing errors
-  }
-  return statusBadge(String(b.status ?? ""));
-}
-
-function statusBadge(status: string) {
-  const s = String(status ?? "");
-  if (s === "confirmed")
-    return {
-      text: "All set",
-      variant: "default" as const,
-      className:
-        "bg-included-2 text-[color-mix(in_srgb,var(--foreground)_82%,var(--included-2)_18%)] ring-1 ring-black/5 dark:ring-white/10",
-    };
-  if (s === "cancelled")
-    return { text: "Cancelled", variant: "muted" as const };
-  if (s === "no_show") return { text: "Missed", variant: "muted" as const };
-  return { text: s || "—", variant: "outline" as const };
-}
 
 export default function AccountPage() {
   const session = useMockSession();
@@ -317,6 +175,42 @@ export default function AccountPage() {
     return { remaining, nextExpiry, active };
   }, [student?.credits]);
 
+  const creditKindLabel = React.useCallback((kind: string) => {
+    const k = String(kind ?? "").trim();
+    if (k === "single_pass") return "Single pass";
+    if (k === "pass_pack_8") return "Pass pack (8)";
+    return k || "Credit";
+  }, []);
+
+  const creditsDetail = React.useMemo(() => {
+    const all = (student?.credits ?? [])
+      .slice()
+      .sort((a, b) => Date.parse(a.expiresAt) - Date.parse(b.expiresAt));
+    const now = Date.now();
+    const active = all.filter(
+      (g) => (g.remaining ?? 0) > 0 && Date.parse(g.expiresAt) > now,
+    );
+    const expired = all.filter((g) => Date.parse(g.expiresAt) <= now);
+    const next = active[0] ?? null;
+    return { all, active, expired, next };
+  }, [student?.credits]);
+
+  const formatDateLabel = React.useCallback(
+    (iso: string) => {
+      try {
+        return new Date(iso).toLocaleDateString("en-US", {
+          timeZone: displayZone,
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+      } catch {
+        return iso;
+      }
+    },
+    [displayZone],
+  );
+
   React.useEffect(() => {
     if (!session.state.user) {
       setProfileSaveMessage(null);
@@ -421,7 +315,44 @@ export default function AccountPage() {
       ? bookingsByView.finished
       : bookingsByView.coming;
 
-  if (studentLoading) return null;
+  const cancelBooking = React.useCallback(
+    async (b: BookingListItem) => {
+      if (!session.state.user) return;
+      setBookingActionId(b.id);
+      setBookingActionMsg(null);
+      try {
+        const res = await fetch(
+          `/api/public/bookings/${encodeURIComponent(String(b.id))}/cancel`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              studentId: (sessionStudentId || student?.id || "").trim(),
+              email: session.state.user!.email,
+            }),
+          },
+        );
+        const json = await res.json().catch(() => null);
+        if (!res.ok || !json?.ok) {
+          setBookingActionMsg(json?.error ?? "Cancellation failed.");
+          return;
+        }
+        setBookingActionMsg("Booking cancelled.");
+        await loadBookings();
+      } catch (e) {
+        setBookingActionMsg(
+          e instanceof Error ? e.message : "Cancellation failed.",
+        );
+      } finally {
+        setBookingActionId(null);
+      }
+    },
+    [loadBookings, session.state.user, sessionStudentId, student?.id],
+  );
+
+  if (studentLoading && !session.state.student) return null;
 
   if (!session.state.user) {
     return (
@@ -608,269 +539,15 @@ export default function AccountPage() {
                     ) : (
                       <div className="space-y-3">
                         {visibleBookings.map((b) => (
-                          <div
+                          <BookingCard
                             key={b.id}
-                            className="rounded-xl border border-border bg-card p-4 "
-                          >
-                            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                              <div className="min-w-0">
-                                {(() => {
-                                  const { startLocal, endLocal } =
-                                    bookingLocalTimes({
-                                      dateKey: b.dateKey,
-                                      startMin: b.startMin,
-                                      endMin: b.endMin,
-                                      displayZone,
-                                    });
-                                  const timeRange =
-                                    startLocal.isValid && endLocal.isValid
-                                      ? `${startLocal.toFormat("h:mm")}–${endLocal.toFormat("h:mm a")}`
-                                      : `${minutesToHhmm(b.startMin)}–${minutesToHhmm(b.endMin)}`;
-                                  const dateLabel = startLocal.isValid
-                                    ? startLocal.toFormat("ccc, MMM d")
-                                    : b.dateKey;
-                                  return (
-                                    <div>
-                                      <div className="text-xl font-semibold tracking-tight text-foreground">
-                                        {timeRange}
-                                      </div>
-                                      <div className=" text-xs text-muted-foreground">
-                                        {dateLabel}
-                                      </div>
-                                    </div>
-                                  );
-                                })()}
-                                <div className="mt-3 flex flex-wrap items-center gap-2">
-                                  {(() => {
-                                    const info = bookingBadge(b);
-                                    return (
-                                      <Badge
-                                        variant={info.variant}
-                                        className={cn(
-                                          "text-[11px] px-2 py-0.5",
-                                          info.className,
-                                        )}
-                                      >
-                                        {info.text}
-                                      </Badge>
-                                    );
-                                  })()}
-                                  {b.cancelled && (
-                                    <Badge
-                                      variant="muted"
-                                      className="text-[11px] px-2 py-0.5"
-                                    >
-                                      Cancelled
-                                    </Badge>
-                                  )}
-                                  {b.dateKey &&
-                                    typeof b.startMin === "number" &&
-                                    (() => {
-                                      const v = startsRelativeLabel(
-                                        b.dateKey,
-                                        b.startMin,
-                                        displayZone,
-                                      );
-                                      return (
-                                        <span
-                                          className={cn(
-                                            "text-xs",
-                                            v === "Starts soon" ||
-                                              v === "Starts now"
-                                              ? "text-foreground font-semibold"
-                                              : "text-muted-foreground",
-                                          )}
-                                        >
-                                          {v}
-                                        </span>
-                                      );
-                                    })()}
-                                </div>
-                              </div>
-                              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                                {(() => {
-                                  const hasTime =
-                                    Boolean(b.dateKey) &&
-                                    typeof b.startMin === "number" &&
-                                    typeof b.endMin === "number";
-                                  const start = hasTime
-                                    ? DateTime.fromISO(b.dateKey, {
-                                        zone: "Asia/Seoul",
-                                      })
-                                        .startOf("day")
-                                        .plus({ minutes: b.startMin })
-                                    : null;
-                                  const meetingKey = String(b.code || b.id);
-                                  const provider = String(
-                                    b.meetingProvider ?? "",
-                                  ).trim();
-                                  const meetUrl = (b.meetUrl ?? "").trim();
-                                  const fallbackPath =
-                                    provider === "google_meet"
-                                      ? `/join/${encodeURIComponent(meetingKey)}`
-                                      : `/call/${encodeURIComponent(meetingKey)}`;
-                                  const meetingLink =
-                                    meetUrl ||
-                                    (typeof window === "undefined"
-                                      ? fallbackPath
-                                      : new URL(
-                                          fallbackPath,
-                                          window.location.origin,
-                                        ).toString());
-                                  const canCancel =
-                                    !b.cancelled &&
-                                    b.status === "confirmed" &&
-                                    Boolean(start) &&
-                                    start!.toMillis() - Date.now() >=
-                                      60 * 60 * 1000;
-                                  const canJoin =
-                                    !b.cancelled &&
-                                    b.status === "confirmed" &&
-                                    hasTime &&
-                                    (() => {
-                                      if (meetUrl) return true;
-                                      if (provider === "google_meet")
-                                        return false;
-                                      const w = callWindowForBooking(
-                                        b.dateKey,
-                                        b.startMin,
-                                        b.endMin,
-                                      );
-                                      const now = DateTime.utc();
-                                      return (
-                                        now >= w.openAt.toUTC() &&
-                                        now <= w.closeAt.toUTC()
-                                      );
-                                    })();
-
-                                  return (
-                                    <>
-                                      <Button
-                                        size="sm"
-                                        variant="outline"
-                                        className="w-full sm:w-auto border-border text-rose-500 hover:bg-red-50/60 active:bg-red-100/70 dark:hover:bg-red-950/20"
-                                        disabled={
-                                          bookingActionId === b.id ||
-                                          b.cancelled ||
-                                          b.status !== "confirmed" ||
-                                          !hasTime ||
-                                          !canCancel
-                                        }
-                                        title={
-                                          canCancel
-                                            ? "Cancel this booking (allowed up to 1 hour before the session)."
-                                            : "Cancellation is allowed up to 1 hour before the session."
-                                        }
-                                        onClick={async () => {
-                                          if (!session.state.user) return;
-                                          if (!canCancel) return;
-                                          const ok = window.confirm(
-                                            "Cancel this booking? (Allowed up to 1 hour before the session.)",
-                                          );
-                                          if (!ok) return;
-                                          setBookingActionId(b.id);
-                                          setBookingActionMsg(null);
-                                          try {
-                                            const res = await fetch(
-                                              `/api/public/bookings/${encodeURIComponent(String(b.id))}/cancel`,
-                                              {
-                                                method: "POST",
-                                                headers: {
-                                                  "Content-Type":
-                                                    "application/json",
-                                                },
-                                                body: JSON.stringify({
-                                                  studentId: (
-                                                    sessionStudentId ||
-                                                    student?.id ||
-                                                    ""
-                                                  ).trim(),
-                                                  email:
-                                                    session.state.user!.email,
-                                                }),
-                                              },
-                                            );
-                                            const json = await res
-                                              .json()
-                                              .catch(() => null);
-                                            if (!res.ok || !json?.ok) {
-                                              setBookingActionMsg(
-                                                json?.error ??
-                                                  "Cancellation failed.",
-                                              );
-                                              return;
-                                            }
-                                            setBookingActionMsg(
-                                              "Booking cancelled.",
-                                            );
-                                            await loadBookings();
-                                          } catch (e) {
-                                            setBookingActionMsg(
-                                              e instanceof Error
-                                                ? e.message
-                                                : "Cancellation failed.",
-                                            );
-                                          } finally {
-                                            setBookingActionId(null);
-                                          }
-                                        }}
-                                      >
-                                        {bookingActionId === b.id
-                                          ? "Cancelling…"
-                                          : "Cancel"}
-                                      </Button>
-
-                                      <Button
-                                        size="sm"
-                                        variant="outline"
-                                        className="w-full sm:w-auto"
-                                        onClick={() =>
-                                          void copyText(b.id, meetingLink)
-                                        }
-                                        disabled={!meetingLink}
-                                      >
-                                        {copiedBookingId === b.id
-                                          ? "Copied"
-                                          : "Copy link"}{" "}
-                                        <CopyIcon className="size-4" />
-                                      </Button>
-
-                                      <Button
-                                        asChild
-                                        size="sm"
-                                        variant="primary"
-                                        className="w-full sm:w-auto"
-                                        disabled={!canJoin}
-                                      >
-                                        {(b.meetUrl ?? "").trim() ? (
-                                          <a
-                                            href={(b.meetUrl ?? "").trim()}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                          >
-                                            Open Meet Link
-                                          </a>
-                                        ) : (b.meetingProvider ?? "").trim() ===
-                                          "google_meet" ? (
-                                          <a
-                                            href={`/join/${encodeURIComponent(String(b.code || b.id))}`}
-                                          >
-                                            Meet link unavailable
-                                          </a>
-                                        ) : (
-                                          <Link
-                                            href={`/call/${encodeURIComponent(String(b.code || b.id))}`}
-                                          >
-                                            Enter lesson
-                                          </Link>
-                                        )}
-                                      </Button>
-                                    </>
-                                  );
-                                })()}
-                              </div>
-                            </div>
-                          </div>
+                            booking={b}
+                            displayZone={displayZone}
+                            bookingActionId={bookingActionId}
+                            copiedBookingId={copiedBookingId}
+                            onCopyLink={copyText}
+                            onCancel={cancelBooking}
+                          />
                         ))}
                       </div>
                     )}
@@ -912,6 +589,87 @@ export default function AccountPage() {
                       ))}
                     </div>
                   )}
+
+                  <div className="mt-8 border-t border-border pt-6">
+                    <div className="text-sm font-semibold text-foreground">
+                      Credits
+                    </div>
+                    <div className="mt-1 text-xs text-muted-foreground">
+                      What you have, what expires next, and when you purchased
+                      it.
+                    </div>
+
+                    {studentLoading ? (
+                      <div className="mt-3 text-sm text-muted-foreground">
+                        Loading…
+                      </div>
+                    ) : creditsDetail.all.length === 0 ? (
+                      <div className="mt-3 text-sm text-muted-foreground">
+                        No credits yet.
+                      </div>
+                    ) : (
+                      <div className="mt-3 space-y-2">
+                        {creditsDetail.all.map((g) => {
+                          const isExpired =
+                            Date.parse(g.expiresAt) <= Date.now();
+                          const isActive = !isExpired && (g.remaining ?? 0) > 0;
+                          return (
+                            <div
+                              key={g.id}
+                              className={cn(
+                                "rounded-md border border-border bg-card p-4",
+                                isExpired ? "opacity-70" : "",
+                              )}
+                            >
+                              <div className="flex flex-wrap items-start justify-between gap-3">
+                                <div className="min-w-0">
+                                  <div className="text-sm font-semibold text-foreground">
+                                    {creditKindLabel(g.kind)}
+                                  </div>
+                                  <div className="mt-1 text-xs text-muted-foreground">
+                                    Purchased {formatDateLabel(g.purchasedAt)}
+                                  </div>
+                                </div>
+                                <div className="text-right">
+                                  <div className="text-sm font-semibold text-foreground">
+                                    {Math.max(0, g.remaining ?? 0)} /{" "}
+                                    {Math.max(0, g.total ?? 0)}
+                                  </div>
+                                  <div className="mt-1 text-xs text-muted-foreground">
+                                    Expires {formatDateLabel(g.expiresAt)}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="mt-3 flex flex-wrap items-center gap-2">
+                                {isActive ? (
+                                  <Badge
+                                    variant="default"
+                                    className="text-[11px] px-2 py-0.5"
+                                  >
+                                    Active
+                                  </Badge>
+                                ) : isExpired ? (
+                                  <Badge
+                                    variant="muted"
+                                    className="text-[11px] px-2 py-0.5"
+                                  >
+                                    Expired
+                                  </Badge>
+                                ) : (
+                                  <Badge
+                                    variant="outline"
+                                    className="text-[11px] px-2 py-0.5"
+                                  >
+                                    Used up
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             )}
@@ -1174,17 +932,11 @@ export default function AccountPage() {
                         {creditsSummary.nextExpiry ? (
                           <>
                             Available until{" "}
-                            {new Date(
-                              creditsSummary.nextExpiry,
-                            ).toLocaleDateString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                              year: "numeric",
-                            })}
+                            {formatDateLabel(creditsSummary.nextExpiry)}
                           </>
-                        ) : (
+                        ) : creditsSummary.remaining > 0 ? (
                           <>Available</>
-                        )}
+                        ) : null}
                       </div>
                     </>
                   ) : (

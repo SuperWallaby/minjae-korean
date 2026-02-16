@@ -33,6 +33,30 @@ import { SegmentedToggle } from "@/components/ui/SegmentedToggle";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
+function getBrowserTimeZone(): string | null {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return typeof tz === "string" && tz.trim() ? tz.trim() : null;
+  } catch {
+    return null;
+  }
+}
+
+function resolveDisplayZone(siteZone: string) {
+  const browserTz = getBrowserTimeZone();
+  const preferred = browserTz ?? siteZone;
+
+  const dt = DateTime.local().setZone(preferred);
+  if (dt.isValid) {
+    return {
+      zoneName: preferred,
+      source: browserTz ? ("browser" as const) : ("site" as const),
+    };
+  }
+
+  return { zoneName: siteZone, source: "site" as const };
+}
+
 function SkipUpdate({
   skip,
   children,
@@ -60,10 +84,6 @@ function minutesToHhmm(min: number) {
   return `${pad2(h)}:${pad2(m)}`;
 }
 
-function dateKeyForSeoul(d: Date) {
-  return DateTime.fromJSDate(d).setZone(BUSINESS_TIME_ZONE).toISODate()!;
-}
-
 export default function BookingPage() {
   const session = useMockSession();
   const router = useRouter();
@@ -77,14 +97,14 @@ export default function BookingPage() {
     return d;
   });
   const [selectedDateKey, setSelectedDateKey] = React.useState<string>(
-    () =>
-      DateTime.now().setZone(BUSINESS_TIME_ZONE).toISODate() ??
-      new Date().toISOString().slice(0, 10),
+    () => DateTime.now().toISODate() ?? new Date().toISOString().slice(0, 10),
   );
   const [selectedSlotId, setSelectedSlotId] = React.useState<string | null>(
     null,
   );
   const [success, setSuccess] = React.useState<string | null>(null);
+  const tz = React.useMemo(() => resolveDisplayZone(BUSINESS_TIME_ZONE), []);
+  const displayZone = tz.zoneName;
   const [slotsByDateKey, setSlotsByDateKey] = React.useState<
     Record<
       string,
@@ -212,11 +232,48 @@ export default function BookingPage() {
     });
   }, [weekStart]);
 
+  const displayDayKeys = React.useMemo(() => {
+    return days.map(
+      (d) =>
+        DateTime.fromJSDate(d, { zone: displayZone }).toISODate() ??
+        d.toISOString().slice(0, 10),
+    );
+  }, [days, displayZone]);
+
+  const seoulKeysToFetch = React.useMemo(() => {
+    try {
+      const startLocal = DateTime.fromJSDate(weekStart, {
+        zone: displayZone,
+      }).startOf("day");
+      const endLocal = startLocal.plus({ days: 6 });
+      const seoulStart = startLocal
+        .setZone(BUSINESS_TIME_ZONE)
+        .minus({ days: 1 })
+        .startOf("day");
+      const seoulEnd = endLocal
+        .setZone(BUSINESS_TIME_ZONE)
+        .plus({ days: 1 })
+        .startOf("day");
+
+      const out: string[] = [];
+      let dt = seoulStart;
+      const endMs = seoulEnd.toMillis();
+      while (dt.toMillis() <= endMs) {
+        const k = dt.toISODate();
+        if (k) out.push(k);
+        dt = dt.plus({ days: 1 });
+      }
+      return Array.from(new Set(out));
+    } catch {
+      return displayDayKeys;
+    }
+  }, [displayDayKeys, displayZone, weekStart]);
+
   const dayStartMsByDateKey = React.useMemo(() => {
     const out: Record<string, number> = {};
     const keys = new Set<string>([
       ...Object.keys(slotsByDateKey),
-      ...days.map(dateKeyForSeoul),
+      ...seoulKeysToFetch,
     ]);
     for (const k of keys) {
       try {
@@ -228,26 +285,74 @@ export default function BookingPage() {
       }
     }
     return out;
-  }, [days, slotsByDateKey]);
+  }, [seoulKeysToFetch, slotsByDateKey]);
+
+  const localSlotIndex = React.useMemo(() => {
+    const visible = new Set(displayDayKeys);
+    const byDay: Record<string, Map<number, SlotResponseItem>> = {};
+    for (const k of displayDayKeys) byDay[k] = new Map();
+    const localStartMins: number[] = [];
+
+    for (const list of Object.values(slotsByDateKey)) {
+      for (const s of list) {
+        try {
+          const startLocal = DateTime.fromISO(s.dateKey, {
+            zone: BUSINESS_TIME_ZONE,
+          })
+            .startOf("day")
+            .plus({ minutes: s.startMin })
+            .setZone(displayZone);
+          const dayKey = startLocal.toISODate();
+          if (!dayKey || !visible.has(dayKey)) continue;
+          const localMin = startLocal.hour * 60 + startLocal.minute;
+          (byDay[dayKey] ?? (byDay[dayKey] = new Map())).set(localMin, s);
+          localStartMins.push(localMin);
+        } catch {
+          // ignore
+        }
+      }
+    }
+
+    return { byDay, localStartMins };
+  }, [displayDayKeys, displayZone, slotsByDateKey]);
+
+  const gridStep = React.useMemo(() => {
+    const mins = localSlotIndex.localStartMins;
+    if (mins.length === 0) return 30 as const;
+    const anyNon30 = mins.some((m) => m % 30 !== 0);
+    if (!anyNon30) return 30 as const;
+    const all15 = mins.every((m) => m % 15 === 0);
+    return all15 ? (15 as const) : (30 as const);
+  }, [localSlotIndex.localStartMins]);
+
+  const showFifteenMinuteWarning = React.useMemo(() => {
+    return gridStep === 15;
+  }, [gridStep]);
 
   const timeRows = React.useMemo(() => {
+    const mins = localSlotIndex.localStartMins;
+    const fallbackMin = 9 * 60;
+    const fallbackMax = 22 * 60;
+    const min = mins.length ? Math.min(...mins) : fallbackMin;
+    const max = mins.length ? Math.max(...mins) : fallbackMax;
+    const start = Math.max(0, Math.floor(min / gridStep) * gridStep);
+    const end = Math.min(
+      24 * 60 - gridStep,
+      Math.ceil(max / gridStep) * gridStep,
+    );
     const out: number[] = [];
-    for (let h = 9; h <= 22; h++) {
-      out.push(h * 60);
-      out.push(h * 60 + 30);
-    }
+    for (let m = start; m <= end; m += gridStep) out.push(m);
     return out;
-  }, []);
+  }, [gridStep, localSlotIndex.localStartMins]);
 
   React.useEffect(() => {
     // keep selected day inside the displayed week
-    const keys = days.map(dateKeyForSeoul);
-    if (!keys.includes(selectedDateKey)) {
-      setSelectedDateKey(keys[0] ?? selectedDateKey);
+    if (!displayDayKeys.includes(selectedDateKey)) {
+      setSelectedDateKey(displayDayKeys[0] ?? selectedDateKey);
       setSelectedSlotId(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [weekStart]);
+  }, [displayDayKeys]);
 
   const selectedSlot = React.useMemo(() => {
     if (!selectedSlotId) return null;
@@ -257,60 +362,68 @@ export default function BookingPage() {
   const selectedSlot2 = React.useMemo(() => {
     if (durationMin !== 50) return null;
     if (!selectedSlot) return null;
-    const m = slotByDateStartMin[selectedDateKey];
+    const m = slotByDateStartMin[selectedSlot.dateKey];
     return m?.get(selectedSlot.startMin + 30) ?? null;
-  }, [durationMin, selectedDateKey, selectedSlot, slotByDateStartMin]);
+  }, [durationMin, selectedSlot, slotByDateStartMin]);
 
   const selectedSlot2Id = selectedSlot2?.id ?? null;
 
-  const bookability = React.useCallback(
-    (
-      s: { dateKey: string; startMin: number; available: number },
-      dateKey: string,
-    ) => {
-      const nowMs = DateTime.now().setZone(BUSINESS_TIME_ZONE).toMillis();
+  const bookableById = React.useMemo(() => {
+    const nowMs = Date.now();
+    const out = new Map<string, { ok: boolean; reason: string | null }>();
+    for (const s of slotById.values()) {
       const dayStartMs =
         dayStartMsByDateKey[s.dateKey] ??
         DateTime.fromISO(s.dateKey, { zone: BUSINESS_TIME_ZONE })
           .startOf("day")
           .toMillis();
       const slotStartMs = dayStartMs + s.startMin * 60 * 1000;
-      const isPast = slotStartMs <= nowMs;
-      if (isPast) return { ok: false, reason: "Ended" as const };
-      if (!(s.available > 0)) return { ok: false, reason: "Booked" as const };
-      if (durationMin === 25) return { ok: true as const, reason: null };
-
-      const next = slotByDateStartMin[dateKey]?.get(s.startMin + 30) ?? null;
-      if (!next) return { ok: false, reason: "" as const };
-      if (!(next.available > 0)) return { ok: false, reason: "" as const };
-      return { ok: true as const, reason: null };
-    },
-    [dayStartMsByDateKey, durationMin, slotByDateStartMin],
-  );
+      if (slotStartMs <= nowMs) {
+        out.set(s.id, { ok: false, reason: "Ended" });
+        continue;
+      }
+      if (!(s.available > 0)) {
+        out.set(s.id, { ok: false, reason: "Booked" });
+        continue;
+      }
+      if (durationMin === 25) {
+        out.set(s.id, { ok: true, reason: null });
+        continue;
+      }
+      const next = slotByDateStartMin[s.dateKey]?.get(s.startMin + 30) ?? null;
+      if (!next || !(next.available > 0)) {
+        out.set(s.id, { ok: false, reason: "" });
+        continue;
+      }
+      out.set(s.id, { ok: true, reason: null });
+    }
+    return out;
+  }, [dayStartMsByDateKey, durationMin, slotByDateStartMin, slotById]);
 
   const selectedOk = React.useMemo(() => {
-    if (!selectedSlot) return false;
-    return bookability(selectedSlot, selectedDateKey).ok;
-  }, [bookability, selectedDateKey, selectedSlot]);
+    if (!selectedSlotId) return false;
+    return bookableById.get(selectedSlotId)?.ok ?? false;
+  }, [bookableById, selectedSlotId]);
 
   const selectedLabel = React.useMemo(() => {
     if (!selectedSlot) return null;
-    const dt = DateTime.fromISO(selectedSlot.dateKey, {
+    const dtSeoul = DateTime.fromISO(selectedSlot.dateKey, {
       zone: BUSINESS_TIME_ZONE,
-    }).plus({
-      minutes: selectedSlot.startMin,
-    });
+    })
+      .startOf("day")
+      .plus({ minutes: selectedSlot.startMin });
+    const dt = dtSeoul.setZone(displayZone);
     const end = dt.plus({ minutes: durationMin });
     const weekday =
       ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][dt.weekday - 1] ?? "";
     return `${weekday} ${dt.toFormat("M/d")} · ${dt.toFormat("HH:mm")}–${end.toFormat("HH:mm")}`;
-  }, [durationMin, selectedSlot]);
+  }, [displayZone, durationMin, selectedSlot]);
 
   const weekRangeLabel = React.useMemo(() => {
     try {
-      const start = DateTime.fromJSDate(weekStart)
-        .setZone(BUSINESS_TIME_ZONE)
-        .startOf("day");
+      const start = DateTime.fromJSDate(weekStart, {
+        zone: displayZone,
+      }).startOf("day");
       const end = start.plus({ days: 6 });
       if (start.hasSame(end, "year")) {
         return `${start.toFormat("MMM d")} — ${end.toFormat("MMM d")}`;
@@ -319,16 +432,15 @@ export default function BookingPage() {
     } catch {
       return "";
     }
-  }, [weekStart]);
+  }, [displayZone, weekStart]);
 
-  async function loadWeekSlots() {
+  const loadWeekSlots = React.useCallback(async () => {
     const startedAt = Date.now();
     setSlotsLoading(true);
     setSlotsError(null);
     try {
-      const keys = days.map(dateKeyForSeoul);
       const results = await Promise.all(
-        keys.map(async (dateKey) => {
+        seoulKeysToFetch.map(async (dateKey) => {
           const res = await fetch(
             `/api/public/slots?dateKey=${encodeURIComponent(dateKey)}`,
             {
@@ -356,12 +468,11 @@ export default function BookingPage() {
       if (waitMs) await new Promise((r) => setTimeout(r, waitMs));
       setSlotsLoading(false);
     }
-  }
+  }, [seoulKeysToFetch, slotsSkeletonMinMs]);
 
   React.useEffect(() => {
-    loadWeekSlots().catch(() => {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [weekStart]);
+    void loadWeekSlots();
+  }, [loadWeekSlots]);
 
   React.useEffect(() => {
     const user = session.state.user;
@@ -572,8 +683,8 @@ export default function BookingPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="mt-2 flex items-center gap-2 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              <img src="/calendar.webp" alt="Time" className="w-8 h-8" />
-              Pick a time
+              {/* <img src="/calendar.webp" alt="Time" className="w-8 h-8" /> */}
+              Pick Session time
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
               Choose a time to talk about today’s Korean.
@@ -592,12 +703,13 @@ export default function BookingPage() {
                   setDurationMin(next);
                   if (next === 50) {
                     // If current selection is not eligible for 50, clear it.
-                    if (
-                      selectedSlot &&
-                      !bookability(selectedSlot, selectedDateKey).ok
-                    ) {
+                    if (!selectedSlot) return;
+                    const nextSlot =
+                      slotByDateStartMin[selectedSlot.dateKey]?.get(
+                        selectedSlot.startMin + 30,
+                      ) ?? null;
+                    if (!nextSlot || !(nextSlot.available > 0))
                       setSelectedSlotId(null);
-                    }
                   }
                 }}
               />
@@ -631,6 +743,14 @@ export default function BookingPage() {
               <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <CardTitle>{weekRangeLabel}</CardTitle>
+                  <div className="mt-1 text-[11px] text-muted-foreground">
+                    Times shown in your time ({displayZone})
+                    {showFifteenMinuteWarning ? (
+                      <span className="ml-2 text-amber-600 dark:text-amber-400">
+                        (15-minute offset detected)
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="hidden md:flex items-center gap-2 mr-1">
@@ -673,8 +793,9 @@ export default function BookingPage() {
                 {/* Mobile: horizontal day selector + list */}
                 <div className="md:hidden">
                   <div className="grid grid-cols-2 gap-2">
-                    {days.map((d) => {
-                      const dk = dateKeyForSeoul(d);
+                    {days.map((d, i) => {
+                      const dk =
+                        displayDayKeys[i] ?? d.toISOString().slice(0, 10);
                       const selected = selectedDateKey === dk;
                       return (
                         <button
@@ -705,20 +826,30 @@ export default function BookingPage() {
                       <div className="text-sm text-muted-foreground">
                         Loading…
                       </div>
-                    ) : (slotsByDateKey[selectedDateKey] ?? []).length === 0 ? (
+                    ) : Array.from(
+                        (
+                          localSlotIndex.byDay[selectedDateKey] ?? new Map()
+                        ).entries(),
+                      ).length === 0 ? (
                       <div className="text-sm whitespace-nowrap text-muted-foreground">
                         No available slots.
                       </div>
                     ) : (
-                      (slotsByDateKey[selectedDateKey] ?? [])
-                        .slice()
-                        .sort((a, b) => a.startMin - b.startMin)
-                        .map((s) => {
+                      Array.from(
+                        (
+                          localSlotIndex.byDay[selectedDateKey] ?? new Map()
+                        ).entries(),
+                      )
+                        .sort((a, b) => a[0] - b[0])
+                        .map(([localStartMin, s]) => {
                           const selectedPrimary = selectedSlotId === s.id;
                           const selectedSecondary = Boolean(
                             selectedSlot2Id && selectedSlot2Id === s.id,
                           );
-                          const b = bookability(s, selectedDateKey);
+                          const b = bookableById.get(s.id) ?? {
+                            ok: false,
+                            reason: "—",
+                          };
                           const available = b.ok;
                           return (
                             <button
@@ -744,7 +875,7 @@ export default function BookingPage() {
                             >
                               <div className=" flex flex-wrap items-center justify-around gap-1">
                                 <div className="font-medium text-sm">
-                                  {minutesToHhmm(s.startMin)}
+                                  {minutesToHhmm(localStartMin)}
                                 </div>
                                 {!available && (
                                   <div className="text-xs whitespace-nowrap text-muted-foreground">
@@ -764,7 +895,13 @@ export default function BookingPage() {
                   <div className="relative">
                     <div
                       className={cn(
-                        "pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-[linear-gradient(90deg,var(--bg-card),transparent)] transition-opacity duration-200",
+                        "pointer-events-none absolute inset-y-0 left-20 z-10 w-20 bg-[linear-gradient(90deg,var(--bg-card),transparent)] transition-opacity duration-200",
+                        desktopCanScrollLeft ? "opacity-100" : "opacity-0",
+                      )}
+                    />
+                    <div
+                      className={cn(
+                        " absolute inset-y-0 left-0 z-10 bg-card w-20",
                         desktopCanScrollLeft ? "opacity-100" : "opacity-0",
                       )}
                     />
@@ -800,16 +937,19 @@ export default function BookingPage() {
                                 <Clock className="size-4" />
                                 {minutesToHhmm(startMin)}
                               </div>
-                              {days.map((d) => {
-                                const dk = dateKeyForSeoul(d);
+                              {days.map((d, i) => {
+                                const dk =
+                                  displayDayKeys[i] ??
+                                  d.toISOString().slice(0, 10);
                                 const s =
-                                  slotByDateStartMin[dk]?.get(startMin) ?? null;
+                                  localSlotIndex.byDay[dk]?.get(startMin) ??
+                                  null;
                                 const b = s
-                                  ? bookability(s, dk)
-                                  : {
-                                      ok: false as const,
-                                      reason: "—" as const,
-                                    };
+                                  ? (bookableById.get(s.id) ?? {
+                                      ok: false,
+                                      reason: "—",
+                                    })
+                                  : { ok: false, reason: "—" };
                                 const available = Boolean(s && b.ok);
                                 const selectedPrimary = Boolean(
                                   s && selectedSlotId === s.id,
@@ -979,12 +1119,12 @@ export default function BookingPage() {
                 </CardContent>
               </Card>
               {session.state.user && creditsLabel && (
-                <Link
-                  href="/account"
-                  className="w-full text-center text-sm justify-center flex mt-4"
+                <Button
+                  variant="ghost"
+                  className="w-full hover:bg-muted text-stone-500 rounded-md px-3 py-2 text-center text-sm justify-center flex mt-2"
                 >
                   {creditsLabel}
-                </Link>
+                </Button>
               )}
             </div>
           </div>

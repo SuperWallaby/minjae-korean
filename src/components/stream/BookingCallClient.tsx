@@ -1536,18 +1536,32 @@ export function BookingCallClient({
             {slotInfo
               ? (() => {
                   try {
-                    const zone = "Asia/Seoul";
-                    const start = DateTime.fromFormat(
+                    const siteZone = "Asia/Seoul";
+                    const browserTz =
+                      typeof Intl !== "undefined"
+                        ? Intl.DateTimeFormat().resolvedOptions().timeZone
+                        : "";
+                    const preferred =
+                      typeof browserTz === "string" && browserTz.trim()
+                        ? browserTz.trim()
+                        : siteZone;
+                    const displayZone = DateTime.local().setZone(preferred).isValid
+                      ? preferred
+                      : siteZone;
+
+                    const startSeoul = DateTime.fromFormat(
                       slotInfo.startTimeLabel,
                       "yyyy-MM-dd HH:mm",
-                      { zone },
+                      { zone: siteZone },
                     );
-                    const end = DateTime.fromFormat(
+                    const endSeoul = DateTime.fromFormat(
                       `${slotInfo.startTimeLabel.slice(0, 10)} ${slotInfo.endTimeLabel}`,
                       "yyyy-MM-dd HH:mm",
-                      { zone },
+                      { zone: siteZone },
                     );
-                    const now = DateTime.now().setZone(zone);
+                    const start = startSeoul.setZone(displayZone);
+                    const end = endSeoul.setZone(displayZone);
+                    const now = DateTime.now().setZone(displayZone);
                     let startLabel = "";
                     if (start.hasSame(now, "day"))
                       startLabel = `Today at ${start.toFormat("h:mm a")}`;

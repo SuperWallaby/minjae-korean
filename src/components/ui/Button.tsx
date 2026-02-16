@@ -30,7 +30,7 @@ const variantClass: Record<ButtonVariant, string> = {
     "bg-muted text-foreground hover:bg-muted/80 active:bg-muted/70 border border-border",
   outline:
     "bg-transparent text-foreground hover:bg-muted/50 active:bg-muted/60 border border-border",
-  ghost: "bg-transparent text-foreground hover:bg-muted/60 active:bg-muted/70",
+  ghost: "bg-transparent text-foreground hover:bg-muted active:bg-muted/70",
   destructive:
     "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 dark:bg-red-500 dark:hover:bg-red-600",
 };
@@ -54,7 +54,7 @@ export function Button({
     "inline-flex items-center cursor-pointer  justify-center gap-2 whitespace-nowrap font-medium outline-none transition focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
     variantClass[variant],
     sizeClass[size],
-    className
+    className,
   );
 
   if (asChild) {
@@ -63,7 +63,9 @@ export function Button({
     } & React.AriaAttributes &
       Record<string, unknown>;
 
-    const child = React.Children.only(children) as React.ReactElement<AsChildProps>;
+    const child = React.Children.only(
+      children,
+    ) as React.ReactElement<AsChildProps>;
 
     return React.cloneElement(child, {
       className: cn(mergedClassName, child.props.className),
@@ -72,13 +74,8 @@ export function Button({
   }
 
   return (
-    <button
-      type={type ?? "button"}
-      className={mergedClassName}
-      {...props}
-    >
+    <button type={type ?? "button"} className={mergedClassName} {...props}>
       {children}
     </button>
   );
 }
-
