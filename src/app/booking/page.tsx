@@ -416,7 +416,7 @@ export default function BookingPage() {
     const end = dt.plus({ minutes: durationMin });
     const weekday =
       ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][dt.weekday - 1] ?? "";
-    return `${weekday} ${dt.toFormat("M/d")} · ${dt.toFormat("HH:mm")}–${end.toFormat("HH:mm")}`;
+    return `${weekday} ${dt.toFormat("MMM d")} · ${dt.toFormat("HH:mm")}–${end.toFormat("HH:mm")}`;
   }, [displayZone, durationMin, selectedSlot]);
 
   const weekRangeLabel = React.useMemo(() => {
@@ -753,7 +753,7 @@ export default function BookingPage() {
                   <div className="mt-1 text-[11px] text-muted-foreground">
                     Times shown in your time ({displayZone})
                     {showFifteenMinuteWarning ? (
-                      <span className="ml-2 text-amber-600 dark:text-amber-400">
+                      <span className="ml-2 text-amber-600">
                         (15-minute offset detected)
                       </span>
                     ) : null}

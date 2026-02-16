@@ -115,7 +115,7 @@ export function LoginClient() {
               ) : null}
 
               {error ? (
-                <div className="rounded-md border border-border bg-muted/40 p-3 text-sm text-red-600 dark:text-red-400">
+                <div className="rounded-md border border-border bg-muted/40 p-3 text-sm text-red-600">
                   {error}
                 </div>
               ) : null}

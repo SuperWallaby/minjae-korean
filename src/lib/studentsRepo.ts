@@ -30,6 +30,11 @@ export type CreditGrant = {
   stripeCustomerId?: string;
 };
 
+export type CouponRedemption = {
+  code: string; // normalized (trimmed/uppercased)
+  redeemedAt: string; // ISO
+};
+
 export type Student = {
   id: string;
   name: string;
@@ -47,6 +52,7 @@ export type Student = {
   notes: StudentNote[];
   payments: PaymentRecord[];
   credits: CreditGrant[];
+  couponRedemptions?: CouponRedemption[];
 };
 
 type StudentDoc = Omit<Student, "id"> & { _id: string };
@@ -209,6 +215,7 @@ export async function upsertStudentByAuthUserId(args: {
     notes: [],
     payments: [],
     credits: [],
+    couponRedemptions: [],
   };
   await students.insertOne(doc);
   return toStudent(doc);
@@ -235,6 +242,7 @@ export async function upsertStudentByEmail(args: { name: string; email: string }
       notes: [],
       payments: [],
       credits: [],
+      couponRedemptions: [],
     };
     await students.insertOne(doc);
     return toStudent(doc);
@@ -522,6 +530,63 @@ export async function adjustStudentCreditsById(args: {
     { _id: studentId },
     { $push: { credits: credit }, $set: { updatedAt: nowIso(), adminNote: s.adminNote ?? "" } },
   );
+  const next = await getStudentById(studentId);
+  if (!next) return { ok: false, error: "Student not found" };
+  return { ok: true, student: next, credit };
+}
+
+function normalizeCouponCode(v: string) {
+  return String(v ?? "")
+    .trim()
+    .toUpperCase()
+    .replace(/\s+/g, "");
+}
+
+export async function redeemCouponByStudentId(args: {
+  studentId: string;
+  code: string;
+  credits?: number;
+}): Promise<
+  | { ok: true; student: Student; credit: CreditGrant }
+  | { ok: false; error: string }
+> {
+  const studentId = String(args.studentId ?? "").trim();
+  if (!studentId) return { ok: false, error: "Missing studentId" };
+
+  const code = normalizeCouponCode(args.code);
+  if (!code) return { ok: false, error: "Missing code" };
+
+  const credits = Math.max(1, Math.floor(Number(args.credits ?? 2)));
+  const purchasedAt = nowIso();
+  const expiresAt = "9999-12-31T00:00:00.000Z";
+
+  const credit: CreditGrant = {
+    id: `cr_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`,
+    source: "admin",
+    product: "custom",
+    kind: "single_pass",
+    total: credits,
+    remaining: credits,
+    purchasedAt,
+    expiresAt,
+  };
+
+  const { students } = await cols();
+  const res = await students.updateOne(
+    { _id: studentId, "couponRedemptions.code": { $ne: code } },
+    {
+      $push: {
+        credits: credit,
+        couponRedemptions: { code, redeemedAt: purchasedAt },
+      },
+      $set: { updatedAt: nowIso() },
+    },
+  );
+
+  if (res.modifiedCount !== 1) {
+    return { ok: false, error: "Coupon already used" };
+  }
+
   const next = await getStudentById(studentId);
   if (!next) return { ok: false, error: "Student not found" };
   return { ok: true, student: next, credit };

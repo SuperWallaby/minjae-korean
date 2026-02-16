@@ -113,7 +113,10 @@ export function CheckoutButton({
         const json = await res.json().catch(() => null);
         if (cancelled) return;
         const credits = (json?.data?.student?.credits ?? []) as Array<{ product?: string }> | null;
-        const used = Array.isArray(credits) && credits.some((c) => c?.product === "trial");
+        const couponRedemptions = (json?.data?.student?.couponRedemptions ?? []) as Array<{ code?: string }> | null;
+        const used =
+          (Array.isArray(credits) && credits.some((c) => c?.product === "trial")) ||
+          (Array.isArray(couponRedemptions) && couponRedemptions.length > 0);
         setTrialStatus(used ? "used" : "available");
       } catch {
         if (!cancelled) setTrialStatus("unknown");

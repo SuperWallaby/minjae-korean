@@ -469,7 +469,9 @@ export default function JoinGuidePage() {
             {statusUI.text}
           </div>
           <div className="mt-4 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            {bookingStatus === "cancelled" ? "Booking cancelled" : "You’re all set ✨"}
+            {bookingStatus === "cancelled"
+              ? "Booking cancelled"
+              : "You’re all set ✨"}
           </div>
           <div className="mt-2 text-sm text-muted-foreground sm:text-base">
             {bookingStatus === "cancelled"
@@ -503,7 +505,7 @@ export default function JoinGuidePage() {
                     {isGoogleMeet ? "Meet link" : "Session link"}
                   </div>
                   {meetUnavailable ? (
-                    <div className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    <div className="mt-1 text-sm text-red-600">
                       We couldn’t generate your Google Meet link for this
                       booking. Please contact Minjae or try booking again.
                     </div>
@@ -567,7 +569,7 @@ export default function JoinGuidePage() {
                 </div>
                 <Badge
                   variant="default"
-                  className="ring-1 ring-black/5 dark:ring-white/10"
+                  className="ring-1 ring-black/5"
                 >
                   {statusLabel(booking?.status ?? "")}
                 </Badge>

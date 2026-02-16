@@ -115,7 +115,7 @@ export function statusBadge(status: string): BookingBadgeInfo {
       text: "All set",
       variant: "default",
       className:
-        "bg-included-2 text-[color-mix(in_srgb,var(--foreground)_82%,var(--included-2)_18%)] ring-1 ring-black/5 dark:ring-white/10",
+        "bg-included-2 text-[color-mix(in_srgb,var(--foreground)_82%,var(--included-2)_18%)] ring-1 ring-black/5",
     };
   if (s === "cancelled") return { text: "Cancelled", variant: "muted" };
   if (s === "no_show") return { text: "Missed", variant: "muted" };

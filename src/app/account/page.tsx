@@ -82,6 +82,12 @@ export default function AccountPage() {
   >(null);
   const [profileSaveOk, setProfileSaveOk] = React.useState(false);
   const [profileDirty, setProfileDirty] = React.useState(false);
+  const [couponCode, setCouponCode] = React.useState("");
+  const [couponRedeeming, setCouponRedeeming] = React.useState(false);
+  const [couponRedeemMsg, setCouponRedeemMsg] = React.useState<{
+    ok: boolean;
+    text: string;
+  } | null>(null);
   const [profileDraft, setProfileDraft] = React.useState<{
     name: string;
     email: string;
@@ -194,6 +200,47 @@ export default function AccountPage() {
     const next = active[0] ?? null;
     return { all, active, expired, next };
   }, [student?.credits]);
+
+  const redeemCoupon = React.useCallback(async () => {
+    if (!couponCode.trim()) return;
+    if (!session.state.user) return;
+    if (couponRedeeming) return;
+    setCouponRedeeming(true);
+    setCouponRedeemMsg(null);
+    try {
+      const res = await fetch("/api/public/coupons/redeem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: couponCode }),
+      });
+      const json = await res.json().catch(() => null);
+      if (!res.ok || !json?.ok) {
+        setCouponRedeemMsg({
+          ok: false,
+          text: String(json?.error ?? "Couldn’t redeem coupon."),
+        });
+        return;
+      }
+      setCouponRedeemMsg({
+        ok: true,
+        text: "Coupon redeemed. +2 credits added.",
+      });
+      setCouponCode("");
+      await session.refreshSession();
+      try {
+        window.dispatchEvent(new CustomEvent("mj_profile_refresh"));
+      } catch {
+        // ignore
+      }
+    } catch (e) {
+      setCouponRedeemMsg({
+        ok: false,
+        text: e instanceof Error ? e.message : "Couldn’t redeem coupon.",
+      });
+    } finally {
+      setCouponRedeeming(false);
+    }
+  }, [couponCode, couponRedeeming, session]);
 
   const formatDateLabel = React.useCallback(
     (iso: string) => {
@@ -674,6 +721,47 @@ export default function AccountPage() {
                         })}
                       </div>
                     )}
+
+                    <div className="mt-6 rounded-lg border border-border bg-muted/20 p-4">
+                      <div className="text-sm font-semibold text-foreground">
+                        Coupon
+                      </div>
+                      <div className="mt-1 text-xs text-muted-foreground">
+                        Redeem a coupon to get +2 credits. One use per account.
+                      </div>
+                      <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <Input
+                          value={couponCode}
+                          onChange={(e) => {
+                            setCouponRedeemMsg(null);
+                            setCouponCode(e.target.value);
+                          }}
+                          placeholder="Enter coupon code"
+                          disabled={couponRedeeming}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="shrink-0"
+                          disabled={couponRedeeming || !couponCode.trim()}
+                          onClick={() => void redeemCoupon()}
+                        >
+                          {couponRedeeming ? "Redeeming…" : "Redeem"}
+                        </Button>
+                      </div>
+                      {couponRedeemMsg ? (
+                        <div
+                          className={cn(
+                            "mt-2 text-xs",
+                            couponRedeemMsg.ok
+                              ? "text-emerald-600 "
+                              : "text-rose-600 ",
+                          )}
+                        >
+                          {couponRedeemMsg.text}
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
                 </CardContent>
               </Card>

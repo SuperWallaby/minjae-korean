@@ -624,7 +624,10 @@ export function BookingCallClient({
   const postWaitingOnce = React.useCallback(async () => {
     const res = await fetch("/api/stream/waiting", {
       method: "POST",
-      headers: { "Content-Type": "application/json", ...(teacherKey.trim() ? { "x-teacher-key": teacherKey.trim() } : {}) },
+      headers: {
+        "Content-Type": "application/json",
+        ...(teacherKey.trim() ? { "x-teacher-key": teacherKey.trim() } : {}),
+      },
       body: JSON.stringify({ bookingId }),
     });
     const j = await res.json().catch(() => null);
@@ -1545,7 +1548,8 @@ export function BookingCallClient({
                       typeof browserTz === "string" && browserTz.trim()
                         ? browserTz.trim()
                         : siteZone;
-                    const displayZone = DateTime.local().setZone(preferred).isValid
+                    const displayZone = DateTime.local().setZone(preferred)
+                      .isValid
                       ? preferred
                       : siteZone;
 
@@ -1783,10 +1787,10 @@ export function BookingCallClient({
 
                     {hasBlocked ? (
                       <div className="rounded-lg border border-amber-500/50 bg-amber-500/10 px-3 py-3 text-sm">
-                        <div className="font-medium text-amber-800 dark:text-amber-200">
+                        <div className="font-medium text-amber-800">
                           If permissions are blocked
                         </div>
-                        <ul className="mt-2 list-inside list-disc space-y-1 text-amber-800/90 dark:text-amber-200/90">
+                        <ul className="mt-2 list-inside list-disc space-y-1 text-amber-800/90">
                           <li>
                             Click the <strong>lock</strong> (or camera/mic icon)
                             in the address bar.
