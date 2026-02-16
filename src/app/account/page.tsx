@@ -407,7 +407,7 @@ export default function AccountPage() {
               {(
                 [
                   { id: "bookings", label: "Bookings", Icon: CalendarDays },
-                  { id: "notes", label: "Talk notes", Icon: FileText },
+                  { id: "notes", label: "Recap notes", Icon: FileText },
                   { id: "profile", label: "Profile", Icon: User },
                   { id: "payments", label: "Payments", Icon: CreditCard },
                 ] as const
@@ -677,7 +677,7 @@ export default function AccountPage() {
             {tab === "notes" && (
               <Card className="h-full flex flex-col">
                 <CardHeader>
-                  <CardTitle>Talk notes</CardTitle>
+                  <CardTitle>Recap notes</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1">
                   {studentLoading ? (

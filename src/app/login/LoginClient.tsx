@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import * as React from "react";
+import { MailCheck } from "lucide-react";
 
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
@@ -95,8 +96,21 @@ export function LoginClient() {
               </Button>
 
               {sent ? (
-                <div className="rounded-md border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
-                  Check your inbox. Click the link to sign in.
+                <div className="rounded-md border border-border bg-muted/40 p-3">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full border border-border bg-background">
+                      <MailCheck className="size-4 text-foreground/70" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold text-foreground">
+                        Check your inbox
+                      </div>
+                      <div className="mt-0.5 text-sm text-muted-foreground">
+                        Click the login link to sign in. (If you don’t see it,
+                        check Spam.)
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ) : null}
 

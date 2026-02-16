@@ -152,7 +152,9 @@ export function ConfirmBookingModal(props: {
                   phoneNumber: digits,
                 });
               } finally {
-                setIsSubmitting(false);
+                setTimeout(() => {
+                  setIsSubmitting(false);
+                }, 1000);
               }
             }}
             disabled={disabled || isSubmitting}

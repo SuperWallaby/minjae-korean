@@ -50,6 +50,7 @@ export function SiteNavbar() {
   const { state } = useMockSession();
   const [activeHash, setActiveHash] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const ids = ["approach", "ways-to-use"];
@@ -73,7 +74,7 @@ export function SiteNavbar() {
 
     for (const el of elements) obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <header className="mb-5 sticky top-5 z-40">
@@ -91,7 +92,7 @@ export function SiteNavbar() {
                   />
                   <NavLink
                     href="/#ways-to-use"
-                    label="Ways to use"
+                    label="Class pass"
                     activeOverride={activeHash === "ways-to-use"}
                   />
                   <NavLink href="/booking" label="Pick a time" />
@@ -202,14 +203,14 @@ export function SiteNavbar() {
                           onClick={() => setMobileOpen(false)}
                           className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                         >
-                          Approach
+                          Home
                         </Link>
                         <Link
                           href="/#ways-to-use"
                           onClick={() => setMobileOpen(false)}
                           className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                         >
-                          Ways to use
+                          Class pass
                         </Link>
                         <Link
                           href="/booking"

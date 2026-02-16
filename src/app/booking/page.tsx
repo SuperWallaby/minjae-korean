@@ -1091,13 +1091,9 @@ export default function BookingPage() {
                   )}
                   {session.state.user &&
                     (profile?.creditsRemaining ?? 0) < creditsNeeded && (
-                      <CheckoutButton
-                        product="single"
-                        className="w-full -mb-2"
-                        variant="ghost"
-                      >
-                        Get credits
-                      </CheckoutButton>
+                      <Button asChild className="w-full" variant="ghost">
+                        <Link href="/#ways-to-use">Get credits</Link>
+                      </Button>
                     )}
                 </CardFooter>
               </Card>
@@ -1120,10 +1116,11 @@ export default function BookingPage() {
               </Card>
               {session.state.user && creditsLabel && (
                 <Button
+                  asChild
                   variant="ghost"
                   className="w-full hover:bg-muted text-stone-500 rounded-md px-3 py-2 text-center text-sm justify-center flex mt-2"
                 >
-                  {creditsLabel}
+                  <Link href="/#ways-to-use">{creditsLabel}</Link>
                 </Button>
               )}
             </div>
@@ -1156,22 +1153,22 @@ export default function BookingPage() {
       <Modal
         open={gate === "pricing"}
         onClose={() => setGate("none")}
-        title="Access required"
-        description="You can pick a time once you have credits."
+        title="Class pass required"
+        description="You need a class pass to book a lesson."
         footer={
           <>
             <Button variant="outline" onClick={() => setGate("none")}>
-              Close
+              Maybe later
             </Button>
             <Link href="/#ways-to-use">
-              <Button>Buy passes</Button>
+              <Button>Get class pass</Button>
             </Link>
           </>
         }
       >
         <div className="text-sm text-muted-foreground">
-          Payments are handled by Stripe Checkout, and credits are added to your
-          account via webhook.
+          Purchase a class pass to reserve your session. Your pass will be
+          available immediately after payment.
         </div>
       </Modal>
 

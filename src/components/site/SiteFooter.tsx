@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Link from "next/link";
 import * as React from "react";
@@ -7,12 +7,12 @@ import {
   Copy,
   Instagram,
   Mail,
-  MessageCircle,
-  MessageSquare,
   Phone,
+  MessageSquare,
   Twitter,
   Youtube,
 } from "lucide-react";
+import Image from "next/image";
 
 import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
@@ -39,7 +39,7 @@ export function SiteFooter() {
   }, []);
 
   const pillClassName =
-    "inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30";
+    "cursor-pointer inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30";
 
   return (
     <footer className="bg-[#14110d] text-white">
@@ -54,23 +54,29 @@ export function SiteFooter() {
             <div className="font-semibold text-white/80">Contact</div>
             <div className="mt-1 flex flex-wrap items-center gap-2">
               <a
-                href="tel:+821052374492"
+                href="sms:+821052374492"
                 className={pillClassName}
-                aria-label="Call +82 10 5237 4492"
+                aria-label="SMS +82 10 5237 4492"
               >
-                <Phone className="size-3.5" />
+                <MessageSquare className="size-3.5" />
                 <span className="tabular-nums">+82 10 5237 4492</span>
               </a>
               <button
                 type="button"
                 className={pillClassName}
-                onClick={() => void copyText("kakao", "@Kaja")}
+                onClick={() => void copyText("kakao", "@kaja_korean")}
                 title="Copy Kakao ID"
-                aria-label="Copy Kakao ID @Kaja"
+                aria-label="Copy Kakao ID @kaja_korean"
               >
-                <MessageCircle className="size-3.5" />
+                <Image
+                  src="/kakao-icon.svg"
+                  alt="Kakao"
+                  width={18}
+                  height={18}
+                  className="object-contain"
+                />
                 <span>Kakao</span>
-                <span className="text-white/55">@Kaja</span>
+                <span className="text-white/55">@kaja_korean</span>
                 {copiedKey === "kakao" ? (
                   <Check className="size-3.5 text-white/90" />
                 ) : (
@@ -85,17 +91,23 @@ export function SiteFooter() {
                 aria-label="Open WhatsApp chat"
                 title="Open WhatsApp chat"
               >
-                <MessageSquare className="size-3.5" />
+                <Image
+                  src="/ws-icon.svg"
+                  alt="WhatsApp"
+                  width={18}
+                  height={18}
+                  className="object-contain"
+                />
                 <span>WhatsApp</span>
-                <span className="text-white/55">@kaja</span>
+                <span className="text-white/55">@kaja_korean</span>
               </a>
               <a
-                href="mailto:kaja95@gmail.com"
+                href="mailto:minjae@kajakorean.com"
                 className={pillClassName}
-                aria-label="Email kaja95@gmail.com"
+                aria-label="Email minjae@kajakorean.com"
               >
                 <Mail className="size-3.5" />
-                <span className="tabular-nums">kaja95@gmail.com</span>
+                <span className="tabular-nums">minjae@kajakorean.com</span>
               </a>
             </div>
           </div>
@@ -104,7 +116,7 @@ export function SiteFooter() {
         <div className="text-sm text-white/70 md:justify-self-end md:text-right">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:justify-end">
             <Link href="/#ways-to-use" className="hover:text-white">
-              Ways to use Korean
+              Class pass
             </Link>
             <Link href="/posts" className="hover:text-white">
               Posts
@@ -119,11 +131,11 @@ export function SiteFooter() {
 
           <div className="mt-4 flex items-center gap-3 md:justify-end">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/kaja_minjae"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/75 transition hover:text-white"
-              aria-label="Instagram"
+              aria-label="Instagram @kaja_minjae"
             >
               <Instagram className="size-4" />
             </a>

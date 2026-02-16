@@ -9,6 +9,7 @@ import { posts } from "@/lib/posts";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { StaggerReveal } from "@/components/ui/StaggerReveal";
 
 function postThumb(slug: string) {
   if (slug.includes("freezing")) return "/placeholders/post-1.svg";
@@ -20,9 +21,9 @@ export default function Home() {
   return (
     <div className="space-y-24">
       {/* 1) Hero (1 column) */}
-      <RevealOnScroll as="section" className="pt-16 sm:pt-24">
+      <section className="pt-16 sm:pt-24">
         <Container className="relative">
-          <div className="relative mx-auto max-w-4xl text-center">
+          <StaggerReveal className="relative mx-auto max-w-4xl text-center">
             <div className="text-sm font-semibold tracking-wide text-primary">
               Daily Korean Practice
             </div>
@@ -47,9 +48,9 @@ export default function Home() {
                 />
               </div>
             </div>
-          </div>
+          </StaggerReveal>
         </Container>
-      </RevealOnScroll>
+      </section>
 
       {/* 2) Context-first talking */}
       <RevealOnScroll
@@ -60,46 +61,48 @@ export default function Home() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="order-2 max-w-xl lg:order-1">
-              <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                Talk in real life
-              </h2>
-              <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                Instead of “studying Korean”, be free to talk. <br />
-                Be freindly with Korean.
-              </p>
-              <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-3xl bg-included-2 p-6">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src="/talk1.webp"
-                      alt="Start from a topic"
-                      className="size-5 text-black/60"
-                    />
-                    <div className="text-sm font-semibold">
-                      Start from a topic
+              <StaggerReveal>
+                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Real conversation, not studying
+                </h2>
+                <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+                  Instead of studying, just start real conversation. <br />{" "}
+                  Becomes natural through 1:1 session.
+                </p>
+                <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-3xl bg-included-2 p-6">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src="/talk1.webp"
+                        alt="Start from a topic"
+                        className="size-5 text-black/60"
+                      />
+                      <div className="text-sm font-semibold">
+                        Friendly Talking
+                      </div>
+                    </div>
+                    <div className="mt-2 text-sm text-muted-foreground">
+                      Minjae will bring up a right topic for you to talk about.
                     </div>
                   </div>
-                  <div className="mt-2 text-sm text-muted-foreground">
-                    Minjae will bring up a right topic for you to talk about.
-                  </div>
-                </div>
-                <div className="rounded-3xl bg-included-3 p-6">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src="/pen-line.webp"
-                      alt="Refine it while you talk"
-                      className="w-4.5 text-black/60"
-                    />
-                    <div className="text-sm font-semibold">
-                      Refine it while you talk
+                  <div className="rounded-3xl bg-included-3 p-6">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src="/pen-line.webp"
+                        alt="Refine it while you talk"
+                        className="w-4.5 text-black/60"
+                      />
+                      <div className="text-sm font-semibold">
+                        Refine it while you talk
+                      </div>
+                    </div>
+                    <div className="mt-2 text-sm text-muted-foreground">
+                      Small corrections you can reuse immediately, and we
+                      practice it together.
                     </div>
                   </div>
-                  <div className="mt-2 text-sm text-muted-foreground">
-                    Small corrections you can reuse immediately, and we practice
-                    it together.
-                  </div>
                 </div>
-              </div>
+              </StaggerReveal>
             </div>
             <div className="order-1 overflow-hidden rounded-3xl border border-border bg-muted/60 lg:order-2">
               <div className="relative aspect-video w-full">
@@ -136,17 +139,20 @@ export default function Home() {
         className="scroll-mt-24 py-10 sm:py-16"
       >
         <Container>
-          <h2 className="text-center font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            Ways to use Korean
-          </h2>
-          <p className="mt-3 text-center text-sm text-muted-foreground sm:text-base">
-            Pick a rhythm that fits. The focus stays on using Korean with
-            content.
-          </p>
+          <StaggerReveal className="text-center">
+            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+              Class passes
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base"></p>
+          </StaggerReveal>
 
-          <div className="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-3">
-            <div className="relative overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
-              <div className="flex items-center gap-3">
+          <StaggerReveal
+            as="div"
+            className="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-3 text-left"
+            staggerMs={110}
+          >
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
+              <div className="flex items-center gap-3 h-11">
                 <div className="grid px-2 py-1 place-items-center rounded-2xl bg-(--included-1)/60">
                   <Image
                     width={30}
@@ -172,33 +178,35 @@ export default function Home() {
                 A gentle first talk to see how you currently use Korean, and set
                 a simple direction.
               </div>
-              <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
-                <li>• 50 min</li>
-                <li>• Only available for first time.</li>
-                <li>• Pick a time, when you want to talk</li>
-              </ul>
-              <div className="mt-6">
-                <Suspense
-                  fallback={
-                    <Button size="sm" disabled>
-                      Be a member
-                    </Button>
-                  }
-                >
-                  <CheckoutButton
-                    product="trial"
-                    size="sm"
-                    variant="primary"
-                    className="font-serif"
+              <div className="mt-8 flex flex-1 flex-col justify-between">
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• 50 min</li>
+                  <li>• Only available for first time.</li>
+                  <li>• Pick a time, when you want to talk</li>
+                </ul>
+                <div className="pt-6">
+                  <Suspense
+                    fallback={
+                      <Button size="sm" disabled>
+                        Be a member
+                      </Button>
+                    }
                   >
-                    Be a member
-                  </CheckoutButton>
-                </Suspense>
+                    <CheckoutButton
+                      product="trial"
+                      size="sm"
+                      variant="primary"
+                      className="font-serif"
+                    >
+                      Be a member
+                    </CheckoutButton>
+                  </Suspense>
+                </div>
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
-              <div className="flex items-center gap-3">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
+              <div className="flex items-center gap-3 h-11">
                 <div className="grid p-2 place-items-center rounded-2xl bg-(--included-2)/60">
                   <Image
                     width={44}
@@ -224,33 +232,35 @@ export default function Home() {
                 A flexible way to use Korean, purchase more when you want to
                 talk.
               </div>
-              <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
-                <li>• 50 min</li>
-                <li>• Pick a time, when you want to talk</li>
-                <li>• Valid for a month</li>
-              </ul>
-              <div className="mt-6">
-                <Suspense
-                  fallback={
-                    <Button size="sm" disabled>
-                      Be a member
-                    </Button>
-                  }
-                >
-                  <CheckoutButton
-                    product="single"
-                    size="sm"
-                    variant="primary"
-                    className="font-serif"
+              <div className="mt-8 flex flex-1 flex-col justify-between">
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• 50 min</li>
+                  <li>• Pick a time, when you want to talk</li>
+                  <li>• Valid for a month</li>
+                </ul>
+                <div className="pt-6">
+                  <Suspense
+                    fallback={
+                      <Button size="sm" disabled>
+                        Be a member
+                      </Button>
+                    }
                   >
-                    Be a member
-                  </CheckoutButton>
-                </Suspense>
+                    <CheckoutButton
+                      product="single"
+                      size="sm"
+                      variant="primary"
+                      className="font-serif"
+                    >
+                      Be a member
+                    </CheckoutButton>
+                  </Suspense>
+                </div>
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
-              <div className="flex items-center gap-3">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
+              <div className="flex items-center gap-3 h-11">
                 <div className="grid p-2 place-items-center rounded-2xl bg-(--included-3)/60">
                   <Image
                     width={35}
@@ -276,31 +286,33 @@ export default function Home() {
                 A steady routine for continuity. Ideal if you like a simple
                 monthly cadence.
               </div>
-              <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
-                <li>• Book a time, when you want to talk</li>
-                <li>• Continuity (same style, same flow)</li>
-                <li>• Valid for a month</li>
-              </ul>
-              <div className="mt-6">
-                <Suspense
-                  fallback={
-                    <Button size="sm" disabled>
-                      Be a member
-                    </Button>
-                  }
-                >
-                  <CheckoutButton
-                    product="monthly"
-                    size="sm"
-                    variant="primary"
-                    className="font-serif"
+              <div className="mt-8 flex flex-1 flex-col justify-between">
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Book a time, when you want to talk</li>
+                  <li>• Continuity (same style, same flow)</li>
+                  <li>• Valid for a month</li>
+                </ul>
+                <div className="pt-6">
+                  <Suspense
+                    fallback={
+                      <Button size="sm" disabled>
+                        Be a member
+                      </Button>
+                    }
                   >
-                    Be a member
-                  </CheckoutButton>
-                </Suspense>
+                    <CheckoutButton
+                      product="monthly"
+                      size="sm"
+                      variant="primary"
+                      className="font-serif"
+                    >
+                      Be a member
+                    </CheckoutButton>
+                  </Suspense>
+                </div>
               </div>
             </div>
-          </div>
+          </StaggerReveal>
         </Container>
       </RevealOnScroll>
 
@@ -308,21 +320,18 @@ export default function Home() {
       <RevealOnScroll as="section" className="py-10 sm:py-16">
         <Container>
           <div className="mx-auto max-w-6xl">
-            <div className="max-w-2xl">
+            <StaggerReveal className="max-w-2xl">
               <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                While you talk
+                What to expect in our session
               </h2>
-              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                Everything is designed to keep momentum.
-              </p>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                Support tools are light, fast, and practical—so you can keep
-                talking while still capturing what matters.
-              </p>
-            </div>
+            </StaggerReveal>
 
             <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:items-stretch">
-              <div className="grid gap-6 lg:col-span-3">
+              <StaggerReveal
+                as="div"
+                className="grid gap-6 lg:col-span-3"
+                staggerMs={120}
+              >
                 <div className="rounded-3xl bg-included-1 p-6">
                   <div className="flex items-center gap-3">
                     <Image
@@ -332,7 +341,7 @@ export default function Home() {
                       alt="Notes"
                       className=" text-black/60"
                     />
-                    <div className="text-sm font-semibold">Talk notes</div>
+                    <div className="text-sm font-semibold">Recap notes</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
                     A clean recap, will be sent to you right after the talk.
@@ -351,12 +360,17 @@ export default function Home() {
                     <div className="text-sm font-semibold">English support</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    When you get stuck, Minjae will help you with English.
+                    When you get stuck, Minjae will help you with English don't
+                    worry about language barrier.{" "}
                   </div>
                 </div>
-              </div>
+              </StaggerReveal>
 
-              <div className="overflow-hidden rounded-3xl bg-card lg:col-span-6">
+              <RevealOnScroll
+                as="div"
+                className="overflow-hidden rounded-3xl bg-card lg:col-span-6"
+                delayMs={80}
+              >
                 <div className="relative aspect-4/3 w-full bg-muted/40">
                   <Image
                     src="/placeholders/okay-session.jpg"
@@ -366,9 +380,14 @@ export default function Home() {
                     unoptimized
                   />
                 </div>
-              </div>
+              </RevealOnScroll>
 
-              <div className="grid gap-6 lg:col-span-3">
+              <StaggerReveal
+                as="div"
+                className="grid gap-6 lg:col-span-3"
+                staggerMs={120}
+                delayMs={120}
+              >
                 <div className="rounded-3xl bg-included-3 p-6">
                   <div className="flex items-center gap-3">
                     <img
@@ -376,7 +395,7 @@ export default function Home() {
                       alt="Subtitles"
                       className="w-11 text-black/60"
                     />
-                    <div className="text-sm font-semibold">Subtitles</div>
+                    <div className="text-sm font-semibold">Pronunciation</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
                     Pronunciation and natural phrasing practice while you talk.
@@ -398,7 +417,7 @@ export default function Home() {
                     better version.
                   </div>
                 </div>
-              </div>
+              </StaggerReveal>
             </div>
           </div>
         </Container>
@@ -409,20 +428,26 @@ export default function Home() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-4">
-              <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                Frequently asked questions
-              </h2>
-              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                A few practical details, so you know what to expect.
-              </p>
+              <StaggerReveal>
+                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Frequently asked questions
+                </h2>
+                <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+                  A few practical details, so you know what to expect.
+                </p>
+              </StaggerReveal>
             </div>
 
             <div className="lg:col-span-8">
-              <div className="border-t border-border/70">
+              <StaggerReveal
+                as="div"
+                className="border-t border-border/70"
+                staggerMs={70}
+              >
                 {[
                   {
-                    q: "What happens in a typical talk?",
-                    a: "We start from a topic minjae will bring up, talk it through, and keep the flow. I’ll write small corrections you can reuse immediately, then we end with a simple recap.",
+                    q: "What happens in a typical session?",
+                    a: "We start from a topic minjae will bring up, talk it through, and keep the flow. Minjae will write small corrections you can reuse immediately, then we end with a simple recap.",
                   },
                   {
                     q: "What level is this for?",
@@ -437,12 +462,12 @@ export default function Home() {
                     a: "25 or 50 minutes, you can choose the duration when you book a time.",
                   },
                   {
-                    q: "What should be prepared for the talk?",
+                    q: "What should be prepared for thes session?",
                     a: "To keep the conversation smooth, you should be able to use very beginner level Korean.",
                   },
                   {
                     q: "Do I get a recap?",
-                    a: "Yes. You’ll get recap, small corrections, and a simple next-step to continue.",
+                    a: "Yes. You’ll get recap! Minjae will write a summary of the session, and send it to you right after the session.",
                   },
                 ].map((item) => (
                   <details
@@ -455,12 +480,12 @@ export default function Home() {
                         +
                       </span>
                     </summary>
-                    <div className="mb-4 text-base leading-7 text-muted-foreground">
+                    <div className="mb-5 text-base leading-7 text-muted-foreground">
                       {item.a}
                     </div>
                   </details>
                 ))}
-              </div>
+              </StaggerReveal>
             </div>
           </div>
         </Container>
@@ -469,7 +494,7 @@ export default function Home() {
       {/* 8) CTA */}
       <RevealOnScroll as="section" className="py-10 sm:py-14">
         <Container>
-          <div className="mx-auto max-w-3xl text-center">
+          <StaggerReveal className="mx-auto max-w-3xl text-center">
             <h2 className="font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-5xl">
               Start practicing with Minjae.
             </h2>
@@ -495,7 +520,7 @@ export default function Home() {
                 <Link href="/login">Sign in</Link>
               </Button>
             </div>
-          </div>
+          </StaggerReveal>
         </Container>
       </RevealOnScroll>
 
@@ -504,7 +529,11 @@ export default function Home() {
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-12">
-              <div className="flex w-full items-end justify-between">
+              <StaggerReveal
+                as="div"
+                className="flex w-full items-end justify-between"
+                staggerMs={80}
+              >
                 <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
                   Learn With Kaja News
                 </h2>
@@ -518,9 +547,14 @@ export default function Home() {
                     More <ArrowRight className="size-4" />
                   </Link>
                 </Button>
-              </div>
+              </StaggerReveal>
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <StaggerReveal
+                as="div"
+                className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                staggerMs={90}
+                delayMs={80}
+              >
                 {posts.slice(0, 3).map((p) => (
                   <Link
                     key={p.slug}
@@ -545,7 +579,7 @@ export default function Home() {
                     </div>
                   </Link>
                 ))}
-              </div>
+              </StaggerReveal>
             </div>
           </div>
         </Container>

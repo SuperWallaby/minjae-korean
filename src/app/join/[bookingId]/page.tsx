@@ -331,7 +331,7 @@ export default function JoinGuidePage() {
   const emailHref = React.useMemo(() => {
     const key = String(booking?.code || booking?.id || bookingId || "").trim();
     const subject = key ? `Booking help (${key})` : "Booking help";
-    return `mailto:kaja95@gmail.com?subject=${encodeURIComponent(
+    return `mailto:minjae@kajakorean.com?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(contactMessage)}`;
   }, [booking?.code, booking?.id, bookingId, contactMessage]);
@@ -757,14 +757,16 @@ export default function JoinGuidePage() {
                     type="button"
                     variant="outline"
                     className="justify-between"
-                    onClick={() => void copyContactText("kakao", "@Kaja")}
+                    onClick={() =>
+                      void copyContactText("kakao", "@kaja_korean")
+                    }
                     title="Copy KakaoTalk ID"
                   >
                     <span className="inline-flex items-center gap-2">
                       <MessageCircle className="size-4" />
                       KakaoTalk
                       <span className="text-xs text-muted-foreground/80">
-                        @Kaja
+                        @kaja_korean
                       </span>
                     </span>
                     {copiedContactKey === "kakao" ? (
