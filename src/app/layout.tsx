@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Let’s Talk in Korean`,
     description: SITE_DESCRIPTION,
-    images: [{ url: "/brand/og.webp" }],
+    images: [{ url: "/brand/og.png" }],
   },
   twitter: {
     card: "summary_large_image",
