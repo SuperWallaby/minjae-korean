@@ -18,7 +18,6 @@ import {
 import { Modal } from "@/components/ui/Modal";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
-import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import Image from "next/image";
 import {
   DEFAULT_PHONE_COUNTRY,
@@ -161,6 +160,7 @@ export default function BookingPage() {
     creditsRemaining: number;
     nextExpiry?: string;
   } | null>(null);
+  const [profileReloadTick, setProfileReloadTick] = React.useState(0);
   const [studentId, setStudentId] = React.useState("");
   const [contactPrefill, setContactPrefill] =
     React.useState<ConfirmBookingContact>({
@@ -586,7 +586,14 @@ export default function BookingPage() {
     return () => {
       cancelled = true;
     };
-  }, [session.state.user]);
+  }, [profileReloadTick, session.state.user]);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onRefresh = () => setProfileReloadTick((v) => v + 1);
+    window.addEventListener("mj_profile_refresh", onRefresh);
+    return () => window.removeEventListener("mj_profile_refresh", onRefresh);
+  }, []);
 
   const goPrevWeek = () => {
     setSelectedSlotId(null);

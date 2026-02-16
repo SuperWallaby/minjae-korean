@@ -360,7 +360,7 @@ export default function Home() {
                     <div className="text-sm font-semibold">English support</div>
                   </div>
                   <div className="mt-2 text-sm text-muted-foreground">
-                    When you get stuck, Minjae will help you with English don't
+                    When you get stuck, Minjae will help you with English don’t
                     worry about language barrier.{" "}
                   </div>
                 </div>

@@ -33,6 +33,10 @@ const threadIdKey = "mj_support_thread_id_v1";
 const emailKey = "mj_support_email_v1";
 const nameKey = "mj_support_name_v1";
 
+function isObjectIdLike(id: string) {
+  return /^[a-f0-9]{24}$/i.test(String(id ?? "").trim());
+}
+
 function isEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
@@ -166,7 +170,10 @@ export function SupportChatWidget() {
     if (typeof window === "undefined") return;
     try {
       const id = window.localStorage.getItem(threadIdKey) ?? "";
-      if (id.trim()) setThreadId(id.trim());
+      if (id.trim()) {
+        if (isObjectIdLike(id.trim())) setThreadId(id.trim());
+        else window.localStorage.removeItem(threadIdKey);
+      }
       const storedEmail = window.localStorage.getItem(emailKey) ?? "";
       const storedName = window.localStorage.getItem(nameKey) ?? "";
       if (storedEmail.trim()) setEmailInput(storedEmail.trim());
@@ -325,7 +332,13 @@ export function SupportChatWidget() {
   }, [open, messages.length]);
 
   const ensureThread = React.useCallback(async (): Promise<string> => {
-    if (threadId) return threadId;
+    if (threadId && isObjectIdLike(threadId)) return threadId;
+    if (threadId && !isObjectIdLike(threadId)) {
+      try {
+        window.localStorage.removeItem(threadIdKey);
+      } catch {}
+      setThreadId("");
+    }
 
     const name = nameInput.trim();
     const { res, json } = await postJson("/api/public/support/threads", {
@@ -335,6 +348,7 @@ export function SupportChatWidget() {
       throw new Error(json?.error ?? "Couldn’t start chat");
     }
     const id = String(json.thread.id);
+    if (!isObjectIdLike(id)) throw new Error("Couldn’t start chat");
     setThreadId(id);
     try {
       window.localStorage.setItem(threadIdKey, id);
@@ -346,7 +360,7 @@ export function SupportChatWidget() {
 
   const sendTyping = React.useCallback(
     async (isTyping: boolean) => {
-      if (!threadId) return;
+      if (!threadId || !isObjectIdLike(threadId)) return;
       try {
         await fetch(
           `/api/public/support/threads/${encodeURIComponent(threadId)}/typing`,

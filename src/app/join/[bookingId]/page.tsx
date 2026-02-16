@@ -469,10 +469,12 @@ export default function JoinGuidePage() {
             {statusUI.text}
           </div>
           <div className="mt-4 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            You’re all set ✨
+            {bookingStatus === "cancelled" ? "Booking cancelled" : "You’re all set ✨"}
           </div>
           <div className="mt-2 text-sm text-muted-foreground sm:text-base">
-            Your session with Minjae is booked.
+            {bookingStatus === "cancelled"
+              ? "Your booking has been cancelled."
+              : "Your session with Minjae is booked."}
           </div>
         </div>
 
@@ -720,8 +722,7 @@ export default function JoinGuidePage() {
                 </div>
               )}
               <div className="text-xs">
-                If you have trouble joining, please send me a message via chat.
-                :)
+                If you have trouble joining, please send me a message. :)
               </div>
 
               <div className="border-t border-border pt-4">

@@ -26,8 +26,11 @@ function flattenChildren(children: React.ReactNode): React.ReactNode[] {
   const out: React.ReactNode[] = [];
   React.Children.forEach(children, (child) => {
     if (child == null || child === false) return;
-    if (React.isValidElement(child) && child.type === React.Fragment) {
-      out.push(...flattenChildren((child as any).props.children));
+    if (
+      React.isValidElement<{ children?: React.ReactNode }>(child) &&
+      child.type === React.Fragment
+    ) {
+      out.push(...flattenChildren(child.props.children));
       return;
     }
     out.push(child);
@@ -98,8 +101,7 @@ export function StaggerReveal<E extends React.ElementType = "div">(
 
   return (
     <Comp
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={(node: any) => {
+      ref={(node: HTMLElement | null) => {
         ref.current = node;
       }}
       className={className}
@@ -116,12 +118,15 @@ export function StaggerReveal<E extends React.ElementType = "div">(
         };
 
         if (React.isValidElement(child)) {
-          const prevClass = (child.props as { className?: string }).className;
-          const prevStyle = (child.props as { style?: React.CSSProperties })
-            .style;
-          return React.cloneElement(child, {
-            // @ts-ignore
-            className: cn(itemClass, prevClass) as string,
+          const el =
+            child as React.ReactElement<{
+              className?: string;
+              style?: React.CSSProperties;
+            }>;
+          const prevClass = el.props.className;
+          const prevStyle = el.props.style;
+          return React.cloneElement(el, {
+            className: cn(itemClass, prevClass),
             style: { ...itemStyle, ...prevStyle },
           });
         }

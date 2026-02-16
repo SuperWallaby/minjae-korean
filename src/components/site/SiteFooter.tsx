@@ -7,7 +7,6 @@ import {
   Copy,
   Instagram,
   Mail,
-  Phone,
   MessageSquare,
   Twitter,
   Youtube,
@@ -46,8 +45,8 @@ export function SiteFooter() {
       <Container className="grid gap-8 py-10 md:grid-cols-2 md:items-start">
         <div className="text-sm text-white/70">
           <Logo mode="footer" />
-          <div className="mt-3 max-w-sm text-xs leading-6 text-white/60">
-            Real life Korean practice with Minjae.
+          <div className="mt-0 max-w-sm text-xs leading-6 text-white/60">
+            Korean 1:1 practice with Minjae.
           </div>
 
           <div className="mt-5 grid gap-1 text-xs">

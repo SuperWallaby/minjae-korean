@@ -340,7 +340,12 @@ export default function AccountPage() {
           return;
         }
         setBookingActionMsg("Booking cancelled.");
-        await loadBookings();
+        await Promise.all([loadBookings(), session.refreshSession()]);
+        try {
+          window.dispatchEvent(new CustomEvent("mj_profile_refresh"));
+        } catch {
+          // ignore
+        }
       } catch (e) {
         setBookingActionMsg(
           e instanceof Error ? e.message : "Cancellation failed.",
@@ -349,7 +354,7 @@ export default function AccountPage() {
         setBookingActionId(null);
       }
     },
-    [loadBookings, session.state.user, sessionStudentId, student?.id],
+    [loadBookings, session, sessionStudentId, student?.id],
   );
 
   if (studentLoading && !session.state.student) return null;
