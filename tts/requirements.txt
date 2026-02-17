@@ -1,0 +1,6 @@
+pykokoro
+soundfile
+fastapi
+uvicorn
+nltk
+jamo

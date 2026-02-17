@@ -117,8 +117,11 @@ export function SiteFooter() {
             <Link href="/#ways-to-use" className="hover:text-white">
               Class pass
             </Link>
-            <Link href="/posts" className="hover:text-white">
-              Posts
+            <Link href="/news" className="hover:text-white">
+              News
+            </Link>
+            <Link href="/grammar" className="hover:text-white">
+              Grammar
             </Link>
             <Link href="/booking" className="hover:text-white">
               Pick a time

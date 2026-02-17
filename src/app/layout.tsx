@@ -21,7 +21,7 @@ const bricolage = Bricolage_Grotesque({
 
 const SITE_NAME = "Kaja";
 const SITE_DESCRIPTION =
-  "A place to use Korean from real context: read a prompt, talk it through, and keep a simple habit going.";
+  "A friendly place to practice Korean through 1:1 conversation and build real confidence.";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 const METADATA_BASE =

@@ -29,13 +29,19 @@ function safeGetReturnTo(pathname: string, search: string) {
 
 function setPendingCheckout(product: CheckoutProduct) {
   try {
-    window.sessionStorage.setItem(pendingKey, JSON.stringify({ product, ts: Date.now() }));
+    window.sessionStorage.setItem(
+      pendingKey,
+      JSON.stringify({ product, ts: Date.now() }),
+    );
   } catch {
     // ignore
   }
 }
 
-function consumePendingCheckout(): { product: CheckoutProduct; ts: number } | null {
+function consumePendingCheckout(): {
+  product: CheckoutProduct;
+  ts: number;
+} | null {
   if (pendingConsumed) return null;
   pendingConsumed = true;
   try {
@@ -43,10 +49,17 @@ function consumePendingCheckout(): { product: CheckoutProduct; ts: number } | nu
     window.sessionStorage.removeItem(pendingKey);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
-    const obj = parsed && typeof parsed === "object" ? (parsed as Record<string, unknown>) : null;
+    const obj =
+      parsed && typeof parsed === "object"
+        ? (parsed as Record<string, unknown>)
+        : null;
     const product = obj?.product;
     const ts = obj?.ts;
-    if ((product !== "trial" && product !== "single" && product !== "monthly") || typeof ts !== "number") return null;
+    if (
+      (product !== "trial" && product !== "single" && product !== "monthly") ||
+      typeof ts !== "number"
+    )
+      return null;
     return { product, ts };
   } catch {
     return null;
@@ -85,14 +98,19 @@ export function CheckoutButton({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const search = searchParams.toString() ? `?${searchParams.toString()}` : "";
-  const returnTo = React.useMemo(() => safeGetReturnTo(pathname, search), [pathname, search]);
+  const returnTo = React.useMemo(
+    () => safeGetReturnTo(pathname, search),
+    [pathname, search],
+  );
 
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [loginOpen, setLoginOpen] = React.useState(false);
   const [emailOpen, setEmailOpen] = React.useState(false);
   const [emailInput, setEmailInput] = React.useState("");
-  const [trialStatus, setTrialStatus] = React.useState<"unknown" | "available" | "used">("unknown");
+  const [trialStatus, setTrialStatus] = React.useState<
+    "unknown" | "available" | "used"
+  >("unknown");
 
   React.useEffect(() => {
     if (product !== "trial") return;
@@ -109,13 +127,20 @@ export function CheckoutButton({
     let cancelled = false;
     async function load() {
       try {
-        const res = await fetch(`/api/public/students/upsert?id=${encodeURIComponent(sid)}`, { cache: "no-store" });
+        const res = await fetch(
+          `/api/public/students/upsert?id=${encodeURIComponent(sid)}`,
+          { cache: "no-store" },
+        );
         const json = await res.json().catch(() => null);
         if (cancelled) return;
-        const credits = (json?.data?.student?.credits ?? []) as Array<{ product?: string }> | null;
-        const couponRedemptions = (json?.data?.student?.couponRedemptions ?? []) as Array<{ code?: string }> | null;
+        const credits = (json?.data?.student?.credits ?? []) as Array<{
+          product?: string;
+        }> | null;
+        const couponRedemptions = (json?.data?.student?.couponRedemptions ??
+          []) as Array<{ code?: string }> | null;
         const used =
-          (Array.isArray(credits) && credits.some((c) => c?.product === "trial")) ||
+          (Array.isArray(credits) &&
+            credits.some((c) => c?.product === "trial")) ||
           (Array.isArray(couponRedemptions) && couponRedemptions.length > 0);
         setTrialStatus(used ? "used" : "available");
       } catch {
@@ -145,14 +170,15 @@ export function CheckoutButton({
           }),
         });
         const json = await res.json().catch(() => null);
-        if (!res.ok || !json?.ok || !json?.url) throw new Error(json?.error ?? "Checkout failed");
+        if (!res.ok || !json?.ok || !json?.url)
+          throw new Error(json?.error ?? "Checkout failed");
         window.location.href = json.url as string;
       } catch (e) {
         setError(e instanceof Error ? e.message : "Checkout failed");
         setLoading(false);
       }
     },
-    [loading, product, session.state.user?.studentId]
+    [loading, product, session.state.user?.studentId],
   );
 
   const start = React.useCallback(async () => {
@@ -216,7 +242,9 @@ export function CheckoutButton({
       {error && (
         <div className="mt-2 text-xs text-muted-foreground">{error}</div>
       )}
-      {product === "trial" && session.state.user && trialStatus === "used" ? (
+      {product === "trial" &&
+      session.state.student &&
+      trialStatus === "used" ? (
         <div className="mt-2 text-xs text-muted-foreground">
           First time offer is available once per account.
         </div>
@@ -239,7 +267,8 @@ export function CheckoutButton({
         }
       >
         <div className="text-sm text-muted-foreground">
-          After signing in, you’ll return to this page and we’ll continue checkout.
+          After signing in, you’ll return to this page and we’ll continue
+          checkout.
         </div>
       </Modal>
 
@@ -281,9 +310,13 @@ export function CheckoutButton({
             />
           </label>
           {!emailInput.trim() ? (
-            <div className="text-xs text-muted-foreground">We’ll use this email for your receipt and credits.</div>
+            <div className="text-xs text-muted-foreground">
+              We’ll use this email for your receipt and credits.
+            </div>
           ) : !isEmail(emailInput.trim()) ? (
-            <div className="text-xs text-muted-foreground">Please enter a valid email address.</div>
+            <div className="text-xs text-muted-foreground">
+              Please enter a valid email address.
+            </div>
           ) : null}
         </div>
       </Modal>

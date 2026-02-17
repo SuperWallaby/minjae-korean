@@ -5,19 +5,31 @@ import { Suspense } from "react";
 
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
-import { posts } from "@/lib/posts";
+import {
+  displayLevel,
+  formatNewsDate,
+  levelBadgeClass,
+  levelLabel,
+  type ReadingLevel,
+} from "@/lib/levelDisplay";
+import { listArticles } from "@/lib/articlesRepo";
+import { cn } from "@/lib/utils";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 
-function postThumb(slug: string) {
-  if (slug.includes("freezing")) return "/placeholders/post-1.svg";
-  if (slug.includes("phrasing")) return "/placeholders/post-2.svg";
-  return "/placeholders/post-3.svg";
-}
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  let news: Awaited<ReturnType<typeof listArticles>> = [];
+  try {
+    news = await listArticles(7);
+  } catch {
+    news = [];
+  }
+  const newsRest = news;
   return (
     <div className="space-y-24">
       {/* 1) Hero (1 column) */}
@@ -27,7 +39,7 @@ export default function Home() {
             <div className="text-sm font-semibold tracking-wide text-primary">
               Daily Korean Practice
             </div>
-            <h1 className="mt-5 font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-6xl">
+            <h1 className="mt-5  font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-6xl">
               Talk in Korean with Minjae.
             </h1>
             <div className="mt-4 text-muted-foreground">
@@ -524,7 +536,7 @@ export default function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 9) Posts */}
+      {/* 9) Posts — 메이저 카드 + 3단 그리드 */}
       <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
@@ -543,43 +555,79 @@ export default function Home() {
                   size="sm"
                   className="inline-flex items-center gap-2"
                 >
-                  <Link href="/posts">
+                  <Link href="/news">
                     More <ArrowRight className="size-4" />
                   </Link>
                 </Button>
               </StaggerReveal>
 
-              <StaggerReveal
-                as="div"
-                className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-                staggerMs={90}
-                delayMs={80}
-              >
-                {posts.slice(0, 3).map((p) => (
-                  <Link
-                    key={p.slug}
-                    href={`/posts/${p.slug}`}
-                    className="group rounded-3xl bg-white/50 p-4 outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  >
-                    <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-card">
-                      <Image
-                        src={postThumb(p.slug)}
-                        alt=""
-                        fill
-                        className="object-cover"
-                        unoptimized
-                      />
+              {news.length === 0 ? null : (
+                <StaggerReveal
+                  as="div"
+                  className="mt-6 space-y-6"
+                  staggerMs={90}
+                  delayMs={80}
+                >
+                  {/* 하단 3단 그리드 */}
+                  {newsRest.length > 0 ? (
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {newsRest.map((p) => (
+                        <Link
+                          key={p.slug}
+                          href={`/news/article/${encodeURIComponent(p.slug)}`}
+                          className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        >
+                          <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
+                            {p.imageThumb?.trim() || p.imageLarge?.trim() ? (
+                              <Image
+                                src={
+                                  p.imageThumb?.trim() ||
+                                  p.imageLarge?.trim() ||
+                                  ""
+                                }
+                                alt=""
+                                fill
+                                className="object-cover transition group-hover:scale-[1.02]"
+                                unoptimized
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              />
+                            ) : (
+                              <Image
+                                src="/placeholders/post-1.svg"
+                                alt=""
+                                fill
+                                className="object-cover"
+                                unoptimized
+                              />
+                            )}
+                          </div>
+                          <div className="flex flex-1 flex-col p-4">
+                            <h4 className=" font-serif font-semibold tracking-tight line-clamp-2">
+                              {p.title}
+                            </h4>
+                            <div className="flex items-center justify-between">
+                              <span
+                                className={cn(
+                                  "mt-2 inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
+                                  levelBadgeClass(
+                                    (p.level ?? 1) as ReadingLevel,
+                                  ),
+                                )}
+                              >
+                                {displayLevel((p.level ?? 1) as ReadingLevel)}{" "}
+                                {levelLabel((p.level ?? 1) as ReadingLevel)}
+                              </span>
+                              <p className="mt-auto pt-2 text-xs text-muted-foreground">
+                                {formatNewsDate(p.createdAt)}
+                              </p>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
                     </div>
-                    <div className="mt-3 text-xs text-muted-foreground">
-                      {new Date(p.dateISO).toLocaleDateString()} ·{" "}
-                      {p.readingTimeMin} min
-                    </div>
-                    <div className="mt-2 font-serif text-base font-semibold tracking-tight text-foreground">
-                      {p.title}
-                    </div>
-                  </Link>
-                ))}
-              </StaggerReveal>
+                  ) : null}
+                </StaggerReveal>
+              )}
             </div>
           </div>
         </Container>

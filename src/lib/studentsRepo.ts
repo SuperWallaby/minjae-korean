@@ -558,7 +558,8 @@ export async function redeemCouponByStudentId(args: {
 
   const credits = Math.max(1, Math.floor(Number(args.credits ?? 2)));
   const purchasedAt = nowIso();
-  const expiresAt = "9999-12-31T00:00:00.000Z";
+  // Use end-of-day UTC to avoid timezone offsets showing the previous day in some zones.
+  const expiresAt = new Date(Date.UTC(9999, 11, 31, 23, 59, 59, 999)).toISOString();
 
   const credit: CreditGrant = {
     id: `cr_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`,
