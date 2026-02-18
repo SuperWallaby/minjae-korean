@@ -23,6 +23,10 @@
   --included-3: #d6d4e3;
   --included-4: color-mix(in srgb, var(--included-2) 55%, var(--included-1));
 
+  /* Level badge 4 = 오렌지, 5 = 레드 */
+  --level-4-bg: #fcd5b0;
+  --level-5-bg: #f5b4b4;
+
   /* Existing app tokens (mapped to requested tokens) */
   --background: var(--bg-canvas);
   --foreground: var(--text-primary);

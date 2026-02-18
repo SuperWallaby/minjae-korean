@@ -95,6 +95,7 @@ export function SiteNavbar() {
                     label="Class pass"
                     activeOverride={activeHash === "ways-to-use"}
                   />
+                  <NavLink href="/grammar" label="Grammar" />
                   <NavLink href="/booking" label="Pick a time" />
                 </nav>
               </div>
@@ -211,6 +212,13 @@ export function SiteNavbar() {
                           className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                         >
                           Class pass
+                        </Link>
+                        <Link
+                          href="/grammar"
+                          onClick={() => setMobileOpen(false)}
+                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
+                        >
+                          Grammar
                         </Link>
                         <Link
                           href="/booking"

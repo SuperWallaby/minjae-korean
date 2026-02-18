@@ -435,10 +435,9 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         const ttsText = [
                           (draft.title ?? "").trim(),
                           ...(draft.paragraphs ?? []).flatMap((p) =>
-                            [
-                              p.subtitle?.trim(),
-                              p.content?.trim(),
-                            ].filter(Boolean),
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
                           ),
                         ]
                           .filter(Boolean)
@@ -485,10 +484,9 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         ![
                           (draft.title ?? "").trim(),
                           ...(draft.paragraphs ?? []).flatMap((p) =>
-                            [
-                              p.subtitle?.trim(),
-                              p.content?.trim(),
-                            ].filter(Boolean),
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
                           ),
                         ]
                           .filter(Boolean)
@@ -498,10 +496,9 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         const ttsText = [
                           (draft.title ?? "").trim(),
                           ...(draft.paragraphs ?? []).flatMap((p) =>
-                            [
-                              p.subtitle?.trim(),
-                              p.content?.trim(),
-                            ].filter(Boolean),
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
                           ),
                         ]
                           .filter(Boolean)
@@ -516,15 +513,14 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                           );
                           if (!res.ok || !json?.ok) {
                             setError(
-                              json?.error ?? "TTS failed (본문이 길면 실패할 수 있음)",
+                              json?.error ??
+                                "TTS failed (본문이 길면 실패할 수 있음)",
                             );
                             return;
                           }
                           const url = String(json?.url ?? "");
                           if (url) {
-                            setDraft((p) =>
-                              p ? { ...p, audio: url } : p,
-                            );
+                            setDraft((p) => (p ? { ...p, audio: url } : p));
                           }
                         } catch (err) {
                           setError(
@@ -640,7 +636,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                             src={String(draft[row.field])}
                             alt=""
                             fill
-                            className="object-cover"
+                            className="object-cover object-center"
                             unoptimized
                           />
                         </div>
@@ -825,10 +821,9 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                       const articleText = [
                         (draft.title ?? "").trim(),
                         ...(draft.paragraphs ?? []).flatMap((p) =>
-                          [
-                            p.subtitle?.trim(),
-                            p.content?.trim(),
-                          ].filter(Boolean),
+                          [p.subtitle?.trim(), p.content?.trim()].filter(
+                            Boolean,
+                          ),
                         ),
                       ]
                         .filter(Boolean)
@@ -907,9 +902,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         }
                       }
                     } catch (e) {
-                      setError(
-                        e instanceof Error ? e.message : "Auto failed",
-                      );
+                      setError(e instanceof Error ? e.message : "Auto failed");
                     } finally {
                       setAutoRunning(false);
                     }

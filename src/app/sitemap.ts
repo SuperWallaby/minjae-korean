@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
 
 const BASE =
@@ -14,9 +15,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/login`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/grammar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/grammar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/account`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
+
+  const grammarChapters = getAllChapters(grammarChapterList);
+  const grammarRoutes: MetadataRoute.Sitemap = grammarChapters.map((ch) => ({
+    url: `${baseUrl}/grammar/${encodeURIComponent(ch.slug)}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 
   let articles: Awaited<ReturnType<typeof listArticles>> = [];
   try {
@@ -32,5 +41,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...articleRoutes];
+  return [...staticRoutes, ...grammarRoutes, ...articleRoutes];
 }

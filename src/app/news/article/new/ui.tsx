@@ -95,13 +95,20 @@ export function ArticleNewClient() {
   const [error, setError] = React.useState<string | null>(null);
   const [uploadingKey, setUploadingKey] = React.useState<string | null>(null);
   const [ttsGenerating, setTtsGenerating] = React.useState(false);
-  const [articleEdgeTtsGenerating, setArticleEdgeTtsGenerating] = React.useState(false);
-  const [jsonParseError, setJsonParseError] = React.useState<string | null>(null);
-  const [unsplashForIdx, setUnsplashForIdx] = React.useState<number | null>(null);
+  const [articleEdgeTtsGenerating, setArticleEdgeTtsGenerating] =
+    React.useState(false);
+  const [jsonParseError, setJsonParseError] = React.useState<string | null>(
+    null,
+  );
+  const [unsplashForIdx, setUnsplashForIdx] = React.useState<number | null>(
+    null,
+  );
   const [wordTtsKey, setWordTtsKey] = React.useState<string | null>(null);
   const [exampleTtsKey, setExampleTtsKey] = React.useState<string | null>(null);
   const [autoRunning, setAutoRunning] = React.useState(false);
-  const fileInputRefs = React.useRef<Record<string, HTMLInputElement | null>>({});
+  const fileInputRefs = React.useRef<Record<string, HTMLInputElement | null>>(
+    {},
+  );
 
   const payloadForJson: ArticleJsonPayload = React.useMemo(
     () => ({
@@ -193,15 +200,18 @@ export function ArticleNewClient() {
     vocabulary,
   ]);
 
-  const setLevelChecked = React.useCallback((lvl: ReadingLevel, on: boolean) => {
-    setLevels((prev) => {
-      const set = new Set(prev ?? []);
-      if (on) set.add(lvl);
-      else set.delete(lvl);
-      const next = Array.from(set.values()).sort((a, b) => a - b);
-      return next.length ? next : [level];
-    });
-  }, [level]);
+  const setLevelChecked = React.useCallback(
+    (lvl: ReadingLevel, on: boolean) => {
+      setLevels((prev) => {
+        const set = new Set(prev ?? []);
+        if (on) set.add(lvl);
+        else set.delete(lvl);
+        const next = Array.from(set.values()).sort((a, b) => a - b);
+        return next.length ? next : [level];
+      });
+    },
+    [level],
+  );
 
   return (
     <div className="py-12 sm:py-16">
@@ -236,255 +246,214 @@ export function ArticleNewClient() {
             ) : null}
           </div>
           <div className="grid gap-8">
-          <section className="rounded-2xl border border-border bg-card p-5">
-            <div className="text-sm font-semibold">Basics</div>
-            <div className="mt-4 grid gap-3">
-              <label className="grid gap-1">
-                <span className="text-xs text-muted-foreground">Title</span>
-                <Input
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Article title"
-                />
-              </label>
+            <section className="rounded-2xl border border-border bg-card p-5">
+              <div className="text-sm font-semibold">Basics</div>
+              <div className="mt-4 grid gap-3">
+                <label className="grid gap-1">
+                  <span className="text-xs text-muted-foreground">Title</span>
+                  <Input
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Article title"
+                  />
+                </label>
 
-              <label className="grid gap-1">
-                <span className="text-xs text-muted-foreground">articleCode</span>
-                <Input
-                  value={articleCode}
-                  onChange={(e) => setArticleCode(e.target.value)}
-                  placeholder="(optional) teacher-provided code"
-                />
-              </label>
+                <label className="grid gap-1">
+                  <span className="text-xs text-muted-foreground">
+                    articleCode
+                  </span>
+                  <Input
+                    value={articleCode}
+                    onChange={(e) => setArticleCode(e.target.value)}
+                    placeholder="(optional) teacher-provided code"
+                  />
+                </label>
 
-              <div className="grid gap-2">
-                <div className="text-xs text-muted-foreground">Level</div>
-                <div className="flex flex-wrap items-center gap-2">
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      className={cn(
-                        "h-9 rounded-full border px-4 text-sm transition",
-                        level === n
-                          ? "bg-black text-white"
-                          : "bg-white hover:bg-muted/40",
-                      )}
-                      onClick={() => setLevel(n as ReadingLevel)}
-                    >
-                      {n}
-                    </button>
-                  ))}
-                </div>
+                <div className="grid gap-2">
+                  <div className="text-xs text-muted-foreground">Level</div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <button
+                        key={n}
+                        type="button"
+                        className={cn(
+                          "h-9 rounded-full border px-4 text-sm transition",
+                          level === n
+                            ? "bg-black text-white"
+                            : "bg-white hover:bg-muted/40",
+                        )}
+                        onClick={() => setLevel(n as ReadingLevel)}
+                      >
+                        {n}
+                      </button>
+                    ))}
+                  </div>
 
-                <div className="mt-2 grid gap-2">
-                  <div className="text-xs text-muted-foreground">Levels</div>
-                  <div className="flex flex-wrap gap-3">
-                    {[1, 2, 3, 4, 5].map((n) => {
-                      const lvl = n as ReadingLevel;
-                      const checked = levels.includes(lvl);
-                      return (
-                        <label
-                          key={n}
-                          className="inline-flex items-center gap-2 text-sm"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={checked}
-                            onChange={(e) =>
-                              setLevelChecked(lvl, e.target.checked)
-                            }
-                          />
-                          {n}
-                        </label>
-                      );
-                    })}
+                  <div className="mt-2 grid gap-2">
+                    <div className="text-xs text-muted-foreground">Levels</div>
+                    <div className="flex flex-wrap gap-3">
+                      {[1, 2, 3, 4, 5].map((n) => {
+                        const lvl = n as ReadingLevel;
+                        const checked = levels.includes(lvl);
+                        return (
+                          <label
+                            key={n}
+                            className="inline-flex items-center gap-2 text-sm"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={(e) =>
+                                setLevelChecked(lvl, e.target.checked)
+                              }
+                            />
+                            {n}
+                          </label>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="grid gap-2">
-                <div className="text-xs text-muted-foreground">Audio</div>
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:flex-wrap">
-                  <Input
-                    value={audio}
-                    onChange={(e) => setAudio(e.target.value)}
-                    placeholder="Audio URL"
-                    className="min-w-0 flex-1"
-                  />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    disabled={
-                      ttsGenerating ||
-                      articleEdgeTtsGenerating ||
-                      Boolean(uploadingKey)
-                    }
-                    onClick={async () => {
-                      const ttsText = [
-                        title.trim(),
-                        ...paragraphs.flatMap((p) =>
-                          [p.subtitle?.trim(), p.content?.trim()].filter(
-                            Boolean,
-                          ),
-                        ),
-                      ]
-                        .filter(Boolean)
-                        .join("\n");
-                      if (!ttsText) {
-                        setError("Add title or paragraph content to generate TTS.");
-                        return;
-                      }
-                      setTtsGenerating(true);
-                      setError(null);
-                      try {
-                        const { res, json } = await postJson("/api/admin/tts", {
-                          text: ttsText,
-                        });
-                        if (!res.ok || !json?.ok || !json?.url) {
-                          throw new Error(json?.error ?? "TTS failed");
-                        }
-                        setAudio(String(json.url));
-                      } catch (err) {
-                        setError(
-                          err instanceof Error ? err.message : "TTS failed",
-                        );
-                      } finally {
-                        setTtsGenerating(false);
-                      }
-                    }}
-                  >
-                    {ttsGenerating ? "Generating…" : "TTS 생성"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    disabled={
-                      articleEdgeTtsGenerating ||
-                      Boolean(uploadingKey) ||
-                      ![
-                        title.trim(),
-                        ...(paragraphs ?? []).flatMap((p) =>
-                          [p.subtitle?.trim(), p.content?.trim()].filter(
-                            Boolean,
-                          ),
-                        ),
-                      ]
-                        .filter(Boolean)
-                        .join("\n")
-                    }
-                    onClick={async () => {
-                      const ttsText = [
-                        title.trim(),
-                        ...(paragraphs ?? []).flatMap((p) =>
-                          [p.subtitle?.trim(), p.content?.trim()].filter(
-                            Boolean,
-                          ),
-                        ),
-                      ]
-                        .filter(Boolean)
-                        .join("\n");
-                      if (!ttsText) return;
-                      setArticleEdgeTtsGenerating(true);
-                      setError(null);
-                      try {
-                        const { res, json } = await postJson("/api/admin/tts/word", {
-                          text: ttsText,
-                        });
-                        if (!res.ok || !json?.ok) {
-                          setError(json?.error ?? "TTS failed (본문이 길면 실패할 수 있음)");
-                          return;
-                        }
-                        setAudio(String(json?.url ?? ""));
-                      } catch (err) {
-                        setError(
-                          err instanceof Error ? err.message : "TTS failed",
-                        );
-                      } finally {
-                        setArticleEdgeTtsGenerating(false);
-                      }
-                    }}
-                  >
-                    {articleEdgeTtsGenerating ? "Generating…" : "Generate (edge-tts)"}
-                  </Button>
-                  <div className="shrink-0">
-                    <input
-                      ref={(el) => { fileInputRefs.current["audio"] = el; }}
-                      type="file"
-                      accept="audio/*"
-                      className="hidden"
-                      disabled={Boolean(uploadingKey)}
-                      onChange={async (e) => {
-                        const file = e.target.files?.[0];
-                        if (!file) return;
-                        try {
-                          setUploadingKey("audio");
-                          const url = await uploadToR2(file);
-                          setAudio(url);
-                        } catch (err) {
-                          setError(
-                            err instanceof Error ? err.message : "Upload failed",
-                          );
-                        } finally {
-                          setUploadingKey(null);
-                          e.target.value = "";
-                        }
-                      }}
+                <div className="grid gap-2">
+                  <div className="text-xs text-muted-foreground">Audio</div>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:flex-wrap">
+                    <Input
+                      value={audio}
+                      onChange={(e) => setAudio(e.target.value)}
+                      placeholder="Audio URL"
+                      className="min-w-0 flex-1"
                     />
                     <Button
                       type="button"
                       variant="outline"
-                      disabled={Boolean(uploadingKey)}
-                      onClick={() => fileInputRefs.current["audio"]?.click()}
+                      disabled={
+                        ttsGenerating ||
+                        articleEdgeTtsGenerating ||
+                        Boolean(uploadingKey)
+                      }
+                      onClick={async () => {
+                        const ttsText = [
+                          title.trim(),
+                          ...paragraphs.flatMap((p) =>
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
+                          ),
+                        ]
+                          .filter(Boolean)
+                          .join("\n");
+                        if (!ttsText) {
+                          setError(
+                            "Add title or paragraph content to generate TTS.",
+                          );
+                          return;
+                        }
+                        setTtsGenerating(true);
+                        setError(null);
+                        try {
+                          const { res, json } = await postJson(
+                            "/api/admin/tts",
+                            {
+                              text: ttsText,
+                            },
+                          );
+                          if (!res.ok || !json?.ok || !json?.url) {
+                            throw new Error(json?.error ?? "TTS failed");
+                          }
+                          setAudio(String(json.url));
+                        } catch (err) {
+                          setError(
+                            err instanceof Error ? err.message : "TTS failed",
+                          );
+                        } finally {
+                          setTtsGenerating(false);
+                        }
+                      }}
                     >
-                      {uploadingKey === "audio" ? "Uploading…" : "Upload"}
+                      {ttsGenerating ? "Generating…" : "TTS 생성"}
                     </Button>
-                  </div>
-                </div>
-                {audio.trim() ? (
-                  <audio controls src={audio.trim()} className="mt-2 w-full" />
-                ) : null}
-              </div>
-            </div>
-          </section>
-
-          <section className="rounded-2xl border border-border bg-card p-5">
-            <div className="text-sm font-semibold">Images</div>
-            <div className="mt-4 grid gap-6">
-              {[
-                { key: "imageThumb", label: "Thumbnail", value: imageThumb, setValue: setImageThumb },
-                { key: "imageLarge", label: "Large", value: imageLarge, setValue: setImageLarge },
-              ].map((row) => (
-                <div key={row.key} className="grid gap-2">
-                  <div className="text-xs text-muted-foreground">{row.label}</div>
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                    <Input
-                      value={row.value}
-                      onChange={(e) => row.setValue(e.target.value)}
-                      placeholder="https://…"
-                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={
+                        articleEdgeTtsGenerating ||
+                        Boolean(uploadingKey) ||
+                        ![
+                          title.trim(),
+                          ...(paragraphs ?? []).flatMap((p) =>
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
+                          ),
+                        ]
+                          .filter(Boolean)
+                          .join("\n")
+                      }
+                      onClick={async () => {
+                        const ttsText = [
+                          title.trim(),
+                          ...(paragraphs ?? []).flatMap((p) =>
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
+                          ),
+                        ]
+                          .filter(Boolean)
+                          .join("\n");
+                        if (!ttsText) return;
+                        setArticleEdgeTtsGenerating(true);
+                        setError(null);
+                        try {
+                          const { res, json } = await postJson(
+                            "/api/admin/tts/word",
+                            {
+                              text: ttsText,
+                            },
+                          );
+                          if (!res.ok || !json?.ok) {
+                            setError(
+                              json?.error ??
+                                "TTS failed (본문이 길면 실패할 수 있음)",
+                            );
+                            return;
+                          }
+                          setAudio(String(json?.url ?? ""));
+                        } catch (err) {
+                          setError(
+                            err instanceof Error ? err.message : "TTS failed",
+                          );
+                        } finally {
+                          setArticleEdgeTtsGenerating(false);
+                        }
+                      }}
+                    >
+                      {articleEdgeTtsGenerating
+                        ? "Generating…"
+                        : "Generate (edge-tts)"}
+                    </Button>
                     <div className="shrink-0">
                       <input
-                        ref={(el) => { fileInputRefs.current[row.key] = el; }}
+                        ref={(el) => {
+                          fileInputRefs.current["audio"] = el;
+                        }}
                         type="file"
-                        accept="image/*"
+                        accept="audio/*"
                         className="hidden"
                         disabled={Boolean(uploadingKey)}
                         onChange={async (e) => {
                           const file = e.target.files?.[0];
                           if (!file) return;
                           try {
-                            setUploadingKey(row.key);
-                            const processed =
-                              row.key === "imageThumb"
-                                ? await processImageForThumbnail(file)
-                                : await processImageForUploadWebPOnly(file);
-                            const url = await uploadToR2(processed);
-                            row.setValue(url);
+                            setUploadingKey("audio");
+                            const url = await uploadToR2(file);
+                            setAudio(url);
                           } catch (err) {
                             setError(
-                              err instanceof Error ? err.message : "Upload failed",
+                              err instanceof Error
+                                ? err.message
+                                : "Upload failed",
                             );
                           } finally {
                             setUploadingKey(null);
@@ -496,96 +465,55 @@ export function ArticleNewClient() {
                         type="button"
                         variant="outline"
                         disabled={Boolean(uploadingKey)}
-                        onClick={() => fileInputRefs.current[row.key]?.click()}
+                        onClick={() => fileInputRefs.current["audio"]?.click()}
                       >
-                        {uploadingKey === row.key ? "Uploading…" : "Upload"}
+                        {uploadingKey === "audio" ? "Uploading…" : "Upload"}
                       </Button>
                     </div>
                   </div>
-                  {row.value.trim() ? (
-                    <div className="overflow-hidden rounded-xl border border-border bg-muted/10">
-                      <div className="relative aspect-video w-full">
-                        <Image
-                          src={row.value.trim()}
-                          alt=""
-                          fill
-                          className="object-cover"
-                          unoptimized
-                        />
-                      </div>
-                    </div>
+                  {audio.trim() ? (
+                    <audio
+                      controls
+                      src={audio.trim()}
+                      className="mt-2 w-full"
+                    />
                   ) : null}
                 </div>
-              ))}
-            </div>
-          </section>
+              </div>
+            </section>
 
-          <section className="rounded-2xl border border-border bg-card p-5">
-            <div className="text-sm font-semibold">Paragraphs</div>
-            <div className="mt-4 grid gap-4">
-              {paragraphs.map((p, idx) => (
-                <div key={idx} className="rounded-xl border border-border p-4">
-                  <div className="flex items-center justify-between gap-2">
+            <section className="rounded-2xl border border-border bg-card p-5">
+              <div className="text-sm font-semibold">Images</div>
+              <div className="mt-4 grid gap-6">
+                {[
+                  {
+                    key: "imageThumb",
+                    label: "Thumbnail",
+                    value: imageThumb,
+                    setValue: setImageThumb,
+                  },
+                  {
+                    key: "imageLarge",
+                    label: "Large",
+                    value: imageLarge,
+                    setValue: setImageLarge,
+                  },
+                ].map((row) => (
+                  <div key={row.key} className="grid gap-2">
                     <div className="text-xs text-muted-foreground">
-                      Block {idx + 1}
+                      {row.label}
                     </div>
-                    <Button
-                      type="button"
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => {
-                        setParagraphs((prev) => {
-                          const next = prev.slice();
-                          next.splice(idx, 1);
-                          return next.length ? next : [{ subtitle: "", content: "" }];
-                        });
-                      }}
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                  <div className="mt-3 grid gap-3">
-                    <Input
-                      value={p.subtitle}
-                      onChange={(e) =>
-                        setParagraphs((prev) => {
-                          const next = prev.slice();
-                          next[idx] = { ...next[idx], subtitle: e.target.value };
-                          return next;
-                        })
-                      }
-                      placeholder="Subtitle"
-                    />
-                    <textarea
-                      className="min-h-28 rounded-md border border-border bg-white px-4 py-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      value={p.content}
-                      onChange={(e) =>
-                        setParagraphs((prev) => {
-                          const next = prev.slice();
-                          next[idx] = { ...next[idx], content: e.target.value };
-                          return next;
-                        })
-                      }
-                      placeholder="Content"
-                    />
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                       <Input
-                        value={p.image ?? ""}
-                        onChange={(e) =>
-                          setParagraphs((prev) => {
-                            const next = prev.slice();
-                            next[idx] = {
-                              ...next[idx],
-                              image: e.target.value.trim() || undefined,
-                            };
-                            return next;
-                          })
-                        }
-                        placeholder="Image URL"
+                        value={row.value}
+                        onChange={(e) => row.setValue(e.target.value)}
+                        placeholder="https://…"
                       />
                       <div className="shrink-0">
                         <input
-                          ref={(el) => { fileInputRefs.current[`para-${idx}`] = el; }}
+                          ref={(el) => {
+                            fileInputRefs.current[row.key] = el;
+                          }}
                           type="file"
                           accept="image/*"
                           className="hidden"
@@ -593,20 +521,19 @@ export function ArticleNewClient() {
                           onChange={async (e) => {
                             const file = e.target.files?.[0];
                             if (!file) return;
-                            const key = `para-${idx}`;
                             try {
-                              setUploadingKey(key);
+                              setUploadingKey(row.key);
                               const processed =
-                                await processImageForUploadWebPOnly(file);
+                                row.key === "imageThumb"
+                                  ? await processImageForThumbnail(file)
+                                  : await processImageForUploadWebPOnly(file);
                               const url = await uploadToR2(processed);
-                              setParagraphs((prev) => {
-                                const next = prev.slice();
-                                next[idx] = { ...next[idx], image: url };
-                                return next;
-                              });
+                              row.setValue(url);
                             } catch (err) {
                               setError(
-                                err instanceof Error ? err.message : "Upload failed",
+                                err instanceof Error
+                                  ? err.message
+                                  : "Upload failed",
                               );
                             } finally {
                               setUploadingKey(null);
@@ -618,479 +545,697 @@ export function ArticleNewClient() {
                           type="button"
                           variant="outline"
                           disabled={Boolean(uploadingKey)}
-                          onClick={() => fileInputRefs.current[`para-${idx}`]?.click()}
+                          onClick={() =>
+                            fileInputRefs.current[row.key]?.click()
+                          }
                         >
-                          {uploadingKey === `para-${idx}`
-                            ? "Uploading…"
-                            : "Upload"}
+                          {uploadingKey === row.key ? "Uploading…" : "Upload"}
                         </Button>
                       </div>
                     </div>
+                    {row.value.trim() ? (
+                      <div className="overflow-hidden rounded-xl border border-border bg-muted/10">
+                        <div className="relative aspect-video w-full">
+                          <Image
+                            src={row.value.trim()}
+                            alt=""
+                            fill
+                            className="object-cover object-center"
+                            unoptimized
+                          />
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </section>
 
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() =>
-                  setParagraphs((prev) => [
-                    ...prev,
-                    { subtitle: "", content: "" },
-                  ])
-                }
-              >
-                Add paragraph
-              </Button>
-            </div>
-          </section>
-
-          <section className="rounded-2xl border border-border bg-card p-5">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="text-sm font-semibold">Vocabulary</div>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                disabled={autoRunning || vocabulary.length === 0}
-                onClick={async () => {
-                  setAutoRunning(true);
-                  setError(null);
-                  try {
-                    const articleText = [
-                      title.trim(),
-                      ...paragraphs.flatMap((p) =>
-                        [p.subtitle?.trim(), p.content?.trim()].filter(Boolean),
-                      ),
-                    ]
-                      .filter(Boolean)
-                      .join("\n");
-                    if (articleText) {
-                      const { res, json } = await postJson("/api/admin/tts/word", {
-                        text: articleText,
-                      });
-                      if (res.ok && json?.ok && json?.url) {
-                        setAudio(String(json.url));
-                      }
-                    }
-                    for (let idx = 0; idx < vocabulary.length; idx++) {
-                      const v = vocabulary[idx];
-                      if (v.word?.trim()) {
-                        const { res: r1, json: j1 } = await postJson(
-                          "/api/admin/tts/word",
-                          { text: v.word.trim() },
-                        );
-                        if (r1.ok && j1?.ok && j1?.url) {
-                          setVocabulary((prev) => {
-                            const next = prev.slice();
-                            next[idx] = { ...next[idx], sound: String(j1.url) };
-                            return next;
-                          });
-                        }
-                      }
-                      if (v.example?.trim()) {
-                        const { res: r2, json: j2 } = await postJson(
-                          "/api/admin/tts/word",
-                          { text: v.example.trim() },
-                        );
-                        if (r2.ok && j2?.ok && j2?.url) {
-                          setVocabulary((prev) => {
-                            const next = prev.slice();
-                            next[idx] = {
-                              ...next[idx],
-                              exampleSound: String(j2.url),
-                            };
-                            return next;
-                          });
-                        }
-                      }
-                      if (v.word?.trim()) {
-                        const unsplashRes = await fetch(
-                          `/api/admin/unsplash/search?q=${encodeURIComponent(v.word.trim())}`,
-                        );
-                        const unsplashJson = await unsplashRes.json().catch(() => null);
-                        if (unsplashRes.ok && unsplashJson?.ok && unsplashJson?.results?.[0]?.url) {
-                          setVocabulary((prev) => {
-                            const next = prev.slice();
-                            next[idx] = {
-                              ...next[idx],
-                              image: unsplashJson.results[0].url,
-                            };
-                            return next;
-                          });
-                        }
-                        await new Promise((r) => setTimeout(r, 400));
-                      }
-                    }
-                  } catch (e) {
-                    setError(e instanceof Error ? e.message : "Auto failed");
-                  } finally {
-                    setAutoRunning(false);
-                  }
-                }}
-              >
-                {autoRunning ? "Auto…" : "Auto"}
-              </Button>
-            </div>
-            <div className="mt-4 grid gap-4">
-              {vocabulary.map((v, idx) => (
-                <div key={idx} className="rounded-xl border border-border p-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="text-xs text-muted-foreground">
-                      Item {idx + 1}
-                    </div>
-                    <Button
-                      type="button"
-                      size="sm"
-                      variant="ghost"
-                      onClick={() =>
-                        setVocabulary((prev) => {
-                          const next = prev.slice();
-                          next.splice(idx, 1);
-                          return next;
-                        })
-                      }
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                  <div className="mt-3 grid gap-3">
-                    <Input
-                      value={v.word}
-                      onChange={(e) =>
-                        setVocabulary((prev) => {
-                          const next = prev.slice();
-                          next[idx] = { ...next[idx], word: e.target.value };
-                          return next;
-                        })
-                      }
-                      placeholder="Word"
-                    />
-                    <Input
-                      value={v.description_en}
-                      onChange={(e) =>
-                        setVocabulary((prev) => {
-                          const next = prev.slice();
-                          next[idx] = {
-                            ...next[idx],
-                            description_en: e.target.value,
-                          };
-                          return next;
-                        })
-                      }
-                      placeholder="English description"
-                    />
-                    <Input
-                      value={v.example}
-                      onChange={(e) =>
-                        setVocabulary((prev) => {
-                          const next = prev.slice();
-                          next[idx] = { ...next[idx], example: e.target.value };
-                          return next;
-                        })
-                      }
-                      placeholder="Example"
-                    />
-                    <Input
-                      value={v.phonetic ?? ""}
-                      onChange={(e) =>
-                        setVocabulary((prev) => {
-                          const next = prev.slice();
-                          next[idx] = {
-                            ...next[idx],
-                            phonetic: e.target.value.trim() || undefined,
-                          };
-                          return next;
-                        })
-                      }
-                      placeholder="Phonetic (e.g. IPA)"
-                    />
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                      <Input
-                        value={v.image ?? ""}
-                        onChange={(e) =>
-                          setVocabulary((prev) => {
-                            const next = prev.slice();
-                            next[idx] = {
-                              ...next[idx],
-                              image: e.target.value.trim() || undefined,
-                            };
-                            return next;
-                          })
-                        }
-                        placeholder="Image URL"
-                      />
+            <section className="rounded-2xl border border-border bg-card p-5">
+              <div className="text-sm font-semibold">Paragraphs</div>
+              <div className="mt-4 grid gap-4">
+                {paragraphs.map((p, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-xl border border-border p-4"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="text-xs text-muted-foreground">
+                        Block {idx + 1}
+                      </div>
                       <Button
                         type="button"
-                        variant="outline"
                         size="sm"
-                        onClick={() => setUnsplashForIdx(idx)}
+                        variant="ghost"
+                        onClick={() => {
+                          setParagraphs((prev) => {
+                            const next = prev.slice();
+                            next.splice(idx, 1);
+                            return next.length
+                              ? next
+                              : [{ subtitle: "", content: "" }];
+                          });
+                        }}
                       >
-                        Search Unsplash
+                        Remove
                       </Button>
                     </div>
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                    <div className="mt-3 grid gap-3">
                       <Input
-                        value={v.sound ?? ""}
+                        value={p.subtitle}
+                        onChange={(e) =>
+                          setParagraphs((prev) => {
+                            const next = prev.slice();
+                            next[idx] = {
+                              ...next[idx],
+                              subtitle: e.target.value,
+                            };
+                            return next;
+                          })
+                        }
+                        placeholder="Subtitle"
+                      />
+                      <textarea
+                        className="min-h-28 rounded-md border border-border bg-white px-4 py-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        value={p.content}
+                        onChange={(e) =>
+                          setParagraphs((prev) => {
+                            const next = prev.slice();
+                            next[idx] = {
+                              ...next[idx],
+                              content: e.target.value,
+                            };
+                            return next;
+                          })
+                        }
+                        placeholder="Content"
+                      />
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <Input
+                          value={p.image ?? ""}
+                          onChange={(e) =>
+                            setParagraphs((prev) => {
+                              const next = prev.slice();
+                              next[idx] = {
+                                ...next[idx],
+                                image: e.target.value.trim() || undefined,
+                              };
+                              return next;
+                            })
+                          }
+                          placeholder="Image URL"
+                        />
+                        <div className="shrink-0">
+                          <input
+                            ref={(el) => {
+                              fileInputRefs.current[`para-${idx}`] = el;
+                            }}
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            disabled={Boolean(uploadingKey)}
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              const key = `para-${idx}`;
+                              try {
+                                setUploadingKey(key);
+                                const processed =
+                                  await processImageForUploadWebPOnly(file);
+                                const url = await uploadToR2(processed);
+                                setParagraphs((prev) => {
+                                  const next = prev.slice();
+                                  next[idx] = { ...next[idx], image: url };
+                                  return next;
+                                });
+                              } catch (err) {
+                                setError(
+                                  err instanceof Error
+                                    ? err.message
+                                    : "Upload failed",
+                                );
+                              } finally {
+                                setUploadingKey(null);
+                                e.target.value = "";
+                              }
+                            }}
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={Boolean(uploadingKey)}
+                            onClick={() =>
+                              fileInputRefs.current[`para-${idx}`]?.click()
+                            }
+                          >
+                            {uploadingKey === `para-${idx}`
+                              ? "Uploading…"
+                              : "Upload"}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() =>
+                    setParagraphs((prev) => [
+                      ...prev,
+                      { subtitle: "", content: "" },
+                    ])
+                  }
+                >
+                  Add paragraph
+                </Button>
+              </div>
+            </section>
+
+            <section className="rounded-2xl border border-border bg-card p-5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="text-sm font-semibold">Vocabulary</div>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={autoRunning || vocabulary.length === 0}
+                  onClick={async () => {
+                    setAutoRunning(true);
+                    setError(null);
+                    try {
+                      const articleText = [
+                        title.trim(),
+                        ...paragraphs.flatMap((p) =>
+                          [p.subtitle?.trim(), p.content?.trim()].filter(
+                            Boolean,
+                          ),
+                        ),
+                      ]
+                        .filter(Boolean)
+                        .join("\n");
+                      if (articleText) {
+                        const { res, json } = await postJson(
+                          "/api/admin/tts/word",
+                          {
+                            text: articleText,
+                          },
+                        );
+                        if (res.ok && json?.ok && json?.url) {
+                          setAudio(String(json.url));
+                        }
+                      }
+                      for (let idx = 0; idx < vocabulary.length; idx++) {
+                        const v = vocabulary[idx];
+                        if (v.word?.trim()) {
+                          const { res: r1, json: j1 } = await postJson(
+                            "/api/admin/tts/word",
+                            { text: v.word.trim() },
+                          );
+                          if (r1.ok && j1?.ok && j1?.url) {
+                            setVocabulary((prev) => {
+                              const next = prev.slice();
+                              next[idx] = {
+                                ...next[idx],
+                                sound: String(j1.url),
+                              };
+                              return next;
+                            });
+                          }
+                        }
+                        if (v.example?.trim()) {
+                          const { res: r2, json: j2 } = await postJson(
+                            "/api/admin/tts/word",
+                            { text: v.example.trim() },
+                          );
+                          if (r2.ok && j2?.ok && j2?.url) {
+                            setVocabulary((prev) => {
+                              const next = prev.slice();
+                              next[idx] = {
+                                ...next[idx],
+                                exampleSound: String(j2.url),
+                              };
+                              return next;
+                            });
+                          }
+                        }
+                        if (v.word?.trim()) {
+                          const unsplashRes = await fetch(
+                            `/api/admin/unsplash/search?q=${encodeURIComponent(v.word.trim())}`,
+                          );
+                          const unsplashJson = await unsplashRes
+                            .json()
+                            .catch(() => null);
+                          if (
+                            unsplashRes.ok &&
+                            unsplashJson?.ok &&
+                            unsplashJson?.results?.[0]?.url
+                          ) {
+                            setVocabulary((prev) => {
+                              const next = prev.slice();
+                              next[idx] = {
+                                ...next[idx],
+                                image: unsplashJson.results[0].url,
+                              };
+                              return next;
+                            });
+                          }
+                          await new Promise((r) => setTimeout(r, 400));
+                        }
+                      }
+                    } catch (e) {
+                      setError(e instanceof Error ? e.message : "Auto failed");
+                    } finally {
+                      setAutoRunning(false);
+                    }
+                  }}
+                >
+                  {autoRunning ? "Auto…" : "Auto"}
+                </Button>
+              </div>
+              <div className="mt-4 grid gap-4">
+                {vocabulary.map((v, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-xl border border-border p-4"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="text-xs text-muted-foreground">
+                        Item {idx + 1}
+                      </div>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="ghost"
+                        onClick={() =>
+                          setVocabulary((prev) => {
+                            const next = prev.slice();
+                            next.splice(idx, 1);
+                            return next;
+                          })
+                        }
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                    <div className="mt-3 grid gap-3">
+                      <Input
+                        value={v.word}
+                        onChange={(e) =>
+                          setVocabulary((prev) => {
+                            const next = prev.slice();
+                            next[idx] = { ...next[idx], word: e.target.value };
+                            return next;
+                          })
+                        }
+                        placeholder="Word"
+                      />
+                      <Input
+                        value={v.description_en}
                         onChange={(e) =>
                           setVocabulary((prev) => {
                             const next = prev.slice();
                             next[idx] = {
                               ...next[idx],
-                              sound: e.target.value.trim() || undefined,
+                              description_en: e.target.value,
                             };
                             return next;
                           })
                         }
-                        placeholder="Sound URL"
+                        placeholder="English description"
                       />
-                      <div className="shrink-0">
-                        <input
-                          ref={(el) => { fileInputRefs.current[`sound-${idx}`] = el; }}
-                          type="file"
-                          accept="audio/*"
-                          className="hidden"
-                          disabled={Boolean(uploadingKey)}
-                          onChange={async (e) => {
-                            const file = e.target.files?.[0];
-                            if (!file) return;
-                            const key = `sound-${idx}`;
-                            try {
-                              setUploadingKey(key);
-                              const url = await uploadToR2(file);
-                              setVocabulary((prev) => {
-                                const next = prev.slice();
-                                next[idx] = { ...next[idx], sound: url };
-                                return next;
-                              });
-                            } catch (err) {
-                              setError(
-                                err instanceof Error ? err.message : "Upload failed",
-                              );
-                            } finally {
-                              setUploadingKey(null);
-                              e.target.value = "";
-                            }
-                          }}
+                      <Input
+                        value={v.example}
+                        onChange={(e) =>
+                          setVocabulary((prev) => {
+                            const next = prev.slice();
+                            next[idx] = {
+                              ...next[idx],
+                              example: e.target.value,
+                            };
+                            return next;
+                          })
+                        }
+                        placeholder="Example"
+                      />
+                      <Input
+                        value={v.phonetic ?? ""}
+                        onChange={(e) =>
+                          setVocabulary((prev) => {
+                            const next = prev.slice();
+                            next[idx] = {
+                              ...next[idx],
+                              phonetic: e.target.value.trim() || undefined,
+                            };
+                            return next;
+                          })
+                        }
+                        placeholder="Phonetic (e.g. IPA)"
+                      />
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <Input
+                          value={v.image ?? ""}
+                          onChange={(e) =>
+                            setVocabulary((prev) => {
+                              const next = prev.slice();
+                              next[idx] = {
+                                ...next[idx],
+                                image: e.target.value.trim() || undefined,
+                              };
+                              return next;
+                            })
+                          }
+                          placeholder="Image URL"
                         />
                         <Button
                           type="button"
                           variant="outline"
-                          disabled={Boolean(uploadingKey)}
-                          onClick={() => fileInputRefs.current[`sound-${idx}`]?.click()}
+                          size="sm"
+                          onClick={() => setUnsplashForIdx(idx)}
                         >
-                          {uploadingKey === `sound-${idx}` ? "Uploading…" : "Upload"}
+                          Search Unsplash
                         </Button>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          disabled={!v.word.trim() || wordTtsKey !== null}
-                          onClick={async () => {
-                            const w = v.word.trim();
-                            if (!w) return;
-                            setWordTtsKey(`sound-${idx}`);
-                            setError(null);
-                            try {
-                              const { res, json } = await postJson("/api/admin/tts/word", {
-                                text: w,
-                              });
-                              if (!res.ok || !json?.ok) {
-                                setError(json?.error ?? "TTS failed");
-                                return;
-                              }
-                              const url = String(json?.url ?? "");
-                              if (url) {
+                      </div>
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <Input
+                          value={v.sound ?? ""}
+                          onChange={(e) =>
+                            setVocabulary((prev) => {
+                              const next = prev.slice();
+                              next[idx] = {
+                                ...next[idx],
+                                sound: e.target.value.trim() || undefined,
+                              };
+                              return next;
+                            })
+                          }
+                          placeholder="Sound URL"
+                        />
+                        <div className="shrink-0">
+                          <input
+                            ref={(el) => {
+                              fileInputRefs.current[`sound-${idx}`] = el;
+                            }}
+                            type="file"
+                            accept="audio/*"
+                            className="hidden"
+                            disabled={Boolean(uploadingKey)}
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              const key = `sound-${idx}`;
+                              try {
+                                setUploadingKey(key);
+                                const url = await uploadToR2(file);
                                 setVocabulary((prev) => {
                                   const next = prev.slice();
                                   next[idx] = { ...next[idx], sound: url };
                                   return next;
                                 });
+                              } catch (err) {
+                                setError(
+                                  err instanceof Error
+                                    ? err.message
+                                    : "Upload failed",
+                                );
+                              } finally {
+                                setUploadingKey(null);
+                                e.target.value = "";
                               }
-                            } catch (e) {
-                              setError(e instanceof Error ? e.message : "TTS failed");
-                            } finally {
-                              setWordTtsKey(null);
+                            }}
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={Boolean(uploadingKey)}
+                            onClick={() =>
+                              fileInputRefs.current[`sound-${idx}`]?.click()
                             }
-                          }}
-                        >
-                          {wordTtsKey === `sound-${idx}` ? "Generating…" : "Generate (edge-tts)"}
-                        </Button>
+                          >
+                            {uploadingKey === `sound-${idx}`
+                              ? "Uploading…"
+                              : "Upload"}
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={!v.word.trim() || wordTtsKey !== null}
+                            onClick={async () => {
+                              const w = v.word.trim();
+                              if (!w) return;
+                              setWordTtsKey(`sound-${idx}`);
+                              setError(null);
+                              try {
+                                const { res, json } = await postJson(
+                                  "/api/admin/tts/word",
+                                  {
+                                    text: w,
+                                  },
+                                );
+                                if (!res.ok || !json?.ok) {
+                                  setError(json?.error ?? "TTS failed");
+                                  return;
+                                }
+                                const url = String(json?.url ?? "");
+                                if (url) {
+                                  setVocabulary((prev) => {
+                                    const next = prev.slice();
+                                    next[idx] = { ...next[idx], sound: url };
+                                    return next;
+                                  });
+                                }
+                              } catch (e) {
+                                setError(
+                                  e instanceof Error ? e.message : "TTS failed",
+                                );
+                              } finally {
+                                setWordTtsKey(null);
+                              }
+                            }}
+                          >
+                            {wordTtsKey === `sound-${idx}`
+                              ? "Generating…"
+                              : "Generate (edge-tts)"}
+                          </Button>
+                        </div>
+                        {v.sound ? (
+                          <audio
+                            controls
+                            src={v.sound}
+                            className="h-8 max-w-[160px]"
+                          />
+                        ) : null}
                       </div>
-                      {v.sound ? (
-                        <audio controls src={v.sound} className="h-8 max-w-[160px]" />
-                      ) : null}
-                    </div>
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                      <Input
-                        value={v.exampleSound ?? ""}
-                        onChange={(e) =>
-                          setVocabulary((prev) => {
-                            const next = prev.slice();
-                            next[idx] = {
-                              ...next[idx],
-                              exampleSound: e.target.value.trim() || undefined,
-                            };
-                            return next;
-                          })
-                        }
-                        placeholder="Example audio URL"
-                      />
-                      <div className="shrink-0">
-                        <input
-                          ref={(el) => { fileInputRefs.current[`exampleSound-${idx}`] = el; }}
-                          type="file"
-                          accept="audio/*"
-                          className="hidden"
-                          disabled={Boolean(uploadingKey)}
-                          onChange={async (e) => {
-                            const file = e.target.files?.[0];
-                            if (!file) return;
-                            try {
-                              setUploadingKey(`exampleSound-${idx}`);
-                              const url = await uploadToR2(file);
-                              setVocabulary((prev) => {
-                                const next = prev.slice();
-                                next[idx] = { ...next[idx], exampleSound: url };
-                                return next;
-                              });
-                            } catch (err) {
-                              setError(
-                                err instanceof Error ? err.message : "Upload failed",
-                              );
-                            } finally {
-                              setUploadingKey(null);
-                              e.target.value = "";
-                            }
-                          }}
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <Input
+                          value={v.exampleSound ?? ""}
+                          onChange={(e) =>
+                            setVocabulary((prev) => {
+                              const next = prev.slice();
+                              next[idx] = {
+                                ...next[idx],
+                                exampleSound:
+                                  e.target.value.trim() || undefined,
+                              };
+                              return next;
+                            })
+                          }
+                          placeholder="Example audio URL"
                         />
-                        <Button
-                          type="button"
-                          variant="outline"
-                          disabled={Boolean(uploadingKey)}
-                          onClick={() => fileInputRefs.current[`exampleSound-${idx}`]?.click()}
-                        >
-                          {uploadingKey === `exampleSound-${idx}` ? "Uploading…" : "Upload"}
-                        </Button>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          disabled={!v.example.trim() || exampleTtsKey !== null}
-                          onClick={async () => {
-                            const ex = v.example.trim();
-                            if (!ex) return;
-                            setExampleTtsKey(`exampleSound-${idx}`);
-                            setError(null);
-                            try {
-                              const { res, json } = await postJson("/api/admin/tts/word", {
-                                text: ex,
-                              });
-                              if (!res.ok || !json?.ok) {
-                                setError(json?.error ?? "TTS failed");
-                                return;
-                              }
-                              const url = String(json?.url ?? "");
-                              if (url) {
+                        <div className="shrink-0">
+                          <input
+                            ref={(el) => {
+                              fileInputRefs.current[`exampleSound-${idx}`] = el;
+                            }}
+                            type="file"
+                            accept="audio/*"
+                            className="hidden"
+                            disabled={Boolean(uploadingKey)}
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              try {
+                                setUploadingKey(`exampleSound-${idx}`);
+                                const url = await uploadToR2(file);
                                 setVocabulary((prev) => {
                                   const next = prev.slice();
-                                  next[idx] = { ...next[idx], exampleSound: url };
+                                  next[idx] = {
+                                    ...next[idx],
+                                    exampleSound: url,
+                                  };
                                   return next;
                                 });
+                              } catch (err) {
+                                setError(
+                                  err instanceof Error
+                                    ? err.message
+                                    : "Upload failed",
+                                );
+                              } finally {
+                                setUploadingKey(null);
+                                e.target.value = "";
                               }
-                            } catch (e) {
-                              setError(e instanceof Error ? e.message : "TTS failed");
-                            } finally {
-                              setExampleTtsKey(null);
+                            }}
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={Boolean(uploadingKey)}
+                            onClick={() =>
+                              fileInputRefs.current[
+                                `exampleSound-${idx}`
+                              ]?.click()
                             }
-                          }}
-                        >
-                          {exampleTtsKey === `exampleSound-${idx}` ? "Generating…" : "Generate (edge-tts)"}
-                        </Button>
+                          >
+                            {uploadingKey === `exampleSound-${idx}`
+                              ? "Uploading…"
+                              : "Upload"}
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={
+                              !v.example.trim() || exampleTtsKey !== null
+                            }
+                            onClick={async () => {
+                              const ex = v.example.trim();
+                              if (!ex) return;
+                              setExampleTtsKey(`exampleSound-${idx}`);
+                              setError(null);
+                              try {
+                                const { res, json } = await postJson(
+                                  "/api/admin/tts/word",
+                                  {
+                                    text: ex,
+                                  },
+                                );
+                                if (!res.ok || !json?.ok) {
+                                  setError(json?.error ?? "TTS failed");
+                                  return;
+                                }
+                                const url = String(json?.url ?? "");
+                                if (url) {
+                                  setVocabulary((prev) => {
+                                    const next = prev.slice();
+                                    next[idx] = {
+                                      ...next[idx],
+                                      exampleSound: url,
+                                    };
+                                    return next;
+                                  });
+                                }
+                              } catch (e) {
+                                setError(
+                                  e instanceof Error ? e.message : "TTS failed",
+                                );
+                              } finally {
+                                setExampleTtsKey(null);
+                              }
+                            }}
+                          >
+                            {exampleTtsKey === `exampleSound-${idx}`
+                              ? "Generating…"
+                              : "Generate (edge-tts)"}
+                          </Button>
+                        </div>
+                        {v.exampleSound ? (
+                          <audio
+                            controls
+                            src={v.exampleSound}
+                            className="h-8 max-w-[160px]"
+                          />
+                        ) : null}
                       </div>
-                      {v.exampleSound ? (
-                        <audio controls src={v.exampleSound} className="h-8 max-w-[160px]" />
-                      ) : null}
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() =>
+                    setVocabulary((prev) => [
+                      ...prev,
+                      {
+                        word: "",
+                        description_en: "",
+                        example: "",
+                        image: undefined,
+                        phonetic: undefined,
+                        exampleSound: undefined,
+                      },
+                    ])
+                  }
+                >
+                  Add vocab
+                </Button>
+              </div>
+            </section>
+
+            <UnsplashSearchModal
+              open={unsplashForIdx !== null}
+              onClose={() => setUnsplashForIdx(null)}
+              defaultQuery={
+                unsplashForIdx !== null
+                  ? (vocabulary[unsplashForIdx]?.word ?? "")
+                  : ""
+              }
+              onSelect={(url) => {
+                if (unsplashForIdx === null) return;
+                setVocabulary((prev) => {
+                  const next = prev.slice();
+                  next[unsplashForIdx] = {
+                    ...next[unsplashForIdx],
+                    image: url,
+                  };
+                  return next;
+                });
+                setUnsplashForIdx(null);
+              }}
+            />
+
+            <section className="rounded-2xl border border-border bg-card p-5">
+              <div className="text-sm font-semibold">
+                Questions & Discussion
+              </div>
+              <div className="mt-4 grid gap-4">
+                <label className="grid gap-1">
+                  <span className="text-xs text-muted-foreground">
+                    Questions (one per line)
+                  </span>
+                  <textarea
+                    className="min-h-32 rounded-md border border-border bg-white px-4 py-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    value={questionsText}
+                    onChange={(e) => setQuestionsText(e.target.value)}
+                  />
+                </label>
+                <label className="grid gap-1">
+                  <span className="text-xs text-muted-foreground">
+                    Discussion prompts (one per line)
+                  </span>
+                  <textarea
+                    className="min-h-32 rounded-md border border-border bg-white px-4 py-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    value={discussionText}
+                    onChange={(e) => setDiscussionText(e.target.value)}
+                  />
+                </label>
+              </div>
+            </section>
+
+            <div className="flex items-center justify-end gap-2">
               <Button
                 type="button"
-                variant="outline"
-                onClick={() =>
-                  setVocabulary((prev) => [
-                    ...prev,
-                    {
-                      word: "",
-                      description_en: "",
-                      example: "",
-                      image: undefined,
-                      phonetic: undefined,
-                      exampleSound: undefined,
-                    },
-                  ])
-                }
+                variant="primary"
+                disabled={loading || !title.trim()}
+                onClick={() => void create()}
               >
-                Add vocab
+                {loading ? "Creating…" : "Create"}
               </Button>
             </div>
-          </section>
-
-          <UnsplashSearchModal
-            open={unsplashForIdx !== null}
-            onClose={() => setUnsplashForIdx(null)}
-            defaultQuery={unsplashForIdx !== null ? vocabulary[unsplashForIdx]?.word ?? "" : ""}
-            onSelect={(url) => {
-              if (unsplashForIdx === null) return;
-              setVocabulary((prev) => {
-                const next = prev.slice();
-                next[unsplashForIdx] = { ...next[unsplashForIdx], image: url };
-                return next;
-              });
-              setUnsplashForIdx(null);
-            }}
-          />
-
-          <section className="rounded-2xl border border-border bg-card p-5">
-            <div className="text-sm font-semibold">Questions & Discussion</div>
-            <div className="mt-4 grid gap-4">
-              <label className="grid gap-1">
-                <span className="text-xs text-muted-foreground">
-                  Questions (one per line)
-                </span>
-                <textarea
-                  className="min-h-32 rounded-md border border-border bg-white px-4 py-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  value={questionsText}
-                  onChange={(e) => setQuestionsText(e.target.value)}
-                />
-              </label>
-              <label className="grid gap-1">
-                <span className="text-xs text-muted-foreground">
-                  Discussion prompts (one per line)
-                </span>
-                <textarea
-                  className="min-h-32 rounded-md border border-border bg-white px-4 py-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  value={discussionText}
-                  onChange={(e) => setDiscussionText(e.target.value)}
-                />
-              </label>
-            </div>
-          </section>
-
-          <div className="flex items-center justify-end gap-2">
-            <Button
-              type="button"
-              variant="primary"
-              disabled={loading || !title.trim()}
-              onClick={() => void create()}
-            >
-              {loading ? "Creating…" : "Create"}
-            </Button>
-          </div>
           </div>
         </div>
       </Container>
     </div>
   );
 }
-

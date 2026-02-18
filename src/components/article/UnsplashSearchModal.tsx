@@ -106,7 +106,7 @@ export function UnsplashSearchModal({
                   src={r.thumb || r.url}
                   alt=""
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   unoptimized
                   sizes="160px"
                 />

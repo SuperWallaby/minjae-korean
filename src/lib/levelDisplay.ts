@@ -10,9 +10,9 @@ export function levelBadgeClass(level: ReadingLevel): string {
     case 3:
       return "bg-[var(--included-3)] text-[var(--text-primary)]";
     case 4:
-      return "bg-[var(--included-4)] text-[var(--text-primary)]";
+      return "bg-[var(--level-4-bg)] text-[var(--text-primary)]";
     case 5:
-      return "bg-[var(--panel-stone)] text-[var(--text-primary)]";
+      return "bg-[var(--level-5-bg)] text-[var(--text-primary)]";
     default:
       return "bg-muted text-muted-foreground";
   }
@@ -21,10 +21,10 @@ export function levelBadgeClass(level: ReadingLevel): string {
 export function levelLabel(level: ReadingLevel): string {
   const labels: Record<ReadingLevel, string> = {
     1: "Beginner",
-    2: "Elementary",
+    2: "Basic",
     3: "Intermediate",
-    4: "Upper",
-    5: "Advanced",
+    4: "Advanced",
+    5: "Proficient",
   };
   return labels[level] ?? `Level ${level}`;
 }

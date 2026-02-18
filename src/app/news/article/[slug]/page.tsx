@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { SoundPlayButton } from "@/components/article/SoundPlayButton";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
 import { Container } from "@/components/site/Container";
@@ -113,12 +114,12 @@ export default async function ArticlePage({
         {/* 0. 메인사진 */}
         {mainImage ? (
           <div className="md:-mx-4 mb-12 overflow-hidden rounded-2xl border border-border bg-muted/10 sm:-mx-6">
-            <div className="relative aspect-16/10 w-full sm:aspect-2/1">
+            <div className="relative aspect-16/10 w-full sm:aspect-vd">
               <Image
                 src={mainImage}
                 alt=""
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 unoptimized
                 priority
                 sizes="(max-width: 896px) 100vw, 896px"
@@ -193,15 +194,14 @@ export default async function ArticlePage({
                   {/* Row 2: 설명+예문 | 이미지 */}
                   <div className="flex flex-row gap-4 p-4 min-w-0">
                     <div className="min-w-0 flex-1 flex flex-col gap-1">
-                      <p className="text-sm text-muted-foreground">
-                        {v.description_en}
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2">
+                      <p className="  text-foreground">{v.description_en}</p>
+                      <div className="mt-1 flex flex-wrap items-center gap-2">
                         <span className="text-sm text-foreground/90">
                           {v.example}
                         </span>
                         {v.exampleSound ? (
                           <SoundPlayButton
+                            size="sm"
                             src={v.exampleSound}
                             aria-label="예문 재생"
                           />
@@ -215,7 +215,7 @@ export default async function ArticlePage({
                             src={v.image}
                             alt=""
                             fill
-                            className="object-cover"
+                            className="object-cover object-center"
                             unoptimized
                             sizes="112px"
                           />
@@ -262,13 +262,13 @@ export default async function ArticlePage({
                     {String(p.content ?? "").trim() || null}
                   </div>
                   {p.image ? (
-                    <div className="mt-4 overflow-hidden rounded-xl border border-border bg-muted/10">
+                    <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
                       <div className="relative aspect-video w-full">
                         <Image
                           src={p.image}
                           alt=""
                           fill
-                          className="object-cover"
+                          className="object-cover object-center"
                           unoptimized
                         />
                       </div>
@@ -312,36 +312,14 @@ export default async function ArticlePage({
           )}
         </section>
 
-        {/* 6. Related Articles */}
+        {/* 6. Related Articles — Learn With Kaja News와 동일 카드(ArticleFeed) */}
         {related.length > 0 ? (
           <section className="mt-20 border-t border-border pt-10">
             <h2 className="font-serif text-2xl font-semibold tracking-tight">
               Related Articles
             </h2>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/news/article/${encodeURIComponent(r.slug)}`}
-                  className="group rounded-2xl border border-border bg-card p-4 outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <div className="relative aspect-video overflow-hidden rounded-xl bg-muted/20">
-                    {r.imageThumb ? (
-                      <Image
-                        src={r.imageThumb}
-                        alt=""
-                        fill
-                        className="object-cover transition group-hover:scale-[1.02]"
-                        unoptimized
-                        sizes="(max-width: 640px) 100vw, 50vw, 25vw"
-                      />
-                    ) : null}
-                  </div>
-                  <div className="mt-3 font-serif font-semibold tracking-tight line-clamp-2">
-                    {r.title}
-                  </div>
-                </Link>
-              ))}
+            <div className="mt-4">
+              <ArticleFeed articles={related} showMajor={false} />
             </div>
           </section>
         ) : null}

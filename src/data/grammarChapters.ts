@@ -1,23 +1,22 @@
 /**
- * Grammar section content. Replace the placeholder with your full JSON (same shape).
+ * @deprecated 리스트는 grammarChapterList, 본문은 grammarChapterContent + BlockRenderer 사용.
+ * 하위 호환용: grammarChapters 는 리스트만 노출 (content 없음).
  */
+import { grammarChapterList } from "./grammarChapterList";
 
 export type GrammarChapter = {
   number: number;
   title: string;
-  content: string;
+  content?: string;
 };
 
 export type GrammarData = {
   chapters: GrammarChapter[];
 };
 
+/** 리스트만 포함 (용량 절약). 본문은 grammarChapterContent + BlockRenderer. */
 export const grammarChapters: GrammarData = {
-  chapters: [
-    {
-      number: 1,
-      title: "Placeholder",
-      content: "Replace this with your grammar content. Add more chapters in the same shape.",
-    },
-  ],
+  chapters: grammarChapterList.sections.flatMap((s) =>
+    s.chapters.map((ch) => ({ number: ch.number, title: ch.title })),
+  ),
 };

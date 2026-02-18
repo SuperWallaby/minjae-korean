@@ -3,17 +3,10 @@ import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 import { Suspense } from "react";
 
+import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
-import {
-  displayLevel,
-  formatNewsDate,
-  levelBadgeClass,
-  levelLabel,
-  type ReadingLevel,
-} from "@/lib/levelDisplay";
 import { listArticles } from "@/lib/articlesRepo";
-import { cn } from "@/lib/utils";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
@@ -29,7 +22,6 @@ export default async function Home() {
   } catch {
     news = [];
   }
-  const newsRest = news;
   return (
     <div className="space-y-24">
       {/* 1) Hero (1 column) */}
@@ -122,7 +114,7 @@ export default async function Home() {
                   src="/placeholders/minjae-hero.jpg"
                   alt="Minjae placeholder video"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   unoptimized
                 />
                 <div className="pointer-events-none absolute inset-0 grid place-items-center">
@@ -388,7 +380,7 @@ export default async function Home() {
                     src="/placeholders/okay-session.jpg"
                     alt="Included features placeholder"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     unoptimized
                   />
                 </div>
@@ -568,64 +560,7 @@ export default async function Home() {
                   staggerMs={90}
                   delayMs={80}
                 >
-                  {/* 하단 3단 그리드 */}
-                  {newsRest.length > 0 ? (
-                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                      {newsRest.map((p) => (
-                        <Link
-                          key={p.slug}
-                          href={`/news/article/${encodeURIComponent(p.slug)}`}
-                          className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                        >
-                          <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                            {p.imageThumb?.trim() || p.imageLarge?.trim() ? (
-                              <Image
-                                src={
-                                  p.imageThumb?.trim() ||
-                                  p.imageLarge?.trim() ||
-                                  ""
-                                }
-                                alt=""
-                                fill
-                                className="object-cover transition group-hover:scale-[1.02]"
-                                unoptimized
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                              />
-                            ) : (
-                              <Image
-                                src="/placeholders/post-1.svg"
-                                alt=""
-                                fill
-                                className="object-cover"
-                                unoptimized
-                              />
-                            )}
-                          </div>
-                          <div className="flex flex-1 flex-col p-4">
-                            <h4 className=" font-serif font-semibold tracking-tight line-clamp-2">
-                              {p.title}
-                            </h4>
-                            <div className="flex items-center justify-between">
-                              <span
-                                className={cn(
-                                  "mt-2 inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                                  levelBadgeClass(
-                                    (p.level ?? 1) as ReadingLevel,
-                                  ),
-                                )}
-                              >
-                                {displayLevel((p.level ?? 1) as ReadingLevel)}{" "}
-                                {levelLabel((p.level ?? 1) as ReadingLevel)}
-                              </span>
-                              <p className="mt-auto pt-2 text-xs text-muted-foreground">
-                                {formatNewsDate(p.createdAt)}
-                              </p>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null}
+                  <ArticleFeed articles={news} showMajor={false} />
                 </StaggerReveal>
               )}
             </div>

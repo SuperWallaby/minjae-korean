@@ -1,6 +1,7 @@
 import type { Collection } from "mongodb";
 
 import { getMongoDb } from "@/lib/mongo";
+import { suggestSlugFromGemini } from "@/lib/slugFromGemini";
 
 export type ReadingLevel = 1 | 2 | 3 | 4 | 5;
 
@@ -157,6 +158,26 @@ export function slugifyTitle(title: string): string {
   return s;
 }
 
+/** 사람이 읽기 좋은 slug용: 끝의 -YYYY-MM-DD 제거, 필요 시 소스 접두사(nyt- 등) 제거 */
+function shortenArticleCodeForSlug(articleCode: string): string {
+  let s = String(articleCode ?? "").trim().toLowerCase();
+  if (!s) return "";
+
+  // 끝의 -2026-02-12 형태 제거
+  s = s.replace(/-\d{4}-\d{2}-\d{2}$/, "");
+
+  // 자주 쓰는 소스 접두사 제거 (슬러그를 주제 중심으로)
+  const sourcePrefixes = ["nyt-", "nytimes-"];
+  for (const prefix of sourcePrefixes) {
+    if (s.startsWith(prefix)) {
+      s = s.slice(prefix.length).replace(/^-+/, "");
+      break;
+    }
+  }
+
+  return slugifyTitle(s) || s;
+}
+
 function toArticle(doc: ArticleDoc): Article {
   const { _id, slug, ...rest } = doc;
   return { slug: slug || String(_id), ...rest };
@@ -176,9 +197,9 @@ async function uniqueSlugFromBase(base: string): Promise<string> {
   return `${b}-${Date.now().toString(36)}`;
 }
 
-/** Slug base: prefer articleCode (meaningful English), else slugified title, else fallback. */
+/** Slug base: prefer shortened articleCode (readable), else slugified title, else fallback. */
 function slugBaseForArticle(title: string, articleCode?: string): string {
-  const fromCode = articleCode ? slugifyTitle(articleCode) : "";
+  const fromCode = articleCode ? shortenArticleCodeForSlug(articleCode) : "";
   const fromTitle = slugifyTitle(title);
   return fromCode || fromTitle || `article-${Date.now().toString(36)}`;
 }
@@ -212,7 +233,11 @@ export async function createArticle(draft: Partial<ArticleCard> & { title: strin
   if (!title) throw new Error("Missing title");
 
   const articleCode = typeof draft.articleCode === "string" ? draft.articleCode.trim() || undefined : undefined;
-  const slugBase = slugBaseForArticle(title, articleCode);
+  // slug 공급 시 그대로 우선 사용, 중복이면 uniqueSlugFromBase가 -2, -3 붙임
+  const suppliedBase = articleCode ? slugifyTitle(articleCode) : "";
+  const slugBase = suppliedBase
+    ? suppliedBase
+    : (await suggestSlugFromGemini(title, draft.paragraphs?.[0]?.content?.trim?.())) ?? slugBaseForArticle(title, undefined);
   const slug = await uniqueSlugFromBase(slugBase);
   const createdAt = nowIso();
 
