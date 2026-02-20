@@ -33,7 +33,9 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
   return (
     <div>
       {recap.level != null ? (
-        <p className="text-sm text-muted-foreground mb-6">Level {recap.level}</p>
+        <p className="text-sm text-muted-foreground mb-6">
+          Level {recap.level}
+        </p>
       ) : null}
 
       {/* Expression */}
@@ -49,7 +51,9 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                 className="flex flex-wrap items-center justify-between gap-2 border-b border-border p-4 last:border-b-0"
               >
                 <span className="flex flex-wrap items-baseline gap-x-2">
-                  <span className="font-semibold text-primary">{item.text}</span>
+                  <span className="font-semibold text-primary">
+                    {item.text}
+                  </span>
                   {item.phonetic ? (
                     <span className="text-sm text-orange-600 dark:text-orange-400">
                       /{item.phonetic}/
@@ -57,7 +61,10 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                   ) : null}
                 </span>
                 {item.audioUrl ? (
-                  <SoundPlayButton src={item.audioUrl} aria-label={`${item.text} 재생`} />
+                  <SoundPlayButton
+                    src={item.audioUrl}
+                    aria-label={`${item.text} 재생`}
+                  />
                 ) : null}
               </div>
             ))}
@@ -79,7 +86,9 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
               >
                 <span className="font-semibold text-primary">{item.text}</span>
                 {item.content ? (
-                  <p className="text-foreground/90">{item.content}</p>
+                  <p className="whitespace-pre-wrap text-foreground/90">
+                    {item.content}
+                  </p>
                 ) : null}
               </div>
             ))}
@@ -102,7 +111,7 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
       />
 
       {/* Mistake & Pronounce */}
-      {(recap.mistake?.length || recap.pronounce?.length) ? (
+      {recap.mistake?.length || recap.pronounce?.length ? (
         <section className="mt-12 border-t border-border pt-10">
           <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
             Mistake
@@ -115,7 +124,9 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                   className="flex flex-wrap items-center justify-between gap-2 border-b border-border p-4 last:border-b-0"
                 >
                   <span className="flex flex-wrap items-baseline gap-x-2">
-                    <span className="font-semibold text-primary">{item.text}</span>
+                    <span className="font-semibold text-primary">
+                      {item.text}
+                    </span>
                     {item.phonetic ? (
                       <span className="text-sm text-orange-600 dark:text-orange-400">
                         /{item.phonetic}/
@@ -123,7 +134,10 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                     ) : null}
                   </span>
                   {item.audioUrl ? (
-                    <SoundPlayButton src={item.audioUrl} aria-label={`${item.text} 재생`} />
+                    <SoundPlayButton
+                      src={item.audioUrl}
+                      aria-label={`${item.text} 재생`}
+                    />
                   ) : null}
                 </div>
               ))}
@@ -143,7 +157,9 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <span className="flex flex-wrap items-baseline gap-x-2">
-                        <span className="font-semibold text-primary">{item.text}</span>
+                        <span className="font-semibold text-primary">
+                          {item.text}
+                        </span>
                         {item.phonetic ? (
                           <span className="text-sm text-orange-600 dark:text-orange-400">
                             /{item.phonetic}/
@@ -151,7 +167,10 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                         ) : null}
                       </span>
                       {item.audioUrl ? (
-                        <SoundPlayButton src={item.audioUrl} aria-label={`${item.text} 재생`} />
+                        <SoundPlayButton
+                          src={item.audioUrl}
+                          aria-label={`${item.text} 재생`}
+                        />
                       ) : null}
                     </div>
                     {item.example ? (
@@ -163,7 +182,11 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                           </span>
                         ) : null}
                         {item.exampleAudioUrl ? (
-                          <SoundPlayButton size="sm" src={item.exampleAudioUrl} aria-label="예문 재생" />
+                          <SoundPlayButton
+                            size="sm"
+                            src={item.exampleAudioUrl}
+                            aria-label="예문 재생"
+                          />
                         ) : null}
                       </div>
                     ) : null}
