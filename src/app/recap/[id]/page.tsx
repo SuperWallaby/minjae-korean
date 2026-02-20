@@ -42,7 +42,7 @@ export async function generateMetadata({
     ? descParts.join(" | ")
     : "Korean lesson recap notes with expressions, vocabulary, and grammar points.";
 
-  const ogImage = recap.vocabulary.find((v) => v.imageUrl)?.imageUrl;
+  const ogImage = "/kaja-recap.png";
 
   return {
     title,
@@ -52,13 +52,13 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      ...(ogImage && { images: [{ url: ogImage, width: 800, height: 800, alt: "Vocabulary" }] }),
+      images: [{ url: ogImage, width: 1200, height: 630, alt: "Korean Lesson Recap" }],
     },
     twitter: {
-      card: ogImage ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title,
       description,
-      ...(ogImage && { images: [ogImage] }),
+      images: [ogImage],
     },
   };
 }

@@ -10,6 +10,17 @@ export const metadata: Metadata = {
   title: "Lesson Recaps",
   description: "A list of feedback notes from Korean lessons.",
   robots: { index: false, follow: false },
+  openGraph: {
+    title: "Lesson Recaps",
+    description: "A list of feedback notes from Korean lessons.",
+    images: [{ url: "/kaja-recap.png", width: 1200, height: 630, alt: "Korean Lesson Recap" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lesson Recaps",
+    description: "A list of feedback notes from Korean lessons.",
+    images: ["/kaja-recap.png"],
+  },
 };
 
 function formatDate(iso: string): string {
