@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
-import { SoundPlayButton } from "@/components/article/SoundPlayButton";
 import { VocabularySection } from "@/components/article/VocabularySection";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
 import { Container } from "@/components/site/Container";

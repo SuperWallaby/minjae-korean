@@ -142,10 +142,6 @@ function toRecap(doc: RecapDoc): Recap {
   } as Recap;
 }
 
-function toDoc(r: Recap): RecapDoc {
-  const { id, ...rest } = r;
-  return { _id: id, ...rest };
-}
 
 export async function getRecapById(id: string): Promise<Recap | null> {
   const { recaps } = await cols();
@@ -162,7 +158,7 @@ export async function listRecaps(opts?: {
   const { recaps } = await cols();
   const limit = Math.min(2000, Math.max(1, opts?.limit ?? 200));
 
-  let filter: Record<string, unknown> = {};
+  const filter: Record<string, unknown> = {};
   if (opts?.bookingId !== undefined && opts.bookingId !== null && opts.bookingId !== "") {
     filter.bookingId = opts.bookingId;
   } else if (opts?.linked === true) {
