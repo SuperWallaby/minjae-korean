@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { SoundPlayButton } from "@/components/article/SoundPlayButton";
+import { VocabularySection } from "@/components/article/VocabularySection";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
 import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
@@ -161,77 +162,18 @@ export default async function ArticlePage({
         </div>
 
         {/* 2. Vocabulary zone (table) */}
-        {(a.vocabulary ?? []).length > 0 ? (
-          <section className="mt-10 border-t border-border pt-10">
-            <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-              Vocabulary
-            </h2>
-            <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">
-              {(a.vocabulary ?? []).map((v, idx) => (
-                <div
-                  key={`${idx}-${v.word}`}
-                  className="flex flex-col border-b border-border last:border-b-0"
-                >
-                  {/* Row 1: 단어 /발음기호/ | 발음버튼 */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 p-4 pb-0 sm:pb-4">
-                    <span className="flex flex-wrap items-baseline gap-x-2">
-                      <span className="font-semibold text-primary">
-                        {v.word}
-                      </span>
-                      {v.phonetic ? (
-                        <span className="text-sm text-orange-600 dark:text-orange-400">
-                          /{v.phonetic}/
-                        </span>
-                      ) : null}
-                    </span>
-                    {v.sound ? (
-                      <SoundPlayButton
-                        src={v.sound}
-                        aria-label={`${v.word} 발음 재생`}
-                      />
-                    ) : null}
-                  </div>
-                  {/* Row 2: 설명+예문 | 이미지 */}
-                  <div className="flex flex-row gap-4 p-4 min-w-0">
-                    <div className="min-w-0 flex-1 flex flex-col gap-1">
-                      <p className="  text-foreground">{v.description_en}</p>
-                      <div className="mt-1 flex flex-wrap items-center gap-2">
-                        <span className="text-sm text-foreground/90">
-                          {v.example}
-                        </span>
-                        {v.exampleSound ? (
-                          <SoundPlayButton
-                            size="sm"
-                            src={v.exampleSound}
-                            aria-label="예문 재생"
-                          />
-                        ) : null}
-                      </div>
-                    </div>
-                    <div className="shrink-0 w-24 sm:w-28">
-                      {v.image ? (
-                        <div className="relative aspect-square w-full overflow-hidden rounded-lg border border-border bg-muted/20">
-                          <Image
-                            src={v.image}
-                            alt=""
-                            fill
-                            className="object-cover object-center"
-                            unoptimized
-                            sizes="112px"
-                          />
-                        </div>
-                      ) : (
-                        <div className="flex aspect-square w-full items-center justify-center rounded-lg border border-dashed border-border bg-muted/10 text-muted-foreground">
-                          —
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : null}
+        <VocabularySection
+          className="mt-10 border-t border-border pt-10"
+          items={(a.vocabulary ?? []).map((v) => ({
+            word: v.word,
+            phonetic: v.phonetic,
+            sound: v.sound,
+            meaning: v.description_en,
+            example: v.example,
+            exampleSound: v.exampleSound,
+            image: v.image,
+          }))}
+        />
 
         {/* 3. Body zone: sticky audio + single flowing text with inline images */}
         <section className="mt-12 border-t border-border pt-10">

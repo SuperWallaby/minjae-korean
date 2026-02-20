@@ -5,6 +5,7 @@ import { DateTime } from "luxon";
 import Link from "next/link";
 import AdminCalendarView from "./_components/AdminCalendarView";
 import AdminBookingsView from "./_components/AdminBookingsView";
+import AdminRecapsView from "./_components/AdminRecapsView";
 import WeeklyPatternEditor from "./_components/WeeklyPatternEditor";
 import AdminStudentsView from "./_components/AdminStudentsView";
 import AdminMeetingsView from "./_components/AdminMeetingsView";
@@ -12,7 +13,7 @@ import AdminMeetingsView from "./_components/AdminMeetingsView";
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
  
 export default function AdminPage() {
-  const [tab, setTab] = React.useState<"calendar" | "pattern" | "bookings" | "students" | "meetings">("calendar");
+  const [tab, setTab] = React.useState<"calendar" | "pattern" | "bookings" | "students" | "meetings" | "recaps">("calendar");
   const [fromDateKey, setFromDateKey] = React.useState<string>(
     DateTime.now().setZone(BUSINESS_TIME_ZONE).toISODate() ?? new Date().toISOString().slice(0, 10)
   );
@@ -84,6 +85,12 @@ export default function AdminPage() {
         >
           미팅 링크
         </button>
+        <button
+          className={`px-3 py-2 rounded border ${tab === "recaps" ? "bg-black text-white" : "bg-white"}`}
+          onClick={() => setTab("recaps")}
+        >
+          리캡
+        </button>
       </div>
 
       {tab === "calendar" ? <AdminCalendarView /> : null}
@@ -91,6 +98,7 @@ export default function AdminPage() {
       {tab === "bookings" ? <AdminBookingsView /> : null}
       {tab === "students" ? <AdminStudentsView /> : null}
       {tab === "meetings" ? <AdminMeetingsView /> : null}
+      {tab === "recaps" ? <AdminRecapsView /> : null}
        <div className="grid gap-4 md:grid-cols-2 mb-6">
          <label className="grid gap-1">
           <span className="text-sm">시작일</span>

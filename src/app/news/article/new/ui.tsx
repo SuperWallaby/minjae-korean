@@ -17,6 +17,7 @@ import {
   processImageForThumbnail,
   processImageForUploadWebPOnly,
 } from "@/lib/imageUpload";
+import { smartUnsplashSearch } from "@/lib/smartUnsplash";
 import { cn } from "@/lib/utils";
 
 type ReadingLevel = 1 | 2 | 3 | 4 | 5;
@@ -780,24 +781,12 @@ export function ArticleNewClient() {
                             });
                           }
                         }
-                        if (v.word?.trim()) {
-                          const unsplashRes = await fetch(
-                            `/api/admin/unsplash/search?q=${encodeURIComponent(v.word.trim())}`,
-                          );
-                          const unsplashJson = await unsplashRes
-                            .json()
-                            .catch(() => null);
-                          if (
-                            unsplashRes.ok &&
-                            unsplashJson?.ok &&
-                            unsplashJson?.results?.[0]?.url
-                          ) {
+                        if (v.word?.trim() && !v.image?.trim()) {
+                          const imageUrl = await smartUnsplashSearch(v.word.trim());
+                          if (imageUrl) {
                             setVocabulary((prev) => {
                               const next = prev.slice();
-                              next[idx] = {
-                                ...next[idx],
-                                image: unsplashJson.results[0].url,
-                              };
+                              next[idx] = { ...next[idx], image: imageUrl };
                               return next;
                             });
                           }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, UserRound, X } from "lucide-react";
+import { ChevronDown, Menu, UserRound, X } from "lucide-react";
 import * as React from "react";
 
 import { Badge } from "@/components/ui/Badge";
@@ -46,11 +46,21 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
   );
 }
 
+const ASSETS_LINKS = [
+  { href: "/grammar", label: "Grammar" },
+  { href: "/news", label: "News" },
+  { href: "/recaps", label: "Recaps" },
+] as const;
+
 export function SiteNavbar() {
   const { state } = useMockSession();
   const [activeHash, setActiveHash] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [assetsOpen, setAssetsOpen] = React.useState(false);
   const pathname = usePathname();
+  const isAssetsActive = ASSETS_LINKS.some(
+    (l) => pathname === l.href || pathname.startsWith(l.href + "/"),
+  );
 
   React.useEffect(() => {
     const ids = ["approach", "ways-to-use"];
@@ -95,7 +105,38 @@ export function SiteNavbar() {
                     label="Class pass"
                     activeOverride={activeHash === "ways-to-use"}
                   />
-                  <NavLink href="/grammar" label="Grammar" />
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setAssetsOpen((v) => !v)}
+                      onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
+                      className={cn(
+                        "inline-flex items-center gap-1.5 rounded-md px-4 py-2.5 text-base font-medium transition",
+                        "text-muted-foreground hover:text-foreground hover:bg-muted/20",
+                        "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                        isAssetsActive && "bg-muted text-foreground",
+                      )}
+                      aria-expanded={assetsOpen}
+                      aria-haspopup="true"
+                    >
+                      Assets
+                      <ChevronDown className={cn("size-5 transition", assetsOpen && "rotate-180")} />
+                    </button>
+                    {assetsOpen && (
+                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[200px] rounded-xl border border-border bg-white py-2 shadow-lg">
+                        {ASSETS_LINKS.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="block px-4 py-3 text-base text-muted-foreground hover:bg-muted/40 hover:text-foreground"
+                            onClick={() => setAssetsOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                   <NavLink href="/booking" label="Pick a time" />
                 </nav>
               </div>
@@ -213,12 +254,27 @@ export function SiteNavbar() {
                         >
                           Class pass
                         </Link>
+                        <span className="text-xs font-medium text-muted-foreground px-1 pt-2">Assets</span>
                         <Link
                           href="/grammar"
                           onClick={() => setMobileOpen(false)}
                           className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                         >
                           Grammar
+                        </Link>
+                        <Link
+                          href="/news"
+                          onClick={() => setMobileOpen(false)}
+                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
+                        >
+                          News
+                        </Link>
+                        <Link
+                          href="/recaps"
+                          onClick={() => setMobileOpen(false)}
+                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
+                        >
+                          Recaps
                         </Link>
                         <Link
                           href="/booking"
