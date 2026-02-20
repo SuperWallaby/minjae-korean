@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 
+import { Describe } from "./Describe";
 import { SoundPlayButton } from "./SoundPlayButton";
 
 export type VocabularyItem = {
@@ -55,7 +56,7 @@ export function VocabularySection({ title = "Vocabulary", items, className = "" 
                 {v.meaning ? <p className="text-foreground">{v.meaning}</p> : null}
                 {v.example ? (
                   <div className="mt-1 flex flex-wrap items-center gap-2">
-                    <span className="text-sm text-foreground/90">{v.example}</span>
+                    <Describe className="text-sm text-foreground/90">{v.example}</Describe>
                     {v.exampleSound ? (
                       <SoundPlayButton size="sm" src={v.exampleSound} aria-label="예문 재생" />
                     ) : null}

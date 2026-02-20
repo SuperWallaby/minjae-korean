@@ -24,6 +24,7 @@ export type ArticleJsonPayload = {
   }>;
   questions?: string[];
   discussion?: string[];
+  noImageIndex?: boolean;
   slug?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -103,6 +104,7 @@ function normalizePayload(parsed: unknown): ArticleJsonPayload {
     discussion: Array.isArray(o.discussion)
       ? o.discussion.map((d) => (typeof d === "string" ? d : String(d)))
       : [],
+    noImageIndex: typeof o.noImageIndex === "boolean" ? o.noImageIndex : undefined,
     slug: typeof o.slug === "string" ? o.slug : undefined,
     createdAt: typeof o.createdAt === "string" ? o.createdAt : undefined,
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : undefined,

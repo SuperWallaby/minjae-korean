@@ -51,6 +51,7 @@ type Article = {
   vocabulary: VocabItem[];
   questions: string[];
   discussion: string[];
+  noImageIndex?: boolean;
   createdAt?: string;
   updatedAt?: string;
 };
@@ -402,6 +403,23 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         );
                       })}
                     </div>
+                  </div>
+
+                  <div className="mt-2">
+                    <label className="inline-flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={draft.noImageIndex ?? false}
+                        onChange={(e) =>
+                          setDraft((prev) =>
+                            prev ? { ...prev, noImageIndex: e.target.checked } : prev
+                          )
+                        }
+                      />
+                      <span className="text-muted-foreground">
+                        Prevent image indexing (copyright protection)
+                      </span>
+                    </label>
                   </div>
                 </div>
 
@@ -774,6 +792,23 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                               ? "Uploading…"
                               : "Upload"}
                           </Button>
+                          {p.image && (
+                            <Button
+                              type="button"
+                              variant="outline"
+                              className="text-rose-600 hover:bg-rose-50"
+                              onClick={() =>
+                                setDraft((prev) => {
+                                  if (!prev) return prev;
+                                  const next = prev.paragraphs.slice();
+                                  next[idx] = { ...next[idx], image: undefined };
+                                  return { ...prev, paragraphs: next };
+                                })
+                              }
+                            >
+                              Delete
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </div>

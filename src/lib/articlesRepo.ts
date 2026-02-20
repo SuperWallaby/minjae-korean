@@ -36,6 +36,8 @@ export type ArticleCard = {
   vocabulary: VocabItem[];
   questions: string[];
   discussion: string[];
+  /** 이미지 로봇 검색 방지 (저작권 보호) */
+  noImageIndex?: boolean;
   createdAt?: string; // ISO
   updatedAt?: string; // ISO
 };

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
+import { Describe } from "@/components/article/Describe";
 import { VocabularySection } from "@/components/article/VocabularySection";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
 import { Container } from "@/components/site/Container";
@@ -50,6 +51,9 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical },
+    ...(a.noImageIndex && {
+      robots: { index: true, follow: true, noimageindex: true },
+    }),
     openGraph: {
       title,
       description,
@@ -146,7 +150,7 @@ export default async function ArticlePage({
               ) : null}
             </div>
             <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              {a.title}
+              <Describe>{a.title}</Describe>
             </h1>
           </div>
           {isDev ? (
@@ -196,11 +200,11 @@ export default async function ArticlePage({
                 <div key={`${idx}-${p.subtitle}`}>
                   {p.subtitle ? (
                     <p className="mb-2 font-semibold text-foreground">
-                      {p.subtitle}
+                      <Describe>{p.subtitle}</Describe>
                     </p>
                   ) : null}
                   <div className="whitespace-pre-wrap text-foreground/90">
-                    {String(p.content ?? "").trim() || null}
+                    <Describe>{String(p.content ?? "").trim() || null}</Describe>
                   </div>
                   {p.image ? (
                     <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
@@ -231,7 +235,7 @@ export default async function ArticlePage({
           ) : (
             <ul className="mt-4 list-inside list-disc space-y-4 text-lg leading-relaxed text-muted-foreground">
               {(a.questions ?? []).map((q, i) => (
-                <li key={i}>{q}</li>
+                <li key={i}><Describe>{q}</Describe></li>
               ))}
             </ul>
           )}
@@ -247,7 +251,7 @@ export default async function ArticlePage({
           ) : (
             <ul className="mt-4 list-inside list-disc space-y-4 text-lg leading-relaxed text-muted-foreground">
               {(a.discussion ?? []).map((q, i) => (
-                <li key={i}>{q}</li>
+                <li key={i}><Describe>{q}</Describe></li>
               ))}
             </ul>
           )}

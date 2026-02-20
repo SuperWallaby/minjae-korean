@@ -82,6 +82,7 @@ export function ArticleNewClient() {
   const [articleCode, setArticleCode] = React.useState("");
   const [level, setLevel] = React.useState<ReadingLevel>(1);
   const [levels, setLevels] = React.useState<ReadingLevel[]>([1]);
+  const [noImageIndex, setNoImageIndex] = React.useState(false);
   const [audio, setAudio] = React.useState("");
   const [imageThumb, setImageThumb] = React.useState("");
   const [imageLarge, setImageLarge] = React.useState("");
@@ -154,6 +155,7 @@ export function ArticleNewClient() {
     setVocabulary(p.vocabulary ?? []);
     setQuestionsText((p.questions ?? []).join("\n"));
     setDiscussionText((p.discussion ?? []).join("\n"));
+    setNoImageIndex(p.noImageIndex ?? false);
   }, []);
 
   const create = React.useCallback(async () => {
@@ -174,6 +176,7 @@ export function ArticleNewClient() {
         vocabulary,
         questions: toLines(questionsText),
         discussion: toLines(discussionText),
+        noImageIndex: noImageIndex || undefined,
       });
       if (!res.ok || !json?.ok || !json?.data?.article?.slug) {
         throw new Error(String(json?.error ?? "Create failed"));
@@ -194,6 +197,7 @@ export function ArticleNewClient() {
     level,
     levels,
     loading,
+    noImageIndex,
     paragraphs,
     questionsText,
     router,
@@ -313,6 +317,19 @@ export function ArticleNewClient() {
                         );
                       })}
                     </div>
+                  </div>
+
+                  <div className="mt-2">
+                    <label className="inline-flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={noImageIndex}
+                        onChange={(e) => setNoImageIndex(e.target.checked)}
+                      />
+                      <span className="text-muted-foreground">
+                        Prevent image indexing (copyright protection)
+                      </span>
+                    </label>
                   </div>
                 </div>
 
@@ -693,6 +710,22 @@ export function ArticleNewClient() {
                               ? "Uploading…"
                               : "Upload"}
                           </Button>
+                          {p.image && (
+                            <Button
+                              type="button"
+                              variant="outline"
+                              className="text-rose-600 hover:bg-rose-50"
+                              onClick={() =>
+                                setParagraphs((prev) => {
+                                  const next = prev.slice();
+                                  next[idx] = { ...next[idx], image: undefined };
+                                  return next;
+                                })
+                              }
+                            >
+                              Delete
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </div>
