@@ -119,8 +119,13 @@ export function SiteNavbar() {
                       aria-expanded={assetsOpen}
                       aria-haspopup="true"
                     >
-                      Assets
-                      <ChevronDown className={cn("size-5 transition", assetsOpen && "rotate-180")} />
+                      Library
+                      <ChevronDown
+                        className={cn(
+                          "size-5 transition -mr-2",
+                          assetsOpen && "rotate-180",
+                        )}
+                      />
                     </button>
                     {assetsOpen && (
                       <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[200px] rounded-xl border border-border bg-white py-2 shadow-lg">
@@ -254,7 +259,9 @@ export function SiteNavbar() {
                         >
                           Class pass
                         </Link>
-                        <span className="text-xs font-medium text-muted-foreground px-1 pt-2">Assets</span>
+                        <span className="text-xs font-medium text-muted-foreground px-1 pt-2">
+                          Library
+                        </span>
                         <Link
                           href="/grammar"
                           onClick={() => setMobileOpen(false)}
