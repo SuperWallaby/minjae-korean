@@ -41,7 +41,7 @@ export function SiteFooter() {
     "cursor-pointer inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30";
 
   return (
-    <footer className="bg-[#14110d] text-white">
+    <footer className="site-footer bg-[#14110d] text-white">
       <Container className="grid gap-8 py-10 md:grid-cols-2 md:items-start">
         <div className="text-sm text-white/70">
           <Logo mode="footer" />

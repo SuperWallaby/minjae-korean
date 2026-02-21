@@ -79,7 +79,9 @@ export function Describe({ children, className = "" }: Props) {
       }
       setResult(json.data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to get description");
+      setError(
+        err instanceof Error ? err.message : "Failed to get description",
+      );
     } finally {
       setLoading(false);
     }
@@ -107,12 +109,12 @@ export function Describe({ children, className = "" }: Props) {
       <span
         ref={textRef}
         onClick={handleClick}
-        className="cursor-pointer rounded-sm transition-colors hover:bg-primary/10"
+        className={`inline-block cursor-pointer rounded-sm px-0.5 -mx-0.5 transition-all duration-200 hover:bg-[rgba(74,156,134,0.15)] hover:shadow-[0_0_0_4px_rgba(74,156,134,0.15)] ${open ? "bg-[rgba(74,156,134,0.18)] shadow-[0_0_0_6px_rgba(74,156,134,0.18)]" : ""}`}
       >
         {children}
       </span>
       {open && (
-        <span className="block w-full mt-3 rounded-lg border border-border bg-muted/20 overflow-hidden">
+        <span className="block w-full my-3 rounded-lg border border-border bg-muted/20 overflow-hidden">
           {loading && (
             <span className="block px-4 py-4 text-base font-normal text-muted-foreground animate-pulse">
               Analyzing...
@@ -150,7 +152,10 @@ export function Describe({ children, className = "" }: Props) {
                     {result.vocabulary.map((v, i) => (
                       <span key={i} className="block text-base font-normal">
                         <span className="text-foreground">{v.word}</span>
-                        <span className="text-muted-foreground"> — {v.meaning}</span>
+                        <span className="text-muted-foreground">
+                          {" "}
+                          — {v.meaning}
+                        </span>
                       </span>
                     ))}
                   </span>

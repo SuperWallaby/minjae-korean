@@ -1,0 +1,84 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+
+import { Container } from "@/components/site/Container";
+import { Button } from "@/components/ui/Button";
+import { ExpressionRenderer } from "@/components/expression/ExpressionRenderer";
+import { getExpressionChapterBySlug } from "@/data/expressionChapterList";
+import { getExpressionChapterContent } from "@/data/expressionChapterContent";
+
+export const runtime = "nodejs";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const chapter = getExpressionChapterBySlug(slug);
+  if (!chapter) return {};
+
+  const canonical = `${SITE_URL}/expressions/${slug}`;
+  return {
+    title: `${chapter.title} | Korean Expressions`,
+    description: chapter.description ?? "Learn Korean expressions with ready-to-use frames.",
+    alternates: { canonical },
+    openGraph: {
+      title: `${chapter.title} | Korean Expressions`,
+      description: chapter.description ?? "Learn Korean expressions with ready-to-use frames.",
+      url: canonical,
+      siteName: "Kaja",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${chapter.title} | Korean Expressions`,
+      description: chapter.description ?? "Learn Korean expressions with ready-to-use frames.",
+    },
+  };
+}
+
+export default async function ExpressionChapterPage({ params }: Props) {
+  const { slug } = await params;
+  const chapter = getExpressionChapterBySlug(slug);
+  if (!chapter) notFound();
+
+  const content = await getExpressionChapterContent(slug);
+  if (!content) notFound();
+
+  const { header } = content;
+
+  return (
+    <div className="py-12 sm:py-16">
+      <Container className="max-w-3xl">
+        {/* Header */}
+        <div className="mb-10">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <Link href="/expressions" className="hover:text-foreground transition-colors">
+              Expressions
+            </Link>
+            <span>/</span>
+            <span>#{chapter.number}</span>
+          </div>
+          <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+            {header.title}
+          </h1>
+          <p className="mt-2 text-muted-foreground">{header.goal}</p>
+        </div>
+
+        {/* Content */}
+        <ExpressionRenderer content={content} />
+
+        {/* Footer */}
+        <div className="mt-12 pt-8 border-t border-border">
+          <Button asChild variant="outline">
+            <Link href="/expressions">← Back to Expressions</Link>
+          </Button>
+        </div>
+      </Container>
+    </div>
+  );
+}

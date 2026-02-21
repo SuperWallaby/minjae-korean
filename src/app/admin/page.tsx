@@ -6,6 +6,7 @@ import Link from "next/link";
 import AdminCalendarView from "./_components/AdminCalendarView";
 import AdminBookingsView from "./_components/AdminBookingsView";
 import AdminRecapsView from "./_components/AdminRecapsView";
+import AdminRemindersView from "./_components/AdminRemindersView";
 import WeeklyPatternEditor from "./_components/WeeklyPatternEditor";
 import AdminStudentsView from "./_components/AdminStudentsView";
 import AdminMeetingsView from "./_components/AdminMeetingsView";
@@ -13,7 +14,7 @@ import AdminMeetingsView from "./_components/AdminMeetingsView";
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
  
 export default function AdminPage() {
-  const [tab, setTab] = React.useState<"calendar" | "pattern" | "bookings" | "students" | "meetings" | "recaps">("calendar");
+  const [tab, setTab] = React.useState<"calendar" | "pattern" | "bookings" | "students" | "meetings" | "recaps" | "reminders">("calendar");
   const [fromDateKey, setFromDateKey] = React.useState<string>(
     DateTime.now().setZone(BUSINESS_TIME_ZONE).toISODate() ?? new Date().toISOString().slice(0, 10)
   );
@@ -91,6 +92,12 @@ export default function AdminPage() {
         >
           리캡
         </button>
+        <button
+          className={`px-3 py-2 rounded border ${tab === "reminders" ? "bg-black text-white" : "bg-white"}`}
+          onClick={() => setTab("reminders")}
+        >
+          리마인더
+        </button>
       </div>
 
       {tab === "calendar" ? <AdminCalendarView /> : null}
@@ -99,6 +106,7 @@ export default function AdminPage() {
       {tab === "students" ? <AdminStudentsView /> : null}
       {tab === "meetings" ? <AdminMeetingsView /> : null}
       {tab === "recaps" ? <AdminRecapsView /> : null}
+      {tab === "reminders" ? <AdminRemindersView /> : null}
        <div className="grid gap-4 md:grid-cols-2 mb-6">
          <label className="grid gap-1">
           <span className="text-sm">시작일</span>

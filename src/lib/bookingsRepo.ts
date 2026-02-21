@@ -29,8 +29,8 @@ export type Booking = {
   meetCreatedAt?: string;
   meetError?: string;
   // Reminder email bookkeeping (ISO timestamps). Used to prevent duplicate sends.
-  reminder24hSentAt?: string;
-  reminder24hAdminSentAt?: string;
+  reminder1hSentAt?: string;
+  reminder1hAdminSentAt?: string;
   reminder30mSentAt?: string;
   reminder30mAdminSentAt?: string;
 };

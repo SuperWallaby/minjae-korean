@@ -11,6 +11,7 @@ import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
+import { useEducationMode } from "@/lib/EducationModeProvider";
 
 type NavLinkProps = {
   href: string;
@@ -48,19 +49,35 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
 
 const ASSETS_LINKS = [
   { href: "/grammar", label: "Grammar" },
+  { href: "/expressions", label: "Expressions" },
+  { href: "/songs", label: "Songs" },
   { href: "/news", label: "News" },
   { href: "/recaps", label: "Recaps" },
 ] as const;
 
 export function SiteNavbar() {
   const { state } = useMockSession();
+  const { enabled: eduMode } = useEducationMode();
   const [activeHash, setActiveHash] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [assetsOpen, setAssetsOpen] = React.useState(false);
+  const [headerVisible, setHeaderVisible] = React.useState(false);
   const pathname = usePathname();
   const isAssetsActive = ASSETS_LINKS.some(
     (l) => pathname === l.href || pathname.startsWith(l.href + "/"),
   );
+
+  React.useEffect(() => {
+    if (!eduMode) {
+      setHeaderVisible(false);
+      return;
+    }
+    const handleMouseMove = (e: MouseEvent) => {
+      setHeaderVisible(e.clientY < 80);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [eduMode]);
 
   React.useEffect(() => {
     const ids = ["approach", "ways-to-use"];
@@ -87,7 +104,12 @@ export function SiteNavbar() {
   }, [pathname]);
 
   return (
-    <header className="mb-5 sticky top-5 z-40">
+    <header
+      className={cn(
+        "site-navbar mb-5 sticky top-5 z-40 transition-transform duration-200",
+        eduMode && !headerVisible && "-translate-y-[calc(100%+1.25rem)]",
+      )}
+    >
       <Container>
         <div className="mx-auto w-fit">
           <div className="rounded-2xl border flex  w-full border-border bg-white px-2 py-2 shadow-(--shadow-navbar) md:rounded-full">
@@ -111,7 +133,7 @@ export function SiteNavbar() {
                       onClick={() => setAssetsOpen((v) => !v)}
                       onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
                       className={cn(
-                        "inline-flex items-center gap-1.5 rounded-md px-4 py-2.5 text-base font-medium transition",
+                        "inline-flex items-center gap-1 rounded-md px-4 py-2.5 text-base font-medium transition",
                         "text-muted-foreground hover:text-foreground hover:bg-muted/20",
                         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                         isAssetsActive && "bg-muted text-foreground",
@@ -122,7 +144,7 @@ export function SiteNavbar() {
                       Library
                       <ChevronDown
                         className={cn(
-                          "size-5 transition -mr-2",
+                          "size-5 transition mt-1 -mr-1",
                           assetsOpen && "rotate-180",
                         )}
                       />

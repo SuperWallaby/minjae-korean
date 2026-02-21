@@ -3,9 +3,11 @@ import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 // NOTE: LiveKit removed (pure WebRTC implementation). Keep this file free of LiveKit imports.
 import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
+import { EducationModeProvider } from "@/lib/EducationModeProvider";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SupportChatWidget } from "@/components/support/SupportChatWidget";
+import { QuickNote } from "@/components/QuickNote";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -87,12 +89,15 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <MockSessionProvider>
-          <div className="min-h-dvh bg-background">
-            <SiteNavbar />
-            <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
-            <SiteFooter />
-            <SupportChatWidget />
-          </div>
+          <EducationModeProvider>
+            <div className="min-h-dvh bg-background">
+              <SiteNavbar />
+              <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
+              <SiteFooter />
+              <SupportChatWidget />
+              <QuickNote />
+            </div>
+          </EducationModeProvider>
         </MockSessionProvider>
       </body>
     </html>

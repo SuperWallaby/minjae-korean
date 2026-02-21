@@ -1,51 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
 
 import { Container } from "@/components/site/Container";
+import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import {
-  displayLevel,
-  formatNewsDate,
-  levelBadgeClass,
-  levelLabel,
-  type ReadingLevel,
-} from "@/lib/levelDisplay";
-import { listArticles } from "@/lib/articlesRepo";
-import { cn } from "@/lib/utils";
+import { formatNewsDate } from "@/lib/levelDisplay";
+import { listSongs } from "@/lib/songsRepo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
-
-export const metadata: Metadata = {
-  title: "Korean News & Reading",
-  description:
-    "Korean study: short news and articles for reading practice, vocabulary, and prompts. Leveled content for learners.",
-  openGraph: {
-    title: "Korean News & Reading | Kaja",
-    description:
-      "Korean study: news and articles for reading practice, vocabulary, and prompts.",
-    url: `${SITE_URL}/news`,
-    siteName: "Kaja",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Korean News & Reading | Kaja",
-    description:
-      "Korean study: news and articles for reading practice, vocabulary, and prompts.",
-  },
-  alternates: { canonical: `${SITE_URL}/news` },
-};
 
 function devOnly() {
   return process.env.NODE_ENV !== "production";
 }
 
-export default async function NewsPage() {
-  const items = await listArticles(100);
+export default async function SongsPage() {
+  const items = await listSongs(100);
   const isDev = devOnly();
   const major = items[0];
   const rest = items.slice(1);
@@ -56,29 +26,28 @@ export default async function NewsPage() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              News
+              Songs
             </h1>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Articles for korean learning, reading, vocabulary, and prompts.
+              Learn Korean through music. Click on lyrics to see translations and explanations.
             </p>
           </div>
           {isDev ? (
             <Button asChild variant="outline" size="sm">
-              <Link href="/news/article/new">New article</Link>
+              <Link href="/songs/new">New song</Link>
             </Button>
           ) : null}
         </div>
 
         {items.length === 0 ? (
           <div className="mt-10 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-            No articles yet.
+            No songs yet.
           </div>
         ) : (
           <>
-            {/* 상단 메이저: 첫 글 큰 카드 */}
             {major ? (
               <Link
-                href={`/news/article/${encodeURIComponent(major.slug)}`}
+                href={`/songs/${encodeURIComponent(major.slug)}`}
                 className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
@@ -95,43 +64,40 @@ export default async function NewsPage() {
                       unoptimized
                       sizes="(max-width: 1024px) 100vw, 1024px"
                     />
-                  ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                      <span className="text-6xl">🎵</span>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <span
-                      className={cn(
-                        "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                        levelBadgeClass((major.level ?? 1) as ReadingLevel),
-                      )}
-                    >
-                      {displayLevel((major.level ?? 1) as ReadingLevel)}{" "}
-                      {levelLabel((major.level ?? 1) as ReadingLevel)}
+                    <span className="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-1 text-xs font-medium text-white">
+                      {major.level || "A1"}
                     </span>
                     <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
                       {major.title}
                     </h2>
-                    <p className="mt-1 text-xs text-white/80">
-                      {formatNewsDate(major.createdAt)}
+                    <p className="mt-1 text-sm text-white/80">
+                      {major.artist}
                     </p>
                   </div>
                 </div>
               </Link>
             ) : null}
 
-            {/* 하단 3단 그리드 */}
             {rest.length > 0 ? (
               <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {rest.map((a) => (
+                {rest.map((s) => (
                   <Link
-                    key={a.slug}
-                    href={`/news/article/${encodeURIComponent(a.slug)}`}
+                    key={s.slug}
+                    href={`/songs/${encodeURIComponent(s.slug)}`}
                     className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                      {a.imageThumb?.trim() || a.imageLarge?.trim() ? (
+                      {s.imageThumb?.trim() || s.imageLarge?.trim() ? (
                         <Image
                           src={
-                            a.imageThumb?.trim() || a.imageLarge?.trim() || ""
+                            s.imageThumb?.trim() || s.imageLarge?.trim() || ""
                           }
                           alt=""
                           fill
@@ -140,27 +106,26 @@ export default async function NewsPage() {
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center text-muted-foreground">
-                          —
+                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                          <span className="text-4xl">🎵</span>
                         </div>
                       )}
                     </div>
                     <div className="flex flex-1 flex-col p-4">
-                      <span
-                        className={cn(
-                          "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                          levelBadgeClass((a.level ?? 1) as ReadingLevel),
-                        )}
-                      >
-                        {displayLevel((a.level ?? 1) as ReadingLevel)}{" "}
-                        {levelLabel((a.level ?? 1) as ReadingLevel)}
-                      </span>
+                      <Badge variant="muted" className="w-fit">
+                        {s.level || "A1"}
+                      </Badge>
                       <h3 className="mt-2 font-serif font-semibold tracking-tight line-clamp-2">
-                        {a.title}
+                        {s.title}
                       </h3>
-                      <p className="mt-auto pt-2 text-xs text-muted-foreground">
-                        {formatNewsDate(a.createdAt)}
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {s.artist}
                       </p>
+                      {s.createdAt ? (
+                        <p className="mt-auto pt-2 text-xs text-muted-foreground">
+                          {formatNewsDate(s.createdAt)}
+                        </p>
+                      ) : null}
                     </div>
                   </Link>
                 ))}

@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { DateTime } from "luxon";
 
 import { listAllBookings, patchBooking, type Booking } from "@/lib/bookingsRepo";
+import { insertReminderLog } from "@/lib/reminderLogsRepo";
 import { getSlotsByIds } from "@/lib/slotsRepo";
 
 export const runtime = "nodejs";
@@ -80,11 +81,11 @@ function requireAdminKey(req: NextRequest) {
   return { ok: true as const };
 }
 
-type ReminderKind = "24h" | "30m";
+type ReminderKind = "1h" | "30m";
 
 function reminderWindow(kind: ReminderKind) {
   // Run this endpoint via cron every ~5 minutes.
-  if (kind === "24h") return { targetMs: 24 * 60 * 60 * 1000, windowMs: 15 * 60 * 1000 };
+  if (kind === "1h") return { targetMs: 60 * 60 * 1000, windowMs: 15 * 60 * 1000 };
   return { targetMs: 30 * 60 * 1000, windowMs: 10 * 60 * 1000 };
 }
 
@@ -126,12 +127,12 @@ function template(args: {
   meetingProvider?: string;
   timeLabel: string;
 }) {
-  const when =
-    args.kind === "24h" ? "tomorrow" : "soon";
+  const is30m = args.kind === "30m";
+  const when = args.kind === "1h" ? "in 1 hour" : "soon";
   const subject =
-    args.kind === "24h"
-      ? `Reminder: your Korean session is ${when}`
-      : "Reminder: your Korean session starts soon";
+    args.kind === "1h"
+      ? "Reminder: your Korean session is in 1 hour"
+      : "Reminder: your Korean session starts in 30 minutes";
   const { call, meetUrl, provider } = meetingLinks({
     bookingKey: args.bookingKey,
     meetUrl: args.meetUrl,
@@ -142,13 +143,18 @@ function template(args: {
     : provider === "google_meet"
       ? "We’re preparing your Google Meet link. If you don’t see it, please contact Minjae."
       : "Lobby opens 10 minutes before class.";
-  const text = `Hi ${args.name || "there"},\n\nThis is a reminder that your Korean session with Minjae is scheduled ${when}.\n\nTime: ${args.timeLabel}\nLink: ${call}\n\n${footer}\n\n— Kaja`;
+  const linkBlock = is30m
+    ? `\n\nJoin here: ${call}\n`
+    : `\nLink: ${call}\n`;
+  const text = `Hi ${args.name || "there"},\n\nThis is a reminder that your Korean session with Minjae is ${when}.\n\nTime: ${args.timeLabel}${linkBlock}\n${footer}\n\n— Kaja`;
+  const linkHtml = is30m
+    ? `<p style="margin: 0 0 18px;"><b>Join your session</b>: <a href="${call}" style="color: #2563eb; font-weight: 600;">${call}</a></p><p style="margin: 0 0 18px;">Time: ${args.timeLabel}</p>`
+    : `<p style="margin: 0 0 6px;"><b>Time</b>: ${args.timeLabel}</p><p style="margin: 0 0 18px;"><b>Session link</b>: <a href="${call}">${call}</a></p>`;
   const html = `
   <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.5;">
     <h2 style="margin: 0 0 10px;">See you ${when}</h2>
-    <p style="margin: 0 0 14px;">Your Korean session with Minjae is scheduled.</p>
-    <p style="margin: 0 0 6px;"><b>Time</b>: ${args.timeLabel}</p>
-    <p style="margin: 0 0 18px;"><b>Session link</b>: <a href="${call}">${call}</a></p>
+    <p style="margin: 0 0 14px;">Your Korean session with Minjae is ${when}.</p>
+    ${linkHtml}
     <p style="margin: 0; color: #6b7280; font-size: 12px;">${
       meetUrl
         ? "Tip: Google Meet may show “Waiting for host” if Minjae isn’t there yet."
@@ -176,9 +182,9 @@ function adminTemplate(args: {
     meetingProvider: args.meetingProvider,
   });
   const subject =
-    args.kind === "24h"
-      ? `Tomorrow: session booked (${args.memberName || "Member"})`
-      : `Starting soon: session (${args.memberName || "Member"})`;
+    args.kind === "1h"
+      ? `In 1 hour: session (${args.memberName || "Member"})`
+      : `In 30 min: session (${args.memberName || "Member"})`;
   const text = `Session reminder.\n\nMember: ${args.memberName} <${args.memberEmail}>\nTime: ${args.timeLabel}\nAdmin link: ${adminCall}\nMember link: ${call}\n`;
   const html = `
   <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.5;">
@@ -224,13 +230,13 @@ export async function GET(req: NextRequest) {
       const memberEmail = (b.email ?? "").trim().toLowerCase();
       const memberName = (b.name ?? "").trim() || "Member";
 
-      for (const kind of ["24h", "30m"] as const) {
+      for (const kind of ["1h", "30m"] as const) {
         const should = shouldSend(msUntil, kind);
         if (!should) continue;
 
         // Member email
-        const memberField: "reminder24hSentAt" | "reminder30mSentAt" =
-          kind === "24h" ? "reminder24hSentAt" : "reminder30mSentAt";
+        const memberField: "reminder1hSentAt" | "reminder30mSentAt" =
+          kind === "1h" ? "reminder1hSentAt" : "reminder30mSentAt";
         if (isEmail(memberEmail) && !b[memberField]) {
           const t = template({
             kind,
@@ -242,14 +248,22 @@ export async function GET(req: NextRequest) {
           });
           await sendResendEmail({ to: memberEmail, ...t });
           await patchBooking(b.id, { [memberField]: new Date().toISOString() } as Partial<Booking>);
+          await insertReminderLog({
+            bookingId: b.id,
+            kind,
+            role: "member",
+            to: memberEmail,
+            memberName,
+            timeLabel: label,
+          });
           results.push({ id: b.id, kind, to: memberEmail });
         }
 
         // Admin email(s)
         const adminField:
-          | "reminder24hAdminSentAt"
+          | "reminder1hAdminSentAt"
           | "reminder30mAdminSentAt" =
-          kind === "24h" ? "reminder24hAdminSentAt" : "reminder30mAdminSentAt";
+          kind === "1h" ? "reminder1hAdminSentAt" : "reminder30mAdminSentAt";
         if (admins.length > 0 && !b[adminField]) {
           for (const to of admins) {
             const t = adminTemplate({
@@ -262,6 +276,14 @@ export async function GET(req: NextRequest) {
               timeLabel: label,
             });
             await sendResendEmail({ to, ...t });
+            await insertReminderLog({
+              bookingId: b.id,
+              kind,
+              role: "admin",
+              to,
+              memberName,
+              timeLabel: label,
+            });
             results.push({ id: b.id, kind, to });
           }
           await patchBooking(b.id, { [adminField]: new Date().toISOString() } as Partial<Booking>);

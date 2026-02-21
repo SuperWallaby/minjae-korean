@@ -1,0 +1,5 @@
+{"sessionId":"460cf6","location":"expression-challenge/route.ts:POST","message":"env check","data":{"hasGeminiKey":false,"keyLength":0,"hypothesisId":"H1"},"timestamp":1771640650643}
+{"sessionId":"460cf6","location":"expression-challenge/route.ts:before Server not configured","message":"returning Server not configured","data":{"hypothesisId":"H2"},"timestamp":1771640650647}
+{"sessionId":"460cf6","location":"expression-challenge/route.ts:POST","message":"env check","data":{"hasGeminiKey":false,"keyLength":0,"hypothesisId":"H1"},"timestamp":1771640773577}
+{"sessionId":"460cf6","location":"expression-challenge/route.ts:before Server not configured","message":"returning Server not configured","data":{"hypothesisId":"H2"},"timestamp":1771640773581}
+{"sessionId":"460cf6","location":"expression-challenge/route.ts:POST","message":"env check","data":{"hasGeminiKey":true,"keyLength":39,"hypothesisId":"H1"},"timestamp":1771640800931}

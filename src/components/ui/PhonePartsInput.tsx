@@ -4,18 +4,13 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/Input";
+import {
+  DEFAULT_PHONE_COUNTRY,
+  loadPhoneCountryOptions,
+  type PhoneCountryOption,
+} from "@/lib/phoneCountryOptions";
 
-export const DEFAULT_PHONE_COUNTRY = "+82";
-
-export const PHONE_COUNTRY_OPTIONS = [
-  { value: "+82", label: "+82 (KR)" },
-  { value: "+1", label: "+1 (US)" },
-  { value: "+44", label: "+44 (UK)" },
-  { value: "+81", label: "+81 (JP)" },
-  { value: "+61", label: "+61 (AU)" },
-  { value: "+49", label: "+49 (DE)" },
-  { value: "+7", label: "+7 (RU)" },
-] as const;
+export { DEFAULT_PHONE_COUNTRY };
 
 function digitsOnly(s: string) {
   return (s ?? "").replace(/\D/g, "");
@@ -60,10 +55,34 @@ export function PhonePartsInput({
   inputClassName,
   placeholder = "Local number",
 }: PhonePartsInputProps) {
+  const [options, setOptions] = React.useState<PhoneCountryOption[]>(() => [
+    { value: DEFAULT_PHONE_COUNTRY, label: `${DEFAULT_PHONE_COUNTRY} (KR)` },
+  ]);
+  const [optionsLoaded, setOptionsLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    loadPhoneCountryOptions().then((list) => {
+      if (!cancelled) {
+        setOptions(list);
+        setOptionsLoaded(true);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const currentCountry = (country ?? DEFAULT_PHONE_COUNTRY).trim() || DEFAULT_PHONE_COUNTRY;
+  const currentOption = options.find((o) => o.value === currentCountry) ?? {
+    value: currentCountry,
+    label: `${currentCountry}`,
+  };
+
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <select
-        value={(country ?? DEFAULT_PHONE_COUNTRY).trim() || DEFAULT_PHONE_COUNTRY}
+        value={currentCountry}
         disabled={disabled}
         onChange={(e) => {
           const nextCountry = e.target.value;
@@ -74,11 +93,15 @@ export function PhonePartsInput({
           selectClassName,
         )}
       >
-        {PHONE_COUNTRY_OPTIONS.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.label}
-          </option>
-        ))}
+        {!optionsLoaded ? (
+          <option value={currentOption.value}>{currentOption.label}</option>
+        ) : (
+          options.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          ))
+        )}
       </select>
       <Input
         value={digitsOnly(number)}
