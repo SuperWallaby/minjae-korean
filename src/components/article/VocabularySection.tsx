@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
 import { Describe } from "./Describe";
 import { SoundPlayButton } from "./SoundPlayButton";
 
@@ -33,7 +34,7 @@ export function VocabularySection({
 
   return (
     <section className={className}>
-      <h2 className={["text-2xl font-semibold tracking-tight sm:text-3xl", titleClassName].filter(Boolean).join(" ")}>
+      <h2 className={cn("text-2xl font-semibold tracking-tight sm:text-3xl", titleClassName)}>
         {title}
       </h2>
       <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">
