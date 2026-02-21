@@ -26,6 +26,9 @@ const SLUG_LIST = [
   "essential-06",
   "essential-07",
 ] as const;
+if(process.env.NODE_ENV === "development") {
+  console.log(SLUG_LIST);
+}
 type Slug = (typeof SLUG_LIST)[number];
 
 const loaders: Record<Slug, () => Promise<{ content: GrammarChapterContent }>> = {
