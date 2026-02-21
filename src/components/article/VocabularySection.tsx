@@ -18,12 +18,14 @@ export type VocabularyItem = {
 
 type Props = {
   title?: string;
+  titleClassName?: string;
   items: VocabularyItem[];
   className?: string;
 };
 
 export function VocabularySection({
   title = "Vocabulary",
+  titleClassName,
   items,
   className = "",
 }: Props) {
@@ -31,7 +33,7 @@ export function VocabularySection({
 
   return (
     <section className={className}>
-      <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
+      <h2 className={["text-2xl font-semibold tracking-tight sm:text-3xl", titleClassName].filter(Boolean).join(" ")}>
         {title}
       </h2>
       <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">

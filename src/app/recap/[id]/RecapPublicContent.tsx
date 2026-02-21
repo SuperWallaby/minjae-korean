@@ -50,7 +50,7 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
       {recap.expression?.length ? (
         <section className="mt-12 border-t border-border pt-12 first:mt-0 first:border-t-0 first:pt-0">
           <div className="flex flex-wrap items-center gap-2">
-            <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className={`text-2xl font-semibold tracking-tight sm:text-3xl ${jua.className}`}>
               <span aria-hidden>✨</span>{" "}
             Today&apos;s Expression
             </h2>
@@ -88,7 +88,7 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
       {/* Grammar Point */}
       {recap.grammarPoint?.length ? (
         <section className="mt-12 border-t border-border pt-10">
-          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className={`text-2xl font-semibold tracking-tight sm:text-3xl ${jua.className}`}>
             <span aria-hidden>👍</span> Grammar Point
           </h2>
           <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">
@@ -112,6 +112,7 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
       {/* Vocabulary — VocabularySection 공통 컴포넌트 사용 */}
       <VocabularySection
         title="📖 Vocabulary"
+        titleClassName={jua.className}
         className="mt-12 border-t border-border pt-10"
         items={recap.vocabulary.map((v) => ({
           word: v.text,
@@ -127,7 +128,7 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
       {/* Mistake & Pronounce */}
       {recap.mistake?.length || recap.pronounce?.length ? (
         <section className="mt-12 border-t border-border pt-10">
-          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className={`text-2xl font-semibold tracking-tight sm:text-3xl ${jua.className}`}>
             <span aria-hidden>💬</span> What to Improve
           </h2>
           {recap.mistake?.length ? (
@@ -160,7 +161,7 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
 
           {recap.pronounce?.length ? (
             <>
-              <h3 className="mt-8 font-serif text-xl font-semibold tracking-tight sm:text-2xl">
+              <h3 className={`mt-8 text-xl font-semibold tracking-tight sm:text-2xl ${jua.className}`}>
                 Pronounce
               </h3>
               <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">

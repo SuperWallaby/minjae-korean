@@ -119,7 +119,7 @@ export default async function RecapPublicPage({
   return (
     <div className="py-12 sm:py-16">
       <Container className="max-w-2xl">
-        <header className="mb-8 text-center">
+        <header className="mb-16 text-center">
           <div className="flex flex-col text-center flex-wrap items-center gap-3 gap-y-2">
             <div className="shrink-0 flex items-center justify-center bg-included-2/80 aspect-square rounded-full p-4 overflow-visible">
               <Image
@@ -132,7 +132,9 @@ export default async function RecapPublicPage({
               />
             </div>
             <div className="flex flex-col flex-wrap items-baseline gap-x-3 gap-y-1">
-              <h1 className="font-serif text-2xl font-semibold tracking-tight text-primary">
+              <h1
+                className={`font-serif text-2xl font-semibold tracking-tight text-primary ${jua.className}`}
+              >
                 {recap.studentName?.length > 1 ? recap.studentName : ""} Recap
                 Note
               </h1>

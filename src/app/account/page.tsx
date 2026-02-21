@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import * as React from "react";
-import { Jua } from "next/font/google";
 import { CalendarDays, CreditCard, FileText, User } from "lucide-react";
 import { DateTime } from "luxon";
 
 import { Container } from "@/components/site/Container";
 
-const jua = Jua({ weight: "400", subsets: ["latin"], display: "swap" });
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -773,7 +771,7 @@ export default function AccountPage() {
             {tab === "notes" && (
               <Card className="h-full flex flex-col">
                 <CardHeader>
-                  <CardTitle className={jua.className}>Recap notes</CardTitle>
+                  <CardTitle>Recap notes</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1">
                   {studentLoading ? (
