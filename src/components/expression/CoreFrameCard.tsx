@@ -36,7 +36,6 @@ export function CoreFrameCard({
   frame,
   index,
   slotValues,
-  activeSlot,
   onSlotFocus,
   onSlotChange,
   onSelectSwapResult,
@@ -88,28 +87,28 @@ export function CoreFrameCard({
             {num}
           </span>
           <span className="text-base font-medium text-foreground inline-flex flex-wrap items-baseline gap-0.5">
-            {hasSlots ? (
-              parts.map((part, i) => (
-                <React.Fragment key={i}>
-                  {part}
-                  {i < parts.length - 1 ? (
-                    <span
-                      ref={(el) => { slotRefs.current[i] = el; }}
-                      contentEditable
-                      suppressContentEditableWarning
-                      onFocus={() => onSlotFocus(index, i)}
-                      onInput={() => handleSlotInput(i)}
-                      onClick={(e) => e.stopPropagation()}
-                      onKeyDown={(e) => e.stopPropagation()}
-                      data-placeholder="..."
-                      className="inline-block min-w-[4ch] max-w-[12ch] cursor-text border-b border-border px-1.5 pb-0.5 text-base font-medium text-foreground outline-none empty:before:content-[attr(data-placeholder)] empty:before:text-muted-foreground/50"
-                    />
-                  ) : null}
-                </React.Fragment>
-              ))
-            ) : (
-              frame.korean
-            )}
+            {hasSlots
+              ? parts.map((part, i) => (
+                  <React.Fragment key={i}>
+                    {part}
+                    {i < parts.length - 1 ? (
+                      <span
+                        ref={(el) => {
+                          slotRefs.current[i] = el;
+                        }}
+                        contentEditable
+                        suppressContentEditableWarning
+                        onFocus={() => onSlotFocus(index, i)}
+                        onInput={() => handleSlotInput(i)}
+                        onClick={(e) => e.stopPropagation()}
+                        onKeyDown={(e) => e.stopPropagation()}
+                        data-placeholder="..."
+                        className="inline-block min-w-[4ch] max-w-[12ch] cursor-text border-b border-border px-1.5 pb-0.5 text-base font-medium text-foreground outline-none empty:before:content-[attr(data-placeholder)] empty:before:text-muted-foreground/50"
+                      />
+                    ) : null}
+                  </React.Fragment>
+                ))
+              : frame.korean}
           </span>
         </div>
         <button
@@ -128,9 +127,7 @@ export function CoreFrameCard({
           <p className="text-base text-muted-foreground">{frame.english}</p>
           {frame.examples.length > 0 && (
             <div className="space-y-1.5">
-              <p className="text-xs text-muted-foreground/70">
-                ex.
-              </p>
+              <p className="text-xs text-muted-foreground/70">ex.</p>
               {frame.examples.map((ex, i) => (
                 <p key={i} className="text-base text-foreground">
                   <Describe>{ex}</Describe>

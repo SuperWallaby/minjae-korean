@@ -24,7 +24,7 @@ export function QuestionReplyBlock({ pairs }: Props) {
             <div className="flex items-center gap-2">
               <div className="flex mt-0.5  items-center justify-center w-6 h-6 bg-included-3 rounded-full">
                 <HelpCircle
-                  className="text-primary h-4 w-4"
+                  className="text-primary/90 h-4 w-4"
                   strokeWidth={1.5}
                 />
               </div>
@@ -35,7 +35,7 @@ export function QuestionReplyBlock({ pairs }: Props) {
             <div className="flex items-center gap-2">
               <div className="flex items-center mt-0.5 justify-center w-6 h-6 bg-included-2 rounded-full">
                 <MessageCircle
-                  className="text-primary  h-4 w-4"
+                  className="text-primary/90  h-4 w-4"
                   strokeWidth={1.5}
                 />
               </div>
