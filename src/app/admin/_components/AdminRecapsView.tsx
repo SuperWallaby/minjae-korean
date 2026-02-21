@@ -377,9 +377,11 @@ export default function AdminRecapsView() {
       for (const item of items) {
         if (!item || typeof item !== "object") continue;
         const obj = item as Record<string, unknown>;
-        const text = typeof obj.text === "string" ? obj.text.trim() : "";
+        const raw = typeof obj.text === "string" ? obj.text.trim() : "";
         const existingAudio = typeof obj.audioUrl === "string" ? obj.audioUrl.trim() : "";
-        if (!text || (existingAudio && existingAudio.startsWith("http"))) continue;
+        if (!raw || (existingAudio && existingAudio.startsWith("http"))) continue;
+        const text = getTextForTts(raw);
+        if (!text) continue; // 영어 제외 후 한글이 없으면 스킵
         try {
           const res = await fetch("/api/admin/tts/word", {
             method: "POST",
@@ -658,15 +660,25 @@ export default function AdminRecapsView() {
     });
   }
 
+  /** 영어(알파벳)·특수문자를 제거한 한글만 반환. 비어 있으면 null (TTS 스킵) */
+  function getTextForTts(text: string): string | null {
+    const t = text.trim();
+    if (!t) return null;
+    const koreanOnly = t.replace(/[a-zA-Z]/g, "").replace(/[^\uAC00-\uD7A3\s0-9.,?!'"]/g, "").trim();
+    return koreanOnly || null;
+  }
   type ListSource = { expression: ListRow[]; grammarPoint: ListRow[]; vocabulary: ListRow[]; mistake: ListRow[]; pronounce: ListRow[] };
   function collectTtsTasks(src: ListSource): { field: keyof ListSource; idx: number; text: string; kind: "text" | "example" }[] {
     const tasks: { field: keyof ListSource; idx: number; text: string; kind: "text" | "example" }[] = [];
     (["expression", "vocabulary", "mistake", "pronounce"] as const).forEach((field) => {
       const rows = src[field] ?? [];
       rows.forEach((row, idx) => {
-        if (row.text?.trim() && !row.audioUrl?.trim()) tasks.push({ field, idx, text: row.text.trim(), kind: "text" });
-        if (field === "pronounce" && row.example?.trim() && !row.exampleAudioUrl?.trim())
-          tasks.push({ field, idx, text: row.example.trim(), kind: "example" });
+        const raw = row.text?.trim();
+        const text = raw ? getTextForTts(raw) : null;
+        if (text && !row.audioUrl?.trim()) tasks.push({ field, idx, text, kind: "text" });
+        const rawExample = field === "pronounce" ? row.example?.trim() : "";
+        const example = rawExample ? getTextForTts(rawExample) : null;
+        if (example && !row.exampleAudioUrl?.trim()) tasks.push({ field, idx, text: example, kind: "example" });
       });
     });
     return tasks;

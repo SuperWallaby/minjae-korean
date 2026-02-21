@@ -1,5 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import { CheckCircle2Icon } from "lucide-react";
+
+import { Describe } from "@/components/article/Describe";
 import { SoundPlayButton } from "@/components/article/SoundPlayButton";
 import { VocabularySection } from "@/components/article/VocabularySection";
 
@@ -29,7 +33,9 @@ type RecapPublic = {
   updatedAt: string;
 };
 
-export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
+type Props = { recap: RecapPublic; closingMessage?: string };
+
+export function RecapPublicContent({ recap, closingMessage }: Props) {
   return (
     <div>
       {recap.level != null ? (
@@ -40,34 +46,38 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
 
       {/* Expression */}
       {recap.expression?.length ? (
-        <section className="mt-12 border-t border-border pt-10 first:mt-0 first:border-t-0 first:pt-0">
-          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-            Expression
-          </h2>
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">
-            {recap.expression.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex flex-wrap items-center justify-between gap-2 border-b border-border p-4 last:border-b-0"
-              >
-                <span className="flex flex-wrap items-baseline gap-x-2">
-                  <span className="font-semibold text-primary">
-                    {item.text}
-                  </span>
-                  {item.phonetic ? (
-                    <span className="text-sm text-orange-600 dark:text-orange-400">
-                      /{item.phonetic}/
+        <section className="mt-12 border-t border-border pt-12 first:mt-0 first:border-t-0 first:pt-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
+              <span aria-hidden>✨</span> Today's Expression
+            </h2>
+          </div>
+          <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card relative">
+            <div className=" pt-1">
+              {recap.expression.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-wrap items-center justify-between gap-2 border-b border-border p-4 last:border-b-0"
+                >
+                  <span className="flex flex-wrap items-baseline gap-x-2">
+                    <span className="font-semibold text-primary">
+                      {item.text}
                     </span>
+                    {item.phonetic ? (
+                      <span className="text-sm text-orange-600 ">
+                        /{item.phonetic}/
+                      </span>
+                    ) : null}
+                  </span>
+                  {item.audioUrl ? (
+                    <SoundPlayButton
+                      src={item.audioUrl}
+                      aria-label={`${item.text} 재생`}
+                    />
                   ) : null}
-                </span>
-                {item.audioUrl ? (
-                  <SoundPlayButton
-                    src={item.audioUrl}
-                    aria-label={`${item.text} 재생`}
-                  />
-                ) : null}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       ) : null}
@@ -76,7 +86,7 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
       {recap.grammarPoint?.length ? (
         <section className="mt-12 border-t border-border pt-10">
           <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-            Grammar Point
+            <span aria-hidden>👍</span> Grammar Point
           </h2>
           <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">
             {recap.grammarPoint.map((item, idx) => (
@@ -98,6 +108,7 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
 
       {/* Vocabulary — VocabularySection 공통 컴포넌트 사용 */}
       <VocabularySection
+        title="📖 Vocabulary"
         className="mt-12 border-t border-border pt-10"
         items={recap.vocabulary.map((v) => ({
           word: v.text,
@@ -114,7 +125,7 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
       {recap.mistake?.length || recap.pronounce?.length ? (
         <section className="mt-12 border-t border-border pt-10">
           <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-            Mistake
+            <span aria-hidden>💬</span> What to Improve
           </h2>
           {recap.mistake?.length ? (
             <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">
@@ -128,7 +139,7 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                       {item.text}
                     </span>
                     {item.phonetic ? (
-                      <span className="text-sm text-orange-600 dark:text-orange-400">
+                      <span className="text-sm text-orange-600 ">
                         /{item.phonetic}/
                       </span>
                     ) : null}
@@ -161,7 +172,7 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                           {item.text}
                         </span>
                         {item.phonetic ? (
-                          <span className="text-sm text-orange-600 dark:text-orange-400">
+                          <span className="text-sm text-orange-600 ">
                             /{item.phonetic}/
                           </span>
                         ) : null}
@@ -177,7 +188,7 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
                       <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-foreground/90">
                         <span>{item.example}</span>
                         {item.examplePhonetic ? (
-                          <span className="text-orange-600 dark:text-orange-400">
+                          <span className="text-orange-600 ">
                             /{item.examplePhonetic}/
                           </span>
                         ) : null}
@@ -197,6 +208,25 @@ export function RecapPublicContent({ recap }: { recap: RecapPublic }) {
           ) : null}
         </section>
       ) : null}
+
+      {/* 마무리 칭찬 */}
+      <section className="mt-12 flex-col border-t border-border pt-10 flex flex-wrap items-center gap-4 text-foreground/90">
+        <Image
+          src="/acheive-1.webp"
+          alt=""
+          width={80}
+          height={80}
+          className="shrink-0 bg-included-2/80 rounded-full p-3"
+          aria-hidden
+        />
+        <p className="font-medium">
+          {closingMessage ? (
+            <Describe>{closingMessage}</Describe>
+          ) : (
+            "오늘 잘 수고했어요. 다음 수업에서 만나요!"
+          )}
+        </p>
+      </section>
     </div>
   );
 }

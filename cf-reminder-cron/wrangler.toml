@@ -1,0 +1,11 @@
+name = "kaja-reminder-cron"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[vars]
+# REMINDER_API_URL and ADMIN_API_KEY must be set via secrets:
+# npx wrangler secret put REMINDER_API_URL   (e.g. https://your-app.vercel.app)
+# npx wrangler secret put ADMIN_API_KEY

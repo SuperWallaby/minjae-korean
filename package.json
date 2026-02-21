@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "clean": "rm -rf .next"
+    "clean": "rm -rf .next",
+    "deploy": "vercel --prod",
+    "deploy:cron": "cd cf-reminder-cron && npx wrangler deploy"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",
@@ -35,6 +37,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.7",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vercel": "^50.22.1"
   }
 }

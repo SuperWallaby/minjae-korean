@@ -22,7 +22,11 @@ type Props = {
   className?: string;
 };
 
-export function VocabularySection({ title = "Vocabulary", items, className = "" }: Props) {
+export function VocabularySection({
+  title = "Vocabulary",
+  items,
+  className = "",
+}: Props) {
   if (!items.length) return null;
 
   return (
@@ -41,29 +45,42 @@ export function VocabularySection({ title = "Vocabulary", items, className = "" 
               <span className="flex flex-wrap items-baseline gap-x-2">
                 <span className="font-semibold text-primary">{v.word}</span>
                 {v.phonetic ? (
-                  <span className="text-sm text-orange-600 dark:text-orange-400">
+                  <span className="text-sm text-orange-600 ">
                     /{v.phonetic}/
                   </span>
                 ) : null}
               </span>
               {v.sound ? (
-                <SoundPlayButton src={v.sound} aria-label={`${v.word} 발음 재생`} />
+                <SoundPlayButton
+                  src={v.sound}
+                  aria-label={`${v.word} 발음 재생`}
+                />
               ) : null}
             </div>
             {/* Row 2: 설명+예문 | 이미지 */}
             <div className="flex flex-row gap-4 p-4 min-w-0">
               <div className="min-w-0 flex-1 flex flex-col gap-1">
-                {v.meaning ? <p className="text-foreground">{v.meaning}</p> : null}
+                {v.meaning ? (
+                  <p className="text-foreground">{v.meaning}</p>
+                ) : null}
                 {v.example ? (
                   <div className="mt-1 flex flex-wrap items-center gap-2">
-                    <Describe className="text-sm text-foreground/90">{v.example}</Describe>
+                    <Describe className="text-sm text-foreground/90">
+                      {v.example}
+                    </Describe>
                     {v.exampleSound ? (
-                      <SoundPlayButton size="sm" src={v.exampleSound} aria-label="예문 재생" />
+                      <SoundPlayButton
+                        size="sm"
+                        src={v.exampleSound}
+                        aria-label="예문 재생"
+                      />
                     ) : null}
                   </div>
                 ) : null}
                 {v.exampleTranslation ? (
-                  <p className="text-xs text-muted-foreground">→ {v.exampleTranslation}</p>
+                  <p className="text-xs text-muted-foreground">
+                    → {v.exampleTranslation}
+                  </p>
                 ) : null}
               </div>
               <div className="shrink-0 w-24 sm:w-28">
