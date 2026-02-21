@@ -49,6 +49,7 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
 
 const ASSETS_LINKS = [
   { href: "/grammar", label: "Grammar" },
+  // { href: "/fundamental", label: "Fundamental" },
   { href: "/expressions", label: "Expressions" },
   { href: "/news", label: "News" },
 ] as const;
@@ -292,6 +293,13 @@ export function SiteNavbar() {
                           className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                         >
                           Grammar
+                        </Link>
+                        <Link
+                          href="/fundamental"
+                          onClick={() => setMobileOpen(false)}
+                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
+                        >
+                          Fundamental
                         </Link>
                         <Link
                           href="/news"

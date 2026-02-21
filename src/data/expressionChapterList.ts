@@ -322,7 +322,7 @@ export const expressionChapterList: ExpressionChapterList = {
         },
         {
           id: "exp-034",
-          slug: "Confirm Meaning",
+          slug: "confirm-meaning",
           number: 4,
           title: "Confirm Meaning",
           description: "무슨 뜻이에요?, ___ 말이에요?",

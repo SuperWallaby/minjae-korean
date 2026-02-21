@@ -124,7 +124,7 @@ export const ReviewsScroller = React.forwardRef<
             <div
               key={r.quote}
               className={cn(
-                "relative w-[calc(100vw-2rem)] max-w-[420px] shrink-0 snap-start overflow-hidden rounded-[36px] bg-white p-6 sm:w-[340px]",
+                "relative flex min-h-[280px] w-[calc(100vw-2rem)] max-w-[420px] shrink-0 snap-start flex-col overflow-hidden rounded-[36px] bg-white p-6 sm:w-[340px]",
               )}
             >
               <div
@@ -134,11 +134,11 @@ export const ReviewsScroller = React.forwardRef<
               >
                 “
               </div>
-              <div className="pt-9 text-lg leading-snug text-foreground">
+              <div className="min-h-0 flex-1 pt-9 text-lg leading-snug text-foreground">
                 {r.quote}
               </div>
 
-              <div className="mt-8 flex items-center gap-3">
+              <div className="mt-auto flex shrink-0 items-center gap-3 pt-6">
                 <div
                   className={cn(
                     "grid size-10 place-items-center overflow-hidden rounded-full ",
@@ -150,8 +150,8 @@ export const ReviewsScroller = React.forwardRef<
                   </span>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Fasha Qistina</div>
-                  <div className="text-xs text-muted-foreground">{r.meta}</div>
+                  <div className="text-sm font-semibold">{r.meta}</div>
+                  {/* <div className="text-xs text-muted-foreground">{r.meta}</div> */}
                 </div>
               </div>
             </div>
