@@ -127,7 +127,7 @@ export function CoreFrameCard({
           <p className="text-base text-muted-foreground">{frame.english}</p>
           {frame.examples.length > 0 && (
             <div className="space-y-1.5">
-              <p className="text-xs text-muted-foreground/70">ex.</p>
+              {/* <p className="text-xs text-muted-foreground/70">Examples</p> */}
               {frame.examples.map((ex, i) => (
                 <p key={i} className="text-base text-foreground">
                   <Describe>{ex}</Describe>
@@ -137,9 +137,6 @@ export function CoreFrameCard({
           )}
           {frame.swapCategories != null && frame.swapCategories.length > 0 && (
             <div className="pt-2">
-              <p className="text-xs text-muted-foreground/70 mb-2">
-                Swap Words
-              </p>
               <SwapChips
                 categories={frame.swapCategories}
                 onSelectResult={onSelectSwapResult}

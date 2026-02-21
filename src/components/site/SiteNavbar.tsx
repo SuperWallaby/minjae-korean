@@ -134,9 +134,13 @@ export function SiteNavbar() {
                       onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
                       className={cn(
                         "inline-flex items-center gap-1 rounded-md px-4 py-2.5 text-base font-medium transition",
-                        "text-muted-foreground hover:text-foreground hover:bg-muted/20",
+                        "text-muted-foreground cursor-pointer",
                         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                         isAssetsActive && "bg-muted text-foreground",
+                        {
+                          "hover:text-foreground hover:bg-muted/20":
+                            !isAssetsActive,
+                        },
                       )}
                       aria-expanded={assetsOpen}
                       aria-haspopup="true"

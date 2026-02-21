@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 import { Container } from "@/components/site/Container";
-import { Button } from "@/components/ui/Button";
 import { ExpressionRenderer } from "@/components/expression/ExpressionRenderer";
-import { getExpressionChapterBySlug } from "@/data/expressionChapterList";
+import {
+  getAllExpressionChapters,
+  getExpressionChapterBySlug,
+} from "@/data/expressionChapterList";
 import { getExpressionChapterContent } from "@/data/expressionChapterContent";
 
 export const runtime = "nodejs";
@@ -24,11 +27,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${SITE_URL}/expressions/${slug}`;
   return {
     title: `${chapter.title} | Korean Expressions`,
-    description: chapter.description ?? "Learn Korean expressions with ready-to-use frames.",
+    description:
+      chapter.description ??
+      "Learn Korean expressions with ready-to-use frames.",
     alternates: { canonical },
     openGraph: {
       title: `${chapter.title} | Korean Expressions`,
-      description: chapter.description ?? "Learn Korean expressions with ready-to-use frames.",
+      description:
+        chapter.description ??
+        "Learn Korean expressions with ready-to-use frames.",
       url: canonical,
       siteName: "Kaja",
       type: "article",
@@ -36,7 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: `${chapter.title} | Korean Expressions`,
-      description: chapter.description ?? "Learn Korean expressions with ready-to-use frames.",
+      description:
+        chapter.description ??
+        "Learn Korean expressions with ready-to-use frames.",
     },
   };
 }
@@ -45,6 +54,12 @@ export default async function ExpressionChapterPage({ params }: Props) {
   const { slug } = await params;
   const chapter = getExpressionChapterBySlug(slug);
   if (!chapter) notFound();
+
+  const chapters = getAllExpressionChapters();
+  const index = chapters.findIndex((c) => c.slug === slug);
+  const prevChapter = index > 0 ? chapters[index - 1] : null;
+  const nextChapter =
+    index >= 0 && index < chapters.length - 1 ? chapters[index + 1] : null;
 
   const content = await getExpressionChapterContent(slug);
   if (!content) notFound();
@@ -57,7 +72,10 @@ export default async function ExpressionChapterPage({ params }: Props) {
         {/* Header */}
         <div className="mb-10">
           <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/expressions" className="hover:text-foreground transition-colors">
+            <Link
+              href="/expressions"
+              className="hover:text-foreground transition-colors"
+            >
               Expressions
             </Link>
             <span>/</span>
@@ -72,11 +90,26 @@ export default async function ExpressionChapterPage({ params }: Props) {
         {/* Content */}
         <ExpressionRenderer content={content} />
 
-        {/* Footer */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <Button asChild variant="outline">
-            <Link href="/expressions">← Back to Expressions</Link>
-          </Button>
+        {/* Footer: Prev / Next */}
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
+          {prevChapter ? (
+            <Link
+              href={`/expressions/${encodeURIComponent(prevChapter.slug)}`}
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-4 text-sm font-medium text-foreground transition hover:bg-muted/50"
+            >
+              <ArrowLeftIcon className="h-4 w-4" /> {prevChapter.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {nextChapter ? (
+            <Link
+              href={`/expressions/${encodeURIComponent(nextChapter.slug)}`}
+              className="inline-flex items-center justify-end gap-2 rounded-xl border border-border bg-card px-4 py-4 text-sm font-medium text-foreground transition hover:bg-muted/50 sm:ml-auto"
+            >
+              {nextChapter.title} <ArrowRightIcon className="h-4 w-4" />
+            </Link>
+          ) : null}
         </div>
       </Container>
     </div>
