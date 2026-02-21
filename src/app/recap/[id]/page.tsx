@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Nunito } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/site/Container";
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
 import { getClosingForRecap, getEncourageForRecap } from "@/lib/encouragesRepo";
 import { getRecapById } from "@/lib/recapRepo";
 import { RecapPublicContent } from "./RecapPublicContent";
@@ -83,14 +90,6 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(iso: string): string {
-  const d = new Date(iso);
-  const day = d.getDate();
-  const month = d.toLocaleDateString("en-US", { month: "short" });
-  const year = d.getFullYear();
-  return `${day} ${month} ${year}`;
-}
-
 export default async function RecapPublicPage({
   params,
 }: {
@@ -122,14 +121,16 @@ export default async function RecapPublicPage({
       <Container className="max-w-2xl">
         <header className="mb-8 text-center">
           <div className="flex flex-col text-center flex-wrap items-center gap-3 gap-y-2">
-            <Image
-              src="/acheive-4.webp"
-              alt=""
-              width={80}
-              height={80}
-              className="shrink-0 bg-included-2/80 rounded-full p-3"
-              aria-hidden
-            />
+            <div className="shrink-0 flex items-center justify-center bg-included-2/80 aspect-square rounded-full p-4 overflow-visible">
+              <Image
+                src="/acheive-3.webp"
+                alt=""
+                width={76}
+                height={76}
+                className="shrink-0    "
+                aria-hidden
+              />
+            </div>
             <div className="flex flex-col flex-wrap items-baseline gap-x-3 gap-y-1">
               <h1 className="font-serif text-2xl font-semibold tracking-tight text-primary">
                 {recap.studentName?.length > 1 ? recap.studentName : ""} Recap
@@ -138,7 +139,9 @@ export default async function RecapPublicPage({
             </div>
           </div>
           {encourage ? (
-            <p className="mt-2 text-sm  text-foreground/80">{encourage}</p>
+            <p className={`mt-2 text-base text-foreground/90 ${nunito.className}`}>
+              {encourage}
+            </p>
           ) : null}
         </header>
         <RecapPublicContent recap={publicRecap} closingMessage={closing} />

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2Icon } from "lucide-react";
 
 import { Describe } from "@/components/article/Describe";
 import { SoundPlayButton } from "@/components/article/SoundPlayButton";
@@ -49,7 +48,8 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
         <section className="mt-12 border-t border-border pt-12 first:mt-0 first:border-t-0 first:pt-0">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-              <span aria-hidden>✨</span> Today's Expression
+              <span aria-hidden>✨</span>{" "}
+            Today&apos;s Expression
             </h2>
           </div>
           <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card relative">
