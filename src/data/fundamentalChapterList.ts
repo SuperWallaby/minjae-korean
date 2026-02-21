@@ -1,7 +1,6 @@
 import type {
   FundamentalChapterList,
   FundamentalChapterListItem,
-  FundamentalSection,
 } from "./fundamentalTypes";
 
 export function getAllChapters(
