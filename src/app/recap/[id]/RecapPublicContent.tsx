@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Jua } from "next/font/google";
 
 import { Describe } from "@/components/article/Describe";
 import { SoundPlayButton } from "@/components/article/SoundPlayButton";
@@ -31,6 +32,8 @@ type RecapPublic = {
   createdAt: string;
   updatedAt: string;
 };
+
+const jua = Jua({ weight: "400", subsets: ["latin"], display: "swap" });
 
 type Props = { recap: RecapPublic; closingMessage?: string };
 
@@ -219,7 +222,7 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
           className="shrink-0 bg-included-2/80 rounded-full p-3"
           aria-hidden
         />
-        <p className="font-medium">
+        <p className={`font-medium text-lg ${jua.className}`}>
           {closingMessage ? (
             <Describe>{closingMessage}</Describe>
           ) : (

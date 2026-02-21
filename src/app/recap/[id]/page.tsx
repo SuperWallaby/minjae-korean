@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Nunito } from "next/font/google";
+import { Jua } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/site/Container";
 
-const nunito = Nunito({
+const jua = Jua({
+  weight: "400",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
   display: "swap",
 });
 import { getClosingForRecap, getEncourageForRecap } from "@/lib/encouragesRepo";
@@ -139,7 +139,7 @@ export default async function RecapPublicPage({
             </div>
           </div>
           {encourage ? (
-            <p className={`mt-2 text-base text-foreground/90 ${nunito.className}`}>
+            <p className={`mt-2 text-lg text-foreground/90 ${jua.className}`}>
               {encourage}
             </p>
           ) : null}
