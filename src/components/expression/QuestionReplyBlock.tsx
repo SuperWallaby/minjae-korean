@@ -22,7 +22,7 @@ export function QuestionReplyBlock({ pairs }: Props) {
         {pairs.map((pair, i) => (
           <div key={i} className="flex flex-col gap-2.5">
             <div className="flex items-center gap-2">
-              <div className="flex mt-0.5  items-center justify-center w-6 h-6 bg-included-1 rounded-full">
+              <div className="flex mt-0.5  items-center justify-center w-6 h-6 bg-included-3 rounded-full">
                 <HelpCircle
                   className="text-primary h-4 w-4"
                   strokeWidth={1.5}
