@@ -34,7 +34,7 @@ const contentLoaders: Record<string, () => Promise<{ default: ExpressionChapterC
   "when-stuck": () => import("./content/when-stuck"),
   "please-repeat": () => import("./content/please-repeat"),
   "forgot-the-word": () => import("./content/forgot-the-word"),
-  "Confirm Meaning": () => import("./content/confirm-meaning"),
+  "confirm-meaning": () => import("./content/confirm-meaning"),
 };
 
 export async function getExpressionChapterContent(

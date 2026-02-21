@@ -34,8 +34,17 @@ export async function generateMetadata({
         year: "numeric",
       })
     : "";
-
-  const title = `Korean Lesson Recap${date ? ` - ${date}` : ""}`;
+  const studentLabel =
+    recap.studentName?.trim() && recap.studentName !== "—"
+      ? recap.studentName.trim()
+      : "";
+  const title = [
+    "Korean Lesson Recap",
+    studentLabel,
+    date,
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
   const descParts: string[] = [];
   if (recap.expression.length > 0) {
@@ -121,13 +130,13 @@ export default async function RecapPublicPage({
       <Container className="max-w-2xl">
         <header className="mb-16 text-center">
           <div className="flex flex-col text-center flex-wrap items-center gap-3 gap-y-2">
-            <div className="shrink-0 flex items-center justify-center bg-included-2/80 aspect-square rounded-full p-4 overflow-visible">
+            <div className="shrink-0 flex items-center justify-center bg-included-2/80 aspect-square rounded-full p-4 overflow-visible animate-achieve-icon">
               <Image
                 src="/acheive-3.webp"
                 alt=""
                 width={76}
                 height={76}
-                className="shrink-0    "
+                className="shrink-0"
                 aria-hidden
               />
             </div>

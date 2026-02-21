@@ -50,9 +50,7 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
 const ASSETS_LINKS = [
   { href: "/grammar", label: "Grammar" },
   { href: "/expressions", label: "Expressions" },
-  { href: "/songs", label: "Songs" },
   { href: "/news", label: "News" },
-  { href: "/recaps", label: "Recaps" },
 ] as const;
 
 export function SiteNavbar() {
@@ -301,13 +299,6 @@ export function SiteNavbar() {
                           className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                         >
                           News
-                        </Link>
-                        <Link
-                          href="/recaps"
-                          onClick={() => setMobileOpen(false)}
-                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                        >
-                          Recaps
                         </Link>
                         <Link
                           href="/booking"

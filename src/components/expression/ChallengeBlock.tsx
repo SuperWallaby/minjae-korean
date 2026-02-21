@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import * as React from "react";
 import type { ExpressionChallenge } from "@/data/expressionTypes";
 
@@ -105,8 +106,16 @@ export function ChallengeBlock({ challenge }: Props) {
         <p className="mt-4 text-center text-sm text-rose-600">{error}</p>
       )}
       {feedback && (
-        <div className="mt-4 rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground">
-          {feedback}
+        <div className="mt-4 flex flex-wrap items-start gap-3 rounded-lg border border-border bg-background px-4 py-3">
+          <Image
+            src="/acheive-1.webp"
+            alt=""
+            width={40}
+            height={40}
+            className="shrink-0"
+            aria-hidden
+          />
+          <p className="min-w-0 flex-1 text-sm text-foreground">{feedback}</p>
         </div>
       )}
     </div>

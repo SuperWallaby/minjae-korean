@@ -220,7 +220,7 @@ export function RecapPublicContent({ recap, closingMessage }: Props) {
           alt=""
           width={80}
           height={80}
-          className="shrink-0 bg-included-2/80 rounded-full p-3"
+          className="shrink-0 bg-included-2/80 rounded-full p-3 animate-achieve-icon"
           aria-hidden
         />
         <p className={`font-medium text-lg ${jua.className}`}>

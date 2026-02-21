@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import * as React from "react";
 import { MailCheck } from "lucide-react";
@@ -46,7 +47,7 @@ export function LoginClient() {
 
           <CardHeader className="mb-2 relative items-center text-center">
             {/* <ShieldCheck className="size-7 text-foreground/70" /> */}
-            <img src="/signin.webp" alt="Kaja Logo" className="w-24 mx-auto" />
+            <Image src="/signin.webp" alt="Kaja Logo" width={96} height={88} className="mx-auto" />
             <CardTitle className="text-2xl mt-4">Welcome to Kaja</CardTitle>
             <CardDescription className="w-full max-w-sm mx-auto text-center">
               Join as a member, talk with Minjae, book a time, recap notes, and
