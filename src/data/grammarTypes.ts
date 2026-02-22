@@ -39,6 +39,19 @@ export type GrammarChapterList = {
 /** 블록 공통: 인라인 텍스트 (나중에 bold/italic 등 확장 가능) */
 export type RichText = { type?: "text"; text: string };
 
+/** 단어 + 발음 URL (vocabulary 스타일, news/recap과 동일) */
+export type SoundwordBlock = {
+  type: "soundword";
+  /** 표기 (e.g. "가", "기역") */
+  word: string;
+  /** 재생할 오디오 URL */
+  sound: string;
+  /** 발음 기호 (optional) */
+  phonetic?: string;
+  /** 뜻/설명 (optional) */
+  meaning?: string;
+};
+
 /** 노션 스타일 블록 타입 */
 export type GrammarBlock =
   | { type: "paragraph"; text: string }
@@ -50,7 +63,8 @@ export type GrammarBlock =
   | { type: "quote"; text: string }
   | { type: "code"; language?: string; code: string }
   | { type: "divider" }
-  | { type: "callout"; emoji?: string; text: string };
+  | { type: "callout"; emoji?: string; text: string }
+  | SoundwordBlock;
 
 /** 챕터별 본문 — 블록 배열 (내용 JSON에서만 사용) */
 export type GrammarChapterContent = {

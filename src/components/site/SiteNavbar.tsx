@@ -53,6 +53,7 @@ const ASSETS_LINKS = [
   { href: "/grammar", label: "Grammar", icon: "/book-open.webp" },
   { href: "/expressions", label: "Expressions", icon: "/talk.webp" },
   { href: "/news", label: "News", icon: "/news.webp" },
+  { href: "/blog", label: "Blog", icon: "/news.webp" },
   // { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
   // { href: "/songs", label: "Song", icon: "/music.webp" },
 ] as const;

@@ -1,5 +1,9 @@
 import type { GrammarChapterContent } from "@/data/grammarTypes";
 
+/**
+ * Block type names are in English (callout, soundword, paragraph, etc.).
+ * soundword: word + sound URL, same pattern as news/recap vocabulary.
+ */
 export const content: GrammarChapterContent = {
   blocks: [
     { type: "heading_1", text: "Consonants & Vowels" },
@@ -9,13 +13,47 @@ export const content: GrammarChapterContent = {
     },
     { type: "heading_2", text: "Basic consonants (자음)" },
     {
-      type: "bulleted_list_item",
-      text: "ㄱ (기역), ㄴ (니은), ㄷ (디귿), ㄹ (리을), ㅁ (미음), ㅂ (비읍), ㅅ (시옷), ㅇ (이응), ㅈ (지읒), ㅊ (치읓), ㅋ (키읔), ㅌ (티읕), ㅍ (피읍), ㅎ (히읗)",
+      type: "soundword",
+      word: "ㄱ",
+      sound: "/audio/giyeok.mp3",
+      phonetic: "g/k",
+      meaning: "기역",
+    },
+    {
+      type: "soundword",
+      word: "ㄴ",
+      sound: "/audio/nieun.mp3",
+      phonetic: "n",
+      meaning: "니은",
+    },
+    {
+      type: "soundword",
+      word: "ㄷ",
+      sound: "/audio/digeut.mp3",
+      phonetic: "d/t",
+      meaning: "디귿",
     },
     { type: "heading_2", text: "Basic vowels (모음)" },
     {
-      type: "bulleted_list_item",
-      text: "ㅏ (a), ㅓ (eo), ㅗ (o), ㅜ (u), ㅡ (eu), ㅣ (i)",
+      type: "soundword",
+      word: "ㅏ",
+      sound: "/audio/a.mp3",
+      phonetic: "a",
+      meaning: "아",
+    },
+    {
+      type: "soundword",
+      word: "ㅓ",
+      sound: "/audio/eo.mp3",
+      phonetic: "eo",
+      meaning: "어",
+    },
+    {
+      type: "soundword",
+      word: "ㅗ",
+      sound: "/audio/o.mp3",
+      phonetic: "o",
+      meaning: "오",
     },
     { type: "divider" },
     {

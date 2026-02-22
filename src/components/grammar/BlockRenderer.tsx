@@ -10,6 +10,7 @@ import { BlockHeading } from "./blocks/BlockHeading";
 import { BlockNumberedList } from "./blocks/BlockNumberedList";
 import { BlockParagraph } from "./blocks/BlockParagraph";
 import { BlockQuote } from "./blocks/BlockQuote";
+import { BlockSoundword } from "./blocks/BlockSoundword";
 
 type Props = {
   blocks: GrammarBlock[];
@@ -95,6 +96,15 @@ function BlockRendererOne({ block }: { block: GrammarBlock }) {
       return <BlockDivider />;
     case "callout":
       return <BlockCallout text={block.text} emoji={block.emoji} />;
+    case "soundword":
+      return (
+        <BlockSoundword
+          word={block.word}
+          sound={block.sound}
+          phonetic={block.phonetic}
+          meaning={block.meaning}
+        />
+      );
     case "bulleted_list_item":
       return <BlockBulletedList items={[block.text]} />;
     case "numbered_list_item":

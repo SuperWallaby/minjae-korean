@@ -35,7 +35,7 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/data/blogPosts/content/12"  ],
   "exclude": [
     "node_modules"
   ]

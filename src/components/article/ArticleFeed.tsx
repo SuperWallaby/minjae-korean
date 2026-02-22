@@ -25,9 +25,15 @@ type ArticleFeedProps = {
   articles: ArticleFeedItem[];
   /** 첫 번째 글을 메이저 카드로 표시 (기본 true) */
   showMajor?: boolean;
+  /** 링크 베이스 경로 (기본 /news/article, 블로그는 /blog/article) */
+  basePath?: string;
 };
 
-export function ArticleFeed({ articles, showMajor = true }: ArticleFeedProps) {
+export function ArticleFeed({
+  articles,
+  showMajor = true,
+  basePath = "/news/article",
+}: ArticleFeedProps) {
   if (articles.length === 0) return null;
 
   const major = showMajor ? articles[0] : null;
@@ -38,7 +44,7 @@ export function ArticleFeed({ articles, showMajor = true }: ArticleFeedProps) {
       {/* 상단 메이저 카드 */}
       {major ? (
         <Link
-          href={`/news/article/${encodeURIComponent(major.slug)}`}
+          href={`${basePath}/${encodeURIComponent(major.slug)}`}
           className="group block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
@@ -89,7 +95,7 @@ export function ArticleFeed({ articles, showMajor = true }: ArticleFeedProps) {
           {rest.map((p) => (
             <Link
               key={p.slug}
-              href={`/news/article/${encodeURIComponent(p.slug)}`}
+              href={`${basePath}/${encodeURIComponent(p.slug)}`}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-muted/20">

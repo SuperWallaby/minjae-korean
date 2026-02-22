@@ -20,6 +20,7 @@
   /* Muted badge foreground (updated per design) */
   --badge-muted-foreground: #342a1b;
   --included-2: #c3dad0;
+  --included-2-foreground: #1a2e28;
   --included-3: #d6d4e3;
   --included-4: color-mix(in srgb, var(--included-2) 55%, var(--included-1));
 
@@ -74,6 +75,7 @@
   --color-accent-olive-foreground: var(--accent-olive-foreground);
   --color-included-1: var(--included-1);
   --color-included-2: var(--included-2);
+  --color-included-2-foreground: var(--included-2-foreground);
   --color-included-3: var(--included-3);
   --color-included-4: var(--included-4);
 
