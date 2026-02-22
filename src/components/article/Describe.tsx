@@ -30,7 +30,7 @@ function ToggleSection({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full cursor-pointer items-center gap-1.5 px-4 py-3 text-left text-base font-normal text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-colors"
+        className="flex w-full cursor-pointer items-center gap-1.5 px-4 py-3 text-left text-base font-normal text-muted-foreground hover:text-foreground hover:bg-stone-50 transition-colors"
       >
         <ChevronDown
           className={`h-4 w-4 text-[hsl(var(--border))] transition-transform ${open ? "rotate-180" : ""}`}

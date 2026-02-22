@@ -253,7 +253,7 @@ export function CheckoutButton({
       <Modal
         open={loginOpen}
         onClose={() => setLoginOpen(false)}
-        title="Sign in required"
+        title="Please sign in"
         description="Please sign in to continue."
         footer={
           <>

@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   let news: Awaited<ReturnType<typeof listArticles>> = [];
   try {
-    news = await listArticles(7);
+    news = await listArticles(6);
   } catch {
     news = [];
   }

@@ -67,7 +67,7 @@ export function CoreFrameCard({
 
   return (
     <div className="border-b border-border last:border-b-0">
-      <div className="flex w-full items-center justify-between gap-3 px-5 py-4 hover:bg-muted/30 transition-colors">
+      <div className="flex w-full items-center justify-between gap-3 px-5 py-4 hover:bg-stone-50 transition-colors">
         <div
           className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer"
           onClick={() => setExpanded((v) => !v)}

@@ -1163,7 +1163,7 @@ export function BookingCallClient({
         <div className="mx-auto max-w-xl px-4">
           <Card>
             <CardHeader>
-              <CardTitle>Sign in required</CardTitle>
+              <CardTitle>Please sign in</CardTitle>
               <CardDescription>
                 We need your email to verify this booking.
               </CardDescription>

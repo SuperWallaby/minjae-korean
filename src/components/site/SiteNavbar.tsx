@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, UserRound, X } from "lucide-react";
@@ -7,7 +8,6 @@ import * as React from "react";
 
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
@@ -38,8 +38,10 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
       href={href}
       className={cn(
         "inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        "hover:bg-muted/20",
         active && "bg-muted text-foreground",
+        {
+          "hover:bg-muted/20": !active,
+        },
       )}
     >
       {label}
@@ -48,11 +50,16 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
 }
 
 const ASSETS_LINKS = [
-  { href: "/grammar", label: "Grammar" },
-  // { href: "/fundamental", label: "Fundamental" },
-  { href: "/expressions", label: "Expressions" },
-  { href: "/news", label: "News" },
+  { href: "/grammar", label: "Grammar", icon: "/book-open.webp" },
+  { href: "/expressions", label: "Expressions", icon: "/talk.webp" },
+  { href: "/news", label: "News", icon: "/news.webp" },
+  // { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
+  // { href: "/songs", label: "Song", icon: "/music.webp" },
 ] as const;
+
+function isAssetLinkActive(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(href + "/");
+}
 
 export function SiteNavbar() {
   const { state } = useMockSession();
@@ -105,14 +112,21 @@ export function SiteNavbar() {
   return (
     <header
       className={cn(
-        "site-navbar mb-5 sticky top-5 z-40 transition-transform duration-200",
+        "site-navbar  sticky z-40 transition-transform duration-200",
+        "top-0 mb-0 md:top-5 md:mb-5",
         eduMode && !headerVisible && "-translate-y-[calc(100%+1.25rem)]",
       )}
     >
-      <Container>
-        <div className="mx-auto w-fit">
-          <div className="rounded-2xl border flex  w-full border-border bg-white px-2 py-2 shadow-(--shadow-navbar) md:rounded-full">
-            <div className="flex items-center justify-between gap-3 px-2">
+      <div className="w-full md:container md:mx-auto md:max-w-6xl md:px-4 lg:px-8">
+        <div className="mx-auto w-full md:w-fit">
+          <div
+            className={cn(
+              " flex w-full border border-border bg-background md:bg-white px-2 py-2",
+              "rounded-none border-x-0 border-t-0 shadow-none",
+              "md:rounded-full md:border md:shadow-(--shadow-navbar) h-[60px]",
+            )}
+          >
+            <div className="flex w-full flex-1 items-center justify-between gap-3 pl-0 md:pl-2 px-2">
               <div className="flex items-center gap-4">
                 <Logo className="px-2" />
                 <nav className="hidden items-center gap-1 md:flex">
@@ -132,7 +146,7 @@ export function SiteNavbar() {
                       onClick={() => setAssetsOpen((v) => !v)}
                       onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
                       className={cn(
-                        "inline-flex items-center gap-1 rounded-md px-4 py-2.5 text-base font-medium transition",
+                        "inline-flex items-center gap-1 -mr-px rounded-md px-4 py-2.5 text-sm font-medium transition",
                         "text-muted-foreground cursor-pointer",
                         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                         isAssetsActive && "bg-muted text-foreground",
@@ -154,16 +168,34 @@ export function SiteNavbar() {
                     </button>
                     {assetsOpen && (
                       <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[200px] rounded-xl border border-border bg-white py-2 shadow-lg">
-                        {ASSETS_LINKS.map((link) => (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            className="block px-4 py-3 text-base text-muted-foreground hover:bg-muted/40 hover:text-foreground"
-                            onClick={() => setAssetsOpen(false)}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
+                        {ASSETS_LINKS.map((link) => {
+                          const active = isAssetLinkActive(
+                            pathname ?? "",
+                            link.href,
+                          );
+                          return (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className={cn(
+                                "flex items-center gap-3 px-4 py-3 text-base hover:bg-muted/40",
+                                active
+                                  ? "bg-muted text-foreground font-medium"
+                                  : "text-muted-foreground hover:text-foreground",
+                              )}
+                              onClick={() => setAssetsOpen(false)}
+                            >
+                              <Image
+                                src={link.icon}
+                                alt=""
+                                width={24}
+                                height={24}
+                                className="size-6 shrink-0 opacity-80"
+                              />
+                              {link.label}
+                            </Link>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
@@ -188,7 +220,7 @@ export function SiteNavbar() {
 
                 {state.user ? (
                   <Button
-                    className="w-[115px]"
+                    className="w-fit w-[101px]"
                     variant="secondary"
                     size="sm"
                     asChild
@@ -198,12 +230,12 @@ export function SiteNavbar() {
                       className="inline-flex items-center gap-2"
                     >
                       <UserRound className="size-4" />
-                      Account
+                      Profile
                     </Link>
                   </Button>
                 ) : (
                   <Button
-                    className="w-[115px]"
+                    className="w-[101px]"
                     variant="primary"
                     size="sm"
                     asChild
@@ -237,7 +269,6 @@ export function SiteNavbar() {
                 ) : (
                   <Menu className="size-4" />
                 )}
-                Menu
               </button>
 
               {/* <div className="text-xs text-muted-foreground pr-2">
@@ -256,7 +287,7 @@ export function SiteNavbar() {
                 />
                 <div className="fixed inset-0 z-50">
                   <div className="flex h-full flex-col bg-(--bg-canvas)">
-                    <div className="flex items-center justify-between border-b border-border px-5 py-4">
+                    <div className="flex items-center justify-between border-b border-border px-4 py-2 h-[60px]">
                       <Logo className="text-foreground [&_span:last-child]:text-muted-foreground" />
                       <button
                         type="button"
@@ -284,30 +315,6 @@ export function SiteNavbar() {
                         >
                           Class pass
                         </Link>
-                        <span className="text-xs font-medium text-muted-foreground px-1 pt-2">
-                          Library
-                        </span>
-                        <Link
-                          href="/grammar"
-                          onClick={() => setMobileOpen(false)}
-                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                        >
-                          Grammar
-                        </Link>
-                        <Link
-                          href="/fundamental"
-                          onClick={() => setMobileOpen(false)}
-                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                        >
-                          Fundamental
-                        </Link>
-                        <Link
-                          href="/news"
-                          onClick={() => setMobileOpen(false)}
-                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                        >
-                          News
-                        </Link>
                         <Link
                           href="/booking"
                           onClick={() => setMobileOpen(false)}
@@ -332,6 +339,35 @@ export function SiteNavbar() {
                             Sign in
                           </Link>
                         )}
+                        <span className="text-xs font-medium text-muted-foreground px-1 pt-2">
+                          Library
+                        </span>
+                        {ASSETS_LINKS.map((link) => {
+                          const active = isAssetLinkActive(
+                            pathname ?? "",
+                            link.href,
+                          );
+                          return (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              onClick={() => setMobileOpen(false)}
+                              className={cn(
+                                "flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold",
+                                active && "bg-muted ring-1 ring-border",
+                              )}
+                            >
+                              <Image
+                                src={link.icon}
+                                alt=""
+                                width={24}
+                                height={24}
+                                className="size-6 shrink-0 opacity-80"
+                              />
+                              {link.label}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
 
@@ -344,7 +380,7 @@ export function SiteNavbar() {
             ) : null}
           </div>
         </div>
-      </Container>
+      </div>
     </header>
   );
 }

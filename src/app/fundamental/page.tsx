@@ -40,9 +40,8 @@ export default function FundamentalPage() {
             Fundamental
           </h1>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            For complete beginners: Hangeul, pronunciation, numbers, time &amp;
-            date, and essential words. Short chapters with the same format as
-            Grammar.
+            Beginner starter pack! Hangul, pronunciation, numbers, time & date,
+            and essential words.
           </p>
         </div>
 

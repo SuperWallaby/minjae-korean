@@ -6,6 +6,7 @@
 import type { GrammarChapterContent } from "../grammarTypes";
 
 const SLUG_LIST = [
+  "hangeul-consonants-vowels",
   "hangul-01",
   "hangul-02",
   "hangul-03",
@@ -32,6 +33,8 @@ if(process.env.NODE_ENV === "development") {
 type Slug = (typeof SLUG_LIST)[number];
 
 const loaders: Record<Slug, () => Promise<{ content: GrammarChapterContent }>> = {
+  "hangeul-consonants-vowels": () =>
+    import("./content/hangeul-consonants-vowels"),
   "hangul-01": () => import("./content/hangul-01"),
   "hangul-02": () => import("./content/hangul-02"),
   "hangul-03": () => import("./content/hangul-03"),

@@ -120,7 +120,9 @@ async function maybeSubscribe(
   }
 }
 
-async function maybeSubscribeInbox(onEvent: () => void): Promise<null | (() => void)> {
+async function maybeSubscribeInbox(
+  onEvent: () => void,
+): Promise<null | (() => void)> {
   try {
     const mod = await import("@/lib/supabaseClient");
     const supabase = getSupabaseFromModule(mod);
@@ -352,11 +354,23 @@ export default function AdminSupportPage() {
           const ch1 = supabase.channel(`support_thread_${selectedId}`);
           const ch2 = supabase.channel("support_inbox");
           await Promise.all([
-            ch1.send({ type: "broadcast", event: "support", payload: { kind: "message", at: Date.now() } }),
-            ch2.send({ type: "broadcast", event: "support", payload: { kind: "message", at: Date.now() } }),
+            ch1.send({
+              type: "broadcast",
+              event: "support",
+              payload: { kind: "message", at: Date.now() },
+            }),
+            ch2.send({
+              type: "broadcast",
+              event: "support",
+              payload: { kind: "message", at: Date.now() },
+            }),
           ]);
-          try { supabase.removeChannel(ch1); } catch {}
-          try { supabase.removeChannel(ch2); } catch {}
+          try {
+            supabase.removeChannel(ch1);
+          } catch {}
+          try {
+            supabase.removeChannel(ch2);
+          } catch {}
         }
       } catch {
         // ignore
@@ -450,7 +464,7 @@ export default function AdminSupportPage() {
                     onClick={() => setSelectedId(t.id)}
                     className={cn(
                       "w-full border-b border-border px-4 py-3 text-left transition",
-                      active ? "bg-muted/40" : "hover:bg-muted/30",
+                      active ? "bg-muted/40" : "hover:bg-stone-50",
                     )}
                   >
                     <div className="flex items-center justify-between gap-3">

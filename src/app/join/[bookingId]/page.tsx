@@ -432,7 +432,7 @@ export default function JoinGuidePage() {
         <Container className="max-w-2xl">
           <Card>
             <CardHeader>
-              <CardTitle>Sign in required</CardTitle>
+              <CardTitle>Please sign in</CardTitle>
               <CardDescription>
                 Sign in with the email you used for booking to see your lobby
                 link.
@@ -565,12 +565,13 @@ export default function JoinGuidePage() {
             <CardContent className="space-y-3">
               <div className="flex flex-wrap items-center gap-2">
                 <div className="text-xs text-muted-foreground">
-                  Times shown in your time ({displayZone})
+                  Times shown in your time{" "}
+                  <span className="bg-included-3 text-included-3-foreground rounded-md px-1 py-0.5 text-xs inline-block">
+                    {" "}
+                    ({displayZone})
+                  </span>
                 </div>
-                <Badge
-                  variant="default"
-                  className="ring-1 ring-black/5"
-                >
+                <Badge variant="default" className="ring-1 ring-black/5">
                   {statusLabel(booking?.status ?? "")}
                 </Badge>
               </div>

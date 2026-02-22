@@ -694,7 +694,7 @@ export default function BookingPage() {
               Pick Session time
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              Choose a time to talk about today’s Korean.
+              Choose a time for Korean session with Minjae.
             </p>
           </div>
           <SkipUpdate skip={profileLoading || slotsLoading}>
@@ -751,7 +751,11 @@ export default function BookingPage() {
                 <div>
                   <CardTitle>{weekRangeLabel}</CardTitle>
                   <div className="mt-1 text-[11px] text-muted-foreground">
-                    Times shown in your time ({displayZone})
+                    Times shown in your time{" "}
+                    <span className="font-medium rounded-md px-1 py-0.5 text-xs inline-block">
+                      {" "}
+                      ({displayZone})
+                    </span>
                     {showFifteenMinuteWarning ? (
                       <span className="ml-2 text-amber-600">
                         (15-minute offset detected)
@@ -814,7 +818,7 @@ export default function BookingPage() {
                           }}
                           className={cn(
                             "w-full rounded-xl border px-4 py-3 text-center transition outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                            "bg-white border-border hover:bg-muted/30 text-foreground",
+                            "bg-white border-border cursor-pointer hover:bg-stone-50 text-foreground",
                             selected
                               ? "ring-2 ring-primary border-primary"
                               : "",
@@ -870,7 +874,7 @@ export default function BookingPage() {
                               className={cn(
                                 "w-full rounded-xl text-center border px-4 py-3  transition outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                                 available
-                                  ? "bg-white border-border hover:bg-muted/30 text-foreground"
+                                  ? "bg-white border-border cursor-pointer hover:bg-stone-50 text-foreground"
                                   : "bg-muted/30 border-border text-muted-foreground cursor-not-allowed",
                                 selectedPrimary
                                   ? "ring-2 ring-primary border-primary"
@@ -880,7 +884,7 @@ export default function BookingPage() {
                                   : "",
                               )}
                             >
-                              <div className=" flex flex-wrap items-center justify-around gap-1">
+                              <div className="flex-col md:flex-row flex flex-wrap items-center justify-around gap-1">
                                 <div className="font-medium text-sm">
                                   {minutesToHhmm(localStartMin)}
                                 </div>
@@ -1037,7 +1041,7 @@ export default function BookingPage() {
                         className="-mt-1"
                       />
                       {!session.state.user
-                        ? "Sign in required"
+                        ? "Please sign in"
                         : (profile?.creditsRemaining ?? 0) < creditsNeeded
                           ? `${creditsNeeded} credits required`
                           : `${creditsNeeded} credit${creditsNeeded === 1 ? "" : "s"} will be used`}
@@ -1117,8 +1121,8 @@ export default function BookingPage() {
                     alt="Head"
                     className="inline-block mr-2 -mt-2  "
                   />
-                  This session focuses on speaking Korean and is best for
-                  learners beyond the very beginner level.
+                  This session is working with Google Meet. You will receive a
+                  link to the meeting after you book the session.
                 </CardContent>
               </Card>
               {session.state.user && creditsLabel && (
@@ -1138,7 +1142,7 @@ export default function BookingPage() {
       <Modal
         open={gate === "login"}
         onClose={() => setGate("none")}
-        title="Sign in required"
+        title="Please sign in"
         description="Please sign in to continue. (Demo)"
         footer={
           <>

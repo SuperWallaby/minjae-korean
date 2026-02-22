@@ -26,8 +26,7 @@ const SITE_DESCRIPTION =
   "A friendly place to practice Korean through 1:1 conversation and build real confidence.";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
-const METADATA_BASE =
-  process.env.NODE_ENV === "production" ? new URL(SITE_URL) : undefined;
+const METADATA_BASE = new URL(SITE_URL);
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,

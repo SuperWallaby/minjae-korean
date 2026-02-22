@@ -25,7 +25,7 @@ export function FundamentalChapterCard({ chapter, progress, isVisited }: Props) 
   return (
     <Link
       href={`/fundamental/${chapter.slug}`}
-      className={`group flex flex-col gap-2 rounded-2xl border border-border p-4 outline-none transition duration-200 hover:-translate-y-1 hover:border-border hover:shadow-card focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:p-4 ${
+      className={`group flex flex-col gap-2 rounded-2xl border border-border p-4 outline-none transition duration-200 hover:-translate-y-1 hover:border-border hover:shadow-card focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3 sm:p-4 ${
         isVisited
           ? "bg-[color-mix(in_srgb,var(--card)_80%,var(--border))]"
           : "bg-card"

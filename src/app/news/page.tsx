@@ -56,10 +56,10 @@ export default async function NewsPage() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              News
+              KAJA! Korean News
             </h1>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Articles for korean learning, reading, vocabulary, and prompts.
+              Articles for Korean learning, reading, vocabulary, and prompts.
             </p>
           </div>
           {isDev ? (

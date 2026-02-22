@@ -5,6 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 import { BlockRenderer } from "@/components/grammar/BlockRenderer";
 import { FundamentalRecordVisit } from "@/components/fundamental/FundamentalRecordVisit";
+import { Breadcrumb } from "@/components/site/Breadcrumb";
 import { Container } from "@/components/site/Container";
 import { getChapterContent } from "@/data/fundamentalChapterContent";
 import {
@@ -84,32 +85,13 @@ export default async function FundamentalChapterPage({
     <div className="py-12 sm:py-16">
       <FundamentalRecordVisit chapterId={chapter.id} />
       <Container className="max-w-4xl">
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-            <li>
-              <Link href="/fundamental" className="hover:text-foreground">
-                Fundamental
-              </Link>
-            </li>
-            <li aria-hidden className="select-none">
-              /
-            </li>
-            <li>
-              <Link
-                href={`/fundamental${listHash}`}
-                className="hover:text-foreground"
-              >
-                {sectionTitle}
-              </Link>
-            </li>
-            <li aria-hidden className="select-none">
-              /
-            </li>
-            <li className="text-foreground font-medium" aria-current="page">
-              {chapter.title}
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: "Fundamental", href: "/fundamental" },
+            { label: sectionTitle, href: `/fundamental${listHash}` },
+            { label: chapter.title },
+          ]}
+        />
 
         <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
           Chapter {chapter.number}

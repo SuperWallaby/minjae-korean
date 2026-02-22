@@ -455,14 +455,14 @@ export default function AccountPage() {
           <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
             <div
               role="tablist"
-              className="inline-flex w-max items-center gap-1 rounded-xl border border-border bg-muted/20 p-1"
+              className="inline-flex w-full lg:w-max justify-between items-center  lg:gap-1 rounded-xl border border-border bg-muted/20 p-1 lg:p-2"
             >
               {(
                 [
-                  { id: "bookings", label: "Bookings", Icon: CalendarDays },
-                  { id: "notes", label: "Recap notes", Icon: FileText },
+                  { id: "bookings", label: "Booking", Icon: CalendarDays },
+                  { id: "notes", label: "Recap", Icon: FileText },
                   { id: "profile", label: "Profile", Icon: User },
-                  { id: "payments", label: "Payments", Icon: CreditCard },
+                  { id: "payments", label: "Credit", Icon: CreditCard },
                 ] as const
               ).map((t) => {
                 const active = tab === t.id;
@@ -474,7 +474,7 @@ export default function AccountPage() {
                     aria-selected={active}
                     onClick={() => setTab(t.id)}
                     className={cn(
-                      "inline-flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition",
+                      "inline-flex cursor-pointer items-center gap-1 lg:gap-2 whitespace-nowrap rounded-md lg:rounded-lg px-2.5 lg:px-3 py-3 lg:py-2 text-sm font-medium transition",
                       active
                         ? "bg-primary text-primary-foreground shadow-sm"
                         : "text-foreground hover:bg-muted/40",
@@ -493,7 +493,7 @@ export default function AccountPage() {
           <div className="flex flex-col lg:col-span-8 lg:h-full">
             {tab === "bookings" && (
               <Card className="h-full flex flex-col">
-                <CardHeader className="flex justify-between md:block">
+                <CardHeader className="flex justify-between lg:block">
                   <div className="flex items-center justify-between gap-4">
                     <CardTitle>Bookings</CardTitle>
                     <div className="hidden sm:block text-[10px] text-stone-600">
@@ -501,7 +501,7 @@ export default function AccountPage() {
                     </div>
                   </div>
 
-                  <div className="mt-3">
+                  <div className="lg:mt-3">
                     <div
                       role="tablist"
                       className="inline-flex items-center gap-1 rounded-lg border border-border bg-muted/20 p-1"
@@ -610,58 +610,57 @@ export default function AccountPage() {
             )}
 
             {tab === "payments" && (
-              <Card className="h-full flex flex-col">
-                <CardHeader>
-                  <CardTitle>Payments History</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  {studentLoading ? (
-                    <div className="text-sm text-muted-foreground">
-                      Loading…
-                    </div>
-                  ) : (student?.payments ?? []).length === 0 ? (
-                    <div className="text-sm text-muted-foreground">
-                      No payments.
-                    </div>
-                  ) : (
-                    <div className="space-y-2">
-                      {(student?.payments ?? []).map((p) => (
-                        <div
-                          key={p.id}
-                          className="rounded-md border border-border bg-card p-4"
-                        >
-                          <div className="text-sm font-semibold">
-                            {p.amount.toLocaleString("en-US")} KRW · {p.type}
-                          </div>
-                          {p.memo && (
-                            <div className="mt-1 text-xs text-muted-foreground">
-                              {p.memo}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="mt-8 border-t border-border pt-6">
-                    <div className="text-sm font-semibold text-foreground">
-                      Credits
-                    </div>
-                    <div className="mt-1 text-xs text-muted-foreground">
-                      What you have, what expires next, and when you purchased
-                      it.
-                    </div>
-
+              <div className="flex flex-col gap-6">
+                <Card className="flex flex-col">
+                  <CardHeader>
+                    <CardTitle>Payments History</CardTitle>
+                  </CardHeader>
+                  <CardContent>
                     {studentLoading ? (
-                      <div className="mt-3 text-sm text-muted-foreground">
+                      <div className="text-sm text-muted-foreground">
+                        Loading…
+                      </div>
+                    ) : (student?.payments ?? []).length === 0 ? (
+                      <div className="text-sm text-muted-foreground">
+                        No payments.
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        {(student?.payments ?? []).map((p) => (
+                          <div
+                            key={p.id}
+                            className="rounded-md border border-border bg-card p-4"
+                          >
+                            <div className="text-sm font-semibold">
+                              {p.amount.toLocaleString("en-US")} KRW · {p.type}
+                            </div>
+                            {p.memo && (
+                              <div className="mt-1 text-xs text-muted-foreground">
+                                {p.memo}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                <Card className="flex flex-col">
+                  <CardHeader>
+                    <CardTitle>Credits</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    {studentLoading ? (
+                      <div className="text-sm text-muted-foreground">
                         Loading…
                       </div>
                     ) : creditsDetail.all.length === 0 ? (
-                      <div className="mt-3 text-sm text-muted-foreground">
+                      <div className="text-sm text-muted-foreground">
                         No credits yet.
                       </div>
                     ) : (
-                      <div className="mt-3 space-y-2">
+                      <div className="space-y-2">
                         {creditsDetail.all.map((g) => {
                           const isExpired =
                             Date.parse(g.expiresAt) <= Date.now();
@@ -723,12 +722,9 @@ export default function AccountPage() {
                       </div>
                     )}
 
-                    <div className="mt-6 rounded-lg border border-border bg-muted/20 p-4">
+                    <div className="rounded-lg border border-border bg-muted/20 p-4">
                       <div className="text-sm font-semibold text-foreground">
                         Coupon
-                      </div>
-                      <div className="mt-1 text-xs text-muted-foreground">
-                        Redeem a coupon to get +2 credits. One use per account.
                       </div>
                       <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
                         <Input
@@ -763,9 +759,9 @@ export default function AccountPage() {
                         </div>
                       ) : null}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             )}
 
             {tab === "notes" && (
@@ -1006,7 +1002,7 @@ export default function AccountPage() {
           </div>
 
           <div className="lg:col-span-4">
-            <div className="sticky top-24 space-y-3">
+            <div className="sticky top-24 space-y-6 lg:space-y-3">
               <Card>
                 <CardContent className="pt-6">
                   {creditsSummary.remaining > 0 ? (
@@ -1040,9 +1036,9 @@ export default function AccountPage() {
                       immediately.
                     </div>
                   )}
-                  <div className="mt-3 flex flex-col gap-2">
+                  <div className="mt-4 flex flex-col gap-2">
                     <Button asChild className="w-full" variant="outline">
-                      <Link href="/#ways-to-use">Get More Credits</Link>
+                      <Link href="/#ways-to-use">Get More</Link>
                     </Button>
                   </div>
                 </CardContent>

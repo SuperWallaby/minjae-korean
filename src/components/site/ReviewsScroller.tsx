@@ -157,6 +157,7 @@ export const ReviewsScroller = React.forwardRef<
             </div>
           ))}
         </div>
+        
       </div>
     </div>
   );

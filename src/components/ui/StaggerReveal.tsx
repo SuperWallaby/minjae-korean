@@ -126,6 +126,7 @@ export function StaggerReveal<E extends React.ElementType = "div">(
           const prevClass = el.props.className;
           const prevStyle = el.props.style;
           return React.cloneElement(el, {
+            key: el.key ?? `${id}-${idx}`,
             className: cn(itemClass, prevClass),
             style: { ...itemStyle, ...prevStyle },
           });

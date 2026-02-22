@@ -71,7 +71,7 @@ export async function POST(req: Request) {
     const token = jar.get("kaja_session")?.value ?? "";
     if (!token) {
       return new Response(
-        JSON.stringify({ ok: false, error: "Sign in required" }),
+        JSON.stringify({ ok: false, error: "Please sign in" }),
         { status: 401 },
       );
     }
@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       verified = await jwtVerify(token, new TextEncoder().encode(secret));
     } catch {
       return new Response(
-        JSON.stringify({ ok: false, error: "Sign in required" }),
+        JSON.stringify({ ok: false, error: "Please sign in" }),
         { status: 401 },
       );
     }
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
     const authUserId = typeof payload.sub === "string" ? payload.sub.trim() : "";
     if (!authUserId) {
       return new Response(
-        JSON.stringify({ ok: false, error: "Sign in required" }),
+        JSON.stringify({ ok: false, error: "Please sign in" }),
         { status: 401 },
       );
     }

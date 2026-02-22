@@ -13,7 +13,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lesson Recaps",
     description: "A list of feedback notes from Korean lessons.",
-    images: [{ url: "/kaja-recap.png", width: 1200, height: 630, alt: "Korean Lesson Recap" }],
+    images: [
+      {
+        url: "/kaja-recap.png",
+        width: 1200,
+        height: 630,
+        alt: "Korean Lesson Recap",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -57,7 +64,7 @@ export default async function RecapsListPage() {
                 <li key={recap.id}>
                   <Link
                     href={`/recap/${recap.id}`}
-                    className="block py-4 hover:bg-muted/30 -mx-4 px-4 rounded-lg transition-colors"
+                    className="block py-4 hover:bg-stone-50 -mx-4 px-4 rounded-lg transition-colors"
                   >
                     <div className="flex items-baseline justify-between gap-4">
                       <span className="text-sm text-muted-foreground">

@@ -54,7 +54,7 @@ export const grammarChapterList: GrammarChapterList = {
     },
     {
       title: "A. 문장 기초/조사",
-      displayTitle: "Particles (조사)",
+      displayTitle: "Particles",
       anchor: "조사",
       filterKey: "조사",
       chapters: [
@@ -74,7 +74,7 @@ export const grammarChapterList: GrammarChapterList = {
     },
     {
       title: "B. 연결/이유/대조",
-      displayTitle: "Connectors (연결)",
+      displayTitle: "Connectors",
       anchor: "연결",
       filterKey: "연결",
       chapters: [
@@ -88,7 +88,7 @@ export const grammarChapterList: GrammarChapterList = {
     },
     {
       title: "C. 시제/상(기본)",
-      displayTitle: "Tense & Aspect (시제/상)",
+      displayTitle: "Tense & Aspect",
       anchor: "시제",
       filterKey: "시제",
       chapters: [
@@ -103,7 +103,7 @@ export const grammarChapterList: GrammarChapterList = {
     },
     {
       title: "D. 문체/말투",
-      displayTitle: "Speech Levels (문체/존대)",
+      displayTitle: "Speech Levels",
       anchor: "문체",
       filterKey: "문체",
       chapters: [
@@ -130,7 +130,7 @@ export const grammarChapterList: GrammarChapterList = {
     },
     {
       title: "F. 간접/인용",
-      displayTitle: "Reported Speech (인용)",
+      displayTitle: "Reported Speech",
       anchor: "인용",
       filterKey: "인용",
       chapters: [
@@ -140,7 +140,7 @@ export const grammarChapterList: GrammarChapterList = {
     },
     {
       title: "G. 높임",
-      displayTitle: "Honorifics (높임말)",
+      displayTitle: "Honorifics",
       anchor: "높임",
       filterKey: "높임",
       chapters: [
