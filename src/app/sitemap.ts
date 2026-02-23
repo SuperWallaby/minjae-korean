@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { listBlogPosts } from "@/data/blogPosts";
+import { getAllExpressionChapters } from "@/data/expressionChapterList";
 import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
 
@@ -18,8 +19,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/grammar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/account`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
+
+  const expressionChapters = getAllExpressionChapters();
+  const expressionRoutes: MetadataRoute.Sitemap = expressionChapters.map((ch) => ({
+    url: `${baseUrl}/expressions/${encodeURIComponent(ch.slug)}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
 
   const grammarChapters = getAllChapters(grammarChapterList);
   const grammarRoutes: MetadataRoute.Sitemap = grammarChapters.map((ch) => ({
@@ -39,7 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${baseUrl}/news/article/${encodeURIComponent(a.slug)}`,
     lastModified: a.updatedAt ? new Date(a.updatedAt) : a.createdAt ? new Date(a.createdAt) : new Date(),
-    changeFrequency: "weekly" as const,
+    changeFrequency: "yearly" as const,
     priority: 0.8,
   }));
 
@@ -52,9 +62,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${baseUrl}/blog/article/${encodeURIComponent(p.slug)}`,
     lastModified: p.createdAt ? new Date(p.createdAt) : new Date(),
-    changeFrequency: "weekly" as const,
+    changeFrequency: "yearly" as const,
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...grammarRoutes, ...articleRoutes, ...blogRoutes];
+  return [...staticRoutes, ...grammarRoutes, ...articleRoutes, ...blogRoutes, ...expressionRoutes];
 }
