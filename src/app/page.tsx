@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Suspense } from "react";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { Container } from "@/components/site/Container";
+import { HomeHeroVideo } from "@/components/site/HomeHeroVideo";
 import { Button } from "@/components/ui/Button";
 import { listArticles } from "@/lib/articlesRepo";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
@@ -108,25 +109,7 @@ export default async function Home() {
                 </div>
               </StaggerReveal>
             </div>
-            <div className="order-1 overflow-hidden rounded-3xl border border-border bg-muted/60 lg:order-2">
-              <div className="relative aspect-video w-full">
-                <Image
-                  src="/placeholders/minjae-hero.jpg"
-                  alt="Minjae placeholder video"
-                  fill
-                  className="object-cover object-center"
-                  unoptimized
-                />
-                <div className="pointer-events-none absolute inset-0 grid place-items-center">
-                  <div className="grid size-16 place-items-center rounded-full bg-white/70 ring-1 ring-black/10 backdrop-blur-sm">
-                    <Play
-                      className="size-6 text-foreground/80"
-                      fill="currentColor"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <HomeHeroVideo />
           </div>
         </Container>
       </RevealOnScroll>

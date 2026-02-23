@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { Describe } from "@/components/article/Describe";
 import { VocabularySection } from "@/components/article/VocabularySection";
+import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
 import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
@@ -197,7 +198,7 @@ export default async function ArticlePage({
               <p className="text-muted-foreground">No content yet.</p>
             ) : (
               (a.paragraphs ?? []).map((p, idx) => (
-                <div key={`${idx}-${p.subtitle}`}>
+                <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}`}>
                   {p.subtitle ? (
                     <p className="mb-2 font-semibold text-foreground">
                       <Describe>{p.subtitle}</Describe>
@@ -208,6 +209,11 @@ export default async function ArticlePage({
                       {String(p.content ?? "").trim() || null}
                     </Describe>
                   </div>
+                  {p.youtube ? (
+                    <div className="mt-4 mb-10">
+                      <YouTubeEmbed urlOrId={p.youtube} />
+                    </div>
+                  ) : null}
                   {p.image ? (
                     <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
                       <div className="relative aspect-video w-full">

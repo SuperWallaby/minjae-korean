@@ -10,6 +10,7 @@ import {
   type ArticleJsonPayload,
 } from "@/components/article/ArticleJsonEditor";
 import { UnsplashSearchModal } from "@/components/article/UnsplashSearchModal";
+import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -57,6 +58,7 @@ type ParagraphBlock = {
   image?: string;
   subtitle: string;
   content: string;
+  youtube?: string;
 };
 
 type VocabItem = {
@@ -648,6 +650,25 @@ export function ArticleNewClient() {
                         }
                         placeholder="Content"
                       />
+                      <Input
+                        value={p.youtube ?? ""}
+                        onChange={(e) =>
+                          setParagraphs((prev) => {
+                            const next = prev.slice();
+                            next[idx] = {
+                              ...next[idx],
+                              youtube: e.target.value.trim() || undefined,
+                            };
+                            return next;
+                          })
+                        }
+                        placeholder="YouTube URL or video ID (between paragraphs)"
+                      />
+                      {p.youtube?.trim() ? (
+                        <div className="max-w-lg">
+                          <YouTubeEmbed urlOrId={p.youtube} />
+                        </div>
+                      ) : null}
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                         <Input
                           value={p.image ?? ""}
@@ -732,18 +753,32 @@ export function ArticleNewClient() {
                   </div>
                 ))}
 
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() =>
-                    setParagraphs((prev) => [
-                      ...prev,
-                      { subtitle: "", content: "" },
-                    ])
-                  }
-                >
-                  Add paragraph
-                </Button>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() =>
+                      setParagraphs((prev) => [
+                        ...prev,
+                        { subtitle: "", content: "" },
+                      ])
+                    }
+                  >
+                    Add paragraph
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() =>
+                      setParagraphs((prev) => [
+                        ...prev,
+                        { subtitle: "", content: "", youtube: "" },
+                      ])
+                    }
+                  >
+                    Add YouTube
+                  </Button>
+                </div>
               </div>
             </section>
 
@@ -938,6 +973,19 @@ export function ArticleNewClient() {
                         >
                           Search Unsplash
                         </Button>
+                        {v.image?.trim() ? (
+                          <div className="shrink-0 overflow-hidden rounded-lg border border-border bg-muted/20">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={v.image}
+                              alt=""
+                              className="size-14 object-cover"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = "none";
+                              }}
+                            />
+                          </div>
+                        ) : null}
                       </div>
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                         <Input

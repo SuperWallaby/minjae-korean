@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { addSupportMessage, getSupportThread, patchSupportThread } from "@/lib/supportChats";
+import { sendSupportPushToAll } from "@/lib/supportPush";
 
 export const runtime = "nodejs";
 
@@ -29,6 +30,9 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
 
     const msg = await addSupportMessage(id, "member", text);
     if (!msg) return new Response(JSON.stringify({ ok: false, error: "Invalid message" }), { status: 400 });
+
+    const fromLabel = (name || thread.name)?.trim() || (email || thread.email)?.trim() || "Guest";
+    void sendSupportPushToAll(id, fromLabel, text);
 
     return new Response(JSON.stringify({ ok: true, message: msg }), { status: 200 });
   } catch (e) {

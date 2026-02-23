@@ -9,6 +9,8 @@ export type ParagraphBlock = {
   image?: string; // url
   subtitle: string;
   content: string;
+  /** YouTube URL or video ID — rendered as embed between paragraphs */
+  youtube?: string;
 };
 
 export type VocabItem = {
@@ -108,11 +110,13 @@ function normalizeParagraphs(v: unknown): ParagraphBlock[] {
       const subtitle = String(o.subtitle ?? "").trim();
       const content = String(o.content ?? "").trim();
       const image = String(o.image ?? "").trim();
-      if (!subtitle && !content && !image) return null;
+      const youtube = String(o.youtube ?? "").trim();
+      if (!subtitle && !content && !image && !youtube) return null;
       return {
         subtitle,
         content,
         image: image || undefined,
+        youtube: youtube || undefined,
       } satisfies ParagraphBlock;
     })
     .filter(Boolean) as ParagraphBlock[];

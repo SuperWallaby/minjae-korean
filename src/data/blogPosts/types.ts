@@ -12,6 +12,8 @@ export type BlogParagraphBlock = {
   image?: string;
   subtitle: string;
   content: ReactNode;
+  /** YouTube URL or video ID — rendered as embed between paragraphs */
+  youtube?: string;
 };
 
 export type BlogPost = {

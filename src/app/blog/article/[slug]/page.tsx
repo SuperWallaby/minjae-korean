@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
+import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/Button";
@@ -171,7 +172,7 @@ export default async function BlogArticlePage({
               <p className="text-muted-foreground">No content yet.</p>
             ) : (
               (a.paragraphs ?? []).map((p, idx) => (
-                <div key={`${idx}-${p.subtitle}`} className="space-y-3">
+                <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}`} className="space-y-3">
                   {p.subtitle ? (
                     <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                       {p.subtitle}
@@ -180,6 +181,11 @@ export default async function BlogArticlePage({
                   <div className="whitespace-pre-wrap text-foreground/90">
                     {p.content}
                   </div>
+                  {p.youtube ? (
+                    <div className="mt-4 mb-10">
+                      <YouTubeEmbed urlOrId={p.youtube} />
+                    </div>
+                  ) : null}
                   {p.image ? (
                     <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
                       <div className="relative aspect-video w-full">

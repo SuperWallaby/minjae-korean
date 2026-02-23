@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Search } from "lucide-react";
+import { Bell, BellOff, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -168,6 +168,10 @@ export default function AdminSupportPage() {
   const unsubscribeRef = React.useRef<null | (() => void)>(null);
   const unsubscribeInboxRef = React.useRef<null | (() => void)>(null);
   const [rtInboxActive, setRtInboxActive] = React.useState(false);
+
+  type PushStatus = "idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error";
+  const [pushStatus, setPushStatus] = React.useState<PushStatus>("idle");
+  const [pushError, setPushError] = React.useState<string | null>(null);
 
   const loadThreads = React.useCallback(async () => {
     setThreadsLoading(true);
@@ -408,6 +412,81 @@ export default function AdminSupportPage() {
     };
   }, [selectedId, sendTyping]);
 
+  React.useEffect(() => {
+    if (typeof window === "undefined" || !("Notification" in window) || !("serviceWorker" in navigator)) {
+      setPushStatus("unsupported");
+      return;
+    }
+    if (Notification.permission === "denied") {
+      setPushStatus("denied");
+      return;
+    }
+    navigator.serviceWorker.getRegistration("/sw-support-push.js").then((reg) => {
+      if (!reg?.active) {
+        setPushStatus("idle");
+        return;
+      }
+      reg.pushManager.getSubscription().then((sub) => {
+        setPushStatus(sub ? "subscribed" : "idle");
+      });
+    });
+  }, []);
+
+  const enablePush = React.useCallback(async () => {
+    setPushError(null);
+    if (typeof window === "undefined" || !("Notification" in window) || !("serviceWorker" in navigator)) {
+      setPushStatus("unsupported");
+      return;
+    }
+    if (Notification.permission === "denied") {
+      setPushStatus("denied");
+      return;
+    }
+    setPushStatus("loading");
+    try {
+      const vapidRes = await fetch("/api/admin/support/push-vapid");
+      const vapidJson = await vapidRes.json().catch(() => ({}));
+      const publicKey = vapidJson?.publicKey;
+      if (!publicKey || typeof publicKey !== "string") {
+        throw new Error("Push not configured (VAPID keys missing)");
+      }
+      const reg = await navigator.serviceWorker.register("/sw-support-push.js", { scope: "/" });
+      await navigator.serviceWorker.ready;
+      if (Notification.permission === "default") {
+        const perm = await Notification.requestPermission();
+        if (perm !== "granted") {
+          setPushStatus("denied");
+          return;
+        }
+      }
+      const keyU8 = (() => {
+        const padding = "=".repeat((4 - (publicKey.length % 4)) % 4);
+        const base64 = (publicKey + padding).replace(/-/g, "+").replace(/_/g, "/");
+        const raw = atob(base64);
+        const out = new Uint8Array(raw.length);
+        for (let i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+        return out;
+      })();
+      const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyU8 });
+      const subJson = sub.toJSON();
+      const body = {
+        endpoint: subJson.endpoint,
+        keys: subJson.keys,
+      };
+      const res = await fetch("/api/admin/support/push-subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json?.ok) throw new Error(json?.error ?? "Failed to save subscription");
+      setPushStatus("subscribed");
+    } catch (e) {
+      setPushStatus("error");
+      setPushError(e instanceof Error ? e.message : String(e));
+    }
+  }, []);
+
   return (
     <div className="p-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -418,8 +497,36 @@ export default function AdminSupportPage() {
           <h1 className="mt-2 font-serif text-3xl font-semibold tracking-tight">
             Support inbox
           </h1>
-          <div className="mt-2 text-sm text-muted-foreground">
-            Reply to member messages from the site widget.
+          <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <span>Reply to member messages from the site widget.</span>
+            {pushStatus !== "unsupported" && pushStatus !== "denied" && (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={enablePush}
+                disabled={pushStatus === "loading" || pushStatus === "subscribed"}
+                className="gap-1.5"
+              >
+                {pushStatus === "subscribed" ? (
+                  <>
+                    <Bell className="size-4" />
+                    알림 사용 중
+                  </>
+                ) : pushStatus === "loading" ? (
+                  "등록 중…"
+                ) : (
+                  <>
+                    <BellOff className="size-4" />
+                    채팅 알림 켜기
+                  </>
+                )}
+              </Button>
+            )}
+            {pushStatus === "denied" && (
+              <span className="text-amber-600">알림이 차단됨. 브라우저 설정에서 허용해 주세요.</span>
+            )}
+            {pushError && <span className="text-destructive">{pushError}</span>}
           </div>
         </div>
 

@@ -34,21 +34,28 @@ export const post: BlogPost = {
       ),
     },
     {
-      subtitle: "English vs Korean",
+      subtitle: "Same meaning, Different focus",
       content: (
         <span>
-          English uses word order to show meaning
+          Korean can move parts around more freely because nouns wear “tags.”
           <br />
-          "I eat pizza."
-          <br />
-          <br />
-          Korean can move parts around more freely because nouns wear name tags
-          <br />
-          <Describe>저는 피자를 먹어요.</Describe>{" "}
-          <Describe>피자는 제가 먹어요.</Describe>
+          The tags keep the meaning clear—even when the order changes.
           <br />
           <br />
-          The tags help you understand the role, even when the order changes.
+          These two can both look like “I am a student” in English:
+          <br />
+          <br />
+          <Describe>저는 학생이에요.</Describe>
+          <br />
+          <Describe>제가 학생이에요.</Describe>
+          <br />
+          <br />
+          But the feeling is different.
+          <br />
+          <Describe>저는 학생이에요</Describe> = I am student
+          <br />
+          <Describe>제가 학생이에요.</Describe> = I’m the student, not someone
+          else.
         </span>
       ),
     },
@@ -100,28 +107,7 @@ export const post: BlogPost = {
           <br />
           <Describe>뭐가 좋아요? → 이게 좋아요.</Describe>
           <br />
-          <Describe>누가 학생이에요? → 디야나가 학생이에요.</Describe>
-        </span>
-      ),
-    },
-    {
-      subtitle: "Same English, different feeling",
-      content: (
-        <span>
-          These two can both look like "I am a student" in English
-          <br />
-          <br />
-          <Describe>저는 학생이에요.</Describe>
-          <br />
-          <Describe>제가 학생이에요.</Describe>
-          <br />
-          <br />
-          But the feeling is different.
-          <br />
-          <Describe>저는 학생이에요</Describe> = normal introduction (topic: me)
-          <br />
-          <Describe>제가 학생이에요.</Describe> = strong focus ("I'm the one,
-          not someone else.")
+          <Describe>누가 학생이에요? → 민재가 학생이에요.</Describe>
         </span>
       ),
     },

@@ -27,7 +27,14 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/blog`,
     siteName: "Kaja",
     type: "website",
-    images: [{ url: `${SITE_URL}/brand/og.png`, width: 1200, height: 630, alt: "Kaja Blog" }],
+    images: [
+      {
+        url: `${SITE_URL}/brand/og.png`,
+        width: 1200,
+        height: 630,
+        alt: "Kaja Blog",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -86,15 +93,6 @@ export default async function BlogPage() {
                   ) : null}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <span
-                      className={cn(
-                        "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                        levelBadgeClass((major.level ?? 1) as ReadingLevel),
-                      )}
-                    >
-                      {displayLevel((major.level ?? 1) as ReadingLevel)}{" "}
-                      {levelLabel((major.level ?? 1) as ReadingLevel)}
-                    </span>
                     <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
                       {major.title}
                     </h2>

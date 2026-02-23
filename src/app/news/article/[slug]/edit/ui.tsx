@@ -10,6 +10,7 @@ import {
   type ArticleJsonPayload,
 } from "@/components/article/ArticleJsonEditor";
 import { UnsplashSearchModal } from "@/components/article/UnsplashSearchModal";
+import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -26,6 +27,7 @@ type ParagraphBlock = {
   image?: string;
   subtitle: string;
   content: string;
+  youtube?: string;
 };
 
 type VocabItem = {
@@ -728,6 +730,27 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         placeholder="Content (multiple sentences allowed)"
                       />
 
+                      <Input
+                        value={p.youtube ?? ""}
+                        onChange={(e) =>
+                          setDraft((prev) => {
+                            if (!prev) return prev;
+                            const next = prev.paragraphs.slice();
+                            next[idx] = {
+                              ...next[idx],
+                              youtube: e.target.value.trim() || undefined,
+                            };
+                            return { ...prev, paragraphs: next };
+                          })
+                        }
+                        placeholder="YouTube URL or video ID (between paragraphs)"
+                      />
+                      {p.youtube?.trim() ? (
+                        <div className="mt-2 max-w-lg">
+                          <YouTubeEmbed urlOrId={p.youtube} />
+                        </div>
+                      ) : null}
+
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                         <Input
                           value={p.image ?? ""}
@@ -815,25 +838,46 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                   </div>
                 ))}
 
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() =>
-                    setDraft((prev) =>
-                      prev
-                        ? {
-                            ...prev,
-                            paragraphs: [
-                              ...(prev.paragraphs ?? []),
-                              { subtitle: "", content: "" },
-                            ],
-                          }
-                        : prev,
-                    )
-                  }
-                >
-                  Add paragraph
-                </Button>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() =>
+                      setDraft((prev) =>
+                        prev
+                          ? {
+                              ...prev,
+                              paragraphs: [
+                                ...(prev.paragraphs ?? []),
+                                { subtitle: "", content: "" },
+                              ],
+                            }
+                          : prev,
+                      )
+                    }
+                  >
+                    Add paragraph
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() =>
+                      setDraft((prev) =>
+                        prev
+                          ? {
+                              ...prev,
+                              paragraphs: [
+                                ...(prev.paragraphs ?? []),
+                                { subtitle: "", content: "", youtube: "" },
+                              ],
+                            }
+                          : prev,
+                      )
+                    }
+                  >
+                    Add YouTube
+                  </Button>
+                </div>
               </div>
             </section>
 
@@ -1044,6 +1088,19 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         >
                           Search Unsplash
                         </Button>
+                        {v.image?.trim() ? (
+                          <div className="shrink-0 overflow-hidden rounded-lg border border-border bg-muted/20">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={v.image}
+                              alt=""
+                              className="size-14 object-cover"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = "none";
+                              }}
+                            />
+                          </div>
+                        ) : null}
                       </div>
                       <div className="flex-wrap flex flex-col gap-2 sm:flex-row sm:items-center">
                         <Input

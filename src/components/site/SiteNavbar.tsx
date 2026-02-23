@@ -179,10 +179,10 @@ export function SiteNavbar() {
                               key={link.href}
                               href={link.href}
                               className={cn(
-                                "flex items-center gap-3 px-4 py-3 text-base hover:bg-muted/40",
+                                "flex items-center gap-3 px-4 py-3 text-base group",
                                 active
                                   ? "bg-muted text-foreground font-medium"
-                                  : "text-muted-foreground hover:text-foreground",
+                                  : "text-muted-foreground hover:text-foreground hover:bg-muted/40",
                               )}
                               onClick={() => setAssetsOpen(false)}
                             >
@@ -191,7 +191,10 @@ export function SiteNavbar() {
                                 alt=""
                                 width={24}
                                 height={24}
-                                className="size-6 shrink-0 opacity-80"
+                                className={cn("size-6 shrink-0 ", {
+                                  "opacity-100": active,
+                                  "opacity-80 group-hover:opacity-100": !active,
+                                })}
                               />
                               {link.label}
                             </Link>
