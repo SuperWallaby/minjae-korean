@@ -14,6 +14,8 @@ export type BlogParagraphBlock = {
   content: ReactNode;
   /** YouTube URL or video ID — rendered as embed between paragraphs */
   youtube?: string;
+  /** Optional audio URL for this paragraph (e.g. phrase pronunciation) */
+  audio?: string;
 };
 
 export type BlogPost = {

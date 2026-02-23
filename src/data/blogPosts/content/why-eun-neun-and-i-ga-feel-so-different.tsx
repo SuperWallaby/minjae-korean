@@ -34,6 +34,7 @@ export const post: BlogPost = {
       ),
     },
     {
+      youtube: "ivJf4OhNmzc",
       subtitle: "Same meaning, Different focus",
       content: (
         <span>

@@ -60,7 +60,7 @@ export default async function BlogPage() {
               KAJA! Korean Blog
             </h1>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Notes and posts about Korean learning and practice.
+              The posting of emphasis on Korean learning and practice.
             </p>
           </div>
         </div>

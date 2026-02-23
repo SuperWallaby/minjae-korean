@@ -172,11 +172,17 @@ export default async function BlogArticlePage({
               <p className="text-muted-foreground">No content yet.</p>
             ) : (
               (a.paragraphs ?? []).map((p, idx) => (
-                <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}`} className="space-y-3">
+                <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`} className="space-y-3">
                   {p.subtitle ? (
                     <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                       {p.subtitle}
                     </h2>
+                  ) : null}
+                  {p.audio ? (
+                    <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/20 px-3 py-2">
+                      <span className="text-xs font-medium text-muted-foreground">Listen</span>
+                      <audio controls src={p.audio} className="h-8 flex-1 min-w-0" />
+                    </div>
                   ) : null}
                   <div className="whitespace-pre-wrap text-foreground/90">
                     {p.content}

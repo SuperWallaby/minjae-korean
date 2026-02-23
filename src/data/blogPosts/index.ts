@@ -25,14 +25,20 @@ async function readBlogOverrides(): Promise<Record<string, BlogImageOverrides>> 
   }
 }
 
-const SLUG_LIST = ["why-eun-neun-and-i-ga-feel-so-different"] as const;
+const SLUG_LIST = [
+  "bts-7-letters-far-future-korean-phrases",
+  "why-eun-neun-and-i-ga-feel-so-different",
+  "why-koreans-cant-speak-english-after-12-years",
+] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
 const loaders: Record<
   Slug,
   () => Promise<{ post: BlogPost }>
 > = {
+  "bts-7-letters-far-future-korean-phrases": () => import("./content/bts-7-letters-far-future-korean-phrases"),
   "why-eun-neun-and-i-ga-feel-so-different": () => import("./content/why-eun-neun-and-i-ga-feel-so-different"),
+  "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),
 };  
 
 export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {
