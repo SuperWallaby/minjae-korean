@@ -12,7 +12,6 @@ import {
   FaXTwitter,
   FaFacebookF,
   FaLinkedinIn,
-  FaPeace,
 } from "react-icons/fa6";
 
 export type ActionBarScope = "blog" | "news" | "grammar" | "expressions";
@@ -94,7 +93,7 @@ export function ArticleActionBar({
     return () => document.removeEventListener("click", close);
   }, [shareOpen]);
 
-  const handleClap = async () => {
+  const _handleClap = async () => {
     if (clapPending || disabled) return;
     setClapPending(true);
     try {

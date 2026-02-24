@@ -77,10 +77,12 @@ export default async function Home() {
                 <div className="mt-7 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-3xl bg-included-2 p-6">
                     <div className="flex items-center gap-3">
-                      <img
+                      <Image
                         src="/talk1.webp"
                         alt="Start from a topic"
-                        className="size-5 text-black/60"
+                        width={20}
+                        height={20}
+                        className="text-black/60"
                       />
                       <div className="text-sm font-semibold">
                         Friendly Talking
@@ -92,10 +94,12 @@ export default async function Home() {
                   </div>
                   <div className="rounded-3xl bg-included-3 p-6">
                     <div className="flex items-center gap-3">
-                      <img
+                      <Image
                         src="/pen-line.webp"
                         alt="Refine it while you talk"
-                        className="w-4.5 text-black/60"
+                        width={18}
+                        height={18}
+                        className="text-black/60"
                       />
                       <div className="text-sm font-semibold">
                         Refine it while you talk
@@ -377,10 +381,12 @@ export default async function Home() {
               >
                 <div className="rounded-3xl bg-included-3 p-6">
                   <div className="flex items-center gap-3">
-                    <img
+                    <Image
                       src="/head.webp"
                       alt="Subtitles"
-                      className="w-11 text-black/60"
+                      width={44}
+                      height={44}
+                      className="text-black/60"
                     />
                     <div className="text-sm font-semibold">Pronunciation</div>
                   </div>

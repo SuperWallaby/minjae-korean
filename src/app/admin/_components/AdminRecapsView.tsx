@@ -1000,7 +1000,7 @@ export default function AdminRecapsView() {
     }
   }
 
-  const formatDate = (iso: string) =>
+  const _formatDate = (iso: string) =>
     DateTime.fromISO(iso).setZone("Asia/Seoul").toFormat("yyyy-MM-dd HH:mm");
 
   /** 리스트에만 사용: "2월 22일 (토요일)" */
@@ -1308,7 +1308,12 @@ export default function AdminRecapsView() {
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                   <input type="url" value={row.imageUrl} onChange={(e) => setForm((p) => ({ ...p, vocabulary: (p.vocabulary as ListRow[]).map((r, i) => i === idx ? { ...r, imageUrl: e.target.value } : r) }))} placeholder="이미지 URL" className="flex-1 px-3 py-2 border rounded" />
                   <button type="button" disabled={uploadingKey !== null} onClick={() => { setImageTarget({ field: "vocabulary", idx }); setTimeout(() => fileInputRef.current?.click(), 0); }} className="px-3 py-2 rounded border disabled:opacity-50 text-sm shrink-0">{uploadingKey === `vocabulary-${idx}` ? "업로드 중…" : "이미지 업로드"}</button>
-                  {row.imageUrl ? <a href={row.imageUrl} target="_blank" rel="noreferrer" className="inline-block shrink-0"><img src={row.imageUrl} alt="" className="h-10 w-10 object-cover rounded border" /></a> : null}
+                  {row.imageUrl ? (
+                    <a href={row.imageUrl} target="_blank" rel="noreferrer" className="inline-block shrink-0">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={row.imageUrl} alt="" className="h-10 w-10 object-cover rounded border" />
+                    </a>
+                  ) : null}
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                   <input type="url" value={row.audioUrl} onChange={(e) => setForm((p) => ({ ...p, vocabulary: (p.vocabulary as ListRow[]).map((r, i) => i === idx ? { ...r, audioUrl: e.target.value } : r) }))} placeholder="사운드 URL" className="flex-1 px-3 py-2 border rounded" />
@@ -1554,7 +1559,12 @@ export default function AdminRecapsView() {
                         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                           <input type="url" value={row.imageUrl} onChange={(e) => setEditForm((p) => ({ ...p, vocabulary: ((p.vocabulary as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, imageUrl: e.target.value } : r) }))} placeholder="이미지 URL" className="flex-1 px-3 py-2 border rounded" />
                           <button type="button" disabled={uploadingKey !== null} onClick={() => { setImageTarget({ field: "vocabulary", idx, forEdit: true }); setTimeout(() => fileInputRef.current?.click(), 0); }} className="px-3 py-2 rounded border disabled:opacity-50 text-sm shrink-0">{uploadingKey === `vocabulary-${idx}` ? "업로드 중…" : "이미지 업로드"}</button>
-                          {row.imageUrl ? <a href={row.imageUrl} target="_blank" rel="noreferrer" className="inline-block shrink-0"><img src={row.imageUrl} alt="" className="h-10 w-10 object-cover rounded border" /></a> : null}
+                          {row.imageUrl ? (
+                            <a href={row.imageUrl} target="_blank" rel="noreferrer" className="inline-block shrink-0">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img src={row.imageUrl} alt="" className="h-10 w-10 object-cover rounded border" />
+                            </a>
+                          ) : null}
                         </div>
                         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                           <input type="url" value={row.audioUrl} onChange={(e) => setEditForm((p) => ({ ...p, vocabulary: ((p.vocabulary as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, audioUrl: e.target.value } : r) }))} placeholder="사운드 URL" className="flex-1 px-3 py-2 border rounded" />

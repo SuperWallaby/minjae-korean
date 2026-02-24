@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { Container } from "@/components/site/Container";
@@ -271,7 +272,7 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
   } | null>(null);
   const ytContainerRef = React.useRef<HTMLDivElement>(null);
   const [ytApiReady, setYtApiReady] = React.useState(false);
-  const [ytPlayerReady, setYtPlayerReady] = React.useState(false);
+  const [_ytPlayerReady, setYtPlayerReady] = React.useState(false);
   const ytCreatedRef = React.useRef<string | null>(null);
 
   React.useEffect(() => {
@@ -468,11 +469,13 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
                     </Button>
                   </div>
                   {(payload.images?.thumb ?? payload.images?.large) && (
-                    <div className="rounded-lg border border-border overflow-hidden bg-muted/20 w-32 aspect-video">
-                      <img
+                    <div className="rounded-lg border border-border overflow-hidden bg-muted/20 w-32 aspect-video relative">
+                      <Image
                         src={payload.images?.thumb || payload.images?.large || ""}
                         alt="썸네일 미리보기"
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        unoptimized
                       />
                     </div>
                   )}
@@ -601,14 +604,12 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
                             </div>
                           );
                         })}
-                        {/* //@ts-ignore */}
-                        {/* @ts-ignore */}
                         {payload.chunks?.length &&
-                          payload.chunks.length > 5 && (
+                          payload.chunks.length > 5 ? (
                             <div className="text-muted-foreground">
                               ... and {payload.chunks.length - 5} more
                             </div>
-                          )}
+                          ) : null}
                       </div>
                     </div>
                   )}

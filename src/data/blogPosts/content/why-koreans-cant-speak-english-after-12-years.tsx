@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import { Describe } from "@/components/article/Describe";
 import { Quoter } from "@/components/article/Quoter";
 import type { BlogPost } from "../types";
 
