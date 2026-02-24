@@ -77,16 +77,16 @@ export default async function Home() {
                 <div className="mt-7 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-3xl bg-included-2 p-6">
                     <div className="flex items-center gap-3">
+                      <div className="order-1 text-sm font-semibold sm:order-2">
+                        Friendly Talking
+                      </div>
                       <Image
                         src="/talk1.webp"
                         alt="Start from a topic"
                         width={20}
                         height={20}
-                        className="text-black/60"
+                        className="order-2 shrink-0 text-black/60 sm:order-1"
                       />
-                      <div className="text-sm font-semibold">
-                        Friendly Talking
-                      </div>
                     </div>
                     <div className="mt-2 text-sm text-muted-foreground">
                       Minjae will bring up a right topic for you to talk about.
@@ -94,16 +94,16 @@ export default async function Home() {
                   </div>
                   <div className="rounded-3xl bg-included-3 p-6">
                     <div className="flex items-center gap-3">
+                      <div className="order-1 text-sm font-semibold sm:order-2">
+                        Refine it while you talk
+                      </div>
                       <Image
                         src="/pen-line.webp"
                         alt="Refine it while you talk"
                         width={18}
                         height={18}
-                        className="text-black/60"
+                        className="order-2 shrink-0 text-black/60 sm:order-1"
                       />
-                      <div className="text-sm font-semibold">
-                        Refine it while you talk
-                      </div>
                     </div>
                     <div className="mt-2 text-sm text-muted-foreground">
                       Small corrections you can reuse immediately, and we

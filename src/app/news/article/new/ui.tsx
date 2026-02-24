@@ -353,19 +353,17 @@ export function ArticleNewClient() {
                         Boolean(uploadingKey)
                       }
                       onClick={async () => {
-                        const ttsText = [
-                          title.trim(),
-                          ...paragraphs.flatMap((p) =>
+                        const ttsText = paragraphs
+                          .flatMap((p) =>
                             [p.subtitle?.trim(), p.content?.trim()].filter(
                               Boolean,
                             ),
-                          ),
-                        ]
+                          )
                           .filter(Boolean)
                           .join("\n");
                         if (!ttsText) {
                           setError(
-                            "Add title or paragraph content to generate TTS.",
+                            "Add paragraph content to generate TTS.",
                           );
                           return;
                         }
@@ -400,26 +398,22 @@ export function ArticleNewClient() {
                       disabled={
                         articleEdgeTtsGenerating ||
                         Boolean(uploadingKey) ||
-                        ![
-                          title.trim(),
-                          ...(paragraphs ?? []).flatMap((p) =>
+                        !(paragraphs ?? [])
+                          .flatMap((p) =>
                             [p.subtitle?.trim(), p.content?.trim()].filter(
                               Boolean,
                             ),
-                          ),
-                        ]
+                          )
                           .filter(Boolean)
                           .join("\n")
                       }
                       onClick={async () => {
-                        const ttsText = [
-                          title.trim(),
-                          ...(paragraphs ?? []).flatMap((p) =>
+                        const ttsText = (paragraphs ?? [])
+                          .flatMap((p) =>
                             [p.subtitle?.trim(), p.content?.trim()].filter(
                               Boolean,
                             ),
-                          ),
-                        ]
+                          )
                           .filter(Boolean)
                           .join("\n");
                         if (!ttsText) return;
@@ -794,14 +788,12 @@ export function ArticleNewClient() {
                     setAutoRunning(true);
                     setError(null);
                     try {
-                      const articleText = [
-                        title.trim(),
-                        ...paragraphs.flatMap((p) =>
+                      const articleText = paragraphs
+                        .flatMap((p) =>
                           [p.subtitle?.trim(), p.content?.trim()].filter(
                             Boolean,
                           ),
-                        ),
-                      ]
+                        )
                         .filter(Boolean)
                         .join("\n");
                       if (articleText) {

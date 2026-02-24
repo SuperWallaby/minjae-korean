@@ -22,6 +22,7 @@
     "luxon": "^3.7.2",
     "mongodb": "^6.21.0",
     "next": "15.2.7",
+    "nextjs-toploader": "^3.9.17",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-icons": "^5.5.0",

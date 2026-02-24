@@ -9,6 +9,7 @@ import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SupportChatWidget } from "@/components/support/SupportChatWidget";
 import { QuickNote } from "@/components/QuickNote";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import NextTopLoader from "nextjs-toploader";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -91,6 +92,13 @@ export default function RootLayout({
         <MockSessionProvider>
           <EducationModeProvider>
             <div className="min-h-dvh bg-background">
+              <NextTopLoader
+                color="#ef4444"
+                height={3}
+                showSpinner={false}
+                crawlSpeed={200}
+                speed={200}
+              />
               <ScrollToTop />
               <SiteNavbar />
               <main className="min-h-[calc(100dvh-4rem)]">{children}</main>

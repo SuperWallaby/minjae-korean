@@ -14,7 +14,7 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "Songs",
+  title: "Kaja! Korean Songs",
   description:
     "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/songs` },
@@ -50,10 +50,11 @@ export default async function SongsPage() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Songs
+              Kaja! Korean Songs
             </h1>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Learn Korean through music. Click on lyrics to see translations and explanations.
+              Learn Korean through music. Click on lyrics to see translations
+              and explanations.
             </p>
           </div>
           {isDev ? (
@@ -75,7 +76,8 @@ export default async function SongsPage() {
                 className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
-                  {major.images?.large?.trim() || major.images?.thumb?.trim() ? (
+                  {major.images?.large?.trim() ||
+                  major.images?.thumb?.trim() ? (
                     <Image
                       src={
                         major.images?.large?.trim() ||
@@ -98,9 +100,7 @@ export default async function SongsPage() {
                     <h2 className="font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
                       {major.title}
                     </h2>
-                    <p className="mt-2 text-sm text-white/80">
-                      {major.artist}
-                    </p>
+                    <p className="mt-2 text-sm text-white/80">{major.artist}</p>
                   </div>
                 </div>
               </Link>
@@ -118,7 +118,9 @@ export default async function SongsPage() {
                       {s.images?.thumb?.trim() || s.images?.large?.trim() ? (
                         <Image
                           src={
-                            s.images?.thumb?.trim() || s.images?.large?.trim() || ""
+                            s.images?.thumb?.trim() ||
+                            s.images?.large?.trim() ||
+                            ""
                           }
                           alt=""
                           fill

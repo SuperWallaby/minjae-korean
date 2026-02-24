@@ -4,6 +4,8 @@ import { listBlogPosts } from "@/data/blogPosts";
 import { getAllExpressionChapters } from "@/data/expressionChapterList";
 import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
+import { listSongs } from "@/lib/songsRepo";
+import { listDramas } from "@/lib/dramaRepo";
 
 const BASE =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
@@ -20,6 +22,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/grammar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/songs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/drama`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/quoto`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/account`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
 
@@ -66,5 +71,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...grammarRoutes, ...articleRoutes, ...blogRoutes, ...expressionRoutes];
+  let songs: Awaited<ReturnType<typeof listSongs>> = [];
+  try {
+    songs = await listSongs(500);
+  } catch {
+    // DB unavailable at build time
+  }
+  const songRoutes: MetadataRoute.Sitemap = songs.map((s) => ({
+    url: `${baseUrl}/songs/${encodeURIComponent(s.slug)}`,
+    lastModified: s.updatedAt ? new Date(s.updatedAt) : s.createdAt ? new Date(s.createdAt) : new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.7,
+  }));
+
+  let dramas: Awaited<ReturnType<typeof listDramas>> = [];
+  try {
+    dramas = await listDramas(500);
+  } catch {
+    // DB unavailable at build time
+  }
+  const dramaRoutes: MetadataRoute.Sitemap = dramas.map((d) => ({
+    url: `${baseUrl}/drama/${encodeURIComponent(d.slug)}`,
+    lastModified: d.updatedAt ? new Date(d.updatedAt) : d.createdAt ? new Date(d.createdAt) : new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...grammarRoutes, ...articleRoutes, ...blogRoutes, ...expressionRoutes, ...songRoutes, ...dramaRoutes];
 }

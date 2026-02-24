@@ -12,6 +12,8 @@ type DescribeResult = {
 type Props = {
   children: React.ReactNode;
   className?: string;
+  /** Called once when user opens the describe panel (click to see meaning). Use to hide "Click to see meaning" hint per device. */
+  onReveal?: () => void;
 };
 
 function ToggleSection({
@@ -30,7 +32,7 @@ function ToggleSection({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full cursor-pointer items-center gap-1.5 px-4 py-3 text-left text-base font-normal text-muted-foreground hover:text-foreground hover:bg-stone-50 transition-colors"
+        className="flex w-full cursor-pointer items-center gap-1.5 px-4 py-3 text-left text-base font-normal text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-colors"
       >
         <ChevronDown
           className={`h-4 w-4 text-[hsl(var(--border))] transition-transform ${open ? "rotate-180" : ""}`}
@@ -42,7 +44,7 @@ function ToggleSection({
   );
 }
 
-export function Describe({ children, className = "" }: Props) {
+export function Describe({ children, className = "", onReveal }: Props) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState<DescribeResult | null>(null);
@@ -50,6 +52,8 @@ export function Describe({ children, className = "" }: Props) {
   const [showVocabulary, setShowVocabulary] = React.useState(false);
   const [showExplanation, setShowExplanation] = React.useState(false);
   const textRef = React.useRef<HTMLSpanElement>(null);
+  const onRevealRef = React.useRef(onReveal);
+  onRevealRef.current = onReveal;
 
   const handleClick = async () => {
     if (open) {
@@ -61,6 +65,7 @@ export function Describe({ children, className = "" }: Props) {
     if (!text) return;
 
     setOpen(true);
+    onRevealRef.current?.();
 
     if (result) return;
 

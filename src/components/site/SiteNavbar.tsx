@@ -57,6 +57,8 @@ const ASSETS_LINKS = [
   { href: "/blog", label: "Blog", icon: "/blog.webp" },
   // { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
   { href: "/songs", label: "Song", icon: "/music.webp" },
+  { href: "/drama", label: "Drama", icon: "/drama.webp" },
+  { href: "/quoto", label: "Quoto", icon: "/talk.webp" },
 ] as const;
 
 function isAssetLinkActive(pathname: string, href: string) {

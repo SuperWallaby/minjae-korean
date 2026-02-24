@@ -7,12 +7,9 @@ import {
   Share2,
   HandMetal,
   Link2,
+  HeartIcon,
 } from "lucide-react";
-import {
-  FaXTwitter,
-  FaFacebookF,
-  FaLinkedinIn,
-} from "react-icons/fa6";
+import { FaXTwitter, FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 
 export type ActionBarScope = "blog" | "news" | "grammar" | "expressions";
 
@@ -212,7 +209,7 @@ export function ArticleActionBar({
               likeAnimating ? "animate-like-pop inline-block" : "inline-block"
             }
           >
-            <HandMetal
+            <HeartIcon
               className="size-5"
               style={likedState ? { fill: "currentColor" } : undefined}
             />

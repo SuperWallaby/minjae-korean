@@ -3,16 +3,16 @@
 import * as React from "react";
 import { X } from "lucide-react";
 import { SongChunkCard } from "@/components/song/SongChunkCard";
-import type { SongChunk, Lexeme } from "@/lib/songsRepo";
+import type { DramaChunk, Lexeme } from "@/lib/dramaRepo";
 
 type Props = {
   videoId: string;
-  chunks: SongChunk[];
+  chunks: DramaChunk[];
   lexicon?: Lexeme[];
   children: React.ReactNode;
 };
 
-export function SongPageContent({
+export function DramaPageContent({
   videoId,
   chunks,
   lexicon = [],
@@ -27,17 +27,26 @@ export function SongPageContent({
   } | null>(null);
   const stopTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const [apiReady, setApiReady] = React.useState(false);
-  const [playingChunkId, setPlayingChunkId] = React.useState<string | null>(
-    null,
-  );
-  const [countdownEndAt, setCountdownEndAt] = React.useState<number | null>(
-    null,
-  );
-  const [countdownRemainingMs, setCountdownRemainingMs] =
-    React.useState<number>(0);
+  const [playingChunkId, setPlayingChunkId] = React.useState<string | null>(null);
+  const [countdownEndAt, setCountdownEndAt] = React.useState<number | null>(null);
+  const [countdownRemainingMs, setCountdownRemainingMs] = React.useState<number>(0);
   const [miniVisible, setMiniVisible] = React.useState(false);
   const [miniDismissed, setMiniDismissed] = React.useState(false);
   const createdRef = React.useRef(false);
+  const firstChunkStartMsRef = React.useRef<number | null>(null);
+  React.useEffect(() => {
+    const first = chunks[0]?.range?.startMs;
+    const startMs =
+      typeof first === "number" && Number.isFinite(first) ? first : null;
+    firstChunkStartMsRef.current = startMs;
+    if (startMs != null) {
+      try {
+        playerRef.current?.seekTo(startMs / 1000);
+      } catch {
+        // ignore
+      }
+    }
+  }, [chunks]);
 
   React.useEffect(() => {
     const el = videoSectionRef.current;
@@ -100,8 +109,7 @@ export function SongPageContent({
     if (!videoId || !apiReady || !containerRef.current) return;
     if (createdRef.current) return;
     createdRef.current = true;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const YT = (window as any).YT;
+    const YT = (window as unknown as { YT?: { Player: new (el: HTMLElement, opts: unknown) => unknown } }).YT;
     if (!YT) return;
     try {
       const player = new YT.Player(containerRef.current, {
@@ -110,15 +118,19 @@ export function SongPageContent({
         height: "100%",
         events: {
           onReady(e: { target: unknown }) {
-            playerRef.current = e.target as {
+            const p = e.target as {
               seekTo(s: number): void;
               playVideo(): void;
               pauseVideo(): void;
             };
+            playerRef.current = p;
+            const startMs = firstChunkStartMsRef.current;
+            if (startMs != null) p.seekTo(startMs / 1000);
           },
         },
       });
-      if (player && !playerRef.current) playerRef.current = player;
+      if (player && !playerRef.current)
+        playerRef.current = player as { seekTo(s: number): void; playVideo(): void; pauseVideo(): void };
     } catch {
       createdRef.current = false;
     }
@@ -169,7 +181,7 @@ export function SongPageContent({
         }, durationMs);
       }
     },
-    [],
+    []
   );
 
   const showMini = miniVisible && miniDismissed === false;
@@ -222,11 +234,11 @@ export function SongPageContent({
 
       <section>
         <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl mb-4">
-          Lyrics
+          Script
         </h2>
 
         {chunks.length === 0 ? (
-          <p className="text-muted-foreground">No lyrics yet.</p>
+          <p className="text-muted-foreground">No script yet.</p>
         ) : (
           <div className="space-y-5">
             {chunks.map((chunk) => (

@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
+      "@typescript-eslint/no-explicit-any": "off",
       // _id, _omit 등 의도적으로 쓰지 않는 변수 허용 (빌드 막지 않도록 완화)
       "@typescript-eslint/no-unused-vars": [
         "warn",

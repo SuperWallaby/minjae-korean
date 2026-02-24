@@ -453,19 +453,17 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         Boolean(uploadingKey)
                       }
                       onClick={async () => {
-                        const ttsText = [
-                          (draft.title ?? "").trim(),
-                          ...(draft.paragraphs ?? []).flatMap((p) =>
+                        const ttsText = (draft.paragraphs ?? [])
+                          .flatMap((p) =>
                             [p.subtitle?.trim(), p.content?.trim()].filter(
                               Boolean,
                             ),
-                          ),
-                        ]
+                          )
                           .filter(Boolean)
                           .join("\n");
                         if (!ttsText) {
                           setError(
-                            "Add title or paragraph content to generate TTS.",
+                            "Add paragraph content to generate TTS.",
                           );
                           return;
                         }
@@ -502,26 +500,22 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                       disabled={
                         articleEdgeTtsGenerating ||
                         Boolean(uploadingKey) ||
-                        ![
-                          (draft.title ?? "").trim(),
-                          ...(draft.paragraphs ?? []).flatMap((p) =>
+                        !(draft.paragraphs ?? [])
+                          .flatMap((p) =>
                             [p.subtitle?.trim(), p.content?.trim()].filter(
                               Boolean,
                             ),
-                          ),
-                        ]
+                          )
                           .filter(Boolean)
                           .join("\n")
                       }
                       onClick={async () => {
-                        const ttsText = [
-                          (draft.title ?? "").trim(),
-                          ...(draft.paragraphs ?? []).flatMap((p) =>
+                        const ttsText = (draft.paragraphs ?? [])
+                          .flatMap((p) =>
                             [p.subtitle?.trim(), p.content?.trim()].filter(
                               Boolean,
                             ),
-                          ),
-                        ]
+                          )
                           .filter(Boolean)
                           .join("\n");
                         if (!ttsText || !draft) return;
@@ -898,14 +892,12 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                     setAutoRunning(true);
                     setError(null);
                     try {
-                      const articleText = [
-                        (draft.title ?? "").trim(),
-                        ...(draft.paragraphs ?? []).flatMap((p) =>
+                      const articleText = (draft.paragraphs ?? [])
+                        .flatMap((p) =>
                           [p.subtitle?.trim(), p.content?.trim()].filter(
                             Boolean,
                           ),
-                        ),
-                      ]
+                        )
                         .filter(Boolean)
                         .join("\n");
                       if (articleText) {
