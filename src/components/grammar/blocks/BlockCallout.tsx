@@ -1,3 +1,5 @@
+import { DescribeKorean } from "../DescribeKorean";
+
 type Props = { text: string; emoji?: string };
 
 export function BlockCallout({ text, emoji }: Props) {
@@ -8,7 +10,9 @@ export function BlockCallout({ text, emoji }: Props) {
           {emoji}
         </span>
       ) : null}
-      <p className="text-base leading-8 text-foreground">{text}</p>
+      <p className="text-base leading-8 text-foreground">
+        <DescribeKorean text={text} />
+      </p>
     </div>
   );
 }

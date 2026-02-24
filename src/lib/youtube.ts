@@ -21,3 +21,28 @@ export function parseYouTubeId(urlOrId: string): string | null {
   }
   return null;
 }
+
+/**
+ * Parse start time from YouTube URL. Supports t= (seconds) and start= (seconds).
+ * Handles both ?v=id&t=899 and malformed ?v=id?t=899 (fallback regex).
+ */
+export function parseYouTubeStartTime(urlOrId: string): number | null {
+  const s = String(urlOrId ?? "").trim();
+  if (!s) return null;
+  try {
+    const u = new URL(s);
+    const t = u.searchParams.get("t") ?? u.searchParams.get("start");
+    if (t != null) {
+      const sec = parseInt(t, 10);
+      if (Number.isFinite(sec) && sec >= 0) return sec;
+    }
+    const match = s.match(/[?&](?:t|start)=(\d+)/);
+    if (match) {
+      const sec = parseInt(match[1], 10);
+      if (Number.isFinite(sec) && sec >= 0) return sec;
+    }
+  } catch {
+    // ignore
+  }
+  return null;
+}

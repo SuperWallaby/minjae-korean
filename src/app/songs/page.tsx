@@ -1,14 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { Container } from "@/components/site/Container";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { formatNewsDate } from "@/lib/levelDisplay";
 import { listSongs } from "@/lib/songsRepo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+
+export const metadata: Metadata = {
+  title: "Songs",
+  description:
+    "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
+  alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/songs` },
+  openGraph: {
+    title: "Songs | Kaja",
+    description:
+      "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
+    url: `${SITE_URL.replace(/\/+$/, "")}/songs`,
+    type: "website",
+    siteName: "Kaja",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Songs | Kaja",
+    description:
+      "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
+  },
+};
 
 function devOnly() {
   return process.env.NODE_ENV !== "production";
@@ -51,11 +75,11 @@ export default async function SongsPage() {
                 className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
-                  {major.imageLarge?.trim() || major.imageThumb?.trim() ? (
+                  {major.images?.large?.trim() || major.images?.thumb?.trim() ? (
                     <Image
                       src={
-                        major.imageLarge?.trim() ||
-                        major.imageThumb?.trim() ||
+                        major.images?.large?.trim() ||
+                        major.images?.thumb?.trim() ||
                         ""
                       }
                       alt=""
@@ -71,13 +95,10 @@ export default async function SongsPage() {
                   )}
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <span className="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-1 text-xs font-medium text-white">
-                      {major.level || "A1"}
-                    </span>
-                    <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
+                    <h2 className="font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
                       {major.title}
                     </h2>
-                    <p className="mt-1 text-sm text-white/80">
+                    <p className="mt-2 text-sm text-white/80">
                       {major.artist}
                     </p>
                   </div>
@@ -94,10 +115,10 @@ export default async function SongsPage() {
                     className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                      {s.imageThumb?.trim() || s.imageLarge?.trim() ? (
+                      {s.images?.thumb?.trim() || s.images?.large?.trim() ? (
                         <Image
                           src={
-                            s.imageThumb?.trim() || s.imageLarge?.trim() || ""
+                            s.images?.thumb?.trim() || s.images?.large?.trim() || ""
                           }
                           alt=""
                           fill
@@ -112,13 +133,10 @@ export default async function SongsPage() {
                       )}
                     </div>
                     <div className="flex flex-1 flex-col p-4">
-                      <Badge variant="muted" className="w-fit">
-                        {s.level || "A1"}
-                      </Badge>
-                      <h3 className="mt-2 font-serif font-semibold tracking-tight line-clamp-2">
+                      <h3 className="font-serif font-semibold tracking-tight line-clamp-2">
                         {s.title}
                       </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
+                      <p className="mt-2 text-sm text-muted-foreground">
                         {s.artist}
                       </p>
                       {s.createdAt ? (

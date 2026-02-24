@@ -5,7 +5,7 @@
  */
 import React from "react";
 import { Describe } from "@/components/article/Describe";
-import { Quoter } from "@/components/article/Quoter";
+import { Gap } from "@/components/article/Gap";
 import type { BlogPost } from "../types";
 
 export const post: BlogPost = {
@@ -16,7 +16,7 @@ export const post: BlogPost = {
   updatedAt: "2026-02-24T00:00:00.000Z",
   paragraphs: [
     {
-      youtube: "https://www.youtube.com/watch?v=29ZlFKsc_ps",
+      youtube: "https://www.youtube.com/watch?v=29ZlFKsc_ps&t=899",
       subtitle: "One question. Seven answers.",
       content: (
         <div className="my-8">
@@ -50,18 +50,15 @@ export const post: BlogPost = {
       content: (
         <span>
           <Describe>꽤나 멋진 30대</Describe>
-          <br />
-          <br />
+          <Gap />
           <b>"A pretty cool group in our 30s."</b>
-          <br />
-          <br />
+          <Gap />
           The key word is <Describe>꽤나</Describe>.
           <br />
           It's not "very". It's more like:
           <br />
           <b>"quite / pretty / more than you'd expect."</b>
-          <br />
-          <br />
+          <Gap />
           Try these
           <br />
           <Describe>꽤나 괜찮은데?</Describe> = "That's pretty good."
@@ -76,16 +73,13 @@ export const post: BlogPost = {
       content: (
         <span>
           <Describe>방탄중년노년단</Describe>
-          <br />
-          <br />
+          <Gap />
           <b>"Bangtan Middle-aged & Elderly Squad."</b>
-          <br />
-          <br />
+          <Gap />
           This is Korean humor
           <br />
           Take a serious-looking label and twist it.
-          <br />
-          <br />
+          <Gap />
           Pieces
           <br />
           <Describe>중년</Describe> = middle age
@@ -93,8 +87,7 @@ export const post: BlogPost = {
           <Describe>노년</Describe> = old age / elderly
           <br />
           <Describe>-단</Describe> = group / crew / squad
-          <br />
-          <br />
+          <Gap />
           You can copy the pattern:
           <br />
           <Describe>우리 ○○단 하자.</Describe> = "Let's be the ○○ squad."
@@ -107,18 +100,15 @@ export const post: BlogPost = {
       content: (
         <span>
           <Describe>무엇이든 괜찮아.</Describe>
-          <br />
-          <br />
+          <Gap />
           <b>"Anything is fine."</b>
           <br />
-          (Sometimes: "Whatever happens, it'll be okay.")
-          <br />
-          <br />
+          (Whatever happens, it'll be okay.)
+          <Gap />
           Why it's useful
           <br />
           It removes pressure. It opens space.
-          <br />
-          <br />
+          <Gap />
           Tone switches
           <br />
           <Describe>괜찮아.</Describe> = casual, close
@@ -135,19 +125,16 @@ export const post: BlogPost = {
       content: (
         <span>
           <Describe>가자 달려라 방탄.</Describe>
-          <br />
-          <br />
+          <Gap />
           <b>"Let's go. Run, Bangtan."</b>
-          <br />
-          <br />
+          <Gap />
           Two commands, two energies
           <br />
           <Describe>가자</Describe> = "Let's go." (fast, strong, casual)
           <br />
           <Describe>달려라</Describe> = "Run!" / "Keep going!" (cheering
           command)
-          <br />
-          <br />
+          <Gap />
           Real-life use
           <br />
           <Describe>가자!</Describe> = "Let's go!"
@@ -162,16 +149,13 @@ export const post: BlogPost = {
       content: (
         <span>
           <Describe>걱정하지 말아요.</Describe>
-          <br />
-          <br />
+          <Gap />
           <b>"Don't worry."</b> (soft + caring)
-          <br />
-          <br />
+          <Gap />
           The softness comes from the ending.
           <br />
           <Describe>-지 말아요</Describe> feels gentler than a sharp command.
-          <br />
-          <br />
+          <Gap />
           Variations by distance
           <br />
           <Describe>걱정하지 마.</Describe> = close, casual
@@ -189,16 +173,13 @@ export const post: BlogPost = {
       content: (
         <span>
           <Describe>늙어도 우린 청춘</Describe>
-          <br />
-          <br />
+          <Gap />
           <b>"Even if we get old, we're still youth."</b>
-          <br />
-          <br />
+          <Gap />
           This is a classic Korean structure
           <br />
           <Describe>~어도</Describe> = "even if / even though"
-          <br />
-          <br />
+          <Gap />
           More examples
           <br />
           <Describe>늦어도 갈게요.</Describe> = "Even if I'm late, I'll go."
@@ -213,21 +194,16 @@ export const post: BlogPost = {
       content: (
         <span>
           <Describe>모먼 이즈 옛투컴</Describe>
-          <br />
-          <br />
+          <Gap />
           This is Korean "sound spelling" of English
           <br />
           <b>"Moment is yet to come."</b>
-          <br />
-          <br />
-          Why this matters for Korean learners
-          <br />
+          <Gap />
           Koreans often write English phrases like Korean sounds for fun /
           style.
           <br />
           It's a real part of modern tone.
-          <br />
-          <br />
+          <Gap />
           You'll see this in comments, captions, and casual writing
           <br />
           It's not "correct English."

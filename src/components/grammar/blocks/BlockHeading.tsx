@@ -1,3 +1,5 @@
+import { DescribeKorean } from "../DescribeKorean";
+
 type Props = { level: 1 | 2 | 3; text: string };
 
 const classes: Record<1 | 2 | 3, string> = {
@@ -8,5 +10,9 @@ const classes: Record<1 | 2 | 3, string> = {
 
 export function BlockHeading({ level, text }: Props) {
   const Tag = `h${level}` as "h1" | "h2" | "h3";
-  return <Tag className={classes[level]}>{text}</Tag>;
+  return (
+    <Tag className={classes[level]}>
+      <DescribeKorean text={text} />
+    </Tag>
+  );
 }

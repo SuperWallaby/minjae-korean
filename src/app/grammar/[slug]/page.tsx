@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
+import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { BlockRenderer } from "@/components/grammar/BlockRenderer";
 import { GrammarRecordVisit } from "@/components/grammar/GrammarRecordVisit";
 import { Breadcrumb } from "@/components/site/Breadcrumb";
@@ -77,6 +78,7 @@ export default async function GrammarChapterPage({
   const listHash = sectionAnchor ? `#${encodeURIComponent(sectionAnchor)}` : "";
   const content = await getChapterContent(slug);
   const blocks = content?.blocks ?? [];
+  const shareUrl = `${SITE_URL.replace(/\/+$/, "")}/grammar/${encodeURIComponent(slug)}`;
 
   return (
     <div className="py-12 sm:py-16">
@@ -97,6 +99,13 @@ export default async function GrammarChapterPage({
         <div className="mt-10 rounded-2xl border border-border bg-card p-6 sm:p-10">
           <BlockRenderer blocks={blocks} />
         </div>
+
+        <ArticleActionsAndComments
+          scope="grammar"
+          slug={slug}
+          shareUrl={shareUrl}
+          shareTitle={chapter.title}
+        />
 
         <div className="mt-10 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
           {prevChapter ? (

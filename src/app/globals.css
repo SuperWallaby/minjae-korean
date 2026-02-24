@@ -125,6 +125,17 @@
   animation: achieveIconIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+/* Article action bar: like “light on” pop */
+@keyframes likePop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.animate-like-pop {
+  animation: likePop 0.45s ease-out forwards;
+}
+
 /* Education Mode */
 .education-mode .site-container {
   max-width: 100% !important;

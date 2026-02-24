@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SupportChatWidget } from "@/components/support/SupportChatWidget";
 import { QuickNote } from "@/components/QuickNote";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -90,6 +91,7 @@ export default function RootLayout({
         <MockSessionProvider>
           <EducationModeProvider>
             <div className="min-h-dvh bg-background">
+              <ScrollToTop />
               <SiteNavbar />
               <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
               <SiteFooter />

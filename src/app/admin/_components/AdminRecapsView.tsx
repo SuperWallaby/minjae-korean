@@ -3,7 +3,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DateTime } from "luxon";
 
-import { SoundPlayButton } from "@/components/article/SoundPlayButton";
 import { smartUnsplashSearch } from "@/lib/smartUnsplash";
 
 /** API/목록에서 오는 리스트 항목 */
@@ -83,6 +82,227 @@ const defaultForm = () => ({
   mistake: [defaultListRow()] as ListRow[],
   pronounce: [defaultListRow()] as ListRow[],
 });
+
+type AdminBookingSearchItem = {
+  id: string;
+  studentId?: string;
+  name: string;
+  email?: string;
+  dateKey?: string;
+  startMin?: number;
+  endMin?: number;
+};
+
+type AdminStudentItem = {
+  id: string;
+  name: string;
+  email: string;
+};
+
+function minutesToHhmm(min: number) {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+function AdminBookingSelect({
+  value,
+  onSelect,
+  placeholder = "예약 선택…",
+}: {
+  value: string;
+  onSelect: (b: AdminBookingSearchItem) => void;
+  placeholder?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const [dateKey, setDateKey] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [list, setList] = useState<AdminBookingSearchItem[]>([]);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const search = useCallback(async () => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams();
+      if (q.trim()) params.set("q", q.trim());
+      if (dateKey.trim()) params.set("dateKey", dateKey.trim());
+      const res = await fetch(`/api/admin/bookings/search?${params.toString()}`, { cache: "no-store" });
+      const json = await res.json().catch(() => null);
+      if (res.ok && json?.ok && Array.isArray(json.data?.items)) {
+        setList(json.data.items as AdminBookingSearchItem[]);
+      } else {
+        setList([]);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [q, dateKey]);
+
+  useEffect(() => {
+    if (open) {
+      search();
+    }
+  }, [open, search]);
+
+  useEffect(() => {
+    if (!open) return;
+    const handle = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, [open]);
+
+  return (
+    <div className="relative" ref={containerRef}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="mt-0.5 w-full px-3 py-2 border rounded bg-white text-left flex items-center justify-between"
+      >
+        <span className={value ? "text-foreground" : "text-muted-foreground"}>{value || placeholder}</span>
+        <span className="text-muted-foreground">▼</span>
+      </button>
+      {open && (
+        <div className="absolute z-50 mt-1 w-full max-h-72 overflow-auto rounded border bg-background shadow-lg p-2 space-y-2">
+          <div className="flex gap-2 flex-wrap">
+            <input
+              type="text"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="이름·이메일 검색"
+              className="flex-1 min-w-[120px] px-2 py-1.5 border rounded text-sm"
+            />
+            <input
+              type="date"
+              value={dateKey}
+              onChange={(e) => setDateKey(e.target.value)}
+              className="px-2 py-1.5 border rounded text-sm"
+            />
+            <button type="button" onClick={search} className="px-2 py-1.5 rounded border text-sm" disabled={loading}>
+              {loading ? "…" : "검색"}
+            </button>
+          </div>
+          <ul className="space-y-1">
+            {list.length === 0 && !loading && <li className="text-sm text-muted-foreground py-2">예약이 없습니다.</li>}
+            {list.map((b) => (
+              <li key={b.id}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onSelect(b);
+                    setOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-2 rounded border bg-white hover:bg-muted/50 text-sm"
+                >
+                  <span className="font-medium">{b.name}</span>
+                  {b.email ? ` · ${b.email}` : ""}
+                  {b.dateKey ? ` · ${b.dateKey} ${minutesToHhmm(b.startMin ?? 0)}–${minutesToHhmm(b.endMin ?? 0)}` : ""}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function AdminStudentSelect({
+  valueId,
+  valueName,
+  onSelect,
+  placeholder = "학생 선택…",
+}: {
+  valueId: string;
+  valueName: string;
+  onSelect: (s: AdminStudentItem) => void;
+  placeholder?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [list, setList] = useState<AdminStudentItem[]>([]);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const search = useCallback(async () => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams();
+      if (q.trim()) params.set("q", q.trim());
+      const res = await fetch(`/api/admin/students?${params.toString()}`, { cache: "no-store" });
+      const json = await res.json().catch(() => null);
+      if (res.ok && json?.ok && Array.isArray(json.data?.items)) {
+        setList(json.data.items as AdminStudentItem[]);
+      } else {
+        setList([]);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [q]);
+
+  useEffect(() => {
+    if (open) search();
+  }, [open, search]);
+
+  useEffect(() => {
+    if (!open) return;
+    const handle = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, [open]);
+
+  const label = valueName || valueId || placeholder;
+  return (
+    <div className="relative" ref={containerRef}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="mt-0.5 w-full px-3 py-2 border rounded bg-white text-left flex items-center justify-between"
+      >
+        <span className={valueId || valueName ? "text-foreground" : "text-muted-foreground"}>{label}</span>
+        <span className="text-muted-foreground">▼</span>
+      </button>
+      {open && (
+        <div className="absolute z-50 mt-1 w-full max-h-72 overflow-auto rounded border bg-background shadow-lg p-2 space-y-2">
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="이름·이메일 검색"
+              className="flex-1 px-2 py-1.5 border rounded text-sm"
+            />
+            <button type="button" onClick={search} className="px-2 py-1.5 rounded border text-sm" disabled={loading}>
+              {loading ? "…" : "검색"}
+            </button>
+          </div>
+          <ul className="space-y-1">
+            {list.length === 0 && !loading && <li className="text-sm text-muted-foreground py-2">학생이 없습니다.</li>}
+            {list.map((s) => (
+              <li key={s.id}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onSelect(s);
+                    setOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-2 rounded border bg-white hover:bg-muted/50 text-sm"
+                >
+                  <span className="font-medium">{s.name}</span> · {s.email}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function toListRows(items: RecapListItem[]): ListRow[] {
   if (!items.length) return [defaultListRow()];
@@ -408,7 +628,7 @@ export default function AdminRecapsView() {
         } else {
           for (const recap of parsed) {
             if (!recap || typeof recap !== "object") continue;
-            const sections = ["expression", "vocabulary", "mistake", "pronounce"] as const;
+            const sections = ["expression", "grammarPoint", "vocabulary", "mistake", "pronounce"] as const;
             for (const sectionKey of sections) {
               const items = (recap as Record<string, unknown>)[sectionKey];
               if (Array.isArray(items)) {
@@ -420,7 +640,7 @@ export default function AdminRecapsView() {
         }
       } else if (parsed && typeof parsed === "object") {
         const obj = parsed as Record<string, unknown>;
-        const sections = ["expression", "vocabulary", "mistake", "pronounce"] as const;
+        const sections = ["expression", "grammarPoint", "vocabulary", "mistake", "pronounce"] as const;
         let foundSection = false;
         for (const sectionKey of sections) {
           if (sectionKey in obj && Array.isArray(obj[sectionKey])) {
@@ -670,7 +890,7 @@ export default function AdminRecapsView() {
   type ListSource = { expression: ListRow[]; grammarPoint: ListRow[]; vocabulary: ListRow[]; mistake: ListRow[]; pronounce: ListRow[] };
   function collectTtsTasks(src: ListSource): { field: keyof ListSource; idx: number; text: string; kind: "text" | "example" }[] {
     const tasks: { field: keyof ListSource; idx: number; text: string; kind: "text" | "example" }[] = [];
-    (["expression", "vocabulary", "mistake", "pronounce"] as const).forEach((field) => {
+    (["expression", "grammarPoint", "vocabulary", "mistake", "pronounce"] as const).forEach((field) => {
       const rows = src[field] ?? [];
       rows.forEach((row, idx) => {
         const raw = row.text?.trim();
@@ -782,6 +1002,10 @@ export default function AdminRecapsView() {
 
   const formatDate = (iso: string) =>
     DateTime.fromISO(iso).setZone("Asia/Seoul").toFormat("yyyy-MM-dd HH:mm");
+
+  /** 리스트에만 사용: "2월 22일 (토요일)" */
+  const formatListDate = (iso: string) =>
+    DateTime.fromISO(iso).setZone("Asia/Seoul").setLocale("ko").toFormat("M월 d일 (cccc)");
 
   return (
     <section className="mt-6">
@@ -953,13 +1177,24 @@ export default function AdminRecapsView() {
         <form onSubmit={handleCreate} className="p-4 mb-6 border rounded bg-muted/20 space-y-4">
           <div className="font-medium">새 리캡 노트</div>
           <label className="block">
-            <span className="text-sm text-muted-foreground">Booking ID (선택)</span>
+            <span className="text-sm text-muted-foreground">Booking (클릭 → 목록·검색 → 선택 시 학생/이름 자동 채움)</span>
+            <AdminBookingSelect
+              value={form.bookingId ? `ID: ${form.bookingId} · ${form.studentName || ""}`.trim() : ""}
+              onSelect={(b) => {
+                setForm((p) => ({
+                  ...p,
+                  bookingId: b.id,
+                  studentId: (b.studentId ?? "").trim() || p.studentId,
+                  studentName: (b.name ?? "").trim() || p.studentName,
+                }));
+              }}
+            />
             <input
               type="text"
               value={form.bookingId}
               onChange={(e) => setForm((p) => ({ ...p, bookingId: e.target.value }))}
-              placeholder="연결할 예약 ID"
-              className="mt-0.5 w-full px-3 py-2 border rounded"
+              placeholder="또는 예약 ID 직접 입력"
+              className="mt-1 w-full px-2 py-1.5 border rounded text-sm text-muted-foreground"
             />
           </label>
           <label className="block">
@@ -972,12 +1207,13 @@ export default function AdminRecapsView() {
             />
           </label>
           <label className="block">
-            <span className="text-sm text-muted-foreground">Student ID (optional, 관리자용·공개 시 비공개)</span>
-            <input
-              type="text"
-              value={form.studentId}
-              onChange={(e) => setForm((p) => ({ ...p, studentId: e.target.value }))}
-              className="mt-0.5 w-full px-3 py-2 border rounded"
+            <span className="text-sm text-muted-foreground">Student ID (선택 → 목록·검색)</span>
+            <AdminStudentSelect
+              valueId={form.studentId}
+              valueName={form.studentName}
+              onSelect={(s) => {
+                setForm((p) => ({ ...p, studentId: s.id, studentName: s.name.trim() || p.studentName }));
+              }}
             />
           </label>
           <label className="block">
@@ -1016,13 +1252,14 @@ export default function AdminRecapsView() {
                   <input type="text" value={row.phonetic} onChange={(e) => setForm((p) => ({ ...p, expression: (p.expression as ListRow[]).map((r, i) => i === idx ? { ...r, phonetic: e.target.value } : r) }))} placeholder="발음기호" className="w-32 px-2 py-1.5 border rounded" />
                   <input type="url" value={row.audioUrl} onChange={(e) => setForm((p) => ({ ...p, expression: (p.expression as ListRow[]).map((r, i) => i === idx ? { ...r, audioUrl: e.target.value } : r) }))} placeholder="사운드 URL" className="flex-1 min-w-[100px] px-2 py-1.5 border rounded" />
                   <button type="button" disabled={!row.text.trim() || ttsKey !== null} className="px-2 py-1.5 rounded border disabled:opacity-50" onClick={async () => { const t = row.text.trim(); if (!t) return; setTtsKey(`form-exp-${idx}`); try { const res = await fetch("/api/admin/tts/word", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: t }) }); const j = await res.json().catch(() => null); if (res.ok && j?.ok && j?.url) setForm((p) => ({ ...p, expression: (p.expression as ListRow[]).map((r, i) => i === idx ? { ...r, audioUrl: String(j.url) } : r) })); else alert(j?.error ?? "실패"); } finally { setTtsKey(null); } }}>{ttsKey === `form-exp-${idx}` ? "…" : "발음"}</button>
+                  {row.audioUrl ? <audio controls src={row.audioUrl} className="h-8 max-w-[160px] shrink-0" /> : null}
                 </div>
               </div>
             ))}
             <button type="button" onClick={() => setForm((p) => ({ ...p, expression: [...(p.expression as ListRow[]), defaultListRow()] }))} className="text-sm text-muted-foreground hover:text-foreground">+ 항목 추가</button>
           </div>
 
-          {/* Grammar Point: text (title), content only */}
+          {/* Grammar Point: text (title), content, audioUrl (보이스) */}
           <div className="space-y-2">
             <span className="text-sm font-medium text-muted-foreground">Grammar Point (리스트)</span>
             {(form.grammarPoint as ListRow[]).map((row, idx) => (
@@ -1044,6 +1281,11 @@ export default function AdminRecapsView() {
                   rows={2}
                   className="w-full px-3 py-2 border rounded text-sm"
                 />
+                <div className="flex flex-wrap items-center gap-2 text-sm">
+                  <input type="url" value={row.audioUrl} onChange={(e) => setForm((p) => ({ ...p, grammarPoint: (p.grammarPoint as ListRow[]).map((r, i) => i === idx ? { ...r, audioUrl: e.target.value } : r) }))} placeholder="사운드 URL" className="flex-1 min-w-[100px] px-2 py-1.5 border rounded" />
+                  <button type="button" disabled={!row.text.trim() || ttsKey !== null} className="px-2 py-1.5 rounded border disabled:opacity-50" onClick={async () => { const t = row.text.trim(); if (!t) return; setTtsKey(`form-gram-${idx}`); try { const res = await fetch("/api/admin/tts/word", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: t }) }); const j = await res.json().catch(() => null); if (res.ok && j?.ok && j?.url) setForm((p) => ({ ...p, grammarPoint: (p.grammarPoint as ListRow[]).map((r, i) => i === idx ? { ...r, audioUrl: String(j.url) } : r) })); else alert(j?.error ?? "실패"); } finally { setTtsKey(null); } }}>{ttsKey === `form-gram-${idx}` ? "…" : "발음"}</button>
+                  {row.audioUrl ? <audio controls src={row.audioUrl} className="h-8 max-w-[160px] shrink-0" /> : null}
+                </div>
               </div>
             ))}
             <button type="button" onClick={() => setForm((p) => ({ ...p, grammarPoint: [...(p.grammarPoint as ListRow[]), defaultListRow()] }))} className="text-sm text-muted-foreground hover:text-foreground">+ 항목 추가</button>
@@ -1197,12 +1439,28 @@ export default function AdminRecapsView() {
                     </button>
                   </div>
                   <label className="block">
-                    <span className="text-sm text-muted-foreground">Booking ID</span>
+                    <span className="text-sm text-muted-foreground">Booking (클릭 → 목록·검색 → 선택 시 관련정보 채움)</span>
+                    <AdminBookingSelect
+                      value={
+                        (editForm.bookingId as string | undefined)
+                          ? `ID: ${editForm.bookingId} · ${(editForm.studentName as string | undefined) ?? ""}`.trim()
+                          : ""
+                      }
+                      onSelect={(b) => {
+                        setEditForm((p) => ({
+                          ...p,
+                          bookingId: b.id,
+                          studentId: (b.studentId ?? "").trim() || (p.studentId as string),
+                          studentName: (b.name ?? "").trim() || (p.studentName as string),
+                        }));
+                      }}
+                    />
                     <input
                       type="text"
                       value={(editForm.bookingId as string | undefined) ?? ""}
                       onChange={(e) => setEditForm((p) => ({ ...p, bookingId: e.target.value }))}
-                      className="mt-0.5 w-full px-3 py-2 border rounded"
+                      placeholder="또는 예약 ID 직접 입력"
+                      className="mt-1 w-full px-2 py-1.5 border rounded text-sm text-muted-foreground"
                     />
                   </label>
                   <label className="block">
@@ -1215,13 +1473,13 @@ export default function AdminRecapsView() {
                     />
                   </label>
                   <label className="block">
-                    <span className="text-sm text-muted-foreground">Student ID (관리자용·공개 시 비공개)</span>
-                    <input
-                      type="text"
-                      value={(editForm.studentId as string | undefined) ?? ""}
-                      onChange={(e) => setEditForm((p) => ({ ...p, studentId: e.target.value }))}
-                      placeholder="Student ID"
-                      className="mt-0.5 w-full px-3 py-2 border rounded"
+                    <span className="text-sm text-muted-foreground">Student ID (목록·검색)</span>
+                    <AdminStudentSelect
+                      valueId={(editForm.studentId as string | undefined) ?? ""}
+                      valueName={(editForm.studentName as string | undefined) ?? ""}
+                      onSelect={(s) => {
+                        setEditForm((p) => ({ ...p, studentId: s.id, studentName: s.name.trim() || (p.studentName as string) }));
+                      }}
                     />
                   </label>
                   <label className="block">
@@ -1252,13 +1510,14 @@ export default function AdminRecapsView() {
                           <input type="text" value={row.phonetic} onChange={(e) => setEditForm((p) => ({ ...p, expression: ((p.expression as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, phonetic: e.target.value } : r) }))} placeholder="발음기호" className="w-32 px-2 py-1.5 border rounded" />
                           <input type="url" value={row.audioUrl} onChange={(e) => setEditForm((p) => ({ ...p, expression: ((p.expression as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, audioUrl: e.target.value } : r) }))} placeholder="사운드 URL" className="flex-1 min-w-[100px] px-2 py-1.5 border rounded" />
                           <button type="button" disabled={!row.text.trim() || ttsKey !== null} className="px-2 py-1.5 rounded border disabled:opacity-50" onClick={async () => { const t = row.text.trim(); if (!t) return; setTtsKey(`edit-exp-${idx}`); try { const res = await fetch("/api/admin/tts/word", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: t }) }); const j = await res.json().catch(() => null); if (res.ok && j?.ok && j?.url) setEditForm((p) => ({ ...p, expression: ((p.expression as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, audioUrl: String(j.url) } : r) })); else alert(j?.error ?? "실패"); } finally { setTtsKey(null); } }}>{ttsKey === `edit-exp-${idx}` ? "…" : "발음"}</button>
+                          {row.audioUrl ? <audio controls src={row.audioUrl} className="h-8 max-w-[160px] shrink-0" /> : null}
                         </div>
                       </div>
                     ))}
                     <button type="button" onClick={() => setEditForm((p) => ({ ...p, expression: [...((p.expression as ListRow[]) ?? []), defaultListRow()] }))} className="text-sm text-muted-foreground">+ 항목 추가</button>
                   </div>
 
-                  {/* Grammar Point: text (title), content only */}
+                  {/* Grammar Point: text (title), content, audioUrl (보이스) */}
                   <div className="space-y-2">
                     <span className="text-sm font-medium text-muted-foreground">Grammar Point</span>
                     {((editForm.grammarPoint ?? []) as ListRow[]).map((row, idx) => (
@@ -1268,6 +1527,11 @@ export default function AdminRecapsView() {
                           <button type="button" onClick={() => setEditForm((p) => ({ ...p, grammarPoint: ((p.grammarPoint as ListRow[]) ?? []).filter((_, i) => i !== idx) }))} className="px-2 py-1 rounded border text-sm">삭제</button>
                         </div>
                         <textarea value={row.content} onChange={(e) => setEditForm((p) => ({ ...p, grammarPoint: ((p.grammarPoint as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, content: e.target.value } : r) }))} placeholder="내용" rows={2} className="w-full px-3 py-2 border rounded text-sm" />
+                        <div className="flex flex-wrap items-center gap-2 text-sm">
+                          <input type="url" value={row.audioUrl} onChange={(e) => setEditForm((p) => ({ ...p, grammarPoint: ((p.grammarPoint as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, audioUrl: e.target.value } : r) }))} placeholder="사운드 URL" className="flex-1 min-w-[100px] px-2 py-1.5 border rounded" />
+                          <button type="button" disabled={!row.text.trim() || ttsKey !== null} className="px-2 py-1.5 rounded border disabled:opacity-50" onClick={async () => { const t = row.text.trim(); if (!t) return; setTtsKey(`edit-gram-${idx}`); try { const res = await fetch("/api/admin/tts/word", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: t }) }); const j = await res.json().catch(() => null); if (res.ok && j?.ok && j?.url) setEditForm((p) => ({ ...p, grammarPoint: ((p.grammarPoint as ListRow[]) ?? []).map((r, i) => i === idx ? { ...r, audioUrl: String(j.url) } : r) })); else alert(j?.error ?? "실패"); } finally { setTtsKey(null); } }}>{ttsKey === `edit-gram-${idx}` ? "…" : "발음"}</button>
+                          {row.audioUrl ? <audio controls src={row.audioUrl} className="h-8 max-w-[160px] shrink-0" /> : null}
+                        </div>
                       </div>
                     ))}
                     <button type="button" onClick={() => setEditForm((p) => ({ ...p, grammarPoint: [...((p.grammarPoint as ListRow[]) ?? []), defaultListRow()] }))} className="text-sm text-muted-foreground">+ 항목 추가</button>
@@ -1373,160 +1637,36 @@ export default function AdminRecapsView() {
                   </div>
                 </form>
               ) : (
-                <>
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <div className="font-medium">
-                      {r.studentName}
-                      {r.studentId ? ` (${r.studentId})` : ""}
-                      <span className="ml-2 text-sm font-normal text-muted-foreground">
-                        {formatDate(r.createdAt)}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span
-                        className={`px-2 py-0.5 rounded text-xs ${
-                          r.bookingId ? "bg-green-100 text-green-800" : "bg-amber-100 text-amber-800"
-                        }`}
-                      >
-                        {r.bookingId ? "연결됨" : "연결 안 됨"}
-                      </span>
-                      {r.level != null ? (
-                        <span className="px-2 py-0.5 rounded text-xs bg-muted text-muted-foreground">
-                          Lv.{r.level}
-                        </span>
-                      ) : null}
-                      <button
-                        type="button"
-                        className="text-sm text-muted-foreground hover:text-foreground"
-                        onClick={() => {
-                          const url = `${typeof window !== "undefined" ? window.location.origin : ""}/recap/${r.id}`;
-                          navigator.clipboard.writeText(url).then(
-                            () => alert("공개 링크가 복사되었습니다."),
-                            () => {},
-                          );
-                        }}
-                      >
-                        링크 복사
-                      </button>
-                      <button
-                        type="button"
-                        className="text-sm text-muted-foreground hover:text-foreground"
-                        onClick={() => startEdit(r)}
-                      >
-                        수정
-                      </button>
-                    </div>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="text-sm">
+                    <span className="font-medium text-foreground">{r.studentName}</span>
+                    <span className="ml-2 text-muted-foreground">
+                      {formatListDate(r.createdAt)}
+                    </span>
                   </div>
-                  <div className="grid gap-2 text-sm">
-                    {/* Expression: text, phonetic, audio (NO image) */}
-                    {r.expression?.length ? (
-                      <div>
-                        <span className="text-muted-foreground">{LIST_FIELD_LABELS.expression}: </span>
-                        <ul className="list-disc list-inside mt-0.5 space-y-1">
-                          {(r.expression as RecapListItem[]).map((item, i) => (
-                            <li key={i} className="flex items-center gap-2 flex-wrap">
-                              <span>{item.text}</span>
-                              {item.phonetic ? <span className="text-muted-foreground">[{item.phonetic}]</span> : null}
-                              {item.audioUrl ? <SoundPlayButton src={item.audioUrl} size="sm" aria-label="재생" /> : null}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-
-                    {/* Grammar Point: text (title), content (NO image, NO audio) */}
-                    {r.grammarPoint?.length ? (
-                      <div>
-                        <span className="text-muted-foreground">{LIST_FIELD_LABELS.grammarPoint}: </span>
-                        <ul className="list-disc list-inside mt-0.5 space-y-1">
-                          {(r.grammarPoint as RecapListItem[]).map((item, i) => (
-                            <li key={i}>
-                              <span className="font-medium">{item.text}</span>
-                              {item.content ? <span className="text-muted-foreground"> — {item.content}</span> : null}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-
-                    {/* Vocabulary: image, text, phonetic, audio, meaning, example, exampleTranslation */}
-                    {r.vocabulary?.length ? (
-                      <div>
-                        <span className="text-muted-foreground">{LIST_FIELD_LABELS.vocabulary}: </span>
-                        <ul className="list-disc list-inside mt-0.5 space-y-1">
-                          {(r.vocabulary as RecapListItem[]).map((item, i) => (
-                            <li key={i} className="flex items-start gap-2 flex-wrap">
-                              {item.imageUrl ? (
-                                <a href={item.imageUrl} target="_blank" rel="noreferrer" className="shrink-0">
-                                  <img src={item.imageUrl} alt="" className="h-6 w-6 object-cover rounded border" />
-                                </a>
-                              ) : null}
-                              <div>
-                                <span>{item.text}</span>
-                                {item.phonetic ? <span className="text-muted-foreground ml-1">[{item.phonetic}]</span> : null}
-                                {item.audioUrl ? <SoundPlayButton src={item.audioUrl} size="sm" aria-label="재생" /> : null}
-                                {item.meaning ? <span className="text-muted-foreground"> — {item.meaning}</span> : null}
-                                {item.example ? (
-                                  <span className="block text-muted-foreground text-xs mt-0.5">
-                                    예: {item.example}
-                                    {item.exampleTranslation ? ` → ${item.exampleTranslation}` : ""}
-                                  </span>
-                                ) : null}
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-                    {(r.mistake?.length || r.pronounce?.length) ? (
-                      <div>
-                        <span className="text-muted-foreground">{LIST_FIELD_LABELS.mistake}</span>
-                        {r.mistake?.length ? (
-                          <ul className="list-disc list-inside mt-0.5 space-y-1">
-                            {(r.mistake as RecapListItem[]).map((item, i) => (
-                              <li key={i} className="flex items-center gap-2 flex-wrap">
-                                <span>{item.text}</span>
-                                {item.phonetic ? (
-                                  <span className="text-muted-foreground">[{item.phonetic}]</span>
-                                ) : null}
-                                {item.audioUrl ? (
-                                  <SoundPlayButton src={item.audioUrl} size="sm" aria-label="재생" />
-                                ) : null}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-                        {r.pronounce?.length ? (
-                          <>
-                            <span className="text-muted-foreground block mt-1"> / {LIST_FIELD_LABELS.pronounce}: </span>
-                            <ul className="list-disc list-inside mt-0.5 space-y-1">
-                              {(r.pronounce as RecapListItem[]).map((item, i) => (
-                                <li key={i} className="flex items-center gap-2 flex-wrap">
-                                  <span>{item.text}</span>
-                                  {item.phonetic ? (
-                                    <span className="text-muted-foreground">[{item.phonetic}]</span>
-                                  ) : null}
-                                  {item.audioUrl ? (
-                                    <SoundPlayButton src={item.audioUrl} size="sm" aria-label="재생" />
-                                  ) : null}
-                                  {item.example ? (
-                                    <span className="text-muted-foreground">
-                                      — 예: {item.example}
-                                      {item.examplePhonetic ? ` [${item.examplePhonetic}]` : ""}
-                                    </span>
-                                  ) : null}
-                                  {item.exampleAudioUrl ? (
-                                    <SoundPlayButton src={item.exampleAudioUrl} size="sm" aria-label="예문 재생" />
-                                  ) : null}
-                                </li>
-                              ))}
-                            </ul>
-                          </>
-                        ) : null}
-                      </div>
-                    ) : null}
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      className="text-xs text-muted-foreground hover:text-foreground"
+                      onClick={() => {
+                        const url = `${typeof window !== "undefined" ? window.location.origin : ""}/recap/${r.id}`;
+                        navigator.clipboard.writeText(url).then(
+                          () => alert("공개 링크가 복사되었습니다."),
+                          () => {},
+                        );
+                      }}
+                    >
+                      링크 복사
+                    </button>
+                    <button
+                      type="button"
+                      className="text-xs text-muted-foreground hover:text-foreground"
+                      onClick={() => startEdit(r)}
+                    >
+                      수정
+                    </button>
                   </div>
-                </>
+                </div>
               )}
             </div>
           ))}

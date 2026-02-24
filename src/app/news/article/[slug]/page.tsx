@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
+import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import { Describe } from "@/components/article/Describe";
 import { VocabularySection } from "@/components/article/VocabularySection";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
@@ -150,9 +152,12 @@ export default async function ArticlePage({
                 </span>
               ) : null}
             </div>
-            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              <Describe>{a.title}</Describe>
-            </h1>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                <Describe>{a.title}</Describe>
+              </h1>
+              <BookmarkNavIcon />
+            </div>
           </div>
           {isDev ? (
             <div className="flex items-center gap-2">
@@ -280,6 +285,13 @@ export default async function ArticlePage({
             </div>
           </section>
         ) : null}
+
+        <ArticleActionsAndComments
+          scope="news"
+          slug={a.slug}
+          shareUrl={canonical}
+          shareTitle={a.title}
+        />
 
         <div className="mt-16 flex flex-col items-center gap-3  mb-12">
           <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-muted-foreground">

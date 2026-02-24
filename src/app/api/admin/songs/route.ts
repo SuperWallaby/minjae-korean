@@ -23,8 +23,8 @@ export async function POST(req: Request) {
       language: body.language,
       tags: body.tags,
       source: body.source,
-      imageThumb: body.imageThumb,
-      imageLarge: body.imageLarge,
+      images: body.images,
+      lexicon: body.lexicon,
       chunks: body.chunks,
       createdAt: body.createdAt,
     });
@@ -48,8 +48,8 @@ export async function PATCH(req: Request) {
       language: body.language,
       tags: body.tags,
       source: body.source,
-      imageThumb: body.imageThumb,
-      imageLarge: body.imageLarge,
+      images: body.images,
+      lexicon: body.lexicon,
       chunks: body.chunks,
     });
     if (!song) {

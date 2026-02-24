@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
+import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
@@ -151,9 +153,12 @@ export default async function BlogArticlePage({
                 </span>
               ) : null}
             </div>
-            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              {a.title}
-            </h1>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                {a.title}
+              </h1>
+              <BookmarkNavIcon />
+            </div>
           </div>
         </div>
 
@@ -172,28 +177,17 @@ export default async function BlogArticlePage({
               <p className="text-muted-foreground">No content yet.</p>
             ) : (
               (a.paragraphs ?? []).map((p, idx) => (
-                <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`} className="space-y-3">
+                <div
+                  key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`}
+                  className="space-y-3"
+                >
                   {p.subtitle ? (
                     <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                       {p.subtitle}
                     </h2>
                   ) : null}
-                  {p.audio ? (
-                    <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/20 px-3 py-2">
-                      <span className="text-xs font-medium text-muted-foreground">Listen</span>
-                      <audio controls src={p.audio} className="h-8 flex-1 min-w-0" />
-                    </div>
-                  ) : null}
-                  <div className="whitespace-pre-wrap text-foreground/90">
-                    {p.content}
-                  </div>
-                  {p.youtube ? (
-                    <div className="mt-4 mb-10">
-                      <YouTubeEmbed urlOrId={p.youtube} />
-                    </div>
-                  ) : null}
                   {p.image ? (
-                    <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
+                    <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-border bg-muted/10">
                       <div className="relative aspect-video w-full">
                         <Image
                           src={p.image}
@@ -205,11 +199,44 @@ export default async function BlogArticlePage({
                       </div>
                     </div>
                   ) : null}
+
+                  {p.audio ? (
+                    <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/20 px-3 py-2">
+                      <audio
+                        controls
+                        src={p.audio}
+                        className="h-10 flex-1 min-w-0"
+                      />
+                    </div>
+                  ) : null}
+                  <div className="whitespace-pre-wrap text-foreground/90">
+                    {p.content}
+                  </div>
+                  {p.youtube ? (
+                    <div className="mt-4 mb-10">
+                      <YouTubeEmbed urlOrId={p.youtube} />
+                    </div>
+                  ) : null}
                 </div>
               ))
             )}
           </div>
         </section>
+
+        <div className="mt-16 flex flex-col items-center gap-3 mb-12">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Logo mode="v2" className="opacity-90" />
+            <span aria-hidden="true">·</span>
+            <h6 className="font-serif font-medium"> Minjae</h6>
+          </div>
+        </div>
+
+        <ArticleActionsAndComments
+          scope="blog"
+          slug={a.slug}
+          shareUrl={canonical}
+          shareTitle={a.title}
+        />
 
         {related.length > 0 ? (
           <section className="mt-20 border-t border-border pt-10">
@@ -225,14 +252,6 @@ export default async function BlogArticlePage({
             </div>
           </section>
         ) : null}
-
-        <div className="mt-16 flex flex-col items-center gap-3 mb-12">
-          <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-muted-foreground">
-            <Logo mode="v2" className="opacity-90" />
-            <span aria-hidden="true">·</span>
-            <h6 className="font-serif font-medium"> Minjae</h6>
-          </div>
-        </div>
 
         <div className="mt-8">
           <Button asChild variant="primary">

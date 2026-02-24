@@ -3,9 +3,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { Container } from "@/components/site/Container";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { SongChunkCard } from "@/components/song/SongChunkCard";
+import { SongPageContent } from "./SongPageContent";
 import { getSong } from "@/lib/songsRepo";
 
 export const runtime = "nodejs";
@@ -25,12 +24,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = `${s.title} - ${s.artist}`;
   const description = `Learn Korean with "${s.title}" by ${s.artist}. Click on lyrics to see translations and explanations.`;
-  const mainImage = s.imageLarge?.trim() || s.imageThumb?.trim();
+  const mainImage = s.images?.large?.trim() || s.images?.thumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/songs/${encodeURIComponent(slug)}`;
 
+  const keywords = [s.level, ...(s.tags ?? [])].filter(Boolean).join(", ");
   return {
     title,
     description,
+    ...(keywords && { keywords }),
     alternates: { canonical },
     openGraph: {
       title,
@@ -56,74 +57,58 @@ export default async function SongPage({ params }: Props) {
   const s = await getSong(slug);
   if (!s) return notFound();
 
-  const videoId = s.source?.videoId;
+  const videoId = s.source?.provider === "youtube" ? s.source.videoId : undefined;
+
+  const videoIdStr = videoId ? String(videoId).trim() : "";
+  const canonical = `${SITE_URL.replace(/\/+$/, "")}/songs/${encodeURIComponent(slug)}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MusicRecording",
+    name: s.title,
+    byArtist: { "@type": "MusicGroup", name: s.artist },
+    url: canonical,
+    description: `Learn Korean with "${s.title}" by ${s.artist}. Click on lyrics to see translations and explanations.`,
+    ...(s.images?.large?.trim() && { image: s.images.large.trim() }),
+  };
 
   return (
     <div className="py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Container className="max-w-3xl">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/songs" className="hover:text-foreground transition-colors">
-              Songs
-            </Link>
-            <span>/</span>
-            <span>{s.artist}</span>
-          </div>
-          <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            {s.title}
-          </h1>
-          <p className="mt-2 text-lg text-muted-foreground">{s.artist}</p>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <Badge variant="muted">Level {s.level}</Badge>
-            {s.tags?.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </div>
-
-        {/* YouTube Player */}
-        {videoId ? (
-          <div className="mb-10 overflow-hidden rounded-xl border border-border bg-black">
-            <div className="relative aspect-video w-full">
-              <iframe
-                src={`https://www.youtube.com/embed/${videoId}`}
-                title={`${s.title} - ${s.artist}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 h-full w-full"
-              />
+        <SongPageContent
+          videoId={videoIdStr}
+          chunks={s.chunks}
+          lexicon={s.lexicon}
+        >
+          <div className="mb-8">
+            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <Link href="/songs" className="hover:text-foreground transition-colors">
+                Songs
+              </Link>
+              <span>/</span>
+              <span>{s.artist}</span>
             </div>
+            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+              {s.title}
+            </h1>
+            <p className="mt-2 text-lg text-muted-foreground">{s.artist}</p>
           </div>
-        ) : null}
+        </SongPageContent>
 
-        {/* Lyrics Chunks */}
-        <section>
-          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl mb-4">
-            Lyrics
-          </h2>
-          <p className="text-sm text-muted-foreground mb-6">
-            Click on any section to see translation, explanation, and vocabulary.
-          </p>
-
-          {s.chunks.length === 0 ? (
-            <p className="text-muted-foreground">No lyrics yet.</p>
-          ) : (
-            <div className="space-y-3">
-              {s.chunks.map((chunk) => (
-                <SongChunkCard key={chunk.id} chunk={chunk} />
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* Footer */}
-        <div className="mt-12 pt-8 border-t border-border">
+        <div className="mt-12 pt-8 border-t border-border flex flex-wrap items-center gap-3">
           <Button asChild variant="outline">
             <Link href="/songs">← Back to Songs</Link>
           </Button>
+          {process.env.NODE_ENV !== "production" && (
+            <Button asChild variant="outline" size="sm">
+              <Link href={`/songs/new?slug=${encodeURIComponent(slug)}`}>
+                Edit
+              </Link>
+            </Button>
+          )}
         </div>
       </Container>
     </div>

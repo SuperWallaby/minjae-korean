@@ -1,15 +1,16 @@
 "use client";
 
-import { parseYouTubeId } from "@/lib/youtube";
+import { parseYouTubeId, parseYouTubeStartTime } from "@/lib/youtube";
 
 type Props = {
-  /** YouTube URL or video ID */
+  /** YouTube URL or video ID (supports ?t=899 for start time in seconds) */
   urlOrId: string;
   className?: string;
 };
 
 /**
  * Renders a responsive YouTube embed (16:9). Use for article paragraphs.
+ * Start time: use ?t=899 or &start=899 in the URL for 899 seconds.
  */
 export function YouTubeEmbed({ urlOrId, className = "" }: Props) {
   const videoId = parseYouTubeId(urlOrId);
@@ -23,7 +24,11 @@ export function YouTubeEmbed({ urlOrId, className = "" }: Props) {
     );
   }
 
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0`;
+  const startSec = parseYouTubeStartTime(urlOrId);
+  const embedUrl =
+    startSec != null
+      ? `https://www.youtube.com/embed/${videoId}?rel=0&start=${startSec}`
+      : `https://www.youtube.com/embed/${videoId}?rel=0`;
 
   return (
     <div

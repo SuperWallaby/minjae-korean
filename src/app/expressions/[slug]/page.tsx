@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
+import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { Container } from "@/components/site/Container";
 import { ExpressionRenderer } from "@/components/expression/ExpressionRenderer";
 import {
@@ -65,6 +66,7 @@ export default async function ExpressionChapterPage({ params }: Props) {
   if (!content) notFound();
 
   const { header } = content;
+  const canonical = `${SITE_URL.replace(/\/+$/, "")}/expressions/${encodeURIComponent(slug)}`;
 
   return (
     <div className="py-12 sm:py-16">
@@ -90,8 +92,15 @@ export default async function ExpressionChapterPage({ params }: Props) {
         {/* Content */}
         <ExpressionRenderer content={content} />
 
+        <ArticleActionsAndComments
+          scope="expressions"
+          slug={slug}
+          shareUrl={canonical}
+          shareTitle={header.title}
+        />
+
         {/* Footer: Prev / Next */}
-        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
           {prevChapter ? (
             <Link
               href={`/expressions/${encodeURIComponent(prevChapter.slug)}`}

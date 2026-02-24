@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, UserRound, X } from "lucide-react";
+import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import * as React from "react";
 
 import { Badge } from "@/components/ui/Badge";
@@ -53,9 +54,9 @@ const ASSETS_LINKS = [
   { href: "/grammar", label: "Grammar", icon: "/book-open.webp" },
   { href: "/expressions", label: "Expressions", icon: "/talk.webp" },
   { href: "/news", label: "News", icon: "/news.webp" },
-  { href: "/blog", label: "Blog", icon: "/news.webp" },
+  { href: "/blog", label: "Blog", icon: "/blog.webp" },
   // { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
-  // { href: "/songs", label: "Song", icon: "/music.webp" },
+  { href: "/songs", label: "Song", icon: "/music.webp" },
 ] as const;
 
 function isAssetLinkActive(pathname: string, href: string) {
@@ -75,10 +76,11 @@ export function SiteNavbar() {
   );
 
   React.useEffect(() => {
-    if (!eduMode) {
-      setHeaderVisible(false);
+    if (eduMode) {
+      setHeaderVisible(true);
       return;
     }
+    setHeaderVisible(false);
     const handleMouseMove = (e: MouseEvent) => {
       setHeaderVisible(e.clientY < 80);
     };
@@ -208,6 +210,7 @@ export function SiteNavbar() {
               </div>
 
               <div className="flex items-center gap-2">
+                <BookmarkNavIcon />
                 <div className="hidden items-center gap-2 lg:flex">
                   {state.subscriptionPlan ? (
                     <Badge variant="default">
