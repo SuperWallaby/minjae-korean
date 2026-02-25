@@ -238,19 +238,19 @@ export default function AdminSupportPage() {
     }
   }, []);
 
+  // Inbox: poll often so new chats show up quickly even without Realtime
+  const inboxPollMs = rtInboxActive ? 30_000 : 4_000;
   React.useEffect(() => {
     void loadThreads();
-    const handle = window.setInterval(
-      () => void loadThreads(),
-      rtInboxActive ? 60000 : 15000,
-    );
+    const handle = window.setInterval(() => void loadThreads(), inboxPollMs);
     return () => window.clearInterval(handle);
-  }, [loadThreads, rtInboxActive]);
+  }, [loadThreads, inboxPollMs]);
 
+  // Selected thread: poll so new messages show up quickly even without Realtime
   React.useEffect(() => {
     if (!selectedId) return;
     void loadThread(selectedId);
-    const handle = window.setInterval(() => void loadThread(selectedId), 60000);
+    const handle = window.setInterval(() => void loadThread(selectedId), 5_000);
     return () => window.clearInterval(handle);
   }, [loadThread, selectedId]);
 

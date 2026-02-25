@@ -9,7 +9,8 @@
     "lint": "eslint",
     "clean": "rm -rf .next",
     "deploy": "vercel --prod",
-    "deploy:cron": "cd cf-reminder-cron && npx wrangler deploy"
+    "deploy:cron": "cd cf-reminder-cron && npx wrangler deploy",
+    "vapid-keys": "web-push generate-vapid-keys"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",

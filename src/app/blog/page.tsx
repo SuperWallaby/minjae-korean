@@ -106,22 +106,16 @@ export default async function BlogPage() {
                     className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                      {a.imageThumb?.trim() || a.imageLarge?.trim() ? (
-                        <Image
-                          src={
-                            a.imageThumb?.trim() || a.imageLarge?.trim() || ""
-                          }
-                          alt=""
-                          fill
-                          className="object-cover transition group-hover:scale-[1.02]"
-                          unoptimized
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center text-muted-foreground">
-                          —
-                        </div>
-                      )}
+                      <Image
+                        src={
+                          a.imageThumb?.trim() || a.imageLarge?.trim() || "#"
+                        }
+                        alt=""
+                        fill
+                        className="object-cover transition group-hover:scale-[1.02]"
+                        unoptimized
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
                     </div>
                     <div className="flex flex-1 flex-col p-4">
                       <h3 className="font-serif font-semibold tracking-tight line-clamp-2">
