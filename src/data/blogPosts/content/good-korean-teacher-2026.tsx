@@ -13,7 +13,7 @@ export const post: BlogPost = {
       subtitle: "A question in the age of AI",
       content: (
         <>
-          In the age of AI, I’ve been asking myself this question
+          I’ve been asking myself this question
           <br />
           <strong>What kind of Korean teacher should I become?</strong>{" "}
           <br></br>
@@ -118,7 +118,7 @@ export const post: BlogPost = {
           I truly support you.
           <Gap />— <strong>Minjae</strong>
           <img
-            src="/meme/thank-you-with-korean.png"
+            src="/meme/offical/thank-you.webp"
             className="w-52"
             alt="Thank you meme"
           />
