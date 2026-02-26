@@ -133,11 +133,10 @@ export default async function RecapPublicPage({
             <div className="shrink-0 flex items-center justify-center bg-included-2/80 aspect-square rounded-full p-4 overflow-visible animate-achieve-icon">
               <Image
                 src="/acheive-3.webp"
-                alt=""
+                alt="Achievement"
                 width={76}
                 height={76}
                 className="shrink-0"
-                aria-hidden
               />
             </div>
             <div className="flex flex-col flex-wrap items-baseline gap-x-3 gap-y-1">

@@ -2,6 +2,11 @@
  * Blog post shape — paragraphs only (no vocabulary / questions / discussion).
  * You edit content via JSON/TS/TSX files in content/.
  * content는 ReactNode라서 <strong>, <br /> 등 JSX 사용 가능.
+ *
+ * content/ 에서 쓰는 컴포넌트:
+ * - Gap — @/components/article/Gap — 문단 사이 여백 (더블 <br /> 대신)
+ * - ContentLink — @/components/article/ContentLink — 본문용 링크 (밑줄·색상으로 링크처럼 보임)
+ * - <strong>, <br /> — 그냥 JSX
  */
 
 import type { ReactNode } from "react";

@@ -127,7 +127,7 @@ export function BookmarkListClient({ className = "" }: Props) {
                 <div className="text-[0px] relative h-16 w-24 shrink-0 bg-muted">
                   <Image
                     src={item.imageThumb}
-                    alt=""
+                    alt={item.title || item.slug}
                     fill
                     className="object-cover object-center"
                     sizes="96px"

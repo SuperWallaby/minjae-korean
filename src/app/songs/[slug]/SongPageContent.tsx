@@ -5,19 +5,29 @@ import { X } from "lucide-react";
 import { SongChunkCard } from "@/components/song/SongChunkCard";
 import type { SongChunk, Lexeme } from "@/lib/songsRepo";
 
+const isDev = process.env.NODE_ENV === "development";
+
 type Props = {
   videoId: string;
   chunks: SongChunk[];
   lexicon?: Lexeme[];
   children: React.ReactNode;
+  /** 개발 모드에서 단어 타이밍 저장 시 필요 */
+  slug?: string;
 };
 
 export function SongPageContent({
   videoId,
-  chunks,
+  chunks: initialChunks,
   lexicon = [],
   children,
+  slug,
 }: Props) {
+  const [chunks, setChunks] = React.useState<SongChunk[]>(initialChunks);
+  React.useEffect(() => {
+    setChunks(initialChunks);
+  }, [initialChunks]);
+
   const videoSectionRef = React.useRef<HTMLDivElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const playerRef = React.useRef<{
@@ -38,6 +48,29 @@ export function SongPageContent({
   const [miniVisible, setMiniVisible] = React.useState(false);
   const [miniDismissed, setMiniDismissed] = React.useState(false);
   const createdRef = React.useRef(false);
+
+  const onWordTimingChange = React.useCallback(
+    (chunkId: string, wordIndex: number, startMs: number, endMs: number) => {
+      if (!slug) return;
+      setChunks((prev) => {
+        const next = prev.map((c) => {
+          if (c.id !== chunkId) return c;
+          const timings = [...(c.wordTimings ?? [])];
+          while (timings.length <= wordIndex)
+            timings.push({ startMs: 0, endMs: 0 });
+          timings[wordIndex] = { startMs, endMs };
+          return { ...c, wordTimings: timings };
+        });
+        fetch("/api/admin/songs", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug, chunks: next }),
+        }).catch(() => {});
+        return next;
+      });
+    },
+    [slug],
+  );
 
   React.useEffect(() => {
     const el = videoSectionRef.current;
@@ -229,23 +262,38 @@ export function SongPageContent({
           <p className="text-muted-foreground">No lyrics yet.</p>
         ) : (
           <div className="space-y-5">
-            {chunks.map((chunk) => (
-              <SongChunkCard
-                key={chunk.id}
-                chunk={chunk}
-                lexicon={lexicon}
-                onPlayRange={
-                  videoId
-                    ? (startMs, endMs) => onPlayRange(chunk.id, startMs, endMs)
-                    : undefined
-                }
-                isPlaying={playingChunkId === chunk.id}
-                countdownRemainingMs={
-                  playingChunkId === chunk.id ? countdownRemainingMs : null
-                }
-                onStop={videoId ? onStop : undefined}
-              />
-            ))}
+            {chunks.map((chunk) => {
+              const isPlaying = playingChunkId === chunk.id;
+              const currentTimeMs =
+                isPlaying &&
+                chunk.range &&
+                countdownRemainingMs != null
+                  ? chunk.range.endMs - countdownRemainingMs
+                  : null;
+              return (
+                <SongChunkCard
+                  key={chunk.id}
+                  chunk={chunk}
+                  lexicon={lexicon}
+                  onPlayRange={
+                    videoId
+                      ? (startMs, endMs) =>
+                          onPlayRange(chunk.id, startMs, endMs)
+                      : undefined
+                  }
+                  isPlaying={isPlaying}
+                  countdownRemainingMs={
+                    isPlaying ? countdownRemainingMs : null
+                  }
+                  onStop={videoId ? onStop : undefined}
+                  devMode={isDev && !!slug}
+                  currentTimeMs={currentTimeMs}
+                  onWordTimingChange={
+                    isDev && slug ? onWordTimingChange : undefined
+                  }
+                />
+              );
+            })}
           </div>
         )}
       </section>

@@ -9,6 +9,12 @@ export type TimeRangeMs = {
   endMs: number;
 };
 
+/** 단어(구) 단위 재생 구간. 0.1초 단위. 재생 시 해당 단어 하이라이트용 */
+export type WordTiming = {
+  startMs: number;
+  endMs: number;
+};
+
 export type SongSource =
   | { provider: "youtube"; videoId: string }
   | { provider: "spotify"; trackId: string }
@@ -53,6 +59,8 @@ export type SongChunk = {
   id: string;
   index: number;
   range?: TimeRangeMs | null;
+  /** 단어 순서별 start/end (ms). 재생 시 단어 하이라이트용 */
+  wordTimings?: WordTiming[];
   lines: string[];
   aid?: {
     blocks: AidBlock[];
@@ -118,6 +126,20 @@ function normalizeTimeRange(v: unknown): TimeRangeMs | null {
   const endMs = typeof o.endMs === "number" ? o.endMs : null;
   if (startMs == null || endMs == null) return null;
   return { startMs, endMs };
+}
+
+export function normalizeWordTimings(v: unknown): WordTiming[] {
+  if (!Array.isArray(v)) return [];
+  return v
+    .map((x) => {
+      if (!x || typeof x !== "object") return null;
+      const o = x as Record<string, unknown>;
+      const startMs = typeof o.startMs === "number" ? o.startMs : null;
+      const endMs = typeof o.endMs === "number" ? o.endMs : null;
+      if (startMs == null || endMs == null) return null;
+      return { startMs, endMs };
+    })
+    .filter((x): x is WordTiming => x != null);
 }
 
 function normalizeAidBlock(b: unknown): AidBlock | null {
@@ -214,11 +236,13 @@ function normalizeChunks(v: unknown): SongChunk[] {
       const validCefr: CEFR[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
       const difficulty = cefr && validCefr.includes(cefr) ? cefr : undefined;
       const tags = Array.isArray(o.tags) ? o.tags.map((t) => String(t).trim()).filter(Boolean) : undefined;
+      const wordTimings = normalizeWordTimings(o.wordTimings);
 
       return {
         id: String(o.id ?? `chunk_${idx}`),
         index: typeof o.index === "number" ? o.index : idx,
         range: range ?? undefined,
+        wordTimings: wordTimings.length > 0 ? wordTimings : undefined,
         lines,
         aid,
         difficulty,
@@ -243,6 +267,7 @@ export function migrateChunkToNewShape(raw: unknown): SongChunk {
           id: String(o.id ?? "chunk_0"),
           index: typeof o.index === "number" ? o.index : 0,
           range: o.range && typeof o.range === "object" ? normalizeTimeRange(o.range) ?? undefined : undefined,
+          wordTimings: normalizeWordTimings(o.wordTimings).length > 0 ? normalizeWordTimings(o.wordTimings) : undefined,
           lines,
           aid: blocks.length > 0 ? { blocks } : undefined,
           difficulty: (["A1", "A2", "B1", "B2", "C1", "C2"] as const).includes(o.difficulty as CEFR) ? (o.difficulty as CEFR) : undefined,
@@ -269,6 +294,7 @@ export function migrateChunkToNewShape(raw: unknown): SongChunk {
           typeof o.startMs === "number" && typeof o.endMs === "number"
             ? { startMs: o.startMs, endMs: o.endMs }
             : undefined,
+        wordTimings: normalizeWordTimings(o.wordTimings).length > 0 ? normalizeWordTimings(o.wordTimings) : undefined,
         lines: lines.length > 0 ? lines : [text],
         aid: blocks.length > 0 ? { blocks } : undefined,
       };

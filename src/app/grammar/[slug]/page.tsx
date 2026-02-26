@@ -45,11 +45,13 @@ export async function generateMetadata({
       url,
       siteName: "Kaja",
       type: "article",
+      images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/brand/og.png"],
     },
     alternates: { canonical: url },
   };
@@ -79,9 +81,31 @@ export default async function GrammarChapterPage({
   const content = await getChapterContent(slug);
   const blocks = content?.blocks ?? [];
   const shareUrl = `${SITE_URL.replace(/\/+$/, "")}/grammar/${encodeURIComponent(slug)}`;
+  const baseUrl = SITE_URL.replace(/\/+$/, "");
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Grammar", item: `${baseUrl}/grammar` },
+      ...(sectionAnchor
+        ? [{ "@type": "ListItem" as const, position: 3, name: sectionTitle, item: `${baseUrl}/grammar${listHash}` }]
+        : []),
+      {
+        "@type": "ListItem" as const,
+        position: sectionAnchor ? 4 : 3,
+        name: chapter.title,
+        item: shareUrl,
+      },
+    ],
+  };
 
   return (
     <div className="py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+      />
       <GrammarRecordVisit chapterId={chapter.id} />
       <Container className="max-w-4xl">
         <Breadcrumb
@@ -93,7 +117,7 @@ export default async function GrammarChapterPage({
         />
 
         <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-          Chapter {chapter.number}
+          {chapter.title}
         </h1>
 
         <div className="mt-10 rounded-2xl border border-border bg-card p-6 sm:p-10">

@@ -47,7 +47,13 @@ export function LoginClient() {
 
           <CardHeader className="mb-2 relative items-center text-center">
             {/* <ShieldCheck className="size-7 text-foreground/70" /> */}
-            <Image src="/signin.webp" alt="Kaja Logo" width={96} height={88} className="mx-auto" />
+            <Image
+              src="/signin.webp"
+              alt="Kaja Logo"
+              width={96}
+              height={88}
+              className="mx-auto"
+            />
             <CardTitle className="text-2xl mt-4">Welcome to Kaja</CardTitle>
             <CardDescription className="w-full max-w-sm mx-auto text-center">
               Join as a member, talk with Minjae, book a time, recap notes, and
@@ -72,7 +78,9 @@ export function LoginClient() {
               </div>
 
               <label className="grid gap-1">
-                <span className="text-xs text-muted-foreground">Email</span>
+                <span className="text-sm text-muted-foreground">
+                  Continue with Email
+                </span>
                 <Input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

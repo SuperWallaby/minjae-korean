@@ -317,15 +317,34 @@ export function BlogEditClient({ slug, post }: Props) {
                       {uploadingKey === `p-${idx}` ? "…" : "Upload"}
                     </Button>
                     {paragraphImagesPadded[idx] ? (
-                      <div className="relative h-12 w-16 overflow-hidden rounded border border-border">
-                        <Image
-                          src={paragraphImagesPadded[idx]!}
-                          alt=""
-                          fill
-                          className="object-cover"
-                          unoptimized
-                        />
-                      </div>
+                      <>
+                        <div className="relative h-12 w-16 overflow-hidden rounded border border-border">
+                          <Image
+                            src={paragraphImagesPadded[idx]!}
+                            alt=""
+                            fill
+                            className="object-cover"
+                            unoptimized
+                          />
+                        </div>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          className="text-muted-foreground hover:text-foreground"
+                          disabled={!!uploadingKey}
+                          onClick={() => {
+                            setParagraphImages((prev) => {
+                              const next = [...prev];
+                              while (next.length <= idx) next.push(null);
+                              next[idx] = null;
+                              return next;
+                            });
+                          }}
+                        >
+                          Remove
+                        </Button>
+                      </>
                     ) : null}
                   </div>
                 </div>

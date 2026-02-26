@@ -84,7 +84,7 @@ export default async function SongsPage() {
                         major.images?.thumb?.trim() ||
                         ""
                       }
-                      alt=""
+                      alt={`${major.title} by ${major.artist}`}
                       fill
                       className="object-cover transition group-hover:scale-[1.02]"
                       unoptimized
@@ -122,7 +122,7 @@ export default async function SongsPage() {
                             s.images?.large?.trim() ||
                             ""
                           }
-                          alt=""
+                          alt={`${s.title} by ${s.artist}`}
                           fill
                           className="object-cover transition group-hover:scale-[1.02]"
                           unoptimized

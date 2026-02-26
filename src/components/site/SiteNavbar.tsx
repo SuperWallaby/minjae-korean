@@ -192,7 +192,7 @@ export function SiteNavbar() {
                             >
                               <Image
                                 src={link.icon}
-                                alt=""
+                                alt={link.label}
                                 width={24}
                                 height={24}
                                 className={cn("size-6 shrink-0 ", {
@@ -368,7 +368,7 @@ export function SiteNavbar() {
                             >
                               <Image
                                 src={link.icon}
-                                alt=""
+                                alt={link.label}
                                 width={24}
                                 height={24}
                                 className="size-6 shrink-0 opacity-80"

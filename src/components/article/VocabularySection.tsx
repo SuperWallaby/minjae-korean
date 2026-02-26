@@ -91,7 +91,7 @@ export function VocabularySection({
                   <div className="relative aspect-square w-full overflow-hidden rounded-lg border border-border bg-muted/20">
                     <Image
                       src={v.image}
-                      alt=""
+                      alt={v.word}
                       fill
                       className="object-cover object-center"
                       unoptimized

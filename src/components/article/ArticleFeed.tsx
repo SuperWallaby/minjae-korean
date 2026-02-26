@@ -55,7 +55,7 @@ export function ArticleFeed({
                   major.imageThumb?.trim() ||
                   ""
                 }
-                alt=""
+                alt={major.title}
                 fill
                 className="object-cover transition group-hover:scale-[1.02]"
                 unoptimized
@@ -104,7 +104,7 @@ export function ArticleFeed({
                     src={
                       p.imageThumb?.trim() || p.imageLarge?.trim() || ""
                     }
-                    alt=""
+                    alt={p.title}
                     fill
                     className="object-cover transition group-hover:scale-[1.02]"
                     unoptimized
@@ -113,7 +113,7 @@ export function ArticleFeed({
                 ) : (
                   <Image
                     src="/placeholders/post-1.svg"
-                    alt=""
+                    alt="Article"
                     fill
                     className="object-cover object-center"
                     unoptimized

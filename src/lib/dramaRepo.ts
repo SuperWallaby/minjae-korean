@@ -9,7 +9,7 @@ import type {
   SongChunk,
   TimeRangeMs,
 } from "@/lib/songsRepo";
-import { migrateChunkToNewShape } from "@/lib/songsRepo";
+import { migrateChunkToNewShape, normalizeWordTimings } from "@/lib/songsRepo";
 
 export type { CEFR, Lexeme, LexemeSense, AidBlock, SongChunk, TimeRangeMs };
 
@@ -166,11 +166,13 @@ function normalizeChunks(v: unknown): DramaChunk[] {
       const validCefr: CEFR[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
       const difficulty = cefr && validCefr.includes(cefr) ? cefr : undefined;
       const tags = Array.isArray(o.tags) ? o.tags.map((t) => String(t).trim()).filter(Boolean) : undefined;
+      const wordTimings = normalizeWordTimings(o.wordTimings);
 
       return {
         id: String(o.id ?? `chunk_${idx}`),
         index: typeof o.index === "number" ? o.index : idx,
         range: range ?? undefined,
+        wordTimings: wordTimings.length > 0 ? wordTimings : undefined,
         lines,
         aid,
         difficulty,

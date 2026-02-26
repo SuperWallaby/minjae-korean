@@ -12,6 +12,17 @@ type Props = {
   isPlaying?: boolean;
   countdownRemainingMs?: number | null;
   onStop?: () => void;
+  /** 개발 모드: 단어 클릭으로 start/end(0.1s) 입력 */
+  devMode?: boolean;
+  /** 재생 중인 청크의 현재 재생 시간(ms). wordTimings와 함께 단어 하이라이트 */
+  currentTimeMs?: number | null;
+  /** 개발 모드에서 단어 타이밍 저장 시 */
+  onWordTimingChange?: (
+    chunkId: string,
+    wordIndex: number,
+    startMs: number,
+    endMs: number,
+  ) => void;
 };
 
 function ToggleSection({
@@ -216,14 +227,38 @@ function formatCountdown(ms: number) {
   return `${m}:${(s % 60).toString().padStart(2, "0")}`;
 }
 
-export function SongChunkCard({ chunk, lexicon = [], onPlayRange, isPlaying, countdownRemainingMs, onStop }: Props) {
+export function SongChunkCard({
+  chunk,
+  lexicon = [],
+  onPlayRange,
+  isPlaying,
+  countdownRemainingMs,
+  onStop,
+  devMode = false,
+  currentTimeMs = null,
+  onWordTimingChange,
+}: Props) {
   const [openSections, setOpenSections] = React.useState<
     Record<string, boolean>
   >({});
+  const [editingWordIndex, setEditingWordIndex] = React.useState<number | null>(
+    null,
+  );
+  const [editStartSec, setEditStartSec] = React.useState("");
+  const [editEndSec, setEditEndSec] = React.useState("");
 
   const toggleSection = (key: string) => {
     setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
   };
+
+  const linesWords = React.useMemo(
+    () =>
+      chunk.lines.map((line) =>
+        line.split(/\s+/).filter(Boolean),
+      ),
+    [chunk.lines],
+  );
+  const wordTimings = chunk.wordTimings ?? [];
 
   const hasRange =
     chunk.range &&
@@ -268,10 +303,139 @@ export function SongChunkCard({ chunk, lexicon = [], onPlayRange, isPlaying, cou
     <div className="group rounded-lg border border-border bg-muted/10 overflow-hidden">
       {/* 가사 + 재생 버튼 (항상 표시) */}
       <div className="flex items-start gap-2 px-4 py-3">
-        <div className="flex-1 min-w-0 text-lg leading-relaxed whitespace-pre-line">
-          {chunk.lines.map((line, i) => (
-            <div key={i}>{line}</div>
-          ))}
+        <div className="flex-1 min-w-0 text-lg leading-relaxed">
+          {(devMode || wordTimings.length > 0)
+            ? linesWords.map((words, lineIdx) => (
+                <div key={lineIdx} className="whitespace-pre-line">
+                  {words.map((word, wi) => {
+                    const globalIndex = linesWords
+                      .slice(0, lineIdx)
+                      .reduce((a, l) => a + l.length, 0)
+                      + wi;
+                    const timing = wordTimings[globalIndex];
+                    const isHighlight =
+                      currentTimeMs != null &&
+                      timing &&
+                      currentTimeMs >= timing.startMs &&
+                      currentTimeMs < timing.endMs;
+                    const isEditing = devMode && editingWordIndex === globalIndex;
+                    return (
+                      <span key={`${lineIdx}-${wi}`}>
+                        {lineIdx > 0 && wi === 0 ? "\n" : null}
+                        {wi > 0 ? " " : null}
+                        {devMode ? (
+                          <span
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => {
+                              setEditingWordIndex(globalIndex);
+                              const t = wordTimings[globalIndex];
+                              setEditStartSec(
+                                t
+                                  ? (t.startMs / 1000).toFixed(1)
+                                  : chunk.range
+                                    ? (chunk.range.startMs / 1000).toFixed(1)
+                                    : "0",
+                              );
+                              setEditEndSec(
+                                t
+                                  ? (t.endMs / 1000).toFixed(1)
+                                  : chunk.range
+                                    ? (chunk.range.endMs / 1000).toFixed(1)
+                                    : "0",
+                              );
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                (e.target as HTMLElement).click();
+                              }
+                            }}
+                            className={`cursor-pointer rounded px-0.5 -mx-0.5 ${
+                              isHighlight
+                                ? "bg-primary/25 text-primary-foreground"
+                                : ""
+                            } ${isEditing ? "ring-2 ring-primary" : ""} hover:bg-muted/50`}
+                          >
+                            {word}
+                          </span>
+                        ) : (
+                          <span
+                            className={
+                              isHighlight
+                                ? "bg-primary/25 text-primary-foreground rounded px-0.5"
+                                : ""
+                            }
+                          >
+                            {word}
+                          </span>
+                        )}
+                      </span>
+                    );
+                  })}
+                </div>
+              ))
+            : chunk.lines.map((line, i) => (
+                <div key={i} className="whitespace-pre-line">
+                  {line}
+                </div>
+              ))}
+          {devMode && editingWordIndex !== null && (
+            <div className="mt-3 flex flex-wrap items-center gap-2 rounded border border-border bg-muted/30 p-2 text-sm">
+              <label className="flex items-center gap-1">
+                <span>start (s)</span>
+                <input
+                  type="number"
+                  step={0.1}
+                  min={0}
+                  value={editStartSec}
+                  onChange={(e) => setEditStartSec(e.target.value)}
+                  className="w-20 rounded border border-border bg-background px-2 py-1"
+                />
+              </label>
+              <label className="flex items-center gap-1">
+                <span>end (s)</span>
+                <input
+                  type="number"
+                  step={0.1}
+                  min={0}
+                  value={editEndSec}
+                  onChange={(e) => setEditEndSec(e.target.value)}
+                  className="w-20 rounded border border-border bg-background px-2 py-1"
+                />
+              </label>
+              <button
+                type="button"
+                onClick={() => {
+                  const startSec = parseFloat(editStartSec);
+                  const endSec = parseFloat(editEndSec);
+                  if (
+                    Number.isFinite(startSec) &&
+                    Number.isFinite(endSec) &&
+                    onWordTimingChange
+                  ) {
+                    onWordTimingChange(
+                      chunk.id,
+                      editingWordIndex,
+                      Math.round(startSec * 1000),
+                      Math.round(endSec * 1000),
+                    );
+                  }
+                  setEditingWordIndex(null);
+                }}
+                className="rounded border border-border bg-primary px-2 py-1 text-primary-foreground hover:bg-primary/90"
+              >
+                저장
+              </button>
+              <button
+                type="button"
+                onClick={() => setEditingWordIndex(null)}
+                className="rounded border border-border px-2 py-1 hover:bg-muted/50"
+              >
+                취소
+              </button>
+            </div>
+          )}
         </div>
         {hasRange && (onPlayRange || onStop) && (
           <div className="shrink-0 flex items-center gap-2">

@@ -60,7 +60,8 @@ export default async function SongPage({ params }: Props) {
   const videoId = s.source?.provider === "youtube" ? s.source.videoId : undefined;
 
   const videoIdStr = videoId ? String(videoId).trim() : "";
-  const canonical = `${SITE_URL.replace(/\/+$/, "")}/songs/${encodeURIComponent(slug)}`;
+  const baseUrl = SITE_URL.replace(/\/+$/, "");
+  const canonical = `${baseUrl}/songs/${encodeURIComponent(slug)}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "MusicRecording",
@@ -70,6 +71,15 @@ export default async function SongPage({ params }: Props) {
     description: `Learn Korean with "${s.title}" by ${s.artist}. Click on lyrics to see translations and explanations.`,
     ...(s.images?.large?.trim() && { image: s.images.large.trim() }),
   };
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Songs", item: `${baseUrl}/songs` },
+      { "@type": "ListItem", position: 3, name: s.title, item: canonical },
+    ],
+  };
 
   return (
     <div className="py-12 sm:py-16">
@@ -77,11 +87,16 @@ export default async function SongPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+      />
       <Container className="max-w-3xl">
         <SongPageContent
           videoId={videoIdStr}
           chunks={s.chunks}
           lexicon={s.lexicon}
+          slug={slug}
         >
           <div className="mb-8">
             <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">

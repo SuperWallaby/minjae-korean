@@ -84,7 +84,7 @@ export default async function DramaPage() {
                         major.images?.thumb?.trim() ||
                         ""
                       }
-                      alt=""
+                      alt={`${major.title} (${major.artist})`}
                       fill
                       className="object-cover transition group-hover:scale-[1.02]"
                       unoptimized
@@ -122,7 +122,7 @@ export default async function DramaPage() {
                             d.images?.large?.trim() ||
                             ""
                           }
-                          alt=""
+                          alt={`${d.title} (${d.artist})`}
                           fill
                           className="object-cover transition group-hover:scale-[1.02]"
                           unoptimized

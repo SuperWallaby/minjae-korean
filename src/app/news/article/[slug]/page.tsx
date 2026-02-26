@@ -66,6 +66,10 @@ export async function generateMetadata({
         images: [{ url: mainImage, width: 1200, height: 630, alt: title }],
       }),
       siteName: "Kaja",
+      ...((a.createdAt || a.updatedAt) && {
+        publishedTime: a.createdAt ?? undefined,
+        modifiedTime: a.updatedAt ?? a.createdAt ?? undefined,
+      }),
     },
     twitter: {
       card: "summary_large_image",
@@ -93,6 +97,7 @@ export default async function ArticlePage({
 
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/news/article/${encodeURIComponent(a.slug)}`;
+  const baseUrl = SITE_URL.replace(/\/+$/, "");
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -106,8 +111,17 @@ export default async function ArticlePage({
     publisher: {
       "@type": "Organization",
       name: "Kaja",
-      url: SITE_URL.replace(/\/+$/, ""),
+      url: baseUrl,
     },
+  };
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "News", item: `${baseUrl}/news` },
+      { "@type": "ListItem", position: 3, name: a.title, item: canonical },
+    ],
   };
 
   return (
@@ -115,6 +129,10 @@ export default async function ArticlePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
       />
       <TailwindClassCheck />
       <Container className="max-w-4xl">
@@ -124,7 +142,7 @@ export default async function ArticlePage({
             <div className="relative aspect-16/10 w-full sm:aspect-vd">
               <Image
                 src={mainImage}
-                alt=""
+                alt={a.title}
                 fill
                 className="object-cover object-center"
                 unoptimized
@@ -224,7 +242,7 @@ export default async function ArticlePage({
                       <div className="relative aspect-video w-full">
                         <Image
                           src={p.image}
-                          alt=""
+                          alt={a.title}
                           fill
                           className="object-cover object-center"
                           unoptimized

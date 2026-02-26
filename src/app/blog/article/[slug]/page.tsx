@@ -58,6 +58,10 @@ export async function generateMetadata({
         images: [{ url: mainImage, width: 1200, height: 630, alt: title }],
       }),
       siteName: "Kaja",
+      ...((a.createdAt || a.updatedAt) && {
+        publishedTime: a.createdAt ?? undefined,
+        modifiedTime: a.updatedAt ?? a.createdAt ?? undefined,
+      }),
     },
     twitter: {
       card: "summary_large_image",
@@ -85,6 +89,7 @@ export default async function BlogArticlePage({
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(a.slug)}`;
 
+  const baseUrl = SITE_URL.replace(/\/+$/, "");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -97,13 +102,27 @@ export default async function BlogArticlePage({
     author: {
       "@type": "Person",
       name: "Minjae",
-      url: SITE_URL.replace(/\/+$/, ""),
+      url: baseUrl,
     },
     publisher: {
       "@type": "Organization",
       name: "Kaja",
-      url: SITE_URL.replace(/\/+$/, ""),
+      url: baseUrl,
     },
+  };
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/blog`,
+      },
+      { "@type": "ListItem", position: 3, name: a.title, item: canonical },
+    ],
   };
 
   return (
@@ -112,10 +131,16 @@ export default async function BlogArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbListJsonLd),
+        }}
+      />
       <Container className="max-w-4xl">
         {mainImage ? (
           <div className="md:-mx-4 mb-12 overflow-hidden rounded-2xl border border-border bg-muted/10 sm:-mx-6">
-            <div className="relative aspect-16/10 w-full sm:aspect-vd">
+            <div className="relative aspect-video w-full sm:aspect-vd">
               <Image
                 src={mainImage}
                 alt={a.title}
@@ -186,20 +211,6 @@ export default async function BlogArticlePage({
                       {p.subtitle}
                     </h2>
                   ) : null}
-                  {p.image ? (
-                    <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-border bg-muted/10">
-                      <div className="relative aspect-video w-full">
-                        <Image
-                          src={p.image}
-                          alt=""
-                          fill
-                          className="object-cover object-center"
-                          unoptimized
-                        />
-                      </div>
-                    </div>
-                  ) : null}
-
                   {p.audio ? (
                     <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/20 px-3 py-2">
                       <audio
@@ -212,6 +223,19 @@ export default async function BlogArticlePage({
                   <div className="whitespace-pre-wrap text-foreground/90">
                     {p.content}
                   </div>
+                  {p.image ? (
+                    <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-border bg-muted/10">
+                      <div className="relative aspect-video w-full">
+                        <Image
+                          src={p.image}
+                          alt={a.title}
+                          fill
+                          className="object-cover object-center"
+                          unoptimized
+                        />
+                      </div>
+                    </div>
+                  ) : null}
                   {p.youtube ? (
                     <div className="mt-4 mb-10">
                       <YouTubeEmbed urlOrId={p.youtube} />

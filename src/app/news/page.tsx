@@ -89,7 +89,7 @@ export default async function NewsPage() {
                         major.imageThumb?.trim() ||
                         ""
                       }
-                      alt=""
+                      alt={major.title}
                       fill
                       className="object-cover transition group-hover:scale-[1.02]"
                       unoptimized
@@ -133,7 +133,7 @@ export default async function NewsPage() {
                           src={
                             a.imageThumb?.trim() || a.imageLarge?.trim() || ""
                           }
-                          alt=""
+                          alt={a.title}
                           fill
                           className="object-cover transition group-hover:scale-[1.02]"
                           unoptimized

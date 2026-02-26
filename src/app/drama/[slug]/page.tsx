@@ -60,7 +60,8 @@ export default async function DramaSlugPage({ params }: Props) {
   const videoId =
     d.source?.provider === "youtube" ? d.source.videoId : undefined;
   const videoIdStr = videoId ? String(videoId).trim() : "";
-  const canonical = `${SITE_URL.replace(/\/+$/, "")}/drama/${encodeURIComponent(slug)}`;
+  const baseUrl = SITE_URL.replace(/\/+$/, "");
+  const canonical = `${baseUrl}/drama/${encodeURIComponent(slug)}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -69,6 +70,15 @@ export default async function DramaSlugPage({ params }: Props) {
     url: canonical,
     ...(d.images?.large?.trim() && { thumbnailUrl: d.images.large.trim() }),
   };
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Drama", item: `${baseUrl}/drama` },
+      { "@type": "ListItem", position: 3, name: d.title, item: canonical },
+    ],
+  };
 
   return (
     <div className="py-12 sm:py-16">
@@ -76,11 +86,16 @@ export default async function DramaSlugPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+      />
       <Container className="max-w-3xl">
         <DramaPageContent
           videoId={videoIdStr}
           chunks={d.chunks}
           lexicon={d.lexicon}
+          slug={slug}
         >
           <div className="mb-8">
             <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
