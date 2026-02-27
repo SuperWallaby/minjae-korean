@@ -115,6 +115,7 @@ export default function BookingPage() {
         capacity: number;
         bookedCount: number;
         available: number;
+        fakeBooked?: boolean;
       }>
     >
   >({});
@@ -127,6 +128,7 @@ export default function BookingPage() {
     capacity: number;
     bookedCount: number;
     available: number;
+    fakeBooked?: boolean;
   };
   const [slotsLoading, setSlotsLoading] = React.useState(false);
   const [slotsError, setSlotsError] = React.useState<string | null>(null);
@@ -382,7 +384,8 @@ export default function BookingPage() {
         out.set(s.id, { ok: false, reason: "Ended" });
         continue;
       }
-      if (!(s.available > 0)) {
+      const canBookSlot = s.available > 0 || s.fakeBooked;
+      if (!canBookSlot) {
         out.set(s.id, { ok: false, reason: "Booked" });
         continue;
       }
@@ -391,7 +394,8 @@ export default function BookingPage() {
         continue;
       }
       const next = slotByDateStartMin[s.dateKey]?.get(s.startMin + 30) ?? null;
-      if (!next || !(next.available > 0)) {
+      const nextCanBook = next && (next.available > 0 || next.fakeBooked);
+      if (!nextCanBook) {
         out.set(s.id, { ok: false, reason: "" });
         continue;
       }
@@ -715,8 +719,10 @@ export default function BookingPage() {
                       slotByDateStartMin[selectedSlot.dateKey]?.get(
                         selectedSlot.startMin + 30,
                       ) ?? null;
-                    if (!nextSlot || !(nextSlot.available > 0))
-                      setSelectedSlotId(null);
+                    const nextCanBook =
+                      nextSlot &&
+                      (nextSlot.available > 0 || nextSlot.fakeBooked);
+                    if (!nextCanBook) setSelectedSlotId(null);
                   }
                 }}
               />
@@ -861,19 +867,20 @@ export default function BookingPage() {
                             ok: false,
                             reason: "—",
                           };
-                          const available = b.ok;
+                          const showAsAvailable = s.available > 0;
+                          const selectable = b.ok || s.fakeBooked;
                           return (
                             <button
                               key={s.id}
                               type="button"
-                              disabled={!available}
+                              disabled={!selectable}
                               onClick={() => {
                                 setSuccess(null);
                                 setSelectedSlotId(s.id);
                               }}
                               className={cn(
                                 "w-full rounded-xl text-center border px-4 py-3  transition outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                                available
+                                showAsAvailable
                                   ? "bg-white border-border cursor-pointer hover:bg-stone-50 text-foreground"
                                   : "bg-muted/30 border-border text-muted-foreground cursor-not-allowed",
                                 selectedPrimary
@@ -888,9 +895,9 @@ export default function BookingPage() {
                                 <div className="font-medium text-sm">
                                   {minutesToHhmm(localStartMin)}
                                 </div>
-                                {!available && (
+                                {!showAsAvailable && (
                                   <div className="text-xs whitespace-nowrap text-muted-foreground">
-                                    {available ? "" : b.reason}
+                                    {b.reason || "Booked"}
                                   </div>
                                 )}
                               </div>
@@ -961,7 +968,12 @@ export default function BookingPage() {
                                       reason: "—",
                                     })
                                   : { ok: false, reason: "—" };
-                                const available = Boolean(s && b.ok);
+                                const showAsAvailable = Boolean(
+                                  s && s.available > 0,
+                                );
+                                const selectable = Boolean(
+                                  s && (b.ok || s.fakeBooked),
+                                );
                                 const selectedPrimary = Boolean(
                                   s && selectedSlotId === s.id,
                                 );
@@ -976,9 +988,9 @@ export default function BookingPage() {
                                     key={`${dk}-${startMin}`}
                                     type="button"
                                     className={cn(
-                                      "h-11 cursor-pointer rounded-md border text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                                      available
-                                        ? "bg-white border-border hover:bg-stone-50 text-foreground"
+                                      "h-11 rounded-md border text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                                      showAsAvailable
+                                        ? "bg-white border-border hover:bg-stone-50 text-foreground cursor-pointer"
                                         : "bg-muted/30 border-border text-muted-foreground cursor-not-allowed",
                                       selectedPrimary
                                         ? "ring-2 ring-primary border-primary"
@@ -987,7 +999,7 @@ export default function BookingPage() {
                                         ? "ring-2 ring-primary/35 border-primary/40 bg-primary/5"
                                         : "",
                                     )}
-                                    disabled={!available}
+                                    disabled={!selectable}
                                     onClick={() => {
                                       setSuccess(null);
                                       if (!s) return;
@@ -995,7 +1007,11 @@ export default function BookingPage() {
                                       setSelectedSlotId(s.id);
                                     }}
                                   >
-                                    {s ? (available ? "Pick" : b.reason) : "—"}
+                                    {s
+                                      ? showAsAvailable
+                                        ? "Pick"
+                                        : b.reason || "Booked"
+                                      : "—"}
                                   </button>
                                 );
                               })}

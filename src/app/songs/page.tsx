@@ -49,8 +49,14 @@ export default async function SongsPage() {
       <Container className="max-w-5xl">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Kaja! Korean Songs
+            <h1 className="font-serif flex items-center gap-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+              <Image
+                alt="Kaja Korean Song"
+                width={56}
+                height={56}
+                src="/meme/offical/song.webp"
+              ></Image>
+              Kaja! Korean Songs{" "}
             </h1>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
               Learn Korean through music. Click on lyrics to see translations

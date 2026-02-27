@@ -162,6 +162,9 @@ function normalizeChunks(v: unknown): DramaChunk[] {
           : typeof o.startMs === "number" && typeof o.endMs === "number"
             ? { startMs: o.startMs, endMs: o.endMs }
             : undefined;
+      const lineRanges = Array.isArray(o.lineRanges)
+        ? lines.map((_, i) => normalizeTimeRange((o.lineRanges as unknown[])[i]) ?? null)
+        : undefined;
       const cefr = o.difficulty as CEFR | undefined;
       const validCefr: CEFR[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
       const difficulty = cefr && validCefr.includes(cefr) ? cefr : undefined;
@@ -172,6 +175,7 @@ function normalizeChunks(v: unknown): DramaChunk[] {
         id: String(o.id ?? `chunk_${idx}`),
         index: typeof o.index === "number" ? o.index : idx,
         range: range ?? undefined,
+        lineRanges: lineRanges?.some((r) => r != null) ? lineRanges : undefined,
         wordTimings: wordTimings.length > 0 ? wordTimings : undefined,
         lines,
         aid,

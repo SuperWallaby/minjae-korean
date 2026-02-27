@@ -37,6 +37,7 @@ export function DramaPageContent({
   const stopTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const [apiReady, setApiReady] = React.useState(false);
   const [playingChunkId, setPlayingChunkId] = React.useState<string | null>(null);
+  const [playingLineIndex, setPlayingLineIndex] = React.useState<number | null>(null);
   const [countdownEndAt, setCountdownEndAt] = React.useState<number | null>(null);
   const [countdownRemainingMs, setCountdownRemainingMs] = React.useState<number>(0);
   const [miniVisible, setMiniVisible] = React.useState(false);
@@ -160,6 +161,7 @@ export function DramaPageContent({
       // ignore
     }
     setPlayingChunkId(null);
+    setPlayingLineIndex(null);
     setCountdownEndAt(null);
   }, []);
 
@@ -176,6 +178,7 @@ export function DramaPageContent({
       p.seekTo(startSec);
       p.playVideo();
       setPlayingChunkId(chunkId);
+      setPlayingLineIndex(null);
       setCountdownEndAt(durationMs > 0 ? Date.now() + durationMs : null);
       if (durationMs > 0) {
         stopTimerRef.current = setTimeout(() => {
@@ -186,11 +189,66 @@ export function DramaPageContent({
             // ignore
           }
           setPlayingChunkId(null);
+          setPlayingLineIndex(null);
           setCountdownEndAt(null);
         }, durationMs);
       }
     },
     []
+  );
+
+  const playLineRange = React.useCallback(
+    (chunkId: string, lineIndex: number, startMs: number, endMs: number) => {
+      const p = playerRef.current;
+      if (!p) return;
+      if (stopTimerRef.current) {
+        clearTimeout(stopTimerRef.current);
+        stopTimerRef.current = null;
+      }
+      const startSec = startMs / 1000;
+      const durationMs = endMs - startMs;
+      p.seekTo(startSec);
+      p.playVideo();
+      setPlayingChunkId(chunkId);
+      setPlayingLineIndex(lineIndex);
+      setCountdownEndAt(durationMs > 0 ? Date.now() + durationMs : null);
+      if (durationMs > 0) {
+        stopTimerRef.current = setTimeout(() => {
+          stopTimerRef.current = null;
+          try {
+            p.pauseVideo();
+          } catch {
+            // ignore
+          }
+          setPlayingChunkId(null);
+          setPlayingLineIndex(null);
+          setCountdownEndAt(null);
+        }, durationMs);
+      }
+    },
+    []
+  );
+
+  const onLineRangeChange = React.useCallback(
+    (chunkId: string, lineIndex: number, startMs: number, endMs: number) => {
+      if (!slug) return;
+      setChunks((prev) => {
+        const next = prev.map((c) => {
+          if (c.id !== chunkId) return c;
+          const lineRanges = [...(c.lineRanges ?? c.lines.map(() => null))];
+          while (lineRanges.length <= lineIndex) lineRanges.push(null);
+          lineRanges[lineIndex] = { startMs, endMs };
+          return { ...c, lineRanges };
+        });
+        fetch("/api/admin/dramas", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug, chunks: next }),
+        }).catch(() => {});
+        return next;
+      });
+    },
+    [slug],
   );
 
   const onWordTimingChange = React.useCallback(
@@ -275,11 +333,15 @@ export function DramaPageContent({
           <div className="space-y-5">
             {chunks.map((chunk) => {
               const isPlaying = playingChunkId === chunk.id;
+              const lineRange =
+                isPlaying &&
+                playingLineIndex != null &&
+                chunk.lineRanges?.[playingLineIndex];
               const currentTimeMs =
                 isPlaying &&
-                chunk.range &&
+                lineRange &&
                 countdownRemainingMs != null
-                  ? chunk.range.endMs - countdownRemainingMs
+                  ? lineRange.endMs - countdownRemainingMs
                   : null;
               return (
                 <SongChunkCard
@@ -299,8 +361,15 @@ export function DramaPageContent({
                   onStop={videoId ? onStop : undefined}
                   devMode={isDev && !!slug}
                   currentTimeMs={currentTimeMs}
-                  onWordTimingChange={
-                    isDev && slug ? onWordTimingChange : undefined
+                  playingLineIndex={isPlaying ? playingLineIndex : null}
+                  onPlayLineRange={
+                    videoId
+                      ? (lineIndex, startMs, endMs) =>
+                          playLineRange(chunk.id, lineIndex, startMs, endMs)
+                      : undefined
+                  }
+                  onLineRangeChange={
+                    isDev && slug ? onLineRangeChange : undefined
                   }
                 />
               );

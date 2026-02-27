@@ -524,6 +524,13 @@ export default async function Home() {
       <RevealOnScroll as="section" className="py-10 sm:py-14">
         <Container>
           <StaggerReveal className="mx-auto max-w-3xl text-center">
+            <Image
+              width={140}
+              height={140}
+              src="/meme/offical/kaja.webp"
+              alt="Kaja Korean study with Minjae"
+              className="mx-auto  -mt-8"
+            ></Image>
             <h2 className="font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-5xl">
               Start practicing with Minjae.
             </h2>
