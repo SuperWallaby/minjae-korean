@@ -53,7 +53,7 @@ export default async function Home() {
     news = [];
   }
   return (
-    <div className="space-y-24">
+    <div className="space-y-12 md:space-y-24">
       {/* 1) Hero (1 column) */}
       <section className="pt-16 sm:pt-24">
         <Container className="relative">
@@ -65,7 +65,7 @@ export default async function Home() {
               Talk in Korean with Minjae.
             </h1>
             <div className="mt-4 text-muted-foreground">
-              A place to speak Korean in real life.
+              Personal Korean teacher for you.
             </div>
 
             {/* keywords hidden for now */}
@@ -76,6 +76,7 @@ export default async function Home() {
                   src="/placeholders/minjae-hero.webp"
                   alt="Minjae placeholder photo"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
                   priority
                   className="object-cover object-top"
                   unoptimized
@@ -93,8 +94,8 @@ export default async function Home() {
         className="scroll-mt-24 py-10 sm:py-16"
       >
         <Container>
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div className="order-2 max-w-xl lg:order-1">
+          <div className="grid gap-10 gap-8 lg:grid-cols-2 lg:items-center">
+            <div className=" max-w-xl order-1 lg:order-1">
               <StaggerReveal>
                 <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
                   Real conversation, not studying
@@ -366,6 +367,12 @@ export default async function Home() {
                   <div className="mt-2 text-sm text-muted-foreground">
                     A clean recap, will be sent to you right after the talk.
                   </div>
+                  <Link
+                    href="/recap/recap_mm0ln71w_tnf492"
+                    className="mt-2 inline-block text-xs text-muted-foreground underline hover:text-foreground"
+                  >
+                    Check recap example
+                  </Link>
                 </div>
                 <div className="rounded-3xl bg-included-2 p-6">
                   <div className="flex items-center gap-3">
@@ -566,7 +573,7 @@ export default async function Home() {
                   className="inline-flex items-center gap-2"
                 >
                   <Link href="/news">
-                    More <ArrowRight className="size-4" />
+                    More Articles <ArrowRight className="size-4" />
                   </Link>
                 </Button>
               </StaggerReveal>

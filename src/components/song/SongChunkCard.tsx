@@ -12,14 +12,18 @@ type Props = {
   isPlaying?: boolean;
   countdownRemainingMs?: number | null;
   onStop?: () => void;
-  /** 개발 모드: 단어 클릭으로 start/end(0.1s) 입력 */
+  /** 개발 모드: 줄 클릭으로 구간(시작/끝 초) 입력 */
   devMode?: boolean;
-  /** 재생 중인 청크의 현재 재생 시간(ms). wordTimings와 함께 단어 하이라이트 */
+  /** 재생 중인 청크의 현재 재생 시간(ms) */
   currentTimeMs?: number | null;
-  /** 개발 모드에서 단어 타이밍 저장 시 */
-  onWordTimingChange?: (
+  /** 이 청크에서 재생 중인 줄 인덱스 (줄 단위 하이라이트용) */
+  playingLineIndex?: number | null;
+  /** 줄 구간 재생 (lineIndex, startMs, endMs) */
+  onPlayLineRange?: (lineIndex: number, startMs: number, endMs: number) => void;
+  /** 개발 모드에서 줄 구간(시작/끝) 저장 시 */
+  onLineRangeChange?: (
     chunkId: string,
-    wordIndex: number,
+    lineIndex: number,
     startMs: number,
     endMs: number,
   ) => void;
@@ -236,29 +240,43 @@ export function SongChunkCard({
   onStop,
   devMode = false,
   currentTimeMs = null,
-  onWordTimingChange,
+  playingLineIndex = null,
+  onPlayLineRange,
+  onLineRangeChange,
 }: Props) {
   const [openSections, setOpenSections] = React.useState<
     Record<string, boolean>
   >({});
-  const [editingWordIndex, setEditingWordIndex] = React.useState<number | null>(
+  const [editingLineIndex, setEditingLineIndex] = React.useState<number | null>(
     null,
   );
   const [editStartSec, setEditStartSec] = React.useState("");
   const [editEndSec, setEditEndSec] = React.useState("");
 
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const m = window.matchMedia("(max-width: 767px)");
+    setIsMobile(m.matches);
+    const on = () => setIsMobile(m.matches);
+    m.addEventListener("change", on);
+    return () => m.removeEventListener("change", on);
+  }, []);
+
+  React.useEffect(() => {
+    if (editingLineIndex === null) return;
+    const r = chunk.lineRanges?.[editingLineIndex] ?? chunk.range;
+    if (r) {
+      setEditStartSec((r.startMs / 1000).toFixed(1));
+      setEditEndSec((r.endMs / 1000).toFixed(1));
+    } else {
+      setEditStartSec("");
+      setEditEndSec("");
+    }
+  }, [chunk.range, chunk.lineRanges, editingLineIndex]);
+
   const toggleSection = (key: string) => {
     setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
   };
-
-  const linesWords = React.useMemo(
-    () =>
-      chunk.lines.map((line) =>
-        line.split(/\s+/).filter(Boolean),
-      ),
-    [chunk.lines],
-  );
-  const wordTimings = chunk.wordTimings ?? [];
 
   const hasRange =
     chunk.range &&
@@ -304,142 +322,189 @@ export function SongChunkCard({
       {/* 가사 + 재생 버튼 (항상 표시) */}
       <div className="flex items-start gap-2 px-4 py-3">
         <div className="flex-1 min-w-0 text-lg leading-relaxed">
-          {(devMode || wordTimings.length > 0)
-            ? linesWords.map((words, lineIdx) => (
-                <div key={lineIdx} className="whitespace-pre-line">
-                  {words.map((word, wi) => {
-                    const globalIndex = linesWords
-                      .slice(0, lineIdx)
-                      .reduce((a, l) => a + l.length, 0)
-                      + wi;
-                    const timing = wordTimings[globalIndex];
-                    const isHighlight =
-                      currentTimeMs != null &&
-                      timing &&
-                      currentTimeMs >= timing.startMs &&
-                      currentTimeMs < timing.endMs;
-                    const isEditing = devMode && editingWordIndex === globalIndex;
-                    return (
-                      <span key={`${lineIdx}-${wi}`}>
-                        {lineIdx > 0 && wi === 0 ? "\n" : null}
-                        {wi > 0 ? " " : null}
-                        {devMode ? (
-                          <span
-                            role="button"
-                            tabIndex={0}
-                            onClick={() => {
-                              setEditingWordIndex(globalIndex);
-                              const t = wordTimings[globalIndex];
-                              setEditStartSec(
-                                t
-                                  ? (t.startMs / 1000).toFixed(1)
-                                  : chunk.range
-                                    ? (chunk.range.startMs / 1000).toFixed(1)
-                                    : "0",
-                              );
-                              setEditEndSec(
-                                t
-                                  ? (t.endMs / 1000).toFixed(1)
-                                  : chunk.range
-                                    ? (chunk.range.endMs / 1000).toFixed(1)
-                                    : "0",
-                              );
-                            }}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter" || e.key === " ") {
-                                e.preventDefault();
-                                (e.target as HTMLElement).click();
-                              }
-                            }}
-                            className={`cursor-pointer rounded px-0.5 -mx-0.5 ${
-                              isHighlight
-                                ? "bg-primary/25 text-primary-foreground"
-                                : ""
-                            } ${isEditing ? "ring-2 ring-primary" : ""} hover:bg-muted/50`}
-                          >
-                            {word}
-                          </span>
-                        ) : (
-                          <span
-                            className={
-                              isHighlight
-                                ? "bg-primary/25 text-primary-foreground rounded px-0.5"
-                                : ""
+          {chunk.lines.map((line, i) => {
+            const lineRange = chunk.lineRanges?.[i];
+            const hasLineRange =
+              lineRange &&
+              Number.isFinite(lineRange.startMs) &&
+              Number.isFinite(lineRange.endMs);
+            const isPlayingLine = isPlaying && playingLineIndex === i;
+            const canPlayLine = hasLineRange && (onPlayLineRange || onStop);
+            const lineClickPlay = canPlayLine && !devMode;
+            const lineClickEdit = devMode && !isMobile;
+            const lineClick = lineClickPlay
+              ? () =>
+                  isPlayingLine &&
+                  countdownRemainingMs != null &&
+                  countdownRemainingMs > 0
+                    ? onStop?.()
+                    : onPlayLineRange?.(i, lineRange!.startMs, lineRange!.endMs)
+              : lineClickEdit
+                ? () => setEditingLineIndex((prev) => (prev === i ? null : i))
+                : devMode && isMobile && canPlayLine
+                  ? () =>
+                      isPlayingLine &&
+                      countdownRemainingMs != null &&
+                      countdownRemainingMs > 0
+                        ? onStop?.()
+                        : onPlayLineRange?.(
+                            i,
+                            lineRange!.startMs,
+                            lineRange!.endMs,
+                          )
+                  : undefined;
+            return (
+              <div
+                key={i}
+                className={`flex items-center gap-2 rounded-md -mx-1 px-1 ${
+                  isPlayingLine
+                    ? "bg-included-2 text-included-2-foreground"
+                    : ""
+                } ${
+                  lineClick
+                    ? "cursor-pointer touch-manipulation active:opacity-90"
+                    : ""
+                } ${devMode && !isMobile ? (isPlayingLine ? "" : " hover:bg-muted/40") : ""}`}
+                role={lineClick ? "button" : undefined}
+                onClick={lineClick}
+                onKeyDown={
+                  lineClick
+                    ? (e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          lineClick();
+                        }
+                      }
+                    : undefined
+                }
+                tabIndex={lineClick ? 0 : undefined}
+              >
+                <span className="whitespace-pre-line py-0.5">{line}</span>
+                {hasLineRange &&
+                  (onPlayLineRange || onStop) &&
+                  devMode &&
+                  !isMobile && (
+                    <span
+                      className="shrink-0"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {isPlayingLine &&
+                      countdownRemainingMs != null &&
+                      countdownRemainingMs > 0 ? (
+                        <button
+                          type="button"
+                          onClick={() => onStop?.()}
+                          className="flex items-center justify-center p-1.5 rounded border border-border text-foreground bg-muted/50 hover:bg-muted"
+                          title="재생 정지"
+                          aria-label="재생 정지"
+                        >
+                          <Square className="h-3.5 w-3.5" />
+                        </button>
+                      ) : (
+                        onPlayLineRange && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              onPlayLineRange(
+                                i,
+                                lineRange!.startMs,
+                                lineRange!.endMs,
+                              )
                             }
+                            className="flex items-center justify-center p-1.5 rounded border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                            title="재생"
+                            aria-label="재생"
                           >
-                            {word}
-                          </span>
-                        )}
-                      </span>
-                    );
-                  })}
-                </div>
-              ))
-            : chunk.lines.map((line, i) => (
-                <div key={i} className="whitespace-pre-line">
-                  {line}
-                </div>
-              ))}
-          {devMode && editingWordIndex !== null && (
-            <div className="mt-3 flex flex-wrap items-center gap-2 rounded border border-border bg-muted/30 p-2 text-sm">
-              <label className="flex items-center gap-1">
-                <span>start (s)</span>
-                <input
-                  type="number"
-                  step={0.1}
-                  min={0}
-                  value={editStartSec}
-                  onChange={(e) => setEditStartSec(e.target.value)}
-                  className="w-20 rounded border border-border bg-background px-2 py-1"
-                />
-              </label>
-              <label className="flex items-center gap-1">
-                <span>end (s)</span>
-                <input
-                  type="number"
-                  step={0.1}
-                  min={0}
-                  value={editEndSec}
-                  onChange={(e) => setEditEndSec(e.target.value)}
-                  className="w-20 rounded border border-border bg-background px-2 py-1"
-                />
-              </label>
-              <button
-                type="button"
-                onClick={() => {
-                  const startSec = parseFloat(editStartSec);
-                  const endSec = parseFloat(editEndSec);
-                  if (
-                    Number.isFinite(startSec) &&
-                    Number.isFinite(endSec) &&
-                    onWordTimingChange
-                  ) {
-                    onWordTimingChange(
-                      chunk.id,
-                      editingWordIndex,
-                      Math.round(startSec * 1000),
-                      Math.round(endSec * 1000),
-                    );
-                  }
-                  setEditingWordIndex(null);
-                }}
-                className="rounded border border-border bg-primary px-2 py-1 text-primary-foreground hover:bg-primary/90"
-              >
-                저장
-              </button>
-              <button
-                type="button"
-                onClick={() => setEditingWordIndex(null)}
-                className="rounded border border-border px-2 py-1 hover:bg-muted/50"
-              >
-                취소
-              </button>
-            </div>
-          )}
+                            <Play className="h-3.5 w-3.5" />
+                          </button>
+                        )
+                      )}
+                    </span>
+                  )}
+                {isMobile && devMode && onLineRangeChange && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setEditingLineIndex((prev) => (prev === i ? null : i));
+                    }}
+                    className="shrink-0 p-1 rounded text-muted-foreground hover:bg-muted/50 hover:text-foreground text-xs"
+                    title="시간 설정"
+                    aria-label="시간 설정"
+                  >
+                    시간
+                  </button>
+                )}
+              </div>
+            );
+          })}
         </div>
+        {devMode && editingLineIndex !== null && onLineRangeChange && (
+          <div className="mt-3 flex flex-wrap items-center gap-2 rounded border border-border bg-muted/30 p-2 text-sm shrink-0">
+            <span className="text-muted-foreground">
+              줄 {editingLineIndex + 1}
+            </span>
+            <label className="flex items-center gap-1">
+              <span>시작 (초)</span>
+              <input
+                type="number"
+                step={0.1}
+                min={0}
+                value={editStartSec}
+                onChange={(e) => setEditStartSec(e.target.value)}
+                onClick={(e) => e.stopPropagation()}
+                className="w-20 rounded border border-border bg-background px-2 py-1"
+              />
+            </label>
+            <label className="flex items-center gap-1">
+              <span>끝 (초)</span>
+              <input
+                type="number"
+                step={0.1}
+                min={0}
+                value={editEndSec}
+                onChange={(e) => setEditEndSec(e.target.value)}
+                onClick={(e) => e.stopPropagation()}
+                className="w-20 rounded border border-border bg-background px-2 py-1"
+              />
+            </label>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                const startSec = parseFloat(editStartSec);
+                const endSec = parseFloat(editEndSec);
+                if (Number.isFinite(startSec) && Number.isFinite(endSec)) {
+                  onLineRangeChange(
+                    chunk.id,
+                    editingLineIndex,
+                    Math.round(startSec * 1000),
+                    Math.round(endSec * 1000),
+                  );
+                  setEditingLineIndex(null);
+                }
+              }}
+              className="rounded border border-border bg-primary px-2 py-1 text-primary-foreground hover:bg-primary/90"
+            >
+              저장
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setEditingLineIndex(null);
+              }}
+              className="rounded border border-border px-2 py-1 hover:bg-muted/50"
+            >
+              취소
+            </button>
+          </div>
+        )}
         {hasRange && (onPlayRange || onStop) && (
           <div className="shrink-0 flex items-center gap-2">
-            {isPlaying && countdownRemainingMs != null && countdownRemainingMs > 0 ? (
+            {isPlaying &&
+            countdownRemainingMs != null &&
+            countdownRemainingMs > 0 ? (
               <>
                 <span className="text-xs text-muted-foreground tabular-nums">
                   {formatCountdown(countdownRemainingMs)} 후 정지

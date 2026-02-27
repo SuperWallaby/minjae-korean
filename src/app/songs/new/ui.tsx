@@ -262,6 +262,23 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
     }
   }, [text]);
 
+  const chunkWarnings = React.useMemo(() => {
+    if (!payload?.chunks || !Array.isArray(payload.chunks)) return null;
+    const raw = payload.chunks as Array<Record<string, unknown>>;
+    const onlyLinesMasked: number[] = [];
+    const wouldDrop: number[] = [];
+    raw.forEach((c, i) => {
+      if (!c || typeof c !== "object") return;
+      const hasLines = Array.isArray(c.lines) && c.lines.length > 0;
+      const hasLinesMasked = Array.isArray(c.linesMasked) && c.linesMasked.length > 0;
+      const hasText = typeof c.text === "string" && String(c.text).trim().length > 0;
+      if (!hasLines && !hasLinesMasked && !hasText) wouldDrop.push(i + 1);
+      else if (!hasLines && hasLinesMasked) onlyLinesMasked.push(i + 1);
+    });
+    if (wouldDrop.length === 0 && onlyLinesMasked.length === 0) return null;
+    return { wouldDrop, onlyLinesMasked };
+  }, [payload?.chunks]);
+
   const videoId =
     payload?.source?.provider === "youtube" && payload.source.videoId
       ? String(payload.source.videoId).trim()
@@ -814,6 +831,21 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
 }`}
               </pre>
             </section>
+
+            {chunkWarnings ? (
+              <div className="rounded-xl border border-amber-500/50 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-200">
+                {chunkWarnings.wouldDrop.length > 0 ? (
+                  <p className="font-medium">
+                    저장 시 청크 #{chunkWarnings.wouldDrop.join(", #")}는 제외됩니다. (lines / linesMasked / text 중 하나 필요)
+                  </p>
+                ) : null}
+                {chunkWarnings.onlyLinesMasked.length > 0 ? (
+                  <p className={chunkWarnings.wouldDrop.length > 0 ? "mt-1" : ""}>
+                    청크 #{chunkWarnings.onlyLinesMasked.join(", #")}는 lines 대신 linesMasked만 있어, 저장 시 linesMasked가 lines로 저장됩니다.
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
 
             <div className="flex items-center justify-end gap-2">
               <Button

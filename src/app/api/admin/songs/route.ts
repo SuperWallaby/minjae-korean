@@ -11,6 +11,27 @@ function json(data: unknown, status = 200) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+    // #region agent log
+    const rawChunks = body.chunks;
+    fetch("http://127.0.0.1:7242/ingest/710510e9-a481-4605-9b78-a95129892604", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "3494ff" },
+      body: JSON.stringify({
+        sessionId: "3494ff",
+        location: "api/admin/songs/route.ts:POST",
+        message: "POST body chunks shape",
+        data: {
+          chunksLength: Array.isArray(rawChunks) ? rawChunks.length : 0,
+          firstChunkKeys: Array.isArray(rawChunks) && rawChunks[0] ? Object.keys(rawChunks[0]) : [],
+          hasLines: Array.isArray(rawChunks) && rawChunks[0] ? "lines" in rawChunks[0] : false,
+          hasLinesMasked: Array.isArray(rawChunks) && rawChunks[0] ? "linesMasked" in rawChunks[0] : false,
+          hasText: Array.isArray(rawChunks) && rawChunks[0] ? "text" in rawChunks[0] : false,
+        },
+        timestamp: Date.now(),
+        hypothesisId: "H1",
+      }),
+    }).catch(() => {});
+    // #endregion
     const title = String(body.title ?? "").trim();
     if (!title) {
       return json({ ok: false, error: "Missing title" }, 400);

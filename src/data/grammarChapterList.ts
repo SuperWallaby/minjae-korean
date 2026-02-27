@@ -130,7 +130,7 @@ export const grammarChapterList: GrammarChapterList = {
     },
     {
       title: "F. 간접/인용",
-      displayTitle: "Reported Speech",
+      displayTitle: "Reported Speech" ,
       anchor: "인용",
       filterKey: "인용",
       chapters: [

@@ -59,6 +59,8 @@ export type SongChunk = {
   id: string;
   index: number;
   range?: TimeRangeMs | null;
+  /** 줄 단위 재생 구간. lineRanges[i] = i번째 줄의 startMs/endMs (없으면 null) */
+  lineRanges?: (TimeRangeMs | null)[];
   /** 단어 순서별 start/end (ms). 재생 시 단어 하이라이트용 */
   wordTimings?: WordTiming[];
   lines: string[];
@@ -195,12 +197,18 @@ function normalizeChunks(v: unknown): SongChunk[] {
       if (!x || typeof x !== "object") return null;
       const o = x as Record<string, unknown>;
 
-      // New shape: lines + aid.blocks
+      // New shape: lines + aid.blocks (also accept linesMasked when lines is missing)
       let lines: string[];
       let aid: { blocks: AidBlock[] } | undefined;
 
-      if (Array.isArray(o.lines) && o.lines.length > 0) {
-        lines = o.lines.map((l) => String(l ?? "").trim()).filter(Boolean);
+      const linesSource = Array.isArray(o.lines) && o.lines.length > 0
+        ? o.lines
+        : Array.isArray(o.linesMasked) && o.linesMasked.length > 0
+          ? o.linesMasked
+          : null;
+
+      if (linesSource && linesSource.length > 0) {
+        lines = linesSource.map((l) => String(l ?? "").trim()).filter(Boolean);
         if (lines.length === 0) return null;
         const aidObj = o.aid && typeof o.aid === "object" ? (o.aid as Record<string, unknown>) : {};
         const blocks = Array.isArray(aidObj.blocks)
@@ -210,7 +218,25 @@ function normalizeChunks(v: unknown): SongChunk[] {
       } else {
         // Legacy: text + aid.translation / aid.explanation / aid.vocab
         const text = String(o.text ?? "").trim();
-        if (!text) return null;
+        if (!text) {
+          // #region agent log
+          if (typeof fetch !== "undefined") {
+            fetch("http://127.0.0.1:7242/ingest/710510e9-a481-4605-9b78-a95129892604", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "3494ff" },
+              body: JSON.stringify({
+                sessionId: "3494ff",
+                location: "songsRepo.ts:normalizeChunks",
+                message: "Chunk dropped: no lines/linesMasked and no text",
+                data: { idx, hasLines: !!o.lines, hasLinesMasked: !!o.linesMasked, hasText: !!o.text },
+                timestamp: Date.now(),
+                hypothesisId: "H2",
+              }),
+            }).catch(() => {});
+          }
+          // #endregion
+          return null;
+        }
         lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
         if (lines.length === 0) lines = [text];
         const legacyAid = o.aid && typeof o.aid === "object" ? (o.aid as Record<string, unknown>) : {};
@@ -237,11 +263,15 @@ function normalizeChunks(v: unknown): SongChunk[] {
       const difficulty = cefr && validCefr.includes(cefr) ? cefr : undefined;
       const tags = Array.isArray(o.tags) ? o.tags.map((t) => String(t).trim()).filter(Boolean) : undefined;
       const wordTimings = normalizeWordTimings(o.wordTimings);
+      const lineRanges = Array.isArray(o.lineRanges)
+        ? lines.map((_, i) => normalizeTimeRange((o.lineRanges as unknown[])[i]) ?? null)
+        : undefined;
 
       return {
         id: String(o.id ?? `chunk_${idx}`),
         index: typeof o.index === "number" ? o.index : idx,
         range: range ?? undefined,
+        lineRanges: lineRanges?.some((r) => r != null) ? lineRanges : undefined,
         wordTimings: wordTimings.length > 0 ? wordTimings : undefined,
         lines,
         aid,
@@ -263,10 +293,14 @@ export function migrateChunkToNewShape(raw: unknown): SongChunk {
         const blocks = Array.isArray(aidObj.blocks)
           ? (aidObj.blocks as AidBlock[])
           : [];
+        const lineRanges = Array.isArray(o.lineRanges)
+          ? lines.map((_, i) => normalizeTimeRange((o.lineRanges as unknown[])[i]) ?? null)
+          : undefined;
         return {
           id: String(o.id ?? "chunk_0"),
           index: typeof o.index === "number" ? o.index : 0,
           range: o.range && typeof o.range === "object" ? normalizeTimeRange(o.range) ?? undefined : undefined,
+          lineRanges: lineRanges?.some((r) => r != null) ? lineRanges : undefined,
           wordTimings: normalizeWordTimings(o.wordTimings).length > 0 ? normalizeWordTimings(o.wordTimings) : undefined,
           lines,
           aid: blocks.length > 0 ? { blocks } : undefined,
@@ -486,7 +520,26 @@ export async function createSong(draft: Partial<SongCard> & { title: string; slu
     source: normalizeSource(draft.source),
     images: normalizeImages(draft.images),
     lexicon: Array.isArray(draft.lexicon) && draft.lexicon.length > 0 ? normalizeLexicon(draft.lexicon) : undefined,
-    chunks: normalizeChunks(draft.chunks),
+    chunks: (() => {
+      const normalized = normalizeChunks(draft.chunks);
+      // #region agent log
+      if (typeof fetch !== "undefined") {
+        fetch("http://127.0.0.1:7242/ingest/710510e9-a481-4605-9b78-a95129892604", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "3494ff" },
+          body: JSON.stringify({
+            sessionId: "3494ff",
+            location: "songsRepo.ts:createSong",
+            message: "normalizeChunks result length",
+            data: { inputLength: Array.isArray(draft.chunks) ? draft.chunks.length : 0, outputLength: normalized.length },
+            timestamp: Date.now(),
+            hypothesisId: "H3",
+          }),
+        }).catch(() => {});
+      }
+      // #endregion
+      return normalized;
+    })(),
     createdAt,
     updatedAt: createdAt,
   };
