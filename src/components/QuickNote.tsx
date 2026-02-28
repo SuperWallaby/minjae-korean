@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { HelpCircle } from "lucide-react";
 
 const DURATION_MS = 200;
 
@@ -23,6 +24,12 @@ export function QuickNote() {
   const [text, setText] = React.useState("");
   const [fontStepIndex, setFontStepIndex] = React.useState(DEFAULT_FONT_STEP_INDEX);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+
+  const [promptMode, setPromptMode] = React.useState(false);
+  const [helpPrompt, setHelpPrompt] = React.useState("");
+  const [helpResponse, setHelpResponse] = React.useState<string | null>(null);
+  const [helpLoading, setHelpLoading] = React.useState(false);
+  const [helpError, setHelpError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     setFontStepIndex(getStoredFontStep());
@@ -111,6 +118,31 @@ export function QuickNote() {
     if (typeof window !== "undefined") window.localStorage.setItem(QUICKNOTE_FONT_STEP_KEY, String(next));
   };
 
+  const askGemini = React.useCallback(async () => {
+    const q = helpPrompt.trim();
+    if (!q || helpLoading) return;
+    setHelpLoading(true);
+    setHelpError(null);
+    setHelpResponse(null);
+    try {
+      const res = await fetch("/api/public/gemini-ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: q }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json?.ok) {
+        setHelpError(json?.error ?? "Request failed");
+        return;
+      }
+      setHelpResponse(json.text ?? "");
+    } catch {
+      setHelpError("Network error");
+    } finally {
+      setHelpLoading(false);
+    }
+  }, [helpPrompt, helpLoading]);
+
   if (!open && !closing) return null;
 
   return (
@@ -119,34 +151,103 @@ export function QuickNote() {
       style={{ opacity }}
       aria-hidden={!open}
     >
-      <div className="sticky top-0 z-10 flex items-center justify-end gap-2 px-4 py-2 bg-background/80 border-b border-border">
-        <button
-          type="button"
-          onClick={decreaseFont}
-          disabled={!canDecrease}
-          className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted disabled:opacity-40 disabled:pointer-events-none"
-        >
-          줄이기
-        </button>
-        <button
-          type="button"
-          onClick={increaseFont}
-          disabled={!canIncrease}
-          className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted disabled:opacity-40 disabled:pointer-events-none"
-        >
-          키우기
-        </button>
+      <div className="sticky top-0 z-10 flex items-center justify-between gap-2 px-4 py-2 bg-background/80 border-b border-border">
+        <div className="flex items-center gap-2">
+          {promptMode ? (
+            <button
+              type="button"
+              onClick={() => {
+                setPromptMode(false);
+                setHelpResponse(null);
+                setHelpError(null);
+              }}
+              className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted"
+            >
+              ← 메모
+            </button>
+          ) : null}
+          {promptMode ? (
+            <span className="text-sm text-muted-foreground">Gemini에게 물어보기</span>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => setPromptMode(true)}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted"
+              >
+                <HelpCircle className="size-4" />
+                Help
+              </button>
+              <button
+                type="button"
+                onClick={decreaseFont}
+                disabled={!canDecrease}
+                className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted disabled:opacity-40 disabled:pointer-events-none"
+              >
+                줄이기
+              </button>
+              <button
+                type="button"
+                onClick={increaseFont}
+                disabled={!canIncrease}
+                className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted disabled:opacity-40 disabled:pointer-events-none"
+              >
+                키우기
+              </button>
+            </>
+          )}
+        </div>
       </div>
-      <div className="max-w-4xl mx-auto px-8 min-h-screen">
-        <textarea
-          ref={textareaRef}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          style={{ fontSize: `${FONT_STEPS[fontStepIndex]}px` }}
-          className="w-full min-h-screen bg-transparent font-medium !leading-[1.4] resize-none outline-none font-sans"
-          spellCheck={false}
-        />
-      </div>
+
+      {promptMode ? (
+        <div className="max-w-3xl mx-auto px-6 py-8">
+          <div className="flex flex-col gap-3">
+            <textarea
+              value={helpPrompt}
+              onChange={(e) => setHelpPrompt(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && e.ctrlKey) {
+                  e.preventDefault();
+                  void askGemini();
+                }
+              }}
+              placeholder="질문을 입력하세요… (Ctrl+Enter로 전송)"
+              rows={3}
+              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-ring resize-none"
+              disabled={helpLoading}
+            />
+            <button
+              type="button"
+              onClick={() => void askGemini()}
+              disabled={helpLoading || !helpPrompt.trim()}
+              className="self-end rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none"
+            >
+              {helpLoading ? "응답 중…" : "보내기"}
+            </button>
+          </div>
+          {helpError ? (
+            <div className="mt-6 rounded-xl border border-destructive/50 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+              {helpError}
+            </div>
+          ) : null}
+          {helpResponse ? (
+            <div className="mt-6 rounded-xl border border-border bg-muted/30 px-4 py-4 text-sm leading-relaxed whitespace-pre-wrap">
+              {helpResponse}
+            </div>
+          ) : null}
+        </div>
+      ) : (
+        <div className="max-w-4xl mx-auto px-8 min-h-screen">
+          <textarea
+            ref={textareaRef}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            style={{ fontSize: `${FONT_STEPS[fontStepIndex]}px` }}
+            className="w-full min-h-screen bg-transparent font-medium !leading-[1.4] resize-none outline-none font-sans"
+            spellCheck={false}
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -102,8 +102,10 @@ export default async function DramaSlugPage({ params }: Props) {
               <Link href="/drama" className="hover:text-foreground transition-colors">
                 Drama
               </Link>
-              <span>/</span>
-              <span>{d.artist}</span>
+              <span aria-hidden>/</span>
+              <span className="font-medium text-foreground" aria-current="page">
+                {d.title}
+              </span>
             </div>
             <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
               {d.title}
