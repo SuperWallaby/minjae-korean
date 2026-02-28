@@ -54,6 +54,8 @@ type Article = {
   questions: string[];
   discussion: string[];
   noImageIndex?: boolean;
+  /** 목록 상단 고정 (개발 모드에서만 설정) */
+  pinned?: boolean;
   createdAt?: string;
   updatedAt?: string;
 };
@@ -211,6 +213,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
           vocabulary: draft.vocabulary,
           questions: draft.questions,
           discussion: draft.discussion,
+          pinned: draft.pinned,
         },
       );
       if (!res.ok || !json?.ok)
@@ -407,7 +410,19 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                     </div>
                   </div>
 
-                  <div className="mt-2">
+                  <div className="mt-2 flex flex-wrap items-center gap-4">
+                    <label className="inline-flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={draft.pinned ?? false}
+                        onChange={(e) =>
+                          setDraft((prev) =>
+                            prev ? { ...prev, pinned: e.target.checked } : prev
+                          )
+                        }
+                      />
+                      상단 고정 (핀)
+                    </label>
                     <label className="inline-flex items-center gap-2 text-sm">
                       <input
                         type="checkbox"

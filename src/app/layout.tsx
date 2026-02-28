@@ -7,9 +7,11 @@ import { EducationModeProvider } from "@/lib/EducationModeProvider";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SupportChatWidget } from "@/components/support/SupportChatWidget";
+import { TeachingSpotlight } from "@/components/site/TeachingSpotlight";
 import { QuickNote } from "@/components/QuickNote";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import NextTopLoader from "nextjs-toploader";
+import { TeachingCmdDraw } from "@/components/site/MouseDraw";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -100,6 +102,8 @@ export default function RootLayout({
                 speed={200}
               />
               <ScrollToTop />
+              <TeachingSpotlight />
+              <TeachingCmdDraw />
               <SiteNavbar />
               <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
               <SiteFooter />

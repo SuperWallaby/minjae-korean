@@ -146,3 +146,19 @@
 .education-mode .site-footer {
   display: none;
 }
+
+
+@keyframes teaching-pulse {
+  0% {
+    transform: scale(0.35);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+.animate-teaching-pulse {
+  animation: teaching-pulse 520ms ease-out forwards;
+}

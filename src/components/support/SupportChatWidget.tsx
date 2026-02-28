@@ -457,7 +457,15 @@ export function SupportChatWidget() {
   return (
     <div className="fixed bottom-4 right-4 z-40">
       {open ? (
-        <div className="w-[min(92vw,380px)] overflow-hidden rounded-2xl border border-border bg-card shadow-(--shadow-chat)">
+        <>
+          {/* 모바일/태블릿: 포커싱용 백드롭 블러 (PC에서는 미표시) */}
+          <button
+            type="button"
+            aria-label="Close chat"
+            className="fixed inset-0 z-39 bg-black/25 backdrop-blur-sm md:hidden"
+            onClick={() => setOpen(false)}
+          />
+        <div className="relative z-40 w-[min(92vw,380px)] overflow-hidden rounded-2xl border border-border bg-card shadow-(--shadow-chat)">
           <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
             <div>
               <div className="font-serif text-base font-semibold leading-tight">
@@ -617,7 +625,7 @@ export function SupportChatWidget() {
                 }}
                 rows={2}
                 placeholder="Write a message…"
-                className="min-h-[44px] flex-1 resize-none rounded-xl border border-border bg-white px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="min-h-[44px] flex-1 resize-none rounded-xl border border-border bg-white px-3 py-2 text-base outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-sm"
               />
               <Button
                 size="sm"
@@ -631,6 +639,7 @@ export function SupportChatWidget() {
             </div>
           </div>
         </div>
+        </>
       ) : (
         <button
           type="button"

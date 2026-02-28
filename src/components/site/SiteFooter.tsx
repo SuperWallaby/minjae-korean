@@ -108,6 +108,18 @@ export function SiteFooter() {
                 <Mail className="size-3.5" />
                 <span className="tabular-nums">minjae@kajakorean.com</span>
               </a>
+              <a
+                href="https://instagram.com/kaja_minjae"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={pillClassName}
+                aria-label="Instagram @kaja_minjae"
+                title="Instagram @kaja_minjae"
+              >
+                <Instagram className="size-3.5" />
+                <span>Instagram</span>
+                <span className="text-white/55">@kaja_minjae</span>
+              </a>
             </div>
           </div>
         </div>

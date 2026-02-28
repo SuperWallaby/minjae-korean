@@ -53,6 +53,7 @@ export function SongPageContent({
     null,
   );
 
+  const LINE_PAD_MS = 200;
   const playLineRange = React.useCallback(
     (chunkId: string, lineIndex: number, startMs: number, endMs: number) => {
       const p = playerRef.current;
@@ -61,8 +62,10 @@ export function SongPageContent({
         clearTimeout(stopTimerRef.current);
         stopTimerRef.current = null;
       }
-      const startSec = startMs / 1000;
-      const durationMs = endMs - startMs;
+      const paddedStartMs = Math.max(0, startMs - LINE_PAD_MS);
+      const paddedEndMs = endMs + LINE_PAD_MS;
+      const startSec = paddedStartMs / 1000;
+      const durationMs = paddedEndMs - paddedStartMs;
       p.seekTo(startSec);
       p.playVideo();
       setPlayingChunkId(chunkId);

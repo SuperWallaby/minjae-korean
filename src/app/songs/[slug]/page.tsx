@@ -103,8 +103,10 @@ export default async function SongPage({ params }: Props) {
               <Link href="/songs" className="hover:text-foreground transition-colors">
                 Songs
               </Link>
-              <span>/</span>
-              <span>{s.artist}</span>
+              <span aria-hidden>/</span>
+              <span className="font-medium text-foreground" aria-current="page">
+                {s.title}
+              </span>
             </div>
             <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
               {s.title}

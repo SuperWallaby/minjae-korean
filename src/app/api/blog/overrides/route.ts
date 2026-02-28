@@ -79,3 +79,44 @@ export async function PUT(req: Request) {
     );
   }
 }
+
+/** 핀 토글: slug별 pinned만 병합 */
+export async function PATCH(req: Request) {
+  if (!devOnly()) {
+    return new Response(JSON.stringify({ ok: false, error: "Not found" }), {
+      status: 404,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+  try {
+    const body = (await req.json().catch(() => null)) as { slug?: string; pinned?: boolean };
+    const slug = typeof body?.slug === "string" ? body.slug.trim() : "";
+    const pinned = Boolean(body?.pinned);
+    if (!slug) {
+      return new Response(JSON.stringify({ ok: false, error: "Missing slug" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+    let all: Record<string, BlogImageOverrides> = {};
+    try {
+      const raw = await fs.readFile(OVERRIDES_PATH, "utf-8");
+      all = (JSON.parse(raw) as Record<string, BlogImageOverrides>) ?? {};
+    } catch {}
+    const existing = all[slug] ?? {};
+    all[slug] = { ...existing, pinned };
+    await fs.writeFile(OVERRIDES_PATH, JSON.stringify(all, null, 2), "utf-8");
+    return new Response(JSON.stringify({ ok: true, pinned }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (e) {
+    return new Response(
+      JSON.stringify({
+        ok: false,
+        error: e instanceof Error ? e.message : String(e),
+      }),
+      { status: 500, headers: { "Content-Type": "application/json" } },
+    );
+  }
+}

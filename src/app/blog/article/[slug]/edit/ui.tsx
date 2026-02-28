@@ -56,6 +56,12 @@ async function uploadToR2(file: File): Promise<string> {
 
 type Props = { slug: string; post: BlogPost };
 
+async function getJson(url: string) {
+  const res = await fetch(url, { cache: "no-store" });
+  const json = await res.json().catch(() => null);
+  return { res, json };
+}
+
 export function BlogEditClient({ slug, post }: Props) {
   const [imageThumb, setImageThumb] = React.useState<string | null>(
     post.imageThumb ?? null,
@@ -66,10 +72,23 @@ export function BlogEditClient({ slug, post }: Props) {
   const [paragraphImages, setParagraphImages] = React.useState<
     (string | null)[]
   >((post.paragraphs ?? []).map((p) => p.image ?? null));
+  const [pinned, setPinned] = React.useState(false);
   const [uploadingKey, setUploadingKey] = React.useState<string | null>(null);
   const [saving, setSaving] = React.useState(false);
   const [msg, setMsg] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    getJson("/api/blog/overrides").then(({ json }) => {
+      if (cancelled || !json?.ok || !json?.data) return;
+      const o = (json.data as Record<string, { pinned?: boolean }>)[slug];
+      if (o?.pinned !== undefined) setPinned(Boolean(o.pinned));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug]);
 
   const handleUpload = React.useCallback(
     async (
@@ -105,6 +124,7 @@ export function BlogEditClient({ slug, post }: Props) {
         imageLarge: imageLarge ?? undefined,
         paragraphImages:
           paragraphImages.length > 0 ? paragraphImages : undefined,
+        pinned,
       };
       const { res, json } = await putJson("/api/blog/overrides", {
         slug,
@@ -119,7 +139,7 @@ export function BlogEditClient({ slug, post }: Props) {
     } finally {
       setSaving(false);
     }
-  }, [slug, imageThumb, imageLarge, paragraphImages]);
+  }, [slug, imageThumb, imageLarge, paragraphImages, pinned]);
 
   const paragraphCount = post.paragraphs?.length ?? 0;
   const paragraphImagesPadded =
@@ -150,6 +170,17 @@ export function BlogEditClient({ slug, post }: Props) {
         <p className="mt-1 text-sm text-muted-foreground">
           {post.title}
         </p>
+
+        <div className="mt-4">
+          <label className="inline-flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={pinned}
+              onChange={(e) => setPinned(e.target.checked)}
+            />
+            상단 고정 (핀)
+          </label>
+        </div>
 
         {error ? (
           <p className="mt-3 text-sm text-rose-600">{error}</p>

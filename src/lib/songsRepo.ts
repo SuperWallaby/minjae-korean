@@ -585,3 +585,31 @@ export async function deleteSong(slug: string): Promise<boolean> {
   const res = await songs.deleteOne({ _id: s });
   return res.deletedCount === 1;
 }
+
+/**
+ * Song slug 변경 (잘못 만든 slug 수정용).
+ * MongoDB _id는 변경 불가라 기존 문서를 새 _id/slug로 복사한 뒤 기존 문서 삭제.
+ */
+export async function renameSong(
+  oldSlug: string,
+  newSlug: string,
+): Promise<Song | null> {
+  const oldS = String(oldSlug ?? "").trim();
+  const newS = String(newSlug ?? "").trim();
+  if (!oldS || !newS || oldS === newS) return null;
+  const { songs } = await cols();
+
+  const cur = await songs.findOne({ $or: [{ slug: oldS }, { _id: oldS }] });
+  if (!cur) return null;
+
+  const exists = await songs.findOne({ $or: [{ _id: newS }, { slug: newS }] }, { projection: { _id: 1 } });
+  if (exists) return null;
+
+  const { _id: _oldId, slug: _oldSlug, ...rest } = cur as Record<string, unknown>;
+  const newDoc = { _id: newS, slug: newS, ...rest };
+  await songs.insertOne(newDoc as SongDoc);
+  await songs.deleteOne({ _id: cur._id });
+
+  const doc = await songs.findOne({ _id: newS });
+  return doc ? toSong(doc as SongDocLegacy) : null;
+}

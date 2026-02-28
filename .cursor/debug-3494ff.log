@@ -1,0 +1,2 @@
+{"sessionId":"3494ff","location":"api/admin/songs/route.ts:POST","message":"POST body chunks shape","data":{"chunksLength":4,"firstChunkKeys":["id","index","range","linesMasked","aid","difficulty"],"hasLines":false,"hasLinesMasked":true,"hasText":false},"timestamp":1772202061304,"hypothesisId":"H1"}
+{"sessionId":"3494ff","location":"songsRepo.ts:createSong","message":"normalizeChunks result length","data":{"inputLength":4,"outputLength":4},"timestamp":1772202062087,"hypothesisId":"H3"}

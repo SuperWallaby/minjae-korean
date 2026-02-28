@@ -60,11 +60,15 @@ export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {
         imageLarge: o?.imageLarge ?? p.imageLarge,
         level: p.level,
         createdAt: p.createdAt,
+        pinned: o?.pinned ?? false,
       } satisfies BlogPostCard;
     }),
   );
   const list = results.filter(Boolean) as BlogPostCard[];
   list.sort((a, b) => {
+    const pinA = a.pinned ? 1 : 0;
+    const pinB = b.pinned ? 1 : 0;
+    if (pinB !== pinA) return pinB - pinA;
     const tA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
     const tB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
     return tB - tA;

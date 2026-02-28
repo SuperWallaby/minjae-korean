@@ -39,12 +39,17 @@ export type BlogPost = {
 export type BlogPostCard = Pick<
   BlogPost,
   "slug" | "title" | "imageThumb" | "imageLarge" | "level" | "createdAt"
->;
+> & {
+  /** 목록 상단 고정 (overrides에서 설정) */
+  pinned?: boolean;
+};
 
-/** 개발 모드에서 업로드한 이미지 오버라이드 (썸네일·문단 이미지) */
+/** 개발 모드에서 업로드한 이미지 오버라이드 (썸네일·문단 이미지) + 핀 */
 export type BlogImageOverrides = {
   imageThumb?: string;
   imageLarge?: string;
   /** 문단별 이미지 URL (인덱스 = paragraph index) */
   paragraphImages?: (string | null)[];
+  /** 목록 상단 고정 (풀기 전까지 맨 위 노출) */
+  pinned?: boolean;
 };

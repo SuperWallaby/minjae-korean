@@ -40,6 +40,8 @@ export type ArticleCard = {
   discussion: string[];
   /** 이미지 로봇 검색 방지 (저작권 보호) */
   noImageIndex?: boolean;
+  /** 목록 상단 고정 (풀기 전까지 맨 위 노출) */
+  pinned?: boolean;
   createdAt?: string; // ISO
   updatedAt?: string; // ISO
 };
@@ -65,6 +67,7 @@ async function cols(): Promise<Collections> {
       try {
         await articles.createIndex({ createdAt: -1 });
         await articles.createIndex({ updatedAt: -1 });
+        await articles.createIndex({ pinned: -1, createdAt: -1 });
         await articles.createIndex({ level: 1, createdAt: -1 });
         await articles.createIndex({ levels: 1, createdAt: -1 });
       } catch {
@@ -218,7 +221,7 @@ export async function listArticles(limit = 50): Promise<Article[]> {
   const n = Math.min(500, Math.max(1, Math.floor(limit)));
   const docs = await articles
     .find({})
-    .sort({ createdAt: -1 })
+    .sort({ pinned: -1, createdAt: -1 })
     .limit(n)
     .toArray();
   const filtered = docs.filter((d) => !EXCLUDED_ARTICLE_SLUGS.includes(d.slug));
@@ -302,6 +305,7 @@ export async function updateArticle(
     ...(patch.vocabulary !== undefined ? { vocabulary: normalizeVocab(patch.vocabulary) } : null),
     ...(patch.questions !== undefined ? { questions: normalizeStrings(patch.questions) } : null),
     ...(patch.discussion !== undefined ? { discussion: normalizeStrings(patch.discussion) } : null),
+    ...(patch.pinned !== undefined ? { pinned: Boolean(patch.pinned) } : null),
     updatedAt: nowIso(),
   };
 
