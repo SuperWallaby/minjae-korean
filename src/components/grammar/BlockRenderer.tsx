@@ -11,6 +11,9 @@ import { BlockNumberedList } from "./blocks/BlockNumberedList";
 import { BlockParagraph } from "./blocks/BlockParagraph";
 import { BlockQuote } from "./blocks/BlockQuote";
 import { BlockSoundword } from "./blocks/BlockSoundword";
+import { BlockHangeulSyllableTable } from "./blocks/BlockHangeulSyllableTable";
+import { BlockSoundwordTable } from "./blocks/BlockSoundwordTable";
+import { BlockTest } from "./blocks/BlockTest";
 
 type Props = {
   blocks: GrammarBlock[];
@@ -103,6 +106,27 @@ function BlockRendererOne({ block }: { block: GrammarBlock }) {
           sound={block.sound}
           phonetic={block.phonetic}
           meaning={block.meaning}
+        />
+      );
+    case "soundword_table":
+      return (
+        <BlockSoundwordTable
+          headers={block.headers}
+          rows={block.rows}
+        />
+      );
+    case "hangeul_syllable_table":
+      return (
+        <BlockHangeulSyllableTable
+          consonants={block.consonants}
+          vowels={block.vowels}
+        />
+      );
+    case "test":
+      return (
+        <BlockTest
+          title={block.title}
+          questions={block.questions}
         />
       );
     case "bulleted_list_item":

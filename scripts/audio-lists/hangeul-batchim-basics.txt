@@ -1,0 +1,22 @@
+# Batchim Basics 챕터 — 소리 필요한 단어/음절
+# 한 줄에 하나. 빈 줄·# 줄은 무시.
+# 생성: node scripts/generate-audio-from-list.mjs scripts/audio-lists/hangeul-batchim-basics.txt
+
+각
+간
+갇
+갈
+감
+갑
+갓
+강
+먹다
+앉다
+닫다
+물고기
+감사
+밥을
+옷이
+방에
+먹어
+강이

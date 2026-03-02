@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Bell, BellOff, Search } from "lucide-react";
+import { Bell, BellOff, Search, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -90,6 +90,12 @@ async function postJson(url: string, body?: unknown) {
     headers: body ? { "Content-Type": "application/json" } : undefined,
     body: body ? JSON.stringify(body) : undefined,
   });
+  const json = await res.json().catch(() => null);
+  return { res, json };
+}
+
+async function deleteJson(url: string) {
+  const res = await fetch(url, { method: "DELETE" });
   const json = await res.json().catch(() => null);
   return { res, json };
 }
@@ -386,6 +392,28 @@ export default function AdminSupportPage() {
     }
   }, [loadThread, reply, selectedId, sendTyping, sending]);
 
+  const [deleting, setDeleting] = React.useState(false);
+  const deleteThread = React.useCallback(async () => {
+    if (!selectedId) return;
+    if (!confirm("이 채팅방을 삭제할까요? 메시지가 모두 삭제됩니다.")) return;
+    setDeleting(true);
+    setChatError(null);
+    try {
+      const { res, json } = await deleteJson(
+        `/api/admin/support/threads/${encodeURIComponent(selectedId)}`,
+      );
+      if (!res.ok || !json?.ok) throw new Error(json?.error ?? "Failed to delete");
+      setThread(null);
+      setMessages([]);
+      setSelectedId("");
+      await loadThreads();
+    } catch (e) {
+      setChatError(e instanceof Error ? e.message : "Failed to delete thread");
+    } finally {
+      setDeleting(false);
+    }
+  }, [loadThreads, selectedId]);
+
   const onReplyChange = React.useCallback(
     (v: string) => {
       setReply(v);
@@ -438,9 +466,14 @@ export default function AdminSupportPage() {
       setPushStatus("unsupported");
       return;
     }
-    if (Notification.permission === "denied") {
-      setPushStatus("denied");
-      return;
+    // When already denied, still try requestPermission() so user can retry after changing browser settings.
+    if (Notification.permission === "default" || Notification.permission === "denied") {
+      setPushStatus("loading");
+      const perm = await Notification.requestPermission();
+      if (perm !== "granted") {
+        setPushStatus("denied");
+        return;
+      }
     }
     setPushStatus("loading");
     try {
@@ -452,13 +485,6 @@ export default function AdminSupportPage() {
       }
       const reg = await navigator.serviceWorker.register("/sw-support-push.js", { scope: "/" });
       await navigator.serviceWorker.ready;
-      if (Notification.permission === "default") {
-        const perm = await Notification.requestPermission();
-        if (perm !== "granted") {
-          setPushStatus("denied");
-          return;
-        }
-      }
       const keyU8 = (() => {
         const padding = "=".repeat((4 - (publicKey.length % 4)) % 4);
         const base64 = (publicKey + padding).replace(/-/g, "+").replace(/_/g, "/");
@@ -524,7 +550,18 @@ export default function AdminSupportPage() {
               </Button>
             )}
             {pushStatus === "denied" && (
-              <span className="text-amber-600">알림이 차단됨. 브라우저 설정에서 허용해 주세요.</span>
+              <>
+                <span className="text-amber-600">알림이 차단됨. 브라우저 설정에서 허용한 뒤 아래 버튼으로 다시 요청하세요.</span>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={enablePush}
+                  className="gap-1.5"
+                >
+                  알림 다시 요청
+                </Button>
+              </>
             )}
             {pushError && <span className="text-destructive">{pushError}</span>}
           </div>
@@ -604,21 +641,36 @@ export default function AdminSupportPage() {
         </div>
 
         <div className="overflow-hidden rounded-2xl border border-border bg-card">
-          <div className="border-b border-border px-4 py-3">
-            <div className="text-sm font-semibold">Conversation</div>
-            <div className="mt-1 text-xs text-muted-foreground">
-              {thread ? (
-                <>
-                  {thread.name?.trim() || thread.email?.trim() || "Guest"} ·{" "}
-                  <span className="capitalize">{thread.status}</span>
-                  {refreshing ? (
-                    <span className="ml-2 opacity-70">Refreshing…</span>
-                  ) : null}
-                </>
-              ) : (
-                "Select a thread."
-              )}
+          <div className="flex items-start justify-between gap-2 border-b border-border px-4 py-3">
+            <div>
+              <div className="text-sm font-semibold">Conversation</div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                {thread ? (
+                  <>
+                    {thread.name?.trim() || thread.email?.trim() || "Guest"} ·{" "}
+                    <span className="capitalize">{thread.status}</span>
+                    {refreshing ? (
+                      <span className="ml-2 opacity-70">Refreshing…</span>
+                    ) : null}
+                  </>
+                ) : (
+                  "Select a thread."
+                )}
+              </div>
             </div>
+            {thread ? (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => void deleteThread()}
+                disabled={deleting}
+                className="shrink-0 gap-1.5 text-muted-foreground hover:text-destructive"
+              >
+                <Trash2 className="size-4" />
+                {deleting ? "삭제 중…" : "채팅방 삭제"}
+              </Button>
+            ) : null}
           </div>
 
           <div

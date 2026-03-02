@@ -195,6 +195,42 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
     [],
   );
 
+  const setChunkLyrics = React.useCallback(
+    (chunkIndex: number, lines: string[], translation?: string) => {
+      setText((prev) => {
+        try {
+          const parsed = JSON.parse(prev) as {
+            chunks?: Array<{
+              lines?: string[];
+              aid?: { blocks?: Array<{ type: string; text?: string }> };
+              [k: string]: unknown;
+            }>;
+          };
+          const chunks = Array.isArray(parsed.chunks) ? [...parsed.chunks] : [];
+          if (chunkIndex < 0 || chunkIndex >= chunks.length) return prev;
+          const ch = { ...chunks[chunkIndex] };
+          ch.lines = lines.length ? lines : [""];
+          if (ch.aid?.blocks) {
+            const blocks = [...ch.aid.blocks];
+            const ti = blocks.findIndex((b) => b.type === "translation");
+            if (translation !== undefined) {
+              if (ti >= 0) blocks[ti] = { ...blocks[ti], type: "translation", text: translation };
+              else blocks.push({ type: "translation", text: translation });
+            }
+            ch.aid = { ...ch.aid, blocks };
+          } else if (translation !== undefined) {
+            ch.aid = { blocks: [{ type: "translation", text: translation }] };
+          }
+          chunks[chunkIndex] = ch;
+          return JSON.stringify({ ...parsed, chunks }, null, 2);
+        } catch {
+          return prev;
+        }
+      });
+    },
+    [],
+  );
+
   const setChunkRange = React.useCallback(
     (chunkIndex: number, startSec: number | undefined, endSec: number | undefined) => {
       setText((prev) => {
@@ -323,8 +359,7 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
     ytCreatedRef.current = videoId;
     ytPlayerRef.current = null;
     setYtPlayerReady(false);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const YT = (window as any).YT;
+    const YT = (window as unknown as { YT?: { Player: new (el: HTMLElement | null, opts: Record<string, unknown>) => unknown } }).YT;
     if (!YT) return;
     try {
       const player = new YT.Player(ytContainerRef.current, {
@@ -340,7 +375,11 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
           },
         },
       });
-      if (player && !ytPlayerRef.current) ytPlayerRef.current = player;
+      if (player && !ytPlayerRef.current)
+        ytPlayerRef.current = player as {
+          getCurrentTime(): number;
+          seekTo(s: number): void;
+        };
     } catch {
       ytCreatedRef.current = null;
     }
@@ -584,10 +623,10 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
                   {payload.chunks && payload.chunks.length > 0 && (
                     <div className="mt-4 border-t border-border pt-4">
                       <div className="text-xs text-muted-foreground mb-2">
-                        Lyrics preview:
+                        Lyrics preview (편집 가능):
                       </div>
-                      <div className="space-y-2 text-sm max-h-60 overflow-y-auto">
-                        {payload.chunks.slice(0, 5).map((chunk, i) => {
+                      <div className="space-y-3 text-sm max-h-60 overflow-y-auto">
+                        {payload.chunks.map((chunk, i) => {
                           const raw = chunk as {
                             lines?: string[];
                             text?: string;
@@ -608,25 +647,37 @@ export function SongNewClient({ initialSong }: SongNewClientProps) {
                           return (
                             <div
                               key={i}
-                              className="border-l-2 border-border pl-3"
+                              className="border-l-2 border-border pl-3 space-y-1.5"
                             >
-                              <div className="whitespace-pre-line">
-                                {lines.join("\n") || "(empty)"}
-                              </div>
-                              {translation ? (
-                                <div className="text-xs text-muted-foreground mt-1">
-                                  → {translation.slice(0, 60)}...
-                                </div>
-                              ) : null}
+                              <label className="text-xs text-muted-foreground">
+                                구간 {i + 1} 가사
+                              </label>
+                              <textarea
+                                rows={Math.min(4, Math.max(2, lines.length))}
+                                className="w-full rounded border border-border bg-background px-2 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                value={lines.join("\n")}
+                                onChange={(e) => {
+                                  const next = e.target.value.split(/\r?\n/);
+                                  setChunkLyrics(i, next.length ? next : [""], translation);
+                                }}
+                                placeholder="가사 입력"
+                              />
+                              <label className="text-xs text-muted-foreground block mt-1">
+                                번역
+                              </label>
+                              <textarea
+                                rows={2}
+                                className="w-full rounded border border-border bg-background px-2 py-1.5 text-xs text-muted-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                value={translation}
+                                onChange={(e) => {
+                                  const next = e.target.value;
+                                  setChunkLyrics(i, lines, next);
+                                }}
+                                placeholder="Translation"
+                              />
                             </div>
                           );
                         })}
-                        {payload.chunks?.length &&
-                          payload.chunks.length > 5 ? (
-                            <div className="text-muted-foreground">
-                              ... and {payload.chunks.length - 5} more
-                            </div>
-                          ) : null}
                       </div>
                     </div>
                   )}

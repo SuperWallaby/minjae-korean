@@ -76,9 +76,8 @@ export function RevealOnScroll<E extends React.ElementType = "div">(
 
   return (
     <Comp
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={(node: any) => {
-        ref.current = node;
+      ref={(node: unknown) => {
+        ref.current = node as HTMLDivElement;
       }}
       className={cn(
         "will-change-transform will-change-opacity transition duration-700 ease-out",
@@ -86,8 +85,7 @@ export function RevealOnScroll<E extends React.ElementType = "div">(
         className,
       )}
       style={{
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ...(rest as any).style,
+        ...(rest as React.HTMLAttributes<HTMLElement>).style,
         transitionDelay: delayMs ? `${delayMs}ms` : undefined,
       }}
       {...rest}

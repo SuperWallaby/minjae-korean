@@ -306,8 +306,7 @@ export function DramaNewClient({ initialDrama }: DramaNewClientProps) {
     ytCreatedRef.current = videoId;
     ytPlayerRef.current = null;
     setYtPlayerReady(false);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const YT = (window as any).YT;
+    const YT = (window as unknown as { YT?: { Player: new (el: HTMLElement | null, opts: Record<string, unknown>) => unknown } }).YT;
     if (!YT) return;
     try {
       const player = new YT.Player(ytContainerRef.current, {
@@ -323,7 +322,11 @@ export function DramaNewClient({ initialDrama }: DramaNewClientProps) {
           },
         },
       });
-      if (player && !ytPlayerRef.current) ytPlayerRef.current = player;
+      if (player && !ytPlayerRef.current)
+        ytPlayerRef.current = player as {
+          getCurrentTime(): number;
+          seekTo(s: number): void;
+        };
     } catch {
       ytCreatedRef.current = null;
     }

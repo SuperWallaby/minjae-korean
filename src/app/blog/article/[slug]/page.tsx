@@ -90,6 +90,10 @@ export default async function BlogArticlePage({
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(a.slug)}`;
 
   const baseUrl = SITE_URL.replace(/\/+$/, "");
+  const useWideContainer = a.slug === "korean-verb-endings";
+  const containerClass = useWideContainer
+    ? "max-w-4xl lg:max-w-5xl xl:max-w-6xl"
+    : "max-w-3xl lg:max-w-4xl";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -137,7 +141,7 @@ export default async function BlogArticlePage({
           __html: JSON.stringify(breadcrumbListJsonLd),
         }}
       />
-      <Container className="max-w-4xl">
+      <Container className={containerClass}>
         {mainImage ? (
           <div className="md:-mx-4 mb-12 overflow-hidden rounded-2xl border border-border bg-muted/10 sm:-mx-6">
             <div className="relative aspect-video w-full sm:aspect-vd">

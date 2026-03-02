@@ -1,65 +1,61 @@
 import type { GrammarChapterContent } from "@/data/grammarTypes";
 
-/**
- * Block type names are in English (callout, soundword, paragraph, etc.).
- * soundword: word + sound URL, same pattern as news/recap vocabulary.
- */
 export const content: GrammarChapterContent = {
   blocks: [
     { type: "heading_1", text: "Consonants & Vowels" },
     {
       type: "paragraph",
-      text: "한글의 기본 자음(ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ)과 모음(ㅏㅓㅗㅜㅡㅣ 등)을 익혀 봅시다.",
+      text: "Let's learn the basic Hangul consonants and vowels. These are the building blocks used to form syllable blocks (글자).",
     },
-    { type: "heading_2", text: "Basic consonants (자음)" },
+
+    { type: "heading_2", text: "Basic consonants" },
+
     {
-      type: "soundword",
-      word: "ㄱ",
-      sound: "/audio/giyeok.mp3",
-      phonetic: "g/k",
-      meaning: "기역",
+      type: "soundword_table",
+      headers: ["Letter", "Phonetic", "Name"],
+      rows: [
+        { word: "ㄱ", phonetic: "g/k", meaning: "Giyeok" },
+        { word: "ㄴ", phonetic: "n", meaning: "Nieun" },
+        { word: "ㄷ", phonetic: "d/t", meaning: "Digeut" },
+        { word: "ㄹ", phonetic: "r/l", meaning: "Rieul" },
+        { word: "ㅁ", phonetic: "m", meaning: "Mieum" },
+        { word: "ㅂ", phonetic: "b/p", meaning: "Bieup" },
+        { word: "ㅅ", phonetic: "s", meaning: "Siot" },
+        { word: "ㅇ", phonetic: "ng / (silent)", meaning: "Ieung" },
+        { word: "ㅈ", phonetic: "j", meaning: "Jieut" },
+        { word: "ㅊ", phonetic: "ch", meaning: "Chieut" },
+        { word: "ㅋ", phonetic: "k", meaning: "Kieuk" },
+        { word: "ㅌ", phonetic: "t", meaning: "Tieut" },
+        { word: "ㅍ", phonetic: "p", meaning: "Pieup" },
+        { word: "ㅎ", phonetic: "h", meaning: "Hieut" },
+      ],
     },
+
+    { type: "heading_2", text: "Basic vowels" },
+
     {
-      type: "soundword",
-      word: "ㄴ",
-      sound: "/audio/nieun.mp3",
-      phonetic: "n",
-      meaning: "니은",
+      type: "soundword_table",
+      headers: ["Letter", "Phonetic", "Name"],
+      rows: [
+        { word: "ㅏ", phonetic: "a", meaning: "A" },
+        { word: "ㅑ", phonetic: "ya", meaning: "Ya" },
+        { word: "ㅓ", phonetic: "eo", meaning: "Eo" },
+        { word: "ㅕ", phonetic: "yeo", meaning: "Yeo" },
+        { word: "ㅗ", phonetic: "o", meaning: "O" },
+        { word: "ㅛ", phonetic: "yo", meaning: "Yo" },
+        { word: "ㅜ", phonetic: "u", meaning: "U" },
+        { word: "ㅠ", phonetic: "yu", meaning: "Yu" },
+        { word: "ㅡ", phonetic: "eu", meaning: "Eu" },
+        { word: "ㅣ", phonetic: "i", meaning: "I" },
+      ],
     },
-    {
-      type: "soundword",
-      word: "ㄷ",
-      sound: "/audio/digeut.mp3",
-      phonetic: "d/t",
-      meaning: "디귿",
-    },
-    { type: "heading_2", text: "Basic vowels (모음)" },
-    {
-      type: "soundword",
-      word: "ㅏ",
-      sound: "/audio/a.mp3",
-      phonetic: "a",
-      meaning: "아",
-    },
-    {
-      type: "soundword",
-      word: "ㅓ",
-      sound: "/audio/eo.mp3",
-      phonetic: "eo",
-      meaning: "어",
-    },
-    {
-      type: "soundword",
-      word: "ㅗ",
-      sound: "/audio/o.mp3",
-      phonetic: "o",
-      meaning: "오",
-    },
+
     { type: "divider" },
+
     {
       type: "callout",
-      emoji: "💡",
-      text: "자음과 모음을 조합하면 글자 블록이 됩니다. 예: ㄱ + ㅏ = 가",
+      emoji: "🔊",
+      text: "Some consonants can sound different by position (e.g., ㄱ can be closer to 'k' at the start and closer to 'g' between vowels).",
     },
   ],
 };

@@ -239,7 +239,7 @@ export function SongChunkCard({
   countdownRemainingMs,
   onStop,
   devMode = false,
-  currentTimeMs = null,
+  currentTimeMs: _currentTimeMs = null,
   playingLineIndex = null,
   onPlayLineRange,
   onLineRangeChange,

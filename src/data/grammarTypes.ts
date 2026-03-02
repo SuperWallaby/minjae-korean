@@ -52,6 +52,50 @@ export type SoundwordBlock = {
   meaning?: string;
 };
 
+/** 한 행: 글자 | 발음 | 이름 (사운드는 일괄 생성 시 path 규칙으로 매핑 가능) */
+export type SoundwordTableRow = {
+  word: string;
+  phonetic?: string;
+  meaning?: string;
+  /** 오디오 URL. 비우면 /audio/{meaning 소문자}.mp3 등 규칙으로 일괄 생성 가능 */
+  sound?: string;
+};
+
+/** 자모/단어 조합 테이블 (예: 자음표, 모음표) */
+export type SoundwordTableBlock = {
+  type: "soundword_table";
+  /** 컬럼 헤더 e.g. ["Letter", "Phonetic", "Name"] */
+  headers: [string, string, string];
+  rows: SoundwordTableRow[];
+};
+
+/** 모음 × 자음 조합 테이블 (가, 나, 다, …). 셀 = 자음+모음 한글 글자. */
+export type HangeulSyllableTableBlock = {
+  type: "hangeul_syllable_table";
+  /** 열: 자음 (ㄱ, ㄴ, ㄷ, …) */
+  consonants: string[];
+  /** 행: 모음 (ㅏ, ㅑ, ㅓ, …) */
+  vowels: string[];
+};
+
+/** Quiz question: multiple choice. All content in English. */
+export type TestQuestion = {
+  /** Question text (English) */
+  prompt: string;
+  /** Answer options (one is correct) */
+  choices: string[];
+  /** Correct choice (must match one of choices exactly) */
+  answer: string;
+};
+
+/** Test block: multiple-choice questions. UI shows choices, then reveals answer. */
+export type TestBlock = {
+  type: "test";
+  /** Block title (English, optional) */
+  title?: string;
+  questions: TestQuestion[];
+};
+
 /** 노션 스타일 블록 타입 */
 export type GrammarBlock =
   | { type: "paragraph"; text: string }
@@ -64,7 +108,10 @@ export type GrammarBlock =
   | { type: "code"; language?: string; code: string }
   | { type: "divider" }
   | { type: "callout"; emoji?: string; text: string }
-  | SoundwordBlock;
+  | SoundwordBlock
+  | SoundwordTableBlock
+  | HangeulSyllableTableBlock
+  | TestBlock;
 
 /** 챕터별 본문 — 블록 배열 (내용 JSON에서만 사용) */
 export type GrammarChapterContent = {

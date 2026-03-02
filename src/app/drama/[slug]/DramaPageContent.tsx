@@ -254,7 +254,7 @@ export function DramaPageContent({
     [slug],
   );
 
-  const onWordTimingChange = React.useCallback(
+  const _onWordTimingChange = React.useCallback(
     (chunkId: string, wordIndex: number, startMs: number, endMs: number) => {
       if (!slug) return;
       setChunks((prev) => {

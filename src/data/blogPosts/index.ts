@@ -30,6 +30,7 @@ const SLUG_LIST = [
   "why-eun-neun-and-i-ga-feel-so-different",
   "why-koreans-cant-speak-english-after-12-years",
   "good-korean-teacher-2026",
+  "korean-verb-endings",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
@@ -41,6 +42,7 @@ const loaders: Record<
   "why-eun-neun-and-i-ga-feel-so-different": () => import("./content/why-eun-neun-and-i-ga-feel-so-different"),
   "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),
   "good-korean-teacher-2026": () => import("./content/good-korean-teacher-2026"),
+  "korean-verb-endings": () => import("./content/korean-verb-endings"),
 };  
 
 export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {

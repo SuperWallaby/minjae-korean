@@ -129,7 +129,6 @@ async function fetchTurn(args: {
 }
 
 // NOTE: We intentionally use `any` here to preserve arbitrary function signatures.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyFn = (...args: any[]) => any;
 
 function useEvent<T extends AnyFn>(fn: T): T {

@@ -55,10 +55,10 @@ const ASSETS_LINKS = [
   { href: "/expressions", label: "Expressions", icon: "/talk.webp" },
   { href: "/news", label: "News", icon: "/news.webp" },
   { href: "/blog", label: "Blog", icon: "/blog.webp" },
-  // { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
   { href: "/songs", label: "Song", icon: "/music.webp" },
   { href: "/drama", label: "Drama", icon: "/drama.webp" },
   { href: "/quoto", label: "Quoto", icon: "/talk.webp" },
+  { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
 ] as const;
 
 function isAssetLinkActive(pathname: string, href: string) {

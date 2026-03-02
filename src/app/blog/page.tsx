@@ -69,7 +69,7 @@ export default async function BlogPage() {
                 href={`/blog/article/${encodeURIComponent(major.slug)}`}
                 className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
+                <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-video">
                   {major.imageLarge?.trim() || major.imageThumb?.trim() ? (
                     <Image
                       src={

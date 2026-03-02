@@ -5,7 +5,6 @@ import {
   MessageCircle,
   Bookmark,
   Share2,
-  HandMetal,
   Link2,
   HeartIcon,
 } from "lucide-react";

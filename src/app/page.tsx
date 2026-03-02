@@ -3,7 +3,6 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { Suspense } from "react";
-
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { Container } from "@/components/site/Container";
 import { HomeHeroVideo } from "@/components/site/HomeHeroVideo";

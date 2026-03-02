@@ -150,7 +150,7 @@ function isTmpId(id: string) {
   return id.startsWith("tmp_");
 }
 
-function stableKey(m: SupportMessage) {
+function _stableKey(m: SupportMessage) {
   return `${m.from}:${m.text.trim()}:${m.createdAt}`;
 }
 

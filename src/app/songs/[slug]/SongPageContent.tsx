@@ -171,8 +171,7 @@ export function SongPageContent({
     if (!videoId || !apiReady || !containerRef.current) return;
     if (createdRef.current) return;
     createdRef.current = true;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const YT = (window as any).YT;
+    const YT = (window as unknown as { YT?: { Player: new (el: HTMLElement | null, opts: Record<string, unknown>) => unknown } }).YT;
     if (!YT) return;
     try {
       const player = new YT.Player(containerRef.current, {
@@ -189,7 +188,12 @@ export function SongPageContent({
           },
         },
       });
-      if (player && !playerRef.current) playerRef.current = player;
+      if (player && !playerRef.current)
+        playerRef.current = player as {
+          seekTo(s: number): void;
+          playVideo(): void;
+          pauseVideo(): void;
+        };
     } catch {
       createdRef.current = false;
     }

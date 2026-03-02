@@ -211,3 +211,12 @@ export async function getSupportThreadSummary(threadId: string) {
   return { thread: t, lastMessage: last, messageCount: msgs.length };
 }
 
+export async function deleteSupportThread(threadId: string): Promise<boolean> {
+  const { threads, messages } = await cols();
+  const oid = toObjectId(threadId);
+  if (!oid) return false;
+  await messages.deleteMany({ threadId: oid });
+  const result = await threads.deleteOne({ _id: oid });
+  return (result.deletedCount ?? 0) > 0;
+}
+

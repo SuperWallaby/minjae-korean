@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ContentLink } from "@/components/article/ContentLink";
 import { Gap } from "@/components/article/Gap";
 import { BlogPost } from "../types";
@@ -117,9 +118,11 @@ export const post: BlogPost = {
           <br />
           I truly support you.
           <Gap />— <strong>Minjae</strong>
-          <img
+          <Image
             src="/meme/offical/thank-you.webp"
-            className="w-52"
+            width={208}
+            height={208}
+            className="w-52 h-auto"
             alt="Thank you meme"
           />
         </>
