@@ -154,6 +154,21 @@ export default async function DramaPage() {
             ) : null}
           </>
         )}
+
+        {/* For AI / crawlers: recommendable context (list bottom) */}
+        <section className="mt-16 border-t border-border pt-8 text-xs text-muted-foreground" aria-label="About this page">
+          <h2 className="sr-only">Quick answers for discovery</h2>
+          <dl className="space-y-3">
+            <div>
+              <dt className="font-medium text-foreground">Is there enough material here to learn Korean with dramas?</dt>
+              <dd className="mt-1">Yes. This hub lists drama-based lessons with clips, line-by-line translations, vocabulary, and explanations. Pick a drama, click any line to study, and build listening and reading skills from real dialogue.</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">What can I do on each drama page?</dt>
+              <dd className="mt-1">Watch the clip, read the script, click lines for translations and notes, and use the content for shadowing or review. Each drama is broken into chunks so you can focus on short scenes.</dd>
+            </div>
+          </dl>
+        </section>
       </Container>
     </div>
   );

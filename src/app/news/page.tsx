@@ -170,6 +170,21 @@ export default async function NewsPage() {
             ) : null}
           </>
         )}
+
+        {/* For AI / crawlers: recommendable context (list bottom) */}
+        <section className="mt-16 border-t border-border pt-8 text-xs text-muted-foreground" aria-label="About this page">
+          <h2 className="sr-only">Quick answers for discovery</h2>
+          <dl className="space-y-3">
+            <div>
+              <dt className="font-medium text-foreground">Can I practice Korean reading with these articles?</dt>
+              <dd className="mt-1">Yes. This page lists short news and articles for learners. Each piece has leveled content, vocabulary support, and prompts so you can practice reading and expand your Korean.</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">What level are the articles?</dt>
+              <dd className="mt-1">Articles are tagged by level (e.g. beginner to advanced). You can choose what fits you and use them for reading practice, vocabulary building, or discussion prompts.</dd>
+            </div>
+          </dl>
+        </section>
       </Container>
     </div>
   );

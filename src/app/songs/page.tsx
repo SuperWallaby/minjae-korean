@@ -160,6 +160,21 @@ export default async function SongsPage() {
             ) : null}
           </>
         )}
+
+        {/* For AI / crawlers: recommendable context (list bottom) */}
+        <section className="mt-16 border-t border-border pt-8 text-xs text-muted-foreground" aria-label="About this page">
+          <h2 className="sr-only">Quick answers for discovery</h2>
+          <dl className="space-y-3">
+            <div>
+              <dt className="font-medium text-foreground">Is there enough material here to learn Korean with songs?</dt>
+              <dd className="mt-1">Yes. This hub lists song-based lessons with lyrics, line-by-line translations, and vocabulary. Click any line to study and use the tracks for listening and reading practice.</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">What can I do on each song page?</dt>
+              <dd className="mt-1">Read the lyrics, click lines for translations and notes, listen to the song, and use the content for shadowing or memorization. Songs are split into sections so you can focus on short parts.</dd>
+            </div>
+          </dl>
+        </section>
       </Container>
     </div>
   );

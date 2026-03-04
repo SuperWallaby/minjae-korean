@@ -151,7 +151,7 @@ export function SiteNavbar() {
                       onClick={() => setAssetsOpen((v) => !v)}
                       onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
                       className={cn(
-                        "inline-flex items-center gap-1 -mr-px rounded-md px-4 py-2.5 text-sm font-medium transition",
+                        "inline-flex group items-center gap-1 -mr-px rounded-md px-4 py-2.5 text-sm font-medium transition",
                         "text-muted-foreground cursor-pointer",
                         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                         isAssetsActive && "bg-muted text-foreground",
@@ -163,6 +163,10 @@ export function SiteNavbar() {
                       aria-expanded={assetsOpen}
                       aria-haspopup="true"
                     >
+                      <img
+                        className="size-6 shrink-0 -mx-1 group-hover:opacity-100 opacity-80"
+                        src="/icons/light-bulb.webp"
+                      ></img>
                       Library
                       <ChevronDown
                         className={cn(

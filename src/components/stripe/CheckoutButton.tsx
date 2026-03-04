@@ -72,7 +72,7 @@ function consumePendingCheckout(): {
       typeof ts !== "number"
     )
       return null;
-    return { product, ts };
+    return { product: product as CheckoutProduct, ts };
   } catch {
     return null;
   }
