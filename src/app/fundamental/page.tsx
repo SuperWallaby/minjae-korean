@@ -19,12 +19,21 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/fundamental`,
     siteName: "Kaja",
     type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/brand/og.png`,
+        width: 1200,
+        height: 630,
+        alt: "Kaja Fundamental",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Fundamental | Kaja",
     description:
       "Korean fundamentals for complete beginners: Hangeul, pronunciation, numbers, time, and essential words.",
+    images: [`${SITE_URL}/brand/og.png`],
   },
   alternates: { canonical: `${SITE_URL}/fundamental` },
 };

@@ -12,7 +12,7 @@ export const post: BlogPost = {
   slug: "korean-verb-endings",
   title: "Top 100 Korean Verb Endings (eomi) You Actually Must Know.",
   level: 3,
-  createdAt: "2026-02-27",
+  createdAt: "2026-03-02",
   paragraphs: [
     {
       subtitle: "Why verb endings matter",

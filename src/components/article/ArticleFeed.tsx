@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { RelativeDate } from "@/components/article/RelativeDate";
 import {
   displayLevel,
-  formatNewsDate,
   levelBadgeClass,
   levelLabel,
   type ReadingLevel,
@@ -76,9 +76,10 @@ export function ArticleFeed({
               <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
                 {major.title}
               </h2>
-              <p className="mt-1 text-xs text-white/80">
-                {formatNewsDate(major.createdAt)}
-              </p>
+              <RelativeDate
+                iso={major.createdAt}
+                className="mt-1 text-xs text-white/80"
+              />
             </div>
           </div>
         </Link>
@@ -134,9 +135,10 @@ export function ArticleFeed({
                     {displayLevel((p.level ?? 1) as ReadingLevel)}{" "}
                     {levelLabel((p.level ?? 1) as ReadingLevel)}
                   </span>
-                  <p className="mt-auto pt-2 text-xs text-muted-foreground">
-                    {formatNewsDate(p.createdAt)}
-                  </p>
+                  <RelativeDate
+                    iso={p.createdAt}
+                    className="mt-auto pt-2 text-xs text-muted-foreground"
+                  />
                 </div>
               </div>
             </Link>

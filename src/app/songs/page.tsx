@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { RelativeDate } from "@/components/article/RelativeDate";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
-import { formatNewsDate } from "@/lib/levelDisplay";
 import { listSongs } from "@/lib/songsRepo";
 
 export const runtime = "nodejs";
@@ -148,9 +148,10 @@ export default async function SongsPage() {
                         {s.artist}
                       </p>
                       {s.createdAt ? (
-                        <p className="mt-auto pt-2 text-xs text-muted-foreground">
-                          {formatNewsDate(s.createdAt)}
-                        </p>
+                        <RelativeDate
+                          iso={s.createdAt}
+                          className="mt-auto pt-2 text-xs text-muted-foreground"
+                        />
                       ) : null}
                     </div>
                   </Link>

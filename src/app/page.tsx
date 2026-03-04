@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { listArticles } from "@/lib/articlesRepo";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
+import { FlexibleMonthlyRhythmCard } from "@/components/stripe/FlexibleMonthlyRhythmCard";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 
@@ -178,12 +179,12 @@ export default async function Home() {
                     width={30}
                     height={37.5}
                     src="/coffeeee.webp"
-                    alt="First time"
+                    alt="Diagnosis"
                     className=" -mt-0.5 ml-1 "
                   />
                 </div>
                 <div className="font-serif text-base font-semibold tracking-tight">
-                  First time
+                  Diagnosis
                 </div>
               </div>
               <div className="mt-5 flex items-baseline gap-2">
@@ -191,18 +192,20 @@ export default async function Home() {
                   $10
                 </span>
                 <span className="text-sm text-foreground font-semibold">
-                  for a first time
+                  diagnosis
                 </span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A gentle first talk to see how you currently use Korean, and set
-                a simple direction.
+                A one-time session to assess your level, identify issues, suggest
+                a learning strategy, and recommend a program.
               </div>
               <div className="mt-8 flex flex-1 flex-col justify-between">
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• 50 min</li>
-                  <li>• Only available for first time.</li>
-                  <li>• Pick a time, when you want to talk</li>
+                  <li>• Level check</li>
+                  <li>• Problem analysis</li>
+                  <li>• Learning strategy suggestion</li>
+                  <li>• Program recommendation</li>
+                  <li>• 50 min · One-time only</li>
                 </ul>
                 <div className="pt-6">
                   <Suspense
@@ -232,12 +235,12 @@ export default async function Home() {
                     width={44}
                     height={28.15}
                     src="/cards.webp"
-                    alt="Flexible"
+                    alt="Single Session"
                     className=" text-foreground/80"
                   />
                 </div>
                 <div className="font-serif text-base font-semibold tracking-tight">
-                  Flexible
+                  Single Session
                 </div>
               </div>
               <div className="mt-5 flex items-baseline gap-2">
@@ -249,14 +252,17 @@ export default async function Home() {
                 </span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A flexible way to use Korean, purchase more when you want to
-                talk.
+                Presentation practice, interview prep, tackling a specific
+                problem, confidence building, situation practice, class
+                extension, and more.
               </div>
               <div className="mt-8 flex flex-1 flex-col justify-between">
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• 50 min</li>
-                  <li>• Pick a time, when you want to talk</li>
-                  <li>• Valid for a month</li>
+                  <li>• Presentation practice, interview prep</li>
+                  <li>• Tackle a specific problem, confidence building</li>
+                  <li>• Situation practice, class extension</li>
+                  <li>• Pick a time · Valid for a month</li>
                 </ul>
                 <div className="pt-6">
                   <Suspense
@@ -279,59 +285,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
-              <div className="flex items-center gap-3 h-11">
-                <div className="grid p-2 place-items-center rounded-2xl bg-(--included-3)/60">
-                  <Image
-                    width={35}
-                    height={25}
-                    src="/stars.webp"
-                    alt="Monthly Rhythm"
-                    className="text-foreground/80"
-                  />
-                </div>
-                <div className="font-serif text-base font-semibold tracking-tight">
-                  Monthly Rhythm
-                </div>
-              </div>
-              <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-3xl font-semibold tracking-tight">
-                  $98
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  16 times × 25 min
-                </span>
-              </div>
-              <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A steady routine for continuity. Ideal if you like a simple
-                monthly cadence.
-              </div>
-              <div className="mt-8 flex flex-1 flex-col justify-between">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Book a time, when you want to talk</li>
-                  <li>• Continuity (same style, same flow)</li>
-                  <li>• Valid for a month</li>
-                </ul>
-                <div className="pt-6">
-                  <Suspense
-                    fallback={
-                      <Button size="sm" disabled>
-                        Be a member
-                      </Button>
-                    }
-                  >
-                    <CheckoutButton
-                      product="monthly"
-                      size="sm"
-                      variant="primary"
-                      className="font-serif"
-                    >
-                      Be a member
-                    </CheckoutButton>
-                  </Suspense>
-                </div>
-              </div>
-            </div>
+            <FlexibleMonthlyRhythmCard />
           </StaggerReveal>
         </Container>
       </RevealOnScroll>

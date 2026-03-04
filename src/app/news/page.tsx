@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { RelativeDate } from "@/components/article/RelativeDate";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import {
   displayLevel,
-  formatNewsDate,
   levelBadgeClass,
   levelLabel,
   type ReadingLevel,
@@ -110,9 +110,10 @@ export default async function NewsPage() {
                     <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
                       {major.title}
                     </h2>
-                    <p className="mt-1 text-xs text-white/80">
-                      {formatNewsDate(major.createdAt)}
-                    </p>
+                    <RelativeDate
+                      iso={major.createdAt}
+                      className="mt-1 text-xs text-white/80"
+                    />
                   </div>
                 </div>
               </Link>
@@ -158,9 +159,10 @@ export default async function NewsPage() {
                       <h3 className="mt-2 font-serif font-semibold tracking-tight line-clamp-2">
                         {a.title}
                       </h3>
-                      <p className="mt-auto pt-2 text-xs text-muted-foreground">
-                        {formatNewsDate(a.createdAt)}
-                      </p>
+                      <RelativeDate
+                        iso={a.createdAt}
+                        className="mt-auto pt-2 text-xs text-muted-foreground"
+                      />
                     </div>
                   </Link>
                 ))}

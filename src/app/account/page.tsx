@@ -185,7 +185,9 @@ export default function AccountPage() {
   const creditKindLabel = React.useCallback((kind: string) => {
     const k = String(kind ?? "").trim();
     if (k === "single_pass") return "Single pass";
+    if (k === "pass_pack_4") return "Pass pack (4)";
     if (k === "pass_pack_8") return "Pass pack (8)";
+    if (k === "pass_pack_12") return "Pass pack (12)";
     return k || "Credit";
   }, []);
 

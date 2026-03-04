@@ -8,7 +8,12 @@ import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 
-export type CheckoutProduct = "trial" | "single" | "monthly";
+export type CheckoutProduct =
+  | "trial"
+  | "single"
+  | "monthly_1x"
+  | "monthly_2x"
+  | "monthly_3x";
 
 type Props = {
   product: CheckoutProduct;
@@ -55,8 +60,15 @@ function consumePendingCheckout(): {
         : null;
     const product = obj?.product;
     const ts = obj?.ts;
+    const validProducts: CheckoutProduct[] = [
+      "trial",
+      "single",
+      "monthly_1x",
+      "monthly_2x",
+      "monthly_3x",
+    ];
     if (
-      (product !== "trial" && product !== "single" && product !== "monthly") ||
+      !validProducts.includes(product as CheckoutProduct) ||
       typeof ts !== "number"
     )
       return null;
@@ -246,7 +258,7 @@ export function CheckoutButton({
       session.state.student &&
       trialStatus === "used" ? (
         <div className="mt-2 text-xs text-muted-foreground">
-          First time offer is available once per account.
+          Diagnosis is available once per account.
         </div>
       ) : null}
 

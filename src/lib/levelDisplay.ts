@@ -34,6 +34,18 @@ export function displayLevel(level: ReadingLevel): number {
   return Math.min(9, Math.max(5, level + 4));
 }
 
+/** 절대 날짜만 표시 (SSR/하이드레이션용, "X days ago" 없음) */
+export function formatNewsDateAbsolute(iso?: string): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return d.toLocaleDateString("ko-KR", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+/** 방문자 기준 "지금"으로 상대 날짜 계산 (클라이언트에서만 정확함) */
 export function formatNewsDate(iso?: string): string {
   if (!iso) return "";
   const d = new Date(iso);
@@ -44,9 +56,5 @@ export function formatNewsDate(iso?: string): string {
   if (diffDays === 0) return "Today";
   if (diffDays === 1) return "1 day ago";
   if (diffDays < 7) return `${diffDays} days ago`;
-  return d.toLocaleDateString("ko-KR", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  return formatNewsDateAbsolute(iso);
 }

@@ -19,8 +19,15 @@ export type PaymentRecord = {
 export type CreditGrant = {
   id: string;
   source: "stripe" | "admin";
-  product?: "trial" | "single" | "monthly" | "custom";
-  kind: "single_pass" | "pass_pack_8";
+  product?:
+    | "trial"
+    | "single"
+    | "monthly"
+    | "monthly_1x"
+    | "monthly_2x"
+    | "monthly_3x"
+    | "custom";
+  kind: "single_pass" | "pass_pack_4" | "pass_pack_8" | "pass_pack_12";
   total: number;
   remaining: number;
   purchasedAt: string;

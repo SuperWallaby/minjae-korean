@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Bell, BellOff, Search, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, Bell, BellOff, Search, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -517,9 +518,12 @@ export default function AdminSupportPage() {
     <div className="p-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="text-sm font-semibold tracking-wide text-primary">
-            Admin
-          </div>
+          <Button variant="ghost" size="sm" className="-ml-2 gap-1.5 text-muted-foreground hover:text-foreground" asChild>
+            <Link href="/admin">
+              <ArrowLeft className="size-4" />
+              Back to Admin
+            </Link>
+          </Button>
           <h1 className="mt-2 font-serif text-3xl font-semibold tracking-tight">
             Support inbox
           </h1>

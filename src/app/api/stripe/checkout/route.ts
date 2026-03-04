@@ -21,15 +21,25 @@ export async function POST(req: NextRequest) {
     }
 
     const prices = stripePrices();
-  const allowed = new Set([prices.singlePass, prices.monthly, prices.firstTrial]);
+  const allowed = new Set([
+    prices.singlePass,
+    prices.firstTrial,
+    prices.monthly1x,
+    prices.monthly2x,
+    prices.monthly3x,
+  ]);
   const resolvedPriceId =
     product === "single"
       ? prices.singlePass
-      : product === "monthly"
-        ? prices.monthly
-        : product === "trial"
-          ? prices.firstTrial
-          : priceId;
+      : product === "trial"
+        ? prices.firstTrial
+        : product === "monthly_1x"
+          ? prices.monthly1x
+          : product === "monthly_2x"
+            ? prices.monthly2x
+            : product === "monthly_3x"
+              ? prices.monthly3x
+              : priceId;
 
     if (!resolvedPriceId || !allowed.has(resolvedPriceId)) {
       return new Response(JSON.stringify({ ok: false, error: "Invalid price" }), { status: 400 });

@@ -20,6 +20,13 @@ export const runtime = "nodejs";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
+const OG_IMAGE = `${SITE_URL}/brand/og.png`;
+
+export function generateStaticParams() {
+  const chapters = getAllChapters(fundamentalChapterList);
+  return chapters.map((ch) => ({ slug: ch.slug }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,7 +34,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const chapter = getChapterBySlug(fundamentalChapterList, slug);
-  if (!chapter) return { title: "Not Found" };
+  if (!chapter) {
+    return {
+      title: "Not Found",
+      description: "This fundamental chapter was not found.",
+      robots: { index: false, follow: true },
+    };
+  }
 
   const title = `${chapter.title} — Fundamental`;
   const description =
@@ -44,11 +57,15 @@ export async function generateMetadata({
       url,
       siteName: "Kaja",
       type: "article",
+      images: [
+        { url: OG_IMAGE, width: 1200, height: 630, alt: title },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [OG_IMAGE],
     },
     alternates: { canonical: url },
   };

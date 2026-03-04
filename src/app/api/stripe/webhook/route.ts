@@ -49,18 +49,26 @@ export async function POST(req: NextRequest) {
           ? ("trial" as const)
           : priceId === prices.singlePass
             ? ("single" as const)
-            : priceId === prices.monthly
-              ? ("monthly" as const)
-              : ("custom" as const);
+            : priceId === prices.monthly1x
+              ? ("monthly_1x" as const)
+              : priceId === prices.monthly2x
+                ? ("monthly_2x" as const)
+                : priceId === prices.monthly3x
+                  ? ("monthly_3x" as const)
+                  : ("custom" as const);
 
       const resolved =
         product === "trial"
           ? { total: 1, kind: "single_pass" as const }
           : product === "single"
             ? { total: 1, kind: "single_pass" as const }
-            : product === "monthly"
-              ? { total: 8, kind: "pass_pack_8" as const }
-              : null;
+            : product === "monthly_1x"
+              ? { total: 4, kind: "pass_pack_4" as const }
+              : product === "monthly_2x"
+                ? { total: 8, kind: "pass_pack_8" as const }
+                : product === "monthly_3x"
+                  ? { total: 12, kind: "pass_pack_12" as const }
+                  : null;
 
       if (!resolved) return new Response("Unknown price", { status: 200 });
 
