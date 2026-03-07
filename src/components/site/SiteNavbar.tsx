@@ -176,8 +176,8 @@ export function SiteNavbar() {
                         )}
                       />
                     </button>
-                    {assetsOpen && (
-                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[320px] rounded-xl border border-border bg-white px-2.5 py-3 shadow-lg grid grid-cols-2">
+                    {true && (
+                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[328px] rounded-xl border border-border bg-white px-2.5 py-3 shadow-lg grid grid-cols-2">
                         {ASSETS_LINKS.map((link) => {
                           const active = isAssetLinkActive(
                             pathname ?? "",
