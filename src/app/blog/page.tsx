@@ -70,20 +70,16 @@ export default async function BlogPage() {
                 className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-video">
-                  {major.imageLarge?.trim() || major.imageThumb?.trim() ? (
-                    <Image
-                      src={
-                        major.imageLarge?.trim() ||
-                        major.imageThumb?.trim() ||
-                        ""
-                      }
-                      alt={major.title}
-                      fill
-                      className="object-cover transition group-hover:scale-[1.02]"
-                      unoptimized
-                      sizes="(max-width: 1024px) 100vw, 1024px"
-                    />
-                  ) : null}
+                  <Image
+                    src={
+                      major.imageLarge?.trim() || major.imageThumb?.trim() || ""
+                    }
+                    alt={major.title}
+                    fill
+                    className="object-cover transition group-hover:scale-[1.02]"
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
                     <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
