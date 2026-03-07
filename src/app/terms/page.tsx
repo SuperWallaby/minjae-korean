@@ -19,9 +19,9 @@ export default function TermsPage() {
           <h2 className="font-medium text-foreground">Use of the Service</h2>
 
           <p>
-            Kaja provides Korean language learning content and related features.
-            You agree to use the service only for lawful purposes and in a
-            respectful manner.
+            Kaja provides Korean coaching, language learning content, and
+            related features. You agree to use the service only for lawful
+            purposes and in a respectful manner.
           </p>
 
           <h2 className="font-medium text-foreground">Accounts</h2>
@@ -43,8 +43,8 @@ export default function TermsPage() {
           <h2 className="font-medium text-foreground">Content</h2>
 
           <p>
-            All lessons, videos, and materials provided by Kaja are protected by
-            copyright and are for personal use only.
+            All coaching sessions, videos, and materials provided by Kaja are
+            protected by copyright and are for personal use only.
           </p>
 
           <p>

@@ -14,8 +14,7 @@ export const metadata: Metadata = {
     "Learn essential Korean expressions with ready-to-use frames. Perfect for beginners who want to speak immediately.",
   openGraph: {
     title: "Korean Expressions | Kaja",
-    description:
-      "Learn essential Korean expressions with ready-to-use frames.",
+    description: "Learn essential Korean expressions with ready-to-use frames.",
     url: `${SITE_URL}/expressions`,
     siteName: "Kaja",
     type: "website",
@@ -23,8 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Korean Expressions | Kaja",
-    description:
-      "Learn essential Korean expressions with ready-to-use frames.",
+    description: "Learn essential Korean expressions with ready-to-use frames.",
   },
   alternates: { canonical: `${SITE_URL}/expressions` },
 };
@@ -37,7 +35,7 @@ export default function ExpressionsPage() {
       <Container className="max-w-4xl">
         <div>
           <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            Kaja! Korean Expressions.
+            Kaja · Korean Expressions.
           </h1>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Ready-to-use Korean frames you can speak immediately

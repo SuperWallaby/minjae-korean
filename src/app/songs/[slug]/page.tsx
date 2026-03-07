@@ -57,7 +57,8 @@ export default async function SongPage({ params }: Props) {
   const s = await getSong(slug);
   if (!s) return notFound();
 
-  const videoId = s.source?.provider === "youtube" ? s.source.videoId : undefined;
+  const videoId =
+    s.source?.provider === "youtube" ? s.source.videoId : undefined;
 
   const videoIdStr = videoId ? String(videoId).trim() : "";
   const baseUrl = SITE_URL.replace(/\/+$/, "");
@@ -76,7 +77,12 @@ export default async function SongPage({ params }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
-      { "@type": "ListItem", position: 2, name: "Songs", item: `${baseUrl}/songs` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Songs",
+        item: `${baseUrl}/songs`,
+      },
       { "@type": "ListItem", position: 3, name: s.title, item: canonical },
     ],
   };
@@ -89,7 +95,9 @@ export default async function SongPage({ params }: Props) {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbListJsonLd),
+        }}
       />
       <Container className="max-w-3xl">
         <SongPageContent
@@ -100,7 +108,10 @@ export default async function SongPage({ params }: Props) {
         >
           <div className="mb-8">
             <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-              <Link href="/songs" className="hover:text-foreground transition-colors">
+              <Link
+                href="/songs"
+                className="hover:text-foreground transition-colors"
+              >
                 Songs
               </Link>
               <span aria-hidden>/</span>

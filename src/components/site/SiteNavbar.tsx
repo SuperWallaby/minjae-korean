@@ -38,7 +38,7 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         active && "bg-muted text-foreground",
         {
           "hover:bg-muted/20": !active,
@@ -57,6 +57,7 @@ const ASSETS_LINKS = [
   { href: "/blog", label: "Blog", icon: "/blog.webp" },
   { href: "/songs", label: "Song", icon: "/music.webp" },
   { href: "/drama", label: "Drama", icon: "/drama.webp" },
+  // { href: "/exams", label: "Exams", icon: "/book-open.webp" },
   { href: "/quoto", label: "Quoto", icon: "/talk.webp" },
   { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
 ] as const;
@@ -151,7 +152,7 @@ export function SiteNavbar() {
                       onClick={() => setAssetsOpen((v) => !v)}
                       onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
                       className={cn(
-                        "inline-flex group items-center gap-1 -mr-px rounded-md px-4 py-2.5 text-sm font-medium transition",
+                        "inline-flex group items-center gap-1 -mr-px rounded-xl px-4 py-2.5 text-sm font-medium transition",
                         "text-muted-foreground cursor-pointer",
                         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                         isAssetsActive && "bg-muted text-foreground",
@@ -176,7 +177,7 @@ export function SiteNavbar() {
                       />
                     </button>
                     {assetsOpen && (
-                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[200px] rounded-xl border border-border bg-white py-2 shadow-lg">
+                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[320px] rounded-xl border border-border bg-white px-2.5 py-3 shadow-lg grid grid-cols-2">
                         {ASSETS_LINKS.map((link) => {
                           const active = isAssetLinkActive(
                             pathname ?? "",
@@ -187,7 +188,7 @@ export function SiteNavbar() {
                               key={link.href}
                               href={link.href}
                               className={cn(
-                                "flex items-center gap-3 px-4 py-3 text-base group",
+                                "flex items-center gap-3 rounded-xl px-4 py-3 mx-1.5 text-base group",
                                 active
                                   ? "bg-muted text-foreground font-medium"
                                   : "text-muted-foreground hover:text-foreground hover:bg-muted/40",

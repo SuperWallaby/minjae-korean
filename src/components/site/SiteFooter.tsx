@@ -46,7 +46,7 @@ export function SiteFooter() {
         <div className="text-sm text-white/70">
           <Logo mode="footer" />
           <div className="mt-0 max-w-sm text-xs leading-6 text-white/60">
-            Korean 1:1 practice with Minjae.
+            1:1 Korean coaching with Minjae.
           </div>
 
           <div className="mt-5 grid gap-1 text-xs">
@@ -173,7 +173,7 @@ export function SiteFooter() {
             </a>
           </div>
           <div className="mt-3 text-xs text-white/55">
-            © {new Date().getFullYear()} Minjae Korean. All rights reserved.
+            © {new Date().getFullYear()} Kaja. All rights reserved.
           </div>
         </div>
       </Container>

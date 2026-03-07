@@ -23,7 +23,7 @@ const SITE_URL =
 export async function generateMetadata(): Promise<Metadata> {
   const title = "Kaja | Let's Talk in Korean";
   const description =
-    "A friendly place to practice Korean through 1:1 conversation and build real confidence. Book a session and start speaking Korean today.";
+    "1:1 Korean coaching with Minjae: assess your level, set your direction, and grow with encouragement and targeted practice. Book a coaching session and start speaking Korean today.";
   const url = SITE_URL.replace(/\/+$/, "");
   return {
     title,
@@ -59,13 +59,13 @@ export default async function Home() {
         <Container className="relative">
           <StaggerReveal className="relative mx-auto max-w-4xl text-center">
             <div className="text-sm font-semibold tracking-wide text-primary">
-              Daily Korean Practice
+              Kaja · 1:1 Korean Coaching
             </div>
             <h1 className="mt-5  font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-6xl">
               Talk in Korean with Minjae.
             </h1>
             <div className="mt-4 text-muted-foreground">
-              Personal Korean teacher for you.
+              Set your direction, build confidence, and grow with encouragement.
             </div>
 
             {/* keywords hidden for now */}
@@ -98,17 +98,17 @@ export default async function Home() {
             <div className=" max-w-xl order-1 lg:order-1">
               <StaggerReveal>
                 <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Real conversation, not studying
+                  Coaching, not just a class
                 </h2>
                 <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                  Instead of studying, just start real conversation. <br />{" "}
-                  Becomes natural through 1:1 session.
+                  Set a clear direction, and Keep you on track with
+                  encouragement. Encourage you to practice and grow.
                 </p>
                 <div className="mt-7 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-3xl bg-included-2 p-6">
                     <div className="flex items-center gap-3">
                       <div className="order-1 text-sm font-semibold sm:order-2">
-                        Friendly Talking
+                        Direction
                       </div>
                       <Image
                         src="/talk1.webp"
@@ -119,25 +119,26 @@ export default async function Home() {
                       />
                     </div>
                     <div className="mt-2 text-sm text-muted-foreground">
-                      Minjae will bring up a right topic for you to talk about.
+                      We set where you’re at and where to go next! <br /> Minjae
+                      will build your studying course. And keep you on track.
                     </div>
                   </div>
                   <div className="rounded-3xl bg-included-3 p-6">
                     <div className="flex items-center gap-3">
                       <div className="order-1 text-sm font-semibold sm:order-2">
-                        Refine it while you talk
+                        Targeted Practice
                       </div>
                       <Image
                         src="/pen-line.webp"
-                        alt="Refine it while you talk"
+                        alt="Pronunciation and grammar focus"
                         width={18}
                         height={18}
                         className="order-2 shrink-0 text-black/60 sm:order-1"
                       />
                     </div>
                     <div className="mt-2 text-sm text-muted-foreground">
-                      Small corrections you can reuse immediately, and we
-                      practice it together.
+                      Goal is building real sense of Korean. Practice with real
+                      conversation in real situation.
                     </div>
                   </div>
                 </div>
@@ -162,9 +163,8 @@ export default async function Home() {
         <Container>
           <StaggerReveal className="text-center">
             <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Class passes
+              Coaching options
             </h2>
-            <p className="mt-3 text-sm text-muted-foreground sm:text-base"></p>
           </StaggerReveal>
 
           <StaggerReveal
@@ -196,8 +196,8 @@ export default async function Home() {
                 </span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A one-time session to assess your level, identify issues, suggest
-                a learning strategy, and recommend a program.
+                A one-time session to assess your level, identify issues,
+                suggest a learning strategy, and recommend a program.
               </div>
               <div className="mt-8 flex flex-1 flex-col justify-between">
                 <ul className="space-y-2 text-sm text-muted-foreground">
@@ -252,16 +252,15 @@ export default async function Home() {
                 </span>
               </div>
               <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                Presentation practice, interview prep, tackling a specific
-                problem, confidence building, situation practice, class
-                extension, and more.
+                A focused coaching session to tackle a specific challenge.
+                Practice real situations, build confidence, and move forward in
+                your Korean.
               </div>
               <div className="mt-8 flex flex-1 flex-col justify-between">
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• 50 min</li>
                   <li>• Presentation practice, interview prep</li>
                   <li>• Tackle a specific problem, confidence building</li>
-                  <li>• Situation practice, class extension</li>
                   <li>• Pick a time · Valid for a month</li>
                 </ul>
                 <div className="pt-6">
@@ -296,7 +295,7 @@ export default async function Home() {
           <div className="mx-auto max-w-6xl">
             <StaggerReveal className="max-w-2xl">
               <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                What to expect in our session
+                What to expect in a session
               </h2>
             </StaggerReveal>
 
@@ -428,28 +427,41 @@ export default async function Home() {
               >
                 {[
                   {
-                    q: "What happens in a typical session?",
-                    a: "We start from a topic minjae will bring up, talk it through, and keep the flow. Minjae will write small corrections you can reuse immediately, then we end with a simple recap.",
+                    q: "What happens in a typical coaching session?",
+                    a: "We start with a simple check-in and a topic for the day. Then we talk, practice Korean in real situations, and make small corrections along the way. At the end, Minjae gives a short recap and direction for what to focus on next.",
                   },
                   {
                     q: "What level is this for?",
-                    a: "This course is suitable for learners who can already speak Korean. You don’t need to be good at Korean, but it’s ideal if you’ve already finished the very beginner level.",
+                    a: (
+                      <>
+                        All levels are welcome. Coaching works best once you’ve
+                        built a basic{" "}
+                        <Link
+                          href="/fundamental"
+                          className="font-medium text-primary underline underline-offset-2 hover:no-underline"
+                        >
+                          foundation
+                        </Link>{" "}
+                        in Korean, but Minjae will meet you where you are and
+                        help you move forward.
+                      </>
+                    ),
                   },
                   {
-                    q: "How to book a time?",
-                    a: "After booking, you’ll get a Google Meet link. Simply join at your scheduled time, and we’ll begin.",
+                    q: "How do I book a session?",
+                    a: "Choose a time on the booking page. After booking, you’ll receive a Google Meet link for your session.",
                   },
                   {
-                    q: "How long it takes?",
-                    a: "25 or 50 minutes, you can choose the duration when you book a time.",
+                    q: "How long is each coaching session?",
+                    a: "You can choose either 25 minutes or 50 minutes when booking.",
                   },
                   {
-                    q: "What should be prepared for thes session?",
-                    a: "To keep the conversation smooth, you should be able to use very beginner level Korean.",
+                    q: "Do I need to prepare anything?",
+                    a: "No special preparation is required. Just join the session ready to talk. If you have something specific you want to work on, you can bring it.",
                   },
                   {
-                    q: "Do I get a recap?",
-                    a: "Yes. You’ll get recap! Minjae will write a summary of the session, and send it to you right after the session.",
+                    q: "Do I get a recap after the session?",
+                    a: "Yes. Minjae sends a short recap with notes and suggestions right after the session.",
                   },
                 ].map((item) => (
                   <details
@@ -481,15 +493,15 @@ export default async function Home() {
               width={140}
               height={140}
               src="/meme/offical/kaja.webp"
-              alt="Kaja Korean study with Minjae"
+              alt="Kaja – 1:1 Korean coaching"
               className="mx-auto  -mt-8"
             ></Image>
             <h2 className="font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-5xl">
-              Start practicing with Minjae.
+              Start talking with Minjae.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              No pressure. Pick a time, talk about a topic, and keep the habit
-              going.
+              No pressure. Pick a time, get direction and encouragement, and
+              keep growing.
             </p>
             <div className="mx-auto mt-6 flex flex-row flex-nowrap items-center justify-center gap-3">
               <Button
@@ -524,7 +536,7 @@ export default async function Home() {
                 staggerMs={80}
               >
                 <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Learn With Kaja News
+                  Kaja News
                 </h2>
                 <Button
                   asChild

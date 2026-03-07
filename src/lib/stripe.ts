@@ -24,4 +24,3 @@ export function stripePrices() {
     monthly3x: requireEnv("STRIPE_PRICE_MONTHLY_3X"),
   };
 }
-

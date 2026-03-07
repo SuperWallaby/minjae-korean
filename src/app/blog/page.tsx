@@ -50,7 +50,7 @@ export default async function BlogPage() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              KAJA! Korean Blog
+              Kaja · Blog
             </h1>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
               The posting of emphasis on Korean learning and practice.

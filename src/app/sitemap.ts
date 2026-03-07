@@ -1,6 +1,10 @@
 import type { MetadataRoute } from "next";
 
 import { listBlogPosts } from "@/data/blogPosts";
+import {
+  LEVEL_EXAM_SLUGS,
+  MOCK_EXAM_SLUGS,
+} from "@/data/examsList";
 import { getAllExpressionChapters } from "@/data/expressionChapterList";
 import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
@@ -26,7 +30,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/drama`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/quoto`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/account`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/exams`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/exams/placement`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
   ];
+
+  const examLevelRoutes: MetadataRoute.Sitemap = LEVEL_EXAM_SLUGS.map((e) => ({
+    url: `${baseUrl}/exams/level/${encodeURIComponent(e.slug)}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+  const examMockRoutes: MetadataRoute.Sitemap = MOCK_EXAM_SLUGS.map((e) => ({
+    url: `${baseUrl}/exams/mock/${encodeURIComponent(e.slug)}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 
   const expressionChapters = getAllExpressionChapters();
   const expressionRoutes: MetadataRoute.Sitemap = expressionChapters.map((ch) => ({
@@ -97,5 +116,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...grammarRoutes, ...articleRoutes, ...blogRoutes, ...expressionRoutes, ...songRoutes, ...dramaRoutes];
+  return [
+    ...staticRoutes,
+    ...grammarRoutes,
+    ...articleRoutes,
+    ...blogRoutes,
+    ...expressionRoutes,
+    ...songRoutes,
+    ...dramaRoutes,
+    ...examLevelRoutes,
+    ...examMockRoutes,
+  ];
 }

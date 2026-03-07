@@ -24,29 +24,29 @@ export function FlexibleMonthlyRhythmCard() {
               width={35}
               height={25}
               src="/stars.webp"
-              alt="Gworth Program"
+              alt="Growth Program"
               className="text-foreground/80"
             />
           </div>
           <div className="font-serif text-base font-semibold tracking-tight">
-            Gworth Program
+            Growth Program
           </div>
         </div>
         <div className="mt-5 flex items-baseline gap-2">
           <span className="text-3xl font-semibold tracking-tight">
             {RHYTHM_PER_SESSION_DISPLAY}
           </span>
-          <span className="text-sm text-muted-foreground">per session</span>
+          <span className="text-sm text-muted-foreground">per coaching</span>
         </div>
         <div className="mt-3 text-sm leading-7 text-muted-foreground">
-          Choose how many times per week you want to practice, grow step by
-          step. Book a time when you want to talk.
+          Meet regularly with Minjae and keep your Korean moving forward. Clear
+          direction, consistent practice, and encouragement along the way.
         </div>
         <div className="mt-8 flex flex-1 flex-col justify-between">
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>• Book a time when you want to talk</li>
-            <li>• Step by step growth, customized for you.</li>
-            <li>• Foucs on your needs, your goals, your progress.</li>
+            <li>• Book a time when you want coaching</li>
+            <li>• Step-by-step growth, customized for you</li>
+            <li>• Focus on your needs, goals, and progress</li>
             <li>• Billed monthly</li>
           </ul>
           <div className="pt-6">
@@ -65,7 +65,7 @@ export function FlexibleMonthlyRhythmCard() {
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        title="Gworth Program"
+        title="Growth Program"
         description="Pick how often you want to practice per week. You’ll be charged monthly."
         footer={
           <Button variant="outline" onClick={() => setModalOpen(false)}>

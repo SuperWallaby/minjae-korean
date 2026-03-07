@@ -22,32 +22,6 @@ export default async function ExpressionOgImage({ params }: Props) {
 
   if (!chapter) {
     return new ImageResponse(
-      (
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            background: `linear-gradient(145deg, ${bgCanvas} 0%, ${bgCard} 50%, ${accentSage} 100%)`,
-            color: textPrimary,
-            fontFamily: "system-ui, sans-serif",
-          }}
-        >
-          <span style={{ fontSize: 64, fontWeight: 700 }}>Korean Expressions</span>
-        </div>
-      ),
-      { ...size }
-    );
-  }
-
-  const title = chapter.title;
-  const subtitle = "Korean Expressions";
-
-  return new ImageResponse(
-    (
       <div
         style={{
           width: "100%",
@@ -56,52 +30,76 @@ export default async function ExpressionOgImage({ params }: Props) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: `linear-gradient(145deg, ${bgCanvas} 0%, ${bgCard} 45%, ${accentSage} 100%)`,
+          background: `linear-gradient(145deg, ${bgCanvas} 0%, ${bgCard} 50%, ${accentSage} 100%)`,
           color: textPrimary,
           fontFamily: "system-ui, sans-serif",
-          padding: 72,
         }}
       >
-        <div
-          style={{
-            fontSize: 38,
-            fontWeight: 600,
-            letterSpacing: "0.06em",
-            textTransform: "uppercase",
-            color: textMuted,
-            marginBottom: 28,
-          }}
-        >
-          {subtitle}
-        </div>
-        <h1
-          style={{
-            fontSize: 100,
-            fontWeight: 700,
-            textAlign: "center",
-            lineHeight: 1.12,
-            maxWidth: "92%",
-            color: textPrimary,
-          }}
-        >
-          {title}
-        </h1>
-        {chapter.description ? (
-          <p
-            style={{
-              fontSize: 32,
-              color: textMuted,
-              marginTop: 36,
-              textAlign: "center",
-              maxWidth: 820,
-              lineHeight: 1.35,
-            }}
-          >
-            {chapter.description}
-          </p>
-        ) : null}
+        <span style={{ fontSize: 64, fontWeight: 700 }}>
+          Korean Expressions
+        </span>
+      </div>,
+      { ...size },
+    );
+  }
+
+  const title = chapter.title;
+  const subtitle = "Korean Expressions";
+
+  return new ImageResponse(
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        background: `linear-gradient(145deg, ${bgCanvas} 0%, ${bgCard} 45%, ${accentSage} 100%)`,
+        color: textPrimary,
+        fontFamily: "system-ui, sans-serif",
+        padding: 72,
+      }}
+    >
+      <div
+        style={{
+          fontSize: 38,
+          fontWeight: 600,
+          letterSpacing: "0.06em",
+          textTransform: "uppercase",
+          color: textMuted,
+          marginBottom: 28,
+        }}
+      >
+        {subtitle}
       </div>
-    ),
-    { ...size }
+      <h1
+        style={{
+          fontSize: 100,
+          fontWeight: 700,
+          textAlign: "center",
+          lineHeight: 1.12,
+          maxWidth: "92%",
+          color: textPrimary,
+        }}
+      >
+        {title}
+      </h1>
+      {chapter.description ? (
+        <p
+          style={{
+            fontSize: 32,
+            color: textMuted,
+            marginTop: 36,
+            textAlign: "center",
+            maxWidth: 820,
+            lineHeight: 1.35,
+          }}
+        >
+          {chapter.description}
+        </p>
+      ) : null}
+    </div>,
+    { ...size },
   );
 }

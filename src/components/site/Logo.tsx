@@ -21,9 +21,9 @@ export function Logo({
         "inline-flex items-baseline gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className,
       )}
-      aria-label="Minjae Korean home"
+      aria-label="Kaja home"
     >
-      <Image width={71} height={28} src={map[mode]} alt="Minjae Korean logo" />
+      <Image width={71} height={28} src={map[mode]} alt="Kaja logo" />
     </Link>
   );
 }

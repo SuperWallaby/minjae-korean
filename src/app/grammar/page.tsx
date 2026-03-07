@@ -37,7 +37,7 @@ export default function GrammarPage() {
       <Container className="max-w-4xl">
         <div>
           <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            Kaja! Korean Grammar.
+            Kaja · Korean Grammar.
           </h1>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Learn real Korean patterns in short chapters with simple examples

@@ -68,6 +68,7 @@ async function cols(): Promise<Collections> {
         await articles.createIndex({ createdAt: -1 });
         await articles.createIndex({ updatedAt: -1 });
         await articles.createIndex({ pinned: -1, createdAt: -1 });
+        await articles.createIndex({ pinned: -1, updatedAt: -1 });
         await articles.createIndex({ level: 1, createdAt: -1 });
         await articles.createIndex({ levels: 1, createdAt: -1 });
       } catch {
@@ -220,9 +221,17 @@ export async function listArticles(limit = 50): Promise<Article[]> {
   const { articles } = await cols();
   const n = Math.min(500, Math.max(1, Math.floor(limit)));
   const docs = await articles
-    .find({})
-    .sort({ pinned: -1, createdAt: -1 })
-    .limit(n)
+    .aggregate<ArticleDoc>([
+      { $match: {} },
+      {
+        $addFields: {
+          _sortUpdated: { $ifNull: ["$updatedAt", "$createdAt"] },
+        },
+      },
+      { $sort: { pinned: -1, _sortUpdated: -1 } },
+      { $limit: n },
+      { $project: { _sortUpdated: 0 } },
+    ])
     .toArray();
   const filtered = docs.filter((d) => !EXCLUDED_ARTICLE_SLUGS.includes(d.slug));
   return filtered.map(toArticle);

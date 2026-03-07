@@ -9,17 +9,27 @@ export const runtime = "nodejs";
 
 export const metadata: Metadata = {
   title: "Recaps",
-  description: "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
+  description:
+    "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
   robots: { index: true, follow: true },
   openGraph: {
     title: "Recaps | Kaja",
-    description: "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
-    images: [{ url: "/kaja-recap.png", width: 1200, height: 630, alt: "Korean Lesson Recap" }],
+    description:
+      "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
+    images: [
+      {
+        url: "/kaja-recap.png",
+        width: 1200,
+        height: 630,
+        alt: "Korean Lesson Recap",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Recaps | Kaja",
-    description: "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
+    description:
+      "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
     images: ["/kaja-recap.png"],
   },
 };
@@ -42,7 +52,8 @@ export default async function RecapsPage() {
           Recaps
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Lesson recaps are open: expressions, vocabulary, and grammar from sessions. Click a recap to view the full note.
+          Lesson recaps are open: expressions, vocabulary, and grammar from
+          sessions. Click a recap to view the full note.
         </p>
 
         {recaps.length === 0 ? (
@@ -61,7 +72,9 @@ export default async function RecapsPage() {
                       <CardContent className="p-5">
                         <div className="flex items-baseline justify-between gap-2">
                           <span className="text-sm text-muted-foreground">
-                            {recap.createdAt ? formatDate(recap.createdAt) : "—"}
+                            {recap.createdAt
+                              ? formatDate(recap.createdAt)
+                              : "—"}
                           </span>
                           {recap.level != null && (
                             <span className="text-xs rounded bg-muted px-1.5 py-0.5 text-muted-foreground">
@@ -78,7 +91,9 @@ export default async function RecapsPage() {
                           <p className="text-sm text-muted-foreground">
                             {[
                               vocabCount > 0 ? `${vocabCount} words` : null,
-                              grammarPreview ? `Grammar: ${grammarPreview}` : null,
+                              grammarPreview
+                                ? `Grammar: ${grammarPreview}`
+                                : null,
                             ]
                               .filter(Boolean)
                               .join(" · ") || "No content"}

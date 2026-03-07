@@ -76,7 +76,10 @@ export default async function GrammarChapterPage({
     grammarChapterList,
     chapter.id,
   );
-  const sectionAnchor = getSectionAnchorForChapter(grammarChapterList, chapter.id);
+  const sectionAnchor = getSectionAnchorForChapter(
+    grammarChapterList,
+    chapter.id,
+  );
   const listHash = sectionAnchor ? `#${encodeURIComponent(sectionAnchor)}` : "";
   const content = await getChapterContent(slug);
   const blocks = content?.blocks ?? [];
@@ -87,9 +90,21 @@ export default async function GrammarChapterPage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
-      { "@type": "ListItem", position: 2, name: "Grammar", item: `${baseUrl}/grammar` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Grammar",
+        item: `${baseUrl}/grammar`,
+      },
       ...(sectionAnchor
-        ? [{ "@type": "ListItem" as const, position: 3, name: sectionTitle, item: `${baseUrl}/grammar${listHash}` }]
+        ? [
+            {
+              "@type": "ListItem" as const,
+              position: 3,
+              name: sectionTitle,
+              item: `${baseUrl}/grammar${listHash}`,
+            },
+          ]
         : []),
       {
         "@type": "ListItem" as const,
@@ -104,7 +119,9 @@ export default async function GrammarChapterPage({
     <div className="py-12 sm:py-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbListJsonLd),
+        }}
       />
       <GrammarRecordVisit chapterId={chapter.id} />
       <Container className="max-w-4xl">

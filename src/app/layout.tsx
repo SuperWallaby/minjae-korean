@@ -27,7 +27,7 @@ const bricolage = Bricolage_Grotesque({
 
 const SITE_NAME = "Kaja";
 const SITE_DESCRIPTION =
-  "A friendly place to practice Korean through 1:1 conversation and build real confidence.";
+  "1:1 Korean coaching with Minjae, assess where you are, set your direction, and grow with encouragement and targeted practice in pronunciation, grammar, and conversation.";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 const METADATA_BASE = new URL(SITE_URL);
@@ -35,7 +35,7 @@ const METADATA_BASE = new URL(SITE_URL);
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
   title: {
-    default: `${SITE_NAME} | Let’s Talk in Korean`,
+    default: `${SITE_NAME} | Let's Talk in Korean`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -68,13 +68,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Let’s Talk in Korean`,
+    title: `${SITE_NAME} | Let's Talk in Korean`,
     description: SITE_DESCRIPTION,
     images: [{ url: "/brand/og.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Let’s Talk in Korean`,
+    title: `${SITE_NAME} | Let's Talk in Korean`,
     description: SITE_DESCRIPTION,
     images: ["/brand/og.png"],
   },

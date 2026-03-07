@@ -119,7 +119,12 @@ export default async function ArticlePage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
-      { "@type": "ListItem", position: 2, name: "News", item: `${baseUrl}/news` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "News",
+        item: `${baseUrl}/news`,
+      },
       { "@type": "ListItem", position: 3, name: a.title, item: canonical },
     ],
   };
@@ -132,7 +137,9 @@ export default async function ArticlePage({
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbListJsonLd),
+        }}
       />
       <TailwindClassCheck />
       <Container className="max-w-4xl">
@@ -292,7 +299,7 @@ export default async function ArticlePage({
           )}
         </section>
 
-        {/* 6. Related Articles — Learn With Kaja News와 동일 카드(ArticleFeed) */}
+        {/* 6. Related Articles — Kaja News와 동일 카드(ArticleFeed) */}
         {related.length > 0 ? (
           <section className="mt-20 border-t border-border pt-10">
             <h2 className="font-serif text-2xl font-semibold tracking-tight">

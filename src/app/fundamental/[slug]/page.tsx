@@ -57,9 +57,7 @@ export async function generateMetadata({
       url,
       siteName: "Kaja",
       type: "article",
-      images: [
-        { url: OG_IMAGE, width: 1200, height: 630, alt: title },
-      ],
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",

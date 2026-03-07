@@ -40,7 +40,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       siteName: "Kaja",
       type: "article",
-      images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: chapter.title }],
+      images: [
+        { url: "/brand/og.png", width: 1200, height: 630, alt: chapter.title },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -75,7 +77,12 @@ export default async function ExpressionChapterPage({ params }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
-      { "@type": "ListItem", position: 2, name: "Expressions", item: `${baseUrl}/expressions` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Expressions",
+        item: `${baseUrl}/expressions`,
+      },
       { "@type": "ListItem", position: 3, name: header.title, item: canonical },
     ],
   };
@@ -84,7 +91,9 @@ export default async function ExpressionChapterPage({ params }: Props) {
     <div className="py-12 sm:py-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbListJsonLd),
+        }}
       />
       <Container className="max-w-3xl">
         {/* Header */}

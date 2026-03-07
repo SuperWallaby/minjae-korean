@@ -144,9 +144,9 @@ export async function POST(req: NextRequest) {
         const calendarId = (process.env.GOOGLE_CALENDAR_ID ?? "primary").trim() || "primary";
         const studentName = String(body.name).trim() || "Student";
 
-        const summary = `🇰🇷 ${studentName} × Minjae · Korean Lesson`;
+        const summary = `🇰🇷 ${studentName} × Minjae · Korean Coaching`;
 
-        const description = `KajaKorean 1:1 Korean Lesson
+        const description = `Kaja 1:1 Korean Coaching
 
 Teacher: Minjae
 Student: ${studentName}
@@ -185,7 +185,7 @@ Booking ID: ${booking.id}
           { status: 201 },
         );
       } catch {
-        // Google Meet mode: do NOT fall back to Kaja Meet.
+        // Google Meet mode: do NOT fall back to internal Meet.
         // Roll back booking + slots + credits, then return an error.
         try {
           await deleteBooking(booking.id);
@@ -208,7 +208,7 @@ Booking ID: ${booking.id}
       }
     }
 
-    // Kaja Meet mode (default): keep existing behavior.
+    // Internal Meet mode (default): keep existing behavior.
     return new Response(JSON.stringify({ ok: true, booking }), { status: 201 });
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: String(e) }), { status: 500 });

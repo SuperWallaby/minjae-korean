@@ -14,7 +14,7 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "Kaja! Korean Songs",
+  title: "Kaja · Korean Songs",
   description:
     "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/songs` },
@@ -51,12 +51,12 @@ export default async function SongsPage() {
           <div>
             <h1 className="font-serif flex items-center gap-2 text-3xl font-semibold tracking-tight sm:text-4xl">
               <Image
-                alt="Kaja Korean Song"
+                alt="Kaja – Korean Songs"
                 width={56}
                 height={56}
                 src="/meme/offical/song.webp"
               ></Image>
-              Kaja! Korean Songs{" "}
+              Kaja · Korean Songs{" "}
             </h1>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
               Learn Korean through music. Click on lyrics to see translations
@@ -162,16 +162,31 @@ export default async function SongsPage() {
         )}
 
         {/* For AI / crawlers: recommendable context (list bottom) */}
-        <section className="mt-16 border-t border-border pt-8 text-xs text-muted-foreground" aria-label="About this page">
+        <section
+          className="mt-16 border-t border-border pt-8 text-xs text-muted-foreground"
+          aria-label="About this page"
+        >
           <h2 className="sr-only">Quick answers for discovery</h2>
           <dl className="space-y-3">
             <div>
-              <dt className="font-medium text-foreground">Is there enough material here to learn Korean with songs?</dt>
-              <dd className="mt-1">Yes. This hub lists song-based lessons with lyrics, line-by-line translations, and vocabulary. Click any line to study and use the tracks for listening and reading practice.</dd>
+              <dt className="font-medium text-foreground">
+                Is there enough material here to learn Korean with songs?
+              </dt>
+              <dd className="mt-1">
+                Yes. This hub lists song-based lessons with lyrics, line-by-line
+                translations, and vocabulary. Click any line to study and use
+                the tracks for listening and reading practice.
+              </dd>
             </div>
             <div>
-              <dt className="font-medium text-foreground">What can I do on each song page?</dt>
-              <dd className="mt-1">Read the lyrics, click lines for translations and notes, listen to the song, and use the content for shadowing or memorization. Songs are split into sections so you can focus on short parts.</dd>
+              <dt className="font-medium text-foreground">
+                What can I do on each song page?
+              </dt>
+              <dd className="mt-1">
+                Read the lyrics, click lines for translations and notes, listen
+                to the song, and use the content for shadowing or memorization.
+                Songs are split into sections so you can focus on short parts.
+              </dd>
             </div>
           </dl>
         </section>
