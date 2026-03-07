@@ -59,7 +59,7 @@ const ASSETS_LINKS = [
   { href: "/drama", label: "Drama", icon: "/drama.webp" },
   // { href: "/exams", label: "Exams", icon: "/book-open.webp" },
   { href: "/quoto", label: "Quoto", icon: "/talk.webp" },
-  { href: "/fundamental", label: "Fundamental", icon: "/cubs.webp" },
+  { href: "/fundamental", label: "Basic", icon: "/cubs.webp" },
 ] as const;
 
 function isAssetLinkActive(pathname: string, href: string) {
@@ -177,7 +177,7 @@ export function SiteNavbar() {
                       />
                     </button>
                     {assetsOpen && (
-                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[332px] rounded-xl border border-border bg-white px-2 shadow-lg grid grid-cols-2">
+                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[332px] rounded-xl border border-border bg-white p-1 py-2 shadow-lg grid grid-cols-2">
                         {ASSETS_LINKS.map((link) => {
                           const active = isAssetLinkActive(
                             pathname ?? "",
