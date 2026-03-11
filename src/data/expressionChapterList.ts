@@ -330,6 +330,77 @@ export const expressionChapterList: ExpressionChapterList = {
         },
       ],
     },
+    {
+      title: "travel",
+      displayTitle: "Travel Korean",
+      anchor: "travel",
+      chapters: [
+        {
+          id: "exp-050",
+          slug: "korean-phrases-for-hotels",
+          number: 1,
+          title: "At the Hotel",
+          description: "예약했어요, 몇 박이에요?, 체크인하고 싶어요",
+          meta: { frames: 6, minutes: 4 },
+        },
+        {
+          id: "exp-051",
+          slug: "korean-phrases-for-restaurants",
+          number: 2,
+          title: "At the Restaurant",
+          description: "몇 명이에요?, 주문할게요, 계산해 주세요",
+          meta: { frames: 6, minutes: 4 },
+        },
+        {
+          id: "exp-052",
+          slug: "korean-phrases-for-cafes",
+          number: 3,
+          title: "At a Cafe",
+          description: "아이스로 주세요, 여기서 먹을게요, 테이크아웃이요",
+          meta: { frames: 6, minutes: 4 },
+        },
+        {
+          id: "exp-053",
+          slug: "korean-phrases-for-taxis",
+          number: 4,
+          title: "Taking a Taxi",
+          description: "여기 가 주세요, 여기서 내려 주세요",
+          meta: { frames: 6, minutes: 4 },
+        },
+        {
+          id: "exp-054",
+          slug: "korean-phrases-for-shopping",
+          number: 5,
+          title: "Shopping",
+          description: "이거 얼마예요?, 다른 색 있어요?",
+          meta: { frames: 6, minutes: 4 },
+        },
+        {
+          id: "exp-055",
+          slug: "korean-phrases-for-public-transport",
+          number: 6,
+          title: "Public Transport",
+          description: "이 버스 맞아요?, 어디서 내려요?",
+          meta: { frames: 6, minutes: 4 },
+        },
+        {
+          id: "exp-056",
+          slug: "korean-phrases-for-directions",
+          number: 7,
+          title: "Asking for Directions",
+          description: "여기 어디예요?, 어떻게 가요?",
+          meta: { frames: 6, minutes: 4 },
+        },
+        {
+          id: "exp-057",
+          slug: "korean-phrases-for-emergencies",
+          number: 8,
+          title: "Emergencies",
+          description: "도와주세요, 경찰 불러 주세요",
+          meta: { frames: 6, minutes: 4 },
+        }
+      ]
+    }
   ],
 };
 

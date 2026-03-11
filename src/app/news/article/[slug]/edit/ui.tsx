@@ -126,6 +126,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
   const [ttsGenerating, setTtsGenerating] = React.useState(false);
   const [articleEdgeTtsGenerating, setArticleEdgeTtsGenerating] =
     React.useState(false);
+  const [newTtsGenerating, setNewTtsGenerating] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [msg, setMsg] = React.useState<string | null>(null);
   const [jsonParseError, setJsonParseError] = React.useState<string | null>(
@@ -465,6 +466,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                       disabled={
                         ttsGenerating ||
                         articleEdgeTtsGenerating ||
+                        newTtsGenerating ||
                         Boolean(uploadingKey)
                       }
                       onClick={async () => {
@@ -513,7 +515,59 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                       variant="outline"
                       size="sm"
                       disabled={
+                        newTtsGenerating ||
+                        ttsGenerating ||
                         articleEdgeTtsGenerating ||
+                        Boolean(uploadingKey)
+                      }
+                      onClick={async () => {
+                        const ttsText = (draft.paragraphs ?? [])
+                          .flatMap((p) =>
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
+                          )
+                          .filter(Boolean)
+                          .join("\n");
+                        if (!ttsText) {
+                          setError(
+                            "Add paragraph content to generate TTS.",
+                          );
+                          return;
+                        }
+                        setNewTtsGenerating(true);
+                        setError(null);
+                        try {
+                          const { res, json } = await postJson(
+                            "/api/admin/tts/new",
+                            {
+                              text: ttsText,
+                            },
+                          );
+                          if (!res.ok || !json?.ok || !json?.url) {
+                            throw new Error(json?.error ?? "TTS failed");
+                          }
+                          setDraft((p) =>
+                            p ? { ...p, audio: String(json.url) } : p,
+                          );
+                        } catch (err) {
+                          setError(
+                            err instanceof Error ? err.message : "TTS failed",
+                          );
+                        } finally {
+                          setNewTtsGenerating(false);
+                        }
+                      }}
+                    >
+                      {newTtsGenerating ? "Generating…" : "New TTS"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={
+                        articleEdgeTtsGenerating ||
+                        newTtsGenerating ||
                         Boolean(uploadingKey) ||
                         !(draft.paragraphs ?? [])
                           .flatMap((p) =>

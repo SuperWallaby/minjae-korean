@@ -3,6 +3,7 @@
 import * as React from "react";
 import type { VerbEndingEntry } from "@/data/blogPosts/verbEndingTypes";
 import { Describe } from "@/components/article/Describe";
+import { SoundPlayButton } from "@/components/article/SoundPlayButton";
 
 type Props = {
   data: VerbEndingEntry[];
@@ -117,9 +118,18 @@ export function VerbEndingTable({ data }: Props) {
                         <ul className="mt-3 space-y-2 border-t border-border pt-3">
                           {entry.examples.map((ex, j) => (
                             <li key={j} className="flex flex-col gap-1">
-                              <span className="cursor-pointer rounded px-1 -mx-1 hover:bg-muted/50 hover:border-b hover:border-dotted border-transparent transition-colors inline self-start text-sm">
-                                <Describe>{ex.text}</Describe>
-                              </span>
+                              <div className="flex items-center gap-2">
+                                {ex.sound ? (
+                                  <SoundPlayButton
+                                    src={ex.sound}
+                                    size="sm"
+                                    aria-label="예문 발음 재생"
+                                  />
+                                ) : null}
+                                <span className="cursor-pointer rounded px-1 -mx-1 hover:bg-muted/50 hover:border-b hover:border-dotted border-transparent transition-colors inline self-start text-sm">
+                                  <Describe>{ex.text}</Describe>
+                                </span>
+                              </div>
                               <span className="text-muted-foreground text-sm pl-1">
                                 {ex.meaning}
                               </span>
@@ -179,9 +189,18 @@ export function VerbEndingTable({ data }: Props) {
                   <ul className="space-y-2">
                     {entry.examples.map((ex, j) => (
                       <li key={j} className="flex flex-col gap-1">
-                        <span className="cursor-pointer rounded px-1 -mx-1 hover:bg-muted/50 hover:border-b hover:border-dotted border-transparent inline self-start text-sm">
-                          <Describe>{ex.text}</Describe>
-                        </span>
+                        <div className="flex items-center gap-2">
+                          {ex.sound ? (
+                            <SoundPlayButton
+                              src={ex.sound}
+                              size="sm"
+                              aria-label="예문 발음 재생"
+                            />
+                          ) : null}
+                          <span className="cursor-pointer rounded px-1 -mx-1 hover:bg-muted/50 hover:border-b hover:border-dotted border-transparent inline self-start text-sm">
+                            <Describe>{ex.text}</Describe>
+                          </span>
+                        </div>
                         <span className="text-muted-foreground text-sm pl-1">
                           {ex.meaning}
                         </span>

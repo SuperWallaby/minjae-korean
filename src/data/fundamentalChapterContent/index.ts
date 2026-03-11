@@ -74,6 +74,7 @@ const loaders: Record<Slug, () => Promise<{ content: GrammarChapterContent }>> =
     import("./content/sentences-01-basic-patterns"),
   "test-core-grammar-01": () => import("./content/test-core-grammar-01"),
   "test-sentence-building-01": () => import("./content/test-sentence-building-01"),
+  
 };
 
 export async function getChapterContent(

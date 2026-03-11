@@ -51,7 +51,19 @@ node scripts/regenerate-audio-with-slash.mjs
 - `/` 포함된 word만 골라서 전부 덮어써서 생성. (예: `서 - 소.mp3` = "서" 재생 + "소" 재생)
 - 느리게: `EDGE_TTS_RATE=-25% node scripts/regenerate-audio-with-slash.mjs`
 
-### 3) 목록 파일로 임의 문장/단어 생성 (배침, 숫자, 표현 등)
+### 3) 동사 활용형 예문 오디오 (korean-verb-ending)
+
+`src/data/blogPosts/content/korean-verb-ending.ts` 의 `examples[].text` 를 한 번에 TTS 생성하고, 각 항목의 `sound` 를 `/audio/파일명.mp3` 로 채웁니다.
+
+```bash
+node scripts/generate-verb-ending-audio.mjs
+```
+
+- 이미 `public/audio/` 에 있는 파일은 건너뜀.
+- 미리 확인만: `DRY_RUN=1 node scripts/generate-verb-ending-audio.mjs`
+- 느리게: `EDGE_TTS_RATE=-25% node scripts/generate-verb-ending-audio.mjs`
+
+### 4) 목록 파일로 임의 문장/단어 생성 (배침, 숫자, 표현 등)
 
 챕터마다 필요한 단어·문장이 다를 때:
 

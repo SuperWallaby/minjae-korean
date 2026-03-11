@@ -35,6 +35,8 @@ const contentLoaders: Record<string, () => Promise<{ default: ExpressionChapterC
   "please-repeat": () => import("./content/please-repeat"),
   "forgot-the-word": () => import("./content/forgot-the-word"),
   "confirm-meaning": () => import("./content/confirm-meaning"),
+  "korean-phrases-for-homework": () => import("./content/korean-phrases-for-hotels"),
+  "korean-phrases-for-restaurants": () => import("./content/korean-phrases-for-restaurants"),
 };
 
 export async function getExpressionChapterContent(

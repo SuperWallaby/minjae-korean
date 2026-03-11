@@ -223,14 +223,8 @@ export async function listArticles(limit = 50): Promise<Article[]> {
   const docs = await articles
     .aggregate<ArticleDoc>([
       { $match: {} },
-      {
-        $addFields: {
-          _sortUpdated: { $ifNull: ["$updatedAt", "$createdAt"] },
-        },
-      },
-      { $sort: { pinned: -1, _sortUpdated: -1 } },
+      { $sort: { createdAt: -1 } },
       { $limit: n },
-      { $project: { _sortUpdated: 0 } },
     ])
     .toArray();
   const filtered = docs.filter((d) => !EXCLUDED_ARTICLE_SLUGS.includes(d.slug));

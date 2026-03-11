@@ -17,13 +17,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "밥을 먹고 학교에 갔어요.",
           "meaning": "I ate and went to school.",
           "feeling": "neutral factual narration",
-          "sound": ""
+          "sound": "/audio/밥을 먹고 학교에 갔어요.mp3"
         },
         {
           "text": "문을 열고 들어왔어요.",
           "meaning": "He opened the door and came in.",
           "feeling": "describing sequence",
-          "sound": ""
+          "sound": "/audio/문을 열고 들어왔어요.mp3"
         }
       ]
     },
@@ -43,13 +43,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "비가 와서 집에 있었어요.",
           "meaning": "It rained so I stayed home.",
           "feeling": "natural explanation",
-          "sound": ""
+          "sound": "/audio/비가 와서 집에 있었어요.mp3"
         },
         {
           "text": "피곤해서 잤어요.",
           "meaning": "I was tired so I slept.",
           "feeling": "personal reason",
-          "sound": ""
+          "sound": "/audio/피곤해서 잤어요.mp3"
         }
       ]
     },
@@ -69,13 +69,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "비싸지만 샀어요.",
           "meaning": "It was expensive but I bought it.",
           "feeling": "contrast decision",
-          "sound": ""
+          "sound": "/audio/비싸지만 샀어요.mp3"
         },
         {
           "text": "어렵지만 재미있어요.",
           "meaning": "It is difficult but interesting.",
           "feeling": "mixed feeling",
-          "sound": ""
+          "sound": "/audio/어렵지만 재미있어요.mp3"
         }
       ]
     },
@@ -95,13 +95,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "시간이 있으면 만나요.",
           "meaning": "If you have time, let's meet.",
           "feeling": "suggestion",
-          "sound": ""
+          "sound": "/audio/시간이 있으면 만나요.mp3"
         },
         {
           "text": "비가 오면 안 가요.",
           "meaning": "If it rains, I don't go.",
           "feeling": "conditional decision",
-          "sound": ""
+          "sound": "/audio/비가 오면 안 가요.mp3"
         }
       ]
     },
@@ -121,13 +121,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "지금 바쁜데 나중에 전화할게요.",
           "meaning": "I'm busy now so I'll call later.",
           "feeling": "polite explanation",
-          "sound": ""
+          "sound": "/audio/지금 바쁜데 나중에 전화할게요.mp3"
         },
         {
           "text": "좋은데 조금 비싸요.",
           "meaning": "It's good but a bit expensive.",
           "feeling": "soft contrast",
-          "sound": ""
+          "sound": "/audio/좋은데 조금 비싸요.mp3"
         }
       ]
     },
@@ -147,13 +147,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "한국에 가고 싶어요.",
           "meaning": "I want to go to Korea.",
           "feeling": "desire",
-          "sound": ""
+          "sound": "/audio/한국에 가고 싶어요.mp3"
         },
         {
           "text": "쉬고 싶어요.",
           "meaning": "I want to rest.",
           "feeling": "personal desire",
-          "sound": ""
+          "sound": "/audio/쉬고 싶어요.mp3"
         }
       ]
     },
@@ -173,13 +173,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "공부해야 해요.",
           "meaning": "I have to study.",
           "feeling": "duty",
-          "sound": ""
+          "sound": "/audio/공부해야 해요.mp3"
         },
         {
           "text": "지금 가야 해요.",
           "meaning": "I must go now.",
           "feeling": "necessity",
-          "sound": ""
+          "sound": "/audio/지금 가야 해요.mp3"
         }
       ]
     },
@@ -199,13 +199,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "예쁘네요.",
           "meaning": "Oh, it's pretty.",
           "feeling": "admiration",
-          "sound": ""
+          "sound": "/audio/예쁘네요.mp3"
         },
         {
           "text": "비가 오네요.",
           "meaning": "Oh, it's raining.",
           "feeling": "realization",
-          "sound": ""
+          "sound": "/audio/비가 오네요.mp3"
         }
       ]
     },
@@ -225,13 +225,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "좋지요?",
           "meaning": "It's good, right?",
           "feeling": "seeking agreement",
-          "sound": ""
+          "sound": "/audio/좋지요?.mp3"
         },
         {
           "text": "어렵지요.",
           "meaning": "It's difficult, you know.",
           "feeling": "shared understanding",
-          "sound": ""
+          "sound": "/audio/어렵지요.mp3"
         }
       ]
     },
@@ -251,13 +251,13 @@ export const verbEndingData: VerbEndingData = [
           "text": "맛있더라.",
           "meaning": "It was delicious (I experienced it).",
           "feeling": "personal memory",
-          "sound": ""
+          "sound": "/audio/맛있더라.mp3"
         },
         {
           "text": "사람이 많더라.",
           "meaning": "There were many people.",
           "feeling": "recollection",
-          "sound": ""
+          "sound": "/audio/사람이 많더라.mp3"
         }
       ]
     },
@@ -277,13 +277,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "시간이 있을 때 책을 읽어요.",
               "meaning": "I read books when I have time.",
               "feeling": "everyday habit",
-              "sound": ""
+              "sound": "/audio/시간이 있을 때 책을 읽어요.mp3"
             },
             {
               "text": "처음 한국에 왔을 때 많이 놀랐어요.",
               "meaning": "When I first came to Korea, I was very surprised.",
               "feeling": "past memory",
-              "sound": ""
+              "sound": "/audio/처음 한국에 왔을 때 많이 놀랐어요.mp3"
             }
           ]
         },
@@ -303,13 +303,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "자기 전에 샤워해요.",
               "meaning": "I shower before sleeping.",
               "feeling": "routine",
-              "sound": ""
+              "sound": "/audio/자기 전에 샤워해요.mp3"
             },
             {
               "text": "출발하기 전에 다시 확인하세요.",
               "meaning": "Please check again before you leave.",
               "feeling": "practical instruction",
-              "sound": ""
+              "sound": "/audio/출발하기 전에 다시 확인하세요.mp3"
             }
           ]
         },
@@ -329,13 +329,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "밥을 먹고 나서 커피를 마셨어요.",
               "meaning": "After eating, I drank coffee.",
               "feeling": "natural sequence",
-              "sound": ""
+              "sound": "/audio/밥을 먹고 나서 커피를 마셨어요.mp3"
             },
             {
               "text": "숙제를 하고 나서 게임해요.",
               "meaning": "I play games after doing my homework.",
               "feeling": "everyday order",
-              "sound": ""
+              "sound": "/audio/숙제를 하고 나서 게임해요.mp3"
             }
           ]
         },
@@ -355,13 +355,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "집에 오자마자 잤어요.",
               "meaning": "As soon as I got home, I slept.",
               "feeling": "immediate action",
-              "sound": ""
+              "sound": "/audio/집에 오자마자 잤어요.mp3"
             },
             {
               "text": "수업이 끝나자마자 밖에 나갔어요.",
               "meaning": "As soon as class ended, I went outside.",
               "feeling": "quick transition",
-              "sound": ""
+              "sound": "/audio/수업이 끝나자마자 밖에 나갔어요.mp3"
             }
           ]
         },
@@ -381,13 +381,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "음악을 들으면서 공부해요.",
               "meaning": "I study while listening to music.",
               "feeling": "everyday habit",
-              "sound": ""
+              "sound": "/audio/음악을 들으면서 공부해요.mp3"
             },
             {
               "text": "걸으면서 이야기했어요.",
               "meaning": "We talked while walking.",
               "feeling": "casual scene",
-              "sound": ""
+              "sound": "/audio/걸으면서 이야기했어요.mp3"
             }
           ]
         },
@@ -407,13 +407,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "집에 가다가 친구를 만났어요.",
               "meaning": "While going home, I met a friend.",
               "feeling": "unexpected event",
-              "sound": ""
+              "sound": "/audio/집에 가다가 친구를 만났어요.mp3"
             },
             {
               "text": "공부하다가 잠이 들었어요.",
               "meaning": "I was studying and then I fell asleep.",
               "feeling": "action got interrupted",
-              "sound": ""
+              "sound": "/audio/공부하다가 잠이 들었어요.mp3"
             }
           ]
         },
@@ -433,13 +433,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "건강을 위해서 운동해요.",
               "meaning": "I exercise for my health.",
               "feeling": "goal-oriented",
-              "sound": ""
+              "sound": "/audio/건강을 위해서 운동해요.mp3"
             },
             {
               "text": "시험에 합격하기 위해 열심히 공부했어요.",
               "meaning": "I studied hard in order to pass the exam.",
               "feeling": "determined",
-              "sound": ""
+              "sound": "/audio/시험에 합격하기 위해 열심히 공부했어요.mp3"
             }
           ]
         },
@@ -459,13 +459,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "오늘 일찍 자려고 해요.",
               "meaning": "I’m going to sleep early today.",
               "feeling": "simple plan",
-              "sound": ""
+              "sound": "/audio/오늘 일찍 자려고 해요.mp3"
             },
             {
               "text": "밥을 먹으려고 식당에 갔어요.",
               "meaning": "I went to a restaurant to eat.",
               "feeling": "purposeful action",
-              "sound": ""
+              "sound": "/audio/밥을 먹으려고 식당에 갔어요.mp3"
             }
           ]
         },
@@ -485,13 +485,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "친구를 만나러 갈 거예요.",
               "meaning": "I’m going to meet a friend.",
               "feeling": "casual plan",
-              "sound": ""
+              "sound": "/audio/친구를 만나러 갈 거예요.mp3"
             },
             {
               "text": "커피 마시러 왔어요.",
               "meaning": "I came to drink coffee.",
               "feeling": "light intention",
-              "sound": ""
+              "sound": "/audio/커피 마시러 왔어요.mp3"
             }
           ]
         },
@@ -511,13 +511,13 @@ export const verbEndingData: VerbEndingData = [
               "text": "방학 동안 한국에 있었어요.",
               "meaning": "I stayed in Korea during the vacation.",
               "feeling": "time window",
-              "sound": ""
+              "sound": "/audio/방학 동안 한국에 있었어요.mp3"
             },
             {
               "text": "기다리는 동안 책을 읽었어요.",
               "meaning": "I read a book while waiting.",
               "feeling": "filling time",
-              "sound": ""
+              "sound": "/audio/기다리는 동안 책을 읽었어요.mp3"
             }
           ]
         },
@@ -537,13 +537,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "한국 노래를 들을 때마다 기분이 좋아져요.",
                 "meaning": "Every time I listen to Korean songs, I feel better.",
                 "feeling": "repeated reaction",
-                "sound": ""
+                "sound": "/audio/한국 노래를 들을 때마다 기분이 좋아져요.mp3"
               },
               {
                 "text": "그 사람을 볼 때마다 웃음이 나요.",
                 "meaning": "Whenever I see that person, I start smiling.",
                 "feeling": "natural repeated feeling",
-                "sound": ""
+                "sound": "/audio/그 사람을 볼 때마다 웃음이 나요.mp3"
               }
             ]
           },
@@ -563,13 +563,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "수업이 끝난 후에 같이 밥 먹어요.",
                 "meaning": "After class ends, let’s eat together.",
                 "feeling": "simple plan",
-                "sound": ""
+                "sound": "/audio/수업이 끝난 후에 같이 밥 먹어요.mp3"
               },
               {
                 "text": "일을 한 뒤에 집에 갔어요.",
                 "meaning": "After working, I went home.",
                 "feeling": "sequence",
-                "sound": ""
+                "sound": "/audio/일을 한 뒤에 집에 갔어요.mp3"
               }
             ]
           },
@@ -589,13 +589,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "비가 오는 한 밖에 안 나갈 거예요.",
                 "meaning": "As long as it’s raining, I won’t go outside.",
                 "feeling": "firm decision",
-                "sound": ""
+                "sound": "/audio/비가 오는 한 밖에 안 나갈 거예요.mp3"
               },
               {
                 "text": "약속을 지키는 한 믿을게요.",
                 "meaning": "As long as you keep your promise, I’ll trust you.",
                 "feeling": "conditional trust",
-                "sound": ""
+                "sound": "/audio/약속을 지키는 한 믿을게요.mp3"
               }
             ]
           },
@@ -615,13 +615,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "문제가 생길 경우에 바로 연락하세요.",
                 "meaning": "If a problem occurs, contact us immediately.",
                 "feeling": "formal instruction",
-                "sound": ""
+                "sound": "/audio/문제가 생길 경우에 바로 연락하세요.mp3"
               },
               {
                 "text": "취소할 경우 수수료가 있을 수 있어요.",
                 "meaning": "In case of cancellation, there may be a fee.",
                 "feeling": "policy notice",
-                "sound": ""
+                "sound": "/audio/취소할 경우 수수료가 있을 수 있어요.mp3"
               }
             ]
           },
@@ -641,13 +641,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "저는 커피를 좋아하는 반면에 동생은 차를 좋아해요.",
                 "meaning": "I like coffee, whereas my younger sibling likes tea.",
                 "feeling": "balanced comparison",
-                "sound": ""
+                "sound": "/audio/저는 커피를 좋아하는 반면에 동생은 차를 좋아해요.mp3"
               },
               {
                 "text": "여름은 덥지만 겨울은 추운 반면에 봄은 따뜻해요.",
                 "meaning": "Summer is hot, whereas spring is warm (by comparison).",
                 "feeling": "explanatory contrast",
-                "sound": ""
+                "sound": "/audio/여름은 덥지만 겨울은 추운 반면에 봄은 따뜻해요.mp3"
               }
             ]
           },
@@ -667,13 +667,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "오늘은 못 가요. 일이 있거든요.",
                 "meaning": "I can’t go today. I have something to do, you see.",
                 "feeling": "casual explanation",
-                "sound": ""
+                "sound": "/audio/오늘은 못 가요. 일이 있거든요.mp3"
               },
               {
                 "text": "좀 늦을 거예요. 길이 막히거든요.",
                 "meaning": "I’ll be a bit late. The traffic is bad, you see.",
                 "feeling": "soft justification",
-                "sound": ""
+                "sound": "/audio/좀 늦을 거예요. 길이 막히거든요.mp3"
               }
             ]
           },
@@ -693,13 +693,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "비가 오길래 우산을 샀어요.",
                 "meaning": "Since I saw it was raining, I bought an umbrella.",
                 "feeling": "casual observation → action",
-                "sound": ""
+                "sound": "/audio/비가 오길래 우산을 샀어요.mp3"
               },
               {
                 "text": "힘들어 보이길래 먼저 도와줬어요.",
                 "meaning": "Since you looked tired, I helped first.",
                 "feeling": "considerate reasoning",
-                "sound": ""
+                "sound": "/audio/힘들어 보이길래 먼저 도와줬어요.mp3"
               }
             ]
           },
@@ -719,13 +719,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "일하느라고 전화를 못 받았어요.",
                 "meaning": "I couldn’t answer because I was working.",
                 "feeling": "apologetic excuse",
-                "sound": ""
+                "sound": "/audio/일하느라고 전화를 못 받았어요.mp3"
               },
               {
                 "text": "준비하느라고 밤을 샜어요.",
                 "meaning": "I stayed up all night because I was preparing.",
                 "feeling": "tired regret",
-                "sound": ""
+                "sound": "/audio/준비하느라고 밤을 샜어요.mp3"
               }
             ]
           },
@@ -745,13 +745,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "비가 오는 바람에 소풍을 못 갔어요.",
                 "meaning": "Because it rained, we couldn’t go on the picnic.",
                 "feeling": "unfortunate situation",
-                "sound": ""
+                "sound": "/audio/비가 오는 바람에 소풍을 못 갔어요.mp3"
               },
               {
                 "text": "버스를 놓치는 바람에 지각했어요.",
                 "meaning": "Because I missed the bus, I was late.",
                 "feeling": "regretful",
-                "sound": ""
+                "sound": "/audio/버스를 놓치는 바람에 지각했어요.mp3"
               }
             ]
           },
@@ -771,13 +771,13 @@ export const verbEndingData: VerbEndingData = [
                 "text": "내가 늦게 출발하는 탓에 약속에 늦었어요.",
                 "meaning": "Because I left late (my fault), I was late for the appointment.",
                 "feeling": "self-blame",
-                "sound": ""
+                "sound": "/audio/내가 늦게 출발하는 탓에 약속에 늦었어요.mp3"
               },
               {
                 "text": "준비를 안 하는 탓에 실수했어요.",
                 "meaning": "Because you didn’t prepare (your fault), you made a mistake.",
                 "feeling": "critical blame",
-                "sound": ""
+                "sound": "/audio/준비를 안 하는 탓에 실수했어요.mp3"
               }
             ]
           },
@@ -797,13 +797,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "친구 덕분에 숙제를 빨리 끝냈어요.",
                   "meaning": "Thanks to my friend, I finished the homework quickly.",
                   "feeling": "grateful",
-                  "sound": ""
+                  "sound": "/audio/친구 덕분에 숙제를 빨리 끝냈어요.mp3"
                 },
                 {
                   "text": "연습을 많이 한 덕분에 잘했어요.",
                   "meaning": "Because I practiced a lot, I did well (thanks to that).",
                   "feeling": "relieved pride",
-                  "sound": ""
+                  "sound": "/audio/연습을 많이 한 덕분에 잘했어요.mp3"
                 }
               ]
             },
@@ -823,13 +823,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "한국어를 공부하다 보니 재미있어졌어요.",
                   "meaning": "As I kept studying Korean, it became fun.",
                   "feeling": "gradual change",
-                  "sound": ""
+                  "sound": "/audio/한국어를 공부하다 보니 재미있어졌어요.mp3"
                 },
                 {
                   "text": "같이 일하다 보니 성격을 알게 됐어요.",
                   "meaning": "After working together for a while, I got to know their personality.",
                   "feeling": "natural realization",
-                  "sound": ""
+                  "sound": "/audio/같이 일하다 보니 성격을 알게 됐어요.mp3"
                 }
               ]
             },
@@ -849,13 +849,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "연습하다 보면 늘어요.",
                   "meaning": "If you keep practicing, you’ll improve.",
                   "feeling": "encouraging",
-                  "sound": ""
+                  "sound": "/audio/연습하다 보면 늘어요.mp3"
                 },
                 {
                   "text": "살다 보면 그런 날도 있어요.",
                   "meaning": "If you live long enough, there are days like that.",
                   "feeling": "calm wisdom",
-                  "sound": ""
+                  "sound": "/audio/살다 보면 그런 날도 있어요.mp3"
                 }
               ]
             },
@@ -875,13 +875,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "아까는 춥더니 지금은 따뜻해요.",
                   "meaning": "It was cold earlier, but now it’s warm.",
                   "feeling": "noticing change",
-                  "sound": ""
+                  "sound": "/audio/아까는 춥더니 지금은 따뜻해요.mp3"
                 },
                 {
                   "text": "열심히 하더니 결국 성공했어요.",
                   "meaning": "They worked hard, and in the end they succeeded.",
                   "feeling": "result after effort",
-                  "sound": ""
+                  "sound": "/audio/열심히 하더니 결국 성공했어요.mp3"
                 }
               ]
             },
@@ -901,13 +901,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "다시 생각해 보고 보니 내가 틀렸어요.",
                   "meaning": "After thinking again, I realized I was wrong.",
                   "feeling": "self-realization",
-                  "sound": ""
+                  "sound": "/audio/다시 생각해 보고 보니 내가 틀렸어요.mp3"
                 },
                 {
                   "text": "가서 보니까 문이 닫혀 있었어요.",
                   "meaning": "When I went there, I found the door was closed.",
                   "feeling": "unexpected discovery",
-                  "sound": ""
+                  "sound": "/audio/가서 보니까 문이 닫혀 있었어요.mp3"
                 }
               ]
             },
@@ -927,13 +927,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "집에 도착하자 바로 전화했어요.",
                   "meaning": "As soon as I arrived home, I called right away.",
                   "feeling": "immediate action",
-                  "sound": ""
+                  "sound": "/audio/집에 도착하자 바로 전화했어요.mp3"
                 },
                 {
                   "text": "문을 열자 바람이 들어왔어요.",
                   "meaning": "As soon as I opened the door, wind came in.",
                   "feeling": "instant result",
-                  "sound": ""
+                  "sound": "/audio/문을 열자 바람이 들어왔어요.mp3"
                 }
               ]
             },
@@ -953,13 +953,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "아파 보고서야 건강이 중요하다는 걸 알았어요.",
                   "meaning": "Only after getting sick did I realize health is important.",
                   "feeling": "regretful lesson",
-                  "sound": ""
+                  "sound": "/audio/아파 보고서야 건강이 중요하다는 걸 알았어요.mp3"
                 },
                 {
                   "text": "끝까지 해 보고서야 포기했어요.",
                   "meaning": "Only after trying to the end did I give up.",
                   "feeling": "finally / exhausted",
-                  "sound": ""
+                  "sound": "/audio/끝까지 해 보고서야 포기했어요.mp3"
                 }
               ]
             },
@@ -979,13 +979,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "마트에 간 김에 우유도 샀어요.",
                   "meaning": "Since I went to the mart, I also bought milk.",
                   "feeling": "efficient add-on",
-                  "sound": ""
+                  "sound": "/audio/마트에 간 김에 우유도 샀어요.mp3"
                 },
                 {
                   "text": "나온 김에 은행도 들를게요.",
                   "meaning": "Since I’m out anyway, I’ll stop by the bank too.",
                   "feeling": "practical plan",
-                  "sound": ""
+                  "sound": "/audio/나온 김에 은행도 들를게요.mp3"
                 }
               ]
             },
@@ -1005,13 +1005,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "택시를 타는 대신에 지하철을 탔어요.",
                   "meaning": "Instead of taking a taxi, I took the subway.",
                   "feeling": "practical choice",
-                  "sound": ""
+                  "sound": "/audio/택시를 타는 대신에 지하철을 탔어요.mp3"
                 },
                 {
                   "text": "제가 도와준 대신에 커피를 사 줬어요.",
                   "meaning": "In return for my help, they bought me coffee.",
                   "feeling": "fair exchange",
-                  "sound": ""
+                  "sound": "/audio/제가 도와준 대신에 커피를 사 줬어요.mp3"
                 }
               ]
             },
@@ -1031,13 +1031,13 @@ export const verbEndingData: VerbEndingData = [
                   "text": "비가 오는 데다 바람도 불어요.",
                   "meaning": "On top of raining, it’s also windy.",
                   "feeling": "complaining / unlucky",
-                  "sound": ""
+                  "sound": "/audio/비가 오는 데다 바람도 불어요.mp3"
                 },
                 {
                   "text": "그 식당은 맛있는 데다 가격도 싸요.",
                   "meaning": "That restaurant is delicious, and on top of that, it’s cheap.",
                   "feeling": "positive listing",
-                  "sound": ""
+                  "sound": "/audio/그 식당은 맛있는 데다 가격도 싸요.mp3"
                 }
               ]
             },
@@ -1057,13 +1057,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "시작한 이상 끝까지 해야 해요.",
                       "meaning": "Since we started, we must finish to the end.",
                       "feeling": "firm determination",
-                      "sound": ""
+                      "sound": "/audio/시작한 이상 끝까지 해야 해요.mp3"
                     },
                     {
                       "text": "약속한 이상 꼭 지킬게요.",
                       "meaning": "Since I promised, I’ll definitely keep it.",
                       "feeling": "responsible commitment",
-                      "sound": ""
+                      "sound": "/audio/약속한 이상 꼭 지킬게요.mp3"
                     }
                   ]
                 },
@@ -1083,13 +1083,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "그 사람은 친절할 뿐만 아니라 일도 잘해요.",
                       "meaning": "That person is not only kind, but also good at work.",
                       "feeling": "strong positive emphasis",
-                      "sound": ""
+                      "sound": "/audio/그 사람은 친절할 뿐만 아니라 일도 잘해요.mp3"
                     },
                     {
                       "text": "이 앱은 빠를 뿐만 아니라 사용하기도 쉬워요.",
                       "meaning": "This app is not only fast, but also easy to use.",
                       "feeling": "promotional emphasis",
-                      "sound": ""
+                      "sound": "/audio/이 앱은 빠를 뿐만 아니라 사용하기도 쉬워요.mp3"
                     }
                   ]
                 },
@@ -1109,13 +1109,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "저는 제 할 일만 했을 뿐이에요.",
                       "meaning": "I only did what I had to do.",
                       "feeling": "modest / downplaying",
-                      "sound": ""
+                      "sound": "/audio/저는 제 할 일만 했을 뿐이에요.mp3"
                     },
                     {
                       "text": "그건 그냥 소문일 뿐이에요.",
                       "meaning": "That’s just a rumor, that’s all.",
                       "feeling": "dismissive but calm",
-                      "sound": ""
+                      "sound": "/audio/그건 그냥 소문일 뿐이에요.mp3"
                     }
                   ]
                 },
@@ -1135,13 +1135,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "생각할수록 더 헷갈려요.",
                       "meaning": "The more I think, the more confused I get.",
                       "feeling": "growing confusion",
-                      "sound": ""
+                      "sound": "/audio/생각할수록 더 헷갈려요.mp3"
                     },
                     {
                       "text": "연습할수록 실력이 늘어요.",
                       "meaning": "The more you practice, the better you get.",
                       "feeling": "encouraging",
-                      "sound": ""
+                      "sound": "/audio/연습할수록 실력이 늘어요.mp3"
                     }
                   ]
                 },
@@ -1161,13 +1161,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "신발을 신은 채로 들어왔어요.",
                       "meaning": "He came in with his shoes still on.",
                       "feeling": "descriptive / slightly critical",
-                      "sound": ""
+                      "sound": "/audio/신발을 신은 채로 들어왔어요.mp3"
                     },
                     {
                       "text": "불을 켠 채로 잤어요.",
                       "meaning": "I slept with the light still on.",
                       "feeling": "careless / accidental",
-                      "sound": ""
+                      "sound": "/audio/불을 켠 채로 잤어요.mp3"
                     }
                   ]
                 },
@@ -1187,13 +1187,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "문을 열어 놓았어요.",
                       "meaning": "I left the door open.",
                       "feeling": "prepared / intentional",
-                      "sound": ""
+                      "sound": "/audio/문을 열어 놓았어요.mp3"
                     },
                     {
                       "text": "음식을 미리 만들어 놓았어요.",
                       "meaning": "I prepared the food in advance.",
                       "feeling": "planning ahead",
-                      "sound": ""
+                      "sound": "/audio/음식을 미리 만들어 놓았어요.mp3"
                     }
                   ]
                 },
@@ -1213,13 +1213,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "필요한 자료를 복사해 뒀어요.",
                       "meaning": "I made copies of the needed documents in advance.",
                       "feeling": "prepared",
-                      "sound": ""
+                      "sound": "/audio/필요한 자료를 복사해 뒀어요.mp3"
                     },
                     {
                       "text": "내일을 위해 돈을 모아 두고 있어요.",
                       "meaning": "I’m saving money for tomorrow/the future.",
                       "feeling": "responsible planning",
-                      "sound": ""
+                      "sound": "/audio/내일을 위해 돈을 모아 두고 있어요.mp3"
                     }
                   ]
                 },
@@ -1239,13 +1239,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "숙제를 다 해 버렸어요.",
                       "meaning": "I finished all my homework (completely).",
                       "feeling": "relieved completion",
-                      "sound": ""
+                      "sound": "/audio/숙제를 다 해 버렸어요.mp3"
                     },
                     {
                       "text": "실수로 파일을 지워 버렸어요.",
                       "meaning": "I accidentally deleted the file.",
                       "feeling": "regret / frustration",
-                      "sound": ""
+                      "sound": "/audio/실수로 파일을 지워 버렸어요.mp3"
                     }
                   ]
                 },
@@ -1265,13 +1265,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "집에 있거나 밖에 나갈 거예요.",
                       "meaning": "I’ll either stay home or go out.",
                       "feeling": "simple options",
-                      "sound": ""
+                      "sound": "/audio/집에 있거나 밖에 나갈 거예요.mp3"
                     },
                     {
                       "text": "피곤하거나 아프면 쉬세요.",
                       "meaning": "If you’re tired or sick, please rest.",
                       "feeling": "caring advice",
-                      "sound": ""
+                      "sound": "/audio/피곤하거나 아프면 쉬세요.mp3"
                     }
                   ]
                 },
@@ -1291,13 +1291,13 @@ export const verbEndingData: VerbEndingData = [
                       "text": "커피든지 차든지 괜찮아요.",
                       "meaning": "Coffee or tea is fine.",
                       "feeling": "easygoing",
-                      "sound": ""
+                      "sound": "/audio/커피든지 차든지 괜찮아요.mp3"
                     },
                     {
                       "text": "주말에 오든지 평일에 오든지 편한 때 오세요.",
                       "meaning": "Come on the weekend or on a weekday—come whenever it’s convenient.",
                       "feeling": "welcoming / flexible",
-                      "sound": ""
+                      "sound": "/audio/주말에 오든지 평일에 오든지 편한 때 오세요.mp3"
                     }
                   ]
                 },
@@ -1317,13 +1317,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "그렇지?",
                           "meaning": "Right?",
                           "feeling": "seeking agreement (casual)",
-                          "sound": ""
+                          "sound": "/audio/그렇지?.mp3"
                         },
                         {
                           "text": "뭘 먹지… 뭐가 좋지…",
                           "meaning": "What should I eat… what would be good…",
                           "feeling": "thinking aloud",
-                          "sound": ""
+                          "sound": "/audio/뭘 먹지… 뭐가 좋지….mp3"
                         }
                       ]
                     },
@@ -1343,13 +1343,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "내가 바쁘잖아.",
                           "meaning": "You know I’m busy.",
                           "feeling": "slightly complaining (casual)",
-                          "sound": ""
+                          "sound": "/audio/내가 바쁘잖아.mp3"
                         },
                         {
                           "text": "이거 어렵잖아요.",
                           "meaning": "You know this is hard.",
                           "feeling": "seeking sympathy (polite)",
-                          "sound": ""
+                          "sound": "/audio/이거 어렵잖아요.mp3"
                         }
                       ]
                     },
@@ -1369,13 +1369,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "지금 바쁘거든 나중에 이야기하자.",
                           "meaning": "I’m busy right now, so let’s talk later.",
                           "feeling": "setting context first",
-                          "sound": ""
+                          "sound": "/audio/지금 바쁘거든 나중에 이야기하자.mp3"
                         },
                         {
                           "text": "이거 처음이거든 천천히 해도 돼.",
                           "meaning": "It’s your first time, so you can do it slowly.",
                           "feeling": "reassuring",
-                          "sound": ""
+                          "sound": "/audio/이거 처음이거든 천천히 해도 돼.mp3"
                         }
                       ]
                     },
@@ -1395,13 +1395,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "생각보다 빠르네요.",
                           "meaning": "Oh, it’s faster than I thought.",
                           "feeling": "surprised realization (polite)",
-                          "sound": ""
+                          "sound": "/audio/생각보다 빠르네요.mp3"
                         },
                         {
                           "text": "날씨 좋네.",
                           "meaning": "Oh, the weather is nice.",
                           "feeling": "casual observation",
-                          "sound": ""
+                          "sound": "/audio/날씨 좋네.mp3"
                         }
                       ]
                     },
@@ -1421,13 +1421,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "그 영화 진짜 재미있더라고요.",
                           "meaning": "That movie was really fun (from my experience).",
                           "feeling": "sharing experience (polite)",
-                          "sound": ""
+                          "sound": "/audio/그 영화 진짜 재미있더라고요.mp3"
                         },
                         {
                           "text": "거기 사람 많더라.",
                           "meaning": "There were a lot of people there (I saw it).",
                           "feeling": "casual recollection",
-                          "sound": ""
+                          "sound": "/audio/거기 사람 많더라.mp3"
                         }
                       ]
                     },
@@ -1447,13 +1447,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "조금 쉬는 게 좋겠나 봐요.",
                           "meaning": "I guess it might be good to rest a bit.",
                           "feeling": "gentle suggestion",
-                          "sound": ""
+                          "sound": "/audio/조금 쉬는 게 좋겠나 봐요.mp3"
                         },
                         {
                           "text": "이거 괜찮나?",
                           "meaning": "I wonder if this is okay?",
                           "feeling": "uncertain, soft",
-                          "sound": ""
+                          "sound": "/audio/이거 괜찮나?.mp3"
                         }
                       ]
                     },
@@ -1473,13 +1473,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "비가 오면 못 가지 뭐.",
                           "meaning": "If it rains, I guess we just can’t go.",
                           "feeling": "resigned but casual",
-                          "sound": ""
+                          "sound": "/audio/비가 오면 못 가지 뭐.mp3"
                         },
                         {
                           "text": "안 되면 다음에 하지 뭐.",
                           "meaning": "If it doesn’t work, we’ll just do it next time.",
                           "feeling": "easygoing resignation",
-                          "sound": ""
+                          "sound": "/audio/안 되면 다음에 하지 뭐.mp3"
                         }
                       ]
                     },
@@ -1499,13 +1499,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "저 지금 바쁜데요…",
                           "meaning": "I’m busy right now… (so…) ",
                           "feeling": "polite hesitation / hinting",
-                          "sound": ""
+                          "sound": "/audio/저 지금 바쁜데요….mp3"
                         },
                         {
                           "text": "그건 좋은 생각인데요.",
                           "meaning": "That’s a good idea, but…",
                           "feeling": "polite soft contrast",
-                          "sound": ""
+                          "sound": "/audio/그건 좋은 생각인데요.mp3"
                         }
                       ]
                     },
@@ -1525,13 +1525,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "괜찮지요?",
                           "meaning": "It’s okay, right?",
                           "feeling": "gentle confirmation",
-                          "sound": ""
+                          "sound": "/audio/괜찮지요?.mp3"
                         },
                         {
                           "text": "쉽지요.",
                           "meaning": "It’s easy, you know.",
                           "feeling": "friendly assurance",
-                          "sound": ""
+                          "sound": "/audio/쉽지요.mp3"
                         }
                       ]
                     },
@@ -1551,13 +1551,13 @@ export const verbEndingData: VerbEndingData = [
                           "text": "지금 오고 있을까?",
                           "meaning": "I wonder if they’re coming now.",
                           "feeling": "curious/uncertain",
-                          "sound": ""
+                          "sound": "/audio/지금 오고 있을까?.mp3"
                         },
                         {
                           "text": "비가 오려나.",
                           "meaning": "Maybe it’ll rain (I wonder).",
                           "feeling": "casual musing",
-                          "sound": ""
+                          "sound": "/audio/비가 오려나.mp3"
                         }
                       ]
                     },
@@ -1577,13 +1577,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "내일 전화할게요.",
                             "meaning": "I’ll call you tomorrow.",
                             "feeling": "promise / reassurance",
-                            "sound": ""
+                            "sound": "/audio/내일 전화할게요.mp3"
                           },
                           {
                             "text": "제가 여기서 기다릴게요.",
                             "meaning": "I’ll wait here.",
                             "feeling": "considerate decision",
-                            "sound": ""
+                            "sound": "/audio/제가 여기서 기다릴게요.mp3"
                           }
                         ]
                       },
@@ -1603,13 +1603,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "저는 집에 있을래요.",
                             "meaning": "I’m going to stay home.",
                             "feeling": "personal choice",
-                            "sound": ""
+                            "sound": "/audio/저는 집에 있을래요.mp3"
                           },
                           {
                             "text": "오늘은 일찍 잘래요.",
                             "meaning": "I want to sleep early today.",
                             "feeling": "casual intention",
-                            "sound": ""
+                            "sound": "/audio/오늘은 일찍 잘래요.mp3"
                           }
                         ]
                       },
@@ -1629,13 +1629,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "사진 좀 찍어 주세요.",
                             "meaning": "Please take a photo for me.",
                             "feeling": "polite request",
-                            "sound": ""
+                            "sound": "/audio/사진 좀 찍어 주세요.mp3"
                           },
                           {
                             "text": "제가 문을 열어 줄게요.",
                             "meaning": "I’ll open the door for you.",
                             "feeling": "helpful offer",
-                            "sound": ""
+                            "sound": "/audio/제가 문을 열어 줄게요.mp3"
                           }
                         ]
                       },
@@ -1655,13 +1655,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "이거 한번 먹어 봐요.",
                             "meaning": "Try eating this once.",
                             "feeling": "friendly suggestion",
-                            "sound": ""
+                            "sound": "/audio/이거 한번 먹어 봐요.mp3"
                           },
                           {
                             "text": "새 방법을 써 봤어요.",
                             "meaning": "I tried a new method.",
                             "feeling": "experimenting",
-                            "sound": ""
+                            "sound": "/audio/새 방법을 써 봤어요.mp3"
                           }
                         ]
                       },
@@ -1681,13 +1681,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "한국에서 살게 됐어요.",
                             "meaning": "I ended up living in Korea.",
                             "feeling": "matter-of-fact outcome",
-                            "sound": ""
+                            "sound": "/audio/한국에서 살게 됐어요.mp3"
                           },
                           {
                             "text": "자주 만나게 됐어요.",
                             "meaning": "We ended up meeting often.",
                             "feeling": "natural progression",
-                            "sound": ""
+                            "sound": "/audio/자주 만나게 됐어요.mp3"
                           }
                         ]
                       },
@@ -1707,13 +1707,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "내일 비가 올 것 같아요.",
                             "meaning": "I think it will rain tomorrow.",
                             "feeling": "uncertain prediction",
-                            "sound": ""
+                            "sound": "/audio/내일 비가 올 것 같아요.mp3"
                           },
                           {
                             "text": "이게 더 좋은 것 같아요.",
                             "meaning": "I think this is better.",
                             "feeling": "soft opinion",
-                            "sound": ""
+                            "sound": "/audio/이게 더 좋은 것 같아요.mp3"
                           }
                         ]
                       },
@@ -1733,13 +1733,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "밖에 비가 오나 봐요.",
                             "meaning": "Looks like it’s raining outside.",
                             "feeling": "inference from clues",
-                            "sound": ""
+                            "sound": "/audio/밖에 비가 오나 봐요.mp3"
                           },
                           {
                             "text": "피곤한가 봐요.",
                             "meaning": "You seem tired.",
                             "feeling": "gentle observation",
-                            "sound": ""
+                            "sound": "/audio/피곤한가 봐요.mp3"
                           }
                         ]
                       },
@@ -1759,13 +1759,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "늦지 않도록 서둘러요.",
                             "meaning": "Hurry so that you’re not late.",
                             "feeling": "instruction / caution",
-                            "sound": ""
+                            "sound": "/audio/늦지 않도록 서둘러요.mp3"
                           },
                           {
                             "text": "모두가 이해하도록 쉽게 설명했어요.",
                             "meaning": "I explained it simply so everyone could understand.",
                             "feeling": "clear purpose",
-                            "sound": ""
+                            "sound": "/audio/모두가 이해하도록 쉽게 설명했어요.mp3"
                           }
                         ]
                       },
@@ -1785,13 +1785,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "잘 들리게끔 크게 말해 주세요.",
                             "meaning": "Please speak loudly so it can be heard well.",
                             "feeling": "practical request",
-                            "sound": ""
+                            "sound": "/audio/잘 들리게끔 크게 말해 주세요.mp3"
                           },
                           {
                             "text": "헷갈리지 않게끔 정리해 뒀어요.",
                             "meaning": "I organized it so it wouldn’t be confusing.",
                             "feeling": "helpful preparation",
-                            "sound": ""
+                            "sound": "/audio/헷갈리지 않게끔 정리해 뒀어요.mp3"
                           }
                         ]
                       },
@@ -1811,13 +1811,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "저는 커피를 마시지 않아요.",
                             "meaning": "I don’t drink coffee.",
                             "feeling": "neutral statement",
-                            "sound": ""
+                            "sound": "/audio/저는 커피를 마시지 않아요.mp3"
                           },
                           {
                             "text": "오늘은 춥지 않아요.",
                             "meaning": "It’s not cold today.",
                             "feeling": "simple observation",
-                            "sound": ""
+                            "sound": "/audio/오늘은 춥지 않아요.mp3"
                           }
                         ]
                       },
@@ -1837,13 +1837,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "날씨가 추워졌어요.",
                             "meaning": "The weather got cold.",
                             "feeling": "natural change",
-                            "sound": ""
+                            "sound": "/audio/날씨가 추워졌어요.mp3"
                           },
                           {
                             "text": "요즘 더 바빠졌어요.",
                             "meaning": "These days I’ve become busier.",
                             "feeling": "gradual change",
-                            "sound": ""
+                            "sound": "/audio/요즘 더 바빠졌어요.mp3"
                           }
                         ]
                       },
@@ -1863,13 +1863,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "아이를 밖에서 놀게 했어요.",
                             "meaning": "I let the child play outside.",
                             "feeling": "allowing",
-                            "sound": ""
+                            "sound": "/audio/아이를 밖에서 놀게 했어요.mp3"
                           },
                           {
                             "text": "사람들을 기다리게 했어요.",
                             "meaning": "I made people wait.",
                             "feeling": "causing inconvenience",
-                            "sound": ""
+                            "sound": "/audio/사람들을 기다리게 했어요.mp3"
                           }
                         ]
                       },
@@ -1889,13 +1889,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "여기 앉아도 돼요?",
                             "meaning": "May I sit here?",
                             "feeling": "polite permission request",
-                            "sound": ""
+                            "sound": "/audio/여기 앉아도 돼요?.mp3"
                           },
                           {
                             "text": "지금 나가도 돼요.",
                             "meaning": "You can leave now.",
                             "feeling": "permission granted",
-                            "sound": ""
+                            "sound": "/audio/지금 나가도 돼요.mp3"
                           }
                         ]
                       },
@@ -1915,13 +1915,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "여기에서 담배 피우면 안 돼요.",
                             "meaning": "You must not smoke here.",
                             "feeling": "rule / warning",
-                            "sound": ""
+                            "sound": "/audio/여기에서 담배 피우면 안 돼요.mp3"
                           },
                           {
                             "text": "늦으면 안 돼요.",
                             "meaning": "You can’t be late.",
                             "feeling": "strict reminder",
-                            "sound": ""
+                            "sound": "/audio/늦으면 안 돼요.mp3"
                           }
                         ]
                       },
@@ -1941,13 +1941,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "저는 수영할 수 있어요.",
                             "meaning": "I can swim.",
                             "feeling": "ability",
-                            "sound": ""
+                            "sound": "/audio/저는 수영할 수 있어요.mp3"
                           },
                           {
                             "text": "오늘은 늦을 수 있어요.",
                             "meaning": "I might be late today.",
                             "feeling": "possibility / warning",
-                            "sound": ""
+                            "sound": "/audio/오늘은 늦을 수 있어요.mp3"
                           }
                         ]
                       },
@@ -1967,13 +1967,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "오늘은 갈 수 없어요.",
                             "meaning": "I can’t go today.",
                             "feeling": "clear limitation",
-                            "sound": ""
+                            "sound": "/audio/오늘은 갈 수 없어요.mp3"
                           },
                           {
                             "text": "그건 믿을 수 없어요.",
                             "meaning": "I can’t believe that.",
                             "feeling": "strong disbelief",
-                            "sound": ""
+                            "sound": "/audio/그건 믿을 수 없어요.mp3"
                           }
                         ]
                       },
@@ -1993,13 +1993,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "지금 가야 돼요.",
                             "meaning": "I have to go now.",
                             "feeling": "everyday necessity",
-                            "sound": ""
+                            "sound": "/audio/지금 가야 돼요.mp3"
                           },
                           {
                             "text": "내일까지 끝내야 돼요.",
                             "meaning": "I need to finish it by tomorrow.",
                             "feeling": "deadline pressure",
-                            "sound": ""
+                            "sound": "/audio/내일까지 끝내야 돼요.mp3"
                           }
                         ]
                       },
@@ -2019,13 +2019,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "오늘 비가 올지도 몰라요.",
                             "meaning": "It might rain today.",
                             "feeling": "uncertain prediction",
-                            "sound": ""
+                            "sound": "/audio/오늘 비가 올지도 몰라요.mp3"
                           },
                           {
                             "text": "그 사람이 안 올지도 몰라요.",
                             "meaning": "That person might not come.",
                             "feeling": "uncertain concern",
-                            "sound": ""
+                            "sound": "/audio/그 사람이 안 올지도 몰라요.mp3"
                           }
                         ]
                       },
@@ -2045,13 +2045,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "이제 자야지.",
                             "meaning": "I should sleep now.",
                             "feeling": "small personal decision",
-                            "sound": ""
+                            "sound": "/audio/이제 자야지.mp3"
                           },
                           {
                             "text": "다음부터는 조심해야지.",
                             "meaning": "From next time, I should be careful.",
                             "feeling": "self-reminder / resolve",
-                            "sound": ""
+                            "sound": "/audio/다음부터는 조심해야지.mp3"
                           }
                         ]
                       },
@@ -2071,13 +2071,13 @@ export const verbEndingData: VerbEndingData = [
                             "text": "걱정하지 마세요.",
                             "meaning": "Please don’t worry.",
                             "feeling": "gentle reassurance",
-                            "sound": ""
+                            "sound": "/audio/걱정하지 마세요.mp3"
                           },
                           {
                             "text": "여기에서 사진 찍지 마.",
                             "meaning": "Don’t take photos here.",
                             "feeling": "direct prohibition (casual)",
-                            "sound": ""
+                            "sound": "/audio/여기에서 사진 찍지 마.mp3"
                           }
                         ]
                       },
@@ -2097,13 +2097,13 @@ export const verbEndingData: VerbEndingData = [
                               "text": "수업이 끝난 후에 같이 밥 먹어요.",
                               "meaning": "After class ends, let’s eat together.",
                               "feeling": "simple plan",
-                              "sound": ""
+                              "sound": "/audio/수업이 끝난 후에 같이 밥 먹어요.mp3"
                             },
                             {
                               "text": "일을 한 뒤에 집에 갔어요.",
                               "meaning": "After working, I went home.",
                               "feeling": "sequence",
-                              "sound": ""
+                              "sound": "/audio/일을 한 뒤에 집에 갔어요.mp3"
                             }
                           ]
                         },
@@ -2119,7 +2119,7 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "duplicate",
                           "function": "duplicate",
                           "examples": [
-                            { "text": "중복 항목입니다.", "meaning": "This is a duplicate entry.", "feeling": "placeholder", "sound": "" }
+                            { "text": "중복 항목입니다.", "meaning": "This is a duplicate entry.", "feeling": "placeholder", "sound": "/audio/중복 항목입니다.mp3" }
                           ]
                         },
                         {
@@ -2134,8 +2134,8 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "before doing an action",
                           "function": "express time (before)",
                           "examples": [
-                            { "text": "자기 전에 샤워해요.", "meaning": "I shower before sleeping.", "feeling": "routine", "sound": "" },
-                            { "text": "출발하기 전에 다시 확인하세요.", "meaning": "Please check again before you leave.", "feeling": "practical instruction", "sound": "" }
+                            { "text": "자기 전에 샤워해요.", "meaning": "I shower before sleeping.", "feeling": "routine", "sound": "/audio/자기 전에 샤워해요.mp3" },
+                            { "text": "출발하기 전에 다시 확인하세요.", "meaning": "Please check again before you leave.", "feeling": "practical instruction", "sound": "/audio/출발하기 전에 다시 확인하세요.mp3" }
                           ]
                         },
                         {
@@ -2150,8 +2150,8 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "immediate sequence",
                           "function": "express time (immediately after)",
                           "examples": [
-                            { "text": "집에 오자마자 잤어요.", "meaning": "As soon as I got home, I slept.", "feeling": "immediate action", "sound": "" },
-                            { "text": "수업이 끝나자마자 밖에 나갔어요.", "meaning": "As soon as class ended, I went outside.", "feeling": "quick transition", "sound": "" }
+                            { "text": "집에 오자마자 잤어요.", "meaning": "As soon as I got home, I slept.", "feeling": "immediate action", "sound": "/audio/집에 오자마자 잤어요.mp3" },
+                            { "text": "수업이 끝나자마자 밖에 나갔어요.", "meaning": "As soon as class ended, I went outside.", "feeling": "quick transition", "sound": "/audio/수업이 끝나자마자 밖에 나갔어요.mp3" }
                           ]
                         },
                         {
@@ -2166,8 +2166,8 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "time marker",
                           "function": "express time (when)",
                           "examples": [
-                            { "text": "시간이 있을 때 책을 읽어요.", "meaning": "I read books when I have time.", "feeling": "everyday habit", "sound": "" },
-                            { "text": "처음 한국에 왔을 때 많이 놀랐어요.", "meaning": "When I first came to Korea, I was very surprised.", "feeling": "past memory", "sound": "" }
+                            { "text": "시간이 있을 때 책을 읽어요.", "meaning": "I read books when I have time.", "feeling": "everyday habit", "sound": "/audio/시간이 있을 때 책을 읽어요.mp3" },
+                            { "text": "처음 한국에 왔을 때 많이 놀랐어요.", "meaning": "When I first came to Korea, I was very surprised.", "feeling": "past memory", "sound": "/audio/처음 한국에 왔을 때 많이 놀랐어요.mp3" }
                           ]
                         },
                         {
@@ -2182,8 +2182,8 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "repetition each time",
                           "function": "express repetition",
                           "examples": [
-                            { "text": "한국 노래를 들을 때마다 기분이 좋아져요.", "meaning": "Every time I listen to Korean songs, I feel better.", "feeling": "repeated reaction", "sound": "" },
-                            { "text": "그 사람을 볼 때마다 웃음이 나요.", "meaning": "Whenever I see that person, I start smiling.", "feeling": "natural repeated feeling", "sound": "" }
+                            { "text": "한국 노래를 들을 때마다 기분이 좋아져요.", "meaning": "Every time I listen to Korean songs, I feel better.", "feeling": "repeated reaction", "sound": "/audio/한국 노래를 들을 때마다 기분이 좋아져요.mp3" },
+                            { "text": "그 사람을 볼 때마다 웃음이 나요.", "meaning": "Whenever I see that person, I start smiling.", "feeling": "natural repeated feeling", "sound": "/audio/그 사람을 볼 때마다 웃음이 나요.mp3" }
                           ]
                         },
                         {
@@ -2198,8 +2198,8 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "during a period",
                           "function": "express duration",
                           "examples": [
-                            { "text": "방학 동안 한국에 있었어요.", "meaning": "I stayed in Korea during the vacation.", "feeling": "time window", "sound": "" },
-                            { "text": "기다리는 동안 책을 읽었어요.", "meaning": "I read a book while waiting.", "feeling": "filling time", "sound": "" }
+                            { "text": "방학 동안 한국에 있었어요.", "meaning": "I stayed in Korea during the vacation.", "feeling": "time window", "sound": "/audio/방학 동안 한국에 있었어요.mp3" },
+                            { "text": "기다리는 동안 책을 읽었어요.", "meaning": "I read a book while waiting.", "feeling": "filling time", "sound": "/audio/기다리는 동안 책을 읽었어요.mp3" }
                           ]
                         },
                         {
@@ -2214,8 +2214,8 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "simultaneous actions",
                           "function": "express simultaneous actions",
                           "examples": [
-                            { "text": "음악을 들으면서 공부해요.", "meaning": "I study while listening to music.", "feeling": "everyday habit", "sound": "" },
-                            { "text": "걸으면서 이야기했어요.", "meaning": "We talked while walking.", "feeling": "casual scene", "sound": "" }
+                            { "text": "음악을 들으면서 공부해요.", "meaning": "I study while listening to music.", "feeling": "everyday habit", "sound": "/audio/음악을 들으면서 공부해요.mp3" },
+                            { "text": "걸으면서 이야기했어요.", "meaning": "We talked while walking.", "feeling": "casual scene", "sound": "/audio/걸으면서 이야기했어요.mp3" }
                           ]
                         },
                         {
@@ -2230,8 +2230,8 @@ export const verbEndingData: VerbEndingData = [
                           "core_meaning": "interruption/change",
                           "function": "express interruption/shift",
                           "examples": [
-                            { "text": "집에 가다가 친구를 만났어요.", "meaning": "While going home, I met a friend.", "feeling": "unexpected event", "sound": "" },
-                            { "text": "공부하다가 잠이 들었어요.", "meaning": "I was studying and then I fell asleep.", "feeling": "interrupted action", "sound": "" }
+                            { "text": "집에 가다가 친구를 만났어요.", "meaning": "While going home, I met a friend.", "feeling": "unexpected event", "sound": "/audio/집에 가다가 친구를 만났어요.mp3" },
+                            { "text": "공부하다가 잠이 들었어요.", "meaning": "I was studying and then I fell asleep.", "feeling": "interrupted action", "sound": "/audio/공부하다가 잠이 들었어요.mp3" }
                           ]
                         },
                         {
@@ -2250,13 +2250,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "늦어도 괜찮아요.",
                                 "meaning": "It’s okay even if you’re late.",
                                 "feeling": "accepting / permissive",
-                                "sound": ""
+                                "sound": "/audio/늦어도 괜찮아요.mp3"
                               },
                               {
                                 "text": "비가 와도 갈 거예요.",
                                 "meaning": "I’ll go even if it rains.",
                                 "feeling": "determined",
-                                "sound": ""
+                                "sound": "/audio/비가 와도 갈 거예요.mp3"
                               }
                             ]
                           },
@@ -2276,13 +2276,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "힘들더라도 끝까지 해요.",
                                 "meaning": "Even if it’s hard, do it to the end.",
                                 "feeling": "encouraging / firm",
-                                "sound": ""
+                                "sound": "/audio/힘들더라도 끝까지 해요.mp3"
                               },
                               {
                                 "text": "비싸더라도 좋은 걸 살래요.",
                                 "meaning": "Even if it’s expensive, I’ll buy a good one.",
                                 "feeling": "strong preference",
-                                "sound": ""
+                                "sound": "/audio/비싸더라도 좋은 걸 살래요.mp3"
                               }
                             ]
                           },
@@ -2302,13 +2302,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "한국어를 잘하려면 많이 들어야 해요.",
                                 "meaning": "If you want to be good at Korean, you need to listen a lot.",
                                 "feeling": "advice / guidance",
-                                "sound": ""
+                                "sound": "/audio/한국어를 잘하려면 많이 들어야 해요.mp3"
                               },
                               {
                                 "text": "예약하려면 먼저 회원가입을 하세요.",
                                 "meaning": "If you want to make a reservation, please sign up first.",
                                 "feeling": "instruction",
-                                "sound": ""
+                                "sound": "/audio/예약하려면 먼저 회원가입을 하세요.mp3"
                               }
                             ]
                           },
@@ -2328,13 +2328,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "비가 오기 때문에 행사가 취소됐어요.",
                                 "meaning": "Because it’s raining, the event was canceled.",
                                 "feeling": "formal explanation",
-                                "sound": ""
+                                "sound": "/audio/비가 오기 때문에 행사가 취소됐어요.mp3"
                               },
                               {
                                 "text": "시간이 없기 때문에 오늘은 못 가요.",
                                 "meaning": "Because I don’t have time, I can’t go today.",
                                 "feeling": "clear justification",
-                                "sound": ""
+                                "sound": "/audio/시간이 없기 때문에 오늘은 못 가요.mp3"
                               }
                             ]
                           },
@@ -2354,13 +2354,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "늦었으니까 빨리 가요.",
                                 "meaning": "Since we’re late, let’s go quickly.",
                                 "feeling": "practical push",
-                                "sound": ""
+                                "sound": "/audio/늦었으니까 빨리 가요.mp3"
                               },
                               {
                                 "text": "춥니까 창문 닫아 주세요.",
                                 "meaning": "Because it’s cold, please close the window.",
                                 "feeling": "polite request with reason",
-                                "sound": ""
+                                "sound": "/audio/춥니까 창문 닫아 주세요.mp3"
                               }
                             ]
                           },
@@ -2380,13 +2380,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "끝날 때까지 기다릴게요.",
                                 "meaning": "I’ll wait until it’s finished.",
                                 "feeling": "patient commitment",
-                                "sound": ""
+                                "sound": "/audio/끝날 때까지 기다릴게요.mp3"
                               },
                               {
                                 "text": "집에 도착할 때까지 연락해 주세요.",
                                 "meaning": "Please 연락 me until you arrive home (keep in touch until then).",
                                 "feeling": "caring / cautious",
-                                "sound": ""
+                                "sound": "/audio/집에 도착할 때까지 연락해 주세요.mp3"
                               }
                             ]
                           },
@@ -2406,13 +2406,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "그 노래를 듣기만 하면 눈물이 나요.",
                                 "meaning": "Whenever I listen to that song, I tear up.",
                                 "feeling": "emotional trigger",
-                                "sound": ""
+                                "sound": "/audio/그 노래를 듣기만 하면 눈물이 나요.mp3"
                               },
                               {
                                 "text": "집에 가기만 하면 바로 잘 거예요.",
                                 "meaning": "As soon as I get home, I’ll sleep right away.",
                                 "feeling": "tired / immediate plan",
-                                "sound": ""
+                                "sound": "/audio/집에 가기만 하면 바로 잘 거예요.mp3"
                               }
                             ]
                           },
@@ -2432,13 +2432,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "좋기는 하지만 너무 비싸요.",
                                 "meaning": "It’s good, but it’s too expensive.",
                                 "feeling": "fair, balanced opinion",
-                                "sound": ""
+                                "sound": "/audio/좋기는 하지만 너무 비싸요.mp3"
                               },
                               {
                                 "text": "가기는 하지만 자주 못 가요.",
                                 "meaning": "I do go, but I can’t go often.",
                                 "feeling": "clarifying gently",
-                                "sound": ""
+                                "sound": "/audio/가기는 하지만 자주 못 가요.mp3"
                               }
                             ]
                           },
@@ -2458,13 +2458,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "도와주기는커녕 방해만 했어요.",
                                 "meaning": "Far from helping, they only got in the way.",
                                 "feeling": "frustrated / critical",
-                                "sound": ""
+                                "sound": "/audio/도와주기는커녕 방해만 했어요.mp3"
                               },
                               {
                                 "text": "쉬기는커녕 더 바빠졌어요.",
                                 "meaning": "I didn’t rest at all—if anything, I got busier.",
                                 "feeling": "tired complaint",
-                                "sound": ""
+                                "sound": "/audio/쉬기는커녕 더 바빠졌어요.mp3"
                               }
                             ]
                           },
@@ -2484,13 +2484,13 @@ export const verbEndingData: VerbEndingData = [
                                 "text": "늦지 않도록 하세요.",
                                 "meaning": "Please make sure you are not late.",
                                 "feeling": "formal reminder",
-                                "sound": ""
+                                "sound": "/audio/늦지 않도록 하세요.mp3"
                               },
                               {
                                 "text": "문을 꼭 잠그도록 해요.",
                                 "meaning": "Make sure to lock the door.",
                                 "feeling": "cautious instruction",
-                                "sound": ""
+                                "sound": "/audio/문을 꼭 잠그도록 해요.mp3"
                               }
                             ]
                           }
