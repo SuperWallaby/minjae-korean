@@ -1,6 +1,6 @@
 "use client";
 
-import { getText } from "@/lib/examUtils";
+import { getText, renderTextWithLineBreaks } from "@/lib/examUtils";
 import type { ShortAnswerItem as ShortAnswerItemType } from "@/types/exam";
 import { Input } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,9 @@ export function ShortAnswerItem({
 
   return (
     <div className="space-y-4">
-      <p className="font-medium text-foreground">{instruction}</p>
+      <p className="font-medium text-foreground">
+        {renderTextWithLineBreaks(instruction)}
+      </p>
       <Input
         type="text"
         value={value}

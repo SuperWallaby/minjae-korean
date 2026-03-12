@@ -1,6 +1,6 @@
 "use client";
 
-import { getText } from "@/lib/examUtils";
+import { getText, renderTextWithLineBreaks } from "@/lib/examUtils";
 import type { AudioMCQItem as AudioMCQItemType } from "@/types/exam";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,9 @@ export function AudioMcqItem({
 
   return (
     <div className="space-y-4">
-      <p className="font-medium text-foreground">{instruction}</p>
+      <p className="font-medium text-foreground">
+        {renderTextWithLineBreaks(instruction)}
+      </p>
       {audio?.url && (
         <audio controls src={audio.url} className="w-full max-w-md" />
       )}
@@ -50,7 +52,7 @@ export function AudioMcqItem({
                   disabled && "cursor-not-allowed opacity-80"
                 )}
               >
-                {getText(opt.text)}
+                {renderTextWithLineBreaks(getText(opt.text))}
               </button>
             </li>
           );

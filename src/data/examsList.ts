@@ -1,5 +1,5 @@
 /**
- * Exam hub: placement (등급 받기), level tests, mock TOPIK.
+ * Exam hub: Check my level  Beginners ~ intermediate , level tests, mock TOPIK.
  * Uses types from @/app/exams/interface.
  */
 
@@ -35,7 +35,7 @@ export function getPlacementSummary(): ExamSummary {
   return {
     slug: PLACEMENT_SLUG,
     kind: "placement",
-    title: "Placement (등급 받기)",
+    title: "Check my level  Beginners ~ intermediate ",
     description: "Find your level with a short assessment.",
     imageThumb: undefined,
   };

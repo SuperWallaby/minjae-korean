@@ -1,6 +1,6 @@
 "use client";
 
-import { getText } from "@/lib/examUtils";
+import { getText, renderTextWithLineBreaks } from "@/lib/examUtils";
 import type { MCQItem as MCQItemType } from "@/types/exam";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,9 @@ export function McqItem({ item, value, onChange, disabled, showCorrect }: Props)
 
   return (
     <div className="space-y-4">
-      <p className="font-medium text-foreground">{instruction}</p>
+      <p className="font-medium text-foreground">
+        {renderTextWithLineBreaks(instruction)}
+      </p>
       {item.stem.content && (
         <div className="rounded-md border border-border bg-muted/30 px-3 py-2 text-sm text-muted-foreground">
           {/* Simple text content if needed later */}
@@ -45,7 +47,7 @@ export function McqItem({ item, value, onChange, disabled, showCorrect }: Props)
                   disabled && "cursor-not-allowed opacity-80"
                 )}
               >
-                {getText(opt.text)}
+                {renderTextWithLineBreaks(getText(opt.text))}
               </button>
             </li>
           );

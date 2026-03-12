@@ -1,6 +1,6 @@
 "use client";
 
-import { getText } from "@/lib/examUtils";
+import { getText, renderTextWithLineBreaks } from "@/lib/examUtils";
 import type { DictationItem as DictationItemType } from "@/types/exam";
 import { Input } from "@/components/ui/Input";
 
@@ -18,7 +18,9 @@ export function DictationItem({ item, value, onChange, disabled }: Props) {
 
   return (
     <div className="space-y-4">
-      <p className="font-medium text-foreground">{instruction}</p>
+      <p className="font-medium text-foreground">
+        {renderTextWithLineBreaks(instruction)}
+      </p>
       {audio?.url && (
         <audio controls src={audio.url} className="w-full max-w-md" />
       )}

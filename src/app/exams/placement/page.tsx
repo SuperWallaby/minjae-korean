@@ -10,11 +10,11 @@ export const runtime = "nodejs";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
 export const metadata: Metadata = {
-  title: "Placement (등급 받기)",
+  title: "Check my level  Beginners ~ intermediate ",
   description:
     "Find your Korean level with a short placement test. Interactive assessment.",
   openGraph: {
-    title: "Placement (등급 받기) | Kaja",
+    title: "Check my level  Beginners ~ intermediate  | Kaja",
     description: "Find your Korean level with a short placement test.",
     url: `${SITE_URL}/exams/placement`,
     siteName: "Kaja",
@@ -35,10 +35,12 @@ export default async function PlacementExamPage() {
             Exams
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-foreground">Placement (등급 받기)</span>
+          <span className="text-foreground">
+            Check my level Beginners ~ intermediate
+          </span>
         </nav>
         <h1 className="mt-4 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-          Placement (등급 받기)
+          Check my level Beginners ~ intermediate
         </h1>
         <p className="mt-3 text-sm text-muted-foreground sm:text-base">
           A short assessment to find your level. You’ll get a recommended level

@@ -2493,6 +2493,58 @@ export const verbEndingData: VerbEndingData = [
                                 "sound": "/audio/문을 꼭 잠그도록 해요.mp3"
                               }
                             ]
+                          },
+                          {
+                            form: "-아/어요",
+                            phonetic: "-a/eo-yo",
+                            frequency: 5,
+                            meaning: "polite present ending",
+                            type: "종결",
+                            form_rule: "verb/adjective stem + 아/어요",
+                            verb_type: "둘다",
+                            des: "The most common polite ending in everyday Korean. It is used for statements in present tense and also for many natural conversational sentences.",
+                            core_meaning: "polite everyday ending",
+                            function: "make a polite statement",
+                            examples: [
+                              {
+                                text: "집에 있어요.",
+                                meaning: "I am at home. / I stay at home.",
+                                feeling: "neutral polite statement",
+                                sound: "/audio/집에 있어요.mp3"
+                              },
+                              {
+                                text: "한국어를 공부해요.",
+                                meaning: "I study Korean.",
+                                feeling: "everyday statement",
+                                sound: "/audio/한국어를 공부해요.mp3"
+                              }
+                            ]
+                          },
+                          {
+                            form: "-아/어요?",
+                            phonetic: "-a/eo-yo?",
+                            frequency: 5,
+                            meaning: "polite question ending",
+                            type: "종결",
+                            form_rule: "verb/adjective stem + 아/어요?",
+                            verb_type: "둘다",
+                            des: "A very common polite question form in spoken Korean. It uses the same ending as -아/어요, but becomes a question with rising intonation or a question mark.",
+                            core_meaning: "polite everyday question",
+                            function: "ask a polite question",
+                            examples: [
+                              {
+                                text: "지금 집에 있어요?",
+                                meaning: "Are you home now?",
+                                feeling: "casual polite question",
+                                sound: "/audio/지금 집에 있어요?.mp3"
+                              },
+                              {
+                                text: "시간 있어요?",
+                                meaning: "Do you have time?",
+                                feeling: "natural spoken question",
+                                sound: "/audio/시간 있어요?.mp3"
+                              }
+                            ]
                           }
   ]
 

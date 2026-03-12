@@ -1,6 +1,6 @@
 "use client";
 
-import { getText } from "@/lib/examUtils";
+import { getText, renderTextWithLineBreaks } from "@/lib/examUtils";
 import type { TrueFalseItem as TrueFalseItemType } from "@/types/exam";
 import { cn } from "@/lib/utils";
 
@@ -25,9 +25,11 @@ export function TrueFalseItem({
 
   return (
     <div className="space-y-4">
-      <p className="font-medium text-foreground">{instruction}</p>
+      <p className="font-medium text-foreground">
+        {renderTextWithLineBreaks(instruction)}
+      </p>
       <p className="rounded-md border border-border bg-muted/30 px-3 py-3 text-sm text-foreground">
-        {statement}
+        {renderTextWithLineBreaks(statement)}
       </p>
       <div className="flex gap-3">
         <button

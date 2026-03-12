@@ -2,20 +2,37 @@
  * Shared helpers for exam UI (localized text, building ordered items from blueprint).
  */
 
+import React, { Fragment, ReactNode } from "react";
 import type { Exam, AssessmentItem, LocalizedText, Locale } from "@/types/exam";
 
 const DEFAULT_LOCALE: Locale = "en";
 
-export function getText(t: LocalizedText | undefined, locale: string = DEFAULT_LOCALE): string {
+export function getText(
+  t: LocalizedText | undefined,
+  locale: string = DEFAULT_LOCALE,
+): string {
   if (!t) return "";
   const loc = locale as Locale;
   if (loc !== "en" && t.translations?.[loc]) return t.translations[loc];
   return t.default;
 }
 
+/** 문자열 안의 \n 을 실제 줄바꿈(<br>)으로 렌더링 */
+export function renderTextWithLineBreaks(text: string): ReactNode {
+  if (!text.includes("\n")) return text;
+
+  const parts = text.split(/\r?\n/);
+
+  return parts.map((line, idx) => (
+    <Fragment key={idx}>
+      {idx > 0 && <br />}
+      {line}
+    </Fragment>
+  ));
+}
 export function buildOrderedItemIds(
   sectionIds: string[],
-  itemIdsBySectionId: Record<string, string[]>
+  itemIdsBySectionId: Record<string, string[]>,
 ): { sectionId: string; itemId: string }[] {
   const out: { sectionId: string; itemId: string }[] = [];
   for (const sectionId of sectionIds) {
@@ -26,7 +43,10 @@ export function buildOrderedItemIds(
 }
 
 /** Build ordered items from exam blueprint (explicit source only) and item bank. */
-export function buildOrderedItems(exam: Exam, items: AssessmentItem[]): AssessmentItem[] {
+export function buildOrderedItems(
+  exam: Exam,
+  items: AssessmentItem[],
+): AssessmentItem[] {
   const byId = new Map(items.map((i) => [i.id, i]));
   const ordered: AssessmentItem[] = [];
   for (const section of exam.blueprint.sections) {

@@ -1,6 +1,6 @@
 /* =========================================================
  * Interactive Korean (TOPIK-style) Assessment Schema (TS)
- * - Placement (등급 받기) + Level Tests (등급별 시험) + Banks
+ * - Check my level  Beginners ~ intermediate  + Level Tests (등급별 시험) + Banks
  * - Listening-heavy friendly (audio-first items, replay rules)
  * - Normalize item bank + delivery blueprint (shuffle/sections)
  * - Attempts + grading + skill/tag analytics

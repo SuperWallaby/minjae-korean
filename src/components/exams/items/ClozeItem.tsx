@@ -1,6 +1,6 @@
 "use client";
 
-import { getText } from "@/lib/examUtils";
+import { getText, renderTextWithLineBreaks } from "@/lib/examUtils";
 import type { ClozeItem as ClozeItemType } from "@/types/exam";
 import { Input } from "@/components/ui/Input";
 
@@ -20,8 +20,12 @@ export function ClozeItem({ item, value, onChange, disabled }: Props) {
   // Minimal: show instruction and placeholders for blanks (full template parsing can be added later)
   return (
     <div className="space-y-4">
-      <p className="font-medium text-foreground">{instruction}</p>
-      <p className="text-sm text-muted-foreground">{template}</p>
+      <p className="font-medium text-foreground">
+        {renderTextWithLineBreaks(instruction)}
+      </p>
+      <p className="text-sm text-muted-foreground">
+        {renderTextWithLineBreaks(template)}
+      </p>
       <div className="flex flex-wrap gap-2">
         {blanks.map((b) => (
           <Input
