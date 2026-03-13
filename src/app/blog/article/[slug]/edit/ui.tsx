@@ -10,6 +10,7 @@ import type { BlogImageOverrides, BlogPost } from "@/data/blogPosts/types";
 import {
   processImageForThumbnail,
   processImageForUploadWebPOnly,
+  getImageAspectRatio,
 } from "@/lib/imageUpload";
 import { cn } from "@/lib/utils";
 
@@ -72,6 +73,13 @@ export function BlogEditClient({ slug, post }: Props) {
   const [paragraphImages, setParagraphImages] = React.useState<
     (string | null)[]
   >((post.paragraphs ?? []).map((p) => p.image ?? null));
+  const [paragraphImageAspects, setParagraphImageAspects] = React.useState<
+    (number | null)[]
+  >(
+    (post.paragraphs ?? []).map((p) =>
+      typeof p.imageAspect === "number" ? p.imageAspect : null,
+    ),
+  );
   const [pinned, setPinned] = React.useState(false);
   const [uploadingKey, setUploadingKey] = React.useState<string | null>(null);
   const [saving, setSaving] = React.useState(false);
@@ -124,6 +132,8 @@ export function BlogEditClient({ slug, post }: Props) {
         imageLarge: imageLarge ?? undefined,
         paragraphImages:
           paragraphImages.length > 0 ? paragraphImages : undefined,
+        paragraphImageAspects:
+          paragraphImageAspects.length > 0 ? paragraphImageAspects : undefined,
         pinned,
       };
       const { res, json } = await putJson("/api/blog/overrides", {
@@ -139,7 +149,7 @@ export function BlogEditClient({ slug, post }: Props) {
     } finally {
       setSaving(false);
     }
-  }, [slug, imageThumb, imageLarge, paragraphImages, pinned]);
+  }, [slug, imageThumb, imageLarge, paragraphImages, paragraphImageAspects, pinned]);
 
   const paragraphCount = post.paragraphs?.length ?? 0;
   const paragraphImagesPadded =
@@ -325,6 +335,9 @@ export function BlogEditClient({ slug, post }: Props) {
                         const file = e.target.files?.[0];
                         if (!file) return;
                         const key = `p-${idx}`;
+                        const aspect = await getImageAspectRatio(file).catch(
+                          () => 0,
+                        );
                         await handleUpload(file, key, (url) => {
                           setParagraphImages((prev) => {
                             const next = [...prev];
@@ -332,6 +345,14 @@ export function BlogEditClient({ slug, post }: Props) {
                             next[idx] = url;
                             return next;
                           });
+                          if (aspect && Number.isFinite(aspect)) {
+                            setParagraphImageAspects((prev) => {
+                              const next = [...prev];
+                              while (next.length <= idx) next.push(null);
+                              next[idx] = aspect;
+                              return next;
+                            });
+                          }
                         });
                         e.target.value = "";
                       }}
@@ -366,6 +387,12 @@ export function BlogEditClient({ slug, post }: Props) {
                           disabled={!!uploadingKey}
                           onClick={() => {
                             setParagraphImages((prev) => {
+                              const next = [...prev];
+                              while (next.length <= idx) next.push(null);
+                              next[idx] = null;
+                              return next;
+                            });
+                            setParagraphImageAspects((prev) => {
                               const next = [...prev];
                               while (next.length <= idx) next.push(null);
                               next[idx] = null;

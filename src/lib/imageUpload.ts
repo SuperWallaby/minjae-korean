@@ -18,6 +18,18 @@ function loadImageBitmap(file: File): Promise<ImageBitmap> {
 }
 
 /**
+ * Read intrinsic aspect ratio (width / height) of an image file.
+ */
+export async function getImageAspectRatio(file: File): Promise<number> {
+  const bitmap = await loadImageBitmap(file);
+  const w = bitmap.width || 0;
+  const h = bitmap.height || 0;
+  bitmap.close();
+  if (!w || !h) return 0;
+  return w / h;
+}
+
+/**
  * Process an image file for upload: convert to WebP; optionally resize to max width (e.g. 600 for thumb).
  * Returns a new File with .webp extension and type image/webp.
  */

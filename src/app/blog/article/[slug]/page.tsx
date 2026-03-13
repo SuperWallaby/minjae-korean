@@ -229,7 +229,16 @@ export default async function BlogArticlePage({
                   </div>
                   {p.image ? (
                     <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-border bg-muted/10">
-                      <div className="relative aspect-video w-full">
+                      <div
+                        className="relative w-full"
+                        style={{
+                          aspectRatio:
+                            typeof p.imageAspect === "number" &&
+                            p.imageAspect > 0
+                              ? p.imageAspect
+                              : 16 / 9,
+                        }}
+                      >
                         <Image
                           src={p.image}
                           alt={a.title}

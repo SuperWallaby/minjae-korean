@@ -13,6 +13,7 @@ import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import { FlexibleMonthlyRhythmCard } from "@/components/stripe/FlexibleMonthlyRhythmCard";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { LIBRARY_LINKS } from "@/data/libraryLinks";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -154,142 +155,7 @@ export default async function Home() {
         <MembersReviewsSection />
       </RevealOnScroll>
 
-      {/* 4) Pricing */}
-      <RevealOnScroll
-        as="section"
-        id="ways-to-use"
-        className="scroll-mt-24 py-10 sm:py-16"
-      >
-        <Container>
-          <StaggerReveal className="text-center">
-            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Coaching options
-            </h2>
-          </StaggerReveal>
-
-          <StaggerReveal
-            as="div"
-            className="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-3 text-left"
-            staggerMs={110}
-          >
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
-              <div className="flex items-center gap-3 h-11">
-                <div className="grid px-2 py-1 place-items-center rounded-2xl bg-(--included-1)/60">
-                  <Image
-                    width={30}
-                    height={37.5}
-                    src="/coffeeee.webp"
-                    alt="Diagnosis"
-                    className=" -mt-0.5 ml-1 "
-                  />
-                </div>
-                <div className="font-serif text-base font-semibold tracking-tight">
-                  Diagnosis
-                </div>
-              </div>
-              <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-3xl font-semibold tracking-tight">
-                  $10
-                </span>
-                <span className="text-sm text-foreground font-semibold">
-                  diagnosis
-                </span>
-              </div>
-              <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A one-time session to assess your level, identify issues,
-                suggest a learning strategy, and recommend a program.
-              </div>
-              <div className="mt-8 flex flex-1 flex-col justify-between">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Level check</li>
-                  <li>• Problem analysis</li>
-                  <li>• Learning strategy suggestion</li>
-                  <li>• Program recommendation</li>
-                  <li>• 50 min · One-time only</li>
-                </ul>
-                <div className="pt-6">
-                  <Suspense
-                    fallback={
-                      <Button size="sm" disabled>
-                        Be a member
-                      </Button>
-                    }
-                  >
-                    <CheckoutButton
-                      product="trial"
-                      size="sm"
-                      variant="primary"
-                      className="font-serif"
-                    >
-                      Be a member
-                    </CheckoutButton>
-                  </Suspense>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[36px] border border-border bg-white p-6 shadow-(--shadow-float)">
-              <div className="flex items-center gap-3 h-11">
-                <div className="grid p-2 place-items-center rounded-2xl bg-(--included-2)/60">
-                  <Image
-                    width={44}
-                    height={28.15}
-                    src="/cards.webp"
-                    alt="Single Session"
-                    className=" text-foreground/80"
-                  />
-                </div>
-                <div className="font-serif text-base font-semibold tracking-tight">
-                  Single Session
-                </div>
-              </div>
-              <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-3xl font-semibold tracking-tight">
-                  $15
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  50 minutes
-                </span>
-              </div>
-              <div className="mt-4 text-sm leading-7 text-muted-foreground">
-                A focused coaching session to tackle a specific challenge.
-                Practice real situations, build confidence, and move forward in
-                your Korean.
-              </div>
-              <div className="mt-8 flex flex-1 flex-col justify-between">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• 50 min</li>
-                  <li>• Presentation practice, interview prep</li>
-                  <li>• Tackle a specific problem, confidence building</li>
-                  <li>• Pick a time · Valid for a month</li>
-                </ul>
-                <div className="pt-6">
-                  <Suspense
-                    fallback={
-                      <Button size="sm" disabled>
-                        Be a member
-                      </Button>
-                    }
-                  >
-                    <CheckoutButton
-                      product="single"
-                      size="sm"
-                      variant="primary"
-                      className="font-serif"
-                    >
-                      Be a member
-                    </CheckoutButton>
-                  </Suspense>
-                </div>
-              </div>
-            </div>
-
-            <FlexibleMonthlyRhythmCard />
-          </StaggerReveal>
-        </Container>
-      </RevealOnScroll>
-
-      {/* 5) Extras */}
+      {/* 4) Extras */}
       <RevealOnScroll as="section" className="py-10 sm:py-16">
         <Container>
           <div className="mx-auto max-w-6xl">
@@ -485,42 +351,45 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 8) CTA */}
-      <RevealOnScroll as="section" className="py-10 sm:py-14">
+      {/* 8) Library quick links */}
+      <RevealOnScroll as="section" className="py-10 sm:py-16 bg-(--bg-canvas)">
         <Container>
           <StaggerReveal className="mx-auto max-w-3xl text-center">
-            <Image
-              width={140}
-              height={140}
-              src="/meme/offical/kaja.webp"
-              alt="Kaja – 1:1 Korean coaching"
-              className="mx-auto  -mt-8"
-            ></Image>
-            <h2 className="font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-5xl">
-              Start talking with Minjae.
+            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+              Library
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              No pressure. Pick a time, get direction and encouragement, and
-              keep growing.
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+              Jump straight into grammar, expressions, news, songs, and more.
             </p>
-            <div className="mx-auto mt-6 flex flex-row flex-nowrap items-center justify-center gap-3">
-              <Button
-                asChild
-                size="md"
-                variant="primary"
-                className="w-fit bg-black px-4 text-white hover:bg-black/90"
+          </StaggerReveal>
+          <StaggerReveal
+            as="div"
+            className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            staggerMs={80}
+          >
+            {LIBRARY_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left text-sm font-medium text-foreground transition hover:bg-muted/60"
               >
-                <Link href="/booking">Pick a time</Link>
-              </Button>
-              <Button
-                asChild
-                size="md"
-                variant="outline"
-                className="w-fit border-black/25 px-4 text-foreground hover:bg-[color-mix(in_srgb,black_4%,transparent)]"
-              >
-                <Link href="/login">Sign in</Link>
-              </Button>
-            </div>
+                <Image
+                  src={link.icon}
+                  alt={link.label}
+                  width={32}
+                  height={32}
+                  className="size-8 shrink-0"
+                />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold group-hover:underline">
+                    {link.label}
+                  </span>
+                  <p className="mt-0.5 text-xs text-muted-foreground sm:text-[13px]">
+                    {link.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </StaggerReveal>
         </Container>
       </RevealOnScroll>
@@ -562,6 +431,46 @@ export default async function Home() {
               )}
             </div>
           </div>
+        </Container>
+      </RevealOnScroll>
+
+      {/* 10) CTA */}
+      <RevealOnScroll as="section" className="py-10 sm:py-14">
+        <Container>
+          <StaggerReveal className="mx-auto max-w-3xl text-center">
+            <Image
+              width={140}
+              height={140}
+              src="/meme/offical/kaja.webp"
+              alt="Kaja – 1:1 Korean coaching"
+              className="mx-auto  -mt-8"
+            ></Image>
+            <h2 className="font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-5xl">
+              Start talking with Minjae.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
+              No pressure. Pick a time, get direction and encouragement, and
+              keep growing.
+            </p>
+            <div className="mx-auto mt-6 flex flex-row flex-nowrap items-center justify-center gap-3">
+              <Button
+                asChild
+                size="md"
+                variant="primary"
+                className="w-fit bg-black px-4 text-white hover:bg-black/90"
+              >
+                <Link href="/booking">Pick a time</Link>
+              </Button>
+              <Button
+                asChild
+                size="md"
+                variant="outline"
+                className="w-fit border-black/25 px-4 text-foreground hover:bg-[color-mix(in_srgb,black_4%,transparent)]"
+              >
+                <Link href="/login">Sign in</Link>
+              </Button>
+            </div>
+          </StaggerReveal>
         </Container>
       </RevealOnScroll>
     </div>

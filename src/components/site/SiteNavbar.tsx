@@ -13,6 +13,7 @@ import { Logo } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { useEducationMode } from "@/lib/EducationModeProvider";
+import { LIBRARY_LINKS } from "@/data/libraryLinks";
 
 type NavLinkProps = {
   href: string;
@@ -50,18 +51,6 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
   );
 }
 
-const ASSETS_LINKS = [
-  { href: "/grammar", label: "Grammar", icon: "/book-open.webp" },
-  { href: "/expressions", label: "Expressions", icon: "/talk.webp" },
-  { href: "/news", label: "News", icon: "/news.webp" },
-  { href: "/blog", label: "Blog", icon: "/blog.webp" },
-  { href: "/songs", label: "Song", icon: "/music.webp" },
-  { href: "/drama", label: "Drama", icon: "/drama.webp" },
-  // { href: "/exams", label: "Exams", icon: "/book-open.webp" },
-  { href: "/quoto", label: "Quoto", icon: "/talk.webp" },
-  { href: "/fundamental", label: "Basic", icon: "/cubs.webp" },
-] as const;
-
 function isAssetLinkActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(href + "/");
 }
@@ -74,7 +63,7 @@ export function SiteNavbar() {
   const [assetsOpen, setAssetsOpen] = React.useState(false);
   const [headerVisible, setHeaderVisible] = React.useState(false);
   const pathname = usePathname();
-  const isAssetsActive = ASSETS_LINKS.some(
+  const isAssetsActive = LIBRARY_LINKS.some(
     (l) => pathname === l.href || pathname.startsWith(l.href + "/"),
   );
 
@@ -92,7 +81,7 @@ export function SiteNavbar() {
   }, [eduMode]);
 
   React.useEffect(() => {
-    const ids = ["approach", "ways-to-use"];
+    const ids = ["approach"];
     const elements = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
@@ -141,11 +130,7 @@ export function SiteNavbar() {
                     label="Approach"
                     activeOverride={activeHash === "approach"}
                   />
-                  <NavLink
-                    href="/#ways-to-use"
-                    label="Class pass"
-                    activeOverride={activeHash === "ways-to-use"}
-                  />
+                  <NavLink href="/coaching" label="Class pass" />
                   <div className="relative">
                     <button
                       type="button"
@@ -178,7 +163,7 @@ export function SiteNavbar() {
                     </button>
                     {assetsOpen && (
                       <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[332px] rounded-xl border border-border bg-white p-1 py-2 shadow-lg grid grid-cols-2">
-                        {ASSETS_LINKS.map((link) => {
+                        {LIBRARY_LINKS.map((link) => {
                           const active = isAssetLinkActive(
                             pathname ?? "",
                             link.href,
@@ -356,7 +341,7 @@ export function SiteNavbar() {
                         <span className="text-xs font-medium text-muted-foreground px-1 pt-2">
                           Library
                         </span>
-                        {ASSETS_LINKS.map((link) => {
+                        {LIBRARY_LINKS.map((link) => {
                           const active = isAssetLinkActive(
                             pathname ?? "",
                             link.href,

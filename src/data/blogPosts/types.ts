@@ -15,6 +15,11 @@ export type ReadingLevel = 1 | 2 | 3 | 4 | 5;
 
 export type BlogParagraphBlock = {
   image?: string;
+  /**
+   * Aspect ratio (width / height) for the image.
+   * Used to render paragraph images at their natural proportions.
+   */
+  imageAspect?: number;
   subtitle: string;
   content: ReactNode;
   /** YouTube URL or video ID — rendered as embed between paragraphs */
@@ -50,6 +55,8 @@ export type BlogImageOverrides = {
   imageLarge?: string;
   /** 문단별 이미지 URL (인덱스 = paragraph index) */
   paragraphImages?: (string | null)[];
+  /** 문단별 이미지 가로세로비 (width / height, 인덱스 = paragraph index) */
+  paragraphImageAspects?: (number | null)[];
   /** 목록 상단 고정 (풀기 전까지 맨 위 노출) */
   pinned?: boolean;
 };
