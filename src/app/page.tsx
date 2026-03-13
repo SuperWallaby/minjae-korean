@@ -270,88 +270,7 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 6) Q&A */}
-      <RevealOnScroll as="section" className="py-10 sm:py-16">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-4">
-              <StaggerReveal>
-                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Frequently asked questions
-                </h2>
-                <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                  A few practical details, so you know what to expect.
-                </p>
-              </StaggerReveal>
-            </div>
-
-            <div className="lg:col-span-8">
-              <StaggerReveal
-                as="div"
-                className="border-t border-border/70"
-                staggerMs={70}
-              >
-                {[
-                  {
-                    q: "What happens in a typical coaching session?",
-                    a: "We start with a simple check-in and a topic for the day. Then we talk, practice Korean in real situations, and make small corrections along the way. At the end, Minjae gives a short recap and direction for what to focus on next.",
-                  },
-                  {
-                    q: "What level is this for?",
-                    a: (
-                      <>
-                        All levels are welcome. Coaching works best once you’ve
-                        built a basic{" "}
-                        <Link
-                          href="/fundamental"
-                          className="font-medium text-primary underline underline-offset-2 hover:no-underline"
-                        >
-                          foundation
-                        </Link>{" "}
-                        in Korean, but Minjae will meet you where you are and
-                        help you move forward.
-                      </>
-                    ),
-                  },
-                  {
-                    q: "How do I book a session?",
-                    a: "Choose a time on the booking page. After booking, you’ll receive a Google Meet link for your session.",
-                  },
-                  {
-                    q: "How long is each coaching session?",
-                    a: "You can choose either 25 minutes or 50 minutes when booking.",
-                  },
-                  {
-                    q: "Do I need to prepare anything?",
-                    a: "No special preparation is required. Just join the session ready to talk. If you have something specific you want to work on, you can bring it.",
-                  },
-                  {
-                    q: "Do I get a recap after the session?",
-                    a: "Yes. Minjae sends a short recap with notes and suggestions right after the session.",
-                  },
-                ].map((item) => (
-                  <details
-                    key={item.q}
-                    className="group border-b border-border/70"
-                  >
-                    <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg font-semibold tracking-tight text-foreground py-5">
-                      <span>{item.q}</span>
-                      <span className="text-xl text-muted-foreground transition group-open:rotate-45">
-                        +
-                      </span>
-                    </summary>
-                    <div className="mb-5 text-base leading-7 text-muted-foreground">
-                      {item.a}
-                    </div>
-                  </details>
-                ))}
-              </StaggerReveal>
-            </div>
-          </div>
-        </Container>
-      </RevealOnScroll>
-
-      {/* 8) Library quick links */}
+      {/* 5) Library quick links */}
       <RevealOnScroll as="section" className="py-10 sm:py-16 bg-(--bg-canvas)">
         <Container>
           <StaggerReveal className="mx-auto max-w-3xl text-center">
@@ -394,7 +313,7 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 9) Posts — 메이저 카드 + 3단 그리드 */}
+      {/* 6) Posts — 메이저 카드 + 3단 그리드 */}
       <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
@@ -434,7 +353,7 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 10) CTA */}
+      {/* 7) CTA */}
       <RevealOnScroll as="section" className="py-10 sm:py-14">
         <Container>
           <StaggerReveal className="mx-auto max-w-3xl text-center">
@@ -471,6 +390,87 @@ export default async function Home() {
               </Button>
             </div>
           </StaggerReveal>
+        </Container>
+      </RevealOnScroll>
+
+      {/* 8) Q&A */}
+      <RevealOnScroll as="section" className="py-10 sm:py-16">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-4">
+              <StaggerReveal>
+                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Frequently asked questions
+                </h2>
+                <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+                  A few practical details, so you know what to expect.
+                </p>
+              </StaggerReveal>
+            </div>
+
+            <div className="lg:col-span-8">
+              <StaggerReveal
+                as="div"
+                className="border-t border-border/70"
+                staggerMs={70}
+              >
+                {[
+                  {
+                    q: "What happens in a typical coaching session?",
+                    a: "We start with a simple check-in and a topic for the day. Then we talk, practice Korean in real situations, and make small corrections along the way. At the end, Minjae gives a short recap and direction for what to focus on next.",
+                  },
+                  {
+                    q: "What level is this for?",
+                    a: (
+                      <>
+                        All levels are welcome. Coaching works best once you’ve
+                          built a basic{" "}
+                        <Link
+                          href="/fundamental"
+                          className="font-medium text-primary underline underline-offset-2 hover:no-underline"
+                        >
+                          foundation
+                        </Link>{" "}
+                        in Korean, but Minjae will meet you where you are and
+                        help you move forward.
+                      </>
+                    ),
+                  },
+                  {
+                    q: "How do I book a session?",
+                    a: "Choose a time on the booking page. After booking, you’ll receive a Google Meet link for your session.",
+                  },
+                  {
+                    q: "How long is each coaching session?",
+                    a: "You can choose either 25 minutes or 50 minutes when booking.",
+                  },
+                  {
+                    q: "Do I need to prepare anything?",
+                    a: "No special preparation is required. Just join the session ready to talk. If you have something specific you want to work on, you can bring it.",
+                  },
+                  {
+                    q: "Do I get a recap after the session?",
+                    a: "Yes. Minjae sends a short recap with notes and suggestions right after the session.",
+                  },
+                ].map((item) => (
+                  <details
+                    key={item.q}
+                    className="group border-b border-border/70"
+                  >
+                    <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-4 py-5 font-serif text-lg font-semibold tracking-tight text-foreground">
+                      <span>{item.q}</span>
+                      <span className="text-xl text-muted-foreground transition group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <div className="mb-5 text-base leading-7 text-muted-foreground">
+                      {item.a}
+                    </div>
+                  </details>
+                ))}
+              </StaggerReveal>
+            </div>
+          </div>
         </Container>
       </RevealOnScroll>
     </div>
