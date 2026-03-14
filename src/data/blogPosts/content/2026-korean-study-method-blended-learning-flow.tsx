@@ -1,16 +1,14 @@
 import { Gap } from "@/components/article/Gap";
 import { BlogPost } from "../types";
+import { ContentLink } from "@/components/article/ContentLink";
 
 export const blogPost: BlogPost = {
   slug: "2026-korean-study-method-blended-learning-flow",
   title: "2026 Korean Study Method: A Level Based Blended Learning Flow",
   level: 4,
-  imageThumb: "/images/placeholder/blog-study-method-thumb.jpg",
-  imageLarge: "/images/placeholder/blog-study-method-large.jpg",
   createdAt: "2026-03-12",
   paragraphs: [
     {
-      image: "/images/placeholder/korean-study-01.jpg",
       subtitle: "Why one study method is not enough",
       content: (
         <>
@@ -43,14 +41,49 @@ export const blogPost: BlogPost = {
       content: (
         <>
           The four big pillars I recommend are these.
-          <Gap />
-          • pronunciation and Korean sound awareness
-          <br />
-          • structure through a course or textbook
-          <br />
-          • repeated exposure through YouTube, TikTok, and short form content
-          <br />
-          • real output through tutors, language exchange, or AI conversation
+          <Gap />• pronunciation and Korean sound awareness, best course is{" "}
+          <ContentLink
+            href="https://www.youtube.com/watch?v=Z9ZxsgMAZmI&list=PLbFrQnW0BNMVrHEJCOYWbLnXFzj4bl5z0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GoBillyKorean&apos;s Hangul Learning
+          </ContentLink>
+          <br />• structure through a course or textbook so far the best chanel
+          is{" "}
+          <ContentLink
+            href="https://www.youtube.com/@GoBillyKorean"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GoBillyKorean
+          </ContentLink>
+          ,
+          <ContentLink
+            href="https://kajakorean.com/grammar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Kaja Grammar Course
+          </ContentLink>
+          <br />• repeated exposure through YouTube, TikTok, and short form
+          content like{" "}
+          <ContentLink
+            href="https://www.instagram.com/kaja_minjae"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Kaja Korean Theater
+          </ContentLink>
+          <br />• real output through tutors, language exchange, or AI
+          conversation, the best app is{" "}
+          <ContentLink
+            href="https://www.hellotalk.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            HelloTalk
+          </ContentLink>
           <Gap />
           The point is not to do all four blindly.
           <Gap />
@@ -60,7 +93,6 @@ export const blogPost: BlogPost = {
       ),
     },
     {
-      image: "/images/placeholder/korean-study-02.jpg",
       subtitle: "The level axis I use for Korean learners",
       content: (
         <>
@@ -94,38 +126,6 @@ export const blogPost: BlogPost = {
       ),
     },
     {
-      subtitle: "The goal axis matters too",
-      content: (
-        <>
-          Even if two learners are at the same level, their study direction can
-          be completely different.
-          <Gap />
-          For example
-          <Gap />
-          • someone studying for travel in Korea
-          <br />
-          • someone aiming for daily conversation
-          <br />
-          • someone preparing for TOPIK
-          <br />
-          • someone who wants to sound fluent
-          <br />
-          • someone preparing to study or work in Korea
-          <Gap />
-          These learners should not give the same weight to the same materials.
-          <Gap />
-          If your goal is travel, survival expressions and listening adaptation
-          matter a lot. If your goal is passing an exam, textbooks, practice
-          questions, and writing matter much more. If your goal is fluency,
-          pronunciation, listening, and frequent output matter even more.
-          <Gap />
-          That is why you have to think about both the level axis and the goal
-          axis together.
-        </>
-      ),
-    },
-    {
-      image: "/images/placeholder/korean-study-03.jpg",
       subtitle: "The Korean learning flow I recommend in 2026",
       content: (
         <>
@@ -177,11 +177,22 @@ export const blogPost: BlogPost = {
           <Gap />
           Even a small amount of correction early on can make later listening
           and speaking much easier.
+          <Gap />
+          Some Korean teacher dosen&apos;t know how to explain. <br />
+          Some Ai Voice is not correct. <br />
+          Some Foreigner Teacher is not good at pronunciation. <br />
+          So far this was the best way to learn pronunciation.{" "}
+          <ContentLink
+            href="https://www.youtube.com/watch?v=Z9ZxsgMAZmI&list=PLbFrQnW0BNMVrHEJCOYWbLnXFzj4bl5z0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GoBillyKorean&apos;s Hangul Learning
+          </ContentLink>
         </>
       ),
     },
     {
-      image: "/images/placeholder/korean-study-04.jpg",
       subtitle: "2. Textbooks and courses build the framework",
       content: (
         <>
@@ -214,6 +225,15 @@ export const blogPost: BlogPost = {
           Learners who get stuck often have the opposite problem. They know many
           pieces, but the pieces do not connect. They have many expressions, but
           no framework. Or they have some framework, but very little real usage.
+          <Gap />
+          If you are looking for a good course or textbook, I recommend{" "}
+          <ContentLink href="#" target="_blank" rel="noopener noreferrer">
+            Korean Made Easy
+          </ContentLink>
+          and{" "}
+          <ContentLink href="#" target="_blank" rel="noopener noreferrer">
+            Beginner, Korean Grammar in Use
+          </ContentLink>
         </>
       ),
     },
@@ -256,11 +276,19 @@ export const blogPost: BlogPost = {
           <Gap />
           So the best combination is to build your framework through a course or
           textbook, and then use video for repetition and familiarity.
+          <Gap />
+          <strong>Just turn your algorithm to the right direction.</strong>{" "}
+          <ContentLink
+            href="https://www.tiktok.com/@kajakorean"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TikTok Kaja Korean Theater
+          </ContentLink>
         </>
       ),
     },
     {
-      image: "/images/placeholder/korean-study-05.jpg",
       subtitle: "4. Real practice makes Korean yours",
       content: (
         <>
@@ -297,6 +325,24 @@ export const blogPost: BlogPost = {
           <Gap />
           Human conversation is still essential. But AI is extremely useful for
           lowering the barrier between studying and actually speaking.
+          <Gap />
+          Output tranning with real person{" "}
+          <ContentLink
+            href="https://www.hellotalk.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            HelloTalk
+          </ContentLink>{" "}
+          <br></br>
+          Or Talk with korean teacher{" "}
+          <ContentLink
+            href="/coaching"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Minjae
+          </ContentLink>
         </>
       ),
     },
@@ -312,7 +358,6 @@ export const blogPost: BlogPost = {
       ),
     },
     {
-      image: "/images/placeholder/korean-study-06.jpg",
       subtitle: "A0 to A1: Complete beginners",
       content: (
         <>
@@ -390,7 +435,6 @@ export const blogPost: BlogPost = {
       ),
     },
     {
-      image: "/images/placeholder/korean-study-07.jpg",
       subtitle: "B1 to B2: Learners entering intermediate",
       content: (
         <>
@@ -435,7 +479,7 @@ export const blogPost: BlogPost = {
       ),
     },
     {
-      subtitle: "B2 to C1: Learners moving toward advanced",
+      subtitle: "B2 ~ C1, Learners moving toward advanced",
       content: (
         <>
           At this stage, you are no longer a learner who simply cannot speak.
@@ -476,7 +520,6 @@ export const blogPost: BlogPost = {
       ),
     },
     {
-      image: "/images/placeholder/korean-study-08.jpg",
       subtitle: "How the goal changes the flow",
       content: (
         <>
@@ -580,7 +623,6 @@ export const blogPost: BlogPost = {
       ),
     },
     {
-      image: "/images/placeholder/korean-study-09.jpg",
       subtitle: "The most realistic Korean study combination in 2026",
       content: (
         <>

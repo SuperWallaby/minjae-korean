@@ -13,24 +13,26 @@ export const dynamic = "force-dynamic";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
+const META_KEYWORD = "Study Korean with Songs";
+
 export const metadata: Metadata = {
-  title: "Kaja · Korean Songs",
+  title: `Korean Songs | ${META_KEYWORD} | Kaja`,
   description:
-    "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
+    "Study Korean with Songs: learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/songs` },
   openGraph: {
-    title: "Songs | Kaja",
+    title: `Songs | ${META_KEYWORD} | Kaja`,
     description:
-      "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
+      "Study Korean with Songs: learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
     url: `${SITE_URL.replace(/\/+$/, "")}/songs`,
     type: "website",
     siteName: "Kaja",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Songs | Kaja",
+    title: `Songs | ${META_KEYWORD} | Kaja`,
     description:
-      "Learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
+      "Study Korean with Songs: learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
   },
 };
 

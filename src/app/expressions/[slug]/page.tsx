@@ -25,18 +25,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const chapter = getExpressionChapterBySlug(slug);
   if (!chapter) return {};
 
+  const META_KEYWORD = "Study Korean Expressions";
   const canonical = `${SITE_URL}/expressions/${slug}`;
+  const metaTitle = `${chapter.title} | ${META_KEYWORD} | Kaja`;
+  const metaDescription =
+    chapter.description ??
+    "Study Korean Expressions: ready-to-use frames for speaking.";
   return {
-    title: `${chapter.title} | Korean Expressions`,
-    description:
-      chapter.description ??
-      "Learn Korean expressions with ready-to-use frames.",
+    title: metaTitle,
+    description: metaDescription,
     alternates: { canonical },
     openGraph: {
-      title: `${chapter.title} | Korean Expressions`,
-      description:
-        chapter.description ??
-        "Learn Korean expressions with ready-to-use frames.",
+      title: metaTitle,
+      description: metaDescription,
       url: canonical,
       siteName: "Kaja",
       type: "article",
@@ -46,10 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${chapter.title} | Korean Expressions`,
-      description:
-        chapter.description ??
-        "Learn Korean expressions with ready-to-use frames.",
+      title: metaTitle,
+      description: metaDescription,
       images: ["/brand/og.png"],
     },
   };

@@ -17,24 +17,27 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+const META_KEYWORD = "Study Korean with Songs";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = await getSong(slug);
   if (!s) return { title: "Song Not Found" };
 
   const title = `${s.title} - ${s.artist}`;
-  const description = `Learn Korean with "${s.title}" by ${s.artist}. Click on lyrics to see translations and explanations.`;
+  const description = `Study Korean with Songs: learn Korean with "${s.title}" by ${s.artist}. Click on lyrics to see translations and explanations.`;
   const mainImage = s.images?.large?.trim() || s.images?.thumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/songs/${encodeURIComponent(slug)}`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
 
   const keywords = [s.level, ...(s.tags ?? [])].filter(Boolean).join(", ");
   return {
-    title,
+    title: metaTitle,
     description,
     ...(keywords && { keywords }),
     alternates: { canonical },
     openGraph: {
-      title,
+      title: metaTitle,
       description,
       type: "article",
       url: canonical,
@@ -45,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: metaTitle,
       description,
       ...(mainImage && { images: [mainImage] }),
     },

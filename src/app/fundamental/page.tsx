@@ -8,14 +8,16 @@ export const runtime = "nodejs";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
+const META_KEYWORD = "Study Korean Fundamentals";
+
 export const metadata: Metadata = {
-  title: "Fundamental",
+  title: `Fundamental | ${META_KEYWORD} | Kaja`,
   description:
-    "Korean fundamentals for complete beginners: Hangeul, pronunciation, numbers, time, and essential words.",
+    "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
   openGraph: {
-    title: "Fundamental | Kaja",
+    title: `Fundamental | ${META_KEYWORD} | Kaja`,
     description:
-      "Korean fundamentals for complete beginners: Hangeul, pronunciation, numbers, time, and essential words.",
+      "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
     url: `${SITE_URL}/fundamental`,
     siteName: "Kaja",
     type: "website",
@@ -30,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fundamental | Kaja",
+    title: `Fundamental | ${META_KEYWORD} | Kaja`,
     description:
-      "Korean fundamentals for complete beginners: Hangeul, pronunciation, numbers, time, and essential words.",
+      "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
     images: [`${SITE_URL}/brand/og.png`],
   },
   alternates: { canonical: `${SITE_URL}/fundamental` },

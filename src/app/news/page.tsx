@@ -19,23 +19,25 @@ export const dynamic = "force-dynamic";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
+const META_KEYWORD = "Study Korean Reading";
+
 export const metadata: Metadata = {
-  title: "Korean News & Reading",
+  title: `Korean News & Reading | ${META_KEYWORD} | Kaja`,
   description:
-    "Korean study: short news and articles for reading practice, vocabulary, and prompts. Leveled content for learners.",
+    "Study Korean Reading: short news and articles for reading practice, vocabulary, and prompts. Leveled content for learners.",
   openGraph: {
-    title: "Korean News & Reading | Kaja",
+    title: `Korean News & Reading | ${META_KEYWORD} | Kaja`,
     description:
-      "Korean study: news and articles for reading practice, vocabulary, and prompts.",
+      "Study Korean Reading: news and articles for reading practice, vocabulary, and prompts.",
     url: `${SITE_URL}/news`,
     siteName: "Kaja",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Korean News & Reading | Kaja",
+    title: `Korean News & Reading | ${META_KEYWORD} | Kaja`,
     description:
-      "Korean study: news and articles for reading practice, vocabulary, and prompts.",
+      "Study Korean Reading: news and articles for reading practice, vocabulary, and prompts.",
   },
   alternates: { canonical: `${SITE_URL}/news` },
 };

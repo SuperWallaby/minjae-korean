@@ -8,23 +8,25 @@ export const runtime = "nodejs";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
+const META_KEYWORD = "Study Korean Grammar";
+
 export const metadata: Metadata = {
-  title: "Korean Grammar",
+  title: `Korean Grammar | ${META_KEYWORD} | Kaja`,
   description:
-    "Learn real Korean grammar in short chapters: particles, tense, speech levels, and more. Simple examples and quick practice.",
+    "Study Korean Grammar: particles, tense, speech levels, and more. Short chapters with simple examples and quick practice.",
   openGraph: {
-    title: "Korean Grammar | Kaja",
+    title: `Korean Grammar | ${META_KEYWORD} | Kaja`,
     description:
-      "Learn real Korean grammar in short chapters: particles, tense, speech levels, and more.",
+      "Study Korean Grammar: particles, tense, speech levels, and more in short chapters.",
     url: `${SITE_URL}/grammar`,
     siteName: "Kaja",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Korean Grammar | Kaja",
+    title: `Korean Grammar | ${META_KEYWORD} | Kaja`,
     description:
-      "Learn real Korean grammar in short chapters: particles, tense, speech levels, and more.",
+      "Study Korean Grammar: particles, tense, speech levels, and more in short chapters.",
   },
   alternates: { canonical: `${SITE_URL}/grammar` },
 };

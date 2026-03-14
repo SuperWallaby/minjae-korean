@@ -25,8 +25,10 @@ function buildDescription(a: Awaited<ReturnType<typeof getBlogPost>>): string {
     const plain = firstContent.replace(/\s+/g, " ").slice(0, 155);
     return plain + (plain.length >= 155 ? "…" : "");
   }
-  return `${a.title}. Blog post.`;
+  return `${a.title}. Study Korean — blog post.`;
 }
+
+const META_KEYWORD = "Study Korean";
 
 export async function generateMetadata({
   params,
@@ -41,17 +43,19 @@ export async function generateMetadata({
   const description = buildDescription(a);
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(slug)}`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
+  const metaDescription = description.includes(META_KEYWORD) ? description : `${META_KEYWORD}. ${description}`;
 
   return {
-    title,
-    description,
+    title: metaTitle,
+    description: metaDescription,
     alternates: { canonical },
     ...(a.noImageIndex && {
       robots: { index: true, follow: true, noimageindex: true },
     }),
     openGraph: {
-      title,
-      description,
+      title: metaTitle,
+      description: metaDescription,
       type: "article",
       url: canonical,
       ...(mainImage && {
@@ -65,8 +69,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: metaTitle,
+      description: metaDescription,
       ...(mainImage && { images: [mainImage] }),
     },
   };

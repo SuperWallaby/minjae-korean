@@ -9,13 +9,15 @@ export const runtime = "nodejs";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
+const META_KEYWORD = "Study Korean - Exams";
+
 export const metadata: Metadata = {
-  title: "Check my level  Beginners ~ intermediate ",
+  title: `Check my level | ${META_KEYWORD} | Kaja`,
   description:
-    "Find your Korean level with a short placement test. Interactive assessment.",
+    "Study Korean - Exams: find your Korean level with a short placement test. Interactive assessment.",
   openGraph: {
-    title: "Check my level  Beginners ~ intermediate  | Kaja",
-    description: "Find your Korean level with a short placement test.",
+    title: `Check my level | ${META_KEYWORD} | Kaja`,
+    description: "Study Korean - Exams: find your Korean level with a short placement test.",
     url: `${SITE_URL}/exams/placement`,
     siteName: "Kaja",
     type: "website",

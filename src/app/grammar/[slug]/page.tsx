@@ -30,17 +30,19 @@ export async function generateMetadata({
   const chapter = getChapterBySlug(grammarChapterList, slug);
   if (!chapter) return { title: "Not Found" };
 
+  const META_KEYWORD = "Study Korean Grammar";
   const title = `${chapter.title} — Korean Grammar`;
   const description =
     chapter.description ??
-    `Learn Korean grammar: ${chapter.title}. Short chapter with examples and practice.`;
+    `Study Korean Grammar: ${chapter.title}. Short chapter with examples and practice.`;
   const url = `${SITE_URL}/grammar/${slug}`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
 
   return {
-    title,
+    title: metaTitle,
     description,
     openGraph: {
-      title,
+      title: metaTitle,
       description,
       url,
       siteName: "Kaja",
@@ -49,7 +51,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: metaTitle,
       description,
       images: ["/brand/og.png"],
     },

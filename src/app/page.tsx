@@ -2,15 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import { Suspense } from "react";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { Container } from "@/components/site/Container";
 import { HomeHeroVideo } from "@/components/site/HomeHeroVideo";
 import { Button } from "@/components/ui/Button";
 import { listArticles } from "@/lib/articlesRepo";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
-import { CheckoutButton } from "@/components/stripe/CheckoutButton";
-import { FlexibleMonthlyRhythmCard } from "@/components/stripe/FlexibleMonthlyRhythmCard";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 import { LIBRARY_LINKS } from "@/data/libraryLinks";
@@ -60,7 +57,7 @@ export default async function Home() {
         <Container className="relative">
           <StaggerReveal className="relative mx-auto max-w-4xl text-center">
             <div className="text-sm font-semibold tracking-wide text-primary">
-              Kaja · 1:1 Korean Coaching
+              Kaja · Study with Minjae
             </div>
             <h1 className="mt-5  font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-6xl">
               Talk in Korean with Minjae.
@@ -87,6 +84,56 @@ export default async function Home() {
           </StaggerReveal>
         </Container>
       </section>
+
+      {/* 5) Library quick links */}
+      <RevealOnScroll as="section" className="py-10 sm:py-16 bg-(--bg-canvas)">
+        <Container>
+          <StaggerReveal className="mx-auto max-w-3xl text-center">
+            <Image
+              width={140}
+              height={140}
+              src="/meme/offical/fighthing.webp"
+              alt="Kaja – 1:1 Korean coaching"
+              className="mx-auto  -mt-8"
+            ></Image>
+            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+              Kaja Library
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+              Useful resources for Korean learning.
+            </p>
+          </StaggerReveal>
+          <StaggerReveal
+            as="div"
+            className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            staggerMs={80}
+          >
+            {LIBRARY_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left text-sm font-medium text-foreground transition hover:bg-muted/60"
+              >
+                <Image
+                  src={link.icon}
+                  alt={link.label}
+                  width={32}
+                  height={32}
+                  className="size-8 shrink-0"
+                />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold group-hover:underline">
+                    {link.label}
+                  </span>
+                  <p className="mt-0.5 text-xs text-muted-foreground sm:text-[13px]">
+                    {link.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </StaggerReveal>
+        </Container>
+      </RevealOnScroll>
 
       {/* 2) Context-first talking */}
       <RevealOnScroll
@@ -270,49 +317,6 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 5) Library quick links */}
-      <RevealOnScroll as="section" className="py-10 sm:py-16 bg-(--bg-canvas)">
-        <Container>
-          <StaggerReveal className="mx-auto max-w-3xl text-center">
-            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Library
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Jump straight into grammar, expressions, news, songs, and more.
-            </p>
-          </StaggerReveal>
-          <StaggerReveal
-            as="div"
-            className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4"
-            staggerMs={80}
-          >
-            {LIBRARY_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="group flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left text-sm font-medium text-foreground transition hover:bg-muted/60"
-              >
-                <Image
-                  src={link.icon}
-                  alt={link.label}
-                  width={32}
-                  height={32}
-                  className="size-8 shrink-0"
-                />
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold group-hover:underline">
-                    {link.label}
-                  </span>
-                  <p className="mt-0.5 text-xs text-muted-foreground sm:text-[13px]">
-                    {link.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </StaggerReveal>
-        </Container>
-      </RevealOnScroll>
-
       {/* 6) Posts — 메이저 카드 + 3단 그리드 */}
       <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
         <Container>
@@ -424,7 +428,7 @@ export default async function Home() {
                     a: (
                       <>
                         All levels are welcome. Coaching works best once you’ve
-                          built a basic{" "}
+                        built a basic{" "}
                         <Link
                           href="/fundamental"
                           className="font-medium text-primary underline underline-offset-2 hover:no-underline"

@@ -7,15 +7,17 @@ import { listRecaps } from "@/lib/recapRepo";
 
 export const runtime = "nodejs";
 
+const META_KEYWORD = "Study Korean - Lesson Recaps";
+
 export const metadata: Metadata = {
-  title: "Recaps",
+  title: `Recaps | ${META_KEYWORD} | Kaja`,
   description:
-    "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
+    "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Recaps | Kaja",
+    title: `Recaps | ${META_KEYWORD} | Kaja`,
     description:
-      "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
+      "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
     images: [
       {
         url: "/kaja-recap.png",
@@ -27,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Recaps | Kaja",
+    title: `Recaps | ${META_KEYWORD} | Kaja`,
     description:
-      "Open lesson recaps: expressions, vocabulary, and grammar from Korean lessons.",
+      "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
     images: ["/kaja-recap.png"],
   },
 };

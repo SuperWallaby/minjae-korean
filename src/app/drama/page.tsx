@@ -13,24 +13,26 @@ export const dynamic = "force-dynamic";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
+const META_KEYWORD = "Study Korean with Dramas";
+
 export const metadata: Metadata = {
-  title: "Drama",
+  title: `Drama | ${META_KEYWORD} | Kaja`,
   description:
-    "Learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
+    "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/drama` },
   openGraph: {
-    title: "Drama | Kaja",
+    title: `Drama | ${META_KEYWORD} | Kaja`,
     description:
-      "Learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
+      "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
     url: `${SITE_URL.replace(/\/+$/, "")}/drama`,
     type: "website",
     siteName: "Kaja",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Drama | Kaja",
+    title: `Drama | ${META_KEYWORD} | Kaja`,
     description:
-      "Learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
+      "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
   },
 };
 

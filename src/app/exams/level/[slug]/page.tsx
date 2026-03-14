@@ -24,11 +24,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const exam = getLevelExamSummary(slug);
   if (!exam) return { title: "Not Found" };
+  const META_KEYWORD = "Study Korean - Exams";
   const url = `${SITE_URL}/exams/level/${slug}`;
+  const metaTitle = `${exam.title} | ${META_KEYWORD} | Kaja`;
+  const metaDescription = exam.description ?? `Study Korean - Exams: level test ${exam.title}.`;
   return {
-    title: `${exam.title} | Exams`,
-    description: exam.description ?? `Level test: ${exam.title}.`,
-    openGraph: { title: `${exam.title} | Kaja`, url, siteName: "Kaja", type: "website" },
+    title: metaTitle,
+    description: metaDescription,
+    openGraph: { title: metaTitle, description: metaDescription, url, siteName: "Kaja", type: "website" },
     alternates: { canonical: url },
   };
 }

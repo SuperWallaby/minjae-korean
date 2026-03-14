@@ -15,14 +15,16 @@ export const runtime = "nodejs";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
+const META_KEYWORD = "Study Korean - Exams";
+
 export const metadata: Metadata = {
-  title: "Exams",
+  title: `Exams | ${META_KEYWORD} | Kaja`,
   description:
-    "Korean placement test (등급 받기), level tests (A1–B2), and mock TOPIK. Interactive online assessments.",
+    "Study Korean - Exams: placement test (등급 받기), level tests (A1–B2), and mock TOPIK. Interactive online assessments.",
   openGraph: {
-    title: "Exams | Kaja",
+    title: `Exams | ${META_KEYWORD} | Kaja`,
     description:
-      "Placement, level tests, and mock TOPIK. Interactive Korean assessments.",
+      "Study Korean - Exams: placement, level tests, and mock TOPIK. Interactive Korean assessments.",
     url: `${SITE_URL}/exams`,
     siteName: "Kaja",
     type: "website",

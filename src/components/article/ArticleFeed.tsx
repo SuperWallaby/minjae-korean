@@ -50,11 +50,7 @@ export function ArticleFeed({
           <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
             {major.imageLarge?.trim() || major.imageThumb?.trim() ? (
               <Image
-                src={
-                  major.imageLarge?.trim() ||
-                  major.imageThumb?.trim() ||
-                  ""
-                }
+                src={major.imageLarge?.trim() || major.imageThumb?.trim() || ""}
                 alt={major.title}
                 fill
                 className="object-cover transition group-hover:scale-[1.02]"
@@ -100,26 +96,16 @@ export function ArticleFeed({
               className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                {p.imageThumb?.trim() || p.imageLarge?.trim() ? (
+                {p?.imageThumb?.trim() || p?.imageLarge?.trim() ? (
                   <Image
-                    src={
-                      p.imageThumb?.trim() || p.imageLarge?.trim() || ""
-                    }
+                    src={p?.imageThumb?.trim() || p?.imageLarge?.trim() || ""}
                     alt={p.title}
                     fill
                     className="object-cover transition group-hover:scale-[1.02]"
                     unoptimized
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                ) : (
-                  <Image
-                    src="/placeholders/post-1.svg"
-                    alt="Article"
-                    fill
-                    className="object-cover object-center"
-                    unoptimized
-                  />
-                )}
+                ) : null}
               </div>
               <div className="flex flex-1 flex-col p-4">
                 <h4 className="font-serif font-semibold tracking-tight line-clamp-2">

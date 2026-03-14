@@ -26,7 +26,7 @@ async function readBlogOverrides(): Promise<Record<string, BlogImageOverrides>> 
 }
 
 const SLUG_LIST = [
-  // "2026-korean-study-method-blended-learning-flow",
+  "2026-korean-study-method-blended-learning-flow",
   "bts-7-letters-far-future-korean-phrases",
   "why-eun-neun-and-i-ga-feel-so-different",
   "why-koreans-cant-speak-english-after-12-years",
@@ -39,7 +39,7 @@ const loaders: Record<
   Slug,
   () => Promise<{ post: BlogPost }>
 > = {
-  // "2026-korean-study-method-blended-learning-flow": () => import("./content/2026-korean-study-method-blended-learning-flow").then(m => ({ post: m.default })),
+  "2026-korean-study-method-blended-learning-flow": () => import("./content/2026-korean-study-method-blended-learning-flow").then(m => ({ post: m.default })),
   "bts-7-letters-far-future-korean-phrases": () => import("./content/bts-7-letters-far-future-korean-phrases"),
   "why-eun-neun-and-i-ga-feel-so-different": () => import("./content/why-eun-neun-and-i-ga-feel-so-different"),
   "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),

@@ -42,17 +42,19 @@ export async function generateMetadata({
     };
   }
 
+  const META_KEYWORD = "Study Korean Fundamentals";
   const title = `${chapter.title} — Fundamental`;
   const description =
     chapter.description ??
-    `Learn: ${chapter.title}. Short chapter with examples.`;
+    `Study Korean Fundamentals: ${chapter.title}. Short chapter with examples.`;
   const url = `${SITE_URL}/fundamental/${slug}`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
 
   return {
-    title,
+    title: metaTitle,
     description,
     openGraph: {
-      title,
+      title: metaTitle,
       description,
       url,
       siteName: "Kaja",
@@ -61,7 +63,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: metaTitle,
       description,
       images: [OG_IMAGE],
     },

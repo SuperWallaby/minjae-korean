@@ -38,6 +38,7 @@ export async function generateMetadata({
     recap.studentName?.trim() && recap.studentName !== "—"
       ? recap.studentName.trim()
       : "";
+  const META_KEYWORD = "Study Korean - Lesson Recaps";
   const title = [
     "Korean Lesson Recap",
     studentLabel,
@@ -45,6 +46,7 @@ export async function generateMetadata({
   ]
     .filter(Boolean)
     .join(" · ");
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
 
   const descParts: string[] = [];
   if (recap.expression.length > 0) {
@@ -75,16 +77,17 @@ export async function generateMetadata({
     descParts.length > 0
       ? descParts.join(" | ")
       : "Korean lesson recap notes with expressions, vocabulary, and grammar points.";
+  const metaDescription = `Study Korean - Lesson Recaps. ${description}`;
 
   const ogImage = "/kaja-recap.png";
 
   return {
-    title,
-    description,
+    title: metaTitle,
+    description: metaDescription,
     robots: { index: false, follow: false },
     openGraph: {
-      title,
-      description,
+      title: metaTitle,
+      description: metaDescription,
       type: "article",
       images: [
         { url: ogImage, width: 1200, height: 630, alt: "Korean Lesson Recap" },
@@ -92,8 +95,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: metaTitle,
+      description: metaDescription,
       images: [ogImage],
     },
   };

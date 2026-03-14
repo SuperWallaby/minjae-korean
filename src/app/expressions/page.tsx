@@ -8,21 +8,23 @@ export const runtime = "nodejs";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 
+const META_KEYWORD = "Study Korean Expressions";
+
 export const metadata: Metadata = {
-  title: "Korean Expressions",
+  title: `Korean Expressions | ${META_KEYWORD} | Kaja`,
   description:
-    "Learn essential Korean expressions with ready-to-use frames. Perfect for beginners who want to speak immediately.",
+    "Study Korean Expressions: essential expressions with ready-to-use frames. Perfect for beginners who want to speak immediately.",
   openGraph: {
-    title: "Korean Expressions | Kaja",
-    description: "Learn essential Korean expressions with ready-to-use frames.",
+    title: `Korean Expressions | ${META_KEYWORD} | Kaja`,
+    description: "Study Korean Expressions: essential expressions with ready-to-use frames.",
     url: `${SITE_URL}/expressions`,
     siteName: "Kaja",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Korean Expressions | Kaja",
-    description: "Learn essential Korean expressions with ready-to-use frames.",
+    title: `Korean Expressions | ${META_KEYWORD} | Kaja`,
+    description: "Study Korean Expressions: essential expressions with ready-to-use frames.",
   },
   alternates: { canonical: `${SITE_URL}/expressions` },
 };

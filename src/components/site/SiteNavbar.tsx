@@ -149,10 +149,13 @@ export function SiteNavbar() {
                       aria-expanded={assetsOpen}
                       aria-haspopup="true"
                     >
-                      <img
-                        className="size-6 shrink-0 -mx-1 group-hover:opacity-100 opacity-80"
+                      <Image
                         src="/icons/light-bulb.webp"
-                      ></img>
+                        width={24}
+                        height={24}
+                        alt=""
+                        className="size-6 shrink-0 -mx-1 group-hover:opacity-100 opacity-80"
+                      />
                       Library
                       <ChevronDown
                         className={cn(

@@ -21,12 +21,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const exam = getMockExamSummary(slug);
   if (!exam) return { title: "Not Found" };
+  const META_KEYWORD = "Study Korean - Exams";
   const url = `${SITE_URL}/exams/mock/${slug}`;
+  const metaTitle = `${exam.title} | ${META_KEYWORD} | Kaja`;
+  const metaDescription = exam.description ?? `Study Korean - Exams: mock TOPIK ${exam.title}.`;
   return {
-    title: `${exam.title} | Exams`,
-    description: exam.description ?? `Mock TOPIK: ${exam.title}.`,
+    title: metaTitle,
+    description: metaDescription,
     openGraph: {
-      title: `${exam.title} | Kaja`,
+      title: metaTitle,
+      description: metaDescription,
       url,
       siteName: "Kaja",
       type: "website",
