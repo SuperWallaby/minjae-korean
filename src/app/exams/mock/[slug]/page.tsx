@@ -75,13 +75,21 @@ export default async function MockExamPage({
             Exam engine will load here. (Blueprint + items for slug: {slug})
           </p>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-wrap items-center gap-4">
           <Link
             href="/exams"
             className="text-sm font-medium text-primary hover:underline"
           >
             ← Back to Exams
           </Link>
+          {process.env.NODE_ENV !== "production" && (
+            <Link
+              href={`/exams/mock/${slug}/edit`}
+              className="rounded border border-border bg-muted/50 px-3 py-1.5 text-sm hover:bg-muted"
+            >
+              Edit
+            </Link>
+          )}
         </div>
       </Container>
     </div>

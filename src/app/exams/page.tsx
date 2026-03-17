@@ -5,8 +5,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/site/Container";
 import {
   getPlacementSummary,
-  LEVEL_EXAM_SLUGS,
-  MOCK_EXAM_SLUGS,
+  getLevelExamSummaries,
+  getMockExamSummaries,
   type ExamSummary,
 } from "@/data/examsList";
 import { cn } from "@/lib/utils";
@@ -44,9 +44,18 @@ function getExamBadgeLabel(e: ExamSummary): string {
   return "Mock TOPIK";
 }
 
+function getExamEditHref(e: ExamSummary): string {
+  if (e.kind === "placement") return "/exams/placement/edit";
+  if (e.kind === "level_test") return `/exams/level/${e.slug}/edit`;
+  return `/exams/mock/${e.slug}/edit`;
+}
+
 export default function ExamsHubPage() {
-  const placement = getPlacementSummary();
-  const rest: ExamSummary[] = [...LEVEL_EXAM_SLUGS, ...MOCK_EXAM_SLUGS];
+  const exams: ExamSummary[] = [
+    getPlacementSummary(),
+    ...getLevelExamSummaries(),
+    ...getMockExamSummaries(),
+  ];
 
   return (
     <div className="py-12 sm:py-16">
@@ -61,48 +70,13 @@ export default function ExamsHubPage() {
           </p>
         </div>
 
-        {/* Featured: Placement */}
-        <Link
-          href={getExamHref(placement)}
-          className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
-            {placement.imageThumb?.trim() ? (
-              <Image
-                src={placement.imageThumb}
-                alt={placement.title}
-                fill
-                className="object-cover transition group-hover:scale-[1.02]"
-                unoptimized
-                sizes="(max-width: 1024px) 100vw, 1024px"
-              />
-            ) : null}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-              <span className="inline-flex items-center rounded-full bg-primary/90 px-2.5 py-1 text-xs font-medium text-primary-foreground">
-                {getExamBadgeLabel(placement)}
-              </span>
-              <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
-                {placement.title}
-              </h2>
-              {placement.description ? (
-                <p className="mt-1 text-sm text-white/90">
-                  {placement.description}
-                </p>
-              ) : null}
-            </div>
-          </div>
-        </Link>
-
-        {/* Card grid: Level tests + Mock TOPIK */}
-        {rest.length > 0 ? (
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {rest.map((e) => (
-              <Link
-                key={`${e.kind}-${e.slug}`}
-                href={getExamHref(e)}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {exams.map((e) => (
+            <div
+              key={`${e.kind}-${e.slug}`}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+            >
+              <Link href={getExamHref(e)} className="flex flex-1 flex-col">
                 <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
                   {e.imageThumb?.trim() ? (
                     <Image
@@ -123,9 +97,11 @@ export default function ExamsHubPage() {
                   <span
                     className={cn(
                       "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                      e.kind === "mock_topik"
-                        ? "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-200"
-                        : "bg-muted text-muted-foreground",
+                      e.kind === "placement"
+                        ? "bg-primary/90 text-primary-foreground"
+                        : e.kind === "mock_topik"
+                          ? "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-200"
+                          : "bg-muted text-muted-foreground",
                     )}
                   >
                     {getExamBadgeLabel(e)}
@@ -140,9 +116,17 @@ export default function ExamsHubPage() {
                   ) : null}
                 </div>
               </Link>
-            ))}
-          </div>
-        ) : null}
+              {process.env.NODE_ENV !== "production" && (
+                <Link
+                  href={getExamEditHref(e)}
+                  className="absolute right-2 top-2 z-10 rounded border border-border bg-background/90 px-2 py-1 text-xs backdrop-blur hover:bg-muted"
+                >
+                  Edit
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
       </Container>
     </div>
   );

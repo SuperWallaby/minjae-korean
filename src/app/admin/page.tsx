@@ -10,11 +10,13 @@ import AdminRemindersView from "./_components/AdminRemindersView";
 import WeeklyPatternEditor from "./_components/WeeklyPatternEditor";
 import AdminStudentsView from "./_components/AdminStudentsView";
 import AdminMeetingsView from "./_components/AdminMeetingsView";
- 
+import AdminExamsCoversView from "./_components/AdminExamsCoversView";
+import AdminExamsVoiceView from "./_components/AdminExamsVoiceView";
+
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
  
 export default function AdminPage() {
-  const [tab, setTab] = React.useState<"calendar" | "pattern" | "bookings" | "students" | "meetings" | "recaps" | "reminders">("calendar");
+  const [tab, setTab] = React.useState<"calendar" | "pattern" | "bookings" | "students" | "meetings" | "recaps" | "reminders" | "exams">("calendar");
   const [fromDateKey, setFromDateKey] = React.useState<string>(
     DateTime.now().setZone(BUSINESS_TIME_ZONE).toISODate() ?? new Date().toISOString().slice(0, 10)
   );
@@ -98,6 +100,12 @@ export default function AdminPage() {
         >
           리마인더
         </button>
+        <button
+          className={`px-3 py-2 rounded border ${tab === "exams" ? "bg-black text-white" : "bg-white"}`}
+          onClick={() => setTab("exams")}
+        >
+          시험 표지
+        </button>
       </div>
 
       {tab === "calendar" ? <AdminCalendarView /> : null}
@@ -107,6 +115,18 @@ export default function AdminPage() {
       {tab === "meetings" ? <AdminMeetingsView /> : null}
       {tab === "recaps" ? <AdminRecapsView /> : null}
       {tab === "reminders" ? <AdminRemindersView /> : null}
+      {tab === "exams" ? (
+        <div className="space-y-10">
+          <section>
+            <h2 className="mb-4 text-lg font-semibold">시험 표지</h2>
+            <AdminExamsCoversView />
+          </section>
+          <section>
+            <h2 className="mb-4 text-lg font-semibold">보이스 생성</h2>
+            <AdminExamsVoiceView />
+          </section>
+        </div>
+      ) : null}
        <div className="grid gap-4 md:grid-cols-2 mb-6">
          <label className="grid gap-1">
           <span className="text-sm">시작일</span>
