@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components/site/Container";
 import { getMockExamSummary, MOCK_EXAM_SLUGS } from "@/data/examsList";
-import { ExamEditClient } from "../../_components/ExamEditClient";
+import { ExamEditClient } from "@/app/exams/_components/ExamEditClient";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
