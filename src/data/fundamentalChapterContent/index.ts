@@ -8,8 +8,17 @@ import type { GrammarChapterContent } from "../grammarTypes";
 
 const _SLUG_LIST = [
   "hangeul-consonants-vowels",
+  "hangeul-what-it-looks-like",
   "hangeul-syllable-building",
+  "hangeul-more-vowels",
+  "hangeul-more-consonants",
+  "hangeul-block-patterns",
+  "hangeul-reading-practice-simple-blocks",
+  "hangeul-reading-practice-simple-words",
   "hangeul-batchim-basics",
+  "hangeul-batchim-sound-groups",
+  "hangeul-liaison-basics",
+  "test-hangeul-foundations-01",
   "test-hangeul-01",
   "test-numbers-01",
   "test-words-01",
@@ -42,8 +51,20 @@ type Slug = (typeof _SLUG_LIST)[number];
 
 const loaders: Record<Slug, () => Promise<{ content: GrammarChapterContent }>> = {
   "hangeul-consonants-vowels": () => import("./content/hangeul-consonants-vowels"),
+  "hangeul-what-it-looks-like": () => import("./content/hangeul-what-it-looks-like"),
   "hangeul-syllable-building": () => import("./content/hangeul-syllable-building"),
+  "hangeul-more-vowels": () => import("./content/hangeul-more-vowels"),
+  "hangeul-more-consonants": () => import("./content/hangeul-more-consonants"),
+  "hangeul-block-patterns": () => import("./content/hangeul-block-patterns"),
+  "hangeul-reading-practice-simple-blocks": () =>
+    import("./content/hangeul-reading-practice-simple-blocks"),
+  "hangeul-reading-practice-simple-words": () =>
+    import("./content/hangeul-reading-practice-simple-words"),
   "hangeul-batchim-basics": () => import("./content/hangeul-batchim-basics"),
+  "hangeul-batchim-sound-groups": () =>
+    import("./content/hangeul-batchim-sound-groups"),
+  "hangeul-liaison-basics": () => import("./content/hangeul-liaison-basics"),
+  "test-hangeul-foundations-01": () => import("./content/test-hangeul-foundations-01"),
   "test-hangeul-01": () => import("./content/test-hangeul-01"),
   "test-numbers-01": () => import("./content/test-numbers-01"),
   "test-words-01": () => import("./content/test-words-01"),

@@ -148,5 +148,6 @@ export const grammarChapterList: GrammarChapterList = {
         { id: "40", slug: "gaekche-nopim", number: 40, title: "객체 높임: 드리다, 여쭙다", description: "Be polite to the other person.", meta: meta(9, 4, 3) },
       ],
     },
+  
   ],
 };

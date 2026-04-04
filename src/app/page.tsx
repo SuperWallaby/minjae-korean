@@ -10,7 +10,8 @@ import { listArticles } from "@/lib/articlesRepo";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
-import { LIBRARY_LINKS } from "@/data/libraryLinks";
+import { LIBRARY_LINKS, NEWS_RESOURCE } from "@/data/libraryLinks";
+import { cn } from "@/lib/utils";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -108,30 +109,91 @@ export default async function Home() {
             className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4"
             staggerMs={80}
           >
-            {LIBRARY_LINKS.map((link) => (
+            {[NEWS_RESOURCE, ...LIBRARY_LINKS].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left text-sm font-medium text-foreground transition hover:bg-muted/60"
+                className={cn(
+                  "group flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left text-sm font-medium text-foreground transition hover:bg-muted/60",
+                  link.emphasized &&
+                    "bg-muted/45 shadow-md shadow-black/4 hover:bg-muted/60",
+                )}
               >
                 <Image
                   src={link.icon}
                   alt={link.label}
                   width={32}
                   height={32}
-                  className="size-8 shrink-0"
+                  className={cn(
+                    "shrink-0",
+                    link.emphasized ? "size-9 sm:size-10" : "size-8",
+                  )}
                 />
                 <div className="flex flex-col">
-                  <span className="text-sm font-semibold group-hover:underline">
+                  <span
+                    className={cn(
+                      "font-semibold group-hover:underline",
+                      link.emphasized
+                        ? "text-base text-foreground sm:text-[17px]"
+                        : "text-sm",
+                    )}
+                  >
                     {link.label}
                   </span>
-                  <p className="mt-0.5 text-xs text-muted-foreground sm:text-[13px]">
+                  <p
+                    className={cn(
+                      "mt-0.5 text-xs sm:text-[13px]",
+                      link.emphasized
+                        ? "text-foreground/80"
+                        : "text-muted-foreground",
+                    )}
+                  >
                     {link.description}
                   </p>
                 </div>
               </Link>
             ))}
           </StaggerReveal>
+        </Container>
+      </RevealOnScroll>
+
+      {/* 6) Posts — 메이저 카드 + 3단 그리드 */}
+      <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
+        <Container>
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-12">
+              <StaggerReveal
+                as="div"
+                className="flex w-full items-end justify-between"
+                staggerMs={80}
+              >
+                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Kaja News Practice Readings & Listening
+                </h2>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="inline-flex items-center gap-2"
+                >
+                  <Link href="/news">
+                    More Articles <ArrowRight className="size-4" />
+                  </Link>
+                </Button>
+              </StaggerReveal>
+
+              {news.length === 0 ? null : (
+                <StaggerReveal
+                  as="div"
+                  className="mt-6 space-y-6"
+                  staggerMs={90}
+                  delayMs={80}
+                >
+                  <ArticleFeed articles={news} showMajor={false} />
+                </StaggerReveal>
+              )}
+            </div>
+          </div>
         </Container>
       </RevealOnScroll>
 
@@ -145,6 +207,9 @@ export default async function Home() {
           <div className="grid gap-10 gap-8 lg:grid-cols-2 lg:items-center">
             <div className=" max-w-xl order-1 lg:order-1">
               <StaggerReveal>
+                <h6 className="text-sm text-muted-foreground">
+                  Get personalized guidance.
+                </h6>
                 <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
                   Coaching, not just a class
                 </h2>
@@ -312,46 +377,6 @@ export default async function Home() {
                   </div>
                 </div>
               </StaggerReveal>
-            </div>
-          </div>
-        </Container>
-      </RevealOnScroll>
-
-      {/* 6) Posts — 메이저 카드 + 3단 그리드 */}
-      <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
-        <Container>
-          <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-12">
-              <StaggerReveal
-                as="div"
-                className="flex w-full items-end justify-between"
-                staggerMs={80}
-              >
-                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Kaja News
-                </h2>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm"
-                  className="inline-flex items-center gap-2"
-                >
-                  <Link href="/news">
-                    More Articles <ArrowRight className="size-4" />
-                  </Link>
-                </Button>
-              </StaggerReveal>
-
-              {news.length === 0 ? null : (
-                <StaggerReveal
-                  as="div"
-                  className="mt-6 space-y-6"
-                  staggerMs={90}
-                  delayMs={80}
-                >
-                  <ArticleFeed articles={news} showMajor={false} />
-                </StaggerReveal>
-              )}
             </div>
           </div>
         </Container>

@@ -27,6 +27,7 @@ async function readBlogOverrides(): Promise<Record<string, BlogImageOverrides>> 
 
 const SLUG_LIST = [
   "study-korean-what-is-arirang",
+  "why-korean-translation-loses-meaning",
   "2026-korean-study-method-blended-learning-flow",
   "bts-7-letters-far-future-korean-phrases",
   "why-eun-neun-and-i-ga-feel-so-different",
@@ -41,6 +42,8 @@ const loaders: Record<
   () => Promise<{ post: BlogPost }>
 > = {
   "study-korean-what-is-arirang": () => import("./content/study-korean-what-is-arirang"),
+  "why-korean-translation-loses-meaning": () =>
+    import("./content/why-korean-translation-loses-meaning"),
   "2026-korean-study-method-blended-learning-flow": () => import("./content/2026-korean-study-method-blended-learning-flow").then(m => ({ post: m.default })),
   "bts-7-letters-far-future-korean-phrases": () => import("./content/bts-7-letters-far-future-korean-phrases"),
   "why-eun-neun-and-i-ga-feel-so-different": () => import("./content/why-eun-neun-and-i-ga-feel-so-different"),

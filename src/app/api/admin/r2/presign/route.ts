@@ -36,6 +36,23 @@ function r2Client() {
 export async function POST(req: Request) {
   try {
     if (!devOnly()) {
+      // #region agent log
+      void fetch("http://127.0.0.1:7383/ingest/9bfe7e81-8b41-49da-bd3f-27e434f7af33", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Debug-Session-Id": "23e8d7",
+        },
+        body: JSON.stringify({
+          sessionId: "23e8d7",
+          hypothesisId: "H5",
+          location: "presign/route.ts:POST",
+          message: "blocked non-dev",
+          data: { nodeEnv: process.env.NODE_ENV },
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {});
+      // #endregion
       return new Response(JSON.stringify({ ok: false, error: "Not found" }), {
         status: 404,
         headers: { "Content-Type": "application/json" },
@@ -71,8 +88,26 @@ export async function POST(req: Request) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (e) {
+    const errMsg = e instanceof Error ? e.message : String(e);
+    // #region agent log
+    void fetch("http://127.0.0.1:7383/ingest/9bfe7e81-8b41-49da-bd3f-27e434f7af33", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Debug-Session-Id": "23e8d7",
+      },
+      body: JSON.stringify({
+        sessionId: "23e8d7",
+        hypothesisId: "H1",
+        location: "presign/route.ts:catch",
+        message: "presign threw",
+        data: { error: errMsg },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+    // #endregion
     return new Response(
-      JSON.stringify({ ok: false, error: e instanceof Error ? e.message : String(e) }),
+      JSON.stringify({ ok: false, error: errMsg }),
       { status: 500, headers: { "Content-Type": "application/json" } },
     );
   }

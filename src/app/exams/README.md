@@ -87,7 +87,7 @@ export const levelA1Exam: Exam = {
   slug: "level-a1",
   title: "Level A1",
   description: "Short level test for A1.",
-  kind: "level_test", // placement | level_test | mock_topik
+  kind: "level_test", // placement | level_test | topic_quiz | mock_topik
   uiLocale: "en",
   blueprint: {
     timeLimitSec: 900,
@@ -122,33 +122,50 @@ export const levelA1Exam: Exam = {
 
 ### 2. exams 목록에 등록 (`src/data/examsList.ts`)
 
-1. `src/data/examsList.ts`에서 새 시험을 import 합니다.
-2. `LEVEL_EXAM_SLUGS` 또는 `MOCK_EXAM_SLUGS` 배열에 **카드용 메타데이터**를 추가합니다.
+1. `src/data/examsList.ts`에서 목록 배열에 **카드용 메타데이터**를 추가합니다.
+2. 종류별 배열:
+   - `LEVEL_EXAM_SLUGS`
+   - `TOPIC_QUIZ_SLUGS` (특정 문법/주제 드릴)
+   - `MOCK_EXAM_SLUGS`
 
 필드 예시:
 - `slug`: 위 `Exam.slug`와 동일
 - `title`: 카드에 보일 제목
 - `description`: 한 줄 설명
-- `kind`: `"placement" | "level_test" | "mock_topik"`
+- `kind`: `"placement" | "level_test" | "topic_quiz" | "mock_topik"`
 - `targetLevel`: level test인 경우 (예: `"A1"`)
 - `imageThumb`: `/exams/…` 카드 썸네일 (선택)
 
 이렇게 추가하면 `/exams` 허브 페이지에 카드가 자동으로 나타납니다.
 
+#### 표지(커버) 이미지
+
+- 표지는 `src/data/examsCovers.json`에 **slug → 이미지 URL**로 저장됩니다.
+- 개발 모드에서 각 시험 페이지의 **Edit 버튼**으로 커버를 업로드/저장할 수 있습니다.
+- 업로드 시 `@/lib/imageUpload`의 `processImageForThumbnail()`로 WebP 변환 + 리사이즈 최적화를 적용합니다.
+
 ---
 
 ### 3. 라우트 설정 (페이지)
 
-레벨 시험 / 모의 시험용 라우트는 이미 준비되어 있습니다.
+레벨 시험 / 주제 드릴 / 모의 시험용 라우트가 준비되어 있습니다.
 
 - `src/app/exams/placement/page.tsx` – 배치 시험
 - `src/app/exams/level/[slug]/page.tsx` – 레벨 시험 (slug로 구분)
+- `src/app/exams/topic/[slug]/page.tsx` – 주제 드릴 (예: 조사/시제 등)
 - `src/app/exams/mock/[slug]/page.tsx` – 모의 TOPIK
 
 새 시험은 보통 **데이터만 추가**하면 됩니다.
 
 - `getExam(kind, slug)` / `getExamItems(kind, slug)` 쪽에서 새 slug를 처리하도록 해 두면
 - 위 페이지들이 해당 slug로 접속했을 때 `ExamSession`에 데이터를 넘겨줍니다.
+
+#### 개발 모드 편집 라우트 (표지 업로드)
+
+- `/exams/placement/edit`
+- `/exams/level/[slug]/edit`
+- `/exams/topic/[slug]/edit`
+- `/exams/mock/[slug]/edit`
 
 ---
 

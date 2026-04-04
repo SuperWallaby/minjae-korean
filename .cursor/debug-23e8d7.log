@@ -1,0 +1,7 @@
+{"sessionId":"23e8d7","hypothesisId":"H2","location":"edit/ui.tsx:handleUpload:start","message":"upload start","data":{"key":"imageThumb","fileName":"asdasdasdasd.jpg","fileType":"image/jpeg","fileSize":104645},"timestamp":1774029637744}
+{"sessionId":"23e8d7","hypothesisId":"H2","location":"edit/ui.tsx:handleUpload:afterProcess","message":"image processed","data":{"key":"imageThumb","outName":"asdasdasdasd.webp","outType":"image/webp","outSize":33572},"timestamp":1774029637777}
+{"sessionId":"23e8d7","runId":"post-fix","hypothesisId":"H3","location":"edit/ui.tsx:uploadToR2:proxyOk","message":"server proxy upload ok","data":{"hasUrl":true},"timestamp":1774029639196}
+{"sessionId":"23e8d7","hypothesisId":"H2","location":"edit/ui.tsx:handleUpload:start","message":"upload start","data":{"key":"imageLarge","fileName":"asdasdasdasd.jpg","fileType":"image/jpeg","fileSize":104645},"timestamp":1774029643786}
+{"sessionId":"23e8d7","hypothesisId":"H2","location":"edit/ui.tsx:handleUpload:afterProcess","message":"image processed","data":{"key":"imageLarge","outName":"asdasdasdasd.webp","outType":"image/webp","outSize":68284},"timestamp":1774029643846}
+{"sessionId":"23e8d7","runId":"post-fix","hypothesisId":"H3","location":"edit/ui.tsx:uploadToR2:proxyOk","message":"server proxy upload ok","data":{"hasUrl":true},"timestamp":1774029644551}
+{"sessionId":"23e8d7","hypothesisId":"H4","location":"edit/ui.tsx:saveOverrides","message":"overrides API","data":{"httpStatus":200,"ok":true,"error":null},"timestamp":1774029647557}

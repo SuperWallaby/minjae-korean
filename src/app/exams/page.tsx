@@ -6,6 +6,7 @@ import { Container } from "@/components/site/Container";
 import {
   getPlacementSummary,
   getLevelExamSummaries,
+  getTopicQuizSummaries,
   getMockExamSummaries,
   type ExamSummary,
 } from "@/data/examsList";
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
 function getExamHref(e: ExamSummary): string {
   if (e.kind === "placement") return "/exams/placement";
   if (e.kind === "level_test") return `/exams/level/${e.slug}`;
+  if (e.kind === "topic_quiz") return `/exams/topic/${e.slug}`;
   return `/exams/mock/${e.slug}`;
 }
 
@@ -47,6 +49,7 @@ function getExamBadgeLabel(e: ExamSummary): string {
 function getExamEditHref(e: ExamSummary): string {
   if (e.kind === "placement") return "/exams/placement/edit";
   if (e.kind === "level_test") return `/exams/level/${e.slug}/edit`;
+  if (e.kind === "topic_quiz") return `/exams/topic/${e.slug}/edit`;
   return `/exams/mock/${e.slug}/edit`;
 }
 
@@ -54,6 +57,7 @@ export default function ExamsHubPage() {
   const exams: ExamSummary[] = [
     getPlacementSummary(),
     ...getLevelExamSummaries(),
+    ...getTopicQuizSummaries(),
     ...getMockExamSummaries(),
   ];
 

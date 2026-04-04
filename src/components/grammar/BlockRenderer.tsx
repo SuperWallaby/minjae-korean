@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import type { GrammarBlock } from "@/data/grammarTypes";
 
+import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { BlockBulletedList } from "./blocks/BlockBulletedList";
 import { BlockCallout } from "./blocks/BlockCallout";
 import { BlockCode } from "./blocks/BlockCode";
@@ -128,6 +130,49 @@ function BlockRendererOne({ block }: { block: GrammarBlock }) {
           title={block.title}
           questions={block.questions}
         />
+      );
+    case "image": {
+      const ratio = block.aspectRatio ?? "16/9";
+      const paddingBottom =
+        ratio === "1/1"
+          ? "100%"
+          : ratio === "4/3"
+            ? "75%"
+            : ratio === "3/4"
+              ? "133.3333%"
+              : "56.25%";
+      return (
+        <figure className="space-y-2">
+          <div className="overflow-hidden rounded-xl border border-border bg-muted/10">
+            <div className="relative w-full" style={{ paddingBottom }}>
+              <Image
+                src={block.src}
+                alt={block.alt ?? ""}
+                fill
+                className="object-cover object-center"
+                unoptimized={Boolean(block.unoptimized)}
+                sizes="(max-width: 1024px) 100vw, 896px"
+              />
+            </div>
+          </div>
+          {block.caption ? (
+            <figcaption className="text-xs text-muted-foreground">
+              {block.caption}
+            </figcaption>
+          ) : null}
+        </figure>
+      );
+    }
+    case "youtube":
+      return (
+        <figure className="space-y-2">
+          <YouTubeEmbed urlOrId={block.urlOrId} />
+          {block.caption ? (
+            <figcaption className="text-xs text-muted-foreground">
+              {block.caption}
+            </figcaption>
+          ) : null}
+        </figure>
       );
     case "bulleted_list_item":
       return <BlockBulletedList items={[block.text]} />;

@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { DateTime } from "luxon";
 
 import { smartUnsplashSearch } from "@/lib/smartUnsplash";
+import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 
 /** API/목록에서 오는 리스트 항목 */
 type RecapListItem = {
@@ -335,26 +336,6 @@ function toListItems(rows: ListRow[]): RecapListItem[] {
       content: r.content.trim() || undefined,
     }))
     .filter((r) => r.text.length > 0);
-}
-
-async function uploadToR2(file: File): Promise<string> {
-  const res = await fetch("/api/admin/r2/presign", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ fileName: file.name, contentType: file.type }),
-  });
-  const json = await res.json().catch(() => null);
-  if (!res.ok || !json?.ok) throw new Error(String(json?.error ?? "업로드 실패"));
-  const uploadUrl = String(json?.data?.uploadUrl ?? "");
-  const publicUrl = String(json?.data?.publicUrl ?? "");
-  if (!uploadUrl || !publicUrl) throw new Error("업로드 URL 없음");
-  const put = await fetch(uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": file.type || "application/octet-stream" },
-    body: file,
-  });
-  if (!put.ok) throw new Error("업로드 실패");
-  return publicUrl;
 }
 
 const JSON_EXAMPLE = `[
@@ -1021,7 +1002,7 @@ export default function AdminRecapsView() {
           if (!file || !target) return;
           setUploadingKey(`${target.field}-${target.idx}`);
           try {
-            const url = await uploadToR2(file);
+            const url = await uploadFileToR2(file);
             if (target.forEdit) {
               setEditForm((p) => ({
                 ...p,

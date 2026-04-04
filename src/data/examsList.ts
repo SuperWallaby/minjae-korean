@@ -29,6 +29,16 @@ export const LEVEL_EXAM_SLUGS: ExamSummary[] = [
   // { slug: "a2-01", kind: "level_test", title: "A2 Level Test 01", targetLevel: "A2" },
 ];
 
+/** Topic quizzes (e.g. particles, honorifics). */
+export const TOPIC_QUIZ_SLUGS: ExamSummary[] = [
+  {
+    slug: "particles-01",
+    kind: "topic_quiz",
+    title: "Particles Drill 01 (조사)",
+    description: "은/는, 이/가, 을/를, 에/에서 집중 연습",
+  },
+];
+
 /** Mock TOPIK slugs. Extend as you add exams. */
 export const MOCK_EXAM_SLUGS: ExamSummary[] = [
   // { slug: "topik-i-01", kind: "mock_topik", title: "TOPIK I Mock 01", description: "Practice TOPIK I format." },
@@ -61,8 +71,19 @@ export function getMockExamSummaries(): ExamSummary[] {
   }));
 }
 
+export function getTopicQuizSummaries(): ExamSummary[] {
+  return TOPIC_QUIZ_SLUGS.map((e) => ({
+    ...e,
+    imageThumb: COVERS[e.slug]?.trim() || e.imageThumb,
+  }));
+}
+
 export function getLevelExamSummary(slug: string): ExamSummary | null {
   return getLevelExamSummaries().find((e) => e.slug === slug) ?? null;
+}
+
+export function getTopicQuizSummary(slug: string): ExamSummary | null {
+  return getTopicQuizSummaries().find((e) => e.slug === slug) ?? null;
 }
 
 export function getMockExamSummary(slug: string): ExamSummary | null {
@@ -71,12 +92,19 @@ export function getMockExamSummary(slug: string): ExamSummary | null {
 
 /** Full exam by kind + slug. Placement uses static data; others return null until wired. */
 export async function getExam(
-  kind: "placement" | "level_test" | "mock_topik",
+  kind: "placement" | "level_test" | "topic_quiz" | "mock_topik",
   slug: string
 ): Promise<Exam | null> {
   if (kind === "placement" && slug === PLACEMENT_SLUG) {
     const { placementExam } = await import("@/data/exams/placementExam");
     return placementExam;
+  }
+  if (kind === "topic_quiz" && getTopicQuizSummary(slug)) {
+    if (slug === "particles-01") {
+      const { particlesQuiz01Exam } = await import("./exams/particlesQuiz01");
+      return particlesQuiz01Exam;
+    }
+    return null;
   }
   if (kind === "level_test" && getLevelExamSummary(slug)) return null;
   if (kind === "mock_topik" && getMockExamSummary(slug)) return null;
@@ -99,13 +127,17 @@ async function loadAudioOverrides(): Promise<Record<string, string>> {
 
 /** Items for an exam (e.g. placement uses static bank). Returns empty array if none. Merges audio overrides for dictation/audio_mcq. */
 export async function getExamItems(
-  kind: "placement" | "level_test" | "mock_topik",
+  kind: "placement" | "level_test" | "topic_quiz" | "mock_topik",
   slug: string
 ): Promise<import("@/types/exam").AssessmentItem[]> {
   let items: import("@/types/exam").AssessmentItem[] = [];
   if (kind === "placement" && slug === PLACEMENT_SLUG) {
     const { placementExamItems } = await import("@/data/exams/placementExam");
     items = placementExamItems;
+  }
+  if (kind === "topic_quiz" && slug === "particles-01") {
+    const { particlesQuiz01Items } = await import("./exams/particlesQuiz01");
+    items = particlesQuiz01Items;
   }
   const overrides = await loadAudioOverrides();
   if (Object.keys(overrides).length === 0) return items;

@@ -13,15 +13,17 @@ import { Logo } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { useEducationMode } from "@/lib/EducationModeProvider";
-import { LIBRARY_LINKS } from "@/data/libraryLinks";
+import { LIBRARY_LINKS, NEWS_RESOURCE } from "@/data/libraryLinks";
 
 type NavLinkProps = {
   href: string;
   label: string;
   activeOverride?: boolean;
+  /** e.g. NEWS_RESOURCE.icon — shows before label */
+  iconSrc?: string;
 };
 
-function NavLink({ href, label, activeOverride }: NavLinkProps) {
+function NavLink({ href, label, activeOverride, iconSrc }: NavLinkProps) {
   const pathname = usePathname() ?? "";
   let active = false;
   // Anchor links (/#something) are controlled by activeOverride (intersection observer)
@@ -39,13 +41,22 @@ function NavLink({ href, label, activeOverride }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         active && "bg-muted text-foreground",
         {
           "hover:bg-muted/20": !active,
         },
       )}
     >
+      {iconSrc ? (
+        <Image
+          src={iconSrc}
+          alt=""
+          width={24}
+          height={24}
+          className="size-6 shrink-0 opacity-85"
+        />
+      ) : null}
       {label}
     </Link>
   );
@@ -130,7 +141,12 @@ export function SiteNavbar() {
                     label="Approach"
                     activeOverride={activeHash === "approach"}
                   />
-                  <NavLink href="/coaching" label="Class pass" />
+                  <NavLink
+                    href="/news"
+                    label="News"
+                    iconSrc={NEWS_RESOURCE.icon}
+                  />
+                  {/* <NavLink href="/coaching" label="Class pass" /> */}
                   <div className="relative">
                     <button
                       type="button"
@@ -180,6 +196,9 @@ export function SiteNavbar() {
                                 active
                                   ? "bg-muted text-foreground font-medium"
                                   : "text-muted-foreground hover:text-foreground hover:bg-muted/40",
+                                link.emphasized &&
+                                  !active &&
+                                  "bg-muted/55 font-semibold text-foreground hover:bg-muted/70",
                               )}
                               onClick={() => setAssetsOpen(false)}
                             >
@@ -191,6 +210,7 @@ export function SiteNavbar() {
                                 className={cn("size-6 shrink-0 ", {
                                   "opacity-100": active,
                                   "opacity-80 group-hover:opacity-100": !active,
+                                  "size-7": link.emphasized,
                                 })}
                               />
                               {link.label}
@@ -200,7 +220,6 @@ export function SiteNavbar() {
                       </div>
                     )}
                   </div>
-                  <NavLink href="/booking" label="Pick a time" />
                 </nav>
               </div>
 
@@ -311,19 +330,26 @@ export function SiteNavbar() {
                           Home
                         </Link>
                         <Link
+                          href="/news"
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
+                        >
+                          <Image
+                            src={NEWS_RESOURCE.icon}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="size-6 shrink-0 opacity-90"
+                          />
+                          News
+                        </Link>
+                        {/* <Link
                           href="/#ways-to-use"
                           onClick={() => setMobileOpen(false)}
                           className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                         >
                           Class pass
-                        </Link>
-                        <Link
-                          href="/booking"
-                          onClick={() => setMobileOpen(false)}
-                          className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                        >
-                          Pick a time
-                        </Link>
+                        </Link> */}
                         {state.user ? (
                           <Link
                             href="/account"
@@ -357,6 +383,8 @@ export function SiteNavbar() {
                               className={cn(
                                 "flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold",
                                 active && "bg-muted ring-1 ring-border",
+                                link.emphasized &&
+                                  "bg-muted/40 shadow-sm shadow-black/5",
                               )}
                             >
                               <Image
@@ -364,7 +392,10 @@ export function SiteNavbar() {
                                 alt={link.label}
                                 width={24}
                                 height={24}
-                                className="size-6 shrink-0 opacity-80"
+                                className={cn(
+                                  "shrink-0 opacity-80",
+                                  link.emphasized ? "size-7" : "size-6",
+                                )}
                               />
                               {link.label}
                             </Link>

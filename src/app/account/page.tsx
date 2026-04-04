@@ -31,6 +31,62 @@ import {
 import { BookingCard } from "./_components/BookingCard";
 import { bookingLocalTimes, zoneToCityLabel } from "./_components/bookingUtils";
 
+/** Decorative sample chart (no API) — avoids empty “Publish to see trends” dead space. */
+function AccountActivityPreview() {
+  const w = 280;
+  const h = 88;
+  const padX = 4;
+  const padY = 8;
+  const innerW = w - padX * 2;
+  const innerH = h - padY * 2;
+  const values = [0.22, 0.38, 0.32, 0.55, 0.48, 0.72, 0.65, 0.88];
+  const n = values.length;
+  const pts = values.map((v, i) => {
+    const x = padX + (i / (n - 1)) * innerW;
+    const y = padY + innerH * (1 - v);
+    return { x, y };
+  });
+  const lineD = pts
+    .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`)
+    .join(" ");
+  const areaD = `${lineD} L ${padX + innerW} ${padY + innerH} L ${padX} ${padY + innerH} Z`;
+  return (
+    <div className="w-full rounded-lg bg-muted/25 px-1 pt-2">
+      <svg
+        viewBox={`0 0 ${w} ${h}`}
+        className="w-full overflow-visible text-primary"
+        aria-hidden
+      >
+        <defs>
+          <linearGradient id="accountPulseFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d={areaD} fill="url(#accountPulseFill)" className="text-primary" />
+        <path
+          d={lineD}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-primary/60"
+        />
+        {pts.map((p, i) => (
+          <circle
+            key={i}
+            cx={p.x}
+            cy={p.y}
+            r="3"
+            className="fill-primary/45"
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 type Student = {
   id: string;
   name: string;
@@ -444,13 +500,15 @@ export default function AccountPage() {
             </h1>
             {/* <p className="mt-2 text-sm text-muted-foreground sm:text-base"></p> */}
           </div>
-          {/* <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="muted">{session.state.user.email}</Badge>
-            {session.state.subscriptionPlan && (
-              <Badge>Subscription {session.state.subscriptionPlan}</Badge>
-            )}
-            <Badge variant="muted">{creditsSummary.remaining} credits</Badge>
-          </div> */}
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="shrink-0 border-border/80 bg-muted/10 hover:bg-muted/25"
+            onClick={() => session.signOut()}
+          >
+            Sign out
+          </Button>
         </div>
 
         <div className="mt-6">
@@ -491,10 +549,10 @@ export default function AccountPage() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col lg:grid lg:items-stretch gap-6 lg:grid-cols-12">
-          <div className="flex flex-col lg:col-span-8 lg:h-full">
+        <div className="mt-6 flex flex-col gap-6 lg:grid lg:grid-cols-12 lg:items-start">
+          <div className="flex min-w-0 flex-col lg:col-span-8">
             {tab === "bookings" && (
-              <Card className="h-full flex flex-col">
+              <Card className="flex flex-col">
                 <CardHeader className="flex justify-between lg:block">
                   <div className="flex items-center justify-between gap-4">
                     <CardTitle>Bookings</CardTitle>
@@ -539,7 +597,7 @@ export default function AccountPage() {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-1">
+                <CardContent>
                   {bookingActionMsg ? (
                     <div className="mb-4 rounded-md border border-border bg-muted/30 p-3 text-sm text-muted-foreground">
                       {bookingActionMsg}
@@ -767,11 +825,11 @@ export default function AccountPage() {
             )}
 
             {tab === "notes" && (
-              <Card className="h-full flex flex-col">
+              <Card className="flex flex-col">
                 <CardHeader>
                   <CardTitle>Recap notes</CardTitle>
                 </CardHeader>
-                <CardContent className="flex-1">
+                <CardContent>
                   {studentLoading ? (
                     <div className="text-sm text-muted-foreground">
                       Loading…
@@ -803,7 +861,7 @@ export default function AccountPage() {
             )}
 
             {tab === "profile" && (
-              <Card className="h-full flex flex-col">
+              <Card className="flex flex-col">
                 <CardHeader>
                   <CardTitle>Profile</CardTitle>
 
@@ -811,7 +869,7 @@ export default function AccountPage() {
                     Manage your basic account info.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="grid gap-3 flex-1">
+                <CardContent className="grid gap-3">
                   <label className="grid gap-1">
                     <span className="text-sm text-muted-foreground">Name</span>
                     <Input
@@ -1003,8 +1061,8 @@ export default function AccountPage() {
             )}
           </div>
 
-          <div className="lg:col-span-4">
-            <div className="sticky top-24 space-y-6 lg:space-y-3">
+          <aside className="w-full lg:col-span-4 lg:self-start">
+            <div className="flex flex-col gap-6 lg:gap-4 lg:sticky lg:top-24">
               <Card>
                 <CardContent className="pt-6">
                   {creditsSummary.remaining > 0 ? (
@@ -1042,29 +1100,32 @@ export default function AccountPage() {
                     <Button asChild className="w-full" variant="outline">
                       <Link href="/#ways-to-use">Get More</Link>
                     </Button>
+                    <Button asChild className="w-full" variant="primary">
+                      <Link href="/booking">Pick a time</Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardHeader>
-                  <CardTitle>Quick actions</CardTitle>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base font-semibold">
+                    Learning pulse
+                  </CardTitle>
+                  <CardDescription className="text-xs leading-snug">
+                    Sample curve for now — livelier than an empty chart.
+                  </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-2">
-                  <Button asChild className="w-full" variant="primary">
-                    <Link href="/booking">Pick a time</Link>
-                  </Button>
-                  <Button
-                    className="w-full border-border/80 bg-muted/10 hover:bg-muted/25"
-                    variant="outline"
-                    onClick={() => session.signOut()}
-                  >
-                    Sign out
-                  </Button>
+                <CardContent className="space-y-2 pt-0">
+                  <AccountActivityPreview />
+                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                    Illustrative only. Real trends can tie to your sessions and
+                    notes later; for now this is placeholder visuals only.
+                  </p>
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </aside>
         </div>
       </Container>
     </div>

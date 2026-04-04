@@ -41,7 +41,8 @@ export const blogPost: BlogPost = {
       content: (
         <>
           The four big pillars I recommend are these.
-          <Gap />• pronunciation and Korean sound awareness, best course is{" "}
+          <Gap />• For the starter pronunciation and Korean sound awareness,
+          best course is{" "}
           <ContentLink
             href="https://www.youtube.com/watch?v=Z9ZxsgMAZmI&list=PLbFrQnW0BNMVrHEJCOYWbLnXFzj4bl5z0"
             target="_blank"
@@ -49,7 +50,7 @@ export const blogPost: BlogPost = {
           >
             GoBillyKorean&apos;s Hangul Learning
           </ContentLink>
-          <br />• structure through a course or textbook so far the best chanel
+          <br />• Structure through a course or textbook so far the best chanel
           is{" "}
           <ContentLink
             href="https://www.youtube.com/@GoBillyKorean"
@@ -66,7 +67,7 @@ export const blogPost: BlogPost = {
           >
             Kaja Grammar Course
           </ContentLink>
-          <br />• repeated exposure through YouTube, TikTok, and short form
+          <br />• Repeated exposure through YouTube, TikTok, and short form
           content like{" "}
           <ContentLink
             href="https://www.instagram.com/kaja_minjae"
@@ -75,7 +76,7 @@ export const blogPost: BlogPost = {
           >
             Kaja Korean Theater
           </ContentLink>
-          <br />• real output through tutors, language exchange, or AI
+          <br />• <b>Real output</b> through tutors, language exchange, or AI
           conversation, the best app is{" "}
           <ContentLink
             href="https://www.hellotalk.com"
@@ -152,13 +153,13 @@ export const blogPost: BlogPost = {
           <Gap />
           When pronunciation is unstable
           <Gap />
-          • listening gets weaker
+          • Listening gets weaker
           <br />
-          • confidence drops when speaking
+          • Confidence drops when speaking
           <br />
-          • native speakers sometimes misunderstand you
+          • Native speakers sometimes misunderstand you
           <br />
-          • wrong sound habits become fixed
+          • Wrong sound habits become fixed
           <Gap />
           One of the most common early problems is this. Learners try to map
           Korean initial consonants directly onto English consonants or onto the
@@ -204,13 +205,13 @@ export const blogPost: BlogPost = {
           Short content is fun, easy to revisit, and memorable. But learners
           often miss things like
           <Gap />
-          • what grammar pattern the expression sits on
+          • What grammar pattern the expression sits on
           <br />
-          • how it differs from a similar expression
+          • How it differs from a similar expression
           <br />
-          • when it sounds natural
+          • When it sounds natural
           <br />
-          • how formality changes the sentence
+          • How formality changes the sentence
           <Gap />
           That is why every learner needs at least one phase of structured
           learning.
@@ -246,15 +247,15 @@ export const blogPost: BlogPost = {
           <Gap />
           Short video based learning is strong in a few specific ways.
           <Gap />
-          • repeated exposure
+          • Repeated exposure
           <br />
-          • rhythm and intonation awareness
+          • Rhythm and intonation awareness
           <br />
-          • contact with common real life expressions
+          • Contact with common real life expressions
           <br />
-          • familiarity with native speed and tone
+          • Familiarity with native speed and tone
           <br />
-          • easier consistency because it feels less heavy
+          • Easier consistency because it feels less heavy
           <Gap />
           These are real strengths. But short form content is fundamentally
           fragmented. It is good at making you see a lot, but not as good at
@@ -311,17 +312,17 @@ export const blogPost: BlogPost = {
           A teacher is great if you have one. But even without a teacher, there
           are still good options.
           <Gap />
-          • one to one tutoring
+          • One-to-one tutoring
           <br />
-          • language exchange apps
+          • Language exchange apps
           <br />
           • AI conversation practice
           <br />
-          • voice recording
+          • Voice recording
           <br />
-          • shadowing
+          • Shadowing
           <br />
-          • short topic speaking drills
+          • Short topic speaking drills
           <Gap />
           Human conversation is still essential. But AI is extremely useful for
           lowering the barrier between studying and actually speaking.
@@ -370,24 +371,24 @@ export const blogPost: BlogPost = {
           <Gap />
           A good balance here looks like this.
           <Gap />
-          • very high focus on pronunciation and Hangul
+          • Very high focus on pronunciation and Hangul
           <br />
-          • high focus on a structured course or textbook
+          • High focus on a structured course or textbook
           <br />
-          • short form exposure as support
+          • Short-form exposure as support
           <br />
-          • output started very early, even if it is tiny
+          • Output started very early, even if it is tiny
           <Gap />
           The goal at this stage is simple.
           <Gap />
-          • read Hangul without panic
+          • Read Hangul without panic
           <br />
-          • build awareness of initial sounds, vowels, and batchim
+          • Build awareness of initial sounds, vowels, and batchim
           <br />
-          • learn greetings, self introduction, and basic question answer
+          • Learn greetings, self-introduction, and basic question-answer
           patterns
           <br />
-          • say short sentences out loud, even slowly
+          • Say short sentences out loud, even slowly
           <Gap />
           At this point, do not chase natural conversation too early. Put the
           bones and sound system of Korean into your body first.
@@ -408,23 +409,23 @@ export const blogPost: BlogPost = {
           <Gap />
           A good balance here looks like this.
           <Gap />
-          • continue pronunciation correction
+          • Continue pronunciation correction
           <br />
-          • keep the course or textbook as the core
+          • Keep the course or textbook as the core
           <br />
-          • expand short form exposure
+          • Expand short-form exposure
           <br />
-          • keep output regular with simple sentences
+          • Keep output regular with simple sentences
           <Gap />
           The goals at this stage are these.
           <Gap />
-          • learn basic tense and particles
+          • Learn basic tense and particles
           <br />
-          • build a usable core of common verbs and adjectives
+          • Build a usable core of common verbs and adjectives
           <br />
-          • connect short daily life expressions
+          • Connect short daily-life expressions
           <br />
-          • stop being afraid of very simple interaction
+          • Stop being afraid of very simple interaction
           <Gap />
           This is the stage where short videos alone hit a wall very fast. But
           textbook only study also becomes too dry.
@@ -450,25 +451,25 @@ export const blogPost: BlogPost = {
           <Gap />
           What becomes important is this.
           <Gap />
-          • using what you already know more accurately
+          • Using what you already know more accurately
           <br />
-          • adapting to real speech speed
+          • Adapting to real speech speed
           <br />
-          • producing longer connected sentences
+          • Producing longer connected sentences
           <br />
-          • reducing long pauses
+          • Reducing long pauses
           <br />
-          • correcting frequent weak points
+          • Correcting frequent weak points
           <Gap />
           A good balance here looks like this.
           <Gap />
-          • selective pronunciation correction
+          • Selective pronunciation correction
           <br />
-          • course or textbook work mainly for weak point repair
+          • Course or textbook work mainly for weak-point repair
           <br />
-          • very important repeated exposure
+          • Very important repeated exposure
           <br />
-          • speaking and output as a central pillar
+          • Speaking and output as a central pillar
           <Gap />
           A lot of intermediate learners make the same mistake here. They keep
           hunting for new grammar and new vocabulary lists.
@@ -490,28 +491,28 @@ export const blogPost: BlogPost = {
           <Gap />
           What starts to matter more is this.
           <Gap />
-          • nuance differences
+          • Nuance differences
           <br />
-          • tone control
+          • Tone control
           <br />
-          • formality and distance
+          • Formality and distance
           <br />
-          • natural sentence flow
+          • Natural sentence flow
           <br />
-          • situation based word choice
+          • Situation-based word choice
           <br />
-          • intonation and rhythm
+          • Intonation and rhythm
           <Gap />
           A good balance here looks like this.
           <Gap />
-          • pronunciation work centered more on rhythm and intonation
+          • Pronunciation work centered more on rhythm and intonation
           <br />
-          • course or textbook study used mainly for advanced sentence building
+          • Course or textbook study used mainly for advanced sentence building
           and writing support
           <br />
-          • continued high quality exposure
+          • Continued high-quality exposure
           <br />
-          • output and feedback as the highest priority
+          • Output and feedback as the highest priority
           <Gap />
           At this level, the people who improve most are not simply the people
           who study the most. They are the people who keep refining their
@@ -531,17 +532,17 @@ export const blogPost: BlogPost = {
           You do not need to study everything widely. You need highly useful
           expressions.
           <Gap />
-          • ordering
+          • Ordering
           <br />
-          • asking for directions
+          • Asking for directions
           <br />
-          • transportation
+          • Transportation
           <br />
-          • paying
+          • Paying
           <br />
-          • making requests
+          • Making requests
           <br />
-          • basic pronunciation and listening adaptation
+          • Basic pronunciation and listening adaptation
           <Gap />
           Here, immediately usable language matters more than advanced grammar.
           <Gap />
@@ -552,17 +553,17 @@ export const blogPost: BlogPost = {
           That means textbooks, question practice, writing, and reading should
           take much more weight.
           <Gap />
-          • grammar review
+          • Grammar review
           <br />
-          • reading
+          • Reading
           <br />
-          • listening
+          • Listening
           <br />
-          • writing
+          • Writing
           <br />
-          • exam pattern adaptation
+          • Exam pattern adaptation
           <br />
-          • time management
+          • Time management
           <Gap />
           Short form content can help, but it is not the main engine here.
           <Gap />
@@ -570,17 +571,17 @@ export const blogPost: BlogPost = {
           <Gap />
           Then pronunciation, exposure, and output all need to become heavier.
           <Gap />
-          • early pronunciation correction
+          • Early pronunciation correction
           <br />
-          • shadowing
+          • Shadowing
           <br />
-          • repeated listening
+          • Repeated listening
           <br />
-          • topic conversation
+          • Topic conversation
           <br />
-          • corrected speaking
+          • Corrected speaking
           <br />
-          • building a life where you speak often
+          • Building a life where you speak often
           <Gap />
           Fluency does not come only from the desk. It comes from hours of real
           output.

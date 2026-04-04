@@ -62,25 +62,105 @@ export const fundamentalChapterList: FundamentalChapterList = {
           meta: meta(0, 0, 5),
         },
         {
+          id: "f1-5",
+          slug: "hangeul-what-it-looks-like",
+          number: 2,
+          title: "What Hangeul Looks Like",
+          description:
+            "Korean is written in syllable blocks.",
+          meta: meta(0, 0, 3),
+        },
+        {
           id: "f2",
           slug: "hangeul-syllable-building",
-          number: 2,
+          number: 3,
           title: "Syllable Building",
           description: "Combining letters into blocks (가/나/다), reading rhythm.",
           meta: meta(0, 0, 5),
         },
         {
+          id: "f2-5",
+          slug: "hangeul-more-vowels",
+          number: 4,
+          title: "More Vowels",
+          description:
+            "y-vowels + common combined vowels (ㅑㅕㅛㅠㅐㅔㅘㅝㅚㅟㅢ).",
+          meta: meta(0, 0, 4),
+        },
+        {
+          id: "f2-6",
+          slug: "hangeul-more-consonants",
+          number: 5,
+          title: "More Consonants",
+          description:
+            "Aspirated and tense consonants (ㅋㅌㅍㅊ, ㄲㄸㅃㅆㅉ).",
+          meta: meta(0, 0, 4),
+        },
+        {
+          id: "f2-7",
+          slug: "hangeul-block-patterns",
+          number: 6,
+          title: "Block Patterns",
+          description:
+            "Left-right vs top-bottom arrangement depending on vowel shape.",
+          meta: meta(0, 0, 4),
+        },
+        {
+          id: "f3-5",
+          slug: "hangeul-reading-practice-simple-blocks",
+          number: 7,
+          title: "Reading Practice: Simple Blocks",
+          description: "가/나/다… 거/너/더… 고/노/도… 구/누/두…",
+          meta: meta(0, 0, 4),
+        },
+        {
+          id: "f3-6",
+          slug: "hangeul-reading-practice-simple-words",
+          number: 8,
+          title: "Reading Practice: Simple Words",
+          description:
+            "Short beginner words built from simple syllable blocks (no 받침 yet).",
+          meta: meta(0, 0, 4),
+        },
+        {
           id: "f3",
           slug: "hangeul-batchim-basics",
-          number: 3,
+          number: 9,
           title: "Batchim Basics",
           description: "Final consonants (받침): ㄱㄴㄷㄹㅁㅂㅅㅇ.",
           meta: meta(0, 0, 5),
         },
         {
+          id: "f4-5",
+          slug: "hangeul-batchim-sound-groups",
+          number: 10,
+          title: "Batchim Sound Groups",
+          description:
+            "Final consonants collapse into a small set of ending sounds (ㄱㄴㄷㄹㅁㅂㅇ).",
+          meta: meta(0, 0, 4),
+        },
+        {
+          id: "f4-6",
+          slug: "hangeul-liaison-basics",
+          number: 11,
+          title: "Liaison Basics (연음)",
+          description:
+            "When batchim is followed by a vowel, the sound often links to the next syllable.",
+          meta: meta(0, 0, 4),
+        },
+        {
+          id: "t0",
+          slug: "test-hangeul-foundations-01",
+          number: 12,
+          title: "Test: Hangeul Foundations",
+          description:
+            "Quick review: letters, blocks, reading practice, batchim basics, liaison.",
+          meta: meta(0, 6, 3),
+        },
+        {
           id: "t1",
           slug: "test-hangeul-01",
-          number: 4,
+          number: 13,
           title: "Test: Hangeul (Reading)",
           description: "Letters and number reading quiz.",
           meta: meta(0, 4, 2),
@@ -95,7 +175,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f4",
           slug: "pronunciation-minimal-pairs",
-          number: 5,
+          number: 14,
           title: "Must-Distinguish Sounds",
           description: "Key pairs: ㄹ/ㄴ, ㅓ/ㅗ, ㅜ/ㅡ, ㅐ/ㅔ.",
           meta: meta(0, 0, 4),
@@ -103,7 +183,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f5",
           slug: "pronunciation-common-sound-changes",
-          number: 6,
+          number: 15,
           title: "Common Sound Changes",
           description: "Frequent changes: ㄴ/ㄹ interactions, batchim sound outcomes.",
           meta: meta(0, 0, 4),
@@ -119,7 +199,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f6",
           slug: "numbers-zero-to-ten",
-          number: 7,
+          number: 16,
           title: "0–10",
           description: "Native vs Sino-Korean basics (둘/이, 하나/일…).",
           meta: meta(0, 0, 3),
@@ -127,7 +207,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f7",
           slug: "numbers-eleven-to-ninety-nine",
-          number: 8,
+          number: 17,
           title: "Building 11–99",
           description: "십/이십… plus Native forms like 스물하나, 서른….",
           meta: meta(0, 0, 4),
@@ -135,7 +215,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f8",
           slug: "numbers-big-numbers-core",
-          number: 9,
+          number: 18,
           title: "Big Number Essentials",
           description: "백/천/만, plus phone numbers and addresses.",
           meta: meta(0, 0, 5),
@@ -143,7 +223,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "t2",
           slug: "test-numbers-01",
-          number: 10,
+          number: 19,
           title: "Test: Numbers",
           description: "0–10, Native/Sino number quiz.",
           meta: meta(0, 6, 2),
@@ -158,7 +238,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f9",
           slug: "counters-top-ten",
-          number: 11,
+          number: 20,
           title: "Top 10 Counters",
           description: "개/명/살/번/시/분/원/잔/마리/권.",
           meta: meta(0, 0, 5),
@@ -166,7 +246,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f10",
           slug: "time-telling-time",
-          number: 12,
+          number: 21,
           title: "Telling Time",
           description: "Hours & minutes, a.m./p.m. patterns.",
           meta: meta(0, 0, 4),
@@ -174,7 +254,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f11",
           slug: "date-weekdays-today-tomorrow-yesterday",
-          number: 13,
+          number: 22,
           title: "Weekdays + Today/Tomorrow/Yesterday",
           description: "Days of the week, plus 오늘/내일/어제.",
           meta: meta(0, 0, 4),
@@ -182,7 +262,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f12",
           slug: "date-months-and-dates",
-          number: 14,
+          number: 23,
           title: "Months & Dates",
           description: "Reading 1월 3일, birthdays, date ranges.",
           meta: meta(0, 0, 5),
@@ -197,7 +277,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f13",
           slug: "words-people-relationships",
-          number: 15,
+          number: 24,
           title: "People & Relationships",
           description: "Core nouns: 나, 너, 친구, 선생님, 가족.",
           meta: meta(0, 0, 4),
@@ -205,7 +285,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f14",
           slug: "words-places-core",
-          number: 16,
+          number: 25,
           title: "Places",
           description: "집, 학교, 회사, 카페, 화장실, 여기/저기.",
           meta: meta(0, 0, 4),
@@ -213,7 +293,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f15",
           slug: "words-directions-movement",
-          number: 17,
+          number: 26,
           title: "Directions & Movement",
           description: "왼쪽/오른쪽, 앞/뒤, 위/아래, 쭉, 건너편.",
           meta: meta(0, 0, 4),
@@ -221,7 +301,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f16",
           slug: "words-food-ordering",
-          number: 18,
+          number: 27,
           title: "Food & Ordering",
           description: "물, 밥, 커피, 메뉴, 포장, 계산.",
           meta: meta(0, 0, 4),
@@ -229,7 +309,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f17",
           slug: "words-daily-life",
-          number: 19,
+          number: 28,
           title: "Daily Life",
           description: "핸드폰, 시간, 돈, 이름, 주소, 날짜.",
           meta: meta(0, 0, 4),
@@ -237,7 +317,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f18",
           slug: "words-adjectives-mini-set",
-          number: 20,
+          number: 29,
           title: "Mini Adjectives Set",
           description: "큰/작은, 좋은/나쁜, 빠른/느린, 뜨거운/차가운.",
           meta: meta(0, 0, 4),
@@ -245,7 +325,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f19",
           slug: "words-with-numbers-reinforcement",
-          number: 21,
+          number: 30,
           title: "With Numbers (Reinforcement)",
           description: "Reinforce: 사람/개/살/시/분/원, etc.",
           meta: meta(0, 0, 4),
@@ -253,7 +333,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "t3",
           slug: "test-words-01",
-          number: 22,
+          number: 31,
           title: "Test: Essential Words",
           description: "I, you, friend, house, water, today, etc.",
           meta: meta(0, 10, 3),
@@ -268,7 +348,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f26",
           slug: "verbs-01-why-verbs-change",
-          number: 23,
+          number: 32,
           title: "Why Verbs Change",
           description:
             "Korean builds meaning with endings: stem + ending (먹- + 어요). Politeness, tense, mood live in endings.",
@@ -277,7 +357,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f27",
           slug: "particles-01-what-they-are",
-          number: 24,
+          number: 33,
           title: "Particles (조사): What They Do",
           description:
             "Particles mark roles: 은/는, 이/가, 을/를, 에/에서. They help meaning stay clear even when word order shifts.",
@@ -286,7 +366,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f28",
           slug: "subject-dropping-01-context-first",
-          number: 25,
+          number: 34,
           title: "Dropping the Subject",
           description:
             "Subjects are often omitted when obvious. Korean is context-driven: 말 안 해도 되면 보통 생략해요.",
@@ -295,7 +375,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "t4",
           slug: "test-core-grammar-01",
-          number: 26,
+          number: 35,
           title: "Test: Core Grammar",
           description: "Verbs, particles, subject dropping quiz.",
           meta: meta(0, 5, 2),
@@ -310,7 +390,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f29",
           slug: "verbs-02-starter-pack",
-          number: 27,
+          number: 36,
           title: "Verbs Starter Pack",
           description: "Top everyday verbs: 하다/가다/오다/먹다/마시다/보다/있다…",
           meta: meta(0, 0, 5),
@@ -318,7 +398,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "f30",
           slug: "sentences-01-basic-patterns",
-          number: 28,
+          number: 37,
           title: "Basic Sentence Patterns",
           description: "Templates: 저는 N(을/를) V-아요/어요, N이/가 N이에요/예요.",
           meta: meta(0, 0, 6),
@@ -326,7 +406,7 @@ export const fundamentalChapterList: FundamentalChapterList = {
         {
           id: "t5",
           slug: "test-sentence-building-01",
-          number: 29,
+          number: 38,
           title: "Test: Sentence Building",
           description: "Basic patterns, particles, common verbs quiz.",
           meta: meta(0, 6, 2),

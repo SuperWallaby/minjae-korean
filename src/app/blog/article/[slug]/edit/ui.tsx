@@ -12,6 +12,7 @@ import {
   processImageForUploadWebPOnly,
   getImageAspectRatio,
 } from "@/lib/imageUpload";
+import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 import { cn } from "@/lib/utils";
 
 async function postJson(url: string, body?: unknown) {
@@ -35,23 +36,26 @@ async function putJson(url: string, body?: unknown) {
 }
 
 async function uploadToR2(file: File): Promise<string> {
-  const { res, json } = await postJson("/api/admin/r2/presign", {
-    fileName: file.name,
-    contentType: file.type,
-  });
-  if (!res.ok || !json?.ok) {
-    throw new Error(String(json?.error ?? "Couldn't start upload"));
-  }
-  const uploadUrl = String(json?.data?.uploadUrl ?? "");
-  const publicUrl = String(json?.data?.publicUrl ?? "");
-  if (!uploadUrl || !publicUrl) throw new Error("Upload URL missing");
-
-  const put = await fetch(uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": file.type || "application/octet-stream" },
-    body: file,
-  });
-  if (!put.ok) throw new Error("Upload failed");
+  /** Same-origin server upload — browser PUT to R2 presign URL hits CORS (“Failed to fetch”). */
+  const publicUrl = await uploadFileToR2(file);
+  // #region agent log
+  fetch("http://127.0.0.1:7383/ingest/9bfe7e81-8b41-49da-bd3f-27e434f7af33", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Debug-Session-Id": "23e8d7",
+    },
+    body: JSON.stringify({
+      sessionId: "23e8d7",
+      runId: "post-fix",
+      hypothesisId: "H3",
+      location: "edit/ui.tsx:uploadToR2:proxyOk",
+      message: "server proxy upload ok",
+      data: { hasUrl: Boolean(publicUrl) },
+      timestamp: Date.now(),
+    }),
+  }).catch(() => {});
+  // #endregion
   return publicUrl;
 }
 
@@ -107,14 +111,85 @@ export function BlogEditClient({ slug, post }: Props) {
       try {
         setUploadingKey(key);
         setError(null);
+        // #region agent log
+        fetch(
+          "http://127.0.0.1:7383/ingest/9bfe7e81-8b41-49da-bd3f-27e434f7af33",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Debug-Session-Id": "23e8d7",
+            },
+            body: JSON.stringify({
+              sessionId: "23e8d7",
+              hypothesisId: "H2",
+              location: "edit/ui.tsx:handleUpload:start",
+              message: "upload start",
+              data: {
+                key,
+                fileName: file.name,
+                fileType: file.type,
+                fileSize: file.size,
+              },
+              timestamp: Date.now(),
+            }),
+          },
+        ).catch(() => {});
+        // #endregion
         const processed =
           key === "imageThumb"
             ? await processImageForThumbnail(file)
             : await processImageForUploadWebPOnly(file);
+        // #region agent log
+        fetch(
+          "http://127.0.0.1:7383/ingest/9bfe7e81-8b41-49da-bd3f-27e434f7af33",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Debug-Session-Id": "23e8d7",
+            },
+            body: JSON.stringify({
+              sessionId: "23e8d7",
+              hypothesisId: "H2",
+              location: "edit/ui.tsx:handleUpload:afterProcess",
+              message: "image processed",
+              data: {
+                key,
+                outName: processed.name,
+                outType: processed.type,
+                outSize: processed.size,
+              },
+              timestamp: Date.now(),
+            }),
+          },
+        ).catch(() => {});
+        // #endregion
         const url = await uploadToR2(processed);
         onSuccess(url);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Upload failed");
+        const msg = err instanceof Error ? err.message : "Upload failed";
+        // #region agent log
+        fetch(
+          "http://127.0.0.1:7383/ingest/9bfe7e81-8b41-49da-bd3f-27e434f7af33",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Debug-Session-Id": "23e8d7",
+            },
+            body: JSON.stringify({
+              sessionId: "23e8d7",
+              hypothesisId: "H1-H3",
+              location: "edit/ui.tsx:handleUpload:catch",
+              message: "upload error",
+              data: { errorMessage: msg },
+              timestamp: Date.now(),
+            }),
+          },
+        ).catch(() => {});
+        // #endregion
+        setError(msg);
       } finally {
         setUploadingKey(null);
       }
@@ -140,6 +215,27 @@ export function BlogEditClient({ slug, post }: Props) {
         slug,
         overrides,
       });
+      // #region agent log
+      fetch("http://127.0.0.1:7383/ingest/9bfe7e81-8b41-49da-bd3f-27e434f7af33", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Debug-Session-Id": "23e8d7",
+        },
+        body: JSON.stringify({
+          sessionId: "23e8d7",
+          hypothesisId: "H4",
+          location: "edit/ui.tsx:saveOverrides",
+          message: "overrides API",
+          data: {
+            httpStatus: res.status,
+            ok: json?.ok,
+            error: json?.error ?? null,
+          },
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {});
+      // #endregion
       if (!res.ok || !json?.ok) {
         throw new Error(String(json?.error ?? "Save failed"));
       }

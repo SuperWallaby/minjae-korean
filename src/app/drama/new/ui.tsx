@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import { processImageForThumbnail } from "@/lib/imageUpload";
+import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 import type {
   CEFR,
   DramaCard,
@@ -120,26 +121,12 @@ export function DramaNewClient({ initialDrama }: DramaNewClientProps) {
   const isEdit = Boolean(initialDrama?.slug);
 
   async function uploadImageToR2(file: File): Promise<string> {
-    const res = await fetch("/api/admin/r2/presign", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        fileName: `drama-thumb-${Date.now()}-${file.name}`,
-        contentType: file.type || "image/webp",
-      }),
-    });
-    const json = await res.json().catch(() => null);
-    if (!res.ok || !json?.ok) throw new Error(String(json?.error ?? "업로드 실패"));
-    const uploadUrl = String(json?.data?.uploadUrl ?? "");
-    const publicUrl = String(json?.data?.publicUrl ?? "");
-    if (!uploadUrl || !publicUrl) throw new Error("업로드 URL 없음");
-    const put = await fetch(uploadUrl, {
-      method: "PUT",
-      headers: { "Content-Type": file.type || "image/webp" },
-      body: file,
-    });
-    if (!put.ok) throw new Error("업로드 실패");
-    return publicUrl;
+    const renamed = new File(
+      [file],
+      `drama-thumb-${Date.now()}-${file.name}`,
+      { type: file.type || "image/webp" },
+    );
+    return uploadFileToR2(renamed);
   }
 
   const setLexemeAudioUrl = React.useCallback(

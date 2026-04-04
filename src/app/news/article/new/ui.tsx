@@ -19,6 +19,7 @@ import {
   processImageForUploadWebPOnly,
 } from "@/lib/imageUpload";
 import { smartUnsplashSearch } from "@/lib/smartUnsplash";
+import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 import { cn } from "@/lib/utils";
 
 type ReadingLevel = 1 | 2 | 3 | 4 | 5;
@@ -31,27 +32,6 @@ async function postJson(url: string, body?: unknown) {
   });
   const json = await res.json().catch(() => null);
   return { res, json };
-}
-
-async function uploadToR2(file: File): Promise<string> {
-  const { res, json } = await postJson("/api/admin/r2/presign", {
-    fileName: file.name,
-    contentType: file.type,
-  });
-  if (!res.ok || !json?.ok) {
-    throw new Error(String(json?.error ?? "Couldn’t start upload"));
-  }
-  const uploadUrl = String(json?.data?.uploadUrl ?? "");
-  const publicUrl = String(json?.data?.publicUrl ?? "");
-  if (!uploadUrl || !publicUrl) throw new Error("Upload URL missing");
-
-  const put = await fetch(uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": file.type || "application/octet-stream" },
-    body: file,
-  });
-  if (!put.ok) throw new Error("Upload failed");
-  return publicUrl;
 }
 
 type ParagraphBlock = {
@@ -461,7 +441,7 @@ export function ArticleNewClient() {
                           if (!file) return;
                           try {
                             setUploadingKey("audio");
-                            const url = await uploadToR2(file);
+                            const url = await uploadFileToR2(file);
                             setAudio(url);
                           } catch (err) {
                             setError(
@@ -541,7 +521,7 @@ export function ArticleNewClient() {
                                 row.key === "imageThumb"
                                   ? await processImageForThumbnail(file)
                                   : await processImageForUploadWebPOnly(file);
-                              const url = await uploadToR2(processed);
+                              const url = await uploadFileToR2(processed);
                               row.setValue(url);
                             } catch (err) {
                               setError(
@@ -695,7 +675,7 @@ export function ArticleNewClient() {
                                 setUploadingKey(key);
                                 const processed =
                                   await processImageForUploadWebPOnly(file);
-                                const url = await uploadToR2(processed);
+                                const url = await uploadFileToR2(processed);
                                 setParagraphs((prev) => {
                                   const next = prev.slice();
                                   next[idx] = { ...next[idx], image: url };
@@ -1009,7 +989,7 @@ export function ArticleNewClient() {
                               const key = `sound-${idx}`;
                               try {
                                 setUploadingKey(key);
-                                const url = await uploadToR2(file);
+                                const url = await uploadFileToR2(file);
                                 setVocabulary((prev) => {
                                   const next = prev.slice();
                                   next[idx] = { ...next[idx], sound: url };
@@ -1119,7 +1099,7 @@ export function ArticleNewClient() {
                               if (!file) return;
                               try {
                                 setUploadingKey(`exampleSound-${idx}`);
-                                const url = await uploadToR2(file);
+                                const url = await uploadFileToR2(file);
                                 setVocabulary((prev) => {
                                   const next = prev.slice();
                                   next[idx] = {

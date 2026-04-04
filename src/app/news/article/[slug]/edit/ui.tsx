@@ -19,6 +19,7 @@ import {
   processImageForUploadWebPOnly,
 } from "@/lib/imageUpload";
 import { smartUnsplashSearch } from "@/lib/smartUnsplash";
+import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 import { cn } from "@/lib/utils";
 
 type ReadingLevel = 1 | 2 | 3 | 4 | 5;
@@ -84,27 +85,6 @@ async function del(url: string) {
   const res = await fetch(url, { method: "DELETE" });
   const json = await res.json().catch(() => null);
   return { res, json };
-}
-
-async function uploadToR2(file: File): Promise<string> {
-  const { res, json } = await postJson("/api/admin/r2/presign", {
-    fileName: file.name,
-    contentType: file.type,
-  });
-  if (!res.ok || !json?.ok) {
-    throw new Error(String(json?.error ?? "Couldn’t start upload"));
-  }
-  const uploadUrl = String(json?.data?.uploadUrl ?? "");
-  const publicUrl = String(json?.data?.publicUrl ?? "");
-  if (!uploadUrl || !publicUrl) throw new Error("Upload URL missing");
-
-  const put = await fetch(uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": file.type || "application/octet-stream" },
-    body: file,
-  });
-  if (!put.ok) throw new Error("Upload failed");
-  return publicUrl;
 }
 
 function toLines(s: string): string[] {
@@ -684,7 +664,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                                 row.key === "imageThumb"
                                   ? await processImageForThumbnail(file)
                                   : await processImageForUploadWebPOnly(file);
-                              const url = await uploadToR2(processed);
+                              const url = await uploadFileToR2(processed);
                               setDraft((p) =>
                                 p ? { ...p, [row.field]: url } : p,
                               );
@@ -847,7 +827,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                                 setUploadingKey(key);
                                 const processed =
                                   await processImageForUploadWebPOnly(file);
-                                const url = await uploadToR2(processed);
+                                const url = await uploadFileToR2(processed);
                                 setDraft((prev) => {
                                   if (!prev) return prev;
                                   const next = prev.paragraphs.slice();
@@ -1194,7 +1174,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                               const key = `sound-${idx}`;
                               try {
                                 setUploadingKey(key);
-                                const url = await uploadToR2(file);
+                                const url = await uploadFileToR2(file);
                                 setDraft((prev) => {
                                   if (!prev) return prev;
                                   const next = prev.vocabulary.slice();
@@ -1307,7 +1287,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                               if (!file) return;
                               try {
                                 setUploadingKey(`exampleSound-${idx}`);
-                                const url = await uploadToR2(file);
+                                const url = await uploadFileToR2(file);
                                 setDraft((prev) => {
                                   if (!prev) return prev;
                                   const next = prev.vocabulary.slice();

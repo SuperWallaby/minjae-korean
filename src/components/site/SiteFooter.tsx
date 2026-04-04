@@ -126,9 +126,9 @@ export function SiteFooter() {
 
         <div className="text-sm text-white/70 md:justify-self-end md:text-right">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:justify-end">
-            <Link href="/#ways-to-use" className="hover:text-white">
+            {/* <Link href="/#ways-to-use" className="hover:text-white">
               Class pass
-            </Link>
+            </Link> */}
             <Link href="/news" className="hover:text-white">
               News
             </Link>

@@ -4,26 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { processImageForThumbnail } from "@/lib/imageUpload";
-
-async function uploadToR2(file: File): Promise<string> {
-  const res = await fetch("/api/admin/r2/presign", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ fileName: file.name, contentType: file.type }),
-  });
-  const json = await res.json().catch(() => null);
-  if (!res.ok || !json?.ok) throw new Error(String(json?.error ?? "업로드 실패"));
-  const uploadUrl = String(json?.data?.uploadUrl ?? "");
-  const publicUrl = String(json?.data?.publicUrl ?? "");
-  if (!uploadUrl || !publicUrl) throw new Error("업로드 URL 없음");
-  const put = await fetch(uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": file.type || "application/octet-stream" },
-    body: file,
-  });
-  if (!put.ok) throw new Error("업로드 실패");
-  return publicUrl;
-}
+import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 
 type Props = {
   slug: string;
@@ -71,7 +52,7 @@ export function ExamEditClient({ slug, title, backHref }: Props) {
     setUploading(true);
     try {
       const processed = await processImageForThumbnail(file);
-      const url = await uploadToR2(processed);
+      const url = await uploadFileToR2(processed);
       setCovers((prev) => ({ ...prev, [slug]: url }));
     } catch (err) {
       setError(err instanceof Error ? err.message : "업로드 실패");

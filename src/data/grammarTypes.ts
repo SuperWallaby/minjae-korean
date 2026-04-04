@@ -78,6 +78,25 @@ export type HangeulSyllableTableBlock = {
   vowels: string[];
 };
 
+/** Image block: show an image in the middle of a chapter. */
+export type ImageBlock = {
+  type: "image";
+  src: string;
+  alt?: string;
+  caption?: string;
+  /** If true, don't use Next image optimization (e.g. remote URLs). */
+  unoptimized?: boolean;
+  /** Aspect ratio hint (e.g. "16/9", "4/3", "1/1"). */
+  aspectRatio?: "16/9" | "4/3" | "3/4" | "1/1";
+};
+
+/** YouTube video embed block (URL or ID). */
+export type YouTubeBlock = {
+  type: "youtube";
+  urlOrId: string;
+  caption?: string;
+};
+
 /** Quiz question: multiple choice. All content in English. */
 export type TestQuestion = {
   /** Question text (English) */
@@ -111,6 +130,8 @@ export type GrammarBlock =
   | SoundwordBlock
   | SoundwordTableBlock
   | HangeulSyllableTableBlock
+  | ImageBlock
+  | YouTubeBlock
   | TestBlock;
 
 /** 챕터별 본문 — 블록 배열 (내용 JSON에서만 사용) */

@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { processImageForThumbnail } from "@/lib/imageUpload";
+import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 
 const EXAM_ENTRIES: { slug: string; label: string }[] = [
   { slug: "placement", label: "Placement (등급 받기)" },
@@ -12,27 +13,6 @@ const EXAM_ENTRIES: { slug: string; label: string }[] = [
   // { slug: "topik-i-01", label: "TOPIK I Mock 01" },
   // { slug: "topik-ii-01", label: "TOPIK II Mock 01" },
 ];
-
-async function uploadToR2(file: File): Promise<string> {
-  const res = await fetch("/api/admin/r2/presign", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ fileName: file.name, contentType: file.type }),
-  });
-  const json = await res.json().catch(() => null);
-  if (!res.ok || !json?.ok)
-    throw new Error(String(json?.error ?? "업로드 실패"));
-  const uploadUrl = String(json?.data?.uploadUrl ?? "");
-  const publicUrl = String(json?.data?.publicUrl ?? "");
-  if (!uploadUrl || !publicUrl) throw new Error("업로드 URL 없음");
-  const put = await fetch(uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": file.type || "application/octet-stream" },
-    body: file,
-  });
-  if (!put.ok) throw new Error("업로드 실패");
-  return publicUrl;
-}
 
 export default function AdminExamsCoversView() {
   const [covers, setCovers] = React.useState<Record<string, string>>({});
@@ -74,7 +54,7 @@ export default function AdminExamsCoversView() {
     setUploadingSlug(slug);
     try {
       const processed = await processImageForThumbnail(file);
-      const url = await uploadToR2(processed);
+      const url = await uploadFileToR2(processed);
       setCovers((prev) => ({ ...prev, [slug]: url }));
     } catch (e) {
       setError(e instanceof Error ? e.message : "업로드 실패");

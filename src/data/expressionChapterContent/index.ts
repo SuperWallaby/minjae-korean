@@ -35,8 +35,14 @@ const contentLoaders: Record<string, () => Promise<{ default: ExpressionChapterC
   "please-repeat": () => import("./content/please-repeat"),
   "forgot-the-word": () => import("./content/forgot-the-word"),
   "confirm-meaning": () => import("./content/confirm-meaning"),
-  "korean-phrases-for-homework": () => import("./content/korean-phrases-for-hotels"),
+  "korean-phrases-for-hotels": () => import("./content/korean-phrases-for-hotels"),
   "korean-phrases-for-restaurants": () => import("./content/korean-phrases-for-restaurants"),
+  "korean-phrases-for-cafes": () => import("./content/korean-phrases-for-cafes"),
+  "korean-phrases-for-taxis": () => import("./content/korean-phrases-for-taxis"),
+  "korean-phrases-for-shopping": () => import("./content/korean-phrases-for-shopping"),
+  "korean-phrases-for-public-transport": () =>
+    import("./content/korean-phrases-for-public-transport"),
+  "korean-phrases-for-emergencies": () => import("./content/korean-phrases-for-emergencies"),
 };
 
 export async function getExpressionChapterContent(
