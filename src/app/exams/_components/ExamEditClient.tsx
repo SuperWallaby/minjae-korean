@@ -12,7 +12,7 @@ type Props = {
   backHref: string;
 };
 
-export function ExamEditClient({ slug, title, backHref }: Props) {
+export function ExamEditClient({ slug, title: _title, backHref }: Props) {
   const [covers, setCovers] = React.useState<Record<string, string>>({});
   const [loading, setLoading] = React.useState(true);
   const [saving, setSaving] = React.useState(false);

@@ -103,14 +103,30 @@ export const particlesQuiz01Items: AssessmentItem[] = [
     skill: "grammar",
     stem: {
       instruction: {
-        default:
-          "Fill in the blanks with 에 / 에서.\n\n저는 집___ 공부해요. 내일 학교___ 가요.",
+        default: "Fill in the blanks with 에 / 에서.",
       },
     },
     interaction: {
+      template: {
+        default: "저는 집____ 공부해요.\n내일 학교____ 가요.",
+      },
       blanks: [
-        { id: "b1", label: "1", options: ["에", "에서"] },
-        { id: "b2", label: "2", options: ["에", "에서"] },
+        {
+          id: "b1",
+          placeholder: "1",
+          choices: [
+            { id: "b1-e", text: { default: "에" } },
+            { id: "b1-eseo", text: { default: "에서" } },
+          ],
+        },
+        {
+          id: "b2",
+          placeholder: "2",
+          choices: [
+            { id: "b2-e", text: { default: "에" } },
+            { id: "b2-eseo", text: { default: "에서" } },
+          ],
+        },
       ],
     },
     scoring: {
@@ -130,14 +146,30 @@ export const particlesQuiz01Items: AssessmentItem[] = [
     skill: "grammar",
     stem: {
       instruction: {
-        default:
-          "Fill in the blanks with 에서 / 까지.\n\n집___ 회사___ 지하철로 가요.",
+        default: "Fill in the blanks with 에서 / 까지.",
       },
     },
     interaction: {
+      template: {
+        default: "집____ 회사____ 지하철로 가요.",
+      },
       blanks: [
-        { id: "b1", label: "1", options: ["에서", "까지"] },
-        { id: "b2", label: "2", options: ["에서", "까지"] },
+        {
+          id: "b1",
+          placeholder: "1",
+          choices: [
+            { id: "c1-eseo", text: { default: "에서" } },
+            { id: "c1-kkaji", text: { default: "까지" } },
+          ],
+        },
+        {
+          id: "b2",
+          placeholder: "2",
+          choices: [
+            { id: "c2-eseo", text: { default: "에서" } },
+            { id: "c2-kkaji", text: { default: "까지" } },
+          ],
+        },
       ],
     },
     scoring: {

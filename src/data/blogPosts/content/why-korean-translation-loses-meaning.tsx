@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import { Gap } from "@/components/article/Gap";
 import { BlogPost } from "../types";

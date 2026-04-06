@@ -15,16 +15,6 @@ import {
 import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 import { cn } from "@/lib/utils";
 
-async function postJson(url: string, body?: unknown) {
-  const res = await fetch(url, {
-    method: "POST",
-    headers: body ? { "Content-Type": "application/json" } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const json = await res.json().catch(() => null);
-  return { res, json };
-}
-
 async function putJson(url: string, body?: unknown) {
   const res = await fetch(url, {
     method: "PUT",

@@ -13,6 +13,7 @@ import type {
   MultiSelectKey,
   ShortAnswerKey,
   TrueFalseKey,
+  ClozeKey,
   ID,
 } from "@/types/exam";
 
@@ -74,6 +75,30 @@ function gradeItem(
       const key = item.scoring.key as TrueFalseKey;
       const correct = response.value === key.correct;
       return { earned: correct ? max : 0, max, correct };
+    }
+    case "cloze": {
+      if (response.type !== "cloze") break;
+      const key = item.scoring.key as ClozeKey;
+      const answers = response.answersByBlankId;
+      const entries = Object.entries(key.answersByBlankId);
+      if (entries.length === 0) break;
+      let correctBlanks = 0;
+      for (const [blankId, acceptedVal] of entries) {
+        const userVal = normalizeShortAnswer(answers[blankId] ?? "", {
+          trim: true,
+          collapseSpaces: true,
+        });
+        const acceptedList = Array.isArray(acceptedVal) ? acceptedVal : null;
+        if (!acceptedList) continue;
+        const normalizedAccepted = acceptedList.map((a) =>
+          normalizeShortAnswer(a, { trim: true, collapseSpaces: true })
+        );
+        if (normalizedAccepted.some((a) => a === userVal)) correctBlanks += 1;
+      }
+      const fraction = correctBlanks / entries.length;
+      const earned = Math.round(fraction * max * 100) / 100;
+      const correct = correctBlanks === entries.length;
+      return { earned, max, correct };
     }
     default:
       return { earned: 0, max, correct: false };
