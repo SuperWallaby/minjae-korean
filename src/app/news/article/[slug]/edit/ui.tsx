@@ -770,15 +770,16 @@ export function ArticleEditClient({ slug }: { slug: string }) {
 
                     {(draft[row.field] ?? "") ? (
                       <div className="overflow-hidden rounded-xl border border-border bg-muted/10">
-                        <div className="relative aspect-video w-full">
-                          <Image
-                            src={String(draft[row.field])}
-                            alt=""
-                            fill
-                            className="object-cover object-center"
-                            unoptimized
-                          />
-                        </div>
+                        <Image
+                          src={String(draft[row.field])}
+                          alt=""
+                          width={1600}
+                          height={900}
+                          className="h-auto w-full max-w-full"
+                          style={{ width: "100%", height: "auto" }}
+                          unoptimized
+                          sizes="(max-width: 896px) 100vw, 896px"
+                        />
                       </div>
                     ) : null}
                   </div>

@@ -111,12 +111,12 @@ export function Describe({
 
   const textInteractive =
     interpretationTrigger === "text"
-      ? "inline-block cursor-pointer rounded-sm px-0.5 -mx-0.5 transition-all duration-200 hover:bg-[rgba(74,156,134,0.15)] hover:shadow-[0_0_0_4px_rgba(74,156,134,0.15)]"
+      ? "inline-block cursor-pointer rounded-sm px-0.5 -mx-0.5 transition-[colors,box-shadow] duration-200 hover:bg-muted/50 hover:shadow-[0_0_0_4px_#2c2a2526]"
       : "inline";
 
   const textOpenHighlight =
     interpretationTrigger === "text" && open
-      ? "bg-[rgba(74,156,134,0.18)] shadow-[0_0_0_6px_rgba(74,156,134,0.18)]"
+      ? "bg-muted/55 shadow-[0_0_0_6px_#2c2a2533]"
       : "";
 
   const formatExplanation = (text: string) => {

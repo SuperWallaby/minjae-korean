@@ -53,7 +53,9 @@ export async function generateMetadata({
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/news/article/${encodeURIComponent(slug)}`;
   const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
-  const metaDescription = description.includes(META_KEYWORD) ? description : `${META_KEYWORD}. ${description}`;
+  const metaDescription = description.includes(META_KEYWORD)
+    ? description
+    : `${META_KEYWORD}. ${description}`;
 
   return {
     title: metaTitle,
@@ -151,17 +153,17 @@ export default async function ArticlePage({
         {/* 0. 메인사진 */}
         {mainImage ? (
           <div className="md:-mx-4 mb-12 overflow-hidden rounded-2xl border border-border bg-muted/10 sm:-mx-6">
-            <div className="relative aspect-16/10 w-full sm:aspect-vd">
-              <Image
-                src={mainImage}
-                alt={a.title}
-                fill
-                className="object-cover object-center"
-                unoptimized
-                priority
-                sizes="(max-width: 896px) 100vw, 896px"
-              />
-            </div>
+            <Image
+              src={mainImage}
+              alt={a.title}
+              width={2400}
+              height={1600}
+              className="h-auto w-full max-w-full"
+              style={{ width: "100%", height: "auto" }}
+              unoptimized
+              priority
+              sizes="(max-width: 896px) 100vw, 896px"
+            />
           </div>
         ) : null}
 
@@ -246,15 +248,16 @@ export default async function ArticlePage({
                       ) : null}
                       {p.image ? (
                         <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
-                          <div className="relative aspect-video w-full">
-                            <Image
-                              src={p.image}
-                              alt={a.title}
-                              fill
-                              className="object-cover object-center"
-                              unoptimized
-                            />
-                          </div>
+                          <Image
+                            src={p.image}
+                            alt={a.title}
+                            width={1600}
+                            height={900}
+                            className="h-auto w-full max-w-full"
+                            style={{ width: "100%", height: "auto" }}
+                            unoptimized
+                            sizes="(max-width: 896px) 100vw, 896px"
+                          />
                         </div>
                       ) : null}
                     </div>

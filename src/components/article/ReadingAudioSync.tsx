@@ -159,15 +159,16 @@ export function ReadingAudioSync({
               ) : null}
               {paragraph.image ? (
                 <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
-                  <div className="relative aspect-video w-full">
-                    <Image
-                      src={paragraph.image}
-                      alt={title}
-                      fill
-                      className="object-cover object-center"
-                      unoptimized
-                    />
-                  </div>
+                  <Image
+                    src={paragraph.image}
+                    alt={title}
+                    width={1600}
+                    height={900}
+                    className="h-auto w-full max-w-full"
+                    style={{ width: "100%", height: "auto" }}
+                    unoptimized
+                    sizes="(max-width: 896px) 100vw, 896px"
+                  />
                 </div>
               ) : null}
             </div>
@@ -193,15 +194,17 @@ function CueRow({
     <div
       className={cn(
         "flex items-start gap-3 rounded-xl px-2 py-1.5 transition-colors",
-        isActive && "bg-[rgba(74,156,134,0.10)] ring-1 ring-[rgba(74,156,134,0.18)]",
+        isActive &&
+          "bg-[rgba(74,156,134,0.10)] ring-1 ring-[rgba(74,156,134,0.18)]",
       )}
     >
       <button
         type="button"
         onClick={() => onJump(cue)}
         className={cn(
-          "mt-0 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:text-foreground hover:bg-muted/60",
-          isActive && "border-transparent bg-[rgba(74,156,134,0.16)] text-foreground",
+          "mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:text-foreground hover:bg-muted/60",
+          isActive &&
+            "border-transparent bg-[rgba(74,156,134,0.16)] text-foreground",
         )}
         aria-label="Jump audio to this line"
         title="Jump audio to this line"
