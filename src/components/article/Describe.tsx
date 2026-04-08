@@ -144,7 +144,7 @@ export function Describe({
           <button
             type="button"
             onClick={openFromIcon}
-            className={`inline-flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md border bg-background text-muted-foreground transition hover:bg-muted/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${open ? "border-[rgba(74,156,134,0.45)] text-[rgba(74,156,134,0.95)] bg-[rgba(74,156,134,0.08)]" : "border-border"}`}
+            className={`inline-flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md border border-transparent bg-transparent text-muted-foreground/38 transition hover:border-border/45 hover:bg-muted/20 hover:text-muted-foreground/62 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${open ? "border-border/50 text-muted-foreground/68 bg-muted/25" : ""}`}
             aria-label="Translation and explanation"
             title="Translation and explanation"
           >

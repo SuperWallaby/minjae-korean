@@ -93,9 +93,9 @@ export function ArticleFeed({
             <Link
               key={p.slug}
               href={`${basePath}/${encodeURIComponent(p.slug)}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
+              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted/20">
                 {p?.imageThumb?.trim() || p?.imageLarge?.trim() ? (
                   <Image
                     src={p?.imageThumb?.trim() || p?.imageLarge?.trim() || ""}
@@ -107,14 +107,14 @@ export function ArticleFeed({
                   />
                 ) : null}
               </div>
-              <div className="flex flex-1 flex-col p-4">
+              <div className="flex min-h-0 flex-1 flex-col p-4">
                 <h4 className="font-serif font-semibold tracking-tight line-clamp-2">
                   {p.title}
                 </h4>
-                <div className="flex items-center justify-between">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3">
                   <span
                     className={cn(
-                      "mt-2 inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
+                      "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
                       levelBadgeClass((p.level ?? 1) as ReadingLevel),
                     )}
                   >
@@ -123,7 +123,7 @@ export function ArticleFeed({
                   </span>
                   <RelativeDate
                     iso={p.createdAt}
-                    className="mt-auto pt-2 text-xs text-muted-foreground"
+                    className="text-xs text-muted-foreground"
                   />
                 </div>
               </div>

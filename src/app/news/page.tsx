@@ -128,9 +128,9 @@ export default async function NewsPage() {
                   <Link
                     key={a.slug}
                     href={`/news/article/${encodeURIComponent(a.slug)}`}
-                    className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
-                    <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
+                    <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted/20">
                       {a.imageThumb?.trim() || a.imageLarge?.trim() ? (
                         <Image
                           src={
@@ -148,23 +148,25 @@ export default async function NewsPage() {
                         </div>
                       )}
                     </div>
-                    <div className="flex flex-1 flex-col p-4">
-                      <span
-                        className={cn(
-                          "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                          levelBadgeClass((a.level ?? 1) as ReadingLevel),
-                        )}
-                      >
-                        {displayLevel((a.level ?? 1) as ReadingLevel)}{" "}
-                        {levelLabel((a.level ?? 1) as ReadingLevel)}
-                      </span>
-                      <h3 className="mt-2 font-serif font-semibold tracking-tight line-clamp-2">
+                    <div className="flex min-h-0 flex-1 flex-col p-4">
+                      <h3 className="font-serif font-semibold tracking-tight line-clamp-2">
                         {a.title}
                       </h3>
-                      <RelativeDate
-                        iso={a.createdAt}
-                        className="mt-auto pt-2 text-xs text-muted-foreground"
-                      />
+                      <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3">
+                        <span
+                          className={cn(
+                            "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
+                            levelBadgeClass((a.level ?? 1) as ReadingLevel),
+                          )}
+                        >
+                          {displayLevel((a.level ?? 1) as ReadingLevel)}{" "}
+                          {levelLabel((a.level ?? 1) as ReadingLevel)}
+                        </span>
+                        <RelativeDate
+                          iso={a.createdAt}
+                          className="text-xs text-muted-foreground"
+                        />
+                      </div>
                     </div>
                   </Link>
                 ))}
