@@ -14,6 +14,7 @@ import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import type { ParagraphBlock, ReadingCue } from "@/lib/articleReading";
 import {
   processImageForThumbnail,
   processImageForUploadWebPOnly,
@@ -23,13 +24,6 @@ import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 import { cn } from "@/lib/utils";
 
 type ReadingLevel = 1 | 2 | 3 | 4 | 5;
-
-type ParagraphBlock = {
-  image?: string;
-  subtitle: string;
-  content: string;
-  youtube?: string;
-};
 
 type VocabItem = {
   sound?: string;
@@ -51,6 +45,7 @@ type Article = {
   imageThumb?: string;
   imageLarge?: string;
   paragraphs: ParagraphBlock[];
+  readingCues?: ReadingCue[];
   vocabulary: VocabItem[];
   questions: string[];
   discussion: string[];
@@ -112,6 +107,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
   const [jsonParseError, setJsonParseError] = React.useState<string | null>(
     null,
   );
+  const [timingsGenerating, setTimingsGenerating] = React.useState(false);
   const [draft, setDraft] = React.useState<Article | null>(null);
   const [unsplashForIdx, setUnsplashForIdx] = React.useState<number | null>(
     null,
@@ -191,6 +187,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
           imageThumb: draft.imageThumb,
           imageLarge: draft.imageLarge,
           paragraphs: draft.paragraphs,
+          readingCues: draft.readingCues,
           vocabulary: draft.vocabulary,
           questions: draft.questions,
           discussion: draft.discussion,
@@ -432,6 +429,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                             ? {
                                 ...p,
                                 audio: e.target.value.trim() || undefined,
+                                readingCues: [],
                               }
                             : p,
                         )
@@ -447,6 +445,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         ttsGenerating ||
                         articleEdgeTtsGenerating ||
                         newTtsGenerating ||
+                        timingsGenerating ||
                         Boolean(uploadingKey)
                       }
                       onClick={async () => {
@@ -477,7 +476,13 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                             throw new Error(json?.error ?? "TTS failed");
                           }
                           setDraft((p) =>
-                            p ? { ...p, audio: String(json.url) } : p,
+                            p
+                              ? {
+                                  ...p,
+                                  audio: String(json.url),
+                                  readingCues: [],
+                                }
+                              : p,
                           );
                         } catch (err) {
                           setError(
@@ -498,6 +503,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         newTtsGenerating ||
                         ttsGenerating ||
                         articleEdgeTtsGenerating ||
+                        timingsGenerating ||
                         Boolean(uploadingKey)
                       }
                       onClick={async () => {
@@ -528,7 +534,13 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                             throw new Error(json?.error ?? "TTS failed");
                           }
                           setDraft((p) =>
-                            p ? { ...p, audio: String(json.url) } : p,
+                            p
+                              ? {
+                                  ...p,
+                                  audio: String(json.url),
+                                  readingCues: [],
+                                }
+                              : p,
                           );
                         } catch (err) {
                           setError(
@@ -548,6 +560,7 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                       disabled={
                         articleEdgeTtsGenerating ||
                         newTtsGenerating ||
+                        timingsGenerating ||
                         Boolean(uploadingKey) ||
                         !(draft.paragraphs ?? [])
                           .flatMap((p) =>
@@ -584,7 +597,11 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                           }
                           const url = String(json?.url ?? "");
                           if (url) {
-                            setDraft((p) => (p ? { ...p, audio: url } : p));
+                            setDraft((p) =>
+                              p
+                                ? { ...p, audio: url, readingCues: [] }
+                                : p,
+                            );
                           }
                         } catch (err) {
                           setError(
@@ -599,7 +616,65 @@ export function ArticleEditClient({ slug }: { slug: string }) {
                         ? "Generating…"
                         : "Generate (edge-tts)"}
                     </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={
+                        timingsGenerating ||
+                        ttsGenerating ||
+                        articleEdgeTtsGenerating ||
+                        newTtsGenerating ||
+                        Boolean(uploadingKey) ||
+                        !(draft.audio ?? "").trim() ||
+                        !(draft.paragraphs ?? []).some(
+                          (p) => p.subtitle?.trim() || p.content?.trim(),
+                        )
+                      }
+                      onClick={async () => {
+                        if (!draft?.audio?.trim()) return;
+                        setTimingsGenerating(true);
+                        setError(null);
+                        try {
+                          const { res, json } = await postJson(
+                            "/api/admin/articles/reading-cues",
+                            {
+                              audioUrl: draft.audio.trim(),
+                              paragraphs: draft.paragraphs,
+                            },
+                          );
+                          if (!res.ok || !json?.ok || !json?.data?.readingCues) {
+                            throw new Error(
+                              json?.error ?? "Failed to generate timings",
+                            );
+                          }
+                          setDraft((p) =>
+                            p
+                              ? {
+                                  ...p,
+                                  readingCues: json.data.readingCues as ReadingCue[],
+                                }
+                              : p,
+                          );
+                        } catch (err) {
+                          setError(
+                            err instanceof Error
+                              ? err.message
+                              : "Failed to generate timings",
+                          );
+                        } finally {
+                          setTimingsGenerating(false);
+                        }
+                      }}
+                    >
+                      {timingsGenerating ? "Generating…" : "Generate timings"}
+                    </Button>
                   </div>
+                  {(draft.readingCues ?? []).length > 0 ? (
+                    <div className="text-xs text-muted-foreground">
+                      {draft.readingCues?.length ?? 0} timing cues ready.
+                    </div>
+                  ) : null}
                   {(draft.audio ?? "").trim() ? (
                     <audio
                       controls

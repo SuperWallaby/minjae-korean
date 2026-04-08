@@ -24,6 +24,7 @@ export async function POST(req: Request) {
     const imageThumb = typeof body?.imageThumb === "string" ? body.imageThumb : undefined;
     const imageLarge = typeof body?.imageLarge === "string" ? body.imageLarge : undefined;
     const paragraphs = body?.paragraphs;
+    const readingCues = body?.readingCues;
     const vocabulary = body?.vocabulary;
     const questions = body?.questions;
     const discussion = body?.discussion;
@@ -37,6 +38,7 @@ export async function POST(req: Request) {
       imageThumb,
       imageLarge,
       paragraphs,
+      readingCues,
       vocabulary,
       questions,
       discussion,

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import type { ParagraphBlock, ReadingCue } from "@/lib/articleReading";
 
 const DEBOUNCE_MS = 500;
 
@@ -12,7 +13,8 @@ export type ArticleJsonPayload = {
   audio?: string;
   imageThumb?: string;
   imageLarge?: string;
-  paragraphs?: Array<{ image?: string; subtitle: string; content: string }>;
+  paragraphs?: ParagraphBlock[];
+  readingCues?: ReadingCue[];
   vocabulary?: Array<{
     sound?: string;
     word: string;
@@ -69,8 +71,48 @@ function normalizePayload(parsed: unknown): ArticleJsonPayload {
                 : undefined,
             subtitle: typeof row.subtitle === "string" ? row.subtitle : "",
             content: typeof row.content === "string" ? row.content : "",
+            youtube:
+              typeof row.youtube === "string" && row.youtube.trim()
+                ? row.youtube.trim()
+                : undefined,
           };
         })
+      : [],
+    readingCues: Array.isArray(o.readingCues)
+      ? o.readingCues
+          .map((cue: unknown) => {
+            const row =
+              cue && typeof cue === "object" ? (cue as Record<string, unknown>) : {};
+            const id = typeof row.id === "string" ? row.id.trim() : "";
+            const text = typeof row.text === "string" ? row.text.trim() : "";
+            const startMs = Number(row.startMs);
+            const endMs = Number(row.endMs);
+            const paragraphIndex = Number(row.paragraphIndex);
+            const sentenceIndex = Number(row.sentenceIndex);
+            const order = Number(row.order);
+            if (
+              !id ||
+              !text ||
+              !Number.isFinite(startMs) ||
+              !Number.isFinite(endMs) ||
+              !Number.isFinite(paragraphIndex) ||
+              !Number.isFinite(sentenceIndex) ||
+              !Number.isFinite(order)
+            ) {
+              return null;
+            }
+            return {
+              id,
+              text,
+              kind: row.kind === "subtitle" ? "subtitle" : "sentence",
+              startMs: Math.max(0, Math.round(startMs)),
+              endMs: Math.max(0, Math.round(endMs)),
+              paragraphIndex: Math.max(0, Math.floor(paragraphIndex)),
+              sentenceIndex: Math.max(0, Math.floor(sentenceIndex)),
+              order: Math.max(0, Math.floor(order)),
+            } satisfies ReadingCue;
+          })
+          .filter(Boolean) as ReadingCue[]
       : [],
     vocabulary: Array.isArray(o.vocabulary)
       ? o.vocabulary.map((v: unknown) => {

@@ -14,6 +14,7 @@ import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import type { ParagraphBlock, ReadingCue } from "@/lib/articleReading";
 import {
   processImageForThumbnail,
   processImageForUploadWebPOnly,
@@ -33,13 +34,6 @@ async function postJson(url: string, body?: unknown) {
   const json = await res.json().catch(() => null);
   return { res, json };
 }
-
-type ParagraphBlock = {
-  image?: string;
-  subtitle: string;
-  content: string;
-  youtube?: string;
-};
 
 type VocabItem = {
   sound?: string;
@@ -84,12 +78,14 @@ export function ArticleNewClient() {
   const [jsonParseError, setJsonParseError] = React.useState<string | null>(
     null,
   );
+  const [timingsGenerating, setTimingsGenerating] = React.useState(false);
   const [unsplashForIdx, setUnsplashForIdx] = React.useState<number | null>(
     null,
   );
   const [wordTtsKey, setWordTtsKey] = React.useState<string | null>(null);
   const [exampleTtsKey, setExampleTtsKey] = React.useState<string | null>(null);
   const [autoRunning, setAutoRunning] = React.useState(false);
+  const [readingCues, setReadingCues] = React.useState<ReadingCue[]>([]);
   const fileInputRefs = React.useRef<Record<string, HTMLInputElement | null>>(
     {},
   );
@@ -104,6 +100,7 @@ export function ArticleNewClient() {
       imageThumb: imageThumb.trim() || undefined,
       imageLarge: imageLarge.trim() || undefined,
       paragraphs,
+      readingCues,
       vocabulary,
       questions: toLines(questionsText),
       discussion: toLines(discussionText),
@@ -117,6 +114,7 @@ export function ArticleNewClient() {
       imageThumb,
       imageLarge,
       paragraphs,
+      readingCues,
       vocabulary,
       questionsText,
       discussionText,
@@ -131,6 +129,7 @@ export function ArticleNewClient() {
     setAudio(p.audio ?? "");
     setImageThumb(p.imageThumb ?? "");
     setImageLarge(p.imageLarge ?? "");
+    setReadingCues(p.readingCues ?? []);
     setParagraphs(
       p.paragraphs?.length ? p.paragraphs : [{ subtitle: "", content: "" }],
     );
@@ -155,6 +154,7 @@ export function ArticleNewClient() {
         imageThumb: imageThumb.trim() || undefined,
         imageLarge: imageLarge.trim() || undefined,
         paragraphs,
+        readingCues,
         vocabulary,
         questions: toLines(questionsText),
         discussion: toLines(discussionText),
@@ -181,6 +181,7 @@ export function ArticleNewClient() {
     loading,
     noImageIndex,
     paragraphs,
+    readingCues,
     questionsText,
     router,
     title,
@@ -320,7 +321,10 @@ export function ArticleNewClient() {
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:flex-wrap">
                     <Input
                       value={audio}
-                      onChange={(e) => setAudio(e.target.value)}
+                      onChange={(e) => {
+                        setAudio(e.target.value);
+                        setReadingCues([]);
+                      }}
                       placeholder="Audio URL"
                       className="min-w-0 flex-1"
                     />
@@ -360,6 +364,7 @@ export function ArticleNewClient() {
                             throw new Error(json?.error ?? "TTS failed");
                           }
                           setAudio(String(json.url));
+                          setReadingCues([]);
                         } catch (err) {
                           setError(
                             err instanceof Error ? err.message : "TTS failed",
@@ -377,6 +382,7 @@ export function ArticleNewClient() {
                       size="sm"
                       disabled={
                         articleEdgeTtsGenerating ||
+                        timingsGenerating ||
                         Boolean(uploadingKey) ||
                         !(paragraphs ?? [])
                           .flatMap((p) =>
@@ -414,6 +420,7 @@ export function ArticleNewClient() {
                             return;
                           }
                           setAudio(String(json?.url ?? ""));
+                          setReadingCues([]);
                         } catch (err) {
                           setError(
                             err instanceof Error ? err.message : "TTS failed",
@@ -426,6 +433,51 @@ export function ArticleNewClient() {
                       {articleEdgeTtsGenerating
                         ? "Generating…"
                         : "Generate (edge-tts)"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={
+                        timingsGenerating ||
+                        ttsGenerating ||
+                        articleEdgeTtsGenerating ||
+                        Boolean(uploadingKey) ||
+                        !audio.trim() ||
+                        !(paragraphs ?? []).some(
+                          (p) => p.subtitle?.trim() || p.content?.trim(),
+                        )
+                      }
+                      onClick={async () => {
+                        if (!audio.trim()) return;
+                        setTimingsGenerating(true);
+                        setError(null);
+                        try {
+                          const { res, json } = await postJson(
+                            "/api/admin/articles/reading-cues",
+                            {
+                              audioUrl: audio.trim(),
+                              paragraphs,
+                            },
+                          );
+                          if (!res.ok || !json?.ok || !json?.data?.readingCues) {
+                            throw new Error(
+                              json?.error ?? "Failed to generate timings",
+                            );
+                          }
+                          setReadingCues(json.data.readingCues as ReadingCue[]);
+                        } catch (err) {
+                          setError(
+                            err instanceof Error
+                              ? err.message
+                              : "Failed to generate timings",
+                          );
+                        } finally {
+                          setTimingsGenerating(false);
+                        }
+                      }}
+                    >
+                      {timingsGenerating ? "Generating…" : "Generate timings"}
                     </Button>
                     <div className="shrink-0">
                       <input
@@ -443,6 +495,7 @@ export function ArticleNewClient() {
                             setUploadingKey("audio");
                             const url = await uploadFileToR2(file);
                             setAudio(url);
+                            setReadingCues([]);
                           } catch (err) {
                             setError(
                               err instanceof Error
@@ -465,6 +518,11 @@ export function ArticleNewClient() {
                       </Button>
                     </div>
                   </div>
+                  {readingCues.length > 0 ? (
+                    <div className="text-xs text-muted-foreground">
+                      {readingCues.length} timing cues ready.
+                    </div>
+                  ) : null}
                   {audio.trim() ? (
                     <audio
                       controls

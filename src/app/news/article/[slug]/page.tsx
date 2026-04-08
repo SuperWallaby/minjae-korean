@@ -6,7 +6,8 @@ import type { Metadata } from "next";
 import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
-import { Describe } from "@/components/article/Describe";
+import { NewsDescribe } from "@/components/article/NewsDescribe";
+import { ReadingAudioSync } from "@/components/article/ReadingAudioSync";
 import { VocabularySection } from "@/components/article/VocabularySection";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
@@ -183,7 +184,7 @@ export default async function ArticlePage({
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-3">
               <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                <Describe>{a.title}</Describe>
+                <NewsDescribe>{a.title}</NewsDescribe>
               </h1>
               <BookmarkNavIcon />
             </div>
@@ -199,9 +200,75 @@ export default async function ArticlePage({
           ) : null}
         </div>
 
-        {/* 2. Vocabulary zone (table) */}
+        {/* 2. Body zone: sticky audio + single flowing text with inline images */}
+        <section className="mt-12 border-t border-border pt-10">
+          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
+            Reading
+          </h2>
+          {a.audio && (a.readingCues ?? []).length > 0 ? (
+            <ReadingAudioSync
+              audio={a.audio}
+              title={a.title}
+              paragraphs={a.paragraphs ?? []}
+              readingCues={a.readingCues ?? []}
+            />
+          ) : (
+            <>
+              {a.audio ? (
+                <div className="sticky top-0 z-9999 -mx-4 mt-6 mb-6 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-sm backdrop-blur sm:-mx-6 sm:px-6">
+                  <div className="text-xs font-medium text-muted-foreground">
+                    Listen
+                  </div>
+                  <audio controls src={a.audio} className="mt-1 w-full" />
+                </div>
+              ) : null}
+
+              <div className="mt-10 space-y-6 text-base leading-8 sm:text-lg">
+                {(a.paragraphs ?? []).length === 0 ? (
+                  <p className="text-muted-foreground">No content yet.</p>
+                ) : (
+                  (a.paragraphs ?? []).map((p, idx) => (
+                    <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}`}>
+                      {p.subtitle ? (
+                        <p className="mb-2 font-semibold text-foreground">
+                          <NewsDescribe>{p.subtitle}</NewsDescribe>
+                        </p>
+                      ) : null}
+                      <div className="whitespace-pre-wrap text-foreground/90">
+                        <NewsDescribe>
+                          {String(p.content ?? "").trim() || null}
+                        </NewsDescribe>
+                      </div>
+                      {p.youtube ? (
+                        <div className="mt-4 mb-10">
+                          <YouTubeEmbed urlOrId={p.youtube} />
+                        </div>
+                      ) : null}
+                      {p.image ? (
+                        <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
+                          <div className="relative aspect-video w-full">
+                            <Image
+                              src={p.image}
+                              alt={a.title}
+                              fill
+                              className="object-cover object-center"
+                              unoptimized
+                            />
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  ))
+                )}
+              </div>
+            </>
+          )}
+        </section>
+
+        {/* 3. Vocabulary zone (table) */}
         <VocabularySection
           className="mt-10 border-t border-border pt-10"
+          describeInterpretationTrigger="icon"
           items={(a.vocabulary ?? []).map((v) => ({
             word: v.word,
             phonetic: v.phonetic,
@@ -212,60 +279,6 @@ export default async function ArticlePage({
             image: v.image,
           }))}
         />
-
-        {/* 3. Body zone: sticky audio + single flowing text with inline images */}
-        <section className="mt-12 border-t border-border pt-10">
-          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-            Reading
-          </h2>
-          {a.audio ? (
-            <div className="sticky top-0 z-[9999] -mx-4 mt-6 mb-6 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-sm backdrop-blur sm:-mx-6 sm:px-6">
-              <div className="text-xs font-medium text-muted-foreground">
-                Listen
-              </div>
-              <audio controls src={a.audio} className="mt-1 w-full" />
-            </div>
-          ) : null}
-
-          <div className="mt-10 space-y-6 text-base leading-8 sm:text-lg">
-            {(a.paragraphs ?? []).length === 0 ? (
-              <p className="text-muted-foreground">No content yet.</p>
-            ) : (
-              (a.paragraphs ?? []).map((p, idx) => (
-                <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}`}>
-                  {p.subtitle ? (
-                    <p className="mb-2 font-semibold text-foreground">
-                      <Describe>{p.subtitle}</Describe>
-                    </p>
-                  ) : null}
-                  <div className="whitespace-pre-wrap text-foreground/90">
-                    <Describe>
-                      {String(p.content ?? "").trim() || null}
-                    </Describe>
-                  </div>
-                  {p.youtube ? (
-                    <div className="mt-4 mb-10">
-                      <YouTubeEmbed urlOrId={p.youtube} />
-                    </div>
-                  ) : null}
-                  {p.image ? (
-                    <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
-                      <div className="relative aspect-video w-full">
-                        <Image
-                          src={p.image}
-                          alt={a.title}
-                          fill
-                          className="object-cover object-center"
-                          unoptimized
-                        />
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-              ))
-            )}
-          </div>
-        </section>
 
         {/* 4. Questions */}
         <section className="mt-12 border-t border-border pt-10">
@@ -278,7 +291,7 @@ export default async function ArticlePage({
             <ul className="mt-4 list-inside list-disc space-y-4 text-lg leading-relaxed text-muted-foreground">
               {(a.questions ?? []).map((q, i) => (
                 <li key={i}>
-                  <Describe>{q}</Describe>
+                  <NewsDescribe>{q}</NewsDescribe>
                 </li>
               ))}
             </ul>
@@ -296,7 +309,7 @@ export default async function ArticlePage({
             <ul className="mt-4 list-inside list-disc space-y-4 text-lg leading-relaxed text-muted-foreground">
               {(a.discussion ?? []).map((q, i) => (
                 <li key={i}>
-                  <Describe>{q}</Describe>
+                  <NewsDescribe>{q}</NewsDescribe>
                 </li>
               ))}
             </ul>

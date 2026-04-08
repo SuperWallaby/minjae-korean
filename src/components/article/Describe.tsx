@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronDown, X } from "lucide-react";
+import { BookOpenText, ChevronDown, X } from "lucide-react";
 
 type DescribeResult = {
   translation: string;
@@ -14,6 +14,8 @@ type Props = {
   className?: string;
   /** Called once when user opens the describe panel (click to see meaning). Use to hide "Click to see meaning" hint per device. */
   onReveal?: () => void;
+  /** `"text"`: click Korean text (default). `"icon"`: separate interpretation button next to text (e.g. news articles). */
+  interpretationTrigger?: "text" | "icon";
 };
 
 function ToggleSection({
@@ -44,7 +46,12 @@ function ToggleSection({
   );
 }
 
-export function Describe({ children, className = "", onReveal }: Props) {
+export function Describe({
+  children,
+  className = "",
+  onReveal,
+  interpretationTrigger = "text",
+}: Props) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState<DescribeResult | null>(null);
@@ -97,6 +104,21 @@ export function Describe({ children, className = "", onReveal }: Props) {
     setOpen(false);
   };
 
+  const openFromIcon = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    void handleClick();
+  };
+
+  const textInteractive =
+    interpretationTrigger === "text"
+      ? "inline-block cursor-pointer rounded-sm px-0.5 -mx-0.5 transition-all duration-200 hover:bg-[rgba(74,156,134,0.15)] hover:shadow-[0_0_0_4px_rgba(74,156,134,0.15)]"
+      : "inline";
+
+  const textOpenHighlight =
+    interpretationTrigger === "text" && open
+      ? "bg-[rgba(74,156,134,0.18)] shadow-[0_0_0_6px_rgba(74,156,134,0.18)]"
+      : "";
+
   const formatExplanation = (text: string) => {
     return text.split(/\n\n+/).map((paragraph, i) => (
       <span key={i} className="block mb-3 last:mb-0">
@@ -111,15 +133,35 @@ export function Describe({ children, className = "", onReveal }: Props) {
 
   return (
     <span className={`group ${className}`}>
-      <span
-        ref={textRef}
-        onClick={handleClick}
-        className={`inline-block cursor-pointer rounded-sm px-0.5 -mx-0.5 transition-all duration-200 hover:bg-[rgba(74,156,134,0.15)] hover:shadow-[0_0_0_4px_rgba(74,156,134,0.15)] ${open ? "bg-[rgba(74,156,134,0.18)] shadow-[0_0_0_6px_rgba(74,156,134,0.18)]" : ""}`}
-      >
-        {children}
-      </span>
+      {interpretationTrigger === "icon" ? (
+        <span className="inline-flex max-w-full flex-wrap items-baseline gap-1.5 align-middle">
+          <span
+            ref={textRef}
+            className={`${textInteractive} ${textOpenHighlight}`}
+          >
+            {children}
+          </span>
+          <button
+            type="button"
+            onClick={openFromIcon}
+            className={`inline-flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md border bg-background text-muted-foreground transition hover:bg-muted/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${open ? "border-[rgba(74,156,134,0.45)] text-[rgba(74,156,134,0.95)] bg-[rgba(74,156,134,0.08)]" : "border-border"}`}
+            aria-label="Translation and explanation"
+            title="Translation and explanation"
+          >
+            <BookOpenText className="h-4 w-4" aria-hidden />
+          </button>
+        </span>
+      ) : (
+        <span
+          ref={textRef}
+          onClick={handleClick}
+          className={`${textInteractive} ${textOpenHighlight}`}
+        >
+          {children}
+        </span>
+      )}
       {open && (
-        <span className="block w-full my-3 rounded-lg border border-border bg-muted/20 overflow-hidden">
+        <span className="relative z-20 my-3 block w-full overflow-hidden rounded-lg border border-border bg-card">
           {loading && (
             <span className="block px-4 py-4 text-base font-normal text-muted-foreground animate-pulse">
               Analyzing...

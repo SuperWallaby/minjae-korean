@@ -22,6 +22,7 @@ type Props = {
   titleClassName?: string;
   items: VocabularyItem[];
   className?: string;
+  describeInterpretationTrigger?: "text" | "icon";
 };
 
 export function VocabularySection({
@@ -29,6 +30,7 @@ export function VocabularySection({
   titleClassName,
   items,
   className = "",
+  describeInterpretationTrigger = "text",
 }: Props) {
   if (!items.length) return null;
 
@@ -68,7 +70,10 @@ export function VocabularySection({
                 ) : null}
                 {v.example ? (
                   <div className="mt-1 flex flex-wrap items-center gap-2">
-                    <Describe className="text-sm text-foreground/90">
+                    <Describe
+                      className="text-sm text-foreground/90"
+                      interpretationTrigger={describeInterpretationTrigger}
+                    >
                       {v.example}
                     </Describe>
                     {v.exampleSound ? (

@@ -1,17 +1,10 @@
 import type { Collection } from "mongodb";
 
+import type { ParagraphBlock, ReadingCue } from "@/lib/articleReading";
 import { getMongoDb } from "@/lib/mongo";
 import { suggestSlugFromGemini } from "@/lib/slugFromGemini";
 
 export type ReadingLevel = 1 | 2 | 3 | 4 | 5;
-
-export type ParagraphBlock = {
-  image?: string; // url
-  subtitle: string;
-  content: string;
-  /** YouTube URL or video ID — rendered as embed between paragraphs */
-  youtube?: string;
-};
 
 export type VocabItem = {
   sound?: string; // url — word pronunciation
@@ -35,6 +28,7 @@ export type ArticleCard = {
   imageThumb?: string; // url
   imageLarge?: string; // url
   paragraphs: ParagraphBlock[];
+  readingCues?: ReadingCue[];
   vocabulary: VocabItem[];
   questions: string[];
   discussion: string[];
@@ -124,6 +118,45 @@ function normalizeParagraphs(v: unknown): ParagraphBlock[] {
       } satisfies ParagraphBlock;
     })
     .filter(Boolean) as ParagraphBlock[];
+}
+
+function normalizeReadingCues(v: unknown): ReadingCue[] {
+  if (!Array.isArray(v)) return [];
+  return v
+    .map((x) => {
+      if (!x || typeof x !== "object") return null;
+      const o = x as Record<string, unknown>;
+      const id = String(o.id ?? "").trim();
+      const text = String(o.text ?? "").trim();
+      const kind = o.kind === "subtitle" ? "subtitle" : "sentence";
+      const paragraphIndex = Number(o.paragraphIndex);
+      const sentenceIndex = Number(o.sentenceIndex);
+      const order = Number(o.order);
+      const startMs = Number(o.startMs);
+      const endMs = Number(o.endMs);
+      if (!id || !text) return null;
+      if (
+        !Number.isFinite(paragraphIndex) ||
+        !Number.isFinite(sentenceIndex) ||
+        !Number.isFinite(order) ||
+        !Number.isFinite(startMs) ||
+        !Number.isFinite(endMs)
+      ) {
+        return null;
+      }
+      if (endMs < startMs) return null;
+      return {
+        id,
+        text,
+        kind,
+        paragraphIndex: Math.max(0, Math.floor(paragraphIndex)),
+        sentenceIndex: Math.max(0, Math.floor(sentenceIndex)),
+        order: Math.max(0, Math.floor(order)),
+        startMs: Math.max(0, Math.round(startMs)),
+        endMs: Math.max(0, Math.round(endMs)),
+      } satisfies ReadingCue;
+    })
+    .filter(Boolean) as ReadingCue[];
 }
 
 function normalizeVocab(v: unknown): VocabItem[] {
@@ -264,6 +297,7 @@ export async function createArticle(draft: Partial<ArticleCard> & { title: strin
     imageThumb: typeof draft.imageThumb === "string" ? draft.imageThumb.trim() || undefined : undefined,
     imageLarge: typeof draft.imageLarge === "string" ? draft.imageLarge.trim() || undefined : undefined,
     paragraphs: normalizeParagraphs(draft.paragraphs),
+    readingCues: normalizeReadingCues(draft.readingCues),
     vocabulary: normalizeVocab(draft.vocabulary),
     questions: normalizeStrings(draft.questions),
     discussion: normalizeStrings(draft.discussion),
@@ -305,6 +339,9 @@ export async function updateArticle(
       ? { imageLarge: String(patch.imageLarge ?? "").trim() || undefined }
       : null),
     ...(patch.paragraphs !== undefined ? { paragraphs: normalizeParagraphs(patch.paragraphs) } : null),
+    ...(patch.readingCues !== undefined
+      ? { readingCues: normalizeReadingCues(patch.readingCues) }
+      : null),
     ...(patch.vocabulary !== undefined ? { vocabulary: normalizeVocab(patch.vocabulary) } : null),
     ...(patch.questions !== undefined ? { questions: normalizeStrings(patch.questions) } : null),
     ...(patch.discussion !== undefined ? { discussion: normalizeStrings(patch.discussion) } : null),
