@@ -1,7 +1,12 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BookOpenText, ChevronDown, X } from "lucide-react";
+
+import { Modal } from "@/components/ui/Modal";
+import { Button } from "@/components/ui/Button";
 
 type DescribeResult = {
   translation: string;
@@ -52,15 +57,19 @@ export function Describe({
   onReveal,
   interpretationTrigger = "text",
 }: Props) {
+  const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState<DescribeResult | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [showVocabulary, setShowVocabulary] = React.useState(false);
   const [showExplanation, setShowExplanation] = React.useState(false);
+  const [loginGateOpen, setLoginGateOpen] = React.useState(false);
   const textRef = React.useRef<HTMLSpanElement>(null);
   const onRevealRef = React.useRef(onReveal);
   onRevealRef.current = onReveal;
+
+  const loginReturnPath = pathname?.startsWith("/") ? pathname : "/";
 
   const handleClick = async () => {
     if (open) {
@@ -85,9 +94,25 @@ export function Describe({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text }),
       });
-      const json = await res.json();
+      const json = (await res.json().catch(() => null)) as {
+        ok?: boolean;
+        code?: string;
+        error?: string;
+        data?: DescribeResult;
+      } | null;
+      if (!json) {
+        throw new Error("Failed to get description");
+      }
       if (!res.ok || !json.ok) {
+        if (res.status === 403 && json.code === "DESCRIBE_LOGIN_REQUIRED") {
+          setOpen(false);
+          setLoginGateOpen(true);
+          return;
+        }
         throw new Error(json.error ?? "Failed to get description");
+      }
+      if (!json.data) {
+        throw new Error("Invalid response");
       }
       setResult(json.data);
     } catch (err) {
@@ -225,6 +250,36 @@ export function Describe({
           )}
         </span>
       )}
+
+      <Modal
+        open={loginGateOpen}
+        onClose={() => setLoginGateOpen(false)}
+        title="Sign in to continue"
+        description="Translations and explanations"
+        footer={
+          <>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setLoginGateOpen(false)}
+            >
+              Close
+            </Button>
+            <Button asChild variant="primary">
+              <Link
+                href={`/login?next=${encodeURIComponent(loginReturnPath)}`}
+              >
+                Sign in
+              </Link>
+            </Button>
+          </>
+        }
+      >
+        <p className="text-sm leading-relaxed text-foreground">
+          You have used all 10 free previews as a guest. After you sign in, you
+          can keep using translations and explanations at no extra cost.
+        </p>
+      </Modal>
     </span>
   );
 }
