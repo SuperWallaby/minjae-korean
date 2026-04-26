@@ -11,7 +11,8 @@
     "deploy": "vercel --prod",
     "deploy:cron": "cd cf-reminder-cron && npx wrangler deploy",
     "vapid-keys": "web-push generate-vapid-keys",
-    "stripe:ensure-book-launch": "node scripts/ensure-stripe-book-launch.mjs"
+    "stripe:ensure-book-launch": "node scripts/ensure-stripe-book-launch.mjs",
+    "r2:put-ebook": "node scripts/r2_put_ebook.cjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",

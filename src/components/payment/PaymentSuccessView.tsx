@@ -8,7 +8,6 @@ import { BookOpen, Download } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import {
-  BOOK_PDF_HREF,
   LAST_STRIPE_PURCHASE_STORAGE_KEY,
   type LastStripePurchaseStored,
 } from "@/lib/stripePurchase";
@@ -29,6 +28,50 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
   const [state, setState] = React.useState<
     { kind: "loading" } | { kind: "error"; message: string } | { kind: "ok"; data: VerifyOk }
   >({ kind: "loading" });
+  const [ebookAction, setEbookAction] = React.useState<null | "read" | "download">(null);
+  const [ebookError, setEbookError] = React.useState<string | null>(null);
+
+  const openEbook = React.useCallback(
+    async (mode: "read" | "download") => {
+      setEbookError(null);
+      setEbookAction(mode);
+      try {
+        const res = await fetch(
+          `/api/public/ebook/signed-url?session_id=${encodeURIComponent(sessionId)}&mode=${mode}`,
+          { cache: "no-store" },
+        );
+        const json = (await res.json().catch(() => null)) as {
+          ok?: boolean;
+          url?: string;
+          error?: string;
+        };
+        if (res.status === 503 && json?.error === "ebook_not_configured") {
+          setEbookError(
+            "eBook download is not configured yet. Check your email for the PDF or contact support.",
+          );
+          return;
+        }
+        if (!res.ok || !json?.ok || !json?.url) {
+          if (res.status === 403) {
+            setEbookError("This link is not valid for the eBook.");
+            return;
+          }
+          setEbookError("Couldn’t get a download link. Try again in a moment.");
+          return;
+        }
+        if (mode === "read") {
+          window.open(json.url, "_blank", "noopener,noreferrer");
+        } else {
+          window.location.assign(json.url);
+        }
+      } catch {
+        setEbookError("Couldn’t get a download link. Check your connection and try again.");
+      } finally {
+        setEbookAction(null);
+      }
+    },
+    [sessionId],
+  );
 
   React.useEffect(() => {
     if (!sessionId) {
@@ -176,41 +219,42 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
 
                 <div className="mt-9 w-full max-w-md space-y-0 sm:mt-10">
                   <Button
-                    asChild
+                    type="button"
                     size="lg"
                     className="h-14 w-full min-w-0 text-base font-semibold sm:text-lg"
                     variant="primary"
+                    disabled={ebookAction !== null}
+                    onClick={() => void openEbook("read")}
                   >
-                    <a
-                      href={BOOK_PDF_HREF}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <BookOpen
-                        className="size-6 shrink-0 sm:size-7"
-                        aria-hidden
-                        strokeWidth={2.25}
-                      />
-                      Read now
-                    </a>
+                    <BookOpen
+                      className="size-6 shrink-0 sm:size-7"
+                      aria-hidden
+                      strokeWidth={2.25}
+                    />
+                    {ebookAction === "read" ? "Opening…" : "Read now"}
                   </Button>
 
                   <div className="pt-2">
                     <Button
-                      asChild
+                      type="button"
                       className="h-[42px] w-full min-w-0 border-[rgba(40,36,32,0.28)] bg-white/70 text-sm font-medium text-[#2c221c] transition-[border-color,background-color] hover:border-[rgba(40,36,32,0.4)] hover:bg-white/90"
                       variant="outline"
+                      disabled={ebookAction !== null}
+                      onClick={() => void openEbook("download")}
                     >
-                      <a href={BOOK_PDF_HREF} download>
-                        <Download
-                          className="size-[0.95rem] shrink-0 opacity-90 sm:size-4"
-                          aria-hidden
-                          strokeWidth={2.1}
-                        />
-                        Download PDF
-                      </a>
+                      <Download
+                        className="size-[0.95rem] shrink-0 opacity-90 sm:size-4"
+                        aria-hidden
+                        strokeWidth={2.1}
+                      />
+                      {ebookAction === "download" ? "Preparing…" : "Download PDF"}
                     </Button>
                   </div>
+                  {ebookError ? (
+                    <p className="pt-2 text-sm text-red-600" role="alert">
+                      {ebookError}
+                    </p>
+                  ) : null}
 
                   <div className="pt-2.5">
                     <details className="w-full text-left">
@@ -246,7 +290,10 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
                         <dt className="text-xs font-medium uppercase tracking-wide text-[#6b4f42]/80">
                           Access
                         </dt>
-                        <dd className="mt-0.5">Saved in this browser</dd>
+                        <dd className="mt-0.5">
+                          File is in private storage; a short link is created
+                          here only after we confirm this checkout
+                        </dd>
                       </div>
                       <div>
                         <dt className="text-xs font-medium uppercase tracking-wide text-[#6b4f42]/80">

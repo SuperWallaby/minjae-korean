@@ -7,10 +7,11 @@ export type LastStripePurchaseStored = {
   savedAt: number;
 };
 
-/** Public PDF filename in /public (URL-encoded in href). */
-const BOOK_PDF_FILE = "[Korean] Beyond Translation.pdf";
-
-export const BOOK_PDF_HREF = `/${encodeURIComponent(BOOK_PDF_FILE)}`;
+/**
+ * Suggested download filename (ASCII for Content-Disposition). The real file
+ * object lives in R2; see R2_EBOOK_OBJECT_KEY and /api/public/ebook/signed-url.
+ */
+export const EBOOK_PDF_FILE_NAME = "Korean-Beyond-Translation.pdf";
 
 export function maskEmailForDisplay(email: string) {
   const t = email.trim().toLowerCase();

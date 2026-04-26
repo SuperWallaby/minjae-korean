@@ -56,6 +56,14 @@ STRIPE_PRICE_BOOK_LAUNCH=price_xxxx
 
 이미 같은 `kaja_key` Product가 있고 동일 금액의 Price가 있으면 **재사용**만 합니다(중복 생성 방지).
 
+**eBook PDF (R2 비공개, 권장):** PDF는 `public`에 두지 말고 **R2에만** 올립니다(퍼블릭 액세스 비활성). 버킷 내 **오브젝트 키**를 env에 넣으면, 결제 검증이 끝난 뒤 `/api/public/ebook/signed-url`이 **짧은 만기의 presigned URL**만 발급합니다.
+
+```env
+R2_EBOOK_OBJECT_KEY=ebook/korean-beyond-translation.pdf
+```
+
+(기존 R2 creds: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` — 퍼블릭 베이스 URL은 eBook **다운로드**에는 쓰지 않습니다.)
+
 ---
 
 ### 2.3 Growth Program (주당 1/2/3회 → 월 결제)
