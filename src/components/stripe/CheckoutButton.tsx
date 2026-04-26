@@ -2,15 +2,19 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { MailCheck } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
+import { GoogleLogoMark } from "../icons/GoogleLogoMark";
 
 export type CheckoutProduct =
   | "trial"
   | "single"
+  | "book_launch"
   | "monthly_1x"
   | "monthly_2x"
   | "monthly_3x";
@@ -63,6 +67,7 @@ function consumePendingCheckout(): {
     const validProducts: CheckoutProduct[] = [
       "trial",
       "single",
+      "book_launch",
       "monthly_1x",
       "monthly_2x",
       "monthly_3x",
@@ -118,6 +123,13 @@ export function CheckoutButton({
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [loginOpen, setLoginOpen] = React.useState(false);
+  const [loginModalEmail, setLoginModalEmail] = React.useState("");
+  const [loginModalSent, setLoginModalSent] = React.useState(false);
+  const [loginModalMagicLoading, setLoginModalMagicLoading] =
+    React.useState(false);
+  const [loginModalMagicError, setLoginModalMagicError] = React.useState<
+    string | null
+  >(null);
   const [emailOpen, setEmailOpen] = React.useState(false);
   const [emailInput, setEmailInput] = React.useState("");
   const [trialStatus, setTrialStatus] = React.useState<
@@ -198,6 +210,13 @@ export function CheckoutButton({
     setError(null);
 
     if (!session.state.user) {
+      if (product === "book_launch") {
+        const override =
+          typeof window !== "undefined" ? readEmailOverride() : "";
+        setEmailInput(override);
+        setEmailOpen(true);
+        return;
+      }
       setPendingCheckout(product);
       setLoginOpen(true);
       return;
@@ -234,7 +253,31 @@ export function CheckoutButton({
     void startCheckout({ email });
   }, [loading, product, session.state.user, startCheckout]);
 
-  const loginHref = `/login?next=${encodeURIComponent(returnTo)}`;
+  React.useEffect(() => {
+    if (!loginOpen) {
+      setLoginModalEmail("");
+      setLoginModalSent(false);
+      setLoginModalMagicError(null);
+      setLoginModalMagicLoading(false);
+    }
+  }, [loginOpen]);
+
+  const googleStartHref = `/api/auth/google/start?next=${encodeURIComponent(returnTo)}`;
+
+  const sendLoginModalMagicLink = React.useCallback(async () => {
+    setLoginModalMagicLoading(true);
+    setLoginModalMagicError(null);
+    const res = await session.requestMagicLink({
+      email: loginModalEmail,
+      next: returnTo,
+    });
+    setLoginModalMagicLoading(false);
+    if (!res.ok) {
+      setLoginModalMagicError(res.error);
+      return;
+    }
+    setLoginModalSent(true);
+  }, [loginModalEmail, returnTo, session]);
 
   return (
     <div className="w-full">
@@ -265,22 +308,102 @@ export function CheckoutButton({
       <Modal
         open={loginOpen}
         onClose={() => setLoginOpen(false)}
-        title="Please sign in"
-        description="Please sign in to continue."
+        title="Sign in to continue"
+        titleClassName="text-2xl sm:text-3xl font-semibold tracking-tight"
+        description="Use Google or email. After you sign in, checkout resumes on this page."
+        descriptionClassName="text-base leading-snug"
         footer={
-          <>
-            <Button variant="outline" onClick={() => setLoginOpen(false)}>
-              Close
-            </Button>
-            <Button asChild>
-              <Link href={loginHref}>Sign in with Google</Link>
-            </Button>
-          </>
+          <Button variant="outline" onClick={() => setLoginOpen(false)}>
+            Close
+          </Button>
         }
       >
-        <div className="text-sm text-muted-foreground">
-          After signing in, you’ll return to this page and we’ll continue
-          checkout.
+        <div className="grid gap-3">
+          <Button asChild className="w-full" size="lg">
+            <Link href={googleStartHref} aria-label="Continue with Google">
+              <GoogleLogoMark />
+              <span>Continue with Google</span>
+            </Link>
+          </Button>
+
+          <div className="my-1 flex items-center gap-3">
+            <div className="h-px flex-1 bg-border" />
+            <div className="text-xs text-muted-foreground">or</div>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
+          <label className="grid gap-1">
+            <span className="text-sm text-muted-foreground">
+              Continue with email
+            </span>
+            <Input
+              value={loginModalEmail}
+              onChange={(e) => setLoginModalEmail(e.target.value)}
+              placeholder="you@example.com"
+              inputMode="email"
+              autoComplete="email"
+              disabled={loginModalMagicLoading || loginModalSent}
+            />
+          </label>
+          <Button
+            className="w-full justify-center"
+            size="lg"
+            variant="primary"
+            onClick={() => void sendLoginModalMagicLink()}
+            disabled={
+              loginModalMagicLoading ||
+              loginModalSent ||
+              !isEmail(loginModalEmail.trim())
+            }
+          >
+            {loginModalSent
+              ? "Login link sent"
+              : loginModalMagicLoading
+                ? "Sending…"
+                : "Send login link"}
+          </Button>
+
+          {loginModalSent ? (
+            <div className="rounded-md border border-border bg-muted/40 p-3">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full border border-border bg-background">
+                  <MailCheck className="size-4 text-foreground/70" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold text-foreground">
+                    Check your inbox
+                  </div>
+                  <div className="mt-0.5 text-sm text-muted-foreground">
+                    Open the link to sign in, then return here for checkout.
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {loginModalMagicError ? (
+            <div className="rounded-md border border-border bg-muted/40 p-3 text-sm text-red-600">
+              {loginModalMagicError}
+            </div>
+          ) : null}
+
+          <p className="text-center text-xs text-muted-foreground">
+            By continuing you agree to our{" "}
+            <Link
+              href="/terms"
+              className="text-primary underline underline-offset-4 hover:text-foreground"
+            >
+              Terms
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="/privacy"
+              className="text-primary underline underline-offset-4 hover:text-foreground"
+            >
+              Privacy Policy
+            </Link>
+            .
+          </p>
         </div>
       </Modal>
 
@@ -288,7 +411,11 @@ export function CheckoutButton({
         open={emailOpen}
         onClose={() => setEmailOpen(false)}
         title="Email required"
-        description="Stripe checkout requires an email address."
+        description={
+          product === "book_launch"
+            ? "Enter the email for your receipt and eBook. No account is required—Stripe will collect payment securely."
+            : "Stripe checkout requires an email address."
+        }
         footer={
           <>
             <Button variant="outline" onClick={() => setEmailOpen(false)}>
@@ -323,7 +450,9 @@ export function CheckoutButton({
           </label>
           {!emailInput.trim() ? (
             <div className="text-xs text-muted-foreground">
-              We’ll use this email for your receipt and credits.
+              {product === "book_launch"
+                ? "We’ll use this for your receipt and to identify your order. You can sign up later with the same email to link it to a member account."
+                : "We’ll use this email for your receipt and credits."}
             </div>
           ) : !isEmail(emailInput.trim()) ? (
             <div className="text-xs text-muted-foreground">

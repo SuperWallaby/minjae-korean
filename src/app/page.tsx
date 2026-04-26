@@ -3,15 +3,13 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
+import { BookHeroClickable } from "@/components/site/BookHeroClickable";
 import { Container } from "@/components/site/Container";
-import { HomeHeroVideo } from "@/components/site/HomeHeroVideo";
 import { Button } from "@/components/ui/Button";
 import { listArticles } from "@/lib/articlesRepo";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
-import { LIBRARY_LINKS, NEWS_RESOURCE } from "@/data/libraryLinks";
-import { cn } from "@/lib/utils";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -53,111 +51,130 @@ export default async function Home() {
   }
   return (
     <div className="space-y-12 md:space-y-24">
-      {/* 1) Hero (1 column) */}
-      <section className="pt-16 sm:pt-24">
+      {/* 1) Hero — book launch */}
+      <section className="pt-12 sm:pt-18">
         <Container className="relative">
-          <StaggerReveal className="relative mx-auto max-w-4xl text-center">
-            <div className="text-sm font-semibold tracking-wide text-primary">
-              Kaja · Study with Minjae
-            </div>
-            <h1 className="mt-5  font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-6xl">
-              Talk in Korean with Minjae.
-            </h1>
-            <div className="mt-4 text-muted-foreground">
-              Set your direction, build confidence, and grow with encouragement.
-            </div>
+          <StaggerReveal className="overflow-hidden rounded-4xl border border-black/8 bg-[#f25b43] shadow-(--shadow-float)">
+            <div className="grid gap-10 px-6 py-10 sm:px-10 sm:py-12 lg:grid-cols-[minmax(260px,420px)_1fr] lg:items-center lg:px-14">
+              <div className="flex justify-center lg:justify-start">
+                <BookHeroClickable />
+              </div>
 
-            {/* keywords hidden for now */}
-
-            <div className="mt-10 overflow-hidden rounded-3xl bg-card">
-              <div className="relative aspect-video w-full">
-                <Image
-                  src="/placeholders/minjae-hero.webp"
-                  alt="Minjae placeholder photo"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
-                  priority
-                  className="object-cover object-top"
-                  unoptimized
-                />
+              <div className="max-w-2xl text-white">
+                <div className="inline-flex items-center rounded-full border border-white/18 bg-white/12 px-4 py-2 font-serif text-sm font-semibold tracking-[0.08em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
+                  <span className="text-lg inline-block mr-1 mt-0.5">🥳</span>{" "}
+                  New Book
+                </div>
+                <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+                  Korean, Beyond Translation
+                </h1>
+                <p className="mt-5 max-w-xl text-base leading-7 text-white/82 sm:text-lg">
+                  <strong className="font-semibold text-white">
+                    100 words
+                  </strong>{" "}
+                  that teach the Korean people actually use. Learn the{" "}
+                  <strong className="font-semibold text-white">nuance</strong>{" "}
+                  behind direct translation and build a more natural feel for{" "}
+                  <strong className="font-semibold text-white">
+                    real conversation
+                  </strong>
+                  .
+                </p>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <Button
+                    asChild
+                    size="md"
+                    variant="light"
+                    className="w-fit px-5"
+                  >
+                    <Link href="/book/korean-beyond-translation">
+                      Read sample content
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="md"
+                    variant="outline"
+                    className="w-fit border-white/45 bg-white/8 px-5 text-white hover:bg-white/14"
+                  >
+                    <Link href="/book/korean-beyond-translation">
+                      Buy for $9.90
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </StaggerReveal>
         </Container>
       </section>
 
-      {/* 5) Library quick links */}
-      <RevealOnScroll as="section" className="py-10 sm:py-16 bg-(--bg-canvas)">
+      {/* 2) Author */}
+      <RevealOnScroll
+        as="section"
+        id="approach"
+        className="scroll-mt-24 py-10 sm:py-16"
+      >
         <Container>
-          <StaggerReveal className="mx-auto max-w-3xl text-center">
-            <Image
-              width={140}
-              height={140}
-              src="/meme/offical/fighthing.webp"
-              alt="Kaja – 1:1 Korean coaching"
-              className="mx-auto  -mt-8"
-            ></Image>
-            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Kaja Library
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Useful resources for Korean learning.
-            </p>
-          </StaggerReveal>
-          <StaggerReveal
-            as="div"
-            className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4"
-            staggerMs={80}
-          >
-            {[NEWS_RESOURCE, ...LIBRARY_LINKS].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "group flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left text-sm font-medium text-foreground transition hover:bg-muted/60",
-                  link.emphasized &&
-                    "bg-muted/45 shadow-md shadow-black/4 hover:bg-muted/60",
-                )}
-              >
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <StaggerReveal className="max-w-2xl">
+              <h6 className="text-sm font-semibold tracking-wide text-primary">
+                Author & teacher
+              </h6>
+              <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+                Learn Korean with nuance, not just literal meaning
+              </h2>
+              <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+                Minjae writes the way he teaches: simple, practical, and focused
+                on how Korean really feels in conversation. The book and the
+                lessons are built to help you notice{" "}
+                <strong className="font-semibold text-foreground">
+                  tone, hidden meaning,
+                </strong>{" "}
+                and{" "}
+                <strong className="font-semibold text-foreground">
+                  everyday phrasing
+                </strong>{" "}
+                that direct translation often misses.
+              </p>
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                If you want structured guidance after reading, Minjae can help
+                you turn those phrases into something you can{" "}
+                <strong className="font-semibold text-foreground">
+                  actually use while speaking
+                </strong>
+                .
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <Button asChild size="md" variant="primary">
+                  <Link href="/booking">Book a session</Link>
+                </Button>
+                <Button asChild size="md" variant="outline">
+                  <Link href="/book/korean-beyond-translation">
+                    View the book
+                  </Link>
+                </Button>
+              </div>
+            </StaggerReveal>
+
+            <StaggerReveal
+              className="flex justify-center lg:justify-end"
+              delayMs={90}
+            >
+              <div className="relative size-[280px] overflow-hidden rounded-full border border-border bg-card shadow-(--shadow-card) sm:size-[340px]">
                 <Image
-                  src={link.icon}
-                  alt={link.label}
-                  width={32}
-                  height={32}
-                  className={cn(
-                    "shrink-0",
-                    link.emphasized ? "size-9 sm:size-10" : "size-8",
-                  )}
+                  src="/placeholders/minjae-hero.webp"
+                  alt="Portrait of Minjae"
+                  fill
+                  className="object-cover"
+                  unoptimized
                 />
-                <div className="flex flex-col">
-                  <span
-                    className={cn(
-                      "font-semibold group-hover:underline",
-                      link.emphasized
-                        ? "text-base text-foreground sm:text-[17px]"
-                        : "text-sm",
-                    )}
-                  >
-                    {link.label}
-                  </span>
-                  <p
-                    className={cn(
-                      "mt-0.5 text-xs sm:text-[13px]",
-                      link.emphasized
-                        ? "text-foreground/80"
-                        : "text-muted-foreground",
-                    )}
-                  >
-                    {link.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </StaggerReveal>
+              </div>
+            </StaggerReveal>
+          </div>
         </Container>
       </RevealOnScroll>
 
-      {/* 6) Posts — 메이저 카드 + 3단 그리드 */}
+      {/* 3) News */}
       <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
@@ -197,72 +214,7 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 2) Context-first talking */}
-      <RevealOnScroll
-        as="section"
-        id="approach"
-        className="scroll-mt-24 py-10 sm:py-16"
-      >
-        <Container>
-          <div className="grid gap-10 gap-8 lg:grid-cols-2 lg:items-center">
-            <div className=" max-w-xl order-1 lg:order-1">
-              <StaggerReveal>
-                <h6 className="text-sm text-muted-foreground">
-                  Get personalized guidance.
-                </h6>
-                <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Coaching, not just a class
-                </h2>
-                <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                  Set a clear direction, and Keep you on track with
-                  encouragement. Encourage you to practice and grow.
-                </p>
-                <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-3xl bg-included-2 p-6">
-                    <div className="flex items-center gap-3">
-                      <div className="order-1 text-sm font-semibold sm:order-2">
-                        Direction
-                      </div>
-                      <Image
-                        src="/talk1.webp"
-                        alt="Start from a topic"
-                        width={20}
-                        height={20}
-                        className="order-2 shrink-0 text-black/60 sm:order-1"
-                      />
-                    </div>
-                    <div className="mt-2 text-sm text-muted-foreground">
-                      We set where you’re at and where to go next! <br /> Minjae
-                      will build your studying course. And keep you on track.
-                    </div>
-                  </div>
-                  <div className="rounded-3xl bg-included-3 p-6">
-                    <div className="flex items-center gap-3">
-                      <div className="order-1 text-sm font-semibold sm:order-2">
-                        Targeted Practice
-                      </div>
-                      <Image
-                        src="/pen-line.webp"
-                        alt="Pronunciation and grammar focus"
-                        width={18}
-                        height={18}
-                        className="order-2 shrink-0 text-black/60 sm:order-1"
-                      />
-                    </div>
-                    <div className="mt-2 text-sm text-muted-foreground">
-                      Goal is building real sense of Korean. Practice with real
-                      conversation in real situation.
-                    </div>
-                  </div>
-                </div>
-              </StaggerReveal>
-            </div>
-            <HomeHeroVideo />
-          </div>
-        </Container>
-      </RevealOnScroll>
-
-      {/* 3) Reviews */}
+      {/* 4) Reviews */}
       <RevealOnScroll as="div">
         <MembersReviewsSection />
       </RevealOnScroll>

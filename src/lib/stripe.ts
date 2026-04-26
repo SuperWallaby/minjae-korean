@@ -18,6 +18,7 @@ export function stripePrices() {
   return {
     singlePass: requireEnv("STRIPE_PRICE_SINGLE_PASS"),
     firstTrial: requireEnv("STRIPE_PRICE_FIRST_TRIAL"),
+    bookLaunch: requireEnv("STRIPE_PRICE_BOOK_LAUNCH"),
     /** Flexible Monthly Rhythm: 주당 1/2/3회 선택 후 월 결제 */
     monthly1x: requireEnv("STRIPE_PRICE_MONTHLY_1X"),
     monthly2x: requireEnv("STRIPE_PRICE_MONTHLY_2X"),

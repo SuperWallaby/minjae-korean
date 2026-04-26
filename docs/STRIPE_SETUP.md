@@ -33,6 +33,31 @@
   STRIPE_PRICE_SINGLE_PASS=price_xxxx
   ```
 
+### 2.2.5 eBook — *Korean, Beyond Translation* (런칭 1회 결제)
+
+- **권장:** 저장소에서 API로 Product + Price를 만들고 Price ID를 `.env`에 넣습니다.
+
+```bash
+# .env.local 에 STRIPE_SECRET_KEY 가 있을 때
+yarn stripe:ensure-book-launch
+```
+
+스크립트는 Product에 `metadata.kaja_key = book_launch`를 붙이고, **기본 $9.90 USD** one-time Price를 씁니다. 금액(센트)을 바꾸려면:
+
+```bash
+STRIPE_BOOK_LAUNCH_CENTS=1990 yarn stripe:ensure-book-launch
+```
+
+출력된 한 줄을 `.env.local`에 추가합니다:
+
+```env
+STRIPE_PRICE_BOOK_LAUNCH=price_xxxx
+```
+
+이미 같은 `kaja_key` Product가 있고 동일 금액의 Price가 있으면 **재사용**만 합니다(중복 생성 방지).
+
+---
+
 ### 2.3 Growth Program (주당 1/2/3회 → 월 결제)
 
 유저가 **주당 횟수(1x / 2x / 3x)**를 선택한 뒤 **한 달 단위로 결제**하는 상품입니다.
@@ -81,6 +106,7 @@ STRIPE_PRICE_MONTHLY_3X=price_xxxx
 | `STRIPE_SECRET_KEY`        | Stripe Secret key (서버 전용)          |
 | `STRIPE_PRICE_FIRST_TRIAL` | 진단(Diagnosis) 1회 결제 Price ID      |
 | `STRIPE_PRICE_SINGLE_PASS` | Single Session(50 min) Price ID        |
+| `STRIPE_PRICE_BOOK_LAUNCH` | eBook *Korean, Beyond Translation* 1회 결제 Price ID |
 | `STRIPE_PRICE_MONTHLY_1X`  | Growth Program 주 1회 월 결제 Price ID |
 | `STRIPE_PRICE_MONTHLY_2X`  | Growth Program 주 2회 월 결제 Price ID |
 | `STRIPE_PRICE_MONTHLY_3X`  | Growth Program 주 3회 월 결제 Price ID |

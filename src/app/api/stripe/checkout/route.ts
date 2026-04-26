@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
   const allowed = new Set([
     prices.singlePass,
     prices.firstTrial,
+    prices.bookLaunch,
     prices.monthly1x,
     prices.monthly2x,
     prices.monthly3x,
@@ -33,6 +34,8 @@ export async function POST(req: NextRequest) {
       ? prices.singlePass
       : product === "trial"
         ? prices.firstTrial
+        : product === "book_launch"
+          ? prices.bookLaunch
         : product === "monthly_1x"
           ? prices.monthly1x
           : product === "monthly_2x"

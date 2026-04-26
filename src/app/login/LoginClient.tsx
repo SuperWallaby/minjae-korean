@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
+import { GoogleLogoMark } from "@/components/icons/GoogleLogoMark";
 
 export function LoginClient() {
   const params = useSearchParams();
@@ -66,8 +67,10 @@ export function LoginClient() {
               <Button asChild className="w-full" size="lg">
                 <Link
                   href={`/api/auth/google/start?next=${encodeURIComponent(next)}`}
+                  aria-label="Continue with Google"
                 >
-                  Continue with Google
+                  <GoogleLogoMark />
+                  <span>Continue with Google</span>
                 </Link>
               </Button>
 

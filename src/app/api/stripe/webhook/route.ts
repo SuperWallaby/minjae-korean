@@ -2,7 +2,11 @@ import Stripe from "stripe";
 import { NextRequest } from "next/server";
 
 import { stripe, stripePrices } from "@/lib/stripe";
-import { addStripeCreditsByEmail } from "@/lib/studentsRepo";
+import {
+  addPayment,
+  addStripeCreditsByEmail,
+  upsertStudentByEmail,
+} from "@/lib/studentsRepo";
 
 export const runtime = "nodejs";
 
@@ -49,6 +53,8 @@ export async function POST(req: NextRequest) {
           ? ("trial" as const)
           : priceId === prices.singlePass
             ? ("single" as const)
+            : priceId === prices.bookLaunch
+              ? ("book_launch" as const)
             : priceId === prices.monthly1x
               ? ("monthly_1x" as const)
               : priceId === prices.monthly2x
@@ -69,6 +75,21 @@ export async function POST(req: NextRequest) {
                 : product === "monthly_3x"
                   ? { total: 12, kind: "pass_pack_12" as const }
                   : null;
+
+      if (product === "book_launch") {
+        const student = await upsertStudentByEmail({
+          name: full.customer_details?.name ?? "Member",
+          email,
+        });
+        if (student) {
+          await addPayment(student.id, {
+            type: "other",
+            amount: 0,
+            memo: "stripe:book_launch",
+          });
+        }
+        return new Response("Book purchase recorded", { status: 200 });
+      }
 
       if (!resolved) return new Response("Unknown price", { status: 200 });
 
