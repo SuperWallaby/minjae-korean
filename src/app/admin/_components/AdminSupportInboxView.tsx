@@ -1,0 +1,763 @@
+"use client";
+
+import * as React from "react";
+import Link from "next/link";
+import { ArrowLeft, Bell, BellOff, Search, Trash2 } from "lucide-react";
+
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
+
+type ThreadListItem = {
+  id: string;
+  status: "open" | "closed";
+  email: string;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+  unread: boolean;
+  lastMessage: null | {
+    from: "member" | "support";
+    text: string;
+    createdAt: string;
+  };
+};
+
+type SupportThread = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  status: "open" | "closed";
+  email?: string;
+  name?: string;
+  lastReadByMemberAt?: string;
+  lastReadBySupportAt?: string;
+};
+
+type SupportMessage = {
+  id: string;
+  threadId: string;
+  from: "member" | "support";
+  text: string;
+  createdAt: string;
+};
+
+type TypingState = { member: boolean; support: boolean };
+
+type RealtimeChannelLike = {
+  on: (...args: unknown[]) => RealtimeChannelLike;
+  subscribe: (...args: unknown[]) => unknown;
+  send: (...args: unknown[]) => Promise<unknown> | unknown;
+};
+
+type SupabaseLike = {
+  channel: (name: string) => RealtimeChannelLike;
+  removeChannel: (channel: RealtimeChannelLike) => unknown;
+};
+
+function getSupabaseFromModule(mod: unknown): SupabaseLike | null {
+  if (!mod || typeof mod !== "object") return null;
+  if (!("supabase" in mod)) return null;
+  const sb = (mod as { supabase?: unknown }).supabase;
+  if (!sb || typeof sb !== "object") return null;
+  const sbo = sb as Partial<SupabaseLike>;
+  if (typeof sbo.channel !== "function") return null;
+  if (typeof sbo.removeChannel !== "function") return null;
+  return sb as SupabaseLike;
+}
+
+function formatWhen(ts: string) {
+  try {
+    const d = new Date(ts);
+    return d.toLocaleString([], {
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } catch {
+    return "";
+  }
+}
+
+async function getJson(url: string) {
+  const res = await fetch(url, { cache: "no-store" });
+  const json = await res.json().catch(() => null);
+  return { res, json };
+}
+
+async function postJson(url: string, body?: unknown) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: body ? { "Content-Type": "application/json" } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const json = await res.json().catch(() => null);
+  return { res, json };
+}
+
+async function deleteJson(url: string) {
+  const res = await fetch(url, { method: "DELETE" });
+  const json = await res.json().catch(() => null);
+  return { res, json };
+}
+
+async function maybeSubscribe(
+  threadId: string,
+  onEvent: () => void,
+): Promise<null | (() => void)> {
+  try {
+    const mod = await import("@/lib/supabaseClient");
+    const supabase = getSupabaseFromModule(mod);
+    if (!supabase) return null;
+
+    const channelName = `support_thread_${threadId}`;
+    const channel = supabase.channel(channelName);
+    channel.on("broadcast", { event: "support" }, () => onEvent());
+    channel.subscribe();
+
+    return () => {
+      try {
+        supabase.removeChannel(channel);
+      } catch {
+        // ignore
+      }
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function maybeSubscribeInbox(
+  onEvent: () => void,
+): Promise<null | (() => void)> {
+  try {
+    const mod = await import("@/lib/supabaseClient");
+    const supabase = getSupabaseFromModule(mod);
+    if (!supabase) return null;
+
+    const channel = supabase.channel("support_inbox");
+    channel.on("broadcast", { event: "support" }, () => onEvent());
+    channel.subscribe();
+
+    return () => {
+      try {
+        supabase.removeChannel(channel);
+      } catch {
+        // ignore
+      }
+    };
+  } catch {
+    return null;
+  }
+}
+
+export type AdminSupportInboxViewProps = {
+  /** When true, omit standalone page chrome (e.g. back link + outer padding) for embedding under `/admin`. */
+  embedded?: boolean;
+};
+
+export default function AdminSupportInboxView({ embedded = false }: AdminSupportInboxViewProps) {
+  const [threads, setThreads] = React.useState<ThreadListItem[]>([]);
+  const [threadsLoading, setThreadsLoading] = React.useState(false);
+  const [threadsError, setThreadsError] = React.useState<string | null>(null);
+
+  const [q, setQ] = React.useState("");
+  const [selectedId, setSelectedId] = React.useState<string>("");
+
+  const [thread, setThread] = React.useState<SupportThread | null>(null);
+  const [messages, setMessages] = React.useState<SupportMessage[]>([]);
+  const [refreshing, setRefreshing] = React.useState(false);
+  const [chatError, setChatError] = React.useState<string | null>(null);
+  const [reply, setReply] = React.useState("");
+  const [sending, setSending] = React.useState(false);
+  const [typing, setTyping] = React.useState<TypingState>({
+    member: false,
+    support: false,
+  });
+  const typingStopRef = React.useRef<number | null>(null);
+
+  const listRef = React.useRef<HTMLDivElement | null>(null);
+  const unsubscribeRef = React.useRef<null | (() => void)>(null);
+  const unsubscribeInboxRef = React.useRef<null | (() => void)>(null);
+  const [rtInboxActive, setRtInboxActive] = React.useState(false);
+
+  type PushStatus = "idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error";
+  const [pushStatus, setPushStatus] = React.useState<PushStatus>("idle");
+  const [pushError, setPushError] = React.useState<string | null>(null);
+
+  const loadThreads = React.useCallback(async () => {
+    setThreadsLoading(true);
+    setThreadsError(null);
+    try {
+      const { res, json } = await getJson("/api/admin/support/threads");
+      if (!res.ok || !json?.ok)
+        throw new Error(json?.error ?? "Failed to load threads");
+      const items = (json.threads as ThreadListItem[]) ?? [];
+      setThreads(Array.isArray(items) ? items : []);
+
+      if (!selectedId && items?.[0]?.id) setSelectedId(items[0].id);
+    } catch (e) {
+      setThreadsError(
+        e instanceof Error ? e.message : "Failed to load threads",
+      );
+      setThreads([]);
+    } finally {
+      setThreadsLoading(false);
+    }
+  }, [selectedId]);
+
+  const loadThread = React.useCallback(async (id: string) => {
+    if (!id) return;
+    setRefreshing(true);
+    try {
+      const { res, json } = await getJson(
+        `/api/admin/support/threads/${encodeURIComponent(id)}`,
+      );
+      if (!res.ok || !json?.ok)
+        throw new Error(json?.error ?? "Failed to load thread");
+      const nextThread = json.thread as SupportThread;
+      setThread((prev) =>
+        prev?.updatedAt === nextThread.updatedAt &&
+        prev?.email === nextThread.email &&
+        prev?.name === nextThread.name
+          ? prev
+          : nextThread,
+      );
+      const msgs = (json.messages as SupportMessage[]) ?? [];
+      const nextMsgs = Array.isArray(msgs) ? msgs : [];
+      setMessages((prev) => {
+        const prevLast = prev[prev.length - 1]?.id ?? "";
+        const nextLast = nextMsgs[nextMsgs.length - 1]?.id ?? "";
+        if (prev.length === nextMsgs.length && prevLast === nextLast)
+          return prev;
+        return nextMsgs;
+      });
+      const ty = (json.typing as TypingState) ?? {
+        member: false,
+        support: false,
+      };
+      if (typeof ty?.member === "boolean" && typeof ty?.support === "boolean")
+        setTyping(ty);
+      await postJson(
+        `/api/admin/support/threads/${encodeURIComponent(id)}/read`,
+      );
+    } catch (e) {
+      setChatError(e instanceof Error ? e.message : "Failed to load thread");
+      setThread(null);
+      setMessages([]);
+    } finally {
+      setRefreshing(false);
+    }
+  }, []);
+
+  // Inbox: poll often so new chats show up quickly even without Realtime
+  const inboxPollMs = rtInboxActive ? 30_000 : 4_000;
+  React.useEffect(() => {
+    void loadThreads();
+    const handle = window.setInterval(() => void loadThreads(), inboxPollMs);
+    return () => window.clearInterval(handle);
+  }, [loadThreads, inboxPollMs]);
+
+  // Selected thread: poll so new messages show up quickly even without Realtime
+  React.useEffect(() => {
+    if (!selectedId) return;
+    void loadThread(selectedId);
+    const handle = window.setInterval(() => void loadThread(selectedId), 5_000);
+    return () => window.clearInterval(handle);
+  }, [loadThread, selectedId]);
+
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
+      unsubscribeInboxRef.current?.();
+      unsubscribeInboxRef.current = null;
+      const unsub = await maybeSubscribeInbox(() => void loadThreads());
+      if (!alive) return;
+      if (unsub) {
+        unsubscribeInboxRef.current = unsub;
+        setRtInboxActive(true);
+      } else {
+        setRtInboxActive(false);
+      }
+    })();
+    return () => {
+      alive = false;
+      unsubscribeInboxRef.current?.();
+      unsubscribeInboxRef.current = null;
+      setRtInboxActive(false);
+    };
+  }, [loadThreads]);
+
+  React.useEffect(() => {
+    if (!selectedId) return;
+    let alive = true;
+    (async () => {
+      unsubscribeRef.current?.();
+      unsubscribeRef.current = null;
+      const unsub = await maybeSubscribe(
+        selectedId,
+        () => void loadThread(selectedId),
+      );
+      if (!alive) return;
+      if (unsub) unsubscribeRef.current = unsub;
+    })();
+    return () => {
+      alive = false;
+      unsubscribeRef.current?.();
+      unsubscribeRef.current = null;
+    };
+  }, [loadThread, selectedId]);
+
+  React.useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
+  }, [messages.length]);
+
+  const filtered = React.useMemo(() => {
+    const qq = q.trim().toLowerCase();
+    if (!qq) return threads;
+    return threads.filter((t) =>
+      `${t.email} ${t.name} ${t.lastMessage?.text ?? ""}`
+        .toLowerCase()
+        .includes(qq),
+    );
+  }, [q, threads]);
+
+  const sendTyping = React.useCallback(
+    async (isTyping: boolean) => {
+      if (!selectedId) return;
+      try {
+        await fetch(
+          `/api/admin/support/threads/${encodeURIComponent(selectedId)}/typing`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ isTyping }),
+          },
+        );
+      } catch {
+        // ignore
+      }
+    },
+    [selectedId],
+  );
+
+  const send = React.useCallback(async () => {
+    if (!selectedId) return;
+    const text = reply.trim();
+    if (!text) return;
+    if (sending) return;
+
+    setSending(true);
+    setChatError(null);
+    try {
+      void sendTyping(false);
+      const { res, json } = await postJson(
+        `/api/admin/support/threads/${encodeURIComponent(selectedId)}/messages`,
+        { text },
+      );
+      if (!res.ok || !json?.ok)
+        throw new Error(json?.error ?? "Failed to send");
+      setReply("");
+      await loadThread(selectedId);
+
+      // Broadcast a lightweight realtime event (if supabase is configured).
+      try {
+        const mod = await import("@/lib/supabaseClient");
+        const supabase = getSupabaseFromModule(mod);
+        if (supabase) {
+          const ch1 = supabase.channel(`support_thread_${selectedId}`);
+          const ch2 = supabase.channel("support_inbox");
+          await Promise.all([
+            ch1.send({
+              type: "broadcast",
+              event: "support",
+              payload: { kind: "message", at: Date.now() },
+            }),
+            ch2.send({
+              type: "broadcast",
+              event: "support",
+              payload: { kind: "message", at: Date.now() },
+            }),
+          ]);
+          try {
+            supabase.removeChannel(ch1);
+          } catch {}
+          try {
+            supabase.removeChannel(ch2);
+          } catch {}
+        }
+      } catch {
+        // ignore
+      }
+    } catch (e) {
+      setChatError(e instanceof Error ? e.message : "Failed to send");
+    } finally {
+      setSending(false);
+    }
+  }, [loadThread, reply, selectedId, sendTyping, sending]);
+
+  const [deleting, setDeleting] = React.useState(false);
+  const deleteThread = React.useCallback(async () => {
+    if (!selectedId) return;
+    if (!confirm("이 채팅방을 삭제할까요? 메시지가 모두 삭제됩니다.")) return;
+    setDeleting(true);
+    setChatError(null);
+    try {
+      const { res, json } = await deleteJson(
+        `/api/admin/support/threads/${encodeURIComponent(selectedId)}`,
+      );
+      if (!res.ok || !json?.ok) throw new Error(json?.error ?? "Failed to delete");
+      setThread(null);
+      setMessages([]);
+      setSelectedId("");
+      await loadThreads();
+    } catch (e) {
+      setChatError(e instanceof Error ? e.message : "Failed to delete thread");
+    } finally {
+      setDeleting(false);
+    }
+  }, [loadThreads, selectedId]);
+
+  const onReplyChange = React.useCallback(
+    (v: string) => {
+      setReply(v);
+      if (!selectedId) return;
+      void sendTyping(true);
+      if (typingStopRef.current) window.clearTimeout(typingStopRef.current);
+      typingStopRef.current = window.setTimeout(
+        () => void sendTyping(false),
+        1200,
+      );
+    },
+    [selectedId, sendTyping],
+  );
+
+  React.useEffect(() => {
+    if (!selectedId) return;
+    return () => {
+      try {
+        if (typingStopRef.current) window.clearTimeout(typingStopRef.current);
+      } catch {
+        // ignore
+      }
+      void sendTyping(false);
+    };
+  }, [selectedId, sendTyping]);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined" || !("Notification" in window) || !("serviceWorker" in navigator)) {
+      setPushStatus("unsupported");
+      return;
+    }
+    if (Notification.permission === "denied") {
+      setPushStatus("denied");
+      return;
+    }
+    navigator.serviceWorker.getRegistration("/sw-support-push.js").then((reg) => {
+      if (!reg?.active) {
+        setPushStatus("idle");
+        return;
+      }
+      reg.pushManager.getSubscription().then((sub) => {
+        setPushStatus(sub ? "subscribed" : "idle");
+      });
+    });
+  }, []);
+
+  const enablePush = React.useCallback(async () => {
+    setPushError(null);
+    if (typeof window === "undefined" || !("Notification" in window) || !("serviceWorker" in navigator)) {
+      setPushStatus("unsupported");
+      return;
+    }
+    // When already denied, still try requestPermission() so user can retry after changing browser settings.
+    if (Notification.permission === "default" || Notification.permission === "denied") {
+      setPushStatus("loading");
+      const perm = await Notification.requestPermission();
+      if (perm !== "granted") {
+        setPushStatus("denied");
+        return;
+      }
+    }
+    setPushStatus("loading");
+    try {
+      const vapidRes = await fetch("/api/admin/support/push-vapid");
+      const vapidJson = await vapidRes.json().catch(() => ({}));
+      const publicKey = vapidJson?.publicKey;
+      if (!publicKey || typeof publicKey !== "string") {
+        throw new Error("Push not configured (VAPID keys missing)");
+      }
+      const reg = await navigator.serviceWorker.register("/sw-support-push.js", { scope: "/" });
+      await navigator.serviceWorker.ready;
+      const keyU8 = (() => {
+        const padding = "=".repeat((4 - (publicKey.length % 4)) % 4);
+        const base64 = (publicKey + padding).replace(/-/g, "+").replace(/_/g, "/");
+        const raw = atob(base64);
+        const out = new Uint8Array(raw.length);
+        for (let i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+        return out;
+      })();
+      const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyU8 });
+      const subJson = sub.toJSON();
+      const body = {
+        endpoint: subJson.endpoint,
+        keys: subJson.keys,
+      };
+      const res = await fetch("/api/admin/support/push-subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json?.ok) throw new Error(json?.error ?? "Failed to save subscription");
+      setPushStatus("subscribed");
+    } catch (e) {
+      setPushStatus("error");
+      setPushError(e instanceof Error ? e.message : String(e));
+    }
+  }, []);
+
+  return (
+    <div className={cn(!embedded && "p-6")}>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          {!embedded ? (
+            <Button variant="ghost" size="sm" className="-ml-2 gap-1.5 text-muted-foreground hover:text-foreground" asChild>
+              <Link href="/admin">
+                <ArrowLeft className="size-4" />
+                Back to Admin
+              </Link>
+            </Button>
+          ) : null}
+          <h1 className={cn("font-serif text-3xl font-semibold tracking-tight", !embedded && "mt-2")}>
+            Support inbox
+          </h1>
+          <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <span>Reply to member messages from the site widget.</span>
+            {pushStatus !== "unsupported" && pushStatus !== "denied" && (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={enablePush}
+                disabled={pushStatus === "loading" || pushStatus === "subscribed"}
+                className="gap-1.5"
+              >
+                {pushStatus === "subscribed" ? (
+                  <>
+                    <Bell className="size-4" />
+                    알림 사용 중
+                  </>
+                ) : pushStatus === "loading" ? (
+                  "등록 중…"
+                ) : (
+                  <>
+                    <BellOff className="size-4" />
+                    채팅 알림 켜기
+                  </>
+                )}
+              </Button>
+            )}
+            {pushStatus === "denied" && (
+              <>
+                <span className="text-amber-600">알림이 차단됨. 브라우저 설정에서 허용한 뒤 아래 버튼으로 다시 요청하세요.</span>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={enablePush}
+                  className="gap-1.5"
+                >
+                  알림 다시 요청
+                </Button>
+              </>
+            )}
+            {pushError && <span className="text-destructive">{pushError}</span>}
+          </div>
+        </div>
+
+        <div className="relative w-full max-w-md">
+          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search email, name, message…"
+            className="h-11 w-full rounded-full border border-border bg-white pl-10 pr-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          />
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-4 lg:grid-cols-[360px_1fr]">
+        <div className="overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="flex items-center justify-between border-b border-border px-4 py-3">
+            <div className="text-sm font-semibold">Threads</div>
+            <div className="text-xs text-muted-foreground">
+              {threadsLoading ? "Loading…" : `${filtered.length}`}
+            </div>
+          </div>
+          {threadsError ? (
+            <div className="px-4 py-3 text-sm text-muted-foreground">
+              {threadsError}
+            </div>
+          ) : null}
+          <div className="max-h-[70vh] overflow-y-auto">
+            {filtered.length === 0 ? (
+              <div className="px-4 py-6 text-sm text-muted-foreground">
+                No threads.
+              </div>
+            ) : (
+              filtered.map((t) => {
+                const active = t.id === selectedId;
+                const title = t.name?.trim() || t.email?.trim() || "Guest";
+                const preview = t.lastMessage?.text ?? "";
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => setSelectedId(t.id)}
+                    className={cn(
+                      "w-full border-b border-border px-4 py-3 text-left transition",
+                      active ? "bg-muted/40" : "hover:bg-stone-50",
+                    )}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="truncate text-sm font-semibold">
+                        {title}
+                      </div>
+                      {t.unread ? (
+                        <span
+                          className="rounded-full px-2 py-0.5 text-[11px] font-semibold"
+                          style={{
+                            backgroundColor: "var(--included-2)",
+                            color: "var(--foreground)",
+                          }}
+                        >
+                          New
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+                      {preview}
+                    </div>
+                    <div className="mt-2 text-[11px] text-muted-foreground">
+                      {formatWhen(t.updatedAt)}
+                    </div>
+                  </button>
+                );
+              })
+            )}
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="flex items-start justify-between gap-2 border-b border-border px-4 py-3">
+            <div>
+              <div className="text-sm font-semibold">Conversation</div>
+              <div className="mt-1 text-xs text-muted-foreground">
+                {thread ? (
+                  <>
+                    {thread.name?.trim() || thread.email?.trim() || "Guest"} ·{" "}
+                    <span className="capitalize">{thread.status}</span>
+                    {refreshing ? (
+                      <span className="ml-2 opacity-70">Refreshing…</span>
+                    ) : null}
+                  </>
+                ) : (
+                  "Select a thread."
+                )}
+              </div>
+            </div>
+            {thread ? (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => void deleteThread()}
+                disabled={deleting}
+                className="shrink-0 gap-1.5 text-muted-foreground hover:text-destructive"
+              >
+                <Trash2 className="size-4" />
+                {deleting ? "삭제 중…" : "채팅방 삭제"}
+              </Button>
+            ) : null}
+          </div>
+
+          <div
+            ref={listRef}
+            className="max-h-[60vh] space-y-3 overflow-y-auto px-4 py-3"
+          >
+            {chatError ? (
+              <div className="text-sm text-muted-foreground">{chatError}</div>
+            ) : null}
+            {messages.map((m) => {
+              const mine = m.from === "support";
+              return (
+                <div
+                  key={m.id}
+                  className={cn("flex", mine ? "justify-end" : "justify-start")}
+                >
+                  <div
+                    className={cn(
+                      "max-w-[82%] rounded-2xl px-3 py-2 text-sm animate-[supportMsgIn_180ms_ease-out_both]",
+                      mine
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-included-2 text-foreground",
+                    )}
+                  >
+                    <div className="whitespace-pre-wrap leading-6">
+                      {m.text}
+                    </div>
+                    <div
+                      className={cn(
+                        "mt-1 text-[11px] opacity-75 text-right",
+                        mine
+                          ? "text-primary-foreground/80"
+                          : "text-muted-foreground",
+                      )}
+                    >
+                      {formatWhen(m.createdAt)}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="border-t border-border p-3">
+            {typing.member ? (
+              <div className="mb-2 text-xs text-muted-foreground">
+                Member is typing…
+              </div>
+            ) : null}
+            <div className="flex items-end gap-2">
+              <textarea
+                value={reply}
+                onChange={(e) => onReplyChange(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    if (!sending && reply.trim()) void send();
+                  }
+                }}
+                rows={2}
+                placeholder={selectedId ? "Reply…" : "Select a thread to reply"}
+                className="min-h-[44px] flex-1 resize-none rounded-xl border border-border bg-white px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60"
+                disabled={!selectedId || sending}
+              />
+              <Button
+                size="sm"
+                className="h-11 rounded-xl"
+                onClick={() => void send()}
+                disabled={!selectedId || sending || !reply.trim()}
+              >
+                {sending ? "Sending…" : "Send"}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
     const phoneCountry = typeof body.phoneCountry === "string" ? body.phoneCountry : undefined;
     const phoneNumber = typeof body.phoneNumber === "string" ? body.phoneNumber : undefined;
     const sessionWish = typeof body.sessionWish === "string" ? body.sessionWish : undefined;
+    const occupation = typeof body.occupation === "string" ? body.occupation : undefined;
     const id = typeof body.id === "string" ? body.id.trim() : "";
     const authUserId = typeof body.authUserId === "string" ? body.authUserId.trim() : "";
 
@@ -31,6 +32,7 @@ export async function POST(req: NextRequest) {
         phoneCountry,
         phoneNumber,
         sessionWish,
+        occupation,
         ...(authUserId ? { authUserId } : null),
       });
       if (!updated) {
@@ -49,12 +51,14 @@ export async function POST(req: NextRequest) {
       phoneCountry !== undefined ||
       phoneNumber !== undefined ||
       sessionWish !== undefined ||
+      occupation !== undefined ||
       typeof body.name === "string"
         ? (await patchStudent(s0.id, {
             phone,
             phoneCountry,
             phoneNumber,
             sessionWish,
+            occupation,
             name,
             email: s0.email,
             ...(authUserId ? { authUserId } : null),

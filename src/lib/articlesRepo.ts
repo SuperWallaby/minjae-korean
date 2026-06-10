@@ -24,6 +24,8 @@ export type ArticleCard = {
   /** Primary level */
   level: ReadingLevel;
   title: string;
+  /** Short English introduction/summary for admin/editor metadata. */
+  introductionEn?: string;
   audio?: string; // url
   imageThumb?: string; // url
   imageLarge?: string; // url
@@ -36,6 +38,8 @@ export type ArticleCard = {
   noImageIndex?: boolean;
   /** 목록 상단 고정 (풀기 전까지 맨 위 노출) */
   pinned?: boolean;
+  /** YouTube source video id (e.g. make-auto pipeline) — used to block duplicate articles. */
+  sourceYoutubeVideoId?: string;
   createdAt?: string; // ISO
   updatedAt?: string; // ISO
 };
@@ -65,6 +69,10 @@ async function cols(): Promise<Collections> {
         await articles.createIndex({ pinned: -1, updatedAt: -1 });
         await articles.createIndex({ level: 1, createdAt: -1 });
         await articles.createIndex({ levels: 1, createdAt: -1 });
+        await articles.createIndex(
+          { sourceYoutubeVideoId: 1 },
+          { sparse: true, unique: true },
+        );
       } catch {
         // ignore
       }
@@ -277,6 +285,23 @@ export async function createArticle(draft: Partial<ArticleCard> & { title: strin
   const title = String(draft.title ?? "").trim();
   if (!title) throw new Error("Missing title");
 
+  const sourceYoutubeVideoId =
+    typeof draft.sourceYoutubeVideoId === "string"
+      ? draft.sourceYoutubeVideoId.trim() || undefined
+      : undefined;
+  if (sourceYoutubeVideoId) {
+    const { articles } = await cols();
+    const dup = await articles.findOne(
+      { sourceYoutubeVideoId },
+      { projection: { slug: 1 } },
+    );
+    if (dup?.slug) {
+      throw new Error(
+        `DUPLICATE_YOUTUBE:이미 이 영상으로 만든 기사가 있습니다 (slug=${dup.slug}, videoId=${sourceYoutubeVideoId})`,
+      );
+    }
+  }
+
   const articleCode = typeof draft.articleCode === "string" ? draft.articleCode.trim() || undefined : undefined;
   // slug 공급 시 그대로 우선 사용, 중복이면 uniqueSlugFromBase가 -2, -3 붙임
   const suppliedBase = articleCode ? slugifyTitle(articleCode) : "";
@@ -293,6 +318,10 @@ export async function createArticle(draft: Partial<ArticleCard> & { title: strin
     levels: normalizeLevels(draft.levels),
     level: normalizeLevel(draft.level),
     title,
+    introductionEn:
+      typeof draft.introductionEn === "string"
+        ? draft.introductionEn.trim() || undefined
+        : undefined,
     audio: typeof draft.audio === "string" ? draft.audio.trim() || undefined : undefined,
     imageThumb: typeof draft.imageThumb === "string" ? draft.imageThumb.trim() || undefined : undefined,
     imageLarge: typeof draft.imageLarge === "string" ? draft.imageLarge.trim() || undefined : undefined,
@@ -301,6 +330,7 @@ export async function createArticle(draft: Partial<ArticleCard> & { title: strin
     vocabulary: normalizeVocab(draft.vocabulary),
     questions: normalizeStrings(draft.questions),
     discussion: normalizeStrings(draft.discussion),
+    ...(sourceYoutubeVideoId ? { sourceYoutubeVideoId } : {}),
     createdAt,
     updatedAt: createdAt,
   };
@@ -329,6 +359,9 @@ export async function updateArticle(
       ? { articleCode: String(patch.articleCode ?? "").trim() || undefined }
       : null),
     ...(patch.title !== undefined ? { title: String(patch.title ?? "").trim() } : null),
+    ...(patch.introductionEn !== undefined
+      ? { introductionEn: String(patch.introductionEn ?? "").trim() || undefined }
+      : null),
     ...(patch.level !== undefined ? { level: normalizeLevel(patch.level) } : null),
     ...(patch.levels !== undefined ? { levels: normalizeLevels(patch.levels) } : null),
     ...(patch.audio !== undefined ? { audio: String(patch.audio ?? "").trim() || undefined } : null),
@@ -346,6 +379,15 @@ export async function updateArticle(
     ...(patch.questions !== undefined ? { questions: normalizeStrings(patch.questions) } : null),
     ...(patch.discussion !== undefined ? { discussion: normalizeStrings(patch.discussion) } : null),
     ...(patch.pinned !== undefined ? { pinned: Boolean(patch.pinned) } : null),
+    ...(patch.sourceYoutubeVideoId !== undefined
+      ? {
+          sourceYoutubeVideoId:
+            typeof patch.sourceYoutubeVideoId === "string" &&
+            patch.sourceYoutubeVideoId.trim()
+              ? patch.sourceYoutubeVideoId.trim()
+              : undefined,
+        }
+      : null),
     updatedAt: nowIso(),
   };
 

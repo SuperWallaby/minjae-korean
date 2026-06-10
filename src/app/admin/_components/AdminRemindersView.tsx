@@ -3,6 +3,10 @@
 import React, { useEffect, useState } from "react";
 import { DateTime } from "luxon";
 
+import { cn } from "@/lib/utils";
+
+import AdminBulkBroadcastForm from "./AdminBulkBroadcastForm";
+
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
 type ReminderLogItem = {
@@ -29,7 +33,12 @@ function isReminderLogItem(v: unknown): v is ReminderLogItem {
   );
 }
 
-export default function AdminRemindersView() {
+export type AdminRemindersViewProps = {
+  /** When true, used inside `/admin` tabs (no extra outer padding). */
+  embedded?: boolean;
+};
+
+export default function AdminRemindersView({ embedded = false }: AdminRemindersViewProps) {
   const [logs, setLogs] = useState<ReminderLogItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -59,31 +68,46 @@ export default function AdminRemindersView() {
     };
   }, []);
 
+  const wrap = (inner: React.ReactNode) => (
+    <section className={cn(embedded ? "" : "rounded border p-4")}>
+      {embedded ? <AdminBulkBroadcastForm /> : null}
+      {embedded ? (
+        <div className="mt-10 mb-4 border-t border-border pt-8">
+          <h2 className="font-serif text-xl font-semibold tracking-tight">예약 리마인더 (이메일)</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            크론이 <code className="rounded bg-muted px-1 py-px text-xs">/api/admin/reminders/run</code>을 호출하면 여기에 기록됩니다.
+          </p>
+        </div>
+      ) : null}
+      {inner}
+    </section>
+  );
+
   if (loading) {
-    return (
+    return wrap(
       <div className="py-4 text-muted-foreground">
         로딩 중…
-      </div>
+      </div>,
     );
   }
 
   if (error) {
-    return (
+    return wrap(
       <div className="py-4 text-rose-600">
         {error}
-      </div>
+      </div>,
     );
   }
 
   if (logs.length === 0) {
-    return (
+    return wrap(
       <div className="py-4 text-muted-foreground">
         발송 이력이 없습니다. 크론으로 리마인더를 실행하면 여기에 기록됩니다.
-      </div>
+      </div>,
     );
   }
 
-  return (
+  return wrap(
     <div className="overflow-x-auto">
       <table className="w-full text-sm border-collapse border border-border">
         <thead>
@@ -124,6 +148,6 @@ export default function AdminRemindersView() {
       <p className="mt-2 text-xs text-muted-foreground">
         최근 {logs.length}건 (발송된 리마인더만 표시)
       </p>
-    </div>
+    </div>,
   );
 }

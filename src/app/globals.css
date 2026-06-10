@@ -162,3 +162,54 @@
 .animate-teaching-pulse {
   animation: teaching-pulse 520ms ease-out forwards;
 }
+
+/* Payment success — eBook: staggered entrance */
+@keyframes book-success-card {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes book-success-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.book-success-card-anim {
+  animation: book-success-card 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.book-success-cover-anim {
+  animation: book-success-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+.book-success-head-anim {
+  animation: book-success-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+.book-success-sub-anim {
+  animation: book-success-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+.book-success-cta-anim {
+  animation: book-success-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-success-card-anim,
+  .book-success-cover-anim,
+  .book-success-head-anim,
+  .book-success-sub-anim,
+  .book-success-cta-anim {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

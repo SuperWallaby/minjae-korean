@@ -37,6 +37,7 @@ type SessionStudent = {
   phoneCountry?: string;
   phoneNumber?: string;
   sessionWish?: string;
+  occupation?: string;
   notes: Array<Pick<StudentNote, "id" | "body" | "createdAt">>;
   payments: Array<Pick<PaymentRecord, "id" | "type" | "amount" | "createdAt" | "memo">>;
   credits: Array<
@@ -56,6 +57,7 @@ function toSessionStudent(s: Student): SessionStudent {
     phoneCountry: (s.phoneCountry ?? "").trim() || undefined,
     phoneNumber: (s.phoneNumber ?? "").trim() || undefined,
     sessionWish: (s.sessionWish ?? "").trim() || undefined,
+    occupation: (s.occupation ?? "").trim() || undefined,
     notes: Array.isArray(s.notes)
       ? s.notes.map((n) => ({
           id: String(n.id ?? ""),

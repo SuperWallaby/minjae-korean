@@ -52,6 +52,8 @@ export type Student = {
   phoneCountry?: string; // e.g. "+82"
   phoneNumber?: string; // digits only
   sessionWish?: string;
+  /** User-reported job / role (e.g. for admin list). */
+  occupation?: string;
   createdAt: string;
   updatedAt: string;
   stripeCustomerId?: string;
@@ -274,11 +276,74 @@ export async function listStudents(args?: { q?: string; limit?: number }): Promi
             { name: { $regex: q, $options: "i" } },
             { email: { $regex: q, $options: "i" } },
             { phone: { $regex: q, $options: "i" } },
+            { occupation: { $regex: q, $options: "i" } },
           ],
         }
       : {};
   const list = await students.find(filter).sort({ updatedAt: -1 }).limit(limit).toArray();
   return list.map(toStudent);
+}
+
+/** Audience for admin bulk site/push broadcasts (Mongo `students`). */
+export type BroadcastAccountFilter = "all" | "linked" | "unlinked" | "active_credits";
+
+const nonEmptyEmail = {
+  email: { $exists: true, $nin: [null, ""] as (string | null)[] },
+} as const;
+
+export async function listStudentIdsByBroadcastFilter(
+  filter: BroadcastAccountFilter,
+  limit: number,
+): Promise<string[]> {
+  const { students } = await cols();
+  const cap = Math.min(Math.max(1, Math.floor(limit)), 10_000);
+  const now = nowIso();
+
+  let mongoFilter: Record<string, unknown> = { ...nonEmptyEmail };
+  if (filter === "linked") {
+    mongoFilter = {
+      ...nonEmptyEmail,
+      authUserId: { $exists: true, $nin: [null, ""] as (string | null)[] },
+    };
+  } else if (filter === "unlinked") {
+    mongoFilter = {
+      $and: [
+        { ...nonEmptyEmail },
+        {
+          $or: [{ authUserId: { $exists: false } }, { authUserId: null }, { authUserId: "" }],
+        },
+      ],
+    };
+  } else if (filter === "active_credits") {
+    mongoFilter = {
+      ...nonEmptyEmail,
+      credits: {
+        $elemMatch: {
+          remaining: { $gt: 0 },
+          expiresAt: { $gt: now },
+        },
+      },
+    };
+  }
+
+  const docs = await students.find(mongoFilter).project({ _id: 1 }).limit(cap).toArray();
+  return docs.map((d) => String(d._id));
+}
+
+export async function listAuthUserIdsForStudentIds(studentIds: string[]): Promise<string[]> {
+  if (studentIds.length === 0) return [];
+  const { students } = await cols();
+  const BATCH = 500;
+  const out = new Set<string>();
+  for (let i = 0; i < studentIds.length; i += BATCH) {
+    const slice = studentIds.slice(i, i + BATCH);
+    const docs = await students.find({ _id: { $in: slice } }).project({ authUserId: 1 }).toArray();
+    for (const d of docs) {
+      const a = normalizeAuthUserId(String((d as { authUserId?: string }).authUserId ?? ""));
+      if (a) out.add(a);
+    }
+  }
+  return [...out];
 }
 
 export async function createStudent(args: { name: string; email: string; phone?: string }): Promise<Student | null> {
@@ -315,7 +380,15 @@ export async function patchStudent(
   patch: Partial<
     Pick<
       Student,
-      "name" | "email" | "phone" | "phoneCountry" | "phoneNumber" | "adminNote" | "authUserId" | "sessionWish"
+      | "name"
+      | "email"
+      | "phone"
+      | "phoneCountry"
+      | "phoneNumber"
+      | "adminNote"
+      | "authUserId"
+      | "sessionWish"
+      | "occupation"
     >
   >,
 ): Promise<Student | null> {
@@ -349,6 +422,7 @@ export async function patchStudent(
     ...(patch.phoneCountry !== undefined ? { phoneCountry: String(patch.phoneCountry).trim() || undefined } : null),
     ...(patch.phoneNumber !== undefined ? { phoneNumber: digitsOnly(String(patch.phoneNumber)) || undefined } : null),
     ...(patch.sessionWish !== undefined ? { sessionWish: String(patch.sessionWish).trim() || undefined } : null),
+    ...(patch.occupation !== undefined ? { occupation: String(patch.occupation).trim() || undefined } : null),
     ...(patch.adminNote !== undefined ? { adminNote: String(patch.adminNote) } : null),
     updatedAt: now,
   };

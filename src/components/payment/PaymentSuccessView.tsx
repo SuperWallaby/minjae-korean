@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, Download } from "lucide-react";
+import { BookOpen, Check, Download } from "lucide-react";
 
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
@@ -171,9 +171,9 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
     return (
       <section className="pt-4 pb-12 sm:pt-6 sm:pb-16">
         <Container className="max-w-[min(100%,58rem)]">
-          <div className="overflow-hidden rounded-3xl border border-[rgba(210,180,145,0.38)] bg-[linear-gradient(165deg,#fff8f4_0%,#fffefc_45%,#f3ebe3_100%)] shadow-[0_20px_45px_rgba(38,28,20,0.07),0_3px_10px_rgba(38,28,20,0.04)]">
-            <div className="grid items-start gap-10 p-10 sm:gap-12 sm:px-12 sm:py-12 md:px-16 md:py-14 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-16">
-              <div className="relative mx-auto w-full max-w-[300px] self-start sm:max-w-[320px] lg:mx-0 lg:pt-1.5">
+          <div className="book-success-card-anim overflow-hidden rounded-3xl border border-[rgba(210,180,145,0.38)] bg-[linear-gradient(165deg,#fff8f4_0%,#fffefc_45%,#f3ebe3_100%)] shadow-[0_20px_45px_rgba(38,28,20,0.07),0_3px_10px_rgba(38,28,20,0.04)]">
+            <div className="grid items-start gap-8 p-10 sm:gap-10 sm:px-12 sm:py-12 md:px-16 md:py-14 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-16">
+              <div className="book-success-cover-anim relative mx-auto w-full max-w-[300px] self-start sm:max-w-[320px] lg:mx-0">
                 <div
                   className="relative aspect-[1985/2807] w-full overflow-hidden rounded-[10px] bg-[#1f1413] shadow-[0_22px_38px_rgba(38,28,20,0.18),0_6px_12px_rgba(38,28,20,0.10)]"
                 >
@@ -186,38 +186,71 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
                     priority
                   />
                 </div>
-                <p className="mt-6 text-center font-serif text-[0.8rem] leading-[1.82] text-[#5b3427]/58 sm:mt-7 sm:text-[0.8125rem] sm:leading-[1.9] lg:text-left">
-                  &ldquo;Learn the Korean people actually use — not textbook
-                  translations.&rdquo;
-                </p>
+                <div className="mt-4 sm:mt-5">
+                  <blockquote
+                    className="rounded-2xl border border-[#e0c9b6]/80 bg-white/60 px-4 py-3.5 text-center text-[0.8rem] leading-[1.55] shadow-[0_1px_0_rgba(255,255,255,0.65)_inset] sm:text-[0.8125rem] sm:leading-[1.6] lg:text-left"
+                    cite="Korean, Beyond Translation"
+                  >
+                    <p className="font-serif font-medium text-[#4a2f25]">
+                      &ldquo;Learn the Korean people actually use — not textbook
+                      translations.&rdquo;
+                    </p>
+                  </blockquote>
+                </div>
               </div>
 
               <div className="min-w-0 lg:-translate-y-2.5">
-                <p className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-[#9d786d] sm:text-xs">
-                  EBOOK READY
-                </p>
-                <h1 className="mt-2 font-serif text-3xl font-semibold leading-[1.2] tracking-tight text-[#1f1410] sm:text-4xl lg:text-[2.4rem] lg:leading-[1.1]">
-                  Your Korean eBook
-                  <br />
-                  is ready
-                </h1>
-                <p className="mt-4 text-base leading-relaxed text-[#3d2a22] sm:text-lg sm:leading-8">
-                  Start reading now. Your PDF is saved in this browser
-                  {emailMasked
-                    ? ` and a receipt was sent to ${emailMasked}.`
-                    : " and a receipt is on the way to your email."}
+                <div className="book-success-head-anim">
+                  <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#1f1410] sm:text-[1.7rem] md:text-[2.1rem] md:leading-tight text-balance">
+                    <span className="inline-flex w-full min-w-0 max-w-[min(100%,26ch)] flex-wrap items-start gap-2 sm:max-w-none sm:flex-nowrap sm:items-center sm:gap-2.5">
+                      <Check
+                        className="mt-0.5 size-7 shrink-0 self-start text-emerald-600 sm:mt-0.5 sm:size-8 md:size-9"
+                        strokeWidth={2.6}
+                        aria-hidden
+                      />
+                      <span>
+                        Your Korean eBook is{" "}
+                        <span className="whitespace-nowrap text-[#0f6b4a]">ready</span>
+                      </span>
+                    </span>
+                  </h1>
+                </div>
+                <p className="book-success-sub-anim mt-4 text-base leading-[1.55] text-[#3d2a22] sm:text-lg sm:leading-relaxed text-balance">
+                  {emailMasked ? (
+                    <>
+                      Start reading now. Your PDF is saved here, and your
+                      receipt has been sent to{" "}
+                      <span className="font-medium text-[#2a1e18]">
+                        {emailMasked}
+                      </span>
+                      .
+                    </>
+                  ) : (
+                    <>
+                      Start reading now. Your PDF is saved here, and your
+                      receipt is on the way to the email you used at checkout.
+                    </>
+                  )}
                 </p>
 
-                <div className="mt-5 space-y-2.5 sm:mt-6">
-                  <span className="inline-block max-w-full rounded-full border border-[#c4a99a]/55 bg-white/60 px-3.5 py-1.5 text-sm font-medium leading-none text-[#3d271d] sm:px-4 sm:py-2 sm:text-[0.95rem]">
-                    Early reader edition
+                <div className="book-success-sub-anim mt-5 space-y-2.5 sm:mt-6">
+                  <span className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-[#c4a99a]/55 bg-white/60 px-3.5 py-1.5 text-sm font-medium leading-tight text-[#3d271d] sm:px-4 sm:py-2 sm:text-[0.95rem]">
+                    <Check
+                      className="size-3.5 shrink-0 text-emerald-600"
+                      strokeWidth={2.75}
+                      aria-hidden
+                    />
+                    <span>
+                      Early reader promo{" "}
+                      <span className="text-[#0f6b4a]">applied</span>
+                    </span>
                   </span>
                   <p className="text-sm leading-relaxed text-[#5c4237] sm:text-base">
                     2–3 hours · Printable PDF · Yours to keep
                   </p>
                 </div>
 
-                <div className="mt-9 w-full max-w-md space-y-0 sm:mt-10">
+                <div className="book-success-cta-anim mt-9 w-full max-w-md space-y-0 sm:mt-10">
                   <Button
                     type="button"
                     size="lg"
@@ -237,7 +270,7 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
                   <div className="pt-2">
                     <Button
                       type="button"
-                      className="h-[42px] w-full min-w-0 border-[rgba(40,36,32,0.28)] bg-white/70 text-sm font-medium text-[#2c221c] transition-[border-color,background-color] hover:border-[rgba(40,36,32,0.4)] hover:bg-white/90"
+                      className="h-[42px] w-full min-w-0 border-[#6b5c52]/50 bg-white/75 text-sm font-medium text-[#2c221c] transition-[border-color,background-color] hover:border-[#3d3330] hover:bg-white/95"
                       variant="outline"
                       disabled={ebookAction !== null}
                       onClick={() => void openEbook("download")}

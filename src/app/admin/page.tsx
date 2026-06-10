@@ -1,8 +1,10 @@
- "use client";
- 
+"use client";
+
 import * as React from "react";
+import { Suspense } from "react";
 import { DateTime } from "luxon";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import AdminCalendarView from "./_components/AdminCalendarView";
 import AdminBookingsView from "./_components/AdminBookingsView";
 import AdminRecapsView from "./_components/AdminRecapsView";
@@ -12,11 +14,45 @@ import AdminStudentsView from "./_components/AdminStudentsView";
 import AdminMeetingsView from "./_components/AdminMeetingsView";
 import AdminExamsCoversView from "./_components/AdminExamsCoversView";
 import AdminExamsVoiceView from "./_components/AdminExamsVoiceView";
+import AdminSupportInboxView from "./_components/AdminSupportInboxView";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
- 
-export default function AdminPage() {
-  const [tab, setTab] = React.useState<"calendar" | "pattern" | "bookings" | "students" | "meetings" | "recaps" | "reminders" | "exams">("calendar");
+
+type AdminTab =
+  | "calendar"
+  | "pattern"
+  | "bookings"
+  | "students"
+  | "meetings"
+  | "recaps"
+  | "notifications"
+  | "exams"
+  | "messages";
+
+function AdminPageInner() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [tab, setTab] = React.useState<AdminTab>("calendar");
+
+  React.useLayoutEffect(() => {
+    const t = searchParams.get("tab");
+    if (t === "messages") setTab("messages");
+    else if (t === "notifications") setTab("notifications");
+  }, [searchParams]);
+
+  const selectTab = React.useCallback(
+    (t: AdminTab) => {
+      setTab(t);
+      if (t === "messages") {
+        router.replace("/admin?tab=messages", { scroll: false });
+      } else if (t === "notifications") {
+        router.replace("/admin?tab=notifications", { scroll: false });
+      } else {
+        router.replace("/admin", { scroll: false });
+      }
+    },
+    [router],
+  );
   const [fromDateKey, setFromDateKey] = React.useState<string>(
     DateTime.now().setZone(BUSINESS_TIME_ZONE).toISODate() ?? new Date().toISOString().slice(0, 10)
   );
@@ -49,72 +85,95 @@ export default function AdminPage() {
     <div className="p-6">
       <div className="flex flex-wrap items-end justify-between gap-3 mb-4">
         <h1 className="text-2xl font-semibold">관리자</h1>
-        <Link
-          href="/admin/support"
-          className="px-3 py-2 rounded border bg-white hover:bg-black hover:text-white transition"
-        >
-          Support inbox
-        </Link>
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href="/admin?tab=messages"
+            className="px-3 py-2 rounded border bg-white hover:bg-black hover:text-white transition"
+          >
+            Support inbox
+          </Link>
+          <Link
+            href="/admin?tab=notifications"
+            className="px-3 py-2 rounded border bg-white hover:bg-black hover:text-white transition"
+          >
+            알림
+          </Link>
+          <Link
+            href="/admin/users"
+            className="px-3 py-2 rounded border bg-white hover:bg-black hover:text-white transition"
+          >
+            유저 목록
+          </Link>
+        </div>
       </div>
 
       <div className="flex gap-2 mb-6">
         <button
           className={`px-3 py-2 rounded border ${tab === "calendar" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("calendar")}
+          onClick={() => selectTab("calendar")}
         >
           캘린더
         </button>
         <button
           className={`px-3 py-2 rounded border ${tab === "pattern" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("pattern")}
+          onClick={() => selectTab("pattern")}
         >
           주간 패턴
         </button>
         <button
           className={`px-3 py-2 rounded border ${tab === "bookings" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("bookings")}
+          onClick={() => selectTab("bookings")}
         >
           예약
         </button>
         <button
           className={`px-3 py-2 rounded border ${tab === "students" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("students")}
+          onClick={() => selectTab("students")}
         >
           학생
         </button>
         <button
           className={`px-3 py-2 rounded border ${tab === "meetings" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("meetings")}
+          onClick={() => selectTab("meetings")}
         >
           미팅 링크
         </button>
         <button
           className={`px-3 py-2 rounded border ${tab === "recaps" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("recaps")}
+          onClick={() => selectTab("recaps")}
         >
           리캡
         </button>
         <button
-          className={`px-3 py-2 rounded border ${tab === "reminders" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("reminders")}
+          className={`px-3 py-2 rounded border ${tab === "notifications" ? "bg-black text-white" : "bg-white"}`}
+          onClick={() => selectTab("notifications")}
+          type="button"
         >
-          리마인더
+          알림
         </button>
         <button
           className={`px-3 py-2 rounded border ${tab === "exams" ? "bg-black text-white" : "bg-white"}`}
-          onClick={() => setTab("exams")}
+          onClick={() => selectTab("exams")}
         >
           시험 표지
         </button>
+        <button
+          className={`px-3 py-2 rounded border ${tab === "messages" ? "bg-black text-white" : "bg-white"}`}
+          onClick={() => selectTab("messages")}
+          type="button"
+        >
+          메시지
+        </button>
       </div>
 
+      {tab === "messages" ? <AdminSupportInboxView embedded /> : null}
+      {tab === "notifications" ? <AdminRemindersView embedded /> : null}
       {tab === "calendar" ? <AdminCalendarView /> : null}
       {tab === "pattern" ? <WeeklyPatternEditor /> : null}
       {tab === "bookings" ? <AdminBookingsView /> : null}
       {tab === "students" ? <AdminStudentsView /> : null}
       {tab === "meetings" ? <AdminMeetingsView /> : null}
       {tab === "recaps" ? <AdminRecapsView /> : null}
-      {tab === "reminders" ? <AdminRemindersView /> : null}
       {tab === "exams" ? (
         <div className="space-y-10">
           <section>
@@ -127,6 +186,8 @@ export default function AdminPage() {
           </section>
         </div>
       ) : null}
+      {tab !== "messages" && tab !== "notifications" ? (
+        <>
        <div className="grid gap-4 md:grid-cols-2 mb-6">
          <label className="grid gap-1">
           <span className="text-sm">시작일</span>
@@ -157,7 +218,16 @@ export default function AdminPage() {
           주간 패턴 탭에서 저장한 패턴을 기준으로 세션을 생성합니다.
         </div>
       </div>
+        </>
+      ) : null}
      </div>
    );
  }
 
+export default function AdminPage() {
+  return (
+    <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">로딩 중…</div>}>
+      <AdminPageInner />
+    </Suspense>
+  );
+}

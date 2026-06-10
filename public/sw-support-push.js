@@ -1,7 +1,7 @@
-/* Service worker for support chat push notifications. Register from /admin/support. */
+/* Service worker for support chat push notifications. Register from /admin (메시지 tab) or /admin/support. */
 self.addEventListener("push", function (event) {
   if (!event.data) return;
-  let data = { title: "새 지원 채팅", body: "", url: "/admin/support", threadId: null };
+  let data = { title: "새 지원 채팅", body: "", url: "/admin?tab=messages", threadId: null };
   try {
     const j = event.data.json();
     if (j.title) data.title = j.title;
@@ -24,11 +24,11 @@ self.addEventListener("push", function (event) {
 
 self.addEventListener("notificationclick", function (event) {
   event.notification.close();
-  const url = event.notification.data?.url || "/admin/support";
+  const url = event.notification.data?.url || "/admin?tab=messages";
   event.waitUntil(
     clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
       for (const c of list) {
-        if (c.url.includes("/admin/support") && "focus" in c) {
+        if (c.url.includes("/admin") && "focus" in c) {
           c.navigate(url);
           return c.focus();
         }

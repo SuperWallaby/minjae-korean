@@ -2,6 +2,8 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { getSessionUser } from "@/lib/authSession";
+import { generateDescriptionAzure } from "@/lib/azureDescribe";
+import { readAzureOpenAIConfig } from "@/lib/azureOpenAI";
 import {
   getCachedDescription,
   saveDescription,
@@ -108,15 +110,20 @@ Respond in this exact JSON format (no markdown, no code blocks, just raw JSON):
 
 export async function POST(req: Request) {
   try {
-    const geminiKey = process.env.GMINI_API_KEY?.trim();
+    const geminiKey =
+      process.env.GEMINI_API_KEY?.trim() || process.env.GMINI_API_KEY?.trim();
+    const azureReady = Boolean(readAzureOpenAIConfig());
 
-    if (!geminiKey) {
+    if (!geminiKey && !azureReady) {
       return NextResponse.json(
-        { ok: false, error: "GMINI_API_KEY not configured" },
+        {
+          ok: false,
+          error:
+            "No LLM configured. Set GEMINI_API_KEY (or GMINI_API_KEY) and/or Azure OpenAI env vars.",
+        },
         { status: 500 },
       );
     }
-
     const body = await req.json().catch(() => null);
     const text = typeof body?.text === "string" ? body.text.trim() : "";
 
@@ -162,7 +169,13 @@ export async function POST(req: Request) {
       );
     }
 
-    const result = await generateDescription(text, geminiKey);
+    let result: DescriptionResult | null = null;
+    if (geminiKey) {
+      result = await generateDescription(text, geminiKey);
+    }
+    if (!result && azureReady) {
+      result = await generateDescriptionAzure(text);
+    }
 
     if (!result) {
       return NextResponse.json(

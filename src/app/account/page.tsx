@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
-import { CalendarDays, CreditCard, FileText, User } from "lucide-react";
+import { CalendarDays, CreditCard, FileText, Bell, User } from "lucide-react";
 import { DateTime } from "luxon";
 
 import { Container } from "@/components/site/Container";
@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/PhonePartsInput";
 
 import { BookingCard } from "./_components/BookingCard";
+import { AccountAlertsPanel } from "./_components/AccountAlertsPanel";
 import { bookingLocalTimes, zoneToCityLabel } from "./_components/bookingUtils";
 
 /** Decorative sample chart (no API) — avoids empty “Publish to see trends” dead space. */
@@ -95,6 +96,7 @@ type Student = {
   phoneCountry?: string;
   phoneNumber?: string;
   sessionWish?: string;
+  occupation?: string;
   notes?: Array<{ id: string; body: string; createdAt: string }>;
   payments?: Array<{
     id: string;
@@ -116,8 +118,14 @@ type Student = {
 export default function AccountPage() {
   const session = useMockSession();
   const [tab, setTab] = React.useState<
-    "bookings" | "payments" | "notes" | "profile"
+    "bookings" | "payments" | "notes" | "profile" | "alerts"
   >("bookings");
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash === "#alerts") setTab("alerts");
+  }, []);
+
   const [bookingsView, setBookingsView] = React.useState<"coming" | "finished">(
     "coming",
   );
@@ -151,12 +159,14 @@ export default function AccountPage() {
     phoneCountry: string;
     phoneNumber: string;
     sessionWish: string;
+    occupation: string;
   }>({
     name: "",
     email: "",
     phoneCountry: DEFAULT_PHONE_COUNTRY,
     phoneNumber: "",
     sessionWish: "",
+    occupation: "",
   });
   const sessionStudentId = (session.state.user?.studentId ?? "").trim();
 
@@ -329,6 +339,7 @@ export default function AccountPage() {
         phoneCountry: DEFAULT_PHONE_COUNTRY,
         phoneNumber: "",
         sessionWish: "",
+        occupation: "",
       });
       return;
     }
@@ -344,6 +355,7 @@ export default function AccountPage() {
       phoneNumber:
         (student?.phoneNumber ?? "").trim() || fallbackPhoneParts.number,
       sessionWish: (student?.sessionWish ?? "").trim(),
+      occupation: (student?.occupation ?? "").trim(),
     });
   }, [
     profileDirty,
@@ -355,6 +367,7 @@ export default function AccountPage() {
     student?.phoneCountry,
     student?.phoneNumber,
     student?.sessionWish,
+    student?.occupation,
   ]);
 
   // Phone is edited via shared PhoneInput component
@@ -523,6 +536,7 @@ export default function AccountPage() {
                   { id: "notes", label: "Recap", Icon: FileText },
                   { id: "profile", label: "Profile", Icon: User },
                   { id: "payments", label: "Credit", Icon: CreditCard },
+                  { id: "alerts", label: "Alerts", Icon: Bell },
                 ] as const
               ).map((t) => {
                 const active = tab === t.id;
@@ -860,6 +874,8 @@ export default function AccountPage() {
               </Card>
             )}
 
+            {tab === "alerts" && <AccountAlertsPanel />}
+
             {tab === "profile" && (
               <Card className="flex flex-col">
                 <CardHeader>
@@ -919,6 +935,22 @@ export default function AccountPage() {
                       }}
                     />
                   </label>
+                  <label className="grid gap-1">
+                    <span className="text-sm text-muted-foreground">Job / 직업 (optional)</span>
+                    <Input
+                      value={profileDraft.occupation}
+                      onChange={(e) => {
+                        setProfileDirty(true);
+                        setProfileSaveOk(false);
+                        setProfileSaveMessage(null);
+                        setProfileDraft((prev) => ({
+                          ...prev,
+                          occupation: e.target.value,
+                        }));
+                      }}
+                      placeholder="e.g. software engineer, teacher"
+                    />
+                  </label>
                   <label className="grid mt-2 gap-1">
                     <span className="mb-px inline-block text-sm text-muted-foreground">
                       How would you like your session to be?
@@ -954,6 +986,7 @@ export default function AccountPage() {
                         const sessionWish = (
                           profileDraft.sessionWish ?? ""
                         ).trim();
+                        const occupation = (profileDraft.occupation ?? "").trim();
                         // Basic client-side validation
                         if (!name) {
                           setProfileSaveOk(false);
@@ -1013,6 +1046,7 @@ export default function AccountPage() {
                                   DEFAULT_PHONE_COUNTRY,
                                 phoneNumber: profileDraft.phoneNumber,
                                 sessionWish,
+                                occupation,
                               }),
                             },
                           );

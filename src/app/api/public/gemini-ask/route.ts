@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+import { azureChatCompletion, readAzureOpenAIConfig } from "@/lib/azureOpenAI";
+
 export const runtime = "nodejs";
 
 const GEMINI_MODEL = "gemini-2.5-flash-lite";
@@ -8,6 +10,17 @@ const SYSTEM_INSTRUCTION = `You are Jack, a Korean teaching assistant (한국어
 - Always respond in English. Never reply in Korean or other languages.
 - Use very simple sentences (아주 쉬운 문장을 만든다).
 - Explain briefly; do not go deep (깊게 설명하지 말고 간단하게 설명한다).`;
+
+async function askAzureJack(prompt: string): Promise<string | null> {
+  if (!readAzureOpenAIConfig()) return null;
+  return azureChatCompletion(
+    [
+      { role: "system", content: SYSTEM_INSTRUCTION },
+      { role: "user", content: prompt },
+    ],
+    { maxTokens: 2048, temperature: 0.4 },
+  );
+}
 
 export async function POST(req: Request) {
   try {
@@ -18,38 +31,43 @@ export async function POST(req: Request) {
     }
 
     const apiKey = process.env.GEMINI_API_KEY?.trim();
-    if (!apiKey) {
+    let text: string | null = null;
+
+    if (apiKey) {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 2048, temperature: 0.4 },
+        }),
+      });
+
+      if (res.ok) {
+        const data = (await res.json()) as {
+          candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+        };
+        text =
+          data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? null;
+      }
+    }
+
+    if (!text) {
+      text = await askAzureJack(prompt);
+    }
+
+    if (!text) {
       return NextResponse.json(
-        { ok: false, error: "GEMINI_API_KEY not configured" },
+        {
+          ok: false,
+          error:
+            "LLM unavailable. Configure GEMINI_API_KEY or Azure OpenAI (AZURE_OPENAI_*).",
+        },
         { status: 503 },
       );
     }
-
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
-        contents: [{ role: "user", parts: [{ text: prompt }] }],
-        generationConfig: { maxOutputTokens: 2048, temperature: 0.4 },
-      }),
-    });
-
-    if (!res.ok) {
-      const err = await res.text();
-      return NextResponse.json(
-        { ok: false, error: "LLM request failed", detail: err.slice(0, 200) },
-        { status: 502 },
-      );
-    }
-
-    const data = (await res.json()) as {
-      candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
-    };
-    const text =
-      data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ??
-      "No response generated.";
 
     return NextResponse.json({ ok: true, text });
   } catch (e) {

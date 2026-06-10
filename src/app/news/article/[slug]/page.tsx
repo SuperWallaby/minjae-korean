@@ -247,16 +247,16 @@ export default async function ArticlePage({
                         </div>
                       ) : null}
                       {p.image ? (
-                        <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
+                        <div className="mx-auto mt-4 mb-10 w-full max-w-[600px] overflow-hidden rounded-xl border border-border bg-muted/10">
                           <Image
                             src={p.image}
                             alt={a.title}
-                            width={1600}
-                            height={900}
+                            width={1200}
+                            height={675}
                             className="h-auto w-full max-w-full"
                             style={{ width: "100%", height: "auto" }}
                             unoptimized
-                            sizes="(max-width: 896px) 100vw, 896px"
+                            sizes="(max-width: 600px) 100vw, 600px"
                           />
                         </div>
                       ) : null}
@@ -271,7 +271,6 @@ export default async function ArticlePage({
         {/* 3. Vocabulary zone (table) */}
         <VocabularySection
           className="mt-10 border-t border-border pt-10"
-          describeInterpretationTrigger="icon"
           items={(a.vocabulary ?? []).map((v) => ({
             word: v.word,
             phonetic: v.phonetic,

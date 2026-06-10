@@ -19,9 +19,15 @@ import {
   processImageForThumbnail,
   processImageForUploadWebPOnly,
 } from "@/lib/imageUpload";
-import { smartUnsplashSearch } from "@/lib/smartUnsplash";
 import { uploadFileToR2 } from "@/lib/uploadFileToR2";
 import { cn } from "@/lib/utils";
+import {
+  runArticleFullBatch,
+  runVocabularyAutoPhase,
+  formatArticleBatchProgress,
+  type ArticleBatchProgress,
+} from "@/app/news/article/_lib/articleGenerationBatch";
+import { NEWS_COVER_IMAGE_SIZE } from "@/lib/newsCoverDefaults";
 
 type ReadingLevel = 1 | 2 | 3 | 4 | 5;
 
@@ -55,6 +61,7 @@ function toLines(s: string): string[] {
 export function ArticleNewClient() {
   const router = useRouter();
   const [title, setTitle] = React.useState("");
+  const [introductionEn, setIntroductionEn] = React.useState("");
   const [articleCode, setArticleCode] = React.useState("");
   const [level, setLevel] = React.useState<ReadingLevel>(1);
   const [levels, setLevels] = React.useState<ReadingLevel[]>([1]);
@@ -72,6 +79,17 @@ export function ArticleNewClient() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [uploadingKey, setUploadingKey] = React.useState<string | null>(null);
+  const [paraBatchAzureLoading, setParaBatchAzureLoading] =
+    React.useState(false);
+  const [paraBatchAzureProgress, setParaBatchAzureProgress] = React.useState<{
+    cur: number;
+    total: number;
+  } | null>(null);
+  const [coverAzureLoading, setCoverAzureLoading] = React.useState(false);
+  const [thumbAzureLoading, setThumbAzureLoading] = React.useState(false);
+  const [fullBatchRunning, setFullBatchRunning] = React.useState(false);
+  const [batchProgress, setBatchProgress] =
+    React.useState<ArticleBatchProgress | null>(null);
   const [ttsGenerating, setTtsGenerating] = React.useState(false);
   const [articleEdgeTtsGenerating, setArticleEdgeTtsGenerating] =
     React.useState(false);
@@ -86,13 +104,85 @@ export function ArticleNewClient() {
   const [exampleTtsKey, setExampleTtsKey] = React.useState<string | null>(null);
   const [autoRunning, setAutoRunning] = React.useState(false);
   const [readingCues, setReadingCues] = React.useState<ReadingCue[]>([]);
+  const vocabularyRef = React.useRef(vocabulary);
+  vocabularyRef.current = vocabulary;
   const fileInputRefs = React.useRef<Record<string, HTMLInputElement | null>>(
     {},
   );
 
+  const runAzureCoverImage = React.useCallback(async () => {
+    const t = title.trim();
+    if (!t) {
+      setError("Title is required for cover generation.");
+      return;
+    }
+    setCoverAzureLoading(true);
+    setError(null);
+    try {
+      const { res, json } = await postJson("/api/admin/news/cover-image", {
+        title: t,
+        size: NEWS_COVER_IMAGE_SIZE,
+        target: "large",
+      });
+      if (!res.ok || !json?.ok || !json?.url) {
+        const j = json as {
+          error?: string;
+          stage?: string;
+          azure?: { message?: string; httpStatus?: number };
+          chat?: {
+            lastMessage?: string;
+            lastHttpStatus?: number;
+            lastDeployment?: string;
+          };
+        } | null;
+        throw new Error(
+          [
+            j?.error,
+            j?.stage && `[${j.stage}]`,
+            j?.chat?.lastMessage,
+            j?.azure?.message,
+          ]
+            .filter(Boolean)
+            .join(" — ") || "Cover generation failed",
+        );
+      }
+      setImageLarge(String(json.url));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Cover failed");
+    } finally {
+      setCoverAzureLoading(false);
+    }
+  }, [title]);
+
+  const runAzureThumbnailFromLarge = React.useCallback(async () => {
+    const large = imageLarge.trim();
+    if (!large) {
+      setError("Large 이미지 URL이 있어야 썸네일을 자동 생성할 수 있습니다.");
+      return;
+    }
+    setThumbAzureLoading(true);
+    setError(null);
+    try {
+      const { res, json } = await postJson("/api/admin/news/thumbnail-from-url", {
+        imageUrl: large,
+      });
+      if (!res.ok || !json?.ok || !json?.url) {
+        throw new Error(
+          String(json?.error ?? "Thumbnail generation failed"),
+        );
+      }
+      setImageThumb(String(json.url));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Thumbnail failed");
+    } finally {
+      setThumbAzureLoading(false);
+    }
+  }, [imageLarge]);
+
   const payloadForJson: ArticleJsonPayload = React.useMemo(
     () => ({
       title,
+      introductionEn: introductionEn.trim() || undefined,
       articleCode: articleCode.trim() || undefined,
       level,
       levels,
@@ -107,6 +197,7 @@ export function ArticleNewClient() {
     }),
     [
       title,
+      introductionEn,
       articleCode,
       level,
       levels,
@@ -123,6 +214,7 @@ export function ArticleNewClient() {
 
   const applyJsonPayload = React.useCallback((p: ArticleJsonPayload) => {
     setTitle(p.title ?? "");
+    setIntroductionEn(p.introductionEn ?? "");
     setArticleCode(p.articleCode ?? "");
     setLevel((p.level as ReadingLevel) ?? 1);
     setLevels(p.levels?.length ? (p.levels as ReadingLevel[]) : [1]);
@@ -147,6 +239,7 @@ export function ArticleNewClient() {
     try {
       const { res, json } = await postJson("/api/admin/articles", {
         title,
+        introductionEn: introductionEn.trim() || undefined,
         level,
         levels,
         articleCode: articleCode.trim() || undefined,
@@ -174,6 +267,7 @@ export function ArticleNewClient() {
     articleCode,
     audio,
     discussionText,
+    introductionEn,
     imageLarge,
     imageThumb,
     level,
@@ -237,12 +331,130 @@ export function ArticleNewClient() {
             <section className="rounded-2xl border border-border bg-card p-5">
               <div className="text-sm font-semibold">Basics</div>
               <div className="mt-4 grid gap-3">
+                <div className="rounded-xl border border-border bg-muted/30 p-4">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+                    <div>
+                      <div className="text-xs font-semibold text-foreground">
+                        전체 오토
+                      </div>
+                      <p className="mt-1 max-w-xl text-xs text-muted-foreground">
+                        Edge TTS → 리딩 타이밍 (Whisper) → cover (1536×1024) →
+                        paragraph images (~30% per block) → thumbnail →
+                        vocabulary Auto. 타이밍 단계 실패 시 전체 파이프라인이
+                        중단됩니다. Rate limit 완화를 위해 단계 간 간격을 둡니다.
+                      </p>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="primary"
+                      className="shrink-0"
+                      disabled={
+                        fullBatchRunning ||
+                        ttsGenerating ||
+                        articleEdgeTtsGenerating ||
+                        timingsGenerating ||
+                        coverAzureLoading ||
+                        thumbAzureLoading ||
+                        paraBatchAzureLoading ||
+                        autoRunning ||
+                        Boolean(uploadingKey) ||
+                        !title.trim() ||
+                        !(paragraphs ?? [])
+                          .flatMap((p) =>
+                            [p.subtitle?.trim(), p.content?.trim()].filter(
+                              Boolean,
+                            ),
+                          )
+                          .filter(Boolean)
+                          .join("\n")
+                      }
+                      onClick={async () => {
+                        setFullBatchRunning(true);
+                        setBatchProgress({ phase: "edge-tts" });
+                        setError(null);
+                        try {
+                          await runArticleFullBatch({
+                            postJson,
+                            onProgress: setBatchProgress,
+                            getTtsPlainText: () =>
+                              (paragraphs ?? [])
+                                .flatMap((p) =>
+                                  [
+                                    p.subtitle?.trim(),
+                                    p.content?.trim(),
+                                  ].filter(Boolean),
+                                )
+                                .filter(Boolean)
+                                .join("\n"),
+                            getTitle: () => title,
+                            getParagraphs: () => paragraphs,
+                            setAudio: (url) => {
+                              setAudio(url);
+                            },
+                            setReadingCues: (cues) => setReadingCues(cues),
+                            setImageLarge: (url) => setImageLarge(url),
+                            setImageThumb: (url) => setImageThumb(url),
+                            setParagraphImage: (i, imageUrl) => {
+                              setParagraphs((prev) => {
+                                const next = prev.slice();
+                                const cur = next[i]!;
+                                next[i] = imageUrl
+                                  ? { ...cur, image: imageUrl }
+                                  : { ...cur, image: undefined };
+                                return next;
+                              });
+                            },
+                            getVocabularySnapshot: () => vocabularyRef.current,
+                            patchVocabulary: (idx, patch) => {
+                              setVocabulary((prev) => {
+                                const next = prev.slice();
+                                next[idx] = { ...next[idx]!, ...patch };
+                                return next;
+                              });
+                            },
+                          });
+                        } catch (err) {
+                          setError(
+                            err instanceof Error
+                              ? err.message
+                              : "Full pipeline failed",
+                          );
+                        } finally {
+                          setFullBatchRunning(false);
+                          setBatchProgress(null);
+                        }
+                      }}
+                    >
+                      {fullBatchRunning
+                        ? "진행 중…"
+                        : "전체 생성 실행"}
+                    </Button>
+                  </div>
+                  {fullBatchRunning && batchProgress ? (
+                    <p className="mt-3 text-xs font-medium text-foreground">
+                      {formatArticleBatchProgress(batchProgress)}
+                    </p>
+                  ) : null}
+                </div>
+
                 <label className="grid gap-1">
                   <span className="text-xs text-muted-foreground">Title</span>
                   <Input
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Article title"
+                  />
+                </label>
+
+                <label className="grid gap-1">
+                  <span className="text-xs text-muted-foreground">
+                    Introduction (English)
+                  </span>
+                  <textarea
+                    className="min-h-20 rounded-md border border-border bg-white px-4 py-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    value={introductionEn}
+                    onChange={(e) => setIntroductionEn(e.target.value)}
+                    placeholder="Short English introduction for this article"
                   />
                 </label>
 
@@ -332,6 +544,7 @@ export function ArticleNewClient() {
                       type="button"
                       variant="outline"
                       disabled={
+                        fullBatchRunning ||
                         ttsGenerating ||
                         articleEdgeTtsGenerating ||
                         Boolean(uploadingKey)
@@ -381,6 +594,7 @@ export function ArticleNewClient() {
                       variant="outline"
                       size="sm"
                       disabled={
+                        fullBatchRunning ||
                         articleEdgeTtsGenerating ||
                         timingsGenerating ||
                         Boolean(uploadingKey) ||
@@ -439,6 +653,7 @@ export function ArticleNewClient() {
                       variant="outline"
                       size="sm"
                       disabled={
+                        fullBatchRunning ||
                         timingsGenerating ||
                         ttsGenerating ||
                         articleEdgeTtsGenerating ||
@@ -478,6 +693,19 @@ export function ArticleNewClient() {
                       }}
                     >
                       {timingsGenerating ? "Generating…" : "Generate timings"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={
+                        fullBatchRunning ||
+                        timingsGenerating ||
+                        readingCues.length === 0
+                      }
+                      onClick={() => setReadingCues([])}
+                    >
+                      Remove timing
                     </Button>
                     <div className="shrink-0">
                       <input
@@ -535,6 +763,135 @@ export function ArticleNewClient() {
             </section>
 
             <section className="rounded-2xl border border-border bg-card p-5">
+              <div className="text-sm font-semibold">Azure generation</div>
+              <div className="mt-4 grid gap-6">
+                <div className="rounded-xl border border-dashed border-border bg-muted/20 p-4">
+                  <div className="text-xs font-semibold text-foreground">
+                    Cover (Azure)
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Landscape{" "}
+                    <span className="font-mono">{NEWS_COVER_IMAGE_SIZE}</span>{" "}
+                    (closest GPT-image preset to ~16:9 / 16:10). Large only.
+                    썸네일은 Basics의{" "}
+                    <span className="font-medium">전체 오토</span>에서
+                    생성합니다.
+                  </p>
+                  <div className="mt-3 flex flex-wrap items-end gap-3">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled={
+                        fullBatchRunning ||
+                        coverAzureLoading ||
+                        thumbAzureLoading ||
+                        Boolean(uploadingKey) ||
+                        paraBatchAzureLoading ||
+                        !title.trim()
+                      }
+                      className="shrink-0"
+                      onClick={() => void runAzureCoverImage()}
+                    >
+                      {coverAzureLoading
+                        ? "Generating…"
+                        : imageLarge.trim()
+                          ? "커버 이미지 재생성 (Azure)"
+                          : "커버 생성 (Azure)"}
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-dashed border-border bg-muted/20 p-4">
+                  <div className="text-xs font-semibold text-foreground">
+                    Paragraph illustrations (Azure)
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Runs every paragraph block that has subtitle or body text,
+                    in order. Existing image URLs are overwritten when
+                    generation succeeds.
+                  </p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="mt-3 shrink-0"
+                    disabled={
+                      fullBatchRunning ||
+                      paraBatchAzureLoading ||
+                      Boolean(uploadingKey) ||
+                      coverAzureLoading ||
+                      thumbAzureLoading
+                    }
+                    onClick={async () => {
+                      const targets = paragraphs
+                        .map((p, i) => ({
+                          i,
+                          t: [p.subtitle?.trim(), p.content?.trim()]
+                            .filter(Boolean)
+                            .join("\n\n"),
+                        }))
+                        .filter((x) => x.t);
+                      if (targets.length === 0) {
+                        setError(
+                          "Add paragraph text in at least one block first.",
+                        );
+                        return;
+                      }
+                      setParaBatchAzureLoading(true);
+                      setParaBatchAzureProgress({
+                        cur: 0,
+                        total: targets.length,
+                      });
+                      setError(null);
+                      try {
+                        for (let step = 0; step < targets.length; step++) {
+                          const { i } = targets[step]!;
+                          setParaBatchAzureProgress({
+                            cur: step + 1,
+                            total: targets.length,
+                          });
+                          const p = paragraphs[i]!;
+                          const { res, json } = await postJson(
+                            "/api/admin/news/paragraph-image",
+                            {
+                              subtitle: p.subtitle ?? "",
+                              content: p.content ?? "",
+                            },
+                          );
+                          if (!res.ok || !json?.ok || !json?.url) {
+                            throw new Error(
+                              String(
+                                json?.error ?? "Paragraph image failed",
+                              ),
+                            );
+                          }
+                          const url = String(json.url);
+                          setParagraphs((prev) => {
+                            const next = prev.slice();
+                            next[i] = { ...next[i]!, image: url };
+                            return next;
+                          });
+                        }
+                      } catch (err) {
+                        setError(
+                          err instanceof Error
+                            ? err.message
+                            : "Paragraph batch failed",
+                        );
+                      } finally {
+                        setParaBatchAzureLoading(false);
+                        setParaBatchAzureProgress(null);
+                      }
+                    }}
+                  >
+                    {paraBatchAzureLoading && paraBatchAzureProgress
+                      ? `Generating paragraphs… (${paraBatchAzureProgress.cur}/${paraBatchAzureProgress.total})`
+                      : "Generate all paragraph illustrations (Azure)"}
+                  </Button>
+                </div>
+              </div>
+            </section>
+
+            <section className="rounded-2xl border border-border bg-card p-5">
               <div className="text-sm font-semibold">Images</div>
               <div className="mt-4 grid gap-6">
                 {[
@@ -561,7 +918,7 @@ export function ArticleNewClient() {
                         onChange={(e) => row.setValue(e.target.value)}
                         placeholder="https://…"
                       />
-                      <div className="shrink-0">
+                      <div className="flex shrink-0 flex-wrap gap-2">
                         <input
                           ref={(el) => {
                             fileInputRefs.current[row.key] = el;
@@ -603,6 +960,44 @@ export function ArticleNewClient() {
                         >
                           {uploadingKey === row.key ? "Uploading…" : "Upload"}
                         </Button>
+                        {row.key === "imageThumb" ? (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={
+                              fullBatchRunning ||
+                              thumbAzureLoading ||
+                              coverAzureLoading ||
+                              Boolean(uploadingKey) ||
+                              paraBatchAzureLoading ||
+                              !imageLarge.trim()
+                            }
+                            onClick={() => void runAzureThumbnailFromLarge()}
+                          >
+                            {thumbAzureLoading
+                              ? "Generating…"
+                              : "썸네일 재생성 (Azure)"}
+                          </Button>
+                        ) : null}
+                        {row.key === "imageLarge" ? (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={
+                              fullBatchRunning ||
+                              coverAzureLoading ||
+                              thumbAzureLoading ||
+                              Boolean(uploadingKey) ||
+                              paraBatchAzureLoading ||
+                              !title.trim()
+                            }
+                            onClick={() => void runAzureCoverImage()}
+                          >
+                            {coverAzureLoading
+                              ? "Generating…"
+                              : "커버 재생성 (Azure)"}
+                          </Button>
+                        ) : null}
                       </div>
                     </div>
                     {row.value.trim() ? (
@@ -821,76 +1216,39 @@ export function ArticleNewClient() {
                   type="button"
                   variant="outline"
                   size="sm"
-                  disabled={autoRunning || vocabulary.length === 0}
+                  disabled={
+                    fullBatchRunning ||
+                    autoRunning ||
+                    vocabulary.length === 0
+                  }
                   onClick={async () => {
                     setAutoRunning(true);
                     setError(null);
                     try {
-                      const articleText = paragraphs
-                        .flatMap((p) =>
-                          [p.subtitle?.trim(), p.content?.trim()].filter(
-                            Boolean,
-                          ),
-                        )
-                        .filter(Boolean)
-                        .join("\n");
-                      if (articleText) {
-                        const { res, json } = await postJson(
-                          "/api/admin/tts/word",
-                          {
-                            text: articleText,
-                          },
-                        );
-                        if (res.ok && json?.ok && json?.url) {
-                          setAudio(String(json.url));
-                        }
-                      }
-                      for (let idx = 0; idx < vocabulary.length; idx++) {
-                        const v = vocabulary[idx];
-                        if (v.word?.trim()) {
-                          const { res: r1, json: j1 } = await postJson(
-                            "/api/admin/tts/word",
-                            { text: v.word.trim() },
-                          );
-                          if (r1.ok && j1?.ok && j1?.url) {
-                            setVocabulary((prev) => {
-                              const next = prev.slice();
-                              next[idx] = {
-                                ...next[idx],
-                                sound: String(j1.url),
-                              };
-                              return next;
-                            });
-                          }
-                        }
-                        if (v.example?.trim()) {
-                          const { res: r2, json: j2 } = await postJson(
-                            "/api/admin/tts/word",
-                            { text: v.example.trim() },
-                          );
-                          if (r2.ok && j2?.ok && j2?.url) {
-                            setVocabulary((prev) => {
-                              const next = prev.slice();
-                              next[idx] = {
-                                ...next[idx],
-                                exampleSound: String(j2.url),
-                              };
-                              return next;
-                            });
-                          }
-                        }
-                        if (v.word?.trim() && !v.image?.trim()) {
-                          const imageUrl = await smartUnsplashSearch(v.word.trim());
-                          if (imageUrl) {
-                            setVocabulary((prev) => {
-                              const next = prev.slice();
-                              next[idx] = { ...next[idx], image: imageUrl };
-                              return next;
-                            });
-                          }
-                          await new Promise((r) => setTimeout(r, 400));
-                        }
-                      }
+                      await runVocabularyAutoPhase({
+                        postJson,
+                        getParagraphsPlainText: () =>
+                          paragraphs
+                            .flatMap((p) =>
+                              [
+                                p.subtitle?.trim(),
+                                p.content?.trim(),
+                              ].filter(Boolean),
+                            )
+                            .filter(Boolean)
+                            .join("\n"),
+                        getVocabularySnapshot: () => vocabularyRef.current,
+                        patchVocabulary: (idx, patch) => {
+                          setVocabulary((prev) => {
+                            const next = prev.slice();
+                            next[idx] = { ...next[idx]!, ...patch };
+                            return next;
+                          });
+                        },
+                        includeArticleWideTts: true,
+                        setAudioFromArticleTts: (url) => setAudio(url),
+                        resetReadingCuesOnArticleTts: () => setReadingCues([]),
+                      });
                     } catch (e) {
                       setError(e instanceof Error ? e.message : "Auto failed");
                     } finally {

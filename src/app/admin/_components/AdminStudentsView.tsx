@@ -10,6 +10,7 @@ type Student = {
   name: string;
   email: string;
   phone?: string;
+  occupation?: string;
   adminNote?: string;
   notes?: Array<{ id: string; body: string; createdAt: string }>;
   payments?: Array<{ id: string; type: string; amount: number; createdAt: string; memo?: string }>;
@@ -215,7 +216,16 @@ export default function AdminStudentsView() {
               onClick={() => openDetail(s)}
               className="w-full text-left rounded border px-4 py-3 hover:bg-muted/20 transition"
             >
-              <div className="font-medium">{s.name}</div>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <div className="font-medium">{s.name}</div>
+                {(s.occupation ?? "").trim() ? (
+                  <div className="text-sm text-muted-foreground shrink-0 max-w-[min(100%,18rem)] truncate" title={(s.occupation ?? "").trim()}>
+                    직업: {(s.occupation ?? "").trim()}
+                  </div>
+                ) : (
+                  <span className="text-xs text-muted-foreground shrink-0">직업 미입력</span>
+                )}
+              </div>
               <div className="text-sm text-muted-foreground">{s.email}</div>
             </button>
           ))
@@ -277,7 +287,18 @@ export default function AdminStudentsView() {
         open={Boolean(selected)}
         onClose={() => setSelected(null)}
         title={selected ? `${selected.name}` : "학생"}
-        description={selected ? selected.email : ""}
+        description={
+          selected ? (
+            <span className="block space-y-0.5">
+              <span className="block">{selected.email}</span>
+              {(selected.occupation ?? "").trim() ? (
+                <span className="block text-muted-foreground text-sm">직업: {(selected.occupation ?? "").trim()}</span>
+              ) : null}
+            </span>
+          ) : (
+            ""
+          )
+        }
         footer={
           <Button variant="outline" onClick={() => setSelected(null)}>
             닫기

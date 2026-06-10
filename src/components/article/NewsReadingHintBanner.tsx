@@ -7,7 +7,8 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
-const STORAGE_KEY = "minjae-news-reading-hint-seen";
+/** Bumped when onboarding copy changes (e.g. icon → tap sentence). */
+const STORAGE_KEY = "minjae-news-reading-hint-seen-v2";
 
 function getSeen(): boolean {
   if (typeof window === "undefined") return true;
@@ -63,7 +64,7 @@ export function NewsReadingHintBanner() {
   if (!mounted || !visible) return null;
 
   const message =
-    "Use the icon next to Korean text for translation and explanation.";
+    "한국어 문장이나 단락을 눌러 보면 번역·해설을 볼 수 있어요.";
 
   if (isMobile) {
     return (

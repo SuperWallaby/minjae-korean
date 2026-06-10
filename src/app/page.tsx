@@ -14,6 +14,9 @@ import { StaggerReveal } from "@/components/ui/StaggerReveal";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+/** 1:1 session booking — set `true` when accepting new bookings again. */
+const SESSION_BOOKING_OPEN = false;
+
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
@@ -118,42 +121,31 @@ export default async function Home() {
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <StaggerReveal className="max-w-2xl">
               <h6 className="text-sm font-semibold tracking-wide text-primary">
-                Author & teacher
+                About me
               </h6>
               <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
                 Learn Korean with nuance, not just literal meaning
               </h2>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                Minjae writes the way he teaches: simple, practical, and focused
-                on how Korean really feels in conversation. The book and the
-                lessons are built to help you notice{" "}
-                <strong className="font-semibold text-foreground">
-                  tone, hidden meaning,
-                </strong>{" "}
-                and{" "}
-                <strong className="font-semibold text-foreground">
-                  everyday phrasing
-                </strong>{" "}
-                that direct translation often misses.
+                The meanings packed into Korean don&apos;t always survive the
+                trip into English—translation can quietly strip away what
+                really matters.
               </p>
-              <p className="mt-4 text-base leading-7 text-muted-foreground">
-                If you want structured guidance after reading, Minjae can help
-                you turn those phrases into something you can{" "}
+              <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+                I want to help you{" "}
                 <strong className="font-semibold text-foreground">
-                  actually use while speaking
+                  understand Korean more deeply
                 </strong>
-                .
+                , not just swap words between languages.
               </p>
-              <div className="mt-7 flex flex-wrap items-center gap-3">
-                <Button asChild size="md" variant="primary">
-                  <Link href="/booking">Book a session</Link>
-                </Button>
-                <Button asChild size="md" variant="outline">
-                  <Link href="/book/korean-beyond-translation">
-                    View the book
-                  </Link>
-                </Button>
-              </div>
+              <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+                I&apos;m always looking for ways to pass on the{" "}
+                <strong className="font-semibold text-foreground">
+                  real sense
+                </strong>{" "}
+                of what you&apos;re learning—simply, memorably, and with a bit
+                of fun.
+              </p>
             </StaggerReveal>
 
             <StaggerReveal
@@ -348,19 +340,44 @@ export default async function Home() {
             <h2 className="font-serif text-4xl font-medium leading-[1.22] tracking-tight sm:text-5xl">
               Start talking with Minjae.
             </h2>
+            {!SESSION_BOOKING_OPEN ? (
+              <p className="mt-3 text-base font-medium text-foreground/90 sm:text-lg">
+                1:1 세션을 당분간 운영하지 않아요.
+              </p>
+            ) : null}
             <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              No pressure. Pick a time, get direction and encouragement, and
-              keep growing.
+              {SESSION_BOOKING_OPEN ? (
+                <>
+                  No pressure. Pick a time, get direction and encouragement, and
+                  keep growing.
+                </>
+              ) : (
+                <>
+                  Session booking is paused for now. You can still explore the
+                  book and news practice below.
+                </>
+              )}
             </p>
             <div className="mx-auto mt-6 flex flex-row flex-nowrap items-center justify-center gap-3">
-              <Button
-                asChild
-                size="md"
-                variant="primary"
-                className="w-fit bg-black px-4 text-white hover:bg-black/90"
-              >
-                <Link href="/booking">Pick a time</Link>
-              </Button>
+              {SESSION_BOOKING_OPEN ? (
+                <Button
+                  asChild
+                  size="md"
+                  variant="primary"
+                  className="w-fit bg-black px-4 text-white hover:bg-black/90"
+                >
+                  <Link href="/booking">Pick a time</Link>
+                </Button>
+              ) : (
+                <Button
+                  size="md"
+                  variant="primary"
+                  disabled
+                  className="w-fit bg-black px-4 text-white"
+                >
+                  Pick a time
+                </Button>
+              )}
               <Button
                 asChild
                 size="md"

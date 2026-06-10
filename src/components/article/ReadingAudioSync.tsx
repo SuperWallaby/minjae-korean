@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Play } from "lucide-react";
 
 import { NewsDescribe } from "@/components/article/NewsDescribe";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
@@ -91,14 +90,6 @@ export function ReadingAudioSync({
     return active?.id ?? null;
   }, [currentTimeMs, orderedCues]);
 
-  const jumpToCue = React.useCallback((cue: ReadingCue) => {
-    const audioEl = audioRef.current;
-    if (!audioEl) return;
-    audioEl.currentTime = cue.startMs / 1000;
-    setCurrentTimeMs(cue.startMs);
-    void audioEl.play().catch(() => {});
-  }, []);
-
   return (
     <>
       <div className="sticky top-0 z-9999 -mx-4 mt-6 mb-6 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-sm backdrop-blur sm:-mx-6 sm:px-6">
@@ -123,7 +114,6 @@ export function ReadingAudioSync({
                 <CueRow
                   cue={subtitleCue}
                   isActive={isPlaying && activeCueId === subtitleCue.id}
-                  onJump={jumpToCue}
                   tone="subtitle"
                 />
               ) : paragraph.subtitle ? (
@@ -139,7 +129,6 @@ export function ReadingAudioSync({
                       key={cue.id}
                       cue={cue}
                       isActive={isPlaying && activeCueId === cue.id}
-                      onJump={jumpToCue}
                       tone="sentence"
                     />
                   ))}
@@ -158,16 +147,16 @@ export function ReadingAudioSync({
                 </div>
               ) : null}
               {paragraph.image ? (
-                <div className="mt-4 mb-10 overflow-hidden rounded-xl border border-border bg-muted/10">
+                <div className="mx-auto mt-4 mb-10 w-full max-w-[600px] overflow-hidden rounded-xl border border-border bg-muted/10">
                   <Image
                     src={paragraph.image}
                     alt={title}
-                    width={1600}
-                    height={900}
+                    width={1200}
+                    height={675}
                     className="h-auto w-full max-w-full"
                     style={{ width: "100%", height: "auto" }}
                     unoptimized
-                    sizes="(max-width: 896px) 100vw, 896px"
+                    sizes="(max-width: 600px) 100vw, 600px"
                   />
                 </div>
               ) : null}
@@ -182,35 +171,20 @@ export function ReadingAudioSync({
 function CueRow({
   cue,
   isActive,
-  onJump,
   tone,
 }: {
   cue: ReadingCue;
   isActive: boolean;
-  onJump: (cue: ReadingCue) => void;
   tone: "subtitle" | "sentence";
 }) {
   return (
     <div
       className={cn(
-        "flex items-start gap-3 rounded-xl px-2 py-1.5 transition-colors",
+        "rounded-xl px-2 py-1.5 transition-colors",
         isActive &&
           "bg-[rgba(74,156,134,0.10)] ring-1 ring-[rgba(74,156,134,0.18)]",
       )}
     >
-      <button
-        type="button"
-        onClick={() => onJump(cue)}
-        className={cn(
-          "mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:text-foreground hover:bg-muted/60",
-          isActive &&
-            "border-transparent bg-[rgba(74,156,134,0.16)] text-foreground",
-        )}
-        aria-label="Jump audio to this line"
-        title="Jump audio to this line"
-      >
-        <Play className="h-3.5 w-3.5 translate-x-px" />
-      </button>
       <div className={cn("min-w-0", tone === "sentence" && "flex-1")}>
         {tone === "subtitle" ? (
           <p className="font-semibold text-foreground">

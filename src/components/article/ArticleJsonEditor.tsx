@@ -7,6 +7,7 @@ const DEBOUNCE_MS = 500;
 
 export type ArticleJsonPayload = {
   title?: string;
+  introductionEn?: string;
   articleCode?: string;
   level?: number;
   levels?: number[];
@@ -46,6 +47,10 @@ function normalizePayload(parsed: unknown): ArticleJsonPayload {
   const uniqueLevels = Array.from(new Set(levels)).sort((a, b) => a - b);
   return {
     title: typeof o.title === "string" ? o.title : "",
+    introductionEn:
+      typeof o.introductionEn === "string" && o.introductionEn.trim()
+        ? o.introductionEn.trim()
+        : undefined,
     articleCode:
       typeof o.articleCode === "string" && o.articleCode.trim()
         ? o.articleCode.trim()

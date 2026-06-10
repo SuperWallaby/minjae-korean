@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { X } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
@@ -10,11 +10,13 @@ import { Button } from "@/components/ui/Button";
 export type ModalProps = {
   open: boolean;
   title?: string;
-  description?: string;
+  description?: React.ReactNode;
   /** Merged with default title typography (e.g. larger heading). */
   titleClassName?: string;
   /** Merged with default description typography. */
   descriptionClassName?: string;
+  /** Extra controls in the header row (e.g. crop actions); keep touch targets ≥44px on mobile. */
+  headerActions?: React.ReactNode;
   children: React.ReactNode;
   footer?: React.ReactNode;
   onClose: () => void;
@@ -22,6 +24,14 @@ export type ModalProps = {
   panelClassName?: string;
   /** Override default padding on the scrollable content area. */
   contentClassName?: string;
+  /**
+   * When true, shows a translucent overlay on the content area while keeping `children` mounted.
+   * Use this for image crop / apply flows so the preview does not disappear (avoid conditional
+   * `{busy ? <Spinner /> : <Cropper />}` which resets crop UI and confuses users).
+   */
+  contentBusy?: boolean;
+  /** Shown on the busy overlay; keep short. */
+  contentBusyText?: string;
 };
 
 export function Modal({
@@ -30,11 +40,14 @@ export function Modal({
   description,
   titleClassName,
   descriptionClassName,
+  headerActions,
   children,
   footer,
   onClose,
   panelClassName,
   contentClassName,
+  contentBusy = false,
+  contentBusyText,
 }: ModalProps) {
   const [mounted, setMounted] = React.useState(false);
 
@@ -72,8 +85,8 @@ export function Modal({
           aria-label={title ?? "modal"}
           onMouseDown={(e) => e.stopPropagation()}
         >
-          <div className="flex shrink-0 items-start justify-between gap-4 border-b border-border px-6 py-5">
-            <div className="min-w-0">
+          <div className="flex shrink-0 items-start justify-between gap-3 border-b border-border px-4 py-4 sm:gap-4 sm:px-6 sm:py-5">
+            <div className="min-w-0 flex-1">
               {title ? (
                 <div
                   className={cn(
@@ -95,23 +108,43 @@ export function Modal({
                 </div>
               ) : null}
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-9 w-9 shrink-0 rounded-md p-0"
-              aria-label="Close modal"
-              onClick={onClose}
-            >
-              <X className="size-4" />
-            </Button>
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+              {headerActions}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-11 w-11 min-h-11 min-w-11 shrink-0 rounded-md p-0 sm:h-9 sm:w-9 sm:min-h-0 sm:min-w-0"
+                aria-label="Close modal"
+                onClick={onClose}
+              >
+                <X className="size-5 sm:size-4" />
+              </Button>
+            </div>
           </div>
           <div
             className={cn(
-              "min-h-0 flex-1 overflow-y-auto px-6 py-5",
+              "relative min-h-0 flex-1 overflow-y-auto px-6 py-5",
               contentClassName
             )}
           >
             {children}
+            {contentBusy ? (
+              <div
+                className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-card/65 px-6 backdrop-blur-[2px]"
+                role="status"
+                aria-live="polite"
+                aria-busy="true"
+              >
+                <Loader2
+                  className="size-9 shrink-0 animate-spin text-foreground/80"
+                  aria-hidden
+                />
+                <p className="max-w-sm text-center text-sm leading-snug text-foreground/90">
+                  {contentBusyText ??
+                    "Processing your selection. The crop you chose is still what we use—this overlay only blocks taps while we finish."}
+                </p>
+              </div>
+            ) : null}
           </div>
           {footer ? (
             <div className="flex shrink-0 items-center justify-end gap-2 border-t border-border px-6 py-4">

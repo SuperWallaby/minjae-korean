@@ -21,6 +21,7 @@ export type SessionStudent = {
   email: string;
   phone?: string;
   sessionWish?: string;
+  occupation?: string;
   notes?: Array<{ id: string; body: string; createdAt: string }>;
   payments?: Array<{
     id: string;

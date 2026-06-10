@@ -22,6 +22,7 @@ export async function PATCH(req: NextRequest) {
       email: body.email,
       phone: body.phone,
       adminNote: body.adminNote,
+      ...(typeof body.occupation === "string" ? { occupation: body.occupation } : null),
     });
     if (!updated) return new Response(JSON.stringify({ ok: false, error: "Not found" }), { status: 404 });
     return new Response(JSON.stringify({ ok: true, data: { student: updated } }), { status: 200 });

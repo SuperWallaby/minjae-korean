@@ -55,7 +55,7 @@ export async function sendSupportPushToAll(
   const payload = JSON.stringify({
     title: "새 지원 채팅",
     body: `${fromLabel}: ${textPreview.slice(0, 60)}${textPreview.length > 60 ? "…" : ""}`,
-    url: "/admin/support",
+    url: "/admin?tab=messages",
     threadId,
   });
 

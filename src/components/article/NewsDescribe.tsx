@@ -9,5 +9,5 @@ type DescribeProps = React.ComponentProps<typeof Describe>;
 export function NewsDescribe(
   props: Omit<DescribeProps, "interpretationTrigger">,
 ) {
-  return <Describe interpretationTrigger="icon" {...props} />;
+  return <Describe interpretationTrigger="text" {...props} />;
 }
