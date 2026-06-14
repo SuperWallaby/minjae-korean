@@ -2,6 +2,9 @@
   "name": "korean-teacher-mj",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "sharp": "0.34.5"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -35,6 +38,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-icons": "^5.5.0",
+    "sharp": "^0.34.5",
     "stripe": "^20.3.1",
     "tailwind-merge": "^3.4.0",
     "web-push": "^3.6.7",
@@ -48,7 +52,6 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.7",
-    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vercel": "^50.39.0"
