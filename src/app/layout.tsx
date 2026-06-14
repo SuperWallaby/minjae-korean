@@ -78,6 +78,9 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: ["/brand/og.png"],
   },
+  other: {
+    "p:domain_verify": "7a6bc7a84bb2c6c634bf33f0618b07d7",
+  },
 };
 
 export default function RootLayout({
