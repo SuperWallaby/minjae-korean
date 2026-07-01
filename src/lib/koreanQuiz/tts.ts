@@ -10,6 +10,7 @@ import {
   resolveAutoVideoKoreanRoot,
   vocabQuizTtsScript,
 } from "./avkPaths";
+import { synthesizeAnswerTtsMp3 } from "./elevenlabsTts";
 import { patchKoreanQuizAnswerTtsMeta, resolveAnswerTtsText } from "./store";
 import {
   buildQuizAnswerTtsR2Key,
@@ -21,11 +22,10 @@ import {
   uploadToR2,
 } from "./objectStorage";
 import type { KoreanQuizItem } from "./types";
-
-const execFileAsync = promisify(execFile);
-
 import type { AnswerTtsVariant } from "./ttsUrls";
 import { answerTtsApiUrl } from "./ttsUrls";
+
+const execFileAsync = promisify(execFile);
 
 export type { AnswerTtsVariant };
 
@@ -52,6 +52,56 @@ function r2KeyForVariant(quizId: string, variant: AnswerTtsVariant): string {
     : buildQuizAnswerTtsR2Key(quizId);
 }
 
+export function answerTtsR2KeyForItem(
+  item: Pick<KoreanQuizItem, "id" | "answerTtsR2Key">,
+  variant: AnswerTtsVariant,
+): string {
+  if (variant === "normal" && item.answerTtsR2Key?.trim()) {
+    return item.answerTtsR2Key.trim();
+  }
+  return r2KeyForVariant(item.id, variant);
+}
+
+export function hasStoredAnswerTts(
+  item: Pick<
+    KoreanQuizItem,
+    "answerTtsR2Key" | "answerTtsUpdatedAt" | "answerTtsSlowUpdatedAt"
+  >,
+  variant: AnswerTtsVariant,
+): boolean {
+  if (variant === "slow") return Boolean(item.answerTtsSlowUpdatedAt?.trim());
+  return Boolean(item.answerTtsR2Key?.trim() || item.answerTtsUpdatedAt?.trim());
+}
+
+/** Public CDN URL when TTS key is known — no R2 credentials required. */
+export function getCachedAnswerTtsUrl(
+  item: Pick<KoreanQuizItem, "id" | "answerTtsR2Key">,
+  variant: AnswerTtsVariant = "normal",
+): string | undefined {
+  return publicUrlForR2Key(answerTtsR2KeyForItem(item, variant)) ?? undefined;
+}
+
+async function fetchPublicMp3(url: string): Promise<Buffer | null> {
+  try {
+    const res = await fetch(url, {
+      signal: AbortSignal.timeout(15_000),
+      headers: { Accept: "audio/mpeg, audio/*, */*" },
+    });
+    if (!res.ok) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    return buf.length > 0 ? buf : null;
+  } catch {
+    return null;
+  }
+}
+
+function withCacheBust(url: string, cacheKey?: string): string {
+  if (!cacheKey?.trim()) return url;
+  const parsed = new URL(url);
+  parsed.searchParams.set("v", cacheKey.trim());
+  return parsed.toString();
+}
+
 /** Cache-bust token for TTS URLs — stored timestamp or R2 LastModified after regen. */
 export async function resolveAnswerTtsCacheKey(
   item: Pick<
@@ -71,12 +121,26 @@ export async function resolveAnswerTtsCacheKey(
   return mod ? String(mod.getTime()) : undefined;
 }
 
-export async function resolveAnswerTtsApiUrl(
+/** Prefer CDN when audio is already stored; otherwise same-origin API (on-demand). */
+export async function resolveAnswerTtsPlaybackUrl(
   item: KoreanQuizItem,
   variant: AnswerTtsVariant = "normal",
 ): Promise<string> {
   const cacheKey = await resolveAnswerTtsCacheKey(item, variant);
+  const publicUrl = getCachedAnswerTtsUrl(item, variant);
+
+  if (publicUrl && hasStoredAnswerTts(item, variant)) {
+    return withCacheBust(publicUrl, cacheKey);
+  }
+
   return answerTtsApiUrl(item.id, variant, cacheKey);
+}
+
+export async function resolveAnswerTtsApiUrl(
+  item: KoreanQuizItem,
+  variant: AnswerTtsVariant = "normal",
+): Promise<string> {
+  return resolveAnswerTtsPlaybackUrl(item, variant);
 }
 
 /** Same-origin API URL for browser playback (generates on demand when R2 cache is empty). */
@@ -87,6 +151,10 @@ export async function generateAnswerTtsMp3(
   variant: AnswerTtsVariant,
   options?: { tonePrompt?: string },
 ): Promise<Buffer> {
+  if (process.env.ELEVENLABS_API_KEY?.trim()) {
+    return synthesizeAnswerTtsMp3({ text, variant });
+  }
+
   const avkRoot = resolveAutoVideoKoreanRoot();
   const pythonBin = resolveAutoVideoKoreanPython(avkRoot);
   const script = vocabQuizTtsScript(avkRoot);
@@ -147,7 +215,7 @@ async function uploadAnswerTtsMp3(
   });
 }
 
-/** Load MP3 bytes from R2 or generate + cache. */
+/** Load MP3 bytes from CDN / R2 or generate + cache. */
 export async function resolveAnswerTtsMp3(
   item: KoreanQuizItem,
   variant: AnswerTtsVariant = "normal",
@@ -155,10 +223,22 @@ export async function resolveAnswerTtsMp3(
   const label = resolveAnswerTtsText(item);
   if (!label) return null;
 
-  const r2Key = r2KeyForVariant(item.id, variant);
+  const cacheKey = await resolveAnswerTtsCacheKey(item, variant);
+  const r2Key = answerTtsR2KeyForItem(item, variant);
+  const publicUrl = getCachedAnswerTtsUrl(item, variant);
+
   if (isR2Configured()) {
     const cached = await getFromR2(r2Key);
     if (cached?.body.length) return cached.body;
+  }
+
+  if (publicUrl) {
+    const fromCdn = await fetchPublicMp3(withCacheBust(publicUrl, cacheKey));
+    if (fromCdn) return fromCdn;
+    if (cacheKey) {
+      const plain = await fetchPublicMp3(publicUrl);
+      if (plain) return plain;
+    }
   }
 
   if (!isKoreanQuizTtsConfigured()) {
@@ -172,11 +252,4 @@ export async function resolveAnswerTtsMp3(
     await uploadAnswerTtsMp3(item.id, variant, mp3);
   }
   return mp3;
-}
-
-/** @deprecated Use answerTtsApiUrl — kept for admin/debug */
-export function getCachedAnswerTtsUrl(item: KoreanQuizItem): string | undefined {
-  const existingKey = item.answerTtsR2Key?.trim();
-  if (!existingKey || !isR2Configured()) return undefined;
-  return publicUrlForR2Key(existingKey) ?? undefined;
 }

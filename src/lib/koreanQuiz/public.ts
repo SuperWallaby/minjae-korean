@@ -1,5 +1,4 @@
-import { answerTtsApiUrl } from "./ttsUrls";
-import { resolveAnswerTtsCacheKey } from "./tts";
+import { resolveAnswerTtsPlaybackUrl } from "./tts";
 import { shuffle } from "./shuffle";
 import { illustrationEnglishBelowImage } from "./englishGloss";
 import { resolveRomanizationDisplay } from "./romanization";
@@ -23,12 +22,10 @@ export async function toKoreanQuizPrepared(
   item: KoreanQuizItem,
 ): Promise<KoreanQuizPrepared> {
   const type = item.type ?? "image_mcq";
-  const [normalKey, slowKey] = await Promise.all([
-    resolveAnswerTtsCacheKey(item, "normal"),
-    resolveAnswerTtsCacheKey(item, "slow"),
+  const [answerTtsUrl, answerTtsSlowUrl] = await Promise.all([
+    resolveAnswerTtsPlaybackUrl(item, "normal"),
+    resolveAnswerTtsPlaybackUrl(item, "slow"),
   ]);
-  const answerTtsUrl = answerTtsApiUrl(item.id, "normal", normalKey);
-  const answerTtsSlowUrl = answerTtsApiUrl(item.id, "slow", slowKey);
   const correctLabel = correctLabelFromItem(item);
 
   const base = {

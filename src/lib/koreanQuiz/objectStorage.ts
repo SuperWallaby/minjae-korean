@@ -57,9 +57,10 @@ export function buildQuizAnswerTtsSlowR2Key(quizId: string): string {
 }
 
 export function publicUrlForR2Key(key: string): string | null {
-  const base = process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "");
-  if (!base) return null;
-  return base + "/" + key;
+  const base =
+    process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "") ||
+    "https://file.fancamrank.com";
+  return `${base}/${key}`;
 }
 
 export async function uploadToR2(options: {

@@ -5,8 +5,7 @@ import { illustrationEnglishBelowImage } from "./englishGloss";
 import { isExcludedQuizTopic, quizTopic } from "./category";
 import { KOREAN_QUIZ_EXCLUDED_TOPICS } from "./excludedTopics";
 import { resolveRomanizationDisplay } from "./romanization";
-import { answerTtsApiUrl } from "./ttsUrls";
-import { resolveAnswerTtsCacheKey } from "./tts";
+import { resolveAnswerTtsPlaybackUrl } from "./tts";
 import type {
   KoreanQuizAttempt,
   KoreanQuizDelivery,
@@ -122,14 +121,14 @@ async function homeCardFromItem(item: KoreanQuizItem): Promise<KoreanQuizHomeCar
   if (!imageUrl) return null;
   const label = correctLabelFromItem(item) || "Korean word";
   const illustrationEnglish = illustrationEnglishBelowImage(item);
-  const ttsKey = await resolveAnswerTtsCacheKey(item, "normal");
+  const answerTtsUrl = await resolveAnswerTtsPlaybackUrl(item, "normal");
   return {
     id: item.id,
     imageUrl,
     label,
     illustrationEnglish,
     romanization: resolveRomanizationDisplay(label, item.romanization),
-    answerTtsUrl: answerTtsApiUrl(item.id, "normal", ttsKey),
+    answerTtsUrl,
   };
 }
 
