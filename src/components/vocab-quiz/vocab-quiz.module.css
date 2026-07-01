@@ -1,0 +1,743 @@
+.vocabQuizRoot {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  color: #111827;
+}
+
+.vocabQuizMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.toolbarGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.storeFooter {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.storeFooterLabel {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.modeBtn,
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #111827;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.modeBtnActive {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem 1rem;
+  gap: 1rem;
+  max-width: 42rem;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+}
+
+.manualStage {
+  position: relative;
+  justify-content: flex-start;
+}
+
+.manualStageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.manualRevealOverlay {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  pointer-events: none;
+  text-align: center;
+  animation: fadeUp 0.25s ease;
+}
+
+.manualRevealRomanization {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: 0.01em;
+}
+
+.manualRevealHint {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.headerLogo {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.controlsBar {
+  flex-shrink: 0;
+  border-top: 1px solid #e5e7eb;
+  background: #fafafa;
+  padding: 0.65rem 0.75rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+}
+
+.controlsTouchRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.controlTouchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.85rem;
+  background: #fff;
+  color: #111827;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.controlTouchBtnPaused {
+  background: #111827;
+  border-color: #111827;
+  color: #fff;
+}
+
+.controlTouchBtnPaused:disabled {
+  opacity: 0.35;
+}
+
+.controlTouchBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.controlTouchIcon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.controlsShortcutRow {
+  display: none;
+  max-width: 42rem;
+  margin: 0.65rem auto 0;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.controlShortcutItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.controlShortcutLabel {
+  font-weight: 600;
+}
+
+.controlShortcutKbd {
+  display: inline-block;
+  border: 1px solid #d1d5db;
+  border-radius: 0.35rem;
+  background: #fff;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.68rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #374151;
+}
+
+@media (min-width: 768px) {
+  .controlsTouchRow {
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .controlsShortcutRow {
+    display: flex;
+  }
+
+  .controlsBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 767px) {
+  .controlsShortcutRow {
+    display: none;
+  }
+}
+
+.headerLines {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.headerPrimary {
+  font-size: clamp(1.1rem, 3.5vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.headerSecondary {
+  margin-top: 0.25rem;
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.sentenceStem {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.illustrationEnglishInFrame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.65rem;
+  margin: 0;
+  padding: 0 0.75rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #888888;
+  line-height: 1.35;
+  pointer-events: none;
+}
+
+.illustrationEnglish {
+  margin-top: 0.45rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #888888;
+  line-height: 1.35;
+}
+
+/* Image + countdown/answer overlay — reserved slot below image, no layout shift */
+.imageStage {
+  position: relative;
+  width: min(100%, 22rem);
+  padding-bottom: 9.5rem;
+}
+
+.imageVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.imageStageNoOverlay {
+  width: min(100%, 22rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.autoStage {
+  touch-action: manipulation;
+}
+
+.imageOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 9.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.countdownBubble {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #111827;
+  background: #f3f4f6;
+  border: 3px solid #e5e7eb;
+  animation: pop 0.35s ease;
+  flex-shrink: 0;
+}
+
+.countdownBubbleOne {
+  color: #2563eb;
+  background: #dbeafe;
+  border-color: #2563eb;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.answerBlock {
+  text-align: center;
+  animation: fadeUp 0.35s ease;
+  max-width: 100%;
+  pointer-events: auto;
+}
+
+.answerKorean {
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 800;
+  color: #111827;
+}
+
+.answerKoreanSlow {
+  color: #2563eb;
+}
+
+.answerRomanization {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: 0.01em;
+}
+
+.answerEnglish {
+  margin-top: 0.35rem;
+  font-size: 1.05rem;
+  color: #6b7280;
+}
+
+.choicesGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.manualStageRevealing .choicesGrid {
+  pointer-events: none;
+}
+
+.manualStageRevealing .choiceSpeakBtn {
+  pointer-events: auto;
+}
+
+.answerBlockRow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  max-width: 100%;
+}
+
+.answerSpeakBtn,
+.choiceSpeakBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: #16a34a;
+  padding: 0.2rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.answerSpeakBtn {
+  color: #2563eb;
+}
+
+.choiceContentMeasure {
+  position: relative;
+  width: 100%;
+  min-height: 1.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choiceEnglishTrail {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+  white-space: nowrap;
+  max-width: 42%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.choiceBtn {
+  position: relative;
+  border: 2px solid transparent;
+  background: #f9fafb;
+  border-radius: 1rem;
+  padding: 0.9rem 2.1rem 0.9rem 0.75rem;
+  min-height: 4.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.choiceSpeakBtn {
+  position: absolute;
+  right: 0.35rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.choiceBtn:disabled {
+  cursor: default;
+}
+
+.choiceLabel {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.choiceEnglish {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.choiceCorrect {
+  border-color: #16a34a;
+  background: #ecfdf5;
+}
+
+.choiceWrong {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.revealHint {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.emptyState,
+.errorState {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #6b7280;
+}
+
+.startOverlay {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.startTitle {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.startHint {
+  color: #6b7280;
+  font-size: 0.95rem;
+  max-width: 20rem;
+  line-height: 1.5;
+}
+
+.startBtn {
+  margin-top: 0.5rem;
+  border: none;
+  background: #111827;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.iconBtnFlagged {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #b45309;
+}
+
+.reviewLink {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #111827;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.reviewBackLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  text-decoration: none;
+}
+
+.reviewPage {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+  max-width: 42rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.reviewTitle {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.reviewHint {
+  margin-top: 0.5rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.reviewAdminLink {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.reviewList {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.reviewCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  background: #fff;
+  padding: 0.75rem;
+}
+
+.reviewThumb {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.reviewThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.reviewThumbEmpty {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  color: #9ca3af;
+  text-align: center;
+  padding: 0.35rem;
+}
+
+.reviewCardBody {
+  min-width: 0;
+}
+
+.reviewAnswer {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.reviewEnglish {
+  margin-top: 0.15rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.reviewMeta {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.reviewId {
+  margin-top: 0.35rem;
+  font-size: 0.68rem;
+  color: #9ca3af;
+  word-break: break-all;
+}
+
+.reviewId code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.reviewCardActions {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.reviewCardActions .modeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+}
+
+.reviewCardFlagIcon {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  color: #f59e0b;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

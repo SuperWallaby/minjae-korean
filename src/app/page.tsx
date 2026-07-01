@@ -3,11 +3,13 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
-import { BookHeroClickable } from "@/components/site/BookHeroClickable";
+import { BookHomeSection } from "@/components/site/BookHomeSection";
 import { Container } from "@/components/site/Container";
 import { Button } from "@/components/ui/Button";
 import { listArticles } from "@/lib/articlesRepo";
+import { sampleKoreanQuizHomeCards } from "@/lib/koreanQuiz/store";
 import { MembersReviewsSection } from "../components/site/StudentsReviewsSection";
+import { VocabQuizHomeSection } from "@/components/site/VocabQuizHomeSection";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 
@@ -47,71 +49,26 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   let news: Awaited<ReturnType<typeof listArticles>> = [];
+  let vocabQuizCards: Awaited<ReturnType<typeof sampleKoreanQuizHomeCards>> = [];
   try {
     news = await listArticles(6);
   } catch {
     news = [];
   }
+  try {
+    vocabQuizCards = await sampleKoreanQuizHomeCards(12);
+  } catch {
+    vocabQuizCards = [];
+  }
   return (
     <div className="space-y-12 md:space-y-24">
-      {/* 1) Hero — book launch */}
-      <section className="pt-12 sm:pt-18">
-        <Container className="relative">
-          <StaggerReveal className="overflow-hidden rounded-4xl border border-black/8 bg-[#f25b43] shadow-(--shadow-float)">
-            <div className="grid gap-10 px-6 py-10 sm:px-10 sm:py-12 lg:grid-cols-[minmax(260px,420px)_1fr] lg:items-center lg:px-14">
-              <div className="flex justify-center lg:justify-start">
-                <BookHeroClickable />
-              </div>
+      {/* 1) Hero — vocab quiz app */}
+      <VocabQuizHomeSection cards={vocabQuizCards} />
 
-              <div className="max-w-2xl text-white">
-                <div className="inline-flex items-center rounded-full border border-white/18 bg-white/12 px-4 py-2 font-serif text-sm font-semibold tracking-[0.08em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
-                  <span className="text-lg inline-block mr-1 mt-0.5">🥳</span>{" "}
-                  New Book
-                </div>
-                <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-                  Korean, Beyond Translation
-                </h1>
-                <p className="mt-5 max-w-xl text-base leading-7 text-white/82 sm:text-lg">
-                  <strong className="font-semibold text-white">
-                    100 words
-                  </strong>{" "}
-                  that teach the Korean people actually use. Learn the{" "}
-                  <strong className="font-semibold text-white">nuance</strong>{" "}
-                  behind direct translation and build a more natural feel for{" "}
-                  <strong className="font-semibold text-white">
-                    real conversation
-                  </strong>
-                  .
-                </p>
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <Button
-                    asChild
-                    size="md"
-                    variant="light"
-                    className="w-fit px-5"
-                  >
-                    <Link href="/book/korean-beyond-translation">
-                      Read sample content
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    size="md"
-                    variant="outline"
-                    className="w-fit border-white/45 bg-white/8 px-5 text-white hover:bg-white/14"
-                  >
-                    <Link href="/book/korean-beyond-translation">
-                      Buy for $9.90
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </StaggerReveal>
-        </Container>
-      </section>
+      {/* 2) Book */}
+      <BookHomeSection />
 
-      {/* 2) Author */}
+      {/* 3) Author */}
       <RevealOnScroll
         as="section"
         id="approach"
@@ -166,7 +123,7 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 3) News */}
+      {/* 4) News */}
       <RevealOnScroll as="section" className="bg-included-1 py-12 sm:py-16">
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
@@ -206,12 +163,12 @@ export default async function Home() {
         </Container>
       </RevealOnScroll>
 
-      {/* 4) Reviews */}
+      {/* 5) Reviews */}
       <RevealOnScroll as="div">
         <MembersReviewsSection />
       </RevealOnScroll>
 
-      {/* 4) Extras */}
+      {/* 6) Extras */}
       <RevealOnScroll as="section" className="py-10 sm:py-16">
         <Container>
           <div className="mx-auto max-w-6xl">
@@ -342,7 +299,7 @@ export default async function Home() {
             </h2>
             {!SESSION_BOOKING_OPEN ? (
               <p className="mt-3 text-base font-medium text-foreground/90 sm:text-lg">
-                1:1 세션을 당분간 운영하지 않아요.
+                1:1 sessions are paused for now.
               </p>
             ) : null}
             <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">

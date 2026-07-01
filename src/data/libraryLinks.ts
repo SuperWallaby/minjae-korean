@@ -65,5 +65,12 @@ export const LIBRARY_LINKS: readonly LibraryLink[] = [
     icon: "/cubs.webp",
     description: "Fundamental basics to build your Korean foundation.",
   },
+  {
+    href: "/vocab-quiz",
+    label: "Vocab Quiz",
+    icon: "/cubs.webp",
+    description: "Picture vocabulary drills — auto or multiple choice.",
+    emphasized: true,
+  },
 ] as const;
 

@@ -1,0 +1,421 @@
+.heroShell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: linear-gradient(145deg, #2563eb 0%, #1d4ed8 55%, #1e40af 100%);
+  box-shadow: var(--shadow-float);
+}
+
+.heroTopBar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1.25rem 0;
+}
+
+@media (min-width: 768px) {
+  .heroTopBar {
+    padding: 1.25rem 1.75rem 0;
+  }
+}
+
+.heroGrid {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem 1.25rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .heroGrid {
+    grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+    gap: 2.5rem 3rem;
+    padding: 2.5rem 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroGrid {
+    padding: 3rem 3.5rem;
+    gap: 3.5rem;
+  }
+}
+
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  background: rgb(255 255 255 / 0.12);
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.15);
+}
+
+.heroTitle {
+  margin-top: 1rem;
+  font-family: var(--font-serif, ui-serif, Georgia, serif);
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.heroLead {
+  margin-top: 1.25rem;
+  max-width: 32rem;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.heroStoreLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.65);
+}
+
+.sectionGrid {
+  display: grid;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sectionGrid {
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+    gap: 2.5rem 3rem;
+    padding: 2.5rem 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectionGrid {
+    padding: 2.75rem 3rem;
+    gap: 3rem;
+  }
+}
+
+.stackCol {
+  order: 2;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-inline: 0.75rem;
+}
+
+@media (max-width: 767px) {
+  .stackCol {
+    padding-inline: 1rem;
+    min-height: clamp(24.5rem, 112vw, 27.5rem);
+  }
+}
+
+.copyCol {
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .stackCol {
+    order: 1;
+    justify-content: flex-end;
+  }
+
+  .copyCol {
+    order: 2;
+  }
+}
+
+.cardStack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: var(--stack-h, 21rem);
+}
+
+.cardStackItem {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background: #fff;
+  box-shadow: 0 10px 28px rgb(17 24 39 / 0.08);
+  overflow: hidden;
+  transform-origin: center center;
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.12, 0.48, 1),
+    opacity 0.35s ease;
+}
+
+.cardStackItem[data-depth="0"] {
+  z-index: 3;
+  transform: translate(0, 0) rotate(0deg) scale(1);
+}
+
+.cardStackItem[data-depth="1"] {
+  z-index: 2;
+  opacity: 0.92;
+  transform: translate(-7px, 6px) rotate(-3.5deg) scale(0.95);
+}
+
+.cardStackItem[data-depth="2"] {
+  z-index: 1;
+  opacity: 0.84;
+  transform: translate(-14px, 12px) rotate(-7deg) scale(0.9);
+}
+
+.cardStackPromoting .cardStackItem[data-layer="mid"] {
+  z-index: 3;
+  opacity: 1;
+  transform: translate(0, 0) rotate(0deg) scale(1);
+}
+
+.cardStackPromoting .cardStackItem[data-layer="bot"] {
+  z-index: 2;
+  opacity: 0.92;
+  transform: translate(-7px, 6px) rotate(-3.5deg) scale(0.95);
+}
+
+@media (max-width: 767px) {
+  .cardStackItem[data-depth="1"] {
+    transform: translate(-5px, 5px) rotate(-2.5deg) scale(0.96);
+  }
+
+  .cardStackItem[data-depth="2"] {
+    transform: translate(-9px, 9px) rotate(-4.5deg) scale(0.92);
+  }
+
+  .cardStackPromoting .cardStackItem[data-layer="bot"] {
+    transform: translate(-5px, 5px) rotate(-2.5deg) scale(0.96);
+  }
+}
+
+.cardStackItem[data-layer="exit"] {
+  z-index: 4;
+  pointer-events: none;
+  animation: cardFlyOut 0.4s cubic-bezier(0.4, 0, 0.65, 1) forwards;
+}
+
+@keyframes cardFlyOut {
+  from {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(54px, -34px) rotate(11deg) scale(0.88);
+    opacity: 0;
+  }
+}
+
+.cardTop {
+  transform-origin: center center;
+}
+
+.cardInner {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #fff;
+}
+
+.cardMain {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.cardVisual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cardIllustrationEnglish {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.55rem;
+  margin: 0;
+  padding: 0 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #888888;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+.cardAnswerPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 0.85rem;
+  border-top: 1px solid transparent;
+  background: #fff;
+  transition:
+    max-height 0.38s cubic-bezier(0.34, 1.1, 0.48, 1),
+    opacity 0.32s ease,
+    padding 0.38s ease,
+    border-color 0.32s ease;
+  pointer-events: none;
+}
+
+.cardInnerRevealed .cardAnswerPanel,
+.cardTopRevealed .cardAnswerPanel {
+  max-height: 6rem;
+  opacity: 1;
+  padding: 0.55rem 0.85rem 0.8rem;
+  border-top-color: rgb(0 0 0 / 0.06);
+}
+
+.stackInteractiveWrap {
+  --stack-w: 15.5rem;
+  --stack-h: 21rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: min(100%, var(--stack-w));
+  margin-inline: auto;
+}
+
+.stackInteractiveWrapHero {
+  --stack-w: 18rem;
+  --stack-h: 24rem;
+}
+
+@media (max-width: 767px) {
+  .stackInteractiveWrapHero {
+    --stack-w: min(82vw, 18rem);
+    --stack-h: clamp(24.5rem, 112vw, 27.5rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .stackInteractiveWrapHero {
+    --stack-w: 18rem;
+    --stack-h: 24rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stackInteractiveWrapHero {
+    --stack-w: 19.5rem;
+    --stack-h: 25.5rem;
+  }
+}
+
+.cardStackButton {
+  display: block;
+  width: 100%;
+  height: var(--stack-h, 21rem);
+  min-height: var(--stack-h, 21rem);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cardStackButton:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 0.85);
+  outline-offset: 4px;
+  border-radius: 1.25rem;
+}
+
+.cardStackButton:disabled {
+  cursor: default;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cardStackButton:not(:disabled):hover .cardStackItem[data-layer="top"] {
+    transform: translate(0, -9px) rotate(0deg) scale(1.03);
+  }
+
+  .cardStackButton:not(:disabled):hover .cardStackItem[data-layer="mid"] {
+    transform: translate(-5px, 2px) rotate(-2deg) scale(0.97);
+  }
+
+  .cardStackButton:not(:disabled):hover .cardStackItem[data-layer="bot"] {
+    transform: translate(-11px, 8px) rotate(-5deg) scale(0.92);
+  }
+}
+
+.stackTapHint {
+  min-height: 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.stackTapHintHero {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.cardAnswer {
+  font-size: clamp(1.25rem, 4.8vw, 1.75rem);
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.cardRomanization {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.cardStackImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 0.85rem 0.85rem 0.25rem;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.cardStackItem[data-depth="0"],
+.cardTop {
+  box-shadow: 0 18px 40px rgb(17 24 39 / 0.14);
+}
+
+.cardStackItem[data-depth="1"] {
+  opacity: 0.92;
+}
+
+.cardStackItem[data-depth="2"] {
+  opacity: 0.84;
+}

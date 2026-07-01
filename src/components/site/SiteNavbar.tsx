@@ -135,6 +135,10 @@ export function SiteNavbar() {
     return () => obs.disconnect();
   }, [pathname]);
 
+  const hideOnVocabQuiz = pathname?.startsWith("/vocab-quiz") ?? false;
+
+  if (hideOnVocabQuiz) return null;
+
   return (
     <>
     <header

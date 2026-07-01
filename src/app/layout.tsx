@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Let's Talk in Korean`,
     description: SITE_DESCRIPTION,
-    images: [{ url: "/brand/og.png" }],
+    images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",

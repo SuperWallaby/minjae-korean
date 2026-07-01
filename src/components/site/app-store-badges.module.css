@@ -1,0 +1,78 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badgeLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  line-height: 0;
+  flex-shrink: 0;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.badgeLink:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.96);
+}
+
+.badgeLink:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.badgeAppStore {
+  width: 120px;
+}
+
+.badgePlayStore {
+  width: 134px;
+}
+
+.badgeSoon {
+  cursor: default;
+}
+
+.badgePending {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.badgeSoon:hover,
+.badgePending:hover {
+  transform: none;
+  filter: none;
+}
+
+.badgeImg {
+  display: block;
+  height: 40px;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.rowLg .badgeLink {
+  height: 52px;
+}
+
+.rowLg .badgeAppStore {
+  width: 156px;
+}
+
+.rowLg .badgePlayStore {
+  width: 174px;
+}
+
+.rowLg .badgeImg {
+  height: 52px;
+}

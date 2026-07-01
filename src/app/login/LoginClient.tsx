@@ -49,11 +49,11 @@ export function LoginClient() {
           <CardHeader className="mb-2 relative items-center text-center">
             {/* <ShieldCheck className="size-7 text-foreground/70" /> */}
             <Image
-              src="/signin.webp"
-              alt="Kaja Logo"
-              width={96}
-              height={88}
-              className="mx-auto"
+              src="/brand/logo.webp"
+              alt="Kaja logo"
+              width={80}
+              height={80}
+              className="mx-auto rounded-full"
             />
             <CardTitle className="text-2xl mt-4">Welcome to Kaja</CardTitle>
             <CardDescription className="w-full max-w-sm mx-auto text-center">

@@ -9,21 +9,23 @@ export function Logo({
   className?: string;
   mode?: "v1" | "v2" | "footer";
 }) {
-  const map = {
-    v1: "/brand/logo.webp",
-    v2: "/brand/logo-v2.webp",
-    footer: "/brand/logo-for-footer.png",
-  };
+  const size = mode === "footer" ? 48 : 40;
   return (
     <Link
       href="/"
       className={cn(
-        "inline-flex items-baseline gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "inline-flex items-center rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className,
       )}
       aria-label="Kaja home"
     >
-      <Image width={71} height={28} src={map[mode]} alt="Kaja logo" />
+      <Image
+        width={size}
+        height={size}
+        src="/brand/logo.webp"
+        alt="Kaja logo"
+        className="rounded-full"
+      />
     </Link>
   );
 }
