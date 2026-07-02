@@ -7,6 +7,7 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 
+import { resolveBlogCoverImage } from "./cover";
 import type {
   BlogPost,
   BlogPostCard,
@@ -35,6 +36,7 @@ const SLUG_LIST = [
   "good-korean-teacher-2026",
   "korean-verb-endings",
   "mastering-korean-emotions-not-just-words",
+  "balanced-practice-trumps-method-for-korean",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
@@ -51,6 +53,7 @@ const loaders: Record<
   "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),
   "good-korean-teacher-2026": () => import("./content/good-korean-teacher-2026"),
   "korean-verb-endings": () => import("./content/korean-verb-endings"),
+  "balanced-practice-trumps-method-for-korean": () => import("./content/balanced-practice-trumps-method-for-korean"),
   "mastering-korean-emotions-not-just-words": () => import("./content/mastering-korean-emotions-not-just-words"),
 };  
 
@@ -64,11 +67,17 @@ export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {
       const p = m.post;
       if (!p) return null;
       const o = overrides[p.slug];
+      const merged = {
+        ...p,
+        imageThumb: o?.imageThumb ?? p.imageThumb,
+        imageLarge: o?.imageLarge ?? p.imageLarge,
+      };
+      const cover = resolveBlogCoverImage(merged);
       return {
         slug: p.slug,
         title: p.title,
-        imageThumb: o?.imageThumb ?? p.imageThumb,
-        imageLarge: o?.imageLarge ?? p.imageLarge,
+        imageThumb: cover,
+        imageLarge: cover,
         level: p.level,
         createdAt: p.createdAt,
         pinned: o?.pinned ?? false,

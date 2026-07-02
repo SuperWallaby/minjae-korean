@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
-import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
 import { listBlogPosts } from "@/data/blogPosts";
 import {
   MarketingHeader,
@@ -47,18 +46,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const items = await listBlogPosts(100);
-  const feedItems = items.map((post) => {
-    const cover = resolveBlogCoverImage(post);
-    return {
-      slug: post.slug,
-      title: post.title,
-      imageThumb: cover,
-      imageLarge: cover,
-      level: post.level,
-      createdAt: post.createdAt,
-    };
-  });
+  const feedItems = await listBlogPosts(100);
 
   return (
     <MarketingPage containerClassName="max-w-5xl">

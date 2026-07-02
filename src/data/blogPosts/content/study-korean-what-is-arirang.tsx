@@ -6,8 +6,6 @@ export const post: BlogPost = {
   slug: "study-korean-what-is-arirang",
   title: "What Is Arirang?",
   level: 2,
-  imageThumb: "/brand/og.png",
-  imageLarge: "/brand/og.png",
   createdAt: "2026-03-17",
   paragraphs: [
     {

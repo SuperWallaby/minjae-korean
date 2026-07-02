@@ -218,7 +218,7 @@ export function SiteNavbar() {
                               key={link.href}
                               href={link.href}
                               className={cn(
-                                "flex items-center gap-3 rounded-xl px-4 py-3 mx-1.5 text-base group",
+                                "flex items-center rounded-xl px-4 py-3 mx-1.5 text-base",
                                 active
                                   ? "bg-muted text-foreground font-medium"
                                   : "text-muted-foreground hover:text-foreground hover:bg-muted/40",
@@ -228,17 +228,6 @@ export function SiteNavbar() {
                               )}
                               onClick={() => setAssetsOpen(false)}
                             >
-                              <Image
-                                src={link.icon}
-                                alt={link.label}
-                                width={24}
-                                height={24}
-                                className={cn("size-6 shrink-0 ", {
-                                  "opacity-100": active,
-                                  "opacity-80 group-hover:opacity-100": !active,
-                                  "size-7": link.emphasized,
-                                })}
-                              />
                               {link.label}
                             </Link>
                           );

@@ -24,7 +24,9 @@
     "youtube:explore-write": "node scripts/youtube_explore_then_article.mjs",
     "youtube:caption-smoke": "node scripts/youtube_caption_smoke_test.mjs",
     "blog:fetch": "node scripts/youtube_fetch_one.mjs",
-    "blog:from-youtube": "node scripts/blog_from_youtube.mjs"
+    "blog:from-youtube": "node scripts/blog_from_youtube.mjs",
+    "blog:cover": "node scripts/blog_cover_only.mjs",
+    "newsletter:upload-pdf": "node scripts/r2_put_newsletter_pdf.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",

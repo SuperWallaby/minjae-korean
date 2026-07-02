@@ -68,19 +68,32 @@ export function SubscribeClient() {
                 className="mt-5"
               />
 
-              <ul className="mx-auto mt-8 grid max-w-md gap-3 text-left text-sm text-[var(--quiz-text-sub)]">
-                <li className="flex items-start gap-3 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3">
+              <ul className="mx-auto mt-8 grid max-w-md gap-3 text-left text-sm">
+                <li className="flex items-start gap-3 rounded-[1.125rem] border border-[color-mix(in_srgb,var(--quiz-primary)_28%,var(--quiz-border))] bg-[color-mix(in_srgb,var(--quiz-primary)_7%,var(--quiz-surface))] px-4 py-3.5 shadow-sm">
                   <FileText className="mt-0.5 size-4 shrink-0 text-[var(--quiz-primary)]" />
-                  <span>Free Korean study PDF, straight to your inbox</span>
+                  <span className="text-[var(--quiz-text-sub)]">
+                    <strong className="font-semibold text-[var(--quiz-text)]">
+                      Free Korean study PDF
+                    </strong>
+                    , straight to your inbox
+                  </span>
                 </li>
-                <li className="flex items-start gap-3 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3">
+                <li className="flex items-start gap-3 rounded-[1.125rem] border border-[color-mix(in_srgb,var(--quiz-primary)_28%,var(--quiz-border))] bg-[color-mix(in_srgb,var(--quiz-primary)_7%,var(--quiz-surface))] px-4 py-3.5 shadow-sm">
                   <Puzzle className="mt-0.5 size-4 shrink-0 text-[var(--quiz-primary)]" />
-                  <span>Korean quizzes and challenges sent by email</span>
+                  <span className="text-[var(--quiz-text-sub)]">
+                    <strong className="font-semibold text-[var(--quiz-text)]">
+                      Korean quizzes and challenges
+                    </strong>{" "}
+                    sent by email
+                  </span>
                 </li>
-                <li className="flex items-start gap-3 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3">
+                <li className="flex items-start gap-3 rounded-[1.125rem] border border-[color-mix(in_srgb,var(--quiz-primary)_28%,var(--quiz-border))] bg-[color-mix(in_srgb,var(--quiz-primary)_7%,var(--quiz-surface))] px-4 py-3.5 shadow-sm">
                   <BookOpen className="mt-0.5 size-4 shrink-0 text-[var(--quiz-primary)]" />
-                  <span>
-                    Practical material from a professional Korean teacher
+                  <span className="text-[var(--quiz-text-sub)]">
+                    Practical material from a{" "}
+                    <strong className="font-semibold text-[var(--quiz-text)]">
+                      professional Korean teacher
+                    </strong>
                   </span>
                 </li>
               </ul>

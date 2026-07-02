@@ -7,8 +7,8 @@ export const post: BlogPost = {
   slug: "why-korean-translation-loses-meaning",
   title: "Why Does Meaning Disappear When You Translate Korean?",
   level: 3,
-  imageThumb: "/brand/og.png",
-  imageLarge: "/brand/og.png",
+  imageThumb: "/mistrans.webp",
+  imageLarge: "/mistrans.webp",
   createdAt: "2026-03-18",
   paragraphs: [
     {

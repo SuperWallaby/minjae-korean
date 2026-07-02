@@ -46,7 +46,7 @@ Three rows in `rounded-[1.125rem]` tiles:
 
 ## Email (API)
 
-Welcome email mentions PDF link + future quiz/challenge emails. PDF URL from `NEWSLETTER_WELCOME_PDF_URL` or `/downloads/kaja-korean-starter.pdf`.
+Welcome email mentions PDF link + future quiz/challenge emails. PDF is hosted on public R2 (`NEWSLETTER_WELCOME_PDF_URL`, default `https://file.kajakorean.com/downloads/kaja-korean-book-preview.pdf`). Upload with `npm run newsletter:upload-pdf`.
 
 ## Reuse
 

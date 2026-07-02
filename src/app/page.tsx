@@ -6,7 +6,6 @@ import { HomeRenewalSections } from "@/components/site/HomeRenewalSections";
 import { VocabQuizHomeSection } from "@/components/site/VocabQuizHomeSection";
 import { listArticles } from "@/lib/articlesRepo";
 import { listBlogPosts } from "@/data/blogPosts";
-import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
 import { sampleKoreanQuizHomeCards } from "@/lib/koreanQuiz/store";
 
 export const runtime = "nodejs";
@@ -69,17 +68,7 @@ export default async function Home() {
 
       <HomeRenewalSections
         news={news}
-        blog={blog.map((post) => {
-          const cover = resolveBlogCoverImage(post);
-          return {
-            slug: post.slug,
-            title: post.title,
-            imageThumb: cover,
-            imageLarge: cover,
-            level: post.level,
-            createdAt: post.createdAt,
-          };
-        })}
+        blog={blog}
       />
     </div>
   );

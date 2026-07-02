@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 
 import { upsertNewsletterSubscriber } from "@/lib/newsletterSubscribersRepo";
+import { newsletterUnsubscribeUrl } from "@/lib/newsletterUnsubscribe";
+import { resolveNewsletterWelcomePdfUrl } from "@/lib/newsletterWelcomePdf";
 import { sendResendEmail } from "@/lib/resendEmail";
 
 export const runtime = "nodejs";
@@ -11,14 +13,13 @@ function isEmail(s: string) {
 }
 
 function welcomePdfUrl() {
-  const fromEnv = process.env.NEWSLETTER_WELCOME_PDF_URL?.trim();
-  if (fromEnv) return fromEnv;
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
-  return `${siteUrl.replace(/\/$/, "")}/downloads/kaja-korean-starter.pdf`;
+  return resolveNewsletterWelcomePdfUrl();
 }
 
-function buildWelcomeEmail(pdfUrl: string) {
+function buildWelcomeEmail(pdfUrl: string, email: string) {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+  const unsubscribeUrl = newsletterUnsubscribeUrl(email, siteUrl);
   const subject = "Your Kaja Korean learning PDF";
   const text = [
     "Thanks for subscribing to Kaja Korean!",
@@ -27,6 +28,8 @@ function buildWelcomeEmail(pdfUrl: string) {
     pdfUrl,
     "",
     "You'll also receive Korean quizzes and challenges by email — so you can keep practicing.",
+    "",
+    `Unsubscribe: ${unsubscribeUrl}`,
     "",
     "Happy studying!",
     "— Minjae / Kaja Korean",
@@ -44,6 +47,7 @@ function buildWelcomeEmail(pdfUrl: string) {
       <p style="margin: 0 0 8px; font-size: 14px; color: #6e6e73;">If the button does not work, copy this link:</p>
       <p style="margin: 0; font-size: 13px; word-break: break-all;"><a href="${pdfUrl}">${pdfUrl}</a></p>
       <p style="margin: 20px 0 0; font-size: 12px; color: #86868b;">Happy studying!<br>— Minjae / Kaja Korean</p>
+      <p style="margin: 14px 0 0; font-size: 12px; color: #86868b;"><a href="${unsubscribeUrl}" style="color:#0071e3;">Unsubscribe</a></p>
     </div>
   `.trim();
   return { subject, text, html };
@@ -67,7 +71,7 @@ export async function POST(req: NextRequest) {
     await upsertNewsletterSubscriber({ email, source });
 
     const pdfUrl = welcomePdfUrl();
-    const mail = buildWelcomeEmail(pdfUrl);
+    const mail = buildWelcomeEmail(pdfUrl, email);
     await sendResendEmail({ to: email, ...mail });
 
     return new Response(JSON.stringify({ ok: true }), {

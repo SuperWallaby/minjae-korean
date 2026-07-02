@@ -4,6 +4,7 @@ export type NewsletterSubscriber = {
   email: string;
   subscribedAt: string;
   source?: string;
+  unsubscribedAt?: string;
 };
 
 type NewsletterSubscriberDoc = NewsletterSubscriber & {
@@ -17,6 +18,7 @@ async function subscribersCollection() {
   const col = db.collection<NewsletterSubscriberDoc>("newsletter_subscribers");
   if (!indexEnsured) {
     await col.createIndex({ email: 1 }, { unique: true });
+    await col.createIndex({ unsubscribedAt: 1 });
     indexEnsured = true;
   }
   return col;
@@ -33,13 +35,19 @@ export async function upsertNewsletterSubscriber(args: {
   if (existing) {
     await col.updateOne(
       { email },
-      { $set: { source: args.source?.trim() || existing.source } },
+      {
+        $set: {
+          source: args.source?.trim() || existing.source,
+          subscribedAt: existing.subscribedAt || now,
+        },
+        $unset: { unsubscribedAt: "" },
+      },
     );
     return {
       created: false,
       subscriber: {
         email,
-        subscribedAt: existing.subscribedAt,
+        subscribedAt: existing.subscribedAt || now,
         source: args.source?.trim() || existing.source,
       },
     };
@@ -51,4 +59,31 @@ export async function upsertNewsletterSubscriber(args: {
   };
   await col.insertOne(subscriber);
   return { created: true, subscriber };
+}
+
+export async function listActiveNewsletterSubscribers(): Promise<
+  NewsletterSubscriber[]
+> {
+  const col = await subscribersCollection();
+  const rows = await col
+    .find({ unsubscribedAt: { $exists: false } })
+    .sort({ subscribedAt: -1 })
+    .toArray();
+  return rows.map((row) => ({
+    email: row.email,
+    subscribedAt: row.subscribedAt,
+    source: row.source,
+  }));
+}
+
+export async function unsubscribeNewsletterSubscriber(
+  email: string,
+): Promise<boolean> {
+  const normalized = email.trim().toLowerCase();
+  const col = await subscribersCollection();
+  const res = await col.updateOne(
+    { email: normalized },
+    { $set: { unsubscribedAt: new Date().toISOString() } },
+  );
+  return res.matchedCount > 0;
 }
