@@ -9,11 +9,11 @@ const SITE_URL =
 export const metadata: Metadata = {
   title: "Get Free Book | Subscribe to Kaja",
   description:
-    "Subscribe to Kaja Korean and get a free Korean learning PDF, plus quizzes and challenges by email.",
+    "Subscribe to Kaja Korean and get a free Korean learning PDF, plus quizzes and challenges every week!",
   openGraph: {
     title: "Get Free Book | Subscribe to Kaja",
     description:
-      "Subscribe to Kaja Korean and get a free Korean learning PDF, plus quizzes and challenges by email.",
+      "Subscribe to Kaja Korean and get a free Korean learning PDF, plus quizzes and challenges every week!",
     url: `${SITE_URL.replace(/\/$/, "")}/subscribe`,
     siteName: "Kaja",
     type: "website",
