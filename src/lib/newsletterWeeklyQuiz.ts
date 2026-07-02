@@ -137,15 +137,27 @@ function optionCell(option: WeeklyPictureQuizOption): string {
   return `
     <td align="center" valign="top" style="padding:8px;width:50%;">
       <div style="font-size:13px;font-weight:700;color:#0071e3;margin-bottom:8px;">${option.letter}</div>
-      <div style="width:148px;height:148px;margin:0 auto;border-radius:16px;border:1px solid #e5e5ea;background:#f4f4f5;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-        <img
-          src="${src}"
-          alt="Option ${option.letter}"
-          width="148"
-          height="148"
-          style="display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:#f4f4f5;"
-        />
-      </div>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="148" style="margin:0 auto;border-collapse:collapse;">
+        <tr>
+          <td
+            align="center"
+            valign="middle"
+            width="148"
+            height="148"
+            bgcolor="#f4f4f5"
+            style="width:148px;height:148px;border-radius:16px;border:1px solid #e5e5ea;background-color:#f4f4f5;"
+          >
+            <img
+              src="${src}"
+              alt="Option ${option.letter}"
+              width="148"
+              height="148"
+              border="0"
+              style="display:block;width:148px;height:148px;border:0;border-radius:16px;"
+            />
+          </td>
+        </tr>
+      </table>
     </td>
   `.trim();
 }

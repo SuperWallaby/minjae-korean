@@ -11,6 +11,7 @@ import {
   buildWeeklyQuizEmail,
   newsletterWeekKey,
 } from "@/lib/newsletterWeeklyQuiz";
+import { flattenQuizImagesForEmail } from "@/lib/newsletterQuizImageEmail";
 import { sendResendEmail } from "@/lib/resendEmail";
 
 export const runtime = "nodejs";
@@ -77,10 +78,12 @@ export async function GET(req: NextRequest) {
       ? [{ email: testTo, subscribedAt: new Date().toISOString() }]
       : await listActiveNewsletterSubscribers();
     const base = siteUrl();
+    const emailQuiz =
+      dryRun ? quiz : await flattenQuizImagesForEmail(quiz);
 
     if (dryRun) {
       const preview = buildWeeklyQuizEmail({
-        quiz,
+        quiz: emailQuiz,
         siteUrl: base,
         recipientEmail: subscribers[0]?.email || "preview@example.com",
       });
@@ -122,7 +125,7 @@ export async function GET(req: NextRequest) {
     for (const subscriber of subscribers) {
       try {
         const mail = buildWeeklyQuizEmail({
-          quiz,
+          quiz: emailQuiz,
           siteUrl: base,
           recipientEmail: subscriber.email,
         });
