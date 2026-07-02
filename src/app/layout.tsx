@@ -6,7 +6,6 @@ import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
 import { EducationModeProvider } from "@/lib/EducationModeProvider";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
-import { SupportChatWidget } from "@/components/support/SupportChatWidget";
 import { TeachingSpotlight } from "@/components/site/TeachingSpotlight";
 import { QuickNote } from "@/components/QuickNote";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -110,7 +109,6 @@ export default function RootLayout({
               <SiteNavbar />
               <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
               <SiteFooter />
-              <SupportChatWidget />
               <QuickNote />
             </div>
           </EducationModeProvider>
