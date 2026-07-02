@@ -42,9 +42,15 @@ export function getCachedAnswerTtsUrl(
   item: Pick<KoreanQuizItem, "id" | "imageUrl" | "answerTtsR2Key">,
   variant: AnswerTtsVariant = "normal",
 ): string | undefined {
-  if (!hasStoredAnswerTts(item, variant)) return undefined;
   const origin = resolveQuizCdnOrigin(item);
+  if (!origin) return undefined;
   const key = answerTtsR2KeyForItem(item, variant);
+  // Normal TTS: korean-quiz uploads every approved quiz image to the same CDN bucket at
+  // system/quiz-tts/{id}.mp3 — do not require DB metadata (answerTtsUpdatedAt) to expose URL.
+  if (variant === "normal" && item.imageUrl?.trim()) {
+    return publicUrlForR2Key(key, origin) ?? undefined;
+  }
+  if (!hasStoredAnswerTts(item, variant)) return undefined;
   return publicUrlForR2Key(key, origin) ?? undefined;
 }
 
