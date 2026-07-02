@@ -22,7 +22,13 @@ export type WeeklyPictureQuiz = {
   word: string;
   english?: string;
   romanization?: string;
+  examples: WeeklyQuizExample[];
   options: WeeklyPictureQuizOption[];
+};
+
+export type WeeklyQuizExample = {
+  korean: string;
+  english: string;
 };
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
@@ -67,6 +73,48 @@ function englishForItem(item: KoreanQuizItem): string | undefined {
   return choice?.english?.trim() || item.illustrationEnglish?.trim() || undefined;
 }
 
+function hasBatchim(word: string): boolean {
+  const ch = word.trim().slice(-1);
+  if (!ch) return false;
+  const code = ch.charCodeAt(0);
+  if (code < 0xac00 || code > 0xd7a3) return false;
+  return (code - 0xac00) % 28 !== 0;
+}
+
+function objectParticle(word: string): "을" | "를" {
+  return hasBatchim(word) ? "을" : "를";
+}
+
+function copula(word: string): "이에요" | "예요" {
+  return hasBatchim(word) ? "이에요" : "예요";
+}
+
+function englishWithArticle(english: string): string {
+  const gloss = english.trim();
+  if (!gloss) return "it";
+  if (/^(a|an|the)\s/i.test(gloss)) return gloss;
+  return /^[aeiou]/i.test(gloss) ? `an ${gloss}` : `a ${gloss}`;
+}
+
+export function weeklyQuizExampleSentences(
+  word: string,
+  english?: string,
+): WeeklyQuizExample[] {
+  const gloss = english?.trim();
+  const obj = objectParticle(word);
+  const cop = copula(word);
+  return [
+    {
+      korean: `이것은 ${word}${cop}.`,
+      english: gloss ? `This is ${englishWithArticle(gloss)}.` : `This is ${word}.`,
+    },
+    {
+      korean: `저는 ${word}${obj} 좋아해요.`,
+      english: gloss ? `I like ${englishWithArticle(gloss)}.` : `I like ${word}.`,
+    },
+  ];
+}
+
 export async function buildWeeklyPictureQuiz(
   weekKey = newsletterWeekKey(),
 ): Promise<WeeklyPictureQuiz> {
@@ -101,6 +149,7 @@ export async function buildWeeklyPictureQuiz(
     word,
     english: englishForItem(target),
     romanization: resolveRomanizationDisplay(word, target.romanization),
+    examples: weeklyQuizExampleSentences(word, englishForItem(target)),
     options: optionItems.map((entry, index) => ({
       letter: String.fromCharCode(65 + index),
       imageUrl: entry.item.imageUrl.trim(),
@@ -145,27 +194,40 @@ export function buildWeeklyQuizEmail(args: {
   const unsubscribeUrl = newsletterUnsubscribeUrl(recipientEmail, base);
   const answer = quiz.options.find((o) => o.correct)?.letter ?? "?";
 
-  const wordLine = quiz.english
-    ? `${quiz.word} (${quiz.english})`
-    : quiz.word;
   const romanizationLine = quiz.romanization
-    ? `<div style="margin-top:6px;font-size:15px;color:#6e6e73;">[${escapeHtml(quiz.romanization)}]</div>`
+    ? `<div style="margin-top:6px;font-size:15px;color:#6e6e73;">${escapeHtml(quiz.romanization)}</div>`
     : "";
+
+  const examplesHtml = quiz.examples
+    .map(
+      (ex, index) => `
+        <div style="margin-top:${index === 0 ? "0" : "12px"};">
+          <div style="font-size:15px;font-weight:600;color:#1d1d1f;">${escapeHtml(ex.korean)}</div>
+          <div style="margin-top:4px;font-size:14px;color:#6e6e73;">${escapeHtml(ex.english)}</div>
+        </div>
+      `,
+    )
+    .join("");
+
+  const examplesText = quiz.examples
+    .map((ex, index) => `${index + 1}. ${ex.korean}\n   ${ex.english}`)
+    .join("\n");
 
   const subject = `This week's Korean quiz — which picture matches “${quiz.word}”?`;
 
   const text = [
     "This week's Korean quiz from Kaja Korean",
     "",
-    `Which picture matches this word?`,
-    wordLine,
-    quiz.romanization ? `[${quiz.romanization}]` : "",
+    "Which picture matches this word?",
+    quiz.word,
+    quiz.romanization ? quiz.romanization : "",
     "",
-    ...quiz.options.map(
-      (o) => `${o.letter}. ${o.imageUrl}`,
-    ),
+    ...quiz.options.map((o) => `${o.letter}. ${o.imageUrl}`),
     "",
     `Answer: ${answer}`,
+    quiz.english ? `Meaning: ${quiz.english}` : "",
+    quiz.examples.length > 0 ? "Examples:" : "",
+    examplesText,
     "",
     `Practice more: ${vocabQuizUrl}`,
     `App Store: ${appStoreUrl}`,
@@ -207,11 +269,6 @@ export function buildWeeklyQuizEmail(args: {
         <div style="font-size:13px;color:#6e6e73;margin-bottom:8px;">Today's word</div>
         <div style="font-size:34px;font-weight:700;letter-spacing:-0.02em;">${escapeHtml(quiz.word)}</div>
         ${romanizationLine}
-        ${
-          quiz.english
-            ? `<div style="margin-top:8px;font-size:15px;color:#424245;">${escapeHtml(quiz.english)}</div>`
-            : ""
-        }
       </div>
 
       <p style="margin:0 0 12px;font-size:15px;font-weight:600;">Pick the matching picture</p>
@@ -222,7 +279,23 @@ export function buildWeeklyQuizEmail(args: {
       <div style="margin:22px 0 0;padding:16px 18px;border-radius:16px;background:#f5f5f7;">
         <div style="font-size:13px;color:#6e6e73;margin-bottom:6px;">Answer</div>
         <div style="font-size:18px;font-weight:700;">${escapeHtml(answer)}</div>
-        <p style="margin:10px 0 0;font-size:14px;color:#424245;">
+        ${
+          quiz.english
+            ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e5e5ea;">
+                <div style="font-size:13px;color:#6e6e73;margin-bottom:4px;">Meaning</div>
+                <div style="font-size:16px;font-weight:600;color:#1d1d1f;">${escapeHtml(quiz.english)}</div>
+              </div>`
+            : ""
+        }
+        ${
+          quiz.examples.length > 0
+            ? `<div style="margin-top:14px;padding-top:14px;border-top:1px solid #e5e5ea;">
+                <div style="font-size:13px;color:#6e6e73;margin-bottom:8px;">Examples</div>
+                ${examplesHtml}
+              </div>`
+            : ""
+        }
+        <p style="margin:14px 0 0;font-size:14px;color:#424245;">
           Images blocked in your inbox? Open the quiz in the app or browser for the full experience.
         </p>
       </div>
