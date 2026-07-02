@@ -14,12 +14,13 @@ const CONFETTI_COLORS = ["#0071e3", "#34c759", "#ff9500", "#af52de", "#ff2d55"];
 function burstConfetti(canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
+  const draw = ctx;
 
   const rect = canvas.getBoundingClientRect();
   const dpr = window.devicePixelRatio || 1;
   canvas.width = Math.floor(rect.width * dpr);
   canvas.height = Math.floor(rect.height * dpr);
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  draw.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   const w = rect.width;
   const h = rect.height;
@@ -40,7 +41,7 @@ function burstConfetti(canvas: HTMLCanvasElement) {
   const maxFrames = 95;
 
   function tick() {
-    ctx.clearRect(0, 0, w, h);
+    draw.clearRect(0, 0, w, h);
     for (const p of particles) {
       p.x += p.vx;
       p.y += p.vy;
@@ -49,20 +50,20 @@ function burstConfetti(canvas: HTMLCanvasElement) {
       p.life -= 1 / maxFrames;
       if (p.life <= 0) continue;
 
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rot);
-      ctx.globalAlpha = Math.max(0, p.life);
-      ctx.fillStyle = p.color;
-      ctx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
-      ctx.restore();
+      draw.save();
+      draw.translate(p.x, p.y);
+      draw.rotate(p.rot);
+      draw.globalAlpha = Math.max(0, p.life);
+      draw.fillStyle = p.color;
+      draw.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
+      draw.restore();
     }
 
     frame += 1;
     if (frame < maxFrames) {
       requestAnimationFrame(tick);
     } else {
-      ctx.clearRect(0, 0, w, h);
+      draw.clearRect(0, 0, w, h);
     }
   }
 
