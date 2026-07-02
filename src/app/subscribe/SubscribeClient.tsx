@@ -105,7 +105,7 @@ export function SubscribeClient() {
                       <span className="text-[var(--quiz-text-sub)]">
                         Practical material from a{" "}
                         <strong className="font-semibold text-[var(--quiz-text)]">
-                          professional Korean teacher
+                          Korean teacher
                         </strong>
                       </span>
                     </li>

@@ -4,7 +4,7 @@ export const KOREAN_QUIZ_DEFAULT_APP_STORE_URL =
   "https://apps.apple.com/app/6784340207";
 
 export const KOREAN_QUIZ_PLAY_STORE_PENDING_MESSAGE =
-  "안드로이드 버전은 출시 대기중입니다.";
+  "The Android version is coming soon.";
 
 export type KoreanQuizAppStoreLinks = {
   appStoreUrl: string;
