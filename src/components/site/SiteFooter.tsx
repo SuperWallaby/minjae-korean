@@ -38,19 +38,19 @@ export function SiteFooter() {
   }, []);
 
   const pillClassName =
-    "cursor-pointer inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30";
+    "cursor-pointer inline-flex items-center gap-2 rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-3 py-1.5 text-xs text-[var(--quiz-text-sub)] transition hover:bg-[var(--quiz-surface-soft)] hover:text-[var(--quiz-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--quiz-primary)]/30";
 
   return (
-    <footer className="site-footer bg-[#14110d] text-white">
+    <footer className="site-footer border-t border-[var(--quiz-border)] bg-[var(--quiz-canvas)] text-[var(--quiz-text)]">
       <Container className="grid gap-8 py-10 md:grid-cols-2 md:items-start">
-        <div className="text-sm text-white/70">
+        <div className="text-sm text-[var(--quiz-text-sub)]">
           <Logo mode="footer" />
-          <div className="mt-0 max-w-sm text-xs leading-6 text-white/60">
-            1:1 Korean coaching with Minjae.
+          <div className="mt-0 max-w-sm text-xs leading-6 text-[var(--quiz-text-muted)]">
+            Learn Korean with nuance — quizzes, news, grammar, and more.
           </div>
 
           <div className="mt-5 grid gap-1 text-xs">
-            <div className="font-semibold text-white/80">Contact</div>
+            <div className="font-semibold text-[var(--quiz-text)]">Contact</div>
             <div className="mt-1 flex flex-wrap items-center gap-2">
               <a
                 href="sms:+821052374492"
@@ -75,11 +75,11 @@ export function SiteFooter() {
                   className="object-contain"
                 />
                 <span>Kakao</span>
-                <span className="text-white/55">@kaja_korean</span>
+                <span className="text-[var(--quiz-text-muted)]">@kaja_korean</span>
                 {copiedKey === "kakao" ? (
-                  <Check className="size-3.5 text-white/90" />
+                  <Check className="size-3.5 text-[var(--quiz-primary)]" />
                 ) : (
-                  <Copy className="size-3.5 text-white/55" />
+                  <Copy className="size-3.5 text-[var(--quiz-text-muted)]" />
                 )}
               </button>
               <a
@@ -98,7 +98,7 @@ export function SiteFooter() {
                   className="object-contain"
                 />
                 <span>WhatsApp</span>
-                <span className="text-white/55">@kaja_korean</span>
+                <span className="text-[var(--quiz-text-muted)]">@kaja_korean</span>
               </a>
               <a
                 href="mailto:minjae@kajakorean.com"
@@ -124,21 +124,16 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="text-sm text-white/70 md:justify-self-end md:text-right">
+        <div className="text-sm text-[var(--quiz-text-sub)] md:justify-self-end md:text-right">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:justify-end">
-            {/* <Link href="/#ways-to-use" className="hover:text-white">
-              Class pass
-            </Link> */}
-            <Link href="/news" className="hover:text-white">
+            <Link href="/news" className="hover:text-[var(--quiz-text)]">
               News
             </Link>
-            <Link href="/grammar" className="hover:text-white">
+            <Link href="/grammar" className="hover:text-[var(--quiz-text)]">
               Grammar
             </Link>
-            <Link href="/booking" className="hover:text-white">
-              Pick a time
-            </Link>
-            <Link href="/account" className="hover:text-white">
+            {/* 1:1 booking hidden while sessions are paused */}
+            <Link href="/account" className="hover:text-[var(--quiz-text)]">
               Account
             </Link>
           </div>
@@ -148,7 +143,7 @@ export function SiteFooter() {
               href="https://instagram.com/kaja_minjae"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/75 transition hover:text-white"
+              className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
               aria-label="Instagram @kaja_minjae"
             >
               <Instagram className="size-4" />
@@ -157,7 +152,7 @@ export function SiteFooter() {
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/75 transition hover:text-white"
+              className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
               aria-label="YouTube"
             >
               <Youtube className="size-4" />
@@ -166,13 +161,13 @@ export function SiteFooter() {
               href="https://x.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/75 transition hover:text-white"
+              className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
               aria-label="X"
             >
               <Twitter className="size-4" />
             </a>
           </div>
-          <div className="mt-3 text-xs text-white/55">
+          <div className="mt-3 text-xs text-[var(--quiz-text-muted)]">
             © {new Date().getFullYear()} Kaja. All rights reserved.
           </div>
         </div>

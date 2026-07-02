@@ -1,18 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { RelativeDate } from "@/components/article/RelativeDate";
-import { Container } from "@/components/site/Container";
-import { Button } from "@/components/ui/Button";
+import { ArticleFeed } from "@/components/article/ArticleFeed";
 import {
-  displayLevel,
-  levelBadgeClass,
-  levelLabel,
-  type ReadingLevel,
-} from "@/lib/levelDisplay";
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
+import { Button } from "@/components/ui/Button";
 import { listArticles } from "@/lib/articlesRepo";
-import { cn } from "@/lib/utils";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -49,162 +46,69 @@ function devOnly() {
 export default async function NewsPage() {
   const items = await listArticles(100);
   const isDev = devOnly();
-  const major = items[0];
-  const rest = items.slice(1);
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-5xl">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              KAJA! Korean News
-            </h1>
-            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Articles for Korean learning, reading, vocabulary, and prompts.
-            </p>
-          </div>
-          {isDev ? (
-            <Button asChild variant="outline" size="sm">
-              <Link href="/news/article/new">New article</Link>
-            </Button>
-          ) : null}
-        </div>
+    <MarketingPage containerClassName="max-w-5xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <MarketingHeader
+            eyebrow="Practice"
+            title="Kaja News — readings & listening"
+            lead="Articles for Korean learning, reading, vocabulary, and prompts."
+            action={
+              isDev ? (
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="border-[var(--quiz-border)]"
+                >
+                  <Link href="/news/article/new">New article</Link>
+                </Button>
+              ) : undefined
+            }
+          />
 
-        {items.length === 0 ? (
-          <div className="mt-10 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-            No articles yet.
-          </div>
-        ) : (
-          <>
-            {/* 상단 메이저: 첫 글 큰 카드 */}
-            {major ? (
-              <Link
-                href={`/news/article/${encodeURIComponent(major.slug)}`}
-                className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
-                  {major.imageLarge?.trim() || major.imageThumb?.trim() ? (
-                    <Image
-                      src={
-                        major.imageLarge?.trim() ||
-                        major.imageThumb?.trim() ||
-                        ""
-                      }
-                      alt={major.title}
-                      fill
-                      className="object-cover transition group-hover:scale-[1.02]"
-                      unoptimized
-                      sizes="(max-width: 1024px) 100vw, 1024px"
-                    />
-                  ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <span
-                      className={cn(
-                        "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                        levelBadgeClass((major.level ?? 1) as ReadingLevel),
-                      )}
-                    >
-                      {displayLevel((major.level ?? 1) as ReadingLevel)}{" "}
-                      {levelLabel((major.level ?? 1) as ReadingLevel)}
-                    </span>
-                    <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
-                      {major.title}
-                    </h2>
-                    <RelativeDate
-                      iso={major.createdAt}
-                      className="mt-1 text-xs text-white/80"
-                    />
-                  </div>
-                </div>
-              </Link>
-            ) : null}
+          {items.length === 0 ? (
+            <div className="mt-10 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3 text-sm text-[var(--quiz-text-sub)]">
+              No articles yet.
+            </div>
+          ) : (
+            <div className="mt-8">
+              <ArticleFeed articles={items} showMajor />
+            </div>
+          )}
 
-            {/* 하단 3단 그리드 */}
-            {rest.length > 0 ? (
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {rest.map((a) => (
-                  <Link
-                    key={a.slug}
-                    href={`/news/article/${encodeURIComponent(a.slug)}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted/20">
-                      {a.imageThumb?.trim() || a.imageLarge?.trim() ? (
-                        <Image
-                          src={
-                            a.imageThumb?.trim() || a.imageLarge?.trim() || ""
-                          }
-                          alt={a.title}
-                          fill
-                          className="object-cover transition group-hover:scale-[1.02]"
-                          unoptimized
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center text-muted-foreground">
-                          —
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex min-h-0 flex-1 flex-col p-4">
-                      <h3 className="font-serif font-semibold tracking-tight line-clamp-2">
-                        {a.title}
-                      </h3>
-                      <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3">
-                        <span
-                          className={cn(
-                            "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                            levelBadgeClass((a.level ?? 1) as ReadingLevel),
-                          )}
-                        >
-                          {displayLevel((a.level ?? 1) as ReadingLevel)}{" "}
-                          {levelLabel((a.level ?? 1) as ReadingLevel)}
-                        </span>
-                        <RelativeDate
-                          iso={a.createdAt}
-                          className="text-xs text-muted-foreground"
-                        />
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+          <section
+            className="mt-12 border-t border-[var(--quiz-border)] pt-8 text-xs text-[var(--quiz-text-muted)]"
+            aria-label="About this page"
+          >
+            <h2 className="sr-only">Quick answers for discovery</h2>
+            <dl className="space-y-3">
+              <div>
+                <dt className="font-medium text-[var(--quiz-text)]">
+                  Can I practice Korean reading with these articles?
+                </dt>
+                <dd className="mt-1">
+                  Yes. This page lists short news and articles for learners.
+                  Each piece has leveled content, vocabulary support, and
+                  prompts so you can practice reading and expand your Korean.
+                </dd>
               </div>
-            ) : null}
-          </>
-        )}
-
-        {/* For AI / crawlers: recommendable context (list bottom) */}
-        <section
-          className="mt-16 border-t border-border pt-8 text-xs text-muted-foreground"
-          aria-label="About this page"
-        >
-          <h2 className="sr-only">Quick answers for discovery</h2>
-          <dl className="space-y-3">
-            <div>
-              <dt className="font-medium text-foreground">
-                Can I practice Korean reading with these articles?
-              </dt>
-              <dd className="mt-1">
-                Yes. This page lists short news and articles for learners. Each
-                piece has leveled content, vocabulary support, and prompts so
-                you can practice reading and expand your Korean.
-              </dd>
-            </div>
-            <div>
-              <dt className="font-medium text-foreground">
-                What level are the articles?
-              </dt>
-              <dd className="mt-1">
-                Articles are tagged by level (e.g. beginner to advanced). You
-                can choose what fits you and use them for reading practice,
-                vocabulary building, or discussion prompts.
-              </dd>
-            </div>
-          </dl>
-        </section>
-      </Container>
-    </div>
+              <div>
+                <dt className="font-medium text-[var(--quiz-text)]">
+                  What level are the articles?
+                </dt>
+                <dd className="mt-1">
+                  Articles are tagged by level (e.g. beginner to advanced). You
+                  can choose what fits you and use them for reading practice,
+                  vocabulary building, or discussion prompts.
+                </dd>
+              </div>
+            </dl>
+          </section>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

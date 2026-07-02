@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 
-import { Container } from "@/components/site/Container";
 import { ExpressionChapterListClient } from "@/components/expression/ExpressionChapterListClient";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { expressionChapterList } from "@/data/expressionChapterList";
 
 export const runtime = "nodejs";
@@ -16,7 +21,8 @@ export const metadata: Metadata = {
     "Study Korean Expressions: essential expressions with ready-to-use frames. Perfect for beginners who want to speak immediately.",
   openGraph: {
     title: `Korean Expressions | ${META_KEYWORD} | Kaja`,
-    description: "Study Korean Expressions: essential expressions with ready-to-use frames.",
+    description:
+      "Study Korean Expressions: essential expressions with ready-to-use frames.",
     url: `${SITE_URL}/expressions`,
     siteName: "Kaja",
     type: "website",
@@ -24,7 +30,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `Korean Expressions | ${META_KEYWORD} | Kaja`,
-    description: "Study Korean Expressions: essential expressions with ready-to-use frames.",
+    description:
+      "Study Korean Expressions: essential expressions with ready-to-use frames.",
   },
   alternates: { canonical: `${SITE_URL}/expressions` },
 };
@@ -33,25 +40,26 @@ export default function ExpressionsPage() {
   const { sections } = expressionChapterList;
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-4xl">
-        <div>
-          <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            Kaja · Korean Expressions.
-          </h1>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Ready-to-use Korean frames you can speak immediately
-          </p>
-        </div>
+    <MarketingPage containerClassName="max-w-4xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <MarketingHeader
+            eyebrow="Library"
+            title="Korean Expressions"
+            lead="Ready-to-use Korean frames you can speak immediately."
+          />
 
-        {sections.length === 0 ? (
-          <div className="mt-10 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-            No chapters yet.
-          </div>
-        ) : (
-          <ExpressionChapterListClient sections={sections} />
-        )}
-      </Container>
-    </div>
+          {sections.length === 0 ? (
+            <div className="mt-10 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3 text-sm text-[var(--quiz-text-sub)]">
+              No chapters yet.
+            </div>
+          ) : (
+            <div className="mt-8">
+              <ExpressionChapterListClient sections={sections} />
+            </div>
+          )}
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

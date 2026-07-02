@@ -12,6 +12,11 @@ import { VocabularySection } from "@/components/article/VocabularySection";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
 import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { Logo } from "@/components/site/Logo";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -137,7 +142,7 @@ export default async function ArticlePage({
   };
 
   return (
-    <div className="py-12 sm:py-16">
+    <MarketingPage containerClassName="max-w-4xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -149,7 +154,8 @@ export default async function ArticlePage({
         }}
       />
       <TailwindClassCheck />
-      <Container className="max-w-4xl">
+      <MarketingShell>
+        <MarketingShellBody>
         {/* 0. 메인사진 */}
         {mainImage ? (
           <div className="md:-mx-4 mb-12 overflow-hidden rounded-2xl border border-border bg-muted/10 sm:-mx-6">
@@ -350,7 +356,8 @@ export default async function ArticlePage({
             <Link href="/news">Back to News</Link>
           </Button>
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

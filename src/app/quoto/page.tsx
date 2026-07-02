@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import { Gowun_Batang } from "next/font/google";
 
-import { QuotoPageClient } from "./QuotoPageClient";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { getRandomQuote } from "@/lib/quotesRepo";
+
+import { QuotoPageClient } from "./QuotoPageClient";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -37,10 +43,15 @@ export const metadata: Metadata = {
 export default async function QuotoPage() {
   const initialQuote = await getRandomQuote();
   return (
-    <div
+    <MarketingPage
+      containerClassName="max-w-3xl"
       className={`${gowunBatang.variable} ${gowunBatang.className} flex min-h-[calc(100dvh-4rem)] flex-col`}
     >
-      <QuotoPageClient initialQuote={initialQuote} />
-    </div>
+      <MarketingShell className="flex flex-1 flex-col">
+        <MarketingShellBody className="flex flex-1 flex-col">
+          <QuotoPageClient initialQuote={initialQuote} />
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

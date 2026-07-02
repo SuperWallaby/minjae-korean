@@ -1,11 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 
-import { RelativeDate } from "@/components/article/RelativeDate";
-import { Container } from "@/components/site/Container";
-import { listBlogPosts } from "@/data/blogPosts";
+import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
+import { listBlogPosts } from "@/data/blogPosts";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 
 export const runtime = "nodejs";
 
@@ -45,91 +48,43 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const items = await listBlogPosts(100);
-  const major = items[0];
-  const rest = items.slice(1);
+  const feedItems = items.map((post) => {
+    const cover = resolveBlogCoverImage(post);
+    return {
+      slug: post.slug,
+      title: post.title,
+      imageThumb: cover,
+      imageLarge: cover,
+      level: post.level,
+      createdAt: post.createdAt,
+    };
+  });
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-5xl">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Kaja · Blog
-            </h1>
-            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              The posting of emphasis on Korean learning and practice.
-            </p>
-          </div>
-        </div>
+    <MarketingPage containerClassName="max-w-5xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <MarketingHeader
+            eyebrow="Blog"
+            title="Notes on learning Korean"
+            lead="Posts about Korean learning, teaching, and practice."
+          />
 
-        {items.length === 0 ? (
-          <div className="mt-10 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-            No posts yet.
-          </div>
-        ) : (
-          <>
-            {major ? (
-              <Link
-                href={`/blog/article/${encodeURIComponent(major.slug)}`}
-                className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-video">
-                  <Image
-                    src={resolveBlogCoverImage(major)}
-                    alt={major.title}
-                    fill
-                    className="object-cover transition group-hover:scale-[1.02]"
-                    unoptimized
-                    sizes="(max-width: 1024px) 100vw, 1024px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
-                      {major.title}
-                    </h2>
-                    <RelativeDate
-                      iso={major.createdAt}
-                      className="mt-1 text-xs text-white/80"
-                    />
-                  </div>
-                </div>
-              </Link>
-            ) : null}
-
-            {rest.length > 0 ? (
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {rest.map((a) => (
-                  <Link
-                    key={a.slug}
-                    href={`/blog/article/${encodeURIComponent(a.slug)}`}
-                    className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                      <Image
-                        src={resolveBlogCoverImage(a)}
-                        alt={a.title}
-                        fill
-                        className="object-cover transition group-hover:scale-[1.02]"
-                        unoptimized
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-4">
-                      <h3 className="font-serif font-semibold tracking-tight line-clamp-2">
-                        {a.title}
-                      </h3>
-                      <RelativeDate
-                        iso={a.createdAt}
-                        className="mt-auto pt-2 text-xs text-muted-foreground"
-                      />
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-          </>
-        )}
-      </Container>
-    </div>
+          {feedItems.length === 0 ? (
+            <div className="mt-10 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3 text-sm text-[var(--quiz-text-sub)]">
+              No posts yet.
+            </div>
+          ) : (
+            <div className="mt-8">
+              <ArticleFeed
+                articles={feedItems}
+                basePath="/blog/article"
+                showMajor
+              />
+            </div>
+          )}
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

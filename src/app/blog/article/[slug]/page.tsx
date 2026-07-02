@@ -8,6 +8,11 @@ import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/Button";
 import { getBlogPost, listBlogPosts } from "@/data/blogPosts";
@@ -135,7 +140,7 @@ export default async function BlogArticlePage({
   };
 
   return (
-    <div className="py-12 sm:py-16">
+    <MarketingPage containerClassName={containerClass}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -146,7 +151,8 @@ export default async function BlogArticlePage({
           __html: JSON.stringify(breadcrumbListJsonLd),
         }}
       />
-      <Container className={containerClass}>
+      <MarketingShell>
+        <MarketingShellBody>
         {mainImage ? (
           <div className="md:-mx-4 mb-12 overflow-hidden rounded-2xl border border-border bg-muted/10 sm:-mx-6">
             <div className="relative aspect-video w-full sm:aspect-vd">
@@ -300,7 +306,8 @@ export default async function BlogArticlePage({
             <Link href="/blog">Back to Blog</Link>
           </Button>
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

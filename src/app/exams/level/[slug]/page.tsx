@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Container } from "@/components/site/Container";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import {
   getLevelExamSummary,
   LEVEL_EXAM_SLUGS,
@@ -46,9 +51,10 @@ export default async function LevelExamPage({
   if (!exam) return notFound();
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-2xl">
-        <nav className="text-sm text-muted-foreground">
+    <MarketingPage containerClassName="max-w-2xl">
+      <MarketingShell>
+        <MarketingShellBody>
+        <nav className="text-sm text-[var(--quiz-text-sub)]">
           <Link href="/exams" className="hover:text-foreground">
             Exams
           </Link>
@@ -93,7 +99,8 @@ export default async function LevelExamPage({
             </Link>
           )}
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

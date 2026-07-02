@@ -6,6 +6,7 @@ import { CalendarDays, CreditCard, FileText, Bell, User } from "lucide-react";
 import { DateTime } from "luxon";
 
 import { Container } from "@/components/site/Container";
+import { MarketingPage } from "@/components/site/MarketingShell";
 
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -480,9 +481,8 @@ export default function AccountPage() {
 
   if (!session.state.user) {
     return (
-      <div className="py-10 sm:py-14">
-        <Container className="max-w-2xl">
-          <Card>
+      <MarketingPage containerClassName="max-w-2xl">
+          <Card className="border-[var(--quiz-border)] bg-[var(--quiz-canvas)]">
             <CardHeader>
               <CardTitle> Please Signin.</CardTitle>
               <CardDescription>
@@ -493,18 +493,14 @@ export default function AccountPage() {
               <Button asChild className="w-full" size="lg">
                 <Link href="/login?next=/account">Sign in</Link>
               </Button>
-              <Button asChild className="w-full" variant="outline" size="lg">
-                <Link href="/booking">Go to booking</Link>
-              </Button>
             </CardFooter>
           </Card>
-        </Container>
-      </div>
+      </MarketingPage>
     );
   }
 
   return (
-    <div className="py-16">
+    <MarketingPage>
       <Container>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -651,16 +647,7 @@ export default function AccountPage() {
                         {bookingsView === "finished" ? (
                           <>No finished sessions yet.</>
                         ) : (
-                          <>
-                            No upcoming bookings.{" "}
-                            <Link
-                              href="/booking"
-                              className="text-foreground underline underline-offset-4"
-                            >
-                              Go to booking
-                            </Link>
-                            .
-                          </>
+                          <>No upcoming bookings.</>
                         )}
                       </div>
                     ) : (
@@ -1125,19 +1112,10 @@ export default function AccountPage() {
                     </>
                   ) : (
                     <div className="text-sm text-muted-foreground">
-                      You don’t have any credits right now.<br></br>Purchase
-                      credits anytime and you’ll be able to book a session
-                      immediately.
+                      You don&apos;t have any session credits right now.
                     </div>
                   )}
-                  <div className="mt-4 flex flex-col gap-2">
-                    <Button asChild className="w-full" variant="outline">
-                      <Link href="/#ways-to-use">Get More</Link>
-                    </Button>
-                    <Button asChild className="w-full" variant="primary">
-                      <Link href="/booking">Pick a time</Link>
-                    </Button>
-                  </div>
+                  {/* 1:1 booking hidden while sessions are paused */}
                 </CardContent>
               </Card>
 
@@ -1162,6 +1140,6 @@ export default function AccountPage() {
           </aside>
         </div>
       </Container>
-    </div>
+    </MarketingPage>
   );
 }

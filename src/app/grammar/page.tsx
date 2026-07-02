@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 
-import { Container } from "@/components/site/Container";
-import { grammarChapterList } from "@/data/grammarChapterList";
 import { GrammarChapterListClient } from "@/components/grammar/GrammarChapterListClient";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
+import { grammarChapterList } from "@/data/grammarChapterList";
 
 export const runtime = "nodejs";
 
@@ -35,26 +40,26 @@ export default function GrammarPage() {
   const { sections } = grammarChapterList;
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-4xl">
-        <div>
-          <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            Kaja · Korean Grammar.
-          </h1>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Learn real Korean patterns in short chapters with simple examples
-            and quick practice
-          </p>
-        </div>
+    <MarketingPage containerClassName="max-w-4xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <MarketingHeader
+            eyebrow="Library"
+            title="Korean Grammar"
+            lead="Learn real Korean patterns in short chapters with simple examples and quick practice."
+          />
 
-        {sections.length === 0 ? (
-          <div className="mt-10 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-            No chapters yet.
-          </div>
-        ) : (
-          <GrammarChapterListClient sections={sections} />
-        )}
-      </Container>
-    </div>
+          {sections.length === 0 ? (
+            <div className="mt-10 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3 text-sm text-[var(--quiz-text-sub)]">
+              No chapters yet.
+            </div>
+          ) : (
+            <div className="mt-8">
+              <GrammarChapterListClient sections={sections} />
+            </div>
+          )}
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

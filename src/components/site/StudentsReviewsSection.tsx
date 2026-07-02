@@ -4,6 +4,7 @@ import * as React from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Container } from "./Container";
 import { ReviewsScroller, type ReviewsScrollerHandle } from "./ReviewsScroller";
+import styles from "./home-renewal.module.css";
 const items = [
   {
     quote:
@@ -71,15 +72,17 @@ export function MembersReviewsSection() {
   const scrollerRef = React.useRef<ReviewsScrollerHandle>(null);
 
   return (
-    <section id="Members-say" className="scroll-mt-24 py-10 sm:py-16">
+    <section id="Members-say" className={`scroll-mt-24 ${styles.sectionBlock}`}>
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+        <div className={styles.sectionShell}>
+          <div
+            className={`${styles.sectionShellPad} grid gap-10 lg:grid-cols-12 lg:items-start`}
+          >
           <div className="lg:col-span-4">
-            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              What members say
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Someone who used Korean with Minjae. And felt the time was worth
+            <span className={styles.eyebrow}>Reviews</span>
+            <h2 className={styles.sectionTitle}>What members say</h2>
+            <p className={styles.sectionLead}>
+              Someone who used Korean with Minjae—and felt the time was worth
               it.
             </p>
 
@@ -87,7 +90,7 @@ export function MembersReviewsSection() {
             <div className="mt-6 hidden items-center justify-end gap-2 lg:flex">
               <button
                 type="button"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white/60 text-foreground/70 transition hover:bg-white hover:text-foreground"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white text-[var(--quiz-text-sub)] transition hover:bg-[var(--quiz-surface)] hover:text-[var(--quiz-text)]"
                 aria-label="Previous reviews"
                 onClick={() => scrollerRef.current?.scrollBy(-1)}
               >
@@ -95,7 +98,7 @@ export function MembersReviewsSection() {
               </button>
               <button
                 type="button"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white/60 text-foreground/70 transition hover:bg-white hover:text-foreground"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white text-[var(--quiz-text-sub)] transition hover:bg-[var(--quiz-surface)] hover:text-[var(--quiz-text)]"
                 aria-label="Next reviews"
                 onClick={() => scrollerRef.current?.scrollBy(1)}
               >
@@ -113,7 +116,7 @@ export function MembersReviewsSection() {
             <div className="mt-4 flex items-center justify-end gap-2 lg:hidden">
               <button
                 type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white/70 text-foreground/70 transition hover:bg-white hover:text-foreground"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white text-[var(--quiz-text-sub)] transition hover:bg-[var(--quiz-surface)]"
                 aria-label="Previous reviews"
                 onClick={() => scrollerRef.current?.scrollBy(-1)}
               >
@@ -121,13 +124,14 @@ export function MembersReviewsSection() {
               </button>
               <button
                 type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white/70 text-foreground/70 transition hover:bg-white hover:text-foreground"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white text-[var(--quiz-text-sub)] transition hover:bg-[var(--quiz-surface)]"
                 aria-label="Next reviews"
                 onClick={() => scrollerRef.current?.scrollBy(1)}
               >
                 <ArrowRight className="size-4" />
               </button>
             </div>
+          </div>
           </div>
         </div>
       </Container>

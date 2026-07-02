@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 
-import { Container } from "@/components/site/Container";
-import { fundamentalChapterList } from "@/data/fundamentalChapterList";
 import { FundamentalChapterListClient } from "@/components/fundamental/FundamentalChapterListClient";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
+import { fundamentalChapterList } from "@/data/fundamentalChapterList";
 
 export const runtime = "nodejs";
 
@@ -44,26 +49,26 @@ export default function FundamentalPage() {
   const { sections } = fundamentalChapterList;
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-4xl">
-        <div>
-          <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-            Fundamental
-          </h1>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Beginner starter pack! Hangul, pronunciation, numbers, time & date,
-            and essential words.
-          </p>
-        </div>
+    <MarketingPage containerClassName="max-w-4xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <MarketingHeader
+            eyebrow="Library"
+            title="Fundamental"
+            lead="Beginner starter pack — Hangul, pronunciation, numbers, time & date, and essential words."
+          />
 
-        {sections.length === 0 ? (
-          <div className="mt-10 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-            No chapters yet.
-          </div>
-        ) : (
-          <FundamentalChapterListClient sections={sections} />
-        )}
-      </Container>
-    </div>
+          {sections.length === 0 ? (
+            <div className="mt-10 rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3 text-sm text-[var(--quiz-text-sub)]">
+              No chapters yet.
+            </div>
+          ) : (
+            <div className="mt-8">
+              <FundamentalChapterListClient sections={sections} />
+            </div>
+          )}
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

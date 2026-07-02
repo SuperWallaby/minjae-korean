@@ -336,14 +336,8 @@ export const blogPost: BlogPost = {
             HelloTalk
           </ContentLink>{" "}
           <br></br>
-          Or Talk with korean teacher{" "}
-          <ContentLink
-            href="/coaching"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Minjae
-          </ContentLink>
+          Or practice with{" "}
+          <ContentLink href="/#approach">Minjae&apos;s resources</ContentLink>
         </>
       ),
     },

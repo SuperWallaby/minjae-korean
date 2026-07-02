@@ -1,4 +1,10 @@
 import { FlashcardsClient } from "@/components/flashcards/FlashcardsClient";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { sampleKoreanQuizHomeCards } from "@/lib/koreanQuiz/store";
 
 export const dynamic = "force-dynamic";
@@ -39,6 +45,19 @@ export default async function FlashcardsPage({
   }
 
   return (
-    <FlashcardsClient cards={cards} columns={columns} title={title} />
+    <MarketingPage containerClassName="max-w-6xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <MarketingHeader
+            eyebrow="Library"
+            title="Flashcards"
+            lead="Picture vocabulary cards from the Kaja quiz pool. Tap to reveal Korean."
+          />
+          <div className="mt-8">
+            <FlashcardsClient cards={cards} columns={columns} title={title} />
+          </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

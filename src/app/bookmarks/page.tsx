@@ -1,22 +1,29 @@
-import { Breadcrumb } from "@/components/site/Breadcrumb";
-import { Container } from "@/components/site/Container";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { BookmarkListClient } from "@/components/article/BookmarkListClient";
+import { Breadcrumb } from "@/components/site/Breadcrumb";
 
 export const runtime = "nodejs";
 
 export default function BookmarksPage() {
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-2xl">
-        <Breadcrumb items={[{ label: "Saved articles", href: "/bookmarks" }]} />
-        <h1 className="mt-4 font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-          Saved bookmarks
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Articles you bookmarked from Blog and News.
-        </p>
-        <BookmarkListClient className="mt-8" />
-      </Container>
-    </div>
+    <MarketingPage containerClassName="max-w-2xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <Breadcrumb items={[{ label: "Saved articles", href: "/bookmarks" }]} />
+          <MarketingHeader
+            className="mt-4"
+            title="Saved bookmarks"
+            lead="Articles you bookmarked from Blog and News."
+            titleAs="h1"
+          />
+          <BookmarkListClient className="mt-8" />
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

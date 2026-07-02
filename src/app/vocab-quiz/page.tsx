@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { VocabQuizClient } from "./VocabQuizClient";
+import { MarketingPage } from "@/components/site/MarketingShell";
 
 export const metadata: Metadata = {
   title: "Vocab Quiz | Kaja",
@@ -9,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function VocabQuizPage() {
-  return <VocabQuizClient />;
+  return (
+    <MarketingPage containerClassName="max-w-6xl" className="pb-8 pt-4 sm:pt-6">
+      <VocabQuizClient />
+    </MarketingPage>
+  );
 }

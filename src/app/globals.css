@@ -9,52 +9,60 @@
 :root {
   color-scheme: light;
 
-  /* Requested tokens */
-  --bg-canvas: #f6f1e9;
-  --bg-card: #f0e9de;
-  --text-primary: #2c2a25;
-  --text-secondary: rgba(44, 42, 37, 0.66);
-  --accent-muted: #e0b77d;
-  /* Muted badge background (updated per design) */
-  --included-1: #eddcc5;
-  /* Muted badge foreground (updated per design) */
-  --badge-muted-foreground: #342a1b;
-  --included-2: #c3dad0;
-  --included-2-foreground: #1a2e28;
-  --included-3: #d6d4e3;
-  --included-4: color-mix(in srgb, var(--included-2) 55%, var(--included-1));
+  /* Quiz app tokens (korean-quiz / Apple-inspired) */
+  --quiz-bg: #f5f5f7;
+  --quiz-canvas: #ffffff;
+  --quiz-surface: #fafafc;
+  --quiz-surface-soft: #f0f0f0;
+  --quiz-text: #1d1d1f;
+  --quiz-text-sub: #6e6e73;
+  --quiz-text-muted: #86868b;
+  --quiz-primary: #0071e3;
+  --quiz-primary-focus: #0066cc;
+  --quiz-border: #e0e0e0;
+  --quiz-divider: #f0f0f0;
 
-  /* Level badge 4 = 오렌지, 5 = 레드 */
+  /* Site tokens — mapped to quiz palette */
+  --bg-canvas: var(--quiz-bg);
+  --bg-card: var(--quiz-canvas);
+  --text-primary: var(--quiz-text);
+  --text-secondary: var(--quiz-text-sub);
+  --accent-muted: color-mix(in srgb, var(--quiz-primary) 18%, white);
+
+  --included-1: var(--quiz-surface);
+  --badge-muted-foreground: var(--quiz-text);
+  --included-2: var(--quiz-surface-soft);
+  --included-2-foreground: var(--quiz-text);
+  --included-3: #e8e8ed;
+  --included-4: var(--quiz-canvas);
+
   --level-4-bg: #fcd5b0;
   --level-5-bg: #f5b4b4;
 
-  /* Existing app tokens (mapped to requested tokens) */
   --background: var(--bg-canvas);
   --foreground: var(--text-primary);
-  --muted: var(--included-1);
-  --muted-foreground: var(--text-secondary);
+  --muted: var(--quiz-surface-soft);
+  --muted-foreground: var(--quiz-text-sub);
   --card: var(--bg-card);
   --card-foreground: var(--text-primary);
-  --border: color-mix(in srgb, var(--accent-muted) 55%, var(--bg-canvas));
-  --primary: var(--text-primary);
-  --primary-foreground: var(--bg-canvas);
-  --ring: color-mix(in srgb, var(--text-primary) 22%, transparent);
+  --border: var(--quiz-border);
+  --primary: var(--quiz-primary);
+  --primary-foreground: #ffffff;
+  --ring: color-mix(in srgb, var(--quiz-primary) 35%, transparent);
 
-  /* Warm neutral set used in sections */
-  --surface-gray: color-mix(in srgb, var(--bg-canvas) 65%, white);
-  --panel-sand: color-mix(in srgb, var(--bg-card) 78%, white);
-  --panel-stone: color-mix(in srgb, var(--bg-card) 66%, var(--accent-muted));
-  --accent-olive: #2f3f33;
+  --surface-gray: var(--quiz-surface);
+  --panel-sand: var(--quiz-surface);
+  --panel-stone: var(--quiz-surface-soft);
+  --accent-olive: var(--quiz-text);
   --accent-olive-foreground: #ffffff;
 
-  /* Shadows (warm, slightly orange-tinted) */
-  --shadow-rgb: 150 92 46; /* warm brown-orange */
-  --shadow-card: 0 10px 30px rgb(var(--shadow-rgb) / 0.08);
-  --shadow-float: 0 16px 50px rgb(var(--shadow-rgb) / 0.08);
-  --shadow-navbar: 0 18px 60px rgb(var(--shadow-rgb) / 0.12);
-  --shadow-cta: 0 14px 34px rgb(var(--shadow-rgb) / 0.22);
-  --shadow-modal: 0 24px 60px rgb(var(--shadow-rgb) / 0.18);
-  --shadow-chat: 0 26px 90px rgb(var(--shadow-rgb) / 0.22);
+  --shadow-rgb: 17 24 39;
+  --shadow-card: 0 10px 28px rgb(var(--shadow-rgb) / 0.06);
+  --shadow-float: 0 16px 40px rgb(var(--shadow-rgb) / 0.1);
+  --shadow-navbar: 0 12px 40px rgb(var(--shadow-rgb) / 0.08);
+  --shadow-cta: 0 14px 34px rgb(var(--shadow-rgb) / 0.14);
+  --shadow-modal: 0 24px 60px rgb(var(--shadow-rgb) / 0.12);
+  --shadow-chat: 0 26px 90px rgb(var(--shadow-rgb) / 0.14);
 }
 
 @theme inline {

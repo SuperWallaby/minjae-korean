@@ -9,6 +9,7 @@ import { BookDetailTabs } from "@/components/site/BookDetailTabs";
 import { BookProductGallery } from "@/components/site/BookProductGallery";
 import { BookTableOfContents } from "@/components/site/BookTableOfContents";
 import { Container } from "@/components/site/Container";
+import { MarketingPage } from "@/components/site/MarketingShell";
 import { CheckoutButton } from "@/components/stripe/CheckoutButton";
 import { Button } from "@/components/ui/Button";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function BookDetailPage() {
   return (
-    <div className="pb-20 pt-10 sm:pt-14">
+    <MarketingPage className="pb-20">
       <Container>
         <RevealOnScroll as="div">
           <Button asChild variant="ghost" size="sm" className="mb-6 px-0">
@@ -170,7 +171,7 @@ export default function BookDetailPage() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Button asChild variant="primary">
-                    <Link href="/booking">Book a session</Link>
+                    <Link href="/vocab-quiz">Try the vocab quiz</Link>
                   </Button>
                   <Button asChild variant="outline">
                     <Link href="/news">Explore Kaja News</Link>
@@ -181,6 +182,6 @@ export default function BookDetailPage() {
           </div>
         </RevealOnScroll>
       </Container>
-    </div>
+    </MarketingPage>
   );
 }

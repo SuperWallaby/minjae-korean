@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, UserRound, X } from "lucide-react";
+import { ChevronDown, BookOpen, Menu, UserRound, X } from "lucide-react";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import * as React from "react";
 import { createPortal } from "react-dom";
@@ -42,8 +42,9 @@ function NavLink({ href, label, activeOverride, iconSrc }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        active && "bg-muted text-foreground",
+        "inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        active &&
+          "bg-[color-mix(in_srgb,var(--quiz-primary)_10%,white)] text-[var(--quiz-primary)] font-semibold",
         {
           "hover:bg-muted/20": !active,
         },
@@ -300,17 +301,17 @@ export function SiteNavbar() {
                   </Button>
                 ) : (
                   <Button
-                    className="w-[101px]"
+                    className="w-auto px-4"
                     variant="primary"
                     size="sm"
                     asChild
                   >
                     <Link
-                      href="/login"
+                      href="/subscribe"
                       className="inline-flex items-center gap-2"
                     >
-                      <UserRound className="size-4" />
-                      Sign in
+                      <BookOpen className="size-4" />
+                      Get Free Book
                     </Link>
                   </Button>
                 )}
@@ -373,11 +374,11 @@ export function SiteNavbar() {
                     </Link>
                   ) : (
                     <Link
-                      href="/login"
+                      href="/subscribe"
                       onClick={() => setMobileOpen(false)}
                       className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                     >
-                      Sign in
+                      Get Free Book
                     </Link>
                   )}
                   <span className="px-1 pt-2 text-xs font-medium text-muted-foreground">

@@ -27,7 +27,7 @@ const bricolage = Bricolage_Grotesque({
 
 const SITE_NAME = "Kaja";
 const SITE_DESCRIPTION =
-  "1:1 Korean coaching with Minjae, assess where you are, set your direction, and grow with encouragement and targeted practice in pronunciation, grammar, and conversation.";
+  "Learn Korean with nuance — vocab quiz, news readings, grammar, and resources from Kaja.";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 const METADATA_BASE = new URL(SITE_URL);
@@ -98,7 +98,7 @@ export default function RootLayout({
           <EducationModeProvider>
             <div className="min-h-dvh bg-background">
               <NextTopLoader
-                color="#ef4444"
+                color="#0071e3"
                 height={3}
                 showSpinner={false}
                 crawlSpeed={200}

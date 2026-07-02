@@ -124,7 +124,7 @@ export const ReviewsScroller = React.forwardRef<
             <div
               key={r.quote}
               className={cn(
-                "relative flex min-h-[280px] w-[calc(100vw-2rem)] max-w-[420px] shrink-0 snap-start flex-col overflow-hidden rounded-[36px] bg-white p-6 sm:w-[340px]",
+                "relative flex min-h-[280px] w-[calc(100vw-2rem)] max-w-[420px] shrink-0 snap-start flex-col overflow-hidden rounded-[1.125rem] border border-[var(--quiz-border)] bg-white p-6 shadow-[var(--shadow-card)] sm:w-[340px]",
               )}
             >
               <div

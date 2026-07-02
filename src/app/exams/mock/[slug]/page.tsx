@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { getMockExamSummary, MOCK_EXAM_SLUGS } from "@/data/examsList";
 
 export const runtime = "nodejs";
@@ -49,8 +53,9 @@ export default async function MockExamPage({
   if (!exam) return notFound();
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-2xl">
+    <MarketingPage containerClassName="max-w-2xl">
+      <MarketingShell>
+        <MarketingShellBody>
         <nav className="text-sm text-muted-foreground">
           <Link href="/exams" className="hover:text-foreground">
             Exams
@@ -91,7 +96,8 @@ export default async function MockExamPage({
             </Link>
           )}
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

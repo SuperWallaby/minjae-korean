@@ -1,0 +1,134 @@
+/* Shared home sections 3+ — quiz app design language (sections 1–2 unchanged). */
+
+.sectionBlock {
+  padding-block: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .sectionBlock {
+    padding-block: 4rem;
+  }
+}
+
+.sectionShell {
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid var(--quiz-border);
+  background: var(--quiz-canvas);
+  box-shadow: var(--shadow-card);
+}
+
+.sectionShellPad {
+  padding: 1.75rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .sectionShellPad {
+    padding: 2.5rem 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectionShellPad {
+    padding: 3rem 3.5rem;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--quiz-primary) 22%, transparent);
+  background: color-mix(in srgb, var(--quiz-primary) 8%, white);
+  padding: 0.4rem 0.95rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--quiz-primary);
+}
+
+.sectionTitle {
+  margin-top: 0.85rem;
+  font-family: var(--font-serif, ui-serif, Georgia, serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--quiz-text);
+}
+
+.sectionLead {
+  margin-top: 0.75rem;
+  max-width: 36rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--quiz-text-sub);
+}
+
+@media (min-width: 640px) {
+  .sectionLead {
+    font-size: 1rem;
+  }
+}
+
+.featureCard {
+  border-radius: 1.125rem;
+  border: 1px solid var(--quiz-border);
+  background: var(--quiz-surface);
+  padding: 1.25rem 1.35rem;
+}
+
+.featureCardTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--quiz-text);
+}
+
+.featureCardBody {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--quiz-text-sub);
+}
+
+.portraitRing {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 1px solid var(--quiz-border);
+  background: var(--quiz-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--quiz-border);
+}
+
+.faqItem summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.ctaShell {
+  border-radius: 2rem;
+  border: 1px solid color-mix(in srgb, var(--quiz-primary) 18%, transparent);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--quiz-primary) 9%, white) 0%,
+    var(--quiz-canvas) 55%,
+    var(--quiz-surface) 100%
+  );
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .ctaShell {
+    padding: 3rem 2.5rem;
+  }
+}

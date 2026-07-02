@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { getExam, getExamItems, getTopicQuizSummary, TOPIC_QUIZ_SLUGS } from "@/data/examsList";
 import { TopicQuizClient } from "./TopicQuizClient";
 
@@ -49,8 +53,9 @@ export default async function TopicQuizPage({
   const items = await getExamItems("topic_quiz", slug);
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-2xl">
+    <MarketingPage containerClassName="max-w-2xl">
+      <MarketingShell>
+        <MarketingShellBody>
         <nav className="text-sm text-muted-foreground">
           <Link href="/exams" className="hover:text-foreground">
             Exams
@@ -94,8 +99,9 @@ export default async function TopicQuizPage({
             </Link>
           )}
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }
 

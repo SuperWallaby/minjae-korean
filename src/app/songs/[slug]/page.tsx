@@ -2,7 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { Button } from "@/components/ui/Button";
 import { SongPageContent } from "./SongPageContent";
 import { getSong } from "@/lib/songsRepo";
@@ -91,7 +95,7 @@ export default async function SongPage({ params }: Props) {
   };
 
   return (
-    <div className="py-12 sm:py-16">
+    <MarketingPage containerClassName="max-w-3xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -102,7 +106,8 @@ export default async function SongPage({ params }: Props) {
           __html: JSON.stringify(breadcrumbListJsonLd),
         }}
       />
-      <Container className="max-w-3xl">
+      <MarketingShell>
+        <MarketingShellBody>
         <SongPageContent
           videoId={videoIdStr}
           chunks={s.chunks}
@@ -141,7 +146,8 @@ export default async function SongPage({ params }: Props) {
             </Button>
           )}
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

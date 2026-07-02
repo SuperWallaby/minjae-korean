@@ -6,7 +6,11 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import { BlockRenderer } from "@/components/grammar/BlockRenderer";
 import { FundamentalRecordVisit } from "@/components/fundamental/FundamentalRecordVisit";
 import { Breadcrumb } from "@/components/site/Breadcrumb";
-import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { getChapterContent } from "@/data/fundamentalChapterContent";
 import {
   fundamentalChapterList,
@@ -99,9 +103,10 @@ export default async function FundamentalChapterPage({
   const blocks = content?.blocks ?? [];
 
   return (
-    <div className="py-12 sm:py-16">
+    <MarketingPage containerClassName="max-w-4xl">
       <FundamentalRecordVisit chapterId={chapter.id} />
-      <Container className="max-w-4xl">
+      <MarketingShell>
+        <MarketingShellBody>
         <Breadcrumb
           items={[
             { label: "Fundamental", href: "/fundamental" },
@@ -138,7 +143,8 @@ export default async function FundamentalChapterPage({
             </Link>
           ) : null}
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

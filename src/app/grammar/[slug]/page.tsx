@@ -7,7 +7,11 @@ import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAn
 import { BlockRenderer } from "@/components/grammar/BlockRenderer";
 import { GrammarRecordVisit } from "@/components/grammar/GrammarRecordVisit";
 import { Breadcrumb } from "@/components/site/Breadcrumb";
-import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { getChapterContent } from "@/data/grammarChapterContent";
 import {
   getAllChapters,
@@ -118,7 +122,7 @@ export default async function GrammarChapterPage({
   };
 
   return (
-    <div className="py-12 sm:py-16">
+    <MarketingPage containerClassName="max-w-4xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -126,7 +130,8 @@ export default async function GrammarChapterPage({
         }}
       />
       <GrammarRecordVisit chapterId={chapter.id} />
-      <Container className="max-w-4xl">
+      <MarketingShell>
+        <MarketingShellBody>
         <Breadcrumb
           items={[
             { label: "Grammar", href: "/grammar" },
@@ -170,7 +175,8 @@ export default async function GrammarChapterPage({
             </Link>
           ) : null}
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

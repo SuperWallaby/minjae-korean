@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Check, Download } from "lucide-react";
 
-import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { Button } from "@/components/ui/Button";
 import {
   LAST_STRIPE_PURCHASE_STORAGE_KEY,
@@ -131,36 +135,36 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
 
   if (state.kind === "loading") {
     return (
-      <section className="py-10 sm:py-14">
-        <Container className="max-w-2xl">
-          <div className="rounded-3xl border border-[#edd4c7]/60 bg-gradient-to-b from-[#fff8f4] to-white p-8 text-center text-sm text-[#7a564a]">
-            <div className="font-serif text-lg font-medium text-[#28140d]">
+      <MarketingPage containerClassName="max-w-2xl">
+        <MarketingShell>
+          <MarketingShellBody className="text-center">
+            <div className="font-serif text-lg font-medium text-[var(--quiz-text)]">
               One moment
             </div>
-            <p className="mt-2 text-muted-foreground">Confirming your order…</p>
-          </div>
-        </Container>
-      </section>
+            <p className="mt-2 text-[var(--quiz-text-sub)]">Confirming your order…</p>
+          </MarketingShellBody>
+        </MarketingShell>
+      </MarketingPage>
     );
   }
 
   if (state.kind === "error") {
     return (
-      <section className="py-10 sm:py-14">
-        <Container className="max-w-2xl">
-          <div className="rounded-3xl border border-border bg-white p-6">
-            <div className="font-serif text-2xl font-semibold tracking-tight">
+      <MarketingPage containerClassName="max-w-2xl">
+        <MarketingShell>
+          <MarketingShellBody>
+            <div className="font-serif text-2xl font-semibold tracking-tight text-[var(--quiz-text)]">
               Something went wrong
             </div>
-            <p className="mt-3 text-sm text-muted-foreground">{state.message}</p>
+            <p className="mt-3 text-sm text-[var(--quiz-text-sub)]">{state.message}</p>
             <div className="mt-6 flex flex-col gap-2 sm:flex-row">
               <Button asChild variant="outline">
                 <Link href="/">Home</Link>
               </Button>
             </div>
-          </div>
-        </Container>
-      </section>
+          </MarketingShellBody>
+        </MarketingShell>
+      </MarketingPage>
     );
   }
 
@@ -169,9 +173,10 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
 
   if (isBook) {
     return (
-      <section className="pt-4 pb-12 sm:pt-6 sm:pb-16">
-        <Container className="max-w-[min(100%,58rem)]">
-          <div className="book-success-card-anim overflow-hidden rounded-3xl border border-[rgba(210,180,145,0.38)] bg-[linear-gradient(165deg,#fff8f4_0%,#fffefc_45%,#f3ebe3_100%)] shadow-[0_20px_45px_rgba(38,28,20,0.07),0_3px_10px_rgba(38,28,20,0.04)]">
+      <MarketingPage containerClassName="max-w-[min(100%,58rem)]" className="pt-4 sm:pt-6">
+        <MarketingShell>
+          <MarketingShellBody className="p-0 sm:p-0">
+          <div className="book-success-card-anim overflow-hidden rounded-[1.125rem] border border-[rgba(210,180,145,0.38)] bg-[linear-gradient(165deg,#fff8f4_0%,#fffefc_45%,#f3ebe3_100%)] shadow-[var(--shadow-card)]">
             <div className="grid items-start gap-8 p-10 sm:gap-10 sm:px-12 sm:py-12 md:px-16 md:py-14 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-16">
               <div className="book-success-cover-anim relative mx-auto w-full max-w-[300px] self-start sm:max-w-[320px] lg:mx-0">
                 <div
@@ -349,65 +354,63 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
               </div>
             </div>
           </div>
-        </Container>
-      </section>
+          </MarketingShellBody>
+        </MarketingShell>
+      </MarketingPage>
     );
   }
 
   return (
-    <section className="py-10 sm:py-14">
-      <Container className="max-w-2xl">
-        <div className="rounded-3xl border border-border bg-white p-6">
-          <div className="font-serif text-2xl font-semibold tracking-tight">
+    <MarketingPage containerClassName="max-w-2xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <div className="font-serif text-2xl font-semibold tracking-tight text-[var(--quiz-text)]">
             Payment successful
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-3 text-sm text-[var(--quiz-text-sub)]">
             Thanks! Your credits will appear in your account shortly
             {emailMasked ? ` (receipt: ${emailMasked})` : ""}.
           </p>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
             <Button asChild>
-              <Link href="/booking">Book a time</Link>
+              <Link href="/account">Account</Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href="/account">Account</Link>
+              <Link href="/">Home</Link>
             </Button>
           </div>
 
-          <p className="mt-6 text-xs text-muted-foreground">
+          <p className="mt-6 text-xs text-[var(--quiz-text-muted)]">
             Reference: <span className="font-mono">{sessionId}</span>
           </p>
-        </div>
-      </Container>
-    </section>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }
 
 export function PaymentSuccessGeneric() {
   return (
-    <section className="py-10 sm:py-14">
-      <Container className="max-w-2xl">
-        <div className="rounded-3xl border border-border bg-white p-6">
-          <div className="font-serif text-2xl font-semibold tracking-tight">
+    <MarketingPage containerClassName="max-w-2xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <div className="font-serif text-2xl font-semibold tracking-tight text-[var(--quiz-text)]">
             Payment successful
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-3 text-sm text-[var(--quiz-text-sub)]">
             Thanks! If you don’t see updates in your account, check the email
             you used at checkout for your receipt.
           </p>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
             <Button asChild>
-              <Link href="/booking">Book a time</Link>
-            </Button>
-            <Button asChild variant="outline">
               <Link href="/account">Account</Link>
             </Button>
-            <Button asChild variant="ghost">
+            <Button asChild variant="outline">
               <Link href="/">Home</Link>
             </Button>
           </div>
-        </div>
-      </Container>
-    </section>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

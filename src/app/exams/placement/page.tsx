@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Container } from "@/components/site/Container";
+import {
+  MarketingHeader,
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { getExam, getExamItems, PLACEMENT_SLUG } from "@/data/examsList";
 import { PlacementExamClient } from "./PlacementExamClient";
 
@@ -17,7 +22,8 @@ export const metadata: Metadata = {
     "Study Korean - Exams: find your Korean level with a short placement test. Interactive assessment.",
   openGraph: {
     title: `Check my level | ${META_KEYWORD} | Kaja`,
-    description: "Study Korean - Exams: find your Korean level with a short placement test.",
+    description:
+      "Study Korean - Exams: find your Korean level with a short placement test.",
     url: `${SITE_URL}/exams/placement`,
     siteName: "Kaja",
     type: "website",
@@ -30,50 +36,53 @@ export default async function PlacementExamPage() {
   const items = await getExamItems("placement", PLACEMENT_SLUG);
 
   return (
-    <div className="py-12 sm:py-16">
-      <Container className="max-w-2xl">
-        <nav className="text-sm text-muted-foreground">
-          <Link href="/exams" className="hover:text-foreground">
-            Exams
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-foreground">
-            Check my level Beginners ~ intermediate
-          </span>
-        </nav>
-        <h1 className="mt-4 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-          Check my level Beginners ~ intermediate
-        </h1>
-        <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-          A short assessment to find your level. You’ll get a recommended level
-          (A0–B2) and can then take level tests or mock TOPIK.
-        </p>
-        <div className="mt-8">
-          {exam && items.length > 0 ? (
-            <PlacementExamClient exam={exam} items={items} />
-          ) : (
-            <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
-              No exam data available.
-            </div>
-          )}
-        </div>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <Link
-            href="/exams"
-            className="text-sm font-medium text-primary hover:underline"
-          >
-            ← Back to Exams
-          </Link>
-          {process.env.NODE_ENV !== "production" && (
+    <MarketingPage containerClassName="max-w-2xl">
+      <MarketingShell>
+        <MarketingShellBody>
+          <nav className="text-sm text-[var(--quiz-text-sub)]">
             <Link
-              href="/exams/placement/edit"
-              className="rounded border border-border bg-muted/50 px-3 py-1.5 text-sm hover:bg-muted"
+              href="/exams"
+              className="hover:text-[var(--quiz-text)]"
             >
-              Edit
+              Exams
             </Link>
-          )}
-        </div>
-      </Container>
-    </div>
+            <span className="mx-2">/</span>
+            <span className="text-[var(--quiz-text)]">
+              Check my level Beginners ~ intermediate
+            </span>
+          </nav>
+          <MarketingHeader
+            title="Check my level Beginners ~ intermediate"
+            lead="A short assessment to find your level. You'll get a recommended level (A0–B2) and can then take level tests or mock TOPIK."
+            className="mt-4"
+          />
+          <div className="mt-8">
+            {exam && items.length > 0 ? (
+              <PlacementExamClient exam={exam} items={items} />
+            ) : (
+              <div className="rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] p-6 text-sm text-[var(--quiz-text-sub)]">
+                No exam data available.
+              </div>
+            )}
+          </div>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <Link
+              href="/exams"
+              className="text-sm font-medium text-[var(--quiz-primary)] hover:underline"
+            >
+              ← Back to Exams
+            </Link>
+            {process.env.NODE_ENV !== "production" && (
+              <Link
+                href="/exams/placement/edit"
+                className="rounded border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-3 py-1.5 text-sm hover:bg-[var(--quiz-surface-soft)]"
+              >
+                Edit
+              </Link>
+            )}
+          </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }

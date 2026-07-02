@@ -4,7 +4,11 @@ import type { Metadata } from "next";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
-import { Container } from "@/components/site/Container";
+import {
+  MarketingPage,
+  MarketingShell,
+  MarketingShellBody,
+} from "@/components/site/MarketingShell";
 import { ExpressionRenderer } from "@/components/expression/ExpressionRenderer";
 import {
   getAllExpressionChapters,
@@ -87,14 +91,15 @@ export default async function ExpressionChapterPage({ params }: Props) {
   };
 
   return (
-    <div className="py-12 sm:py-16">
+    <MarketingPage containerClassName="max-w-3xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbListJsonLd),
         }}
       />
-      <Container className="max-w-3xl">
+      <MarketingShell>
+        <MarketingShellBody>
         {/* Header */}
         <div className="mb-10">
           <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
@@ -144,7 +149,8 @@ export default async function ExpressionChapterPage({ params }: Props) {
             </Link>
           ) : null}
         </div>
-      </Container>
-    </div>
+        </MarketingShellBody>
+      </MarketingShell>
+    </MarketingPage>
   );
 }
