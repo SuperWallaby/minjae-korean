@@ -11,6 +11,7 @@ import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/Button";
 import { getBlogPost, listBlogPosts } from "@/data/blogPosts";
+import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
 
 export const runtime = "nodejs";
 
@@ -90,7 +91,7 @@ export default async function BlogArticlePage({
 
   const isDev = process.env.NODE_ENV !== "production";
   const related = allPosts.filter((x) => x.slug !== a.slug).slice(0, 4);
-  const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
+  const mainImage = resolveBlogCoverImage(a);
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(a.slug)}`;
 
   const baseUrl = SITE_URL.replace(/\/+$/, "");

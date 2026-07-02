@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { RelativeDate } from "@/components/article/RelativeDate";
 import { Container } from "@/components/site/Container";
 import { listBlogPosts } from "@/data/blogPosts";
+import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
 
 export const runtime = "nodejs";
 
@@ -73,18 +74,14 @@ export default async function BlogPage() {
                 className="group mt-10 block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-video">
-                  {(major.imageLarge?.trim() || major.imageThumb?.trim()) ? (
-                    <Image
-                      src={
-                        major.imageLarge?.trim() || major.imageThumb?.trim() || ""
-                      }
-                      alt={major.title}
-                      fill
-                      className="object-cover transition group-hover:scale-[1.02]"
-                      unoptimized
-                      sizes="(max-width: 1024px) 100vw, 1024px"
-                    />
-                  ) : null}
+                  <Image
+                    src={resolveBlogCoverImage(major)}
+                    alt={major.title}
+                    fill
+                    className="object-cover transition group-hover:scale-[1.02]"
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
                     <h2 className="mt-2 font-serif text-xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-2xl">
@@ -108,18 +105,14 @@ export default async function BlogPage() {
                     className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                      {(a.imageThumb?.trim() || a.imageLarge?.trim()) ? (
-                        <Image
-                          src={
-                            a.imageThumb?.trim() || a.imageLarge?.trim() || ""
-                          }
-                          alt={a.title}
-                          fill
-                          className="object-cover transition group-hover:scale-[1.02]"
-                          unoptimized
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      ) : null}
+                      <Image
+                        src={resolveBlogCoverImage(a)}
+                        alt={a.title}
+                        fill
+                        className="object-cover transition group-hover:scale-[1.02]"
+                        unoptimized
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
                     </div>
                     <div className="flex flex-1 flex-col p-4">
                       <h3 className="font-serif font-semibold tracking-tight line-clamp-2">

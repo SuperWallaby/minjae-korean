@@ -34,6 +34,7 @@ const SLUG_LIST = [
   "why-koreans-cant-speak-english-after-12-years",
   "good-korean-teacher-2026",
   "korean-verb-endings",
+  "mastering-korean-emotions-not-just-words",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
@@ -50,6 +51,7 @@ const loaders: Record<
   "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),
   "good-korean-teacher-2026": () => import("./content/good-korean-teacher-2026"),
   "korean-verb-endings": () => import("./content/korean-verb-endings"),
+  "mastering-korean-emotions-not-just-words": () => import("./content/mastering-korean-emotions-not-just-words"),
 };  
 
 export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {

@@ -6,8 +6,8 @@ export const post: BlogPost = {
   slug: "study-korean-what-is-arirang",
   title: "What Is Arirang?",
   level: 2,
-  imageThumb: "/images/placeholder/arirang-thumb.jpg",
-  imageLarge: "/images/placeholder/arirang-large.jpg",
+  imageThumb: "/brand/og.png",
+  imageLarge: "/brand/og.png",
   createdAt: "2026-03-17",
   paragraphs: [
     {
@@ -39,7 +39,6 @@ export const post: BlogPost = {
       ),
     },
     {
-      image: "/images/placeholder/arirang-02.jpg",
       subtitle: "A song full of emotion",
       content: (
         <>
@@ -66,7 +65,6 @@ export const post: BlogPost = {
       ),
     },
     {
-      image: "/images/placeholder/arirang-03.jpg",
       subtitle: "A song for Koreans abroad",
       content: (
         <>
