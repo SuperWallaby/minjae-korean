@@ -41,16 +41,25 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function isEmail(s: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+}
+
 export async function GET(req: NextRequest) {
   const auth = requireAdminKey(req);
   if (!auth.ok) return json(401, { ok: false, error: auth.error });
 
   const dryRun = req.nextUrl.searchParams.get("dryRun") === "1";
   const force = req.nextUrl.searchParams.get("force") === "1";
+  const testTo = req.nextUrl.searchParams.get("testTo")?.trim().toLowerCase() || "";
   const weekKey = req.nextUrl.searchParams.get("week")?.trim() || newsletterWeekKey();
 
+  if (testTo && !isEmail(testTo)) {
+    return json(400, { ok: false, error: "Invalid testTo email" });
+  }
+
   try {
-    if (!force) {
+    if (!force && !testTo) {
       const existing = await getNewsletterQuizWeekRun(weekKey);
       if (existing) {
         return json(200, {
@@ -64,7 +73,9 @@ export async function GET(req: NextRequest) {
     }
 
     const quiz = await buildWeeklyPictureQuiz(weekKey);
-    const subscribers = await listActiveNewsletterSubscribers();
+    const subscribers = testTo
+      ? [{ email: testTo, subscribedAt: new Date().toISOString() }]
+      : await listActiveNewsletterSubscribers();
     const base = siteUrl();
 
     if (dryRun) {
@@ -90,17 +101,19 @@ export async function GET(req: NextRequest) {
       return json(200, {
         ok: true,
         skipped: true,
-        reason: "no_subscribers",
+        reason: testTo ? "invalid_test_to" : "no_subscribers",
         weekKey,
         quiz,
       });
     }
 
-    await markNewsletterQuizWeekStarted({
-      weekKey,
-      quizWord: quiz.word,
-      quizId: quiz.targetQuizId,
-    });
+    if (!testTo) {
+      await markNewsletterQuizWeekStarted({
+        weekKey,
+        quizWord: quiz.word,
+        quizId: quiz.targetQuizId,
+      });
+    }
 
     let sent = 0;
     let failed = 0;
@@ -130,15 +143,18 @@ export async function GET(req: NextRequest) {
       await sleep(250);
     }
 
-    await finishNewsletterQuizWeekRun({
-      weekKey,
-      recipientCount: sent,
-      failedCount: failed,
-    });
+    if (!testTo) {
+      await finishNewsletterQuizWeekRun({
+        weekKey,
+        recipientCount: sent,
+        failedCount: failed,
+      });
+    }
 
     return json(200, {
       ok: true,
       weekKey,
+      testTo: testTo || undefined,
       quiz: {
         word: quiz.word,
         targetQuizId: quiz.targetQuizId,
