@@ -249,14 +249,22 @@ export type AzureChatCompletionDetail = {
 
 export async function azureChatCompletionDetail(
   messages: Array<{ role: "system" | "user" | "assistant"; content: unknown }>,
-  opts?: { maxTokens?: number; temperature?: number },
+  opts?: {
+    maxTokens?: number;
+    temperature?: number;
+    deployments?: string[];
+  },
 ): Promise<AzureChatCompletionDetail> {
   const c = readAzureOpenAIConfig();
   if (!c) return { text: null, lastMessage: "Azure config missing" };
+  const deployments =
+    opts?.deployments?.filter(Boolean).length
+      ? opts.deployments!.filter(Boolean)
+      : c.chatDeployments;
   let lastHttpStatus: number | undefined;
   let lastMessage: string | undefined;
   let lastDeployment: string | undefined;
-  for (const deployment of c.chatDeployments) {
+  for (const deployment of deployments) {
     lastDeployment = deployment;
     const r = await chatOnce(
       c.endpoint,
@@ -275,7 +283,11 @@ export async function azureChatCompletionDetail(
 
 export async function azureChatCompletion(
   messages: Array<{ role: "system" | "user" | "assistant"; content: unknown }>,
-  opts?: { maxTokens?: number; temperature?: number },
+  opts?: {
+    maxTokens?: number;
+    temperature?: number;
+    deployments?: string[];
+  },
 ): Promise<string | null> {
   const d = await azureChatCompletionDetail(messages, opts);
   return d.text;

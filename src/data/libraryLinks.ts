@@ -7,7 +7,7 @@ export type LibraryLink = {
   emphasized?: boolean;
 };
 
-/** News — 라이브러리 드롭다운 밖(헤더·홈 상단 카드 등)에서 사용 */
+/** News — first item in Library nav */
 export const NEWS_RESOURCE: LibraryLink = {
   href: "/news",
   label: "News",
@@ -17,6 +17,7 @@ export const NEWS_RESOURCE: LibraryLink = {
 };
 
 export const LIBRARY_LINKS: readonly LibraryLink[] = [
+  NEWS_RESOURCE,
   {
     href: "/blog",
     label: "Blog",
@@ -64,13 +65,6 @@ export const LIBRARY_LINKS: readonly LibraryLink[] = [
     label: "Basic",
     icon: "/cubs.webp",
     description: "Fundamental basics to build your Korean foundation.",
-  },
-  {
-    href: "/vocab-quiz",
-    label: "Vocab Quiz",
-    icon: "/cubs.webp",
-    description: "Picture vocabulary drills — auto or multiple choice.",
-    emphasized: true,
   },
 ] as const;
 

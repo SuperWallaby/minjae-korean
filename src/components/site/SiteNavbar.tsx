@@ -14,13 +14,13 @@ import { Logo } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { useEducationMode } from "@/lib/EducationModeProvider";
-import { LIBRARY_LINKS, NEWS_RESOURCE } from "@/data/libraryLinks";
+import { LIBRARY_LINKS } from "@/data/libraryLinks";
 
 type NavLinkProps = {
   href: string;
   label: string;
   activeOverride?: boolean;
-  /** e.g. NEWS_RESOURCE.icon — shows before label */
+  /** Optional icon before label */
   iconSrc?: string;
 };
 
@@ -71,7 +71,6 @@ function isAssetLinkActive(pathname: string, href: string) {
 export function SiteNavbar() {
   const { state } = useMockSession();
   const { enabled: eduMode } = useEducationMode();
-  const [activeHash, setActiveHash] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [assetsOpen, setAssetsOpen] = React.useState(false);
   const [headerVisible, setHeaderVisible] = React.useState(false);
@@ -112,30 +111,6 @@ export function SiteNavbar() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [eduMode]);
 
-  React.useEffect(() => {
-    const ids = ["approach"];
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-    if (elements.length === 0) return;
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort(
-            (a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0),
-          );
-        if (visible[0]?.target?.id) setActiveHash(visible[0].target.id);
-      },
-      // Include threshold 0 so tall sections still trigger updates.
-      { rootMargin: "-20% 0px -70% 0px", threshold: [0, 0.08, 0.15, 0.25] },
-    );
-
-    for (const el of elements) obs.observe(el);
-    return () => obs.disconnect();
-  }, [pathname]);
-
   const hideOnVocabQuiz = pathname?.startsWith("/vocab-quiz") ?? false;
 
   if (hideOnVocabQuiz) return null;
@@ -163,16 +138,10 @@ export function SiteNavbar() {
                 <Logo className="px-2" />
                 <nav className="hidden items-center gap-1 md:flex">
                   <NavLink
-                    href="/#approach"
-                    label="Approach"
-                    activeOverride={activeHash === "approach"}
+                    href="/"
+                    label="Home"
+                    activeOverride={pathname === "/"}
                   />
-                  <NavLink
-                    href="/news"
-                    label="News"
-                    iconSrc={NEWS_RESOURCE.icon}
-                  />
-                  {/* <NavLink href="/coaching" label="Class pass" /> */}
                   <div className="relative">
                     <button
                       type="button"
@@ -274,35 +243,55 @@ export function SiteNavbar() {
                 </div>
 
                 {state.user ? (
-                  <Button
-                    className="w-fit w-[101px]"
-                    variant="secondary"
-                    size="sm"
-                    asChild
-                  >
-                    <Link
-                      href="/account"
-                      className="inline-flex items-center gap-2"
+                  <>
+                    <Button
+                      className="hidden w-auto px-4 sm:inline-flex"
+                      variant="outline"
+                      size="sm"
+                      asChild
                     >
-                      <UserRound className="size-4" />
-                      Profile
-                    </Link>
-                  </Button>
+                      <Link href="/vocab-quiz">Play Game</Link>
+                    </Button>
+                    <Button
+                      className="w-fit w-[101px]"
+                      variant="secondary"
+                      size="sm"
+                      asChild
+                    >
+                      <Link
+                        href="/account"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <UserRound className="size-4" />
+                        Profile
+                      </Link>
+                    </Button>
+                  </>
                 ) : (
-                  <Button
-                    className="w-auto px-4"
-                    variant="primary"
-                    size="sm"
-                    asChild
-                  >
-                    <Link
-                      href="/subscribe"
-                      className="inline-flex items-center gap-2"
+                  <>
+                    <Button
+                      className="hidden w-auto px-4 sm:inline-flex"
+                      variant="outline"
+                      size="sm"
+                      asChild
                     >
-                      <BookOpen className="size-4" />
-                      Get Free Book
-                    </Link>
-                  </Button>
+                      <Link href="/vocab-quiz">Play Game</Link>
+                    </Button>
+                    <Button
+                      className="w-auto px-4"
+                      variant="primary"
+                      size="sm"
+                      asChild
+                    >
+                      <Link
+                        href="/subscribe"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <BookOpen className="size-4" />
+                        Get Free Book
+                      </Link>
+                    </Button>
+                  </>
                 )}
               </div>
             </div>
@@ -333,25 +322,18 @@ export function SiteNavbar() {
             <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain px-5 py-6">
                 <div className="grid gap-2">
                   <Link
-                    href="/#approach"
+                    href="/"
                     onClick={() => setMobileOpen(false)}
                     className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                   >
                     Home
                   </Link>
                   <Link
-                    href="/news"
+                    href="/vocab-quiz"
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
+                    className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
                   >
-                    <Image
-                      src={NEWS_RESOURCE.icon}
-                      alt=""
-                      width={24}
-                      height={24}
-                      className="size-6 shrink-0 opacity-90"
-                    />
-                    News
+                    Play Game
                   </Link>
                   {state.user ? (
                     <Link

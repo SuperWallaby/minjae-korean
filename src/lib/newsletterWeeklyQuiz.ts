@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 
+import { generateWeeklyQuizExamples } from "@/lib/newsletterQuizExamples";
 import { getKoreanQuizAppStoreLinks } from "@/lib/koreanQuizAppLinks";
 import { resolveRomanizationDisplay } from "@/lib/koreanQuiz/romanization";
 import {
@@ -73,48 +74,6 @@ function englishForItem(item: KoreanQuizItem): string | undefined {
   return choice?.english?.trim() || item.illustrationEnglish?.trim() || undefined;
 }
 
-function hasBatchim(word: string): boolean {
-  const ch = word.trim().slice(-1);
-  if (!ch) return false;
-  const code = ch.charCodeAt(0);
-  if (code < 0xac00 || code > 0xd7a3) return false;
-  return (code - 0xac00) % 28 !== 0;
-}
-
-function objectParticle(word: string): "을" | "를" {
-  return hasBatchim(word) ? "을" : "를";
-}
-
-function copula(word: string): "이에요" | "예요" {
-  return hasBatchim(word) ? "이에요" : "예요";
-}
-
-function englishWithArticle(english: string): string {
-  const gloss = english.trim();
-  if (!gloss) return "it";
-  if (/^(a|an|the)\s/i.test(gloss)) return gloss;
-  return /^[aeiou]/i.test(gloss) ? `an ${gloss}` : `a ${gloss}`;
-}
-
-export function weeklyQuizExampleSentences(
-  word: string,
-  english?: string,
-): WeeklyQuizExample[] {
-  const gloss = english?.trim();
-  const obj = objectParticle(word);
-  const cop = copula(word);
-  return [
-    {
-      korean: `이것은 ${word}${cop}.`,
-      english: gloss ? `This is ${englishWithArticle(gloss)}.` : `This is ${word}.`,
-    },
-    {
-      korean: `저는 ${word}${obj} 좋아해요.`,
-      english: gloss ? `I like ${englishWithArticle(gloss)}.` : `I like ${word}.`,
-    },
-  ];
-}
-
 export async function buildWeeklyPictureQuiz(
   weekKey = newsletterWeekKey(),
 ): Promise<WeeklyPictureQuiz> {
@@ -143,13 +102,20 @@ export async function buildWeeklyPictureQuiz(
     hashString(`${weekKey}:options`),
   );
 
+  const english = englishForItem(target);
+  const examples = await generateWeeklyQuizExamples({
+    word,
+    english,
+    topic: target.topic,
+  });
+
   return {
     weekKey,
     targetQuizId: target.id,
     word,
-    english: englishForItem(target),
+    english,
     romanization: resolveRomanizationDisplay(word, target.romanization),
-    examples: weeklyQuizExampleSentences(word, englishForItem(target)),
+    examples,
     options: optionItems.map((entry, index) => ({
       letter: String.fromCharCode(65 + index),
       imageUrl: entry.item.imageUrl.trim(),
@@ -171,13 +137,15 @@ function optionCell(option: WeeklyPictureQuizOption): string {
   return `
     <td align="center" valign="top" style="padding:8px;width:50%;">
       <div style="font-size:13px;font-weight:700;color:#0071e3;margin-bottom:8px;">${option.letter}</div>
-      <img
-        src="${src}"
-        alt="Option ${option.letter}"
-        width="148"
-        height="148"
-        style="display:block;width:148px;height:148px;object-fit:cover;border-radius:16px;border:1px solid #e5e5ea;background:#f5f5f7;margin:0 auto;"
-      />
+      <div style="width:148px;height:148px;margin:0 auto;border-radius:16px;border:1px solid #e5e5ea;background:#f4f4f5;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+        <img
+          src="${src}"
+          alt="Option ${option.letter}"
+          width="148"
+          height="148"
+          style="display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:#f4f4f5;"
+        />
+      </div>
     </td>
   `.trim();
 }
