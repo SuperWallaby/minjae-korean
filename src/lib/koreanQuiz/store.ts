@@ -122,14 +122,15 @@ async function homeCardFromItem(item: KoreanQuizItem): Promise<KoreanQuizHomeCar
   const label = correctLabelFromItem(item) || "Korean word";
   const illustrationEnglish = illustrationEnglishBelowImage(item);
   const answerTtsUrl = await resolveAnswerTtsPlaybackUrl(item, "normal");
-  return {
+  const card: KoreanQuizHomeCard = {
     id: item.id,
     imageUrl,
     label,
     illustrationEnglish,
     romanization: resolveRomanizationDisplay(label, item.romanization),
-    answerTtsUrl,
   };
+  if (answerTtsUrl) card.answerTtsUrl = answerTtsUrl;
+  return card;
 }
 
 /** Random approved noun quizzes with images — for marketing card stack on home. */

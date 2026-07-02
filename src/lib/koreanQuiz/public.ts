@@ -37,8 +37,8 @@ export async function toKoreanQuizPrepared(
       label: choice.label,
       english: choice.english?.trim() ?? "",
     })),
-    answerTtsUrl,
-    answerTtsSlowUrl,
+    ...(answerTtsUrl ? { answerTtsUrl } : {}),
+    ...(answerTtsSlowUrl ? { answerTtsSlowUrl } : {}),
     illustrationEnglish: illustrationEnglishFromItem(item),
     romanization: resolveRomanizationDisplay(
       correctLabel,

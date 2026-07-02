@@ -56,13 +56,6 @@ export function buildQuizAnswerTtsSlowR2Key(quizId: string): string {
   return "system/quiz-tts/" + quizId + "-slow.mp3";
 }
 
-export function publicUrlForR2Key(key: string): string | null {
-  const base =
-    process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "") ||
-    "https://file.fancamrank.com";
-  return `${base}/${key}`;
-}
-
 export async function uploadToR2(options: {
   key: string;
   body: Buffer;
