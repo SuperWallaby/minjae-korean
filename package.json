@@ -26,7 +26,8 @@
     "blog:fetch": "node scripts/youtube_fetch_one.mjs",
     "blog:from-youtube": "node scripts/blog_from_youtube.mjs",
     "blog:cover": "node scripts/blog_cover_only.mjs",
-    "newsletter:upload-pdf": "node scripts/r2_put_newsletter_pdf.mjs"
+    "newsletter:upload-pdf": "node scripts/r2_put_newsletter_pdf.mjs",
+    "newsletter:upload-quiz-images": "npx tsx scripts/upload_weekly_quiz_email_images.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",

@@ -46,6 +46,18 @@ function isAllowedQuizImageUrl(imageUrl: string): boolean {
   }
 }
 
+async function publicObjectExists(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, {
+      method: "HEAD",
+      signal: AbortSignal.timeout(12_000),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
 async function flattenQuizImageJpeg(sourceUrl: string): Promise<Buffer> {
   const res = await fetch(sourceUrl, { signal: AbortSignal.timeout(20_000) });
   if (!res.ok) {
@@ -72,12 +84,6 @@ export async function quizImageR2UrlForEmail(args: {
   if (!sourceUrl || sourceUrl.startsWith("data:")) return sourceUrl;
   if (!isAllowedQuizImageUrl(sourceUrl)) return sourceUrl;
 
-  if (!isR2Configured()) {
-    throw new Error(
-      "R2 is not configured — weekly quiz emails need R2 upload for trusted image URLs",
-    );
-  }
-
   const key = newsletterQuizEmailImageKey(args.weekKey, args.letter);
   const publicBase = resolveNewsletterQuizImagePublicBase();
   const publicUrl = publicUrlForR2Key(key, publicBase);
@@ -87,6 +93,13 @@ export async function quizImageR2UrlForEmail(args: {
 
   const existing = await getR2LastModified(key);
   if (existing) return publicUrl;
+  if (await publicObjectExists(publicUrl)) return publicUrl;
+
+  if (!isR2Configured()) {
+    throw new Error(
+      `Weekly quiz image missing at ${publicUrl}. Set R2 env on the server or run: node scripts/upload_weekly_quiz_email_images.mjs ${args.weekKey}`,
+    );
+  }
 
   const jpeg = await flattenQuizImageJpeg(sourceUrl);
   await uploadToR2({
