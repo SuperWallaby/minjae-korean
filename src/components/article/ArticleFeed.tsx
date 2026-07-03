@@ -37,8 +37,8 @@ function resolveFeedCover(
   fallbackCover: string,
 ): string {
   return (
-    item.imageLarge?.trim() ||
     item.imageThumb?.trim() ||
+    item.imageLarge?.trim() ||
     fallbackCover
   );
 }

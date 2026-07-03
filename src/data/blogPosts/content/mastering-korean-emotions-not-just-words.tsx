@@ -9,8 +9,8 @@ export const post: BlogPost = {
   slug: "mastering-korean-emotions-not-just-words",
   title: "I Thought Learning Korean Was Vocabulary. Then I Found Its Emotional Layers",
   level: 4,
-  imageLarge: "https://file.kajakorean.com/articles/blog-cover-mastering-korean-emotions-not-just-words-1782994997295_j178gc.webp",
-  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-mastering-korean-emotions-not-just-words-1782994997295_j178gc.webp",
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-mastering-korean-emotions-not-just-words-1783001101050_79thiu.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-mastering-korean-emotions-not-just-words-1783001101050_79thiu.webp",
   createdAt: "2026-07-02T10:24:57.262Z",
   updatedAt: "2026-07-02T10:24:57.262Z",
   paragraphs: [

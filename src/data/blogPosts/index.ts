@@ -37,6 +37,8 @@ const SLUG_LIST = [
   "korean-verb-endings",
   "mastering-korean-emotions-not-just-words",
   "balanced-practice-trumps-method-for-korean",
+  "why-essential-korean-words-are-more-than-vocab",
+  "korean-study-plans-realistic-flexible-goals",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
@@ -53,6 +55,8 @@ const loaders: Record<
   "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),
   "good-korean-teacher-2026": () => import("./content/good-korean-teacher-2026"),
   "korean-verb-endings": () => import("./content/korean-verb-endings"),
+  "korean-study-plans-realistic-flexible-goals": () => import("./content/korean-study-plans-realistic-flexible-goals"),
+  "why-essential-korean-words-are-more-than-vocab": () => import("./content/why-essential-korean-words-are-more-than-vocab"),
   "balanced-practice-trumps-method-for-korean": () => import("./content/balanced-practice-trumps-method-for-korean"),
   "mastering-korean-emotions-not-just-words": () => import("./content/mastering-korean-emotions-not-just-words"),
 };  

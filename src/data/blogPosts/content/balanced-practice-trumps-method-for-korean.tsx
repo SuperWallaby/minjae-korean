@@ -9,8 +9,8 @@ export const post: BlogPost = {
   slug: "balanced-practice-trumps-method-for-korean",
   title: "I Thought Watching Korean Dramas Was Enough, But My Take Has Changed",
   level: 3,
-  imageLarge: "https://file.kajakorean.com/articles/blog-cover-balanced-practice-trumps-method-for-korean-1782995526886_463pdi.webp",
-  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-balanced-practice-trumps-method-for-korean-1782995526886_463pdi.webp",
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-balanced-practice-trumps-method-for-korean-1783001100828_ly4y18.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-balanced-practice-trumps-method-for-korean-1783001100828_ly4y18.webp",
   createdAt: "2026-07-02T12:29:53.707Z",
   updatedAt: "2026-07-02T12:29:53.707Z",
   paragraphs: [
