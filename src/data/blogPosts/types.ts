@@ -31,6 +31,10 @@ export type BlogParagraphBlock = {
 export type BlogPost = {
   slug: string;
   title: string;
+  /** SEO/meta description. Falls back to first paragraph when omitted. */
+  description?: string;
+  /** Search keywords used for metadata and internal planning. */
+  keywords?: string[];
   level?: ReadingLevel;
   imageThumb?: string;
   imageLarge?: string;

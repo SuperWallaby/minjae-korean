@@ -25,6 +25,7 @@
     "youtube:caption-smoke": "node scripts/youtube_caption_smoke_test.mjs",
     "blog:fetch": "node scripts/youtube_fetch_one.mjs",
     "blog:from-youtube": "node scripts/blog_from_youtube.mjs",
+    "blog:from-youtube:essay": "node scripts/blog_from_youtube.mjs --mode essay",
     "blog:cover": "node scripts/blog_cover_only.mjs",
     "newsletter:upload-pdf": "node scripts/r2_put_newsletter_pdf.mjs",
     "newsletter:upload-quiz-images": "npx tsx scripts/upload_weekly_quiz_email_images.mjs"

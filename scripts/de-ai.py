@@ -51,7 +51,9 @@ REMOVE:
 - Excessive rhetorical questions
 - ALL semicolons (;) — replace with periods, commas, or "and"
 
-Article must read as opinionated essay, not summary. If it can be reverse-engineered to source section order, restructure.
+If the article is an opinion essay, it must read as an opinionated essay, not a summary.
+If the article is an SEO learning guide, preserve the useful guide structure: # title, ## section headers, Korean examples, Common Mistakes, and FAQ.
+In both cases, if it can be reverse-engineered to source section order, restructure.
 
 Return ONLY the rewritten markdown article. No commentary.""",
 
@@ -66,6 +68,7 @@ ADD:
 - Contractions (don't, it's, I'd, you're)
 - Plain section titles
 - Mixed paragraph lengths (some 4-6 lines, some short blunt ones)
+- Preserve helpful SEO guide elements when present: ## headers, Korean examples, Common Mistakes, FAQ
 
 AVOID:
 - Semicolons (;)
@@ -76,7 +79,7 @@ Return ONLY the rewritten markdown article. No commentary.""",
 
     "roughen": """You are a de-AI editor. PASS 3: ROUGHEN — remove Claude-style phrasebook and uniform polish.
 
-Rewrite the article below. Keep thesis, facts, numbers, title, subtitle, source line.
+Rewrite the article below. Keep thesis, facts, numbers, title, subtitle, source line, and any useful guide/FAQ structure.
 
 REPLACE coined AI label phrases with plain speech:
 - "cognitive debt" → explain plainly (borrow thinking now, pay later / skipped the hard part)
@@ -101,6 +104,7 @@ Return ONLY the rewritten markdown article. No commentary.""",
     "highlight": """You are a de-AI editor. PASS 4: HIGHLIGHT key sentences.
 
 Edit the article below. Do NOT rewrite. Only add **bold** around full sentences.
+Preserve all # and ## markdown headers exactly unless they contain obvious AI wording.
 
 Rules:
 - Bold 1-2 KEY SENTENCES per section — sentences that carry the thesis or a sharp insight

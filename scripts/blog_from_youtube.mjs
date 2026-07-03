@@ -20,7 +20,13 @@ import { fetchOneYoutubeDigest, parseVideoId } from "./lib/youtube_transcript.mj
 const LOG = "[blog-pipeline] ";
 const STYLE = (name) => readStyleRef(name, ROOT);
 
-const TITLE_SYSTEM = `You synthesize Korean YouTube topics into English blog posts for a Korean teacher's site.
+function normalizeMode(raw) {
+  const mode = String(raw || "").trim().toLowerCase();
+  if (mode === "essay" || mode === "seo") return mode;
+  throw new Error(`Unknown --mode: ${raw} (use seo or essay)`);
+}
+
+const ESSAY_TITLE_SYSTEM = `You synthesize Korean YouTube topics into English blog posts for a Korean teacher's site.
 
 ${STYLE("synthesis.md")}
 
@@ -39,7 +45,29 @@ level guide for blog readers (English learners of Korean):
 3 = default conversational
 4-5 = denser but still clear`;
 
-const DRAFT_SYSTEM = `You write an English opinion essay for a Korean teacher's blog.
+const SEO_TITLE_SYSTEM = `You turn Korean-learning YouTube transcripts into SEO-focused English blog articles for a Korean teacher's site.
+
+Goal:
+- Search traffic first, not Substack/Medium essay vibes.
+- Choose one clear search intent a learner might type into Google.
+- Prefer practical keywords such as "how to learn Korean", "Korean study plan", "Korean words for beginners", "Korean subtitles", "Korean pronunciation".
+- Titles must include the primary keyword or a close variant.
+
+Return JSON only:
+{
+  "thesis": "one sentence — useful angle for learners",
+  "primaryKeyword": "one exact target keyword",
+  "searchIntent": "what the searcher wants solved",
+  "titles": ["3-5 SEO titles, clear and searchable, no clickbait"],
+  "slugSuggestion": "lowercase-english-hyphens",
+  "metaDescription": "145-160 character SEO description",
+  "relatedKeywords": ["4-8 related search phrases"],
+  "level": 1-5
+}
+
+Do not make Medium-style titles like "I Thought X..." unless they still clearly match search intent.`;
+
+const ESSAY_DRAFT_SYSTEM = `You write an English opinion essay for a Korean teacher's blog.
 
 ${STYLE("synthesis.md")}
 
@@ -61,6 +89,52 @@ Rules:
 - End with a short closing section (no "Source:" line — added later)
 - Do not name people from the video; no "the video says"`;
 
+const SEO_DRAFT_SYSTEM = `You write an SEO-focused English Korean-learning guide for a Korean teacher's site.
+
+This is NOT a Medium/Substack essay. It should help a searcher solve a concrete Korean-learning problem.
+
+Output markdown only:
+# Title (exact chosen title)
+
+Short intro: answer the search intent in 2-4 direct sentences.
+
+## Clear searchable section title
+
+Body...
+
+Rules:
+- Use the primary keyword naturally in the intro and at least one H2.
+- 6-9 useful H2 sections. Keep H2 titles plain and searchable, no colons.
+- Include practical Korean examples using [[KO: ...]] where helpful.
+- Explain what the Korean means, when to use it, and beginner mistakes.
+- Include at least one section titled "Common Mistakes".
+- Include a short "FAQ" section with 3-5 learner questions and direct answers.
+- English body; Korean snippets are allowed with [[KO: 한국어 문장]].
+- NO semicolons (;)
+- No fake personal stories.
+- No "the video says" or source-retelling.
+- No Source line — added later.
+
+Tone:
+- Friendly teacher, clear and useful.
+- Human but not overly literary.
+- Searcher should leave with steps, examples, and a better mental model.`;
+
+const MODE_CONFIG = {
+  essay: {
+    titleStep: "Thesis + essay titles",
+    draftStep: "Draft essay",
+    titleSystem: ESSAY_TITLE_SYSTEM,
+    draftSystem: ESSAY_DRAFT_SYSTEM,
+  },
+  seo: {
+    titleStep: "SEO brief + titles",
+    draftStep: "SEO guide draft",
+    titleSystem: SEO_TITLE_SYSTEM,
+    draftSystem: SEO_DRAFT_SYSTEM,
+  },
+};
+
 function parseArgs(argv) {
   const val = (flag, fallback = null) => {
     const i = argv.indexOf(flag);
@@ -70,6 +144,7 @@ function parseArgs(argv) {
   const url = val("--url") || val("-u");
   return {
     url,
+    mode: normalizeMode(val("--mode", process.env.BLOG_PIPELINE_MODE || "seo")),
     titleIndex: Number.parseInt(val("--title-index", "0"), 10) || 0,
     register: has("--register"),
     skipDeai: has("--skip-deai"),
@@ -92,7 +167,8 @@ function runDeAi(inputPath, outPath, passes) {
   }
 }
 
-async function proposeTitles(digest) {
+async function proposeTitles(digest, mode) {
+  const config = MODE_CONFIG[mode];
   const user = `YouTube source (Korean transcript excerpt):
 Title: ${digest.title}
 Channel: ${digest.channelTitle}
@@ -102,10 +178,10 @@ Transcript:
 ${digest.textForPersonalSummary.slice(0, 6000)}`;
 
   const raw = await azureChat({
-    system: TITLE_SYSTEM,
+    system: config.titleSystem,
     user,
-    temperature: 0.8,
-    maxTokens: 2000,
+    temperature: mode === "seo" ? 0.45 : 0.8,
+    maxTokens: mode === "seo" ? 2600 : 2000,
     jsonMode: true,
   });
   const json = JSON.parse(stripCodeFence(raw));
@@ -115,18 +191,27 @@ ${digest.textForPersonalSummary.slice(0, 6000)}`;
   return json;
 }
 
-async function writeDraft(digest, title, thesis) {
+async function writeDraft(digest, title, proposal, mode) {
+  const config = MODE_CONFIG[mode];
+  const seoBits =
+    mode === "seo"
+      ? `Primary keyword: ${proposal.primaryKeyword || ""}
+Search intent: ${proposal.searchIntent || ""}
+Meta description target: ${proposal.metaDescription || ""}
+Related keywords: ${(proposal.relatedKeywords || []).join(", ")}`
+      : "";
   const user = `Chosen title: ${title}
-Thesis to build around: ${thesis}
+Thesis to build around: ${proposal.thesis}
+${seoBits}
 
 Source transcript:
 ${digest.textForPersonalSummary.slice(0, 8000)}`;
 
   const raw = await azureChat({
-    system: DRAFT_SYSTEM,
+    system: config.draftSystem,
     user,
-    temperature: 0.75,
-    maxTokens: 8000,
+    temperature: mode === "seo" ? 0.55 : 0.75,
+    maxTokens: mode === "seo" ? 9000 : 8000,
   });
   let md = stripCodeFence(raw);
   if (!md.startsWith("# ")) {
@@ -139,6 +224,7 @@ ${digest.textForPersonalSummary.slice(0, 8000)}`;
 async function main() {
   loadEnvLocal();
   const args = parseArgs(process.argv.slice(2));
+  const modeConfig = MODE_CONFIG[args.mode];
 
   mkdirSync(args.outDir, { recursive: true });
   const indexPath = join(ROOT, "src", "data", "blogPosts", "index.ts");
@@ -165,18 +251,22 @@ async function main() {
     console.error(`${LOG}  saved ${digestPath}`);
   }
 
-  console.error(`${LOG}[2/7] Thesis + titles…`);
-  const proposal = await proposeTitles(digest);
+  console.error(`${LOG}mode: ${args.mode}`);
+  console.error(`${LOG}[2/7] ${modeConfig.titleStep}…`);
+  const proposal = await proposeTitles(digest, args.mode);
   const titleIdx = Math.min(Math.max(0, args.titleIndex), proposal.titles.length - 1);
   const title = proposal.titles[titleIdx];
   const slug = slugify(proposal.slugSuggestion || title);
   console.error(`${LOG}  thesis: ${proposal.thesis}`);
+  if (args.mode === "seo") {
+    console.error(`${LOG}  keyword: ${proposal.primaryKeyword || "(none)"}`);
+  }
   console.error(`${LOG}  title [${titleIdx}]: ${title}`);
   console.error(`${LOG}  slug: ${slug}`);
   writeFileSync(join(args.outDir, `${slug}-proposal.json`), JSON.stringify(proposal, null, 2));
 
-  console.error(`${LOG}[3/7] Draft essay…`);
-  const draftMd = await writeDraft(digest, title, proposal.thesis);
+  console.error(`${LOG}[3/7] ${modeConfig.draftStep}…`);
+  const draftMd = await writeDraft(digest, title, proposal, args.mode);
   const draftPath = join(args.outDir, `${slug}-draft.md`);
   writeFileSync(draftPath, draftMd, "utf8");
   console.error(`${LOG}  saved ${draftPath}`);
@@ -199,6 +289,11 @@ async function main() {
   const tsx = blogPostToTsx({
     slug,
     title: postTitle,
+    description: proposal.metaDescription,
+    keywords:
+      args.mode === "seo"
+        ? [proposal.primaryKeyword, ...(proposal.relatedKeywords || [])].filter(Boolean)
+        : undefined,
     level: proposal.level || 3,
     videoId: digest.videoId,
     sections: parsed.sections,
@@ -248,6 +343,8 @@ async function main() {
     ok: true,
     slug,
     title: postTitle,
+    mode: args.mode,
+    primaryKeyword: proposal.primaryKeyword || null,
     draft: draftPath,
     final: join(args.outDir, `${slug}.md`),
     registered: args.register,

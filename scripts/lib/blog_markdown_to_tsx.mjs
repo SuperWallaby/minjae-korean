@@ -127,8 +127,24 @@ function bodyToJsx(body) {
   return linesOut.join("\n");
 }
 
-export function blogPostToTsx({ slug, title, level, createdAt, videoId, sections, imageThumb, imageLarge }) {
+export function blogPostToTsx({
+  slug,
+  title,
+  description,
+  keywords,
+  level,
+  createdAt,
+  videoId,
+  sections,
+  imageThumb,
+  imageLarge,
+}) {
   const iso = createdAt || new Date().toISOString();
+  const metaFields = [];
+  if (description) metaFields.push(`  description: ${JSON.stringify(description)},`);
+  if (Array.isArray(keywords) && keywords.length) {
+    metaFields.push(`  keywords: ${JSON.stringify(keywords)},`);
+  }
   const imageFields = [];
   if (imageThumb) imageFields.push(`  imageThumb: ${JSON.stringify(imageThumb)},`);
   if (imageLarge) imageFields.push(`  imageLarge: ${JSON.stringify(imageLarge)},`);
@@ -153,6 +169,7 @@ import type { BlogPost } from "../types";
 export const post: BlogPost = {
   slug: ${JSON.stringify(slug)},
   title: ${JSON.stringify(title)},
+${metaFields.length ? `${metaFields.join("\n")}\n` : ""}
   level: ${level || 3},
 ${imageFields.length ? `${imageFields.join("\n")}\n` : ""}  createdAt: ${JSON.stringify(iso)},
   updatedAt: ${JSON.stringify(iso)},

@@ -1,6 +1,8 @@
 # Blog from YouTube Pipeline
 
-Turn a Korean YouTube URL into a `/blog` post (English essay + de-AI passes + TSX registration).
+Turn a Korean YouTube URL into a `/blog` post (SEO guide or essay + de-AI passes + TSX registration).
+
+Default mode is **SEO guide** for search traffic. Use `--mode essay` only when you want the older Medium/Substack-style reflective article.
 
 ## Prerequisites
 
@@ -18,11 +20,14 @@ Turn a Korean YouTube URL into a `/blog` post (English essay + de-AI passes + TS
 # 1) Fetch transcript only
 yarn blog:fetch "https://www.youtube.com/watch?v=VIDEO_ID"
 
-# 2) Full pipeline (preview in .tmp — does NOT touch src/)
+# 2) Full SEO pipeline (preview in .tmp — does NOT touch src/)
 yarn blog:from-youtube --url "https://www.youtube.com/watch?v=VIDEO_ID"
 
 # 3) Pick title option 2, register on site
 yarn blog:from-youtube --url "..." --title-index 1 --register
+
+# Essay mode (old reflective style)
+yarn blog:from-youtube --mode essay --url "..." --register
 
 # 4) Cover only (existing post)
 yarn blog:cover --slug mastering-korean-emotions-not-just-words
@@ -35,10 +40,11 @@ yarn blog:from-youtube --url "..." --register --skip-cover
 
 ```
 URL → transcript
-    → thesis + titles (LLM)
-    → draft markdown
+    → SEO brief + titles (default) OR essay thesis + titles
+    → SEO guide draft OR essay draft
     → de-ai.py (5 passes)
-    → TSX → src/data/blogPosts/content/{slug}.tsx
+    → TSX (+ description/keywords in SEO mode)
+    → src/data/blogPosts/content/{slug}.tsx
     ▼
 [7] Cover (gpt-image-2) → R2 large WebP + thumb WebP → patch TSX
 ```

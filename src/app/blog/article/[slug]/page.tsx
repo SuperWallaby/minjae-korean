@@ -25,6 +25,7 @@ const SITE_URL =
 
 function buildDescription(a: Awaited<ReturnType<typeof getBlogPost>>): string {
   if (!a) return "";
+  if (a.description?.trim()) return a.description.trim();
   const raw = a.paragraphs?.[0]?.content;
   const firstContent = typeof raw === "string" ? raw.trim() : "";
   if (firstContent) {
@@ -55,6 +56,7 @@ export async function generateMetadata({
   return {
     title: metaTitle,
     description: metaDescription,
+    ...(a.keywords?.length && { keywords: a.keywords }),
     alternates: { canonical },
     ...(a.noImageIndex && {
       robots: { index: true, follow: true, noimageindex: true },
