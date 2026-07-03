@@ -13,6 +13,11 @@ import type { ReactNode } from "react";
 
 export type ReadingLevel = 1 | 2 | 3 | 4 | 5;
 
+export type BlogFaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type BlogParagraphBlock = {
   image?: string;
   /**
@@ -35,6 +40,8 @@ export type BlogPost = {
   description?: string;
   /** Search keywords used for metadata and internal planning. */
   keywords?: string[];
+  /** FAQ entries for answer engines and FAQ structured data. */
+  faq?: BlogFaqItem[];
   level?: ReadingLevel;
   imageThumb?: string;
   imageLarge?: string;

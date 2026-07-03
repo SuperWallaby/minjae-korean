@@ -45,25 +45,36 @@ level guide for blog readers (English learners of Korean):
 3 = default conversational
 4-5 = denser but still clear`;
 
-const SEO_TITLE_SYSTEM = `You turn Korean-learning YouTube transcripts into SEO-focused English blog articles for a Korean teacher's site.
+const SEO_TITLE_SYSTEM = `You turn Korean-learning YouTube transcripts into SEO/AEO/GEO-focused English blog articles for a Korean teacher's site.
 
 Goal:
 - Search traffic first, not Substack/Medium essay vibes.
+- Answer-engine friendliness: the article should be easy for Google snippets, ChatGPT, Perplexity, and Gemini to quote.
 - Choose one clear search intent a learner might type into Google.
 - Prefer practical keywords such as "how to learn Korean", "Korean study plan", "Korean words for beginners", "Korean subtitles", "Korean pronunciation".
 - Titles must include the primary keyword or a close variant.
+- Prefer question-style search queries when they fit, e.g. "is Korean hard to learn", "how long does it take to learn Korean", "can you learn Korean with K-dramas".
 
 Return JSON only:
 {
   "thesis": "one sentence — useful angle for learners",
   "primaryKeyword": "one exact target keyword",
   "searchIntent": "what the searcher wants solved",
+  "directAnswer": "2-3 sentence answer to the primary query, written for featured snippets",
   "titles": ["3-5 SEO titles, clear and searchable, no clickbait"],
   "slugSuggestion": "lowercase-english-hyphens",
   "metaDescription": "145-160 character SEO description",
   "relatedKeywords": ["4-8 related search phrases"],
+  "faq": [
+    { "question": "search-style learner question", "answer": "short direct answer, 1-3 sentences" }
+  ],
   "level": 1-5
 }
+
+FAQ rules:
+- 4-6 questions.
+- Questions must match real search or answer-engine phrasing.
+- Answers must be concise, factual, and not fluffy.
 
 Do not make Medium-style titles like "I Thought X..." unless they still clearly match search intent.`;
 
@@ -89,31 +100,40 @@ Rules:
 - End with a short closing section (no "Source:" line — added later)
 - Do not name people from the video; no "the video says"`;
 
-const SEO_DRAFT_SYSTEM = `You write an SEO-focused English Korean-learning guide for a Korean teacher's site.
+const SEO_DRAFT_SYSTEM = `You write an SEO/AEO/GEO-focused English Korean-learning guide for a Korean teacher's site.
 
 This is NOT a Medium/Substack essay. It should help a searcher solve a concrete Korean-learning problem.
 
 Output markdown only:
 # Title (exact chosen title)
 
-Short intro: answer the search intent in 2-4 direct sentences.
+Opening requirement:
+- Start with a short direct answer paragraph BEFORE the first H2.
+- The first sentence should answer the main query immediately.
+- This paragraph should be 2-4 sentences and suitable for a featured snippet.
 
-## Clear searchable section title
+## Question-style or searchable section title
 
 Body...
 
 Rules:
 - Use the primary keyword naturally in the intro and at least one H2.
-- 6-9 useful H2 sections. Keep H2 titles plain and searchable, no colons.
+- 6-9 useful H2 sections. Keep H2 titles plain, searchable, and often question-style. No colons.
+- Include one section titled "Key Takeaway" near the end with 2-4 concise bullets or short paragraphs.
 - Include practical Korean examples using [[KO: ...]] where helpful.
 - Explain what the Korean means, when to use it, and beginner mistakes.
 - Include at least one section titled "Common Mistakes".
-- Include a short "FAQ" section with 3-5 learner questions and direct answers.
+- Include a "FAQ" section with 4-6 learner questions and direct 1-3 sentence answers.
 - English body; Korean snippets are allowed with [[KO: 한국어 문장]].
 - NO semicolons (;)
 - No fake personal stories.
 - No "the video says" or source-retelling.
 - No Source line — added later.
+
+AEO/GEO rules:
+- Add concise definition-style sentences when useful, e.g. "Korean speech levels are..."
+- Make important answer sentences self-contained, so an answer engine can quote them without extra context.
+- Avoid vague reflections. Prefer direct answer, explanation, example, and mistake.
 
 Tone:
 - Friendly teacher, clear and useful.
@@ -197,8 +217,13 @@ async function writeDraft(digest, title, proposal, mode) {
     mode === "seo"
       ? `Primary keyword: ${proposal.primaryKeyword || ""}
 Search intent: ${proposal.searchIntent || ""}
+Direct answer to use near the top: ${proposal.directAnswer || ""}
 Meta description target: ${proposal.metaDescription || ""}
-Related keywords: ${(proposal.relatedKeywords || []).join(", ")}`
+Related keywords: ${(proposal.relatedKeywords || []).join(", ")}
+FAQ questions to cover:
+${(proposal.faq || [])
+  .map((x, i) => `${i + 1}. ${x.question} — ${x.answer}`)
+  .join("\n")}`
       : "";
   const user = `Chosen title: ${title}
 Thesis to build around: ${proposal.thesis}
@@ -294,6 +319,7 @@ async function main() {
       args.mode === "seo"
         ? [proposal.primaryKeyword, ...(proposal.relatedKeywords || [])].filter(Boolean)
         : undefined,
+    faq: args.mode === "seo" ? proposal.faq : undefined,
     level: proposal.level || 3,
     videoId: digest.videoId,
     sections: parsed.sections,

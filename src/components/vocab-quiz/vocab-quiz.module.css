@@ -48,6 +48,80 @@
   color: #9ca3af;
 }
 
+.seoSection {
+  margin: 2rem auto 0;
+  max-width: 62rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at top left, rgba(0, 113, 227, 0.08), transparent 34rem),
+    #ffffff;
+  padding: 1.5rem;
+  color: #111827;
+}
+
+.seoEyebrow {
+  margin: 0 0 0.5rem;
+  color: #0071e3;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.seoTitle {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.seoLead {
+  margin: 0.85rem 0 0;
+  max-width: 46rem;
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.seoGrid {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.seoCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 1.125rem;
+  background: #f9fafb;
+  padding: 1rem;
+}
+
+.seoCard h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.seoCard p {
+  margin: 0.45rem 0 0;
+  color: #4b5563;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .seoSection {
+    padding: 2rem;
+  }
+
+  .seoGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .modeBtn,
 .iconBtn {
   display: inline-flex;

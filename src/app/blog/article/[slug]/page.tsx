@@ -140,6 +140,21 @@ export default async function BlogArticlePage({
       { "@type": "ListItem", position: 3, name: a.title, item: canonical },
     ],
   };
+  const faqJsonLd =
+    a.faq && a.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: a.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
 
   return (
     <MarketingPage containerClassName={containerClass}>
@@ -153,6 +168,12 @@ export default async function BlogArticlePage({
           __html: JSON.stringify(breadcrumbListJsonLd),
         }}
       />
+      {faqJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      ) : null}
       <MarketingShell>
         <MarketingShellBody>
         {mainImage ? (

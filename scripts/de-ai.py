@@ -52,7 +52,7 @@ REMOVE:
 - ALL semicolons (;) — replace with periods, commas, or "and"
 
 If the article is an opinion essay, it must read as an opinionated essay, not a summary.
-If the article is an SEO learning guide, preserve the useful guide structure: # title, ## section headers, Korean examples, Common Mistakes, and FAQ.
+If the article is an SEO/AEO learning guide, preserve the useful guide structure: # title, ## section headers, direct answer intro, Korean examples, Key Takeaway, Common Mistakes, and FAQ.
 In both cases, if it can be reverse-engineered to source section order, restructure.
 
 Return ONLY the rewritten markdown article. No commentary.""",
@@ -68,7 +68,7 @@ ADD:
 - Contractions (don't, it's, I'd, you're)
 - Plain section titles
 - Mixed paragraph lengths (some 4-6 lines, some short blunt ones)
-- Preserve helpful SEO guide elements when present: ## headers, Korean examples, Common Mistakes, FAQ
+- Preserve helpful SEO/AEO guide elements when present: direct answer intro, ## headers, Korean examples, Key Takeaway, Common Mistakes, FAQ
 
 AVOID:
 - Semicolons (;)
@@ -79,7 +79,7 @@ Return ONLY the rewritten markdown article. No commentary.""",
 
     "roughen": """You are a de-AI editor. PASS 3: ROUGHEN — remove Claude-style phrasebook and uniform polish.
 
-Rewrite the article below. Keep thesis, facts, numbers, title, subtitle, source line, and any useful guide/FAQ structure.
+Rewrite the article below. Keep thesis, facts, numbers, title, subtitle, source line, direct answer intro, and any useful guide/FAQ structure.
 
 REPLACE coined AI label phrases with plain speech:
 - "cognitive debt" → explain plainly (borrow thinking now, pay later / skipped the hard part)
@@ -121,13 +121,14 @@ Read the article. Fix anything that still sounds LLM-generated.
 Catch:
 - Semicolons (;) — zero allowed
 - Missing `##` section headers — restore them if stripped
+- Missing AEO sections in guide-style posts — restore Direct Answer, Key Takeaway, Common Mistakes, and FAQ if stripped
 - Coined phrases: cognitive debt, literacy of attention, taste intelligence, "the pattern I keep noticing", "what surprised me is", cementing inequality
 - Every sentence equally polished — roughen one more spot if needed
 - Listicle / summary structure
 - Invented personal experiences
 - "That's not X. That's Y."
 
-Keep facts, title, subtitle, source line, sentence-level **bold**. No word-level bold.
+Keep facts, title, subtitle, source line, sentence-level **bold**. No word-level bold. Preserve FAQ questions as plain text questions.
 
 Return ONLY the final markdown article. No commentary.""",
 }

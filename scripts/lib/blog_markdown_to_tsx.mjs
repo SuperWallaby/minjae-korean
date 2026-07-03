@@ -132,6 +132,7 @@ export function blogPostToTsx({
   title,
   description,
   keywords,
+  faq,
   level,
   createdAt,
   videoId,
@@ -144,6 +145,9 @@ export function blogPostToTsx({
   if (description) metaFields.push(`  description: ${JSON.stringify(description)},`);
   if (Array.isArray(keywords) && keywords.length) {
     metaFields.push(`  keywords: ${JSON.stringify(keywords)},`);
+  }
+  if (Array.isArray(faq) && faq.length) {
+    metaFields.push(`  faq: ${JSON.stringify(faq, null, 2).replace(/\n/g, "\n  ")},`);
   }
   const imageFields = [];
   if (imageThumb) imageFields.push(`  imageThumb: ${JSON.stringify(imageThumb)},`);
