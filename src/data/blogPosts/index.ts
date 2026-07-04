@@ -41,6 +41,7 @@ const SLUG_LIST = [
   "korean-study-plans-realistic-flexible-goals",
   "how-to-understand-korean-dialects-bts-suga",
   "is-korean-hard-to-learn",
+  "celebrities-speaking-korean-pronunciation-tips",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
@@ -57,6 +58,7 @@ const loaders: Record<
   "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),
   "good-korean-teacher-2026": () => import("./content/good-korean-teacher-2026"),
   "korean-verb-endings": () => import("./content/korean-verb-endings"),
+  "celebrities-speaking-korean-pronunciation-tips": () => import("./content/celebrities-speaking-korean-pronunciation-tips"),
   "is-korean-hard-to-learn": () => import("./content/is-korean-hard-to-learn"),
   "how-to-understand-korean-dialects-bts-suga": () => import("./content/how-to-understand-korean-dialects-bts-suga"),
   "korean-study-plans-realistic-flexible-goals": () => import("./content/korean-study-plans-realistic-flexible-goals"),

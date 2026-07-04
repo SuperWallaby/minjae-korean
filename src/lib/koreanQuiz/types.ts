@@ -29,7 +29,7 @@ export type KoreanQuizItem = {
   answerTtsSlowUpdatedAt?: string;
   /** Format-8 illustration hint — only when source clip had an english line (auto-video-korean). */
   illustrationEnglish?: string;
-  /** When true, show english below the illustration during the quiz. */
+  /** Legacy display flag; vocab quiz now shows the English gloss whenever available. */
   showIllustrationEnglish?: boolean;
   /** Optional stored romanization; auto-generated from correct label when missing. */
   romanization?: string;

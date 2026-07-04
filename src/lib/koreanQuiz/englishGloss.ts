@@ -17,25 +17,17 @@ export function choiceEnglishGloss(
   return isLikelyEnglishGloss(english) ? english : "";
 }
 
-/** Matches korean-quiz Flutter `illustrationEnglishBelowImage`. */
+/** English gloss shown below the illustration in the quiz. */
 export function illustrationEnglishBelowImage(
   item: Pick<
     KoreanQuizItem,
     | "imageUrl"
     | "illustrationEnglish"
-    | "showIllustrationEnglish"
     | "choices"
     | "correctChoiceId"
   >,
 ): string | undefined {
   if (!item.imageUrl?.trim()) return undefined;
-
-  const enabled =
-    item.showIllustrationEnglish === true ||
-    (item.showIllustrationEnglish == null &&
-      Boolean(item.illustrationEnglish?.trim()));
-
-  if (!enabled) return undefined;
 
   const explicit = item.illustrationEnglish?.trim();
   if (explicit && isLikelyEnglishGloss(explicit)) return explicit;
