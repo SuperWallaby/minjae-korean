@@ -132,6 +132,9 @@ export function SiteFooter() {
             <Link href="/grammar" className="hover:text-[var(--quiz-text)]">
               Grammar
             </Link>
+            <Link href="/grammar/compare" className="hover:text-[var(--quiz-text)]">
+              Word & grammar comparisons
+            </Link>
             {/* 1:1 booking hidden while sessions are paused */}
             <Link href="/account" className="hover:text-[var(--quiz-text)]">
               Account

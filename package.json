@@ -17,7 +17,7 @@
     "stripe:ensure-book-launch": "node scripts/ensure-stripe-book-launch.mjs",
     "brand:assets": "node scripts/generate-brand-assets.mjs",
     "r2:put-ebook": "node scripts/r2_put_ebook.cjs",
-    "make-auto": "node scripts/youtube_explore_then_article.mjs --register --full",
+    "make-auto": "node scripts/youtube_explore_then_article.mjs --register --full --pick",
     "make-after-collect": "node scripts/youtube_after_collect.mjs",
     "youtube:digest": "node scripts/youtube_personal_digest.mjs",
     "youtube:article": "node scripts/youtube_digest_to_news_article.mjs",
@@ -28,7 +28,8 @@
     "blog:from-youtube:essay": "node scripts/blog_from_youtube.mjs --mode essay",
     "blog:cover": "node scripts/blog_cover_only.mjs",
     "newsletter:upload-pdf": "node scripts/r2_put_newsletter_pdf.mjs",
-    "newsletter:upload-quiz-images": "npx tsx scripts/upload_weekly_quiz_email_images.mjs"
+    "newsletter:upload-quiz-images": "npx tsx scripts/upload_weekly_quiz_email_images.mjs",
+    "generate-grammar": "npx tsx scripts/generate-grammar-data.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",

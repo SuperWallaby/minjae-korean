@@ -8,6 +8,7 @@ import {
 import { getAllExpressionChapters } from "@/data/expressionChapterList";
 import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
+import { listTopComparisonsForStaticParams } from "@/lib/grammarComparisonsRepo";
 import { listSongs } from "@/lib/songsRepo";
 import { listDramas } from "@/lib/dramaRepo";
 
@@ -26,6 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/grammar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/grammar/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
     { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/songs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/drama`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
@@ -63,6 +65,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
+
+  let grammarComparisons: Awaited<
+    ReturnType<typeof listTopComparisonsForStaticParams>
+  > = [];
+  try {
+    grammarComparisons = await listTopComparisonsForStaticParams(500);
+  } catch {
+    // DB unavailable at build time
+  }
+  const grammarComparisonRoutes: MetadataRoute.Sitemap = grammarComparisons.map(
+    (c) => ({
+      url: `${baseUrl}/grammar/${c.id}/${encodeURIComponent(c.slug)}`,
+      lastModified: c.updatedAt ? new Date(c.updatedAt) : new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    }),
+  );
 
   let articles: Awaited<ReturnType<typeof listArticles>> = [];
   try {
@@ -120,6 +139,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes,
     ...grammarRoutes,
+    ...grammarComparisonRoutes,
     ...articleRoutes,
     ...blogRoutes,
     ...expressionRoutes,

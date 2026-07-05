@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, BookOpen, Menu, UserRound, X } from "lucide-react";
+import { ChevronDown, BookOpen, Gamepad2, Menu, UserRound, X } from "lucide-react";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import * as React from "react";
 import { createPortal } from "react-dom";
@@ -135,7 +135,7 @@ export function SiteNavbar() {
           >
             <div className="flex w-full flex-1 items-center justify-between gap-2 pl-0 md:gap-3 md:pl-2 px-2 sm:gap-3">
               <div className="flex items-center gap-4">
-                <Logo className="px-2" />
+                <Logo className="pl-2" />
                 <nav className="hidden items-center gap-1 md:flex">
                   <NavLink
                     href="/"
@@ -148,7 +148,7 @@ export function SiteNavbar() {
                       onClick={() => setAssetsOpen((v) => !v)}
                       onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
                       className={cn(
-                        "inline-flex group items-center gap-1 -mr-px rounded-xl px-4 py-2.5 text-sm font-medium transition",
+                        "inline-flex group items-center gap-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
                         "text-muted-foreground cursor-pointer",
                         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                         isAssetsActive && "bg-muted text-foreground",
@@ -160,13 +160,6 @@ export function SiteNavbar() {
                       aria-expanded={assetsOpen}
                       aria-haspopup="true"
                     >
-                      <Image
-                        src="/icons/light-bulb.webp"
-                        width={24}
-                        height={24}
-                        alt=""
-                        className="size-6 shrink-0 -mx-1 group-hover:opacity-100 opacity-80"
-                      />
                       Library
                       <ChevronDown
                         className={cn(
@@ -246,11 +239,17 @@ export function SiteNavbar() {
                   <>
                     <Button
                       className="hidden w-auto px-4 sm:inline-flex"
-                      variant="outline"
+                      variant="gradient"
                       size="sm"
                       asChild
                     >
-                      <Link href="/vocab-quiz">Play Game</Link>
+                      <Link
+                        href="/vocab-quiz"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <Gamepad2 className="size-4" />
+                        Play Game
+                      </Link>
                     </Button>
                     <Button
                       className="w-fit w-[101px]"
@@ -271,11 +270,17 @@ export function SiteNavbar() {
                   <>
                     <Button
                       className="hidden w-auto px-4 sm:inline-flex"
-                      variant="outline"
+                      variant="gradient"
                       size="sm"
                       asChild
                     >
-                      <Link href="/vocab-quiz">Play Game</Link>
+                      <Link
+                        href="/vocab-quiz"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <Gamepad2 className="size-4" />
+                        Play Game
+                      </Link>
                     </Button>
                     <Button
                       className="w-auto px-4"
@@ -331,8 +336,9 @@ export function SiteNavbar() {
                   <Link
                     href="/vocab-quiz"
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
+                    className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-[#111827] to-[#0b1220] px-4 py-4 text-lg font-semibold text-white shadow-(--shadow-cta) transition-[filter,box-shadow,background-color] duration-200 hover:from-[#1f2937] hover:to-[#111827] hover:shadow-md hover:brightness-105 active:brightness-95"
                   >
+                    <Gamepad2 className="size-5 shrink-0" />
                     Play Game
                   </Link>
                   {state.user ? (

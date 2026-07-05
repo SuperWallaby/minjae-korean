@@ -29,10 +29,15 @@ export function VocabQuizReviewClient() {
   return (
     <div className={styles.vocabQuizRoot}>
       <div className={styles.toolbar}>
-        <Link href="/vocab-quiz" className={styles.reviewBackLink}>
-          <ArrowLeft size={16} aria-hidden />
-          Back to quiz
-        </Link>
+        <div className={styles.toolbarGroup}>
+          <Link href="/" className={styles.reviewBackLink}>
+            Home
+          </Link>
+          <Link href="/vocab-quiz" className={styles.reviewBackLink}>
+            <ArrowLeft size={16} aria-hidden />
+            Back to quiz
+          </Link>
+        </div>
         <button
           type="button"
           className={styles.modeBtn}

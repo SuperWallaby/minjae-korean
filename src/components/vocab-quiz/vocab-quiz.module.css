@@ -204,6 +204,27 @@
   width: 100%;
 }
 
+.headerNavRow {
+  display: flex;
+  width: 100%;
+  max-width: 24rem;
+  justify-content: flex-start;
+}
+
+.headerHomeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.headerHomeLink:hover {
+  color: #111827;
+}
+
 .headerLogo {
   width: 2.75rem;
   height: 2.75rem;

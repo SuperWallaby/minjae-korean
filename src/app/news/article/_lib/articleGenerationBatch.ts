@@ -1,6 +1,7 @@
 import type { ParagraphBlock, ReadingCue } from "@/lib/articleReading";
 import {
   NEWS_COVER_IMAGE_SIZE,
+  NEWS_PARAGRAPH_IMAGE_MAX,
   NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY,
 } from "@/lib/newsCoverDefaults";
 import { smartUnsplashSearch } from "@/lib/smartUnsplash";
@@ -284,6 +285,7 @@ export async function runArticleFullBatch(
   if (targets.length === 0) {
     onProgress({ phase: "paragraphs", cur: 0, total: 0 });
   } else {
+    let paragraphImageCount = 0;
     for (let step = 0; step < targets.length; step++) {
       onProgress({
         phase: "paragraphs",
@@ -292,7 +294,10 @@ export async function runArticleFullBatch(
       });
       const { i } = targets[step]!;
       const p = getParagraphs()[i]!;
-      if (Math.random() >= NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY) {
+      if (
+        paragraphImageCount >= NEWS_PARAGRAPH_IMAGE_MAX ||
+        Math.random() >= NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY
+      ) {
         setParagraphImage(i, null);
         continue;
       }
@@ -308,6 +313,7 @@ export async function runArticleFullBatch(
         throw new Error(j.error ?? "Paragraph image failed");
       }
       setParagraphImage(i, String(j.url));
+      paragraphImageCount++;
       if (step < targets.length - 1) {
         await sleep(DELAY_MS.betweenParagraphAzure);
       }

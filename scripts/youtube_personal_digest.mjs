@@ -27,6 +27,7 @@
  * Usage (from repo root):
  *   node scripts/youtube_personal_digest.mjs
  *   node scripts/youtube_personal_digest.mjs --query-count 8
+ *   node scripts/youtube_personal_digest.mjs --candidates 5
  *   node scripts/youtube_personal_digest.mjs --queries "한국어 공부 팁,Korean study tips"
  *
  * Reads keys from process.env / .env.local and tries in order until one works:
@@ -34,7 +35,7 @@
  *
  * Not for production scraping at scale; polite delays between fetches.
  *
- * Per run: keeps 1 video with usable transcript total, then stops (remaining random queries skipped).
+ * Per run: keeps N videos with usable transcript (default 1; `--candidates 5` for pick mode).
  *
  * When stderr shows rate limits or “blocking requests from your IP”: wait, fewer
  * queries per run, or check Supadata dashboard / plan.
@@ -1280,6 +1281,15 @@ async function enrichVideoStatsAnyKey(keys, videoIds, preferKey) {
 }
 
 function parseArgs(argv) {
+  const candIdx = argv.indexOf("--candidates");
+  let candidateCount = DIGEST_TOTAL_STOP_AFTER;
+  if (candIdx !== -1 && argv[candIdx + 1]) {
+    const parsed = Number.parseInt(argv[candIdx + 1], 10);
+    if (Number.isFinite(parsed) && parsed >= 1 && parsed <= 20) {
+      candidateCount = parsed;
+    }
+  }
+
   const qi = argv.indexOf("--queries");
   if (qi !== -1 && argv[qi + 1]) {
     return {
@@ -1288,6 +1298,7 @@ function parseArgs(argv) {
         .map((s) => s.trim())
         .filter(Boolean),
       randomRun: false,
+      candidateCount,
     };
   }
   let count = randomQueryCountFromEnv();
@@ -1297,7 +1308,7 @@ function parseArgs(argv) {
     if (Number.isFinite(parsed) && parsed >= 1 && parsed <= 50) count = parsed;
   }
   const picked = pickRandomQueries(count);
-  return { queries: picked, randomRun: true, randomCount: count };
+  return { queries: picked, randomRun: true, randomCount: count, candidateCount };
 }
 
 async function main() {
@@ -1326,12 +1337,16 @@ async function main() {
     process.exit(1);
   }
 
-  const { queries, randomRun, randomCount } = parseArgs(process.argv);
+  const { queries, randomRun, randomCount, candidateCount } = parseArgs(process.argv);
+  const totalStopAfter = candidateCount;
   if (randomRun) {
     log.blank();
     log.trace(
       `이번 실행 주제: 풀에서 무작위 ${queries.length}개 (요청 ${randomCount} · 환경 YOUTUBE_DIGEST_RANDOM_QUERY_COUNT로 기본 변경 가능)`,
     );
+    if (totalStopAfter > 1) {
+      log.trace(`  · 후보 ${totalStopAfter}개까지 수집 (자막 확보 시 중단)`);
+    }
     for (const rq of queries) {
       log.trace(`  → ${rq}`);
     }
@@ -1342,7 +1357,7 @@ async function main() {
   const results = [];
 
   for (const q of queries) {
-    if (results.length >= DIGEST_TOTAL_STOP_AFTER) break;
+    if (results.length >= totalStopAfter) break;
     log.queryOpen(q);
     const queue = [];
     let searchPageToken = null;
@@ -1534,10 +1549,10 @@ async function main() {
         charCount: transcript.text.length,
       });
       await sleep(1200);
-      if (results.length >= DIGEST_TOTAL_STOP_AFTER) break;
+      if (results.length >= totalStopAfter) break;
     }
 
-    if (results.length >= DIGEST_TOTAL_STOP_AFTER) break;
+    if (results.length >= totalStopAfter) break;
 
     if (acceptedForQuery < PER_QUERY_TARGET) {
       const extra =

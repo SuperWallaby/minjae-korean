@@ -8,8 +8,7 @@
  *   If unset: `AZURE_OPENAI_DEPLOYMENT_CHAT` or `AZURE_OPENAI_DEPLOYMENT` (single).
  *
  * Image (Microsoft Foundry / gpt-image; DALL·E 3 retired per MS docs):
- *   AZURE_OPENAI_DEPLOYMENT_IMAGE — deployment name for gpt-image-1.5, gpt-image-2, etc.
- *   (Foundry may offer newer gpt-image-* models by region; 1.5 is not always the latest.)
+ *   AZURE_OPENAI_DEPLOYMENT_IMAGE — deployment name (default `gpt-image-2` when unset).
  *   AZURE_OPENAI_IMAGE_API_VERSION — default `2025-04-01-preview`
  *   AZURE_OPENAI_IMAGE_QUALITY — optional `low` | `medium` | `high` (default `high`)
  *
@@ -52,6 +51,11 @@ export type AzureImageGenSize =
 /** @deprecated use AzureImageGenSize */
 export type AzureDalle3Size = AzureImageGenSize;
 
+/** Foundry deployment for news/article GPT-image calls; override via AZURE_OPENAI_DEPLOYMENT_IMAGE. */
+export function getImageDeploymentName(): string {
+  return process.env.AZURE_OPENAI_DEPLOYMENT_IMAGE?.trim() || "gpt-image-2";
+}
+
 export function getChatDeploymentNames(): string[] {
   const raw = process.env.AZURE_OPENAI_CHAT_DEPLOYMENTS?.trim();
   if (raw) {
@@ -74,7 +78,7 @@ export function readAzureOpenAIConfig(): AzureOpenAIConfig | null {
   const imageApiVersion =
     process.env.AZURE_OPENAI_IMAGE_API_VERSION?.trim() || "2025-04-01-preview";
   const chatDeployments = getChatDeploymentNames();
-  const imageDeployment = process.env.AZURE_OPENAI_DEPLOYMENT_IMAGE?.trim();
+  const imageDeployment = getImageDeploymentName();
   if (!endpoint || !apiKey || chatDeployments.length === 0) return null;
   return {
     endpoint,
@@ -83,7 +87,7 @@ export function readAzureOpenAIConfig(): AzureOpenAIConfig | null {
     imageApiVersion,
     chatDeployment: chatDeployments[0],
     chatDeployments,
-    imageDeployment: imageDeployment || undefined,
+    imageDeployment,
   };
 }
 
@@ -314,7 +318,7 @@ export async function azureTryImageGenerationsB64(
       ok: false,
       failure: {
         httpStatus: 0,
-        message: "Missing AZURE_OPENAI_DEPLOYMENT_IMAGE",
+        message: "Missing Azure image deployment (set AZURE_OPENAI_DEPLOYMENT_IMAGE or use default gpt-image-2)",
       },
     };
   }

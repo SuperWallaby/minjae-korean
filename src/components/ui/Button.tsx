@@ -23,7 +23,7 @@ const variantClass: Record<ButtonVariant, string> = {
   primary:
     "bg-primary text-primary-foreground hover:brightness-95 active:brightness-90",
   gradient:
-    "text-white bg-gradient-to-b from-[#111827] to-[#0b1220] shadow-(--shadow-cta) hover:brightness-95 active:brightness-90",
+    "text-white bg-gradient-to-b from-[#111827] to-[#0b1220] shadow-(--shadow-cta) transition-[filter,box-shadow,background-color] duration-200 hover:from-[#1f2937] hover:to-[#111827] hover:shadow-md hover:brightness-105 active:brightness-95",
   light:
     "bg-white text-[#111827] border border-black/10 hover:bg-white/90 active:bg-white/85",
   secondary:

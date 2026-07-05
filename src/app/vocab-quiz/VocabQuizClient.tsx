@@ -197,6 +197,9 @@ export function VocabQuizClient() {
     <div className={styles.vocabQuizRoot}>
       <div className={styles.toolbar}>
         <div className={styles.toolbarGroup}>
+          <Link href="/" className={styles.reviewBackLink}>
+            Home
+          </Link>
           <button
             type="button"
             className={`${styles.modeBtn} ${mode === "manual" ? styles.modeBtnActive : ""}`}

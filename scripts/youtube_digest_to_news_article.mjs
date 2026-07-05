@@ -48,8 +48,9 @@ function agentLogLine(payload) {
   }
 }
 
-/** Match `NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY` in src/lib/newsCoverDefaults.ts */
-const NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY = 0.3;
+/** Match `NEWS_PARAGRAPH_IMAGE_*` in src/lib/newsCoverDefaults.ts */
+const NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY = 0.15;
+const NEWS_PARAGRAPH_IMAGE_MAX = 2;
 
 function loadEnvLocal() {
   if (!existsSync(ENV_PATH)) return;
@@ -858,11 +859,15 @@ async function runFullAutomation(baseUrl, article) {
   patch.imageThumb = thumb.url;
 
   const paragraphs = (article.paragraphs || []).map((p) => ({ ...p }));
+  let paragraphImageCount = 0;
   for (let i = 0; i < paragraphs.length; i++) {
     const p = paragraphs[i];
     if (!p?.subtitle && !p?.content) continue;
     const label = `  ├─ 문단 이미지 ${i + 1}/${paragraphs.length}`;
-    if (Math.random() >= NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY) {
+    if (
+      paragraphImageCount >= NEWS_PARAGRAPH_IMAGE_MAX ||
+      Math.random() >= NEWS_PARAGRAPH_IMAGE_STICK_PROBABILITY
+    ) {
       console.error(`${label} (건너뜀)`);
       paragraphs[i] = { ...p, image: null };
       continue;
@@ -873,6 +878,7 @@ async function runFullAutomation(baseUrl, article) {
       content: p.content || "",
     });
     paragraphs[i] = { ...p, image: img.url };
+    paragraphImageCount++;
     await new Promise((r) => setTimeout(r, 1000));
   }
   patch.paragraphs = paragraphs;

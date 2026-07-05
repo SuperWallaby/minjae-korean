@@ -1,18 +1,23 @@
 import fs from "fs";
-import path from "path";
 
 import {
   azureChatCompletionDetail,
   azureImageGenerationsB64,
   readAzureNewsParagraphPromptMaxTokens,
 } from "@/lib/azureOpenAI";
+import {
+  newsIllustrationStyleReferenceExists,
+  newsIllustrationStyleReferencePath,
+} from "@/lib/newsIllustrationStyleRef";
 
-export function newsParagraphStyleReferencePath(): string {
-  return path.join(
-    process.cwd(),
-    "public/brand/news-paragraph-style-reference.png",
-  );
-}
+export { newsIllustrationStyleReferencePath as newsParagraphStyleReferencePath } from "@/lib/newsIllustrationStyleRef";
+
+const PARAGRAPH_PROMPT_SYSTEM = `You output only one raw English string: the prompt for an image generation model (GPT-image class). No quotes, no markdown, no preamble, no JSON.
+
+The image model cannot see the reference PNG — it only reads your text. Study the attached reference and translate its visual style into concrete words. Do not invent a different art direction.`;
+
+const PARAGRAPH_PROMPT_SUFFIX =
+  " Match the reference style: soft watercolor/marker webtoon, clean soft brown outlines, pastel cream and light-blue palette, gentle daylight. No readable text, captions, speech bubbles, watermarks, or logos.";
 
 /**
  * Build an image prompt from paragraph text + optional bundled style reference (Azure chat + vision).
@@ -20,14 +25,10 @@ export function newsParagraphStyleReferencePath(): string {
 export async function buildNewsParagraphDallePrompt(
   paragraphText: string,
 ): Promise<string | null> {
-  const refPath = newsParagraphStyleReferencePath();
-  const hasRef = fs.existsSync(refPath);
+  const refPath = newsIllustrationStyleReferencePath();
+  const hasRef = newsIllustrationStyleReferenceExists();
   const trimmed = paragraphText.trim().slice(0, 2800);
   if (!trimmed) return null;
-
-  const system = `You output only one raw English string: the prompt for an image generation model (GPT-image class). No quotes, no markdown, no preamble, no JSON.
-
-The image model cannot see the reference PNG — it only reads your text. You MUST spell out the reference's color mood in concrete words (warm paper tone, muted pastel hues, low saturation), not vague phrases like "nice colors".`;
 
   const chatOpts = {
     maxTokens: readAzureNewsParagraphPromptMaxTokens(),
@@ -41,53 +42,52 @@ The image model cannot see the reference PNG — it only reads your text. You MU
     userContent = [
       {
         type: "text",
-        text: `The attached image is the official style reference for Kaja “news practice” illustrations.
+        text: `Attached image = the ONLY style reference. Match its soft watercolor webtoon look (clean soft brown outlines, pastel cream/beige/sky-blue palette, warm airy daylight, gentle shading, slice-of-life mood).
 
-Your task: write ONE image prompt (English, max ~580 characters) for a new illustration that teaches this article paragraph. The scene should help a Korean learner feel the situation (characters, props, emotion), not restate the article as text on the canvas.
+Write ONE image prompt (English, max ~580 characters) for a new illustration that teaches this article paragraph. Scene should help a Korean learner feel the situation (characters, props, emotion) — not restate the article as text on the canvas.
 
-Paragraph (for meaning only — do not copy long strings into the image):
+Paragraph (meaning only — do not copy long strings into the image):
 ---
 ${trimmed}
 ---
 
-Hard rules for the prompt you write:
-- Match the reference: hand-drawn educational webtoon / doodle, clean warm ink outlines (not razor-sharp digital vector), soft marker or watercolor fills.
-- Color / palette (copy from the attached reference, in your own words — be specific): warm eggshell or aged-paper cream background (not pure white, not cold gray studio); fills in dusty low-chroma pastels (e.g. blush, muted peach, soft sage, powder blue) like the reference; gentle optional pastel wash shapes behind figures; no neon, no glossy gradients, no hyper-saturated digital UI colors.
-- Absolutely forbid: speech bubbles, blocks of readable text, captions, labels, watermarks, logos, app UI, photorealism. Prefer zero letters in the image; if you mention text at all, say “no readable text”.`,
+Hard rules:
+- Same illustration family as the reference: line weight, color temperature, watercolor washes, proportions.
+- Forbid: speech bubbles, readable text blocks, captions, labels, watermarks, logos, app UI, photorealism.`,
       },
       { type: "image_url", image_url: { url: dataUrl } },
     ];
   } else {
-    userContent = `Style (no reference file on server): Korean learning webtoon doodle — warm ink outlines, dusty muted pastel fills on warm cream paper (not pure white), low saturation, friendly tone, minimal or zero text in the image.
+    userContent = `Style reference missing. Soft watercolor webtoon — clean soft brown outlines, pastel cream and light-blue palette, gentle daylight, slice-of-life mood.
 
 Paragraph:
 ---
 ${trimmed}
 ---
 
-Write ONE concise English image prompt (max ~580 characters) that names the palette explicitly. Emphasize: no captions, no speech bubbles, no paragraphs of text in the image.`;
+Write ONE concise English image prompt (max ~580 characters). No captions, speech bubbles, or readable text in the image.`;
   }
 
   const vision = await azureChatCompletionDetail(
     [
-      { role: "system", content: system },
+      { role: "system", content: PARAGRAPH_PROMPT_SYSTEM },
       { role: "user", content: userContent },
     ],
     chatOpts,
   );
   let raw = vision.text;
   if (!raw && hasRef) {
-    const textOnlyUser = `Style (no image in this request): Korean learning webtoon doodle — warm ink outlines, dusty muted pastel fills on warm cream paper (not pure white), low saturation, friendly tone, minimal or zero text in the image.
+    const textOnlyUser = `Style reference missing in this request. Soft watercolor webtoon — clean soft brown outlines, pastel cream and light-blue palette, gentle daylight.
 
 Paragraph:
 ---
 ${trimmed}
 ---
 
-Write ONE concise English image prompt (max ~580 characters) that names the palette explicitly. Emphasize: no captions, no speech bubbles, no paragraphs of text in the image.`;
+Write ONE concise English image prompt (max ~580 characters). No captions, speech bubbles, or readable text in the image.`;
     const textOnly = await azureChatCompletionDetail(
       [
-        { role: "system", content: system },
+        { role: "system", content: PARAGRAPH_PROMPT_SYSTEM },
         { role: "user", content: textOnlyUser },
       ],
       chatOpts,
@@ -104,8 +104,7 @@ export async function generateNewsParagraphImageB64(
 ): Promise<string | null> {
   const prompt = await buildNewsParagraphDallePrompt(paragraphText);
   if (!prompt) return null;
-  const suffix =
-    " Same color mood: warm cream paper background, dusty muted pastel fills, low saturation, no neon. No readable text, captions, speech bubbles, watermarks, or logos in the image.";
+  const suffix = PARAGRAPH_PROMPT_SUFFIX;
   const finalPrompt = (prompt + suffix).slice(0, 3900);
   return azureImageGenerationsB64(finalPrompt, { size: "1024x1024" });
 }

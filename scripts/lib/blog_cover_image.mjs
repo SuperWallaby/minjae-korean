@@ -43,7 +43,7 @@ async function buildCoverPrompt(title, thesis) {
 
   const system = `You output only one raw English string: the prompt for an image generation model (GPT-image class). No quotes, no markdown, no preamble, no JSON.
 
-The image model cannot see reference art — spell out palette and style in concrete words: warm eggshell paper, dusty muted pastels, low saturation, warm ink outlines, friendly Korean-learning blog doodle (not stock photo, not UI mockup).`;
+The image model cannot see the reference PNG — study the attached image and translate its visual style into concrete words. Do not invent a different art direction.`;
 
   let userContent;
   if (existsSync(STYLE_REF)) {
@@ -51,7 +51,7 @@ The image model cannot see reference art — spell out palette and style in conc
     userContent = [
       {
         type: "text",
-        text: `Attached = official Kaja illustration style reference.
+        text: `Attached image = the ONLY style reference. Copy its illustration language (soft watercolor digital webtoon, hand-drawn soft brown outlines, pastel cream/beige/sky-blue palette, warm airy daylight, gentle shading, cozy slice-of-life mood).
 
 Design a **blog essay cover** (editorial hero, not an interior panel) for:
 Title: "${t.replace(/"/g, '\\"')}"
@@ -59,7 +59,7 @@ Theme: ${th.replace(/"/g, '\\"') || "Korean language learning"}
 
 Canvas: wide landscape 1536×1024 — horizontal hero, strong focal illustration, room for optional short title typography.
 
-Write ONE image prompt (English, max ~620 chars): warm cream paper background, dusty pastel fills, low saturation, hand-drawn educational webtoon mood. Visual metaphor for the essay theme (emotions, language, nuance) — abstract or symbolic, not literal YouTube screenshot. Optional 3–6 word title text if it fits; no paragraphs, no watermarks.`,
+Write ONE image prompt (English, max ~620 chars): scene inspired by the theme, rendered in the same style family as the reference. Visual metaphor for the essay — not a YouTube screenshot. Optional 3–6 word title text if it fits; no paragraphs, no watermarks.`,
       },
       { type: "image_url", image_url: { url: `data:image/png;base64,${b64}` } },
     ];
@@ -68,11 +68,11 @@ Write ONE image prompt (English, max ~620 chars): warm cream paper background, d
 Title: "${t.replace(/"/g, '\\"')}"
 Theme: ${th.replace(/"/g, '\\"') || "Korean language"}
 
-Wide landscape 1536×1024. Warm ink outlines, dusty muted pastels on cream paper, low saturation, friendly doodle editorial cover. One prompt (~620 chars), optional short title text only.`;
+Wide landscape 1536×1024. Soft watercolor webtoon cover: clean soft brown outlines, pastel cream and light-blue palette, gentle daylight, slice-of-life mood. One prompt (~620 chars), optional short title text only.`;
   }
 
   const suffix =
-    " Same palette: warm cream paper, dusty muted pastels, low saturation, no neon. Blog cover only — no UI, no tiny unreadable text blocks, no photorealism.";
+    " Match the reference style: soft watercolor/marker webtoon, clean soft brown outlines, pastel cream and light-blue palette, gentle daylight. Blog cover only — no UI, no tiny unreadable text blocks, no photorealism.";
 
   let raw = await azureChat({
     system,
@@ -132,7 +132,7 @@ async function generateImageB64(prompt) {
   throw new Error("Azure image response missing b64_json/url");
 }
 
-const STYLE_REF = join(ROOT, "public/brand/news-paragraph-style-reference.png");
+const STYLE_REF = join(ROOT, "refrefref.png");
 
 async function makeLargeWebp(pngBuffer) {
   return sharp(pngBuffer)

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { GrammarChapterListClient } from "@/components/grammar/GrammarChapterListClient";
 import {
@@ -58,6 +59,22 @@ export default function GrammarPage() {
               <GrammarChapterListClient sections={sections} />
             </div>
           )}
+
+          <section className="mt-12 rounded-[1.125rem] border border-emerald-200 bg-emerald-50/60 p-5">
+            <h2 className="text-lg font-bold text-[var(--quiz-text)]">
+              Word & grammar comparisons
+            </h2>
+            <p className="mt-2 text-sm text-[var(--quiz-text-sub)]">
+              Easily confused particles and connectors — side by side with real examples
+              and a quick quiz on each page.
+            </p>
+            <Link
+              href="/grammar/compare"
+              className="mt-4 inline-flex text-sm font-semibold text-emerald-800 underline hover:text-emerald-950"
+            >
+              Browse comparisons →
+            </Link>
+          </section>
         </MarketingShellBody>
       </MarketingShell>
     </MarketingPage>

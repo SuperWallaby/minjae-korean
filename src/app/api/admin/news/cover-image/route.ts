@@ -71,7 +71,7 @@ export async function POST(req: Request) {
         {
           ok: false,
           error:
-            "Azure image deployment missing: set AZURE_OPENAI_DEPLOYMENT_IMAGE to your Foundry deployment name for gpt-image (e.g. kaja-gpt-image-15). Optional: AZURE_OPENAI_IMAGE_API_VERSION (default 2025-04-01-preview).",
+            "Azure image deployment missing: set AZURE_OPENAI_DEPLOYMENT_IMAGE (default gpt-image-2). Optional: AZURE_OPENAI_IMAGE_API_VERSION (default 2025-04-01-preview).",
         },
         { status: 503 },
       );
