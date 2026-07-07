@@ -218,16 +218,16 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
               );
             })}
           </div>
-        </div>
 
-        {revealing ? (
-          <div className={styles.manualRevealOverlay} aria-hidden>
-            {quiz.romanization ? (
-              <p className={styles.manualRevealRomanization}>{quiz.romanization}</p>
-            ) : null}
-            <p className={styles.manualRevealHint}>Tap anywhere to continue</p>
-          </div>
-        ) : null}
+          {revealing ? (
+            <div className={styles.manualRevealFooter} aria-hidden>
+              {quiz.romanization ? (
+                <p className={styles.manualRevealRomanization}>{quiz.romanization}</p>
+              ) : null}
+              <p className={styles.manualRevealHint}>Tap anywhere to continue</p>
+            </div>
+          ) : null}
+        </div>
       </button>
     );
   },

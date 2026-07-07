@@ -1,18 +1,6 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-
-import styles from "./vocab-quiz.module.css";
-import { VOCAB_QUIZ_HEADER_LINES } from "@/lib/vocabQuiz/constants";
-
 export function VocabQuizHeader() {
   return (
     <div className={styles.headerBlock}>
-      <div className={styles.headerNavRow}>
-        <Link href="/" className={styles.headerHomeLink}>
-          <ArrowLeft size={14} aria-hidden />
-          Home
-        </Link>
-      </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         className={styles.headerLogo}

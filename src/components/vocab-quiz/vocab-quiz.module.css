@@ -6,11 +6,29 @@
   color: #111827;
 }
 
+.vocabQuizPageHeader {
+  flex-shrink: 0;
+  padding: 0 1rem 0.5rem;
+}
+
+.vocabQuizGameShell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin: 0 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  background: #fff;
+  overflow: hidden;
+}
+
 .vocabQuizMain {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-height: 0;
+  overflow-y: auto;
 }
 
 .toolbar {
@@ -148,8 +166,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 1.25rem 1rem 1rem;
+  justify-content: flex-start;
+  padding: 1.25rem 1rem 1.5rem;
   gap: 1rem;
   max-width: 42rem;
   width: 100%;
@@ -159,7 +177,6 @@
 
 .manualStage {
   position: relative;
-  justify-content: flex-start;
 }
 
 .manualStageBody {
@@ -168,20 +185,24 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
+  padding-bottom: 0.25rem;
 }
 
-.manualRevealOverlay {
-  position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: 0.75rem;
+.manualStageRevealing .manualStageBody {
+  padding-bottom: 0.5rem;
+}
+
+.manualRevealFooter {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
-  pointer-events: none;
+  gap: 0.3rem;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.85rem 0.5rem 0.25rem;
   text-align: center;
   animation: fadeUp 0.25s ease;
+  flex-shrink: 0;
 }
 
 .manualRevealRomanization {
@@ -204,27 +225,6 @@
   width: 100%;
 }
 
-.headerNavRow {
-  display: flex;
-  width: 100%;
-  max-width: 24rem;
-  justify-content: flex-start;
-}
-
-.headerHomeLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #6b7280;
-  text-decoration: none;
-}
-
-.headerHomeLink:hover {
-  color: #111827;
-}
-
 .headerLogo {
   width: 2.75rem;
   height: 2.75rem;
@@ -237,7 +237,7 @@
   flex-shrink: 0;
   border-top: 1px solid #e5e7eb;
   background: #fafafa;
-  padding: 0.65rem 0.75rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+  padding: 0.85rem 0.75rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
 }
 
 .controlsTouchRow {
@@ -409,7 +409,7 @@
 .imageStage {
   position: relative;
   width: min(100%, 22rem);
-  padding-bottom: 9.5rem;
+  padding-bottom: 10.5rem;
 }
 
 .imageVisual {
@@ -435,7 +435,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 9.5rem;
+  height: 10.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -624,41 +624,6 @@
   text-align: center;
   padding: 2rem 1rem;
   color: #6b7280;
-}
-
-.startOverlay {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem 1.5rem;
-  text-align: center;
-}
-
-.startTitle {
-  font-size: 1.35rem;
-  font-weight: 800;
-}
-
-.startHint {
-  color: #6b7280;
-  font-size: 0.95rem;
-  max-width: 20rem;
-  line-height: 1.5;
-}
-
-.startBtn {
-  margin-top: 0.5rem;
-  border: none;
-  background: #111827;
-  color: #fff;
-  border-radius: 999px;
-  padding: 0.85rem 1.6rem;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
 }
 
 .iconBtnFlagged {
