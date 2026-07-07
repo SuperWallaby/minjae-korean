@@ -76,11 +76,11 @@ export function VocabQuizClient() {
   const [soundOn, setSoundOn] = React.useState(true);
   const [hiddenPaused, setHiddenPaused] = React.useState(false);
   const [userPaused, setUserPaused] = React.useState(false);
-  const [audioReady, setAudioReady] = React.useState(false);
+  const [started, setStarted] = React.useState(false);
 
   const paused = hiddenPaused || userPaused;
   const canGoBack = history.length > 0;
-  const controlsVisible = Boolean(current) && !bootstrapping && !error;
+  const controlsVisible = started && Boolean(current) && !bootstrapping && !error;
 
   React.useEffect(() => {
     setMode(readModeFromUrl() ?? readStoredMode());
@@ -97,31 +97,6 @@ export function VocabQuizClient() {
     document.addEventListener("visibilitychange", onVisibility);
     return () => document.removeEventListener("visibilitychange", onVisibility);
   }, [audio]);
-
-  React.useEffect(() => {
-    if (bootstrapping || error || !current) {
-      setAudioReady(false);
-      return;
-    }
-
-    let cancelled = false;
-    void (async () => {
-      audio.setEnabled(true);
-      setSoundOn(true);
-      try {
-        localStorage.setItem(SOUND_ENABLED_KEY, "1");
-      } catch {
-        // ignore
-      }
-      await audio.unlock();
-      if (!cancelled) setAudioReady(true);
-    })();
-
-    return () => {
-      cancelled = true;
-      setAudioReady(false);
-    };
-  }, [audio, bootstrapping, error, current?.id]);
 
   const togglePause = React.useCallback(() => {
     setUserPaused((v) => {
@@ -196,6 +171,19 @@ export function VocabQuizClient() {
     }
   };
 
+  const handleStart = async () => {
+    audio.setEnabled(true);
+    setSoundOn(true);
+    try {
+      localStorage.setItem(SOUND_ENABLED_KEY, "1");
+    } catch {
+      // ignore
+    }
+    await audio.unlock();
+    setUserPaused(false);
+    setStarted(true);
+  };
+
   const handleToggleFlag = async () => {
     if (!current || flagBusy) return;
     setFlagBusy(true);
@@ -233,7 +221,7 @@ export function VocabQuizClient() {
             </button>
           </div>
         <div className={styles.toolbarGroup}>
-          {current ? (
+          {started ? (
             <button
               type="button"
               className={`${styles.iconBtn} ${currentFlagged ? styles.iconBtnFlagged : ""}`}
@@ -276,6 +264,17 @@ export function VocabQuizClient() {
               Retry
             </button>
           </div>
+        ) : !started ? (
+          <div className={styles.startOverlay}>
+            <div className={styles.startTitle}>Vocab Quiz</div>
+            <p className={styles.startHint}>
+              Tap to start. In Manual mode, pick an answer to hear the word. Auto mode
+              plays the full countdown sequence.
+            </p>
+            <button type="button" className={styles.startBtn} onClick={() => void handleStart()}>
+              Tap to start
+            </button>
+          </div>
         ) : !current ? (
           <div className={styles.emptyState}>
             <p>No quizzes in queue.</p>
@@ -284,20 +283,16 @@ export function VocabQuizClient() {
             </button>
           </div>
         ) : mode === "auto" ? (
-          audioReady ? (
-            <AutoQuizPlayer
-              ref={autoRef}
-              key={current.id}
-              quiz={current}
-              deviceId={deviceId}
-              audio={audio}
-              frozen={hiddenPaused}
-              paused={userPaused}
-              onDone={() => advanceRef.current()}
-            />
-          ) : (
-            <div className={styles.emptyState}>Starting…</div>
-          )
+          <AutoQuizPlayer
+            ref={autoRef}
+            key={current.id}
+            quiz={current}
+            deviceId={deviceId}
+            audio={audio}
+            frozen={hiddenPaused}
+            paused={userPaused}
+            onDone={() => advanceRef.current()}
+          />
         ) : (
           <ManualQuizPlayer
             ref={manualRef}

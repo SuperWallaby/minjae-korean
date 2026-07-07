@@ -94,8 +94,8 @@ export default function RootLayout({
         className={`${plusJakarta.variable} ${bricolage.variable} min-h-dvh font-sans`}
         cz-shortcut-listen="true"
       >
-        <GoogleAnalytics />
         <MockSessionProvider>
+          <GoogleAnalytics />
           <EducationModeProvider>
             <div className="min-h-dvh bg-background">
               <NextTopLoader
