@@ -1,0 +1,11 @@
+# Usage guides — one Korean word/pattern per line
+으로
+에서
+에게
+한테
+-(으)ㄹ까
+-(으)ㄴ/는데
+-(아/어)서
+-(으)면
+-(으)ㄹ게
+# Add more learner-searchable patterns below

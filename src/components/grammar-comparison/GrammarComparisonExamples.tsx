@@ -1,6 +1,8 @@
 import type { ComparisonExample } from "@/lib/grammarComparisonsRepo";
 import { filterConfidentExamples } from "@/lib/grammarComparisonExamples";
 
+import { GrammarSentenceWithRomanization } from "./GrammarKoreanWithRomanization";
+
 type Props = {
   examples: ComparisonExample[];
 };
@@ -28,7 +30,10 @@ export function GrammarComparisonExamples({ examples }: Props) {
                 {ex.isCorrect ? "⭕" : "❌"}
               </span>
               <div className="min-w-0 flex-1">
-                <p className="font-medium text-[var(--quiz-text)]">{ex.sentence}</p>
+                <GrammarSentenceWithRomanization
+                  sentence={ex.sentence}
+                  className="font-medium text-[var(--quiz-text)]"
+                />
                 <p className="mt-2 text-sm text-[var(--quiz-text-sub)]">{ex.reasonEn}</p>
               </div>
             </div>

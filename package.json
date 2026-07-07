@@ -29,7 +29,20 @@
     "blog:cover": "node scripts/blog_cover_only.mjs",
     "newsletter:upload-pdf": "node scripts/r2_put_newsletter_pdf.mjs",
     "newsletter:upload-quiz-images": "npx tsx scripts/upload_weekly_quiz_email_images.mjs",
-    "generate-grammar": "npx tsx scripts/generate-grammar-data.ts"
+    "generate-grammar": "npx tsx scripts/generate-grammar-data.ts",
+    "generate-grammar-guide": "npx tsx scripts/generate-grammar-guide-data.ts",
+    "generate-grammar-meaning-batch": "npx tsx scripts/generate-grammar-guide-data.ts --type meaning --batch-file scripts/data/grammar-meaning-batch.txt",
+    "generate-grammar-usage-batch": "npx tsx scripts/generate-grammar-guide-data.ts --type usage --batch-file scripts/data/grammar-usage-batch.txt",
+    "generate-grammar-batch": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100.txt",
+    "generate-grammar-batch-2": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-2.txt",
+    "generate-grammar-batch-3": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-3.txt",
+    "generate-grammar-batch-1000": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-1000.txt",
+    "post-grammar-x": "npx tsx scripts/post-grammar-x.ts",
+    "x-oauth2-setup": "npx tsx scripts/x-oauth2-setup.ts",
+    "x-oauth2-setup:manual": "npx tsx scripts/x-oauth2-setup.ts --manual",
+    "x-oauth1-setup": "npx tsx scripts/x-oauth1-setup.ts",
+    "x-oauth1-setup:manual": "npx tsx scripts/x-oauth1-setup.ts --manual",
+    "deploy-x-poster": "bash scripts/deploy-x-poster.sh"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",
@@ -50,6 +63,7 @@
     "sharp": "^0.34.5",
     "stripe": "^20.3.1",
     "tailwind-merge": "^3.4.0",
+    "twitter-api-v2": "^1.29.0",
     "web-push": "^3.6.7",
     "world-countries": "^5.1.0"
   },

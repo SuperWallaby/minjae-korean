@@ -9,6 +9,7 @@ import { getAllExpressionChapters } from "@/data/expressionChapterList";
 import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
 import { listTopComparisonsForStaticParams } from "@/lib/grammarComparisonsRepo";
+import { listTopGuidesForStaticParams } from "@/lib/grammarGuidesRepo";
 import { listSongs } from "@/lib/songsRepo";
 import { listDramas } from "@/lib/dramaRepo";
 
@@ -28,6 +29,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/grammar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/grammar/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/meaning`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/usage`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
     { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/songs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/drama`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
@@ -70,7 +73,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ReturnType<typeof listTopComparisonsForStaticParams>
   > = [];
   try {
-    grammarComparisons = await listTopComparisonsForStaticParams(500);
+    grammarComparisons = await listTopComparisonsForStaticParams(2000);
   } catch {
     // DB unavailable at build time
   }
@@ -78,6 +81,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (c) => ({
       url: `${baseUrl}/grammar/${c.id}/${encodeURIComponent(c.slug)}`,
       lastModified: c.updatedAt ? new Date(c.updatedAt) : new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    }),
+  );
+
+  let grammarMeaningGuides: Awaited<
+    ReturnType<typeof listTopGuidesForStaticParams>
+  > = [];
+  let grammarUsageGuides: Awaited<
+    ReturnType<typeof listTopGuidesForStaticParams>
+  > = [];
+  try {
+    [grammarMeaningGuides, grammarUsageGuides] = await Promise.all([
+      listTopGuidesForStaticParams("meaning", 2000),
+      listTopGuidesForStaticParams("usage", 2000),
+    ]);
+  } catch {
+    // DB unavailable at build time
+  }
+  const grammarMeaningRoutes: MetadataRoute.Sitemap = grammarMeaningGuides.map(
+    (g) => ({
+      url: `${baseUrl}/grammar/meaning/${g.id}/${encodeURIComponent(g.slug)}`,
+      lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    }),
+  );
+  const grammarUsageRoutes: MetadataRoute.Sitemap = grammarUsageGuides.map(
+    (g) => ({
+      url: `${baseUrl}/grammar/usage/${g.id}/${encodeURIComponent(g.slug)}`,
+      lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.65,
     }),
@@ -140,6 +174,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...grammarRoutes,
     ...grammarComparisonRoutes,
+    ...grammarMeaningRoutes,
+    ...grammarUsageRoutes,
     ...articleRoutes,
     ...blogRoutes,
     ...expressionRoutes,

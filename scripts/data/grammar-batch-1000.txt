@@ -1,0 +1,13 @@
+# Grammar comparison batch — 12 topics (dice ~35% three-way, got 0)
+택배,퀵
+나열,선택
+끝내다,마치다
+앱,웹
+부사절,명사절
+이미,벌써
+구이,찜
+벌써,아직
+이유,원인
+반찬,밥
+요약,전체
+방금,조금전

@@ -17,6 +17,7 @@ import {
   buildComparisonBreadcrumbJsonLd,
   buildComparisonFaqJsonLd,
 } from "@/lib/grammarComparisonSeo";
+import { grammarRomanizationVariants } from "@/lib/grammarRomanization";
 import {
   getComparisonById,
   incrementViewCount,
@@ -44,7 +45,7 @@ function comparisonCanonical(id: number, seoSlug: string) {
 
 export async function generateStaticParams() {
   try {
-    const top = await listTopComparisonsForStaticParams(200);
+    const top = await listTopComparisonsForStaticParams(1000);
     return top.map((c) => ({ slug: String(c.id), subslug: c.slug }));
   } catch {
     return [];
@@ -67,10 +68,15 @@ export async function generateMetadata({
   const description = comparison.summaryEn;
   const canonical = comparisonCanonical(comparison.id, comparison.slug);
   const ogImage = comparison.imageUrl ?? `${baseUrl}/brand/og.png`;
+  const keywords = [
+    ...comparison.items.map((i) => i.wordName),
+    ...comparison.items.flatMap((i) => grammarRomanizationVariants(i.wordName)),
+  ].join(", ");
 
   return {
     title: `${title} | Kaja`,
     description,
+    keywords,
     openGraph: {
       title,
       description,
@@ -110,8 +116,7 @@ export default async function GrammarComparisonPage({
 
   void incrementViewCount(id);
 
-  const wordNames = comparison.items.map((item) => item.wordName);
-  const related = await listRelatedComparisons(id, wordNames, 8);
+  const related = await listRelatedComparisons(id, 8);
 
   const canonical = comparisonCanonical(comparison.id, comparison.slug);
   const faqJsonLd = buildComparisonFaqJsonLd(comparison, canonical);

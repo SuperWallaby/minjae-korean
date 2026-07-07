@@ -37,6 +37,10 @@
     "**/*.mts"
 , "src/data/blogPosts/content/12"  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "scripts",
+    "render",
+    "x-poster",
+    ".tmp"
   ]
 }

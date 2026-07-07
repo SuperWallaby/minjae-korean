@@ -5,6 +5,8 @@ import { useMemo, useState } from "react";
 import type { ComparisonQuiz } from "@/lib/grammarComparisonsRepo";
 import { cn } from "@/lib/utils";
 
+import { GrammarKoreanWithRomanization } from "./GrammarKoreanWithRomanization";
+
 type Props = {
   quizzes: ComparisonQuiz[];
 };
@@ -58,7 +60,11 @@ export function GrammarComparisonQuiz({ quizzes }: Props) {
             key={`${quiz.questionEn}-${index}`}
             className="rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] p-4"
           >
-            <p className="font-medium text-[var(--quiz-text)]">{quiz.questionKo}</p>
+            <GrammarKoreanWithRomanization
+              word={quiz.questionKo}
+              block
+              koreanClassName="font-medium text-[var(--quiz-text)]"
+            />
             <p className="mt-1 text-sm text-[var(--quiz-text-sub)]">{quiz.questionEn}</p>
 
             <ul className="mt-3 flex flex-wrap gap-2">
@@ -80,7 +86,15 @@ export function GrammarComparisonQuiz({ quizzes }: Props) {
                           "border-red-400 bg-red-50 text-red-800",
                       )}
                     >
-                      {option}
+                      {/[가-힣]/.test(option) ? (
+                        <GrammarKoreanWithRomanization
+                          word={option}
+                          koreanClassName=""
+                          romanClassName="text-[0.8em] font-normal opacity-80"
+                        />
+                      ) : (
+                        option
+                      )}
                     </button>
                   </li>
                 );

@@ -7,6 +7,8 @@ import {
   MarketingShell,
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
+import { comparisonWordsFromSlug } from "@/lib/grammarComparisonSlug";
+import { formatKoreanWithRomanization } from "@/lib/grammarRomanization";
 import { listComparisons } from "@/lib/grammarComparisonsRepo";
 
 export const runtime = "nodejs";
@@ -31,14 +33,34 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; ways?: string }>;
 };
+
+function parseWaysFilter(raw: string | undefined): 2 | 3 | undefined {
+  if (raw === "2") return 2;
+  if (raw === "3") return 3;
+  return undefined;
+}
 
 export default async function GrammarCompareIndexPage({ searchParams }: Props) {
   const sp = await searchParams;
   const page = Math.max(1, parseInt(String(sp.page ?? "1"), 10) || 1);
-  const { items, total } = await listComparisons({ page, pageSize: PAGE_SIZE });
+  const ways = parseWaysFilter(sp.ways);
+  const { items, total } = await listComparisons({ page, pageSize: PAGE_SIZE, ways });
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  const pageHref = (nextPage: number) => {
+    const params = new URLSearchParams();
+    if (nextPage > 1) params.set("page", String(nextPage));
+    if (ways) params.set("ways", String(ways));
+    const q = params.toString();
+    return q ? `/grammar/compare?${q}` : "/grammar/compare";
+  };
+
+  const filterHref = (nextWays?: 2 | 3) => {
+    if (!nextWays) return "/grammar/compare";
+    return `/grammar/compare?ways=${nextWays}`;
+  };
 
   return (
     <MarketingPage containerClassName="max-w-3xl">
@@ -49,6 +71,39 @@ export default async function GrammarCompareIndexPage({ searchParams }: Props) {
             title="Word & grammar comparisons"
             lead="Side-by-side guides for words Koreans and learners mix up — with examples and a quick quiz on each page."
           />
+
+          <div className="mt-6 flex flex-wrap gap-2 text-sm">
+            <Link
+              href={filterHref()}
+              className={`rounded-full px-3 py-1.5 font-medium transition-colors ${
+                !ways
+                  ? "bg-emerald-800 text-white"
+                  : "bg-[var(--quiz-surface-muted)] text-[var(--quiz-text-sub)] hover:text-[var(--quiz-text)]"
+              }`}
+            >
+              All
+            </Link>
+            <Link
+              href={filterHref(2)}
+              className={`rounded-full px-3 py-1.5 font-medium transition-colors ${
+                ways === 2
+                  ? "bg-emerald-800 text-white"
+                  : "bg-[var(--quiz-surface-muted)] text-[var(--quiz-text-sub)] hover:text-[var(--quiz-text)]"
+              }`}
+            >
+              2-way
+            </Link>
+            <Link
+              href={filterHref(3)}
+              className={`rounded-full px-3 py-1.5 font-medium transition-colors ${
+                ways === 3
+                  ? "bg-emerald-800 text-white"
+                  : "bg-[var(--quiz-surface-muted)] text-[var(--quiz-text-sub)] hover:text-[var(--quiz-text)]"
+              }`}
+            >
+              3-way
+            </Link>
+          </div>
 
           {items.length === 0 ? (
             <p className="mt-8 text-sm text-[var(--quiz-text-sub)]">
@@ -66,7 +121,19 @@ export default async function GrammarCompareIndexPage({ searchParams }: Props) {
                     href={`/grammar/${item.id}/${encodeURIComponent(item.slug)}`}
                     className="block px-4 py-4 transition-colors hover:bg-[var(--quiz-surface-muted)]"
                   >
-                    <p className="font-semibold text-[var(--quiz-text)]">{item.titleEn}</p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="font-semibold text-[var(--quiz-text)]">{item.titleEn}</p>
+                      {item.itemCount >= 3 ? (
+                        <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-900">
+                          3-way
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-1 text-sm text-[var(--quiz-text-sub)]">
+                      {comparisonWordsFromSlug(item.slug)
+                        .map((w) => formatKoreanWithRomanization(w))
+                        .join(" · ")}
+                    </p>
                     {item.summaryEn ? (
                       <p className="mt-1 line-clamp-2 text-sm text-[var(--quiz-text-sub)]">
                         {item.summaryEn}
@@ -85,7 +152,7 @@ export default async function GrammarCompareIndexPage({ searchParams }: Props) {
             >
               {page > 1 ? (
                 <Link
-                  href={`/grammar/compare?page=${page - 1}`}
+                  href={pageHref(page - 1)}
                   className="underline hover:text-[var(--quiz-text)]"
                 >
                   Previous
@@ -98,7 +165,7 @@ export default async function GrammarCompareIndexPage({ searchParams }: Props) {
               </span>
               {page < totalPages ? (
                 <Link
-                  href={`/grammar/compare?page=${page + 1}`}
+                  href={pageHref(page + 1)}
                   className="underline hover:text-[var(--quiz-text)]"
                 >
                   Next

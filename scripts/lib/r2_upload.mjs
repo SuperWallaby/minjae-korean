@@ -45,3 +45,10 @@ export function hasR2Config() {
       process.env.R2_PUBLIC_BASE_URL?.trim(),
   );
 }
+
+/** @returns {Promise<void>} */
+export async function deleteR2Object(key) {
+  const { DeleteObjectCommand } = await import("@aws-sdk/client-s3");
+  const bucket = mustEnv("R2_BUCKET");
+  await r2Client().send(new DeleteObjectCommand({ Bucket: bucket, Key: key }));
+}

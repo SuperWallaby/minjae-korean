@@ -1,5 +1,9 @@
 import type { Collection } from "mongodb";
 
+import {
+  COMPARISON_THREE_WAY_SLUG_REGEX,
+  comparisonWordCountFromSlug,
+} from "@/lib/grammarComparisonSlug";
 import { getMongoDb } from "@/lib/mongo";
 
 export type ComparisonItem = {
@@ -17,6 +21,8 @@ export type ComparisonExample = {
   isCorrect: boolean;
   reasonKo: string;
   reasonEn: string;
+  /** Natural English translation of sentence (X posts prefer this over reasonEn). */
+  translationEn?: string;
 };
 
 export type ComparisonQuiz = {
@@ -45,7 +51,9 @@ export type Comparison = {
   quizzes: ComparisonQuiz[];
 };
 
-export type ComparisonCard = Omit<Comparison, "items" | "examples" | "quizzes">;
+export type ComparisonCard = Omit<Comparison, "items" | "examples" | "quizzes"> & {
+  itemCount: number;
+};
 
 export type GeneratedComparisonPayload = {
   slug: string;
@@ -71,6 +79,7 @@ type ComparisonDoc = {
   imageUrl?: string;
   imageAlt?: string;
   viewCount: number;
+  itemCount?: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -177,9 +186,33 @@ function docToCard(doc: ComparisonDoc): ComparisonCard {
     imageUrl: doc.imageUrl,
     imageAlt: doc.imageAlt,
     viewCount: doc.viewCount ?? 0,
+    itemCount: doc.itemCount ?? comparisonWordCountFromSlug(doc.slug),
     createdAt: doc.createdAt,
     updatedAt: doc.updatedAt,
   };
+}
+
+function comparisonListFilter(ways?: 2 | 3): Record<string, unknown> | undefined {
+  if (ways === 3) {
+    return {
+      $or: [
+        { itemCount: { $gte: 3 } },
+        { itemCount: { $exists: false }, slug: COMPARISON_THREE_WAY_SLUG_REGEX },
+      ],
+    };
+  }
+  if (ways === 2) {
+    return {
+      $or: [
+        { itemCount: 2 },
+        {
+          itemCount: { $exists: false },
+          slug: { $not: COMPARISON_THREE_WAY_SLUG_REGEX },
+        },
+      ],
+    };
+  }
+  return undefined;
 }
 
 export async function getComparisonById(
@@ -207,11 +240,12 @@ export async function getComparisonById(
       situationsKo: normalizeStrings(situationsKo),
       situationsEn: normalizeStrings(situationsEn),
     })),
-    examples: exampleDocs.map(({ sentence, isCorrect, reasonKo, reasonEn }) => ({
+    examples: exampleDocs.map(({ sentence, isCorrect, reasonKo, reasonEn, translationEn }) => ({
       sentence,
       isCorrect: Boolean(isCorrect),
       reasonKo,
       reasonEn,
+      translationEn,
     })),
     quizzes: quizDocs.map(
       ({
@@ -250,71 +284,67 @@ export async function listTopComparisonsForStaticParams(
   const { comparisons } = await cols();
   const docs = await comparisons
     .find({})
-    .sort({ viewCount: -1, createdAt: -1 })
+    .sort({ id: -1 })
     .limit(Math.max(1, limit))
     .toArray();
   return docs.map(docToCard);
 }
 
 export async function listComparisons(
-  opts?: { page?: number; pageSize?: number },
+  opts?: { page?: number; pageSize?: number; ways?: 2 | 3 },
 ): Promise<{ items: ComparisonCard[]; total: number }> {
   const page = Math.max(1, opts?.page ?? 1);
   const pageSize = Math.min(100, Math.max(1, opts?.pageSize ?? 24));
   const skip = (page - 1) * pageSize;
+  const filter = comparisonListFilter(opts?.ways) ?? {};
   const { comparisons } = await cols();
   const [docs, total] = await Promise.all([
     comparisons
-      .find({})
-      .sort({ viewCount: -1, createdAt: -1 })
+      .find(filter)
+      .sort({ id: -1 })
       .skip(skip)
       .limit(pageSize)
       .toArray(),
-    comparisons.countDocuments({}),
+    comparisons.countDocuments(filter),
   ]);
   return { items: docs.map(docToCard), total };
 }
 
-/** Related pages for internal linking — shared words first, then popular/recent fallbacks. */
+/** Comparisons before/after `currentId` (sorted by id) for prev/next exploration. */
 export async function listRelatedComparisons(
   currentId: number,
-  wordNames: string[],
   limit = 8,
 ): Promise<ComparisonCard[]> {
   const cap = Math.max(1, Math.min(limit, 12));
-  const names = wordNames.map((w) => w.trim()).filter(Boolean);
-  const { comparisons, items } = await cols();
+  const { comparisons } = await cols();
 
-  const picked = new Map<number, ComparisonDoc>();
+  const beforeCount = Math.floor(cap / 2);
+  const afterCount = cap - beforeCount;
 
-  if (names.length > 0) {
-    const shared = await items
-      .find({ comparisonId: { $ne: currentId }, wordName: { $in: names } })
-      .project({ comparisonId: 1 })
+  const fetchBefore = (n: number) =>
+    comparisons
+      .find({ id: { $lt: currentId } })
+      .sort({ id: -1 })
+      .limit(n)
       .toArray();
-    const sharedIds = [...new Set(shared.map((r) => r.comparisonId))];
-    if (sharedIds.length > 0) {
-      const docs = await comparisons
-        .find({ id: { $in: sharedIds } })
-        .sort({ viewCount: -1, createdAt: -1 })
-        .toArray();
-      for (const doc of docs) picked.set(doc.id, doc);
-    }
+
+  const fetchAfter = (n: number) =>
+    comparisons
+      .find({ id: { $gt: currentId } })
+      .sort({ id: 1 })
+      .limit(n)
+      .toArray();
+
+  let beforeDocs = await fetchBefore(beforeCount);
+  let afterDocs = await fetchAfter(afterCount);
+
+  if (beforeDocs.length < beforeCount) {
+    afterDocs = await fetchAfter(afterCount + (beforeCount - beforeDocs.length));
+  } else if (afterDocs.length < afterCount) {
+    beforeDocs = await fetchBefore(beforeCount + (afterCount - afterDocs.length));
   }
 
-  if (picked.size < cap) {
-    const exclude = [currentId, ...picked.keys()];
-    const more = await comparisons
-      .find({ id: { $nin: exclude } })
-      .sort({ viewCount: -1, createdAt: -1 })
-      .limit(cap - picked.size)
-      .toArray();
-    for (const doc of more) picked.set(doc.id, doc);
-  }
-
-  return Array.from(picked.values())
-    .slice(0, cap)
-    .map(docToCard);
+  return [...beforeDocs.reverse(), ...afterDocs].slice(0, cap).map(docToCard);
 }
 
 export async function upsertComparisonFromGenerated(
@@ -329,6 +359,7 @@ export async function upsertComparisonFromGenerated(
   const id = existing?.id ?? (await nextComparisonId(counters));
   const created = !existing;
 
+  const itemCount = payload.items.length;
   const master: ComparisonDoc = {
     _id: id,
     id,
@@ -339,6 +370,7 @@ export async function upsertComparisonFromGenerated(
     summaryEn: payload.summaryEn.trim(),
     imageAlt: payload.imageAlt.trim(),
     viewCount: existing?.viewCount ?? 0,
+    itemCount,
     createdAt: existing?.createdAt ?? now,
     updatedAt: now,
   };
@@ -373,6 +405,7 @@ export async function upsertComparisonFromGenerated(
         comparisonId: id,
         sortOrder,
         sentence: ex.sentence.trim(),
+        translationEn: ex.translationEn?.trim() || undefined,
         isCorrect: Boolean(ex.isCorrect),
         reasonKo: ex.reasonKo.trim(),
         reasonEn: ex.reasonEn.trim(),
@@ -410,8 +443,49 @@ export async function updateComparisonImage(
   );
 }
 
+/** All comparison ids sorted ascending (for batch image refresh). */
+export async function listAllComparisonIds(): Promise<number[]> {
+  const { comparisons } = await cols();
+  const docs = await comparisons
+    .find({}, { projection: { id: 1 } })
+    .sort({ id: 1 })
+    .toArray();
+  return docs.map((doc) => doc.id).filter((id) => Number.isFinite(id) && id > 0);
+}
+
 export async function incrementViewCount(id: number): Promise<void> {
   if (!Number.isFinite(id) || id <= 0) return;
   const { comparisons } = await cols();
   await comparisons.updateOne({ id }, { $inc: { viewCount: 1 } });
+}
+
+/** Delete comparison and all child rows (items, examples, quizzes). */
+export async function deleteComparisonById(id: number): Promise<boolean> {
+  if (!Number.isFinite(id) || id <= 0) return false;
+  const { comparisons, items, examples, quizzes } = await cols();
+  const doc = await comparisons.findOne({ id });
+  if (!doc) return false;
+  await Promise.all([
+    comparisons.deleteOne({ id }),
+    items.deleteMany({ comparisonId: id }),
+    examples.deleteMany({ comparisonId: id }),
+    quizzes.deleteMany({ comparisonId: id }),
+  ]);
+  return true;
+}
+
+export async function listAllComparisonSlugs(): Promise<
+  Array<{ id: number; slug: string; titleKo: string; titleEn: string }>
+> {
+  const { comparisons } = await cols();
+  const docs = await comparisons
+    .find({}, { projection: { id: 1, slug: 1, titleKo: 1, titleEn: 1 } })
+    .sort({ id: 1 })
+    .toArray();
+  return docs.map((doc) => ({
+    id: doc.id,
+    slug: doc.slug,
+    titleKo: doc.titleKo,
+    titleEn: doc.titleEn,
+  }));
 }

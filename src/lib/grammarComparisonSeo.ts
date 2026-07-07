@@ -1,5 +1,10 @@
 import type { Comparison } from "@/lib/grammarComparisonsRepo";
 import { filterConfidentExamples } from "@/lib/grammarComparisonExamples";
+import {
+  formatKoreanWithRomanization,
+  grammarRomanizationVariants,
+  romanizeGrammarSentence,
+} from "@/lib/grammarRomanization";
 
 export type FaqItem = {
   question: string;
@@ -10,20 +15,23 @@ export function buildComparisonFaqItems(comparison: Comparison): FaqItem[] {
   const items: FaqItem[] = [];
 
   for (const item of comparison.items) {
+    const wordSeo = formatKoreanWithRomanization(item.wordName);
+    const romHint = grammarRomanizationVariants(item.wordName).join(", ");
     items.push({
-      question: `When should I use ${item.wordName}? (${comparison.titleEn})`,
-      answer: `${item.meaningEn} — ${item.ruleEn}. Typical situations: ${item.situationsEn.join(", ")}.`,
+      question: `When should I use ${wordSeo}? (${comparison.titleEn})`,
+      answer: `${item.meaningEn} — ${item.ruleEn}. Typical situations: ${item.situationsEn.join(", ")}.${romHint ? ` Pronunciation: ${romHint}.` : ""}`,
     });
     items.push({
-      question: `${item.wordName}는 언제 쓰나요?`,
-      answer: `${item.meaningKo}. ${item.ruleKo} 대표 상황: ${item.situationsKo.join(", ")}.`,
+      question: `${wordSeo}는 언제 쓰나요?`,
+      answer: `${item.meaningKo}. ${item.ruleKo} 대표 상황: ${item.situationsKo.join(", ")}.${romHint ? ` 발음: ${romHint}.` : ""}`,
     });
   }
 
   for (const ex of filterConfidentExamples(comparison.examples)) {
     const verdict = ex.isCorrect ? "Correct" : "Incorrect";
+    const rom = romanizeGrammarSentence(ex.sentence);
     items.push({
-      question: `Is this sentence ${verdict}? ${ex.sentence}`,
+      question: `Is this sentence ${verdict}? ${ex.sentence}${rom ? ` (${rom})` : ""}`,
       answer: ex.reasonEn,
     });
   }

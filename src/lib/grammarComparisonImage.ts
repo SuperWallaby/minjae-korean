@@ -97,10 +97,11 @@ export async function renderGrammarComparisonImage(
 
   const png = await renderCapybaraDialogueImage({
     question,
+    questionWords: wordNames,
     groupedAnswers,
     answerFormat: "groupedList",
     groupedListCompact: true,
-    groupedListCompactGap: 14,
+    groupedListCompactGap: 24,
     outputWidth: 1600,
   });
 

@@ -1,6 +1,8 @@
 import type { ComparisonItem } from "@/lib/grammarComparisonsRepo";
 import { cn } from "@/lib/utils";
 
+import { GrammarKoreanWithRomanization } from "./GrammarKoreanWithRomanization";
+
 type Props = {
   items: ComparisonItem[];
 };
@@ -34,9 +36,12 @@ export function GrammarComparisonTable({ items }: Props) {
               twoCol && "md:px-6 md:py-6 md:first:pl-0 md:last:pr-0",
             )}
           >
-            <p className="font-mono text-2xl font-bold tracking-tight text-[var(--quiz-text)]">
-              {item.wordName}
-            </p>
+            <GrammarKoreanWithRomanization
+              word={item.wordName}
+              block
+              koreanClassName="font-mono text-2xl font-bold tracking-tight text-[var(--quiz-text)]"
+              romanClassName="font-mono text-sm font-normal text-[var(--quiz-text-muted)]"
+            />
             <p className="mt-2 text-base leading-snug text-[var(--quiz-text)]">
               {item.meaningEn}
             </p>
