@@ -22,5 +22,5 @@ export function shouldExcludeFromGaClient(hostname: string): boolean {
 
 export function disableGaMeasurement(gaId: string): void {
   if (typeof window === "undefined") return;
-  (window as Window & Record<string, boolean>)[`ga-disable-${gaId}`] = true;
+  (window as unknown as Record<string, boolean>)[`ga-disable-${gaId}`] = true;
 }

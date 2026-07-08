@@ -40,10 +40,6 @@ function resolveCdnOrigin(imageUrl?: string): string | undefined {
   );
 }
 
-export function grammarGuidePronunciationApiUrl(id: number): string {
-  return `/api/grammar-guide/tts/${id}`;
-}
-
 export function getCachedGrammarGuidePronunciationUrl(
   guide: Pick<
     GrammarGuide,

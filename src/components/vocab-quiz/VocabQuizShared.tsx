@@ -1,3 +1,7 @@
+import { VOCAB_QUIZ_HEADER_LINES } from "@/lib/vocabQuiz/constants";
+
+import styles from "./vocab-quiz.module.css";
+
 export function VocabQuizHeader() {
   return (
     <div className={styles.headerBlock}>

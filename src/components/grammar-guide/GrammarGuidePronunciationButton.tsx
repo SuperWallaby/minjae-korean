@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Loader2, Volume2 } from "lucide-react";
 
-import { grammarGuidePronunciationApiUrl } from "@/lib/grammarGuideTts";
+import { grammarGuidePronunciationApiUrl } from "@/lib/grammarGuideTtsUrls";
 
 type Props = {
   guideId: number;
