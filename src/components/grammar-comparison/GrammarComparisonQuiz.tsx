@@ -60,12 +60,20 @@ export function GrammarComparisonQuiz({ quizzes }: Props) {
             key={`${quiz.questionEn}-${index}`}
             className="rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] p-4"
           >
-            <GrammarKoreanWithRomanization
-              word={quiz.questionKo}
-              block
-              koreanClassName="font-medium text-[var(--quiz-text)]"
-            />
-            <p className="mt-1 text-sm text-[var(--quiz-text-sub)]">{quiz.questionEn}</p>
+            <p className="font-medium leading-snug text-[var(--quiz-text)]">
+              {quiz.questionEn.trim() || quiz.questionKo}
+            </p>
+            {quiz.questionKo.trim() &&
+            quiz.questionEn.trim() &&
+            quiz.questionKo.trim() !== quiz.questionEn.trim() &&
+            /[가-힣]/.test(quiz.questionKo) ? (
+              <GrammarKoreanWithRomanization
+                word={quiz.questionKo}
+                block
+                koreanClassName="mt-1.5 text-sm text-[var(--quiz-text-sub)]"
+                romanClassName="text-xs font-normal text-[var(--quiz-text-muted)]"
+              />
+            ) : null}
 
             <ul className="mt-3 flex flex-wrap gap-2">
               {quiz.options.map((option) => {

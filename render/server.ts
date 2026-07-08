@@ -9,6 +9,7 @@
 import http from "node:http";
 
 import { renderGrammarComparisonImage } from "../src/lib/grammarComparisonImage";
+import { renderGrammarGuideImage } from "../src/lib/grammarGuideImage";
 
 const PORT = Number(process.env.CAPYBARA_RENDER_PORT ?? 8766);
 const HOST = process.env.CAPYBARA_RENDER_HOST ?? "0.0.0.0";
@@ -17,6 +18,17 @@ const API_KEY = process.env.CAPYBARA_RENDER_API_KEY?.trim() ?? "";
 type RenderBody = {
   questionEn?: string;
   items?: Array<{ wordName: string; situationsEn: string[] }>;
+  outputWidth?: number;
+  webpQuality?: number;
+};
+
+type RenderGuideBody = {
+  type?: "meaning" | "usage";
+  questionEn?: string;
+  wordName?: string;
+  imageAnswerEn?: string;
+  meaningEn?: string;
+  summaryEn?: string;
   outputWidth?: number;
   webpQuality?: number;
 };
@@ -74,6 +86,49 @@ const server = http.createServer(async (req, res) => {
       const webp = await renderGrammarComparisonImage({
         questionEn,
         items,
+        outputWidth: body.outputWidth,
+        webpQuality: body.webpQuality,
+      });
+
+      res.writeHead(200, {
+        "Content-Type": "image/webp",
+        "Content-Length": webp.length,
+      });
+      res.end(webp);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      res.writeHead(500, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: message }));
+    }
+    return;
+  }
+
+  if (req.method === "POST" && path === "/render-grammar-guide") {
+    if (!authorized(req)) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Unauthorized" }));
+      return;
+    }
+
+    try {
+      const body = (await readJsonBody(req)) as RenderGuideBody;
+      const type = body.type === "usage" ? "usage" : "meaning";
+      const questionEn = body.questionEn?.trim() ?? "";
+      const wordName = body.wordName?.trim() ?? "";
+
+      if (!questionEn || !wordName) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "questionEn and wordName are required" }));
+        return;
+      }
+
+      const webp = await renderGrammarGuideImage({
+        type,
+        questionEn,
+        wordName,
+        imageAnswerEn: body.imageAnswerEn?.trim() ?? "",
+        meaningEn: body.meaningEn?.trim(),
+        summaryEn: body.summaryEn?.trim(),
         outputWidth: body.outputWidth,
         webpQuality: body.webpQuality,
       });

@@ -175,10 +175,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
                 .filter(Boolean)
                 .join(" ");
 
-              const showEnglish =
-                revealing &&
-                state !== "none" &&
-                !(state === "correct" && quiz.illustrationEnglish);
+              const showEnglish = revealing;
 
               const showSpeak =
                 revealing &&

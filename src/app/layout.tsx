@@ -4,7 +4,7 @@ import "./globals.css";
 // NOTE: LiveKit removed (pure WebRTC implementation). Keep this file free of LiveKit imports.
 import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
 import { EducationModeProvider } from "@/lib/EducationModeProvider";
-import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
+import { GoogleAnalyticsGate } from "@/components/site/GoogleAnalyticsGate";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { TeachingSpotlight } from "@/components/site/TeachingSpotlight";
@@ -95,7 +95,7 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <MockSessionProvider>
-          <GoogleAnalytics />
+          <GoogleAnalyticsGate />
           <EducationModeProvider>
             <div className="min-h-dvh bg-background">
               <NextTopLoader

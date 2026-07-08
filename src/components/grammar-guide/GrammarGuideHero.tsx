@@ -1,4 +1,8 @@
 import type { GrammarGuide } from "@/lib/grammarGuidesRepo";
+import {
+  formatGrammarPatternDisplay,
+  formatUsageGuideTitleEn,
+} from "@/lib/grammarPatternDisplay";
 import { formatKoreanWithRomanization } from "@/lib/grammarRomanization";
 
 type Props = {
@@ -7,12 +11,26 @@ type Props = {
 
 export function GrammarGuideHero({ guide }: Props) {
   const pronunciationLine = formatKoreanWithRomanization(guide.wordName);
+  const headline =
+    guide.type === "usage"
+      ? formatUsageGuideTitleEn(guide.wordName)
+      : guide.titleEn;
+  const patternLabel =
+    guide.type === "usage"
+      ? formatGrammarPatternDisplay(guide.wordName)
+      : null;
 
   return (
     <header className="space-y-4">
       <h1 className="text-2xl font-bold tracking-tight text-[var(--quiz-text)] sm:text-3xl">
-        {guide.titleEn}
+        {headline}
       </h1>
+
+      {patternLabel && patternLabel !== guide.wordName ? (
+        <p className="font-mono text-sm text-[var(--quiz-text-sub)]">
+          Pattern: {guide.wordName}
+        </p>
+      ) : null}
 
       {pronunciationLine ? (
         <p className="font-mono text-sm leading-relaxed text-[var(--quiz-text-sub)]">

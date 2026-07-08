@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import type { GrammarGuideCard, GrammarGuideType } from "@/lib/grammarGuidesRepo";
 import { guideBasePath } from "@/lib/grammarGuidesRepo";
+import { formatUsageGuideTitleEn } from "@/lib/grammarPatternDisplay";
 
 type Props = {
   type: GrammarGuideType;
@@ -37,7 +38,9 @@ export function GrammarGuideRelated({ type, currentId, related }: Props) {
                 href={`${basePath}/${item.id}/${encodeURIComponent(item.slug)}`}
                 className="block py-3 text-base font-medium text-[var(--quiz-text)] transition-colors hover:text-emerald-800"
               >
-                {item.titleEn}
+                {type === "usage"
+                  ? formatUsageGuideTitleEn(item.wordName)
+                  : item.titleEn}
               </Link>
             </li>
           ))}

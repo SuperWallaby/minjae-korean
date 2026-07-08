@@ -7,6 +7,7 @@ import {
   MarketingShell,
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
+import { formatUsageGuideTitleEn } from "@/lib/grammarPatternDisplay";
 import { formatKoreanWithRomanization } from "@/lib/grammarRomanization";
 import { guideBasePath, listGrammarGuides } from "@/lib/grammarGuidesRepo";
 
@@ -71,7 +72,9 @@ export default async function GrammarUsageIndexPage({ searchParams }: Props) {
                     href={`${basePath}/${item.id}/${encodeURIComponent(item.slug)}`}
                     className="block px-4 py-4 transition-colors hover:bg-[var(--quiz-surface-muted)]"
                   >
-                    <p className="font-semibold text-[var(--quiz-text)]">{item.titleEn}</p>
+                    <p className="font-semibold text-[var(--quiz-text)]">
+                      {formatUsageGuideTitleEn(item.wordName)}
+                    </p>
                     <p className="mt-1 text-sm text-[var(--quiz-text-sub)]">
                       {formatKoreanWithRomanization(item.wordName)}
                     </p>

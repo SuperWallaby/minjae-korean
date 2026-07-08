@@ -40,6 +40,8 @@ export type GrammarGuide = {
   nuancesEn: string[];
   imageUrl?: string;
   imageAlt?: string;
+  imageAnswerEn?: string;
+  pronunciationUrl?: string;
   viewCount: number;
   createdAt: string;
   updatedAt: string;
@@ -68,6 +70,7 @@ export type GeneratedGrammarGuidePayload = {
   examples: GuideExample[];
   quizzes: GuideQuiz[];
   capybaraQuestionEn: string;
+  imageAnswerEn: string;
   imageAlt: string;
 };
 
@@ -91,6 +94,8 @@ type GuideDoc = {
   nuancesEn: string[];
   imageUrl?: string;
   imageAlt?: string;
+  imageAnswerEn?: string;
+  pronunciationUrl?: string;
   viewCount: number;
   createdAt: string;
   updatedAt: string;
@@ -208,6 +213,8 @@ function docToCard(doc: GuideDoc): GrammarGuideCard {
     nuancesEn: normalizeStrings(doc.nuancesEn),
     imageUrl: doc.imageUrl,
     imageAlt: doc.imageAlt,
+    imageAnswerEn: doc.imageAnswerEn,
+    pronunciationUrl: doc.pronunciationUrl,
     viewCount: doc.viewCount ?? 0,
     createdAt: doc.createdAt,
     updatedAt: doc.updatedAt,
@@ -264,6 +271,18 @@ export async function getGrammarGuideBySlug(
   if (!trimmed) return null;
   const { guides } = await cols();
   const doc = await guides.findOne({ type, slug: trimmed });
+  if (!doc) return null;
+  return getGrammarGuideById(doc.id);
+}
+
+export async function getGrammarGuideByWord(
+  type: GrammarGuideType,
+  wordName: string,
+): Promise<GrammarGuide | null> {
+  const trimmed = wordName.trim();
+  if (!trimmed) return null;
+  const { guides } = await cols();
+  const doc = await guides.findOne({ type, wordName: trimmed });
   if (!doc) return null;
   return getGrammarGuideById(doc.id);
 }
@@ -369,6 +388,7 @@ export async function upsertGrammarGuideFromGenerated(
     situationsEn: normalizeStrings(payload.situationsEn),
     nuancesKo: normalizeStrings(payload.nuancesKo),
     nuancesEn: normalizeStrings(payload.nuancesEn),
+    imageAnswerEn: payload.imageAnswerEn.trim(),
     imageAlt: payload.imageAlt.trim(),
     viewCount: existing?.viewCount ?? 0,
     createdAt: existing?.createdAt ?? now,
@@ -423,6 +443,22 @@ export async function updateGrammarGuideImage(
   await guides.updateOne(
     { id },
     { $set: { imageUrl: imageUrl.trim(), imageAlt: imageAlt.trim(), updatedAt: nowIso() } },
+  );
+}
+
+export async function updateGrammarGuidePronunciation(
+  id: number,
+  pronunciationUrl: string,
+): Promise<void> {
+  const { guides } = await cols();
+  await guides.updateOne(
+    { id },
+    {
+      $set: {
+        pronunciationUrl: pronunciationUrl.trim(),
+        updatedAt: nowIso(),
+      },
+    },
   );
 }
 

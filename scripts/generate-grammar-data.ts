@@ -187,7 +187,7 @@ Never include borderline, context-dependent, or "both could work" cases.
 Wrong examples must be common, recognizable mistakes — not debatable pedantry.
 reasonEn must be definitive: say why it works or which word to use instead. Ban hedging words: might, sometimes, depends, often, can work, either way, etc.
 translationEn must be a natural English translation of the Korean sentence only (max ~12 words). Do not repeat grammar labels in translationEn.
-Quizzes: 2–4 items; options must include the compared words fairly; answer must match one option exactly.
+Quizzes: 2–4 items; questionEn is the learner-facing prompt in English; questionKo optional Korean example line only when needed; options must include the compared words fairly; answer must match one option exactly.
 
 Slug: Korean hyphen-separated, e.g. "그래서-vs-그러니까" (no URL encoding).
 summaryKo/summaryEn: 1–2 sentences explaining the nuance (for page intro — NOT a short tagline).

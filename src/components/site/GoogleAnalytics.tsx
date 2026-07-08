@@ -6,15 +6,13 @@ import { useEffect, useState } from "react";
 import {
   applyGaOptOutFromUrl,
   disableGaMeasurement,
-  shouldExcludeFromGa,
+  shouldExcludeFromGaClient,
 } from "@/lib/gaExclusion";
-import { useMockSession } from "@/lib/mock/MockSessionProvider";
 
 const GA_ID =
   process.env.NEXT_PUBLIC_GA_ID?.trim() || "G-9D5H1C2BSP";
 
 export function GoogleAnalytics() {
-  const { ready, state } = useMockSession();
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
@@ -22,11 +20,7 @@ export function GoogleAnalytics() {
 
     applyGaOptOutFromUrl(window.location.search);
 
-    const excluded = shouldExcludeFromGa({
-      email: state.user?.email,
-      hostname: window.location.hostname,
-    });
-
+    const excluded = shouldExcludeFromGaClient(window.location.hostname);
     if (excluded) {
       disableGaMeasurement(GA_ID);
       setEnabled(false);
@@ -34,7 +28,7 @@ export function GoogleAnalytics() {
     }
 
     setEnabled(true);
-  }, [ready, state.user?.email]);
+  }, []);
 
   if (!GA_ID || !enabled) return null;
 

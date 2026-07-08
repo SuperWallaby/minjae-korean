@@ -2,6 +2,10 @@ import { filterConfidentExamples } from "@/lib/grammarComparisonExamples";
 import type { GrammarGuide, GrammarGuideType } from "@/lib/grammarGuidesRepo";
 import { guideBasePath } from "@/lib/grammarGuidesRepo";
 import {
+  formatGrammarPatternDisplay,
+  formatUsageGuideTitleEn,
+} from "@/lib/grammarPatternDisplay";
+import {
   formatKoreanWithRomanization,
   grammarRomanizationVariants,
   romanizeGrammarSentence,
@@ -19,7 +23,11 @@ const INDEX_LABELS: Record<GrammarGuideType, string> = {
 
 export function buildGuideFaqItems(guide: GrammarGuide): FaqItem[] {
   const items: FaqItem[] = [];
-  const wordSeo = formatKoreanWithRomanization(guide.wordName);
+  const displayWord =
+    guide.type === "usage"
+      ? formatGrammarPatternDisplay(guide.wordName)
+      : guide.wordName;
+  const wordSeo = formatKoreanWithRomanization(displayWord);
   const romHint = grammarRomanizationVariants(guide.wordName).join(", ");
 
   if (guide.type === "meaning") {

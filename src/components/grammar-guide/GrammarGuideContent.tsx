@@ -1,6 +1,7 @@
 import type { GrammarGuide } from "@/lib/grammarGuidesRepo";
 
 import { GrammarKoreanWithRomanization } from "../grammar-comparison/GrammarKoreanWithRomanization";
+import { GrammarGuidePronunciationButton } from "./GrammarGuidePronunciationButton";
 
 type Props = {
   guide: GrammarGuide;
@@ -22,7 +23,15 @@ export function GrammarGuideContent({ guide }: Props) {
         </p>
       </div>
 
-      <article className="rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] p-5">
+      <article className="relative rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] p-5">
+        {isMeaning ? (
+          <GrammarGuidePronunciationButton
+            guideId={guide.id}
+            pronunciationUrl={guide.pronunciationUrl}
+            wordName={guide.wordName}
+          />
+        ) : null}
+
         <GrammarKoreanWithRomanization
           word={guide.wordName}
           block

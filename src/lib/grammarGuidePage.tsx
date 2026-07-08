@@ -19,6 +19,10 @@ import {
 } from "@/lib/grammarGuideSeo";
 import { grammarRomanizationVariants } from "@/lib/grammarRomanization";
 import {
+  formatGrammarPatternDisplay,
+  formatUsageGuideTitleEn,
+} from "@/lib/grammarPatternDisplay";
+import {
   getGrammarGuideById,
   guideBasePath,
   guideCanonicalUrl,
@@ -67,11 +71,17 @@ export function createGuideMetadata(type: GrammarGuideType) {
     const guide = await getGrammarGuideById(id);
     if (!guide || guide.type !== type) return { title: "Not Found" };
 
-    const title = guide.titleEn;
+    const title =
+      guide.type === "usage"
+        ? formatUsageGuideTitleEn(guide.wordName)
+        : guide.titleEn;
     const description = guide.summaryEn;
     const canonical = guideCanonicalUrl(baseUrl, guide);
     const ogImage = guide.imageUrl ?? `${baseUrl}/brand/og.png`;
     const keywords = [
+      guide.type === "usage"
+        ? formatGrammarPatternDisplay(guide.wordName)
+        : guide.wordName,
       guide.wordName,
       ...grammarRomanizationVariants(guide.wordName),
       type === "meaning" ? "what does mean" : "how to use korean",

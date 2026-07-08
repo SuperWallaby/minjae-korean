@@ -33,7 +33,25 @@ export const DEFAULT_CAPYBARA_DIALOGUE_LAYOUT: CapybaraDialogueLayout = {
   rightAnchor: { x: 0.81, y: 0.51 },
 };
 
-export type AnswerFormat = "auto" | "list" | "sentence" | "groupedList";
+/**
+ * Format 12 — manual workflow: 1 question + up to 5 answer lines you type in.
+ * Slightly wider text columns; each answer is its own line (no AI comma-list).
+ */
+export const CAPYBARA_FORMAT_12_LAYOUT: CapybaraDialogueLayout = {
+  questionBox: { x: 0.04, y: 0.08, maxWidth: 0.44 },
+  answerBox: { x: 0.5, y: 0.08, maxWidth: 0.46 },
+  leftAnchor: { x: 0.24, y: 0.36 },
+  rightAnchor: { x: 0.81, y: 0.51 },
+};
+
+export type CapybaraFormatPreset = "default" | "12";
+
+export type AnswerFormat =
+  | "auto"
+  | "list"
+  | "sentence"
+  | "groupedList"
+  | "manualLines";
 
 export type GroupedAnswer = {
   word: string;
@@ -54,8 +72,14 @@ export type RenderCapybaraDialogueImageInput = {
   groupedListCompact?: boolean;
   /** Minimum vertical gap between grouped dialogue entries (px at 1600px canvas width). */
   groupedListCompactGap?: number;
-  /** `list` = comma-separated chips; `sentence` = prose wrap; `groupedList` = per-word lines; `auto` = detect (default). */
+  /** `list` = comma-separated chips; `sentence` = prose wrap; `groupedList` = per-word lines; `manualLines` = up to 5 typed lines; `auto` = detect (default). */
   answerFormat?: AnswerFormat;
+  /** Format 12: apply wider layout + manual line answers. */
+  formatPreset?: CapybaraFormatPreset;
+  /** Format 12: up to 5 answer lines (shown verbatim, one block per line). */
+  manualAnswers?: string[];
+  /** `guide` = larger, bolder type for single-word meaning/usage pages. */
+  textProfile?: "default" | "guide";
   baseImagePath?: string;
   layout?: CapybaraDialogueLayout;
   /** Output width; height scales with source aspect ratio. */
@@ -237,6 +261,36 @@ function formatAnswerLines(
   return wrapAnswerWords(parts, maxChars);
 }
 
+function formatManualAnswerLines(lines: string[], maxChars: number): string[] {
+  const items = lines.map((s) => s.trim()).filter(Boolean).slice(0, 5);
+  if (items.length === 0) return [];
+  const out: string[] = [];
+  for (let i = 0; i < items.length; i++) {
+    if (i > 0) out.push("");
+    out.push(...wrapWords(items[i]!, maxChars));
+  }
+  return out;
+}
+
+function resolveFormat12Input(
+  input: RenderCapybaraDialogueImageInput,
+): RenderCapybaraDialogueImageInput {
+  if (input.formatPreset !== "12") return input;
+  const manualAnswers =
+    input.manualAnswers ??
+    (Array.isArray(input.answers)
+      ? input.answers
+      : parseAnswerList(input.answers ?? ""));
+  return {
+    ...input,
+    layout: input.layout ?? CAPYBARA_FORMAT_12_LAYOUT,
+    answerFormat: input.answerFormat ?? "manualLines",
+    manualAnswers,
+    answers: manualAnswers,
+    groupedListCompactGap: input.groupedListCompactGap ?? 20,
+  };
+}
+
 function wrapWords(text: string, maxChars: number): string[] {
   const words = text.trim().split(/\s+/).filter(Boolean);
   if (words.length === 0) return [];
@@ -285,6 +339,30 @@ function formatQuestionLines(
       return [single];
     }
     return ["When to use", `${words.join(" vs ")}?`];
+  }
+
+  if (words.length === 1) {
+    const w = words[0]!;
+    const whatMean = `What does ${w} mean?`;
+    if (lineFitsWidth(whatMean, maxWidthPx, fontSize, true)) {
+      return [whatMean];
+    }
+    const whenUse = `When to use ${w}?`;
+    if (lineFitsWidth(whenUse, maxWidthPx, fontSize, true)) {
+      return [whenUse];
+    }
+    const howUse = `How to use ${w}?`;
+    if (lineFitsWidth(howUse, maxWidthPx, fontSize, true)) {
+      return [howUse];
+    }
+    const whatMatch = q.match(/^What does\s+(.+?)\s+mean\??$/i);
+    if (whatMatch) {
+      return ["What does", `${whatMatch[1]!.trim()} mean?`];
+    }
+    const whenMatch = q.match(/^(?:When|How) to use\s+(.+?)\??$/i);
+    if (whenMatch) {
+      return ["When to use", `${whenMatch[1]!.trim()}?`];
+    }
   }
 
   if (lineFitsWidth(q, maxWidthPx, fontSize, true)) {
@@ -588,23 +666,32 @@ async function buildExtendedBase(
 export async function renderCapybaraDialogueImage(
   input: RenderCapybaraDialogueImageInput,
 ): Promise<Buffer> {
-  const basePath = input.baseImagePath ?? capybaraDialogueBaseImagePath();
+  const resolved = resolveFormat12Input(input);
+  const basePath = resolved.baseImagePath ?? capybaraDialogueBaseImagePath();
   if (!fs.existsSync(basePath)) {
     throw new Error(`Capybara base image not found: ${basePath}`);
   }
 
-  const layout = input.layout ?? DEFAULT_CAPYBARA_DIALOGUE_LAYOUT;
-  const question = String(input.question ?? "").trim();
-  const answerFormatInput = input.answerFormat ?? "auto";
+  const layout = resolved.layout ?? DEFAULT_CAPYBARA_DIALOGUE_LAYOUT;
+  const question = String(resolved.question ?? "").trim();
+  const answerFormatInput = resolved.answerFormat ?? "auto";
   const isGrouped = answerFormatInput === "groupedList";
-  const groupedAnswers = (input.groupedAnswers ?? []).filter(
+  const isManual = answerFormatInput === "manualLines";
+  const groupedAnswers = (resolved.groupedAnswers ?? []).filter(
     (g) => g.word.trim() && g.situations.some((s) => s.trim()),
   );
-  const answers = isGrouped ? [] : parseAnswerList(input.answers ?? []);
+  const manualAnswers = (resolved.manualAnswers ?? [])
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const answers = isGrouped || isManual ? [] : parseAnswerList(resolved.answers ?? []);
   if (!question) throw new Error("question is required");
   if (isGrouped) {
     if (groupedAnswers.length === 0) {
       throw new Error("groupedAnswers must contain at least one word with situations");
+    }
+  } else if (isManual) {
+    if (manualAnswers.length === 0) {
+      throw new Error("manualAnswers must contain at least one line");
     }
   } else if (answers.length === 0) {
     throw new Error("answers must contain at least one word");
@@ -614,20 +701,36 @@ export async function renderCapybaraDialogueImage(
   const meta = await base.metadata();
   const srcW = meta.width ?? 1600;
   const srcH = meta.height ?? 983;
-  const outW = input.outputWidth ?? srcW;
+  const outW = resolved.outputWidth ?? srcW;
   const scale = outW / srcW;
   const outH = Math.round(srcH * scale);
   const topPad = Math.round(TOP_HEADER_PAD_FINAL * scale);
   const canvasH = outH + topPad;
   const paperBg = await samplePaperBackground(basePath);
 
-  const questionFont = Math.round(44 * scale);
-  const answerFont = Math.round(40 * scale);
-  const questionLineHeight = Math.round(50 * scale);
-  const isCompactGrouped = isGrouped && Boolean(input.groupedListCompact);
-  const entryGapPx = input.groupedListCompactGap ?? DEFAULT_GROUPED_ENTRY_GAP;
-  const answerEntryGap = isCompactGrouped ? Math.round(entryGapPx * scale) : undefined;
-  const answerLineHeight = Math.round((isCompactGrouped ? 56 : 48) * scale);
+  const textProfile = resolved.textProfile ?? "default";
+  const isGuideProfile = textProfile === "guide";
+  const isFormat12 = resolved.formatPreset === "12";
+  const questionFont = Math.round(
+    (isGuideProfile ? 52 : isFormat12 ? 46 : 44) * scale,
+  );
+  const answerFont = Math.round(
+    (isGuideProfile ? 54 : isFormat12 ? 42 : 40) * scale,
+  );
+  const questionLineHeight = Math.round(
+    (isGuideProfile ? 58 : isFormat12 ? 52 : 50) * scale,
+  );
+  const isCompactGrouped = isGrouped && Boolean(resolved.groupedListCompact);
+  const entryGapPx = resolved.groupedListCompactGap ?? DEFAULT_GROUPED_ENTRY_GAP;
+  const answerEntryGap = isManual
+    ? Math.round((entryGapPx + 4) * scale)
+    : isCompactGrouped
+      ? Math.round(entryGapPx * scale)
+      : undefined;
+  const answerLineHeight = Math.round(
+    (isCompactGrouped ? 56 : isGuideProfile ? 58 : isFormat12 ? 50 : 48) * scale,
+  );
+  const textWeight = isGuideProfile ? 800 : 700;
 
   const textMarginY = Math.round(
     TEXT_TOP_PAD_FINAL * (outW / BRAND_IMAGE_WIDTH_FINAL),
@@ -650,23 +753,30 @@ export async function renderCapybaraDialogueImage(
     question,
     qMaxW,
     questionFont,
-    input.questionWords,
+    resolved.questionWords,
   );
   const answerFormat = isGrouped
     ? "groupedList"
-    : resolveAnswerFormat(answers, input.answerFormat);
+    : isManual
+      ? "manualLines"
+      : resolveAnswerFormat(answers, resolved.answerFormat);
   const answerLines =
     answerFormat === "groupedList"
       ? formatGroupedAnswerLines(
           groupedAnswers,
           maxCharsForWidth(aMaxW, answerFont),
-          Boolean(input.groupedListCompact),
+          Boolean(resolved.groupedListCompact),
         )
-      : formatAnswerLines(
-          answers,
-          maxCharsForWidth(aMaxW, answerFont),
-          answerFormat,
-        );
+      : answerFormat === "manualLines"
+        ? formatManualAnswerLines(
+            manualAnswers,
+            maxCharsForWidth(aMaxW, answerFont),
+          )
+        : formatAnswerLines(
+            answers,
+            maxCharsForWidth(aMaxW, answerFont),
+            answerFormat,
+          );
 
   const fitted = fitAnswerBlockVertically(
     answerLines,
@@ -686,7 +796,7 @@ export async function renderCapybaraDialogueImage(
     lineHeight: questionLineHeight,
     fontSize: questionFont,
     color: QUESTION_TEXT_COLOR,
-    fontWeight: 700,
+    fontWeight: textWeight,
   };
   const answerBlock: TextBlock = {
     lines: fitted.lines,
@@ -696,7 +806,7 @@ export async function renderCapybaraDialogueImage(
     entryGap: fitted.entryGap,
     fontSize: fitted.fontSize,
     color: ANSWER_TEXT_COLOR,
-    fontWeight: 700,
+    fontWeight: textWeight,
   };
 
   const leftAnchor: Point = {
@@ -722,7 +832,7 @@ export async function renderCapybaraDialogueImage(
   const layers: sharp.OverlayOptions[] = [
     { input: Buffer.from(svg), top: 0, left: 0 },
   ];
-  if (brandFooterEnabled(input)) {
+  if (brandFooterEnabled(resolved)) {
     layers.push(...(await buildBrandFooterLayers(outW, canvasH)));
   }
 

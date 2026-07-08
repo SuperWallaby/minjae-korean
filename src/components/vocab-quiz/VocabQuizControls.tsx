@@ -23,7 +23,7 @@ type Props = {
   onCommand: (id: VocabQuizCommandId) => void;
 };
 
-const ICON_SIZE = 20;
+const ICON_SIZE = 18;
 
 function ControlIcon({
   id,

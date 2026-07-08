@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
-import { ArrowLeft, Flag, Volume2, VolumeX } from "lucide-react";
+import { Flag, Volume2, VolumeX } from "lucide-react";
 
 import {
   AutoQuizPlayer,
@@ -195,13 +195,6 @@ export function VocabQuizClient() {
 
   return (
     <div className={styles.vocabQuizRoot}>
-      <div className={styles.vocabQuizPageHeader}>
-        <Link href="/" className={styles.reviewBackLink}>
-          <ArrowLeft size={16} aria-hidden />
-          Home
-        </Link>
-      </div>
-
       <div className={styles.vocabQuizGameShell}>
         <div className={styles.toolbar}>
           <div className={styles.toolbarGroup}>
