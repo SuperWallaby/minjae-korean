@@ -31,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/grammar/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
     { url: `${baseUrl}/grammar/meaning`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
     { url: `${baseUrl}/grammar/usage`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/how-to-say`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
     { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/songs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/drama`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
@@ -92,11 +93,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let grammarUsageGuides: Awaited<
     ReturnType<typeof listTopGuidesForStaticParams>
   > = [];
+  let grammarHowToSayGuides: Awaited<
+    ReturnType<typeof listTopGuidesForStaticParams>
+  > = [];
   try {
-    [grammarMeaningGuides, grammarUsageGuides] = await Promise.all([
-      listTopGuidesForStaticParams("meaning", 2000),
-      listTopGuidesForStaticParams("usage", 2000),
-    ]);
+    [grammarMeaningGuides, grammarUsageGuides, grammarHowToSayGuides] =
+      await Promise.all([
+        listTopGuidesForStaticParams("meaning", 2000),
+        listTopGuidesForStaticParams("usage", 2000),
+        listTopGuidesForStaticParams("how-to-say", 2000),
+      ]);
   } catch {
     // DB unavailable at build time
   }
@@ -111,6 +117,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const grammarUsageRoutes: MetadataRoute.Sitemap = grammarUsageGuides.map(
     (g) => ({
       url: `${baseUrl}/grammar/usage/${g.id}/${encodeURIComponent(g.slug)}`,
+      lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    }),
+  );
+  const grammarHowToSayRoutes: MetadataRoute.Sitemap = grammarHowToSayGuides.map(
+    (g) => ({
+      url: `${baseUrl}/grammar/how-to-say/${g.id}/${encodeURIComponent(g.slug)}`,
       lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.65,
@@ -176,6 +190,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...grammarComparisonRoutes,
     ...grammarMeaningRoutes,
     ...grammarUsageRoutes,
+    ...grammarHowToSayRoutes,
     ...articleRoutes,
     ...blogRoutes,
     ...expressionRoutes,

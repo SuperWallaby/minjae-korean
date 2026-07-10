@@ -61,7 +61,7 @@ export default function GrammarPage() {
             </div>
           )}
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <section className="rounded-[1.125rem] border border-emerald-200 bg-emerald-50/60 p-5">
               <h2 className="text-lg font-bold text-[var(--quiz-text)]">
                 Word & grammar comparisons
@@ -105,6 +105,21 @@ export default function GrammarPage() {
                 className="mt-4 inline-flex text-sm font-semibold text-emerald-800 underline hover:text-emerald-950"
               >
                 Browse usage guides →
+              </Link>
+            </section>
+
+            <section className="rounded-[1.125rem] border border-emerald-200 bg-emerald-50/60 p-5">
+              <h2 className="text-lg font-bold text-[var(--quiz-text)]">
+                How to say it
+              </h2>
+              <p className="mt-2 text-sm text-[var(--quiz-text-sub)]">
+                Everyday English phrases — the natural Korean way to say them.
+              </p>
+              <Link
+                href="/grammar/how-to-say"
+                className="mt-4 inline-flex text-sm font-semibold text-emerald-800 underline hover:text-emerald-950"
+              >
+                Browse how-to-say guides →
               </Link>
             </section>
           </div>

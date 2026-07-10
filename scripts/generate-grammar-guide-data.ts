@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
- * Generate "What does xxx mean" and "How to use yyy" grammar SEO pages.
+ * Generate "What does xxx mean", "How to use yyy", and "How to say zzz in Korean" SEO pages.
  *
  *   npx tsx scripts/generate-grammar-guide-data.ts --type meaning --word 근데
  *   npx tsx scripts/generate-grammar-guide-data.ts --type usage --word 으로
- *   npx tsx scripts/generate-grammar-guide-data.ts --type meaning --batch-file scripts/data/grammar-meaning-batch.txt
+ *   npx tsx scripts/generate-grammar-guide-data.ts --type how-to-say --word "nice to meet you"
+ *   npx tsx scripts/generate-grammar-guide-data.ts --type how-to-say --batch-file scripts/data/grammar-how-to-say-batch.txt
  */
 import fs from "node:fs";
 import { dirname, join } from "node:path";
@@ -17,7 +18,11 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-type GuideType = "meaning" | "usage";
+type GuideType = "meaning" | "usage" | "how-to-say";
+
+function isGuideType(v: string): v is GuideType {
+  return v === "meaning" || v === "usage" || v === "how-to-say";
+}
 
 async function loadEnv() {
   const { loadEnvLocal } = await import("./lib/env_local.mjs");
@@ -64,12 +69,14 @@ const QUIZ_SCHEMA = {
 } as const;
 
 function buildGuideJsonSchema(type: GuideType) {
+  const nuanceMin = type === "usage" ? 0 : 2;
   return {
     type: "object",
     additionalProperties: false,
     required: [
       "slug",
       "wordName",
+      "englishPhrase",
       "titleKo",
       "titleEn",
       "summaryKo",
@@ -91,6 +98,7 @@ function buildGuideJsonSchema(type: GuideType) {
     properties: {
       slug: { type: "string" },
       wordName: { type: "string" },
+      englishPhrase: { type: "string" },
       titleKo: { type: "string" },
       titleEn: { type: "string" },
       summaryKo: { type: "string" },
@@ -113,13 +121,13 @@ function buildGuideJsonSchema(type: GuideType) {
       },
       nuancesKo: {
         type: "array",
-        minItems: type === "meaning" ? 2 : 0,
+        minItems: nuanceMin,
         maxItems: 4,
         items: { type: "string" },
       },
       nuancesEn: {
         type: "array",
-        minItems: type === "meaning" ? 2 : 0,
+        minItems: nuanceMin,
         maxItems: 4,
         items: { type: "string" },
       },
@@ -146,13 +154,12 @@ function parseType(argv: string[]): GuideType | null {
   const flag = argv.find((a) => a.startsWith("--type="));
   if (flag) {
     const v = flag.slice("--type=".length).trim();
-    if (v === "meaning" || v === "usage") return v;
-    return null;
+    return isGuideType(v) ? v : null;
   }
   const idx = argv.indexOf("--type");
   if (idx >= 0 && argv[idx + 1]) {
     const v = argv[idx + 1]!.trim();
-    if (v === "meaning" || v === "usage") return v;
+    return isGuideType(v) ? v : null;
   }
   return null;
 }
@@ -214,14 +221,37 @@ function buildSystemPrompt(type: GuideType): string {
   const pageKind =
     type === "meaning"
       ? '"What does xxx mean" meaning guide'
-      : '"How to use yyy" usage guide';
+      : type === "usage"
+        ? '"How to use yyy" usage guide'
+        : '"How to say zzz in Korean" English→Korean phrase guide';
+
+  const slugHint =
+    type === "meaning"
+      ? '"what-does-근데-mean"'
+      : type === "usage"
+        ? '"how-to-use-으로"'
+        : '"how-to-say-nice-to-meet-you"';
+
+  const titleHint =
+    type === "meaning"
+      ? '"What does {word} mean?"'
+      : type === "usage"
+        ? '"How to use {display} in Korean" where {display} has no hyphen/parens (e.g. "은/ㄴ 후에" not "-(으)ㄴ 후에")'
+        : '"How to say "{english phrase}" in Korean"';
+
+  const nuanceHint =
+    type === "usage"
+      ? "may be empty arrays for usage pages"
+      : type === "how-to-say"
+        ? "2–4 bullets: polite vs casual, formality, common alternatives"
+        : "2–4 short nuance bullets (meaning pages)";
 
   return `You are a friendly Korean native "Language Partner" — not a stiff textbook teacher.
 Write for B1–B2 Korean learners AND Koreans who want sharper, natural phrasing.
 Tone: witty, intuitive, real-life spoken Korean + business nuance when relevant.
 Always provide BOTH Korean (_ko) and English (_en) for meanings, rules, reasons, and explanations.
 
-This is a ${pageKind} for a SINGLE Korean word or grammar pattern.
+This is a ${pageKind} for ${type === "how-to-say" ? "an ENGLISH phrase learners want to say in Korean" : "a SINGLE Korean word or grammar pattern"}.
 Focus on what learners actually search for on Google.
 
 Examples: ONLY sentences native speakers would agree are clearly correct (⭕) or clearly wrong (❌).
@@ -230,15 +260,17 @@ reasonEn must be definitive. Ban hedging: might, sometimes, depends, often, can 
 translationEn: natural English translation only (max ~12 words).
 Quizzes: 2–4 items; questionEn is the learner-facing prompt in English; questionKo optional Korean example line only when needed; options are Korean; answer must match one option exactly.
 
-Slug: SEO-friendly hyphen-separated, e.g. "what-does-근데-mean" or "how-to-use-으로" (no URL encoding).
-titleEn: must match SEO intent — "What does {word} mean?" or "How to use {display} in Korean" where {display} has no hyphen/parens (e.g. "은/ㄴ 후에" not "-(으)ㄴ 후에").
+Slug: SEO-friendly hyphen-separated, e.g. ${slugHint} (no URL encoding).
+titleEn: must match SEO intent — ${titleHint}.
 summaryKo/summaryEn: 1–2 sentences hook for the page intro.
-capybaraQuestionEn: English question for infographic; Korean allowed ONLY as the clean display form (no hyphen or parentheses).
-imageAnswerEn: ONE short English sentence for the capybara answer on the infographic (max 15 words). Complete thought — never a comma-separated keyword list.
+capybaraQuestionEn: English question for infographic${type === "how-to-say" ? ' like "How to say nice to meet you?"' : "; Korean allowed ONLY as the clean display form (no hyphen or parentheses)"}.
+imageAnswerEn: ONE short English sentence for the capybara answer on the infographic (max 15 words). Complete thought — never a comma-separated keyword list.${type === "how-to-say" ? " Prefer naming the Korean expression, e.g. \"Say 반갑습니다 (bangapseumnida).\"" : ""}
 situationsEn: 1–3 words each, English only (page content). situationsKo: page content only.
-nuancesKo/nuancesEn: ${type === "meaning" ? "2–4 short nuance bullets (meaning pages)" : "may be empty arrays for usage pages"}.
+nuancesKo/nuancesEn: ${nuanceHint}.
 When mentioning Korean words in summaryEn or ruleEn, add romanization in parentheses once.
-imageAlt: concise English alt text for accessibility/SEO.`;
+imageAlt: concise English alt text for accessibility/SEO.
+englishPhrase: ${type === "how-to-say" ? "the exact English phrase from the user prompt (lowercase natural form OK)" : "empty string for meaning/usage pages"}.
+wordName: ${type === "how-to-say" ? "the PRIMARY Korean expression to say (Hangul)" : "the Korean word/pattern exactly as given"}.`;
 }
 
 function buildUserPrompt(type: GuideType, word: string): string {
@@ -246,6 +278,7 @@ function buildUserPrompt(type: GuideType, word: string): string {
     return `Create a full "What does ${word} mean?" dictionary-style guide for this Korean word/pattern: ${word}.
 Return JSON matching the schema exactly.
 - wordName: exactly "${word}"
+- englishPhrase: ""
 - titleEn: "What does ${word} mean?" (or natural variant)
 - meaningKo/meaningEn: core definition
 - ruleKo/ruleEn: how it fits in real sentences / register
@@ -253,9 +286,11 @@ Return JSON matching the schema exactly.
 - 4–8 confident examples
 - 2–4 quiz questions`;
   }
-  return `Create a full "How to use ${word}" usage guide for this Korean word/pattern: ${word}.
+  if (type === "usage") {
+    return `Create a full "How to use ${word}" usage guide for this Korean word/pattern: ${word}.
 Return JSON matching the schema exactly.
 - wordName: exactly "${word}" (keep textbook notation for DB)
+- englishPhrase: ""
 - titleEn: "How to use {clean display form} in Korean" — e.g. for "-(으)ㄴ 후에" use "How to use 은/ㄴ 후에 in Korean"
 - capybaraQuestionEn: "When to use {clean display form}?" — no hyphen or parentheses in the Korean part
 - meaningKo/meaningEn: brief gloss
@@ -264,6 +299,23 @@ Return JSON matching the schema exactly.
 - nuancesKo/nuancesEn: empty arrays OK
 - 4–8 confident examples
 - 2–4 quiz questions`;
+  }
+  return `Create a full "How to say \\"${word}\\" in Korean" guide for this English phrase: ${word}.
+Return JSON matching the schema exactly.
+- englishPhrase: exactly "${word}" (normalize casing lightly if needed, keep meaning)
+- wordName: the most natural PRIMARY Korean expression (Hangul) for this phrase
+- slug: "how-to-say-{english-kebab}" e.g. how-to-say-nice-to-meet-you
+- titleEn: How to say "${word}" in Korean
+- titleKo: natural Korean title about how to say this
+- meaningKo: the Korean expression + short gloss in Korean
+- meaningEn: what the Korean expression means / when you'd say it
+- ruleKo/ruleEn: formality (반말 vs 존댓말), who you say it to, common variants
+- nuancesKo/nuancesEn: polite vs casual alternatives, tone tips
+- situationsKo/situationsEn: when you'd actually say this
+- examples: natural Korean sentences using the expression (⭕/❌)
+- quizzes: pick the right Korean for the English intent
+- capybaraQuestionEn: How to say ${word}?
+- imageAnswerEn: short English line naming the Korean (with romanization once)`;
 }
 
 async function azureStructuredJson(
@@ -341,6 +393,10 @@ function normalizePayload(
   if (!slug) throw new Error("AI response missing slug");
 
   const wordName = String(raw.wordName ?? word).trim() || word;
+  const englishPhrase =
+    type === "how-to-say"
+      ? String(raw.englishPhrase ?? word).trim() || word
+      : String(raw.englishPhrase ?? "").trim() || undefined;
 
   const examplesRaw = Array.isArray(raw.examples) ? raw.examples : [];
   const examples = filterExamples(
@@ -374,16 +430,21 @@ function normalizePayload(
     };
   });
 
+  const phraseForTitle = englishPhrase || word;
   const capybaraQuestionEn =
     String(raw.capybaraQuestionEn ?? "").trim() ||
     (type === "meaning"
       ? `What does ${wordName} mean?`
-      : `When to use ${formatGrammarPatternDisplay(wordName)}?`);
+      : type === "usage"
+        ? `When to use ${formatGrammarPatternDisplay(wordName)}?`
+        : `How to say ${phraseForTitle}?`);
   const imageAlt =
     String(raw.imageAlt ?? "").trim() ||
     (type === "meaning"
       ? `Korean meaning guide: What does ${wordName} mean?`
-      : `Korean usage guide: How to use ${wordName}`);
+      : type === "usage"
+        ? `Korean usage guide: How to use ${wordName}`
+        : `How to say "${phraseForTitle}" in Korean`);
   const imageAnswerEn =
     String(raw.imageAnswerEn ?? "").trim() ||
     String(raw.meaningEn ?? "").trim() ||
@@ -392,15 +453,21 @@ function normalizePayload(
   const strArr = (v: unknown) =>
     Array.isArray(v) ? v.map((s) => String(s).trim()).filter(Boolean) : [];
 
+  const titleEn =
+    type === "usage"
+      ? formatUsageGuideTitleEn(wordName)
+      : type === "how-to-say"
+        ? String(raw.titleEn ?? "").trim() ||
+          `How to say "${phraseForTitle}" in Korean`
+        : String(raw.titleEn ?? "").trim();
+
   return {
     type,
     slug,
     wordName,
+    englishPhrase,
     titleKo: String(raw.titleKo ?? "").trim(),
-    titleEn:
-      type === "usage"
-        ? formatUsageGuideTitleEn(wordName)
-        : String(raw.titleEn ?? "").trim(),
+    titleEn,
     summaryKo: String(raw.summaryKo ?? "").trim(),
     summaryEn: String(raw.summaryEn ?? "").trim(),
     meaningKo: String(raw.meaningKo ?? "").trim(),
@@ -536,7 +603,7 @@ async function generateAndUploadPronunciation(
   wordName: string,
   imageUrl?: string | null,
 ): Promise<string | null> {
-  if (type !== "meaning") return null;
+  if (type !== "meaning" && type !== "how-to-say") return null;
 
   try {
     const { ensureGrammarGuidePronunciation } = await import(
@@ -613,7 +680,7 @@ async function generateGuideForWord(
     );
   }
 
-  if (type === "meaning") {
+  if (type === "meaning" || type === "how-to-say") {
     await generateAndUploadPronunciation(
       type,
       id,
@@ -630,7 +697,12 @@ function guideUrl(type: GuideType, id: number, slug: string): string {
   const site =
     process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ||
     "http://localhost:3000";
-  const prefix = type === "meaning" ? "/grammar/meaning" : "/grammar/usage";
+  const prefix =
+    type === "meaning"
+      ? "/grammar/meaning"
+      : type === "usage"
+        ? "/grammar/usage"
+        : "/grammar/how-to-say";
   return `${site}${prefix}/${id}/${encodeURIComponent(slug)}`;
 }
 
@@ -655,14 +727,14 @@ async function runBatchFromFile(
   let ok = 0;
   let skipped = 0;
 
-  const getGrammarGuideByWord = skipExisting
-    ? (await import("../src/lib/grammarGuidesRepo")).getGrammarGuideByWord
+  const getGrammarGuideByBatchKey = skipExisting
+    ? (await import("../src/lib/grammarGuidesRepo")).getGrammarGuideByBatchKey
     : null;
 
   for (let i = startIndex; i < words.length; i++) {
     const word = words[i]!;
-    if (getGrammarGuideByWord) {
-      const existing = await getGrammarGuideByWord(type, word);
+    if (getGrammarGuideByBatchKey) {
+      const existing = await getGrammarGuideByBatchKey(type, word);
       if (existing) {
         skipped += 1;
         console.log(`\n=== [${i + 1}/${words.length}] ${word} — skip existing id=${existing.id} ===`);
@@ -703,7 +775,9 @@ async function reimageGuideById(
   const questionEn =
     type === "meaning"
       ? `What does ${guide.wordName} mean?`
-      : `When to use ${formatGrammarPatternDisplay(guide.wordName)}?`;
+      : type === "usage"
+        ? `When to use ${formatGrammarPatternDisplay(guide.wordName)}?`
+        : `How to say ${guide.englishPhrase || guide.wordName}?`;
   const imageAnswerEn = guide.imageAnswerEn?.trim() || guide.meaningEn;
 
   await renderAndUploadGuideImage(
@@ -719,7 +793,7 @@ async function reimageGuideById(
     forceLocal,
   );
 
-  if (type === "meaning") {
+  if (type === "meaning" || type === "how-to-say") {
     await generateAndUploadPronunciation(
       type,
       guide.id,
@@ -736,7 +810,7 @@ async function runReimageBatch(
   startIndex: number,
   forceLocal: boolean,
 ) {
-  const { getGrammarGuideByWord } = await import("../src/lib/grammarGuidesRepo");
+  const { getGrammarGuideByBatchKey } = await import("../src/lib/grammarGuidesRepo");
   const words = readBatchWords(filePath);
   const failed: Array<{ index: number; word: string; error: string }> = [];
   let ok = 0;
@@ -749,7 +823,7 @@ async function runReimageBatch(
     const word = words[i]!;
     console.log(`\n=== [${i + 1}/${words.length}] ${word} ===`);
     try {
-      const guide = await getGrammarGuideByWord(type, word);
+      const guide = await getGrammarGuideByBatchKey(type, word);
       if (!guide) throw new Error("Guide not found in DB");
       await reimageGuideById(type, guide.id, forceLocal);
       ok += 1;
@@ -767,14 +841,17 @@ async function runReimageBatch(
   process.exit(failed.length > 0 ? 1 : 0);
 }
 
+const USAGE_HELP = `Usage:
+  yarn generate-grammar-guide --type meaning|usage|how-to-say --word <key>
+  yarn generate-grammar-guide --type how-to-say --word "nice to meet you"
+  yarn generate-grammar-guide --type how-to-say --batch-file scripts/data/grammar-how-to-say-batch.txt`;
+
 async function main() {
   await loadEnv();
   const argv = process.argv.slice(2);
   const type = parseType(argv);
   if (!type) {
-    console.error(
-      "Usage:\n  yarn generate-grammar-guide --type meaning|usage --word 근데\n  yarn generate-grammar-guide --type meaning --batch-file scripts/data/grammar-meaning-batch.txt",
-    );
+    console.error(USAGE_HELP);
     process.exit(1);
   }
 
@@ -818,9 +895,7 @@ async function main() {
 
   const word = parseWord(argv);
   if (!word) {
-    console.error(
-      "Usage:\n  yarn generate-grammar-guide --type meaning|usage --word 근데\n  yarn generate-grammar-guide --type meaning --batch-file scripts/data/grammar-meaning-batch.txt",
-    );
+    console.error(USAGE_HELP);
     process.exit(1);
   }
 

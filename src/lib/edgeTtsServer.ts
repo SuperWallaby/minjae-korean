@@ -5,14 +5,20 @@ import { join } from "node:path";
 
 const DEFAULT_VOICE = "ko-KR-InJoonNeural";
 
-export async function synthesizeEdgeTtsMp3(text: string): Promise<Buffer> {
+export async function synthesizeEdgeTtsMp3(
+  text: string,
+  opts?: { voice?: string; rate?: string },
+): Promise<Buffer> {
   const trimmed = text.trim();
   if (!trimmed) {
     throw new Error("TTS text is required");
   }
 
-  const voice = process.env.EDGE_TTS_VOICE?.trim() || DEFAULT_VOICE;
-  const rate = process.env.EDGE_TTS_RATE?.trim();
+  const voice =
+    opts?.voice?.trim() ||
+    process.env.EDGE_TTS_VOICE?.trim() ||
+    DEFAULT_VOICE;
+  const rate = opts?.rate?.trim() || process.env.EDGE_TTS_RATE?.trim();
   const dir = await mkdtemp(join(tmpdir(), "edge-tts-"));
   const outPath = join(dir, "out.mp3");
 

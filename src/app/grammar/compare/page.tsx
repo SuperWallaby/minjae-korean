@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
+import { GrammarHubCrossLinks } from "@/components/grammar/GrammarHubCrossLinks";
 import {
   MarketingHeader,
   MarketingPage,
@@ -72,6 +73,8 @@ export default async function GrammarCompareIndexPage({ searchParams }: Props) {
             title="Word & grammar comparisons"
             lead="Side-by-side guides for words Koreans and learners mix up — with examples and a quick quiz on each page."
           />
+
+          <GrammarHubCrossLinks current="compare" />
 
           <div className="mt-6 flex flex-wrap gap-2 text-sm">
             <Link

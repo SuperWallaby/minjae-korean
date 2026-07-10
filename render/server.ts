@@ -23,7 +23,7 @@ type RenderBody = {
 };
 
 type RenderGuideBody = {
-  type?: "meaning" | "usage";
+  type?: "meaning" | "usage" | "how-to-say";
   questionEn?: string;
   wordName?: string;
   imageAnswerEn?: string;
@@ -112,7 +112,10 @@ const server = http.createServer(async (req, res) => {
 
     try {
       const body = (await readJsonBody(req)) as RenderGuideBody;
-      const type = body.type === "usage" ? "usage" : "meaning";
+      const type =
+        body.type === "usage" || body.type === "how-to-say"
+          ? body.type
+          : "meaning";
       const questionEn = body.questionEn?.trim() ?? "";
       const wordName = body.wordName?.trim() ?? "";
 

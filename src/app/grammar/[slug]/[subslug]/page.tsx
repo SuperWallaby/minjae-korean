@@ -25,6 +25,7 @@ import {
   listRelatedComparisons,
   listTopComparisonsForStaticParams,
 } from "@/lib/grammarComparisonsRepo";
+import { getGrammarGuideByWord } from "@/lib/grammarGuidesRepo";
 
 export const runtime = "nodejs";
 export const dynamicParams = true;
@@ -118,6 +119,20 @@ export default async function GrammarComparisonPage({
   void incrementViewCount(id);
 
   const related = await listRelatedComparisons(id, 8);
+  const meaningGuideResults = await Promise.all(
+    comparison.items.map((item) => getGrammarGuideByWord("meaning", item.wordName)),
+  );
+  const meaningGuides = meaningGuideResults
+    .filter((guide): guide is NonNullable<typeof guide> => Boolean(guide))
+    .filter(
+      (guide, index, all) => all.findIndex((item) => item.id === guide.id) === index,
+    )
+    .map((guide) => ({
+      id: guide.id,
+      slug: guide.slug,
+      wordName: guide.wordName,
+      titleEn: guide.titleEn,
+    }));
 
   const canonical = comparisonCanonical(comparison.id, comparison.slug);
   const faqJsonLd = buildComparisonFaqJsonLd(comparison, canonical);
@@ -154,7 +169,11 @@ export default async function GrammarComparisonPage({
             <GrammarComparisonTable items={comparison.items} />
             <GrammarComparisonExamples examples={comparison.examples} />
             <GrammarComparisonQuiz quizzes={comparison.quizzes} />
-            <GrammarComparisonRelated currentId={comparison.id} related={related} />
+            <GrammarComparisonRelated
+              currentId={comparison.id}
+              related={related}
+              meaningGuides={meaningGuides}
+            />
           </div>
         </MarketingShellBody>
       </MarketingShell>

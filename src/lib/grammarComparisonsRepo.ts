@@ -4,6 +4,12 @@ import {
   COMPARISON_THREE_WAY_SLUG_REGEX,
   comparisonWordCountFromSlug,
 } from "@/lib/grammarComparisonSlug";
+import {
+  comparisonRelatedKeys,
+  escapeRegex,
+  rankByRelatedScore,
+  scoreSlugMatch,
+} from "@/lib/grammarRelatedMatch";
 import { getMongoDb } from "@/lib/mongo";
 
 export type ComparisonItem = {
@@ -310,12 +316,10 @@ export async function listComparisons(
   return { items: docs.map(docToCard), total };
 }
 
-/** Comparisons before/after `currentId` (sorted by id) for prev/next exploration. */
-export async function listRelatedComparisons(
+async function listRelatedComparisonsById(
   currentId: number,
-  limit = 8,
+  cap: number,
 ): Promise<ComparisonCard[]> {
-  const cap = Math.max(1, Math.min(limit, 12));
   const { comparisons } = await cols();
 
   const beforeCount = Math.floor(cap / 2);
@@ -345,6 +349,55 @@ export async function listRelatedComparisons(
   }
 
   return [...beforeDocs.reverse(), ...afterDocs].slice(0, cap).map(docToCard);
+}
+
+/** Comparisons that share words or slug tokens with the current page. */
+export async function listRelatedComparisons(
+  currentId: number,
+  limit = 8,
+): Promise<ComparisonCard[]> {
+  const cap = Math.max(1, Math.min(limit, 12));
+  const current = await getComparisonById(currentId);
+  if (!current) return listRelatedComparisonsById(currentId, cap);
+
+  const keys = comparisonRelatedKeys(current.slug, current.items, current.titleEn);
+  const slugKeys = keys.filter((key) => key.length >= 2).slice(0, 8);
+  if (slugKeys.length === 0) return listRelatedComparisonsById(currentId, cap);
+
+  const { comparisons } = await cols();
+  const orClauses = slugKeys.map((key) => ({
+    slug: { $regex: escapeRegex(key), $options: "i" },
+  }));
+
+  const candidates = await comparisons
+    .find({ id: { $ne: currentId }, $or: orClauses })
+    .limit(80)
+    .toArray();
+
+  const scored = candidates
+    .map((doc) => ({
+      doc,
+      id: doc.id,
+      score:
+        scoreSlugMatch(doc.slug, keys) +
+        (doc.titleEn ? scoreSlugMatch(doc.titleEn, keys) : 0),
+    }))
+    .filter((item) => item.score > 0);
+
+  const semantic = rankByRelatedScore(scored, cap).map((item) => docToCard(item.doc));
+  if (semantic.length >= cap) return semantic;
+
+  const usedIds = new Set([currentId, ...semantic.map((item) => item.id)]);
+  const fallback = await listRelatedComparisonsById(currentId, cap);
+  const merged = [...semantic];
+  for (const item of fallback) {
+    if (merged.length >= cap) break;
+    if (!usedIds.has(item.id)) {
+      merged.push(item);
+      usedIds.add(item.id);
+    }
+  }
+  return merged.slice(0, cap);
 }
 
 export async function upsertComparisonFromGenerated(

@@ -29,6 +29,7 @@ type DragOffset = {
 
 export type StudioQuizPlayerHandle = {
   skipToNext: () => void;
+  toggleOptions: () => void;
 };
 
 type Props = {
@@ -39,6 +40,7 @@ type Props = {
   frozen: boolean;
   paused: boolean;
   onDone: (opts?: VocabQuizAdvanceOptions) => void;
+  onShowOptionsChange?: (show: boolean) => void;
 };
 
 function correctLabel(quiz: KoreanQuizPrepared): string {
@@ -119,18 +121,21 @@ function FlipCard({
   quiz,
   flipped,
   flipping,
+  flipDir,
 }: {
   quiz: KoreanQuizPrepared;
   flipped: boolean;
   flipping: boolean;
+  flipDir: "forward" | "back";
 }) {
   return (
     <div className={styles.studioFlipScene}>
       <div
         className={[
           styles.studioFlipInner,
-          flipped ? styles.studioFlipInnerFlipped : "",
-          flipping ? styles.studioFlipInnerAnimating : "",
+          flipped && !flipping ? styles.studioFlipInnerFlipped : "",
+          flipping && flipDir === "forward" ? styles.studioFlipInnerAnimating : "",
+          flipping && flipDir === "back" ? styles.studioFlipInnerUnflipping : "",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -148,11 +153,21 @@ function FlipCard({
 
 export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
   function StudioQuizPlayer(
-    { quiz, upcoming, deviceId, audio, frozen, paused, onDone },
+    {
+      quiz,
+      upcoming,
+      deviceId,
+      audio,
+      frozen,
+      paused,
+      onDone,
+      onShowOptionsChange,
+    },
     ref,
   ) {
     const [flipped, setFlipped] = React.useState(false);
     const [flipping, setFlipping] = React.useState(false);
+    const [flipDir, setFlipDir] = React.useState<"forward" | "back">("forward");
     const [showOptions, setShowOptions] = React.useState(false);
     const [choices, setChoices] = React.useState(quiz.choices);
     const [selectedId, setSelectedId] = React.useState<string | null>(null);
@@ -201,7 +216,9 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
     React.useEffect(() => {
       setFlipped(false);
       setFlipping(false);
+      setFlipDir("forward");
       setShowOptions(false);
+      onShowOptionsChange?.(false);
       setChoices(shuffle(quiz.choices));
       setSelectedId(null);
       setFeedback({});
@@ -214,7 +231,16 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       shownAtRef.current = Date.now();
       if (quiz.imageUrl) audio.prefetch(quiz.imageUrl);
       if (quiz.answerTtsUrl) audio.prefetch(quiz.answerTtsUrl);
-    }, [audio, quiz]);
+    }, [audio, onShowOptionsChange, quiz]);
+
+    React.useEffect(() => {
+      onShowOptionsChange?.(showOptions);
+    }, [onShowOptionsChange, showOptions]);
+
+    const toggleOptions = React.useCallback(() => {
+      if (frozen || paused || promoting || revealing) return;
+      setShowOptions((value) => !value);
+    }, [frozen, paused, promoting, revealing]);
 
     React.useEffect(() => {
       if (paused) audio.pauseAll();
@@ -240,15 +266,22 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
     );
 
     const flipCard = React.useCallback(async () => {
-      if (flipped || flipping || showOptions || promoting || frozen || paused) return;
+      if (flipping || showOptions || promoting || frozen || paused) return;
       if (!audio.isUnlocked()) await audio.unlock();
       void audio.playSfx(VOCAB_QUIZ_SFX.click);
       setFlipping(true);
-      setFlipped(true);
-      window.setTimeout(() => setFlipping(false), 400);
-      if (quiz.answerTtsUrl) {
-        void audio.playUrl(quiz.answerTtsUrl);
+      if (flipped) {
+        setFlipDir("back");
+        setFlipped(false);
+        void audio.stopAll();
+      } else {
+        setFlipDir("forward");
+        setFlipped(true);
+        if (quiz.answerTtsUrl) {
+          void audio.playUrl(quiz.answerTtsUrl);
+        }
       }
+      window.setTimeout(() => setFlipping(false), 400);
     }, [
       audio,
       flipped,
@@ -262,12 +295,8 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
 
     const handleTap = React.useCallback(() => {
       if (interactionLocked) return;
-      if (!flipped) {
-        void flipCard();
-        return;
-      }
-      void advance();
-    }, [advance, flipCard, flipped, interactionLocked]);
+      void flipCard();
+    }, [flipCard, interactionLocked]);
 
     const throwAway = React.useCallback(
       (dx: number, dy: number, velocity: number) => {
@@ -346,8 +375,9 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
         skipToNext: () => {
           handleSkip();
         },
+        toggleOptions,
       }),
-      [handleSkip],
+      [handleSkip, toggleOptions],
     );
 
     React.useEffect(() => {
@@ -356,8 +386,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
         const key = event.key.toLowerCase();
         if (key === "0" || key === "o" || event.code === "Digit0" || event.code === "Numpad0") {
           event.preventDefault();
-          if (revealing) return;
-          setShowOptions((value) => !value);
+          toggleOptions();
           return;
         }
         if (key === "escape" && showOptions) {
@@ -367,7 +396,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       };
       window.addEventListener("keydown", onKeyDown);
       return () => window.removeEventListener("keydown", onKeyDown);
-    }, [frozen, paused, promoting, revealing, showOptions]);
+    }, [frozen, paused, promoting, revealing, showOptions, toggleOptions]);
 
     const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
       if (interactionLocked) return;
@@ -486,7 +515,9 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
               }
             }}
             aria-label={
-              flipped ? "Continue to next card" : "Flip card to see Korean answer"
+              flipped
+                ? "Flip card back — swipe or throw to go next"
+                : "Flip card to see Korean answer — swipe or throw to skip"
             }
           >
             <div className={stackClass}>
@@ -528,7 +559,12 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
                   data-depth={0}
                   data-layer="top"
                 >
-                  <FlipCard quiz={quiz} flipped={flipped} flipping={flipping} />
+                  <FlipCard
+                    quiz={quiz}
+                    flipped={flipped}
+                    flipping={flipping}
+                    flipDir={flipDir}
+                  />
                 </div>
               ) : null}
 
@@ -555,13 +591,13 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
 
         {showOptions ? (
           <div className={styles.studioChoicesWrap}>
-            <div className={styles.choicesGrid}>
+            <div className={styles.studioChoicesGrid}>
               {choices.map((choice) => {
                 const state = feedback[choice.id] ?? "none";
                 const className = [
-                  styles.choiceBtn,
-                  state === "correct" ? styles.choiceCorrect : "",
-                  state === "wrong" ? styles.choiceWrong : "",
+                  styles.studioChoiceBtn,
+                  state === "correct" ? styles.studioChoiceCorrect : "",
+                  state === "wrong" ? styles.studioChoiceWrong : "",
                 ]
                   .filter(Boolean)
                   .join(" ");

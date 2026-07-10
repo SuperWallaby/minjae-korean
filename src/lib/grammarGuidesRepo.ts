@@ -1,8 +1,15 @@
 import type { Collection } from "mongodb";
 
 import { getMongoDb } from "@/lib/mongo";
+import {
+  escapeRegex,
+  guideRelatedKeys,
+  rankByRelatedScore,
+  scoreSlugMatch,
+  scoreWordNameMatch,
+} from "@/lib/grammarRelatedMatch";
 
-export type GrammarGuideType = "meaning" | "usage";
+export type GrammarGuideType = "meaning" | "usage" | "how-to-say";
 
 export type GuideExample = {
   sentence: string;
@@ -26,6 +33,8 @@ export type GrammarGuide = {
   type: GrammarGuideType;
   slug: string;
   wordName: string;
+  /** English phrase for how-to-say pages (batch / SEO primary key). */
+  englishPhrase?: string;
   titleKo: string;
   titleEn: string;
   summaryKo: string;
@@ -55,6 +64,7 @@ export type GeneratedGrammarGuidePayload = {
   type: GrammarGuideType;
   slug: string;
   wordName: string;
+  englishPhrase?: string;
   titleKo: string;
   titleEn: string;
   summaryKo: string;
@@ -80,6 +90,7 @@ type GuideDoc = {
   type: GrammarGuideType;
   slug: string;
   wordName: string;
+  englishPhrase?: string;
   titleKo: string;
   titleEn: string;
   summaryKo: string;
@@ -125,11 +136,13 @@ type Collections = {
 const COUNTER_KEYS: Record<GrammarGuideType, string> = {
   meaning: "grammar_meaning_id",
   usage: "grammar_usage_id",
+  "how-to-say": "grammar_how_to_say_id",
 };
 
 const INITIAL_IDS: Record<GrammarGuideType, number> = {
   meaning: 5000,
   usage: 6000,
+  "how-to-say": 7000,
 };
 
 let indexesPromise: Promise<void> | null = null;
@@ -158,6 +171,10 @@ async function cols(): Promise<Collections> {
         await guides.createIndex({ id: 1 }, { unique: true });
         await guides.createIndex({ type: 1, slug: 1 }, { unique: true });
         await guides.createIndex({ type: 1, viewCount: -1, createdAt: -1 });
+        await guides.createIndex(
+          { type: 1, englishPhrase: 1 },
+          { sparse: true },
+        );
         await examples.createIndex({ guideId: 1, sortOrder: 1 });
         await quizzes.createIndex({ guideId: 1, sortOrder: 1 });
       } catch {
@@ -199,6 +216,7 @@ function docToCard(doc: GuideDoc): GrammarGuideCard {
     type: doc.type,
     slug: doc.slug,
     wordName: doc.wordName,
+    englishPhrase: doc.englishPhrase?.trim() || undefined,
     titleKo: doc.titleKo,
     titleEn: doc.titleEn,
     summaryKo: doc.summaryKo,
@@ -287,6 +305,33 @@ export async function getGrammarGuideByWord(
   return getGrammarGuideById(doc.id);
 }
 
+/** Lookup how-to-say (or any type) by English phrase key. */
+export async function getGrammarGuideByEnglishPhrase(
+  type: GrammarGuideType,
+  englishPhrase: string,
+): Promise<GrammarGuide | null> {
+  const trimmed = englishPhrase.trim();
+  if (!trimmed) return null;
+  const { guides } = await cols();
+  const doc = await guides.findOne({
+    type,
+    englishPhrase: { $regex: `^${escapeRegex(trimmed)}$`, $options: "i" },
+  });
+  if (!doc) return null;
+  return getGrammarGuideById(doc.id);
+}
+
+/** Batch skip-existing: wordName for meaning/usage, englishPhrase for how-to-say. */
+export async function getGrammarGuideByBatchKey(
+  type: GrammarGuideType,
+  key: string,
+): Promise<GrammarGuide | null> {
+  if (type === "how-to-say") {
+    return getGrammarGuideByEnglishPhrase(type, key);
+  }
+  return getGrammarGuideByWord(type, key);
+}
+
 export async function listTopGuidesForStaticParams(
   type: GrammarGuideType,
   limit = 200,
@@ -321,12 +366,11 @@ export async function listGrammarGuides(
   return { items: docs.map(docToCard), total };
 }
 
-export async function listRelatedGrammarGuides(
+async function listRelatedGrammarGuidesById(
   type: GrammarGuideType,
   currentId: number,
-  limit = 8,
+  cap: number,
 ): Promise<GrammarGuideCard[]> {
-  const cap = Math.max(1, Math.min(limit, 12));
   const { guides } = await cols();
 
   const beforeCount = Math.floor(cap / 2);
@@ -358,6 +402,73 @@ export async function listRelatedGrammarGuides(
   return [...beforeDocs.reverse(), ...afterDocs].slice(0, cap).map(docToCard);
 }
 
+/** Guides that share wordName or slug tokens with the current page. */
+export async function listRelatedGrammarGuides(
+  type: GrammarGuideType,
+  currentId: number,
+  limit = 8,
+): Promise<GrammarGuideCard[]> {
+  const cap = Math.max(1, Math.min(limit, 12));
+  const current = await getGrammarGuideById(currentId);
+  if (!current || current.type !== type) {
+    return listRelatedGrammarGuidesById(type, currentId, cap);
+  }
+
+  const keys = guideRelatedKeys(
+    current.wordName,
+    current.slug,
+    current.titleEn,
+    current.englishPhrase ?? "",
+  );
+  const hangulKeys = keys.filter((key) => /[\uac00-\ud7a3]/.test(key)).slice(0, 6);
+  const slugKeys = keys.filter((key) => key.length >= 2).slice(0, 8);
+  if (hangulKeys.length === 0 && slugKeys.length === 0) {
+    return listRelatedGrammarGuidesById(type, currentId, cap);
+  }
+
+  const { guides } = await cols();
+  const orClauses: Record<string, unknown>[] = [];
+  if (hangulKeys.length > 0) {
+    orClauses.push({ wordName: { $in: hangulKeys } });
+  }
+  for (const key of slugKeys) {
+    orClauses.push({ slug: { $regex: escapeRegex(key), $options: "i" } });
+    orClauses.push({ wordName: { $regex: escapeRegex(key), $options: "i" } });
+    orClauses.push({
+      englishPhrase: { $regex: escapeRegex(key), $options: "i" },
+    });
+  }
+
+  const candidates = await guides
+    .find({ type, id: { $ne: currentId }, $or: orClauses })
+    .limit(80)
+    .toArray();
+
+  const scored = candidates
+    .map((doc) => ({
+      doc,
+      id: doc.id,
+      score:
+        scoreWordNameMatch(doc.wordName, keys) + scoreSlugMatch(doc.slug, keys),
+    }))
+    .filter((item) => item.score > 0);
+
+  const semantic = rankByRelatedScore(scored, cap).map((item) => docToCard(item.doc));
+  if (semantic.length >= cap) return semantic;
+
+  const usedIds = new Set([currentId, ...semantic.map((item) => item.id)]);
+  const fallback = await listRelatedGrammarGuidesById(type, currentId, cap);
+  const merged = [...semantic];
+  for (const item of fallback) {
+    if (merged.length >= cap) break;
+    if (!usedIds.has(item.id)) {
+      merged.push(item);
+      usedIds.add(item.id);
+    }
+  }
+  return merged.slice(0, cap);
+}
+
 export async function upsertGrammarGuideFromGenerated(
   payload: GeneratedGrammarGuidePayload,
 ): Promise<{ id: number; slug: string; created: boolean }> {
@@ -376,6 +487,7 @@ export async function upsertGrammarGuideFromGenerated(
     type: payload.type,
     slug,
     wordName: payload.wordName.trim(),
+    englishPhrase: payload.englishPhrase?.trim() || undefined,
     titleKo: payload.titleKo.trim(),
     titleEn: payload.titleEn.trim(),
     summaryKo: payload.summaryKo.trim(),
@@ -469,7 +581,9 @@ export async function incrementGrammarGuideViewCount(id: number): Promise<void> 
 }
 
 export function guideBasePath(type: GrammarGuideType): string {
-  return type === "meaning" ? "/grammar/meaning" : "/grammar/usage";
+  if (type === "meaning") return "/grammar/meaning";
+  if (type === "usage") return "/grammar/usage";
+  return "/grammar/how-to-say";
 }
 
 export function guideCanonicalUrl(

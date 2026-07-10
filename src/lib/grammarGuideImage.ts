@@ -22,7 +22,9 @@ export function compactQuestionForGuide(
   const fallback =
     type === "meaning"
       ? `What does ${displayWord} mean?`
-      : formatUsageGuideHeadline(wordName);
+      : type === "usage"
+        ? formatUsageGuideHeadline(wordName)
+        : `How to say it in Korean?`;
 
   const q = questionEn.trim();
   if (!q) return fallback;
@@ -155,7 +157,11 @@ export function defaultGrammarGuideImageAlt(
 ): string {
   const word = wordName.trim();
   const display = type === "usage" ? formatGrammarPatternDisplay(word) : word;
-  return type === "meaning"
-    ? `Korean meaning guide: What does ${display} mean?`
-    : `Korean usage guide: When to use ${display}`;
+  if (type === "meaning") {
+    return `Korean meaning guide: What does ${display} mean?`;
+  }
+  if (type === "usage") {
+    return `Korean usage guide: When to use ${display}`;
+  }
+  return `How to say it in Korean: ${display}`;
 }

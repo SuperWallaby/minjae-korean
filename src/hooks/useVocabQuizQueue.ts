@@ -14,28 +14,51 @@ export type VocabQuizAdvanceOptions = {
   serverAlreadyConsumed?: boolean;
 };
 
-async function fetchQueue(
-  deviceId: string,
-  studio: boolean,
-): Promise<KoreanQuizPrepared[]> {
+function quizModeHeaders(deviceId: string, studio: boolean): Record<string, string> {
   const headers: Record<string, string> = { "X-Device-Id": deviceId };
   if (studio) headers["X-Quiz-Mode"] = "studio";
+  return headers;
+}
 
-  const res = await fetch("/api/vocab-quiz/queue", {
-    headers,
-    cache: "no-store",
-  });
+async function parseQuizList(
+  res: Response,
+  studio: boolean,
+  fallbackError: string,
+): Promise<KoreanQuizPrepared[]> {
   const json = await res.json().catch(() => null);
   if (!res.ok) {
     const msg =
       json && typeof json === "object" && "error" in json
         ? String((json as { error?: unknown }).error ?? "")
         : `HTTP ${res.status}`;
-    throw new Error(msg || "Failed to load queue");
+    throw new Error(msg || fallbackError);
   }
   const quizzes = (json as { quizzes?: KoreanQuizPrepared[] }).quizzes;
   const list = Array.isArray(quizzes) ? quizzes : [];
   return studio ? list.filter(isStudioQuizPrepared) : list;
+}
+
+async function fetchQueue(
+  deviceId: string,
+  studio: boolean,
+): Promise<KoreanQuizPrepared[]> {
+  const res = await fetch("/api/vocab-quiz/queue", {
+    headers: quizModeHeaders(deviceId, studio),
+    cache: "no-store",
+  });
+  return parseQuizList(res, studio, "Failed to load queue");
+}
+
+async function postReshuffle(
+  deviceId: string,
+  studio: boolean,
+): Promise<KoreanQuizPrepared[]> {
+  const res = await fetch("/api/vocab-quiz/reshuffle", {
+    method: "POST",
+    headers: quizModeHeaders(deviceId, studio),
+    cache: "no-store",
+  });
+  return parseQuizList(res, studio, "Failed to reshuffle deck");
 }
 
 export function useVocabQuizQueue(mode: VocabQuizMode) {
@@ -45,6 +68,7 @@ export function useVocabQuizQueue(mode: VocabQuizMode) {
   const [current, setCurrent] = React.useState<KoreanQuizPrepared | null>(null);
   const [history, setHistory] = React.useState<KoreanQuizPrepared[]>([]);
   const [bootstrapping, setBootstrapping] = React.useState(true);
+  const [reshuffling, setReshuffling] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
   const HISTORY_CAP = 30;
@@ -155,6 +179,27 @@ export function useVocabQuizQueue(mode: VocabQuizMode) {
     });
   }, []);
 
+  const reshuffle = React.useCallback(async () => {
+    if (reshuffling) return;
+    setReshuffling(true);
+    setError(null);
+    try {
+      const quizzes = await postReshuffle(deviceId, studio);
+      setHistory([]);
+      if (quizzes.length > 0) {
+        applyQueue(quizzes);
+      } else {
+        setQueue([]);
+        setCurrent(null);
+        setError("No approved quizzes available yet.");
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setReshuffling(false);
+    }
+  }, [applyQueue, deviceId, reshuffling, studio]);
+
   const prefetchAssets = React.useCallback((quizzes: KoreanQuizPrepared[]) => {
     for (const quiz of quizzes.slice(0, 6)) {
       if (quiz.imageUrl) {
@@ -174,9 +219,11 @@ export function useVocabQuizQueue(mode: VocabQuizMode) {
     current,
     history,
     bootstrapping,
+    reshuffling,
     error,
     advance,
     goBack,
+    reshuffle,
     resync: () => syncQueue(true),
   };
 }

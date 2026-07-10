@@ -9,27 +9,40 @@ type Props = {
 
 export function GrammarGuideContent({ guide }: Props) {
   const isMeaning = guide.type === "meaning";
+  const isHowToSay = guide.type === "how-to-say";
+  const showTts = isMeaning || isHowToSay;
+
+  const sectionTitle = isMeaning
+    ? "Definition & nuance"
+    : isHowToSay
+      ? "How to say it"
+      : "Usage guide";
+  const sectionLead = isMeaning
+    ? "Core meaning and shades learners miss."
+    : isHowToSay
+      ? "The natural Korean expression — and when to use which form."
+      : "When and how native speakers actually use it.";
 
   return (
     <section className="space-y-5">
       <div>
-        <h2 className="text-xl font-bold text-[var(--quiz-text)]">
-          {isMeaning ? "Definition & nuance" : "Usage guide"}
-        </h2>
-        <p className="mt-1 text-sm text-[var(--quiz-text-sub)]">
-          {isMeaning
-            ? "Core meaning and shades learners miss."
-            : "When and how native speakers actually use it."}
-        </p>
+        <h2 className="text-xl font-bold text-[var(--quiz-text)]">{sectionTitle}</h2>
+        <p className="mt-1 text-sm text-[var(--quiz-text-sub)]">{sectionLead}</p>
       </div>
 
       <article className="relative rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] p-5">
-        {isMeaning ? (
+        {showTts ? (
           <GrammarGuidePronunciationButton
             guideId={guide.id}
             pronunciationUrl={guide.pronunciationUrl}
             wordName={guide.wordName}
           />
+        ) : null}
+
+        {isHowToSay && guide.englishPhrase ? (
+          <p className="mb-3 text-sm font-medium text-[var(--quiz-text-sub)]">
+            “{guide.englishPhrase}”
+          </p>
         ) : null}
 
         <GrammarKoreanWithRomanization
@@ -45,7 +58,7 @@ export function GrammarGuideContent({ guide }: Props) {
         {guide.nuancesEn.length > 0 ? (
           <div className="mt-5">
             <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-[var(--quiz-text-muted)]">
-              Nuances
+              {isHowToSay ? "Alternatives & tone" : "Nuances"}
             </p>
             <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[var(--quiz-text-sub)]">
               {guide.nuancesEn.map((n) => (
@@ -68,7 +81,7 @@ export function GrammarGuideContent({ guide }: Props) {
 
         <div className="mt-5">
           <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-[var(--quiz-text-muted)]">
-            {isMeaning ? "In context" : "The nuance"}
+            {isMeaning ? "In context" : isHowToSay ? "Formality tip" : "The nuance"}
           </p>
           <p className="mt-1.5 text-sm leading-relaxed text-[var(--quiz-text)]">
             {guide.ruleEn}

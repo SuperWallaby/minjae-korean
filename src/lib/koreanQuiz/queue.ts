@@ -145,6 +145,40 @@ export async function getKoreanQuizQueueResponse(
   return { quizzes, refreshPending: false };
 }
 
+/**
+ * Drop the current device deck and build a fresh random queue.
+ * Current + recently served IDs stay in cooldown so the same cards don't come back immediately.
+ */
+export async function reshuffleDeviceQueue(
+  deviceId: string,
+  opts?: { studio?: boolean },
+): Promise<KoreanQuizQueueResponse> {
+  const existing = await getKoreanQuizDeviceQueue(deviceId);
+  const currentIds = (existing?.items ?? []).map((row) => row.quizId);
+  const recentServed = [
+    ...(existing?.recentServedQuizIds ?? []),
+    ...currentIds,
+  ].slice(-QUIZ_REAPPEAR_COOLDOWN);
+
+  const items = await buildQueueEntries(
+    deviceId,
+    KOREAN_QUIZ_QUEUE_SIZE,
+    new Set(),
+    recentServed,
+    opts?.studio,
+  );
+
+  await saveKoreanQuizDeviceQueue({
+    deviceId,
+    items,
+    updatedAt: new Date().toISOString(),
+    recentServedQuizIds: recentServed,
+  });
+
+  const quizzes = await preparedQuizzesFromEntries(items);
+  return { quizzes, refreshPending: false };
+}
+
 export async function consumeCurrentQuiz(deviceId: string, quizId: string): Promise<void> {
   await advanceQueueHead(deviceId, quizId);
 }

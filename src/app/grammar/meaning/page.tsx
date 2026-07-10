@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
+import { GrammarHubCrossLinks } from "@/components/grammar/GrammarHubCrossLinks";
 import {
   MarketingHeader,
   MarketingPage,
@@ -55,6 +56,8 @@ export default async function GrammarMeaningIndexPage({ searchParams }: Props) {
             title="What does it mean?"
             lead="SEO-friendly meaning guides for Korean words and patterns learners search for — with examples and a quick quiz."
           />
+
+          <GrammarHubCrossLinks current="meaning" />
 
           {items.length === 0 ? (
             <p className="mt-8 text-sm text-[var(--quiz-text-sub)]">

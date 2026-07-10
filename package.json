@@ -33,6 +33,7 @@
     "generate-grammar-guide": "npx tsx scripts/generate-grammar-guide-data.ts",
     "generate-grammar-meaning-batch": "npx tsx scripts/generate-grammar-guide-data.ts --type meaning --batch-file scripts/data/grammar-meaning-batch.txt",
     "generate-grammar-usage-batch": "npx tsx scripts/generate-grammar-guide-data.ts --type usage --batch-file scripts/data/grammar-usage-batch.txt",
+    "generate-grammar-how-to-say-batch": "npx tsx scripts/generate-grammar-guide-data.ts --type how-to-say --batch-file scripts/data/grammar-how-to-say-batch.txt",
     "generate-grammar-batch": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100.txt",
     "generate-grammar-batch-2": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-2.txt",
     "generate-grammar-batch-3": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-3.txt",

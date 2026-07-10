@@ -12,6 +12,7 @@ import type {
   KoreanQuizDeviceQueue,
   KoreanQuizItem,
   KoreanQuizReviewFlag,
+  WordExplanationExample,
 } from "./types";
 
 let indexesEnsured = false;
@@ -410,6 +411,48 @@ export async function patchKoreanQuizAnswerTtsMeta(
 
   const db = await getKoreanQuizDb();
   await db.collection<KoreanQuizItem>("korean_quiz_items").updateOne({ id }, { $set: set });
+}
+
+/** Persist word explanation — same fields as korean-quiz app (shared DB). */
+export async function patchKoreanQuizWordExplanation(
+  id: string,
+  patch: {
+    wordExplanation: string;
+    wordExplanationExamples?: WordExplanationExample[];
+    wordExplanationGeneratedAt?: string;
+  },
+): Promise<void> {
+  await ensureKoreanQuizIndexes();
+  const set: Partial<KoreanQuizItem> = {
+    wordExplanation: patch.wordExplanation.trim(),
+    wordExplanationGeneratedAt:
+      patch.wordExplanationGeneratedAt ?? new Date().toISOString(),
+  };
+  if (patch.wordExplanationExamples) {
+    set.wordExplanationExamples = patch.wordExplanationExamples;
+  }
+  const db = await getKoreanQuizDb();
+  await db.collection<KoreanQuizItem>("korean_quiz_items").updateOne({ id }, { $set: set });
+}
+
+export async function patchWordExplanationExampleTts(
+  id: string,
+  exampleIndex: number,
+  ttsR2Key: string,
+): Promise<void> {
+  await ensureKoreanQuizIndexes();
+  const db = await getKoreanQuizDb();
+  const row = await db
+    .collection<KoreanQuizItem>("korean_quiz_items")
+    .findOne({ id }, { projection: { _id: 0, wordExplanationExamples: 1 } });
+  if (!row?.wordExplanationExamples?.length) return;
+
+  const examples = row.wordExplanationExamples.map((example, index) =>
+    index === exampleIndex ? { ...example, ttsR2Key } : example,
+  );
+  await db
+    .collection<KoreanQuizItem>("korean_quiz_items")
+    .updateOne({ id }, { $set: { wordExplanationExamples: examples } });
 }
 
 /** @deprecated Use patchKoreanQuizAnswerTtsMeta */

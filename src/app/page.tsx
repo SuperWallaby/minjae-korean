@@ -3,6 +3,7 @@ import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 
 import { BookHomeSection } from "@/components/site/BookHomeSection";
+import { GrammarHomeSection } from "@/components/site/GrammarHomeSection";
 import { HomeRenewalSections } from "@/components/site/HomeRenewalSections";
 import { VocabQuizHomeSection } from "@/components/site/VocabQuizHomeSection";
 import { listArticles } from "@/lib/articlesRepo";
@@ -65,6 +66,9 @@ export default async function Home() {
 
       {/* 2) Book (keep as-is) */}
       <BookHomeSection />
+
+      {/* 3) Grammar hubs */}
+      <GrammarHomeSection />
 
       <HomeRenewalSections
         news={news}

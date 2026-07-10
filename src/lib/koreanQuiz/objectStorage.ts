@@ -56,6 +56,31 @@ export function buildQuizAnswerTtsSlowR2Key(quizId: string): string {
   return "system/quiz-tts/" + quizId + "-slow.mp3";
 }
 
+function voiceSlugForQuizAnswerTtsR2Key(voiceId: string): string {
+  return voiceId
+    .trim()
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .toLowerCase();
+}
+
+/** Same key layout as korean-quiz app example TTS. */
+export function buildQuizExampleTtsR2Key(
+  quizId: string,
+  exampleIndex: number,
+  edgeVoiceId: string,
+): string {
+  return (
+    "system/quiz-tts/" +
+    quizId +
+    "/examples/" +
+    exampleIndex +
+    "/" +
+    voiceSlugForQuizAnswerTtsR2Key(edgeVoiceId) +
+    ".mp3"
+  );
+}
+
 export async function uploadToR2(options: {
   key: string;
   body: Buffer;

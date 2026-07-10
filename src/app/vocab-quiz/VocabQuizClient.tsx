@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
-import { Flag, Heart, Volume2, VolumeX } from "lucide-react";
+import { Flag, Grid2X2, Heart, Lightbulb, Shuffle, Volume2, VolumeX } from "lucide-react";
 
 import {
   AutoQuizPlayer,
@@ -16,6 +16,8 @@ import {
   StudioQuizPlayer,
   type StudioQuizPlayerHandle,
 } from "@/components/vocab-quiz/StudioQuizPlayer";
+import { StudioShuffleOverlay } from "@/components/vocab-quiz/StudioShuffleOverlay";
+import { WordExplanationSheet } from "@/components/vocab-quiz/WordExplanationSheet";
 import {
   useVocabQuizKeyboard,
   VocabQuizControls,
@@ -24,6 +26,10 @@ import { AppStoreBadges } from "@/components/site/AppStoreBadges";
 import styles from "@/components/vocab-quiz/vocab-quiz.module.css";
 import { useVocabQuizQueue, type VocabQuizAdvanceOptions } from "@/hooks/useVocabQuizQueue";
 import { useQuizReviewFlags } from "@/hooks/useQuizReviewFlags";
+import {
+  correctEnglishFromPrepared,
+  correctLabelFromPrepared,
+} from "@/lib/koreanQuiz/preparedDisplay";
 import { VocabQuizAudio } from "@/lib/vocabQuiz/audio";
 import type { VocabQuizCommandId } from "@/lib/vocabQuiz/playbackCommands";
 import {
@@ -65,15 +71,26 @@ export function VocabQuizClient() {
   const [hiddenPaused, setHiddenPaused] = React.useState(false);
   const [userPaused, setUserPaused] = React.useState(false);
   const [started, setStarted] = React.useState(false);
+  const [studioShuffleImages, setStudioShuffleImages] = React.useState<string[]>(
+    [],
+  );
+  const [studioShuffleTopImage, setStudioShuffleTopImage] = React.useState<
+    string | undefined
+  >(undefined);
+  const [studioShuffleAnim, setStudioShuffleAnim] = React.useState(false);
+  const [studioOptionsOn, setStudioOptionsOn] = React.useState(false);
+  const [wordExplainOpen, setWordExplainOpen] = React.useState(false);
 
   const {
     current,
     queue,
     bootstrapping,
+    reshuffling,
     error,
     advance,
     goBack,
     history,
+    reshuffle,
     resync,
     deviceId,
   } = useVocabQuizQueue(mode);
@@ -86,9 +103,15 @@ export function VocabQuizClient() {
   };
   goBackRef.current = goBack;
 
-  const paused = hiddenPaused || userPaused;
+  const paused = hiddenPaused || userPaused || wordExplainOpen;
   const canGoBack = history.length > 0;
-  const controlsVisible = started && Boolean(current) && !bootstrapping && !error;
+  const controlsVisible =
+    started &&
+    Boolean(current) &&
+    !bootstrapping &&
+    !reshuffling &&
+    !studioShuffleAnim &&
+    !error;
 
   React.useEffect(() => {
     setMode(readModeFromUrl() ?? readStoredMode());
@@ -196,6 +219,45 @@ export function VocabQuizClient() {
     setStarted(true);
   };
 
+  const handleReshuffle = React.useCallback(async () => {
+    if (reshuffling || studioShuffleAnim) return;
+    void audio.stopAll();
+    setUserPaused(false);
+
+    const isStudio = mode === "studio";
+    if (isStudio) {
+      const imgs = [current, ...queue.slice(1, 6)]
+        .map((q) => q?.imageUrl?.trim())
+        .filter((url): url is string => Boolean(url));
+      setStudioShuffleTopImage(current?.imageUrl?.trim() || imgs[0]);
+      setStudioShuffleImages(imgs);
+      setStudioShuffleAnim(true);
+    }
+
+    const startedAt = Date.now();
+    await reshuffle();
+
+    if (isStudio) {
+      // flip (~0.55s) + riffle (~1.55s)
+      const minMs = 2300;
+      const wait = Math.max(0, minMs - (Date.now() - startedAt));
+      if (wait > 0) {
+        await new Promise((resolve) => setTimeout(resolve, wait));
+      }
+      setStudioShuffleAnim(false);
+      setStudioShuffleImages([]);
+      setStudioShuffleTopImage(undefined);
+    }
+  }, [
+    audio,
+    current,
+    mode,
+    queue,
+    reshuffle,
+    reshuffling,
+    studioShuffleAnim,
+  ]);
+
   const handleToggleFlag = async () => {
     if (!current || flagBusy) return;
     setFlagBusy(true);
@@ -203,8 +265,20 @@ export function VocabQuizClient() {
     setFlagBusy(false);
   };
 
+  const openWordExplain = React.useCallback(() => {
+    void audio.unlock();
+    setWordExplainOpen(true);
+  }, [audio]);
+
   const currentFlagged = current ? isFlagged(current.id) : false;
   const studioFocus = mode === "studio" && started;
+  const showStudioShuffle = studioFocus && (reshuffling || studioShuffleAnim);
+  const explainKorean = current ? correctLabelFromPrepared(current) : "";
+  const explainEnglish = current ? correctEnglishFromPrepared(current) : "";
+
+  React.useEffect(() => {
+    setWordExplainOpen(false);
+  }, [current?.id]);
 
   return (
     <div
@@ -255,6 +329,39 @@ export function VocabQuizClient() {
             </button>
           </div>
         <div className={`${styles.toolbarGroup} ${studioFocus ? styles.toolbarGroupHidden : ""}`}>
+          {started && current && explainKorean ? (
+            <button
+              type="button"
+              className={styles.iconBtn}
+              disabled={bootstrapping || reshuffling || studioShuffleAnim}
+              onClick={openWordExplain}
+              aria-label="Word explanation"
+              title="Word explanation"
+            >
+              <Lightbulb size={16} strokeWidth={2} aria-hidden />
+            </button>
+          ) : null}
+          {started ? (
+            <button
+              type="button"
+              className={styles.iconBtn}
+              disabled={bootstrapping || reshuffling || studioShuffleAnim}
+              onClick={() => void handleReshuffle()}
+              aria-label="Shuffle deck — get a new random quiz list"
+              title="New deck"
+            >
+              <Shuffle
+                size={16}
+                strokeWidth={2}
+                aria-hidden
+                className={
+                  reshuffling || studioShuffleAnim
+                    ? styles.shuffleIconSpin
+                    : undefined
+                }
+              />
+            </button>
+          ) : null}
           {started ? (
             <button
               type="button"
@@ -288,27 +395,83 @@ export function VocabQuizClient() {
         </div>
       </div>
 
-      {studioFocus && started && current ? (
-        <button
-          type="button"
-          className={[
-            styles.studioHeartBtn,
-            currentFlagged ? styles.studioHeartBtnActive : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-          disabled={flagBusy}
-          onClick={() => void handleToggleFlag()}
-          aria-label={currentFlagged ? "Remove from review" : "Save for review"}
-          aria-pressed={currentFlagged}
-        >
-          <Heart
-            size={20}
-            strokeWidth={2}
-            fill={currentFlagged ? "currentColor" : "none"}
-            aria-hidden
-          />
-        </button>
+      {studioFocus && started && !showStudioShuffle ? (
+        <div className={styles.studioTopActions}>
+          {current && explainKorean ? (
+            <button
+              type="button"
+              className={styles.studioActionBtn}
+              disabled={bootstrapping || reshuffling || studioShuffleAnim}
+              onClick={openWordExplain}
+              aria-label="Word explanation"
+              title="Word explanation"
+            >
+              <Lightbulb size={20} strokeWidth={2} aria-hidden />
+            </button>
+          ) : null}
+          <button
+            type="button"
+            className={[
+              styles.studioActionBtn,
+              studioOptionsOn ? styles.studioHintBtnActive : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            disabled={!current || bootstrapping || reshuffling || studioShuffleAnim}
+            onClick={() => studioRef.current?.toggleOptions()}
+            aria-label={
+              studioOptionsOn ? "Hide answer options" : "Show answer options"
+            }
+            aria-pressed={studioOptionsOn}
+            title="Options hint"
+          >
+            <Grid2X2 size={20} strokeWidth={2} aria-hidden />
+          </button>
+          <button
+            type="button"
+            className={styles.studioActionBtn}
+            disabled={bootstrapping || reshuffling || studioShuffleAnim}
+            onClick={() => void handleReshuffle()}
+            aria-label="Shuffle deck — get a new random quiz list"
+            title="New deck"
+          >
+            <Shuffle
+              size={20}
+              strokeWidth={2}
+              aria-hidden
+              className={
+                reshuffling || studioShuffleAnim
+                  ? styles.shuffleIconSpin
+                  : undefined
+              }
+            />
+          </button>
+          {current ? (
+            <button
+              type="button"
+              className={[
+                styles.studioActionBtn,
+                styles.studioHeartBtn,
+                currentFlagged ? styles.studioHeartBtnActive : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              disabled={flagBusy}
+              onClick={() => void handleToggleFlag()}
+              aria-label={
+                currentFlagged ? "Remove from review" : "Save for review"
+              }
+              aria-pressed={currentFlagged}
+            >
+              <Heart
+                size={20}
+                strokeWidth={2}
+                fill={currentFlagged ? "currentColor" : "none"}
+                aria-hidden
+              />
+            </button>
+          ) : null}
+        </div>
       ) : null}
 
       <div
@@ -319,8 +482,15 @@ export function VocabQuizClient() {
           .filter(Boolean)
           .join(" ")}
       >
-        {bootstrapping ? (
-          <div className={styles.emptyState}>Loading quizzes…</div>
+        {showStudioShuffle ? (
+          <StudioShuffleOverlay
+            topImage={studioShuffleTopImage}
+            images={studioShuffleImages}
+          />
+        ) : bootstrapping || reshuffling ? (
+          <div className={styles.emptyState}>
+            {reshuffling ? "Shuffling a new deck…" : "Loading quizzes…"}
+          </div>
         ) : error ? (
           <div className={styles.errorState}>
             <p>{error}</p>
@@ -342,8 +512,8 @@ export function VocabQuizClient() {
         ) : !current ? (
           <div className={styles.emptyState}>
             <p>No quizzes in queue.</p>
-            <button type="button" className={styles.modeBtn} onClick={() => void resync()}>
-              Reload
+            <button type="button" className={styles.modeBtn} onClick={() => void handleReshuffle()}>
+              New deck
             </button>
           </div>
         ) : mode === "auto" ? (
@@ -354,7 +524,7 @@ export function VocabQuizClient() {
             deviceId={deviceId}
             audio={audio}
             frozen={hiddenPaused}
-            paused={userPaused}
+            paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
           />
         ) : mode === "studio" ? (
@@ -366,8 +536,9 @@ export function VocabQuizClient() {
             deviceId={deviceId}
             audio={audio}
             frozen={hiddenPaused}
-            paused={userPaused}
+            paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
+            onShowOptionsChange={setStudioOptionsOn}
           />
         ) : (
           <ManualQuizPlayer
@@ -377,7 +548,7 @@ export function VocabQuizClient() {
             deviceId={deviceId}
             audio={audio}
             frozen={hiddenPaused}
-            paused={userPaused}
+            paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
           />
         )}
@@ -396,6 +567,17 @@ export function VocabQuizClient() {
         <p className={styles.storeFooterLabel}>Get the app</p>
         <AppStoreBadges size="md" theme="light" />
       </footer>
+      ) : null}
+
+      {current && explainKorean ? (
+        <WordExplanationSheet
+          open={wordExplainOpen}
+          quizId={current.id}
+          korean={explainKorean}
+          english={explainEnglish || undefined}
+          audio={audio}
+          onClose={() => setWordExplainOpen(false)}
+        />
       ) : null}
     </div>
   );

@@ -3,7 +3,6 @@ import type { GrammarGuide, GrammarGuideType } from "@/lib/grammarGuidesRepo";
 import { guideBasePath } from "@/lib/grammarGuidesRepo";
 import {
   formatGrammarPatternDisplay,
-  formatUsageGuideTitleEn,
 } from "@/lib/grammarPatternDisplay";
 import {
   formatKoreanWithRomanization,
@@ -19,6 +18,7 @@ export type FaqItem = {
 const INDEX_LABELS: Record<GrammarGuideType, string> = {
   meaning: "What does it mean?",
   usage: "How to use",
+  "how-to-say": "How to say it",
 };
 
 export function buildGuideFaqItems(guide: GrammarGuide): FaqItem[] {
@@ -29,6 +29,7 @@ export function buildGuideFaqItems(guide: GrammarGuide): FaqItem[] {
       : guide.wordName;
   const wordSeo = formatKoreanWithRomanization(displayWord);
   const romHint = grammarRomanizationVariants(guide.wordName).join(", ");
+  const english = guide.englishPhrase?.trim() || guide.titleEn;
 
   if (guide.type === "meaning") {
     items.push({
@@ -45,7 +46,7 @@ export function buildGuideFaqItems(guide: GrammarGuide): FaqItem[] {
         answer: guide.nuancesEn.join(" "),
       });
     }
-  } else {
+  } else if (guide.type === "usage") {
     items.push({
       question: `How do you use ${wordSeo} in Korean?`,
       answer: `${guide.ruleEn} Typical situations: ${guide.situationsEn.join(", ")}.${romHint ? ` Pronunciation: ${romHint}.` : ""}`,
@@ -54,6 +55,21 @@ export function buildGuideFaqItems(guide: GrammarGuide): FaqItem[] {
       question: `${wordSeo}는 어떻게 써요?`,
       answer: `${guide.ruleKo} 대표 상황: ${guide.situationsKo.join(", ")}.${romHint ? ` 발음: ${romHint}.` : ""}`,
     });
+  } else {
+    items.push({
+      question: `How do you say "${english}" in Korean?`,
+      answer: `Say ${wordSeo}. ${guide.meaningEn} ${guide.ruleEn}${romHint ? ` Pronunciation: ${romHint}.` : ""}`,
+    });
+    items.push({
+      question: `"${english}"는 한국어로 어떻게 말해요?`,
+      answer: `${guide.meaningKo} ${guide.ruleKo}${romHint ? ` 발음: ${romHint}.` : ""}`,
+    });
+    if (guide.nuancesEn.length > 0) {
+      items.push({
+        question: `Are there other ways to say "${english}" in Korean?`,
+        answer: guide.nuancesEn.join(" "),
+      });
+    }
   }
 
   for (const ex of filterConfidentExamples(guide.examples)) {

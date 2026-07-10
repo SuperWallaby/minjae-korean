@@ -12,6 +12,13 @@ export type KoreanQuizChoice = {
   english?: string;
 };
 
+/** Shared with korean-quiz app — stored on the same `korean_quiz_items` docs. */
+export type WordExplanationExample = {
+  korean: string;
+  english: string;
+  ttsR2Key?: string;
+};
+
 export type KoreanQuizItem = {
   id: string;
   type?: KoreanQuizType;
@@ -41,6 +48,10 @@ export type KoreanQuizItem = {
   stats: { attempts: number; correct: number };
   createdAt: string;
   approvedAt?: string;
+  /** Learner-facing English explanation — shared with korean-quiz Flutter app. */
+  wordExplanation?: string;
+  wordExplanationExamples?: WordExplanationExample[];
+  wordExplanationGeneratedAt?: string;
 };
 
 export type KoreanQuizQueueEntry = {

@@ -25,6 +25,7 @@ import {
 } from "@/lib/grammarPatternDisplay";
 import {
   getGrammarGuideById,
+  getGrammarGuideByWord,
   guideBasePath,
   guideCanonicalUrl,
   incrementGrammarGuideViewCount,
@@ -40,6 +41,7 @@ const baseUrl = SITE_URL.replace(/\/+$/, "");
 const BREADCRUMB_INDEX: Record<GrammarGuideType, string> = {
   meaning: "What does it mean?",
   usage: "How to use",
+  "how-to-say": "How to say it",
 };
 
 function parseGuideId(raw: string): number | null {
@@ -79,13 +81,24 @@ export function createGuideMetadata(type: GrammarGuideType) {
     const description = guide.summaryEn;
     const canonical = guideCanonicalUrl(baseUrl, guide);
     const ogImage = guide.imageUrl ?? `${baseUrl}/brand/og.png`;
-    const keywords = [
+    const keywordSeed =
       guide.type === "usage"
         ? formatGrammarPatternDisplay(guide.wordName)
-        : guide.wordName,
+        : guide.type === "how-to-say"
+          ? guide.englishPhrase || guide.wordName
+          : guide.wordName;
+    const intentKeyword =
+      type === "meaning"
+        ? "what does mean"
+        : type === "usage"
+          ? "how to use korean"
+          : "how to say in korean";
+    const keywords = [
+      keywordSeed,
       guide.wordName,
+      ...(guide.englishPhrase ? [guide.englishPhrase] : []),
       ...grammarRomanizationVariants(guide.wordName),
-      type === "meaning" ? "what does mean" : "how to use korean",
+      intentKeyword,
     ].join(", ");
 
     return {
@@ -134,6 +147,23 @@ export function createGuidePage(type: GrammarGuideType) {
     void incrementGrammarGuideViewCount(id);
 
     const related = await listRelatedGrammarGuides(type, id, 8);
+    let crossGuide: {
+      type: GrammarGuideType;
+      guide: GrammarGuide;
+    } | null = null;
+    if (type === "how-to-say") {
+      const meaningGuide = await getGrammarGuideByWord("meaning", guide.wordName);
+      if (meaningGuide && meaningGuide.id !== guide.id) {
+        crossGuide = { type: "meaning", guide: meaningGuide };
+      }
+    } else {
+      const crossType: GrammarGuideType =
+        type === "meaning" ? "usage" : "meaning";
+      const crossGuideDoc = await getGrammarGuideByWord(crossType, guide.wordName);
+      if (crossGuideDoc && crossGuideDoc.id !== guide.id) {
+        crossGuide = { type: crossType, guide: crossGuideDoc };
+      }
+    }
     const canonical = guideCanonicalUrl(baseUrl, guide);
     const faqJsonLd = buildGuideFaqJsonLd(guide, canonical);
     const breadcrumbJsonLd = buildGuideBreadcrumbJsonLd(guide, baseUrl, canonical);
@@ -166,7 +196,12 @@ export function createGuidePage(type: GrammarGuideType) {
               <GrammarGuideContent guide={guide} />
               <GrammarComparisonExamples examples={guide.examples} />
               <GrammarComparisonQuiz quizzes={guide.quizzes} />
-              <GrammarGuideRelated type={type} currentId={guide.id} related={related} />
+              <GrammarGuideRelated
+                type={type}
+                currentId={guide.id}
+                related={related}
+                crossGuide={crossGuide}
+              />
             </div>
           </MarketingShellBody>
         </MarketingShell>
