@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
@@ -40,7 +41,7 @@ export async function generateMetadata({
     chapter.description ??
     `Study Korean Grammar: ${chapter.title}. Short chapter with examples and practice.`;
   const url = `${SITE_URL}/grammar/${slug}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
+  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
 
   return {
     title: metaTitle,
@@ -49,7 +50,7 @@ export async function generateMetadata({
       title: metaTitle,
       description,
       url,
-      siteName: "Kaja",
+      siteName: SITE_NAME,
       type: "article",
       images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: title }],
     },

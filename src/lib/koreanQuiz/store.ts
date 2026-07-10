@@ -105,6 +105,18 @@ export type KoreanQuizHomeCard = {
 
 const NOUN_QUIZ_TOPIC_BLOCKLIST = new Set(["actions"]);
 
+/** Studio flashcards — image MCQ with illustration; includes verbs/actions (not noun-only). */
+export function isStudioQuizItem(
+  item: Pick<KoreanQuizItem, "type" | "topic"> & {
+    imageUrl?: string | null;
+  },
+): boolean {
+  if (isExcludedQuizTopic(item)) return false;
+  if (!item.imageUrl?.trim()) return false;
+  if (item.type === "sentence_blank") return false;
+  return true;
+}
+
 /** image_mcq nouns only — skip verb topic and dictionary-form verb answers. */
 export function isNounQuizItem(item: KoreanQuizItem): boolean {
   if (item.type === "sentence_blank") return false;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 import { notFound, permanentRedirect } from "next/navigation";
 
 import { GrammarComparisonExamples } from "@/components/grammar-comparison/GrammarComparisonExamples";
@@ -74,14 +75,14 @@ export async function generateMetadata({
   ].join(", ");
 
   return {
-    title: `${title} | Kaja`,
+    title: `${title} | What is this in Korean`,
     description,
     keywords,
     openGraph: {
       title,
       description,
       url: canonical,
-      siteName: "Kaja",
+      siteName: SITE_NAME,
       type: "article",
       images: comparison.imageUrl
         ? [{ url: ogImage, width: 640, height: 393, alt: comparison.imageAlt ?? title }]

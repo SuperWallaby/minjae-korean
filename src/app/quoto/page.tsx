@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 import { Gowun_Batang } from "next/font/google";
 
 import {
@@ -26,15 +27,15 @@ export const metadata: Metadata = {
   title: "Quoto",
   description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
   openGraph: {
-    title: "Quoto | Kaja",
+    title: "Quoto | What is this in Korean",
     description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
     url: `${SITE_URL}/quoto`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Quoto | Kaja",
+    title: "Quoto | What is this in Korean",
     description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
   },
   alternates: { canonical: `${SITE_URL}/quoto` },

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
@@ -19,20 +20,20 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 const META_KEYWORD = "Study Korean Reading";
 
 export const metadata: Metadata = {
-  title: `Korean News & Reading | ${META_KEYWORD} | Kaja`,
+  title: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean Reading: short news and articles for reading practice, vocabulary, and prompts. Leveled content for learners.",
   openGraph: {
-    title: `Korean News & Reading | ${META_KEYWORD} | Kaja`,
+    title: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean Reading: news and articles for reading practice, vocabulary, and prompts.",
     url: `${SITE_URL}/news`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `Korean News & Reading | ${META_KEYWORD} | Kaja`,
+    title: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean Reading: news and articles for reading practice, vocabulary, and prompts.",
   },
@@ -53,7 +54,7 @@ export default async function NewsPage() {
         <MarketingShellBody>
           <MarketingHeader
             eyebrow="Practice"
-            title="Kaja News — readings & listening"
+            title="News — readings & listening"
             lead="Articles for Korean learning, reading, vocabulary, and prompts."
             action={
               isDev ? (

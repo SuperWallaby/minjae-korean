@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 
 import { BookHomeSection } from "@/components/site/BookHomeSection";
@@ -15,16 +16,15 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "Kaja | Let's Talk in Korean";
-  const description =
-    "Learn Korean with nuance — vocab quiz, news readings, grammar, and resources from Kaja.";
+  const title = SITE_NAME;
+  const description = SITE_DESCRIPTION;
   const url = SITE_URL.replace(/\/+$/, "");
   return {
     title,
     description,
     openGraph: {
       type: "website",
-      siteName: "Kaja",
+      siteName: SITE_NAME,
       title,
       description,
       url,

@@ -7,7 +7,7 @@ export const CORRECT_WEIGHT_FACTOR = 1 / 3;
 export const BASE_PICK_WEIGHT = 1;
 
 /** Served quiz IDs in this window cannot be picked again. */
-export const QUIZ_REAPPEAR_COOLDOWN = 10;
+export const QUIZ_REAPPEAR_COOLDOWN = 40;
 
 export function quizPickWeight(params: {
   quizId: string;

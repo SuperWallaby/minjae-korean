@@ -8,6 +8,7 @@ import { shuffle } from "@/lib/koreanQuiz/shuffle";
 import { VocabQuizAudio } from "@/lib/vocabQuiz/audio";
 import { VOCAB_QUIZ_SFX } from "@/lib/vocabQuiz/constants";
 import { postAttempt } from "@/hooks/useVocabQuizQueue";
+import type { VocabQuizAdvanceOptions } from "@/hooks/useVocabQuizQueue";
 
 import styles from "./vocab-quiz.module.css";
 import { VocabQuizHeader, VocabQuizImage } from "./VocabQuizShared";
@@ -25,7 +26,7 @@ type Props = {
   audio: VocabQuizAudio;
   frozen: boolean;
   paused: boolean;
-  onDone: () => void;
+  onDone: (opts?: VocabQuizAdvanceOptions) => void;
 };
 
 export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
@@ -104,7 +105,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
       if (!revealingRef.current || frozen) return;
       await audio.stopAll();
       void audio.playSfx(VOCAB_QUIZ_SFX.next);
-      onDone();
+      onDone({ serverAlreadyConsumed: true });
     }, [audio, frozen, onDone]);
 
     React.useImperativeHandle(

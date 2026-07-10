@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
 import {
@@ -17,15 +18,15 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 const META_KEYWORD = "Study Korean - Exams";
 
 export const metadata: Metadata = {
-  title: `Check my level | ${META_KEYWORD} | Kaja`,
+  title: `Check my level | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean - Exams: find your Korean level with a short placement test. Interactive assessment.",
   openGraph: {
-    title: `Check my level | ${META_KEYWORD} | Kaja`,
+    title: `Check my level | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean - Exams: find your Korean level with a short placement test.",
     url: `${SITE_URL}/exams/placement`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
   },
   alternates: { canonical: `${SITE_URL}/exams/placement` },

@@ -53,6 +53,7 @@ async function buildQueueEntries(
   count: number,
   excludeIds: Set<string>,
   cooldownIds: string[],
+  studio?: boolean,
 ): Promise<KoreanQuizQueueEntry[]> {
   const [wrongIdList, difficultyPreference, adaptiveScore, correctCounts] =
     await Promise.all([
@@ -72,10 +73,14 @@ async function buildQueueEntries(
     difficultyPreference,
     adaptiveScore,
     listApproved: listApprovedKoreanQuizzesForQueue,
+    studio,
   });
 }
 
-export async function refreshDeviceQueue(deviceId: string): Promise<KoreanQuizQueueEntry[]> {
+export async function refreshDeviceQueue(
+  deviceId: string,
+  opts?: { studio?: boolean },
+): Promise<KoreanQuizQueueEntry[]> {
   const existing = await getKoreanQuizDeviceQueue(deviceId);
   const items = existing?.items ?? [];
   if (items.length >= KOREAN_QUIZ_QUEUE_SIZE) {
@@ -85,7 +90,13 @@ export async function refreshDeviceQueue(deviceId: string): Promise<KoreanQuizQu
   const exclude = new Set(items.map((row) => row.quizId));
   const needed = KOREAN_QUIZ_QUEUE_SIZE - items.length;
   const cooldownIds = existing?.recentServedQuizIds ?? [];
-  const refill = await buildQueueEntries(deviceId, needed, exclude, cooldownIds);
+  const refill = await buildQueueEntries(
+    deviceId,
+    needed,
+    exclude,
+    cooldownIds,
+    opts?.studio,
+  );
   const merged = [...items, ...refill];
 
   await saveKoreanQuizDeviceQueue({
@@ -127,8 +138,9 @@ async function advanceQueueHead(
 
 export async function getKoreanQuizQueueResponse(
   deviceId: string,
+  opts?: { studio?: boolean },
 ): Promise<KoreanQuizQueueResponse> {
-  const entries = await refreshDeviceQueue(deviceId);
+  const entries = await refreshDeviceQueue(deviceId, opts);
   const quizzes = await preparedQuizzesFromEntries(entries);
   return { quizzes, refreshPending: false };
 }

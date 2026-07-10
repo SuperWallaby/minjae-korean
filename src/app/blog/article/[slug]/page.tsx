@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -50,7 +51,7 @@ export async function generateMetadata({
   const description = buildDescription(a);
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(slug)}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
+  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
   const metaDescription = description.includes(META_KEYWORD) ? description : `${META_KEYWORD}. ${description}`;
 
   return {
@@ -69,7 +70,7 @@ export async function generateMetadata({
       ...(mainImage && {
         images: [{ url: mainImage, width: 1200, height: 630, alt: title }],
       }),
-      siteName: "Kaja",
+      siteName: SITE_NAME,
       ...((a.createdAt || a.updatedAt) && {
         publishedTime: a.createdAt ?? undefined,
         modifiedTime: a.updatedAt ?? a.createdAt ?? undefined,
@@ -122,7 +123,7 @@ export default async function BlogArticlePage({
     },
     publisher: {
       "@type": "Organization",
-      name: "Kaja",
+      name: SITE_NAME,
       url: baseUrl,
     },
   };

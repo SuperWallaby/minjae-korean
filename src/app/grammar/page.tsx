@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
 import { GrammarChapterListClient } from "@/components/grammar/GrammarChapterListClient";
@@ -17,20 +18,20 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 const META_KEYWORD = "Study Korean Grammar";
 
 export const metadata: Metadata = {
-  title: `Korean Grammar | ${META_KEYWORD} | Kaja`,
+  title: `Korean Grammar | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean Grammar: particles, tense, speech levels, and more. Short chapters with simple examples and quick practice.",
   openGraph: {
-    title: `Korean Grammar | ${META_KEYWORD} | Kaja`,
+    title: `Korean Grammar | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean Grammar: particles, tense, speech levels, and more in short chapters.",
     url: `${SITE_URL}/grammar`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `Korean Grammar | ${META_KEYWORD} | Kaja`,
+    title: `Korean Grammar | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean Grammar: particles, tense, speech levels, and more in short chapters.",
   },

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_NAME } from "@/lib/siteBrand";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `Study Korean with Songs: learn Korean with "${s.title}" by ${s.artist}. Click on lyrics to see translations and explanations.`;
   const mainImage = s.images?.large?.trim() || s.images?.thumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/songs/${encodeURIComponent(slug)}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
+  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
 
   const keywords = [s.level, ...(s.tags ?? [])].filter(Boolean).join(", ");
   return {
@@ -48,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ...(mainImage && {
         images: [{ url: mainImage, width: 1200, height: 630, alt: title }],
       }),
-      siteName: "Kaja",
+      siteName: SITE_NAME,
     },
     twitter: {
       card: "summary_large_image",

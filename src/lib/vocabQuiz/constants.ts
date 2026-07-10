@@ -31,4 +31,4 @@ export const DEVICE_ID_KEY = "kaja_vocab_quiz_device_id";
 export const SOUND_ENABLED_KEY = "kaja_vocab_quiz_sound";
 export const MODE_KEY = "kaja_vocab_quiz_mode";
 
-export type VocabQuizMode = "auto" | "manual";
+export type VocabQuizMode = "auto" | "manual" | "studio";

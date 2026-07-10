@@ -146,7 +146,7 @@ function template(args: {
   const linkBlock = is30m
     ? `\n\nJoin here: ${call}\n`
     : `\nLink: ${call}\n`;
-  const text = `Hi ${args.name || "there"},\n\nThis is a reminder that your Korean session with Minjae is ${when}.\n\nTime: ${args.timeLabel}${linkBlock}\n${footer}\n\n— Kaja`;
+  const text = `Hi ${args.name || "there"},\n\nThis is a reminder that your Korean session with Minjae is ${when}.\n\nTime: ${args.timeLabel}${linkBlock}\n${footer}\n\n— What is this in Korean`;
   const linkHtml = is30m
     ? `<p style="margin: 0 0 18px;"><b>Join your session</b>: <a href="${call}" style="color: #2563eb; font-weight: 600;">${call}</a></p><p style="margin: 0 0 18px;">Time: ${args.timeLabel}</p>`
     : `<p style="margin: 0 0 6px;"><b>Time</b>: ${args.timeLabel}</p><p style="margin: 0 0 18px;"><b>Session link</b>: <a href="${call}">${call}</a></p>`;

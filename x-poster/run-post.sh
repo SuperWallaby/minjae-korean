@@ -4,6 +4,11 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+if [[ -f "$ROOT/x-poster/PAUSED" ]]; then
+  echo "[x-poster] paused ($(date -Iseconds)) — skipping post"
+  exit 0
+fi
+
 if [[ -f "$ROOT/x-poster/worker-runtime.env" ]]; then
   set -a
   # shellcheck source=/dev/null

@@ -51,7 +51,7 @@ export default async function FlashcardsPage({
           <MarketingHeader
             eyebrow="Library"
             title="Flashcards"
-            lead="Picture vocabulary cards from the Kaja quiz pool. Tap to reveal Korean."
+            lead="Picture vocabulary cards from the What is this in Korean quiz pool. Tap to reveal Korean."
           />
           <div className="mt-8">
             <FlashcardsClient cards={cards} columns={columns} title={title} />

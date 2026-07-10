@@ -15,6 +15,7 @@ export type GrammarXQueueItem = {
   tweetText?: string;
   imageUrl?: string;
   imageAlt?: string;
+  replyText?: string;
   note?: string;
   createdAt: string;
   updatedAt: string;
@@ -103,6 +104,7 @@ export async function enqueueGrammarXManual(input: {
   tweetText: string;
   imageUrl: string;
   imageAlt: string;
+  replyText?: string;
   note?: string;
 }): Promise<GrammarXQueueItem> {
   const col = await queueCol();
@@ -115,6 +117,7 @@ export async function enqueueGrammarXManual(input: {
     tweetText: input.tweetText.trim(),
     imageUrl: input.imageUrl.trim(),
     imageAlt: input.imageAlt.trim(),
+    replyText: input.replyText?.trim() || undefined,
     note: input.note?.trim() || undefined,
     createdAt: now,
     updatedAt: now,

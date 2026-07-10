@@ -39,14 +39,14 @@ export async function GET(req: NextRequest) {
   if (!email || !token) {
     return page(
       "Unsubscribe",
-      "<p>Invalid unsubscribe link.</p><p><a href='/'>Back to Kaja</a></p>",
+      "<p>Invalid unsubscribe link.</p><p><a href='/'>Back to What is this in Korean</a></p>",
     );
   }
 
   if (!verifyNewsletterUnsubscribeToken(email, token)) {
     return page(
       "Unsubscribe",
-      "<p>This unsubscribe link is invalid or expired.</p><p><a href='/'>Back to Kaja</a></p>",
+      "<p>This unsubscribe link is invalid or expired.</p><p><a href='/'>Back to What is this in Korean</a></p>",
     );
   }
 
@@ -59,8 +59,8 @@ export async function GET(req: NextRequest) {
 
   return page(
     "You're unsubscribed",
-    `<p><strong>${safeEmail}</strong> will no longer receive weekly Korean quiz emails from Kaja.</p>
+    `<p><strong>${safeEmail}</strong> will no longer receive weekly Korean quiz emails from What is this in Korean.</p>
      <p>You can subscribe again anytime from our <a href='/subscribe'>Get Free Book</a> page.</p>
-     <p><a href='/'>Back to Kaja</a></p>`,
+     <p><a href='/'>Back to What is this in Korean</a></p>`,
   );
 }

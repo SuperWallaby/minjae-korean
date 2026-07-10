@@ -34,8 +34,8 @@ export const post: BlogPost = {
   ],
 
   level: 3,
-  imageLarge: "https://file.kajakorean.com/articles/blog-cover-celebrities-speaking-korean-pronunciation-tips-1783176564562_th48rr.webp",
-  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-celebrities-speaking-korean-pronunciation-tips-1783176564562_th48rr.webp",
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-celebrities-speaking-korean-pronunciation-tips-1783525895054_05x427.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-celebrities-speaking-korean-pronunciation-tips-1783525895054_05x427.webp",
   createdAt: "2026-07-04T14:47:15.457Z",
   updatedAt: "2026-07-04T14:47:15.457Z",
   paragraphs: [

@@ -27,7 +27,10 @@ export async function getGrammarXDashboard() {
 
   return {
     schedule,
-    cronNote: "lab-worker cron — 09:00 / 15:00 / 21:00 KST (1 post each)",
+    cronNote:
+      process.env.X_POSTER_PAUSED === "1" || process.env.X_POSTER_PAUSED === "true"
+        ? "⏸ Paused — capybara auto-posting off (new strategy pending)"
+        : "lab-worker cron — 09:00 / 15:00 / 21:00 KST (1 post each)",
     queuedCount,
     pendingAutoCount,
     queue,

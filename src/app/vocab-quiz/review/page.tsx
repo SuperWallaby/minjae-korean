@@ -5,7 +5,7 @@ import { MarketingPage } from "@/components/site/MarketingShell";
 import { VocabQuizReviewClient } from "./VocabQuizReviewClient";
 
 export const metadata: Metadata = {
-  title: "Flagged Quizzes | Vocab Quiz | Kaja",
+  title: "Flagged Quizzes | Vocab Quiz | What is this in Korean",
   description: "Quizzes marked for review before editing in korean-quiz admin.",
 };
 

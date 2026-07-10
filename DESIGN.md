@@ -1,4 +1,4 @@
-# Kaja Korean — Site Design System
+# What is this in Korean — Site Design System
 
 This document is the **single source of truth** for the marketing site visual language introduced in the 2026 home renewal. New pages and refactors should follow it until explicitly superseded.
 

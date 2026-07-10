@@ -639,6 +639,7 @@ async function runBatchFromFile(
   filePath: string,
   startIndex = 0,
   forceLocal = false,
+  skipExisting = false,
 ) {
   const words = readBatchWords(filePath);
   if (words.length === 0) {
@@ -647,14 +648,27 @@ async function runBatchFromFile(
   }
 
   console.log(
-    `Batch generate ${words.length} ${type} guides from ${filePath} (start=${startIndex})${forceLocal ? " [local-render]" : ""}`,
+    `Batch generate ${words.length} ${type} guides from ${filePath} (start=${startIndex})${forceLocal ? " [local-render]" : ""}${skipExisting ? " [skip-existing]" : ""}`,
   );
 
   const failed: Array<{ index: number; word: string; error: string }> = [];
   let ok = 0;
+  let skipped = 0;
+
+  const getGrammarGuideByWord = skipExisting
+    ? (await import("../src/lib/grammarGuidesRepo")).getGrammarGuideByWord
+    : null;
 
   for (let i = startIndex; i < words.length; i++) {
     const word = words[i]!;
+    if (getGrammarGuideByWord) {
+      const existing = await getGrammarGuideByWord(type, word);
+      if (existing) {
+        skipped += 1;
+        console.log(`\n=== [${i + 1}/${words.length}] ${word} — skip existing id=${existing.id} ===`);
+        continue;
+      }
+    }
     console.log(`\n=== [${i + 1}/${words.length}] ${word} ===`);
     try {
       const result = await generateGuideForWord(type, word, forceLocal);
@@ -669,7 +683,7 @@ async function runBatchFromFile(
   }
 
   console.log(
-    JSON.stringify({ ok: failed.length === 0, created: ok, failed: failed.length, failures: failed }, null, 2),
+    JSON.stringify({ ok: failed.length === 0, created: ok, skipped, failed: failed.length, failures: failed }, null, 2),
   );
   process.exit(failed.length > 0 ? 1 : 0);
 }
@@ -792,7 +806,13 @@ async function main() {
   }
 
   if (batchFile) {
-    await runBatchFromFile(type, batchFile, parseStartIndex(argv), forceLocal);
+    await runBatchFromFile(
+      type,
+      batchFile,
+      parseStartIndex(argv),
+      forceLocal,
+      argv.includes("--skip-existing"),
+    );
     return;
   }
 

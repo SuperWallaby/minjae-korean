@@ -49,12 +49,12 @@ export function LoginClient() {
             {/* <ShieldCheck className="size-7 text-foreground/70" /> */}
             <Image
               src="/brand/logo.webp"
-              alt="Kaja logo"
+              alt="What is this in Korean logo"
               width={80}
               height={80}
               className="mx-auto rounded-full"
             />
-            <CardTitle className="text-2xl mt-4">Welcome to Kaja</CardTitle>
+            <CardTitle className="text-2xl mt-4">Welcome to What is this in Korean</CardTitle>
             <CardDescription className="w-full max-w-sm mx-auto text-center">
               Join as a member, talk with Minjae, book a time, recap notes, and
               more.

@@ -559,10 +559,23 @@ async function generateComparisonForWords(
   return { id, slug, created };
 }
 
+async function comparisonExists(words: string[]): Promise<boolean> {
+  const { getMongoDb } = await import("../src/lib/mongo");
+  const db = await getMongoDb();
+  const key = words.join("-vs-");
+  const legacy = words.join("-");
+  const doc = await db.collection("comparisons").findOne(
+    { slug: { $in: [key, legacy] } },
+    { projection: { _id: 1 } },
+  );
+  return Boolean(doc);
+}
+
 async function runBatchFromFile(
   filePath: string,
   startIndex = 0,
   forceLocal = false,
+  skipExisting = false,
 ) {
   const groups = readBatchGroups(filePath);
   if (groups.length === 0) {
@@ -572,14 +585,20 @@ async function runBatchFromFile(
 
   const cacheVersion = nextImageCacheVersion();
   console.log(
-    `Batch generate ${groups.length} comparisons from ${filePath} (start=${startIndex}, cache v=${cacheVersion % 10})${forceLocal ? " [local-render]" : ""}`,
+    `Batch generate ${groups.length} comparisons from ${filePath} (start=${startIndex}, cache v=${cacheVersion % 10})${forceLocal ? " [local-render]" : ""}${skipExisting ? " [skip-existing]" : ""}`,
   );
 
   const failed: Array<{ index: number; words: string[]; error: string }> = [];
   let ok = 0;
+  let skipped = 0;
 
   for (let i = startIndex; i < groups.length; i++) {
     const words = groups[i]!;
+    if (skipExisting && (await comparisonExists(words))) {
+      skipped += 1;
+      console.log(`\n=== [${i + 1}/${groups.length}] ${words.join(", ")} — skip existing ===`);
+      continue;
+    }
     console.log(`\n=== [${i + 1}/${groups.length}] ${words.join(", ")} ===`);
     try {
       const result = await generateComparisonForWords(words, cacheVersion, forceLocal);
@@ -603,6 +622,7 @@ async function runBatchFromFile(
       {
         ok: failed.length === 0,
         created: ok,
+        skipped,
         failed: failed.length,
         cacheVersion: cacheVersion % 10,
         failures: failed,
@@ -740,7 +760,12 @@ async function main() {
   const batchFile = parseBatchFile(argv);
   if (batchFile) {
     const forceLocal = argv.includes("--local-render");
-    await runBatchFromFile(batchFile, parseStartIndex(argv), forceLocal);
+    await runBatchFromFile(
+      batchFile,
+      parseStartIndex(argv),
+      forceLocal,
+      argv.includes("--skip-existing"),
+    );
     return;
   }
 

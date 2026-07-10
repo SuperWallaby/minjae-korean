@@ -6,6 +6,7 @@ import {
   pickTierByAdaptiveScore,
 } from "./difficulty";
 import { isExcludedQuizTopic, queueEntryFromItem } from "./category";
+import { isStudioQuizItem } from "./store";
 import {
   pickWeightedRandom,
   QUIZ_REAPPEAR_COOLDOWN,
@@ -73,6 +74,7 @@ function filterWithExcludes(
   excludeIds: Set<string>,
   cooldownIds: string[],
   applyCooldown: boolean,
+  studio?: boolean,
 ): KoreanQuizQueuePick[] {
   const exclude = new Set(excludeIds);
   if (applyCooldown) {
@@ -80,15 +82,19 @@ function filterWithExcludes(
       exclude.add(id);
     }
   }
-  return approved.filter(
-    (item) => !isExcludedQuizTopic(item) && !exclude.has(item.id),
-  );
+  return approved.filter((item) => {
+    if (isExcludedQuizTopic(item)) return false;
+    if (exclude.has(item.id)) return false;
+    if (studio && !isStudioQuizItem(item)) return false;
+    return true;
+  });
 }
 
 async function filterQuizPool(params: {
   excludeIds: Set<string>;
   cooldownIds: string[];
   listApproved: () => Promise<KoreanQuizQueuePick[]>;
+  studio?: boolean;
 }): Promise<KoreanQuizQueuePick[]> {
   const approved = await params.listApproved();
   let pool = filterWithExcludes(
@@ -96,6 +102,7 @@ async function filterQuizPool(params: {
     params.excludeIds,
     params.cooldownIds,
     true,
+    params.studio,
   );
   if (pool.length === 0) {
     pool = filterWithExcludes(
@@ -103,6 +110,7 @@ async function filterQuizPool(params: {
       params.excludeIds,
       params.cooldownIds,
       false,
+      params.studio,
     );
   }
   return pool;
@@ -118,6 +126,7 @@ export async function buildWeightedQueueEntries(params: {
   difficultyPreference?: DifficultyPreference;
   adaptiveScore?: number;
   listApproved: () => Promise<KoreanQuizQueuePick[]>;
+  studio?: boolean;
 }): Promise<KoreanQuizQueueEntry[]> {
   if (params.count <= 0) return [];
 
@@ -131,6 +140,7 @@ export async function buildWeightedQueueEntries(params: {
       excludeIds: params.excludeIds,
       cooldownIds: params.cooldownIds,
       listApproved: params.listApproved,
+      studio: params.studio,
     }),
     preference,
   );

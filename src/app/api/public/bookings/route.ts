@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
 
         const summary = `🇰🇷 ${studentName} × Minjae · Korean Coaching`;
 
-        const description = `Kaja 1:1 Korean Coaching
+        const description = `What is this in Korean — 1:1 Korean Coaching
 
 Teacher: Minjae
 Student: ${studentName}

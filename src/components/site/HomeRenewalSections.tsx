@@ -57,7 +57,7 @@ export function HomeRenewalSections({ news, blog }: Props) {
                   I kept researching how to teach Korean more accessibly — and
                   that became{" "}
                   <strong className="font-semibold text-[var(--quiz-text)]">
-                    Kaja Korean
+                    What is this in Korean
                   </strong>
                   .
                 </p>
@@ -115,7 +115,7 @@ export function HomeRenewalSections({ news, blog }: Props) {
             <MarketingShellBody>
               <MarketingHeader
                 eyebrow="Practice"
-                title="Kaja News — readings & listening"
+                title="News — readings & listening"
                 titleAs="h2"
                 action={
                   <Button

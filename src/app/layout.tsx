@@ -1,3 +1,4 @@
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
@@ -25,9 +26,6 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-const SITE_NAME = "Kaja";
-const SITE_DESCRIPTION =
-  "Learn Korean with nuance — vocab quiz, news readings, grammar, and resources from Kaja.";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 const METADATA_BASE = new URL(SITE_URL);
@@ -35,7 +33,7 @@ const METADATA_BASE = new URL(SITE_URL);
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
   title: {
-    default: `${SITE_NAME} | Let's Talk in Korean`,
+    default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -68,13 +66,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Let's Talk in Korean`,
+    title: SITE_NAME,
     description: SITE_DESCRIPTION,
     images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Let's Talk in Korean`,
+    title: SITE_NAME,
     description: SITE_DESCRIPTION,
     images: ["/brand/og.png"],
   },

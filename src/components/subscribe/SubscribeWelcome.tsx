@@ -120,7 +120,7 @@ export function SubscribeWelcome({ email, onSubscribeAgain }: SubscribeWelcomePr
           className={`mt-4 inline-flex items-center justify-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--quiz-primary)_22%,transparent)] bg-[color-mix(in_srgb,var(--quiz-primary)_8%,white)] px-3 py-1 text-xs font-semibold tracking-wide text-[var(--quiz-primary)] ${styles.fadeUp1}`}
         >
           <Sparkles className="size-3.5" aria-hidden />
-          Welcome to Kaja
+          Welcome to What is this in Korean
         </p>
 
         <h1

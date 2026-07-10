@@ -1,13 +1,15 @@
 import { ensureKoreanQuizIndexes } from "./store";
 import { getKoreanQuizDb } from "./db";
 import { normalizeDifficulty } from "./difficulty";
-import type { DifficultyTier, KoreanQuizItem } from "./types";
+import type { DifficultyTier, KoreanQuizItem, KoreanQuizType } from "./types";
 
 /** Fields required to build / refill the per-device quiz queue. */
 export type KoreanQuizQueuePick = {
   id: string;
   topic?: string;
   difficulty: DifficultyTier;
+  imageUrl?: string;
+  type?: KoreanQuizType;
 };
 
 const DEFAULT_CACHE_TTL_MS = 3 * 60 * 60 * 1000;
@@ -24,18 +26,25 @@ const QUEUE_PICK_PROJECTION = {
   id: 1,
   topic: 1,
   difficulty: 1,
+  imageUrl: 1,
+  type: 1,
 } as const;
 
 let cached: { items: KoreanQuizQueuePick[]; loadedAt: number } | null = null;
 let refreshPromise: Promise<KoreanQuizQueuePick[]> | null = null;
 
 function toQueuePick(
-  item: Pick<KoreanQuizItem, "id" | "topic" | "difficulty">,
+  item: Pick<
+    KoreanQuizItem,
+    "id" | "topic" | "difficulty" | "imageUrl" | "type"
+  >,
 ): KoreanQuizQueuePick {
   return {
     id: item.id,
     topic: item.topic,
     difficulty: normalizeDifficulty(item.difficulty),
+    imageUrl: item.imageUrl,
+    type: item.type,
   };
 }
 

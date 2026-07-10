@@ -11,6 +11,7 @@ import {
   VOCAB_QUIZ_SFX,
 } from "@/lib/vocabQuiz/constants";
 import { postConsume } from "@/hooks/useVocabQuizQueue";
+import type { VocabQuizAdvanceOptions } from "@/hooks/useVocabQuizQueue";
 
 import styles from "./vocab-quiz.module.css";
 import { VocabQuizHeader, VocabQuizImage } from "./VocabQuizShared";
@@ -28,7 +29,7 @@ type Props = {
   audio: VocabQuizAudio;
   frozen: boolean;
   paused: boolean;
-  onDone: () => void;
+  onDone: (opts?: VocabQuizAdvanceOptions) => void;
 };
 
 export const AutoQuizPlayer = React.forwardRef<AutoQuizPlayerHandle, Props>(
@@ -94,7 +95,7 @@ export const AutoQuizPlayer = React.forwardRef<AutoQuizPlayerHandle, Props>(
         finished = true;
         setPhase("done");
         void postConsume({ deviceId, quizId: quiz.id }).catch(() => undefined);
-        onDoneRef.current();
+        onDoneRef.current({ serverAlreadyConsumed: true });
       };
 
       const revealAnswer = async () => {

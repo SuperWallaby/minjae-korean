@@ -61,6 +61,9 @@ Optional: `X_USERNAME` for clean tweet URLs.
 | 15:00 | 1 post |
 | 21:00 | 1 post |
 
+**Pause:** `bash scripts/pause-x-poster.sh` (removes cron, creates `x-poster/PAUSED`)  
+**Resume:** `bash scripts/resume-x-poster.sh`
+
 Logs: `~/korean-teacher-mj/x-poster/post.log`
 
 ## Manual test

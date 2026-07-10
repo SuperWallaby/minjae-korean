@@ -10,12 +10,12 @@ export const runtime = "nodejs";
 const META_KEYWORD = "Study Korean - Lesson Recaps";
 
 export const metadata: Metadata = {
-  title: `Recaps | ${META_KEYWORD} | Kaja`,
+  title: `Recaps | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: `Recaps | ${META_KEYWORD} | Kaja`,
+    title: `Recaps | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Recaps | ${META_KEYWORD} | Kaja`,
+    title: `Recaps | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
     images: ["/kaja-recap.png"],

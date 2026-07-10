@@ -19,11 +19,11 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "Korean, Beyond Translation | Book Samples | Kaja",
+  title: "Korean, Beyond Translation | Book Samples | What is this in Korean",
   description:
     "Read sample pages from Korean, Beyond Translation by Minjae. Explore how the book teaches tone, nuance, and real Korean feeling beyond direct translation.",
   openGraph: {
-    title: "Korean, Beyond Translation | Book Samples | Kaja",
+    title: "Korean, Beyond Translation | Book Samples | What is this in Korean",
     description:
       "Read sample pages from Korean, Beyond Translation by Minjae.",
     url: `${SITE_URL.replace(/\/+$/, "")}/book/korean-beyond-translation`,
@@ -174,7 +174,7 @@ export default function BookDetailPage() {
                     <Link href="/vocab-quiz">Try the vocab quiz</Link>
                   </Button>
                   <Button asChild variant="outline">
-                    <Link href="/news">Explore Kaja News</Link>
+                    <Link href="/news">Explore News</Link>
                   </Button>
                 </div>
               </div>

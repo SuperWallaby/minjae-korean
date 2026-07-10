@@ -199,3 +199,18 @@ export async function postTweetWithImage({ imageBuffer, mimeType, altText, tweet
     : `https://x.com/i/web/status/${tweetId}`;
   return { tweetId, tweetUrl };
 }
+
+/**
+ * @param {string} tweetText
+ * @param {string} inReplyToTweetId
+ */
+export async function postTweetReply({ tweetText, inReplyToTweetId }) {
+  const client = await createReadWriteClient();
+  const tweet = await client.v2.reply(tweetText, inReplyToTweetId);
+  const tweetId = tweet.data.id;
+  const author = optionalEnv("X_USERNAME").replace(/^@/, "");
+  const tweetUrl = author
+    ? `https://x.com/${author}/status/${tweetId}`
+    : `https://x.com/i/web/status/${tweetId}`;
+  return { tweetId, tweetUrl };
+}

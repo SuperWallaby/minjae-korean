@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -24,15 +25,15 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 const META_KEYWORD = "Study Korean - Exams";
 
 export const metadata: Metadata = {
-  title: `Exams | ${META_KEYWORD} | Kaja`,
+  title: `Exams | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean - Exams: placement test (등급 받기), level tests (A1–B2), and mock TOPIK. Interactive online assessments.",
   openGraph: {
-    title: `Exams | ${META_KEYWORD} | Kaja`,
+    title: `Exams | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean - Exams: placement, level tests, and mock TOPIK. Interactive Korean assessments.",
     url: `${SITE_URL}/exams`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
   },
   alternates: { canonical: `${SITE_URL}/exams` },

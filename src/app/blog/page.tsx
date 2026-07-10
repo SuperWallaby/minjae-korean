@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { listBlogPosts } from "@/data/blogPosts";
@@ -16,28 +17,28 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 const META_KEYWORD = "Study Korean";
 
 export const metadata: Metadata = {
-  title: `Blog | ${META_KEYWORD} | Kaja`,
+  title: `Blog | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean: notes and posts about Korean learning, teaching, and practice.",
   openGraph: {
-    title: `Blog | ${META_KEYWORD} | Kaja`,
+    title: `Blog | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean: notes and posts about Korean learning, teaching, and practice.",
     url: `${SITE_URL}/blog`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
     images: [
       {
         url: `${SITE_URL}/brand/og.png`,
         width: 1200,
         height: 630,
-        alt: "Kaja Blog",
+        alt: `${SITE_NAME} Blog`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Blog | ${META_KEYWORD} | Kaja`,
+    title: `Blog | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean: notes and posts about Korean learning, teaching, and practice.",
     images: [`${SITE_URL}/brand/og.png`],

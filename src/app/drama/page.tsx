@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
@@ -21,21 +22,21 @@ const SITE_URL =
 const META_KEYWORD = "Study Korean with Dramas";
 
 export const metadata: Metadata = {
-  title: `Drama | ${META_KEYWORD} | Kaja`,
+  title: `Drama | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/drama` },
   openGraph: {
-    title: `Drama | ${META_KEYWORD} | Kaja`,
+    title: `Drama | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
     url: `${SITE_URL.replace(/\/+$/, "")}/drama`,
     type: "website",
-    siteName: "Kaja",
+    siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
-    title: `Drama | ${META_KEYWORD} | Kaja`,
+    title: `Drama | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
   },

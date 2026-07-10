@@ -8,7 +8,9 @@ export const runtime = "nodejs";
 export async function GET(request: Request) {
   try {
     const deviceId = getKoreanQuizDeviceRawId(request);
-    const payload = await getKoreanQuizQueueResponse(deviceId);
+    const studio =
+      request.headers.get("x-quiz-mode")?.trim().toLowerCase() === "studio";
+    const payload = await getKoreanQuizQueueResponse(deviceId, { studio });
     return NextResponse.json(payload);
   } catch (error) {
     const authResponse = authErrorResponse(error);

@@ -4,12 +4,25 @@ import * as React from "react";
 
 import type { KoreanQuizPrepared } from "@/lib/koreanQuiz/types";
 import { getOrCreateDeviceId } from "@/lib/vocabQuiz/device";
+import { isStudioQuizPrepared } from "@/lib/vocabQuiz/studio";
+import type { VocabQuizMode } from "@/lib/vocabQuiz/constants";
 
 const REFILL_THRESHOLD = 8;
 
-async function fetchQueue(deviceId: string): Promise<KoreanQuizPrepared[]> {
+export type VocabQuizAdvanceOptions = {
+  /** Set when attempt/consume API already advanced the server queue. */
+  serverAlreadyConsumed?: boolean;
+};
+
+async function fetchQueue(
+  deviceId: string,
+  studio: boolean,
+): Promise<KoreanQuizPrepared[]> {
+  const headers: Record<string, string> = { "X-Device-Id": deviceId };
+  if (studio) headers["X-Quiz-Mode"] = "studio";
+
   const res = await fetch("/api/vocab-quiz/queue", {
-    headers: { "X-Device-Id": deviceId },
+    headers,
     cache: "no-store",
   });
   const json = await res.json().catch(() => null);
@@ -21,10 +34,12 @@ async function fetchQueue(deviceId: string): Promise<KoreanQuizPrepared[]> {
     throw new Error(msg || "Failed to load queue");
   }
   const quizzes = (json as { quizzes?: KoreanQuizPrepared[] }).quizzes;
-  return Array.isArray(quizzes) ? quizzes : [];
+  const list = Array.isArray(quizzes) ? quizzes : [];
+  return studio ? list.filter(isStudioQuizPrepared) : list;
 }
 
-export function useVocabQuizQueue() {
+export function useVocabQuizQueue(mode: VocabQuizMode) {
+  const studio = mode === "studio";
   const deviceIdRef = React.useRef<string | null>(null);
   const [queue, setQueue] = React.useState<KoreanQuizPrepared[]>([]);
   const [current, setCurrent] = React.useState<KoreanQuizPrepared | null>(null);
@@ -41,6 +56,9 @@ export function useVocabQuizQueue() {
     return id;
   }, []);
 
+  const currentRef = React.useRef<KoreanQuizPrepared | null>(null);
+  currentRef.current = current;
+
   const applyQueue = React.useCallback((quizzes: KoreanQuizPrepared[]) => {
     setQueue(quizzes);
     setCurrent(quizzes[0] ?? null);
@@ -53,7 +71,7 @@ export function useVocabQuizQueue() {
         setError(null);
       }
       try {
-        const quizzes = await fetchQueue(deviceId);
+        const quizzes = await fetchQueue(deviceId, studio);
         if (quizzes.length > 0) applyQueue(quizzes);
         else if (showBlocking) setError("No approved quizzes available yet.");
       } catch (e) {
@@ -64,12 +82,12 @@ export function useVocabQuizQueue() {
         if (showBlocking) setBootstrapping(false);
       }
     },
-    [applyQueue, deviceId],
+    [applyQueue, deviceId, studio],
   );
 
   const topOffQueue = React.useCallback(async () => {
     try {
-      const quizzes = await fetchQueue(deviceId);
+      const quizzes = await fetchQueue(deviceId, studio);
       if (quizzes.length === 0) return;
       setQueue((prev) => {
         const known = new Set(prev.map((q) => q.id));
@@ -80,24 +98,36 @@ export function useVocabQuizQueue() {
     } catch {
       // keep local queue
     }
-  }, [deviceId]);
+  }, [deviceId, studio]);
 
   React.useEffect(() => {
     void syncQueue(true);
   }, [syncQueue]);
 
-  const advance = React.useCallback(() => {
-    setQueue((prev) => {
-      const [head, ...rest] = prev;
-      if (head) {
-        setHistory((h) => [...h, head].slice(-HISTORY_CAP));
+  const advance = React.useCallback(
+    async (opts?: VocabQuizAdvanceOptions) => {
+      const head = currentRef.current;
+      if (!opts?.serverAlreadyConsumed && head) {
+        try {
+          await postConsume({ deviceId, quizId: head.id });
+        } catch {
+          // If server is out of sync, resync on next refill.
+        }
       }
-      setCurrent(rest[0] ?? null);
-      if (rest.length < REFILL_THRESHOLD) void topOffQueue();
-      if (rest.length === 0) void syncQueue(false);
-      return rest;
-    });
-  }, [syncQueue, topOffQueue]);
+
+      setQueue((prev) => {
+        const [first, ...rest] = prev;
+        if (first) {
+          setHistory((h) => [...h, first].slice(-HISTORY_CAP));
+        }
+        setCurrent(rest[0] ?? null);
+        if (rest.length < REFILL_THRESHOLD) void topOffQueue();
+        if (rest.length === 0) void syncQueue(false);
+        return rest;
+      });
+    },
+    [deviceId, syncQueue, topOffQueue],
+  );
 
   const goBack = React.useCallback(() => {
     setHistory((prevHistory) => {

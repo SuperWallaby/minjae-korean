@@ -69,15 +69,15 @@ export function SubscribeClient() {
                 <>
                   <Image
                     src="/brand/logo.webp"
-                    alt="Kaja logo"
+                    alt="What is this in Korean logo"
                     width={72}
                     height={72}
                     className="mx-auto rounded-full"
                   />
                   <MarketingHeader
                     eyebrow="Free book"
-                    title="Subscribe to Kaja"
-                    lead="Join the list and we'll email you a Korean learning PDF made by Kaja Korean — plus Korean quizzes and challenges every week!"
+                    title="Subscribe to What is this in Korean"
+                    lead="Join the list and we'll email you a Korean learning PDF made by What is this in Korean — plus Korean quizzes and challenges every week!"
                     centered
                     className="mt-5"
                   />

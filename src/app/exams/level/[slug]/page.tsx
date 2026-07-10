@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -31,12 +32,12 @@ export async function generateMetadata({
   if (!exam) return { title: "Not Found" };
   const META_KEYWORD = "Study Korean - Exams";
   const url = `${SITE_URL}/exams/level/${slug}`;
-  const metaTitle = `${exam.title} | ${META_KEYWORD} | Kaja`;
+  const metaTitle = `${exam.title} | ${META_KEYWORD} | What is this in Korean`;
   const metaDescription = exam.description ?? `Study Korean - Exams: level test ${exam.title}.`;
   return {
     title: metaTitle,
     description: metaDescription,
-    openGraph: { title: metaTitle, description: metaDescription, url, siteName: "Kaja", type: "website" },
+    openGraph: { title: metaTitle, description: metaDescription, url, siteName: SITE_NAME, type: "website" },
     alternates: { canonical: url },
   };
 }

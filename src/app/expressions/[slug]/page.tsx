@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_NAME } from "@/lib/siteBrand";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const META_KEYWORD = "Study Korean Expressions";
   const canonical = `${SITE_URL}/expressions/${slug}`;
-  const metaTitle = `${chapter.title} | ${META_KEYWORD} | Kaja`;
+  const metaTitle = `${chapter.title} | ${META_KEYWORD} | What is this in Korean`;
   const metaDescription =
     chapter.description ??
     "Study Korean Expressions: ready-to-use frames for speaking.";
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: metaTitle,
       description: metaDescription,
       url: canonical,
-      siteName: "Kaja",
+      siteName: SITE_NAME,
       type: "article",
       images: [
         { url: "/brand/og.png", width: 1200, height: 630, alt: chapter.title },

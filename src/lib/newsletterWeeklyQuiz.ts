@@ -196,7 +196,7 @@ export function buildWeeklyQuizEmail(args: {
   const subject = `This week's Korean quiz — which picture matches “${quiz.word}”?`;
 
   const text = [
-    "This week's Korean quiz from Kaja Korean",
+    "This week's Korean quiz from What is this in Korean",
     "",
     "Which picture matches this word?",
     quiz.word,
@@ -295,7 +295,7 @@ export function buildWeeklyQuizEmail(args: {
       </div>
 
       <p style="margin:28px 0 0;font-size:12px;line-height:1.6;color:#86868b;text-align:center;">
-        You are receiving this because you subscribed at Kaja Korean.<br />
+        You are receiving this because you subscribed at What is this in Korean.<br />
         <a href="${escapeHtml(unsubscribeUrl)}" style="color:#0071e3;">Unsubscribe</a>
       </p>
     </div>

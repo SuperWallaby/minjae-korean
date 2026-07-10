@@ -210,7 +210,7 @@ async function postManualQueueItem(
   }
 
   const { buffer, mimeType } = await fetchImageBuffer(imageUrl);
-  const { postTweetWithImage } = await import("./lib/x_post.mjs");
+  const { postTweetWithImage, postTweetReply } = await import("./lib/x_post.mjs");
   const { tweetId, tweetUrl } = await postTweetWithImage({
     imageBuffer: buffer,
     mimeType,
@@ -218,10 +218,23 @@ async function postManualQueueItem(
     tweetText,
   });
 
+  const replyText = item.replyText?.trim();
+  let replyTweetUrl: string | undefined;
+  if (replyText) {
+    const reply = await postTweetReply({ tweetText: replyText, inReplyToTweetId: tweetId });
+    replyTweetUrl = reply.tweetUrl;
+  }
+
   const { markGrammarXQueuePosted } = await import("../src/lib/grammarXQueueRepo");
   await markGrammarXQueuePosted({ id: item.id, tweetId, tweetUrl });
 
-  console.log(JSON.stringify({ ok: true, queueId: item.id, kind: "manual", tweetId, tweetUrl }, null, 2));
+  console.log(
+    JSON.stringify(
+      { ok: true, queueId: item.id, kind: "manual", tweetId, tweetUrl, replyTweetUrl },
+      null,
+      2,
+    ),
+  );
 }
 
 async function postQueueItem(

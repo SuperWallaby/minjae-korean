@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 import { Container } from "@/components/site/Container";
 import { HomeHeroVideo } from "@/components/site/HomeHeroVideo";
@@ -18,23 +19,23 @@ const SITE_URL =
 const META_KEYWORD = "Study Korean - Coaching";
 
 export const metadata: Metadata = {
-  title: `Coaching | ${META_KEYWORD} | Kaja`,
+  title: `Coaching | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean - Coaching: 1:1 Korean coaching with Minjae. Set a clear direction, stay on track with encouragement, and grow with targeted practice. Not just a class—real coaching.",
   openGraph: {
     type: "website",
-    siteName: "Kaja",
-    title: `Coaching | ${META_KEYWORD} | Kaja`,
+    siteName: SITE_NAME,
+    title: `Coaching | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean - Coaching: 1:1 Korean coaching with Minjae. Set a clear direction, stay on track with encouragement, and grow with targeted practice.",
     url: `${SITE_URL}/coaching`,
     images: [
-      { url: "/brand/og.png", width: 1200, height: 630, alt: "Kaja Coaching" },
+      { url: "/brand/og.png", width: 1200, height: 630, alt: `${SITE_NAME} Coaching` },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Coaching | ${META_KEYWORD} | Kaja`,
+    title: `Coaching | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean - Coaching: 1:1 Korean coaching with Minjae. Set a clear direction, stay on track with encouragement, and grow with targeted practice.",
     images: ["/brand/og.png"],

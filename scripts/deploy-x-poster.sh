@@ -7,6 +7,14 @@ REMOTE="${X_POSTER_SSH:-lab-worker}"
 REMOTE_DIR="${X_POSTER_REMOTE_DIR:-/home/user/korean-teacher-mj}"
 CRON_MARK="# korean-teacher-mj-x-poster"
 
+if [[ -f "${ROOT}/x-poster/PAUSED" ]]; then
+  echo "⚠ x-poster/PAUSED exists — syncing code but skipping cron install"
+  echo "  Resume: bash scripts/resume-x-poster.sh"
+  SKIP_CRON=1
+else
+  SKIP_CRON=0
+fi
+
 echo "→ Syncing to ${REMOTE}:${REMOTE_DIR}"
 rsync -az \
   --exclude node_modules \
@@ -27,6 +35,7 @@ fi
 echo "→ Installing deps + cron on ${REMOTE}"
 ssh -o BatchMode=yes "${REMOTE}" bash -s <<EOF
 set -euo pipefail
+SKIP_CRON=${SKIP_CRON}
 cd ${REMOTE_DIR}
 chmod +x x-poster/run-post.sh
 
@@ -42,13 +51,19 @@ yarn install --frozen-lockfile 2>/dev/null || yarn install
 mkdir -p x-poster
 touch x-poster/post.log
 
-CRON_LINE="0 9,15,21 * * * ${REMOTE_DIR}/x-poster/run-post.sh >> ${REMOTE_DIR}/x-poster/post.log 2>&1"
-( crontab -l 2>/dev/null | grep -v "${CRON_MARK}" || true
-  echo "\${CRON_LINE} ${CRON_MARK}"
-) | crontab -
-
-echo "Installed crontab:"
-crontab -l | grep "${CRON_MARK}" || true
+if [[ "${SKIP_CRON}" == "1" ]]; then
+  ( crontab -l 2>/dev/null | grep -v "${CRON_MARK}" || true ) | crontab -
+  touch x-poster/PAUSED
+  echo "Cron skipped (PAUSED)"
+else
+  CRON_LINE="0 9,15,21 * * * ${REMOTE_DIR}/x-poster/run-post.sh >> ${REMOTE_DIR}/x-poster/post.log 2>&1"
+  ( crontab -l 2>/dev/null | grep -v "${CRON_MARK}" || true
+    echo "\${CRON_LINE} ${CRON_MARK}"
+  ) | crontab -
+  rm -f x-poster/PAUSED
+  echo "Installed crontab:"
+  crontab -l | grep "${CRON_MARK}" || true
+fi
 
 if [[ ! -f x-poster/worker-runtime.env ]]; then
   echo ""

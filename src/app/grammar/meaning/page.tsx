@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
 import {
@@ -17,15 +18,15 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 const PAGE_SIZE = 24;
 
 export const metadata: Metadata = {
-  title: "What Does It Mean? | Korean Grammar | Kaja",
+  title: "What Does It Mean? | Korean Grammar | What is this in Korean",
   description:
     "Clear explanations of Korean words and grammar patterns — what they mean, with real examples and quick quizzes.",
   openGraph: {
-    title: "What Does It Mean? | Korean Grammar | Kaja",
+    title: "What Does It Mean? | Korean Grammar | What is this in Korean",
     description:
       "Clear explanations of Korean words and grammar patterns — what they mean.",
     url: `${SITE_URL}/grammar/meaning`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
   },
   alternates: { canonical: `${SITE_URL}/grammar/meaning` },

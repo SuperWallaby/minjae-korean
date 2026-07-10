@@ -86,11 +86,11 @@ export async function POST(req: NextRequest) {
 
     const link = `${siteUrl.replace(/\/$/, "")}/login/verify?token=${encodeURIComponent(token)}`;
 
-    const subject = "Your Kaja login link";
+    const subject = "Your What is this in Korean login link";
     const text = `Tap to sign in:\n${link}\n\nThis link expires in 15 minutes.`;
     const html = `
       <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.5;">
-        <h2 style="margin: 0 0 12px;">Sign in to Kaja</h2>
+        <h2 style="margin: 0 0 12px;">Sign in to What is this in Korean</h2>
         <p style="margin: 0 0 14px;">Click the button below to sign in. This link expires in <b>15 minutes</b>.</p>
         <p style="margin: 18px 0;">
           <a href="${link}" style="display:inline-block; background:#111827; color:white; padding:10px 14px; border-radius:10px; text-decoration:none;">

@@ -705,7 +705,7 @@ export default function JoinGuidePage() {
         <div className="mt-10">
           <Card className="overflow-hidden">
             <CardHeader>
-              <CardTitle>Kaja uses Google Meet for coaching</CardTitle>
+              <CardTitle>What is this in Korean uses Google Meet for coaching</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               {isGoogleMeet ? (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 
 import { FundamentalChapterListClient } from "@/components/fundamental/FundamentalChapterListClient";
 import {
@@ -16,28 +17,28 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
 const META_KEYWORD = "Study Korean Fundamentals";
 
 export const metadata: Metadata = {
-  title: `Fundamental | ${META_KEYWORD} | Kaja`,
+  title: `Fundamental | ${META_KEYWORD} | What is this in Korean`,
   description:
     "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
   openGraph: {
-    title: `Fundamental | ${META_KEYWORD} | Kaja`,
+    title: `Fundamental | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
     url: `${SITE_URL}/fundamental`,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
     images: [
       {
         url: `${SITE_URL}/brand/og.png`,
         width: 1200,
         height: 630,
-        alt: "Kaja Fundamental",
+        alt: `${SITE_NAME} Fundamental`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Fundamental | ${META_KEYWORD} | Kaja`,
+    title: `Fundamental | ${META_KEYWORD} | What is this in Korean`,
     description:
       "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
     images: [`${SITE_URL}/brand/og.png`],

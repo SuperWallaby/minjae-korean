@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/siteBrand";
 
 import { VocabQuizClient } from "./VocabQuizClient";
 import { MarketingPage } from "@/components/site/MarketingShell";
@@ -9,7 +10,7 @@ const SITE_URL =
   "https://kajakorean.com";
 
 const PAGE_URL = `${SITE_URL}/vocab-quiz`;
-const PAGE_TITLE = "Korean Word Game | Learn Korean Vocabulary with Kaja";
+const PAGE_TITLE = "Korean Word Game | Learn Korean Vocabulary with What is this in Korean";
 const PAGE_DESCRIPTION =
   "Play a Korean word game for vocabulary learning. Practice Korean vocab with pictures, audio, romanization, and multiple-choice quizzes in manual or auto mode.";
 
@@ -33,14 +34,14 @@ export const metadata: Metadata = {
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     url: PAGE_URL,
-    siteName: "Kaja",
+    siteName: SITE_NAME,
     type: "website",
     images: [
       {
         url: "/brand/og.png",
         width: 1200,
         height: 630,
-        alt: "Kaja Korean word game",
+        alt: "What is this in Korean word game",
       },
     ],
   },
@@ -58,7 +59,7 @@ const structuredData = {
     {
       "@type": "WebApplication",
       "@id": `${PAGE_URL}#app`,
-      name: "Kaja Korean Word Game",
+      name: "What is this in Korean Word Game",
       alternateName: ["Korean Vocab Quiz", "Korean Vocabulary Game"],
       url: PAGE_URL,
       applicationCategory: "EducationalApplication",
@@ -79,7 +80,7 @@ const structuredData = {
       },
       publisher: {
         "@type": "Organization",
-        name: "Kaja",
+        name: SITE_NAME,
         url: SITE_URL,
       },
     },
@@ -89,7 +90,7 @@ const structuredData = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "What is the Kaja Korean word game?",
+          name: "What is the What is this in Korean word game?",
           acceptedAnswer: {
             "@type": "Answer",
             text: "It is a Korean vocabulary game that helps learners practice Korean words with pictures, audio, romanization, and multiple-choice quizzes.",

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -57,7 +58,7 @@ export async function generateMetadata({
   const description = buildDescription(a);
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/news/article/${encodeURIComponent(slug)}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | Kaja`;
+  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
   const metaDescription = description.includes(META_KEYWORD)
     ? description
     : `${META_KEYWORD}. ${description}`;
@@ -77,7 +78,7 @@ export async function generateMetadata({
       ...(mainImage && {
         images: [{ url: mainImage, width: 1200, height: 630, alt: title }],
       }),
-      siteName: "Kaja",
+      siteName: SITE_NAME,
       ...((a.createdAt || a.updatedAt) && {
         publishedTime: a.createdAt ?? undefined,
         modifiedTime: a.updatedAt ?? a.createdAt ?? undefined,
@@ -122,7 +123,7 @@ export default async function ArticlePage({
     ...(mainImage && { image: mainImage }),
     publisher: {
       "@type": "Organization",
-      name: "Kaja",
+      name: SITE_NAME,
       url: baseUrl,
     },
   };
@@ -324,7 +325,7 @@ export default async function ArticlePage({
           )}
         </section>
 
-        {/* 6. Related Articles — Kaja News와 동일 카드(ArticleFeed) */}
+        {/* 6. Related Articles — News와 동일 카드(ArticleFeed) */}
         {related.length > 0 ? (
           <section className="mt-20 border-t border-border pt-10">
             <h2 className="font-serif text-2xl font-semibold tracking-tight">
