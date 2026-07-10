@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { RotateCcw } from "lucide-react";
 
 import type { KoreanQuizPrepared } from "@/lib/koreanQuiz/types";
 import { shuffle } from "@/lib/koreanQuiz/shuffle";
@@ -14,7 +15,7 @@ import styles from "./vocab-quiz.module.css";
 import { ChoiceLabelWithEnglish } from "./ChoiceLabelWithEnglish";
 
 const EXIT_MS = 400;
-const THROW_MS = 340;
+const THROW_MS = 420;
 const TAP_SLOP_PX = 10;
 const THROW_DISTANCE_PX = 64;
 const THROW_VELOCITY_PX_MS = 0.42;
@@ -66,7 +67,13 @@ function StudioCardFront({ quiz }: { quiz: KoreanQuizPrepared }) {
   );
 }
 
-function StudioCardBack({ quiz }: { quiz: KoreanQuizPrepared }) {
+function StudioCardBack({
+  quiz,
+  onUnflip,
+}: {
+  quiz: KoreanQuizPrepared;
+  onUnflip?: () => void;
+}) {
   const label = correctLabel(quiz);
   const wrapRef = React.useRef<HTMLDivElement>(null);
   const answerRef = React.useRef<HTMLSpanElement>(null);
@@ -105,6 +112,26 @@ function StudioCardBack({ quiz }: { quiz: KoreanQuizPrepared }) {
 
   return (
     <div className={styles.studioCardBack}>
+      {onUnflip ? (
+        <button
+          type="button"
+          className={styles.studioUnflipBtn}
+          onPointerDown={(event) => {
+            event.stopPropagation();
+          }}
+          onPointerUp={(event) => {
+            event.stopPropagation();
+          }}
+          onClick={(event) => {
+            event.stopPropagation();
+            onUnflip();
+          }}
+          aria-label="Flip card back"
+          title="Flip back"
+        >
+          <RotateCcw size={17} strokeWidth={2.25} aria-hidden />
+        </button>
+      ) : null}
       <div ref={wrapRef} className={styles.studioCardBackAnswerWrap}>
         <span ref={answerRef} className={styles.studioCardBackAnswer}>
           {label}
@@ -122,11 +149,13 @@ function FlipCard({
   flipped,
   flipping,
   flipDir,
+  onUnflip,
 }: {
   quiz: KoreanQuizPrepared;
   flipped: boolean;
   flipping: boolean;
   flipDir: "forward" | "back";
+  onUnflip?: () => void;
 }) {
   return (
     <div className={styles.studioFlipScene}>
@@ -144,7 +173,10 @@ function FlipCard({
           <StudioCardFront quiz={quiz} />
         </div>
         <div className={styles.studioFlipBack}>
-          <StudioCardBack quiz={quiz} />
+          <StudioCardBack
+            quiz={quiz}
+            onUnflip={flipped && !flipping ? onUnflip : undefined}
+          />
         </div>
       </div>
     </div>
@@ -265,21 +297,15 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       [audio, flipped, frozen, onDone, promoting],
     );
 
-    const flipCard = React.useCallback(async () => {
-      if (flipping || showOptions || promoting || frozen || paused) return;
+    const flipForward = React.useCallback(async () => {
+      if (flipped || flipping || showOptions || promoting || frozen || paused) return;
       if (!audio.isUnlocked()) await audio.unlock();
       void audio.playSfx(VOCAB_QUIZ_SFX.click);
+      setFlipDir("forward");
       setFlipping(true);
-      if (flipped) {
-        setFlipDir("back");
-        setFlipped(false);
-        void audio.stopAll();
-      } else {
-        setFlipDir("forward");
-        setFlipped(true);
-        if (quiz.answerTtsUrl) {
-          void audio.playUrl(quiz.answerTtsUrl);
-        }
+      setFlipped(true);
+      if (quiz.answerTtsUrl) {
+        void audio.playUrl(quiz.answerTtsUrl);
       }
       window.setTimeout(() => setFlipping(false), 400);
     }, [
@@ -293,10 +319,16 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       showOptions,
     ]);
 
-    const handleTap = React.useCallback(() => {
-      if (interactionLocked) return;
-      void flipCard();
-    }, [flipCard, interactionLocked]);
+    const flipBack = React.useCallback(async () => {
+      if (!flipped || flipping || showOptions || promoting || frozen || paused) return;
+      if (!audio.isUnlocked()) await audio.unlock();
+      void audio.playSfx(VOCAB_QUIZ_SFX.click);
+      void audio.stopAll();
+      setFlipDir("back");
+      setFlipping(true);
+      setFlipped(false);
+      window.setTimeout(() => setFlipping(false), 400);
+    }, [audio, flipped, flipping, frozen, paused, promoting, showOptions]);
 
     const throwAway = React.useCallback(
       (dx: number, dy: number, velocity: number) => {
@@ -320,6 +352,15 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       },
       [advance, audio, interactionLocked],
     );
+
+    const handleTap = React.useCallback(() => {
+      if (interactionLocked) return;
+      if (flipped) {
+        throwAway(1, -0.2, 0.5);
+        return;
+      }
+      void flipForward();
+    }, [flipped, flipForward, interactionLocked, throwAway]);
 
     const handleSkip = React.useCallback(() => {
       if (interactionLocked) return;
@@ -361,13 +402,16 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           choiceId,
           elapsedMs,
         }).catch(() => undefined);
-
-        window.setTimeout(() => {
-          void advance({ serverAlreadyConsumed: true });
-        }, 900);
       },
-      [advance, audio, deviceId, frozen, paused, promoting, quiz, selectedId],
+      [audio, deviceId, frozen, paused, promoting, quiz, selectedId],
     );
+
+    const continueAfterReveal = React.useCallback(() => {
+      if (!selectedId || advancingRef.current || frozen || promoting || throwing) {
+        return;
+      }
+      void advance({ serverAlreadyConsumed: true });
+    }, [advance, frozen, promoting, selectedId, throwing]);
 
     React.useImperativeHandle(
       ref,
@@ -384,6 +428,18 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       const onKeyDown = (event: KeyboardEvent) => {
         if (frozen || paused || promoting) return;
         const key = event.key.toLowerCase();
+        if (revealing) {
+          if (
+            key === "enter" ||
+            key === " " ||
+            event.code === "Space" ||
+            key === "arrowright"
+          ) {
+            event.preventDefault();
+            continueAfterReveal();
+          }
+          return;
+        }
         if (key === "0" || key === "o" || event.code === "Digit0" || event.code === "Numpad0") {
           event.preventDefault();
           toggleOptions();
@@ -391,12 +447,20 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
         }
         if (key === "escape" && showOptions) {
           event.preventDefault();
-          if (!revealing) setShowOptions(false);
+          setShowOptions(false);
         }
       };
       window.addEventListener("keydown", onKeyDown);
       return () => window.removeEventListener("keydown", onKeyDown);
-    }, [frozen, paused, promoting, revealing, showOptions, toggleOptions]);
+    }, [
+      continueAfterReveal,
+      frozen,
+      paused,
+      promoting,
+      revealing,
+      showOptions,
+      toggleOptions,
+    ]);
 
     const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
       if (interactionLocked) return;
@@ -476,6 +540,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
     const stackClass = [
       homeStyles.cardStack,
       promoting ? homeStyles.cardStackPromoting : "",
+      throwing ? homeStyles.cardStackThrowing : "",
     ]
       .filter(Boolean)
       .join(" ");
@@ -491,7 +556,15 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
         } as React.CSSProperties);
 
     return (
-      <div className={styles.studioStage}>
+      <div
+        className={[
+          styles.studioStage,
+          revealing ? styles.studioStageAwaitContinue : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        onClick={revealing ? () => continueAfterReveal() : undefined}
+      >
         <header className={styles.studioHeader}>
           <h1 className={styles.studioTitle}>
             What is this in <span className={styles.studioTitleAccent}>Korean</span>?
@@ -516,13 +589,14 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
             }}
             aria-label={
               flipped
-                ? "Flip card back — swipe or throw to go next"
+                ? "Go to next card — or use the corner button to flip back"
                 : "Flip card to see Korean answer — swipe or throw to skip"
             }
           >
             <div className={stackClass}>
               {bot ? (
                 <div
+                  key={bot.id}
                   className={homeStyles.cardStackItem}
                   data-depth={2}
                   data-layer="bot"
@@ -533,6 +607,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
 
               {mid ? (
                 <div
+                  key={mid.id}
                   className={homeStyles.cardStackItem}
                   data-depth={1}
                   data-layer="mid"
@@ -564,12 +639,14 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
                     flipped={flipped}
                     flipping={flipping}
                     flipDir={flipDir}
+                    onUnflip={() => void flipBack()}
                   />
                 </div>
               ) : null}
 
               {exitingQuiz ? (
                 <div
+                  key={`exit-${exitingQuiz.id}`}
                   className={`${homeStyles.cardStackItem} ${homeStyles.cardTop} ${homeStyles.cardStackItemExiting}`}
                   data-layer="exit"
                   aria-hidden
@@ -598,6 +675,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
                   styles.studioChoiceBtn,
                   state === "correct" ? styles.studioChoiceCorrect : "",
                   state === "wrong" ? styles.studioChoiceWrong : "",
+                  revealing ? styles.studioChoiceBtnRevealed : "",
                 ]
                   .filter(Boolean)
                   .join(" ");
@@ -607,8 +685,15 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
                     key={choice.id}
                     type="button"
                     className={className}
-                    disabled={Boolean(selectedId)}
-                    onClick={() => void revealChoice(choice.id)}
+                    aria-disabled={revealing}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      if (selectedId) {
+                        continueAfterReveal();
+                        return;
+                      }
+                      void revealChoice(choice.id);
+                    }}
                   >
                     <ChoiceLabelWithEnglish
                       label={choice.label}
