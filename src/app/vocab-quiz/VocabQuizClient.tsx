@@ -52,7 +52,7 @@ function readStoredMode(): VocabQuizMode {
   } catch {
     // ignore
   }
-  return "manual";
+  return "studio";
 }
 
 export function VocabQuizClient() {
@@ -66,7 +66,7 @@ export function VocabQuizClient() {
   const advanceRef = React.useRef<(opts?: VocabQuizAdvanceOptions) => void>(() => undefined);
   const goBackRef = React.useRef<() => void>(() => undefined);
 
-  const [mode, setMode] = React.useState<VocabQuizMode>("manual");
+  const [mode, setMode] = React.useState<VocabQuizMode>("studio");
   const [soundOn, setSoundOn] = React.useState(true);
   const [hiddenPaused, setHiddenPaused] = React.useState(false);
   const [userPaused, setUserPaused] = React.useState(false);
