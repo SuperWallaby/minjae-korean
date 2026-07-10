@@ -66,9 +66,48 @@ function StudioCardFront({ quiz }: { quiz: KoreanQuizPrepared }) {
 
 function StudioCardBack({ quiz }: { quiz: KoreanQuizPrepared }) {
   const label = correctLabel(quiz);
+  const wrapRef = React.useRef<HTMLDivElement>(null);
+  const answerRef = React.useRef<HTMLSpanElement>(null);
+
+  React.useLayoutEffect(() => {
+    const wrap = wrapRef.current;
+    const answer = answerRef.current;
+    if (!wrap || !answer || !label) return;
+
+    const fit = () => {
+      const maxPx = Math.min(80, Math.floor(wrap.clientWidth * 0.22));
+      const minPx = 22;
+      let low = minPx;
+      let high = Math.max(minPx, maxPx);
+      let best = minPx;
+
+      answer.style.whiteSpace = "nowrap";
+      while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        answer.style.fontSize = `${mid}px`;
+        if (answer.scrollWidth <= wrap.clientWidth) {
+          best = mid;
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+      answer.style.fontSize = `${best}px`;
+    };
+
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(wrap);
+    return () => observer.disconnect();
+  }, [label]);
+
   return (
     <div className={styles.studioCardBack}>
-      <span className={styles.studioCardBackAnswer}>{label}</span>
+      <div ref={wrapRef} className={styles.studioCardBackAnswerWrap}>
+        <span ref={answerRef} className={styles.studioCardBackAnswer}>
+          {label}
+        </span>
+      </div>
       {quiz.romanization ? (
         <span className={styles.studioCardBackRoman}>{quiz.romanization}</span>
       ) : null}

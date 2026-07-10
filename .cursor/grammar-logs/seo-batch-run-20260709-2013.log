@@ -1,0 +1,530 @@
+=== compare batch 8 ===
+yarn run v1.22.19
+$ npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-run-8.txt --start=4 --skip-existing --local-render
+Batch generate 20 comparisons from scripts/data/grammar-batch-run-8.txt (start=4, cache v=4) [local-render] [skip-existing]
+
+=== [5/20] 상환하다, 상환되다 ===
+  · DB created id=1903 slug=상환하다-vs-상환되다
+  · using GPU render (http://127.0.0.1:8766)
+  · GPU render unavailable, using local Sharp: fetch failed
+  · image uploaded: https://file.kajakorean.com/grammar-comparisons/1903/%EC%83%81%ED%99%98%ED%95%98%EB%8B%A4-vs-%EC%83%81%ED%99%98%EB%90%98%EB%8B%A4.webp?v=4
+  → https://kajakorean.com/grammar/1903/%EC%83%81%ED%99%98%ED%95%98%EB%8B%A4-vs-%EC%83%81%ED%99%98%EB%90%98%EB%8B%A4
+
+=== [6/20] 항상, 맨날, 자주 — skip existing ===
+
+=== [7/20] 높임, 낮춤, 중립 — skip existing ===
+
+=== [8/20] 쉽게, 어렵게, 힘들게 — skip existing ===
+
+=== [9/20] 교체하다, 교체되다 — skip existing ===
+
+=== [10/20] 봄, 여름, 가을 — skip existing ===
+
+=== [11/20] 원하다, 거부하다 — skip existing ===
+
+=== [12/20] 제출하다, 제출되다 ===
+  · DB created id=1904 slug=제출하다-vs-제출되다
+  · using GPU render (http://127.0.0.1:8766)
+  · GPU render unavailable, using local Sharp: fetch failed
+  · image uploaded: https://file.kajakorean.com/grammar-comparisons/1904/%EC%A0%9C%EC%B6%9C%ED%95%98%EB%8B%A4-vs-%EC%A0%9C%EC%B6%9C%EB%90%98%EB%8B%A4.webp?v=4
+  → https://kajakorean.com/grammar/1904/%EC%A0%9C%EC%B6%9C%ED%95%98%EB%8B%A4-vs-%EC%A0%9C%EC%B6%9C%EB%90%98%EB%8B%A4
+
+=== [13/20] 추천하다, 추천되다 — skip existing ===
+
+=== [14/20] 입학하다, 졸업하다 ===
+  · DB created id=1905 slug=입학하다-vs-졸업하다
+  · using GPU render (http://127.0.0.1:8766)
+  · GPU render unavailable, using local Sharp: fetch failed
+  · image uploaded: https://file.kajakorean.com/grammar-comparisons/1905/%EC%9E%85%ED%95%99%ED%95%98%EB%8B%A4-vs-%EC%A1%B8%EC%97%85%ED%95%98%EB%8B%A4.webp?v=4
+  → https://kajakorean.com/grammar/1905/%EC%9E%85%ED%95%99%ED%95%98%EB%8B%A4-vs-%EC%A1%B8%EC%97%85%ED%95%98%EB%8B%A4
+
+=== [15/20] 진료하다, 진료되다 ===
+  · DB created id=1906 slug=진료하다-vs-진료되다
+  · using GPU render (http://127.0.0.1:8766)
+  · GPU render unavailable, using local Sharp: fetch failed
+  · image uploaded: https://file.kajakorean.com/grammar-comparisons/1906/%EC%A7%84%EB%A3%8C%ED%95%98%EB%8B%A4-vs-%EC%A7%84%EB%A3%8C%EB%90%98%EB%8B%A4.webp?v=4
+  → https://kajakorean.com/grammar/1906/%EC%A7%84%EB%A3%8C%ED%95%98%EB%8B%A4-vs-%EC%A7%84%EB%A3%8C%EB%90%98%EB%8B%A4
+
+=== [16/20] 하지만, 그런데, 그렇지만 — skip existing ===
+
+=== [17/20] 탈퇴하다, 탈퇴되다 — skip existing ===
+
+=== [18/20] 직접, 간접, 대리 — skip existing ===
+
+=== [19/20] 취소하다, 취소되다 ===
+  · DB created id=1907 slug=취소하다-vs-취소되다
+  · using GPU render (http://127.0.0.1:8766)
+  · GPU render unavailable, using local Sharp: fetch failed
+  · image uploaded: https://file.kajakorean.com/grammar-comparisons/1907/%EC%B7%A8%EC%86%8C%ED%95%98%EB%8B%A4-vs-%EC%B7%A8%EC%86%8C%EB%90%98%EB%8B%A4.webp?v=4
+  → https://kajakorean.com/grammar/1907/%EC%B7%A8%EC%86%8C%ED%95%98%EB%8B%A4-vs-%EC%B7%A8%EC%86%8C%EB%90%98%EB%8B%A4
+
+=== [20/20] 교환하다, 교환되다 ===
+  · DB created id=1908 slug=교환하다-vs-교환되다
+  · using GPU render (http://127.0.0.1:8766)
+  · GPU render unavailable, using local Sharp: fetch failed
+  · image uploaded: https://file.kajakorean.com/grammar-comparisons/1908/%EA%B5%90%ED%99%98%ED%95%98%EB%8B%A4-vs-%EA%B5%90%ED%99%98%EB%90%98%EB%8B%A4.webp?v=4
+  → https://kajakorean.com/grammar/1908/%EA%B5%90%ED%99%98%ED%95%98%EB%8B%A4-vs-%EA%B5%90%ED%99%98%EB%90%98%EB%8B%A4
+{
+  "ok": true,
+  "created": 6,
+  "skipped": 10,
+  "failed": 0,
+  "cacheVersion": 4,
+  "failures": []
+}
+Done in 146.09s.
+=== meaning batch 8 ===
+yarn run v1.22.19
+$ npx tsx scripts/generate-grammar-guide-data.ts --type meaning --batch-file scripts/data/grammar-meaning-batch-8.txt --skip-existing --local-render
+Batch generate 20 meaning guides from scripts/data/grammar-meaning-batch-8.txt (start=0) [local-render] [skip-existing]
+
+=== [1/20] 지루하다 ===
+  · DB created id=5229 slug=what-does-지루하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5229/what-does-지루하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5229/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5229/what-does-%EC%A7%80%EB%A3%A8%ED%95%98%EB%8B%A4-mean
+
+=== [2/20] 답답하다 ===
+  · DB created id=5230 slug=what-does-답답하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5230/what-does-답답하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5230/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5230/what-does-%EB%8B%B5%EB%8B%B5%ED%95%98%EB%8B%A4-mean
+
+=== [3/20] 짜증나다 ===
+  · DB created id=5231 slug=what-does-짜증나다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5231/what-does-짜증나다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5231/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5231/what-does-%EC%A7%9C%EC%A6%9D%EB%82%98%EB%8B%A4-mean
+
+=== [4/20] 후회하다 ===
+  · DB created id=5232 slug=what-does-후회하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5232/what-does-후회하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5232/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5232/what-does-%ED%9B%84%ED%9A%8C%ED%95%98%EB%8B%A4-mean
+
+=== [5/20] 그리워하다 ===
+  · DB created id=5233 slug=what-does-그리워하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5233/what-does-그리워하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5233/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5233/what-does-%EA%B7%B8%EB%A6%AC%EC%9B%8C%ED%95%98%EB%8B%A4-mean
+
+=== [6/20] 보고 싶다 ===
+  · DB created id=5234 slug=what-does-보고-싶다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5234/what-does-보고-싶다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5234/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5234/what-does-%EB%B3%B4%EA%B3%A0-%EC%8B%B6%EB%8B%A4-mean
+
+=== [7/20] 외롭다 ===
+  · DB created id=5235 slug=what-does-외롭다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5235/what-does-외롭다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5235/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5235/what-does-%EC%99%B8%EB%A1%AD%EB%8B%A4-mean
+
+=== [8/20] 편하다 ===
+  · DB created id=5236 slug=what-does-편하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5236/what-does-편하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5236/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5236/what-does-%ED%8E%B8%ED%95%98%EB%8B%A4-mean
+
+=== [9/20] 불편하다 ===
+  · DB created id=5237 slug=what-does-불편하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5237/what-does-불편하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5237/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5237/what-does-%EB%B6%88%ED%8E%B8%ED%95%98%EB%8B%A4-mean
+
+=== [10/20] 행복하다 ===
+  · DB created id=5238 slug=what-does-행복하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5238/what-does-행복하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5238/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5238/what-does-%ED%96%89%EB%B3%B5%ED%95%98%EB%8B%A4-mean
+
+=== [11/20] 우울하다 ===
+  · DB created id=5239 slug=what-does-우울하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5239/what-does-우울하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5239/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5239/what-does-%EC%9A%B0%EC%9A%B8%ED%95%98%EB%8B%A4-mean
+
+=== [12/20] 지치다 ===
+  · DB created id=5240 slug=what-does-지치다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5240/what-does-지치다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5240/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5240/what-does-%EC%A7%80%EC%B9%98%EB%8B%A4-mean
+
+=== [13/20] 피곤하다 ===
+  · DB created id=5241 slug=what-does-피곤하다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5241/what-does-피곤하다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5241/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5241/what-does-%ED%94%BC%EA%B3%A4%ED%95%98%EB%8B%A4-mean
+
+=== [14/20] 졸리다 ===
+  · DB created id=5242 slug=what-does-졸리다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5242/what-does-졸리다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5242/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5242/what-does-%EC%A1%B8%EB%A6%AC%EB%8B%A4-mean
+
+=== [15/20] 배부르다 ===
+  · DB created id=5243 slug=what-does-배부르다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5243/what-does-배부르다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5243/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5243/what-does-%EB%B0%B0%EB%B6%80%EB%A5%B4%EB%8B%A4-mean
+
+=== [16/20] 배고프다 ===
+  · DB created id=5244 slug=what-does-배고프다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5244/what-does-배고프다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5244/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5244/what-does-%EB%B0%B0%EA%B3%A0%ED%94%84%EB%8B%A4-mean
+
+=== [17/20] 목마르다 ===
+  · DB created id=5245 slug=what-does-목마르다-mean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/meaning/5245/what-does-목마르다-mean.webp
+  · pronunciation uploaded: https://file.kajakorean.com/grammar-guides/meaning/5245/pronunciation.mp3
+  → https://kajakorean.com/grammar/meaning/5245/what-does-%EB%AA%A9%EB%A7%88%EB%A5%B4%EB%8B%A4-mean
+
+=== [18/20] 춥다 — skip existing id=5100 ===
+
+=== [19/20] 덥다 — skip existing id=5101 ===
+
+=== [20/20] 아프다 — skip existing id=5102 ===
+{
+  "ok": true,
+  "created": 17,
+  "skipped": 3,
+  "failed": 0,
+  "failures": []
+}
+Done in 269.31s.
+=== usage batch 8 ===
+yarn run v1.22.19
+$ npx tsx scripts/generate-grammar-guide-data.ts --type usage --batch-file scripts/data/grammar-usage-batch-8.txt --skip-existing --local-render
+Batch generate 20 usage guides from scripts/data/grammar-usage-batch-8.txt (start=0) [local-render] [skip-existing]
+
+=== [1/20] -(으)ㄹ 뿐만 아니라 ===
+  · DB created id=6110 slug=how-to-use-을-뿐만-아니라
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6110/how-to-use-을-뿐만-아니라.webp
+  → https://kajakorean.com/grammar/usage/6110/how-to-use-%EC%9D%84-%EB%BF%90%EB%A7%8C-%EC%95%84%EB%8B%88%EB%9D%BC
+
+=== [2/20] -(으)ㄹ 뿐이다 ===
+  · DB created id=6111 slug=how-to-use-을-뿐이다
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6111/how-to-use-을-뿐이다.webp
+  → https://kajakorean.com/grammar/usage/6111/how-to-use-%EC%9D%84-%EB%BF%90%EC%9D%B4%EB%8B%A4
+
+=== [3/20] -(으)ㄹ 뿐이에요 ===
+  · DB created id=6112 slug=how-to-use-을-뿐이에요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6112/how-to-use-을-뿐이에요.webp
+  → https://kajakorean.com/grammar/usage/6112/how-to-use-%EC%9D%84-%EB%BF%90%EC%9D%B4%EC%97%90%EC%9A%94
+
+=== [4/20] -(으)ㄹ 수 없다 — skip existing id=6039 ===
+
+=== [5/20] -(으)ㄹ 수 없어요 — skip existing id=6053 ===
+
+=== [6/20] -(으)ㄹ 수밖에 없다 — skip existing id=6109 ===
+
+=== [7/20] -(으)ㄹ 수밖에 없어요 ===
+  · DB created id=6113 slug=how-to-use-을-수밖에-없어요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6113/how-to-use-을-수밖에-없어요.webp
+  → https://kajakorean.com/grammar/usage/6113/how-to-use-%EC%9D%84-%EC%88%98%EB%B0%96%EC%97%90-%EC%97%86%EC%96%B4%EC%9A%94
+
+=== [8/20] -(으)ㄹ 리가 없다 ===
+  · DB created id=6114 slug=how-to-use-을-리가-없다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6114/how-to-use-을-리가-없다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6114/how-to-use-%EC%9D%84-%EB%A6%AC%EA%B0%80-%EC%97%86%EB%8B%A4-in-korean
+
+=== [9/20] -(으)ㄹ 리가 없어요 ===
+  · DB created id=6115 slug=how-to-use-을-리가-없어요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6115/how-to-use-을-리가-없어요.webp
+  → https://kajakorean.com/grammar/usage/6115/how-to-use-%EC%9D%84-%EB%A6%AC%EA%B0%80-%EC%97%86%EC%96%B4%EC%9A%94
+
+=== [10/20] -(으)ㄹ 게 뻔하다 ===
+  · DB created id=6116 slug=how-to-use-을-게-뻔하다
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6116/how-to-use-을-게-뻔하다.webp
+  → https://kajakorean.com/grammar/usage/6116/how-to-use-%EC%9D%84-%EA%B2%8C-%EB%BB%94%ED%95%98%EB%8B%A4
+
+=== [11/20] -(으)ㄹ 게 뻔해요 ===
+  · DB created id=6117 slug=how-to-use-ㄹ-게-뻔해요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6117/how-to-use-ㄹ-게-뻔해요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6117/how-to-use-%E3%84%B9-%EA%B2%8C-%EB%BB%94%ED%95%B4%EC%9A%94-in-korean
+
+=== [12/20] -(으)ㄹ 줄 알았다 ===
+  · DB created id=6118 slug=how-to-use-을-줄-알았다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6118/how-to-use-을-줄-알았다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6118/how-to-use-%EC%9D%84-%EC%A4%84-%EC%95%8C%EC%95%98%EB%8B%A4-in-korean
+
+=== [13/20] -(으)ㄹ 줄 몰랐다 ===
+  · DB created id=6119 slug=how-to-use-을-줄-몰랐다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6119/how-to-use-을-줄-몰랐다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6119/how-to-use-%EC%9D%84-%EC%A4%84-%EB%AA%B0%EB%9E%90%EB%8B%A4-in-korean
+
+=== [14/20] -(으)ㄹ 줄 알았어요 — skip existing id=6063 ===
+
+=== [15/20] -(으)ㄹ 줄 몰랐어요 ===
+  · DB created id=6120 slug=how-to-use-을-줄-몰랐어요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6120/how-to-use-을-줄-몰랐어요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6120/how-to-use-%EC%9D%84-%EC%A4%84-%EB%AA%B0%EB%9E%90%EC%96%B4%EC%9A%94-in-korean
+
+=== [16/20] -(으)ㄹ 것 같다 ===
+  · DB created id=6121 slug=how-to-use-을-것-같다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6121/how-to-use-을-것-같다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6121/how-to-use-%EC%9D%84-%EA%B2%83-%EA%B0%99%EB%8B%A4-in-korean
+
+=== [17/20] -(으)ㄹ 것 같아요 ===
+  · DB created id=6122 slug=how-to-use-을-것-같아요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6122/how-to-use-을-것-같아요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6122/how-to-use-%EC%9D%84-%EA%B2%83-%EA%B0%99%EC%95%84%EC%9A%94-in-korean
+
+=== [18/20] -(았/었)을 텐데 ===
+  · DB created id=6123 slug=how-to-use-았었을-텐데
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6123/how-to-use-았었을-텐데.webp
+  → https://kajakorean.com/grammar/usage/6123/how-to-use-%EC%95%98%EC%97%88%EC%9D%84-%ED%85%90%EB%8D%B0
+
+=== [19/20] -(았/었)을 텐데요 ===
+  · DB created id=6124 slug=how-to-use-았었을-텐데요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6124/how-to-use-았었을-텐데요.webp
+  → https://kajakorean.com/grammar/usage/6124/how-to-use-%EC%95%98%EC%97%88%EC%9D%84-%ED%85%90%EB%8D%B0%EC%9A%94
+
+=== [20/20] -(았/었)을 거예요 ===
+  · DB created id=6125 slug=how-to-use-았었을-거예요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6125/how-to-use-았었을-거예요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6125/how-to-use-%EC%95%98%EC%97%88%EC%9D%84-%EA%B1%B0%EC%98%88%EC%9A%94-in-korean
+{
+  "ok": true,
+  "created": 16,
+  "skipped": 4,
+  "failed": 0,
+  "failures": []
+}
+Done in 268.14s.
+=== usage batch 6 (resume) ===
+yarn run v1.22.19
+$ npx tsx scripts/generate-grammar-guide-data.ts --type usage --batch-file scripts/data/grammar-usage-batch-6.txt --skip-existing --local-render
+Batch generate 102 usage guides from scripts/data/grammar-usage-batch-6.txt (start=0) [local-render] [skip-existing]
+
+=== [1/102] -(이)라고 ===
+  · DB created id=6126 slug=how-to-use-이라고-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6126/how-to-use-이라고-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6126/how-to-use-%EC%9D%B4%EB%9D%BC%EA%B3%A0-in-korean
+
+=== [2/102] -(이)라고 해요 ===
+  · DB created id=6127 slug=how-to-use-이라고-해요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6127/how-to-use-이라고-해요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6127/how-to-use-%EC%9D%B4%EB%9D%BC%EA%B3%A0-%ED%95%B4%EC%9A%94-in-korean
+
+=== [3/102] -(이)라고 합니다 ===
+  · DB created id=6128 slug=how-to-use-이라고합니다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6128/how-to-use-이라고합니다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6128/how-to-use-%EC%9D%B4%EB%9D%BC%EA%B3%A0%ED%95%A9%EB%8B%88%EB%8B%A4-in-korean
+
+=== [4/102] -(이)라는 — skip existing id=6090 ===
+
+=== [5/102] -(이)라는 것 — skip existing id=6091 ===
+
+=== [6/102] -(으)ㄴ다 — skip existing id=6092 ===
+
+=== [7/102] -(아/어)요 — skip existing id=6093 ===
+
+=== [8/102] -(으)세요 — skip existing id=6094 ===
+
+=== [9/102] -(으)십시오 — skip existing id=6095 ===
+
+=== [10/102] -(으)시다 — skip existing id=6096 ===
+
+=== [11/102] -(으)ㄴ데요 — skip existing id=6097 ===
+
+=== [12/102] -(아/어)도 — skip existing id=6098 ===
+
+=== [13/102] -(으)면서 — skip existing id=6099 ===
+
+=== [14/102] -(으)면서도 — skip existing id=6100 ===
+
+=== [15/102] -(으)러 — skip existing id=6101 ===
+
+=== [16/102] -(으)러 가다 — skip existing id=6102 ===
+
+=== [17/102] -(으)러 왔어요 ===
+  · DB created id=6129 slug=how-to-use-으로-왔어요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6129/how-to-use-으로-왔어요.webp
+  → https://kajakorean.com/grammar/usage/6129/how-to-use-%EC%9C%BC%EB%A1%9C-%EC%99%94%EC%96%B4%EC%9A%94
+
+=== [18/102] -(으)ㄹ까요 — skip existing id=6103 ===
+
+=== [19/102] -(으)ㄹ게요 — skip existing id=6104 ===
+
+=== [20/102] -(으)ㄹ게 — skip existing id=6007 ===
+
+=== [21/102] -(아/어) 줄까요 — skip existing id=6106 ===
+
+=== [22/102] -(아/어) 주면 — skip existing id=6107 ===
+
+=== [23/102] -(아/어) 주셨어요 — skip existing id=6108 ===
+
+=== [24/102] -(으)ㄹ 수밖에 없다 — skip existing id=6109 ===
+
+=== [25/102] -(으)ㄹ 수밖에 없어요 — skip existing id=6113 ===
+
+=== [26/102] -(으)ㄴ 채로 ===
+  · DB created id=6130 slug=how-to-use-은-채로
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6130/how-to-use-은-채로.webp
+  → https://kajakorean.com/grammar/usage/6130/how-to-use-%EC%9D%80-%EC%B1%84%EB%A1%9C
+
+=== [27/102] -(으)ㄴ 상태로 ===
+  · DB created id=6131 slug=how-to-use-은-ㄴ-상태로
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6131/how-to-use-은-ㄴ-상태로.webp
+  → https://kajakorean.com/grammar/usage/6131/how-to-use-%EC%9D%80-%E3%84%B4-%EC%83%81%ED%83%9C%EB%A1%9C
+
+=== [28/102] -(으)ㄴ지 ===
+  · DB created id=6132 slug=how-to-use-은ㄴ지-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6132/how-to-use-은ㄴ지-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6132/how-to-use-%EC%9D%80%E3%84%B4%EC%A7%80-in-korean
+
+=== [29/102] -(으)ㄴ지 몰라요 ===
+  · DB created id=6133 slug=how-to-use-은지-몰라요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6133/how-to-use-은지-몰라요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6133/how-to-use-%EC%9D%80%EC%A7%80-%EB%AA%B0%EB%9D%BC%EC%9A%94-in-korean
+
+=== [30/102] -(으)ㄴ지 알아요 ===
+  · DB created id=6134 slug=how-to-use-은지-알아요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6134/how-to-use-은지-알아요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6134/how-to-use-%EC%9D%80%EC%A7%80-%EC%95%8C%EC%95%84%EC%9A%94-in-korean
+
+=== [31/102] -(으)니까 ===
+  · DB created id=6135 slug=how-to-use-니까-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6135/how-to-use-니까-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6135/how-to-use-%EB%8B%88%EA%B9%8C-in-korean
+
+=== [32/102] -(으)니 ===
+  · DB created id=6136 slug=how-to-use-니
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6136/how-to-use-니.webp
+  → https://kajakorean.com/grammar/usage/6136/how-to-use-%EB%8B%88
+
+=== [33/102] -(으)니까요 ===
+  · DB created id=6137 slug=how-to-use-니까요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6137/how-to-use-니까요.webp
+  → https://kajakorean.com/grammar/usage/6137/how-to-use-%EB%8B%88%EA%B9%8C%EC%9A%94
+
+=== [34/102] -(아/어)서는 ===
+  · DB created id=6138 slug=how-to-use-아서서는
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6138/how-to-use-아서서는.webp
+  → https://kajakorean.com/grammar/usage/6138/how-to-use-%EC%95%84%EC%84%9C%EC%84%9C%EB%8A%94
+
+=== [35/102] -(아/어) 버리다 ===
+  · DB created id=6139 slug=how-to-use-아어-버리다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6139/how-to-use-아어-버리다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6139/how-to-use-%EC%95%84%EC%96%B4-%EB%B2%84%EB%A6%AC%EB%8B%A4-in-korean
+
+=== [36/102] -(아/어) 버렸어요 ===
+  · DB created id=6140 slug=how-to-use-아어-버렸어요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6140/how-to-use-아어-버렸어요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6140/how-to-use-%EC%95%84%EC%96%B4-%EB%B2%84%EB%A0%B8%EC%96%B4%EC%9A%94-in-korean
+
+=== [37/102] -(아/어) 놓다 ===
+  · DB created id=6141 slug=how-to-use-아어-놓다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6141/how-to-use-아어-놓다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6141/how-to-use-%EC%95%84%EC%96%B4-%EB%86%93%EB%8B%A4-in-korean
+
+=== [38/102] -(아/어) 놨어요 ===
+  · DB created id=6142 slug=how-to-use-아어-놨어요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6142/how-to-use-아어-놨어요.webp
+  → https://kajakorean.com/grammar/usage/6142/how-to-use-%EC%95%84%EC%96%B4-%EB%86%A8%EC%96%B4%EC%9A%94
+
+=== [39/102] -(아/어) 두다 ===
+  · DB created id=6143 slug=how-to-use-아어-두다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6143/how-to-use-아어-두다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6143/how-to-use-%EC%95%84%EC%96%B4-%EB%91%90%EB%8B%A4-in-korean
+
+=== [40/102] -(아/어) 뒀어요 ===
+  · DB created id=6144 slug=how-to-use-아어-뒀어요-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6144/how-to-use-아어-뒀어요-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6144/how-to-use-%EC%95%84%EC%96%B4-%EB%92%80%EC%96%B4%EC%9A%94-in-korean
+
+=== [41/102] -(으)ㄹ 듯하다 ===
+  · DB created id=6145 slug=how-to-use-을-듯하다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6145/how-to-use-을-듯하다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6145/how-to-use-%EC%9D%84-%EB%93%AF%ED%95%98%EB%8B%A4-in-korean
+
+=== [42/102] -(으)ㄹ 듯해요 ===
+  · DB created id=6146 slug=how-to-use-을-듯해요
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6146/how-to-use-을-듯해요.webp
+  → https://kajakorean.com/grammar/usage/6146/how-to-use-%EC%9D%84-%EB%93%AF%ED%95%B4%EC%9A%94
+
+=== [43/102] -(으)ㄴ 듯하다 ===
+  · DB created id=6147 slug=how-to-use-은-듯하다-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6147/how-to-use-은-듯하다-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6147/how-to-use-%EC%9D%80-%EB%93%AF%ED%95%98%EB%8B%A4-in-korean
+
+=== [44/102] -(았/었)던 ===
+  · DB created id=6148 slug=how-to-use-았었던-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6148/how-to-use-았었던-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6148/how-to-use-%EC%95%98%EC%97%88%EB%8D%98-in-korean
+
+=== [45/102] -(았/었)었던 ===
+  · DB updated id=6148 slug=how-to-use-았었던-in-korean
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6148/how-to-use-았었던-in-korean.webp
+  → https://kajakorean.com/grammar/usage/6148/how-to-use-%EC%95%98%EC%97%88%EB%8D%98-in-korean
+
+=== [46/102] -(으)ㄹ 테니 ===
+  · DB created id=6149 slug=how-to-use-을-테니
+  · using local Sharp render (--local-render)
+  · image uploaded: https://file.kajakorean.com/grammar-guides/usage/6149/how-to-use-을-테니.webp
+  → https://kajakorean.com/grammar/usage/6149/how-to-use-%EC%9D%84-%ED%85%8C%EB%8B%88
+
+=== [47/102] -(으)ㄹ 테니까 ===
+  ✗ failed: fetch failed
+getaddrinfo ENOTFOUND trbox-shard-00-00.ofhdx.mongodb.net
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
