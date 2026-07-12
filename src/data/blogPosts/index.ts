@@ -27,6 +27,21 @@ async function readBlogOverrides(): Promise<Record<string, BlogImageOverrides>> 
 }
 
 const SLUG_LIST = [
+  "what-is-this-called-in-korean-app",
+  "learn-korean-words-in-5-minutes",
+  "human-made-korean-quizzes-vs-ai",
+  "korean-vocab-practice-without-ads",
+  "what-is-this-called-in-korean-vs-duolingo",
+  "what-is-this-called-in-korean-vs-anki",
+  "korean-vocab-quiz-vs-flashcards",
+  "what-is-this-called-in-korean-vs-drops",
+  "what-is-this-called-in-korean-vs-memrise",
+  "what-is-this-called-in-korean-vs-lingodeer",
+  "best-korean-vocabulary-apps-for-beginners",
+  "picture-audio-vs-text-korean-memorization",
+  "learn-korean-vocabulary-with-live-streams",
+  "korean-vocab-quiz-manual-auto-studio-mode",
+  "beginner-korean-words-low-burnout-quiz-routine",
   "study-korean-what-is-arirang",
   "why-korean-translation-loses-meaning",
   "2026-korean-study-method-blended-learning-flow",
@@ -50,6 +65,36 @@ const loaders: Record<
   Slug,
   () => Promise<{ post: BlogPost }>
 > = {
+  "what-is-this-called-in-korean-app": () =>
+    import("./content/what-is-this-called-in-korean-app"),
+  "learn-korean-words-in-5-minutes": () =>
+    import("./content/learn-korean-words-in-5-minutes"),
+  "human-made-korean-quizzes-vs-ai": () =>
+    import("./content/human-made-korean-quizzes-vs-ai"),
+  "korean-vocab-practice-without-ads": () =>
+    import("./content/korean-vocab-practice-without-ads"),
+  "what-is-this-called-in-korean-vs-duolingo": () =>
+    import("./content/what-is-this-called-in-korean-vs-duolingo"),
+  "what-is-this-called-in-korean-vs-anki": () =>
+    import("./content/what-is-this-called-in-korean-vs-anki"),
+  "korean-vocab-quiz-vs-flashcards": () =>
+    import("./content/korean-vocab-quiz-vs-flashcards"),
+  "what-is-this-called-in-korean-vs-drops": () =>
+    import("./content/what-is-this-called-in-korean-vs-drops"),
+  "what-is-this-called-in-korean-vs-memrise": () =>
+    import("./content/what-is-this-called-in-korean-vs-memrise"),
+  "what-is-this-called-in-korean-vs-lingodeer": () =>
+    import("./content/what-is-this-called-in-korean-vs-lingodeer"),
+  "best-korean-vocabulary-apps-for-beginners": () =>
+    import("./content/best-korean-vocabulary-apps-for-beginners"),
+  "picture-audio-vs-text-korean-memorization": () =>
+    import("./content/picture-audio-vs-text-korean-memorization"),
+  "learn-korean-vocabulary-with-live-streams": () =>
+    import("./content/learn-korean-vocabulary-with-live-streams"),
+  "korean-vocab-quiz-manual-auto-studio-mode": () =>
+    import("./content/korean-vocab-quiz-manual-auto-studio-mode"),
+  "beginner-korean-words-low-burnout-quiz-routine": () =>
+    import("./content/beginner-korean-words-low-burnout-quiz-routine"),
   "study-korean-what-is-arirang": () => import("./content/study-korean-what-is-arirang"),
   "why-korean-translation-loses-meaning": () =>
     import("./content/why-korean-translation-loses-meaning"),

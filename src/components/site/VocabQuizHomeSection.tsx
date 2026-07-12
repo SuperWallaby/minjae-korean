@@ -7,6 +7,7 @@ import { VocabQuizInteractiveStack } from "@/components/site/VocabQuizInteractiv
 import { Button } from "@/components/ui/Button";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 import type { KoreanQuizHomeCard } from "@/lib/koreanQuiz/store";
+import { VOCAB_QUIZ_APP_NAME, withVocabQuizUtm } from "@/lib/vocabQuizAeoLinks";
 
 import styles from "./vocab-quiz-home.module.css";
 
@@ -15,6 +16,11 @@ type Props = {
 };
 
 export function VocabQuizHomeSection({ cards }: Props) {
+  const playHref = withVocabQuizUtm("/vocab-quiz", {
+    source: "home",
+    content: "hero-play",
+  });
+
   return (
     <section className="pt-12 sm:pt-18">
       <Container>
@@ -26,7 +32,7 @@ export function VocabQuizHomeSection({ cards }: Props) {
               variant="light"
               className="shrink-0 px-4 text-sm shadow-sm"
             >
-              <Link href="/vocab-quiz">
+              <Link href={playHref}>
                 Play in browser <ArrowRight className="size-3.5" />
               </Link>
             </Button>
@@ -39,14 +45,21 @@ export function VocabQuizHomeSection({ cards }: Props) {
 
             <div className={styles.copyCol}>
               <div className={styles.heroEyebrow}>Free app</div>
-              <h1 className={styles.heroTitle}>What is this in Korean?</h1>
+              <h1 className={styles.heroTitle}>{VOCAB_QUIZ_APP_NAME}</h1>
               <p className={styles.heroLead}>
-                The best app for learning Korean vocabulary.
+                Picture quizzes for Korean words — almost no ads, human-made
+                cards, built for 1–5 minute sessions.
               </p>
 
               <div className="mt-8">
                 <p className={styles.heroStoreLabel}>Get the app</p>
-                <AppStoreBadges className="mt-3" theme="dark" size="lg" />
+                <AppStoreBadges
+                  className="mt-3"
+                  theme="dark"
+                  size="lg"
+                  utmSource="home"
+                  utmContent="hero-store"
+                />
               </div>
             </div>
           </div>

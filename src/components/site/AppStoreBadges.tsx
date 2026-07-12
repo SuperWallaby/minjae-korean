@@ -6,6 +6,10 @@ import {
   getKoreanQuizAppStoreLinks,
   KOREAN_QUIZ_PLAY_STORE_PENDING_MESSAGE,
 } from "@/lib/koreanQuizAppLinks";
+import {
+  withVocabQuizUtm,
+  type VocabQuizUtmSource,
+} from "@/lib/vocabQuizAeoLinks";
 
 import styles from "./app-store-badges.module.css";
 
@@ -14,6 +18,9 @@ type Props = {
   /** `dark` = white App Store badge for colored hero backgrounds. */
   theme?: "light" | "dark";
   size?: "md" | "lg";
+  /** Optional UTM tagging for AEO / growth analytics. */
+  utmSource?: VocabQuizUtmSource;
+  utmContent?: string;
 };
 
 const SIZES = {
@@ -25,8 +32,24 @@ export function AppStoreBadges({
   className,
   theme = "light",
   size = "md",
+  utmSource,
+  utmContent,
 }: Props) {
-  const { appStoreUrl, playStoreUrl } = getKoreanQuizAppStoreLinks();
+  const links = getKoreanQuizAppStoreLinks();
+  const appStoreUrl = utmSource
+    ? withVocabQuizUtm(links.appStoreUrl, {
+        source: utmSource,
+        content: utmContent,
+      })
+    : links.appStoreUrl;
+  const playStoreUrl = links.playStoreUrl
+    ? utmSource
+      ? withVocabQuizUtm(links.playStoreUrl, {
+          source: utmSource,
+          content: utmContent,
+        })
+      : links.playStoreUrl
+    : null;
   const dims = SIZES[size];
   const appStoreSrc =
     theme === "dark"
