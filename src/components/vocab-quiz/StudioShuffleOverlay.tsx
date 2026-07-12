@@ -5,8 +5,8 @@ import * as React from "react";
 import styles from "./vocab-quiz.module.css";
 
 const CARD_COUNT = 7;
-const FLIP_MS = 260;
-const SHUFFLE_START_MS = 300;
+const FLIP_MS = 340;
+const SHUFFLE_START_MS = 380;
 
 type Props = {
   /** Top card image shown before the flip. */
@@ -47,17 +47,11 @@ export function StudioShuffleOverlay({ topImage, images = [] }: Props) {
       data-phase={phase}
     >
       <div className={styles.studioShuffleGlow} aria-hidden />
-      <p className={styles.studioShuffleLabel}>
-        {phase === "flip" ? (
-          <>
-            Flipping <span className={styles.studioShuffleLabelAccent}>top card</span>
-          </>
-        ) : (
-          <>
-            Shuffling <span className={styles.studioShuffleLabelAccent}>new deck</span>
-          </>
-        )}
-      </p>
+      <header className={styles.studioHeader}>
+        <h1 className={styles.studioTitle}>
+          What is this in <span className={styles.studioTitleAccent}>Korean</span>?
+        </h1>
+      </header>
 
       <div className={styles.studioShuffleArena} aria-hidden>
         {phase === "flip" ? (

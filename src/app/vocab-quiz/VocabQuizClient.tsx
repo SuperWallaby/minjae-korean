@@ -242,8 +242,8 @@ export function VocabQuizClient() {
     await reshuffle();
 
     if (isStudio) {
-      // flip (~0.3s) + riffle (~1.55s)
-      const minMs = 1850;
+      // flip (~0.34s) + riffle (~1.55s)
+      const minMs = 1950;
       const wait = Math.max(0, minMs - (Date.now() - startedAt));
       if (wait > 0) {
         await new Promise((resolve) => setTimeout(resolve, wait));
