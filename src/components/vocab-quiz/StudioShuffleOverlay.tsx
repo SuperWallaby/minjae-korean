@@ -5,8 +5,8 @@ import * as React from "react";
 import styles from "./vocab-quiz.module.css";
 
 const CARD_COUNT = 7;
-const FLIP_MS = 480;
-const SHUFFLE_START_MS = 560;
+const FLIP_MS = 260;
+const SHUFFLE_START_MS = 300;
 
 type Props = {
   /** Top card image shown before the flip. */

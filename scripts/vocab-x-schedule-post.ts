@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
- * Upload vocab infographic to R2 and enqueue X manual post (3×/day via lab-worker cron).
+ * Upload vocab infographic to R2 and register for X review (approve → queue).
  *
  *   npx tsx scripts/vocab-x-schedule-post.ts --id grid-fruits-tropical
- *   npx tsx scripts/vocab-x-auto-queue.ts          # queue all ready images
+ *   npx tsx scripts/vocab-x-schedule-post.ts --auto
+ *   npx tsx scripts/vocab-x-schedule-post.ts --id grid-fruits-tropical --queue   # skip review, enqueue now
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -14,6 +15,7 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { ALL_VOCAB_BUNDLES } from "../src/lib/vocabInfographic/bundle-catalog.ts";
 import { buildVocabXPostText } from "../src/lib/vocabXCaption.ts";
 import { enqueueGrammarXManual } from "../src/lib/grammarXQueueRepo";
+import { markVocabXApproved, upsertVocabXPending } from "../src/lib/vocabXReviewRepo";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -67,23 +69,12 @@ function findBundle(bundleId: string) {
   return bundle;
 }
 
-export async function scheduleVocabXPost(input: {
-  bundleId: string;
-  skipIfScheduled?: boolean;
-}) {
-  const bundleId = input.bundleId.trim();
+async function uploadBrandedImage(bundleId: string): Promise<{ imageUrl: string; imageAlt: string }> {
   const bundle = findBundle(bundleId);
   const imagePath = path.join(OUT, `${bundleId}.png`);
   if (!fs.existsSync(imagePath)) {
     throw new Error(`Branded image not found: ${imagePath}`);
   }
-
-  const scheduled = loadScheduled();
-  if (input.skipIfScheduled !== false && scheduled[bundleId]) {
-    return { skipped: true, bundleId, reason: "already_scheduled" as const };
-  }
-
-  const { tweetText, caption, replyText } = await buildVocabXPostText(bundle);
 
   const key = `grammar-x/vocab-infographic/${Date.now()}-${bundleId}.png`;
   const buffer = fs.readFileSync(imagePath);
@@ -101,8 +92,82 @@ export async function scheduleVocabXPost(input: {
     `https://${mustEnv("R2_ACCOUNT_ID")}.r2.cloudflarestorage.com/${r2Bucket()}`;
   const imageUrl = `${publicBase}/${key}`;
   const imageAlt = `${bundle.title} — Korean vocabulary by What is this in Korean`;
+  return { imageUrl, imageAlt };
+}
 
-  const item = await enqueueGrammarXManual({
+/** Register for admin approval (does not enqueue X). */
+export async function registerVocabXForReview(input: {
+  bundleId: string;
+  skipIfRegistered?: boolean;
+}) {
+  const bundleId = input.bundleId.trim();
+  const bundle = findBundle(bundleId);
+
+  const scheduled = loadScheduled();
+  const prev = scheduled[bundleId] as { reviewStatus?: string; queueId?: string } | undefined;
+  if (input.skipIfRegistered !== false && prev?.reviewStatus === "pending") {
+    return { skipped: true as const, bundleId, reason: "already_pending" as const };
+  }
+  if (input.skipIfRegistered !== false && prev?.queueId && !prev.reviewStatus) {
+    // Legacy auto-queued entry — treat as already handled until pull-back.
+    return { skipped: true as const, bundleId, reason: "already_scheduled" as const };
+  }
+
+  const { tweetText, caption, replyText } = await buildVocabXPostText(bundle);
+  const { imageUrl, imageAlt } = await uploadBrandedImage(bundleId);
+
+  const item = await upsertVocabXPending({
+    bundleId,
+    title: bundle.title,
+    format: bundle.format,
+    priority: bundle.priority,
+    imageUrl,
+    imageAlt,
+    tweetText,
+    replyText,
+    captionLine1: caption.line1,
+    captionLine2: caption.line2,
+  });
+
+  scheduled[bundleId] = {
+    reviewId: item.id,
+    reviewStatus: "pending",
+    imageUrl,
+    tweetText,
+    caption,
+    replyText,
+    registeredAt: new Date().toISOString(),
+  };
+  saveScheduled(scheduled);
+
+  return {
+    skipped: false as const,
+    bundleId,
+    reviewId: item.id,
+    imageUrl,
+    tweetText,
+    caption,
+    replyText,
+  };
+}
+
+/** Legacy: upload + enqueue immediately (skip review). Prefer register + approve. */
+export async function scheduleVocabXPost(input: {
+  bundleId: string;
+  skipIfScheduled?: boolean;
+}) {
+  const bundleId = input.bundleId.trim();
+  const bundle = findBundle(bundleId);
+
+  const scheduled = loadScheduled();
+  if (input.skipIfScheduled !== false && scheduled[bundleId]) {
+    return { skipped: true, bundleId, reason: "already_scheduled" as const };
+  }
+
+  const { tweetText, caption, replyText } = await buildVocabXPostText(bundle);
+  const { imageUrl, imageAlt } = await uploadBrandedImage(bundleId);
+
+  const queueItem = await enqueueGrammarXManual({
     tweetText,
     imageUrl,
     imageAlt,
@@ -110,8 +175,25 @@ export async function scheduleVocabXPost(input: {
     note: `vocab-infographic:${bundleId}`,
   });
 
+  await upsertVocabXPending({
+    bundleId,
+    title: bundle.title,
+    format: bundle.format,
+    priority: bundle.priority,
+    imageUrl,
+    imageAlt,
+    tweetText,
+    replyText,
+    captionLine1: caption.line1,
+    captionLine2: caption.line2,
+    forcePending: true,
+  });
+  // Mark approved with the queue we just created (avoid double enqueue).
+  await markVocabXApproved(bundleId, queueItem.id);
+
   scheduled[bundleId] = {
-    queueId: item.id,
+    queueId: queueItem.id,
+    reviewStatus: "approved",
     imageUrl,
     tweetText,
     caption,
@@ -123,7 +205,7 @@ export async function scheduleVocabXPost(input: {
   return {
     skipped: false as const,
     bundleId,
-    queueId: item.id,
+    queueId: queueItem.id,
     imageUrl,
     tweetText,
     caption,
@@ -131,7 +213,7 @@ export async function scheduleVocabXPost(input: {
   };
 }
 
-export async function autoQueueReadyVocabPosts() {
+export async function autoRegisterReadyVocabReviews() {
   const scheduled = loadScheduled();
   const ready = ALL_VOCAB_BUNDLES.filter((b) => {
     if (scheduled[b.id]) return false;
@@ -141,7 +223,7 @@ export async function autoQueueReadyVocabPosts() {
   const results = [];
   for (const bundle of ready) {
     try {
-      const r = await scheduleVocabXPost({ bundleId: bundle.id, skipIfScheduled: true });
+      const r = await registerVocabXForReview({ bundleId: bundle.id, skipIfRegistered: true });
       results.push(r);
     } catch (e) {
       results.push({
@@ -153,33 +235,46 @@ export async function autoQueueReadyVocabPosts() {
   return results;
 }
 
+/** @deprecated use autoRegisterReadyVocabReviews */
+export async function autoQueueReadyVocabPosts() {
+  return autoRegisterReadyVocabReviews();
+}
+
 function parseArgs(argv: string[]) {
   let bundleId = "";
   let auto = argv.includes("--auto");
+  let queueNow = argv.includes("--queue");
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]!;
     if (a.startsWith("--id=")) bundleId = a.slice("--id=".length);
     else if (a === "--id" && argv[i + 1]) bundleId = argv[++i]!;
     else if (a === "--auto") auto = true;
+    else if (a === "--queue") queueNow = true;
   }
-  return { bundleId, auto };
+  return { bundleId, auto, queueNow };
 }
 
 async function main() {
   await loadEnv();
-  const { bundleId, auto } = parseArgs(process.argv.slice(2));
+  const { bundleId, auto, queueNow } = parseArgs(process.argv.slice(2));
 
   if (auto) {
-    const results = await autoQueueReadyVocabPosts();
-    console.log(JSON.stringify({ ok: true, queued: results.length, results }, null, 2));
+    const results = await autoRegisterReadyVocabReviews();
+    console.log(JSON.stringify({ ok: true, registered: results.length, results }, null, 2));
     return;
   }
 
   if (!bundleId) {
-    throw new Error("Usage: --id BUNDLE_ID  |  --auto");
+    throw new Error("Usage: --id BUNDLE_ID [--queue]  |  --auto");
   }
 
-  const result = await scheduleVocabXPost({ bundleId });
+  if (queueNow) {
+    const result = await scheduleVocabXPost({ bundleId });
+    console.log(JSON.stringify({ ok: true, ...result }, null, 2));
+    return;
+  }
+
+  const result = await registerVocabXForReview({ bundleId });
   console.log(JSON.stringify({ ok: true, ...result }, null, 2));
 }
 

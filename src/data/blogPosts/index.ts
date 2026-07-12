@@ -42,6 +42,7 @@ const SLUG_LIST = [
   "how-to-understand-korean-dialects-bts-suga",
   "is-korean-hard-to-learn",
   "celebrities-speaking-korean-pronunciation-tips",
+  "jimin-busan-dialect-korean",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
@@ -58,6 +59,7 @@ const loaders: Record<
   "why-koreans-cant-speak-english-after-12-years": () => import("./content/why-koreans-cant-speak-english-after-12-years"),
   "good-korean-teacher-2026": () => import("./content/good-korean-teacher-2026"),
   "korean-verb-endings": () => import("./content/korean-verb-endings"),
+  "jimin-busan-dialect-korean": () => import("./content/jimin-busan-dialect-korean"),
   "celebrities-speaking-korean-pronunciation-tips": () => import("./content/celebrities-speaking-korean-pronunciation-tips"),
   "is-korean-hard-to-learn": () => import("./content/is-korean-hard-to-learn"),
   "how-to-understand-korean-dialects-bts-suga": () => import("./content/how-to-understand-korean-dialects-bts-suga"),

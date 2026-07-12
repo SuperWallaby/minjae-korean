@@ -35,6 +35,7 @@ import type { VocabQuizCommandId } from "@/lib/vocabQuiz/playbackCommands";
 import {
   MODE_KEY,
   SOUND_ENABLED_KEY,
+  VOCAB_QUIZ_SFX,
   type VocabQuizMode,
 } from "@/lib/vocabQuiz/constants";
 
@@ -232,14 +233,17 @@ export function VocabQuizClient() {
       setStudioShuffleTopImage(current?.imageUrl?.trim() || imgs[0]);
       setStudioShuffleImages(imgs);
       setStudioShuffleAnim(true);
+      void audio.unlock().then(() => {
+        void audio.playSfx(VOCAB_QUIZ_SFX.shuffle, { volume: 0.62 });
+      });
     }
 
     const startedAt = Date.now();
     await reshuffle();
 
     if (isStudio) {
-      // flip (~0.55s) + riffle (~1.55s)
-      const minMs = 2300;
+      // flip (~0.3s) + riffle (~1.55s)
+      const minMs = 1850;
       const wait = Math.max(0, minMs - (Date.now() - startedAt));
       if (wait > 0) {
         await new Promise((resolve) => setTimeout(resolve, wait));

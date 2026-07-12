@@ -8,6 +8,7 @@ export const VOCAB_QUIZ_SFX = {
   correct: "/audio/quiz/correct.wav",
   wrong: "/audio/quiz/wrong.wav",
   next: "/audio/quiz/next.wav",
+  shuffle: "/audio/quiz/shuffle.wav",
   countdown: [
     "/audio/quiz/countdown-1.wav",
     "/audio/quiz/countdown-2.wav",

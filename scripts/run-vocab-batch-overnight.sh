@@ -10,7 +10,8 @@ log "supervisor started"
 
 while true; do
   log "launching batch"
-  VOCAB_AUTO_QUEUE_X=1 npx tsx scripts/batch-generate-vocab-infographics.ts 2>&1 | tee -a "$OUT/batch-console.log" || true
+  # Register for admin X approval (do not auto-enqueue). Use VOCAB_AUTO_QUEUE_X=1 only to force-queue.
+  VOCAB_AUTO_REVIEW_X=1 npx tsx scripts/batch-generate-vocab-infographics.ts 2>&1 | tee -a "$OUT/batch-console.log" || true
 
   REMAINING=$(npx tsx -e "
     import { existsSync, readFileSync } from 'node:fs';

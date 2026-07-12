@@ -4,6 +4,7 @@ import {
   mergeDifficultyBucketCounts,
   normalizeDifficulty,
   pickTierByAdaptiveScore,
+  STUDIO_C_TIER_WEIGHT_SCALE,
 } from "./difficulty";
 import { isExcludedQuizTopic, queueEntryFromItem } from "./category";
 import { isStudioQuizItem } from "./store";
@@ -35,9 +36,13 @@ function weightedPickFromPool(
   correctCounts: Map<string, number>,
   adaptiveScore: number,
   fixedTier?: DifficultyTier,
+  studio?: boolean,
 ): KoreanQuizQueueEntry[] {
   const picked: KoreanQuizQueueEntry[] = [];
   const used = new Set<string>();
+  const tierOptions = studio
+    ? { cWeightScale: STUDIO_C_TIER_WEIGHT_SCALE }
+    : undefined;
 
   const weightOf = (item: KoreanQuizQueuePick) =>
     quizPickWeight({
@@ -47,7 +52,7 @@ function weightedPickFromPool(
     });
 
   while (picked.length < count && used.size < pool.length) {
-    const tier = fixedTier ?? pickTierByAdaptiveScore(adaptiveScore);
+    const tier = fixedTier ?? pickTierByAdaptiveScore(adaptiveScore, tierOptions);
 
     let candidates = pool.filter(
       (item) =>
@@ -153,6 +158,7 @@ export async function buildWeightedQueueEntries(params: {
     params.correctCounts,
     adaptiveScore,
     fixedTier,
+    params.studio,
   );
 }
 

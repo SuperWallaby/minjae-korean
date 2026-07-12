@@ -150,6 +150,15 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
     } catch (e) {
       log(`  ⚠ X queue skip (${bundle.id}): ${e instanceof Error ? e.message : e}`);
     }
+  } else if (process.env.VOCAB_AUTO_REVIEW_X === "1") {
+    try {
+      const { registerVocabXForReview } = await import("./vocab-x-schedule-post.ts");
+      const r = await registerVocabXForReview({ bundleId: bundle.id, skipIfRegistered: true });
+      if (r.skipped) log(`  ↷ X review skip (${bundle.id}): ${r.reason}`);
+      else log(`  📝 X review pending ${bundle.id} → ${r.reviewId}`);
+    } catch (e) {
+      log(`  ⚠ X review skip (${bundle.id}): ${e instanceof Error ? e.message : e}`);
+    }
   }
 
   await sleep(2000);

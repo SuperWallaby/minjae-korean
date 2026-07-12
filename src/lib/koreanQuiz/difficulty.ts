@@ -126,18 +126,31 @@ export function nextAdaptiveScore(current: number, correct: boolean): number {
 }
 
 /** At 50: equal weights. Toward 0: more A. Toward 100: more C. */
-export function tierWeightsFromAdaptiveScore(score: number): Record<DifficultyTier, number> {
+export function tierWeightsFromAdaptiveScore(
+  score: number,
+  options?: { cWeightScale?: number },
+): Record<DifficultyTier, number> {
   const clamped = clampAdaptiveScore(score);
   const t = (clamped - DEFAULT_ADAPTIVE_SCORE) / DEFAULT_ADAPTIVE_SCORE;
+  const cScale =
+    typeof options?.cWeightScale === "number" && Number.isFinite(options.cWeightScale)
+      ? Math.max(0, options.cWeightScale)
+      : 1;
   return {
     A: Math.max(MIN_TIER_WEIGHT, 1 - ADAPTIVE_TIER_SKEW * t),
     B: 1,
-    C: Math.max(MIN_TIER_WEIGHT, 1 + ADAPTIVE_TIER_SKEW * t),
+    C: Math.max(MIN_TIER_WEIGHT, (1 + ADAPTIVE_TIER_SKEW * t) * cScale),
   };
 }
 
-export function pickTierByAdaptiveScore(score: number): DifficultyTier {
-  const weights = tierWeightsFromAdaptiveScore(score);
+/** Studio mode: C-grade words appear about half as often. */
+export const STUDIO_C_TIER_WEIGHT_SCALE = 0.5;
+
+export function pickTierByAdaptiveScore(
+  score: number,
+  options?: { cWeightScale?: number },
+): DifficultyTier {
+  const weights = tierWeightsFromAdaptiveScore(score, options);
   const total = weights.A + weights.B + weights.C;
   let roll = Math.random() * total;
   for (const tier of DIFFICULTY_TIER_IDS) {

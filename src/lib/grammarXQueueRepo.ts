@@ -147,12 +147,74 @@ export async function cancelGrammarXQueueItem(id: string): Promise<boolean> {
 
 export async function claimNextGrammarXQueueItem(): Promise<GrammarXQueueItem | null> {
   const col = await queueCol();
+  // Prefer newly generated vocab infographics over legacy IG imports / other manuals.
+  const vocab = await col.findOneAndUpdate(
+    {
+      status: "queued",
+      note: { $regex: /^vocab-infographic:/ },
+    },
+    { $set: { status: "processing", updatedAt: nowIso() } },
+    { sort: { priority: 1, createdAt: 1 }, returnDocument: "after" },
+  );
+  if (vocab) return vocab;
+
   const doc = await col.findOneAndUpdate(
     { status: "queued" },
     { $set: { status: "processing", updatedAt: nowIso() } },
     { sort: { priority: 1, createdAt: 1 }, returnDocument: "after" },
   );
   return doc;
+}
+
+/** Cancel queued legacy Instagram-import posts so they don't block new vocab cards. */
+export async function cancelQueuedIgVocabPosts(): Promise<number> {
+  const col = await queueCol();
+  const result = await col.updateMany(
+    {
+      status: "queued",
+      note: { $regex: /^ig-vocab:/ },
+    },
+    { $set: { status: "cancelled", updatedAt: nowIso() } },
+  );
+  return result.modifiedCount;
+}
+
+/** Cancel queued vocab-infographic posts (pull back into review before auto-posting). */
+export async function cancelQueuedVocabInfographicPosts(): Promise<
+  Array<{ id: string; bundleId: string; tweetText: string; imageUrl: string; imageAlt: string; replyText?: string }>
+> {
+  const col = await queueCol();
+  const queued = await col
+    .find({
+      status: "queued",
+      note: { $regex: /^vocab-infographic:/ },
+    })
+    .toArray();
+
+  const pulled: Array<{
+    id: string;
+    bundleId: string;
+    tweetText: string;
+    imageUrl: string;
+    imageAlt: string;
+    replyText?: string;
+  }> = [];
+
+  for (const item of queued) {
+    const bundleId = (item.note ?? "").replace(/^vocab-infographic:/, "").trim();
+    if (!bundleId || !item.tweetText || !item.imageUrl) continue;
+    const ok = await cancelGrammarXQueueItem(item.id);
+    if (!ok) continue;
+    pulled.push({
+      id: item.id,
+      bundleId,
+      tweetText: item.tweetText,
+      imageUrl: item.imageUrl,
+      imageAlt: item.imageAlt || `${bundleId} — Korean vocabulary`,
+      replyText: item.replyText,
+    });
+  }
+  return pulled;
 }
 
 /** Revert claim when post fails before tweet goes out. */
