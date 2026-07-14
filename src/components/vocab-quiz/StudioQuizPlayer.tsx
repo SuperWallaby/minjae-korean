@@ -265,6 +265,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       setFlipDir("forward");
       setShowOptions(false);
       onShowOptionsChange?.(false);
+      onShowChosungHintChange?.(false);
       setChoices(shuffle(quiz.choices));
       setSelectedId(null);
       setFeedback({});
@@ -277,7 +278,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       shownAtRef.current = Date.now();
       if (quiz.imageUrl) audio.prefetch(quiz.imageUrl);
       if (quiz.answerTtsUrl) audio.prefetch(quiz.answerTtsUrl);
-    }, [audio, onShowOptionsChange, quiz]);
+    }, [audio, onShowChosungHintChange, onShowOptionsChange, quiz]);
 
     React.useEffect(() => {
       onShowOptionsChange?.(showOptions);
@@ -697,14 +698,13 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
             </div>
           </div>
 
-          {chosungVisible ? (
-            <p className={styles.studioChosungHint} aria-live="polite">
-              <span className={styles.studioChosungHintLabel}>초성</span>
-              <span className={styles.studioChosungHintText}>{chosungHint}</span>
-            </p>
-          ) : null}
           {english ? (
             <p className={styles.studioEnglishLabel}>{english}</p>
+          ) : null}
+          {chosungVisible ? (
+            <p className={styles.studioChosungHint} aria-live="polite">
+              <span className={styles.studioChosungHintText}>{chosungHint}</span>
+            </p>
           ) : null}
         </div>
 

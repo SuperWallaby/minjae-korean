@@ -18,6 +18,9 @@ export type VocabXReviewItem = {
   captionLine1?: string;
   captionLine2?: string;
   queueId?: string;
+  /** Admin “really good” shortlist. */
+  hearted?: boolean;
+  heartedAt?: string;
   createdAt: string;
   updatedAt: string;
   reviewedAt?: string;
@@ -37,6 +40,7 @@ async function col(): Promise<Collection<VocabXReviewItem>> {
       try {
         await collection.createIndex({ bundleId: 1 }, { unique: true });
         await collection.createIndex({ status: 1, createdAt: -1 });
+        await collection.createIndex({ hearted: 1, heartedAt: -1 });
       } catch {
         // ignore
       }
@@ -106,7 +110,28 @@ export async function upsertVocabXPending(
 export async function listVocabXReview(status?: VocabXReviewStatus): Promise<VocabXReviewItem[]> {
   const collection = await col();
   const filter = status ? { status } : {};
-  return collection.find(filter).sort({ createdAt: -1 }).limit(500).toArray();
+  const items = await collection.find(filter).sort({ createdAt: -1 }).limit(500).toArray();
+  // Hearted first, then newest
+  return items.sort((a, b) => {
+    const ah = a.hearted ? 1 : 0;
+    const bh = b.hearted ? 1 : 0;
+    if (ah !== bh) return bh - ah;
+    return String(b.createdAt).localeCompare(String(a.createdAt));
+  });
+}
+
+export async function listVocabXHearted(): Promise<VocabXReviewItem[]> {
+  const collection = await col();
+  return collection
+    .find({ hearted: true })
+    .sort({ heartedAt: -1, createdAt: -1 })
+    .limit(500)
+    .toArray();
+}
+
+export async function countVocabXHearted(): Promise<number> {
+  const collection = await col();
+  return collection.countDocuments({ hearted: true });
 }
 
 export async function countVocabXReviewByStatus(): Promise<Record<VocabXReviewStatus, number>> {
@@ -187,5 +212,34 @@ export async function reopenVocabXPending(
       $unset: { reviewedAt: "", queueId: "" },
     },
   );
+  return collection.findOne({ bundleId });
+}
+
+export async function setVocabXHearted(
+  bundleId: string,
+  hearted: boolean,
+): Promise<VocabXReviewItem | null> {
+  const collection = await col();
+  const now = nowIso();
+  if (hearted) {
+    await collection.updateOne(
+      { bundleId },
+      {
+        $set: {
+          hearted: true,
+          heartedAt: now,
+          updatedAt: now,
+        },
+      },
+    );
+  } else {
+    await collection.updateOne(
+      { bundleId },
+      {
+        $set: { hearted: false, updatedAt: now },
+        $unset: { heartedAt: "" },
+      },
+    );
+  }
   return collection.findOne({ bundleId });
 }

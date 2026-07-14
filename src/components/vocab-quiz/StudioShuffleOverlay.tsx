@@ -97,12 +97,6 @@ export function StudioShuffleOverlay({ topImage, images = [] }: Props) {
           ))
         )}
       </div>
-
-      <div className={styles.studioShuffleDots} aria-hidden>
-        <span />
-        <span />
-        <span />
-      </div>
     </div>
   );
 }

@@ -7,8 +7,11 @@ import {
   reopenVocabXReview,
 } from "@/lib/vocabXReviewActions";
 import {
+  countVocabXHearted,
   countVocabXReviewByStatus,
+  listVocabXHearted,
   listVocabXReview,
+  setVocabXHearted,
   type VocabXReviewStatus,
 } from "@/lib/vocabXReviewRepo";
 
@@ -25,15 +28,20 @@ export async function GET(req: NextRequest) {
 
   try {
     const statusParam = req.nextUrl.searchParams.get("status")?.trim();
+    const heartedOnly = statusParam === "hearted";
     const status =
       statusParam === "pending" || statusParam === "approved" || statusParam === "rejected"
         ? (statusParam as VocabXReviewStatus)
         : undefined;
-    const [items, counts] = await Promise.all([
-      listVocabXReview(status),
+    const [items, counts, heartedCount] = await Promise.all([
+      heartedOnly ? listVocabXHearted() : listVocabXReview(status),
       countVocabXReviewByStatus(),
+      countVocabXHearted(),
     ]);
-    return Response.json({ ok: true, data: { items, counts } });
+    return Response.json({
+      ok: true,
+      data: { items, counts: { ...counts, hearted: heartedCount } },
+    });
   } catch (error) {
     return Response.json(
       { ok: false, error: error instanceof Error ? error.message : String(error) },
@@ -55,6 +63,7 @@ export async function POST(req: NextRequest) {
     const body = (await req.json()) as {
       action?: string;
       bundleId?: string;
+      hearted?: boolean;
     };
     const action = body.action?.trim();
     const bundleId = body.bundleId?.trim();
@@ -74,9 +83,17 @@ export async function POST(req: NextRequest) {
       const item = await reopenVocabXReview(bundleId);
       return Response.json({ ok: true, data: { item } });
     }
+    if (action === "heart") {
+      const hearted = body.hearted !== false;
+      const item = await setVocabXHearted(bundleId, hearted);
+      if (!item) {
+        return Response.json({ ok: false, error: "not found" }, { status: 404 });
+      }
+      return Response.json({ ok: true, data: { item } });
+    }
 
     return Response.json(
-      { ok: false, error: "action must be approve | reject | reopen" },
+      { ok: false, error: "action must be approve | reject | reopen | heart" },
       { status: 400 },
     );
   } catch (error) {

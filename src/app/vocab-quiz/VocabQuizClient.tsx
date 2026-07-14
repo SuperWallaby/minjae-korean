@@ -284,6 +284,7 @@ export function VocabQuizClient() {
 
   React.useEffect(() => {
     setWordExplainOpen(false);
+    setStudioChosungOn(false);
   }, [current?.id]);
 
   return (
