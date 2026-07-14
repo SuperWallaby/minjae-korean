@@ -79,19 +79,32 @@ function descriptionFromEntry(entry) {
   return text.slice(0, 480);
 }
 
-/** Search-oriented alt text for Pinterest accessibility + discovery. */
-function altTextFromEntry(title, entry) {
-  const cap = entry.caption || {};
-  const line1 = String(cap.line1 || "").trim();
-  const topic = String(title || "")
-    .replace(/\s+in Korean$/i, "")
+/** Short alt text — core subject only (Pinterest prefers concise alt). */
+function altTextFromEntry(title, bundleId) {
+  let topic = String(title || "").trim();
+  // First clause only (drop caption-style tails after ?!.)
+  const head = topic
+    .split(/[?!.]/)[0]
+    .replace(/[^\w\s'/-]+/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
-  const parts = [
-    `Korean vocabulary infographic: ${title}.`,
-    line1 || `Learn ${topic || "Korean"} words with Hangul, English, and romanization.`,
-    "Korean language learning chart for beginners. Hangul vocabulary study pin.",
-  ];
-  return parts.filter(Boolean).join(" ").replace(/\s+/g, " ").trim().slice(0, 480);
+  if (head.length >= 4) topic = head;
+  topic = topic.replace(/\s+in Korean$/i, "").trim();
+
+  const tooHooky =
+    topic.length > 40 ||
+    /^(let'?s practice|want to|check out|start with|feeling|need to|learn how)\b/i.test(topic);
+  if (tooHooky) {
+    const fromId = String(bundleId || "")
+      .replace(/^(grid|list|ant|quiz)-/i, "")
+      .replace(/-/g, " ")
+      .trim();
+    if (fromId) topic = fromId;
+  }
+
+  topic = topic.slice(0, 56).trim();
+  if (!topic) topic = "Korean vocabulary";
+  return `${topic} — Korean vocab chart`.slice(0, 100);
 }
 
 /** Prefer a specific interest tag from the title; fall back to Korean language. */
@@ -243,11 +256,11 @@ async function main() {
     const title = titleFromEntry(bundleId, entry);
     const description = descriptionFromEntry(entry);
     const topic = topicFromTitle(title);
-    const alt = altTextFromEntry(title, entry);
+    const alt = altTextFromEntry(title, bundleId);
     console.log(`→ [${i + 1}/${candidates.length}] ${bundleId}`);
     console.log(`   title: ${title}`);
     console.log(`   topic: ${topic}`);
-    console.log(`   alt: ${alt.slice(0, 100)}…`);
+    console.log(`   alt: ${alt}`);
     console.log(`   desc: ${description.slice(0, 120).replace(/\n/g, " / ")}…`);
 
     if (dryRun) {

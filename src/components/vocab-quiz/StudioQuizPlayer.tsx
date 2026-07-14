@@ -4,6 +4,7 @@ import * as React from "react";
 import { RotateCcw } from "lucide-react";
 
 import type { KoreanQuizPrepared } from "@/lib/koreanQuiz/types";
+import { chosungHintFromLabel } from "@/lib/koreanQuiz/chosungHint";
 import { shuffle } from "@/lib/koreanQuiz/shuffle";
 import { VocabQuizAudio } from "@/lib/vocabQuiz/audio";
 import { VOCAB_QUIZ_SFX } from "@/lib/vocabQuiz/constants";
@@ -31,6 +32,7 @@ type DragOffset = {
 export type StudioQuizPlayerHandle = {
   skipToNext: () => void;
   toggleOptions: () => void;
+  toggleChosungHint: () => void;
 };
 
 type Props = {
@@ -42,6 +44,9 @@ type Props = {
   paused: boolean;
   onDone: (opts?: VocabQuizAdvanceOptions) => void;
   onShowOptionsChange?: (show: boolean) => void;
+  /** Session preference — survives card remounts when owned by parent. */
+  chosungHintOn?: boolean;
+  onShowChosungHintChange?: (show: boolean) => void;
 };
 
 function correctLabel(quiz: KoreanQuizPrepared): string {
@@ -194,6 +199,8 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       paused,
       onDone,
       onShowOptionsChange,
+      chosungHintOn = false,
+      onShowChosungHintChange,
     },
     ref,
   ) {
@@ -244,6 +251,13 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
     const interactionLocked =
       promoting || frozen || paused || showOptions || revealing || throwing || flipping;
     const english = quiz.illustrationEnglish?.trim();
+    const answerLabel = correctLabel(quiz);
+    const chosungHint = React.useMemo(
+      () => chosungHintFromLabel(answerLabel),
+      [answerLabel],
+    );
+    const chosungVisible =
+      chosungHintOn && !flipped && !flipping && Boolean(chosungHint);
 
     React.useEffect(() => {
       setFlipped(false);
@@ -273,6 +287,21 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       if (frozen || paused || promoting || revealing) return;
       setShowOptions((value) => !value);
     }, [frozen, paused, promoting, revealing]);
+
+    const toggleChosungHint = React.useCallback(() => {
+      if (frozen || paused || promoting || revealing || flipped) return;
+      if (!chosungHint) return;
+      onShowChosungHintChange?.(!chosungHintOn);
+    }, [
+      chosungHint,
+      chosungHintOn,
+      flipped,
+      frozen,
+      onShowChosungHintChange,
+      paused,
+      promoting,
+      revealing,
+    ]);
 
     React.useEffect(() => {
       if (paused) audio.pauseAll();
@@ -420,8 +449,9 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           handleSkip();
         },
         toggleOptions,
+        toggleChosungHint,
       }),
-      [handleSkip, toggleOptions],
+      [handleSkip, toggleChosungHint, toggleOptions],
     );
 
     React.useEffect(() => {
@@ -438,6 +468,11 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
             event.preventDefault();
             continueAfterReveal();
           }
+          return;
+        }
+        if (key === "h") {
+          event.preventDefault();
+          toggleChosungHint();
           return;
         }
         if (key === "0" || key === "o" || event.code === "Digit0" || event.code === "Numpad0") {
@@ -459,6 +494,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       promoting,
       revealing,
       showOptions,
+      toggleChosungHint,
       toggleOptions,
     ]);
 
@@ -661,6 +697,12 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
             </div>
           </div>
 
+          {chosungVisible ? (
+            <p className={styles.studioChosungHint} aria-live="polite">
+              <span className={styles.studioChosungHintLabel}>초성</span>
+              <span className={styles.studioChosungHintText}>{chosungHint}</span>
+            </p>
+          ) : null}
           {english ? (
             <p className={styles.studioEnglishLabel}>{english}</p>
           ) : null}

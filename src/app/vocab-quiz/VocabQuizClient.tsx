@@ -23,6 +23,7 @@ import {
   VocabQuizControls,
 } from "@/components/vocab-quiz/VocabQuizControls";
 import { AppStoreBadges } from "@/components/site/AppStoreBadges";
+import { ChosungHintIcon } from "@/components/vocab-quiz/ChosungHintIcon";
 import styles from "@/components/vocab-quiz/vocab-quiz.module.css";
 import { useVocabQuizQueue, type VocabQuizAdvanceOptions } from "@/hooks/useVocabQuizQueue";
 import { useQuizReviewFlags } from "@/hooks/useQuizReviewFlags";
@@ -80,6 +81,7 @@ export function VocabQuizClient() {
   >(undefined);
   const [studioShuffleAnim, setStudioShuffleAnim] = React.useState(false);
   const [studioOptionsOn, setStudioOptionsOn] = React.useState(false);
+  const [studioChosungOn, setStudioChosungOn] = React.useState(false);
   const [wordExplainOpen, setWordExplainOpen] = React.useState(false);
 
   const {
@@ -417,6 +419,28 @@ export function VocabQuizClient() {
             type="button"
             className={[
               styles.studioActionBtn,
+              studioChosungOn ? styles.studioHintBtnActive : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            disabled={!current || bootstrapping || reshuffling || studioShuffleAnim}
+            onClick={() => studioRef.current?.toggleChosungHint()}
+            aria-label={
+              studioChosungOn
+                ? "Hide initial consonant hint"
+                : "Show initial consonant hint"
+            }
+            aria-pressed={studioChosungOn}
+            title="초성 hint (H)"
+          >
+            <span className={styles.studioChosungIcon} aria-hidden>
+              <ChosungHintIcon size={20} />
+            </span>
+          </button>
+          <button
+            type="button"
+            className={[
+              styles.studioActionBtn,
               studioOptionsOn ? styles.studioHintBtnActive : "",
             ]
               .filter(Boolean)
@@ -543,6 +567,8 @@ export function VocabQuizClient() {
             paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
             onShowOptionsChange={setStudioOptionsOn}
+            chosungHintOn={studioChosungOn}
+            onShowChosungHintChange={setStudioChosungOn}
           />
         ) : (
           <ManualQuizPlayer

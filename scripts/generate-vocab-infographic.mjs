@@ -3,7 +3,7 @@
  * Generate sample vocab infographics via gpt-image-2 (generations only).
  *   npx tsx scripts/generate-vocab-infographic.mjs --sample 3
  */
-import { mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -14,8 +14,9 @@ import {
   STYLE_BASE,
   KAJA_ART_STYLE,
   KAJA_MASCOT,
-  buildImagePrompt,
   compositeFooter,
+  generateWithRetry,
+} from "./lib/vocab-infographic-gen.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, ".tmp", "vocab-infographic-gen");
@@ -113,8 +114,16 @@ CRITICAL: Do NOT highlight or mark the correct answer. All four options look equ
   },
 ];
 
+async function rebrandRaw(rawPath, logoPath) {
+  const base = rawPath.replace(/_raw\.png$/i, "");
+  const branded = await compositeFooter(readFileSync(rawPath), logoPath);
+  writeFileSync(`${base}.png`, branded);
+  return base.split("/").pop();
+}
+
 async function main() {
   const rebrandOnly = process.argv.includes("--rebrand");
+  const rebrandAll = process.argv.includes("--rebrand-all");
   const sampleN = (() => {
     const idx = process.argv.indexOf("--sample");
     if (idx >= 0 && process.argv[idx + 1]) return Math.max(1, parseInt(process.argv[idx + 1], 10) || 3);
@@ -124,12 +133,26 @@ async function main() {
   mkdirSync(OUT, { recursive: true });
   const logoPath = join(ROOT, LOGO_PATH);
 
+  if (rebrandAll) {
+    const raws = readdirSync(OUT)
+      .filter((f) => f.endsWith("_raw.png"))
+      .map((f) => join(OUT, f))
+      .sort();
+    console.log(`Rebranding ${raws.length} raw images (SNS-optimal → translucent footer, else extend)\n`);
+    let n = 0;
+    for (const rawPath of raws) {
+      const id = await rebrandRaw(rawPath, logoPath);
+      n += 1;
+      if (n % 25 === 0 || n === raws.length) console.log(`  ↺ ${n}/${raws.length} (last: ${id})`);
+    }
+    return;
+  }
+
   if (rebrandOnly) {
     for (const s of SAMPLES.slice(0, sampleN)) {
       const rawPath = join(OUT, `${s.id}_raw.png`);
       if (!existsSync(rawPath)) continue;
-      const branded = await compositeFooter(readFileSync(rawPath), logoPath);
-      writeFileSync(join(OUT, `${s.id}.png`), branded);
+      await rebrandRaw(rawPath, logoPath);
       console.log(`  ↺ rebranded ${s.id}.png`);
     }
     return;

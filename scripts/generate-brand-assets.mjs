@@ -44,6 +44,20 @@ async function resizeSquare(size) {
   return source.clone().resize(size, size, { fit: "cover" });
 }
 
+/** Keep circular avatar; make square corner background transparent. */
+async function circularPng(size) {
+  const r = size / 2;
+  const mask = await sharp(
+    Buffer.from(
+      `<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg"><circle cx="${r}" cy="${r}" r="${r}" fill="#fff"/></svg>`,
+    ),
+  )
+    .ensureAlpha()
+    .png()
+    .toBuffer();
+  return (await resizeSquare(size)).ensureAlpha().composite([{ input: mask, blend: "dest-in" }]);
+}
+
 console.log("Generating brand assets from logo-app.png...\n");
 
 await writePng(
@@ -54,11 +68,7 @@ await writePng(
 
 await writeWebp(await resizeSquare(80), path.join(BRAND, "logo.webp"), "navbar logo");
 await writeWebp(await resizeSquare(96), path.join(BRAND, "logo-v2.webp"), "logo v2");
-await writePng(
-  await resizeSquare(96),
-  path.join(BRAND, "logo-for-footer.png"),
-  "footer logo",
-);
+await writePng(await circularPng(96), path.join(BRAND, "logo-for-footer.png"), "footer logo");
 
 const iconSizes = [
   ["favicon-16x16.png", 16],

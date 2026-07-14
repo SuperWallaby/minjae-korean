@@ -39,6 +39,10 @@ Warm, friendly, professional edu-influencer aesthetic.
 NO website URLs, NO watermarks, NO @handles, NO logos, NO footer text anywhere in the image.
 Leave a clean empty footer band (about 10% height at bottom) completely blank for branding overlay.`;
 
+export function imageApiVersion() {
+  return process.env.AZURE_OPENAI_IMAGE_API_VERSION?.trim() || "2025-04-01-preview";
+}
+
 /** Square / IG 4:5 / Pinterest 2:3 / story — keep canvas size; use translucent overlay. */
 export function isSnsOptimalAspect(w, h) {
   if (!w || !h) return false;
@@ -229,48 +233,6 @@ export async function generateWithRetry(
       await sleep(wait);
     }
   }
-}
-
-export async function compositeFooter(basePng, logoPath) {
-  if (!existsSync(logoPath)) {
-    throw new Error(`Logo not found: ${logoPath}`);
-  }
-
-  const meta = await sharp(basePng).metadata();
-  const w = meta.width ?? 1024;
-  const h = meta.height ?? 1024;
-
-  const footerH = Math.round(h * 0.1);
-  const logoMaxH = Math.round(footerH * 0.7);
-  const logoBuf = await sharp(logoPath).resize({ height: logoMaxH, fit: "inside" }).png().toBuffer();
-  const logoMeta = await sharp(logoBuf).metadata();
-  const logoW = logoMeta.width ?? logoMaxH;
-
-  const label = FOOTER_TAGLINE;
-  const fontSize = Math.max(15, Math.round(footerH * 0.34));
-  const gap = Math.round(fontSize * 0.5);
-  const textW = Math.round(label.length * fontSize * 0.48);
-  const groupW = logoW + gap + textW;
-  const groupLeft = Math.round((w - groupW) / 2);
-  const logoTop = Math.round((footerH - logoMaxH) / 2);
-  const textY = Math.round(footerH * 0.68);
-
-  const logoB64 = logoBuf.toString("base64");
-  const footerSvg = `
-<svg width="${w}" height="${footerH}" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="rgba(255,252,248,0.96)"/>
-  <image href="data:image/png;base64,${logoB64}" x="${groupLeft}" y="${logoTop}" height="${logoMaxH}" width="${logoW}" preserveAspectRatio="xMidYMid meet"/>
-  <text x="${groupLeft + logoW + gap}" y="${textY}"
-    font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif"
-    font-size="${fontSize}"
-    font-weight="600"
-    fill="#374151">${label}</text>
-</svg>`;
-
-  return sharp(basePng)
-    .composite([{ input: Buffer.from(footerSvg), top: h - footerH, left: 0 }])
-    .png()
-    .toBuffer();
 }
 
 export function sizeForFormat(format) {
