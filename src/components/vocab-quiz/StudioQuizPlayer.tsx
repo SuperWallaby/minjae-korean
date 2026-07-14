@@ -207,6 +207,8 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
     const [flipped, setFlipped] = React.useState(false);
     const [flipping, setFlipping] = React.useState(false);
     const [flipDir, setFlipDir] = React.useState<"forward" | "back">("forward");
+    /** When 초성 hint is on, reveal the Korean answer in the hint slot (no card flip). */
+    const [inlineAnswer, setInlineAnswer] = React.useState(false);
     const [showOptions, setShowOptions] = React.useState(false);
     const [choices, setChoices] = React.useState(quiz.choices);
     const [selectedId, setSelectedId] = React.useState<string | null>(null);
@@ -256,13 +258,19 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       () => chosungHintFromLabel(answerLabel),
       [answerLabel],
     );
-    const chosungVisible =
-      chosungHintOn && !flipped && !flipping && Boolean(chosungHint);
+    const answerShownInSlot = inlineAnswer || revealing;
+    const hintSlotVisible =
+      chosungHintOn &&
+      !flipped &&
+      !flipping &&
+      Boolean(answerShownInSlot ? answerLabel : chosungHint);
+    const hintSlotText = answerShownInSlot ? answerLabel : chosungHint;
 
     React.useEffect(() => {
       setFlipped(false);
       setFlipping(false);
       setFlipDir("forward");
+      setInlineAnswer(false);
       setShowOptions(false);
       onShowOptionsChange?.(false);
       onShowChosungHintChange?.(false);
@@ -290,7 +298,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
     }, [frozen, paused, promoting, revealing]);
 
     const toggleChosungHint = React.useCallback(() => {
-      if (frozen || paused || promoting || revealing || flipped) return;
+      if (frozen || paused || promoting || revealing || flipped || inlineAnswer) return;
       if (!chosungHint) return;
       onShowChosungHintChange?.(!chosungHintOn);
     }, [
@@ -298,6 +306,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       chosungHintOn,
       flipped,
       frozen,
+      inlineAnswer,
       onShowChosungHintChange,
       paused,
       promoting,
@@ -383,14 +392,57 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       [advance, audio, interactionLocked],
     );
 
+    const revealInlineAnswer = React.useCallback(async () => {
+      if (
+        inlineAnswer ||
+        flipped ||
+        flipping ||
+        showOptions ||
+        promoting ||
+        frozen ||
+        paused
+      ) {
+        return;
+      }
+      if (!audio.isUnlocked()) await audio.unlock();
+      void audio.playSfx(VOCAB_QUIZ_SFX.click);
+      setInlineAnswer(true);
+      if (quiz.answerTtsUrl) {
+        void audio.playUrl(quiz.answerTtsUrl);
+      }
+    }, [
+      audio,
+      flipped,
+      flipping,
+      frozen,
+      inlineAnswer,
+      paused,
+      promoting,
+      quiz.answerTtsUrl,
+      showOptions,
+    ]);
+
     const handleTap = React.useCallback(() => {
       if (interactionLocked) return;
-      if (flipped) {
+      if (flipped || inlineAnswer) {
         throwAway(1, -0.2, 0.5);
         return;
       }
+      if (chosungHintOn && chosungHint) {
+        void revealInlineAnswer();
+        return;
+      }
       void flipForward();
-    }, [flipped, flipForward, interactionLocked, throwAway]);
+    }, [
+      chosungHint,
+      chosungHintOn,
+      flipped,
+      flipForward,
+      inlineAnswer,
+      interactionLocked,
+      revealInlineAnswer,
+      throwAway,
+    ]);
 
     const handleSkip = React.useCallback(() => {
       if (interactionLocked) return;
@@ -625,9 +677,11 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
               }
             }}
             aria-label={
-              flipped
+              flipped || inlineAnswer
                 ? "Go to next card — or use the corner button to flip back"
-                : "Flip card to see Korean answer — swipe or throw to skip"
+                : chosungHintOn
+                  ? "Reveal Korean answer below — swipe or throw to skip"
+                  : "Flip card to see Korean answer — swipe or throw to skip"
             }
           >
             <div className={stackClass}>
@@ -701,9 +755,18 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           {english ? (
             <p className={styles.studioEnglishLabel}>{english}</p>
           ) : null}
-          {chosungVisible ? (
+          {hintSlotVisible ? (
             <p className={styles.studioChosungHint} aria-live="polite">
-              <span className={styles.studioChosungHintText}>{chosungHint}</span>
+              <span
+                className={[
+                  styles.studioChosungHintText,
+                  answerShownInSlot ? styles.studioChosungHintTextAnswer : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                {hintSlotText}
+              </span>
             </p>
           ) : null}
         </div>

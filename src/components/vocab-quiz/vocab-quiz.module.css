@@ -1107,6 +1107,11 @@
     sans-serif;
 }
 
+.studioChosungHintTextAnswer {
+  letter-spacing: 0.04em;
+  -webkit-text-stroke: 0.2px currentColor;
+}
+
 .studioChosungIcon {
   display: inline-flex;
   align-items: center;
