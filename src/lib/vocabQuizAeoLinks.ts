@@ -12,7 +12,8 @@ export type VocabQuizUtmSource =
   | "home"
   | "newsletter"
   | "vocab-quiz"
-  | "hub";
+  | "hub"
+  | "when-to-use";
 
 /** Queries to spot-check in Google / Perplexity after publishing AEO posts. */
 export const VOCAB_QUIZ_AEO_SMOKE_QUERIES = [
@@ -26,6 +27,7 @@ export const VOCAB_QUIZ_AEO_SMOKE_QUERIES = [
   "picture Korean vocabulary quiz",
   "human made Korean quizzes",
   "Korean vocab practice for commute",
+  "when to use in Korean",
 ] as const;
 
 export function withVocabQuizUtm(
@@ -49,8 +51,10 @@ export function withVocabQuizUtm(
 }
 
 export function vocabQuizPlayPath(content?: string): string {
+  const source: VocabQuizUtmSource =
+    content?.startsWith("when-to-use") ? "when-to-use" : content ? "blog" : "hub";
   return withVocabQuizUtm("/vocab-quiz", {
-    source: content ? "blog" : "hub",
+    source,
     content,
   });
 }
