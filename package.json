@@ -36,6 +36,7 @@
     "generate-grammar-how-to-say-batch": "npx tsx scripts/generate-grammar-guide-data.ts --type how-to-say --batch-file scripts/data/grammar-how-to-say-batch.txt",
     "vocab-quiz-aeo-smoke": "npx tsx scripts/vocab-quiz-aeo-smoke.ts",
     "when-to-use:pipeline": "npx tsx scripts/when-to-use-pipeline.ts",
+    "vocab-compare:pipeline": "npx tsx scripts/vocab-compare-pipeline.ts",
     "generate-grammar-batch": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100.txt",
     "generate-grammar-batch-2": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-2.txt",
     "generate-grammar-batch-3": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-3.txt",

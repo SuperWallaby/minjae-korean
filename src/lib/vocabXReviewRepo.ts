@@ -243,3 +243,19 @@ export async function setVocabXHearted(
   }
   return collection.findOne({ bundleId });
 }
+
+export async function setVocabXImageUrl(
+  bundleId: string,
+  imageUrl: string,
+): Promise<VocabXReviewItem | null> {
+  const url = imageUrl.trim();
+  if (!url) return null;
+  const collection = await col();
+  const now = nowIso();
+  const result = await collection.updateOne(
+    { bundleId },
+    { $set: { imageUrl: url, updatedAt: now } },
+  );
+  if (!result.matchedCount) return null;
+  return collection.findOne({ bundleId });
+}

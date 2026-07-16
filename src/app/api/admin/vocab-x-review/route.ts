@@ -12,6 +12,7 @@ import {
   listVocabXHearted,
   listVocabXReview,
   setVocabXHearted,
+  setVocabXImageUrl,
   type VocabXReviewStatus,
 } from "@/lib/vocabXReviewRepo";
 
@@ -64,6 +65,7 @@ export async function POST(req: NextRequest) {
       action?: string;
       bundleId?: string;
       hearted?: boolean;
+      imageUrl?: string;
     };
     const action = body.action?.trim();
     const bundleId = body.bundleId?.trim();
@@ -91,9 +93,20 @@ export async function POST(req: NextRequest) {
       }
       return Response.json({ ok: true, data: { item } });
     }
+    if (action === "replaceImage") {
+      const imageUrl = body.imageUrl?.trim();
+      if (!imageUrl) {
+        return Response.json({ ok: false, error: "imageUrl required" }, { status: 400 });
+      }
+      const item = await setVocabXImageUrl(bundleId, imageUrl);
+      if (!item) {
+        return Response.json({ ok: false, error: "not found" }, { status: 404 });
+      }
+      return Response.json({ ok: true, data: { item } });
+    }
 
     return Response.json(
-      { ok: false, error: "action must be approve | reject | reopen | heart" },
+      { ok: false, error: "action must be approve | reject | reopen | heart | replaceImage" },
       { status: 400 },
     );
   } catch (error) {

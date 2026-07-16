@@ -19,6 +19,13 @@ export type WordExplanationExample = {
   ttsR2Key?: string;
 };
 
+export type WordExplanationComparison = {
+  korean: string;
+  english: string;
+  contrast: string;
+  quizId?: string;
+};
+
 export type KoreanQuizItem = {
   id: string;
   type?: KoreanQuizType;
@@ -52,6 +59,11 @@ export type KoreanQuizItem = {
   wordExplanation?: string;
   wordExplanationExamples?: WordExplanationExample[];
   wordExplanationGeneratedAt?: string;
+  /** Cached similar-word contrasts from the quiz app explanation sheet. */
+  wordExplanationComparisons?: WordExplanationComparison[];
+  wordExplanationComparisonsGeneratedAt?: string;
+  /** Semantic vector used for related-word / compare matching. */
+  meaningEmbedding?: number[];
 };
 
 export type KoreanQuizQueueEntry = {

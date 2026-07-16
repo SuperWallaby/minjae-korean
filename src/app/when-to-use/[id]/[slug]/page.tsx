@@ -8,7 +8,9 @@ import {
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
 import { WhenToUseArticle } from "@/components/when-to-use/WhenToUseArticle";
+import { WhenToUseRelated } from "@/components/when-to-use/WhenToUseRelated";
 import { SITE_NAME } from "@/lib/siteBrand";
+import { listRelatedVocabForQuiz } from "@/lib/vocabCompare/repo";
 import {
   getWhenToUsePageById,
   listTopWhenToUseForStaticParams,
@@ -100,6 +102,7 @@ export default async function WhenToUseDetailPage({ params }: Props) {
   const faqJsonLd = buildWhenToUseFaqJsonLd(page, canonical);
   const articleJsonLd = buildWhenToUseArticleJsonLd(page, canonical);
   const breadcrumbJsonLd = buildWhenToUseBreadcrumbJsonLd(page, baseUrl, canonical);
+  const related = await listRelatedVocabForQuiz(page.id, 6);
 
   return (
     <MarketingPage containerClassName="max-w-3xl">
@@ -124,8 +127,9 @@ export default async function WhenToUseDetailPage({ params }: Props) {
               { label: page.titleEn },
             ]}
           />
-          <div className="mt-6">
+          <div className="mt-6 space-y-10">
             <WhenToUseArticle page={page} />
+            <WhenToUseRelated items={related} />
           </div>
         </MarketingShellBody>
       </MarketingShell>

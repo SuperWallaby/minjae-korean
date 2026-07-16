@@ -109,6 +109,14 @@ async function main() {
   console.log("  - Detail pages ship Article + FAQ + Breadcrumb JSON-LD");
   console.log("  - Hero image uses illustrationEnglish (or gloss) as alt");
   console.log("  - Do not regenerate explanations here — use korean-quiz backfill if missing\n");
+
+  try {
+    const { closeMongoClient } = await import("../src/lib/mongo");
+    await closeMongoClient();
+  } catch {
+    // no client opened
+  }
+  process.exit(0);
 }
 
 main().catch((error) => {

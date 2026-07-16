@@ -4,10 +4,33 @@ import {
   captionLinesFromTweetBody,
   fallbackVocabTweetBody,
   finalizeVocabXTweet,
+  needsLineBreakRepair,
   pickVocabXTweetStyle,
+  supportingCaptionFromTweet,
+  unescapeLiteralNewlines,
   type VocabCaptionLines,
   type VocabXTweetStyle,
 } from "@/lib/vocabXTweet";
+
+function azureChatConfig(): {
+  endpoint: string;
+  apiKey: string;
+  deployment: string;
+  apiVersion: string;
+  url: string;
+} | null {
+  const endpoint = process.env.AZURE_OPENAI_ENDPOINT?.trim().replace(/\/+$/, "");
+  const apiKey = process.env.AZURE_OPENAI_API_KEY?.trim();
+  const deployment =
+    process.env.AZURE_OPENAI_CHAT_DEPLOYMENTS?.split(",")[0]?.trim() ||
+    process.env.AZURE_OPENAI_DEPLOYMENT_CHAT?.trim() ||
+    process.env.AZURE_OPENAI_DEPLOYMENT?.trim() ||
+    "trx-gpt-4-1-mini";
+  const apiVersion = process.env.AZURE_OPENAI_API_VERSION?.trim() || "2024-08-01-preview";
+  if (!endpoint || !apiKey) return null;
+  const url = `${endpoint}/openai/deployments/${encodeURIComponent(deployment)}/chat/completions?api-version=${encodeURIComponent(apiVersion)}`;
+  return { endpoint, apiKey, deployment, apiVersion, url };
+}
 
 function stylePromptBlock(style: VocabXTweetStyle): string {
   if (style === "quiz") {
@@ -29,8 +52,8 @@ Write like this tone:
 Use fandom / drama / daily K-life situations. Light meme energy, not a textbook.`;
   }
   return `STYLE = practical (real-life usefulness)
-Write like this tone:
-Use "붐비다" when you're stuck in a crowded subway, and "텅 비다" when your wallet is completely empty. 💸😂
+Write like this tone (newlines matter — blank line before bullets and before the closing question):
+Use these when you're stuck on the subway 👇
 
 🔴 붐비다 [bumbida] - Crowded
 🔵 텅 비다 [teong bida] - Empty
@@ -39,19 +62,27 @@ What's the subway like in your country right now? 🚇
 Easy English. Concrete situations. End with a light question.`;
 }
 
+function parseTweetBodyJson(raw: string): string | null {
+  try {
+    const parsed = JSON.parse(raw) as { tweetBody?: string; line1?: string; line2?: string };
+    if (parsed.tweetBody?.trim()) {
+      return unescapeLiteralNewlines(parsed.tweetBody.trim());
+    }
+    if (parsed.line1?.trim() && parsed.line2?.trim()) {
+      return `${parsed.line1.trim()}\n${parsed.line2.trim()}`;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 async function azureTweetBody(
   bundle: VocabBundle,
   style: VocabXTweetStyle,
 ): Promise<string | null> {
-  const endpoint = process.env.AZURE_OPENAI_ENDPOINT?.trim().replace(/\/+$/, "");
-  const apiKey = process.env.AZURE_OPENAI_API_KEY?.trim();
-  const deployment =
-    process.env.AZURE_OPENAI_CHAT_DEPLOYMENTS?.split(",")[0]?.trim() ||
-    process.env.AZURE_OPENAI_DEPLOYMENT_CHAT?.trim() ||
-    process.env.AZURE_OPENAI_DEPLOYMENT?.trim() ||
-    "trx-gpt-4-1-mini";
-  const apiVersion = process.env.AZURE_OPENAI_API_VERSION?.trim() || "2024-08-01-preview";
-  if (!endpoint || !apiKey) return null;
+  const cfg = azureChatConfig();
+  if (!cfg) return null;
 
   const preview = bundle.preview?.slice(0, 6).join(", ") || "";
   const quizHint =
@@ -74,7 +105,17 @@ HARD RULES:
 - For list/grid topics: show at most 2–3 example words, then point to the image for the rest.
 - For quiz: do NOT paste all 4 options in the tweet if it gets long — one question + "look at the picture / reply below" is enough.
 - Snackable: one hook, clear contrast or quiz prompt, invite engagement.
-- Tone: light & useful — mix study account + soft meme, not stiff textbook.`;
+- Tone: light & useful — mix study account + soft meme, not stiff textbook.
+- LINE BREAKS (important for mobile X):
+  Use real newline characters in tweetBody (JSON string with \\n is fine).
+  Structure exactly:
+    1) hook line(s)
+    2) blank line
+    3) 2–3 bullet lines (one word per line, emoji prefix)
+    4) blank line
+    5) one short CTA / question
+  Do NOT dump hook + bullets + CTA into one paragraph.
+  Do NOT put a blank line between every single bullet — bullets stay consecutive.`;
 
   const user = `Topic: ${bundle.title}
 Format: ${bundle.format}
@@ -84,10 +125,9 @@ ${preview ? `Sample words: ${preview}` : ""}
 ${quizHint}
 The post includes an infographic image — refer to it lightly ("look at the picture") when helpful.`;
 
-  const url = `${endpoint}/openai/deployments/${encodeURIComponent(deployment)}/chat/completions?api-version=${encodeURIComponent(apiVersion)}`;
-  const res = await fetch(url, {
+  const res = await fetch(cfg.url, {
     method: "POST",
-    headers: { "Content-Type": "application/json", "api-key": apiKey },
+    headers: { "Content-Type": "application/json", "api-key": cfg.apiKey },
     body: JSON.stringify({
       messages: [
         { role: "system", content: system },
@@ -104,17 +144,55 @@ The post includes an infographic image — refer to it lightly ("look at the pic
 
   const raw = data?.choices?.[0]?.message?.content;
   if (!raw) return null;
-  try {
-    const parsed = JSON.parse(raw) as { tweetBody?: string; line1?: string; line2?: string };
-    if (parsed.tweetBody?.trim()) return parsed.tweetBody.trim();
-    // Back-compat if model returns old shape
-    if (parsed.line1?.trim() && parsed.line2?.trim()) {
-      return `${parsed.line1.trim()}\n${parsed.line2.trim()}`;
-    }
-    return null;
-  } catch {
-    return null;
-  }
+  return parseTweetBodyJson(raw);
+}
+
+/**
+ * Second pass: when the first draft is one paragraph, ask the model to
+ * re-layout the SAME content with hook / bullets / CTA newlines.
+ */
+async function azureRepairTweetLineBreaks(blob: string): Promise<string | null> {
+  const cfg = azureChatConfig();
+  if (!cfg) return null;
+
+  const system = `You fix X (Twitter) Korean-learning captions that were written as one dense paragraph.
+Return JSON only: {"tweetBody":"..."}
+
+Keep the SAME meaning, Hangul words, glosses, and question — do not invent new vocab.
+Reorder lightly only if needed for the layout. NO hashtags, NO URLs.
+Max ~200 characters. Prefer short.
+
+Use real newline characters in tweetBody. Structure exactly:
+1) hook line(s)
+2) blank line
+3) 2–3 bullet lines (one word/phrase per line, emoji prefix like 🔴 🔵 🟢)
+4) blank line
+5) one short CTA / question
+
+If the blob lists words inline with commas ("A (…), B (…), C (…)"), split each onto its own bullet line.
+Do NOT return another single-paragraph blob.`;
+
+  const user = `Reformat this caption with proper line breaks:\n\n${blob}`;
+
+  const res = await fetch(cfg.url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "api-key": cfg.apiKey },
+    body: JSON.stringify({
+      messages: [
+        { role: "system", content: system },
+        { role: "user", content: user },
+      ],
+      temperature: 0.2,
+      max_completion_tokens: 280,
+      response_format: { type: "json_object" },
+    }),
+    signal: AbortSignal.timeout(60_000),
+  });
+  const data = await res.json().catch(() => null);
+  if (!res.ok) return null;
+  const raw = data?.choices?.[0]?.message?.content;
+  if (!raw) return null;
+  return parseTweetBodyJson(raw);
 }
 
 export async function buildVocabXPostText(bundle: VocabBundle): Promise<{
@@ -124,10 +202,26 @@ export async function buildVocabXPostText(bundle: VocabBundle): Promise<{
   style: VocabXTweetStyle;
 }> {
   const style = pickVocabXTweetStyle(bundle);
-  const body =
+  let body =
     (await azureTweetBody(bundle, style)) ?? fallbackVocabTweetBody(bundle, style);
+
+  if (needsLineBreakRepair(body)) {
+    const repaired = await azureRepairTweetLineBreaks(body);
+    if (repaired && !needsLineBreakRepair(repaired)) {
+      body = repaired;
+    } else if (repaired && repaired.includes("\n")) {
+      // Partial improvement still better than a single blob.
+      body = repaired;
+    }
+    // If repair fails, keep original / fallback — finalize still clamps safely.
+  }
+
   const tweetText = finalizeVocabXTweet(body, style);
-  const caption = captionLinesFromTweetBody(body);
+  // Store supporting lines only — do not repeat the tweet hook (pin title).
+  const caption = supportingCaptionFromTweet(
+    tweetText,
+    captionLinesFromTweetBody(body),
+  );
   const replyText =
     bundle.format === "quiz_comment" && bundle.quiz
       ? buildQuizAnswerReply(bundle.quiz)

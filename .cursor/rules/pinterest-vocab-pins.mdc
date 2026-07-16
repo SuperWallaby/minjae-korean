@@ -1,0 +1,19 @@
+---
+description: Pinterest uploads use X vocab images — never format4 video pins
+alwaysApply: true
+---
+
+# Pinterest uploads
+
+When the user asks to upload/register Pinterest pins (especially “25개”, “핀 등록”, nightly):
+
+- **Correct command**: in `korean-teacher-mj`, run `./scripts/pin-vocab-batch.sh 25`
+  - Source: X 승인대기 보캡 이미지 (`.tmp/vocab-infographic-gen/`, `vocab-x-scheduled.json`)
+  - Board default: `Korean words`
+- **Do NOT** run `auto-video-korean` `./scripts/pin-batch.sh` / `npm run pin` for this — that path is GPU **format4/format8 video** pins and is deprecated for format4.
+
+## Title / description
+
+- Pin **title** = tweet first line
+- Pin **description** = `caption.line1` / `line2` only when they do **not** repeat the title
+- Stored `caption` must not duplicate the tweet hook (`supportingCaptionFromTweet`)

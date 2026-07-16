@@ -11,9 +11,14 @@ const dbName = () => process.env.MONGODB_DB?.trim() || "";
 
 type GlobalWithMongo = typeof globalThis & {
   __mjMongoClientPromise?: Promise<MongoClient>;
+  __mjMongoShutdownRegistered?: boolean;
 };
 
+let closingPromise: Promise<void> | null = null;
+
 export async function getMongoClient(): Promise<MongoClient> {
+  registerMongoShutdownHandlers();
+
   const g = globalThis as GlobalWithMongo;
   if (!g.__mjMongoClientPromise) {
     const client = new MongoClient(uri(), {
@@ -32,3 +37,53 @@ export async function getMongoDb() {
   return client.db(); // use db from connection string
 }
 
+/** Close the shared Mongo client (safe to call multiple times). */
+export async function closeMongoClient(): Promise<void> {
+  const g = globalThis as GlobalWithMongo;
+  const promise = g.__mjMongoClientPromise;
+  if (!promise) return;
+
+  if (closingPromise) {
+    await closingPromise;
+    return;
+  }
+
+  closingPromise = (async () => {
+    g.__mjMongoClientPromise = undefined;
+    try {
+      const client = await promise;
+      await client.close();
+    } catch (error) {
+      console.warn(
+        "[mongo] close failed:",
+        error instanceof Error ? error.message : error,
+      );
+    } finally {
+      closingPromise = null;
+    }
+  })();
+
+  await closingPromise;
+}
+
+/** Attach process listeners once (no-op on Edge). */
+export function registerMongoShutdownHandlers(): void {
+  const g = globalThis as GlobalWithMongo;
+  if (g.__mjMongoShutdownRegistered) return;
+  if (typeof process === "undefined" || typeof process.on !== "function") {
+    return;
+  }
+  if (process.env.NEXT_RUNTIME === "edge") return;
+
+  g.__mjMongoShutdownRegistered = true;
+
+  const shutdown = () => {
+    void closeMongoClient();
+  };
+
+  // Do not process.exit here — Next.js / the host own the lifecycle.
+  // Closing the client drops TCP keep-alives so the process can exit cleanly.
+  process.on("SIGINT", shutdown);
+  process.on("SIGTERM", shutdown);
+  process.on("beforeExit", shutdown);
+}

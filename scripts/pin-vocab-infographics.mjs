@@ -69,11 +69,29 @@ function titleFromEntry(bundleId, entry) {
   return bundleId.replace(/-/g, " ").slice(0, 100);
 }
 
-function descriptionFromEntry(entry) {
+function descriptionFromEntry(entry, title = "") {
   const cap = entry.caption || {};
   const line1 = String(cap.line1 || "").trim();
   const line2 = String(cap.line2 || "").trim();
-  const body = [line1, line2].filter(Boolean).join("\n\n");
+  const titleNorm = String(title || "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+
+  const parts = [];
+  for (const line of [line1, line2]) {
+    if (!line) continue;
+    const norm = line.replace(/\s+/g, " ").toLowerCase();
+    // Skip lines that repeat the pin title (Pinterest shows title + description).
+    if (titleNorm && (norm === titleNorm || titleNorm.startsWith(norm) || norm.startsWith(titleNorm))) {
+      continue;
+    }
+    // Also skip exact duplicates of an already-kept line.
+    if (parts.some((p) => p.replace(/\s+/g, " ").toLowerCase() === norm)) continue;
+    parts.push(line);
+  }
+
+  const body = parts.join("\n\n");
   const tags = "#koreanvocab #learnkorean #kajakorean #한국어";
   const text = body ? `${body}\n\n${tags}` : tags;
   return text.slice(0, 480);
@@ -254,7 +272,7 @@ async function main() {
     const entry = scheduled[bundleId];
     const media = path.join(OUT, `${bundleId}.png`);
     const title = titleFromEntry(bundleId, entry);
-    const description = descriptionFromEntry(entry);
+    const description = descriptionFromEntry(entry, title);
     const topic = topicFromTitle(title);
     const alt = altTextFromEntry(title, bundleId);
     console.log(`→ [${i + 1}/${candidates.length}] ${bundleId}`);

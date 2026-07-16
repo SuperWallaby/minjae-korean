@@ -31,7 +31,7 @@ function r2Client() {
   });
 }
 
-const MAX_BYTES = 8 * 1024 * 1024;
+const MAX_BYTES = 32 * 1024 * 1024;
 
 export async function POST(req: NextRequest) {
   const auth = requireAdminKey(req);
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       return Response.json({ ok: false, error: "Missing file" }, { status: 400 });
     }
     if (file.size > MAX_BYTES) {
-      return Response.json({ ok: false, error: "File too large (max 8MB)" }, { status: 400 });
+      return Response.json({ ok: false, error: "File too large (max 32MB)" }, { status: 400 });
     }
 
     const mimeType = file.type || "image/jpeg";
@@ -54,11 +54,13 @@ export async function POST(req: NextRequest) {
       return Response.json({ ok: false, error: "Images only" }, { status: 400 });
     }
 
-    const ext = mimeType.includes("png")
-      ? "png"
-      : mimeType.includes("webp")
-        ? "webp"
-        : "jpg";
+    const ext = mimeType.includes("gif")
+      ? "gif"
+      : mimeType.includes("png")
+        ? "png"
+        : mimeType.includes("webp")
+          ? "webp"
+          : "jpg";
     const key = `grammar-x/manual/${Date.now()}-${sanitizeFileName(file.name)}.${ext}`;
     const buffer = Buffer.from(await file.arrayBuffer());
 
