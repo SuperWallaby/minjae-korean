@@ -109,6 +109,14 @@ export type KoreanQuizPreparedChoice = {
   english: string;
 };
 
+/** First usable example sentence for the answer word (reveal card). */
+export type KoreanQuizPreparedExample = {
+  index: number;
+  korean: string;
+  english: string;
+  ttsUrl?: string;
+};
+
 export type KoreanQuizPrepared = {
   id: string;
   type: KoreanQuizType;
@@ -122,6 +130,8 @@ export type KoreanQuizPrepared = {
   illustrationEnglish?: string;
   /** Bracketed pronunciation shown below Korean answer on reveal. */
   romanization?: string;
+  /** Representative example for the reveal screen (from wordExplanationExamples). */
+  example?: KoreanQuizPreparedExample;
 };
 
 export type KoreanQuizQueueResponse = {

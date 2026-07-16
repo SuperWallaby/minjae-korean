@@ -13,6 +13,7 @@ import type { VocabQuizAdvanceOptions } from "@/hooks/useVocabQuizQueue";
 import styles from "./vocab-quiz.module.css";
 import { VocabQuizHeader, VocabQuizImage } from "./VocabQuizShared";
 import { ChoiceLabelWithEnglish } from "./ChoiceLabelWithEnglish";
+import { AnswerExampleCard } from "./AnswerExampleCard";
 
 type ChoiceFeedback = "none" | "correct" | "wrong";
 
@@ -27,10 +28,14 @@ type Props = {
   frozen: boolean;
   paused: boolean;
   onDone: (opts?: VocabQuizAdvanceOptions) => void;
+  onSeeDetails?: () => void;
 };
 
 export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
-  function ManualQuizPlayer({ quiz, deviceId, audio, frozen, paused, onDone }, ref) {
+  function ManualQuizPlayer(
+    { quiz, deviceId, audio, frozen, paused, onDone, onSeeDetails },
+    ref,
+  ) {
     const [choices, setChoices] = React.useState(quiz.choices);
     const [selectedId, setSelectedId] = React.useState<string | null>(null);
     const [feedback, setFeedback] = React.useState<Record<string, ChoiceFeedback>>({});
@@ -136,6 +141,11 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
       .filter(Boolean)
       .join(" ");
 
+    // After reveal: keep only the correct option (drop distractors).
+    const visibleChoices = revealing
+      ? choices.filter((choice) => choice.id === quiz.correctChoiceId)
+      : choices;
+
     return (
       <button
         type="button"
@@ -166,7 +176,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
             onClick={(e) => e.stopPropagation()}
             onKeyDown={(e) => e.stopPropagation()}
           >
-            {choices.map((choice) => {
+            {visibleChoices.map((choice) => {
               const state = feedback[choice.id] ?? "none";
               const className = [
                 styles.choiceBtn,
@@ -180,7 +190,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
 
               const showSpeak =
                 revealing &&
-                state === "correct" &&
+                choice.id === quiz.correctChoiceId &&
                 Boolean(quiz.answerTtsUrl);
 
               return (
@@ -216,6 +226,15 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
               );
             })}
           </div>
+
+          {revealing && quiz.example && onSeeDetails ? (
+            <AnswerExampleCard
+              quizId={quiz.id}
+              example={quiz.example}
+              audio={audio}
+              onSeeDetails={onSeeDetails}
+            />
+          ) : null}
 
           {revealing ? (
             <div className={styles.manualRevealFooter} aria-hidden>

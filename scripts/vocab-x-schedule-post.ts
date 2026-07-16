@@ -14,6 +14,7 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
 import { ALL_VOCAB_BUNDLES } from "../src/lib/vocabInfographic/bundle-catalog.ts";
 import { buildVocabXPostText } from "../src/lib/vocabXCaption.ts";
+import { resolveVocabImageWords } from "../src/lib/vocabImageWords.ts";
 import { enqueueGrammarXManual } from "../src/lib/grammarXQueueRepo";
 import { markVocabXApproved, upsertVocabXPending } from "../src/lib/vocabXReviewRepo";
 
@@ -21,6 +22,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = path.join(ROOT, ".tmp", "vocab-infographic-gen");
 const SCHEDULED_PATH = path.join(OUT, "vocab-x-scheduled.json");
+
+async function imageWordsForBundle(
+  bundleId: string,
+  imageUrl?: string,
+) {
+  const bundle = findBundle(bundleId);
+  const imagePath = path.join(OUT, `${bundleId}.png`);
+  return resolveVocabImageWords({
+    bundle,
+    cacheDir: OUT,
+    imagePath: fs.existsSync(imagePath) ? imagePath : undefined,
+    imageUrl,
+  });
+}
 
 async function loadEnv() {
   const { loadEnvLocal } = await import("./lib/env_local.mjs");
@@ -113,8 +128,11 @@ export async function registerVocabXForReview(input: {
     return { skipped: true as const, bundleId, reason: "already_scheduled" as const };
   }
 
-  const { tweetText, caption, replyText } = await buildVocabXPostText(bundle);
   const { imageUrl, imageAlt } = await uploadBrandedImage(bundleId);
+  const imagePayload = await imageWordsForBundle(bundleId, imageUrl);
+  const { tweetText, caption, replyText } = await buildVocabXPostText(bundle, {
+    imageWords: imagePayload.words,
+  });
 
   const item = await upsertVocabXPending({
     bundleId,
@@ -136,6 +154,8 @@ export async function registerVocabXForReview(input: {
     tweetText,
     caption,
     replyText,
+    imageWords: imagePayload.words,
+    imageWordsSource: imagePayload.source,
     registeredAt: new Date().toISOString(),
   };
   saveScheduled(scheduled);
@@ -164,8 +184,11 @@ export async function scheduleVocabXPost(input: {
     return { skipped: true, bundleId, reason: "already_scheduled" as const };
   }
 
-  const { tweetText, caption, replyText } = await buildVocabXPostText(bundle);
   const { imageUrl, imageAlt } = await uploadBrandedImage(bundleId);
+  const imagePayload = await imageWordsForBundle(bundleId, imageUrl);
+  const { tweetText, caption, replyText } = await buildVocabXPostText(bundle, {
+    imageWords: imagePayload.words,
+  });
 
   const queueItem = await enqueueGrammarXManual({
     tweetText,
@@ -198,6 +221,8 @@ export async function scheduleVocabXPost(input: {
     tweetText,
     caption,
     replyText,
+    imageWords: imagePayload.words,
+    imageWordsSource: imagePayload.source,
     scheduledAt: new Date().toISOString(),
   };
   saveScheduled(scheduled);

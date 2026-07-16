@@ -570,6 +570,7 @@ export function VocabQuizClient() {
             onShowOptionsChange={setStudioOptionsOn}
             chosungHintOn={studioChosungOn}
             onShowChosungHintChange={setStudioChosungOn}
+            onSeeDetails={openWordExplain}
           />
         ) : (
           <ManualQuizPlayer
@@ -581,6 +582,7 @@ export function VocabQuizClient() {
             frozen={hiddenPaused}
             paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
+            onSeeDetails={openWordExplain}
           />
         )}
       </div>

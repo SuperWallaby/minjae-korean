@@ -1,4 +1,5 @@
 import type { QuizBundleData, VocabBundle } from "@/lib/vocabInfographic/bundle-catalog";
+import type { VocabImageWord } from "@/lib/vocabImageWords";
 
 export type VocabCaptionLines = {
   line1: string;
@@ -254,13 +255,23 @@ function previewWords(bundle: VocabBundle): string[] {
   return (bundle.preview ?? []).map((w) => w.trim()).filter(Boolean).slice(0, 4);
 }
 
+function formatImageWordBullet(w: VocabImageWord, i: number): string {
+  const emoji = ["🔴", "🔵", "🟢"][i] ?? "•";
+  const bits = [w.hangul];
+  if (w.romanization) bits.push(`[${w.romanization}]`);
+  if (w.english) bits.push(`- ${w.english}`);
+  return `${emoji} ${bits.join(" ")}`;
+}
+
 export function fallbackVocabTweetBody(
   bundle: VocabBundle,
   style: VocabXTweetStyle,
+  imageWords: VocabImageWord[] = [],
 ): string {
   const topic = topicLabel(bundle);
   const pair = antonymParts(bundle);
-  const words = previewWords(bundle);
+  const preview = previewWords(bundle);
+  const known = imageWords.filter((w) => w.hangul?.trim());
 
   if (style === "quiz" && bundle.quiz) {
     const q = bundle.quiz;
@@ -274,24 +285,56 @@ export function fallbackVocabTweetBody(
     ].join("\n");
   }
 
+  if (known.length >= 2) {
+    const bullets = known.slice(0, 3).map(formatImageWordBullet);
+    if (style === "kcontent" && pair) {
+      const a = known[0]!;
+      const b = known[1]!;
+      return [
+        `🗣️ Real-life Korean vibes:`,
+        `➡️ ${pair.left}: ${a.hangul}${a.romanization ? ` [${a.romanization}]` : ""}${a.english ? ` (${a.english})` : ""} 📈🔥`,
+        `➡️ ${pair.right}: ${b.hangul}${b.romanization ? ` [${b.romanization}]` : ""}${b.english ? ` (${b.english})` : ""} 💨🥲`,
+        ``,
+        `Look at the picture for the full card.`,
+        `Which mood are you today?`,
+      ].join("\n");
+    }
+    if (style === "kcontent") {
+      return [
+        `🗣️ When you're deep in K-content mode:`,
+        ``,
+        ...bullets,
+        ``,
+        `Save the card & use them next time you watch. 🎬`,
+      ].join("\n");
+    }
+    return [
+      `Handy Korean for ${topic.toLowerCase()} ✨`,
+      ``,
+      ...bullets,
+      ``,
+      `What's your go-to word from this list?`,
+    ].join("\n");
+  }
+
   if (style === "kcontent" && pair) {
     return [
       `🗣️ Real-life Korean vibes:`,
       `➡️ Feeling ${pair.left.toLowerCase()} energy 📈🔥`,
       `➡️ Feeling ${pair.right.toLowerCase()} energy 💨🥲`,
       ``,
-      `Swipe the image for Hangul + romanization.`,
+      `Look at the picture for Hangul + romanization.`,
       `Which mood are you today?`,
     ].join("\n");
   }
 
   if (style === "kcontent") {
-    const sample = words.length ? words.slice(0, 2).join(" / ") : topic;
+    const sample = preview.length ? preview.slice(0, 2).join(" / ") : topic;
     return [
       `🗣️ When you're deep in K-content mode:`,
-      `➡️ These words hit different: ${sample} 📈🔥`,
+      `➡️ Topic: ${sample} 📈🔥`,
       ``,
-      `Save the card & use them next time you watch. 🎬`,
+      `Look at the picture for the Hangul — don't guess from memory. 🎬`,
     ].join("\n");
   }
 
@@ -308,15 +351,16 @@ export function fallbackVocabTweetBody(
     ].join("\n");
   }
 
-  if (words.length >= 2) {
+  if (preview.length >= 2) {
     return [
       `Handy Korean for ${topic.toLowerCase()} ✨`,
       ``,
-      words
+      preview
         .slice(0, 3)
         .map((w, i) => `${["🔴", "🔵", "🟢"][i] ?? "•"} ${w}`)
         .join("\n"),
       ``,
+      `Look at the picture for Hangul + romanization.`,
       `What's your go-to word from this list?`,
     ].join("\n");
   }

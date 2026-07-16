@@ -14,6 +14,7 @@ import type { VocabQuizAdvanceOptions } from "@/hooks/useVocabQuizQueue";
 import homeStyles from "@/components/site/vocab-quiz-home.module.css";
 import styles from "./vocab-quiz.module.css";
 import { ChoiceLabelWithEnglish } from "./ChoiceLabelWithEnglish";
+import { AnswerExampleCard } from "./AnswerExampleCard";
 
 const EXIT_MS = 400;
 const THROW_MS = 420;
@@ -47,6 +48,7 @@ type Props = {
   /** Session preference — survives card remounts when owned by parent. */
   chosungHintOn?: boolean;
   onShowChosungHintChange?: (show: boolean) => void;
+  onSeeDetails?: () => void;
 };
 
 function correctLabel(quiz: KoreanQuizPrepared): string {
@@ -201,6 +203,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       onShowOptionsChange,
       chosungHintOn = false,
       onShowChosungHintChange,
+      onSeeDetails,
     },
     ref,
   ) {
@@ -772,9 +775,19 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
         </div>
 
         {showOptions ? (
-          <div className={styles.studioChoicesWrap}>
+          <div
+            className={[
+              styles.studioChoicesWrap,
+              revealing ? styles.studioChoicesWrapRevealing : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <div className={styles.studioChoicesGrid}>
-              {choices.map((choice) => {
+              {(revealing
+                ? choices.filter((choice) => choice.id === quiz.correctChoiceId)
+                : choices
+              ).map((choice) => {
                 const state = feedback[choice.id] ?? "none";
                 const className = [
                   styles.studioChoiceBtn,
@@ -808,6 +821,14 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
                 );
               })}
             </div>
+            {revealing && quiz.example && onSeeDetails ? (
+              <AnswerExampleCard
+                quizId={quiz.id}
+                example={quiz.example}
+                audio={audio}
+                onSeeDetails={onSeeDetails}
+              />
+            ) : null}
           </div>
         ) : null}
       </div>
