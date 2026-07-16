@@ -1,14 +1,8 @@
 import { azureChatCompletion, readAzureOpenAIConfig } from "@/lib/azureOpenAI";
-import { synthesizeEdgeTtsMp3 } from "@/lib/edgeTtsServer";
 
 import { choiceEnglishGloss } from "./englishGloss";
-import {
-  buildQuizExampleTtsR2Key,
-  getFromR2,
-  isR2Configured,
-  uploadToR2,
-} from "./objectStorage";
-import { publicUrlForR2Key, resolveQuizTtsCdnOrigin } from "./quizMedia";
+import { buildQuizExampleTtsR2Key } from "./objectStorage";
+import { publicUrlForR2Key, quizMediaObjectExists, resolveQuizTtsCdnOrigin } from "./quizMedia";
 import {
   correctLabelFromItem,
   patchKoreanQuizWordExplanation,
@@ -18,6 +12,35 @@ import type { KoreanQuizItem, WordExplanationExample } from "./types";
 
 /** Same Edge voice as korean-quiz Flutter app example TTS. */
 export const WORD_EXPLANATION_EDGE_VOICE = "ko-KR-SunHiNeural";
+
+function koreanQuizApiBase(): string {
+  return (
+    process.env.KOREAN_QUIZ_API_BASE?.trim().replace(/\/$/, "") ||
+    process.env.NEXT_PUBLIC_KOREAN_QUIZ_API_BASE?.trim().replace(/\/$/, "") ||
+    "https://korean-quiz-delta.vercel.app"
+  );
+}
+
+/**
+ * Ask the korean-quiz app to mint/return example TTS on the correct CDN.
+ * kajakorean.com R2 is a different bucket and must not receive quiz TTS.
+ */
+async function fetchExampleTtsFromKoreanQuizApi(
+  quizId: string,
+  exampleIndex: number,
+): Promise<string | null> {
+  const url = `${koreanQuizApiBase()}/api/korean-quiz/word-explanation/tts?quizId=${encodeURIComponent(quizId)}&index=${exampleIndex}`;
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(60_000) });
+    const json = (await res.json().catch(() => null)) as
+      | { url?: string }
+      | null;
+    const out = json?.url?.trim();
+    return res.ok && out ? out : null;
+  } catch {
+    return null;
+  }
+}
 
 export type WordExplanationBundle = {
   explanation: string;
@@ -223,32 +246,27 @@ export async function resolveWordExplanationExampleTtsUrl(
     example.ttsR2Key?.trim() ??
     buildQuizExampleTtsR2Key(item.id, exampleIndex, voice);
   const origin = resolveQuizTtsCdnOrigin(item);
+  const publicUrl = publicUrlForR2Key(r2Key, origin);
+  if (!publicUrl) {
+    throw new Error("Quiz CDN origin is not configured.");
+  }
 
-  if (isR2Configured()) {
-    const cached = await getFromR2(r2Key);
-    if (cached?.body.length) {
-      const url = publicUrlForR2Key(r2Key, origin);
-      if (!url) throw new Error("Quiz CDN origin is not configured.");
-      if (!example.ttsR2Key?.trim()) {
-        await patchWordExplanationExampleTts(item.id, exampleIndex, r2Key);
-      }
-      return { url, cached: true };
+  // Prefer the quiz-media CDN (same place the Flutter app plays from).
+  if (await quizMediaObjectExists(publicUrl)) {
+    if (!example.ttsR2Key?.trim()) {
+      await patchWordExplanationExampleTts(item.id, exampleIndex, r2Key);
     }
+    return { url: publicUrl, cached: true };
   }
 
-  if (!isR2Configured()) {
-    throw new Error("Object storage is not configured.");
+  // Mint on korean-quiz (correct bucket) rather than uploading to site R2.
+  const remoteUrl = await fetchExampleTtsFromKoreanQuizApi(item.id, exampleIndex);
+  if (remoteUrl) {
+    if (!example.ttsR2Key?.trim()) {
+      await patchWordExplanationExampleTts(item.id, exampleIndex, r2Key);
+    }
+    return { url: remoteUrl, cached: false };
   }
 
-  const mp3 = await synthesizeEdgeTtsMp3(text, { voice });
-  await uploadToR2({
-    key: r2Key,
-    body: mp3,
-    contentType: "audio/mpeg",
-  });
-  await patchWordExplanationExampleTts(item.id, exampleIndex, r2Key);
-
-  const url = publicUrlForR2Key(r2Key, origin);
-  if (!url) throw new Error("Quiz CDN origin is not configured.");
-  return { url, cached: false };
+  throw new Error("Could not load example audio.");
 }

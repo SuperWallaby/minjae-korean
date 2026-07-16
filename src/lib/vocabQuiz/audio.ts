@@ -98,13 +98,15 @@ export class VocabQuizAudio {
 
   /** Example / modal TTS — user gesture; works while quiz stage is paused. */
   async playSpeechUrl(url: string, options?: PlayOptions) {
-    if (!this.enabled || !url?.trim()) return;
+    if (!this.enabled || !url?.trim()) {
+      throw new Error("Audio is off or URL is empty.");
+    }
     await this.unlock();
     await this.stopAll();
     const wasPaused = this.paused;
     this.paused = false;
     try {
-      await this.playOne(url, options);
+      await this.playOneOrThrow(url, options);
     } finally {
       this.paused = wasPaused;
     }
@@ -214,6 +216,41 @@ export class VocabQuizAudio {
       audio.addEventListener("ended", onEnd);
       audio.addEventListener("error", onErr);
       void audio.play().catch(() => finish());
+    });
+  }
+
+  private async playOneOrThrow(url: string, options?: PlayOptions) {
+    if (!this.enabled) throw new Error("Sound is turned off.");
+    if (!url) throw new Error("Audio URL is empty.");
+    if (!this.unlocked) await this.unlock();
+
+    const audio = new Audio(url);
+    audio.crossOrigin = "anonymous";
+    audio.volume = options?.volume ?? 1;
+    audio.playbackRate = options?.playbackRate ?? 1;
+    this.active.push(audio);
+
+    await new Promise<void>((resolve, reject) => {
+      const cleanup = () => {
+        audio.removeEventListener("ended", onEnd);
+        audio.removeEventListener("error", onErr);
+        this.active = this.active.filter((a) => a !== audio);
+        this.pendingSkips = this.pendingSkips.filter((r) => r !== finish);
+      };
+      const finish = () => {
+        cleanup();
+        resolve();
+      };
+      const fail = (reason: string) => {
+        cleanup();
+        reject(new Error(reason));
+      };
+      this.pendingSkips.push(finish);
+      const onEnd = () => finish();
+      const onErr = () => fail("Could not play example audio.");
+      audio.addEventListener("ended", onEnd);
+      audio.addEventListener("error", onErr);
+      void audio.play().catch(() => fail("Could not play example audio."));
     });
   }
 

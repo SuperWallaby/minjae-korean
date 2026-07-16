@@ -120,12 +120,22 @@ export function WordExplanationSheet({
     example: WordExplanationExample,
   ) => {
     setTtsError(null);
-    const cachedUrl = exampleTtsUrls[index] ?? example.ttsUrl;
-    if (cachedUrl?.trim()) {
+    const cachedUrl = (exampleTtsUrls[index] ?? example.ttsUrl)?.trim() || "";
+    // Ignore stale URLs from the wrong CDN (site R2 ≠ quiz-media).
+    const usableCache =
+      cachedUrl &&
+      (/quiz-media\.kajakorean\.com/i.test(cachedUrl) ||
+        cachedUrl.startsWith("/"))
+        ? cachedUrl
+        : "";
+
+    if (usableCache) {
       try {
-        await audio.playSpeechUrl(cachedUrl);
-      } catch {
-        setTtsError("Could not play example audio.");
+        await audio.playSpeechUrl(usableCache);
+      } catch (err) {
+        setTtsError(
+          err instanceof Error ? err.message : "Could not play example audio.",
+        );
       }
       return;
     }

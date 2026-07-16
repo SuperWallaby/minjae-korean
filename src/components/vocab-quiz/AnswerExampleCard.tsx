@@ -38,7 +38,7 @@ export function AnswerExampleCard({
         await audio.playSpeechUrl(url);
       };
 
-      if (ttsUrl) {
+      if (ttsUrl && /quiz-media\.kajakorean\.com/i.test(ttsUrl)) {
         void play(ttsUrl);
         return;
       }
