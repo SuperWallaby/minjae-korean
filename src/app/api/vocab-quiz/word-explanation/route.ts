@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { choiceEnglishGloss } from "@/lib/koreanQuiz/englishGloss";
-import { resolveQuizCdnOrigin } from "@/lib/koreanQuiz/quizMedia";
+import { resolveQuizTtsCdnOrigin } from "@/lib/koreanQuiz/quizMedia";
 import { correctLabelFromItem, findKoreanQuizById } from "@/lib/koreanQuiz/store";
 import {
   bundleFromItem,
@@ -38,7 +38,7 @@ export async function GET(request: Request) {
       ? bundleFromItem(item)
       : await ensureKoreanQuizWordExplanation(item);
     const choice = item.choices.find((row) => row.id === item.correctChoiceId);
-    const origin = resolveQuizCdnOrigin(item);
+    const origin = resolveQuizTtsCdnOrigin(item);
 
     return NextResponse.json({
       quizId: item.id,

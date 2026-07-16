@@ -56,6 +56,7 @@ export function WordExplanationSheet({
     Record<number, string>
   >({});
   const [messageIndex, setMessageIndex] = React.useState(0);
+  const [ttsError, setTtsError] = React.useState<string | null>(null);
   const requestIdRef = React.useRef(0);
 
   const load = React.useCallback(async () => {
@@ -92,6 +93,7 @@ export function WordExplanationSheet({
     setData(null);
     setExampleTtsUrls({});
     setLoadingTtsIndex(null);
+    setTtsError(null);
     setMessageIndex(0);
     void load();
   }, [open, quizId, load]);
@@ -117,9 +119,14 @@ export function WordExplanationSheet({
     index: number,
     example: WordExplanationExample,
   ) => {
+    setTtsError(null);
     const cachedUrl = exampleTtsUrls[index] ?? example.ttsUrl;
     if (cachedUrl?.trim()) {
-      await audio.playUrl(cachedUrl);
+      try {
+        await audio.playSpeechUrl(cachedUrl);
+      } catch {
+        setTtsError("Could not play example audio.");
+      }
       return;
     }
 
@@ -136,9 +143,12 @@ export function WordExplanationSheet({
       }
       setExampleTtsUrls((prev) => ({ ...prev, [index]: json.url! }));
       setLoadingTtsIndex(null);
-      await audio.playUrl(json.url);
-    } catch {
+      await audio.playSpeechUrl(json.url);
+    } catch (err) {
       setLoadingTtsIndex(null);
+      setTtsError(
+        err instanceof Error ? err.message : "Could not play example audio.",
+      );
     }
   };
 
@@ -214,6 +224,9 @@ export function WordExplanationSheet({
               {data.examples.length > 0 ? (
                 <div className={styles.wordExplainExamples}>
                   <div className={styles.wordExplainExamplesLabel}>Examples</div>
+                  {ttsError ? (
+                    <p className={styles.wordExplainExampleWait}>{ttsError}</p>
+                  ) : null}
                   {data.examples.map((example, index) => {
                     const ttsBusy = loadingTtsIndex === index;
                     return (

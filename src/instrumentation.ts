@@ -4,6 +4,6 @@
  */
 export async function register() {
   if (process.env.NEXT_RUNTIME !== "nodejs") return;
-  const { registerMongoShutdownHandlers } = await import("@/lib/mongo");
+  const { registerMongoShutdownHandlers } = await import("@/lib/mongoShutdown");
   registerMongoShutdownHandlers();
 }

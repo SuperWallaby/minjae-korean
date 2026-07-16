@@ -2,7 +2,7 @@ import { resolveAnswerTtsPlaybackUrl } from "./tts";
 import { shuffle } from "./shuffle";
 import { illustrationEnglishBelowImage } from "./englishGloss";
 import { resolveRomanizationDisplay } from "./romanization";
-import { publicUrlForR2Key, resolveQuizCdnOrigin } from "./quizMedia";
+import { publicUrlForR2Key, resolveQuizTtsCdnOrigin } from "./quizMedia";
 import type {
   KoreanQuizItem,
   KoreanQuizPrepared,
@@ -28,7 +28,7 @@ function representativeExample(
   item: KoreanQuizItem,
 ): KoreanQuizPreparedExample | undefined {
   const examples = item.wordExplanationExamples ?? [];
-  const origin = resolveQuizCdnOrigin(item);
+  const origin = resolveQuizTtsCdnOrigin(item);
   for (let index = 0; index < examples.length; index += 1) {
     const example = examples[index];
     const korean = example?.korean?.trim();

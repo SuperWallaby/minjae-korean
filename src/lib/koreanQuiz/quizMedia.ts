@@ -12,15 +12,28 @@ export function quizCdnOriginFromImageUrl(
   }
 }
 
+function quizR2PublicBaseUrl(): string | undefined {
+  return (
+    process.env.KOREAN_QUIZ_R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "") ||
+    process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "")
+  );
+}
+
 /** Same R2 public origin as quiz illustrations (korean-quiz bucket). */
 export function resolveQuizCdnOrigin(
   item: Pick<KoreanQuizItem, "imageUrl">,
 ): string | undefined {
-  return (
-    quizCdnOriginFromImageUrl(item.imageUrl) ||
-    process.env.KOREAN_QUIZ_R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "") ||
-    process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "")
-  );
+  return quizCdnOriginFromImageUrl(item.imageUrl) || quizR2PublicBaseUrl();
+}
+
+/**
+ * Public CDN for `system/quiz-tts/*` — always the quiz R2 bucket, not the image
+ * host (kajakorean.com file proxy vs korean-quiz CDN mismatch broke example TTS).
+ */
+export function resolveQuizTtsCdnOrigin(
+  item: Pick<KoreanQuizItem, "imageUrl">,
+): string | undefined {
+  return quizR2PublicBaseUrl() || quizCdnOriginFromImageUrl(item.imageUrl);
 }
 
 export function publicUrlForR2Key(

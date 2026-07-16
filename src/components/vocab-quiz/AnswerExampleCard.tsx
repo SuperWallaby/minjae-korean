@@ -35,8 +35,7 @@ export function AnswerExampleCard({
       if (loadingTts) return;
 
       const play = async (url: string) => {
-        await audio.stopAll();
-        await audio.playUrl(url);
+        await audio.playSpeechUrl(url);
       };
 
       if (ttsUrl) {

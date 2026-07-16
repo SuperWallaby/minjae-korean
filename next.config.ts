@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["sharp", "hangul-romanize", "hangulx"],
+  serverExternalPackages: ["sharp", "hangul-romanize", "hangulx", "mongodb"],
   async redirects() {
     return [
       { source: "/my/messages", destination: "/admin?tab=messages", permanent: false },

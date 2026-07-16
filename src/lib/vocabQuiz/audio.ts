@@ -96,6 +96,20 @@ export class VocabQuizAudio {
     await this.playOne(url, options);
   }
 
+  /** Example / modal TTS — user gesture; works while quiz stage is paused. */
+  async playSpeechUrl(url: string, options?: PlayOptions) {
+    if (!this.enabled || !url?.trim()) return;
+    await this.unlock();
+    await this.stopAll();
+    const wasPaused = this.paused;
+    this.paused = false;
+    try {
+      await this.playOne(url, options);
+    } finally {
+      this.paused = wasPaused;
+    }
+  }
+
   /**
    * Play SFX, then start `tailUrl` just before SFX ends (overlap).
    * Non-blocking — safe to fire without await.

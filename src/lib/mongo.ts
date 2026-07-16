@@ -1,5 +1,7 @@
 import { MongoClient } from "mongodb";
 
+import { registerMongoShutdownHandlers } from "@/lib/mongoShutdown";
+
 function requireEnv(name: string) {
   const v = process.env[name];
   if (!v) throw new Error(`Missing env: ${name}`);
@@ -11,7 +13,6 @@ const dbName = () => process.env.MONGODB_DB?.trim() || "";
 
 type GlobalWithMongo = typeof globalThis & {
   __mjMongoClientPromise?: Promise<MongoClient>;
-  __mjMongoShutdownRegistered?: boolean;
 };
 
 let closingPromise: Promise<void> | null = null;
@@ -66,24 +67,4 @@ export async function closeMongoClient(): Promise<void> {
   await closingPromise;
 }
 
-/** Attach process listeners once (no-op on Edge). */
-export function registerMongoShutdownHandlers(): void {
-  const g = globalThis as GlobalWithMongo;
-  if (g.__mjMongoShutdownRegistered) return;
-  if (typeof process === "undefined" || typeof process.on !== "function") {
-    return;
-  }
-  if (process.env.NEXT_RUNTIME === "edge") return;
-
-  g.__mjMongoShutdownRegistered = true;
-
-  const shutdown = () => {
-    void closeMongoClient();
-  };
-
-  // Do not process.exit here — Next.js / the host own the lifecycle.
-  // Closing the client drops TCP keep-alives so the process can exit cleanly.
-  process.on("SIGINT", shutdown);
-  process.on("SIGTERM", shutdown);
-  process.on("beforeExit", shutdown);
-}
+export { registerMongoShutdownHandlers } from "@/lib/mongoShutdown";

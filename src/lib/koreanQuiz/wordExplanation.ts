@@ -8,7 +8,7 @@ import {
   isR2Configured,
   uploadToR2,
 } from "./objectStorage";
-import { publicUrlForR2Key, resolveQuizCdnOrigin } from "./quizMedia";
+import { publicUrlForR2Key, resolveQuizTtsCdnOrigin } from "./quizMedia";
 import {
   correctLabelFromItem,
   patchKoreanQuizWordExplanation,
@@ -222,7 +222,7 @@ export async function resolveWordExplanationExampleTtsUrl(
   const r2Key =
     example.ttsR2Key?.trim() ??
     buildQuizExampleTtsR2Key(item.id, exampleIndex, voice);
-  const origin = resolveQuizCdnOrigin(item);
+  const origin = resolveQuizTtsCdnOrigin(item);
 
   if (isR2Configured()) {
     const cached = await getFromR2(r2Key);
