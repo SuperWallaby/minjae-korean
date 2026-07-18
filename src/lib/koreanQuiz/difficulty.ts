@@ -100,20 +100,23 @@ export function mergeDifficultyBucketCounts(...sets: number[][]): number[] {
   return merged;
 }
 
-/** Default adaptive score — mid difficulty preference. */
+/** Default adaptive score — kept for prefs compatibility; web mix is fixed below. */
 export const DEFAULT_ADAPTIVE_SCORE = 50;
 
 const ADAPTIVE_SCORE_MIN = 0;
 const ADAPTIVE_SCORE_MAX = 100;
-/** Climb slowly so Level 1 (A) stays common after a few correct answers. */
 const SCORE_GAIN_ON_CORRECT = 3;
 const SCORE_LOSS_ON_WRONG = 8;
 
-/** Skew strength at score 0 / 100 (kept mild so A does not collapse). */
-const ADAPTIVE_TIER_SKEW = 0.85;
-const MIN_TIER_WEIGHT = 0.12;
-/** Floor for A so Level 1 remains the plurality even at high scores. */
-const MIN_A_TIER_WEIGHT = 0.75;
+/**
+ * Fixed web quiz mix (no hidden adaptive score):
+ * Level 1 / 2 / 3 ≈ 50% / 33% / 17%.
+ */
+export const WEB_TIER_WEIGHTS: Record<DifficultyTier, number> = {
+  A: 50,
+  B: 33,
+  C: 17,
+};
 
 export function clampAdaptiveScore(raw: unknown): number {
   if (typeof raw !== "number" || !Number.isFinite(raw)) {
@@ -128,39 +131,26 @@ export function nextAdaptiveScore(current: number, correct: boolean): number {
   return clampAdaptiveScore(base + delta);
 }
 
-/** At 50: A heavy by default; B/C scaled down so easy words dominate. */
+/** Web vocab-quiz uses a fixed Level 1 / 2 / 3 mix (score/options ignored). */
 export function tierWeightsFromAdaptiveScore(
-  score: number,
-  options?: { bWeightScale?: number; cWeightScale?: number },
+  _score?: number,
+  _options?: { bWeightScale?: number; cWeightScale?: number },
 ): Record<DifficultyTier, number> {
-  const clamped = clampAdaptiveScore(score);
-  const t = (clamped - DEFAULT_ADAPTIVE_SCORE) / DEFAULT_ADAPTIVE_SCORE;
-  const bScale =
-    typeof options?.bWeightScale === "number" && Number.isFinite(options.bWeightScale)
-      ? Math.max(0, options.bWeightScale)
-      : DEFAULT_B_TIER_WEIGHT_SCALE;
-  const cScale =
-    typeof options?.cWeightScale === "number" && Number.isFinite(options.cWeightScale)
-      ? Math.max(0, options.cWeightScale)
-      : DEFAULT_C_TIER_WEIGHT_SCALE;
-  return {
-    A: Math.max(MIN_A_TIER_WEIGHT, 1 - ADAPTIVE_TIER_SKEW * t),
-    B: Math.max(MIN_TIER_WEIGHT, 1 * bScale),
-    C: Math.max(MIN_TIER_WEIGHT, (1 + ADAPTIVE_TIER_SKEW * t) * cScale),
-  };
+  return { ...WEB_TIER_WEIGHTS };
 }
 
-/** Default web quiz: B less often, C much less often. */
-export const DEFAULT_B_TIER_WEIGHT_SCALE = 0.32;
-export const DEFAULT_C_TIER_WEIGHT_SCALE = 0.12;
+/** @deprecated web mix is fixed via WEB_TIER_WEIGHTS */
+export const DEFAULT_B_TIER_WEIGHT_SCALE = 0.33;
+/** @deprecated web mix is fixed via WEB_TIER_WEIGHTS */
+export const DEFAULT_C_TIER_WEIGHT_SCALE = 0.17;
 
-/** Studio: B a bit less, C even rarer. */
-export const STUDIO_B_TIER_WEIGHT_SCALE = 0.28;
-/** @deprecated use STUDIO + DEFAULT scales via pick options */
-export const STUDIO_C_TIER_WEIGHT_SCALE = 0.08;
+/** @deprecated web mix is fixed via WEB_TIER_WEIGHTS */
+export const STUDIO_B_TIER_WEIGHT_SCALE = 0.33;
+/** @deprecated web mix is fixed via WEB_TIER_WEIGHTS */
+export const STUDIO_C_TIER_WEIGHT_SCALE = 0.17;
 
 export function pickTierByAdaptiveScore(
-  score: number,
+  score?: number,
   options?: { bWeightScale?: number; cWeightScale?: number },
 ): DifficultyTier {
   const weights = tierWeightsFromAdaptiveScore(score, options);
@@ -170,7 +160,7 @@ export function pickTierByAdaptiveScore(
     roll -= weights[tier];
     if (roll <= 0) return tier;
   }
-  return "B";
+  return "A";
 }
 
 export function pickUnderfilledDifficultyBucket(
