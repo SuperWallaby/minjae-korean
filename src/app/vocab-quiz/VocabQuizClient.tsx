@@ -595,12 +595,10 @@ export function VocabQuizClient() {
       />
       </div>
 
-      {!studioFocus ? (
       <footer className={styles.storeFooter}>
         <p className={styles.storeFooterLabel}>Get the app</p>
         <AppStoreBadges size="md" theme="light" utmSource="vocab-quiz" utmContent="player-footer" />
       </footer>
-      ) : null}
 
       {current && explainKorean ? (
         <WordExplanationSheet
