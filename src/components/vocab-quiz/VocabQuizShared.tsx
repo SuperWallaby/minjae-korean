@@ -1,8 +1,37 @@
 import { VOCAB_QUIZ_HEADER_LINES } from "@/lib/vocabQuiz/constants";
+import type { DifficultyTier } from "@/lib/koreanQuiz/types";
 
 import styles from "./vocab-quiz.module.css";
 
-export function VocabQuizHeader() {
+export function DifficultyBadge({
+  difficulty,
+}: {
+  difficulty?: DifficultyTier | string | null;
+}) {
+  const tier = String(difficulty || "").trim().toUpperCase();
+  if (tier !== "A" && tier !== "B" && tier !== "C") return null;
+  return (
+    <span
+      className={[
+        styles.difficultyBadge,
+        tier === "A"
+          ? styles.difficultyBadgeA
+          : tier === "B"
+            ? styles.difficultyBadgeB
+            : styles.difficultyBadgeC,
+      ].join(" ")}
+      aria-label={`Difficulty level ${tier}`}
+    >
+      Level {tier}
+    </span>
+  );
+}
+
+export function VocabQuizHeader({
+  difficulty,
+}: {
+  difficulty?: DifficultyTier | string | null;
+} = {}) {
   return (
     <div className={styles.headerBlock}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -18,6 +47,7 @@ export function VocabQuizHeader() {
         <div className={styles.headerPrimary}>{VOCAB_QUIZ_HEADER_LINES[0]}</div>
         <div className={styles.headerSecondary}>{VOCAB_QUIZ_HEADER_LINES[1]}</div>
       </div>
+      <DifficultyBadge difficulty={difficulty} />
     </div>
   );
 }

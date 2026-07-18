@@ -225,7 +225,8 @@ export class VocabQuizAudio {
     if (!this.unlocked) await this.unlock();
 
     const audio = new Audio(url);
-    audio.crossOrigin = "anonymous";
+    // Do not set crossOrigin — quiz-media CDN may not always send CORS headers,
+    // and simple <audio> playback does not need a CORS fetch.
     audio.volume = options?.volume ?? 1;
     audio.playbackRate = options?.playbackRate ?? 1;
     this.active.push(audio);

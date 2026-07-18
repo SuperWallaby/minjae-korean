@@ -274,6 +274,38 @@
   align-items: center;
   gap: 0.55rem;
   width: 100%;
+  position: relative;
+}
+
+.difficultyBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  border: 1px solid transparent;
+}
+
+.difficultyBadgeA {
+  color: #166534;
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.difficultyBadgeB {
+  color: #1d4ed8;
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.difficultyBadgeC {
+  color: #9a3412;
+  background: #ffedd5;
+  border-color: #fdba74;
 }
 
 .headerLogo {
@@ -588,6 +620,10 @@
   display: flex;
   align-items: flex-start;
   gap: 0.35rem;
+}
+
+.answerExampleRowSpaced {
+  margin-top: 0.75rem;
 }
 
 .answerExampleText {
@@ -1110,6 +1146,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.65rem;
   width: 100%;
   text-align: center;
   margin-bottom: clamp(1.25rem, 5vh, 2rem);
@@ -2103,6 +2140,58 @@
 
 .wordExplainError p {
   margin: 0;
+}
+
+.wordExplainComparisons {
+  margin-top: 1.35rem;
+}
+
+.wordExplainCompareCard {
+  margin-top: 0.65rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid rgb(17 24 39 / 0.1);
+  border-radius: 0.9rem;
+  background: #fff;
+}
+
+.wordExplainCompareTitle {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.wordExplainCompareVs {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.wordExplainCompareKo {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.wordExplainCompareEn {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.wordExplainCompareContrast {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #1f2937;
+}
+
+.wordExplainCompareError {
+  margin-top: 0.5rem;
+}
+
+.wordExplainCompareError p {
+  margin: 0 0 0.55rem;
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -130,8 +130,10 @@ export type KoreanQuizPrepared = {
   illustrationEnglish?: string;
   /** Bracketed pronunciation shown below Korean answer on reveal. */
   romanization?: string;
-  /** Representative example for the reveal screen (from wordExplanationExamples). */
-  example?: KoreanQuizPreparedExample;
+  /** Vocabulary difficulty tier (A / B / C). */
+  difficulty?: DifficultyTier;
+  /** Reveal-screen examples (up to 2 from wordExplanationExamples). */
+  examples?: KoreanQuizPreparedExample[];
 };
 
 export type KoreanQuizQueueResponse = {

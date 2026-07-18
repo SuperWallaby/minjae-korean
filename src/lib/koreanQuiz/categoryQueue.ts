@@ -1,9 +1,12 @@
 import {
   DEFAULT_ADAPTIVE_SCORE,
+  DEFAULT_B_TIER_WEIGHT_SCALE,
+  DEFAULT_C_TIER_WEIGHT_SCALE,
   emptyDifficultyBucketCounts,
   mergeDifficultyBucketCounts,
   normalizeDifficulty,
   pickTierByAdaptiveScore,
+  STUDIO_B_TIER_WEIGHT_SCALE,
   STUDIO_C_TIER_WEIGHT_SCALE,
 } from "./difficulty";
 import { isExcludedQuizTopic, queueEntryFromItem } from "./category";
@@ -41,8 +44,14 @@ function weightedPickFromPool(
   const picked: KoreanQuizQueueEntry[] = [];
   const used = new Set<string>();
   const tierOptions = studio
-    ? { cWeightScale: STUDIO_C_TIER_WEIGHT_SCALE }
-    : undefined;
+    ? {
+        bWeightScale: STUDIO_B_TIER_WEIGHT_SCALE,
+        cWeightScale: STUDIO_C_TIER_WEIGHT_SCALE,
+      }
+    : {
+        bWeightScale: DEFAULT_B_TIER_WEIGHT_SCALE,
+        cWeightScale: DEFAULT_C_TIER_WEIGHT_SCALE,
+      };
 
   const weightOf = (item: KoreanQuizQueuePick) =>
     quizPickWeight({

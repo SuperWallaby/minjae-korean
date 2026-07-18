@@ -159,7 +159,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
         }}
       >
         <div className={styles.manualStageBody}>
-          <VocabQuizHeader />
+          <VocabQuizHeader difficulty={quiz.difficulty} />
           {quiz.sentenceStem ? (
             <p className={styles.sentenceStem}>{quiz.sentenceStem}</p>
           ) : null}
@@ -227,10 +227,10 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
             })}
           </div>
 
-          {revealing && quiz.example && onSeeDetails ? (
+          {revealing && quiz.examples && quiz.examples.length > 0 && onSeeDetails ? (
             <AnswerExampleCard
               quizId={quiz.id}
-              example={quiz.example}
+              examples={quiz.examples}
               audio={audio}
               onSeeDetails={onSeeDetails}
             />

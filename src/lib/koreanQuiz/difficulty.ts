@@ -100,7 +100,7 @@ export function mergeDifficultyBucketCounts(...sets: number[][]): number[] {
   return merged;
 }
 
-/** Default adaptive score — tier weights A:B:C are equal at 50. */
+/** Default adaptive score — mid difficulty preference. */
 export const DEFAULT_ADAPTIVE_SCORE = 50;
 
 const ADAPTIVE_SCORE_MIN = 0;
@@ -125,30 +125,40 @@ export function nextAdaptiveScore(current: number, correct: boolean): number {
   return clampAdaptiveScore(base + delta);
 }
 
-/** At 50: equal weights. Toward 0: more A. Toward 100: more C. */
+/** At 50: A heavy by default; B/C scaled down so easy words dominate. */
 export function tierWeightsFromAdaptiveScore(
   score: number,
-  options?: { cWeightScale?: number },
+  options?: { bWeightScale?: number; cWeightScale?: number },
 ): Record<DifficultyTier, number> {
   const clamped = clampAdaptiveScore(score);
   const t = (clamped - DEFAULT_ADAPTIVE_SCORE) / DEFAULT_ADAPTIVE_SCORE;
+  const bScale =
+    typeof options?.bWeightScale === "number" && Number.isFinite(options.bWeightScale)
+      ? Math.max(0, options.bWeightScale)
+      : DEFAULT_B_TIER_WEIGHT_SCALE;
   const cScale =
     typeof options?.cWeightScale === "number" && Number.isFinite(options.cWeightScale)
       ? Math.max(0, options.cWeightScale)
-      : 1;
+      : DEFAULT_C_TIER_WEIGHT_SCALE;
   return {
     A: Math.max(MIN_TIER_WEIGHT, 1 - ADAPTIVE_TIER_SKEW * t),
-    B: 1,
+    B: Math.max(MIN_TIER_WEIGHT, 1 * bScale),
     C: Math.max(MIN_TIER_WEIGHT, (1 + ADAPTIVE_TIER_SKEW * t) * cScale),
   };
 }
 
-/** Studio mode: C-grade words appear about half as often. */
-export const STUDIO_C_TIER_WEIGHT_SCALE = 0.5;
+/** Default web quiz: B less often, C much less often. */
+export const DEFAULT_B_TIER_WEIGHT_SCALE = 0.48;
+export const DEFAULT_C_TIER_WEIGHT_SCALE = 0.2;
+
+/** Studio: B a bit less, C even rarer. */
+export const STUDIO_B_TIER_WEIGHT_SCALE = 0.42;
+/** @deprecated use STUDIO + DEFAULT scales via pick options */
+export const STUDIO_C_TIER_WEIGHT_SCALE = 0.15;
 
 export function pickTierByAdaptiveScore(
   score: number,
-  options?: { cWeightScale?: number },
+  options?: { bWeightScale?: number; cWeightScale?: number },
 ): DifficultyTier {
   const weights = tierWeightsFromAdaptiveScore(score, options);
   const total = weights.A + weights.B + weights.C;

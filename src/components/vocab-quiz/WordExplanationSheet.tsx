@@ -13,6 +13,12 @@ export type WordExplanationExample = {
   ttsUrl?: string;
 };
 
+export type WordExplanationComparison = {
+  korean: string;
+  english: string;
+  contrast: string;
+};
+
 export type WordExplanationData = {
   quizId: string;
   korean: string;
@@ -57,7 +63,15 @@ export function WordExplanationSheet({
   >({});
   const [messageIndex, setMessageIndex] = React.useState(0);
   const [ttsError, setTtsError] = React.useState<string | null>(null);
+  const [comparisons, setComparisons] = React.useState<
+    WordExplanationComparison[] | null
+  >(null);
+  const [comparisonsLoading, setComparisonsLoading] = React.useState(false);
+  const [comparisonsError, setComparisonsError] = React.useState<string | null>(
+    null,
+  );
   const requestIdRef = React.useRef(0);
+  const comparisonsRequestIdRef = React.useRef(0);
 
   const load = React.useCallback(async () => {
     const requestId = ++requestIdRef.current;
@@ -88,6 +102,32 @@ export function WordExplanationSheet({
     }
   }, [quizId]);
 
+  const loadComparisons = React.useCallback(async () => {
+    const requestId = ++comparisonsRequestIdRef.current;
+    setComparisonsLoading(true);
+    setComparisonsError(null);
+    try {
+      const res = await fetch(
+        `/api/vocab-quiz/word-explanation/comparisons?quizId=${encodeURIComponent(quizId)}`,
+      );
+      const json = (await res.json().catch(() => null)) as
+        | { comparisons?: WordExplanationComparison[]; error?: string }
+        | null;
+      if (requestId !== comparisonsRequestIdRef.current) return;
+      if (!res.ok) {
+        throw new Error(json?.error || "Could not load similar words.");
+      }
+      setComparisons(Array.isArray(json?.comparisons) ? json.comparisons : []);
+      setComparisonsLoading(false);
+    } catch (err) {
+      if (requestId !== comparisonsRequestIdRef.current) return;
+      setComparisonsError(
+        err instanceof Error ? err.message : "Could not load similar words.",
+      );
+      setComparisonsLoading(false);
+    }
+  }, [quizId]);
+
   React.useEffect(() => {
     if (!open) return;
     setData(null);
@@ -95,8 +135,16 @@ export function WordExplanationSheet({
     setLoadingTtsIndex(null);
     setTtsError(null);
     setMessageIndex(0);
+    setComparisons(null);
+    setComparisonsError(null);
+    setComparisonsLoading(false);
     void load();
   }, [open, quizId, load]);
+
+  React.useEffect(() => {
+    if (!open || !data) return;
+    void loadComparisons();
+  }, [open, data, loadComparisons]);
 
   React.useEffect(() => {
     if (!open || !loading) return;
@@ -240,7 +288,10 @@ export function WordExplanationSheet({
                   {data.examples.map((example, index) => {
                     const ttsBusy = loadingTtsIndex === index;
                     return (
-                      <div key={`${example.korean}-${index}`} className={styles.wordExplainExample}>
+                      <div
+                        key={`${example.korean}-${index}`}
+                        className={styles.wordExplainExample}
+                      >
                         <div className={styles.wordExplainExampleText}>
                           <div className={styles.wordExplainExampleKo}>
                             {example.korean}
@@ -269,6 +320,50 @@ export function WordExplanationSheet({
                   })}
                 </div>
               ) : null}
+
+              <div className={styles.wordExplainComparisons}>
+                <div className={styles.wordExplainExamplesLabel}>Similar words</div>
+                {comparisonsLoading && (!comparisons || comparisons.length === 0) ? (
+                  <p className={styles.wordExplainExampleWait}>
+                    Finding similar words…
+                  </p>
+                ) : null}
+                {comparisonsError && (!comparisons || comparisons.length === 0) ? (
+                  <div className={styles.wordExplainCompareError}>
+                    <p>{comparisonsError}</p>
+                    <button
+                      type="button"
+                      className={styles.modeBtn}
+                      onClick={() => void loadComparisons()}
+                    >
+                      Retry
+                    </button>
+                  </div>
+                ) : null}
+                {comparisons && comparisons.length === 0 && !comparisonsLoading ? (
+                  <p className={styles.wordExplainExampleWait}>
+                    No close comparisons yet.
+                  </p>
+                ) : null}
+                {comparisons?.map((row, index) => (
+                  <div
+                    key={`${row.korean}-${index}`}
+                    className={styles.wordExplainCompareCard}
+                  >
+                    <div className={styles.wordExplainCompareTitle}>
+                      <span className={styles.wordExplainCompareVs}>vs </span>
+                      <span className={styles.wordExplainCompareKo}>{row.korean}</span>
+                      {row.english.trim() ? (
+                        <span className={styles.wordExplainCompareEn}>
+                          {" "}
+                          {row.english}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className={styles.wordExplainCompareContrast}>{row.contrast}</p>
+                  </div>
+                ))}
+              </div>
             </>
           ) : null}
         </div>

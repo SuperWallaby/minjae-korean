@@ -222,7 +222,7 @@ export const AutoQuizPlayer = React.forwardRef<AutoQuizPlayerHandle, Props>(
         }}
         aria-label="Tap to continue"
       >
-        <VocabQuizHeader />
+        <VocabQuizHeader difficulty={quiz.difficulty} />
         {quiz.sentenceStem ? (
           <p className={styles.sentenceStem}>{quiz.sentenceStem}</p>
         ) : null}

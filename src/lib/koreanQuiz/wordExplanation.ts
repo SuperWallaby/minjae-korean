@@ -8,7 +8,11 @@ import {
   patchKoreanQuizWordExplanation,
   patchWordExplanationExampleTts,
 } from "./store";
-import type { KoreanQuizItem, WordExplanationExample } from "./types";
+import type {
+  KoreanQuizItem,
+  WordExplanationComparison,
+  WordExplanationExample,
+} from "./types";
 
 /** Same Edge voice as korean-quiz Flutter app example TTS. */
 export const WORD_EXPLANATION_EDGE_VOICE = "ko-KR-SunHiNeural";
@@ -19,6 +23,53 @@ function koreanQuizApiBase(): string {
     process.env.NEXT_PUBLIC_KOREAN_QUIZ_API_BASE?.trim().replace(/\/$/, "") ||
     "https://korean-quiz-delta.vercel.app"
   );
+}
+
+export function hasCachedWordExplanationComparisons(item: KoreanQuizItem): boolean {
+  return (item.wordExplanationComparisons?.length ?? 0) >= 1;
+}
+
+/**
+ * Similar-word contrasts for the explanation sheet.
+ * Prefer shared DB cache; otherwise ask korean-quiz (same generator as the app).
+ */
+export async function resolveWordExplanationComparisons(
+  item: KoreanQuizItem,
+): Promise<{ comparisons: WordExplanationComparison[]; cached: boolean }> {
+  if (hasCachedWordExplanationComparisons(item)) {
+    return {
+      comparisons: item.wordExplanationComparisons ?? [],
+      cached: true,
+    };
+  }
+
+  const url = `${koreanQuizApiBase()}/api/korean-quiz/word-explanation/comparisons?quizId=${encodeURIComponent(item.id)}`;
+  const res = await fetch(url, { signal: AbortSignal.timeout(90_000) });
+  const json = (await res.json().catch(() => null)) as
+    | {
+        comparisons?: Array<{
+          korean?: string;
+          english?: string;
+          contrast?: string;
+          quizId?: string;
+        }>;
+        error?: string;
+      }
+    | null;
+  if (!res.ok) {
+    throw new Error(json?.error || "Could not load similar words.");
+  }
+
+  const comparisons: WordExplanationComparison[] = (json?.comparisons ?? [])
+    .map((row) => ({
+      korean: String(row.korean || "").trim(),
+      english: String(row.english || "").trim(),
+      contrast: String(row.contrast || "").trim(),
+      ...(row.quizId ? { quizId: String(row.quizId).trim() } : {}),
+    }))
+    .filter((row) => row.korean && row.contrast);
+
+  return { comparisons, cached: false };
 }
 
 /**
