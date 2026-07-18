@@ -2,11 +2,8 @@ import { randomUUID } from "crypto";
 
 import { buildWeightedQueueEntries } from "./categoryQueue";
 import { listApprovedKoreanQuizzesForQueue } from "./approvedCache";
-import {
-  getKoreanQuizDeviceAdaptiveScore,
-  getKoreanQuizDeviceDifficultyPreference,
-  updateKoreanQuizDeviceAdaptiveScore,
-} from "./devicePrefs";
+import { getKoreanQuizDeviceDifficultyPreference } from "./devicePrefs";
+import { DEFAULT_ADAPTIVE_SCORE } from "./difficulty";
 import { QUIZ_REAPPEAR_COOLDOWN } from "./pickWeights";
 import {
   findKoreanQuizzesByIds,
@@ -55,13 +52,12 @@ async function buildQueueEntries(
   cooldownIds: string[],
   studio?: boolean,
 ): Promise<KoreanQuizQueueEntry[]> {
-  const [wrongIdList, difficultyPreference, adaptiveScore, correctCounts] =
-    await Promise.all([
-      getRecentWrongQuizIds(deviceId, 10),
-      getKoreanQuizDeviceDifficultyPreference(deviceId),
-      getKoreanQuizDeviceAdaptiveScore(deviceId),
-      getCorrectCountByQuizId(deviceId),
-    ]);
+  // Web quiz has no visible difficulty score — always use the default Level-1-heavy mix.
+  const [wrongIdList, difficultyPreference, correctCounts] = await Promise.all([
+    getRecentWrongQuizIds(deviceId, 10),
+    getKoreanQuizDeviceDifficultyPreference(deviceId),
+    getCorrectCountByQuizId(deviceId),
+  ]);
   const wrongIds = new Set(wrongIdList);
 
   return buildWeightedQueueEntries({
@@ -71,7 +67,7 @@ async function buildQueueEntries(
     wrongIds,
     correctCounts,
     difficultyPreference,
-    adaptiveScore,
+    adaptiveScore: DEFAULT_ADAPTIVE_SCORE,
     listApproved: listApprovedKoreanQuizzesForQueue,
     studio,
   });
@@ -215,7 +211,6 @@ export async function submitKoreanQuizAttempt(params: {
       outcome: correct ? "correct" : "incorrect",
       attemptId,
     }),
-    updateKoreanQuizDeviceAdaptiveScore(params.deviceId, correct),
   ]);
 
   await advanceQueueHead(params.deviceId, params.quizId);

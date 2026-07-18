@@ -21,6 +21,19 @@ export function VocabQuizHomeSection({ cards }: Props) {
     content: "hero-play",
   });
 
+  const storeBlock = (
+    <>
+      <p className={styles.heroStoreLabel}>Get the app</p>
+      <AppStoreBadges
+        className={`mt-3 ${styles.heroStoreBadges}`}
+        theme="dark"
+        size="lg"
+        utmSource="home"
+        utmContent="hero-store"
+      />
+    </>
+  );
+
   return (
     <section className="pt-12 sm:pt-18">
       <Container>
@@ -44,24 +57,16 @@ export function VocabQuizHomeSection({ cards }: Props) {
             </StaggerReveal>
 
             <div className={styles.copyCol}>
-              <div className={styles.heroEyebrow}>Free app</div>
               <h1 className={styles.heroTitle}>{VOCAB_QUIZ_APP_NAME}</h1>
               <p className={styles.heroLead}>
                 Picture quizzes for Korean words — almost no ads, human-made
                 cards, built for 1–5 minute sessions.
               </p>
 
-              <div className="mt-8">
-                <p className={styles.heroStoreLabel}>Get the app</p>
-                <AppStoreBadges
-                  className="mt-3"
-                  theme="dark"
-                  size="lg"
-                  utmSource="home"
-                  utmContent="hero-store"
-                />
-              </div>
+              <div className={styles.heroStoreDesktop}>{storeBlock}</div>
             </div>
+
+            <div className={styles.heroStoreMobile}>{storeBlock}</div>
           </div>
         </StaggerReveal>
       </Container>

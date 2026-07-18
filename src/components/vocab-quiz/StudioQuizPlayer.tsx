@@ -254,6 +254,9 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
     const promoting = exitingQuiz !== null;
     const activeThrow = throwing && throwTargetId === quiz.id;
     const revealing = Boolean(selectedId);
+    /** Answer shown — flip, 초성 inline, or options pick. Examples must show without the grid. */
+    const answerRevealed = flipped || inlineAnswer || revealing;
+
     const interactionLocked =
       promoting || frozen || paused || showOptions || revealing || throwing || flipping;
     const english = quiz.illustrationEnglish?.trim();
@@ -654,222 +657,203 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       ? choices.filter((choice) => choice.id === quiz.correctChoiceId)
       : choices;
 
-    const choicesBlock =
-      showOptions || revealing ? (
-        <div
-          className={[
-            styles.studioChoicesWrap,
-            revealing ? styles.studioChoicesWrapRevealing : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-        >
-          <div className={styles.studioChoicesGrid}>
-            {visibleChoices.map((choice) => {
-              const state = feedback[choice.id] ?? "none";
-              const className = [
-                styles.studioChoiceBtn,
-                state === "correct" ? styles.studioChoiceCorrect : "",
-                state === "wrong" ? styles.studioChoiceWrong : "",
-                revealing ? styles.studioChoiceBtnRevealed : "",
-              ]
-                .filter(Boolean)
-                .join(" ");
-
-              return (
-                <button
-                  key={choice.id}
-                  type="button"
-                  className={className}
-                  aria-disabled={revealing}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    if (selectedId) {
-                      continueAfterReveal();
-                      return;
-                    }
-                    void revealChoice(choice.id);
-                  }}
-                >
-                  <ChoiceLabelWithEnglish
-                    label={choice.label}
-                    english={revealing ? choice.english : undefined}
-                  />
-                </button>
-              );
-            })}
-          </div>
-          {revealing && quiz.examples && quiz.examples.length > 0 ? (
-            <AnswerExampleCard
-              quizId={quiz.id}
-              examples={quiz.examples}
-              audio={audio}
-              onSeeDetails={onSeeDetails}
-            />
-          ) : null}
-          {revealing ? (
-            <p className={styles.studioRevealContinueHint}>Tap to continue</p>
-          ) : null}
-        </div>
+    const exampleCard =
+      answerRevealed && quiz.examples && quiz.examples.length > 0 ? (
+        <AnswerExampleCard
+          quizId={quiz.id}
+          examples={quiz.examples}
+          audio={audio}
+          onSeeDetails={onSeeDetails}
+        />
       ) : null;
 
     return (
       <div
         className={[
           styles.studioStage,
-          showOptions || revealing ? styles.studioStageWithOptions : "",
           revealing ? styles.studioStageAwaitContinue : "",
         ]
           .filter(Boolean)
           .join(" ")}
         onClick={revealing ? () => continueAfterReveal() : undefined}
       >
-        <header
-          className={[
-            styles.studioHeader,
-            revealing ? styles.studioHeaderCompact : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-        >
+        <header className={styles.studioHeader}>
           <h1 className={styles.studioTitle}>
             What is this in <span className={styles.studioTitleAccent}>Korean</span>?
           </h1>
           <DifficultyBadge difficulty={quiz.difficulty} />
         </header>
 
-        {revealing ? (
-          <div className={styles.studioRevealPanel}>
-            {quiz.imageUrl ? (
-              <div className={styles.studioRevealThumb} aria-hidden>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={quiz.imageUrl} alt="" className={styles.studioRevealThumbImg} />
-              </div>
-            ) : null}
-            {choicesBlock}
-          </div>
-        ) : (
-          <>
-            <div
-              className={[
-                styles.studioStackWrap,
-                showOptions ? styles.studioStackWrapWithOptions : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              <div
-                ref={stackRef}
-                className={styles.studioStackButton}
-                onPointerDown={onPointerDown}
-                onPointerMove={onPointerMove}
-                onPointerUp={onPointerUp}
-                onPointerCancel={onPointerCancel}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    handleTap();
-                  }
-                }}
-                aria-label={
-                  flipped || inlineAnswer
-                    ? "Go to next card — or use the corner button to flip back"
-                    : chosungHintOn
-                      ? "Reveal Korean answer below — swipe or throw to skip"
-                      : "Flip card to see Korean answer — swipe or throw to skip"
-                }
-              >
-                <div className={stackClass}>
-                  {bot ? (
-                    <div
-                      key={bot.id}
-                      className={homeStyles.cardStackItem}
-                      data-depth={2}
-                      data-layer="bot"
-                    >
-                      <StudioCardFront quiz={bot} />
-                    </div>
-                  ) : null}
-
-                  {mid ? (
-                    <div
-                      key={mid.id}
-                      className={homeStyles.cardStackItem}
-                      data-depth={1}
-                      data-layer="mid"
-                    >
-                      <StudioCardFront quiz={mid} />
-                    </div>
-                  ) : null}
-
-                  {!promoting ? (
-                    <div
-                      key={quiz.id}
-                      className={[
-                        homeStyles.cardStackItem,
-                        homeStyles.cardTop,
-                        styles.studioTopCard,
-                        activeThrow ? styles.studioTopCardThrowing : "",
-                        dragOffset.x !== 0 || dragOffset.y !== 0
-                          ? styles.studioTopCardDragging
-                          : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")}
-                      style={topMotionStyle}
-                      data-depth={0}
-                      data-layer="top"
-                    >
-                      <FlipCard
-                        quiz={quiz}
-                        flipped={flipped}
-                        flipping={flipping}
-                        flipDir={flipDir}
-                        onUnflip={() => void flipBack()}
-                      />
-                    </div>
-                  ) : null}
-
-                  {exitingQuiz ? (
-                    <div
-                      key={`exit-${exitingQuiz.id}`}
-                      className={`${homeStyles.cardStackItem} ${homeStyles.cardTop} ${homeStyles.cardStackItemExiting}`}
-                      data-layer="exit"
-                      aria-hidden
-                    >
-                      {exitingFlipped ? (
-                        <StudioCardBack quiz={exitingQuiz} />
-                      ) : (
-                        <StudioCardFront quiz={exitingQuiz} />
-                      )}
-                    </div>
-                  ) : null}
+        <div className={styles.studioStackWrap}>
+          <div
+            ref={stackRef}
+            className={styles.studioStackButton}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerCancel}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                handleTap();
+              }
+            }}
+            aria-label={
+              flipped || inlineAnswer
+                ? "Go to next card — or use the corner button to flip back"
+                : chosungHintOn
+                  ? "Reveal Korean answer below — swipe or throw to skip"
+                  : "Flip card to see Korean answer — swipe or throw to skip"
+            }
+          >
+            <div className={stackClass}>
+              {bot ? (
+                <div
+                  key={bot.id}
+                  className={homeStyles.cardStackItem}
+                  data-depth={2}
+                  data-layer="bot"
+                >
+                  <StudioCardFront quiz={bot} />
                 </div>
-              </div>
-
-              {english ? (
-                <p className={styles.studioEnglishLabel}>{english}</p>
               ) : null}
-              {hintSlotVisible ? (
-                <p className={styles.studioChosungHint} aria-live="polite">
-                  <span
-                    className={[
-                      styles.studioChosungHintText,
-                      answerShownInSlot ? styles.studioChosungHintTextAnswer : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                  >
-                    {hintSlotText}
-                  </span>
-                </p>
+
+              {mid ? (
+                <div
+                  key={mid.id}
+                  className={homeStyles.cardStackItem}
+                  data-depth={1}
+                  data-layer="mid"
+                >
+                  <StudioCardFront quiz={mid} />
+                </div>
+              ) : null}
+
+              {!promoting ? (
+                <div
+                  key={quiz.id}
+                  className={[
+                    homeStyles.cardStackItem,
+                    homeStyles.cardTop,
+                    styles.studioTopCard,
+                    activeThrow ? styles.studioTopCardThrowing : "",
+                    dragOffset.x !== 0 || dragOffset.y !== 0
+                      ? styles.studioTopCardDragging
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  style={topMotionStyle}
+                  data-depth={0}
+                  data-layer="top"
+                >
+                  <FlipCard
+                    quiz={quiz}
+                    flipped={flipped}
+                    flipping={flipping}
+                    flipDir={flipDir}
+                    onUnflip={() => void flipBack()}
+                  />
+                </div>
+              ) : null}
+
+              {exitingQuiz ? (
+                <div
+                  key={`exit-${exitingQuiz.id}`}
+                  className={`${homeStyles.cardStackItem} ${homeStyles.cardTop} ${homeStyles.cardStackItemExiting}`}
+                  data-layer="exit"
+                  aria-hidden
+                >
+                  {exitingFlipped ? (
+                    <StudioCardBack quiz={exitingQuiz} />
+                  ) : (
+                    <StudioCardFront quiz={exitingQuiz} />
+                  )}
+                </div>
               ) : null}
             </div>
-            {choicesBlock}
-          </>
-        )}
+          </div>
+
+          {english && !showOptions ? (
+            <p className={styles.studioEnglishLabel}>{english}</p>
+          ) : null}
+          {hintSlotVisible ? (
+            <p className={styles.studioChosungHint} aria-live="polite">
+              <span
+                className={[
+                  styles.studioChosungHintText,
+                  answerShownInSlot ? styles.studioChosungHintTextAnswer : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                {hintSlotText}
+              </span>
+            </p>
+          ) : null}
+        </div>
+
+        {showOptions ? (
+          <div
+            className={[
+              styles.studioChoicesWrap,
+              revealing ? styles.studioChoicesWrapRevealing : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <div className={styles.studioChoicesGrid}>
+              {visibleChoices.map((choice) => {
+                const state = feedback[choice.id] ?? "none";
+                const className = [
+                  styles.studioChoiceBtn,
+                  state === "correct" ? styles.studioChoiceCorrect : "",
+                  state === "wrong" ? styles.studioChoiceWrong : "",
+                  revealing ? styles.studioChoiceBtnRevealed : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ");
+
+                return (
+                  <button
+                    key={choice.id}
+                    type="button"
+                    className={className}
+                    aria-disabled={revealing}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      if (selectedId) {
+                        continueAfterReveal();
+                        return;
+                      }
+                      void revealChoice(choice.id);
+                    }}
+                  >
+                    <ChoiceLabelWithEnglish
+                      label={choice.label}
+                      english={revealing ? choice.english : undefined}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+
+        {exampleCard ? (
+          <div
+            className={styles.studioExampleWrap}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
+          >
+            {exampleCard}
+            {revealing ? (
+              <p className={styles.studioRevealContinueHint}>Tap to continue</p>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     );
   },

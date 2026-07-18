@@ -105,12 +105,15 @@ export const DEFAULT_ADAPTIVE_SCORE = 50;
 
 const ADAPTIVE_SCORE_MIN = 0;
 const ADAPTIVE_SCORE_MAX = 100;
-const SCORE_GAIN_ON_CORRECT = 6;
+/** Climb slowly so Level 1 (A) stays common after a few correct answers. */
+const SCORE_GAIN_ON_CORRECT = 3;
 const SCORE_LOSS_ON_WRONG = 8;
 
-/** Skew strength at score 0 / 100 (B weight stays 1). */
-const ADAPTIVE_TIER_SKEW = 1.8;
-const MIN_TIER_WEIGHT = 0.15;
+/** Skew strength at score 0 / 100 (kept mild so A does not collapse). */
+const ADAPTIVE_TIER_SKEW = 0.85;
+const MIN_TIER_WEIGHT = 0.12;
+/** Floor for A so Level 1 remains the plurality even at high scores. */
+const MIN_A_TIER_WEIGHT = 0.75;
 
 export function clampAdaptiveScore(raw: unknown): number {
   if (typeof raw !== "number" || !Number.isFinite(raw)) {
@@ -141,20 +144,20 @@ export function tierWeightsFromAdaptiveScore(
       ? Math.max(0, options.cWeightScale)
       : DEFAULT_C_TIER_WEIGHT_SCALE;
   return {
-    A: Math.max(MIN_TIER_WEIGHT, 1 - ADAPTIVE_TIER_SKEW * t),
+    A: Math.max(MIN_A_TIER_WEIGHT, 1 - ADAPTIVE_TIER_SKEW * t),
     B: Math.max(MIN_TIER_WEIGHT, 1 * bScale),
     C: Math.max(MIN_TIER_WEIGHT, (1 + ADAPTIVE_TIER_SKEW * t) * cScale),
   };
 }
 
 /** Default web quiz: B less often, C much less often. */
-export const DEFAULT_B_TIER_WEIGHT_SCALE = 0.48;
-export const DEFAULT_C_TIER_WEIGHT_SCALE = 0.2;
+export const DEFAULT_B_TIER_WEIGHT_SCALE = 0.32;
+export const DEFAULT_C_TIER_WEIGHT_SCALE = 0.12;
 
 /** Studio: B a bit less, C even rarer. */
-export const STUDIO_B_TIER_WEIGHT_SCALE = 0.42;
+export const STUDIO_B_TIER_WEIGHT_SCALE = 0.28;
 /** @deprecated use STUDIO + DEFAULT scales via pick options */
-export const STUDIO_C_TIER_WEIGHT_SCALE = 0.15;
+export const STUDIO_C_TIER_WEIGHT_SCALE = 0.08;
 
 export function pickTierByAdaptiveScore(
   score: number,
