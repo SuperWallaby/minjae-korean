@@ -652,6 +652,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       <div
         className={[
           styles.studioStage,
+          showOptions ? styles.studioStageWithOptions : "",
           revealing ? styles.studioStageAwaitContinue : "",
         ]
           .filter(Boolean)
@@ -665,7 +666,14 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           <DifficultyBadge difficulty={quiz.difficulty} />
         </header>
 
-        <div className={styles.studioStackWrap}>
+        <div
+          className={[
+            styles.studioStackWrap,
+            revealing ? styles.studioStackWrapRevealing : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
           <div
             ref={stackRef}
             className={styles.studioStackButton}
@@ -823,13 +831,16 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
                 );
               })}
             </div>
-            {revealing && quiz.examples && quiz.examples.length > 0 && onSeeDetails ? (
+            {revealing && quiz.examples && quiz.examples.length > 0 ? (
               <AnswerExampleCard
                 quizId={quiz.id}
                 examples={quiz.examples}
                 audio={audio}
                 onSeeDetails={onSeeDetails}
               />
+            ) : null}
+            {revealing ? (
+              <p className={styles.studioRevealContinueHint}>Tap to continue</p>
             ) : null}
           </div>
         ) : null}

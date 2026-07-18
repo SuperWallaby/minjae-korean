@@ -1027,7 +1027,9 @@
 }
 
 .vocabQuizMainStudio {
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .toolbarStudio {
@@ -1138,8 +1140,22 @@
   min-height: 0;
 }
 
+.studioStageWithOptions {
+  flex: none;
+  width: 100%;
+  min-height: 100%;
+  justify-content: flex-start;
+  overflow: visible;
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+}
+
 .studioStageAwaitContinue {
   cursor: pointer;
+  flex: none;
+  width: 100%;
+  min-height: 100%;
+  justify-content: flex-start;
+  overflow: visible;
 }
 
 .studioHeader {
@@ -1173,6 +1189,11 @@
   align-items: center;
   gap: 1rem;
   width: min(100%, var(--stack-w));
+  flex-shrink: 0;
+}
+
+.studioStackWrapRevealing {
+  --stack-h: clamp(12.5rem, 42vw, 16.5rem);
 }
 
 .studioStackButton {
@@ -1241,8 +1262,9 @@
   width: 100%;
   max-width: min(100%, 28rem);
   margin-top: 1.35rem;
-  padding: 0 0.15rem;
+  padding: 0 0.15rem 0.5rem;
   overflow: visible;
+  flex: 0 0 auto;
   animation: fadeUp 0.22s ease;
 }
 
@@ -1264,6 +1286,14 @@
   margin-top: 0.85rem;
   max-width: 22rem;
   margin-inline: auto;
+}
+
+.studioRevealContinueHint {
+  margin: 0.85rem 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #9ca3af;
 }
 
 @media (min-width: 640px) {

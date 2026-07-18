@@ -227,7 +227,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
             })}
           </div>
 
-          {revealing && quiz.examples && quiz.examples.length > 0 && onSeeDetails ? (
+          {revealing && quiz.examples && quiz.examples.length > 0 ? (
             <AnswerExampleCard
               quizId={quiz.id}
               examples={quiz.examples}

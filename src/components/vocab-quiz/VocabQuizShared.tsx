@@ -10,6 +10,7 @@ export function DifficultyBadge({
 }) {
   const tier = String(difficulty || "").trim().toUpperCase();
   if (tier !== "A" && tier !== "B" && tier !== "C") return null;
+  const level = tier === "A" ? "1" : tier === "B" ? "2" : "3";
   return (
     <span
       className={[
@@ -20,9 +21,9 @@ export function DifficultyBadge({
             ? styles.difficultyBadgeB
             : styles.difficultyBadgeC,
       ].join(" ")}
-      aria-label={`Difficulty level ${tier}`}
+      aria-label={`Difficulty level ${level}`}
     >
-      Level {tier}
+      Level {level}
     </span>
   );
 }

@@ -12,7 +12,7 @@ type Props = {
   quizId: string;
   examples: KoreanQuizPreparedExample[];
   audio: VocabQuizAudio;
-  onSeeDetails: () => void;
+  onSeeDetails?: () => void;
 };
 
 export function AnswerExampleCard({
@@ -111,17 +111,19 @@ export function AnswerExampleCard({
           </div>
         );
       })}
-      <button
-        type="button"
-        className={styles.answerExampleDetailsBtn}
-        onClick={(e) => {
-          e.stopPropagation();
-          onSeeDetails();
-        }}
-      >
-        <BookOpen size={16} strokeWidth={2.25} aria-hidden />
-        See details
-      </button>
+      {onSeeDetails ? (
+        <button
+          type="button"
+          className={styles.answerExampleDetailsBtn}
+          onClick={(e) => {
+            e.stopPropagation();
+            onSeeDetails();
+          }}
+        >
+          <BookOpen size={16} strokeWidth={2.25} aria-hidden />
+          See details
+        </button>
+      ) : null}
     </div>
   );
 }
