@@ -36,6 +36,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-picture-audio-vs-text-korean-memorization-1784604282287_tr8955.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-picture-audio-vs-text-korean-memorization-1784604282287_tr8955.webp",
   createdAt: "2026-07-12T10:20:00.000Z",
   updatedAt: "2026-07-12T10:20:00.000Z",
   paragraphs: [

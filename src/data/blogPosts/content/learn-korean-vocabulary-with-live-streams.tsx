@@ -35,6 +35,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-learn-korean-vocabulary-with-live-streams-1784604149036_yjio78.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-learn-korean-vocabulary-with-live-streams-1784604149036_yjio78.webp",
   createdAt: "2026-07-12T10:25:00.000Z",
   updatedAt: "2026-07-12T10:25:00.000Z",
   paragraphs: [

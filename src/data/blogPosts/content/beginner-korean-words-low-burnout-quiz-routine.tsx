@@ -36,6 +36,8 @@ export const post: BlogPost = {
     },
   ],
   level: 1,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-beginner-korean-words-low-burnout-quiz-routine-1784603878053_z9fbgn.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-beginner-korean-words-low-burnout-quiz-routine-1784603878053_z9fbgn.webp",
   createdAt: "2026-07-12T10:35:00.000Z",
   updatedAt: "2026-07-12T10:35:00.000Z",
   paragraphs: [

@@ -35,6 +35,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-what-is-this-called-in-korean-vs-drops-1784605320685_j3vygf.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-what-is-this-called-in-korean-vs-drops-1784605320685_j3vygf.webp",
   createdAt: "2026-07-12T10:00:00.000Z",
   updatedAt: "2026-07-12T10:00:00.000Z",
   paragraphs: [

@@ -42,6 +42,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-learn-korean-words-in-5-minutes-1784604910214_xjphtt.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-learn-korean-words-in-5-minutes-1784604910214_xjphtt.webp",
   createdAt: "2026-07-12T09:05:00.000Z",
   updatedAt: "2026-07-12T09:05:00.000Z",
   paragraphs: [

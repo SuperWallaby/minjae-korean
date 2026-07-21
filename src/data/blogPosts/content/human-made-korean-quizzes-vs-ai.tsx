@@ -42,6 +42,8 @@ export const post: BlogPost = {
     },
   ],
   level: 3,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-human-made-korean-quizzes-vs-ai-1784604788572_hsy4rf.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-human-made-korean-quizzes-vs-ai-1784604788572_hsy4rf.webp",
   createdAt: "2026-07-12T09:10:00.000Z",
   updatedAt: "2026-07-12T09:10:00.000Z",
   paragraphs: [

@@ -35,6 +35,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-what-is-this-called-in-korean-vs-lingodeer-1784606058801_auesd0.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-what-is-this-called-in-korean-vs-lingodeer-1784606058801_auesd0.webp",
   createdAt: "2026-07-12T10:10:00.000Z",
   updatedAt: "2026-07-12T10:10:00.000Z",
   paragraphs: [

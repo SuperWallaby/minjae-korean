@@ -42,6 +42,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-korean-vocab-quiz-vs-flashcards-1784604538926_fhchwa.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-korean-vocab-quiz-vs-flashcards-1784604538926_fhchwa.webp",
   createdAt: "2026-07-12T09:30:00.000Z",
   updatedAt: "2026-07-12T09:30:00.000Z",
   paragraphs: [

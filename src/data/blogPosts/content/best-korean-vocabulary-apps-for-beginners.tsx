@@ -36,6 +36,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-best-korean-vocabulary-apps-for-beginners-1784604411124_trjakv.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-best-korean-vocabulary-apps-for-beginners-1784604411124_trjakv.webp",
   createdAt: "2026-07-12T10:15:00.000Z",
   updatedAt: "2026-07-12T10:15:00.000Z",
   paragraphs: [

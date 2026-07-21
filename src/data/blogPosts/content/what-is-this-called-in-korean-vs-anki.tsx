@@ -40,6 +40,8 @@ export const post: BlogPost = {
     },
   ],
   level: 3,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-what-is-this-called-in-korean-vs-anki-1784605465823_94ld41.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-what-is-this-called-in-korean-vs-anki-1784605465823_94ld41.webp",
   createdAt: "2026-07-12T09:25:00.000Z",
   updatedAt: "2026-07-12T09:25:00.000Z",
   paragraphs: [

@@ -72,7 +72,7 @@ Wide landscape 1536×1024. Soft watercolor webtoon cover: clean soft brown outli
   }
 
   const suffix =
-    " Match the reference style: soft watercolor/marker webtoon, clean soft brown outlines, pastel cream and light-blue palette, gentle daylight. Blog cover only — no UI, no tiny unreadable text blocks, no photorealism.";
+    " Soft watercolor/marker webtoon, clean soft brown outlines, pastel cream and light-blue palette, gentle daylight. Blog cover only — no UI, no tiny unreadable text blocks, no photorealism. Never print prompt instructions or meta phrases such as 'match the reference style' in the image.";
 
   let raw = await azureChat({
     system,

@@ -42,6 +42,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-korean-vocab-practice-without-ads-1784604660456_77t581.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-korean-vocab-practice-without-ads-1784604660456_77t581.webp",
   createdAt: "2026-07-12T09:15:00.000Z",
   updatedAt: "2026-07-12T09:15:00.000Z",
   paragraphs: [

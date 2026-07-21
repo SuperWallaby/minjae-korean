@@ -27,8 +27,15 @@ function parseArgs(argv) {
 
 function readTitleFromTsx(tsxPath) {
   const src = readFileSync(tsxPath, "utf8");
-  const m = src.match(/\n  title:\s*"([^"]+)"/) || src.match(/\n  title:\s*'([^']+)'/);
-  return m?.[1] || null;
+  const m =
+    src.match(/\n  title:\s*"([^"]+)"/) ||
+    src.match(/\n  title:\s*'([^']+)'/) ||
+    src.match(/\n  title:\s*`([^`]+)`/);
+  if (!m?.[1]) return null;
+  return m[1].replace(
+    /\$\{VOCAB_QUIZ_APP_NAME\}/g,
+    "What is this called in Korean",
+  );
 }
 
 async function main() {

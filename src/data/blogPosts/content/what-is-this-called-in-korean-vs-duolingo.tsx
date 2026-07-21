@@ -40,6 +40,8 @@ export const post: BlogPost = {
     },
   ],
   level: 2,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-what-is-this-called-in-korean-vs-duolingo-1784605603938_uli0cd.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-what-is-this-called-in-korean-vs-duolingo-1784605603938_uli0cd.webp",
   createdAt: "2026-07-12T09:20:00.000Z",
   updatedAt: "2026-07-12T09:20:00.000Z",
   paragraphs: [
