@@ -13,7 +13,7 @@ export function VocabSeoHubCard({ page }: { page: VocabSeoPage }) {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={page.imageUrl}
+        src={page.imageThumbUrl || page.imageUrl}
         alt=""
         width={72}
         height={72}

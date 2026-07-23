@@ -16,6 +16,8 @@ export type VocabSeoPage = {
   titleEn: string;
   description: string;
   imageUrl: string;
+  /** Optional small WebP for hub cards. */
+  imageThumbUrl?: string;
   imageAlt: string;
   words: VocabSeoWord[];
   tags: string[];

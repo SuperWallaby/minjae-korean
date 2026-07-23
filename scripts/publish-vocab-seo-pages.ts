@@ -31,6 +31,7 @@ const OUT_PATH = path.join(ROOT, "src/data/vocabInfographic/published.json");
 
 type ScheduledEntry = {
   imageUrl?: string;
+  imageThumbUrl?: string;
   tweetText?: string;
   caption?: { line1?: string; line2?: string };
   imageWords?: Array<{
@@ -137,6 +138,7 @@ function main() {
       titleEn,
       description: vocabSeoDescription(titleEn, words),
       imageUrl,
+      imageThumbUrl: String(entry.imageThumbUrl ?? "").trim() || undefined,
       imageAlt: `${titleEn} — Korean vocab chart`,
       words,
       tags: bundle?.tags ?? [],

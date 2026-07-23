@@ -84,30 +84,59 @@ function findBundle(bundleId: string) {
   return bundle;
 }
 
-async function uploadBrandedImage(bundleId: string): Promise<{ imageUrl: string; imageAlt: string }> {
+async function uploadBrandedImage(bundleId: string): Promise<{
+  imageUrl: string;
+  imageThumbUrl: string;
+  imageAlt: string;
+}> {
   const bundle = findBundle(bundleId);
   const imagePath = path.join(OUT, `${bundleId}.png`);
   if (!fs.existsSync(imagePath)) {
     throw new Error(`Branded image not found: ${imagePath}`);
   }
 
-  const key = `grammar-x/vocab-infographic/${Date.now()}-${bundleId}.png`;
-  const buffer = fs.readFileSync(imagePath);
-  await r2Client().send(
+  const sharp = (await import("sharp")).default;
+  const png = fs.readFileSync(imagePath);
+  const hero = await sharp(png)
+    .resize({ width: 1200, withoutEnlargement: true })
+    .webp({ quality: 82, effort: 4 })
+    .toBuffer();
+  const thumb = await sharp(png)
+    .resize({ width: 360, withoutEnlargement: true })
+    .webp({ quality: 75, effort: 4 })
+    .toBuffer();
+
+  const stamp = Date.now();
+  const heroKey = `grammar-x/vocab-infographic/${stamp}-${bundleId}.webp`;
+  const thumbKey = `grammar-x/vocab-infographic/${stamp}-${bundleId}-thumb.webp`;
+  const client = r2Client();
+  const bucket = r2Bucket();
+  await client.send(
     new PutObjectCommand({
-      Bucket: r2Bucket(),
-      Key: key,
-      Body: buffer,
-      ContentType: "image/png",
+      Bucket: bucket,
+      Key: heroKey,
+      Body: hero,
+      ContentType: "image/webp",
+      CacheControl: "public, max-age=31536000, immutable",
+    }),
+  );
+  await client.send(
+    new PutObjectCommand({
+      Bucket: bucket,
+      Key: thumbKey,
+      Body: thumb,
+      ContentType: "image/webp",
+      CacheControl: "public, max-age=31536000, immutable",
     }),
   );
 
   const publicBase =
     process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "") ||
-    `https://${mustEnv("R2_ACCOUNT_ID")}.r2.cloudflarestorage.com/${r2Bucket()}`;
-  const imageUrl = `${publicBase}/${key}`;
+    `https://${mustEnv("R2_ACCOUNT_ID")}.r2.cloudflarestorage.com/${bucket}`;
+  const imageUrl = `${publicBase}/${heroKey}`;
+  const imageThumbUrl = `${publicBase}/${thumbKey}`;
   const imageAlt = `${bundle.title} — Korean vocabulary by What is this in Korean`;
-  return { imageUrl, imageAlt };
+  return { imageUrl, imageThumbUrl, imageAlt };
 }
 
 /** Register for admin approval (does not enqueue X). */
@@ -128,7 +157,7 @@ export async function registerVocabXForReview(input: {
     return { skipped: true as const, bundleId, reason: "already_scheduled" as const };
   }
 
-  const { imageUrl, imageAlt } = await uploadBrandedImage(bundleId);
+  const { imageUrl, imageThumbUrl, imageAlt } = await uploadBrandedImage(bundleId);
   const imagePayload = await imageWordsForBundle(bundleId, imageUrl);
   const { tweetText, caption, replyText } = await buildVocabXPostText(bundle, {
     imageWords: imagePayload.words,
@@ -151,6 +180,7 @@ export async function registerVocabXForReview(input: {
     reviewId: item.id,
     reviewStatus: "pending",
     imageUrl,
+    imageThumbUrl,
     tweetText,
     caption,
     replyText,
