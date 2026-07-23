@@ -37,6 +37,7 @@
     "vocab-quiz-aeo-smoke": "npx tsx scripts/vocab-quiz-aeo-smoke.ts",
     "when-to-use:pipeline": "npx tsx scripts/when-to-use-pipeline.ts",
     "vocab-compare:pipeline": "npx tsx scripts/vocab-compare-pipeline.ts",
+    "vocab:publish": "npx tsx scripts/publish-vocab-seo-pages.ts",
     "generate-grammar-batch": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100.txt",
     "generate-grammar-batch-2": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-2.txt",
     "generate-grammar-batch-3": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-3.txt",

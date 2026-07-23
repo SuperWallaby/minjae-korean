@@ -144,6 +144,9 @@ export function SiteFooter() {
             <Link href="/when-to-use" className="hover:text-[var(--quiz-text)]">
               When to use (vocab)
             </Link>
+            <Link href="/vocab" className="hover:text-[var(--quiz-text)]">
+              Vocab charts
+            </Link>
             <Link href="/vocab/compare" className="hover:text-[var(--quiz-text)]">
               Vocab compare
             </Link>

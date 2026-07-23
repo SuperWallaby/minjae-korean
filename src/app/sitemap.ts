@@ -11,6 +11,7 @@ import { listArticles } from "@/lib/articlesRepo";
 import { listTopComparisonsForStaticParams } from "@/lib/grammarComparisonsRepo";
 import { listTopGuidesForStaticParams } from "@/lib/grammarGuidesRepo";
 import { listTopVocabCompareForStaticParams } from "@/lib/vocabCompare/repo";
+import { listAllVocabSeoPages } from "@/lib/vocabInfographic/repo";
 import { listTopWhenToUseForStaticParams } from "@/lib/whenToUse/repo";
 import { listSongs } from "@/lib/songsRepo";
 import { listDramas } from "@/lib/dramaRepo";
@@ -36,6 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/grammar/how-to-say`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
     { url: `${baseUrl}/vocab-quiz`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/when-to-use`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/vocab`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/vocab/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/songs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
@@ -221,6 +223,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
+  const vocabSeoPages = listAllVocabSeoPages();
+  const vocabSeoRoutes: MetadataRoute.Sitemap = vocabSeoPages.map((row) => ({
+    url: `${baseUrl}/vocab/${encodeURIComponent(row.bundleId)}/${encodeURIComponent(row.slug)}`,
+    lastModified: row.updatedAt ? new Date(row.updatedAt) : new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.72,
+  }));
+
   return [
     ...staticRoutes,
     ...grammarRoutes,
@@ -230,6 +240,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...grammarHowToSayRoutes,
     ...whenToUseRoutes,
     ...vocabCompareRoutes,
+    ...vocabSeoRoutes,
     ...articleRoutes,
     ...blogRoutes,
     ...expressionRoutes,

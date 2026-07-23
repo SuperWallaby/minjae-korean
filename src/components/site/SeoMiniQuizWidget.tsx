@@ -16,12 +16,14 @@ import styles from "./seo-mini-quiz-widget.module.css";
 const SEO_ROUTE_PREFIXES = [
   "/grammar/",
   "/when-to-use/",
+  "/vocab/",
   "/vocab/compare/",
 ] as const;
 
 const SEO_HUB_PATHS = new Set([
   "/grammar",
   "/when-to-use",
+  "/vocab",
   "/vocab/compare",
 ]);
 
