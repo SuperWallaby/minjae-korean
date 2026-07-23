@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { VocabSeoPage } from "@/lib/vocabInfographic/seoTypes";
 import { vocabSeoPath } from "@/lib/vocabInfographic/seo";
 import { vocabQuizPlayPath } from "@/lib/vocabQuizAeoLinks";
+import { VocabSeoPlayButton } from "@/components/vocab-infographic/VocabSeoPlayButton";
 
 export function VocabSeoHubCard({ page }: { page: VocabSeoPage }) {
   const href = vocabSeoPath(page.bundleId, page.slug);
@@ -40,6 +41,8 @@ export function VocabSeoHubCard({ page }: { page: VocabSeoPage }) {
 
 export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
   const playHref = vocabQuizPlayPath(`vocab-${page.slug}`);
+  const explanation = page.explanationEn?.trim() || "";
+  const examples = page.examples?.filter((ex) => ex.korean && ex.english) ?? [];
 
   return (
     <article className="space-y-10">
@@ -74,6 +77,20 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
         </figcaption>
       </figure>
 
+      {explanation ? (
+        <section className="space-y-3" aria-labelledby="vocab-explain">
+          <h2
+            id="vocab-explain"
+            className="text-lg font-semibold text-[var(--quiz-text)]"
+          >
+            How these words work together
+          </h2>
+          <p className="max-w-2xl text-base leading-relaxed text-[var(--quiz-text-sub)]">
+            {explanation}
+          </p>
+        </section>
+      ) : null}
+
       {page.words.length > 0 ? (
         <section className="space-y-4" aria-labelledby="vocab-words">
           <h2
@@ -94,8 +111,16 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
               <tbody className="divide-y divide-[var(--quiz-border)]">
                 {page.words.map((w) => (
                   <tr key={`${w.hangul}-${w.english}`}>
-                    <td className="px-4 py-3 text-base font-semibold text-[var(--quiz-text)]">
-                      {w.hangul}
+                    <td className="px-4 py-3">
+                      <span className="inline-flex items-center gap-2 text-base font-semibold text-[var(--quiz-text)]">
+                        {w.hangul}
+                        {w.ttsUrl ? (
+                          <VocabSeoPlayButton
+                            src={w.ttsUrl}
+                            label={`Play pronunciation of ${w.hangul}`}
+                          />
+                        ) : null}
+                      </span>
                     </td>
                     <td className="px-4 py-3 font-mono text-[var(--quiz-text-sub)]">
                       {w.romanization || "—"}
@@ -108,6 +133,42 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
               </tbody>
             </table>
           </div>
+        </section>
+      ) : null}
+
+      {examples.length > 0 ? (
+        <section className="space-y-4" aria-labelledby="vocab-examples">
+          <h2
+            id="vocab-examples"
+            className="text-lg font-semibold text-[var(--quiz-text)]"
+          >
+            Example sentences
+          </h2>
+          <ol className="space-y-4">
+            {examples.map((example, index) => (
+              <li
+                key={`${example.korean}-${index}`}
+                className="rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-4"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-lg font-semibold text-[var(--quiz-text)]">
+                      {example.korean}
+                    </p>
+                    <p className="mt-1 text-sm text-[var(--quiz-text-sub)]">
+                      {example.english}
+                    </p>
+                  </div>
+                  {example.ttsUrl ? (
+                    <VocabSeoPlayButton
+                      src={example.ttsUrl}
+                      label={`Play example ${index + 1}`}
+                    />
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
       ) : null}
 

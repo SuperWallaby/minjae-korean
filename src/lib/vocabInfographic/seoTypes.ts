@@ -4,6 +4,17 @@ export type VocabSeoWord = {
   hangul: string;
   romanization?: string;
   english: string;
+  ttsUrl?: string;
+  /** sovits | edge */
+  ttsProvider?: string;
+  ttsScore?: number;
+};
+
+export type VocabSeoExample = {
+  korean: string;
+  english: string;
+  ttsUrl?: string;
+  ttsProvider?: string;
 };
 
 export type VocabSeoPage = {
@@ -23,7 +34,12 @@ export type VocabSeoPage = {
   tags: string[];
   /** Short learner blurb (tweet cleaned). */
   intro: string;
+  /** Longer English explanation for the group/comparison. */
+  explanationEn?: string;
+  /** Example sentences using chart words. */
+  examples?: VocabSeoExample[];
   updatedAt: string;
+  enrichedAt?: string;
 };
 
 export type VocabSeoPublishedFile = {

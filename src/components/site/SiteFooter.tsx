@@ -16,6 +16,62 @@ import Image from "next/image";
 import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
 
+const LEARN_LINKS = [
+  { href: "/vocab-quiz", label: "Vocab quiz" },
+  { href: "/vocab/detail", label: "Vocab detail" },
+  { href: "/when-to-use", label: "When to use" },
+  { href: "/vocab", label: "Vocab charts" },
+  { href: "/vocab/compare", label: "Vocab compare" },
+  { href: "/grammar", label: "Grammar" },
+  { href: "/grammar/compare", label: "Grammar compare" },
+  { href: "/grammar/meaning", label: "Meaning guides" },
+  { href: "/grammar/usage", label: "Usage guides" },
+  { href: "/grammar/how-to-say", label: "How to say it" },
+] as const;
+
+const EXPLORE_LINKS = [
+  { href: "/news", label: "News" },
+  { href: "/blog", label: "Blog" },
+  { href: "/expressions", label: "Expressions" },
+  { href: "/songs", label: "Songs" },
+  { href: "/drama", label: "Drama" },
+  { href: "/exams", label: "Exams" },
+] as const;
+
+const ACCOUNT_LINKS = [
+  { href: "/account", label: "Account" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
+] as const;
+
+const linkClassName =
+  "text-sm text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]";
+
+function FooterLinkColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: readonly { href: string; label: string }[];
+}) {
+  return (
+    <nav aria-label={title}>
+      <p className="text-xs font-semibold uppercase tracking-wide text-[var(--quiz-text)]">
+        {title}
+      </p>
+      <ul className="mt-3 grid gap-2">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href} className={linkClassName}>
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 export function SiteFooter() {
   const [copiedKey, setCopiedKey] = React.useState<string | null>(null);
   const copyTimerRef = React.useRef<number | null>(null);
@@ -42,7 +98,7 @@ export function SiteFooter() {
 
   return (
     <footer className="site-footer border-t border-[var(--quiz-border)] bg-[var(--quiz-canvas)] text-[var(--quiz-text)]">
-      <Container className="grid gap-8 py-10 md:grid-cols-2 md:items-start">
+      <Container className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] lg:items-start">
         <div className="text-sm text-[var(--quiz-text-sub)]">
           <Logo mode="footer" />
           <div className="mt-0 max-w-sm text-xs leading-6 text-[var(--quiz-text-muted)]">
@@ -124,72 +180,43 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="text-sm text-[var(--quiz-text-sub)] md:justify-self-end md:text-right">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:justify-end">
-            <Link href="/news" className="hover:text-[var(--quiz-text)]">
-              News
-            </Link>
-            <Link href="/grammar" className="hover:text-[var(--quiz-text)]">
-              Grammar
-            </Link>
-            <Link href="/grammar/compare" className="hover:text-[var(--quiz-text)]">
-              Word & grammar comparisons
-            </Link>
-            <Link href="/grammar/meaning" className="hover:text-[var(--quiz-text)]">
-              Meaning guides
-            </Link>
-            <Link href="/grammar/usage" className="hover:text-[var(--quiz-text)]">
-              Usage guides
-            </Link>
-            <Link href="/when-to-use" className="hover:text-[var(--quiz-text)]">
-              When to use (vocab)
-            </Link>
-            <Link href="/vocab" className="hover:text-[var(--quiz-text)]">
-              Vocab charts
-            </Link>
-            <Link href="/vocab/compare" className="hover:text-[var(--quiz-text)]">
-              Vocab compare
-            </Link>
-            <Link href="/grammar/how-to-say" className="hover:text-[var(--quiz-text)]">
-              How to say it
-            </Link>
-            {/* 1:1 booking hidden while sessions are paused */}
-            <Link href="/account" className="hover:text-[var(--quiz-text)]">
-              Account
-            </Link>
-          </div>
-
-          <div className="mt-4 flex items-center gap-3 md:justify-end">
-            <a
-              href="https://instagram.com/kaja_minjae"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
-              aria-label="Instagram @kaja_minjae"
-            >
-              <Instagram className="size-4" />
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
-              aria-label="YouTube"
-            >
-              <Youtube className="size-4" />
-            </a>
-            <a
-              href="https://x.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
-              aria-label="X"
-            >
-              <Twitter className="size-4" />
-            </a>
-          </div>
-          <div className="mt-3 text-xs text-[var(--quiz-text-muted)]">
-            © {new Date().getFullYear()} What is this in Korean. All rights reserved.
+        <div className="grid gap-8 sm:grid-cols-3">
+          <FooterLinkColumn title="Learn" links={LEARN_LINKS} />
+          <FooterLinkColumn title="Explore" links={EXPLORE_LINKS} />
+          <div>
+            <FooterLinkColumn title="Account" links={ACCOUNT_LINKS} />
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                href="https://instagram.com/kaja_minjae"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
+                aria-label="Instagram @kaja_minjae"
+              >
+                <Instagram className="size-4" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
+                aria-label="YouTube"
+              >
+                <Youtube className="size-4" />
+              </a>
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
+                aria-label="X"
+              >
+                <Twitter className="size-4" />
+              </a>
+            </div>
+            <div className="mt-3 text-xs text-[var(--quiz-text-muted)]">
+              © {new Date().getFullYear()} What is this in Korean. All rights reserved.
+            </div>
           </div>
         </div>
       </Container>

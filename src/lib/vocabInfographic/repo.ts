@@ -1,6 +1,7 @@
 import publishedFile from "@/data/vocabInfographic/published.json";
 
 import type { VocabInfographicFormatId } from "./formats";
+import { pickRelatedVocabSeoPages } from "./related";
 import type { VocabSeoPage, VocabSeoPublishedFile } from "./seoTypes";
 
 const data = publishedFile as VocabSeoPublishedFile;
@@ -42,6 +43,15 @@ export function getVocabSeoPageById(bundleId: string): VocabSeoPage | null {
 
 export function listAllVocabSeoPages(): VocabSeoPage[] {
   return [...(data.pages ?? [])];
+}
+
+export function listRelatedVocabSeoPages(
+  bundleId: string,
+  limit = 14,
+): VocabSeoPage[] {
+  const current = idIndex.get(bundleId);
+  if (!current) return [];
+  return pickRelatedVocabSeoPages(current, listAllVocabSeoPages(), limit);
 }
 
 export function listTopVocabSeoForStaticParams(

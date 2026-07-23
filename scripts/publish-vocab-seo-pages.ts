@@ -91,12 +91,60 @@ function normalizeWords(
     .filter((w) => w.hangul && w.english);
 }
 
+function loadPrevious(): Map<string, VocabSeoPage> {
+  if (!existsSync(OUT_PATH)) return new Map();
+  try {
+    const prev = JSON.parse(readFileSync(OUT_PATH, "utf8")) as VocabSeoPublishedFile;
+    return new Map((prev.pages || []).map((p) => [p.bundleId, p]));
+  } catch {
+    return new Map();
+  }
+}
+
+/** Keep explanation / examples / word TTS across republish. */
+function mergeEnrichment(
+  next: VocabSeoPage,
+  prev: VocabSeoPage | undefined,
+): VocabSeoPage {
+  if (!prev) return next;
+  const ttsByHangul = new Map(
+    prev.words
+      .filter((w) => w.hangul && w.ttsUrl)
+      .map((w) => [w.hangul, w] as const),
+  );
+  const words = next.words.map((w) => {
+    const old = ttsByHangul.get(w.hangul);
+    if (!old?.ttsUrl) return w;
+    return {
+      ...w,
+      ttsUrl: old.ttsUrl,
+      ttsProvider: old.ttsProvider,
+      ttsScore: old.ttsScore,
+    };
+  });
+  return {
+    ...next,
+    words,
+    explanationEn: prev.explanationEn || next.explanationEn,
+    examples: prev.examples?.length ? prev.examples : next.examples,
+    enrichedAt: prev.enrichedAt || next.enrichedAt,
+    description:
+      prev.explanationEn && prev.explanationEn.length > 40
+        ? prev.explanationEn.length > 160
+          ? `${prev.explanationEn.slice(0, 157).trimEnd()}…`
+          : prev.explanationEn
+        : next.description,
+  };
+}
+
 function main() {
   const scheduled = loadScheduled();
+  const previous = loadPrevious();
   const catalogById = new Map(ALL_VOCAB_BUNDLES.map((b) => [b.id, b]));
   const pages: VocabSeoPage[] = [];
   let skippedNoImage = 0;
   let skippedUnknownBundle = 0;
+  let keptEnrichment = 0;
 
   for (const [bundleId, entry] of Object.entries(scheduled)) {
     const imageUrl = String(entry.imageUrl ?? "").trim();
@@ -130,21 +178,26 @@ function main() {
       entry.scheduledAt ||
       new Date().toISOString();
 
-    pages.push({
-      bundleId,
-      slug,
-      format: bundle?.format ?? "grid_cluster",
-      title,
-      titleEn,
-      description: vocabSeoDescription(titleEn, words),
-      imageUrl,
-      imageThumbUrl: String(entry.imageThumbUrl ?? "").trim() || undefined,
-      imageAlt: `${titleEn} — Korean vocab chart`,
-      words,
-      tags: bundle?.tags ?? [],
-      intro,
-      updatedAt,
-    });
+    const page = mergeEnrichment(
+      {
+        bundleId,
+        slug,
+        format: bundle?.format ?? "grid_cluster",
+        title,
+        titleEn,
+        description: vocabSeoDescription(titleEn, words),
+        imageUrl,
+        imageThumbUrl: String(entry.imageThumbUrl ?? "").trim() || undefined,
+        imageAlt: `${titleEn} — Korean vocab chart`,
+        words,
+        tags: bundle?.tags ?? [],
+        intro,
+        updatedAt,
+      },
+      previous.get(bundleId),
+    );
+    if (page.enrichedAt) keptEnrichment += 1;
+    pages.push(page);
   }
 
   pages.sort((a, b) => a.bundleId.localeCompare(b.bundleId));
@@ -164,7 +217,7 @@ function main() {
     `  skipped no-image=${skippedNoImage} unknown-bundle=${skippedUnknownBundle}`,
   );
   console.log(
-    `  with words=${pages.filter((p) => p.words.length > 0).length}`,
+    `  with words=${pages.filter((p) => p.words.length > 0).length} keptEnrichment=${keptEnrichment}`,
   );
 }
 

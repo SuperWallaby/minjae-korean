@@ -27,7 +27,7 @@ const DEFAULT_LINK =
 const DEFAULT_TOPIC =
   process.env.PINTEREST_TOPIC?.trim() || "Korean language";
 const BROWSER_URL = process.env.CHROME_WORK_DEBUG_URL || "http://127.0.0.1:9222";
-const DELAY_SEC = Number(process.env.PINTEREST_UPLOAD_DELAY_SEC || 90);
+const DELAY_SEC = Number(process.env.PINTEREST_UPLOAD_DELAY_SEC || 10);
 const ATTEMPT_TIMEOUT_MS = Number(process.env.PINTEREST_ATTEMPT_TIMEOUT_MS || 180_000);
 const MAX_RETRIES = Number(process.env.PINTEREST_MAX_RETRIES || 2);
 

@@ -8,12 +8,18 @@ import {
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
 import { VocabSeoArticle } from "@/components/vocab-infographic/VocabSeoArticle";
+import { VocabSeoRelated } from "@/components/vocab-infographic/VocabSeoRelated";
 import { SITE_NAME } from "@/lib/siteBrand";
 import {
   getVocabSeoPageById,
+  listRelatedVocabSeoPages,
   listTopVocabSeoForStaticParams,
 } from "@/lib/vocabInfographic/repo";
 import {
+  buildVocabSeoArticleJsonLd,
+  buildVocabSeoBreadcrumbJsonLd,
+  buildVocabSeoFaqJsonLd,
+  vocabSeoBreadcrumbItems,
   vocabSeoCanonicalUrl,
   vocabSeoPath,
   vocabSeoSiteBaseUrl,
@@ -91,33 +97,37 @@ export default async function VocabSeoDetailPage({ params }: Props) {
   }
 
   const canonical = vocabSeoCanonicalUrl(baseUrl, page.bundleId, page.slug);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: page.titleEn,
-    description: page.description,
-    image: page.imageUrl,
-    dateModified: page.updatedAt,
-    mainEntityOfPage: canonical,
-    author: { "@type": "Organization", name: SITE_NAME },
-  };
+  const breadcrumbItems = vocabSeoBreadcrumbItems(page);
+  const articleJsonLd = buildVocabSeoArticleJsonLd(page, canonical);
+  const faqJsonLd = buildVocabSeoFaqJsonLd(page, canonical);
+  const breadcrumbJsonLd = buildVocabSeoBreadcrumbJsonLd(
+    page,
+    baseUrl,
+    canonical,
+  );
+  const related = listRelatedVocabSeoPages(page.bundleId, 14);
 
   return (
     <MarketingPage containerClassName="max-w-3xl">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <MarketingShell>
         <MarketingShellBody>
-          <Breadcrumb
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Vocab", href: "/vocab" },
-              { label: page.title },
-            ]}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-          />
-          <VocabSeoArticle page={page} />
+          <Breadcrumb items={breadcrumbItems} />
+          <div className="space-y-10">
+            <VocabSeoArticle page={page} />
+            <VocabSeoRelated items={related} />
+          </div>
         </MarketingShellBody>
       </MarketingShell>
     </MarketingPage>

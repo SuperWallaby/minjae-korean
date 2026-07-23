@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { VocabSeoHubCard } from "@/components/vocab-infographic/VocabSeoArticle";
+import { Breadcrumb } from "@/components/site/Breadcrumb";
 import {
   MarketingHeader,
   MarketingPage,
@@ -10,7 +11,11 @@ import {
 } from "@/components/site/MarketingShell";
 import { SITE_NAME } from "@/lib/siteBrand";
 import { listVocabSeoPages } from "@/lib/vocabInfographic/repo";
-import { vocabSeoSiteBaseUrl } from "@/lib/vocabInfographic/seo";
+import {
+  buildVocabSeoHubBreadcrumbJsonLd,
+  vocabSeoHubBreadcrumbItems,
+  vocabSeoSiteBaseUrl,
+} from "@/lib/vocabInfographic/seo";
 import { vocabQuizPlayPath } from "@/lib/vocabQuizAeoLinks";
 
 export const runtime = "nodejs";
@@ -50,10 +55,17 @@ export default async function VocabSeoIndexPage({ searchParams }: Props) {
   const pageHref = (nextPage: number) =>
     nextPage > 1 ? `/vocab?page=${nextPage}` : "/vocab";
 
+  const breadcrumbJsonLd = buildVocabSeoHubBreadcrumbJsonLd(SITE_URL);
+
   return (
     <MarketingPage containerClassName="max-w-3xl">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <MarketingShell>
         <MarketingShellBody>
+          <Breadcrumb items={vocabSeoHubBreadcrumbItems()} />
           <MarketingHeader
             eyebrow="Vocabulary"
             title="Vocab charts"

@@ -1,3 +1,7 @@
+import { SITE_NAME } from "@/lib/siteBrand";
+
+import type { VocabSeoPage } from "./seoTypes";
+
 /** ASCII SEO slug from a vocab bundle title. */
 export function slugifyVocabBundleTitle(title: string): string {
   const base = title
@@ -79,4 +83,154 @@ export function vocabSeoDescription(
     return `${titleEn} — ${sample}. Picture vocab chart for Korean learners.`;
   }
   return `${titleEn}. Picture-backed Korean vocabulary group for learners.`;
+}
+
+export type VocabSeoBreadcrumbItem = { label: string; href?: string };
+
+/** UI + JSON-LD share the same trail: Home → Vocab charts → page. */
+export function vocabSeoBreadcrumbItems(
+  page: Pick<VocabSeoPage, "titleEn" | "title">,
+): VocabSeoBreadcrumbItem[] {
+  return [
+    { label: "Home", href: "/" },
+    { label: "Vocab charts", href: "/vocab" },
+    { label: page.titleEn || page.title },
+  ];
+}
+
+export function vocabSeoHubBreadcrumbItems(): VocabSeoBreadcrumbItem[] {
+  return [
+    { label: "Home", href: "/" },
+    { label: "Vocab charts" },
+  ];
+}
+
+export function buildVocabSeoBreadcrumbJsonLd(
+  page: Pick<VocabSeoPage, "titleEn" | "title">,
+  baseUrl: string,
+  canonicalUrl: string,
+) {
+  const root = baseUrl.replace(/\/+$/, "");
+  const items = vocabSeoBreadcrumbItems(page);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => {
+      const position = i + 1;
+      const isLast = i === items.length - 1;
+      const entry: {
+        "@type": "ListItem";
+        position: number;
+        name: string;
+        item?: string;
+      } = {
+        "@type": "ListItem",
+        position,
+        name: item.label,
+      };
+      if (isLast) {
+        entry.item = canonicalUrl;
+      } else if (item.href) {
+        entry.item = item.href.startsWith("http")
+          ? item.href
+          : `${root}${item.href}`;
+      }
+      return entry;
+    }),
+  };
+}
+
+export function buildVocabSeoHubBreadcrumbJsonLd(baseUrl: string) {
+  const root = baseUrl.replace(/\/+$/, "");
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: root },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Vocab charts",
+        item: `${root}/vocab`,
+      },
+    ],
+  };
+}
+
+export function buildVocabSeoArticleJsonLd(
+  page: VocabSeoPage,
+  canonicalUrl: string,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: page.titleEn,
+    description: page.description,
+    image: page.imageUrl,
+    inLanguage: "en",
+    dateModified: page.updatedAt,
+    mainEntityOfPage: canonicalUrl,
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+    about: page.words.slice(0, 8).map((w) => ({
+      "@type": "Thing",
+      name: w.hangul,
+      alternateName: w.english,
+    })),
+  };
+}
+
+export function buildVocabSeoFaqJsonLd(
+  page: VocabSeoPage,
+  canonicalUrl: string,
+) {
+  const explanation =
+    page.explanationEn?.trim() ||
+    page.description ||
+    `A picture chart of related Korean words: ${page.title}.`;
+  const wordSample = page.words
+    .slice(0, 4)
+    .map((w) => `${w.hangul} (${w.english})`)
+    .join(", ");
+
+  const mainEntity = [
+    {
+      "@type": "Question",
+      name: `What does ${page.titleEn.replace(/\s+in Korean$/i, "")} mean in Korean?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: explanation,
+      },
+    },
+  ];
+
+  if (wordSample) {
+    mainEntity.push({
+      "@type": "Question",
+      name: `Which Korean words are on the ${page.title} chart?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `This chart includes ${wordSample}${page.words.length > 4 ? ", and more" : ""}.`,
+      },
+    });
+  }
+
+  if (page.examples?.[0]) {
+    const ex = page.examples[0];
+    mainEntity.push({
+      "@type": "Question",
+      name: `How can I use these words in a Korean sentence?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `${ex.korean} — ${ex.english}`,
+      },
+    });
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    url: canonicalUrl,
+    mainEntity,
+  };
 }

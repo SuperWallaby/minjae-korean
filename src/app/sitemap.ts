@@ -10,7 +10,8 @@ import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
 import { listTopComparisonsForStaticParams } from "@/lib/grammarComparisonsRepo";
 import { listTopGuidesForStaticParams } from "@/lib/grammarGuidesRepo";
-import { listTopVocabCompareForStaticParams } from "@/lib/vocabCompare/repo";
+import { listTopVocabCompareForStaticParams, buildVocabCompareCatalog } from "@/lib/vocabCompare/repo";
+import { toVocabDifferencePage } from "@/lib/vocabDetail/project";
 import { listAllVocabSeoPages } from "@/lib/vocabInfographic/repo";
 import { listTopWhenToUseForStaticParams } from "@/lib/whenToUse/repo";
 import { listSongs } from "@/lib/songsRepo";
@@ -39,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/when-to-use`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/vocab`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/vocab/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/vocab/detail`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/songs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/drama`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
@@ -223,6 +225,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
+  let vocabDetailDifferencePages: Awaited<
+    ReturnType<typeof buildVocabCompareCatalog>
+  > = [];
+  try {
+    vocabDetailDifferencePages = await buildVocabCompareCatalog(2000);
+  } catch {
+    // DB unavailable at build time
+  }
+  const vocabDetailDifferenceRoutes: MetadataRoute.Sitemap =
+    vocabDetailDifferencePages.map((row) => {
+      const page = toVocabDifferencePage(row);
+      return {
+        url: `${baseUrl}/vocab/detail/difference/${encodeURIComponent(page.leftId)}/${encodeURIComponent(page.rightId)}/${encodeURIComponent(page.slug)}`,
+        lastModified: page.updatedAt ? new Date(page.updatedAt) : new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.72,
+      };
+    });
+
+  const vocabDetailHowToSayRoutes: MetadataRoute.Sitemap = whenToUsePages.map(
+    (row) => ({
+      url: `${baseUrl}/vocab/detail/how-to-say/${encodeURIComponent(row.id)}/${encodeURIComponent(row.slug)}`,
+      lastModified: row.updatedAt ? new Date(row.updatedAt) : new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.72,
+    }),
+  );
+
   const vocabSeoPages = listAllVocabSeoPages();
   const vocabSeoRoutes: MetadataRoute.Sitemap = vocabSeoPages.map((row) => ({
     url: `${baseUrl}/vocab/${encodeURIComponent(row.bundleId)}/${encodeURIComponent(row.slug)}`,
@@ -240,6 +270,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...grammarHowToSayRoutes,
     ...whenToUseRoutes,
     ...vocabCompareRoutes,
+    ...vocabDetailDifferenceRoutes,
+    ...vocabDetailHowToSayRoutes,
     ...vocabSeoRoutes,
     ...articleRoutes,
     ...blogRoutes,
