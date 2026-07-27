@@ -268,6 +268,8 @@ async function main() {
   });
 
   await runBatch();
+  log("batch finished cleanly — exiting");
+  process.exit(0);
 }
 
 main().catch((e) => {
