@@ -39,6 +39,19 @@ export type VocabAntonymFormat = {
   whenToUse: string;
 };
 
+/** Left vs right — one near-synonym / confusable pair (NOT opposites). */
+export type VocabSimilarFormat = {
+  id: "similar_split";
+  name: string;
+  pattern: string;
+  pairCount: 1;
+  sideStructure: string;
+  layout: string;
+  titlePattern: string;
+  aspectRatio: "4:5" | "1:1";
+  whenToUse: string;
+};
+
 /** Tall vertical list — scales to many rows (numbers, money, colors…). */
 export type VocabSuperListFormat = {
   id: "super_list";
@@ -66,11 +79,60 @@ export type VocabQuizCommentFormat = {
   whenToUse: string;
 };
 
+/**
+ * Concept comparison rows — grammar/logic words explained with simple diagrams
+ * (e.g. stick-figure markup for everybody / somebody / anybody / nobody).
+ */
+export type VocabConceptRowsFormat = {
+  id: "concept_rows";
+  name: string;
+  pattern: string;
+  typicalRows: string;
+  rowStructure: string;
+  visualStyle: string;
+  titlePattern: string;
+  aspectRatio: "3:4" | "4:5";
+  whenToUse: string;
+};
+
+/** Polished daily-phrase stack — fewer lines, designed (not a plain text dump). */
+export type VocabPhraseStackFormat = {
+  id: "phrase_stack";
+  name: string;
+  pattern: string;
+  typicalCount: string;
+  rowStructure: string;
+  visualStyle: string;
+  titlePattern: string;
+  aspectRatio: "3:4" | "4:5";
+  whenToUse: string;
+};
+
+/**
+ * TOPIK I ↔ II upgrade table — beginner/casual Hangul on the left,
+ * more formal / written / exam-level Hangul on the right (same meaning rows).
+ */
+export type VocabTopikUpgradeFormat = {
+  id: "topik_upgrade";
+  name: string;
+  pattern: string;
+  typicalRows: string;
+  rowStructure: string;
+  visualStyle: string;
+  titlePattern: string;
+  aspectRatio: "3:4" | "4:5";
+  whenToUse: string;
+};
+
 export type VocabInfographicFormatId =
   | "grid_cluster"
   | "antonym_split"
+  | "similar_split"
   | "super_list"
-  | "quiz_comment";
+  | "quiz_comment"
+  | "concept_rows"
+  | "phrase_stack"
+  | "topik_upgrade";
 
 export const VOCAB_GRID_CLUSTER_FORMAT: VocabGridFormat = {
   id: "grid_cluster",
@@ -108,6 +170,24 @@ export const VOCAB_ANTONYM_SPLIT_FORMAT: VocabAntonymFormat = {
     "High-contrast adjectives/adverbs learners confuse. One pair per post — do not cram multiple pairs.",
 };
 
+export const VOCAB_SIMILAR_SPLIT_FORMAT: VocabSimilarFormat = {
+  id: "similar_split",
+  name: "비슷한말 스플릿",
+  pattern:
+    "Exactly one near-synonym / confusable pair (NOT opposites). Same vertical split as antonym_split, " +
+    "but both sides feel close in meaning — difference shown via situation + a tiny nuance badge. " +
+    "One Korean word per side with locked Hangul.",
+  pairCount: 1,
+  sideStructure:
+    "scene illustration → English → Hangul → [romanization] → tiny nuance gloss",
+  layout: "vertical split, mirrored structure, shared '비슷한 말' / SIMILAR header",
+  titlePattern: "{Word A} vs {Word B}",
+  aspectRatio: "4:5",
+  whenToUse:
+    "Learner traps: honorific pairs, know/understand, spicy/hot, borrow/lend, size/quantity. " +
+    "One pair per post — never pack three+ near-synonyms.",
+};
+
 export const VOCAB_SUPER_LIST_FORMAT: VocabSuperListFormat = {
   id: "super_list",
   name: "슈퍼 나열형",
@@ -142,9 +222,74 @@ export const VOCAB_QUIZ_COMMENT_FORMAT: VocabQuizCommentFormat = {
     "Near-synonym or easily confused verbs/adjectives. High engagement — post answer as first reply.",
 };
 
+export const VOCAB_CONCEPT_ROWS_FORMAT: VocabConceptRowsFormat = {
+  id: "concept_rows",
+  name: "개념 비교 패널",
+  pattern:
+    "Compare 3–4 related grammar/logic words using ORIGINAL Kaja scene panels — NOT competitor " +
+    "stick-figure + red-circle/X row charts. Prefer a 2×2 card grid. " +
+    "Each panel teaches meaning through a simple situation beat, not a busy illustration.",
+  typicalRows: "3–4 panels",
+  rowStructure: "simple scene + Hangul + [romanization] + short English gloss",
+  visualStyle:
+    "SIMPLER art: soft flat pastel, few props, 1–2 characters max, clean empty backgrounds, " +
+    "large clear Hangul. Avoid crowded café/classroom detail, tiny props, and busy backgrounds. " +
+    "FORBIDDEN: stick-figure oval/X charts, flag ornaments, finger-heart logos, save-for-later badges.",
+  titlePattern: "{Concept set} in Korean",
+  aspectRatio: "3:4",
+  whenToUse:
+    "Grammar contrast sets where a situation beat teaches better than a vocab grid " +
+    "(indefinites, demonstratives, polite vs casual). Keep scenes minimal and readable.",
+};
+
+export const VOCAB_PHRASE_STACK_FORMAT: VocabPhraseStackFormat = {
+  id: "phrase_stack",
+  name: "일상 표현 스택",
+  pattern:
+    "A short curated stack of everyday Korean phrases (questions or one-liners) for English speakers. " +
+    "Fewer lines than a dump list — typically 7–8 — so each row stays large and readable. " +
+    "Do NOT copy plain white text-only competitor dumps; this must feel designed.",
+  typicalCount: "7–8 phrases",
+  rowStructure: "number badge | Hangul (largest) | [romanization] | English gloss",
+  visualStyle:
+    "Soft cream/blush canvas, teal number pills, rounded soft row cards with light separators, " +
+    "friendly title band + small header illustration (chat bubbles / phone / café vibe). " +
+    "Generous spacing. No dense 15+ line walls of text. No competitor watermarks.",
+  titlePattern: "{Theme} Korean phrases",
+  aspectRatio: "3:4",
+  whenToUse:
+    "Feeling-check questions, cafe orders, meetup openers — snackable spoken Korean sets.",
+};
+
+export const VOCAB_TOPIK_UPGRADE_FORMAT: VocabTopikUpgradeFormat = {
+  id: "topik_upgrade",
+  name: "TOPIK I↔II 업그레이드",
+  pattern:
+    "Two-column upgrade table: LEFT = TOPIK I (beginner / casual spoken), RIGHT = TOPIK II " +
+    "(more formal, written, or exam-ready). 6–8 aligned rows — same meaning, better wording. " +
+    "Hangul is primary; romanization small; English is a tiny shared gloss only.",
+  typicalRows: "6–8 pairs",
+  rowStructure:
+    "TOPIK I Hangul + [rom]  ↔  TOPIK II Hangul + [rom]  (+ tiny English meaning)",
+  visualStyle:
+    "Soft cream/blush portrait card. Twin rounded pill headers: 'TOPIK I' (soft teal) and " +
+    "'TOPIK II' (soft coral/rose). Clean two-column Hangul list, generous row spacing. " +
+    "Optional tiny cute footer vibe stickers (student vs polished learner) — ORIGINAL Kaja art. " +
+    "FORBIDDEN: competitor watermarks, dog memes, IELTS branding, purple clone layouts.",
+  titlePattern: "{Theme}: TOPIK I → II",
+  aspectRatio: "3:4",
+  whenToUse:
+    "Level-up posts: speaking verbs, opinions, study/work verbs, polite upgrades. " +
+    "One theme per card — do not mix unrelated domains.",
+};
+
 export const VOCAB_INFOGRAPHIC_FORMATS = {
   grid_cluster: VOCAB_GRID_CLUSTER_FORMAT,
   antonym_split: VOCAB_ANTONYM_SPLIT_FORMAT,
+  similar_split: VOCAB_SIMILAR_SPLIT_FORMAT,
   super_list: VOCAB_SUPER_LIST_FORMAT,
   quiz_comment: VOCAB_QUIZ_COMMENT_FORMAT,
+  concept_rows: VOCAB_CONCEPT_ROWS_FORMAT,
+  phrase_stack: VOCAB_PHRASE_STACK_FORMAT,
+  topik_upgrade: VOCAB_TOPIK_UPGRADE_FORMAT,
 } as const;

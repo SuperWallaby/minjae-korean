@@ -119,6 +119,59 @@ export function wordsFromQuizBundle(bundle: VocabBundle): VocabImageWord[] {
   }));
 }
 
+export function wordsFromConceptRowsBundle(bundle: VocabBundle): VocabImageWord[] {
+  if (bundle.format !== "concept_rows" || !bundle.conceptRows?.length) return [];
+  return bundle.conceptRows.map((r) => ({
+    hangul: r.hangul.trim(),
+    romanization: r.romanization.trim(),
+    english: r.english.trim(),
+  }));
+}
+
+export function wordsFromPhraseStackBundle(bundle: VocabBundle): VocabImageWord[] {
+  if (bundle.format !== "phrase_stack" || !bundle.phraseLines?.length) return [];
+  return bundle.phraseLines.map((p) => ({
+    hangul: p.hangul.trim(),
+    romanization: p.romanization.trim(),
+    english: p.english.trim(),
+  }));
+}
+
+export function wordsFromSimilarPairBundle(bundle: VocabBundle): VocabImageWord[] {
+  if (bundle.format !== "similar_split" || !bundle.similarPair) return [];
+  const p = bundle.similarPair;
+  return [
+    {
+      hangul: p.leftHangul.trim(),
+      romanization: p.leftRom.trim(),
+      english: p.leftEnglish.trim(),
+    },
+    {
+      hangul: p.rightHangul.trim(),
+      romanization: p.rightRom.trim(),
+      english: p.rightEnglish.trim(),
+    },
+  ];
+}
+
+export function wordsFromTopikUpgradeBundle(bundle: VocabBundle): VocabImageWord[] {
+  if (bundle.format !== "topik_upgrade" || !bundle.topikRows?.length) return [];
+  const out: VocabImageWord[] = [];
+  for (const r of bundle.topikRows) {
+    out.push({
+      hangul: r.topikI.hangul.trim(),
+      romanization: r.topikI.romanization.trim(),
+      english: `${r.english} (TOPIK I)`,
+    });
+    out.push({
+      hangul: r.topikII.hangul.trim(),
+      romanization: r.topikII.romanization.trim(),
+      english: `${r.english} (TOPIK II)`,
+    });
+  }
+  return out;
+}
+
 export function wordsCachePath(dir: string, bundleId: string): string {
   return path.join(dir, `${bundleId}.words.json`);
 }
@@ -254,7 +307,24 @@ export function narrowToTopicWords(
   bundle: VocabBundle,
   words: VocabImageWord[],
 ): VocabImageWord[] {
-  if (bundle.format !== "antonym_split") return words;
+  if (bundle.format !== "antonym_split" && bundle.format !== "similar_split") {
+    return words;
+  }
+  if (bundle.format === "similar_split" && bundle.similarPair) {
+    const p = bundle.similarPair;
+    return [
+      {
+        hangul: p.leftHangul,
+        romanization: p.leftRom,
+        english: p.leftEnglish,
+      },
+      {
+        hangul: p.rightHangul,
+        romanization: p.rightRom,
+        english: p.rightEnglish,
+      },
+    ];
+  }
   const cleaned = words.filter((w) => w.hangul?.trim());
   if (cleaned.length <= 2) return cleaned;
 
@@ -343,6 +413,54 @@ export async function resolveVocabImageWords(input: {
     return payload;
   }
 
+  const conceptWords = wordsFromConceptRowsBundle(bundle);
+  if (conceptWords.length) {
+    const payload: VocabImageWordsPayload = {
+      bundleId: bundle.id,
+      extractedAt: new Date().toISOString(),
+      source: "quiz",
+      words: conceptWords,
+    };
+    if (input.cacheDir) saveVocabImageWords(input.cacheDir, payload);
+    return payload;
+  }
+
+  const phraseWords = wordsFromPhraseStackBundle(bundle);
+  if (phraseWords.length) {
+    const payload: VocabImageWordsPayload = {
+      bundleId: bundle.id,
+      extractedAt: new Date().toISOString(),
+      source: "quiz",
+      words: phraseWords,
+    };
+    if (input.cacheDir) saveVocabImageWords(input.cacheDir, payload);
+    return payload;
+  }
+
+  const similarWords = wordsFromSimilarPairBundle(bundle);
+  if (similarWords.length) {
+    const payload: VocabImageWordsPayload = {
+      bundleId: bundle.id,
+      extractedAt: new Date().toISOString(),
+      source: "quiz",
+      words: similarWords,
+    };
+    if (input.cacheDir) saveVocabImageWords(input.cacheDir, payload);
+    return payload;
+  }
+
+  const topikWords = wordsFromTopikUpgradeBundle(bundle);
+  if (topikWords.length) {
+    const payload: VocabImageWordsPayload = {
+      bundleId: bundle.id,
+      extractedAt: new Date().toISOString(),
+      source: "quiz",
+      words: topikWords,
+    };
+    if (input.cacheDir) saveVocabImageWords(input.cacheDir, payload);
+    return payload;
+  }
+
   if (input.cacheDir && !input.forceRefresh) {
     const cached = loadCachedVocabImageWords(input.cacheDir, bundle.id);
     if (cached?.words.length) {
@@ -357,7 +475,8 @@ export async function resolveVocabImageWords(input: {
     imagePath: input.imagePath,
     imageUrl: input.imageUrl,
     bundleTitle: bundle.title,
-    antonymPair: bundle.format === "antonym_split",
+    antonymPair:
+      bundle.format === "antonym_split" || bundle.format === "similar_split",
   });
   if (visionWords.length) {
     const words = narrowToTopicWords(bundle, visionWords);

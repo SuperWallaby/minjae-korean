@@ -1,5 +1,8 @@
-/** Shared batch config — audit drops excluded from generation. */
-export const DROP_IDS = new Set([
+/** Shared batch config — audit drops + archived surplus excluded from generation. */
+import { ARCHIVED_SURPLUS_GRID_IDS } from "./vocab-grid-surplus-ids.mjs";
+
+/** Manual audit drops (weak / duplicate / niche). */
+export const AUDIT_DROP_IDS = new Set([
   "grid-animal-groups", "grid-eco-green-living", "grid-mental-health-words",
   "grid-meeting-business", "grid-email-words", "grid-presentation-words",
   "grid-remote-work", "grid-software-ui", "grid-internet-terms",
@@ -20,6 +23,12 @@ export const DROP_IDS = new Set([
   "list-romanization-guide", "list-keyboard-hangul-layout",
   "list-seoul-districts", "list-kpop-generations",
   "list-weekdays", "list-seasons", "list-hangul-double-consonants",
+]);
+
+/** Everything excluded from gen / overnight remaining counts. */
+export const DROP_IDS = new Set([
+  ...AUDIT_DROP_IDS,
+  ...ARCHIVED_SURPLUS_GRID_IDS,
 ]);
 
 export const TARGET_BUNDLE_COUNT = 445;

@@ -18,7 +18,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { ALL_VOCAB_BUNDLES } from "../src/lib/vocabInfographic/bundle-catalog.ts";
-import { mixedBundleQueue, summarizeBundleTiers } from "../src/lib/vocabInfographic/bundle-queue.ts";
+import { mixedBundleQueue, summarizeBundleTiers, summarizeByFormat } from "../src/lib/vocabInfographic/bundle-queue.ts";
 import {
   IMAGE_DEPLOY,
   LOGO_PATH,
@@ -98,10 +98,32 @@ function isDone(bundleId: string) {
 
 function buildQueue(priorityFilter: string | null, progress: Progress) {
   const catalogOrder = process.argv.includes("--catalog-order");
+  const onlyIdx = process.argv.indexOf("--only");
+  const onlyId =
+    onlyIdx >= 0 && process.argv[onlyIdx + 1] ? process.argv[onlyIdx + 1].trim() : null;
+  const idsFileIdx = process.argv.indexOf("--ids-file");
+  const idsFile =
+    idsFileIdx >= 0 && process.argv[idsFileIdx + 1]
+      ? process.argv[idsFileIdx + 1].trim()
+      : null;
+  let onlyIds: Set<string> | null = null;
+  if (idsFile) {
+    const raw = JSON.parse(readFileSync(idsFile, "utf8")) as { ids?: string[] } | string[];
+    const list = Array.isArray(raw) ? raw : (raw.ids ?? []);
+    onlyIds = new Set(list.map((id) => String(id).trim()).filter(Boolean));
+  }
+  const formatIdx = process.argv.indexOf("--format");
+  const formatFilter =
+    formatIdx >= 0 && process.argv[formatIdx + 1]
+      ? process.argv[formatIdx + 1].trim()
+      : null;
   let queue = ALL_VOCAB_BUNDLES.filter((b) => !DROP_IDS.has(b.id));
+  if (onlyId) queue = queue.filter((b) => b.id === onlyId);
+  if (onlyIds) queue = queue.filter((b) => onlyIds!.has(b.id));
+  if (formatFilter) queue = queue.filter((b) => b.format === formatFilter);
   if (priorityFilter) queue = queue.filter((b) => b.priority === priorityFilter);
   queue = queue.filter((b) => !isDone(b.id) && !progress.skipped?.[b.id]);
-  if (!catalogOrder && queue.length > 1) {
+  if (!catalogOrder && !onlyId && queue.length > 1) {
     queue = mixedBundleQueue(queue);
   }
   return queue;
@@ -184,11 +206,13 @@ async function runBatch() {
 
     progress.passes += 1;
     const tierCounts = summarizeBundleTiers(queue);
+    const fmtCounts = summarizeByFormat(queue);
     log(
       `Pass #${progress.passes} — ${queue.length} remaining (expr ${tierCounts.expression} / noun ${tierCounts.noun} / ant ${tierCounts.antonym} / list ${tierCounts.list} / quiz ${tierCounts.quiz})`,
     );
+    log(`  by format: ${JSON.stringify(fmtCounts)}`);
     if (queue.length > 0) {
-      log(`  next up: ${queue.slice(0, 5).map((b) => b.id).join(" → ")}`);
+      log(`  next up: ${queue.slice(0, 8).map((b) => `${b.format}:${b.id}`).join(" → ")}`);
     }
     saveProgress(progress);
 

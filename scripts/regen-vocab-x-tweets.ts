@@ -94,7 +94,10 @@ function tweetNeedsRegen(
   // Without known image words we cannot safely judge or rewrite Hangul.
   if (!words.length) return false;
   if (!tweetHangulMatchesImageWords(tweetText, words).ok) return true;
-  if (bundle.format === "antonym_split" && !antonymTweetUsesTopicPair(tweetText, words)) {
+  if (
+    (bundle.format === "antonym_split" || bundle.format === "similar_split") &&
+    !antonymTweetUsesTopicPair(tweetText, words)
+  ) {
     return true;
   }
   return false;

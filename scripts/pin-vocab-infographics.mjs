@@ -34,6 +34,7 @@ const MAX_RETRIES = Number(process.env.PINTEREST_MAX_RETRIES || 2);
 function parseArgs(argv) {
   let count = 30;
   let id = "";
+  let prefix = "";
   let dryRun = false;
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -42,9 +43,11 @@ function parseArgs(argv) {
     else if (a.startsWith("--count=")) count = Math.max(1, parseInt(a.slice(8), 10) || 30);
     else if (a === "--id" && argv[i + 1]) id = argv[++i];
     else if (a.startsWith("--id=")) id = a.slice(5);
+    else if (a === "--prefix" && argv[i + 1]) prefix = argv[++i];
+    else if (a.startsWith("--prefix=")) prefix = a.slice(9);
     else if (/^\d+$/.test(a)) count = Math.max(1, parseInt(a, 10) || 30);
   }
-  return { count, id, dryRun };
+  return { count, id, prefix, dryRun };
 }
 
 function loadJson(file, fallback) {
@@ -64,37 +67,137 @@ function saveJson(file, data) {
 function titleFromEntry(bundleId, entry) {
   const tweet = String(entry.tweetText || "");
   const first = tweet.split("\n").map((l) => l.trim()).find(Boolean) || "";
-  const cleaned = first.replace(/^🇰🇷\s*/, "").trim();
-  if (cleaned) return cleaned.slice(0, 100);
-  return bundleId.replace(/-/g, " ").slice(0, 100);
+  let cleaned = first.replace(/^🇰🇷\s*/, "").trim();
+  if (!cleaned) return bundleId.replace(/-/g, " ").slice(0, 60);
+
+  // Pinterest titles scan best short — never paste a long sentence wall.
+  const TITLE_MAX = 64;
+  if (cleaned.length > TITLE_MAX) {
+    const cut = cleaned.slice(0, TITLE_MAX);
+    const breakAt = Math.max(
+      cut.lastIndexOf("?"),
+      cut.lastIndexOf("!"),
+      cut.lastIndexOf("."),
+      cut.lastIndexOf(" — "),
+      cut.lastIndexOf(" - "),
+      cut.lastIndexOf(" "),
+    );
+    cleaned = (breakAt >= 28 ? cut.slice(0, breakAt) : cut).trim();
+    cleaned = cleaned.replace(/[—,:;\-–\s]+$/u, "").trim();
+  }
+  return cleaned.slice(0, TITLE_MAX);
 }
 
+const DESC_MAX = 500;
+const PIN_TAGS = "#koreanvocab #learnkorean #kajakorean #한국어";
+const WORD_EMOJIS = ["🔴", "🔵", "🟢", "🟡", "🟣", "🟠", "⚫️", "⚪️"];
+
+function formatWordGloss(word, index) {
+  const hangul = String(word?.hangul || "").trim();
+  if (!hangul) return "";
+  const rom = String(word?.romanization || "").trim();
+  const en = String(word?.english || "")
+    .replace(/\s*\(TOPIK\s*I+\)\s*/gi, "")
+    .trim();
+  const emoji = WORD_EMOJIS[index % WORD_EMOJIS.length] || "▪️";
+  const romBit = rom ? ` [${rom}]` : "";
+  // Keep each line short: Hangul + rom; English only if tiny
+  if (en && en.length <= 18 && !/TOPIK/i.test(en)) {
+    return `${emoji} ${hangul}${romBit} — ${en}`.trim();
+  }
+  return `${emoji} ${hangul}${romBit}`.trim();
+}
+
+/** TOPIK I→II: one upgrade pair per line (never a · soup). */
+function topikPairLines(words) {
+  const out = [];
+  for (let i = 0; i + 1 < words.length; i += 2) {
+    const a = words[i];
+    const b = words[i + 1];
+    const aEn = String(a?.english || "");
+    const bEn = String(b?.english || "");
+    const paired =
+      /TOPIK\s*I\b/i.test(aEn) && /TOPIK\s*II\b/i.test(bEn);
+    if (!paired) return null;
+    const h1 = String(a.hangul || "").trim();
+    const h2 = String(b.hangul || "").trim();
+    if (!h1 || !h2) continue;
+    const gloss = aEn.replace(/\s*\(TOPIK\s*I\)\s*/i, "").trim();
+    const glossBit = gloss && gloss.length <= 16 ? `  · ${gloss}` : "";
+    out.push(`${h1} → ${h2}${glossBit}`);
+  }
+  return out.length ? out : null;
+}
+
+function packLines(lines, budget) {
+  const kept = [];
+  for (const line of lines) {
+    const next = kept.length ? `${kept.join("\n")}\n${line}` : line;
+    if (next.length > budget) break;
+    kept.push(line);
+  }
+  return kept.join("\n");
+}
+
+/**
+ * Pin description: short lines + real newlines.
+ * Never dump a long middle-dot (·) wall — hard to scan on Pinterest.
+ */
 function descriptionFromEntry(entry, title = "") {
-  const cap = entry.caption || {};
-  const line1 = String(cap.line1 || "").trim();
-  const line2 = String(cap.line2 || "").trim();
+  const tags = PIN_TAGS;
+  const budget = Math.max(40, DESC_MAX - tags.length - 2);
   const titleNorm = String(title || "")
     .trim()
     .replace(/\s+/g, " ")
     .toLowerCase();
 
-  const parts = [];
-  for (const line of [line1, line2]) {
-    if (!line) continue;
-    const norm = line.replace(/\s+/g, " ").toLowerCase();
-    // Skip lines that repeat the pin title (Pinterest shows title + description).
-    if (titleNorm && (norm === titleNorm || titleNorm.startsWith(norm) || norm.startsWith(titleNorm))) {
-      continue;
+  const words = Array.isArray(entry?.imageWords)
+    ? entry.imageWords.filter((w) => String(w?.hangul || "").trim())
+    : [];
+
+  let body = "";
+
+  if (words.length) {
+    const pairLines = topikPairLines(words);
+    if (pairLines?.length) {
+      body = packLines(pairLines, budget);
+    } else {
+      const lines = words.map((w, i) => formatWordGloss(w, i)).filter(Boolean);
+      body = packLines(lines, budget);
+      // If nothing fit (edge), hangul-only lines
+      if (!body) {
+        const tiny = words
+          .map((w) => String(w.hangul || "").trim())
+          .filter(Boolean)
+          .map((h, i) => `${WORD_EMOJIS[i % WORD_EMOJIS.length]} ${h}`);
+        body = packLines(tiny, budget);
+      }
     }
-    // Also skip exact duplicates of an already-kept line.
-    if (parts.some((p) => p.replace(/\s+/g, " ").toLowerCase() === norm)) continue;
-    parts.push(line);
   }
 
-  const body = parts.join("\n\n");
-  const tags = "#koreanvocab #learnkorean #kajakorean #한국어";
+  // Fallback: legacy caption lines (when no imageWords)
+  if (!body) {
+    const cap = entry?.caption || {};
+    const parts = [];
+    for (const line of [cap.line1, cap.line2]) {
+      const s = String(line || "").trim();
+      if (!s) continue;
+      const norm = s.replace(/\s+/g, " ").toLowerCase();
+      if (
+        titleNorm &&
+        (norm === titleNorm || titleNorm.startsWith(norm) || norm.startsWith(titleNorm))
+      ) {
+        continue;
+      }
+      if (parts.some((p) => p.replace(/\s+/g, " ").toLowerCase() === norm)) continue;
+      // Cap each caption line
+      parts.push(s.length > 90 ? `${s.slice(0, 87).trim()}…` : s);
+    }
+    body = parts.join("\n");
+  }
+
   const text = body ? `${body}\n\n${tags}` : tags;
-  return text.slice(0, 480);
+  return text.slice(0, DESC_MAX);
 }
 
 /** Short alt text — core subject only (Pinterest prefers concise alt). */
@@ -222,7 +325,7 @@ async function uploadWithRetries(args) {
 }
 
 async function main() {
-  const { count, id, dryRun } = parseArgs(process.argv.slice(2));
+  const { count, id, prefix, dryRun } = parseArgs(process.argv.slice(2));
   if (!fs.existsSync(UPLOAD_PIN)) {
     throw new Error(`upload-pin.mjs not found: ${UPLOAD_PIN}`);
   }
@@ -236,6 +339,7 @@ async function main() {
   } else {
     candidates = Object.keys(scheduled)
       .filter((k) => !pinned[k])
+      .filter((k) => !prefix || k.startsWith(prefix))
       .filter((k) => fs.existsSync(path.join(OUT, `${k}.png`)))
       .sort((a, b) => {
         const ta = Date.parse(scheduled[a]?.scheduledAt || 0) || 0;

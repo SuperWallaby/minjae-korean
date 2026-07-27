@@ -134,8 +134,9 @@ HARD RULES:
       : `ALLOWED_WORDS is empty. Write English ONLY. Do NOT invent any Hangul. Tell readers to look at the picture for Korean.`
   }
 ${
-  bundle.format === "antonym_split" && hasAllowed
-    ? `- ANTONYM / X vs Y LOCK (critical):
+  (bundle.format === "antonym_split" || bundle.format === "similar_split") &&
+  hasAllowed
+    ? `- ${bundle.format === "similar_split" ? "SIMILAR / NEAR-SYNONYM" : "ANTONYM"} / X vs Y LOCK (critical):
   ALLOWED_WORDS has the TWO topic words on the card. You MUST feature BOTH of them (with given romanization/english).
   Do NOT replace them with mood/synonym words. Example of FORBIDDEN: image shows 전/후 but you write 설레다/허전하다.`
     : ""
@@ -242,7 +243,7 @@ function bodyMatchesImageWords(
 ): boolean {
   const { ok, foreign } = tweetHangulMatchesImageWords(body, imageWords);
   if (!ok && foreign.length) return false;
-  if (bundle?.format === "antonym_split") {
+  if (bundle?.format === "antonym_split" || bundle?.format === "similar_split") {
     return antonymTweetUsesTopicPair(body, imageWords);
   }
   return true;

@@ -1,4 +1,5 @@
 import type { VocabBundle } from "./bundle-catalog";
+import type { VocabInfographicFormatId } from "./formats";
 
 export type BundleQueueTier = "expression" | "noun" | "list" | "antonym" | "quiz";
 
@@ -6,6 +7,10 @@ export type BundleQueueTier = "expression" | "noun" | "list" | "antonym" | "quiz
 export function bundleQueueTier(bundle: VocabBundle): BundleQueueTier {
   if (bundle.format === "quiz_comment") return "quiz";
   if (bundle.format === "antonym_split") return "antonym";
+  if (bundle.format === "similar_split") return "antonym";
+  if (bundle.format === "concept_rows") return "expression";
+  if (bundle.format === "phrase_stack") return "expression";
+  if (bundle.format === "topik_upgrade") return "expression";
   if (bundle.format === "super_list") {
     const expressionList =
       bundle.tags.includes("grammar") ||
@@ -36,43 +41,46 @@ function seededShuffle<T>(items: T[], seed: number): T[] {
 }
 
 /**
- * Interleave expression + noun (+ antonym/list/quiz) so X feed is varied.
- * Weight: 2 expression : 1 noun per mini-cycle, then antonym → list → quiz.
+ * Format-first rotation so Pinterest mix is not grid-heavy.
+ * Prefer non-grid formats; insert one grid only every other cycle step.
  */
-export function mixedBundleQueue(bundles: VocabBundle[], seed = 20260710): VocabBundle[] {
-  const buckets: Record<BundleQueueTier, VocabBundle[]> = {
-    expression: [],
-    noun: [],
-    list: [],
-    antonym: [],
-    quiz: [],
-  };
+export function formatRotatedQueue(
+  bundles: VocabBundle[],
+  seed = 20260726,
+): VocabBundle[] {
+  const byFormat = new Map<VocabInfographicFormatId, VocabBundle[]>();
   for (const b of bundles) {
-    buckets[bundleQueueTier(b)].push(b);
+    const list = byFormat.get(b.format) ?? [];
+    list.push(b);
+    byFormat.set(b.format, list);
   }
-  for (const tier of Object.keys(buckets) as BundleQueueTier[]) {
-    buckets[tier] = seededShuffle(buckets[tier], seed + tier.charCodeAt(0) * 97);
+  for (const [fmt, list] of byFormat) {
+    byFormat.set(fmt, seededShuffle(list, seed + fmt.length * 31));
   }
 
-  const rotation: BundleQueueTier[] = [
-    "expression",
-    "expression",
-    "noun",
-    "antonym",
-    "list",
-    "quiz",
+  // Non-grid formats first in rotation; grid appears once per full pass.
+  const preferred: VocabInfographicFormatId[] = [
+    "topik_upgrade",
+    "similar_split",
+    "phrase_stack",
+    "concept_rows",
+    "quiz_comment",
+    "super_list",
+    "antonym_split",
+    "grid_cluster",
   ];
 
   const out: VocabBundle[] = [];
   let start = 0;
   while (true) {
     let pushed = false;
-    for (let offset = 0; offset < rotation.length; offset++) {
-      const tier = rotation[(start + offset) % rotation.length]!;
-      const next = buckets[tier].shift();
+    for (let offset = 0; offset < preferred.length; offset++) {
+      const fmt = preferred[(start + offset) % preferred.length]!;
+      const bucket = byFormat.get(fmt);
+      const next = bucket?.shift();
       if (next) {
         out.push(next);
-        start = (start + offset + 1) % rotation.length;
+        start = (start + offset + 1) % preferred.length;
         pushed = true;
         break;
       }
@@ -80,6 +88,16 @@ export function mixedBundleQueue(bundles: VocabBundle[], seed = 20260710): Vocab
     if (!pushed) break;
   }
   return out;
+}
+
+/**
+ * Interleave expression + noun (+ antonym/list/quiz) so X feed is varied.
+ * Weight: 2 expression : 1 noun per mini-cycle, then antonym → list → quiz.
+ * @deprecated Prefer formatRotatedQueue for balanced format mix.
+ */
+export function mixedBundleQueue(bundles: VocabBundle[], seed = 20260710): VocabBundle[] {
+  // Default to format rotation — keeps overnight / batch evenly mixed.
+  return formatRotatedQueue(bundles, seed);
 }
 
 export function summarizeBundleTiers(bundles: VocabBundle[]) {
@@ -91,5 +109,13 @@ export function summarizeBundleTiers(bundles: VocabBundle[]) {
     quiz: 0,
   };
   for (const b of bundles) counts[bundleQueueTier(b)] += 1;
+  return counts;
+}
+
+export function summarizeByFormat(bundles: VocabBundle[]) {
+  const counts: Partial<Record<VocabInfographicFormatId, number>> = {};
+  for (const b of bundles) {
+    counts[b.format] = (counts[b.format] ?? 0) + 1;
+  }
   return counts;
 }

@@ -293,6 +293,105 @@ RIGHT half (cool pastel): scene for ${right} — English label, accurate Hangul,
 Mirrored layout, one pair only, contrasting moods.`;
   }
 
+  if (bundle.format === "similar_split") {
+    const p = bundle.similarPair;
+    const m = bundle.title.match(/^(.+?)\s+vs\s+(.+)$/i);
+    const leftEn = p?.leftEnglish || m?.[1]?.trim() || "Left";
+    const rightEn = p?.rightEnglish || m?.[2]?.trim() || "Right";
+    const leftKo = p
+      ? `"${p.leftHangul}" [${p.leftRom}] — nuance: ${p.leftNuance}`
+      : "accurate Hangul + [romanization] + tiny nuance gloss";
+    const rightKo = p
+      ? `"${p.rightHangul}" [${p.rightRom}] — nuance: ${p.rightNuance}`
+      : "accurate Hangul + [romanization] + tiny nuance gloss";
+    return `${STYLE_BASE}
+
+FORMAT: Vertical split SIMILAR-WORDS card (NOT antonyms — near-synonyms / confusable pair learners mix up).
+Header: "비슷한 말" bold centered (small English "SIMILAR" under it ok). Soft pastel both sides — mint vs peach or cream vs blush — NOT day/night opposite drama.
+LEFT half: scene for ${leftEn} — English label, Hangul ${leftKo}.
+RIGHT half: scene for ${rightEn} — English label, Hangul ${rightKo}.
+Mirrored layout, one pair only. Difference shown through situation + tiny nuance badge under each Hangul.
+HARD BAN: treating them as opposites; cramming extra words; tiny unreadable nuance text.`;
+  }
+
+  if (bundle.format === "concept_rows" && bundle.conceptRows?.length) {
+    const panels = bundle.conceptRows
+      .map(
+        (r, i) =>
+          `PANEL ${i + 1}: Hangul "${r.hangul}" largest, then [${r.romanization}], small English "${r.english}".\n` +
+          `  Scene (keep SIMPLE): ${r.visual}`,
+      )
+      .join("\n");
+    return `${STYLE_BASE}
+
+FORMAT: Original Kaja CONCEPT PANEL card titled "${bundle.title}" (bold, friendly). Soft cream + sky-teal accents.
+Layout: ${bundle.conceptRows.length === 4 ? "2×2 rounded cards" : "stacked rounded cards"} with equal spacing.
+ART STYLE — simpler than usual grids:
+- Soft flat pastel / light watercolor, minimal shading
+- Each panel: ONE clear idea, 1–2 people max, 0–2 props max
+- Clean empty or nearly-empty background (no busy rooms, no crowded tables, no tiny background text)
+- Large readable Hangul; English is a small gloss
+- Think "kids flashcard clarity" not "detailed webtoon page"
+
+HARD BAN:
+- crowded multi-person scenes, dense backgrounds, lots of props/signage
+- rows of stick-figure / person pictograms with red ovals or X marks
+- left text column + right icon diagram split
+- Korean flags, finger-heart logos, "save for later" badges
+
+${panels}
+Leave empty footer band blank.`;
+  }
+
+  if (bundle.format === "topik_upgrade" && bundle.topikRows?.length) {
+    const rows = bundle.topikRows
+      .map(
+        (r, i) =>
+          `${i + 1}. ${r.english}\n` +
+          `   TOPIK I:  ${r.topikI.hangul}  [${r.topikI.romanization}]\n` +
+          `   TOPIK II: ${r.topikII.hangul}  [${r.topikII.romanization}]`,
+      )
+      .join("\n");
+    return `${STYLE_BASE}
+
+FORMAT: TOPIK I ↔ TOPIK II upgrade card titled "${bundle.title}". Portrait soft cream-to-blush (NOT stark white meme screenshot).
+HEADER: twin rounded pill badges side by side — soft teal "TOPIK I" (left) and soft coral/rose "TOPIK II" (right). Small friendly subtitle under title ok.
+BODY: exactly ${bundle.topikRows.length} horizontally aligned rows in two clean columns.
+LEFT column = beginner/casual Hangul (largest) + small [romanization].
+RIGHT column = more formal/exam Hangul (largest) + small [romanization].
+Tiny English meaning can sit faintly between columns or as a left gutter gloss — Hangul must dominate.
+Generous spacing, scannable on phone. Optional tiny ORIGINAL cute footer vibe stickers (simple student doodle left / polished learner doodle right) — soft pastel, not photoreal.
+HARD BAN: dog memes, IELTS branding, competitor watermarks/@handles, purple clone of English synonym memes, denser than ${bundle.topikRows.length} rows.
+PAIRS (use exactly):
+${rows}
+Leave empty footer band blank.`;
+  }
+
+  if (bundle.format === "phrase_stack" && bundle.phraseLines?.length) {
+    const lines = bundle.phraseLines
+      .map(
+        (p, i) =>
+          `${i + 1}. ${p.hangul}  [${p.romanization}]  — ${p.english}`,
+      )
+      .join("\n");
+    const mood = bundle.fit?.includes("café") || /cafe|café/i.test(bundle.title)
+      ? "café tray / iced drink motif"
+      : /feeling|how are you/i.test(bundle.title)
+        ? "soft chat bubbles + phone glow"
+        : "friendly meetup / calendar motif";
+    return `${STYLE_BASE}
+
+FORMAT: Polished DAILY PHRASE STACK titled "${bundle.title}". Portrait soft cream-to-blush gradient (NOT plain stark white document).
+HEADER: bold friendly title + small teal pill badge "Daily Korean" + tiny watercolor header illustration (${mood}).
+BODY: exactly ${bundle.phraseLines.length} stacked rounded row cards with generous spacing (NOT a dense 15+ line dump).
+Each row: teal circle number badge | Hangul largest and boldest | muted [romanization] | soft English gloss on the right or below.
+Light hairline separators or soft card shadows. High mobile readability.
+HARD BAN: plain Notepad/Word aesthetic, tiny crammed lists, competitor watermarks, vulgar slang.
+PHRASES (use exactly):
+${lines}
+Leave empty footer band blank.`;
+  }
+
   const rows = bundle.preview?.length
     ? bundle.preview.map((p, i) => `${i + 1}. ${p}`).join("\n")
     : `Invent ${Math.max(bundle.count, 9)} ordered items for "${title}" with clear ordering (numbers, values, or sequence).`;

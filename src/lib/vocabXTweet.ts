@@ -24,8 +24,8 @@ export function pickVocabXTweetStyle(bundle: VocabBundle): VocabXTweetStyle {
     return "kcontent";
   }
 
-  // Antonym cards: mix practical vs K-content for variety (deterministic).
-  if (bundle.format === "antonym_split") {
+  // Antonym / similar-pair cards: mix practical vs K-content for variety (deterministic).
+  if (bundle.format === "antonym_split" || bundle.format === "similar_split") {
     let hash = 0;
     for (const ch of bundle.id) hash = (hash + ch.charCodeAt(0) * 17) % 997;
     return hash % 3 === 0 ? "kcontent" : "practical";
@@ -245,7 +245,9 @@ function topicLabel(bundle: Pick<VocabBundle, "title">): string {
 }
 
 function antonymParts(bundle: VocabBundle): { left: string; right: string } | null {
-  if (bundle.format !== "antonym_split") return null;
+  if (bundle.format !== "antonym_split" && bundle.format !== "similar_split") {
+    return null;
+  }
   const parts = bundle.title.split(/\s+vs\s+/i);
   if (parts.length !== 2) return null;
   return { left: parts[0]!.trim(), right: parts[1]!.trim() };
@@ -318,13 +320,16 @@ export function fallbackVocabTweetBody(
   }
 
   if (style === "kcontent" && pair) {
+    const isSimilar = bundle.format === "similar_split";
     return [
-      `🗣️ Real-life Korean vibes:`,
-      `➡️ Feeling ${pair.left.toLowerCase()} energy 📈🔥`,
-      `➡️ Feeling ${pair.right.toLowerCase()} energy 💨🥲`,
+      isSimilar
+        ? `🗣️ Korean near-synonyms that trick learners:`
+        : `🗣️ Real-life Korean vibes:`,
+      `➡️ ${pair.left} energy 📈🔥`,
+      `➡️ ${pair.right} energy 💨🥲`,
       ``,
       `Look at the picture for Hangul + romanization.`,
-      `Which mood are you today?`,
+      isSimilar ? `Which one would you use?` : `Which mood are you today?`,
     ].join("\n");
   }
 
@@ -340,14 +345,19 @@ export function fallbackVocabTweetBody(
 
   // practical
   if (pair) {
+    const isSimilar = bundle.format === "similar_split";
     return [
-      `Use these opposites in real life 👇`,
+      isSimilar
+        ? `Two similar Korean words learners mix up 👇`
+        : `Use these opposites in real life 👇`,
       ``,
       `🔴 ${pair.left}`,
       `🔵 ${pair.right}`,
       ``,
       `Check the image for Hangul + romanization.`,
-      `Which one fits your day right now?`,
+      isSimilar
+        ? `Can you tell the difference?`
+        : `Which one fits your day right now?`,
     ].join("\n");
   }
 
@@ -388,6 +398,18 @@ export function fallbackVocabCaption(
     return {
       line1: `Two opposite Korean words — snackable contrast card.`,
       line2: `Real-life situations + Hangul on the image.`,
+    };
+  }
+  if (bundle.format === "similar_split") {
+    return {
+      line1: `Two similar Korean words learners mix up.`,
+      line2: `Same vibe, different nuance — check the card.`,
+    };
+  }
+  if (bundle.format === "topik_upgrade") {
+    return {
+      line1: `TOPIK I → TOPIK II — level-up the same meaning.`,
+      line2: `Beginner Hangul vs more formal / exam wording.`,
     };
   }
   return {

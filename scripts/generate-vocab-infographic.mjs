@@ -112,6 +112,21 @@ ${KAJA_ART_STYLE}
 ABOVE FOOTER BAND: light blue rounded CTA bar with lightbulb icon + "Try to answer before checking the comments! ↓"
 CRITICAL: Do NOT highlight or mark the correct answer. All four options look equally neutral.`,
   },
+  {
+    id: "05-concept-indefinite-pronouns",
+    format: "concept_rows",
+    size: "1024x1536",
+    prompt: `${STYLE_BASE}
+
+FORMAT: Original Kaja 2×2 CONCEPT PANEL card titled "Indefinite pronouns in Korean".
+Soft cream + sky-teal. Four rounded watercolor scene cards (NOT stick-figure diagrams).
+PANEL 1 모두 [modu] everybody — café friends cheering together.
+PANEL 2 누군가 [nugunga] somebody — mystery silhouette at a classroom door.
+PANEL 3 누구든지 [nugudeunji] anybody — open audition door, anyone may enter.
+PANEL 4 아무도 [amudo] nobody — empty park bench, no people.
+HARD BAN: stick-figure rows, red ovals, red X over people, flag ornaments, finger-heart logos.
+Empty footer band blank.`,
+  },
 ];
 
 async function rebrandRaw(rawPath, logoPath) {
