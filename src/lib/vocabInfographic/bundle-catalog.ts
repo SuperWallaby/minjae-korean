@@ -14,6 +14,13 @@ import {
   EXPR_WAVE2_SIMILAR_BUNDLES,
   EXPR_WAVE2_TOPIK_BUNDLES,
 } from "./bundle-catalog-expr-wave2";
+import {
+  EXPR_WAVE3_BUNDLES,
+  EXPR_WAVE3_CONCEPT_BUNDLES,
+  EXPR_WAVE3_PHRASE_BUNDLES,
+  EXPR_WAVE3_SIMILAR_BUNDLES,
+  EXPR_WAVE3_TOPIK_BUNDLES,
+} from "./bundle-catalog-expr-wave3";
 
 export type BundlePriority = "high" | "medium" | "low";
 
@@ -2773,6 +2780,7 @@ export const ALL_VOCAB_BUNDLES: VocabBundle[] = [
   ...WAVE2_GRID_BUNDLES,
   ...(EXPR_WAVE_BUNDLES as VocabBundle[]),
   ...(EXPR_WAVE2_BUNDLES as VocabBundle[]),
+  ...(EXPR_WAVE3_BUNDLES as VocabBundle[]),
 ];
 
 export type BundleCatalogValidation = {
@@ -2797,21 +2805,25 @@ export function validateBundleCatalog(minTotal = 300): BundleCatalogValidation {
     similar_split:
       SIMILAR_SPLIT_BUNDLES.length +
       EXPR_WAVE_SIMILAR_BUNDLES.length +
-      EXPR_WAVE2_SIMILAR_BUNDLES.length,
+      EXPR_WAVE2_SIMILAR_BUNDLES.length +
+      EXPR_WAVE3_SIMILAR_BUNDLES.length,
     super_list: SUPER_LIST_BUNDLES.length,
     quiz_comment: QUIZ_COMMENT_BUNDLES.length,
     concept_rows:
       CONCEPT_ROWS_BUNDLES.length +
       EXPR_WAVE_CONCEPT_BUNDLES.length +
-      EXPR_WAVE2_CONCEPT_BUNDLES.length,
+      EXPR_WAVE2_CONCEPT_BUNDLES.length +
+      EXPR_WAVE3_CONCEPT_BUNDLES.length,
     phrase_stack:
       PHRASE_STACK_BUNDLES.length +
       EXPR_WAVE_PHRASE_BUNDLES.length +
-      EXPR_WAVE2_PHRASE_BUNDLES.length,
+      EXPR_WAVE2_PHRASE_BUNDLES.length +
+      EXPR_WAVE3_PHRASE_BUNDLES.length,
     topik_upgrade:
       TOPIK_UPGRADE_BUNDLES.length +
       EXPR_WAVE_TOPIK_BUNDLES.length +
-      EXPR_WAVE2_TOPIK_BUNDLES.length,
+      EXPR_WAVE2_TOPIK_BUNDLES.length +
+      EXPR_WAVE3_TOPIK_BUNDLES.length,
   };
 
   const total = ALL_VOCAB_BUNDLES.length;
