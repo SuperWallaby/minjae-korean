@@ -95,7 +95,7 @@ export const EXPR_WAVE3_PHRASE_BUNDLES: VocabBundle[] = [
     L("감독이 누구예요?", "gamdogi nuguyeyo?", "Who's the director?"),
     L("다시 보고 싶어요", "dasi bogo sipeoyo", "I want to watch it again"),
   ], ['culture']),
-  phrase("cafe-study2", "Study café phrases in Korean", [
+  phrase("cafe-study2", "More study café phrases in Korean", [
     L("조용한 자리 있어요?", "joyonghan jari isseoyo?", "Is there a quiet seat?"),
     L("콘센트 있는 자리요", "konsenteu inneun jariyo", "A seat with an outlet"),
     L("몇 시간 이용할게요", "myeot sigan iyonghalgeyo", "I'll stay a few hours"),
@@ -227,7 +227,7 @@ export const EXPR_WAVE3_PHRASE_BUNDLES: VocabBundle[] = [
   ], ['weather']),
 ];
 export const EXPR_WAVE3_CONCEPT_BUNDLES: VocabBundle[] = [
-  concept("must-vs-should2", "Must vs should in Korean", [
+  concept("must-vs-should2", "Must / should modality in Korean", [
     C("must", "해야 해요", "haeya haeyo", "Strict obligation icon with red stamp"),
     C("should", "하는 게 좋아요", "haneun ge joayo", "Soft advice lightbulb"),
     C("don't have to", "안 해도 돼요", "an haedo dwaeyo", "Optional chore crossed out"),
@@ -239,7 +239,7 @@ export const EXPR_WAVE3_CONCEPT_BUNDLES: VocabBundle[] = [
     C("give up", "포기해요", "pogihaeyo", "Person dropping tools"),
     C("keep trying", "계속 해 봐요", "gyesok hae bwayo", "Person retrying after failure"),
   ], ['verbs']),
-  concept("give-receive2", "Give vs receive in Korean", [
+  concept("give-receive2", "Give and receive actions in Korean", [
     C("give", "줘요", "jwoyo", "Handing a gift"),
     C("receive", "받아요", "badayo", "Receiving a gift"),
     C("pass", "건네요", "geonneyo", "Passing an object across a table"),
@@ -281,7 +281,7 @@ export const EXPR_WAVE3_CONCEPT_BUNDLES: VocabBundle[] = [
     C("dislike", "싫어해요", "sireohaeyo", "Rejecting gesture"),
     C("hate", "미워해요", "miwohaeyo", "Angry frown"),
   ], ['emotion']),
-  concept("happy-sad-angry", "Basic emotions in Korean", [
+  concept("happy-sad-angry", "Core emotion words in Korean", [
     C("happy", "기뻐요", "gippeoyo", "Bright smiling face"),
     C("sad", "슬퍼요", "seulpeoyo", "Tearful face"),
     C("angry", "화나요", "hwanayo", "Steam from ears"),
@@ -311,7 +311,7 @@ export const EXPR_WAVE3_CONCEPT_BUNDLES: VocabBundle[] = [
     C("next to", "옆에", "yeope", "Person standing beside a friend"),
     C("across", "건너편에", "geonneopyeone", "Shop across the street"),
   ], ['location']),
-  concept("before-after2", "Before vs after in Korean", [
+  concept("before-after2", "Before & after timing in Korean", [
     C("before", "전에", "jeone", "Preparation before event"),
     C("after", "후에", "hue", "Aftermath / finished plates"),
     C("during", "동안", "dongan", "Timer running mid-task"),
@@ -359,7 +359,7 @@ export const EXPR_WAVE3_TOPIK_BUNDLES: VocabBundle[] = [
     T("board", "타다", "tada", "탑승하다", "tapseunghada"),
     T("get off", "내리다", "naerida", "하차하다", "hachahada"),
   ], ['travel']),
-  topik("money-verbs2", "Money verbs: TOPIK I → II", [
+  topik("money-verbs2", "Money actions: TOPIK I → II", [
     T("earn", "벌다", "beolda", "소득을 올리다", "sodeugeul ollida"),
     T("save", "모으다", "moeuda", "저축하다", "jeochukhada"),
     T("spend", "쓰다", "sseuda", "소비하다", "sobihada"),
@@ -379,7 +379,7 @@ export const EXPR_WAVE3_TOPIK_BUNDLES: VocabBundle[] = [
     T("apologize", "사과하다", "sagwahada", "사죄하다", "sajoehada"),
     T("thank", "감사하다", "gamsahada", "사의를 표하다", "sauireul pyohada"),
   ], ['speech']),
-  topik("housing2", "Housing: TOPIK I → II", [
+  topik("housing2", "Housing life: TOPIK I → II", [
     T("rent", "월세", "wolse", "임대료", "imdaeryo"),
     T("deposit", "보증금", "bojeunggeum", "보증", "bojeung"),
     T("contract", "계약", "gyeyak", "약정", "yakjeong"),
@@ -399,7 +399,7 @@ export const EXPR_WAVE3_TOPIK_BUNDLES: VocabBundle[] = [
     T("homework", "숙제", "sukje", "과제", "gwaje"),
     T("major", "전공", "jeongong", "주전공", "jujeongong"),
   ], ['school']),
-  topik("environment2", "Environment: TOPIK I → II", [
+  topik("environment2", "Nature & environment: TOPIK I → II", [
     T("pollute", "더럽히다", "deoreophida", "오염시키다", "oyeomsikida"),
     T("protect", "지키다", "jikida", "보전하다", "bojeonhada"),
     T("recycle", "재활용하다", "jaehwalyonghada", "재이용하다", "jaeiyonghada"),
@@ -409,7 +409,7 @@ export const EXPR_WAVE3_TOPIK_BUNDLES: VocabBundle[] = [
     T("plant", "심다", "simda", "식재하다", "sikjaehada"),
     T("climate", "날씨", "nalssi", "기후", "gihu"),
   ], ['environment']),
-  topik("culture2", "Culture verbs: TOPIK I → II", [
+  topik("culture2", "Arts & culture: TOPIK I → II", [
     T("enjoy", "즐기다", "jeulgida", "향유하다", "hyangyuhada"),
     T("perform", "하다", "hada", "공연하다", "gongyeonhada"),
     T("exhibit", "보여 주다", "boyeo juda", "전시하다", "jeonsihada"),
@@ -454,7 +454,7 @@ export const EXPR_WAVE3_SIMILAR_BUNDLES: VocabBundle[] = [
   similar("bring-take", "Bring", "Take", "가져오다", "가져가다", "gajyeooda", "gajyeogada", "bring here", "take there", "motion"),
   similar("put-on-take-off", "Put on", "Take off", "입다", "벗다", "ipda", "beotda", "put on clothes", "take off clothes", "daily"),
   similar("turn-on-off", "Turn on", "Turn off", "켜다", "끄다", "kyeoda", "kkeuda", "power on", "power off", "devices"),
-  similar("enter-exit", "Enter", "Exit", "들어가다", "나가다", "deureogada", "nagada", "go in", "go out", "motion"),
+  similar("enter-exit", "Go in", "Go out", "들어가다", "나가다", "deureogada", "nagada", "go in", "go out", "motion"),
   similar("rise-fall", "Rise", "Fall", "오르다", "내리다", "oreuda", "naerida", "go up", "go down", "motion"),
   similar("increase-decrease", "Increase", "Decrease", "늘다", "줄다", "neulda", "julda", "grow in amount", "shrink in amount", "quantity"),
   similar("accept-refuse", "Accept", "Refuse", "받다", "거절하다", "batda", "geojeolhada", "accept offer", "refuse offer", "social"),
