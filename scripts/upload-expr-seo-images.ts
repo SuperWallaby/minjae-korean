@@ -57,6 +57,7 @@ async function main() {
     }
   }
   console.log(JSON.stringify({ ok, fail, remainingAttempted: need.length }));
+  process.exit(fail ? 1 : 0);
 }
 
 main().catch((e) => {
