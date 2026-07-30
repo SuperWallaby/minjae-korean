@@ -31,7 +31,7 @@ function buildWelcomeEmail(pdfUrl: string, email: string) {
     "Here is your free Korean learning PDF:",
     pdfUrl,
     "",
-    "You'll also receive Korean quizzes and challenges every week — so you can keep practicing.",
+    "You'll also receive a weekly Korean quiz and a popular-expressions pin roundup — so you can keep practicing.",
     "If you don't see this email, check your spam or promotions folder.",
     "",
     `Unsubscribe: ${unsubscribeUrl}`,
@@ -43,7 +43,7 @@ function buildWelcomeEmail(pdfUrl: string, email: string) {
     <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.55; color: #1d1d1f; max-width: 520px;">
       <h2 style="margin: 0 0 12px; font-size: 20px;">Thanks for subscribing!</h2>
       <p style="margin: 0 0 14px;">As promised, here is your free Korean learning PDF from What is this in Korean — made for learners who want clear, practical study material.</p>
-      <p style="margin: 0 0 14px;">You'll also get Korean quizzes and challenges every week, so you can keep practicing between lessons.</p>
+      <p style="margin: 0 0 14px;">You'll also get a weekly Korean quiz and a popular-expressions pin roundup, so you can keep practicing between lessons.</p>
       <div style="margin: 22px 0 18px; text-align: center;">
         <a href="${pdfUrl}" style="text-decoration: none;">
           <img

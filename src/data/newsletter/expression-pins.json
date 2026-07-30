@@ -1,0 +1,5038 @@
+{
+  "generatedAt": "2026-07-30T06:44:41.634Z",
+  "note": "Pinned expression-style infographics for weekly newsletter. Refresh via scripts/sync-newsletter-expression-pins.mjs",
+  "items": [
+    {
+      "bundleId": "concept-indefinite-pronouns",
+      "slug": "indefinite-pronouns-in-korean",
+      "format": "concept_rows",
+      "title": "Indefinite pronouns in Korean",
+      "description": "Indefinite pronouns in Korean are words used to refer to people in a general or unknown way. They include words like 'everybody,' 'somebody,' 'anybody,' and…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128823713-concept-indefinite-pronouns.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128823713-concept-indefinite-pronouns-thumb.webp",
+      "words": [
+        {
+          "hangul": "모두",
+          "romanization": "modu",
+          "english": "everybody"
+        },
+        {
+          "hangul": "누군가",
+          "romanization": "nugunga",
+          "english": "somebody"
+        },
+        {
+          "hangul": "누구든지",
+          "romanization": "nugudeunji",
+          "english": "anybody"
+        },
+        {
+          "hangul": "아무도",
+          "romanization": "amudo",
+          "english": "nobody"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:29:28.278Z",
+      "pinTitle": "Handy Korean for indefinite pronouns ✨"
+    },
+    {
+      "bundleId": "concept-demonstratives",
+      "slug": "this-that-these-those-in-korean",
+      "format": "concept_rows",
+      "title": "This that these those in Korean",
+      "description": "In Korean, demonstratives like 이것, 그것, 저것, and 이것들 help you point to things based on their location. 이것 means 'this' for something close to the speaker. 그것 m…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128826279-concept-demonstratives.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128826279-concept-demonstratives-thumb.webp",
+      "words": [
+        {
+          "hangul": "이것",
+          "romanization": "igeot",
+          "english": "this"
+        },
+        {
+          "hangul": "그것",
+          "romanization": "geugeot",
+          "english": "that (near you)"
+        },
+        {
+          "hangul": "저것",
+          "romanization": "jeogeot",
+          "english": "that (over there)"
+        },
+        {
+          "hangul": "이것들",
+          "romanization": "igeotdeul",
+          "english": "these"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:29:54.948Z",
+      "pinTitle": "Handy Korean for this that these those ✨"
+    },
+    {
+      "bundleId": "concept-polite-vs-casual",
+      "slug": "polite-vs-casual-endings-in-korean",
+      "format": "concept_rows",
+      "title": "Polite vs casual endings in Korean",
+      "description": "In Korean, polite and casual endings show different levels of respect when speaking. Polite endings are used with strangers, elders, or in formal situations.…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128829418-concept-polite-vs-casual.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128829418-concept-polite-vs-casual-thumb.webp",
+      "words": [
+        {
+          "hangul": "안녕하세요",
+          "romanization": "annyeonghaseyo",
+          "english": "polite hello"
+        },
+        {
+          "hangul": "안녕",
+          "romanization": "annyeong",
+          "english": "casual hello"
+        },
+        {
+          "hangul": "감사합니다",
+          "romanization": "gamsahamnida",
+          "english": "polite thanks"
+        },
+        {
+          "hangul": "고마워",
+          "romanization": "gomawo",
+          "english": "casual thanks"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:30:21.022Z",
+      "pinTitle": "Handy Korean for polite vs casual endings ✨"
+    },
+    {
+      "bundleId": "concept-topic-vs-subject",
+      "slug": "topic-vs-subject-particles-in-korean",
+      "format": "concept_rows",
+      "title": "Topic vs subject particles in Korean",
+      "description": "In Korean, topic particles and subject particles are used to mark different parts of a sentence. Topic particles like '는' highlight what the sentence is abou…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128831939-concept-topic-vs-subject.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128831939-concept-topic-vs-subject-thumb.webp",
+      "words": [
+        {
+          "hangul": "나는",
+          "romanization": "naneun",
+          "english": "as for me… (topic)"
+        },
+        {
+          "hangul": "내가",
+          "romanization": "naega",
+          "english": "I (do)… (subject)"
+        },
+        {
+          "hangul": "커피는",
+          "romanization": "keopineun",
+          "english": "as for coffee…"
+        },
+        {
+          "hangul": "커피가",
+          "romanization": "keopiga",
+          "english": "coffee is…"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:30:47.430Z",
+      "pinTitle": "Handy Korean for topic vs subject particles ✨"
+    },
+    {
+      "bundleId": "concept-location-particles",
+      "slug": "location-particles-in-korean",
+      "format": "concept_rows",
+      "title": "Location particles in Korean",
+      "description": "Location particles in Korean show where an action happens or the direction of movement. '에' indicates a destination or place where something exists. '에서' is…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128835766-concept-location-particles.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128835766-concept-location-particles-thumb.webp",
+      "words": [
+        {
+          "hangul": "에",
+          "romanization": "e",
+          "english": "to / at (destination)"
+        },
+        {
+          "hangul": "에서",
+          "romanization": "eseo",
+          "english": "at / in (doing there)"
+        },
+        {
+          "hangul": "으로",
+          "romanization": "euro",
+          "english": "toward / by means of"
+        },
+        {
+          "hangul": "부터",
+          "romanization": "buteo",
+          "english": "from (starting point)"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:31:13.686Z",
+      "pinTitle": "Handy Korean for location particles ✨"
+    },
+    {
+      "bundleId": "concept-time-words",
+      "slug": "time-words-in-korean",
+      "format": "concept_rows",
+      "title": "Time words in Korean",
+      "description": "These Korean time words help you talk about when something happens. '지금' means 'now,' and it's used for the present moment. '아까' refers to a short time ago,…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128838507-concept-time-words.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128838507-concept-time-words-thumb.webp",
+      "words": [
+        {
+          "hangul": "지금",
+          "romanization": "jigeum",
+          "english": "now"
+        },
+        {
+          "hangul": "아까",
+          "romanization": "akka",
+          "english": "a while ago"
+        },
+        {
+          "hangul": "나중에",
+          "romanization": "najunge",
+          "english": "later"
+        },
+        {
+          "hangul": "내일",
+          "romanization": "naeil",
+          "english": "tomorrow"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:31:48.545Z",
+      "pinTitle": "Handy Korean for time words ✨"
+    },
+    {
+      "bundleId": "concept-counters-people-things",
+      "slug": "counters-for-people-and-things",
+      "format": "concept_rows",
+      "title": "Counters for people and things in Korean",
+      "description": "In Korean, different counters are used to count people, animals, books, and general objects. For example, '명' is used for people, '마리' for animals, '권' for b…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128841228-concept-counters-people-things.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128841228-concept-counters-people-things-thumb.webp",
+      "words": [
+        {
+          "hangul": "두 명",
+          "romanization": "du myeong",
+          "english": "two people"
+        },
+        {
+          "hangul": "두 개",
+          "romanization": "du gae",
+          "english": "two things"
+        },
+        {
+          "hangul": "두 마리",
+          "romanization": "du mari",
+          "english": "two animals"
+        },
+        {
+          "hangul": "두 권",
+          "romanization": "du gwon",
+          "english": "two books"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:32:15.160Z",
+      "pinTitle": "Handy Korean for counters for people and things ✨"
+    },
+    {
+      "bundleId": "concept-want-vs-like",
+      "slug": "want-vs-like-in-korean",
+      "format": "concept_rows",
+      "title": "Want vs like in Korean",
+      "description": "In Korean, 'want' and 'like' are expressed differently. To say you want to do something, use the verb stem plus '고 싶어요.' To say you like something, use the o…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128844080-concept-want-vs-like.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128844080-concept-want-vs-like-thumb.webp",
+      "words": [
+        {
+          "hangul": "먹고 싶어요",
+          "romanization": "meokgo sipeoyo",
+          "english": "I want to eat"
+        },
+        {
+          "hangul": "국수를 좋아해요",
+          "romanization": "guksureul joahaeyo",
+          "english": "I like noodles"
+        },
+        {
+          "hangul": "가고 싶어요",
+          "romanization": "gago sipeoyo",
+          "english": "I want to go"
+        },
+        {
+          "hangul": "여행을 좋아해요",
+          "romanization": "yeohaengeul joahaeyo",
+          "english": "I like traveling"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:32:41.742Z",
+      "pinTitle": "Handy Korean for want vs like ✨"
+    },
+    {
+      "bundleId": "concept-before-vs-after",
+      "slug": "before-vs-after-in-korean",
+      "format": "concept_rows",
+      "title": "Before vs after in Korean",
+      "description": "In Korean, 'before' and 'after' are used to talk about when something happens in relation to another event. '전에' means 'before' and is used after a noun or v…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128846314-concept-before-vs-after.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128846314-concept-before-vs-after-thumb.webp",
+      "words": [
+        {
+          "hangul": "수업 전에",
+          "romanization": "sueop jeone",
+          "english": "before class"
+        },
+        {
+          "hangul": "수업 후에",
+          "romanization": "sueop hue",
+          "english": "after class"
+        },
+        {
+          "hangul": "먹기 전에",
+          "romanization": "meokgi jeone",
+          "english": "before eating"
+        },
+        {
+          "hangul": "먹은 후에",
+          "romanization": "meogeun hue",
+          "english": "after eating"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:33:08.177Z",
+      "pinTitle": "Handy Korean for before vs after ✨"
+    },
+    {
+      "bundleId": "concept-give-vs-receive",
+      "slug": "give-vs-receive-in-korean",
+      "format": "concept_rows",
+      "title": "Give vs receive in Korean",
+      "description": "This chart shows the basic Korean verbs for giving and receiving. '주다' means 'to give,' and '받다' means 'to receive.' You can use polite forms like '주세요' to a…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128848855-concept-give-vs-receive.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128848855-concept-give-vs-receive-thumb.webp",
+      "words": [
+        {
+          "hangul": "주다",
+          "romanization": "juda",
+          "english": "to give"
+        },
+        {
+          "hangul": "받다",
+          "romanization": "batda",
+          "english": "to receive"
+        },
+        {
+          "hangul": "주세요",
+          "romanization": "juseyo",
+          "english": "please give me…"
+        },
+        {
+          "hangul": "받았어요",
+          "romanization": "badasseoyo",
+          "english": "I received it"
+        }
+      ],
+      "pinnedAt": "2026-07-25T14:33:34.086Z",
+      "pinTitle": "Handy Korean for give vs receive ✨"
+    },
+    {
+      "bundleId": "phrase-how-are-you-feeling",
+      "slug": "how-are-you-feeling-in-korean",
+      "format": "phrase_stack",
+      "title": "How are you feeling? in Korean",
+      "description": "This chart shows common Korean questions used to ask about someone's feelings or state. These phrases are simple and often used in daily conversations to che…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128852088-phrase-how-are-you-feeling.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128852088-phrase-how-are-you-feeling-thumb.webp",
+      "words": [
+        {
+          "hangul": "괜찮아?",
+          "romanization": "gwaenchana?",
+          "english": "Are you okay?"
+        },
+        {
+          "hangul": "진심이야?",
+          "romanization": "jinsimiya?",
+          "english": "Are you serious?"
+        },
+        {
+          "hangul": "긴장돼?",
+          "romanization": "ginjangdwae?",
+          "english": "Are you nervous?"
+        },
+        {
+          "hangul": "화났어?",
+          "romanization": "hwanasseo?",
+          "english": "Are you angry?"
+        },
+        {
+          "hangul": "무서워?",
+          "romanization": "museowo?",
+          "english": "Are you scared?"
+        },
+        {
+          "hangul": "피곤해?",
+          "romanization": "pigonhae?",
+          "english": "Are you tired?"
+        },
+        {
+          "hangul": "배고파?",
+          "romanization": "baegopa?",
+          "english": "Are you hungry?"
+        },
+        {
+          "hangul": "확실해?",
+          "romanization": "hwaksilhae?",
+          "english": "Are you sure?"
+        }
+      ],
+      "pinnedAt": "2026-07-25T17:35:29.482Z",
+      "pinTitle": "Handy Korean for how are you feeling? ✨"
+    },
+    {
+      "bundleId": "topik-daily-life",
+      "slug": "daily-life-verbs-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Daily life verbs: TOPIK I → II in Korean",
+      "description": "This chart shows daily life verbs in Korean with two levels: TOPIK I and TOPIK II. TOPIK I verbs are simpler and commonly used in everyday conversation. TOPI…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785037483116-topik-daily-life.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785037483116-topik-daily-life-thumb.webp",
+      "words": [
+        {
+          "hangul": "먹다",
+          "romanization": "meokda",
+          "english": "eat (TOPIK I)"
+        },
+        {
+          "hangul": "식사하다",
+          "romanization": "siksahada",
+          "english": "eat (TOPIK II)"
+        },
+        {
+          "hangul": "자다",
+          "romanization": "jada",
+          "english": "sleep (TOPIK I)"
+        },
+        {
+          "hangul": "취침하다",
+          "romanization": "chwichimhada",
+          "english": "sleep (TOPIK II)"
+        },
+        {
+          "hangul": "일어나다",
+          "romanization": "ireonada",
+          "english": "wake up (TOPIK I)"
+        },
+        {
+          "hangul": "기상하다",
+          "romanization": "gisanghada",
+          "english": "wake up (TOPIK II)"
+        },
+        {
+          "hangul": "가다",
+          "romanization": "gada",
+          "english": "go (TOPIK I)"
+        },
+        {
+          "hangul": "방문하다",
+          "romanization": "bangmunhada",
+          "english": "go (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:49:49.028Z",
+      "pinTitle": "Upgrade your daily verbs from TOPIK I to II 👇"
+    },
+    {
+      "bundleId": "topik-show-look",
+      "slug": "show-and-look-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Show & look: TOPIK I → II in Korean",
+      "description": "This chart shows pairs of Korean verbs related to 'show' and 'look' that are used at different TOPIK levels. Each pair includes a simpler verb for TOPIK I le…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785037981950-topik-show-look.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785037981950-topik-show-look-thumb.webp",
+      "words": [
+        {
+          "hangul": "보여 주다",
+          "romanization": "boyeo juda",
+          "english": "show (TOPIK I)"
+        },
+        {
+          "hangul": "제시하다",
+          "romanization": "jesihada",
+          "english": "show (TOPIK II)"
+        },
+        {
+          "hangul": "보다",
+          "romanization": "boda",
+          "english": "look at (TOPIK I)"
+        },
+        {
+          "hangul": "살펴보다",
+          "romanization": "salpyeoboda",
+          "english": "look at (TOPIK II)"
+        },
+        {
+          "hangul": "구경하다",
+          "romanization": "gugyeonghada",
+          "english": "watch (TOPIK I)"
+        },
+        {
+          "hangul": "관람하다",
+          "romanization": "gwanramhada",
+          "english": "watch (TOPIK II)"
+        },
+        {
+          "hangul": "찾다",
+          "romanization": "chatda",
+          "english": "find (TOPIK I)"
+        },
+        {
+          "hangul": "발견하다",
+          "romanization": "balgyeonhada",
+          "english": "find (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:50:18.769Z",
+      "pinTitle": "Upgrade your Korean with these show & look verbs!"
+    },
+    {
+      "bundleId": "sim-receive-obtain",
+      "slug": "receive-vs-obtain-get",
+      "format": "similar_split",
+      "title": "Receive vs Obtain / get in Korean",
+      "description": "In Korean, both 받다 and 얻다 mean to get something, but they are used differently. 받다 is used when you receive something from someone, like a gift or a message.…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785038090423-sim-receive-obtain.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785038090423-sim-receive-obtain-thumb.webp",
+      "words": [
+        {
+          "hangul": "받다",
+          "romanization": "batda",
+          "english": "Receive"
+        },
+        {
+          "hangul": "얻다",
+          "romanization": "eotda",
+          "english": "Obtain / get"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:50:45.702Z",
+      "pinTitle": "Get confused between 받다 and 얻다? Use these when you need to talk about getting things in Korean 👇"
+    },
+    {
+      "bundleId": "phrase-cafe-orders",
+      "slug": "cafe-order-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Café order phrases in Korean",
+      "description": "These are common phrases used when ordering at a café in Korean. They help you communicate your order clearly, ask for specific preferences, and interact pol…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785038187483-phrase-cafe-orders.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785038187483-phrase-cafe-orders-thumb.webp",
+      "words": [
+        {
+          "hangul": "주문할게요",
+          "romanization": "jumunhalgeyo",
+          "english": "I'd like to order"
+        },
+        {
+          "hangul": "아메리카노 주세요",
+          "romanization": "amerikano juseyo",
+          "english": "Americano, please"
+        },
+        {
+          "hangul": "아이스로 해주세요",
+          "romanization": "aiseuro haejuseyo",
+          "english": "Make it iced"
+        },
+        {
+          "hangul": "덜 달게 해주세요",
+          "romanization": "deol dalge haejuseyo",
+          "english": "Less sweet, please"
+        },
+        {
+          "hangul": "여기요",
+          "romanization": "yeogiyo",
+          "english": "Excuse me (to staff)"
+        },
+        {
+          "hangul": "포장해주세요",
+          "romanization": "pojanghaejuseyo",
+          "english": "To go, please"
+        },
+        {
+          "hangul": "카드로 할게요",
+          "romanization": "kadeuro halgeyo",
+          "english": "I'll pay by card"
+        },
+        {
+          "hangul": "감사합니다",
+          "romanization": "gamsahamnida",
+          "english": "Thank you"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:51:17.684Z",
+      "pinTitle": "Ordering coffee in Korean? Use these handy phrases at the café counter 👇"
+    },
+    {
+      "bundleId": "topik-action-verbs",
+      "slug": "everyday-actions-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Everyday actions: TOPIK I → II in Korean",
+      "description": "This chart shows pairs of Korean verbs used for everyday actions, comparing simpler TOPIK I words with more formal or advanced TOPIK II equivalents. Both ver…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042310232-topik-action-verbs.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042310232-topik-action-verbs-thumb.webp",
+      "words": [
+        {
+          "hangul": "하다",
+          "romanization": "hada",
+          "english": "do / make (TOPIK I)"
+        },
+        {
+          "hangul": "실시하다",
+          "romanization": "silsihada",
+          "english": "do / make (TOPIK II)"
+        },
+        {
+          "hangul": "시작하다",
+          "romanization": "sijakhada",
+          "english": "start (TOPIK I)"
+        },
+        {
+          "hangul": "개시하다",
+          "romanization": "gaesihada",
+          "english": "start (TOPIK II)"
+        },
+        {
+          "hangul": "끝내다",
+          "romanization": "kkeunnaeda",
+          "english": "finish (TOPIK I)"
+        },
+        {
+          "hangul": "완료하다",
+          "romanization": "wanryohada",
+          "english": "finish (TOPIK II)"
+        },
+        {
+          "hangul": "쓰다",
+          "romanization": "sseuda",
+          "english": "use (TOPIK I)"
+        },
+        {
+          "hangul": "사용하다",
+          "romanization": "sayonghada",
+          "english": "use (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:51:47.436Z",
+      "pinTitle": "Want to sound more advanced in Korean? Upgrade your everyday verbs!"
+    },
+    {
+      "bundleId": "sim-send-mail",
+      "slug": "send-vs-mail-ship",
+      "format": "similar_split",
+      "title": "Send vs Mail / ship in Korean",
+      "description": "In Korean, 보내다 means 'to send' and is used for sending things like messages, gifts, or people. 부치다 means 'to mail' or 'to ship' and is used when sending pack…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042403775-sim-send-mail.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042403775-sim-send-mail-thumb.webp",
+      "words": [
+        {
+          "hangul": "보내다",
+          "romanization": "bonaeda",
+          "english": "Send"
+        },
+        {
+          "hangul": "부치다",
+          "romanization": "buchida",
+          "english": "Mail / ship"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:52:13.521Z",
+      "pinTitle": "Need to get a package or letter out?"
+    },
+    {
+      "bundleId": "phrase-plans-and-availability",
+      "slug": "plans-and-availability-in-korean",
+      "format": "phrase_stack",
+      "title": "Plans & availability in Korean",
+      "description": "These phrases are useful for talking about plans and checking availability in Korean. They help you ask if someone is busy, has time, or is ready to meet up.…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042499596-phrase-plans-and-availability.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042499596-phrase-plans-and-availability-thumb.webp",
+      "words": [
+        {
+          "hangul": "바빠?",
+          "romanization": "bappa?",
+          "english": "Are you busy?"
+        },
+        {
+          "hangul": "시간 있어?",
+          "romanization": "sigan isseo?",
+          "english": "Do you have time?"
+        },
+        {
+          "hangul": "오늘 어때?",
+          "romanization": "oneul eottae?",
+          "english": "How about today?"
+        },
+        {
+          "hangul": "언제 돼?",
+          "romanization": "eonje dwae?",
+          "english": "When works for you?"
+        },
+        {
+          "hangul": "어디야?",
+          "romanization": "eodiya?",
+          "english": "Where are you?"
+        },
+        {
+          "hangul": "집이야?",
+          "romanization": "jibiya?",
+          "english": "Are you home?"
+        },
+        {
+          "hangul": "준비됐어?",
+          "romanization": "junbidwaesseo?",
+          "english": "Are you ready?"
+        },
+        {
+          "hangul": "갈까?",
+          "romanization": "galkka?",
+          "english": "Shall we go?"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:52:42.873Z",
+      "pinTitle": "Handy Korean for plans & availability ✨"
+    },
+    {
+      "bundleId": "topik-speaking-verbs",
+      "slug": "speaking-verbs-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Speaking verbs: TOPIK I → II in Korean",
+      "description": "This chart shows pairs of Korean speaking verbs that help you upgrade your language skills from TOPIK I to TOPIK II. Each pair includes a basic verb used in…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042734299-topik-speaking-verbs.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042734299-topik-speaking-verbs-thumb.webp",
+      "words": [
+        {
+          "hangul": "말하다",
+          "romanization": "malhada",
+          "english": "say (TOPIK I)"
+        },
+        {
+          "hangul": "말씀하다",
+          "romanization": "malsseumhada",
+          "english": "say (TOPIK II)"
+        },
+        {
+          "hangul": "이야기하다",
+          "romanization": "iyagihada",
+          "english": "talk about (TOPIK I)"
+        },
+        {
+          "hangul": "논의하다",
+          "romanization": "nonuihada",
+          "english": "talk about (TOPIK II)"
+        },
+        {
+          "hangul": "물어보다",
+          "romanization": "mureoboda",
+          "english": "ask (TOPIK I)"
+        },
+        {
+          "hangul": "문의하다",
+          "romanization": "munuihada",
+          "english": "ask (TOPIK II)"
+        },
+        {
+          "hangul": "대답하다",
+          "romanization": "daedaphada",
+          "english": "answer (TOPIK I)"
+        },
+        {
+          "hangul": "답변하다",
+          "romanization": "dapbyeonhada",
+          "english": "answer (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:53:14.036Z",
+      "pinTitle": "Want to sound more formal in Korean? Upgrade your speaking verbs for TOPIK II! 👇"
+    },
+    {
+      "bundleId": "sim-fun-interesting",
+      "slug": "fun-vs-interesting",
+      "format": "similar_split",
+      "title": "Fun vs Interesting in Korean",
+      "description": "The words 재미있다 and 흥미롭다 both describe positive feelings but are used differently. 재미있다 means something is fun and enjoyable, often related to activities or e…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042832717-sim-fun-interesting.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785042832717-sim-fun-interesting-thumb.webp",
+      "words": [
+        {
+          "hangul": "재미있다",
+          "romanization": "jaemiitda",
+          "english": "Fun"
+        },
+        {
+          "hangul": "흥미롭다",
+          "romanization": "heungmiropda",
+          "english": "Interesting"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:53:41.057Z",
+      "pinTitle": "😂 When your fave show is just so 재미있다 [jaemiitda] (fun) you can’t stop laughing!"
+    },
+    {
+      "bundleId": "topik-connectors",
+      "slug": "connectors-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Connectors: TOPIK I → II in Korean",
+      "description": "This chart shows connectors used in Korean from TOPIK I to TOPIK II levels. These connectors help link ideas and sentences smoothly, showing contrast, cause,…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043057968-topik-connectors.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043057968-topik-connectors-thumb.webp",
+      "words": [
+        {
+          "hangul": "그런데",
+          "romanization": "geureonde",
+          "english": "but (TOPIK I)"
+        },
+        {
+          "hangul": "그러나",
+          "romanization": "geureona",
+          "english": "but (TOPIK II)"
+        },
+        {
+          "hangul": "그래서",
+          "romanization": "geuraeseo",
+          "english": "so / therefore (TOPIK I)"
+        },
+        {
+          "hangul": "따라서",
+          "romanization": "ddaraseo",
+          "english": "so / therefore (TOPIK II)"
+        },
+        {
+          "hangul": "왜냐하면",
+          "romanization": "waenyahamyeon",
+          "english": "because (TOPIK I)"
+        },
+        {
+          "hangul": "그 이유로",
+          "romanization": "geu iyuro",
+          "english": "because (TOPIK II)"
+        },
+        {
+          "hangul": "그리고",
+          "romanization": "geurigo",
+          "english": "and / also (TOPIK I)"
+        },
+        {
+          "hangul": "또한",
+          "romanization": "ttohan",
+          "english": "and / also (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:54:09.790Z",
+      "pinTitle": "Upgrade your Korean connectors from TOPIK I to II!"
+    },
+    {
+      "bundleId": "sim-eat-eat-honorific",
+      "slug": "eat-vs-eat-honorific",
+      "format": "similar_split",
+      "title": "Eat vs Eat (honorific) in Korean",
+      "description": "In Korean, 먹다 (meokda) is the basic verb for 'to eat,' used in casual or neutral situations. 드시다 (deusida) is the honorific form of 'to eat,' used to show re…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043155545-sim-eat-eat-honorific.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043155545-sim-eat-eat-honorific-thumb.webp",
+      "words": [
+        {
+          "hangul": "먹다",
+          "romanization": "meokda",
+          "english": "Eat"
+        },
+        {
+          "hangul": "드시다",
+          "romanization": "deusida",
+          "english": "Eat (honorific)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:54:35.234Z",
+      "pinTitle": "🗣️ Real-life Korean vibes:"
+    },
+    {
+      "bundleId": "topik-thinking-verbs",
+      "slug": "thinking-verbs-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Thinking verbs: TOPIK I → II in Korean",
+      "description": "This chart shows pairs of Korean thinking verbs used in TOPIK I and TOPIK II levels. The TOPIK I verbs are simpler and more common in everyday conversation,…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043400508-topik-thinking-verbs.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043400508-topik-thinking-verbs-thumb.webp",
+      "words": [
+        {
+          "hangul": "생각하다",
+          "romanization": "saenggakhada",
+          "english": "think (TOPIK I)"
+        },
+        {
+          "hangul": "고려하다",
+          "romanization": "goryeohada",
+          "english": "think (TOPIK II)"
+        },
+        {
+          "hangul": "알다",
+          "romanization": "alda",
+          "english": "know (TOPIK I)"
+        },
+        {
+          "hangul": "인지하다",
+          "romanization": "injihada",
+          "english": "know (TOPIK II)"
+        },
+        {
+          "hangul": "이해하다",
+          "romanization": "ihae-hada",
+          "english": "understand (TOPIK I)"
+        },
+        {
+          "hangul": "파악하다",
+          "romanization": "paakhada",
+          "english": "understand (TOPIK II)"
+        },
+        {
+          "hangul": "기억하다",
+          "romanization": "gieokhada",
+          "english": "remember (TOPIK I)"
+        },
+        {
+          "hangul": "상기하다",
+          "romanization": "sanggihada",
+          "english": "remember (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:55:03.692Z",
+      "pinTitle": "Upgrade your Korean thinking verbs from TOPIK I to II!"
+    },
+    {
+      "bundleId": "sim-close-turn-off",
+      "slug": "close-vs-turn-off",
+      "format": "similar_split",
+      "title": "Close vs Turn off in Korean",
+      "description": "닫다 and 끄다 are two Korean verbs that both relate to stopping or ending something, but they are used in different situations. 닫다 means 'to close' and is used f…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043492238-sim-close-turn-off.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043492238-sim-close-turn-off-thumb.webp",
+      "words": [
+        {
+          "hangul": "닫다",
+          "romanization": "datda",
+          "english": "Close"
+        },
+        {
+          "hangul": "끄다",
+          "romanization": "kkeuda",
+          "english": "Turn off"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:55:29.458Z",
+      "pinTitle": "🗣️ Real-life Korean vibes:"
+    },
+    {
+      "bundleId": "topik-problem-solution",
+      "slug": "problems-and-solutions-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Problems & solutions: TOPIK I → II in Korean",
+      "description": "This chart shows pairs of Korean verbs used to talk about problems and solutions, comparing words from TOPIK I and TOPIK II levels. Each pair has a similar m…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043726365-topik-problem-solution.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043726365-topik-problem-solution-thumb.webp",
+      "words": [
+        {
+          "hangul": "문제",
+          "romanization": "munje",
+          "english": "problem (TOPIK I)"
+        },
+        {
+          "hangul": "쟁점",
+          "romanization": "jaengjeom",
+          "english": "problem (TOPIK II)"
+        },
+        {
+          "hangul": "해결하다",
+          "romanization": "haegyeolhada",
+          "english": "solve (TOPIK I)"
+        },
+        {
+          "hangul": "해소하다",
+          "romanization": "haesohada",
+          "english": "solve (TOPIK II)"
+        },
+        {
+          "hangul": "나아지다",
+          "romanization": "naajida",
+          "english": "improve (TOPIK I)"
+        },
+        {
+          "hangul": "개선하다",
+          "romanization": "gaeseonhada",
+          "english": "improve (TOPIK II)"
+        },
+        {
+          "hangul": "늘다",
+          "romanization": "neulda",
+          "english": "increase (TOPIK I)"
+        },
+        {
+          "hangul": "증가하다",
+          "romanization": "jeunggahada",
+          "english": "increase (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:59:11.842Z",
+      "pinTitle": "Upgrade your Korean from TOPIK I to II with these pairs 👇"
+    },
+    {
+      "bundleId": "sim-kind-affectionate",
+      "slug": "kind-vs-affectionate",
+      "format": "similar_split",
+      "title": "Kind vs Affectionate in Korean",
+      "description": "The words 친절하다 and 다정하다 both describe positive personality traits in Korean, but they focus on different types of warmth. 친절하다 means to be kind, showing help…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043827316-sim-kind-affectionate.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785043827316-sim-kind-affectionate-thumb.webp",
+      "words": [
+        {
+          "hangul": "친절하다",
+          "romanization": "chinjeolhada",
+          "english": "Kind"
+        },
+        {
+          "hangul": "다정하다",
+          "romanization": "dajeonghada",
+          "english": "Affectionate"
+        }
+      ],
+      "pinnedAt": "2026-07-26T06:59:38.282Z",
+      "pinTitle": "🗣️ When you meet a new friend:"
+    },
+    {
+      "bundleId": "sim-go-come",
+      "slug": "go-vs-come",
+      "format": "similar_split",
+      "title": "Go vs Come in Korean",
+      "description": "In Korean, 가다 (gada) means 'to go,' and 오다 (oda) means 'to come.' These verbs describe movement relative to the speaker's location. Use 가다 when moving away f…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785044164749-sim-go-come.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785044164749-sim-go-come-thumb.webp",
+      "words": [
+        {
+          "hangul": "가다",
+          "romanization": "gada",
+          "english": "Go"
+        },
+        {
+          "hangul": "오다",
+          "romanization": "oda",
+          "english": "Come"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:10:15.082Z",
+      "pinTitle": "Need to talk about moving places?"
+    },
+    {
+      "bundleId": "topik-study-work",
+      "slug": "study-and-work-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Study & work: TOPIK I → II in Korean",
+      "description": "This chart shows Korean verbs related to studying and working, comparing basic TOPIK I words with more formal or advanced TOPIK II words. Many verbs have sim…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785044389158-topik-study-work.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785044389158-topik-study-work-thumb.webp",
+      "words": [
+        {
+          "hangul": "공부하다",
+          "romanization": "gongbuhada",
+          "english": "study (TOPIK I)"
+        },
+        {
+          "hangul": "학습하다",
+          "romanization": "hakseuphada",
+          "english": "study (TOPIK II)"
+        },
+        {
+          "hangul": "일하다",
+          "romanization": "ilhada",
+          "english": "work (TOPIK I)"
+        },
+        {
+          "hangul": "근무하다",
+          "romanization": "geunmuhada",
+          "english": "work (TOPIK II)"
+        },
+        {
+          "hangul": "준비하다",
+          "romanization": "junbihada",
+          "english": "prepare (TOPIK I)"
+        },
+        {
+          "hangul": "대비하다",
+          "romanization": "daebihada",
+          "english": "prepare (TOPIK II)"
+        },
+        {
+          "hangul": "연습하다",
+          "romanization": "yeonseuphada",
+          "english": "practice (TOPIK I)"
+        },
+        {
+          "hangul": "훈련하다",
+          "romanization": "hullyeonhada",
+          "english": "practice (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:10:45.721Z",
+      "pinTitle": "Upgrade your Korean for work & study! 👩‍🎓👨‍💼"
+    },
+    {
+      "bundleId": "topik-opinions",
+      "slug": "opinions-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Opinions: TOPIK I → II in Korean",
+      "description": "This chart shows how to upgrade common Korean adjectives from TOPIK I to TOPIK II level. Each pair shares a similar meaning but the TOPIK II word is more for…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047350342-topik-opinions.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047350342-topik-opinions-thumb.webp",
+      "words": [
+        {
+          "hangul": "좋다",
+          "romanization": "jota",
+          "english": "good (TOPIK I)"
+        },
+        {
+          "hangul": "우수하다",
+          "romanization": "usuhada",
+          "english": "good (TOPIK II)"
+        },
+        {
+          "hangul": "나쁘다",
+          "romanization": "nappeuda",
+          "english": "bad (TOPIK I)"
+        },
+        {
+          "hangul": "부적절하다",
+          "romanization": "bujeoljeolhada",
+          "english": "bad (TOPIK II)"
+        },
+        {
+          "hangul": "중요하다",
+          "romanization": "jungyohada",
+          "english": "important (TOPIK I)"
+        },
+        {
+          "hangul": "핵심적이다",
+          "romanization": "haeksimjeogida",
+          "english": "important (TOPIK II)"
+        },
+        {
+          "hangul": "재미있다",
+          "romanization": "jaemiitda",
+          "english": "interesting (TOPIK I)"
+        },
+        {
+          "hangul": "흥미롭다",
+          "romanization": "heungmiropda",
+          "english": "interesting (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:11:16.490Z",
+      "pinTitle": "Want to upgrade your TOPIK I words to TOPIK II?"
+    },
+    {
+      "bundleId": "sim-give-give-humble",
+      "slug": "give-vs-give-humble",
+      "format": "similar_split",
+      "title": "Give vs Give (humble) in Korean",
+      "description": "In Korean, there are different words for \"give\" depending on the level of politeness. \"주다\" (juda) is the common word used in everyday situations. \"드리다\" (deur…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047450133-sim-give-give-humble.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047450133-sim-give-give-humble-thumb.webp",
+      "words": [
+        {
+          "hangul": "주다",
+          "romanization": "juda",
+          "english": "Give"
+        },
+        {
+          "hangul": "드리다",
+          "romanization": "deurida",
+          "english": "Give (humble)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:11:43.990Z",
+      "pinTitle": "Need to say \"give\" politely in Korean?"
+    },
+    {
+      "bundleId": "topik-people-society",
+      "slug": "people-and-society-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "People & society: TOPIK I → II in Korean",
+      "description": "This chart helps you upgrade your Korean vocabulary from TOPIK I to TOPIK II by showing more formal or advanced words related to people and society. For exam…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047696836-topik-people-society.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047696836-topik-people-society-thumb.webp",
+      "words": [
+        {
+          "hangul": "사람",
+          "romanization": "saram",
+          "english": "person (TOPIK I)"
+        },
+        {
+          "hangul": "인물",
+          "romanization": "inmul",
+          "english": "person (TOPIK II)"
+        },
+        {
+          "hangul": "친구",
+          "romanization": "chingu",
+          "english": "friend (TOPIK I)"
+        },
+        {
+          "hangul": "지인",
+          "romanization": "jiin",
+          "english": "friend (TOPIK II)"
+        },
+        {
+          "hangul": "일",
+          "romanization": "il",
+          "english": "job (TOPIK I)"
+        },
+        {
+          "hangul": "직업",
+          "romanization": "jigeop",
+          "english": "job (TOPIK II)"
+        },
+        {
+          "hangul": "돈",
+          "romanization": "don",
+          "english": "money (TOPIK I)"
+        },
+        {
+          "hangul": "자금",
+          "romanization": "jageum",
+          "english": "money (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:12:12.860Z",
+      "pinTitle": "Upgrade your Korean with these TOPIK I → II word pairs for people & society 👇"
+    },
+    {
+      "bundleId": "sim-meet-meet-humble",
+      "slug": "meet-vs-meet-humble",
+      "format": "similar_split",
+      "title": "Meet vs Meet (humble) in Korean",
+      "description": "In Korean, there are different words for \"meet\" depending on the level of politeness. \"만나다 (mannada)\" is the standard word used in everyday situations. \"뵙다 (…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047803129-sim-meet-meet-humble.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785047803129-sim-meet-meet-humble-thumb.webp",
+      "words": [
+        {
+          "hangul": "만나다",
+          "romanization": "mannada",
+          "english": "Meet"
+        },
+        {
+          "hangul": "뵙다",
+          "romanization": "boepda",
+          "english": "Meet (humble)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:12:39.546Z",
+      "pinTitle": "Need to meet someone casually or respectfully? Use these two verbs👇"
+    },
+    {
+      "bundleId": "topik-polite-upgrades",
+      "slug": "polite-upgrades-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Polite upgrades: TOPIK I → II in Korean",
+      "description": "This chart shows polite upgrades from TOPIK I to TOPIK II in Korean. It helps learners understand how to express common phrases more formally and respectfull…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048054409-topik-polite-upgrades.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048054409-topik-polite-upgrades-thumb.webp",
+      "words": [
+        {
+          "hangul": "미안해요",
+          "romanization": "mianhaeyo",
+          "english": "sorry (TOPIK I)"
+        },
+        {
+          "hangul": "죄송합니다",
+          "romanization": "joesonghamnida",
+          "english": "sorry (TOPIK II)"
+        },
+        {
+          "hangul": "고마워요",
+          "romanization": "gomawoyo",
+          "english": "thank you (TOPIK I)"
+        },
+        {
+          "hangul": "감사합니다",
+          "romanization": "gamsahamnida",
+          "english": "thank you (TOPIK II)"
+        },
+        {
+          "hangul": "해 주세요",
+          "romanization": "hae juseyo",
+          "english": "please (request) (TOPIK I)"
+        },
+        {
+          "hangul": "부탁드리겠습니다",
+          "romanization": "butakdeurigetseumnida",
+          "english": "please (request) (TOPIK II)"
+        },
+        {
+          "hangul": "만나서 반가워요",
+          "romanization": "mannaseo bangawoyo",
+          "english": "meet you (TOPIK I)"
+        },
+        {
+          "hangul": "뵙게 되어 영광입니다",
+          "romanization": "boepge doeeo yeonggwangimnida",
+          "english": "meet you (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:13:36.827Z",
+      "pinTitle": "Want to sound more polite in Korean?"
+    },
+    {
+      "bundleId": "sim-hear-be-heard",
+      "slug": "hear-listen-vs-be-heard",
+      "format": "similar_split",
+      "title": "Hear / listen vs Be heard in Korean",
+      "description": "In Korean, 듣다 means to actively hear or listen to something, showing that you are paying attention. 들리다 means that a sound is heard or can be heard, focusing…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048151933-sim-hear-be-heard.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048151933-sim-hear-be-heard-thumb.webp",
+      "words": [
+        {
+          "hangul": "듣다",
+          "romanization": "deutda",
+          "english": "Hear / listen"
+        },
+        {
+          "hangul": "들리다",
+          "romanization": "deullida",
+          "english": "Be heard"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:14:03.277Z",
+      "pinTitle": "When you want to say \"I hear something,\" use 듣다 (deutda)."
+    },
+    {
+      "bundleId": "sim-see-appear",
+      "slug": "see-vs-be-seen-appear",
+      "format": "similar_split",
+      "title": "See vs Be seen / appear in Korean",
+      "description": "In Korean, '보다' means 'to see' and is used when you actively look at something. '보이다' means 'to be seen' or 'to appear,' and it describes something that can…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128121882-sim-see-appear.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128121882-sim-see-appear-thumb.webp",
+      "words": [
+        {
+          "hangul": "보다",
+          "romanization": "boda",
+          "english": "See"
+        },
+        {
+          "hangul": "보이다",
+          "romanization": "boida",
+          "english": "Be seen / appear"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:14:30.338Z",
+      "pinTitle": "🗣️ Korean near-synonyms that trick learners:"
+    },
+    {
+      "bundleId": "sim-like-love",
+      "slug": "like-vs-love",
+      "format": "similar_split",
+      "title": "Like vs Love in Korean",
+      "description": "In Korean, 좋아하다 (joahada) means 'to like' and 사랑하다 (saranghada) means 'to love.' 좋아하다 is used for general liking or fondness, such as liking food, hobbies, o…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048381614-sim-like-love.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048381614-sim-like-love-thumb.webp",
+      "words": [
+        {
+          "hangul": "좋아하다",
+          "romanization": "joahada",
+          "english": "Like"
+        },
+        {
+          "hangul": "사랑하다",
+          "romanization": "saranghada",
+          "english": "Love"
+        }
+      ],
+      "pinnedAt": "2026-07-26T07:15:02.340Z",
+      "pinTitle": "💖 Like vs Love in K-drama feels!"
+    },
+    {
+      "bundleId": "sim-wear-clothes-shoes",
+      "slug": "wear-clothes-vs-wear-shoes",
+      "format": "similar_split",
+      "title": "Wear (clothes) vs Wear (shoes) in Korean",
+      "description": "In Korean, there are different verbs for wearing clothes and shoes. The verb 입다 (ipda) is used when you wear clothes like shirts, pants, or dresses. On the o…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048620941-sim-wear-clothes-shoes.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048620941-sim-wear-clothes-shoes-thumb.webp",
+      "words": [
+        {
+          "hangul": "입다",
+          "romanization": "ipda",
+          "english": "Wear (clothes)"
+        },
+        {
+          "hangul": "신다",
+          "romanization": "sinda",
+          "english": "Wear (shoes)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T16:56:58.466Z",
+      "pinTitle": "🗣️ Real-life Korean vibes:"
+    },
+    {
+      "bundleId": "sim-okay-good",
+      "slug": "okay-fine-vs-good",
+      "format": "similar_split",
+      "title": "Okay / fine vs Good in Korean",
+      "description": "In Korean, 괜찮다 (gwaenchanta) and 좋다 (jota) both express positive feelings but are used differently. 괜찮다 means 'okay' or 'fine' and is often used to show some…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048857139-sim-okay-good.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785048857139-sim-okay-good-thumb.webp",
+      "words": [
+        {
+          "hangul": "괜찮다",
+          "romanization": "gwaenchanta",
+          "english": "Okay / fine"
+        },
+        {
+          "hangul": "좋다",
+          "romanization": "jota",
+          "english": "Good"
+        }
+      ],
+      "pinnedAt": "2026-07-26T16:57:53.506Z",
+      "pinTitle": "When someone asks \"How are you?\" and you want to say it's okay"
+    },
+    {
+      "bundleId": "sim-late-slow",
+      "slug": "late-vs-slow",
+      "format": "similar_split",
+      "title": "Late vs Slow in Korean",
+      "description": "The words '늦다' and '느리다' both relate to time and speed but have different meanings. '늦다' means to be late or delayed, focusing on timing. '느리다' means slow, d…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049094049-sim-late-slow.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049094049-sim-late-slow-thumb.webp",
+      "words": [
+        {
+          "hangul": "늦다",
+          "romanization": "neutda",
+          "english": "Late"
+        },
+        {
+          "hangul": "느리다",
+          "romanization": "neurida",
+          "english": "Slow"
+        }
+      ],
+      "pinnedAt": "2026-07-26T16:58:47.794Z",
+      "pinTitle": "Mixing up 늦다 and 느리다? Here’s a quick tip:"
+    },
+    {
+      "bundleId": "sim-speak-speak-honorific",
+      "slug": "speak-vs-speak-honorific",
+      "format": "similar_split",
+      "title": "Speak vs Speak (honorific) in Korean",
+      "description": "In Korean, there are different ways to say 'speak' depending on the level of politeness. '말하다' is the standard way to say 'speak' used in casual or neutral s…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049323385-sim-speak-speak-honorific.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049323385-sim-speak-speak-honorific-thumb.webp",
+      "words": [
+        {
+          "hangul": "말하다",
+          "romanization": "malhada",
+          "english": "Speak"
+        },
+        {
+          "hangul": "말씀하다",
+          "romanization": "malsseumhada",
+          "english": "Speak (honorific)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:01:18.140Z",
+      "pinTitle": "Want to sound polite in Korean? Use these when you talk to"
+    },
+    {
+      "bundleId": "sim-open-turn-on",
+      "slug": "open-vs-turn-on",
+      "format": "similar_split",
+      "title": "Open vs Turn on in Korean",
+      "description": "In Korean, 열다 (yeolda) means to open something like a door, book, or window. 켜다 (kyeoda) means to turn on devices or lights. Both verbs describe actions but…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049564643-sim-open-turn-on.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049564643-sim-open-turn-on-thumb.webp",
+      "words": [
+        {
+          "hangul": "열다",
+          "romanization": "yeolda",
+          "english": "Open"
+        },
+        {
+          "hangul": "켜다",
+          "romanization": "kyeoda",
+          "english": "Turn on"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:02:13.158Z",
+      "pinTitle": "🗣️ Real-life Korean vibes:"
+    },
+    {
+      "bundleId": "sim-think-feel",
+      "slug": "think-vs-feel",
+      "format": "similar_split",
+      "title": "Think vs Feel in Korean",
+      "description": "In Korean, 생각하다 means to think or to have an opinion, focusing on mental processes and reasoning. 느끼다 means to feel, referring to emotions or physical sensat…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049808621-sim-think-feel.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785049808621-sim-think-feel-thumb.webp",
+      "words": [
+        {
+          "hangul": "생각하다",
+          "romanization": "saenggakhada",
+          "english": "Think"
+        },
+        {
+          "hangul": "느끼다",
+          "romanization": "neukkida",
+          "english": "Feel"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:03:09.427Z",
+      "pinTitle": "Confused between 생각하다 (saenggakhada) and 느끼다 (neukkida)?"
+    },
+    {
+      "bundleId": "sim-tired-sleepy",
+      "slug": "tired-vs-sleepy",
+      "format": "similar_split",
+      "title": "Tired vs Sleepy in Korean",
+      "description": "In Korean, 피곤하다 means 'tired' and describes feeling physically or mentally exhausted after work or activities. 졸리다 means 'sleepy' and refers to the feeling o…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785050054495-sim-tired-sleepy.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785050054495-sim-tired-sleepy-thumb.webp",
+      "words": [
+        {
+          "hangul": "피곤하다",
+          "romanization": "pigonhada",
+          "english": "Tired"
+        },
+        {
+          "hangul": "졸리다",
+          "romanization": "jollida",
+          "english": "Sleepy"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:04:06.361Z",
+      "pinTitle": "Feeling worn out or just ready to nap?"
+    },
+    {
+      "bundleId": "topik-emotion-words",
+      "slug": "emotions-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Emotions: TOPIK I → II in Korean",
+      "description": "This chart helps you upgrade your Korean emotion vocabulary from TOPIK I to TOPIK II level. It shows basic words for feelings like happy, sad, and angry, and…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785044073157-topik-emotion-words.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785044073157-topik-emotion-words-thumb.webp",
+      "words": [
+        {
+          "hangul": "기쁘다",
+          "romanization": "gippeuda",
+          "english": "happy (TOPIK I)"
+        },
+        {
+          "hangul": "행복하다",
+          "romanization": "haengbokhada",
+          "english": "happy (TOPIK II)"
+        },
+        {
+          "hangul": "슬프다",
+          "romanization": "seulpeuda",
+          "english": "sad (TOPIK I)"
+        },
+        {
+          "hangul": "우울하다",
+          "romanization": "uulhada",
+          "english": "sad (TOPIK II)"
+        },
+        {
+          "hangul": "화나다",
+          "romanization": "hwanada",
+          "english": "angry (TOPIK I)"
+        },
+        {
+          "hangul": "분노하다",
+          "romanization": "bunnohada",
+          "english": "angry (TOPIK II)"
+        },
+        {
+          "hangul": "놀라다",
+          "romanization": "nollada",
+          "english": "surprised (TOPIK I)"
+        },
+        {
+          "hangul": "경악하다",
+          "romanization": "gyeongakhada",
+          "english": "surprised (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:05:02.918Z",
+      "pinTitle": "Level up your Korean emotions! 👀"
+    },
+    {
+      "bundleId": "sim-fast-urgent",
+      "slug": "fast-vs-urgent-rushed",
+      "format": "similar_split",
+      "title": "Fast vs Urgent / rushed in Korean",
+      "description": "In Korean, 빠르다 means 'fast' and describes something moving or happening quickly. 급하다 means 'urgent' or 'rushed' and is used when something needs immediate at…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128819031-sim-fast-urgent.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128819031-sim-fast-urgent-thumb.webp",
+      "words": [
+        {
+          "hangul": "빠르다",
+          "romanization": "ppareuda",
+          "english": "Fast"
+        },
+        {
+          "hangul": "급하다",
+          "romanization": "geuphada",
+          "english": "Urgent / rushed"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:21:06.777Z",
+      "pinTitle": "Two similar Korean words learners mix up 👇"
+    },
+    {
+      "bundleId": "sim-hurt-uncomfortable",
+      "slug": "hurt-sick-vs-uncomfortable",
+      "format": "similar_split",
+      "title": "Hurt / sick vs Uncomfortable in Korean",
+      "description": "In Korean, 아프다 means to be hurt or sick, referring to physical pain or illness. 불편하다 means to feel uncomfortable, often about situations, feelings, or physic…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128821175-sim-hurt-uncomfortable.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128821175-sim-hurt-uncomfortable-thumb.webp",
+      "words": [
+        {
+          "hangul": "아프다",
+          "romanization": "apeuda",
+          "english": "Hurt / sick"
+        },
+        {
+          "hangul": "불편하다",
+          "romanization": "bulpyeonhada",
+          "english": "Uncomfortable"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:21:33.121Z",
+      "pinTitle": "🗣️ Korean near-synonyms that trick learners:"
+    },
+    {
+      "bundleId": "sim-speak-chat",
+      "slug": "speak-say-vs-talk-chat",
+      "format": "similar_split",
+      "title": "Speak / say vs Talk / chat in Korean",
+      "description": "In Korean, both 말하다 and 이야기하다 relate to speaking, but they are used differently. 말하다 means to speak or say something directly, often focusing on the content…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128816902-sim-speak-chat.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128816902-sim-speak-chat-thumb.webp",
+      "words": [
+        {
+          "hangul": "말하다",
+          "romanization": "malhada",
+          "english": "Speak / say"
+        },
+        {
+          "hangul": "이야기하다",
+          "romanization": "iyagihada",
+          "english": "Talk / chat"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:21:58.781Z",
+      "pinTitle": "Two similar Korean words learners mix up 👇"
+    },
+    {
+      "bundleId": "sim-wear-clothes-hat",
+      "slug": "wear-clothes-vs-wear-hat-glasses",
+      "format": "similar_split",
+      "title": "Wear (clothes) vs Wear (hat / glasses) in Korean",
+      "description": "In Korean, different verbs are used to say 'wear' depending on the item. Use 입다 (ipda) when talking about wearing clothes like shirts or pants. Use 쓰다 (sseud…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128812901-sim-wear-clothes-hat.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785128812901-sim-wear-clothes-hat-thumb.webp",
+      "words": [
+        {
+          "hangul": "입다",
+          "romanization": "ipda",
+          "english": "Wear (clothes)"
+        },
+        {
+          "hangul": "쓰다",
+          "romanization": "sseuda",
+          "english": "Wear (hat / glasses)"
+        }
+      ],
+      "pinnedAt": "2026-07-26T17:22:24.724Z",
+      "pinTitle": "Two similar Korean words learners mix up 👇"
+    },
+    {
+      "bundleId": "topik-argument-essay",
+      "slug": "essay-verbs-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Essay verbs: TOPIK I → II in Korean",
+      "description": "This chart shows pairs of Korean verbs used in essays, comparing basic TOPIK I words with more advanced TOPIK II words. These verbs help you express agreemen…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135424874-topik-argument-essay.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135424874-topik-argument-essay-thumb.webp",
+      "words": [
+        {
+          "hangul": "동의하다",
+          "romanization": "donguihada",
+          "english": "agree (TOPIK I)"
+        },
+        {
+          "hangul": "찬성하다",
+          "romanization": "chanseonghada",
+          "english": "agree (TOPIK II)"
+        },
+        {
+          "hangul": "반대하다",
+          "romanization": "bandaehada",
+          "english": "disagree (TOPIK I)"
+        },
+        {
+          "hangul": "이의를 제기하다",
+          "romanization": "iuireul jegihada",
+          "english": "disagree (TOPIK II)"
+        },
+        {
+          "hangul": "제안하다",
+          "romanization": "jeanada",
+          "english": "suggest (TOPIK I)"
+        },
+        {
+          "hangul": "제시하다",
+          "romanization": "jesihada",
+          "english": "suggest (TOPIK II)"
+        },
+        {
+          "hangul": "강조하다",
+          "romanization": "gangjohada",
+          "english": "emphasize (TOPIK I)"
+        },
+        {
+          "hangul": "역설하다",
+          "romanization": "yeokseolhada",
+          "english": "emphasize (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:45:13.762Z",
+      "pinTitle": "Upgrade your essay verbs for TOPIK II 👇"
+    },
+    {
+      "bundleId": "sim-use-utilize",
+      "slug": "use-vs-utilize",
+      "format": "similar_split",
+      "title": "Use vs Utilize in Korean",
+      "description": "Both 쓰다 and 활용하다 mean to use something, but they are different in how they are used. 쓰다 is a common verb that means to use things in everyday life, like usin…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135543956-sim-use-utilize.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135543956-sim-use-utilize-thumb.webp",
+      "words": [
+        {
+          "hangul": "쓰다",
+          "romanization": "sseuda",
+          "english": "Use"
+        },
+        {
+          "hangul": "활용하다",
+          "romanization": "hwaryonghada",
+          "english": "Utilize"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:45:40.177Z",
+      "pinTitle": "When to 쓰다 vs 활용하다? 🤔"
+    },
+    {
+      "bundleId": "phrase-restaurant-orders",
+      "slug": "restaurant-order-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Restaurant order phrases in Korean",
+      "description": "These common Korean phrases are useful when ordering food at a restaurant. They help you ask for the menu, order dishes, request water, and handle the bill p…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135658325-phrase-restaurant-orders.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135658325-phrase-restaurant-orders-thumb.webp",
+      "words": [
+        {
+          "hangul": "메뉴 주세요",
+          "romanization": "menyu juseyo",
+          "english": "Menu, please"
+        },
+        {
+          "hangul": "이거 주세요",
+          "romanization": "igeo juseyo",
+          "english": "I'll have this"
+        },
+        {
+          "hangul": "물 좀 주세요",
+          "romanization": "mul jom juseyo",
+          "english": "Water, please"
+        },
+        {
+          "hangul": "계산해 주세요",
+          "romanization": "gyesanhae juseyo",
+          "english": "Check, please"
+        },
+        {
+          "hangul": "따로따로 주세요",
+          "romanization": "ttarottaro juseyo",
+          "english": "Separate checks"
+        },
+        {
+          "hangul": "포장해 주세요",
+          "romanization": "pojanghae juseyo",
+          "english": "To go, please"
+        },
+        {
+          "hangul": "맛있어요",
+          "romanization": "masisseoyo",
+          "english": "It's delicious"
+        },
+        {
+          "hangul": "배불러요",
+          "romanization": "baebulleoyo",
+          "english": "I'm full"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:46:10.762Z",
+      "pinTitle": "Eating out in Korea? Use these easy phrases to order like a"
+    },
+    {
+      "bundleId": "concept-a-vs-the-feel",
+      "slug": "this-vs-that-feel-in-korean",
+      "format": "concept_rows",
+      "title": "This vs that feel in Korean",
+      "description": "In Korean, words like 이것, 그것, and 저것 are used to point out things based on their location. 이것 means 'this' for something near the speaker, 그것 means 'that' fo…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135767077-concept-a-vs-the-feel.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135767077-concept-a-vs-the-feel-thumb.webp",
+      "words": [
+        {
+          "hangul": "이것",
+          "romanization": "igeot",
+          "english": "this (near me)"
+        },
+        {
+          "hangul": "그것",
+          "romanization": "geugeot",
+          "english": "that (near you)"
+        },
+        {
+          "hangul": "저것",
+          "romanization": "jeogeot",
+          "english": "that (over there)"
+        },
+        {
+          "hangul": "어느 것",
+          "romanization": "eoneu geot",
+          "english": "which one?"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:46:38.785Z",
+      "pinTitle": "Confused about \"this,\" \"that,\" and \"that over there\" in Korean?"
+    },
+    {
+      "bundleId": "topik-school-verbs",
+      "slug": "school-verbs-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "School verbs: TOPIK I → II in Korean",
+      "description": "This chart shows pairs of Korean verbs related to school activities, comparing words commonly used at the TOPIK I level with their more formal or advanced eq…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135889240-topik-school-verbs.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785135889240-topik-school-verbs-thumb.webp",
+      "words": [
+        {
+          "hangul": "입학하다",
+          "romanization": "iphakhada",
+          "english": "enter school (TOPIK I)"
+        },
+        {
+          "hangul": "입학하다",
+          "romanization": "iphakhada",
+          "english": "enter school (TOPIK II)"
+        },
+        {
+          "hangul": "다니다",
+          "romanization": "danida",
+          "english": "attend (TOPIK I)"
+        },
+        {
+          "hangul": "재학하다",
+          "romanization": "jaehakhada",
+          "english": "attend (TOPIK II)"
+        },
+        {
+          "hangul": "시험 보다",
+          "romanization": "siheom boda",
+          "english": "take a test (TOPIK I)"
+        },
+        {
+          "hangul": "응시하다",
+          "romanization": "eungsihada",
+          "english": "take a test (TOPIK II)"
+        },
+        {
+          "hangul": "합격하다",
+          "romanization": "hapgyeokhada",
+          "english": "pass (TOPIK I)"
+        },
+        {
+          "hangul": "통과하다",
+          "romanization": "tonggwahada",
+          "english": "pass (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:47:06.961Z",
+      "pinTitle": "Upgrade your school verbs from TOPIK I to II! 👩‍🎓"
+    },
+    {
+      "bundleId": "sim-look-check",
+      "slug": "look-vs-check",
+      "format": "similar_split",
+      "title": "Look vs Check in Korean",
+      "description": "Both '보다' and '확인하다' are verbs related to seeing or checking something in Korean. '보다' means 'to look' or 'to see' and is used when you simply observe or wat…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136008262-sim-look-check.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136008262-sim-look-check-thumb.webp",
+      "words": [
+        {
+          "hangul": "보다",
+          "romanization": "boda",
+          "english": "Look"
+        },
+        {
+          "hangul": "확인하다",
+          "romanization": "hwaginhada",
+          "english": "Check"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:47:33.470Z",
+      "pinTitle": "👀 When you just want to see the cool K-drama scene:"
+    },
+    {
+      "bundleId": "phrase-subway-taxi",
+      "slug": "subway-and-taxi-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Subway & taxi phrases in Korean",
+      "description": "These Korean phrases are useful for traveling by subway or taxi. They help you ask about transfers, directions, and fares when using public transportation. L…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136126052-phrase-subway-taxi.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136126052-phrase-subway-taxi-thumb.webp",
+      "words": [
+        {
+          "hangul": "환승이요",
+          "romanization": "hwanseungiyo",
+          "english": "Transfer, please"
+        },
+        {
+          "hangul": "몇 호선이에요?",
+          "romanization": "myeot hoseonieyo?",
+          "english": "Which line is it?"
+        },
+        {
+          "hangul": "종점 가요?",
+          "romanization": "jongjeom gayo?",
+          "english": "Does this go to the last stop?"
+        },
+        {
+          "hangul": "택시 불러 주세요",
+          "romanization": "taeksi bulleo juseyo",
+          "english": "Please call a taxi"
+        },
+        {
+          "hangul": "여기로 가 주세요",
+          "romanization": "yeogiro ga juseyo",
+          "english": "Please go here"
+        },
+        {
+          "hangul": "여기서 세워 주세요",
+          "romanization": "yeogiseo sewo juseyo",
+          "english": "Please stop here"
+        },
+        {
+          "hangul": "요금 얼마예요?",
+          "romanization": "yogeum eolmayeyo?",
+          "english": "How much is the fare?"
+        },
+        {
+          "hangul": "천천히 가 주세요",
+          "romanization": "cheoncheonhi ga juseyo",
+          "english": "Please drive slowly"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:48:03.829Z",
+      "pinTitle": "Handy Korean for subway & taxi phrases ✨"
+    },
+    {
+      "bundleId": "concept-like-prefer-love",
+      "slug": "like-prefer-love-scenes",
+      "format": "concept_rows",
+      "title": "Like / prefer / love scenes in Korean",
+      "description": "This chart shows how to express different levels of liking or loving something in Korean. You can say 좋아해요 to mean 'like,' 더 좋아해요 to say 'prefer,' 사랑해요 to ex…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136248505-concept-like-prefer-love.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136248505-concept-like-prefer-love-thumb.webp",
+      "words": [
+        {
+          "hangul": "좋아해요",
+          "romanization": "joahaeyo",
+          "english": "like"
+        },
+        {
+          "hangul": "더 좋아해요",
+          "romanization": "deo joahaeyo",
+          "english": "prefer"
+        },
+        {
+          "hangul": "사랑해요",
+          "romanization": "saranghaeyo",
+          "english": "love"
+        },
+        {
+          "hangul": "안 좋아해요",
+          "romanization": "an joahaeyo",
+          "english": "don't like"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:48:31.136Z",
+      "pinTitle": "How do you say your feelings in Korean?"
+    },
+    {
+      "bundleId": "topik-environment",
+      "slug": "environment-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Environment: TOPIK I → II in Korean",
+      "description": "This chart shows Korean vocabulary related to the environment, comparing words used in TOPIK I and TOPIK II levels. Some words are the same for both levels,…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136380524-topik-environment.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136380524-topik-environment-thumb.webp",
+      "words": [
+        {
+          "hangul": "환경",
+          "romanization": "hwangyeong",
+          "english": "environment (TOPIK I)"
+        },
+        {
+          "hangul": "환경",
+          "romanization": "hwangyeong",
+          "english": "environment (TOPIK II)"
+        },
+        {
+          "hangul": "오염",
+          "romanization": "oyeom",
+          "english": "pollution (TOPIK I)"
+        },
+        {
+          "hangul": "오염",
+          "romanization": "oyeom",
+          "english": "pollution (TOPIK II)"
+        },
+        {
+          "hangul": "지키다",
+          "romanization": "jikida",
+          "english": "protect (TOPIK I)"
+        },
+        {
+          "hangul": "보호하다",
+          "romanization": "bohohada",
+          "english": "protect (TOPIK II)"
+        },
+        {
+          "hangul": "줄이다",
+          "romanization": "jurida",
+          "english": "reduce (TOPIK I)"
+        },
+        {
+          "hangul": "감소시키다",
+          "romanization": "gamsosikida",
+          "english": "reduce (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:48:59.102Z",
+      "pinTitle": "Upgrade your environment vocab for TOPIK II! 👇"
+    },
+    {
+      "bundleId": "sim-start-begin",
+      "slug": "start-vs-begin",
+      "format": "similar_split",
+      "title": "Start vs Begin in Korean",
+      "description": "Both 시작하다 and 개시하다 mean to start or begin something in Korean. 시작하다 is more commonly used in everyday situations and casual speech. 개시하다 is more formal and o…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136493665-sim-start-begin.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785136493665-sim-start-begin-thumb.webp",
+      "words": [
+        {
+          "hangul": "시작하다",
+          "romanization": "sijakhada",
+          "english": "Start"
+        },
+        {
+          "hangul": "개시하다",
+          "romanization": "gaesihada",
+          "english": "Begin"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:49:25.775Z",
+      "pinTitle": "Use these when you want to talk about starting something new 👇"
+    },
+    {
+      "bundleId": "topik-people-roles",
+      "slug": "people-and-roles-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "People & roles: TOPIK I → II in Korean",
+      "description": "This chart shows common Korean words for people and roles, comparing basic TOPIK I vocabulary with more advanced TOPIK II terms. TOPIK I words are simple and…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142538689-topik-people-roles.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142538689-topik-people-roles-thumb.webp",
+      "words": [
+        {
+          "hangul": "사람",
+          "romanization": "saram",
+          "english": "person (TOPIK I)"
+        },
+        {
+          "hangul": "인원",
+          "romanization": "inwon",
+          "english": "person (TOPIK II)"
+        },
+        {
+          "hangul": "친구",
+          "romanization": "chingu",
+          "english": "friend (TOPIK I)"
+        },
+        {
+          "hangul": "지인",
+          "romanization": "jiin",
+          "english": "friend (TOPIK II)"
+        },
+        {
+          "hangul": "사장",
+          "romanization": "sajang",
+          "english": "boss (TOPIK I)"
+        },
+        {
+          "hangul": "대표",
+          "romanization": "daepyo",
+          "english": "boss (TOPIK II)"
+        },
+        {
+          "hangul": "직장 동료",
+          "romanization": "jikjang dongnyo",
+          "english": "coworker (TOPIK I)"
+        },
+        {
+          "hangul": "동료",
+          "romanization": "dongnyo",
+          "english": "coworker (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:50:55.472Z",
+      "pinTitle": "Upgrade your Korean people words from TOPIK I to II!"
+    },
+    {
+      "bundleId": "sim-say-mention",
+      "slug": "say-vs-mention",
+      "format": "similar_split",
+      "title": "Say vs Mention in Korean",
+      "description": "In Korean, both 말하다 and 언급하다 relate to speaking, but they are used differently. 말하다 means 'to say' and is used for general speaking or expressing something d…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142654572-sim-say-mention.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142654572-sim-say-mention-thumb.webp",
+      "words": [
+        {
+          "hangul": "말하다",
+          "romanization": "malhada",
+          "english": "Say"
+        },
+        {
+          "hangul": "언급하다",
+          "romanization": "eongeuphada",
+          "english": "Mention"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:51:21.799Z",
+      "pinTitle": "🗣️ When you want to speak directly:"
+    },
+    {
+      "bundleId": "phrase-hotel-checkin",
+      "slug": "hotel-check-in-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Hotel check-in phrases in Korean",
+      "description": "These phrases are useful for checking in and out of a hotel in Korea. They include common requests and questions you might need during your stay, such as ask…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142781972-phrase-hotel-checkin.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142781972-phrase-hotel-checkin-thumb.webp",
+      "words": [
+        {
+          "hangul": "체크인 할게요",
+          "romanization": "chekeuin halgeyo",
+          "english": "I'd like to check in"
+        },
+        {
+          "hangul": "예약했어요",
+          "romanization": "yeyakhaesseoyo",
+          "english": "I have a reservation"
+        },
+        {
+          "hangul": "와이파이 비밀번호요?",
+          "romanization": "waipai bimilbeonhoyyo?",
+          "english": "Wi‑Fi password?"
+        },
+        {
+          "hangul": "조식 몇 시예요?",
+          "romanization": "josik myeot siyeyo?",
+          "english": "What time is breakfast?"
+        },
+        {
+          "hangul": "수건 더 주세요",
+          "romanization": "sugeon deo juseyo",
+          "english": "More towels, please"
+        },
+        {
+          "hangul": "체크아웃은 몇 시예요?",
+          "romanization": "chekeuausoneun myeot siyeyo?",
+          "english": "Checkout time?"
+        },
+        {
+          "hangul": "짐 보관해 주세요",
+          "romanization": "jim bogwanhae juseyo",
+          "english": "Please hold my luggage"
+        },
+        {
+          "hangul": "영수증 부탁해요",
+          "romanization": "yeongsujeung butakhaeyo",
+          "english": "Receipt, please"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:51:51.960Z",
+      "pinTitle": "Handy Korean for hotel check-in phrases ✨"
+    },
+    {
+      "bundleId": "concept-start-finish-day",
+      "slug": "start-and-finish-the-day-in-korean",
+      "format": "concept_rows",
+      "title": "Start & finish the day in Korean",
+      "description": "This chart shows common Korean verbs used to describe starting and finishing your day. You can use these words to talk about waking up, going to work or scho…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142899062-concept-start-finish-day.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785142899062-concept-start-finish-day-thumb.webp",
+      "words": [
+        {
+          "hangul": "일어나다",
+          "romanization": "ireonada",
+          "english": "wake up"
+        },
+        {
+          "hangul": "출근하다 / 등교하다",
+          "romanization": "chulgeunhada",
+          "english": "go to work/school"
+        },
+        {
+          "hangul": "퇴근하다 / 하교하다",
+          "romanization": "toegeunhada",
+          "english": "come home"
+        },
+        {
+          "hangul": "자다",
+          "romanization": "jada",
+          "english": "go to bed"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:52:19.724Z",
+      "pinTitle": "How to start and finish your day in Korean 👇"
+    },
+    {
+      "bundleId": "topik-digital-life",
+      "slug": "digital-life-topik-i-ii",
+      "format": "topik_upgrade",
+      "title": "Digital life: TOPIK I → II in Korean",
+      "description": "This chart shows common Korean verbs related to digital life, comparing basic TOPIK I words with their more formal or technical TOPIK II counterparts. Both s…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143024315-topik-digital-life.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143024315-topik-digital-life-thumb.webp",
+      "words": [
+        {
+          "hangul": "찾아보다",
+          "romanization": "chajaboda",
+          "english": "search (TOPIK I)"
+        },
+        {
+          "hangul": "검색하다",
+          "romanization": "geomsaekhada",
+          "english": "search (TOPIK II)"
+        },
+        {
+          "hangul": "받다",
+          "romanization": "batda",
+          "english": "download (TOPIK I)"
+        },
+        {
+          "hangul": "다운로드하다",
+          "romanization": "daunloduhada",
+          "english": "download (TOPIK II)"
+        },
+        {
+          "hangul": "올리다",
+          "romanization": "ollida",
+          "english": "upload (TOPIK I)"
+        },
+        {
+          "hangul": "업로드하다",
+          "romanization": "eoploduhada",
+          "english": "upload (TOPIK II)"
+        },
+        {
+          "hangul": "보내다",
+          "romanization": "bonaeda",
+          "english": "share (TOPIK I)"
+        },
+        {
+          "hangul": "공유하다",
+          "romanization": "gongyuhada",
+          "english": "share (TOPIK II)"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:52:47.988Z",
+      "pinTitle": "Upgrade your digital Korean! Use these TOPIK II words when you"
+    },
+    {
+      "bundleId": "sim-change-modify",
+      "slug": "change-vs-modify",
+      "format": "similar_split",
+      "title": "Change vs Modify in Korean",
+      "description": "Both '바꾸다' and '수정하다' are verbs related to making changes, but they are used differently. '바꾸다' means to change something completely or replace it with somet…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143135805-sim-change-modify.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143135805-sim-change-modify-thumb.webp",
+      "words": [
+        {
+          "hangul": "바꾸다",
+          "romanization": "bakkuda",
+          "english": "Change"
+        },
+        {
+          "hangul": "수정하다",
+          "romanization": "sujeonghada",
+          "english": "Modify"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:53:15.137Z",
+      "pinTitle": "Need to say \"change\" or \"modify\" in Korean?"
+    },
+    {
+      "bundleId": "phrase-gym-fitness",
+      "slug": "gym-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Gym phrases in Korean",
+      "description": "These gym phrases in Korean are useful for beginners who want to talk about working out and fitness activities. They include common questions, statements, an…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143280056-phrase-gym-fitness.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143280056-phrase-gym-fitness-thumb.webp",
+      "words": [
+        {
+          "hangul": "운동하러 갈래?",
+          "romanization": "undonghareo gallae?",
+          "english": "Want to work out?"
+        },
+        {
+          "hangul": "오늘 하체 하는 날",
+          "romanization": "oneul hache haneun nal",
+          "english": "Leg day today"
+        },
+        {
+          "hangul": "기구 쓰세요?",
+          "romanization": "gigu sseuseyo?",
+          "english": "Are you using this machine?"
+        },
+        {
+          "hangul": "세트 남았어요?",
+          "romanization": "seteu namasseoyo?",
+          "english": "Sets left?"
+        },
+        {
+          "hangul": "물 마시고 올게",
+          "romanization": "mul masigo olge",
+          "english": "I'll grab water"
+        },
+        {
+          "hangul": "스트레칭부터 하자",
+          "romanization": "seuteurechingbuteo haja",
+          "english": "Let's stretch first"
+        },
+        {
+          "hangul": "힘드네",
+          "romanization": "himdeune",
+          "english": "This is tough"
+        },
+        {
+          "hangul": "오늘도 수고했어",
+          "romanization": "oneuldo sugohaesseo",
+          "english": "Good job today"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:53:45.044Z",
+      "pinTitle": "Handy Korean for gym phrases ✨"
+    },
+    {
+      "bundleId": "concept-become-change",
+      "slug": "become-change-in-korean",
+      "format": "concept_rows",
+      "title": "Become / change in Korean",
+      "description": "This chart shows Korean verbs related to becoming or changing. '되다' means to become or to turn into something. '바꾸다' is used when you change something else,…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143410887-concept-become-change.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143410887-concept-become-change-thumb.webp",
+      "words": [
+        {
+          "hangul": "되다",
+          "romanization": "doeda",
+          "english": "become"
+        },
+        {
+          "hangul": "바꾸다",
+          "romanization": "bakkuda",
+          "english": "change (something)"
+        },
+        {
+          "hangul": "변하다",
+          "romanization": "byeonhada",
+          "english": "change (self)"
+        },
+        {
+          "hangul": "되다",
+          "romanization": "doeda",
+          "english": "become (result)"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:54:12.414Z",
+      "pinTitle": "How to say \"become\" and \"change\" in Korean?"
+    },
+    {
+      "bundleId": "sim-cook-prepare-food",
+      "slug": "cook-vs-prepare-food",
+      "format": "similar_split",
+      "title": "Cook vs Prepare food in Korean",
+      "description": "In Korean, '요리하다' means to cook food, focusing on the actual process of making a dish with heat or other cooking methods. '준비하다' means to prepare food, which…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143528103-sim-cook-prepare-food.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143528103-sim-cook-prepare-food-thumb.webp",
+      "words": [
+        {
+          "hangul": "요리하다",
+          "romanization": "yorihada",
+          "english": "Cook"
+        },
+        {
+          "hangul": "준비하다",
+          "romanization": "junbihada",
+          "english": "Prepare food"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:54:38.906Z",
+      "pinTitle": "When you want to eat, do you"
+    },
+    {
+      "bundleId": "phrase-rent-house",
+      "slug": "renting-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Renting phrases in Korean",
+      "description": "These phrases are useful when renting a place in Korea. They help you ask about rent, deposits, contracts, and nearby facilities. Knowing these expressions m…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143650868-phrase-rent-house.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143650868-phrase-rent-house-thumb.webp",
+      "words": [
+        {
+          "hangul": "월세 얼마예요?",
+          "romanization": "wolse eolmayeyo?",
+          "english": "What's the monthly rent?"
+        },
+        {
+          "hangul": "보증금은요?",
+          "romanization": "bojeunggeumeunyo?",
+          "english": "And the deposit?"
+        },
+        {
+          "hangul": "관리비 포함이에요?",
+          "romanization": "gwallibi pohamieyo?",
+          "english": "Is maintenance included?"
+        },
+        {
+          "hangul": "언제부터 가능해요?",
+          "romanization": "eonjebuteo ganeunghaeyo?",
+          "english": "Available from when?"
+        },
+        {
+          "hangul": "계약서 볼 수 있어요?",
+          "romanization": "gyeyakseo bol su isseoyo?",
+          "english": "Can I see the contract?"
+        },
+        {
+          "hangul": "옵션이 뭐예요?",
+          "romanization": "opsyeoni mwoyeyo?",
+          "english": "What furniture is included?"
+        },
+        {
+          "hangul": "주변에 편의점 있어요?",
+          "romanization": "jubyeone pyeonuijeom isseoyo?",
+          "english": "Is there a convenience store nearby?"
+        },
+        {
+          "hangul": "생각 좀 해 볼게요",
+          "romanization": "saenggak jom hae bolgeyo",
+          "english": "I'll think about it"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:58:04.527Z",
+      "pinTitle": "Handy Korean for renting phrases ✨"
+    },
+    {
+      "bundleId": "concept-too-also",
+      "slug": "also-too-particles-in-korean",
+      "format": "concept_rows",
+      "title": "Also / too particles in Korean",
+      "description": "In Korean, particles like 도 (do) and 만 (man) are used to express 'also', 'too', or 'only'. They help add meaning to nouns by showing inclusion or limitation.…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143777649-concept-too-also.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143777649-concept-too-also-thumb.webp",
+      "words": [
+        {
+          "hangul": "나도",
+          "romanization": "nado",
+          "english": "me too"
+        },
+        {
+          "hangul": "이것도",
+          "romanization": "igeotdo",
+          "english": "this too"
+        },
+        {
+          "hangul": "이것만",
+          "romanization": "igeotman",
+          "english": "only this"
+        },
+        {
+          "hangul": "나조차",
+          "romanization": "najocha",
+          "english": "even me"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:58:32.082Z",
+      "pinTitle": "Learn how to say \"also\" or \"too\" in Korean with these easy"
+    },
+    {
+      "bundleId": "sim-leave-depart",
+      "slug": "leave-vs-depart",
+      "format": "similar_split",
+      "title": "Leave vs Depart in Korean",
+      "description": "Both '떠나다' and '출발하다' mean to leave or go away, but they are used differently. '떠나다' is a general term for leaving a place or situation. '출발하다' is more speci…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143891314-sim-leave-depart.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785143891314-sim-leave-depart-thumb.webp",
+      "words": [
+        {
+          "hangul": "떠나다",
+          "romanization": "tteonada",
+          "english": "Leave"
+        },
+        {
+          "hangul": "출발하다",
+          "romanization": "chulbalhada",
+          "english": "Depart"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:58:58.682Z",
+      "pinTitle": "🛫 When you’re about to start your trip:"
+    },
+    {
+      "bundleId": "phrase-convenience-store",
+      "slug": "convenience-store-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Convenience store phrases in Korean",
+      "description": "These phrases are commonly used when visiting a convenience store in Korea. They help you ask for items, request services like heating food, and handle payme…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144018177-phrase-convenience-store.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144018177-phrase-convenience-store-thumb.webp",
+      "words": [
+        {
+          "hangul": "봉지 주세요",
+          "romanization": "bongji juseyo",
+          "english": "Bag, please"
+        },
+        {
+          "hangul": "데워 주세요",
+          "romanization": "dewo juseyo",
+          "english": "Please heat this up"
+        },
+        {
+          "hangul": "젓가락 있어요?",
+          "romanization": "jeotgarak isseoyo?",
+          "english": "Chopsticks?"
+        },
+        {
+          "hangul": "결제할게요",
+          "romanization": "gyeoljehalgeyo",
+          "english": "I'll pay"
+        },
+        {
+          "hangul": "포인트 적립이요",
+          "romanization": "pointeu jeogibiyo",
+          "english": "Points, please"
+        },
+        {
+          "hangul": "담배 있어요?",
+          "romanization": "dambae isseoyo?",
+          "english": "Do you sell cigarettes?"
+        },
+        {
+          "hangul": "아이스커피 하나요",
+          "romanization": "aiseukeopi hanayo",
+          "english": "One iced coffee"
+        },
+        {
+          "hangul": "영수증 필요 없어요",
+          "romanization": "yeongsujeung piryo eopseoyo",
+          "english": "No receipt"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:59:29.089Z",
+      "pinTitle": "Need quick Korean for convenience stores? Use these easy"
+    },
+    {
+      "bundleId": "concept-more-most",
+      "slug": "more-and-most-in-korean",
+      "format": "concept_rows",
+      "title": "More & most in Korean",
+      "description": "This chart shows words used to compare amounts or degrees in Korean. '더' means 'more,' and '가장' means 'the most.' '덜' means 'less,' and '만큼' means 'as much a…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144121830-concept-more-most.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144121830-concept-more-most-thumb.webp",
+      "words": [
+        {
+          "hangul": "더",
+          "romanization": "deo",
+          "english": "more"
+        },
+        {
+          "hangul": "가장",
+          "romanization": "gajang",
+          "english": "the most"
+        },
+        {
+          "hangul": "덜",
+          "romanization": "deol",
+          "english": "less"
+        },
+        {
+          "hangul": "만큼",
+          "romanization": "mankeum",
+          "english": "as much as"
+        }
+      ],
+      "pinnedAt": "2026-07-27T15:59:55.631Z",
+      "pinTitle": "Want to say \"more\" or \"the most\" in Korean?"
+    },
+    {
+      "bundleId": "sim-wait-standby",
+      "slug": "wait-vs-stand-by",
+      "format": "similar_split",
+      "title": "Wait vs Stand by in Korean",
+      "description": "Both 기다리다 and 대기하다 mean to wait, but they are used in different situations. 기다리다 is used for general waiting, like waiting for a friend or a bus. 대기하다 means…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144240035-sim-wait-standby.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144240035-sim-wait-standby-thumb.webp",
+      "words": [
+        {
+          "hangul": "기다리다",
+          "romanization": "gidarida",
+          "english": "Wait"
+        },
+        {
+          "hangul": "대기하다",
+          "romanization": "daegihada",
+          "english": "Stand by"
+        }
+      ],
+      "pinnedAt": "2026-07-27T16:00:21.608Z",
+      "pinTitle": "Confused between 기다리다 and 대기하다?"
+    },
+    {
+      "bundleId": "phrase-greetings-polite",
+      "slug": "polite-greetings-in-korean",
+      "format": "phrase_stack",
+      "title": "Polite greetings in Korean",
+      "description": "These polite greetings in Korean are commonly used in everyday conversations to show respect and friendliness. They are suitable for beginners learning how t…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144368685-phrase-greetings-polite.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144368685-phrase-greetings-polite-thumb.webp",
+      "words": [
+        {
+          "hangul": "안녕하세요",
+          "romanization": "annyeonghaseyo",
+          "english": "Hello"
+        },
+        {
+          "hangul": "처음 뵙겠습니다",
+          "romanization": "cheoeum boepgetseumnida",
+          "english": "Nice to meet you"
+        },
+        {
+          "hangul": "잘 지내셨어요?",
+          "romanization": "jal jinaesyeosseoyo?",
+          "english": "How have you been?"
+        },
+        {
+          "hangul": "반갑습니다",
+          "romanization": "bangapseumnida",
+          "english": "Nice to meet you"
+        },
+        {
+          "hangul": "수고하세요",
+          "romanization": "sugohaseyo",
+          "english": "Keep up the good work"
+        },
+        {
+          "hangul": "다음에 봐요",
+          "romanization": "daeume bwayo",
+          "english": "See you next time"
+        },
+        {
+          "hangul": "조심히 가세요",
+          "romanization": "josimhi gaseyo",
+          "english": "Go carefully"
+        },
+        {
+          "hangul": "좋은 하루 보내세요",
+          "romanization": "joeun haru bonaeseyo",
+          "english": "Have a nice day"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:07:56.399Z",
+      "pinTitle": "Handy Korean for polite greetings ✨"
+    },
+    {
+      "bundleId": "concept-try-attempt",
+      "slug": "try-doing-in-korean",
+      "format": "concept_rows",
+      "title": "Try doing in Korean",
+      "description": "The expressions in this chart are used to talk about trying something in Korean. They help you say that you will try, have tried, or encourage someone to try…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144500212-concept-try-attempt.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144500212-concept-try-attempt-thumb.webp",
+      "words": [
+        {
+          "hangul": "해 보다",
+          "romanization": "hae boda",
+          "english": "try -ing"
+        },
+        {
+          "hangul": "해 볼게요",
+          "romanization": "hae bolgeyo",
+          "english": "I'll try"
+        },
+        {
+          "hangul": "해 봤어요?",
+          "romanization": "hae bwasseoyo?",
+          "english": "have you tried?"
+        },
+        {
+          "hangul": "한번 해 봐",
+          "romanization": "hanbeon hae bwa",
+          "english": "give it a try"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:08:23.595Z",
+      "pinTitle": "Handy Korean for try doing ✨"
+    },
+    {
+      "bundleId": "sim-need-require",
+      "slug": "need-vs-require",
+      "format": "similar_split",
+      "title": "Need vs Require in Korean",
+      "description": "Both 필요하다 and 요구하다 express the idea of needing something, but they are used differently. 필요하다 means 'to need' in a general or personal sense, like needing an…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144611610-sim-need-require.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144611610-sim-need-require-thumb.webp",
+      "words": [
+        {
+          "hangul": "필요하다",
+          "romanization": "piryohada",
+          "english": "Need"
+        },
+        {
+          "hangul": "요구하다",
+          "romanization": "yoguhada",
+          "english": "Require"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:08:50.065Z",
+      "pinTitle": "When you want to say you just can't live without it 🥺:"
+    },
+    {
+      "bundleId": "phrase-phone-texting",
+      "slug": "phone-and-texting-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Phone & texting phrases in Korean",
+      "description": "These phrases are common expressions used when talking on the phone or texting in Korean. They help you ask for permission to call, inform someone about send…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144722836-phrase-phone-texting.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144722836-phrase-phone-texting-thumb.webp",
+      "words": [
+        {
+          "hangul": "전화해도 돼?",
+          "romanization": "jeonhwahaedo dwae?",
+          "english": "Can I call you?"
+        },
+        {
+          "hangul": "문자 보낼게",
+          "romanization": "munja bonaelge",
+          "english": "I'll text you"
+        },
+        {
+          "hangul": "통화 가능해?",
+          "romanization": "tonghwa ganeunghae?",
+          "english": "Can you talk?"
+        },
+        {
+          "hangul": "나중에 전화할게",
+          "romanization": "najunge jeonhwahalge",
+          "english": "I'll call later"
+        },
+        {
+          "hangul": "카톡했어",
+          "romanization": "katokaesseo",
+          "english": "I sent a KakaoTalk"
+        },
+        {
+          "hangul": "읽씹하지 마",
+          "romanization": "ilkssiphaji ma",
+          "english": "Don't leave me on read"
+        },
+        {
+          "hangul": "답장 기다려",
+          "romanization": "dapjang gidaryeo",
+          "english": "Wait for my reply"
+        },
+        {
+          "hangul": "배터리가 없어",
+          "romanization": "baeteoriga eopseo",
+          "english": "My battery is dead"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:09:20.984Z",
+      "pinTitle": "Handy Korean for phone & texting phrases ✨"
+    },
+    {
+      "bundleId": "concept-early-late-arrive",
+      "slug": "early-vs-late-arrival",
+      "format": "concept_rows",
+      "title": "Early vs late arrival in Korean",
+      "description": "This chart shows words used to talk about arriving early, on time, or late in Korean. You can use these words to describe when someone gets somewhere compare…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144846624-concept-early-late-arrive.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144846624-concept-early-late-arrive-thumb.webp",
+      "words": [
+        {
+          "hangul": "일찍",
+          "romanization": "iljjik",
+          "english": "early"
+        },
+        {
+          "hangul": "제시간에",
+          "romanization": "jesigane",
+          "english": "on time"
+        },
+        {
+          "hangul": "늦게",
+          "romanization": "neutge",
+          "english": "late"
+        },
+        {
+          "hangul": "너무 늦었어요",
+          "romanization": "neomu neujeosseoyo",
+          "english": "too late"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:09:48.607Z",
+      "pinTitle": "Arriving early or late? Here’s what you can say on the subway 👇"
+    },
+    {
+      "bundleId": "sim-rest-relax",
+      "slug": "rest-vs-relax",
+      "format": "similar_split",
+      "title": "Rest vs Relax in Korean",
+      "description": "In Korean, 쉬다 and 휴식하다 both relate to taking a break, but they are used differently. 쉬다 means to rest, often implying stopping work or activity to recover en…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144958939-sim-rest-relax.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785144958939-sim-rest-relax-thumb.webp",
+      "words": [
+        {
+          "hangul": "쉬다",
+          "romanization": "swida",
+          "english": "Rest"
+        },
+        {
+          "hangul": "휴식하다",
+          "romanization": "hyusikhada",
+          "english": "Relax"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:10:14.597Z",
+      "pinTitle": "Need a break but confused? 😵‍💫"
+    },
+    {
+      "bundleId": "phrase-directions-ask",
+      "slug": "asking-for-directions-in-korean",
+      "format": "phrase_stack",
+      "title": "Asking for directions in Korean",
+      "description": "These common Korean phrases are useful for asking and giving directions, especially when traveling. They include questions about location, distance, and time…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145075156-phrase-directions-ask.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145075156-phrase-directions-ask-thumb.webp",
+      "words": [
+        {
+          "hangul": "화장실 어디예요?",
+          "romanization": "hwajangsil eodiyeyo?",
+          "english": "Where's the bathroom?"
+        },
+        {
+          "hangul": "이 길 맞아요?",
+          "romanization": "i gil majayo?",
+          "english": "Is this the right way?"
+        },
+        {
+          "hangul": "얼마나 걸려요?",
+          "romanization": "eolmana geollyeoyo?",
+          "english": "How long does it take?"
+        },
+        {
+          "hangul": "여기서 가까워요?",
+          "romanization": "yeogiseo gakkawoyo?",
+          "english": "Is it close from here?"
+        },
+        {
+          "hangul": "지하철역 어디예요?",
+          "romanization": "jihacheolyeok eodiyeyo?",
+          "english": "Where's the subway station?"
+        },
+        {
+          "hangul": "왼쪽으로 가세요",
+          "romanization": "oenjjogeuro gaseyo",
+          "english": "Go left"
+        },
+        {
+          "hangul": "직진하세요",
+          "romanization": "jikjinhaseyo",
+          "english": "Go straight"
+        },
+        {
+          "hangul": "여기서 내려요",
+          "romanization": "yeogiseo naeryeoyo",
+          "english": "I get off here"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:10:44.474Z",
+      "pinTitle": "Handy Korean for asking for directions ✨"
+    },
+    {
+      "bundleId": "concept-remember-forget",
+      "slug": "remember-vs-forget",
+      "format": "concept_rows",
+      "title": "Remember vs forget in Korean",
+      "description": "In Korean, 기억하다 means 'to remember' and 잊다 means 'to forget.' When you want someone to remind you of something, you can say 알려 주세요. If you almost forgot some…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145190538-concept-remember-forget.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145190538-concept-remember-forget-thumb.webp",
+      "words": [
+        {
+          "hangul": "기억하다",
+          "romanization": "gieokhada",
+          "english": "remember"
+        },
+        {
+          "hangul": "잊다",
+          "romanization": "itda",
+          "english": "forget"
+        },
+        {
+          "hangul": "알려 주세요",
+          "romanization": "allyeo juseyo",
+          "english": "remind me"
+        },
+        {
+          "hangul": "깜빡할 뻔했어요",
+          "romanization": "kkamppakhal ppeonhaesseoyo",
+          "english": "I almost forgot"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:11:11.785Z",
+      "pinTitle": "Confused about 기억하다 vs 잊다?"
+    },
+    {
+      "bundleId": "sim-want-desire",
+      "slug": "want-vs-desire",
+      "format": "similar_split",
+      "title": "Want vs Desire in Korean",
+      "description": "In Korean, both 원하다 and 희망하다 express wanting something, but they have different feelings. 원하다 is used for simple wants or needs, like wanting food or an item…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145307840-sim-want-desire.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145307840-sim-want-desire-thumb.webp",
+      "words": [
+        {
+          "hangul": "원하다",
+          "romanization": "wonhada",
+          "english": "Want"
+        },
+        {
+          "hangul": "희망하다",
+          "romanization": "huimanghada",
+          "english": "Desire"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:11:38.301Z",
+      "pinTitle": "Confused between 원하다 and 희망하다?"
+    },
+    {
+      "bundleId": "phrase-rainy-day",
+      "slug": "rainy-day-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Rainy day phrases in Korean",
+      "description": "These are common Korean phrases used on rainy days. They include questions about umbrellas, comments on the weather, and expressions about how rain affects d…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145428576-phrase-rainy-day.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145428576-phrase-rainy-day-thumb.webp",
+      "words": [
+        {
+          "hangul": "우산 있어요?",
+          "romanization": "usan isseoyo?",
+          "english": "Do you have an umbrella?"
+        },
+        {
+          "hangul": "비 와요",
+          "romanization": "bi wayo",
+          "english": "It's raining"
+        },
+        {
+          "hangul": "우산 빌려줄래?",
+          "romanization": "usan billyeojullae?",
+          "english": "Can I borrow your umbrella?"
+        },
+        {
+          "hangul": "길이 미끄러워요",
+          "romanization": "giri mikkeureowoyo",
+          "english": "The road is slippery"
+        },
+        {
+          "hangul": "비 그칠 때까지 기다릴게요",
+          "romanization": "bi geuchil ttaekkaji gidarilgeyo",
+          "english": "I'll wait until it stops raining"
+        },
+        {
+          "hangul": "옷이 젖었어요",
+          "romanization": "osi jeojeosseoyo",
+          "english": "My clothes got wet"
+        },
+        {
+          "hangul": "날씨 때문에 늦었어요",
+          "romanization": "nalssi ttaemune neujeosseoyo",
+          "english": "I'm late because of the weather"
+        },
+        {
+          "hangul": "실내로 들어가요",
+          "romanization": "sillaero deureogayo",
+          "english": "Let's go inside"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:12:08.572Z",
+      "pinTitle": "Handy Korean for rainy day phrases ✨"
+    },
+    {
+      "bundleId": "concept-see-watch-look",
+      "slug": "see-watch-look-scenes",
+      "format": "concept_rows",
+      "title": "See / watch / look scenes in Korean",
+      "description": "These Korean verbs all relate to seeing or watching, but they have different meanings. 보다 means to look at something briefly or generally. 지켜보다 means to watc…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145544900-concept-see-watch-look.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145544900-concept-see-watch-look-thumb.webp",
+      "words": [
+        {
+          "hangul": "보다",
+          "romanization": "boda",
+          "english": "look at"
+        },
+        {
+          "hangul": "지켜보다",
+          "romanization": "jikyeoboda",
+          "english": "watch (for a while)"
+        },
+        {
+          "hangul": "구경하다",
+          "romanization": "gugyeonghada",
+          "english": "sightsee"
+        },
+        {
+          "hangul": "쳐다보다",
+          "romanization": "chyeodaboda",
+          "english": "stare"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:12:35.834Z",
+      "pinTitle": "How do you say \"see\" or \"watch\" in Korean? It depends on the"
+    },
+    {
+      "bundleId": "phrase-apology-fix",
+      "slug": "formal-apology-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Formal apology phrases in Korean",
+      "description": "These formal apology phrases in Korean are used to express sincere regret in polite and professional situations. They are common in workplaces or any setting…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145671436-phrase-apology-fix.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145671436-phrase-apology-fix-thumb.webp",
+      "words": [
+        {
+          "hangul": "죄송합니다",
+          "romanization": "joesonghamnida",
+          "english": "I'm sorry"
+        },
+        {
+          "hangul": "제가 실수했습니다",
+          "romanization": "jega silsuhaetseumnida",
+          "english": "I made a mistake"
+        },
+        {
+          "hangul": "양해 부탁드립니다",
+          "romanization": "yanghae butakdeurimnida",
+          "english": "Please understand"
+        },
+        {
+          "hangul": "다시는 안 그러겠습니다",
+          "romanization": "dasineun an geureogetseumnida",
+          "english": "It won't happen again"
+        },
+        {
+          "hangul": "불편을 드려 죄송합니다",
+          "romanization": "bulpyeoneul deuryeo joesonghamnida",
+          "english": "Sorry for the inconvenience"
+        },
+        {
+          "hangul": "확인이 부족했습니다",
+          "romanization": "hwagini bujokhaetseumnida",
+          "english": "I didn't check carefully enough"
+        },
+        {
+          "hangul": "바로 수정하겠습니다",
+          "romanization": "baro sujeonghagetseumnida",
+          "english": "I'll fix it right away"
+        },
+        {
+          "hangul": "다시 한번 사과드립니다",
+          "romanization": "dasi hanbeon sagwadeurimnida",
+          "english": "I apologize again"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:13:11.125Z",
+      "pinTitle": "Need to apologize formally in Korean? Use these polite phrases"
+    },
+    {
+      "bundleId": "concept-lend-borrow-scenes",
+      "slug": "lend-vs-borrow-scenes",
+      "format": "concept_rows",
+      "title": "Lend vs borrow scenes in Korean",
+      "description": "This chart shows the difference between 'lend' and 'borrow' in Korean. '빌리다' means to borrow something from someone. '빌려주다' means to lend something to someon…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145786970-concept-lend-borrow-scenes.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145786970-concept-lend-borrow-scenes-thumb.webp",
+      "words": [
+        {
+          "hangul": "빌리다",
+          "romanization": "billida",
+          "english": "borrow"
+        },
+        {
+          "hangul": "빌려주다",
+          "romanization": "billyeojuda",
+          "english": "lend"
+        },
+        {
+          "hangul": "돌려주다",
+          "romanization": "dollyeojuda",
+          "english": "return"
+        },
+        {
+          "hangul": "잠깐 쓸게",
+          "romanization": "jamkkan sseulge",
+          "english": "keep for now"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:13:38.698Z",
+      "pinTitle": "When you need something for a short time:"
+    },
+    {
+      "bundleId": "phrase-encouragement",
+      "slug": "cheer-someone-on-in-korean",
+      "format": "phrase_stack",
+      "title": "Cheer someone on in Korean",
+      "description": "These Korean phrases are used to cheer someone on and offer encouragement. They are common in everyday conversations when you want to support a friend or fam…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145900276-phrase-encouragement.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785145900276-phrase-encouragement-thumb.webp",
+      "words": [
+        {
+          "hangul": "화이팅",
+          "romanization": "hwaiting",
+          "english": "You got this"
+        },
+        {
+          "hangul": "할 수 있어",
+          "romanization": "hal su isseo",
+          "english": "You can do it"
+        },
+        {
+          "hangul": "걱정 마",
+          "romanization": "geokjeong ma",
+          "english": "Don't worry"
+        },
+        {
+          "hangul": "천천히 해",
+          "romanization": "cheoncheonhi hae",
+          "english": "Take it slow"
+        },
+        {
+          "hangul": "괜찮아질 거야",
+          "romanization": "gwaenchanajil geoya",
+          "english": "It'll be okay"
+        },
+        {
+          "hangul": "수고했어",
+          "romanization": "sugohaesseo",
+          "english": "Good work / you worked hard"
+        },
+        {
+          "hangul": "힘내",
+          "romanization": "himnae",
+          "english": "Cheer up"
+        },
+        {
+          "hangul": "잘될 거야",
+          "romanization": "jaldoel geoya",
+          "english": "It'll work out"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:14:08.710Z",
+      "pinTitle": "Need to cheer someone on in Korean? Use these phrases to show"
+    },
+    {
+      "bundleId": "concept-open-close-devices",
+      "slug": "open-close-vs-on-off",
+      "format": "concept_rows",
+      "title": "Open/close vs on/off in Korean",
+      "description": "In Korean, 열다 and 닫다 are used to talk about opening and closing things like doors or windows. 켜다 and 끄다 are used to turn on and off devices like lights or el…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146022284-concept-open-close-devices.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146022284-concept-open-close-devices-thumb.webp",
+      "words": [
+        {
+          "hangul": "열다",
+          "romanization": "yeolda",
+          "english": "open door"
+        },
+        {
+          "hangul": "닫다",
+          "romanization": "datda",
+          "english": "close door"
+        },
+        {
+          "hangul": "켜다",
+          "romanization": "kyeoda",
+          "english": "turn on light"
+        },
+        {
+          "hangul": "끄다",
+          "romanization": "kkeuda",
+          "english": "turn off light"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:14:36.054Z",
+      "pinTitle": "Open and close vs on and off"
+    },
+    {
+      "bundleId": "phrase-pharmacy",
+      "slug": "pharmacy-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Pharmacy phrases in Korean",
+      "description": "These pharmacy phrases in Korean are useful for beginners who want to communicate effectively when buying medicine or discussing health issues. They include…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146155562-phrase-pharmacy.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146155562-phrase-pharmacy-thumb.webp",
+      "words": [
+        {
+          "hangul": "감기약 주세요",
+          "romanization": "gamgiyak juseyo",
+          "english": "Cold medicine, please"
+        },
+        {
+          "hangul": "진통제 있어요?",
+          "romanization": "jintongje isseoyo?",
+          "english": "Do you have painkillers?"
+        },
+        {
+          "hangul": "하루에 몇 번 먹어요?",
+          "romanization": "harue myeot beon meogeoyo?",
+          "english": "How many times a day?"
+        },
+        {
+          "hangul": "식후에 드세요",
+          "romanization": "sikhue deuseyo",
+          "english": "Take after meals"
+        },
+        {
+          "hangul": "알레르기 있어요",
+          "romanization": "allereugi isseoyo",
+          "english": "I have an allergy"
+        },
+        {
+          "hangul": "어린이 약이에요",
+          "romanization": "eorini yagieyo",
+          "english": "It's children's medicine"
+        },
+        {
+          "hangul": "연고 주세요",
+          "romanization": "yeonggo juseyo",
+          "english": "Ointment, please"
+        },
+        {
+          "hangul": "이거 맞아요?",
+          "romanization": "igeo majayo?",
+          "english": "Is this the right one?"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:15:05.956Z",
+      "pinTitle": "Handy Korean for pharmacy phrases ✨"
+    },
+    {
+      "bundleId": "concept-listen-hear-scenes",
+      "slug": "listen-vs-hear-scenes",
+      "format": "concept_rows",
+      "title": "Listen vs hear scenes in Korean",
+      "description": "In Korean, 듣다 means to listen actively, focusing on sounds or speech. 들리다 means to hear something that is audible, often without trying. 우연히 듣다 means to over…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146271505-concept-listen-hear-scenes.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146271505-concept-listen-hear-scenes-thumb.webp",
+      "words": [
+        {
+          "hangul": "듣다",
+          "romanization": "deutda",
+          "english": "listen (actively)"
+        },
+        {
+          "hangul": "들리다",
+          "romanization": "deullida",
+          "english": "hear (be audible)"
+        },
+        {
+          "hangul": "우연히 듣다",
+          "romanization": "uyeonhi deutda",
+          "english": "overhear"
+        },
+        {
+          "hangul": "못 들은 척",
+          "romanization": "mot deureun cheok",
+          "english": "ignore sound"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:15:33.731Z",
+      "pinTitle": "Listen vs Hear in real life 👂"
+    },
+    {
+      "bundleId": "phrase-laundry-home",
+      "slug": "laundry-and-home-chores-in-korean",
+      "format": "phrase_stack",
+      "title": "Laundry & home chores in Korean",
+      "description": "This chart introduces common Korean phrases related to laundry and home chores. These expressions are useful for everyday conversations about cleaning, washi…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146394234-phrase-laundry-home.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146394234-phrase-laundry-home-thumb.webp",
+      "words": [
+        {
+          "hangul": "빨래해야 해",
+          "romanization": "ppallaehaeya hae",
+          "english": "I need to do laundry"
+        },
+        {
+          "hangul": "세제 어디 있어?",
+          "romanization": "seje eodi isseo?",
+          "english": "Where's the detergent?"
+        },
+        {
+          "hangul": "건조기 돌려도 돼?",
+          "romanization": "geonjogi dollyeodo dwae?",
+          "english": "Can I use the dryer?"
+        },
+        {
+          "hangul": "옷 널어 놓을게",
+          "romanization": "ot neoreo noheulge",
+          "english": "I'll hang the clothes"
+        },
+        {
+          "hangul": "청소 좀 하자",
+          "romanization": "cheongso jom haja",
+          "english": "Let's clean a bit"
+        },
+        {
+          "hangul": "쓰레기 버려 줄래?",
+          "romanization": "sseuregi beoryeo jullae?",
+          "english": "Can you take out the trash?"
+        },
+        {
+          "hangul": "설거지할게",
+          "romanization": "seolgeojihalge",
+          "english": "I'll do the dishes"
+        },
+        {
+          "hangul": "바닥 닦았어",
+          "romanization": "badak dakkasseo",
+          "english": "I mopped the floor"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:16:03.940Z",
+      "pinTitle": "Handy Korean for laundry & home chores ✨"
+    },
+    {
+      "bundleId": "concept-while-during",
+      "slug": "while-during-in-korean",
+      "format": "concept_rows",
+      "title": "While / during in Korean",
+      "description": "This chart shows common Korean connectors used to talk about time relationships between actions. '하면서' means 'while doing' and is used when two actions happe…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146504945-concept-while-during.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146504945-concept-while-during-thumb.webp",
+      "words": [
+        {
+          "hangul": "하면서",
+          "romanization": "hamyeonseo",
+          "english": "while doing"
+        },
+        {
+          "hangul": "동안",
+          "romanization": "dongan",
+          "english": "during"
+        },
+        {
+          "hangul": "하자마자",
+          "romanization": "hajamaja",
+          "english": "as soon as"
+        },
+        {
+          "hangul": "하기 전에",
+          "romanization": "hagi jeone",
+          "english": "before doing"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:16:32.228Z",
+      "pinTitle": "Use these to talk about time in Korean 👇"
+    },
+    {
+      "bundleId": "phrase-disagree-soft",
+      "slug": "soft-disagreement-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Soft disagreement phrases in Korean",
+      "description": "These soft disagreement phrases in Korean help you express a different opinion politely without sounding too harsh. They are useful in everyday conversations…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146634837-phrase-disagree-soft.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146634837-phrase-disagree-soft-thumb.webp",
+      "words": [
+        {
+          "hangul": "글쎄",
+          "romanization": "geulsse",
+          "english": "Well… / I'm not sure"
+        },
+        {
+          "hangul": "아닌 것 같아",
+          "romanization": "anin geot gata",
+          "english": "I don't think so"
+        },
+        {
+          "hangul": "조금 달라",
+          "romanization": "jogeum dalla",
+          "english": "It's a bit different"
+        },
+        {
+          "hangul": "그래도…",
+          "romanization": "geuraedo…",
+          "english": "Still… / Even so…"
+        },
+        {
+          "hangul": "내 생각엔",
+          "romanization": "nae saenggagen",
+          "english": "In my opinion"
+        },
+        {
+          "hangul": "그건 좀…",
+          "romanization": "geugeon jom…",
+          "english": "That's a bit…"
+        },
+        {
+          "hangul": "한번 더 생각해 봐",
+          "romanization": "hanbeon deo saenggakhae bwa",
+          "english": "Think about it again"
+        },
+        {
+          "hangul": "동의하기 어려워",
+          "romanization": "donguihagi eoryeowo",
+          "english": "Hard to agree"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:17:01.857Z",
+      "pinTitle": "How to say \"I disagree\" softly in Korean👇"
+    },
+    {
+      "bundleId": "concept-hungry-full",
+      "slug": "hungry-vs-full-scenes",
+      "format": "concept_rows",
+      "title": "Hungry vs full scenes in Korean",
+      "description": "This chart shows common Korean expressions to talk about feeling hungry, full, or thirsty. You can use these phrases to describe your body’s needs or wants.…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146745773-concept-hungry-full.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146745773-concept-hungry-full-thumb.webp",
+      "words": [
+        {
+          "hangul": "배고파요",
+          "romanization": "baegopayo",
+          "english": "hungry"
+        },
+        {
+          "hangul": "배불러요",
+          "romanization": "baebulleoyo",
+          "english": "full"
+        },
+        {
+          "hangul": "목말라요",
+          "romanization": "mongmallayo",
+          "english": "thirsty"
+        },
+        {
+          "hangul": "간식 먹고 싶어요",
+          "romanization": "gansik meokgo sipeoyo",
+          "english": "I want a snack"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:17:30.181Z",
+      "pinTitle": "Feeling hungry or full? Know how to say it right in Korean!"
+    },
+    {
+      "bundleId": "phrase-study-korean",
+      "slug": "study-korean-phrases",
+      "format": "phrase_stack",
+      "title": "Study Korean phrases in Korean",
+      "description": "These Korean phrases are useful for beginners studying the language. They focus on common questions and expressions used during learning, such as asking abou…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146865037-phrase-study-korean.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146865037-phrase-study-korean-thumb.webp",
+      "words": [
+        {
+          "hangul": "오늘 뭐 공부해?",
+          "romanization": "oneul mwo gongbuhae?",
+          "english": "What are you studying today?"
+        },
+        {
+          "hangul": "발음이 어려워",
+          "romanization": "bareumi eoryeowo",
+          "english": "Pronunciation is hard"
+        },
+        {
+          "hangul": "이거 무슨 뜻이야?",
+          "romanization": "igeo museun tteusiya?",
+          "english": "What does this mean?"
+        },
+        {
+          "hangul": "예문 있어?",
+          "romanization": "yemun isseo?",
+          "english": "Got an example sentence?"
+        },
+        {
+          "hangul": "복습하자",
+          "romanization": "bokseuphaja",
+          "english": "Let's review"
+        },
+        {
+          "hangul": "단어 외웠어",
+          "romanization": "daneo oewosseo",
+          "english": "I memorized the words"
+        },
+        {
+          "hangul": "말하기 연습하자",
+          "romanization": "malhagi yeonseuphaja",
+          "english": "Let's practice speaking"
+        },
+        {
+          "hangul": "실수해도 괜찮아",
+          "romanization": "silsuhaedo gwaenchana",
+          "english": "Mistakes are okay"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:18:11.016Z",
+      "pinTitle": "Handy Korean for study korean phrases ✨"
+    },
+    {
+      "bundleId": "concept-know-how",
+      "slug": "know-how-expressions-in-korean",
+      "format": "concept_rows",
+      "title": "Know-how expressions in Korean",
+      "description": "These Korean expressions are used to talk about knowing something or knowing how to do something. '알아요' means 'I know,' and '몰라요' means 'I don't know.' To sa…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146968080-concept-know-how.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785146968080-concept-know-how-thumb.webp",
+      "words": [
+        {
+          "hangul": "알아요",
+          "romanization": "arayo",
+          "english": "I know"
+        },
+        {
+          "hangul": "몰라요",
+          "romanization": "mollayo",
+          "english": "I don't know"
+        },
+        {
+          "hangul": "할 줄 알아요",
+          "romanization": "hal jul arayo",
+          "english": "I know how to"
+        },
+        {
+          "hangul": "배웠어요",
+          "romanization": "baewosseoyo",
+          "english": "I learned"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:18:39.343Z",
+      "pinTitle": "When you want to say you know something or a skill in Korean"
+    },
+    {
+      "bundleId": "phrase-doctor-visit",
+      "slug": "clinic-visit-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Clinic visit phrases in Korean",
+      "description": "These phrases are useful when visiting a clinic or hospital in Korea. They help you communicate common health concerns, ask about appointments, prescriptions…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147092142-phrase-doctor-visit.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147092142-phrase-doctor-visit-thumb.webp",
+      "words": [
+        {
+          "hangul": "예약했어요",
+          "romanization": "yeyakhaesseoyo",
+          "english": "I have an appointment"
+        },
+        {
+          "hangul": "머리가 아파요",
+          "romanization": "meoriga apayo",
+          "english": "I have a headache"
+        },
+        {
+          "hangul": "열이 나요",
+          "romanization": "yeori nayo",
+          "english": "I have a fever"
+        },
+        {
+          "hangul": "언제부터예요?",
+          "romanization": "eonjebuteoyeyo?",
+          "english": "Since when?"
+        },
+        {
+          "hangul": "처방전 주세요",
+          "romanization": "cheobangjeon juseyo",
+          "english": "Prescription, please"
+        },
+        {
+          "hangul": "약 어디서 받아요?",
+          "romanization": "yak eodiseo badayo?",
+          "english": "Where do I get medicine?"
+        },
+        {
+          "hangul": "보험 되나요?",
+          "romanization": "boheom doenayo?",
+          "english": "Is insurance accepted?"
+        },
+        {
+          "hangul": "다음 예약할게요",
+          "romanization": "daeum yeyakhalgeyo",
+          "english": "I'll book a follow-up"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:19:09.152Z",
+      "pinTitle": "Going to the clinic in Korea? Use these phrases to communicate"
+    },
+    {
+      "bundleId": "phrase-delivery-receive",
+      "slug": "delivery-receive-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Delivery receive phrases in Korean",
+      "description": "These phrases are commonly used when receiving deliveries in Korean. They help you communicate with delivery workers about where to leave packages, your avai…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147202330-phrase-delivery-receive.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147202330-phrase-delivery-receive-thumb.webp",
+      "words": [
+        {
+          "hangul": "택배 왔어요",
+          "romanization": "taekbae wasseoyo",
+          "english": "A package arrived"
+        },
+        {
+          "hangul": "문 앞에 두세요",
+          "romanization": "mun ape duseyo",
+          "english": "Leave it at the door"
+        },
+        {
+          "hangul": "경비실에 맡겨 주세요",
+          "romanization": "gyeongbisire matgyeo juseyo",
+          "english": "Leave it at the guard office"
+        },
+        {
+          "hangul": "지금 없어요",
+          "romanization": "jigeum eopseoyo",
+          "english": "I'm not home now"
+        },
+        {
+          "hangul": "내일 다시 와 주세요",
+          "romanization": "naeil dasi wa juseyo",
+          "english": "Please come again tomorrow"
+        },
+        {
+          "hangul": "서명할게요",
+          "romanization": "seomyeonghalgeyo",
+          "english": "I'll sign"
+        },
+        {
+          "hangul": "송장 번호 있어요?",
+          "romanization": "songjang beonho isseoyo?",
+          "english": "Do you have the tracking number?"
+        },
+        {
+          "hangul": "감사합니다",
+          "romanization": "gamsahamnida",
+          "english": "Thank you"
+        }
+      ],
+      "pinnedAt": "2026-07-28T16:19:38.956Z",
+      "pinTitle": "Need to get your package smoothly? Use these phrases when"
+    },
+    {
+      "bundleId": "phrase-dating-soft",
+      "slug": "dating-soft-talk-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Dating / soft talk phrases in Korean",
+      "description": "These are soft talk phrases commonly used in dating or casual romantic conversations in Korean. They express feelings, invitations, and care in a gentle and…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147314619-phrase-dating-soft.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147314619-phrase-dating-soft-thumb.webp",
+      "words": [
+        {
+          "hangul": "오늘 즐거웠어",
+          "romanization": "oneul jeulgeowosseo",
+          "english": "I had fun today"
+        },
+        {
+          "hangul": "또 만나자",
+          "romanization": "tto mannaja",
+          "english": "Let's meet again"
+        },
+        {
+          "hangul": "보고 싶었어",
+          "romanization": "bogo sipeosseo",
+          "english": "I missed you"
+        },
+        {
+          "hangul": "괜찮으면 커피 할래?",
+          "romanization": "gwaenchanheumyeon keopi hallae?",
+          "english": "Coffee if you're free?"
+        },
+        {
+          "hangul": "너랑 있으면 편해",
+          "romanization": "neorang isseumyeon pyeonhae",
+          "english": "I feel comfortable with you"
+        },
+        {
+          "hangul": "답장 늦어서 미안",
+          "romanization": "dapjang neujeoseo mian",
+          "english": "Sorry for the late reply"
+        },
+        {
+          "hangul": "내일 어때?",
+          "romanization": "naeil eottae?",
+          "english": "How about tomorrow?"
+        },
+        {
+          "hangul": "조심히 들어가",
+          "romanization": "josimhi deureoga",
+          "english": "Get home safe"
+        }
+      ],
+      "pinnedAt": "2026-07-29T03:27:41.054Z",
+      "pinTitle": "Soft talk for your Korean crush 💬"
+    },
+    {
+      "bundleId": "phrase-thanks-sorry",
+      "slug": "thanks-and-sorry-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Thanks & sorry phrases in Korean",
+      "description": "These phrases are common ways to say thanks and sorry in Korean. They include both casual and polite expressions, so you can use them depending on your relat…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147430796-phrase-thanks-sorry.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147430796-phrase-thanks-sorry-thumb.webp",
+      "words": [
+        {
+          "hangul": "고마워",
+          "romanization": "gomawo",
+          "english": "Thanks (casual)"
+        },
+        {
+          "hangul": "감사해요",
+          "romanization": "gamsahaeyo",
+          "english": "Thank you"
+        },
+        {
+          "hangul": "정말 고마워요",
+          "romanization": "jeongmal gomawoyo",
+          "english": "Thank you so much"
+        },
+        {
+          "hangul": "미안해",
+          "romanization": "mianhae",
+          "english": "Sorry (casual)"
+        },
+        {
+          "hangul": "죄송해요",
+          "romanization": "joesonghaeyo",
+          "english": "I'm sorry"
+        },
+        {
+          "hangul": "실례합니다",
+          "romanization": "sillyehamnida",
+          "english": "Excuse me"
+        },
+        {
+          "hangul": "괜찮아요",
+          "romanization": "gwaenchanayo",
+          "english": "It's okay"
+        },
+        {
+          "hangul": "신경 쓰지 마세요",
+          "romanization": "singyeong sseuji maseyo",
+          "english": "Don't worry about it"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:05:29.776Z",
+      "pinTitle": "Say thanks & sorry like a pro in Korean 👇"
+    },
+    {
+      "bundleId": "phrase-bank-atm",
+      "slug": "bank-and-atm-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Bank & ATM phrases in Korean",
+      "description": "These common phrases are useful when you visit a bank or use an ATM in Korea. They help you talk about opening accounts, withdrawing or depositing money, tra…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147545676-phrase-bank-atm.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147545676-phrase-bank-atm-thumb.webp",
+      "words": [
+        {
+          "hangul": "계좌 만들고 싶어요",
+          "romanization": "gyejwa mandeulgo sipeoyo",
+          "english": "I want to open an account"
+        },
+        {
+          "hangul": "출금할게요",
+          "romanization": "chulgeumhalgeyo",
+          "english": "I'd like to withdraw"
+        },
+        {
+          "hangul": "입금이요",
+          "romanization": "ipgeumiyo",
+          "english": "Deposit"
+        },
+        {
+          "hangul": "이체해 주세요",
+          "romanization": "ichehae juseyo",
+          "english": "Please transfer"
+        },
+        {
+          "hangul": "잔액 확인이요",
+          "romanization": "janaek hwaginyo",
+          "english": "Balance check"
+        },
+        {
+          "hangul": "비밀번호 잊어버렸어요",
+          "romanization": "bimilbeonho ijeobeoryeosseoyo",
+          "english": "I forgot my PIN"
+        },
+        {
+          "hangul": "카드 분실했어요",
+          "romanization": "kadeu bunsilhaesseoyo",
+          "english": "I lost my card"
+        },
+        {
+          "hangul": "환전할 수 있어요?",
+          "romanization": "hwanjeonhal su isseoyo?",
+          "english": "Can I exchange money?"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:06:00.762Z",
+      "pinTitle": "Need to use a bank or ATM in Korea? Use these handy phrases 👇"
+    },
+    {
+      "bundleId": "phrase-pet-care",
+      "slug": "pet-care-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Pet care phrases in Korean",
+      "description": "These phrases are useful for everyday conversations about taking care of pets in Korean. They include common expressions for feeding, walking, and visiting t…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147665768-phrase-pet-care.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147665768-phrase-pet-care-thumb.webp",
+      "words": [
+        {
+          "hangul": "강아지 키워요",
+          "romanization": "gangaji kiwoyo",
+          "english": "I have a dog"
+        },
+        {
+          "hangul": "산책 갈래?",
+          "romanization": "sanchaek gallae?",
+          "english": "Want to go for a walk?"
+        },
+        {
+          "hangul": "사료 주세요",
+          "romanization": "saryo juseyo",
+          "english": "Pet food, please"
+        },
+        {
+          "hangul": "동물병원 어디예요?",
+          "romanization": "dongmulbyeongwon eodiyeyo?",
+          "english": "Where's the vet?"
+        },
+        {
+          "hangul": "예방접종 했어요",
+          "romanization": "yebangjeopjong haesseoyo",
+          "english": "I got the vaccines done"
+        },
+        {
+          "hangul": "물그릇 채워 줘",
+          "romanization": "mulgeureut chaewo jwo",
+          "english": "Fill the water bowl"
+        },
+        {
+          "hangul": "배변 패드 갈았어",
+          "romanization": "baebyeon paedeu garasseo",
+          "english": "I changed the puppy pad"
+        },
+        {
+          "hangul": "쓰다듬어도 돼요?",
+          "romanization": "sseudadeumeodo dwaeyo?",
+          "english": "Can I pet them?"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:06:31.978Z",
+      "pinTitle": "Handy Korean for pet care phrases ✨"
+    },
+    {
+      "bundleId": "phrase-classroom-talk",
+      "slug": "classroom-talk-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Classroom talk phrases in Korean",
+      "description": "These classroom talk phrases are useful for everyday communication between students and teachers in Korean schools. They help beginners express common needs…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147776282-phrase-classroom-talk.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147776282-phrase-classroom-talk-thumb.webp",
+      "words": [
+        {
+          "hangul": "질문 있어요",
+          "romanization": "jilmun isseoyo",
+          "english": "I have a question"
+        },
+        {
+          "hangul": "다시 한번 설명해 주세요",
+          "romanization": "dasi hanbeon seolmyeonghae juseyo",
+          "english": "Please explain again"
+        },
+        {
+          "hangul": "칠판 잘 안 보여요",
+          "romanization": "chilpan jal an boyeoyo",
+          "english": "I can't see the board well"
+        },
+        {
+          "hangul": "조별 활동이에요?",
+          "romanization": "jobyeol hwaldongieyo?",
+          "english": "Is this group work?"
+        },
+        {
+          "hangul": "발표할게요",
+          "romanization": "balpyohalgeyo",
+          "english": "I'll present"
+        },
+        {
+          "hangul": "숙제 언제까지예요?",
+          "romanization": "sukje eonjekkajiyeyo?",
+          "english": "When is homework due?"
+        },
+        {
+          "hangul": "지각해서 죄송해요",
+          "romanization": "jigakhaeseo joesonghaeyo",
+          "english": "Sorry I'm late"
+        },
+        {
+          "hangul": "이해했어요",
+          "romanization": "ihaehaesseoyo",
+          "english": "I understand"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:07:02.889Z",
+      "pinTitle": "Use these in your Korean class or study group 👇"
+    },
+    {
+      "bundleId": "phrase-customer-service",
+      "slug": "customer-service-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Customer service phrases in Korean",
+      "description": "These customer service phrases in Korean are useful when shopping or dealing with product issues. They help you communicate clearly about exchanges, refunds,…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147889348-phrase-customer-service.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147889348-phrase-customer-service-thumb.webp",
+      "words": [
+        {
+          "hangul": "교환하고 싶어요",
+          "romanization": "gyohwanhago sipeoyo",
+          "english": "I'd like to exchange this"
+        },
+        {
+          "hangul": "환불 되나요?",
+          "romanization": "hwanbul doenayo?",
+          "english": "Can I get a refund?"
+        },
+        {
+          "hangul": "영수증 없어요",
+          "romanization": "yeongsujeung eopseoyo",
+          "english": "I don't have the receipt"
+        },
+        {
+          "hangul": "불량인 것 같아요",
+          "romanization": "bullyangin geot gatayo",
+          "english": "I think it's defective"
+        },
+        {
+          "hangul": "AS 받으려면요?",
+          "romanization": "eieseue bateuryeomyeonyo?",
+          "english": "How do I get after-service?"
+        },
+        {
+          "hangul": "담당자 바꿔 주세요",
+          "romanization": "damdangja bakkwo juseyo",
+          "english": "Please get me the manager"
+        },
+        {
+          "hangul": "언제 처리돼요?",
+          "romanization": "eonje cheoridwaeyo?",
+          "english": "When will it be handled?"
+        },
+        {
+          "hangul": "문자로 알려 주세요",
+          "romanization": "munjaro allyeo juseyo",
+          "english": "Please text me updates"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:07:33.424Z",
+      "pinTitle": "Handy Korean for customer service phrases ✨"
+    },
+    {
+      "bundleId": "phrase-ordering-delivery",
+      "slug": "food-delivery-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Food delivery phrases in Korean",
+      "description": "These phrases are useful for ordering food delivery in Korean. They help you communicate clearly with delivery drivers about your order, address, and deliver…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147997565-phrase-ordering-delivery.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785147997565-phrase-ordering-delivery-thumb.webp",
+      "words": [
+        {
+          "hangul": "배달 주문할게요",
+          "romanization": "baedal jumunhalgeyo",
+          "english": "I'd like to order delivery"
+        },
+        {
+          "hangul": "주소가 여기예요",
+          "romanization": "jusoga yeogiyeyo",
+          "english": "Here's the address"
+        },
+        {
+          "hangul": "문 앞에 놔 주세요",
+          "romanization": "mun ape nwa juseyo",
+          "english": "Leave it at the door"
+        },
+        {
+          "hangul": "벨 누르지 마세요",
+          "romanization": "bel nureuji maseyo",
+          "english": "Please don't ring the bell"
+        },
+        {
+          "hangul": "도착하면 연락 주세요",
+          "romanization": "dochakhamyeon yeollak juseyo",
+          "english": "Text me when you arrive"
+        },
+        {
+          "hangul": "배달비 얼마예요?",
+          "romanization": "baedalbi eolmayeyo?",
+          "english": "How much is the delivery fee?"
+        },
+        {
+          "hangul": "아직 안 왔어요",
+          "romanization": "ajik an wasseoyo",
+          "english": "It hasn't arrived yet"
+        },
+        {
+          "hangul": "잘 받았어요",
+          "romanization": "jal badasseoyo",
+          "english": "I received it, thanks"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:08:03.535Z",
+      "pinTitle": "Ordering food delivery in Korean? Use these handy phrases when"
+    },
+    {
+      "bundleId": "phrase-compliments",
+      "slug": "compliment-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Compliment phrases in Korean",
+      "description": "These compliment phrases in Korean are commonly used to express positive feelings about someone's skills, appearance, or style. They are simple and useful fo…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148111075-phrase-compliments.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148111075-phrase-compliments-thumb.webp",
+      "words": [
+        {
+          "hangul": "잘한다",
+          "romanization": "jalhanda",
+          "english": "You're good at that"
+        },
+        {
+          "hangul": "멋있다",
+          "romanization": "meositda",
+          "english": "That's cool / stylish"
+        },
+        {
+          "hangul": "예쁘다",
+          "romanization": "yeppeuda",
+          "english": "You're pretty"
+        },
+        {
+          "hangul": "잘 어울려",
+          "romanization": "jal eoullyeo",
+          "english": "It suits you"
+        },
+        {
+          "hangul": "센스 있다",
+          "romanization": "senseu itda",
+          "english": "You have good taste"
+        },
+        {
+          "hangul": "대단해",
+          "romanization": "daedanhae",
+          "english": "Amazing"
+        },
+        {
+          "hangul": "부럽다",
+          "romanization": "bureopda",
+          "english": "I'm jealous (in a good way)"
+        },
+        {
+          "hangul": "진짜 잘했어",
+          "romanization": "jinjja jalhaesseo",
+          "english": "You did really well"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:08:32.593Z",
+      "pinTitle": "Give compliments like a pro in Korean! Use these phrases to"
+    },
+    {
+      "bundleId": "phrase-kdrama-react",
+      "slug": "k-drama-reaction-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "K-drama reaction phrases in Korean",
+      "description": "These K-drama reaction phrases are common expressions used by fans when watching Korean dramas. They help you share your feelings about exciting scenes, plot…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148234966-phrase-kdrama-react.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148234966-phrase-kdrama-react-thumb.webp",
+      "words": [
+        {
+          "hangul": "미쳤다",
+          "romanization": "michyeotda",
+          "english": "Insane / crazy good"
+        },
+        {
+          "hangul": "소름 돋아",
+          "romanization": "soreum doda",
+          "english": "Goosebumps"
+        },
+        {
+          "hangul": "눈물 나",
+          "romanization": "nunmul na",
+          "english": "I'm tearing up"
+        },
+        {
+          "hangul": "반전이다",
+          "romanization": "banjeonida",
+          "english": "Plot twist"
+        },
+        {
+          "hangul": "연기 진짜 잘해",
+          "romanization": "yeonggi jinjja jalhae",
+          "english": "Acting is so good"
+        },
+        {
+          "hangul": "다음 화 언제야?",
+          "romanization": "daeum hwa eonjeya?",
+          "english": "When's the next episode?"
+        },
+        {
+          "hangul": "스포 하지 마",
+          "romanization": "seupo haji ma",
+          "english": "No spoilers"
+        },
+        {
+          "hangul": "또 보게 돼",
+          "romanization": "tto boge dwae",
+          "english": "I keep rewatching"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:09:02.301Z",
+      "pinTitle": "🗣️ When you're deep in K-content mode:"
+    },
+    {
+      "bundleId": "phrase-emergency-help",
+      "slug": "emergency-help-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Emergency help phrases in Korean",
+      "description": "These emergency help phrases in Korean are essential for travelers and beginners to communicate quickly and clearly in urgent situations. They include reques…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148354582-phrase-emergency-help.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148354582-phrase-emergency-help-thumb.webp",
+      "words": [
+        {
+          "hangul": "도와주세요",
+          "romanization": "dowajuseyo",
+          "english": "Please help"
+        },
+        {
+          "hangul": "경찰 불러 주세요",
+          "romanization": "gyeongchal bulleo juseyo",
+          "english": "Call the police"
+        },
+        {
+          "hangul": "병원 어디에 있어요?",
+          "romanization": "byeongwon eodie isseoyo?",
+          "english": "Where is a hospital?"
+        },
+        {
+          "hangul": "길을 잃었어요",
+          "romanization": "gireul ireosseoyo",
+          "english": "I'm lost"
+        },
+        {
+          "hangul": "지갑을 잃어버렸어요",
+          "romanization": "jigabeul ireobeoryeosseoyo",
+          "english": "I lost my wallet"
+        },
+        {
+          "hangul": "응급상황이에요",
+          "romanization": "eunggeupsanghwangieyo",
+          "english": "It's an emergency"
+        },
+        {
+          "hangul": "영어 하세요?",
+          "romanization": "yeongeo haseyo?",
+          "english": "Do you speak English?"
+        },
+        {
+          "hangul": "통역 필요해요",
+          "romanization": "tongyeok piryohaeyo",
+          "english": "I need an interpreter"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:09:33.143Z",
+      "pinTitle": "Handy Korean for emergency help phrases ✨"
+    },
+    {
+      "bundleId": "phrase-office-smalltalk",
+      "slug": "office-small-talk-in-korean",
+      "format": "phrase_stack",
+      "title": "Office small talk in Korean",
+      "description": "These phrases are commonly used for small talk in an office setting in Korean. They help you communicate about meetings, deadlines, and work tasks in a polit…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148475392-phrase-office-smalltalk.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148475392-phrase-office-smalltalk-thumb.webp",
+      "words": [
+        {
+          "hangul": "오늘 회의 있어요?",
+          "romanization": "oneul hoeui isseoyo?",
+          "english": "Is there a meeting today?"
+        },
+        {
+          "hangul": "메일 보냈어요",
+          "romanization": "meil bonaesseoyo",
+          "english": "I sent an email"
+        },
+        {
+          "hangul": "이거 검토해 주세요",
+          "romanization": "igeo geomtohae juseyo",
+          "english": "Please review this"
+        },
+        {
+          "hangul": "마감이 언제예요?",
+          "romanization": "magami eonjeyeyo?",
+          "english": "When is the deadline?"
+        },
+        {
+          "hangul": "잠깐 괜찮으세요?",
+          "romanization": "jamkkan gwaenchaneuseyo?",
+          "english": "Do you have a moment?"
+        },
+        {
+          "hangul": "회의실 비었어요?",
+          "romanization": "hoeui sil bieosseoyo?",
+          "english": "Is the meeting room free?"
+        },
+        {
+          "hangul": "오늘 야근해요",
+          "romanization": "oneul yageunhaeyo",
+          "english": "I'm working overtime today"
+        },
+        {
+          "hangul": "수고 많으셨어요",
+          "romanization": "sugo maneusyeosseoyo",
+          "english": "You've worked hard"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:10:03.842Z",
+      "pinTitle": "Handy Korean for office small talk ✨"
+    },
+    {
+      "bundleId": "phrase-study-cafe",
+      "slug": "study-cafe-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Study café phrases in Korean",
+      "description": "These common Korean phrases are useful when visiting a study café. They help you ask about seating, Wi-Fi, and other amenities politely. You can also use the…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148591211-phrase-study-cafe.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148591211-phrase-study-cafe-thumb.webp",
+      "words": [
+        {
+          "hangul": "공부하러 왔어",
+          "romanization": "gongbuhareo wasseo",
+          "english": "I came to study"
+        },
+        {
+          "hangul": "자리 있어요?",
+          "romanization": "jari isseoyo?",
+          "english": "Is there a seat?"
+        },
+        {
+          "hangul": "콘센트 있는 자리요",
+          "romanization": "konsenteu inneun jariyo",
+          "english": "A seat with an outlet, please"
+        },
+        {
+          "hangul": "와이파이 돼요?",
+          "romanization": "waipai dwaeyo?",
+          "english": "Does Wi-Fi work?"
+        },
+        {
+          "hangul": "조금 조용히 해 주세요",
+          "romanization": "jogeum joyonghi hae juseyo",
+          "english": "Please keep it a bit quieter"
+        },
+        {
+          "hangul": "몇 시간 이용할 거예요",
+          "romanization": "myeot sigan iyonghal geoyeyo",
+          "english": "I'll stay for a few hours"
+        },
+        {
+          "hangul": "음료는 셀프예요?",
+          "romanization": "eumnyoneun selpeuyeyo?",
+          "english": "Is drinks self-serve?"
+        },
+        {
+          "hangul": "짐 두고 나가도 돼요?",
+          "romanization": "jim dugo nagado dwaeyo?",
+          "english": "Can I leave my stuff and go out?"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:10:33.968Z",
+      "pinTitle": "Handy Korean for study café phrases ✨"
+    },
+    {
+      "bundleId": "phrase-birthday-celebrate",
+      "slug": "birthday-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Birthday phrases in Korean",
+      "description": "These birthday phrases in Korean are commonly used during celebrations to express good wishes and excitement. They include polite and casual ways to say happ…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148706109-phrase-birthday-celebrate.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148706109-phrase-birthday-celebrate-thumb.webp",
+      "words": [
+        {
+          "hangul": "생일 축하해",
+          "romanization": "saengil chukahae",
+          "english": "Happy birthday"
+        },
+        {
+          "hangul": "생일 축하해요",
+          "romanization": "saengil chukahaeyo",
+          "english": "Happy birthday (polite)"
+        },
+        {
+          "hangul": "선물 준비했어",
+          "romanization": "seonmul junbihaesseo",
+          "english": "I got you a gift"
+        },
+        {
+          "hangul": "케이크 자르자",
+          "romanization": "keikeu jareuja",
+          "english": "Let's cut the cake"
+        },
+        {
+          "hangul": "소원 빌어",
+          "romanization": "sowon bireo",
+          "english": "Make a wish"
+        },
+        {
+          "hangul": "파티 하자",
+          "romanization": "pati haja",
+          "english": "Let's party"
+        },
+        {
+          "hangul": "나이 한 살 더 먹었다",
+          "romanization": "nai han sal deo meogeotda",
+          "english": "Another year older"
+        },
+        {
+          "hangul": "오늘 주인공이야",
+          "romanization": "oneul juingongiya",
+          "english": "You're the star today"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:11:04.661Z",
+      "pinTitle": "Need easy birthday phrases in Korean? Use these when you"
+    },
+    {
+      "bundleId": "phrase-meeting-friends",
+      "slug": "meeting-friends-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Meeting friends phrases in Korean",
+      "description": "These phrases are useful for meeting friends in Korean. They include common expressions for deciding where to meet, informing about your arrival, and making…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148827137-phrase-meeting-friends.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148827137-phrase-meeting-friends-thumb.webp",
+      "words": [
+        {
+          "hangul": "어디서 볼까?",
+          "romanization": "eodiseo bolkka?",
+          "english": "Where should we meet?"
+        },
+        {
+          "hangul": "지금 출발해",
+          "romanization": "jigeum chulbalhae",
+          "english": "I'm leaving now"
+        },
+        {
+          "hangul": "거의 다 왔어",
+          "romanization": "geoui da wasseo",
+          "english": "I'm almost there"
+        },
+        {
+          "hangul": "입구에서 만나",
+          "romanization": "ipgueseo manna",
+          "english": "Meet at the entrance"
+        },
+        {
+          "hangul": "늦을 것 같아",
+          "romanization": "neujeul geot gata",
+          "english": "I might be late"
+        },
+        {
+          "hangul": "자리 맡아 줄래?",
+          "romanization": "jari mata jullae?",
+          "english": "Can you save a seat?"
+        },
+        {
+          "hangul": "먼저 주문해도 돼?",
+          "romanization": "meonjeo jumunhaedo dwae?",
+          "english": "Can I order first?"
+        },
+        {
+          "hangul": "다음에 또 만나자",
+          "romanization": "daeume tto mannaja",
+          "english": "Let's hang out again"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:11:36.035Z",
+      "pinTitle": "Handy Korean for meeting friends phrases ✨"
+    },
+    {
+      "bundleId": "phrase-work-messages",
+      "slug": "work-chat-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Work chat phrases in Korean",
+      "description": "These are common polite phrases used in Korean work chats. They help you communicate clearly and respectfully with colleagues or clients. The phrases are use…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148944445-phrase-work-messages.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785148944445-phrase-work-messages-thumb.webp",
+      "words": [
+        {
+          "hangul": "확인했습니다",
+          "romanization": "hwaginhaetseumnida",
+          "english": "Got it / Confirmed"
+        },
+        {
+          "hangul": "공유드립니다",
+          "romanization": "gongyudeurimnida",
+          "english": "Sharing this with you"
+        },
+        {
+          "hangul": "회신 부탁드립니다",
+          "romanization": "hoesin butakdeurimnida",
+          "english": "Please reply"
+        },
+        {
+          "hangul": "검토해 주세요",
+          "romanization": "geomtohae juseyo",
+          "english": "Please review"
+        },
+        {
+          "hangul": "오늘 중으로 보낼게요",
+          "romanization": "oneul jungeuro bonaelgeyo",
+          "english": "I'll send it today"
+        },
+        {
+          "hangul": "미팅 가능하세요?",
+          "romanization": "miting ganeunghaseyo?",
+          "english": "Are you free for a meeting?"
+        },
+        {
+          "hangul": "잠시만요",
+          "romanization": "jamsimanyo",
+          "english": "One moment"
+        },
+        {
+          "hangul": "수고하셨습니다",
+          "romanization": "sugohasyeotseumnida",
+          "english": "Thank you for your work"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:12:06.807Z",
+      "pinTitle": "Handy Korean for work chat phrases ✨"
+    },
+    {
+      "bundleId": "phrase-friend-hangout",
+      "slug": "friend-hangout-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Friend hangout phrases in Korean",
+      "description": "These are common Korean phrases used when hanging out with friends. They include casual expressions for boredom, food choices, leaving, drinking, taking phot…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785149053908-phrase-friend-hangout.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785149053908-phrase-friend-hangout-thumb.webp",
+      "words": [
+        {
+          "hangul": "심심해",
+          "romanization": "simsimhae",
+          "english": "I'm bored"
+        },
+        {
+          "hangul": "뭐 먹을래?",
+          "romanization": "mwo meogeullae?",
+          "english": "What do you want to eat?"
+        },
+        {
+          "hangul": "집에 갈래?",
+          "romanization": "jibe gallae?",
+          "english": "Want to go home?"
+        },
+        {
+          "hangul": "한잔할래?",
+          "romanization": "hanjanhallae?",
+          "english": "Want a drink?"
+        },
+        {
+          "hangul": "사진 찍자",
+          "romanization": "sajin jjikja",
+          "english": "Let's take a photo"
+        },
+        {
+          "hangul": "분위기 좋다",
+          "romanization": "bunwigi jota",
+          "english": "Nice vibe"
+        },
+        {
+          "hangul": "배고파 죽겠어",
+          "romanization": "baegopa jukgesseo",
+          "english": "I'm starving"
+        },
+        {
+          "hangul": "오늘 굿나잇",
+          "romanization": "oneul gusnait",
+          "english": "Good night"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:12:36.859Z",
+      "pinTitle": "Handy Korean for friend hangout phrases ✨"
+    },
+    {
+      "bundleId": "phrase-party-invite",
+      "slug": "party-and-invite-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Party & invite phrases in Korean",
+      "description": "These phrases are useful for talking about parties and invitations in Korean. They help you invite friends, ask about details, and express thanks after meeti…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785149170018-phrase-party-invite.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785149170018-phrase-party-invite-thumb.webp",
+      "words": [
+        {
+          "hangul": "이번 주 파티 할 건데",
+          "romanization": "ibeon ju pati hal geonde",
+          "english": "I'm having a party this week"
+        },
+        {
+          "hangul": "올 수 있어?",
+          "romanization": "ol su isseo?",
+          "english": "Can you come?"
+        },
+        {
+          "hangul": "몇 시쯤?",
+          "romanization": "myeot sijjeum?",
+          "english": "Around what time?"
+        },
+        {
+          "hangul": "뭐 가져갈까?",
+          "romanization": "mwo gajyeogalkka?",
+          "english": "What should I bring?"
+        },
+        {
+          "hangul": "즐거웠어 고마워",
+          "romanization": "jeulgeowosseo gomawo",
+          "english": "Thanks, that was fun"
+        },
+        {
+          "hangul": "다음에 또 하자",
+          "romanization": "daeume tto haja",
+          "english": "Let's do it again"
+        },
+        {
+          "hangul": "늦을 것 같아",
+          "romanization": "neujeul geot gata",
+          "english": "I might be late"
+        },
+        {
+          "hangul": "먼저 갈게",
+          "romanization": "meonjeo galge",
+          "english": "I'm heading out first"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:13:07.409Z",
+      "pinTitle": "Handy Korean for party & invite phrases ✨"
+    },
+    {
+      "bundleId": "phrase-greetings-casual",
+      "slug": "casual-greetings-in-korean",
+      "format": "phrase_stack",
+      "title": "Casual greetings in Korean",
+      "description": "These casual greetings are commonly used among friends or people of the same age in Korean. They help you start or end conversations in a friendly and inform…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150275035-phrase-greetings-casual.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150275035-phrase-greetings-casual-thumb.webp",
+      "words": [
+        {
+          "hangul": "안녕",
+          "romanization": "annyeong",
+          "english": "Hi (casual)"
+        },
+        {
+          "hangul": "잘 지냈어?",
+          "romanization": "jal jinaesseo?",
+          "english": "How have you been?"
+        },
+        {
+          "hangul": "오랜만이야",
+          "romanization": "oraenmaniya",
+          "english": "Long time no see"
+        },
+        {
+          "hangul": "뭐 해?",
+          "romanization": "mwo hae?",
+          "english": "What are you doing?"
+        },
+        {
+          "hangul": "나중에 봐",
+          "romanization": "najunge bwa",
+          "english": "See you later"
+        },
+        {
+          "hangul": "잘 가",
+          "romanization": "jal ga",
+          "english": "Bye (to someone leaving)"
+        },
+        {
+          "hangul": "내일 봐",
+          "romanization": "naeil bwa",
+          "english": "See you tomorrow"
+        },
+        {
+          "hangul": "연락할게",
+          "romanization": "yeollakhalge",
+          "english": "I'll text you"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:13:37.049Z",
+      "pinTitle": "Handy Korean for casual greetings ✨"
+    },
+    {
+      "bundleId": "phrase-shopping-phrases",
+      "slug": "everyday-shopping-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Everyday shopping phrases in Korean",
+      "description": "These everyday shopping phrases in Korean are essential for beginners who want to communicate effectively while shopping. They include common questions about…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150279673-phrase-shopping-phrases.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150279673-phrase-shopping-phrases-thumb.webp",
+      "words": [
+        {
+          "hangul": "이거 얼마예요?",
+          "romanization": "igeo eolmayeyo?",
+          "english": "How much is this?"
+        },
+        {
+          "hangul": "할인해요?",
+          "romanization": "harinhaeyo?",
+          "english": "Is it on sale?"
+        },
+        {
+          "hangul": "다른 색깔 있어요?",
+          "romanization": "dareun saekkkal isseoyo?",
+          "english": "Do you have another color?"
+        },
+        {
+          "hangul": "한번 입어봐도 돼요?",
+          "romanization": "hanbeon ibeobwado dwaeyo?",
+          "english": "Can I try it on?"
+        },
+        {
+          "hangul": "좀 더 작은 사이즈요",
+          "romanization": "jom deo jageun saijeuyo",
+          "english": "A smaller size, please"
+        },
+        {
+          "hangul": "이거 살게요",
+          "romanization": "igeo salgeyo",
+          "english": "I'll take this"
+        },
+        {
+          "hangul": "카드로 결제할게요",
+          "romanization": "kadeuro gyeoljehalgeyo",
+          "english": "I'll pay by card"
+        },
+        {
+          "hangul": "영수증 주세요",
+          "romanization": "yeongsujeung juseyo",
+          "english": "Receipt, please"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:14:07.842Z",
+      "pinTitle": "Handy Korean for everyday shopping phrases ✨"
+    },
+    {
+      "bundleId": "phrase-weather-smalltalk",
+      "slug": "weather-small-talk-in-korean",
+      "format": "phrase_stack",
+      "title": "Weather small talk in Korean",
+      "description": "These phrases are useful for making small talk about the weather in Korean. They include common expressions to describe different weather conditions like col…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150282667-phrase-weather-smalltalk.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150282667-phrase-weather-smalltalk-thumb.webp",
+      "words": [
+        {
+          "hangul": "날씨 좋다",
+          "romanization": "nalssi jota",
+          "english": "Nice weather"
+        },
+        {
+          "hangul": "오늘 춥다",
+          "romanization": "oneul chupta",
+          "english": "It's cold today"
+        },
+        {
+          "hangul": "비 온다",
+          "romanization": "bi onda",
+          "english": "It's raining"
+        },
+        {
+          "hangul": "더워서 죽겠다",
+          "romanization": "deowoseo jukgetda",
+          "english": "It's so hot"
+        },
+        {
+          "hangul": "미세먼지 심해",
+          "romanization": "misemeonji simhae",
+          "english": "Fine dust is bad"
+        },
+        {
+          "hangul": "우산 있어?",
+          "romanization": "usan isseo?",
+          "english": "Do you have an umbrella?"
+        },
+        {
+          "hangul": "따뜻해졌어",
+          "romanization": "ttatteuthaejyeosseo",
+          "english": "It got warmer"
+        },
+        {
+          "hangul": "바람 많이 분다",
+          "romanization": "baram mani bunda",
+          "english": "It's really windy"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:14:38.355Z",
+      "pinTitle": "Make small talk about the weather in Korean!"
+    },
+    {
+      "bundleId": "phrase-weekend-plans",
+      "slug": "weekend-plan-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Weekend plan phrases in Korean",
+      "description": "These phrases are useful for talking about weekend plans in Korean. They help you ask about someone's schedule, suggest activities, and respond to invitation…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150285286-phrase-weekend-plans.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150285286-phrase-weekend-plans-thumb.webp",
+      "words": [
+        {
+          "hangul": "주말에 뭐 해?",
+          "romanization": "jumare mwo hae?",
+          "english": "What are you doing this weekend?"
+        },
+        {
+          "hangul": "영화 볼래?",
+          "romanization": "yeonghwa bollae?",
+          "english": "Want to watch a movie?"
+        },
+        {
+          "hangul": "밥 먹으러 갈까?",
+          "romanization": "bap meogeureo galkka?",
+          "english": "Shall we go eat?"
+        },
+        {
+          "hangul": "집에서 쉴래",
+          "romanization": "jibeseo swillae",
+          "english": "I want to rest at home"
+        },
+        {
+          "hangul": "약속 있어",
+          "romanization": "yaksok isseo",
+          "english": "I have plans"
+        },
+        {
+          "hangul": "시간 되면 연락해",
+          "romanization": "sigan doemyeon yeollakhae",
+          "english": "Text me if you're free"
+        },
+        {
+          "hangul": "다음에 하자",
+          "romanization": "daeume haja",
+          "english": "Let's do it next time"
+        },
+        {
+          "hangul": "재밌겠다",
+          "romanization": "jaemitgetda",
+          "english": "That sounds fun"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:15:08.114Z",
+      "pinTitle": "Handy Korean for weekend plan phrases ✨"
+    },
+    {
+      "bundleId": "phrase-beauty-salon",
+      "slug": "salon-and-beauty-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Salon & beauty phrases in Korean",
+      "description": "These Korean phrases are useful when visiting a salon or beauty shop. They help you communicate your needs clearly, such as making a reservation, asking for…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150288608-phrase-beauty-salon.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150288608-phrase-beauty-salon-thumb.webp",
+      "words": [
+        {
+          "hangul": "예약했는데요",
+          "romanization": "yeyakhaenneundeyo",
+          "english": "I have a reservation"
+        },
+        {
+          "hangul": "짧게 잘라 주세요",
+          "romanization": "jjalge jalla juseyo",
+          "english": "Please cut it short"
+        },
+        {
+          "hangul": "염색하고 싶어요",
+          "romanization": "yeomsaekhago sipeoyo",
+          "english": "I want to dye my hair"
+        },
+        {
+          "hangul": "펌 할 수 있어요?",
+          "romanization": "peom hal su isseoyo?",
+          "english": "Can I get a perm?"
+        },
+        {
+          "hangul": "앞머리만 해주세요",
+          "romanization": "apmeoriman haejuseyo",
+          "english": "Just bangs, please"
+        },
+        {
+          "hangul": "자연스럽게 해주세요",
+          "romanization": "jayeonseureopge haejuseyo",
+          "english": "Make it natural"
+        },
+        {
+          "hangul": "얼마예요?",
+          "romanization": "eolmayeyo?",
+          "english": "How much is it?"
+        },
+        {
+          "hangul": "카드로 할게요",
+          "romanization": "kadeuro halgeyo",
+          "english": "Card, please"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:15:39.317Z",
+      "pinTitle": "Need to visit a salon in Korea? Use these handy phrases 👇"
+    },
+    {
+      "bundleId": "phrase-movie-theater",
+      "slug": "movie-theater-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Movie theater phrases in Korean",
+      "description": "These phrases are useful when visiting a movie theater in Korea. They include common expressions for buying tickets, asking about showtimes, ordering snacks,…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150291950-phrase-movie-theater.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150291950-phrase-movie-theater-thumb.webp",
+      "words": [
+        {
+          "hangul": "표 두 장요",
+          "romanization": "pyo du jangyo",
+          "english": "Two tickets"
+        },
+        {
+          "hangul": "저녁 회차요",
+          "romanization": "jeonyeok hoechayo",
+          "english": "Evening showing"
+        },
+        {
+          "hangul": "커플석 있어요?",
+          "romanization": "keopeulseok isseoyo?",
+          "english": "Couple seats?"
+        },
+        {
+          "hangul": "팝콘이랑 콜라요",
+          "romanization": "papkonirang kollayo",
+          "english": "Popcorn and cola"
+        },
+        {
+          "hangul": "자막이에요?",
+          "romanization": "jamagieyo?",
+          "english": "Is it subtitled?"
+        },
+        {
+          "hangul": "자리 안내해 주세요",
+          "romanization": "jari annaehae juseyo",
+          "english": "Please show me the seats"
+        },
+        {
+          "hangul": "재밌었다",
+          "romanization": "jaemisseotda",
+          "english": "That was fun"
+        },
+        {
+          "hangul": "다음엔 뭐 볼까?",
+          "romanization": "daeumen mwo bolkka?",
+          "english": "What should we watch next?"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:16:10.021Z",
+      "pinTitle": "Handy Korean for movie theater phrases ✨"
+    },
+    {
+      "bundleId": "phrase-airport-basics",
+      "slug": "airport-basics-in-korean",
+      "format": "phrase_stack",
+      "title": "Airport basics in Korean",
+      "description": "These basic Korean phrases are useful when navigating airports. They help you ask about gates, check bags, and understand flight status. Knowing these expres…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150295168-phrase-airport-basics.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150295168-phrase-airport-basics-thumb.webp",
+      "words": [
+        {
+          "hangul": "탑승구 어디예요?",
+          "romanization": "tapseunggu eodiyeyo?",
+          "english": "Where's the gate?"
+        },
+        {
+          "hangul": "수하물 맡기려고요",
+          "romanization": "suhamul matgiryeogoyo",
+          "english": "I'd like to check bags"
+        },
+        {
+          "hangul": "기내 반입이에요",
+          "romanization": "ginaebanibieyo",
+          "english": "Carry-on only"
+        },
+        {
+          "hangul": "탑승권 보여 주세요",
+          "romanization": "tapseunggwon boyeo juseyo",
+          "english": "Boarding pass, please"
+        },
+        {
+          "hangul": "연착인가요?",
+          "romanization": "yeonchagingayo?",
+          "english": "Is it delayed?"
+        },
+        {
+          "hangul": "환승이에요",
+          "romanization": "hwanseungieyo",
+          "english": "I'm transferring"
+        },
+        {
+          "hangul": "출국 심사 어디예요?",
+          "romanization": "chulguk simsa eodiyeyo?",
+          "english": "Where is departure immigration?"
+        },
+        {
+          "hangul": "면세점 아직 열려요?",
+          "romanization": "myeonsejeom ajik yeollyeoyo?",
+          "english": "Is duty-free still open?"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:16:40.279Z",
+      "pinTitle": "Handy Korean for airport basics ✨"
+    },
+    {
+      "bundleId": "phrase-moving-day",
+      "slug": "moving-day-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Moving day phrases in Korean",
+      "description": "These phrases are useful for talking about moving day in Korean. They include common expressions you might need when organizing, packing, and coordinating wi…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150299122-phrase-moving-day.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150299122-phrase-moving-day-thumb.webp",
+      "words": [
+        {
+          "hangul": "이사업체 불렀어요",
+          "romanization": "isasieopche bulleosseoyo",
+          "english": "I called movers"
+        },
+        {
+          "hangul": "박스가 더 필요해요",
+          "romanization": "bakseuga deo piryohaeyo",
+          "english": "I need more boxes"
+        },
+        {
+          "hangul": "짐이 많아요",
+          "romanization": "jimi manayo",
+          "english": "There's a lot of stuff"
+        },
+        {
+          "hangul": "엘리베이터 예약했어요",
+          "romanization": "ellibeiteo yeyakhaesseoyo",
+          "english": "I reserved the elevator"
+        },
+        {
+          "hangul": "깨지기 쉬워요",
+          "romanization": "kkaejigi swiwoyo",
+          "english": "It's fragile"
+        },
+        {
+          "hangul": "어디에 둘까요?",
+          "romanization": "eodie dulkkayo?",
+          "english": "Where should I put this?"
+        },
+        {
+          "hangul": "쓰레기 분리해 주세요",
+          "romanization": "sseuregi bunrihae juseyo",
+          "english": "Please sort the trash"
+        },
+        {
+          "hangul": "수고하셨어요",
+          "romanization": "sugohasyeosseoyo",
+          "english": "Thank you for your hard work"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:17:10.969Z",
+      "pinTitle": "Moving day? Use these handy Korean phrases to sound like a pro!"
+    },
+    {
+      "bundleId": "phrase-photo-selfie",
+      "slug": "photo-and-selfie-phrases-in-korean",
+      "format": "phrase_stack",
+      "title": "Photo & selfie phrases in Korean",
+      "description": "These phrases are useful for taking photos and selfies in Korean. They include common expressions to ask someone to take a picture, suggest taking photos tog…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150302289-phrase-photo-selfie.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785150302289-phrase-photo-selfie-thumb.webp",
+      "words": [
+        {
+          "hangul": "사진 찍어 줄래?",
+          "romanization": "sajin jjigeo jullae?",
+          "english": "Can you take a photo?"
+        },
+        {
+          "hangul": "같이 찍자",
+          "romanization": "gachi jjikja",
+          "english": "Let's take one together"
+        },
+        {
+          "hangul": "하나 둘 셋!",
+          "romanization": "hana dul set!",
+          "english": "One, two, three!"
+        },
+        {
+          "hangul": "다시 찍자",
+          "romanization": "dasi jjikja",
+          "english": "Let's retake it"
+        },
+        {
+          "hangul": "필터 쓸까?",
+          "romanization": "pilteo sseulkka?",
+          "english": "Want to use a filter?"
+        },
+        {
+          "hangul": "여기로 와 봐",
+          "romanization": "yeogiro wa bwa",
+          "english": "Come over here"
+        },
+        {
+          "hangul": "웃어 봐",
+          "romanization": "useo bwa",
+          "english": "Smile"
+        },
+        {
+          "hangul": "인스타에 올릴게",
+          "romanization": "inseutae ollilge",
+          "english": "I'll post it on Instagram"
+        }
+      ],
+      "pinnedAt": "2026-07-29T21:17:41.276Z",
+      "pinTitle": "Handy Korean for photo & selfie phrases ✨"
+    }
+  ]
+}

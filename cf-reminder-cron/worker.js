@@ -1,9 +1,10 @@
 /**
- * Cloudflare Worker: booking reminders every 5 min + weekly quiz on Mon 09:00 KST.
+ * Cloudflare Worker: booking reminders every 5 min +
+ * weekly quiz Mon 09:00 KST + popular expressions Thu 09:00 KST.
  * Set secrets: REMINDER_API_URL, ADMIN_API_KEY
  */
 
-function isWeeklyQuizSlot(now = new Date()) {
+function seoulParts(now = new Date()) {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: "Asia/Seoul",
     weekday: "short",
@@ -11,10 +12,21 @@ function isWeeklyQuizSlot(now = new Date()) {
     minute: "numeric",
     hour12: false,
   }).formatToParts(now);
-  const weekday = parts.find((p) => p.type === "weekday")?.value;
-  const hour = Number(parts.find((p) => p.type === "hour")?.value);
-  const minute = Number(parts.find((p) => p.type === "minute")?.value);
+  return {
+    weekday: parts.find((p) => p.type === "weekday")?.value,
+    hour: Number(parts.find((p) => p.type === "hour")?.value),
+    minute: Number(parts.find((p) => p.type === "minute")?.value),
+  };
+}
+
+function isWeeklyQuizSlot(now = new Date()) {
+  const { weekday, hour, minute } = seoulParts(now);
   return weekday === "Mon" && hour === 9 && minute < 5;
+}
+
+function isPopularExpressionsSlot(now = new Date()) {
+  const { weekday, hour, minute } = seoulParts(now);
+  return weekday === "Thu" && hour === 9 && minute < 5;
 }
 
 async function callAdminApi(base, key, path, label) {
@@ -51,6 +63,15 @@ export default {
         key,
         "/api/admin/newsletter/weekly-quiz/run",
         "Weekly quiz",
+      );
+    }
+
+    if (isPopularExpressionsSlot()) {
+      await callAdminApi(
+        base,
+        key,
+        "/api/admin/newsletter/popular-expressions/run",
+        "Popular expressions",
       );
     }
   },
