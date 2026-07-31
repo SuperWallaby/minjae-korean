@@ -5,6 +5,7 @@ import { Container } from "@/components/site/Container";
 import { listRecaps } from "@/lib/recapRepo";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const META_KEYWORD = "Study Korean - Lesson Recaps";
 

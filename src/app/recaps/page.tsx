@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/Card";
 import { listRecaps } from "@/lib/recapRepo";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const META_KEYWORD = "Study Korean - Lesson Recaps";
 

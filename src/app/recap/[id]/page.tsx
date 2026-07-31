@@ -15,6 +15,7 @@ import { getRecapById } from "@/lib/recapRepo";
 import { RecapPublicContent } from "./RecapPublicContent";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
