@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import { Suspense } from "react";
 
 import { SubscribeClient } from "@/app/subscribe/SubscribeClient";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const SITE_URL = SITE_ORIGIN;
 
 export const metadata: Metadata = {
-  title: "Get Free Book | Subscribe to What is this in Korean",
+  title: { absolute: "Get Free Book | Subscribe to What is this in Korean" },
   description:
     "Subscribe to What is this in Korean and get a free Korean learning PDF, plus quizzes and challenges every week!",
+  alternates: { canonical: `${SITE_URL}/subscribe` },
   openGraph: {
     title: "Get Free Book | Subscribe to What is this in Korean",
     description:

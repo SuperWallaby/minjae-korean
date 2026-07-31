@@ -15,12 +15,14 @@ function WordPanel({
   imageUrl,
   imageAlt,
   explanation,
+  howToSayHref,
 }: {
   korean: string;
   english: string;
   imageUrl: string;
   imageAlt: string;
   explanation: string;
+  howToSayHref?: string;
 }) {
   return (
     <figure className="overflow-hidden rounded-[1.25rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)]">
@@ -44,6 +46,14 @@ function WordPanel({
         <p className="text-sm leading-relaxed text-[var(--quiz-text-sub)] line-clamp-4">
           {explanation}
         </p>
+        {howToSayHref ? (
+          <Link
+            href={howToSayHref}
+            className="inline-block text-sm font-medium text-[var(--quiz-primary)] underline-offset-2 hover:underline"
+          >
+            How to say {english}
+          </Link>
+        ) : null}
       </figcaption>
     </figure>
   );
@@ -72,6 +82,7 @@ export function VocabDifferenceArticle({ page }: Props) {
           imageUrl={page.left.imageUrl}
           imageAlt={page.left.imageAlt}
           explanation={page.left.explanation}
+          howToSayHref={page.left.whenToUsePath}
         />
         <WordPanel
           korean={page.right.korean}
@@ -79,6 +90,7 @@ export function VocabDifferenceArticle({ page }: Props) {
           imageUrl={page.right.imageUrl}
           imageAlt={page.right.imageAlt}
           explanation={page.right.explanation}
+          howToSayHref={page.right.whenToUsePath}
         />
       </div>
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { whenToUsePath } from "@/lib/whenToUse/slug";
+import { vocabHowToSayPath } from "@/lib/vocabDetail/slug";
 
 export type WhenToUseRelatedItem = {
   id: string;
@@ -15,9 +15,10 @@ export type WhenToUseRelatedItem = {
 
 type Props = {
   items: WhenToUseRelatedItem[];
+  title?: string;
 };
 
-export function WhenToUseRelated({ items }: Props) {
+export function WhenToUseRelated({ items, title = "Related words" }: Props) {
   if (items.length === 0) return null;
 
   return (
@@ -26,7 +27,7 @@ export function WhenToUseRelated({ items }: Props) {
         id="when-to-use-related"
         className="text-lg font-semibold text-[var(--quiz-text)]"
       >
-        Related words
+        {title}
       </h2>
       <ul className="grid gap-3 sm:grid-cols-2">
         {items.map((item) => (
@@ -35,7 +36,7 @@ export function WhenToUseRelated({ items }: Props) {
             className="rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] p-3"
           >
             <Link
-              href={whenToUsePath(item.id, item.slug)}
+              href={vocabHowToSayPath(item.id, item.slug)}
               className="flex gap-3 transition-opacity hover:opacity-90"
             >
               <div className="relative size-16 shrink-0 overflow-hidden rounded-xl border border-[var(--quiz-border)] bg-[var(--quiz-canvas)]">
@@ -60,7 +61,7 @@ export function WhenToUseRelated({ items }: Props) {
                 href={item.comparePath}
                 className="mt-2 inline-block text-xs font-medium text-[var(--quiz-primary)] underline-offset-2 hover:underline"
               >
-                Compare with this word
+                Difference with this word
               </Link>
             ) : null}
           </li>

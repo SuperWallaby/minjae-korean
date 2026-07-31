@@ -15,16 +15,13 @@ import styles from "./seo-mini-quiz-widget.module.css";
 
 const SEO_ROUTE_PREFIXES = [
   "/grammar/",
-  "/when-to-use/",
   "/vocab/",
-  "/vocab/compare/",
 ] as const;
 
 const SEO_HUB_PATHS = new Set([
   "/grammar",
-  "/when-to-use",
   "/vocab",
-  "/vocab/compare",
+  "/vocab/detail",
 ]);
 
 const SEO_DEVICE_ID_KEY = "seo-mini-quiz-device-id";

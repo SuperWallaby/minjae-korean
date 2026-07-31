@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 
-const BASE =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
-const baseUrl = BASE.replace(/\/+$/, "");
+import { vocabDetailSiteBaseUrl } from "@/lib/vocabDetail/slug";
+
+const baseUrl = vocabDetailSiteBaseUrl();
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/", "/api/"],
+        disallow: ["/admin", "/api"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

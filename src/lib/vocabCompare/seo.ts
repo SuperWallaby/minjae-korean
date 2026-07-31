@@ -1,4 +1,5 @@
 import { SITE_NAME } from "@/lib/siteBrand";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import {
   vocabCompareCanonicalUrl,
@@ -78,8 +79,8 @@ export function buildVocabCompareBreadcrumbJsonLd(
       {
         "@type": "ListItem",
         position: 2,
-        name: "Vocab compare",
-        item: `${root}/vocab/compare`,
+        name: "Vocab detail",
+        item: `${root}/vocab/detail`,
       },
       {
         "@type": "ListItem",
@@ -92,9 +93,7 @@ export function buildVocabCompareBreadcrumbJsonLd(
 }
 
 export function vocabCompareSiteBaseUrl(): string {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kajakorean.com"
-  ).replace(/\/+$/, "");
+  return SITE_ORIGIN;
 }
 
 export { vocabCompareCanonicalUrl };

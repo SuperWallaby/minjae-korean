@@ -43,9 +43,7 @@ async function main() {
   const { limit, write } = parseArgs(process.argv.slice(2));
 
   const { buildWhenToUseCatalog } = await import("../src/lib/whenToUse/repo");
-  const { whenToUseCanonicalUrl, whenToUseSiteBaseUrl } = await import(
-    "../src/lib/whenToUse/seo"
-  );
+  const { whenToUseSiteBaseUrl } = await import("../src/lib/whenToUse/seo");
 
   const baseUrl = whenToUseSiteBaseUrl();
   console.log(`\nWhen to use — SEO catalog pipeline`);
@@ -61,12 +59,12 @@ async function main() {
   console.log(`Ready pages: ${pages.length}`);
   console.log(`  with example TTS: ${withExampleTts}`);
   console.log(`  with answer TTS:  ${withAnswerTts}`);
-  console.log(`Hub: ${baseUrl}/when-to-use\n`);
+  console.log(`Hub: ${baseUrl}/vocab/detail\n`);
 
   const preview = pages.slice(0, 25);
   console.log("Sample URLs (first 25):");
   for (const page of preview) {
-    const url = whenToUseCanonicalUrl(baseUrl, page.id, page.slug);
+    const url = `${baseUrl}/vocab/detail/how-to-say/${encodeURIComponent(page.id)}/${encodeURIComponent(page.slug)}`;
     console.log(`  ${url}`);
     console.log(`    ${page.korean} · ${page.english} · examples=${page.examples.length}`);
   }
@@ -82,15 +80,18 @@ async function main() {
       generatedAt: new Date().toISOString(),
       baseUrl,
       total: pages.length,
-      hub: `${baseUrl}/when-to-use`,
+      hub: `${baseUrl}/vocab/detail`,
+      canonicalNote:
+        "Legacy /when-to-use URLs 301 to /vocab/detail/how-to-say",
       pages: pages.map((page) => ({
         id: page.id,
         slug: page.slug,
-        path: `/when-to-use/${page.id}/${page.slug}`,
-        url: whenToUseCanonicalUrl(baseUrl, page.id, page.slug),
+        path: `/vocab/detail/how-to-say/${page.id}/${page.slug}`,
+        url: `${baseUrl}/vocab/detail/how-to-say/${encodeURIComponent(page.id)}/${encodeURIComponent(page.slug)}`,
+        legacyPath: `/when-to-use/${page.id}/${page.slug}`,
         korean: page.korean,
         english: page.english,
-        titleEn: page.titleEn,
+        titleEn: `How to say ${page.english} in Korean`,
         topic: page.topic ?? null,
         examples: page.examples.length,
         hasAnswerTts: Boolean(page.answerTtsUrl),
@@ -105,9 +106,9 @@ async function main() {
   }
 
   console.log("\nSEO checklist:");
-  console.log("  - Sitemap includes /when-to-use + each page URL");
+  console.log("  - Sitemap includes /vocab/detail/how-to-say URLs");
+  console.log("  - Legacy /when-to-use redirects to how-to-say");
   console.log("  - Detail pages ship Article + FAQ + Breadcrumb JSON-LD");
-  console.log("  - Hero image uses illustrationEnglish (or gloss) as alt");
   console.log("  - Do not regenerate explanations here — use korean-quiz backfill if missing\n");
 
   try {

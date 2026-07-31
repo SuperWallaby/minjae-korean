@@ -15,7 +15,12 @@ function clipDescription(text: string, max = 160): string {
 
 /** Project a compare page into the “Difference between…” SEO format. */
 export function toVocabDifferencePage(page: VocabComparePage): VocabComparePage {
-  const titleEn = differenceBetweenTitleEn(page.left.english, page.right.english);
+  const titleEn = differenceBetweenTitleEn(
+    page.left.english,
+    page.right.english,
+    page.left.korean,
+    page.right.korean,
+  );
   const description = clipDescription(
     page.contrast ||
       `${page.left.english} (${page.left.korean}) vs ${page.right.english} (${page.right.korean}) in Korean.`,

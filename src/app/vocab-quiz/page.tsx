@@ -8,14 +8,13 @@ import {
 import {
   getKoreanQuizAppStoreLinks,
 } from "@/lib/koreanQuizAppLinks";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import { VocabQuizClient } from "./VocabQuizClient";
 import { MarketingPage } from "@/components/site/MarketingShell";
 import styles from "@/components/vocab-quiz/vocab-quiz.module.css";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ||
-  "https://kajakorean.com";
+const SITE_URL = SITE_ORIGIN;
 
 const PAGE_URL = `${SITE_URL}/vocab-quiz`;
 const PAGE_TITLE = `${VOCAB_QUIZ_APP_NAME} | Korean Vocab Picture Quiz`;

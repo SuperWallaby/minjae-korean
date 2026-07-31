@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,7 +15,7 @@ import { TopicQuizClient } from "./TopicQuizClient";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 export function generateStaticParams() {
   return TOPIC_QUIZ_SLUGS.map((e) => ({ slug: e.slug }));
@@ -34,7 +35,7 @@ export async function generateMetadata({
   const metaDescription =
     exam.description ?? `Study Korean - topic quiz ${exam.title}.`;
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description: metaDescription,
     openGraph: { title: metaTitle, description: metaDescription, url, siteName: SITE_NAME, type: "website" },
     alternates: { canonical: url },

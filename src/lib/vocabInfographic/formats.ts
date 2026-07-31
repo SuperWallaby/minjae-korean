@@ -180,7 +180,7 @@ export const VOCAB_SIMILAR_SPLIT_FORMAT: VocabSimilarFormat = {
   pairCount: 1,
   sideStructure:
     "scene illustration → English → Hangul → [romanization] → tiny nuance gloss",
-  layout: "vertical split, mirrored structure, shared '비슷한 말' / SIMILAR header",
+  layout: "vertical split, mirrored structure, shared English pair title header (e.g. 'Know vs Understand')",
   titlePattern: "{Word A} vs {Word B}",
   aspectRatio: "4:5",
   whenToUse:

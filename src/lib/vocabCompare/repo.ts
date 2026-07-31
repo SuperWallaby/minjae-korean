@@ -1,7 +1,5 @@
-import {
-  slugifyWhenToUseEnglish,
-  whenToUsePath,
-} from "@/lib/whenToUse/slug";
+import { vocabHowToSayPath } from "@/lib/vocabDetail/slug";
+import { slugifyWhenToUseEnglish } from "@/lib/whenToUse/slug";
 
 import {
   fallbackContrast,
@@ -13,15 +11,14 @@ import {
 import {
   orderedPairIds,
   slugifyVocabComparePair,
-  vocabComparePath,
   vocabCompareTitleEn,
 } from "./slug";
+import { slugifyDifferencePair, vocabDifferencePath } from "@/lib/vocabDetail/slug";
 import type {
   VocabCompareListItem,
   VocabComparePage,
   VocabCompareSide,
 } from "./types";
-import { VOCAB_COMPARE_NEIGHBORS } from "./types";
 
 function toSide(row: SeoEmbeddingRow): VocabCompareSide {
   const slug = slugifyWhenToUseEnglish(row.english);
@@ -33,7 +30,7 @@ function toSide(row: SeoEmbeddingRow): VocabCompareSide {
     imageUrl: row.imageUrl,
     imageAlt: row.english || `Korean word ${row.korean}`,
     explanation: row.explanation,
-    whenToUsePath: whenToUsePath(row.id, slug),
+    whenToUsePath: vocabHowToSayPath(row.id, slug),
   };
 }
 
@@ -65,6 +62,14 @@ type PairSeed = { a: string; b: string };
 
 function collectPairSeeds(pool: SeoEmbeddingRow[]): PairSeed[] {
   const byId = new Map(pool.map((row) => [row.id, row]));
+  const idsByKorean = new Map<string, string[]>();
+  for (const row of pool) {
+    const key = row.korean.trim();
+    if (!key) continue;
+    const ids = idsByKorean.get(key) ?? [];
+    ids.push(row.id);
+    idsByKorean.set(key, ids);
+  }
   const seen = new Set<string>();
   const seeds: PairSeed[] = [];
 
@@ -78,29 +83,26 @@ function collectPairSeeds(pool: SeoEmbeddingRow[]): PairSeed[] {
   };
 
   for (const row of pool) {
-    // Prefer quiz-app cached contrasts (have explicit difference copy).
+    // Only explicit, cached comparison copy is publishable. Resolve old rows
+    // without quizId by their stored Korean label.
     for (const comp of row.comparisons) {
       const otherId = comp.quizId?.trim();
-      if (otherId) add(row.id, otherId);
-    }
-    // High-confidence embedding neighbors (+ same topic when both tagged).
-    for (const { row: neighbor, score } of topSimilarFromPool(
-      pool,
-      row.id,
-      VOCAB_COMPARE_NEIGHBORS,
-      0.68,
-    )) {
-      const topicOk =
-        !row.topic ||
-        !neighbor.topic ||
-        row.topic === neighbor.topic;
-      if (topicOk && score >= 0.68) {
-        add(row.id, neighbor.id);
+      if (otherId) {
+        add(row.id, otherId);
+        continue;
       }
+      const korean = comp.korean?.trim();
+      if (!korean) continue;
+      const matchingIds = idsByKorean.get(korean) ?? [];
+      if (matchingIds.length === 1) add(row.id, matchingIds[0]!);
     }
   }
 
-  return seeds;
+  return seeds.filter(({ a, b }) => {
+    const left = byId.get(a);
+    const right = byId.get(b);
+    return Boolean(left && right && resolveCachedContrast(left, right));
+  });
 }
 
 const PAGES_TTL_MS = 30 * 60 * 1000;
@@ -121,7 +123,8 @@ async function allComparePages(): Promise<VocabComparePage[]> {
       const left = byId.get(seed.a);
       const right = byId.get(seed.b);
       if (!left || !right) continue;
-      pages.push(buildPage(left, right));
+      const page = buildPage(left, right);
+      if (page.contrastSource === "cached") pages.push(page);
     }
     pages.sort((a, b) => (b.updatedAt ?? "").localeCompare(a.updatedAt ?? ""));
     pagesCache = pages;
@@ -243,6 +246,7 @@ export async function listRelatedVocabForQuiz(
     const { leftId, rightId } = orderedPairIds(anchor.id, row.id);
     const leftEn = leftId === anchor.id ? anchor.english : row.english;
     const rightEn = rightId === anchor.id ? anchor.english : row.english;
+    const hasCachedContrast = Boolean(resolveCachedContrast(anchor, row));
     return {
       id: row.id,
       slug,
@@ -250,11 +254,13 @@ export async function listRelatedVocabForQuiz(
       english: row.english,
       imageUrl: row.imageUrl,
       imageAlt: row.english || `Korean word ${row.korean}`,
-      comparePath: vocabComparePath(
-        leftId,
-        rightId,
-        slugifyVocabComparePair(leftEn, rightEn),
-      ),
+      comparePath: hasCachedContrast
+        ? vocabDifferencePath(
+            leftId,
+            rightId,
+            slugifyDifferencePair(leftEn, rightEn),
+          )
+        : undefined,
     };
   });
 }

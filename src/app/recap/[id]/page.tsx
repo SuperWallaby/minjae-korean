@@ -82,7 +82,7 @@ export async function generateMetadata({
   const ogImage = "/kaja-recap.png";
 
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description: metaDescription,
     robots: { index: false, follow: false },
     openGraph: {

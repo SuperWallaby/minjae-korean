@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/siteBrand";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
@@ -19,7 +20,7 @@ import { getExpressionChapterContent } from "@/data/expressionChapterContent";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     chapter.description ??
     "Study Korean Expressions: ready-to-use frames for speaking.";
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description: metaDescription,
     alternates: { canonical },
     openGraph: {

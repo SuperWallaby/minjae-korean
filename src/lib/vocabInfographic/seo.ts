@@ -1,4 +1,5 @@
 import { SITE_NAME } from "@/lib/siteBrand";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import type { VocabSeoPage } from "./seoTypes";
 
@@ -40,10 +41,7 @@ export function vocabSeoCanonicalUrl(
 }
 
 export function vocabSeoSiteBaseUrl(): string {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ||
-    "https://kajakorean.com"
-  );
+  return SITE_ORIGIN;
 }
 
 /** Drop hashtags / heavy emoji noise from tweet for page intro. */

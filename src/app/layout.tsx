@@ -5,13 +5,14 @@ import "./globals.css";
 // NOTE: LiveKit removed (pure WebRTC implementation). Keep this file free of LiveKit imports.
 import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
 import { EducationModeProvider } from "@/lib/EducationModeProvider";
-import { GoogleAnalyticsGate } from "@/components/site/GoogleAnalyticsGate";
+import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { TeachingSpotlight } from "@/components/site/TeachingSpotlight";
 import { QuickNote } from "@/components/QuickNote";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SeoMiniQuizWidget } from "@/components/site/SeoMiniQuizWidget";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import NextTopLoader from "nextjs-toploader";
 import { TeachingCmdDraw } from "@/components/site/MouseDraw";
 
@@ -27,12 +28,8 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
-const METADATA_BASE = new URL(SITE_URL);
-
 export const metadata: Metadata = {
-  metadataBase: METADATA_BASE,
+  metadataBase: new URL(SITE_ORIGIN),
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
@@ -94,7 +91,7 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <MockSessionProvider>
-          <GoogleAnalyticsGate />
+          <GoogleAnalytics />
           <EducationModeProvider>
             <div className="min-h-dvh bg-background">
               <NextTopLoader

@@ -1430,6 +1430,7 @@ const SIMILAR_SEEDS: SimilarSeed[] = [
   },
 ].map((s) => ({
   ...s,
+  priority: s.priority as BundlePriority,
   tags: s.tags ?? ["similar", s.theme],
 }));
 

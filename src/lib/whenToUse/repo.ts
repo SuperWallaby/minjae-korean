@@ -134,11 +134,16 @@ async function fetchSeoReadyDocs(limit?: number): Promise<SeoReadyQuizDoc[]> {
         wordExplanationExamplesReviewed: 1,
         approvedAt: 1,
       },
-    })
-    .sort({ approvedAt: -1, wordExplanationGeneratedAt: -1 });
+    });
 
-  if (limit && limit > 0) cursor.limit(limit);
-  return cursor.toArray();
+  const docs = await cursor.toArray();
+  docs.sort((a, b) => {
+    const aKey = `${a.approvedAt ?? ""}\0${a.wordExplanationGeneratedAt ?? ""}`;
+    const bKey = `${b.approvedAt ?? ""}\0${b.wordExplanationGeneratedAt ?? ""}`;
+    return bKey.localeCompare(aKey);
+  });
+  if (limit && limit > 0) return docs.slice(0, limit);
+  return docs;
 }
 
 export async function listWhenToUsePages(options?: {
@@ -152,7 +157,7 @@ export async function listWhenToUsePages(options?: {
 
   const filter = SEO_READY_FILTER;
   const coll = db.collection<SeoReadyQuizDoc>("korean_quiz_items");
-  const [total, docs] = await Promise.all([
+  const [total, unsorted] = await Promise.all([
     coll.countDocuments(filter),
     coll
       .find(filter, {
@@ -171,11 +176,15 @@ export async function listWhenToUsePages(options?: {
           approvedAt: 1,
         },
       })
-      .sort({ approvedAt: -1, wordExplanationGeneratedAt: -1 })
-      .skip((page - 1) * pageSize)
-      .limit(pageSize)
       .toArray(),
   ]);
+
+  unsorted.sort((a, b) => {
+    const aKey = `${a.approvedAt ?? ""}\0${a.wordExplanationGeneratedAt ?? ""}`;
+    const bKey = `${b.approvedAt ?? ""}\0${b.wordExplanationGeneratedAt ?? ""}`;
+    return bKey.localeCompare(aKey);
+  });
+  const docs = unsorted.slice((page - 1) * pageSize, page * pageSize);
 
   const items = docs
     .map((doc) => toWhenToUseListItem(doc))

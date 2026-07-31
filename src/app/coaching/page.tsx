@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { Container } from "@/components/site/Container";
 import { HomeHeroVideo } from "@/components/site/HomeHeroVideo";
 import { MembersReviewsSection } from "@/components/site/StudentsReviewsSection";
@@ -13,15 +14,15 @@ import React from "react";
 
 export const runtime = "nodejs";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean - Coaching";
 
 export const metadata: Metadata = {
-  title: `Coaching | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Coaching | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean - Coaching: 1:1 Korean coaching with Minjae. Set a clear direction, stay on track with encouragement, and grow with targeted practice. Not just a class—real coaching.",
+  alternates: { canonical: `${SITE_URL}/coaching` },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,

@@ -4,69 +4,76 @@ import { listBlogPosts } from "@/data/blogPosts";
 import {
   LEVEL_EXAM_SLUGS,
   MOCK_EXAM_SLUGS,
+  TOPIC_QUIZ_SLUGS,
 } from "@/data/examsList";
 import { getAllExpressionChapters } from "@/data/expressionChapterList";
 import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
 import { listTopComparisonsForStaticParams } from "@/lib/grammarComparisonsRepo";
 import { listTopGuidesForStaticParams } from "@/lib/grammarGuidesRepo";
-import { listTopVocabCompareForStaticParams, buildVocabCompareCatalog } from "@/lib/vocabCompare/repo";
+import { buildVocabCompareCatalog } from "@/lib/vocabCompare/repo";
 import { toVocabDifferencePage } from "@/lib/vocabDetail/project";
+import { vocabDetailSiteBaseUrl } from "@/lib/vocabDetail/slug";
 import { listAllVocabSeoPages } from "@/lib/vocabInfographic/repo";
 import { listTopWhenToUseForStaticParams } from "@/lib/whenToUse/repo";
 import { listSongs } from "@/lib/songsRepo";
 import { listDramas } from "@/lib/dramaRepo";
 
-const BASE =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
-const baseUrl = BASE.replace(/\/+$/, "");
+const baseUrl = vocabDetailSiteBaseUrl();
+const MAX_SITEMAP_ENTRIES = 49_000;
+
+function warnSitemapSource(source: string, error: unknown) {
+  console.warn(`[sitemap] Failed to load ${source}:`, error);
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: `${baseUrl}/news`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
-    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: baseUrl, changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/news`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${baseUrl}/blog`, changeFrequency: "weekly", priority: 0.8 },
     // { url: `${baseUrl}/booking`, ... }, // hidden while 1:1 sessions are paused
-    { url: `${baseUrl}/subscribe`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/login`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.3 },
-    { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/grammar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/grammar/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
-    { url: `${baseUrl}/grammar/meaning`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
-    { url: `${baseUrl}/grammar/usage`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
-    { url: `${baseUrl}/grammar/how-to-say`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
-    { url: `${baseUrl}/vocab-quiz`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
-    { url: `${baseUrl}/when-to-use`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/vocab`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
-    { url: `${baseUrl}/vocab/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/vocab/detail`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/expressions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/songs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/drama`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/quoto`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${baseUrl}/account`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${baseUrl}/exams`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/exams/placement`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/subscribe`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/privacy`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/terms`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/grammar`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/grammar/compare`, changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/meaning`, changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/usage`, changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/how-to-say`, changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/vocab-quiz`, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${baseUrl}/vocab`, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${baseUrl}/vocab/detail`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/vocab/detail?tab=how-to-say`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/expressions`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/songs`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/drama`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/quoto`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/support`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/book/korean-beyond-translation`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/coaching`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/exams`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/exams/placement`, changeFrequency: "monthly", priority: 0.7 },
   ];
 
   const examLevelRoutes: MetadataRoute.Sitemap = LEVEL_EXAM_SLUGS.map((e) => ({
     url: `${baseUrl}/exams/level/${encodeURIComponent(e.slug)}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
   const examMockRoutes: MetadataRoute.Sitemap = MOCK_EXAM_SLUGS.map((e) => ({
     url: `${baseUrl}/exams/mock/${encodeURIComponent(e.slug)}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
+  }));
+  const examTopicRoutes: MetadataRoute.Sitemap = TOPIC_QUIZ_SLUGS.map((e) => ({
+    url: `${baseUrl}/exams/topic/${encodeURIComponent(e.slug)}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
   }));
 
   const expressionChapters = getAllExpressionChapters();
   const expressionRoutes: MetadataRoute.Sitemap = expressionChapters.map((ch) => ({
     url: `${baseUrl}/expressions/${encodeURIComponent(ch.slug)}`,
-    lastModified: new Date(),
     changeFrequency: "yearly" as const,
     priority: 0.6,
   }));
@@ -74,7 +81,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const grammarChapters = getAllChapters(grammarChapterList);
   const grammarRoutes: MetadataRoute.Sitemap = grammarChapters.map((ch) => ({
     url: `${baseUrl}/grammar/${encodeURIComponent(ch.slug)}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
@@ -84,8 +90,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   > = [];
   try {
     grammarComparisons = await listTopComparisonsForStaticParams(2000);
-  } catch {
-    // DB unavailable at build time
+  } catch (error) {
+    warnSitemapSource("grammar comparisons", error);
   }
   const grammarComparisonRoutes: MetadataRoute.Sitemap = grammarComparisons.map(
     (c) => ({
@@ -112,8 +118,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         listTopGuidesForStaticParams("usage", 2000),
         listTopGuidesForStaticParams("how-to-say", 2000),
       ]);
-  } catch {
-    // DB unavailable at build time
+  } catch (error) {
+    warnSitemapSource("grammar guides", error);
   }
   const grammarMeaningRoutes: MetadataRoute.Sitemap = grammarMeaningGuides.map(
     (g) => ({
@@ -143,8 +149,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let articles: Awaited<ReturnType<typeof listArticles>> = [];
   try {
     articles = await listArticles(500);
-  } catch {
-    // DB unavailable at build time
+  } catch (error) {
+    warnSitemapSource("news articles", error);
   }
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
@@ -157,12 +163,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogPosts: Awaited<ReturnType<typeof listBlogPosts>> = [];
   try {
     blogPosts = await listBlogPosts(500);
-  } catch {
-    // ignore
+  } catch (error) {
+    warnSitemapSource("blog posts", error);
   }
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${baseUrl}/blog/article/${encodeURIComponent(p.slug)}`,
-    lastModified: p.createdAt ? new Date(p.createdAt) : new Date(),
+    lastModified: p.createdAt ? new Date(p.createdAt) : undefined,
     changeFrequency: "yearly" as const,
     priority: 0.7,
   }));
@@ -170,8 +176,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let songs: Awaited<ReturnType<typeof listSongs>> = [];
   try {
     songs = await listSongs(500);
-  } catch {
-    // DB unavailable at build time
+  } catch (error) {
+    warnSitemapSource("songs", error);
   }
   const songRoutes: MetadataRoute.Sitemap = songs.map((s) => ({
     url: `${baseUrl}/songs/${encodeURIComponent(s.slug)}`,
@@ -183,8 +189,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let dramas: Awaited<ReturnType<typeof listDramas>> = [];
   try {
     dramas = await listDramas(500);
-  } catch {
-    // DB unavailable at build time
+  } catch (error) {
+    warnSitemapSource("dramas", error);
   }
   const dramaRoutes: MetadataRoute.Sitemap = dramas.map((d) => ({
     url: `${baseUrl}/drama/${encodeURIComponent(d.slug)}`,
@@ -198,40 +204,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   > = [];
   try {
     whenToUsePages = await listTopWhenToUseForStaticParams(2000);
-  } catch {
-    // DB unavailable at build time
+  } catch (error) {
+    warnSitemapSource("how-to-say vocab pages", error);
   }
-  const whenToUseRoutes: MetadataRoute.Sitemap = whenToUsePages.map((row) => ({
-    url: `${baseUrl}/when-to-use/${encodeURIComponent(row.id)}/${encodeURIComponent(row.slug)}`,
-    lastModified: row.updatedAt ? new Date(row.updatedAt) : new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }));
-
-  let vocabComparePages: Awaited<
-    ReturnType<typeof listTopVocabCompareForStaticParams>
-  > = [];
-  try {
-    vocabComparePages = await listTopVocabCompareForStaticParams(2000);
-  } catch {
-    // DB unavailable at build time
-  }
-  const vocabCompareRoutes: MetadataRoute.Sitemap = vocabComparePages.map(
-    (row) => ({
-      url: `${baseUrl}/vocab/compare/${encodeURIComponent(row.leftId)}/${encodeURIComponent(row.rightId)}/${encodeURIComponent(row.slug)}`,
-      lastModified: row.updatedAt ? new Date(row.updatedAt) : new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    }),
-  );
 
   let vocabDetailDifferencePages: Awaited<
     ReturnType<typeof buildVocabCompareCatalog>
   > = [];
   try {
     vocabDetailDifferencePages = await buildVocabCompareCatalog(2000);
-  } catch {
-    // DB unavailable at build time
+  } catch (error) {
+    warnSitemapSource("cached vocab differences", error);
   }
   const vocabDetailDifferenceRoutes: MetadataRoute.Sitemap =
     vocabDetailDifferencePages.map((row) => {
@@ -261,15 +244,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.72,
   }));
 
-  return [
+  const routes: MetadataRoute.Sitemap = [
     ...staticRoutes,
     ...grammarRoutes,
     ...grammarComparisonRoutes,
     ...grammarMeaningRoutes,
     ...grammarUsageRoutes,
     ...grammarHowToSayRoutes,
-    ...whenToUseRoutes,
-    ...vocabCompareRoutes,
     ...vocabDetailDifferenceRoutes,
     ...vocabDetailHowToSayRoutes,
     ...vocabSeoRoutes,
@@ -280,5 +261,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...dramaRoutes,
     ...examLevelRoutes,
     ...examMockRoutes,
+    ...examTopicRoutes,
   ];
+  if (routes.length > MAX_SITEMAP_ENTRIES) {
+    console.warn(
+      `[sitemap] Truncating ${routes.length} routes to ${MAX_SITEMAP_ENTRIES}`,
+    );
+  }
+  return routes.slice(0, MAX_SITEMAP_ENTRIES);
 }

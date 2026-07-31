@@ -307,7 +307,9 @@ Mirrored layout, one pair only, contrasting moods.`;
     return `${STYLE_BASE}
 
 FORMAT: Vertical split SIMILAR-WORDS card (NOT antonyms — near-synonyms / confusable pair learners mix up).
-Header: "비슷한 말" bold centered (small English "SIMILAR" under it ok). Soft pastel both sides — mint vs peach or cream vs blush — NOT day/night opposite drama.
+Header: "${title}" bold centered in ENGLISH (the pair title, e.g. "${leftEn} vs ${rightEn}"). Optional small subtitle "Similar words" under it ok.
+HARD BAN for header: do NOT use Korean "비슷한 말" / Hangul title text — English speakers scan the English pair name.
+Soft pastel both sides — mint vs peach or cream vs blush — NOT day/night opposite drama.
 LEFT half: scene for ${leftEn} — English label, Hangul ${leftKo}.
 RIGHT half: scene for ${rightEn} — English label, Hangul ${rightKo}.
 Mirrored layout, one pair only. Difference shown through situation + tiny nuance badge under each Hangul.

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import type { ArticleFeedItem } from "@/components/article/ArticleFeed";
@@ -16,13 +17,12 @@ import { listDramas } from "@/lib/dramaRepo";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean with Dramas";
 
 export const metadata: Metadata = {
-  title: `Drama | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Drama | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/drama` },

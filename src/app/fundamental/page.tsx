@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 
 import { FundamentalChapterListClient } from "@/components/fundamental/FundamentalChapterListClient";
@@ -12,14 +13,15 @@ import { fundamentalChapterList } from "@/data/fundamentalChapterList";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean Fundamentals";
 
 export const metadata: Metadata = {
-  title: `Fundamental | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Fundamental | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
+  robots: { index: false, follow: false },
   openGraph: {
     title: `Fundamental | ${META_KEYWORD} | What is this in Korean`,
     description:

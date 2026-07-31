@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 
 import { ExpressionChapterListClient } from "@/components/expression/ExpressionChapterListClient";
@@ -12,12 +13,12 @@ import { expressionChapterList } from "@/data/expressionChapterList";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean Expressions";
 
 export const metadata: Metadata = {
-  title: `Korean Expressions | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Korean Expressions | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean Expressions: essential expressions with ready-to-use frames. Perfect for beginners who want to speak immediately.",
   openGraph: {

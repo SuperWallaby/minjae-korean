@@ -1,9 +1,21 @@
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { slugifyWhenToUseEnglish } from "@/lib/whenToUse/slug";
 
 export function differenceBetweenTitleEn(
   leftEnglish: string,
   rightEnglish: string,
+  leftKorean?: string,
+  rightKorean?: string,
 ): string {
+  const normalize = (value: string) =>
+    value.trim().toLowerCase().replace(/\s+/g, " ");
+  if (
+    leftKorean?.trim() &&
+    rightKorean?.trim() &&
+    normalize(leftEnglish) === normalize(rightEnglish)
+  ) {
+    return `${leftKorean.trim()} vs ${rightKorean.trim()}: What’s the difference?`;
+  }
   return `Difference between ${leftEnglish.trim()} and ${rightEnglish.trim()} in Korean`;
 }
 
@@ -51,7 +63,5 @@ export function vocabHowToSayCanonicalUrl(
 }
 
 export function vocabDetailSiteBaseUrl(): string {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kajakorean.com"
-  ).replace(/\/+$/, "");
+  return SITE_ORIGIN;
 }

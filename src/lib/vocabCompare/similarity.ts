@@ -157,11 +157,15 @@ export function resolveCachedContrast(
 ): string | null {
   for (const row of left.comparisons) {
     if (row.quizId === right.id) return row.contrast.trim() || null;
-    if (row.korean.trim() === right.korean) return row.contrast.trim() || null;
+    if (!row.quizId && row.korean.trim() === right.korean) {
+      return row.contrast.trim() || null;
+    }
   }
   for (const row of right.comparisons) {
     if (row.quizId === left.id) return row.contrast.trim() || null;
-    if (row.korean.trim() === left.korean) return row.contrast.trim() || null;
+    if (!row.quizId && row.korean.trim() === left.korean) {
+      return row.contrast.trim() || null;
+    }
   }
   return null;
 }

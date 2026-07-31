@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,7 +13,7 @@ import { getMockExamSummary, MOCK_EXAM_SLUGS } from "@/data/examsList";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 export function generateStaticParams() {
   return MOCK_EXAM_SLUGS.map((e) => ({ slug: e.slug }));
@@ -31,7 +32,7 @@ export async function generateMetadata({
   const metaTitle = `${exam.title} | ${META_KEYWORD} | What is this in Korean`;
   const metaDescription = exam.description ?? `Study Korean - Exams: mock TOPIK ${exam.title}.`;
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description: metaDescription,
     openGraph: {
       title: metaTitle,

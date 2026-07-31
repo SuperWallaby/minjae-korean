@@ -19,9 +19,7 @@ import { Logo } from "@/components/site/Logo";
 const LEARN_LINKS = [
   { href: "/vocab-quiz", label: "Vocab quiz" },
   { href: "/vocab/detail", label: "Vocab detail" },
-  { href: "/when-to-use", label: "When to use" },
   { href: "/vocab", label: "Vocab charts" },
-  { href: "/vocab/compare", label: "Vocab compare" },
   { href: "/grammar", label: "Grammar" },
   { href: "/grammar/compare", label: "Grammar compare" },
   { href: "/grammar/meaning", label: "Meaning guides" },

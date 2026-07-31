@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import {
@@ -15,12 +16,12 @@ import { listArticles } from "@/lib/articlesRepo";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean Reading";
 
 export const metadata: Metadata = {
-  title: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean Reading: short news and articles for reading practice, vocabulary, and prompts. Leveled content for learners.",
   openGraph: {

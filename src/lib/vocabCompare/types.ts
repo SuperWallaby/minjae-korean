@@ -36,4 +36,4 @@ export type VocabCompareListItem = {
 /** Min cosine similarity to form a compare/related pair. */
 export const VOCAB_COMPARE_MIN_SCORE = 0.55;
 /** Max similar neighbors considered per word when building pairs. */
-export const VOCAB_COMPARE_NEIGHBORS = 1;
+export const VOCAB_COMPARE_NEIGHBORS = 2;

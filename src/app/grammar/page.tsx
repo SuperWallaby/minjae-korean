@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
@@ -13,12 +14,12 @@ import { grammarChapterList } from "@/data/grammarChapterList";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean Grammar";
 
 export const metadata: Metadata = {
-  title: `Korean Grammar | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Korean Grammar | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean Grammar: particles, tense, speech levels, and more. Short chapters with simple examples and quick practice.",
   openGraph: {

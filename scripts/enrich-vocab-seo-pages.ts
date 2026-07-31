@@ -159,7 +159,7 @@ async function synthesizeSovitsMp3(text: string): Promise<Buffer> {
   const remoteCmd = [
     `export GPT_SOVITS_API_URL="\${GPT_SOVITS_API_URL:-http://127.0.0.1:9880}"`,
     `cd ${REMOTE_AVK}`,
-    `${REMOTE_PY} scripts/generate_korean_quiz_tts.py --text ${JSON.stringify(text)} --output ${remoteOut} --provider sovits --voice-id ${JSON.stringify(SOVITS_VOICE)}`,
+    `${REMOTE_PY} scripts/generate_korean_quiz_tts.py --text=${JSON.stringify(text)} --output ${remoteOut} --provider sovits --voice-id=${JSON.stringify(SOVITS_VOICE)}`,
   ].join(" && ");
 
   await execFileAsync(

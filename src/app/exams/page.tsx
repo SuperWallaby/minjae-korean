@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import {
   MarketingHeader,
@@ -20,12 +21,12 @@ import { cn } from "@/lib/utils";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean - Exams";
 
 export const metadata: Metadata = {
-  title: `Exams | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Exams | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean - Exams: placement test (등급 받기), level tests (A1–B2), and mock TOPIK. Interactive online assessments.",
   openGraph: {

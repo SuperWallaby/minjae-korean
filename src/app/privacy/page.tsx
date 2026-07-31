@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
+
 import {
   MarketingHeader,
   MarketingPage,
   MarketingShell,
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
+import { siteUrl } from "@/lib/siteUrl";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Privacy policy for What is this in Korean and the Korean Quiz app.",
+  alternates: { canonical: siteUrl("/privacy") },
+};
 
 export default function PrivacyPage() {
   return (
@@ -32,6 +42,24 @@ export default function PrivacyPage() {
             <p>
               We also collect usage data, such as how you interact with lessons,
               videos, and features, to improve the learning experience.
+            </p>
+
+            <h2 className="font-medium text-[var(--quiz-text)]">
+              Quiz App Data
+            </h2>
+
+            <p>
+              The What is this in Korean quiz app does not require an account.
+              It may use a random device identifier and quiz activity to serve
+              questions, remember difficulty preferences, and improve learning
+              progress. Favorites and history may also be stored locally on
+              your device.
+            </p>
+
+            <p>
+              If you enable study reminders, we may store a push notification
+              token solely to deliver those reminders. You can disable
+              notifications in your device settings.
             </p>
 
             <h2 className="font-medium text-[var(--quiz-text)]">
@@ -71,7 +99,7 @@ export default function PrivacyPage() {
               If you have any questions about this Privacy Policy, please contact
               us at:
               <br />
-              <span className="text-[var(--quiz-text)]">minjae@kajakorean.com</span>
+              <span className="text-[var(--quiz-text)]">support@trbox.co.kr</span>
             </p>
 
             <p>

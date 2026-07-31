@@ -16,14 +16,20 @@ const ROOT = path.resolve(__dirname, "..");
 const OUT = path.join(ROOT, ".tmp", "vocab-infographic-gen");
 const SCHEDULED = path.join(OUT, "vocab-x-scheduled.json");
 const PINNED = path.join(OUT, "pinterest-pinned.json");
+const PUBLISHED = path.join(
+  ROOT,
+  "src",
+  "data",
+  "vocabInfographic",
+  "published.json",
+);
 const UPLOAD_PIN = path.join(
   ROOT,
   "..",
   "projects/neo-project/auto-video-korean/scripts/pinterest-browser/upload-pin.mjs",
 );
 const DEFAULT_BOARD = process.env.PINTEREST_BOARD_NAME || "Korean words";
-const DEFAULT_LINK =
-  process.env.PINTEREST_DEFAULT_LINK?.trim() || "https://kajakorean.com";
+const SITE_URL = "https://kajakorean.com";
 const DEFAULT_TOPIC =
   process.env.PINTEREST_TOPIC?.trim() || "Korean language";
 const BROWSER_URL = process.env.CHROME_WORK_DEBUG_URL || "http://127.0.0.1:9222";
@@ -62,6 +68,17 @@ function loadJson(file, fallback) {
 function saveJson(file, data) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
+}
+
+function linkForBundle(bundleId, publishedById) {
+  const page = publishedById.get(bundleId);
+  const pathname = page?.slug
+    ? `/vocab/${encodeURIComponent(bundleId)}/${encodeURIComponent(page.slug)}`
+    : "/";
+  const url = new URL(pathname, `${SITE_URL}/`);
+  url.searchParams.set("utm_source", "pinterest");
+  url.searchParams.set("utm_campaign", "vocab-pin");
+  return url.toString();
 }
 
 function titleFromEntry(bundleId, entry) {
@@ -240,7 +257,7 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-function runUploadOnce({ media, title, description, topic, alt }) {
+function runUploadOnce({ media, title, description, topic, alt, link }) {
   const result = spawnSync(
     process.execPath,
     [
@@ -252,7 +269,7 @@ function runUploadOnce({ media, title, description, topic, alt }) {
       "--description",
       description,
       "--link",
-      DEFAULT_LINK,
+      link,
       "--topic",
       topic,
       "--alt",
@@ -331,6 +348,12 @@ async function main() {
   }
   const scheduled = loadJson(SCHEDULED, {});
   const pinned = loadJson(PINNED, {});
+  const published = loadJson(PUBLISHED, { pages: [] });
+  const publishedById = new Map(
+    (Array.isArray(published?.pages) ? published.pages : [])
+      .filter((page) => page?.bundleId && page?.slug)
+      .map((page) => [String(page.bundleId), page]),
+  );
 
   let candidates;
   if (id) {
@@ -353,7 +376,7 @@ async function main() {
     `==> Vocab Pinterest: ${candidates.length} (of ${Object.keys(scheduled).length} scheduled, ${Object.keys(pinned).length} already pinned)`,
   );
   console.log(
-    `    board=${DEFAULT_BOARD} link=${DEFAULT_LINK} topic~=${DEFAULT_TOPIC} delay=${DELAY_SEC}s timeout=${ATTEMPT_TIMEOUT_MS}ms retries=${MAX_RETRIES} dryRun=${dryRun}`,
+    `    board=${DEFAULT_BOARD} site=${SITE_URL} topic~=${DEFAULT_TOPIC} delay=${DELAY_SEC}s timeout=${ATTEMPT_TIMEOUT_MS}ms retries=${MAX_RETRIES} dryRun=${dryRun}`,
   );
 
   if (candidates.length === 0) {
@@ -379,10 +402,12 @@ async function main() {
     const description = descriptionFromEntry(entry, title);
     const topic = topicFromTitle(title);
     const alt = altTextFromEntry(title, bundleId);
+    const link = linkForBundle(bundleId, publishedById);
     console.log(`→ [${i + 1}/${candidates.length}] ${bundleId}`);
     console.log(`   title: ${title}`);
     console.log(`   topic: ${topic}`);
     console.log(`   alt: ${alt}`);
+    console.log(`   link: ${link}`);
     console.log(`   desc: ${description.slice(0, 120).replace(/\n/g, " / ")}…`);
 
     if (dryRun) {
@@ -390,7 +415,14 @@ async function main() {
       continue;
     }
 
-    const result = await uploadWithRetries({ media, title, description, topic, alt });
+    const result = await uploadWithRetries({
+      media,
+      title,
+      description,
+      topic,
+      alt,
+      link,
+    });
     if (!result.ok) {
       console.error(`  failed after retries: ${result.out}`);
       failed += 1;
@@ -411,7 +443,7 @@ async function main() {
       description,
       topic,
       alt,
-      link: DEFAULT_LINK,
+      link,
       board: DEFAULT_BOARD,
       ...(result.publishUnconfirmed || payload.publishUnconfirmed
         ? { publishUnconfirmed: true }

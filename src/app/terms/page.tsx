@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
+
 import {
   MarketingHeader,
   MarketingPage,
   MarketingShell,
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
+import { siteUrl } from "@/lib/siteUrl";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Terms of service for What is this in Korean.",
+  alternates: { canonical: siteUrl("/terms") },
+};
 
 export default function TermsPage() {
   return (

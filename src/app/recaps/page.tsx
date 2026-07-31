@@ -10,10 +10,10 @@ export const runtime = "nodejs";
 const META_KEYWORD = "Study Korean - Lesson Recaps";
 
 export const metadata: Metadata = {
-  title: `Recaps | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Recaps | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: false },
   openGraph: {
     title: `Recaps | ${META_KEYWORD} | What is this in Korean`,
     description:

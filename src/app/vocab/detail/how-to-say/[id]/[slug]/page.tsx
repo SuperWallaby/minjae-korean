@@ -8,7 +8,9 @@ import {
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
 import { VocabHowToSayArticle } from "@/components/vocab-detail/VocabHowToSayArticle";
+import { WhenToUseRelated } from "@/components/when-to-use/WhenToUseRelated";
 import { SITE_NAME } from "@/lib/siteBrand";
+import { listRelatedVocabForQuiz } from "@/lib/vocabCompare/repo";
 import { toVocabHowToSayPage } from "@/lib/vocabDetail/project";
 import {
   buildVocabHowToSayArticleJsonLd,
@@ -37,7 +39,7 @@ type Props = {
 
 export async function generateStaticParams() {
   try {
-    const top = await listTopWhenToUseForStaticParams(500);
+    const top = await listTopWhenToUseForStaticParams(2000);
     return top.map((row) => ({ id: row.id, slug: row.slug }));
   } catch {
     return [];
@@ -63,7 +65,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .join(", ");
 
   return {
-    title: `${page.titleEn} | What is this in Korean`,
+    title: { absolute: `${page.titleEn} | What is this in Korean` },
     description: page.description,
     keywords,
     openGraph: {
@@ -110,6 +112,7 @@ export default async function VocabHowToSayDetailPage({ params }: Props) {
     baseUrl,
     canonical,
   );
+  const related = await listRelatedVocabForQuiz(page.id, 6);
 
   return (
     <MarketingPage containerClassName="max-w-3xl">
@@ -135,8 +138,9 @@ export default async function VocabHowToSayDetailPage({ params }: Props) {
               { label: page.titleEn },
             ]}
           />
-          <div className="mt-6">
+          <div className="mt-6 space-y-10">
             <VocabHowToSayArticle page={page} />
+            <WhenToUseRelated items={related} />
           </div>
         </MarketingShellBody>
       </MarketingShell>

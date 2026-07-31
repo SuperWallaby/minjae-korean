@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import { notFound, permanentRedirect } from "next/navigation";
 
@@ -31,7 +32,7 @@ export const runtime = "nodejs";
 export const dynamicParams = true;
 export const revalidate = 86400;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 const baseUrl = SITE_URL.replace(/\/+$/, "");
 
 /** First URL segment is numeric id; second is Korean SEO slug (ignored for DB lookup). */
@@ -76,7 +77,7 @@ export async function generateMetadata({
   ].join(", ");
 
   return {
-    title: `${title} | What is this in Korean`,
+    title: { absolute: `${title} | What is this in Korean` },
     description,
     keywords,
     openGraph: {

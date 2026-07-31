@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import { Gowun_Batang } from "next/font/google";
 
@@ -14,7 +15,7 @@ import { QuotoPageClient } from "./QuotoPageClient";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const gowunBatang = Gowun_Batang({
   weight: ["400", "700"],
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   title: "Quoto",
   description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
   openGraph: {
-    title: "Quoto | What is this in Korean",
+    title: { absolute: "Quoto | What is this in Korean" },
     description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
     url: `${SITE_URL}/quoto`,
     siteName: SITE_NAME,

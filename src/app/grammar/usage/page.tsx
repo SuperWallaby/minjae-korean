@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
@@ -16,11 +17,11 @@ import { guideBasePath, listGrammarGuides } from "@/lib/grammarGuidesRepo";
 export const runtime = "nodejs";
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 const PAGE_SIZE = 24;
 
 export const metadata: Metadata = {
-  title: "How to Use Korean Grammar | What is this in Korean",
+  title: { absolute: "How to Use Korean Grammar | What is this in Korean" },
   description:
     "Practical usage guides for Korean words and grammar patterns — when and how to use them, with real examples.",
   openGraph: {
@@ -55,18 +56,14 @@ export default async function GrammarUsageIndexPage({ searchParams }: Props) {
           <MarketingHeader
             eyebrow="Grammar"
             title="How to use"
-            lead="SEO-friendly usage guides for Korean words and patterns — when to use them, with examples and a quick quiz."
+            lead="Practical usage guides for Korean words and patterns — when to use them, with examples and a quick quiz."
           />
 
           <GrammarHubCrossLinks current="usage" />
 
           {items.length === 0 ? (
             <p className="mt-8 text-sm text-[var(--quiz-text-sub)]">
-              No usage guides yet. Run{" "}
-              <code className="rounded bg-[var(--quiz-surface-muted)] px-1.5 py-0.5 text-xs">
-                yarn generate-grammar-guide --type usage --word 으로
-              </code>{" "}
-              to create the first entry.
+              Usage guides are temporarily unavailable. Please try again soon.
             </p>
           ) : (
             <ul className="mt-8 divide-y divide-[var(--quiz-border)] rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)]">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -24,7 +25,7 @@ import {
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 export async function generateMetadata({
   params,
@@ -44,7 +45,7 @@ export async function generateMetadata({
   const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
 
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description,
     openGraph: {
       title: metaTitle,

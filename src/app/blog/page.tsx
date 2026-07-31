@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
@@ -12,12 +13,12 @@ import {
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean";
 
 export const metadata: Metadata = {
-  title: `Blog | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Blog | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean: notes and posts about Korean learning, teaching, and practice.",
   openGraph: {

@@ -8,10 +8,12 @@ import {
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
 import { VocabDifferenceArticle } from "@/components/vocab-detail/VocabDifferenceArticle";
+import { WhenToUseRelated } from "@/components/when-to-use/WhenToUseRelated";
 import { SITE_NAME } from "@/lib/siteBrand";
 import {
   buildVocabCompareCatalog,
   getVocabComparePage,
+  listRelatedVocabForQuiz,
 } from "@/lib/vocabCompare/repo";
 import { orderedPairIds } from "@/lib/vocabCompare/slug";
 import { toVocabDifferencePage } from "@/lib/vocabDetail/project";
@@ -38,7 +40,7 @@ type Props = {
 
 export async function generateStaticParams() {
   try {
-    const top = await buildVocabCompareCatalog(400);
+    const top = await buildVocabCompareCatalog(2000);
     return top.map((row) => {
       const page = toVocabDifferencePage(row);
       return {
@@ -66,8 +68,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
 
   return {
-    title: `${page.titleEn} | What is this in Korean`,
+    title: { absolute: `${page.titleEn} | What is this in Korean` },
     description: page.description,
+    robots:
+      source.contrastSource === "cached"
+        ? undefined
+        : { index: false, follow: true },
     keywords: [
       page.left.english,
       page.right.english,
@@ -143,6 +149,18 @@ export default async function VocabDifferenceDetailPage({ params }: Props) {
     baseUrl,
     canonical,
   );
+  const relatedGroups = await Promise.all([
+    listRelatedVocabForQuiz(page.leftId, 4),
+    listRelatedVocabForQuiz(page.rightId, 4),
+  ]);
+  const related = Array.from(
+    new Map(
+      relatedGroups
+        .flat()
+        .filter((item) => item.id !== page.leftId && item.id !== page.rightId)
+        .map((item) => [item.id, item]),
+    ).values(),
+  ).slice(0, 6);
 
   return (
     <MarketingPage containerClassName="max-w-3xl">
@@ -168,8 +186,12 @@ export default async function VocabDifferenceDetailPage({ params }: Props) {
               { label: page.titleEn },
             ]}
           />
-          <div className="mt-6">
+          <div className="mt-6 space-y-10">
             <VocabDifferenceArticle page={page} />
+            <WhenToUseRelated
+              items={related}
+              title="Related Korean words and differences"
+            />
           </div>
         </MarketingShellBody>
       </MarketingShell>

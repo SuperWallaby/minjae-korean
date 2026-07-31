@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
@@ -13,12 +14,12 @@ import { PlacementExamClient } from "./PlacementExamClient";
 
 export const runtime = "nodejs";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean - Exams";
 
 export const metadata: Metadata = {
-  title: `Check my level | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Check my level | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean - Exams: find your Korean level with a short placement test. Interactive assessment.",
   openGraph: {

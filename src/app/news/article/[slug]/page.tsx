@@ -3,6 +3,7 @@ import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
@@ -12,7 +13,6 @@ import { ReadingAudioSync } from "@/components/article/ReadingAudioSync";
 import { VocabularySection } from "@/components/article/VocabularySection";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
-import { Container } from "@/components/site/Container";
 import {
   MarketingPage,
   MarketingShell,
@@ -26,8 +26,7 @@ import { getArticle, listArticles } from "@/lib/articlesRepo";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const SITE_URL = SITE_ORIGIN;
 
 function devOnly() {
   return process.env.NODE_ENV !== "production";
@@ -64,7 +63,7 @@ export async function generateMetadata({
     : `${META_KEYWORD}. ${description}`;
 
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description: metaDescription,
     alternates: { canonical },
     ...(a.noImageIndex && {

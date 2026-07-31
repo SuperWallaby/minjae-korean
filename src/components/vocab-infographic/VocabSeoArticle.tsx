@@ -181,6 +181,13 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
           >
             Open the vocab quiz
           </Link>
+          {" · "}
+          <Link
+            href="/vocab/detail?tab=how-to-say"
+            className="font-semibold text-[var(--quiz-primary)] underline-offset-2 hover:underline"
+          >
+            Browse how-to-say word guides
+          </Link>
           .
         </p>
       </section>

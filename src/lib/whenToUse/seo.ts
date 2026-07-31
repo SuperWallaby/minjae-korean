@@ -1,4 +1,5 @@
 import { SITE_NAME } from "@/lib/siteBrand";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { whenToUseCanonicalUrl, whenToUseTitleEn } from "./slug";
 import type { WhenToUsePage } from "./types";
 
@@ -88,8 +89,8 @@ export function buildWhenToUseBreadcrumbJsonLd(
       {
         "@type": "ListItem",
         position: 2,
-        name: "When to use",
-        item: `${root}/when-to-use`,
+        name: "Vocab detail",
+        item: `${root}/vocab/detail?tab=how-to-say`,
       },
       {
         "@type": "ListItem",
@@ -102,9 +103,7 @@ export function buildWhenToUseBreadcrumbJsonLd(
 }
 
 export function whenToUseSiteBaseUrl(): string {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kajakorean.com"
-  ).replace(/\/+$/, "");
+  return SITE_ORIGIN;
 }
 
 export { whenToUseCanonicalUrl };

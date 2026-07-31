@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/siteBrand";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import {
   MarketingPage,
@@ -15,8 +16,7 @@ import { getDrama } from "@/lib/dramaRepo";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const SITE_URL = SITE_ORIGIN;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const keywords = [d.level, ...(d.tags ?? [])].filter(Boolean).join(", ");
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description,
     ...(keywords && { keywords }),
     alternates: { canonical },

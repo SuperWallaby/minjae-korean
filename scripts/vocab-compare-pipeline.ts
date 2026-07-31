@@ -41,28 +41,31 @@ async function main() {
   const { buildVocabCompareCatalog } = await import(
     "../src/lib/vocabCompare/repo"
   );
+  const { toVocabDifferencePage } = await import("../src/lib/vocabDetail/project");
   const {
-    vocabCompareCanonicalUrl,
-    vocabCompareSiteBaseUrl,
-  } = await import("../src/lib/vocabCompare/seo");
+    vocabDetailSiteBaseUrl,
+    vocabDifferenceCanonicalUrl,
+    vocabDifferencePath,
+  } = await import("../src/lib/vocabDetail/slug");
 
-  const baseUrl = vocabCompareSiteBaseUrl();
+  const baseUrl = vocabDetailSiteBaseUrl();
   console.log(`\nVocab compare — SEO catalog pipeline`);
   console.log(`Site: ${baseUrl}`);
   console.log(`Limit: ${limit}\n`);
 
-  const pages = await buildVocabCompareCatalog(limit);
+  const raw = await buildVocabCompareCatalog(limit);
+  const pages = raw.map((page) => toVocabDifferencePage(page));
   const cachedContrast = pages.filter((p) => p.contrastSource === "cached").length;
 
-  console.log(`Ready compare pages: ${pages.length}`);
+  console.log(`Ready difference pages: ${pages.length}`);
   console.log(`  with cached AI contrast: ${cachedContrast}`);
   console.log(`  with fallback contrast:  ${pages.length - cachedContrast}`);
-  console.log(`Hub: ${baseUrl}/vocab/compare\n`);
+  console.log(`Hub: ${baseUrl}/vocab/detail\n`);
 
   const preview = pages.slice(0, 20);
   console.log("Sample URLs (first 20):");
   for (const page of preview) {
-    const url = vocabCompareCanonicalUrl(
+    const url = vocabDifferenceCanonicalUrl(
       baseUrl,
       page.leftId,
       page.rightId,
@@ -85,13 +88,15 @@ async function main() {
       generatedAt: new Date().toISOString(),
       baseUrl,
       total: pages.length,
-      hub: `${baseUrl}/vocab/compare`,
+      hub: `${baseUrl}/vocab/detail`,
+      canonicalNote:
+        "Legacy /vocab/compare URLs 301 to /vocab/detail/difference",
       pages: pages.map((page) => ({
         leftId: page.leftId,
         rightId: page.rightId,
         slug: page.slug,
-        path: `/vocab/compare/${page.leftId}/${page.rightId}/${page.slug}`,
-        url: vocabCompareCanonicalUrl(
+        path: vocabDifferencePath(page.leftId, page.rightId, page.slug),
+        url: vocabDifferenceCanonicalUrl(
           baseUrl,
           page.leftId,
           page.rightId,
@@ -120,8 +125,8 @@ async function main() {
 
   console.log("\nSEO checklist:");
   console.log("  - Each page has two quiz illustrations with English alt text");
-  console.log("  - Sitemap includes /vocab/compare + pair URLs");
-  console.log("  - when-to-use detail pages link related words + compare\n");
+  console.log("  - Sitemap includes /vocab/detail/difference URLs");
+  console.log("  - Legacy /vocab/compare redirects to difference pages\n");
 
   try {
     const { closeMongoClient } = await import("../src/lib/mongo");

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 
@@ -15,11 +16,11 @@ import { guideBasePath, listGrammarGuides } from "@/lib/grammarGuidesRepo";
 export const runtime = "nodejs";
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kaja.kr";
+const SITE_URL = SITE_ORIGIN;
 const PAGE_SIZE = 24;
 
 export const metadata: Metadata = {
-  title: "How to Say It in Korean | What is this in Korean",
+  title: { absolute: "How to Say It in Korean | What is this in Korean" },
   description:
     "How to say everyday English phrases in Korean — natural expressions, formality tips, examples, and a quick quiz.",
   openGraph: {
@@ -64,11 +65,7 @@ export default async function GrammarHowToSayIndexPage({ searchParams }: Props) 
 
           {items.length === 0 ? (
             <p className="mt-8 text-sm text-[var(--quiz-text-sub)]">
-              No how-to-say guides yet. Run{" "}
-              <code className="rounded bg-[var(--quiz-surface-muted)] px-1.5 py-0.5 text-xs">
-                yarn generate-grammar-guide --type how-to-say --word &quot;nice to meet you&quot;
-              </code>{" "}
-              to create the first entry.
+              How-to-say guides are temporarily unavailable. Please try again soon.
             </p>
           ) : (
             <ul className="mt-8 divide-y divide-[var(--quiz-border)] rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)]">

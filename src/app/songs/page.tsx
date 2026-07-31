@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import type { ArticleFeedItem } from "@/components/article/ArticleFeed";
@@ -17,13 +18,12 @@ import { listSongs } from "@/lib/songsRepo";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const SITE_URL = SITE_ORIGIN;
 
 const META_KEYWORD = "Study Korean with Songs";
 
 export const metadata: Metadata = {
-  title: `Korean Songs | ${META_KEYWORD} | What is this in Korean`,
+  title: { absolute: `Korean Songs | ${META_KEYWORD} | What is this in Korean` },
   description:
     "Study Korean with Songs: learn Korean through music. Click on lyrics to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/songs` },

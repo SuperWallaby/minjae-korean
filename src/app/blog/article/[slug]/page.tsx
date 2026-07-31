@@ -3,12 +3,12 @@ import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
-import { Container } from "@/components/site/Container";
 import {
   MarketingPage,
   MarketingShell,
@@ -21,8 +21,7 @@ import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
 
 export const runtime = "nodejs";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+const SITE_URL = SITE_ORIGIN;
 
 function buildDescription(a: Awaited<ReturnType<typeof getBlogPost>>): string {
   if (!a) return "";
@@ -55,7 +54,7 @@ export async function generateMetadata({
   const metaDescription = description.includes(META_KEYWORD) ? description : `${META_KEYWORD}. ${description}`;
 
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description: metaDescription,
     ...(a.keywords?.length && { keywords: a.keywords }),
     alternates: { canonical },
