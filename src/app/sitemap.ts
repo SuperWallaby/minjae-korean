@@ -36,17 +36,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/privacy`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/terms`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/grammar`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/grammar/compare`, changeFrequency: "weekly", priority: 0.75 },
-    { url: `${baseUrl}/grammar/meaning`, changeFrequency: "weekly", priority: 0.75 },
-    { url: `${baseUrl}/grammar/usage`, changeFrequency: "weekly", priority: 0.75 },
-    { url: `${baseUrl}/grammar/how-to-say`, changeFrequency: "weekly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/compare`, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/meaning`, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/usage`, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/grammar/how-to-say`, changeFrequency: "monthly", priority: 0.75 },
     { url: `${baseUrl}/vocab-quiz`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/vocab`, changeFrequency: "weekly", priority: 0.85 },
-    { url: `${baseUrl}/vocab/detail`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/vocab/detail?tab=how-to-say`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/vocab/detail`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/vocab/detail?tab=how-to-say`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/expressions`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/songs`, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/drama`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/songs`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/drama`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/quoto`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/support`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/book/korean-beyond-translation`, changeFrequency: "monthly", priority: 0.8 },
@@ -81,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const grammarChapters = getAllChapters(grammarChapterList);
   const grammarRoutes: MetadataRoute.Sitemap = grammarChapters.map((ch) => ({
     url: `${baseUrl}/grammar/${encodeURIComponent(ch.slug)}`,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "yearly" as const,
     priority: 0.6,
   }));
 
@@ -96,8 +96,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const grammarComparisonRoutes: MetadataRoute.Sitemap = grammarComparisons.map(
     (c) => ({
       url: `${baseUrl}/grammar/${c.id}/${encodeURIComponent(c.slug)}`,
-      lastModified: c.updatedAt ? new Date(c.updatedAt) : new Date(),
-      changeFrequency: "monthly" as const,
+      lastModified: c.updatedAt ? new Date(c.updatedAt) : undefined,
+      changeFrequency: "yearly" as const,
       priority: 0.65,
     }),
   );
@@ -124,24 +124,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const grammarMeaningRoutes: MetadataRoute.Sitemap = grammarMeaningGuides.map(
     (g) => ({
       url: `${baseUrl}/grammar/meaning/${g.id}/${encodeURIComponent(g.slug)}`,
-      lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
-      changeFrequency: "monthly" as const,
+      lastModified: g.updatedAt ? new Date(g.updatedAt) : undefined,
+      changeFrequency: "yearly" as const,
       priority: 0.65,
     }),
   );
   const grammarUsageRoutes: MetadataRoute.Sitemap = grammarUsageGuides.map(
     (g) => ({
       url: `${baseUrl}/grammar/usage/${g.id}/${encodeURIComponent(g.slug)}`,
-      lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
-      changeFrequency: "monthly" as const,
+      lastModified: g.updatedAt ? new Date(g.updatedAt) : undefined,
+      changeFrequency: "yearly" as const,
       priority: 0.65,
     }),
   );
   const grammarHowToSayRoutes: MetadataRoute.Sitemap = grammarHowToSayGuides.map(
     (g) => ({
       url: `${baseUrl}/grammar/how-to-say/${g.id}/${encodeURIComponent(g.slug)}`,
-      lastModified: g.updatedAt ? new Date(g.updatedAt) : new Date(),
-      changeFrequency: "monthly" as const,
+      lastModified: g.updatedAt ? new Date(g.updatedAt) : undefined,
+      changeFrequency: "yearly" as const,
       priority: 0.65,
     }),
   );
@@ -221,8 +221,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const page = toVocabDifferencePage(row);
       return {
         url: `${baseUrl}/vocab/detail/difference/${encodeURIComponent(page.leftId)}/${encodeURIComponent(page.rightId)}/${encodeURIComponent(page.slug)}`,
-        lastModified: page.updatedAt ? new Date(page.updatedAt) : new Date(),
-        changeFrequency: "weekly" as const,
+        lastModified: page.updatedAt ? new Date(page.updatedAt) : undefined,
+        changeFrequency: "yearly" as const,
         priority: 0.72,
       };
     });
@@ -230,8 +230,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const vocabDetailHowToSayRoutes: MetadataRoute.Sitemap = whenToUsePages.map(
     (row) => ({
       url: `${baseUrl}/vocab/detail/how-to-say/${encodeURIComponent(row.id)}/${encodeURIComponent(row.slug)}`,
-      lastModified: row.updatedAt ? new Date(row.updatedAt) : new Date(),
-      changeFrequency: "weekly" as const,
+      lastModified: row.updatedAt ? new Date(row.updatedAt) : undefined,
+      changeFrequency: "yearly" as const,
       priority: 0.72,
     }),
   );
@@ -239,8 +239,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const vocabSeoPages = listAllVocabSeoPages();
   const vocabSeoRoutes: MetadataRoute.Sitemap = vocabSeoPages.map((row) => ({
     url: `${baseUrl}/vocab/${encodeURIComponent(row.bundleId)}/${encodeURIComponent(row.slug)}`,
-    lastModified: row.updatedAt ? new Date(row.updatedAt) : new Date(),
-    changeFrequency: "weekly" as const,
+    lastModified: row.updatedAt ? new Date(row.updatedAt) : undefined,
+    changeFrequency: "yearly" as const,
     priority: 0.72,
   }));
 
