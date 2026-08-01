@@ -194,6 +194,21 @@ export function SiteFooter() {
                 <Instagram className="size-4" />
               </a>
               <a
+                href="https://www.pinterest.com/kajakorean/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] text-[var(--quiz-text-sub)] transition hover:text-[var(--quiz-text)]"
+                aria-label="Pinterest @kajakorean"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="size-4 fill-current"
+                  aria-hidden="true"
+                >
+                  <path d="M12.017 1.5c-5.79 0-9.517 3.9-9.517 8.95 0 2.15.85 4.07 2.67 4.79.15.06.28.02.32-.1.03-.09.2-.8.26-1.1.03-.1.02-.18-.07-.28-.42-.5-.68-1.15-.68-2.07 0-2.67 2-5.06 5.21-5.06 2.84 0 4.4 1.74 4.4 4.06 0 3.05-1.35 5.63-3.36 5.63-.99 0-1.73-.82-1.49-1.83.29-1.2.84-2.5.84-3.37 0-.78-.42-1.42-1.28-1.42-.98 0-1.78 1.02-1.78 2.38 0 .87.29 1.45.29 1.45l-1.18 4.98c-.35 1.48-.05 3.3-.03 3.48.02.1.14.14.21.05.1-.12 1.36-1.65 1.79-3.17.12-.43.69-2.7.69-2.7.34.65 1.34 1.22 2.4 1.22 3.16 0 5.31-2.88 5.31-6.74 0-3.67-3.12-6.7-7.33-6.7z" />
+                </svg>
+              </a>
+              <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"

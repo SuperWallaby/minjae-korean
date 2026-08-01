@@ -2262,3 +2262,84 @@
     animation: none !important;
   }
 }
+
+.shareDone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1.25rem 3rem;
+}
+.shareDoneEyebrow {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+.shareDoneTitle {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #111827;
+}
+.shareDoneBody {
+  margin: 0;
+  max-width: 26rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4b5563;
+}
+.shareDoneActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+.sharePrimaryCta,
+.shareSecondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.sharePrimaryCta {
+  background: #0066cc;
+  color: #fff;
+}
+.shareSecondaryCta {
+  background: #eef2ff;
+  color: #0066cc;
+}
+.sharePageWrap {
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 1rem 0 2.5rem;
+}
+.resultShareCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.65rem;
+  padding: 2.75rem 1.25rem 2rem;
+}
+.resultShareScore {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0066cc;
+  line-height: 1;
+}
+.resultShareScorePerfect {
+  color: #248a3d;
+}

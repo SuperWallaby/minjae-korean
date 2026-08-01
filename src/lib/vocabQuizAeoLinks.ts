@@ -13,7 +13,8 @@ export type VocabQuizUtmSource =
   | "newsletter"
   | "vocab-quiz"
   | "hub"
-  | "when-to-use";
+  | "when-to-use"
+  | "share";
 
 /** Queries to spot-check in Google / Perplexity after publishing AEO posts. */
 export const VOCAB_QUIZ_AEO_SMOKE_QUERIES = [
