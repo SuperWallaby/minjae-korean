@@ -655,8 +655,19 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           transform: `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0) rotate(${dragOffset.rot}deg)`,
         } as React.CSSProperties);
 
+    // After reveal: keep the pick + correct answer (app parity); hide other distractors.
     const visibleChoices = revealing
-      ? choices.filter((choice) => choice.id === quiz.correctChoiceId)
+      ? choices.filter((choice) => {
+          if (choice.id === quiz.correctChoiceId) return true;
+          if (
+            selectedId &&
+            choice.id === selectedId &&
+            selectedId !== quiz.correctChoiceId
+          ) {
+            return true;
+          }
+          return false;
+        })
       : choices;
 
     const exampleCard =
@@ -834,7 +845,14 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
                   >
                     <ChoiceLabelWithEnglish
                       label={choice.label}
-                      english={revealing ? choice.english : undefined}
+                      english={
+                        revealing &&
+                        selectedId != null &&
+                        choice.id === selectedId &&
+                        choice.id !== quiz.correctChoiceId
+                          ? choice.english
+                          : undefined
+                      }
                     />
                   </button>
                 );

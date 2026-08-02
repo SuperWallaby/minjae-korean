@@ -912,6 +912,12 @@
   text-overflow: ellipsis;
 }
 
+@media (max-width: 640px) {
+  .choiceEnglishTrail {
+    display: none !important;
+  }
+}
+
 .choiceBtn {
   position: relative;
   border: 2px solid transparent;

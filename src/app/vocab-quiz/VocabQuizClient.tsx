@@ -729,6 +729,7 @@ export function VocabQuizClient() {
             onDone={(opts) => advanceRef.current(opts)}
             onAnswered={recordSetAnswer}
             onSeeDetails={openWordExplain}
+            hideChoiceEnglish={isMobile}
           />
         )}
       </div>

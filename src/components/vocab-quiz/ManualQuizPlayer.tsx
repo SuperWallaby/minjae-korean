@@ -33,11 +33,23 @@ type Props = {
   onDone: (opts?: VocabQuizAdvanceOptions) => void;
   onAnswered?: (correct: boolean) => void;
   onSeeDetails?: () => void;
+  /** Mobile: never show English gloss inside choice pills. */
+  hideChoiceEnglish?: boolean;
 };
 
 export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
   function ManualQuizPlayer(
-    { quiz, deviceId, audio, frozen, paused, onDone, onAnswered, onSeeDetails },
+    {
+      quiz,
+      deviceId,
+      audio,
+      frozen,
+      paused,
+      onDone,
+      onAnswered,
+      onSeeDetails,
+      hideChoiceEnglish = false,
+    },
     ref,
   ) {
     const [choices, setChoices] = React.useState(quiz.choices);
@@ -168,9 +180,19 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
       .filter(Boolean)
       .join(" ");
 
-    // After reveal: keep only the correct option (drop distractors).
+    // After reveal: keep the pick + correct answer (app parity); hide other distractors.
     const visibleChoices = revealing
-      ? choices.filter((choice) => choice.id === quiz.correctChoiceId)
+      ? choices.filter((choice) => {
+          if (choice.id === quiz.correctChoiceId) return true;
+          if (
+            selectedId &&
+            choice.id === selectedId &&
+            selectedId !== quiz.correctChoiceId
+          ) {
+            return true;
+          }
+          return false;
+        })
       : choices;
 
     return (
@@ -213,7 +235,14 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
                 .filter(Boolean)
                 .join(" ");
 
-              const showEnglish = revealing;
+              // App: gloss only on the wrong pick (never on the correct row).
+              // Mobile: no gloss in choice pills.
+              const showEnglish =
+                !hideChoiceEnglish &&
+                revealing &&
+                selectedId != null &&
+                choice.id === selectedId &&
+                choice.id !== quiz.correctChoiceId;
 
               const showSpeak =
                 revealing &&
