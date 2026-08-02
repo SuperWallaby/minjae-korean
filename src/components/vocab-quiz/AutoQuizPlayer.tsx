@@ -30,18 +30,24 @@ type Props = {
   frozen: boolean;
   paused: boolean;
   onDone: (opts?: VocabQuizAdvanceOptions) => void;
+  onAnswered?: (correct: boolean) => void;
 };
 
 export const AutoQuizPlayer = React.forwardRef<AutoQuizPlayerHandle, Props>(
-  function AutoQuizPlayer({ quiz, deviceId, audio, frozen, paused, onDone }, ref) {
+  function AutoQuizPlayer(
+    { quiz, deviceId, audio, frozen, paused, onDone, onAnswered },
+    ref,
+  ) {
     const [phase, setPhase] = React.useState<Phase>("idle");
     const [countdown, setCountdown] = React.useState<number | null>(null);
     const [showAnswer, setShowAnswer] = React.useState(false);
     const [slowHighlight, setSlowHighlight] = React.useState(false);
     const runIdRef = React.useRef(0);
     const onDoneRef = React.useRef(onDone);
+    const onAnsweredRef = React.useRef(onAnswered);
     const skipRef = React.useRef(false);
     onDoneRef.current = onDone;
+    onAnsweredRef.current = onAnswered;
 
     const answerLabel = correctLabelFromPrepared(quiz);
 
@@ -102,6 +108,7 @@ export const AutoQuizPlayer = React.forwardRef<AutoQuizPlayerHandle, Props>(
         setPhase("reveal");
         setShowAnswer(true);
         setCountdown(null);
+        onAnsweredRef.current?.(true);
         if (shouldSkip() || !isActive()) return;
 
         if (quiz.answerTtsUrl) {

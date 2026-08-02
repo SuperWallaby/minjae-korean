@@ -44,6 +44,7 @@ type Props = {
   frozen: boolean;
   paused: boolean;
   onDone: (opts?: VocabQuizAdvanceOptions) => void;
+  onAnswered?: (correct: boolean) => void;
   onShowOptionsChange?: (show: boolean) => void;
   /** Session preference — survives card remounts when owned by parent. */
   chosungHintOn?: boolean;
@@ -200,6 +201,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
       frozen,
       paused,
       onDone,
+      onAnswered,
       onShowOptionsChange,
       chosungHintOn = false,
       onShowChosungHintChange,
@@ -470,6 +472,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           nextFeedback[quiz.correctChoiceId] = "correct";
         }
         setFeedback(nextFeedback);
+        onAnswered?.(correct);
 
         void audio.playSfx(VOCAB_QUIZ_SFX.click);
         const feedbackSfx = correct ? VOCAB_QUIZ_SFX.correct : VOCAB_QUIZ_SFX.wrong;
@@ -493,7 +496,7 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           elapsedMs,
         }).catch(() => undefined);
       },
-      [audio, deviceId, frozen, paused, promoting, quiz, selectedId],
+      [audio, deviceId, frozen, onAnswered, paused, promoting, quiz, selectedId],
     );
 
     const continueAfterReveal = React.useCallback(() => {

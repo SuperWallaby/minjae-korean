@@ -33,5 +33,7 @@ export const SOUND_ENABLED_KEY = "kaja_vocab_quiz_sound";
 export const MODE_KEY = "kaja_vocab_quiz_mode";
 /** First-time reveal coach mark (Tap Anywhere badge). */
 export const TAP_CONTINUE_HINT_KEY = "kaja_vocab_quiz_tap_continue_seen";
+/** App-matching finite quiz set size for the progress bar. */
+export const QUIZ_SET_SIZE = 7;
 
 export type VocabQuizMode = "auto" | "manual" | "studio";

@@ -261,6 +261,7 @@
 }
 
 .cardInner {
+  position: relative;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
   width: 100%;
@@ -269,6 +270,34 @@
   overflow: hidden;
   border-radius: inherit;
   background: #fff;
+}
+
+.cardTtsBtn {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  color: #16a34a;
+  background: rgb(22 163 74 / 0.12);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cardTtsBtn:hover {
+  background: rgb(22 163 74 / 0.2);
+  color: #15803d;
+}
+
+.cardTtsBtn:focus-visible {
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
 }
 
 .cardMain {
@@ -387,20 +416,21 @@
   border-radius: 1.25rem;
 }
 
-.cardStackButton:disabled {
+.cardStackButton[aria-disabled="true"] {
   cursor: default;
+  pointer-events: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .cardStackButton:not(:disabled):hover .cardStackItem[data-layer="top"] {
+  .cardStackButton:not([aria-disabled="true"]):hover .cardStackItem[data-layer="top"] {
     transform: translate(0, -9px) rotate(0deg) scale(1.03);
   }
 
-  .cardStackButton:not(:disabled):hover .cardStackItem[data-layer="mid"] {
+  .cardStackButton:not([aria-disabled="true"]):hover .cardStackItem[data-layer="mid"] {
     transform: translate(-5px, 2px) rotate(-2deg) scale(0.97);
   }
 
-  .cardStackButton:not(:disabled):hover .cardStackItem[data-layer="bot"] {
+  .cardStackButton:not([aria-disabled="true"]):hover .cardStackItem[data-layer="bot"] {
     transform: translate(-11px, 8px) rotate(-5deg) scale(0.92);
   }
 }

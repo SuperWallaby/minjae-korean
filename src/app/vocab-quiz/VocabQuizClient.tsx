@@ -18,6 +18,7 @@ import {
 } from "@/components/vocab-quiz/StudioQuizPlayer";
 import { StudioShuffleOverlay } from "@/components/vocab-quiz/StudioShuffleOverlay";
 import { WordExplanationSheet } from "@/components/vocab-quiz/WordExplanationSheet";
+import { QuizSetProgress } from "@/components/vocab-quiz/QuizSetProgress";
 import {
   useVocabQuizKeyboard,
   VocabQuizControls,
@@ -35,6 +36,7 @@ import { VocabQuizAudio } from "@/lib/vocabQuiz/audio";
 import type { VocabQuizCommandId } from "@/lib/vocabQuiz/playbackCommands";
 import {
   MODE_KEY,
+  QUIZ_SET_SIZE,
   SOUND_ENABLED_KEY,
   VOCAB_QUIZ_SFX,
   type VocabQuizMode,
@@ -84,6 +86,13 @@ export function VocabQuizClient() {
   const [studioOptionsOn, setStudioOptionsOn] = React.useState(false);
   const [studioChosungOn, setStudioChosungOn] = React.useState(false);
   const [wordExplainOpen, setWordExplainOpen] = React.useState(false);
+  const [setAnswered, setSetAnswered] = React.useState(0);
+  const [setCorrect, setSetCorrect] = React.useState(0);
+  const [cardAnswered, setCardAnswered] = React.useState(false);
+  const [setComplete, setSetComplete] = React.useState(false);
+  const setAnsweredRef = React.useRef(0);
+  const cardAnsweredRef = React.useRef(false);
+  const setCompleteRef = React.useRef(false);
 
   const {
     current,
@@ -102,10 +111,56 @@ export function VocabQuizClient() {
   const { isFlagged, toggleFlag } = useQuizReviewFlags(deviceId);
   const [flagBusy, setFlagBusy] = React.useState(false);
 
+  const resetQuizSet = React.useCallback(() => {
+    setAnsweredRef.current = 0;
+    cardAnsweredRef.current = false;
+    setCompleteRef.current = false;
+    setSetAnswered(0);
+    setSetCorrect(0);
+    setCardAnswered(false);
+    setSetComplete(false);
+  }, []);
+
+  const recordSetAnswer = React.useCallback((correct?: boolean) => {
+    if (cardAnsweredRef.current || setCompleteRef.current) return;
+    cardAnsweredRef.current = true;
+    setCardAnswered(true);
+    setAnsweredRef.current = Math.min(
+      QUIZ_SET_SIZE,
+      setAnsweredRef.current + 1,
+    );
+    setSetAnswered(setAnsweredRef.current);
+    if (correct === true) {
+      setSetCorrect((n) => Math.min(QUIZ_SET_SIZE, n + 1));
+    }
+  }, []);
+
+  const handlePlayerDone = React.useCallback(
+    async (opts?: VocabQuizAdvanceOptions) => {
+      // Count skips / auto completes if the player didn't report an answer.
+      recordSetAnswer();
+      const answered = setAnsweredRef.current;
+      if (answered >= QUIZ_SET_SIZE) {
+        setCompleteRef.current = true;
+        setSetComplete(true);
+        await advance(opts);
+        return;
+      }
+      cardAnsweredRef.current = false;
+      setCardAnswered(false);
+      await advance(opts);
+    },
+    [advance, recordSetAnswer],
+  );
+
   advanceRef.current = (opts) => {
-    void advance(opts);
+    void handlePlayerDone(opts);
   };
   goBackRef.current = goBack;
+
+  const setCurrentQuestion = cardAnswered
+    ? Math.max(1, setAnswered)
+    : Math.min(QUIZ_SET_SIZE, setAnswered + 1);
 
   const paused = hiddenPaused || userPaused || wordExplainOpen;
   const canGoBack = history.length > 0;
@@ -198,7 +253,7 @@ export function VocabQuizClient() {
     [handleBack, handleNext, togglePause],
   );
 
-  useVocabQuizKeyboard(controlsVisible, {
+  useVocabQuizKeyboard(controlsVisible && !isMobile, {
     onPause: togglePause,
     onBack: handleBack,
     onNext: handleNext,
@@ -246,6 +301,7 @@ export function VocabQuizClient() {
     if (reshuffling || studioShuffleAnim) return;
     void audio.stopAll();
     setUserPaused(false);
+    resetQuizSet();
 
     const isStudio = mode === "studio";
     if (isStudio) {
@@ -281,8 +337,16 @@ export function VocabQuizClient() {
     queue,
     reshuffle,
     reshuffling,
+    resetQuizSet,
     studioShuffleAnim,
   ]);
+
+  const startNextQuizSet = React.useCallback(() => {
+    void audio.stopAll();
+    resetQuizSet();
+    setUserPaused(false);
+    void audio.playSfx(VOCAB_QUIZ_SFX.next, { volume: 0.7 });
+  }, [audio, resetQuizSet]);
 
   const handleToggleFlag = async () => {
     if (!current || flagBusy) return;
@@ -542,6 +606,13 @@ export function VocabQuizClient() {
         </div>
       ) : null}
 
+      {started && !bootstrapping && !error ? (
+        <QuizSetProgress
+          current={setComplete ? QUIZ_SET_SIZE : setCurrentQuestion}
+          total={QUIZ_SET_SIZE}
+        />
+      ) : null}
+
       <div
         className={[
           styles.vocabQuizMain,
@@ -596,6 +667,20 @@ export function VocabQuizClient() {
               Tap to start
             </button>
           </div>
+        ) : setComplete ? (
+          <div className={styles.setCompleteState}>
+            <p className={styles.setCompleteTitle}>Set complete!</p>
+            <p className={styles.setCompleteScore}>
+              {setCorrect} / {QUIZ_SET_SIZE} correct
+            </p>
+            <button
+              type="button"
+              className={styles.setCompleteBtn}
+              onClick={startNextQuizSet}
+            >
+              Next 7
+            </button>
+          </div>
         ) : !current ? (
           <div className={styles.emptyState}>
             <p>No quizzes in queue.</p>
@@ -613,6 +698,7 @@ export function VocabQuizClient() {
             frozen={hiddenPaused}
             paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
+            onAnswered={recordSetAnswer}
           />
         ) : mode === "studio" ? (
           <StudioQuizPlayer
@@ -625,6 +711,7 @@ export function VocabQuizClient() {
             frozen={hiddenPaused}
             paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
+            onAnswered={recordSetAnswer}
             onShowOptionsChange={setStudioOptionsOn}
             chosungHintOn={studioChosungOn}
             onShowChosungHintChange={setStudioChosungOn}
@@ -640,13 +727,14 @@ export function VocabQuizClient() {
             frozen={hiddenPaused}
             paused={userPaused || wordExplainOpen}
             onDone={(opts) => advanceRef.current(opts)}
+            onAnswered={recordSetAnswer}
             onSeeDetails={openWordExplain}
           />
         )}
       </div>
 
       <VocabQuizControls
-        visible={controlsVisible && mode !== "studio"}
+        visible={controlsVisible && mode !== "studio" && !isMobile}
         paused={paused}
         canGoBack={canGoBack}
         onCommand={handleCommand}

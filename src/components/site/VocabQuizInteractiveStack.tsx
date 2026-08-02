@@ -1,14 +1,13 @@
 "use client";
 
 import * as React from "react";
+import { Volume2 } from "lucide-react";
 
 import type { KoreanQuizHomeCard } from "@/lib/koreanQuiz/store";
 import { VOCAB_QUIZ_SFX } from "@/lib/vocabQuiz/constants";
 
 import styles from "./vocab-quiz-home.module.css";
 
-const REVEAL_ANIM_MS = 420;
-const REVEAL_HOLD_MS = 1100;
 const EXIT_MS = 400;
 
 type Phase = "idle" | "revealed" | "exiting";
@@ -52,13 +51,31 @@ function prefetchAudio(url: string) {
 function CardFace({
   card,
   revealed,
+  onReplayTts,
 }: {
   card: KoreanQuizHomeCard;
   revealed?: boolean;
+  onReplayTts?: () => void;
 }) {
   const english = card.illustrationEnglish?.trim();
+  const showSpeaker = Boolean(revealed && card.answerTtsUrl && onReplayTts);
+
   return (
     <div className={`${styles.cardInner} ${revealed ? styles.cardInnerRevealed : ""}`}>
+      {showSpeaker ? (
+        <button
+          type="button"
+          className={styles.cardTtsBtn}
+          onClick={(e) => {
+            e.stopPropagation();
+            onReplayTts?.();
+          }}
+          aria-label="Listen again"
+          title="Listen again"
+        >
+          <Volume2 size={20} strokeWidth={2.25} aria-hidden />
+        </button>
+      ) : null}
       <div className={styles.cardMain}>
         <div className={styles.cardVisual}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -92,7 +109,6 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
   const [exitingCard, setExitingCard] = React.useState<KoreanQuizHomeCard | null>(
     null,
   );
-  const timerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const ttsTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const wordAudioRef = React.useRef<HTMLAudioElement | null>(null);
   const advancingRef = React.useRef(false);
@@ -116,31 +132,32 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
     }
   }, []);
 
-  const playWordTts = React.useCallback((url: string) => {
-    stopWordTts();
-    try {
-      const audio = new Audio(url);
-      audio.volume = 0.92;
-      wordAudioRef.current = audio;
-      void audio.play().catch(() => undefined);
-    } catch {
-      // ignore
-    }
-  }, [stopWordTts]);
+  const playWordTts = React.useCallback(
+    (url: string) => {
+      stopWordTts();
+      try {
+        const audio = new Audio(url);
+        audio.volume = 0.92;
+        wordAudioRef.current = audio;
+        void audio.play().catch(() => undefined);
+      } catch {
+        // ignore
+      }
+    },
+    [stopWordTts],
+  );
+
+  const replayTopTts = React.useCallback(() => {
+    const url = topRef.current.answerTtsUrl;
+    if (!url) return;
+    playWordTts(url);
+  }, [playWordTts]);
 
   const promoting = exitingCard !== null;
-
-  const clearTimer = React.useCallback(() => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-  }, []);
 
   const advance = React.useCallback(() => {
     if (advancingRef.current) return;
     advancingRef.current = true;
-    clearTimer();
     stopWordTts();
     playSfx(VOCAB_QUIZ_SFX.next, 0.5);
     setExitingCard(topRef.current);
@@ -151,10 +168,10 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
       setPhase("idle");
       advancingRef.current = false;
     }, EXIT_MS);
-  }, [clearTimer, deck.length, stopWordTts]);
+  }, [deck.length, stopWordTts]);
 
   const handleTap = () => {
-    if (phase === "exiting") return;
+    if (phase === "exiting" || promoting) return;
     if (phase === "idle") {
       playSfx(VOCAB_QUIZ_SFX.click, 0.45);
       const ttsUrl = topRef.current.answerTtsUrl;
@@ -165,12 +182,9 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
         }, TTS_AFTER_CLICK_MS);
       }
       setPhase("revealed");
-      timerRef.current = setTimeout(
-        advance,
-        REVEAL_ANIM_MS + REVEAL_HOLD_MS,
-      );
       return;
     }
+    // Revealed — require an explicit second tap (no auto-advance).
     advance();
   };
 
@@ -182,10 +196,9 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
 
   React.useEffect(
     () => () => {
-      clearTimer();
       stopWordTts();
     },
-    [clearTimer, stopWordTts],
+    [stopWordTts],
   );
 
   const hint =
@@ -211,11 +224,18 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
         .filter(Boolean)
         .join(" ")}
     >
-      <button
-        type="button"
+      <div
         className={styles.cardStackButton}
+        role="button"
+        tabIndex={promoting ? -1 : 0}
         onClick={handleTap}
-        disabled={promoting}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleTap();
+          }
+        }}
+        aria-disabled={promoting || undefined}
         aria-label={
           phase === "idle"
             ? "Tap to reveal the Korean word"
@@ -251,7 +271,15 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
               data-depth={0}
               data-layer="top"
             >
-              <CardFace card={top} revealed={phase === "revealed"} />
+              <CardFace
+                card={top}
+                revealed={phase === "revealed"}
+                onReplayTts={
+                  phase === "revealed" && top.answerTtsUrl
+                    ? replayTopTts
+                    : undefined
+                }
+              />
             </div>
           ) : null}
 
@@ -265,7 +293,7 @@ export function VocabQuizInteractiveStack({ cards, hero = false }: Props) {
             </div>
           ) : null}
         </div>
-      </button>
+      </div>
       <p
         className={
           hero

@@ -31,12 +31,13 @@ type Props = {
   frozen: boolean;
   paused: boolean;
   onDone: (opts?: VocabQuizAdvanceOptions) => void;
+  onAnswered?: (correct: boolean) => void;
   onSeeDetails?: () => void;
 };
 
 export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
   function ManualQuizPlayer(
-    { quiz, deviceId, audio, frozen, paused, onDone, onSeeDetails },
+    { quiz, deviceId, audio, frozen, paused, onDone, onAnswered, onSeeDetails },
     ref,
   ) {
     const [choices, setChoices] = React.useState(quiz.choices);
@@ -102,6 +103,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
         }
         setFeedback(nextFeedback);
         setRevealing(true);
+        onAnswered?.(correct);
 
         void audio.playSfx(VOCAB_QUIZ_SFX.click);
         const feedbackSfx = correct ? VOCAB_QUIZ_SFX.correct : VOCAB_QUIZ_SFX.wrong;
@@ -127,7 +129,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
           elapsedMs,
         }).catch(() => undefined);
       },
-      [audio, deviceId, frozen, paused, quiz, selectedId],
+      [audio, deviceId, frozen, onAnswered, paused, quiz, selectedId],
     );
 
     const handleAdvance = React.useCallback(async () => {
