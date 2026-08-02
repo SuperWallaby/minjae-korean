@@ -15,7 +15,6 @@ import homeStyles from "@/components/site/vocab-quiz-home.module.css";
 import styles from "./vocab-quiz.module.css";
 import { ChoiceLabelWithEnglish } from "./ChoiceLabelWithEnglish";
 import { AnswerExampleCard } from "./AnswerExampleCard";
-import { DifficultyBadge } from "./VocabQuizShared";
 
 const EXIT_MS = 400;
 const THROW_MS = 420;
@@ -681,7 +680,6 @@ export const StudioQuizPlayer = React.forwardRef<StudioQuizPlayerHandle, Props>(
           <h1 className={styles.studioTitle}>
             What is this in <span className={styles.studioTitleAccent}>Korean</span>?
           </h1>
-          <DifficultyBadge difficulty={quiz.difficulty} />
         </header>
 
         <div className={styles.studioStackWrap}>

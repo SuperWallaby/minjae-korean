@@ -31,5 +31,7 @@ export const AUTO_TIMING = {
 export const DEVICE_ID_KEY = "kaja_vocab_quiz_device_id";
 export const SOUND_ENABLED_KEY = "kaja_vocab_quiz_sound";
 export const MODE_KEY = "kaja_vocab_quiz_mode";
+/** First-time reveal coach mark (Tap Anywhere badge). */
+export const TAP_CONTINUE_HINT_KEY = "kaja_vocab_quiz_tap_continue_seen";
 
 export type VocabQuizMode = "auto" | "manual" | "studio";

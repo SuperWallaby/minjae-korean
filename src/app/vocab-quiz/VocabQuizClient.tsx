@@ -68,7 +68,8 @@ export function VocabQuizClient() {
   const advanceRef = React.useRef<(opts?: VocabQuizAdvanceOptions) => void>(() => undefined);
   const goBackRef = React.useRef<() => void>(() => undefined);
 
-  const [mode, setMode] = React.useState<VocabQuizMode>("studio");
+  const [mode, setMode] = React.useState<VocabQuizMode>("manual");
+  const [isMobile, setIsMobile] = React.useState(false);
   const [soundOn, setSoundOn] = React.useState(true);
   const [hiddenPaused, setHiddenPaused] = React.useState(false);
   const [userPaused, setUserPaused] = React.useState(false);
@@ -117,10 +118,26 @@ export function VocabQuizClient() {
     !error;
 
   React.useEffect(() => {
-    setMode(readModeFromUrl() ?? readStoredMode());
     setSoundOn(true);
     audio.setEnabled(true);
   }, [audio]);
+
+  // Mobile: Manual only (no Studio card-drag / mode chips). Desktop keeps modes.
+  React.useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const sync = () => {
+      const mobile = mq.matches;
+      setIsMobile(mobile);
+      if (mobile) {
+        setMode("manual");
+      } else {
+        setMode(readModeFromUrl() ?? readStoredMode());
+      }
+    };
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   React.useEffect(() => {
     const onVisibility = () => {
@@ -188,6 +205,7 @@ export function VocabQuizClient() {
   });
 
   const setModePersist = (next: VocabQuizMode) => {
+    if (isMobile) return;
     setMode(next);
     try {
       localStorage.setItem(MODE_KEY, next);
@@ -298,6 +316,18 @@ export function VocabQuizClient() {
         .filter(Boolean)
         .join(" ")}
     >
+      <div className={styles.topBrandBar}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={styles.topBrandLogo}
+          src="/brand/logo.webp"
+          alt=""
+          width={44}
+          height={44}
+          decoding="async"
+        />
+      </div>
+
       <div
         className={[
           styles.vocabQuizGameShell,
@@ -318,29 +348,31 @@ export function VocabQuizClient() {
             <Link href="/" className={styles.homeLink} aria-label="Home">
               Home
             </Link>
-            <div className={styles.toolbarGroup}>
-              <button
-                type="button"
-                className={`${styles.modeBtn} ${mode === "manual" ? styles.modeBtnActive : ""}`}
-                onClick={() => setModePersist("manual")}
-              >
-                Manual
-              </button>
-              <button
-                type="button"
-                className={`${styles.modeBtn} ${mode === "auto" ? styles.modeBtnActive : ""}`}
-                onClick={() => setModePersist("auto")}
-              >
-                Auto
-              </button>
-              <button
-                type="button"
-                className={`${styles.modeBtn} ${mode === "studio" ? styles.modeBtnActive : ""}`}
-                onClick={() => setModePersist("studio")}
-              >
-                Studio
-              </button>
-            </div>
+            {!isMobile ? (
+              <div className={styles.toolbarGroup}>
+                <button
+                  type="button"
+                  className={`${styles.modeBtn} ${mode === "manual" ? styles.modeBtnActive : ""}`}
+                  onClick={() => setModePersist("manual")}
+                >
+                  Manual
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.modeBtn} ${mode === "auto" ? styles.modeBtnActive : ""}`}
+                  onClick={() => setModePersist("auto")}
+                >
+                  Auto
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.modeBtn} ${mode === "studio" ? styles.modeBtnActive : ""}`}
+                  onClick={() => setModePersist("studio")}
+                >
+                  Studio
+                </button>
+              </div>
+            ) : null}
             <Link href="/vocab-quiz/review" className={styles.reviewLink}>
               Review
             </Link>
@@ -549,8 +581,9 @@ export function VocabQuizClient() {
           >
             <div className={styles.startTitle}>Vocab Quiz</div>
             <p className={styles.startHint}>
-              Tap to start. Manual picks an answer, Auto plays the countdown, and
-              Studio uses flip cards like the home deck.
+              {isMobile
+                ? "Tap to start. See a picture, pick the Korean word, then tap anywhere to continue."
+                : "Tap to start. Manual picks an answer, Auto plays the countdown, and Studio uses flip cards like the home deck."}
             </p>
             <button
               type="button"

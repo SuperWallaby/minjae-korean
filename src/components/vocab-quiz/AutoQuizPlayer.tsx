@@ -222,18 +222,16 @@ export const AutoQuizPlayer = React.forwardRef<AutoQuizPlayerHandle, Props>(
         }}
         aria-label="Tap to continue"
       >
-        <VocabQuizHeader difficulty={quiz.difficulty} />
+        <VocabQuizHeader />
         {quiz.sentenceStem ? (
           <p className={styles.sentenceStem}>{quiz.sentenceStem}</p>
         ) : null}
         <div className={styles.imageStage}>
-          <div className={styles.imageVisual}>
-            <VocabQuizImage
-              imageUrl={quiz.imageUrl}
-              alt="Quiz illustration"
-              illustrationEnglish={quiz.illustrationEnglish}
-            />
-          </div>
+          <VocabQuizImage
+            imageUrl={quiz.imageUrl}
+            alt="Quiz illustration"
+            illustrationEnglish={quiz.illustrationEnglish}
+          />
           <div className={styles.imageOverlay}>
             {phase === "countdown" && countdown !== null ? (
               <div

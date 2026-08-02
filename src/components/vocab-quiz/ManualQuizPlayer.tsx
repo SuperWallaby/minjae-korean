@@ -6,7 +6,10 @@ import { Volume2 } from "lucide-react";
 import type { KoreanQuizPrepared } from "@/lib/koreanQuiz/types";
 import { shuffle } from "@/lib/koreanQuiz/shuffle";
 import { VocabQuizAudio } from "@/lib/vocabQuiz/audio";
-import { VOCAB_QUIZ_SFX } from "@/lib/vocabQuiz/constants";
+import {
+  TAP_CONTINUE_HINT_KEY,
+  VOCAB_QUIZ_SFX,
+} from "@/lib/vocabQuiz/constants";
 import { postAttempt } from "@/hooks/useVocabQuizQueue";
 import type { VocabQuizAdvanceOptions } from "@/hooks/useVocabQuizQueue";
 
@@ -40,9 +43,18 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
     const [selectedId, setSelectedId] = React.useState<string | null>(null);
     const [feedback, setFeedback] = React.useState<Record<string, ChoiceFeedback>>({});
     const [revealing, setRevealing] = React.useState(false);
+    const [showTapHint, setShowTapHint] = React.useState(false);
     const shownAtRef = React.useRef<number>(Date.now());
     const revealingRef = React.useRef(false);
     revealingRef.current = revealing;
+
+    React.useEffect(() => {
+      try {
+        setShowTapHint(localStorage.getItem(TAP_CONTINUE_HINT_KEY) !== "1");
+      } catch {
+        setShowTapHint(true);
+      }
+    }, []);
 
     React.useEffect(() => {
       setChoices(shuffle(quiz.choices));
@@ -53,6 +65,18 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
       if (quiz.imageUrl) audio.prefetch(quiz.imageUrl);
       if (quiz.answerTtsUrl) audio.prefetch(quiz.answerTtsUrl);
     }, [audio, quiz]);
+
+    const dismissTapHint = React.useCallback(() => {
+      setShowTapHint((prev) => {
+        if (!prev) return prev;
+        try {
+          localStorage.setItem(TAP_CONTINUE_HINT_KEY, "1");
+        } catch {
+          // ignore
+        }
+        return false;
+      });
+    }, []);
 
     const replayAnswerTts = React.useCallback(
       (event?: React.MouseEvent) => {
@@ -108,10 +132,11 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
 
     const handleAdvance = React.useCallback(async () => {
       if (!revealingRef.current || frozen) return;
+      dismissTapHint();
       await audio.stopAll();
       void audio.playSfx(VOCAB_QUIZ_SFX.next);
       onDone({ serverAlreadyConsumed: true });
-    }, [audio, frozen, onDone]);
+    }, [audio, dismissTapHint, frozen, onDone]);
 
     React.useImperativeHandle(
       ref,
@@ -159,7 +184,7 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
         }}
       >
         <div className={styles.manualStageBody}>
-          <VocabQuizHeader difficulty={quiz.difficulty} />
+          <VocabQuizHeader />
           {quiz.sentenceStem ? (
             <p className={styles.sentenceStem}>{quiz.sentenceStem}</p>
           ) : null}
@@ -241,7 +266,34 @@ export const ManualQuizPlayer = React.forwardRef<ManualQuizPlayerHandle, Props>(
               {quiz.romanization ? (
                 <p className={styles.manualRevealRomanization}>{quiz.romanization}</p>
               ) : null}
-              <p className={styles.manualRevealHint}>Tap anywhere to continue</p>
+              {showTapHint ? (
+                <div className={styles.tapContinueBadge}>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M9 11.24V7.5a2.5 2.5 0 0 1 5 0v3.74"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M14 10.5V6.75a2.25 2.25 0 0 1 4.5 0V14a6 6 0 0 1-6 6h-.5a6 6 0 0 1-5.66-4.05L5.2 12.4A1.75 1.75 0 0 1 7.5 10.1l1.5.5"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Tap Anywhere
+                </div>
+              ) : (
+                <p className={styles.manualRevealHint}>Tap anywhere to continue</p>
+              )}
             </div>
           ) : null}
         </div>
