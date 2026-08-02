@@ -503,6 +503,57 @@ export async function setKoreanQuizReviewFlag(
   );
 }
 
+export async function listDeviceKoreanQuizHistory(
+  deviceId: string,
+  limit = 40,
+): Promise<
+  Array<{
+    id: string;
+    imageUrl?: string;
+    correctLabel: string;
+    correctEnglish: string;
+    topic?: string;
+    correct: boolean;
+    attemptedAt: string;
+  }>
+> {
+  const attempts = await listRecentKoreanQuizAttempts(deviceId, Math.max(limit * 3, 60));
+  const latestByQuiz = new Map<string, KoreanQuizAttempt>();
+  for (const attempt of attempts) {
+    if (!attempt.quizId || latestByQuiz.has(attempt.quizId)) continue;
+    latestByQuiz.set(attempt.quizId, attempt);
+    if (latestByQuiz.size >= limit) break;
+  }
+
+  if (latestByQuiz.size === 0) return [];
+
+  const db = await getKoreanQuizDb();
+  const quizIds = [...latestByQuiz.keys()];
+  const items = await db
+    .collection<KoreanQuizItem>("korean_quiz_items")
+    .find({ id: { $in: quizIds } }, { projection: { _id: 0 } })
+    .toArray();
+  const itemById = new Map(items.map((item) => [item.id, item]));
+
+  return quizIds
+    .map((quizId) => {
+      const attempt = latestByQuiz.get(quizId);
+      const item = itemById.get(quizId);
+      if (!attempt || !item) return null;
+      const correct = item.choices.find((c) => c.id === item.correctChoiceId);
+      return {
+        id: item.id,
+        imageUrl: item.imageUrl?.trim() || undefined,
+        correctLabel: correct?.label ?? "",
+        correctEnglish: correct?.english?.trim() ?? "",
+        topic: item.topic,
+        correct: Boolean(attempt.correct),
+        attemptedAt: attempt.createdAt,
+      };
+    })
+    .filter((row): row is NonNullable<typeof row> => row !== null);
+}
+
 export async function listFlaggedKoreanQuizSummaries(): Promise<
   Array<{
     id: string;

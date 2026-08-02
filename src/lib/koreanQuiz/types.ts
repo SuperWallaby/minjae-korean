@@ -157,6 +157,17 @@ export type KoreanQuizFlaggedItem = {
   flaggedAt: string;
 };
 
+/** Per-device solved history shown on /vocab-quiz/review. */
+export type KoreanQuizHistoryItem = {
+  id: string;
+  imageUrl?: string;
+  correctLabel: string;
+  correctEnglish: string;
+  topic?: string;
+  correct: boolean;
+  attemptedAt: string;
+};
+
 export type KoreanQuizAttemptResponse = {
   ok: true;
   correct: boolean;

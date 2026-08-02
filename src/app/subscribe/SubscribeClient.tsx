@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
-import { BookOpen, FileText, Puzzle } from "lucide-react";
+import { BookOpen, FileText, Mail, Puzzle } from "lucide-react";
 
 import { SubscribeWelcome } from "@/components/subscribe/SubscribeWelcome";
 import {
@@ -118,22 +118,30 @@ export function SubscribeClient() {
                       void subscribe();
                     }}
                   >
-                    <label className="grid gap-2">
-                      <span className="text-sm font-medium text-[var(--quiz-text)]">
+                    <label className="grid gap-2.5">
+                      <span className="text-sm font-semibold tracking-tight text-[var(--quiz-text)]">
                         Email address
                       </span>
-                      <Input
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@example.com"
-                        inputMode="email"
-                        autoComplete="email"
-                        disabled={loading}
-                        className="border-[var(--quiz-border)] bg-[var(--quiz-surface)]"
-                      />
+                      <div className="relative">
+                        <span
+                          className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-[var(--quiz-primary)]"
+                          aria-hidden
+                        >
+                          <Mail className="size-5" strokeWidth={2.25} />
+                        </span>
+                        <Input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@example.com"
+                          inputMode="email"
+                          autoComplete="email"
+                          disabled={loading}
+                          className="h-14 rounded-2xl border-2 border-[color-mix(in_srgb,var(--quiz-primary)_42%,var(--quiz-border))] bg-[color-mix(in_srgb,var(--quiz-primary)_6%,var(--quiz-surface))] pl-12 pr-4 text-base font-medium text-[var(--quiz-text)] shadow-[0_10px_28px_color-mix(in_srgb,var(--quiz-primary)_16%,transparent)] placeholder:text-[var(--quiz-text-muted)] focus-visible:border-[var(--quiz-primary)] focus-visible:ring-[var(--quiz-primary)] focus-visible:ring-offset-2"
+                        />
+                      </div>
                     </label>
                     <Button
-                      className="mt-4 w-full"
+                      className="mt-4 w-full shadow-[0_8px_22px_color-mix(in_srgb,var(--quiz-primary)_28%,transparent)]"
                       size="lg"
                       variant="primary"
                       type="submit"

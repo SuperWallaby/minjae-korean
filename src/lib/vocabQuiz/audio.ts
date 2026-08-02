@@ -44,10 +44,17 @@ export class VocabQuizAudio {
     probe.src =
       "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=";
     try {
-      await probe.play();
-      probe.pause();
-      this.unlocked = true;
+      // Some mobile browsers never settle play() on a data-URI probe —
+      // don't block UI (Tap to start) on that promise.
+      await Promise.race([
+        probe.play().then(() => {
+          probe.pause();
+        }),
+        new Promise<void>((resolve) => window.setTimeout(resolve, 250)),
+      ]);
     } catch {
+      // ignore autoplay denial
+    } finally {
       this.unlocked = true;
     }
   }

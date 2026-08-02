@@ -98,7 +98,7 @@ export function VocabQuizClient() {
     deviceId,
   } = useVocabQuizQueue(mode);
 
-  const { count: flaggedCount, isFlagged, toggleFlag } = useQuizReviewFlags(deviceId);
+  const { isFlagged, toggleFlag } = useQuizReviewFlags(deviceId);
   const [flagBusy, setFlagBusy] = React.useState(false);
 
   advanceRef.current = (opts) => {
@@ -209,7 +209,8 @@ export function VocabQuizClient() {
     }
   };
 
-  const handleStart = async () => {
+  const handleStart = () => {
+    if (started) return;
     audio.setEnabled(true);
     setSoundOn(true);
     try {
@@ -217,9 +218,10 @@ export function VocabQuizClient() {
     } catch {
       // ignore
     }
-    await audio.unlock();
     setUserPaused(false);
+    // Start immediately — never gate UI on audio unlock (mobile Safari hangs).
     setStarted(true);
+    void audio.unlock();
   };
 
   const handleReshuffle = React.useCallback(async () => {
@@ -312,95 +314,100 @@ export function VocabQuizClient() {
             .filter(Boolean)
             .join(" ")}
         >
-          <div className={styles.toolbarGroup}>
-            <button
-              type="button"
-              className={`${styles.modeBtn} ${mode === "manual" ? styles.modeBtnActive : ""}`}
-              onClick={() => setModePersist("manual")}
-            >
-              Manual
-            </button>
-            <button
-              type="button"
-              className={`${styles.modeBtn} ${mode === "auto" ? styles.modeBtnActive : ""}`}
-              onClick={() => setModePersist("auto")}
-            >
-              Auto
-            </button>
-            <button
-              type="button"
-              className={`${styles.modeBtn} ${mode === "studio" ? styles.modeBtnActive : ""}`}
-              onClick={() => setModePersist("studio")}
-            >
-              Studio
-            </button>
-          </div>
-        <div className={`${styles.toolbarGroup} ${studioFocus ? styles.toolbarGroupHidden : ""}`}>
-          {started && current && explainKorean ? (
-            <button
-              type="button"
-              className={styles.iconBtn}
-              disabled={bootstrapping || reshuffling || studioShuffleAnim}
-              onClick={openWordExplain}
-              aria-label="Word explanation"
-              title="Word explanation"
-            >
-              <Lightbulb size={16} strokeWidth={2} aria-hidden />
-            </button>
-          ) : null}
-          {started ? (
-            <button
-              type="button"
-              className={styles.iconBtn}
-              disabled={bootstrapping || reshuffling || studioShuffleAnim}
-              onClick={() => void handleReshuffle()}
-              aria-label="Shuffle deck — get a new random quiz list"
-              title="New deck"
-            >
-              <Shuffle
-                size={16}
-                strokeWidth={2}
-                aria-hidden
-                className={
-                  reshuffling || studioShuffleAnim
-                    ? styles.shuffleIconSpin
-                    : undefined
-                }
-              />
-            </button>
-          ) : null}
-          {started ? (
-            <button
-              type="button"
-              className={`${styles.iconBtn} ${currentFlagged ? styles.iconBtnFlagged : ""}`}
-              disabled={!current || flagBusy}
-              onClick={() => void handleToggleFlag()}
-              aria-label={currentFlagged ? "Unflag quiz" : "Flag for review"}
-              aria-pressed={currentFlagged}
-            >
-              <Flag size={16} strokeWidth={2} aria-hidden />
-            </button>
-          ) : null}
-          {flaggedCount > 0 ? (
-            <Link href="/vocab-quiz/review" className={styles.reviewLink}>
-              Review ({flaggedCount})
+          <div className={styles.toolbarScroll}>
+            <Link href="/" className={styles.homeLink} aria-label="Home">
+              Home
             </Link>
-          ) : null}
-          <button
-            type="button"
-            className={styles.iconBtn}
-            onClick={toggleSound}
-            aria-label={soundOn ? "Sound on" : "Sound off"}
-          >
-            {soundOn ? (
-              <Volume2 size={16} strokeWidth={2} aria-hidden />
-            ) : (
-              <VolumeX size={16} strokeWidth={2} aria-hidden />
-            )}
-            <span>{soundOn ? "On" : "Off"}</span>
-          </button>
+            <div className={styles.toolbarGroup}>
+              <button
+                type="button"
+                className={`${styles.modeBtn} ${mode === "manual" ? styles.modeBtnActive : ""}`}
+                onClick={() => setModePersist("manual")}
+              >
+                Manual
+              </button>
+              <button
+                type="button"
+                className={`${styles.modeBtn} ${mode === "auto" ? styles.modeBtnActive : ""}`}
+                onClick={() => setModePersist("auto")}
+              >
+                Auto
+              </button>
+              <button
+                type="button"
+                className={`${styles.modeBtn} ${mode === "studio" ? styles.modeBtnActive : ""}`}
+                onClick={() => setModePersist("studio")}
+              >
+                Studio
+              </button>
+            </div>
+            <Link href="/vocab-quiz/review" className={styles.reviewLink}>
+              Review
+            </Link>
+            <div
+              className={`${styles.toolbarGroup} ${studioFocus ? styles.toolbarGroupHidden : ""}`}
+            >
+              {started && current && explainKorean ? (
+                <button
+                  type="button"
+                  className={styles.iconBtn}
+                  disabled={bootstrapping || reshuffling || studioShuffleAnim}
+                  onClick={openWordExplain}
+                  aria-label="Word explanation"
+                  title="Word explanation"
+                >
+                  <Lightbulb size={16} strokeWidth={2} aria-hidden />
+                </button>
+              ) : null}
+              {started ? (
+                <button
+                  type="button"
+                  className={styles.iconBtn}
+                  disabled={bootstrapping || reshuffling || studioShuffleAnim}
+                  onClick={() => void handleReshuffle()}
+                  aria-label="Shuffle deck — get a new random quiz list"
+                  title="New deck"
+                >
+                  <Shuffle
+                    size={16}
+                    strokeWidth={2}
+                    aria-hidden
+                    className={
+                      reshuffling || studioShuffleAnim
+                        ? styles.shuffleIconSpin
+                        : undefined
+                    }
+                  />
+                </button>
+              ) : null}
+              {started ? (
+                <button
+                  type="button"
+                  className={`${styles.iconBtn} ${currentFlagged ? styles.iconBtnFlagged : ""}`}
+                  disabled={!current || flagBusy}
+                  onClick={() => void handleToggleFlag()}
+                  aria-label={currentFlagged ? "Unflag quiz" : "Flag for review"}
+                  aria-pressed={currentFlagged}
+                >
+                  <Flag size={16} strokeWidth={2} aria-hidden />
+                </button>
+              ) : null}
+              <button
+                type="button"
+                className={styles.iconBtn}
+                onClick={toggleSound}
+                aria-label={soundOn ? "Sound on" : "Sound off"}
+              >
+                {soundOn ? (
+                  <Volume2 size={16} strokeWidth={2} aria-hidden />
+                ) : (
+                  <VolumeX size={16} strokeWidth={2} aria-hidden />
+                )}
+                <span>{soundOn ? "On" : "Off"}</span>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
 
       {studioFocus && started && !showStudioShuffle ? (
         <div className={styles.studioTopActions}>
@@ -528,13 +535,31 @@ export function VocabQuizClient() {
             </button>
           </div>
         ) : !started ? (
-          <div className={styles.startOverlay}>
+          <div
+            className={styles.startOverlay}
+            role="button"
+            tabIndex={0}
+            onClick={handleStart}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleStart();
+              }
+            }}
+          >
             <div className={styles.startTitle}>Vocab Quiz</div>
             <p className={styles.startHint}>
               Tap to start. Manual picks an answer, Auto plays the countdown, and
               Studio uses flip cards like the home deck.
             </p>
-            <button type="button" className={styles.startBtn} onClick={() => void handleStart()}>
+            <button
+              type="button"
+              className={styles.startBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleStart();
+              }}
+            >
               Tap to start
             </button>
           </div>
