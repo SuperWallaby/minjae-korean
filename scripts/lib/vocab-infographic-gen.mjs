@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
@@ -6,24 +7,55 @@ export const IMAGE_DEPLOY = "gpt-image-2";
 export const LOGO_PATH = "public/brand/logo-for-footer.png";
 export const FOOTER_TAGLINE = "What is this in Korean?";
 
-/** Kaja boy from refrefref.png — soft watercolor webtoon (NOT capybara, NOT kimono anime). */
-export const KAJA_MASCOT =
-  "Kaja boy character exactly like brand refrefref.png: young Korean man in soft watercolor digital webtoon style, " +
-  "thin soft brown outlines, pink blush on cheeks, large round dark eyes, black hair under a backwards blue baseball cap, " +
-  "beige oatmeal oversized hoodie, dark backpack strap visible. Friendly smile, pointing at the quiz options.";
+/**
+ * Brand capybara from capybara-style-ref.png / AVK brand-mascots sheet —
+ * lo-fi KakaoTalk sticker doodle (NOT webtoon Jack, NOT polished brown photo-capybara).
+ */
+export const CAPYBARA_MASCOT =
+  "Kaja brand CAPYBARA mascot exactly like the attached doodle sheet: beige/tan pill-shaped potato body, " +
+  "larger oval darker-tan snout, tiny black-dot eyes, soft pink cheek blush, short stubby limbs, " +
+  "wobbly hand-drawn black outlines, flat soft fills. Friendly sticker-chibi pose (pointing / holding a prop / waving). " +
+  "Optional small sidekick: same capybara wearing a vivid electric-blue baseball cap BACKWARDS.";
 
-export const KAJA_ART_STYLE =
-  "Art style must match refrefref.png: soft watercolor/marker webtoon, hand-drawn soft brown outlines, " +
-  "pastel cream/beige/sky-blue palette, gentle shading, cozy slice-of-life mood — NOT flat cel-anime, NOT capybara.";
+export const CAPYBARA_ART_STYLE =
+  "Art style must match the brand CAPYBARA sticker sheet: lo-fi hand-drawn doodle / KakaoTalk sticker pack, " +
+  "slightly shaky uneven black outlines, soft flat pastel fills, minimal shading, cute potato-chibi proportions. " +
+  "Cream / soft pastel backgrounds. NOT polished webtoon, NOT watercolor manhwa Jack, NOT photoreal, NOT cel-anime shine.";
+
+/** @deprecated alias — pins now use capybara doodle, not Jack. */
+export const KAJA_MASCOT = CAPYBARA_MASCOT;
+/** @deprecated alias */
+export const KAJA_ART_STYLE = CAPYBARA_ART_STYLE;
 
 export function resolveCharacterRefPath(root) {
   const env = process.env.VOCAB_CHARACTER_REF?.trim() || process.env.IG_VOCAB_CHARACTER_REF?.trim();
+  // korean-teacher-mj lives at Desktop/korean-teacher-mj; AVK at Desktop/projects/neo-project/...
   const candidates = [
     env,
-    root ? join(root, "refrefref.png") : null,
-    root ? join(root, "public", "brand", "character-style-ref.png") : null,
-    root ? join(root, "..", "auto-video-korean", "refrefref.png") : null,
-    root ? join(root, "..", "projects", "neo-project", "auto-video-korean", "refrefref.png") : null,
+    root ? join(root, "public", "brand", "capybara-style-ref.png") : null,
+    root
+      ? join(
+          root,
+          "..",
+          "projects",
+          "neo-project",
+          "auto-video-korean",
+          "assets",
+          "brand-mascots",
+          "capybara-sheet.png",
+        )
+      : null,
+    root
+      ? join(
+          root,
+          "..",
+          "neo-project",
+          "auto-video-korean",
+          "assets",
+          "brand-mascots",
+          "capybara-sheet.png",
+        )
+      : null,
   ].filter(Boolean);
   for (const p of candidates) {
     if (existsSync(p)) return p;
@@ -31,8 +63,10 @@ export function resolveCharacterRefPath(root) {
   return null;
 }
 
-export const STYLE_BASE = `Premium Korean-learning Instagram save graphic for English-speaking beginners.
-Soft pastel cream or blush background, clean modern sans-serif typography, cute colorful semi-flat illustrations (not photorealistic).
+export const STYLE_BASE = `Premium Korean-learning Instagram/Pinterest save graphic for English-speaking beginners.
+Soft pastel cream or blush background, clean modern sans-serif typography.
+Illustrations MUST follow the brand CAPYBARA doodle sticker style (wobbly black outlines, flat soft fills, cute chibi props) — not photorealistic, not polished webtoon.
+When a scene needs a person/mascot, cast the beige doodle CAPYBARA (and optional blue-hat sidekick) from the style reference — do NOT invent a different mascot or human teacher.
 Every Korean word must show: English label, Hangul, and romanization in [brackets].
 High contrast, readable on mobile, Pinterest/IG carousel quality — the kind foreigners bookmark to study later.
 Warm, friendly, professional edu-influencer aesthetic.
@@ -163,11 +197,104 @@ export function isTransientError(err) {
   );
 }
 
+function multipartBody(fields, files) {
+  const seed = files[0]?.[2]?.subarray?.(0, 4096) || Buffer.from(String(Date.now()));
+  const boundary = `----FormBoundary${createHash("sha1").update(seed).digest("hex").slice(0, 24)}`;
+  const chunks = [];
+  const push = (s) => chunks.push(Buffer.isBuffer(s) ? s : Buffer.from(s));
+  for (const [name, value] of Object.entries(fields)) {
+    push(`--${boundary}\r\nContent-Disposition: form-data; name="${name}"\r\n\r\n${value}\r\n`);
+  }
+  for (const [name, filename, buf, ctype] of files) {
+    push(
+      `--${boundary}\r\nContent-Disposition: form-data; name="${name}"; filename="${filename}"\r\nContent-Type: ${ctype}\r\n\r\n`,
+    );
+    push(buf);
+    push("\r\n");
+  }
+  push(`--${boundary}--\r\n`);
+  return { body: Buffer.concat(chunks), boundary };
+}
+
+function parseImageResponse(data, status) {
+  if (!data || status >= 400) {
+    const msg = data?.error?.message || data?.message || `gpt-image-2 HTTP ${status}`;
+    const err = new Error(msg);
+    err.status = status;
+    err.code = data?.error?.code || data?.error?.type || "";
+    if (isPromptContentError(err)) err.skipReason = "prompt";
+    throw err;
+  }
+  const row = data?.data?.[0];
+  if (row?.b64_json) return Buffer.from(row.b64_json, "base64");
+  if (row?.url) return row.url;
+  throw new Error("gpt-image-2 response missing image data");
+}
+
+async function downloadIfUrl(result) {
+  if (Buffer.isBuffer(result)) return result;
+  const img = await fetch(result);
+  if (!img.ok) throw new Error(`image URL download failed: ${img.status}`);
+  return Buffer.from(await img.arrayBuffer());
+}
+
+/** Prefer images/edits with the capybara style sheet so the model actually sees the brand look. */
+async function generateGptImage2WithRef({ prompt, size, root, endpoint, apiKey }) {
+  const refPath = resolveCharacterRefPath(root);
+  if (!refPath) return null;
+
+  const refBuf = readFileSync(refPath);
+  const suffix = refPath.toLowerCase();
+  const ctype = suffix.endsWith(".jpg") || suffix.endsWith(".jpeg") ? "image/jpeg" : "image/png";
+  const editPrompt =
+    `Image 1 is the ONLY brand character + illustration STYLE reference (Kaja beige doodle CAPYBARA sticker sheet).\n` +
+    `Match that doodle line weight, flat fills, potato-chibi proportions, and beige snout face whenever drawing mascots/illustrations.\n` +
+    `Do NOT copy Korean sticker captions from Image 1. Do NOT switch to webtoon Jack or a different animal.\n\n` +
+    prompt.slice(0, 3400);
+
+  const { body, boundary } = multipartBody(
+    {
+      prompt: editPrompt,
+      model: IMAGE_DEPLOY,
+      n: "1",
+      size: String(size),
+      quality: "high",
+      input_fidelity: "high",
+    },
+    [["image[]", "capybara-style-ref.png", refBuf, ctype]],
+  );
+
+  const url = `${endpoint}/openai/deployments/${encodeURIComponent(IMAGE_DEPLOY)}/images/edits?api-version=${encodeURIComponent(imageApiVersion())}`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "api-key": apiKey,
+      "Content-Type": `multipart/form-data; boundary=${boundary}`,
+    },
+    body,
+    signal: AbortSignal.timeout(IMAGE_TIMEOUT_MS),
+  });
+  const data = await res.json().catch(() => null);
+  return downloadIfUrl(parseImageResponse(data, res.status));
+}
+
 export async function generateGptImage2({ prompt, size, root }) {
   const endpoint = process.env.AZURE_OPENAI_ENDPOINT?.trim().replace(/\/+$/, "");
   const apiKey = process.env.AZURE_OPENAI_API_KEY?.trim();
   if (!endpoint || !apiKey) {
     throw new Error("Missing AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY");
+  }
+
+  const useRef =
+    process.env.VOCAB_IMAGE_USE_REF !== "0" && Boolean(resolveCharacterRefPath(root));
+  if (useRef) {
+    try {
+      return await generateGptImage2WithRef({ prompt, size, root, endpoint, apiKey });
+    } catch (e) {
+      // Fall back to text-only generations if edits reject the payload.
+      if (isPromptContentError(e)) throw e;
+      console.warn(`  ⚠ style-ref edit failed, falling back to generations: ${e.message}`);
+    }
   }
 
   const url = `${endpoint}/openai/deployments/${encodeURIComponent(IMAGE_DEPLOY)}/images/generations?api-version=${encodeURIComponent(imageApiVersion())}`;
@@ -190,22 +317,7 @@ export async function generateGptImage2({ prompt, size, root }) {
   });
 
   const data = await res.json().catch(() => null);
-  if (!res.ok) {
-    const msg = data?.error?.message || data?.message || `gpt-image-2 HTTP ${res.status}`;
-    const err = new Error(msg);
-    err.status = res.status;
-    err.code = data?.error?.code || data?.error?.type || "";
-    if (isPromptContentError(err)) err.skipReason = "prompt";
-    throw err;
-  }
-  const row = data?.data?.[0];
-  if (row?.b64_json) return Buffer.from(row.b64_json, "base64");
-  if (row?.url) {
-    const img = await fetch(row.url);
-    if (!img.ok) throw new Error(`image URL download failed: ${img.status}`);
-    return Buffer.from(await img.arrayBuffer());
-  }
-  throw new Error("gpt-image-2 response missing image data");
+  return downloadIfUrl(parseImageResponse(data, res.status));
 }
 
 export async function generateWithRetry(
@@ -263,8 +375,8 @@ TOP RIGHT: "${direction}" with small blue motion lines.
 CENTER: bold black question — ${q.question}
 LEFT COLUMN: four stacked white rounded option cards with thin blue border, large blue number circles:
 ${options}
-RIGHT SIDE: ${KAJA_MASCOT}
-${KAJA_ART_STYLE}
+RIGHT SIDE: ${CAPYBARA_MASCOT}
+${CAPYBARA_ART_STYLE}
 ABOVE FOOTER BAND: light blue rounded CTA bar with lightbulb icon + "Try to answer before checking the comments! ↓"
 CRITICAL: Do NOT highlight, circle, or mark the correct answer. All four options look equally neutral.`;
   }
@@ -420,15 +532,15 @@ No quotes, no markdown, no preamble. The image model cannot see the reference �
     const user = [
       {
         type: "text",
-        text: `Attached image = refrefref.png, the ONLY character + illustration style reference.
+        text: `Attached image = brand CAPYBARA doodle sticker sheet, the ONLY character + illustration style reference.
 
-The quiz card's RIGHT-SIDE character MUST be the young man from this reference (backwards blue baseball cap, beige hoodie, watercolor webtoon look).
-Do NOT draw capybara, kimono, cel-anime, or a different person.
+The quiz card's RIGHT-SIDE character MUST be the beige doodle CAPYBARA from this sheet (potato body, oval snout, black-dot eyes, wobbly outlines). Optional tiny blue-hat sidekick ok.
+Do NOT draw Jack/human webtoon boy, kimono anime, photoreal animals, or a different mascot.
 
 Keep this quiz layout exactly (question, 4 options, CTA bar, footer band empty):
 ${base}
 
-Write ONE image prompt (max ~3200 chars) merging the layout above with the reference character and art style.`,
+Write ONE image prompt (max ~3200 chars) merging the layout above with the reference capybara character and doodle art style.`,
       },
       { type: "image_url", image_url: { url: `data:image/png;base64,${b64}` } },
     ];

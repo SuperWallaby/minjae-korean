@@ -144,14 +144,14 @@ CONTENT (keep every item — change ORDER, not wording):
 - REORDER the vocabulary rows — do NOT keep the same top-to-bottom sequence as Image 1.
 
 CHARACTERS (critical when Image 1 has people):
-- If Image 1 contains ANY human, teacher mascot, branded avatar, stick-figure person, or cartoon character with a face: REPLACE them with NEW original Kaja characters drawn in the style of Image 3.
-- Match Image 3's technique only (soft 2D Korean educational webtoon, thin clean outlines, gentle pastel watercolor, friendly expressive faces) — do NOT copy Image 3's exact pose, outfit, or composition.
+- If Image 1 contains ANY human, teacher mascot, branded avatar, stick-figure person, or cartoon character with a face: REPLACE them with the Kaja beige doodle CAPYBARA from Image 3 (potato body, oval snout, black-dot eyes, wobbly outlines). Optional tiny blue-hat sidekick ok.
+- Match Image 3's doodle/sticker technique (lo-fi KakaoTalk sticker, flat soft fills, shaky black outlines) — do NOT copy Image 3's exact sticker poses/text, and do NOT use webtoon Jack or a different animal.
 - Do NOT keep the source creator's mascot, likeness, branded character, or recognizable person.
 - Keep only the teaching role/emotion/gesture when helpful (pointing, thinking, reacting).
 - If Image 1 has NO people or mascots, do NOT add characters.
 
 PRESENTATION:
-- Clean readable Kaja template: warm cream background, friendly educational illustration, legible typography.
+- Clean readable Kaja template: warm cream background, cute doodle educational illustration, legible typography.
 - Keep a simple list structure (rows or numbered items) — focus on changing ORDER, not inventing a new layout system.
 - Use a TALL PORTRAIT layout matching the source — fit EVERY vocabulary row fully inside the frame (nothing cropped at top or bottom).
 - Scale rows smaller if needed so the full list is visible; never cut off the last items.
@@ -170,12 +170,23 @@ function restylePromptForIndex(i, hasHumanFigure = false) {
 }
 
 function resolveCharacterRefPath() {
-  const envPath = process.env.IG_VOCAB_CHARACTER_REF?.trim();
+  const envPath =
+    process.env.IG_VOCAB_CHARACTER_REF?.trim() ||
+    process.env.VOCAB_CHARACTER_REF?.trim();
   const candidates = [
     envPath,
+    path.join(ROOT, "public", "brand", "capybara-style-ref.png"),
+    path.join(
+      ROOT,
+      "..",
+      "projects",
+      "neo-project",
+      "auto-video-korean",
+      "assets",
+      "brand-mascots",
+      "capybara-sheet.png",
+    ),
     path.join(ROOT, "public", "brand", "character-style-ref.png"),
-    path.join(ROOT, "..", "projects", "neo-project", "auto-video-korean", "refrefref.png"),
-    path.join(ROOT, "..", "neo-project", "auto-video-korean", "assets", "refrefref.png"),
   ].filter(Boolean);
   for (const p of candidates) {
     if (fs.existsSync(p)) return p;
@@ -852,7 +863,7 @@ async function main() {
   if (characterRefBuf) {
     console.log(`   character ref: ${characterRefFile}`);
   } else {
-    console.warn("   ⚠ no character style ref (set IG_VOCAB_CHARACTER_REF or add public/brand/character-style-ref.png)");
+    console.warn("   ⚠ no character style ref (set IG_VOCAB_CHARACTER_REF or add public/brand/capybara-style-ref.png)");
   }
 
   const restyled = [];

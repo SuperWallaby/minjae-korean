@@ -36,11 +36,15 @@ pinned_count() {
 }
 
 ensure_chrome() {
-  if curl -sf "${CHROME_DEBUG_URL}/json/version" >/dev/null; then
+  # Prefer Plantweb (support@plantweb.io / kajakorean) — not chrome-cursor-work.
+  local launcher="${AVK}/scripts/launch-chrome-pinterest-plantweb.sh"
+  if [[ -x "$launcher" ]]; then
+    # If :9222 is up but not Plantweb, launcher replaces it.
+    bash "$launcher" "https://www.pinterest.com/" >/dev/null 2>&1 || true
+  elif curl -sf "${CHROME_DEBUG_URL}/json/version" >/dev/null; then
     return 0
-  fi
-  echo "→ starting work Chrome (debug ${CHROME_DEBUG_URL})"
-  if [[ -x "${AVK}/scripts/launch-chrome-work-profile.sh" ]]; then
+  elif [[ -x "${AVK}/scripts/launch-chrome-work-profile.sh" ]]; then
+    echo "→ fallback work Chrome (debug ${CHROME_DEBUG_URL})"
     "${AVK}/scripts/launch-chrome-work-profile.sh" "about:blank" >/dev/null 2>&1 &
   fi
   for _ in $(seq 1 25); do
@@ -49,7 +53,7 @@ ensure_chrome() {
     fi
     sleep 1
   done
-  echo "work Chrome is not running on ${CHROME_DEBUG_URL}" >&2
+  echo "Pinterest Chrome is not running on ${CHROME_DEBUG_URL}" >&2
   return 1
 }
 

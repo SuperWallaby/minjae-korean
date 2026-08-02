@@ -98,20 +98,18 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="space-y-10 md:space-y-14">
-        {/* 1) Hero — vocab quiz app (keep as-is) */}
+        {/* 1) Hero — vocab quiz app */}
         <VocabQuizHomeSection cards={vocabQuizCards} />
 
-        {/* 2) Book (keep as-is) */}
+        {/* 2) Book */}
         <BookHomeSection />
 
-      {/* 3) Vocab discovery */}
-      <VocabHomeSection />
-
-      {/* 4) Grammar hubs */}
-        <GrammarHomeSection />
-
-        {/* 5) Support */}
+        {/* 3) Support */}
         <BuyMeCoffeeHomeSection />
+
+        {/* 4) Vocab / grammar hubs (lower priority) */}
+        <VocabHomeSection />
+        <GrammarHomeSection />
 
         <HomeRenewalSections news={news} blog={blog} />
       </div>

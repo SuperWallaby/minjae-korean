@@ -12,8 +12,8 @@ import {
   LOGO_PATH,
   FOOTER_TAGLINE,
   STYLE_BASE,
-  KAJA_ART_STYLE,
-  KAJA_MASCOT,
+  CAPYBARA_ART_STYLE,
+  CAPYBARA_MASCOT,
   compositeFooter,
   generateWithRetry,
 } from "./lib/vocab-infographic-gen.mjs";
@@ -107,8 +107,8 @@ LEFT COLUMN: four stacked white rounded option cards with thin blue border, larg
 2. 고려하다 [goryeohada]
 3. 알다 [alda]
 4. 이해하다 [ihaehada]
-RIGHT SIDE: ${KAJA_MASCOT}
-${KAJA_ART_STYLE}
+RIGHT SIDE: ${CAPYBARA_MASCOT}
+${CAPYBARA_ART_STYLE}
 ABOVE FOOTER BAND: light blue rounded CTA bar with lightbulb icon + "Try to answer before checking the comments! ↓"
 CRITICAL: Do NOT highlight or mark the correct answer. All four options look equally neutral.`,
   },

@@ -27,6 +27,7 @@ import {
   compositeFooter,
   generateWithRetry,
   isPromptContentError,
+  resolveCharacterRefPath,
   sizeForFormat,
   sleep,
 } from "./lib/vocab-infographic-gen.mjs";
@@ -195,7 +196,13 @@ async function runBatch() {
   mkdirSync(OUT, { recursive: true });
   const progress = loadProgress();
 
+  const styleRef = resolveCharacterRefPath(ROOT);
   log(`═══ batch runner start — ${IMAGE_DEPLOY} quality=high timeout=600s ═══`);
+  log(
+    styleRef
+      ? `style/character ref: ${styleRef} (images/edits + high fidelity)`
+      : "⚠ no capybara style ref found — text-only generations",
+  );
 
   while (true) {
     const queue = buildQueue(priorityFilter, progress);

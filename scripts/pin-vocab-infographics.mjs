@@ -445,6 +445,7 @@ async function main() {
       alt,
       link,
       board: DEFAULT_BOARD,
+      ...(payload.pin_id ? { pin_id: String(payload.pin_id) } : {}),
       ...(result.publishUnconfirmed || payload.publishUnconfirmed
         ? { publishUnconfirmed: true }
         : {}),

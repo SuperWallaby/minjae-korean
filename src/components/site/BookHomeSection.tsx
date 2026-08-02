@@ -16,11 +16,7 @@ export function BookHomeSection() {
             </div>
 
             <div className="max-w-2xl text-white">
-              <div className="inline-flex items-center rounded-full border border-white/18 bg-white/12 px-4 py-2 font-serif text-sm font-semibold tracking-[0.08em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
-                <span className="mr-1 mt-0.5 inline-block text-lg">🥳</span> New
-                Book
-              </div>
-              <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="font-serif text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
                 Korean, Beyond Translation
               </h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-white/82 sm:text-lg">
