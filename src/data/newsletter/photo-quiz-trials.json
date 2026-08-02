@@ -1,65 +1,8 @@
 {
-  "generatedAt": "2026-08-02T03:43:06.287Z",
+  "generatedAt": "2026-08-02T04:05:53.709Z",
   "sourceRoot": "/Users/minjaekim/Desktop/projects/neo-project/korean-quiz/local/photo-quiz-trials/raw-safezone",
-  "note": "Photo-trial grammar quizzes for weekly newsletter. Refresh via scripts/sync-newsletter-photo-quiz-trials.mjs",
+  "note": "Photo-trial grammar quizzes for weekly newsletter. Refresh via scripts/sync-newsletter-photo-quiz-trials.mjs Removed early trials 01-umbrella, 02-bus, 03-apple.",
   "items": [
-    {
-      "id": "01-umbrella",
-      "difficulty": "1",
-      "focus": "noun",
-      "korean": "우산",
-      "sentence": "비 와서 ___ 가져갔어요",
-      "choices": [
-        "우산",
-        "모자",
-        "가방",
-        "신발"
-      ],
-      "correct": 0,
-      "sceneMeaning": "",
-      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/01-umbrella-composed.jpg",
-      "tweetText": "What goes in the blank?\n\n비 와서 ___ 가져갔어요\n\nLook at the picture and fill in the blank.\n1) 우산  ·  2) 모자  ·  3) 가방  ·  4) 신발\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
-      "replyText": "Answer: 1) 우산",
-      "level": 1
-    },
-    {
-      "id": "02-bus",
-      "difficulty": "1",
-      "focus": "noun",
-      "korean": "버스",
-      "sentence": "___ 타고 학교에 가요",
-      "choices": [
-        "버스",
-        "지하철",
-        "택시",
-        "자전거"
-      ],
-      "correct": 0,
-      "sceneMeaning": "",
-      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/02-bus-composed.jpg",
-      "tweetText": "Can you fill this in? ✍️\n\n___ 타고 학교에 가요\n\nLook at the picture and fill in the blank.\n1) 버스  ·  2) 지하철  ·  3) 택시  ·  4) 자전거\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
-      "replyText": "Answer: 1) 버스",
-      "level": 1
-    },
-    {
-      "id": "03-apple",
-      "difficulty": "1",
-      "focus": "noun",
-      "korean": "사과",
-      "sentence": "식탁에 ___ 있어요",
-      "choices": [
-        "사과",
-        "배",
-        "포도",
-        "바나나"
-      ],
-      "correct": 0,
-      "sceneMeaning": "",
-      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/03-apple-composed.jpg",
-      "tweetText": "What goes in the blank?\n\n식탁에 ___ 있어요\n\nLook at the picture and fill in the blank.\n1) 사과  ·  2) 배  ·  3) 포도  ·  4) 바나나\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
-      "replyText": "Answer: 1) 사과",
-      "level": 1
-    },
     {
       "id": "A1-pay-by-card",
       "difficulty": "1",
