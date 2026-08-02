@@ -4,11 +4,12 @@ Vercel Hobby에서는 Cron이 지원되지 않으므로, Cloudflare Worker로 �
 
 ## 스케줄
 
-| Cron | 동작 |
-|------|------|
-| `*/5 * * * *` | 예약 리마인더 |
-| 월 09:00–09:04 KST | 주간 퀴즈 이메일 |
-| 목 09:00–09:04 KST | **인기 표현(핀 이미지) 이메일** |
+| Cron | 동작 | 메일 제목 |
+|------|------|-----------|
+| `*/5 * * * *` | 예약 리마인더 | — |
+| 월 09:00–09:04 KST | 그림 퀴즈 (Photo Quiz) | `[🧢 Kaja Korean] Photo Quiz` |
+| 수 09:00–09:04 KST | 문법/포토트라이얼 (Grammar Quiz) | `[🧢 Kaja Korean] GRAMMAR Quiz` |
+| 목 09:00–09:04 KST | 인기 표현 핀 | `[🧢 Kaja Korean] Popular Korean Expressions.` |
 
 ## 설정
 
@@ -68,6 +69,24 @@ curl -s -H "x-admin-key: $ADMIN_API_KEY" \
 # 강제 전체 발송 (이번 주 중복 체크 무시)
 curl -s -H "x-admin-key: $ADMIN_API_KEY" \
   "https://kajakorean.com/api/admin/newsletter/popular-expressions/run?force=1"
+```
+
+## 문법 퀴즈 (포토 트라이얼) 수동 테스트
+
+후보 트라이얼을 로컬에서 동기화·R2 업로드한 뒤 배포에 포함하세요:
+
+```bash
+node scripts/sync-newsletter-photo-quiz-trials.mjs
+```
+
+```bash
+# 미리보기만
+curl -s -H "x-admin-key: $ADMIN_API_KEY" \
+  "https://kajakorean.com/api/admin/newsletter/grammar-quiz/run?dryRun=1"
+
+# 테스트 발송
+curl -s -H "x-admin-key: $ADMIN_API_KEY" \
+  "https://kajakorean.com/api/admin/newsletter/grammar-quiz/run?testTo=you@example.com"
 ```
 
 ## 이메일 형식

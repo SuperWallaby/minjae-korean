@@ -5,7 +5,15 @@ export const NEWSLETTER_WELCOME_PDF_R2_KEY =
 export const NEWSLETTER_WELCOME_PDF_DEFAULT_URL =
   "https://file.kajakorean.com/downloads/kaja-korean-book-preview.pdf";
 
+/** Full-res site path (web only — not for email). */
 export const NEWSLETTER_WELCOME_BOOK_COVER_PATH = "/book-samples/book-cover.png";
+
+/** Email-optimized progressive JPEG on R2 (see scripts/upload_newsletter_book_cover.mjs). */
+export const NEWSLETTER_WELCOME_BOOK_COVER_R2_KEY =
+  "newsletter/welcome/book-cover-email.jpg";
+
+export const NEWSLETTER_WELCOME_BOOK_COVER_DEFAULT_URL =
+  "https://file.kajakorean.com/newsletter/welcome/book-cover-email.jpg";
 
 export function resolveNewsletterWelcomePdfUrl(): string {
   const fromEnv = process.env.NEWSLETTER_WELCOME_PDF_URL?.trim();
@@ -19,13 +27,18 @@ export function resolveNewsletterWelcomePdfUrl(): string {
   return NEWSLETTER_WELCOME_PDF_DEFAULT_URL;
 }
 
-/** Absolute HTTPS URL for book cover image in welcome email `<img>`. */
+/**
+ * Absolute HTTPS URL for book cover in welcome email `<img>`.
+ * Prefer a small progressive JPEG on R2 (not the 3MB site PNG).
+ */
 export function resolveNewsletterWelcomeBookCoverUrl(): string {
   const fromEnv = process.env.NEWSLETTER_WELCOME_BOOK_COVER_URL?.trim();
   if (fromEnv) return fromEnv;
 
-  const site =
-    process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ||
-    "https://kajakorean.com";
-  return `${site}${NEWSLETTER_WELCOME_BOOK_COVER_PATH}`;
+  const publicBase = process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/+$/, "");
+  if (publicBase) {
+    return `${publicBase}/${NEWSLETTER_WELCOME_BOOK_COVER_R2_KEY}`;
+  }
+
+  return NEWSLETTER_WELCOME_BOOK_COVER_DEFAULT_URL;
 }

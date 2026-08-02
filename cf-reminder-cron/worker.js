@@ -1,6 +1,8 @@
 /**
  * Cloudflare Worker: booking reminders every 5 min +
- * weekly quiz Mon 09:00 KST + popular expressions Thu 09:00 KST.
+ * Photo Quiz Mon 09:00 KST +
+ * Grammar (photo trial) Quiz Wed 09:00 KST +
+ * popular expressions Thu 09:00 KST.
  * Set secrets: REMINDER_API_URL, ADMIN_API_KEY
  */
 
@@ -22,6 +24,11 @@ function seoulParts(now = new Date()) {
 function isWeeklyQuizSlot(now = new Date()) {
   const { weekday, hour, minute } = seoulParts(now);
   return weekday === "Mon" && hour === 9 && minute < 5;
+}
+
+function isGrammarQuizSlot(now = new Date()) {
+  const { weekday, hour, minute } = seoulParts(now);
+  return weekday === "Wed" && hour === 9 && minute < 5;
 }
 
 function isPopularExpressionsSlot(now = new Date()) {
@@ -62,7 +69,16 @@ export default {
         base,
         key,
         "/api/admin/newsletter/weekly-quiz/run",
-        "Weekly quiz",
+        "Photo quiz",
+      );
+    }
+
+    if (isGrammarQuizSlot()) {
+      await callAdminApi(
+        base,
+        key,
+        "/api/admin/newsletter/grammar-quiz/run",
+        "Grammar quiz",
       );
     }
 

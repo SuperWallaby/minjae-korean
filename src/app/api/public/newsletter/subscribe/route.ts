@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 
 import { upsertNewsletterSubscriber } from "@/lib/newsletterSubscribersRepo";
 import { newsletterUnsubscribeUrl } from "@/lib/newsletterUnsubscribe";
+import { NEWSLETTER_SUBJECT } from "@/lib/newsletterSubjects";
 import {
   resolveNewsletterWelcomeBookCoverUrl,
   resolveNewsletterWelcomePdfUrl,
@@ -24,7 +25,7 @@ function buildWelcomeEmail(pdfUrl: string, email: string) {
     process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
   const unsubscribeUrl = newsletterUnsubscribeUrl(email, siteUrl);
   const bookCoverUrl = resolveNewsletterWelcomeBookCoverUrl();
-  const subject = "Your What is this in Korean learning PDF";
+  const subject = NEWSLETTER_SUBJECT.welcomePdf;
   const text = [
     "Thanks for subscribing to What is this in Korean!",
     "",
@@ -50,6 +51,7 @@ function buildWelcomeEmail(pdfUrl: string, email: string) {
             src="${bookCoverUrl}"
             alt="What is this in Korean — Korean, Beyond Translation"
             width="200"
+            height="283"
             style="display: block; margin: 0 auto 14px; max-width: 200px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #e5e5ea;"
           />
         </a>

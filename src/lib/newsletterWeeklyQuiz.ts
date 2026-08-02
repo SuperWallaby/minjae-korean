@@ -9,6 +9,7 @@ import {
   listApprovedKoreanQuizzes,
 } from "@/lib/koreanQuiz/store";
 import type { KoreanQuizItem } from "@/lib/koreanQuiz/types";
+import { NEWSLETTER_SUBJECT } from "@/lib/newsletterSubjects";
 import { newsletterUnsubscribeUrl } from "@/lib/newsletterUnsubscribe";
 
 export type WeeklyPictureQuizOption = {
@@ -193,7 +194,7 @@ export function buildWeeklyQuizEmail(args: {
     .map((ex, index) => `${index + 1}. ${ex.korean}\n   ${ex.english}`)
     .join("\n");
 
-  const subject = `This week's Korean quiz — which picture matches “${quiz.word}”?`;
+  const subject = NEWSLETTER_SUBJECT.photoQuiz;
 
   const text = [
     "This week's Korean quiz from What is this in Korean",

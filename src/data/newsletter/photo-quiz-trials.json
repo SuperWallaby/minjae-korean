@@ -1,0 +1,520 @@
+{
+  "generatedAt": "2026-08-02T03:43:06.287Z",
+  "sourceRoot": "/Users/minjaekim/Desktop/projects/neo-project/korean-quiz/local/photo-quiz-trials/raw-safezone",
+  "note": "Photo-trial grammar quizzes for weekly newsletter. Refresh via scripts/sync-newsletter-photo-quiz-trials.mjs",
+  "items": [
+    {
+      "id": "01-umbrella",
+      "difficulty": "1",
+      "focus": "noun",
+      "korean": "우산",
+      "sentence": "비 와서 ___ 가져갔어요",
+      "choices": [
+        "우산",
+        "모자",
+        "가방",
+        "신발"
+      ],
+      "correct": 0,
+      "sceneMeaning": "",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/01-umbrella-composed.jpg",
+      "tweetText": "What goes in the blank?\n\n비 와서 ___ 가져갔어요\n\nLook at the picture and fill in the blank.\n1) 우산  ·  2) 모자  ·  3) 가방  ·  4) 신발\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 우산",
+      "level": 1
+    },
+    {
+      "id": "02-bus",
+      "difficulty": "1",
+      "focus": "noun",
+      "korean": "버스",
+      "sentence": "___ 타고 학교에 가요",
+      "choices": [
+        "버스",
+        "지하철",
+        "택시",
+        "자전거"
+      ],
+      "correct": 0,
+      "sceneMeaning": "",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/02-bus-composed.jpg",
+      "tweetText": "Can you fill this in? ✍️\n\n___ 타고 학교에 가요\n\nLook at the picture and fill in the blank.\n1) 버스  ·  2) 지하철  ·  3) 택시  ·  4) 자전거\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 버스",
+      "level": 1
+    },
+    {
+      "id": "03-apple",
+      "difficulty": "1",
+      "focus": "noun",
+      "korean": "사과",
+      "sentence": "식탁에 ___ 있어요",
+      "choices": [
+        "사과",
+        "배",
+        "포도",
+        "바나나"
+      ],
+      "correct": 0,
+      "sceneMeaning": "",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/03-apple-composed.jpg",
+      "tweetText": "What goes in the blank?\n\n식탁에 ___ 있어요\n\nLook at the picture and fill in the blank.\n1) 사과  ·  2) 배  ·  3) 포도  ·  4) 바나나\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 사과",
+      "level": 1
+    },
+    {
+      "id": "A1-pay-by-card",
+      "difficulty": "1",
+      "focus": "particle",
+      "korean": "로",
+      "sentence": "카드___ 계산할게요",
+      "choices": [
+        "로",
+        "을",
+        "에",
+        "가"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Paying by card in a café. Show card + payment terminal clearly as context for particle 로/으로 (means/with).",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/A1-pay-by-card-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n카드___ 계산할게요\n\nThis one’s about particles — look at the picture for context.\n1) 로  ·  2) 을  ·  3) 에  ·  4) 가\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 로",
+      "level": 1
+    },
+    {
+      "id": "A2-coffee-please",
+      "difficulty": "1",
+      "focus": "object-marker",
+      "korean": "를",
+      "sentence": "아메리카노___ 주세요",
+      "choices": [
+        "를",
+        "이",
+        "에",
+        "으로"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Ordering an Americano. Cup being given is clear; quiz tests object particle 를/을, not the drink name.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/A2-coffee-please-composed.jpg",
+      "tweetText": "Korean in real life 👇\n\n아메리카노___ 주세요\n\nThis one’s about particles — look at the picture for context.\n1) 를  ·  2) 이  ·  3) 에  ·  4) 으로\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 를",
+      "level": 1
+    },
+    {
+      "id": "A3-give-to-friend",
+      "difficulty": "1",
+      "focus": "dative",
+      "korean": "한테",
+      "sentence": "친구___ 선물을 줘요",
+      "choices": [
+        "한테",
+        "에서",
+        "으로",
+        "을"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Giving a gift TO a friend — person-to-person exchange for particle 한테/에게.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/A3-give-to-friend-composed.jpg",
+      "tweetText": "Can you fill this in? ✍️\n\n친구___ 선물을 줘요\n\nThis one’s about particles — look at the picture for context.\n1) 한테  ·  2) 에서  ·  3) 으로  ·  4) 을\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 한테",
+      "level": 1
+    },
+    {
+      "id": "B1-met-yesterday",
+      "difficulty": "2",
+      "focus": "past-tense",
+      "korean": "만났어요",
+      "sentence": "어제 친구를 ___",
+      "choices": [
+        "만났어요",
+        "만나요",
+        "만날까요",
+        "만나세요"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Friends meeting yesterday — casual reunion scene. Verb tense is the quiz point (만났어요 vs 만나요).",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/B1-met-yesterday-composed.jpg",
+      "tweetText": "Can you fill this in? ✍️\n\n어제 친구를 ___\n\nWatch the tense — what’s the natural ending?\n1) 만났어요  ·  2) 만나요  ·  3) 만날까요  ·  4) 만나세요\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 만났어요",
+      "level": 2
+    },
+    {
+      "id": "B2-at-cafe-study",
+      "difficulty": "2",
+      "focus": "location-particle",
+      "korean": "에서",
+      "sentence": "카페___ 공부해요",
+      "choices": [
+        "에서",
+        "에",
+        "으로",
+        "을"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Studying happening AT a café (activity location). Visual café study scene for particle 에서 vs 에.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/B2-at-cafe-study-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n카페___ 공부해요\n\nThis one’s about particles — look at the picture for context.\n1) 에서  ·  2) 에  ·  3) 으로  ·  4) 을\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 에서",
+      "level": 2
+    },
+    {
+      "id": "B3-want-to-eat",
+      "difficulty": "2",
+      "focus": "want",
+      "korean": "고 싶어요",
+      "sentence": "김치찌개 먹___",
+      "choices": [
+        "고 싶어요",
+        "세요",
+        "을까요",
+        "지 마세요"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Wanting to eat kimchi stew — desire grammar -고 싶어요, not naming the soup.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/B3-want-to-eat-composed.jpg",
+      "tweetText": "Korean in real life 👇\n\n김치찌개 먹___\n\nGrammar vibe check — which ending fits the scene?\n1) 고 싶어요  ·  2) 세요  ·  3) 을까요  ·  4) 지 마세요\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 고 싶어요",
+      "level": 2
+    },
+    {
+      "id": "B4-with-mom",
+      "difficulty": "2",
+      "focus": "comitative",
+      "korean": "랑",
+      "sentence": "엄마___ 시장에 가요",
+      "choices": [
+        "랑",
+        "에",
+        "을",
+        "으로"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Going to the market WITH mom — comitative 랑/하고, people are the focus.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/B4-with-mom-composed.jpg",
+      "tweetText": "Can you fill this in? ✍️\n\n엄마___ 시장에 가요\n\nThis one’s about particles — look at the picture for context.\n1) 랑  ·  2) 에  ·  3) 을  ·  4) 으로\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 랑",
+      "level": 2
+    },
+    {
+      "id": "C1-have-to-go",
+      "difficulty": "3",
+      "focus": "obligation",
+      "korean": "해야 해요",
+      "sentence": "지금 집에 가___",
+      "choices": [
+        "야 해요",
+        "고 싶어요",
+        "면 돼요",
+        "지 마세요"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Need to go home now — sense of obligation/time pressure. Grammar point is -아/어야 해요 style, not a noun label.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/C1-have-to-go-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n지금 집에 가___\n\nGrammar vibe check — which ending fits the scene?\n1) 야 해요  ·  2) 고 싶어요  ·  3) 면 돼요  ·  4) 지 마세요\n\nLevel 3  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 야 해요",
+      "level": 3
+    },
+    {
+      "id": "C2-while-walking",
+      "difficulty": "3",
+      "focus": "simultaneous",
+      "korean": "면서",
+      "sentence": "음악을 들으___ 걸어요",
+      "choices": [
+        "면서",
+        "려고",
+        "지만",
+        "니까"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Listening to music WHILE walking. Simultaneous action context for -면서, not naming earphones.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/C2-while-walking-composed.jpg",
+      "tweetText": "Can you fill this in? ✍️\n\n음악을 들으___ 걸어요\n\nGrammar vibe check — which ending fits the scene?\n1) 면서  ·  2) 려고  ·  3) 지만  ·  4) 니까\n\nLevel 3  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 면서",
+      "level": 3
+    },
+    {
+      "id": "C3-because-tired",
+      "difficulty": "3",
+      "focus": "reason",
+      "korean": "아서",
+      "sentence": "피곤해___ 일찍 잤어요",
+      "choices": [
+        "서",
+        "면",
+        "지만",
+        "려고"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Slept early BECAUSE tired — connective -아서/어서 reason, person must read as exhausted.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/C3-because-tired-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n피곤해___ 일찍 잤어요\n\nGrammar vibe check — which ending fits the scene?\n1) 서  ·  2) 면  ·  3) 지만  ·  4) 려고\n\nLevel 3  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 서",
+      "level": 3
+    },
+    {
+      "id": "D1-buy-water-store",
+      "difficulty": "1",
+      "focus": "location-particle",
+      "korean": "에서",
+      "sentence": "편의점___ 물을 샀어요",
+      "choices": [
+        "에서",
+        "에",
+        "으로",
+        "부터"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Buying water AT a convenience store — an action happening at a place, so 에서 is required rather than 에.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/D1-buy-water-store-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n편의점___ 물을 샀어요\n\nThis one’s about particles — look at the picture for context.\n1) 에서  ·  2) 에  ·  3) 으로  ·  4) 부터\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 에서",
+      "level": 1
+    },
+    {
+      "id": "D2-go-to-meet-friend",
+      "difficulty": "2",
+      "focus": "purpose",
+      "korean": "려고",
+      "sentence": "친구를 만나___ 카페에 가요",
+      "choices": [
+        "려고",
+        "면서",
+        "지만",
+        "니까"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Going to a café IN ORDER TO meet a friend — purpose grammar -(으)려고.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/D2-go-to-meet-friend-composed.jpg",
+      "tweetText": "What goes in the blank?\n\n친구를 만나___ 카페에 가요\n\nLook at the picture and fill in the blank.\n1) 려고  ·  2) 면서  ·  3) 지만  ·  4) 니까\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 려고",
+      "level": 2
+    },
+    {
+      "id": "D3-after-eating-coffee",
+      "difficulty": "2",
+      "focus": "sequence",
+      "korean": "고 나서",
+      "sentence": "밥을 먹___ 커피를 마셨어요",
+      "choices": [
+        "고 나서",
+        "으면서",
+        "기 전에",
+        "더라도"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Drinking coffee AFTER finishing the meal — completed sequence expressed by -고 나서.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/D3-after-eating-coffee-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n밥을 먹___ 커피를 마셨어요\n\nLook at the picture and fill in the blank.\n1) 고 나서  ·  2) 으면서  ·  3) 기 전에  ·  4) 더라도\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 고 나서",
+      "level": 2
+    },
+    {
+      "id": "D4-hurry-or-late",
+      "difficulty": "3",
+      "focus": "negative-condition",
+      "korean": "으면",
+      "sentence": "서두르지 않___ 지각할 거예요",
+      "choices": [
+        "으면",
+        "아도",
+        "지만",
+        "으려고"
+      ],
+      "correct": 0,
+      "sceneMeaning": "If the person does NOT hurry, they will be late — negative condition 않으면.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/D4-hurry-or-late-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n서두르지 않___ 지각할 거예요\n\nLook at the picture and fill in the blank.\n1) 으면  ·  2) 아도  ·  3) 지만  ·  4) 으려고\n\nLevel 3  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 으면",
+      "level": 3
+    },
+    {
+      "id": "E1-borrow-book",
+      "difficulty": "1",
+      "focus": "object-particle",
+      "korean": "을",
+      "sentence": "도서관에서 책___ 빌렸어요",
+      "choices": [
+        "을",
+        "에",
+        "에서",
+        "으로"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Borrowed a book (object) — object particle 을/를 on 책.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E1-borrow-book-composed.jpg",
+      "tweetText": "What goes in the blank?\n\n도서관에서 책___ 빌렸어요\n\nThis one’s about particles — look at the picture for context.\n1) 을  ·  2) 에  ·  3) 에서  ·  4) 으로\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 을",
+      "level": 1
+    },
+    {
+      "id": "E10-even-if-busy",
+      "difficulty": "3",
+      "focus": "concession",
+      "korean": "아도",
+      "sentence": "바빠___ 운동해요",
+      "choices": [
+        "아도",
+        "으면",
+        "아서",
+        "려고"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Exercises EVEN IF busy — concessive -아도/어도.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E10-even-if-busy-composed.jpg",
+      "tweetText": "Can you fill this in? ✍️\n\n바빠___ 운동해요\n\nLook at the picture and fill in the blank.\n1) 아도  ·  2) 으면  ·  3) 아서  ·  4) 려고\n\nLevel 3  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 아도",
+      "level": 3
+    },
+    {
+      "id": "E2-send-message",
+      "difficulty": "1",
+      "focus": "dative",
+      "korean": "에게",
+      "sentence": "선생님___ 문자를 보냈어요",
+      "choices": [
+        "에게",
+        "에서",
+        "으로",
+        "을"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Sent a text TO the teacher — polite dative 에게.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E2-send-message-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n선생님___ 문자를 보냈어요\n\nThis one’s about particles — look at the picture for context.\n1) 에게  ·  2) 에서  ·  3) 으로  ·  4) 을\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 에게",
+      "level": 1
+    },
+    {
+      "id": "E3-wait-at-station",
+      "difficulty": "1",
+      "focus": "location-particle",
+      "korean": "에서",
+      "sentence": "역___ 친구를 기다려요",
+      "choices": [
+        "에서",
+        "에",
+        "으로",
+        "부터"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Waiting AT the station — action location 에서.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E3-wait-at-station-composed.jpg",
+      "tweetText": "Korean in real life 👇\n\n역___ 친구를 기다려요\n\nThis one’s about particles — look at the picture for context.\n1) 에서  ·  2) 에  ·  3) 으로  ·  4) 부터\n\nLevel 1  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 에서",
+      "level": 1
+    },
+    {
+      "id": "E4-try-on-clothes",
+      "difficulty": "2",
+      "focus": "try",
+      "korean": "어 볼게요",
+      "sentence": "이 옷 입___",
+      "choices": [
+        "어 볼게요",
+        "고 싶어요",
+        "어야 해요",
+        "지 마세요"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Will try putting the clothes on — experiential -아/어 보다.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E4-try-on-clothes-composed.jpg",
+      "tweetText": "What goes in the blank?\n\n이 옷 입___\n\nLook at the picture and fill in the blank.\n1) 어 볼게요  ·  2) 고 싶어요  ·  3) 어야 해요  ·  4) 지 마세요\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 어 볼게요",
+      "level": 2
+    },
+    {
+      "id": "E5-before-sleep",
+      "difficulty": "2",
+      "focus": "before",
+      "korean": "기 전에",
+      "sentence": "자___ 이를 닦아요",
+      "choices": [
+        "기 전에",
+        "고 나서",
+        "면서",
+        "아서"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Brush teeth BEFORE sleeping — 기 전에 sequence.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E5-before-sleep-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n자___ 이를 닦아요\n\nLook at the picture and fill in the blank.\n1) 기 전에  ·  2) 고 나서  ·  3) 면서  ·  4) 아서\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 기 전에",
+      "level": 2
+    },
+    {
+      "id": "E6-although-rain",
+      "difficulty": "2",
+      "focus": "contrast",
+      "korean": "지만",
+      "sentence": "비가 오___ 산책했어요",
+      "choices": [
+        "지만",
+        "아서",
+        "려고",
+        "으면"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Went for a walk ALTHOUGH it was raining — contrast -지만.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E6-although-rain-composed.jpg",
+      "tweetText": "Korean in real life 👇\n\n비가 오___ 산책했어요\n\nLook at the picture and fill in the blank.\n1) 지만  ·  2) 아서  ·  3) 려고  ·  4) 으면\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 지만",
+      "level": 2
+    },
+    {
+      "id": "E7-too-spicy",
+      "difficulty": "2",
+      "focus": "degree",
+      "korean": "너무",
+      "sentence": "이 라면 ___ 매워요",
+      "choices": [
+        "너무",
+        "조금",
+        "아직",
+        "벌써"
+      ],
+      "correct": 0,
+      "sceneMeaning": "The noodles are TOO spicy — degree adverb 너무.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E7-too-spicy-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n이 라면 ___ 매워요\n\nLook at the picture and fill in the blank.\n1) 너무  ·  2) 조금  ·  3) 아직  ·  4) 벌써\n\nLevel 2  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 너무",
+      "level": 2
+    },
+    {
+      "id": "E8-should-rest",
+      "difficulty": "3",
+      "focus": "obligation",
+      "korean": "아야 해요",
+      "sentence": "오늘은 쉬___",
+      "choices": [
+        "어야 해요",
+        "고 싶어요",
+        "을까요",
+        "지 마세요"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Should/must rest today — obligation -아야/어야 해요.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E8-should-rest-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n오늘은 쉬___\n\nGrammar vibe check — which ending fits the scene?\n1) 어야 해요  ·  2) 고 싶어요  ·  3) 을까요  ·  4) 지 마세요\n\nLevel 3  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 어야 해요",
+      "level": 3
+    },
+    {
+      "id": "E9-so-that-hear",
+      "difficulty": "3",
+      "focus": "purpose-result",
+      "korean": "게",
+      "sentence": "잘 들리___ 크게 말해 주세요",
+      "choices": [
+        "게",
+        "도록",
+        "면서",
+        "지만"
+      ],
+      "correct": 0,
+      "sceneMeaning": "Speak loudly SO THAT it can be heard well — adverbial -게.",
+      "imageUrl": "https://file.kajakorean.com/newsletter/photo-quiz-trials/v2/E9-so-that-hear-composed.jpg",
+      "tweetText": "Quick Korean quiz 🇰🇷\n\n잘 들리___ 크게 말해 주세요\n\nLook at the picture and fill in the blank.\n1) 게  ·  2) 도록  ·  3) 면서  ·  4) 지만\n\nLevel 3  ·  Reply with 1–4!\n\n#LearnKorean #KoreanQuiz #Hangul",
+      "replyText": "Answer: 1) 게",
+      "level": 3
+    }
+  ]
+}

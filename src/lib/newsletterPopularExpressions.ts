@@ -2,14 +2,19 @@ import { DateTime } from "luxon";
 
 import expressionPinsFile from "@/data/newsletter/expression-pins.json";
 import { getKoreanQuizAppStoreLinks } from "@/lib/koreanQuizAppLinks";
+import { NEWSLETTER_SUBJECT } from "@/lib/newsletterSubjects";
 import { newsletterUnsubscribeUrl } from "@/lib/newsletterUnsubscribe";
 import { vocabSeoPath } from "@/lib/vocabInfographic/seo";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
-const MIN_PIN_AGE_DAYS = 10;
+/** Prefer pins that have been live long enough to earn real engagement. */
+const MATURITY_LADDER_DAYS = [10, 7, 5, 3] as const;
 const PINS_PER_EMAIL = 1;
 /** Prefer spoken phrase stacks for “popular expressions”. */
 const PREFERRED_FORMATS = ["phrase_stack"] as const;
+const SECONDARY_FORMATS = ["similar_split", "topik_upgrade", "concept_rows"] as const;
+/** Among the scored shortlist, rotate weekly so the same #1 does not always win. */
+const TOP_CANDIDATE_WINDOW = 12;
 
 export type ExpressionPinWord = {
   hangul: string;
@@ -28,6 +33,12 @@ export type ExpressionPinCandidate = {
   words: ExpressionPinWord[];
   pinnedAt?: string | null;
   pinTitle?: string;
+  /** Optional Pinterest engagement (when metrics file is present). */
+  saveCount?: number | null;
+  impressionCount?: number | null;
+  /** Diagnostic fields set at pick time. */
+  pinAgeDays?: number;
+  popularityScore?: number;
 };
 
 export type PopularExpressionsDigest = {
@@ -90,6 +101,38 @@ function pinAgeDays(pinnedAt: string | null | undefined, nowMs: number): number 
   return (nowMs - t) / 86_400_000;
 }
 
+function formatBonus(format: string): number {
+  if ((PREFERRED_FORMATS as readonly string[]).includes(format)) return 8;
+  if ((SECONDARY_FORMATS as readonly string[]).includes(format)) return 2;
+  return 0;
+}
+
+/**
+ * Ranking score:
+ * - Real Pinterest saves/impressions when present (preferred)
+ * - Otherwise pin maturity (days live) + format preference
+ */
+export function popularityScore(
+  pin: ExpressionPinCandidate,
+  nowMs = Date.now(),
+): number {
+  const saves = Number(pin.saveCount);
+  const impressions = Number(pin.impressionCount);
+  const hasMetrics =
+    (Number.isFinite(saves) && saves > 0) ||
+    (Number.isFinite(impressions) && impressions > 0);
+
+  if (hasMetrics) {
+    const s = Number.isFinite(saves) ? saves : 0;
+    const i = Number.isFinite(impressions) ? impressions : 0;
+    // Saves dominate; light impression boost.
+    return 10_000 + s * 100 + i * 0.05 + formatBonus(pin.format);
+  }
+
+  const age = pinAgeDays(pin.pinnedAt, nowMs) ?? 0;
+  return age + formatBonus(pin.format);
+}
+
 function loadCandidates(): ExpressionPinCandidate[] {
   const file = expressionPinsFile as ExpressionPinsFile;
   return (file.items ?? []).filter(
@@ -101,20 +144,48 @@ function loadCandidates(): ExpressionPinCandidate[] {
   );
 }
 
-function pickPool(all: ExpressionPinCandidate[], nowMs: number): ExpressionPinCandidate[] {
-  const mature = all.filter((item) => {
+function byAgeMature(
+  all: ExpressionPinCandidate[],
+  minDays: number,
+  nowMs: number,
+): ExpressionPinCandidate[] {
+  return all.filter((item) => {
     const age = pinAgeDays(item.pinnedAt, nowMs);
-    return age == null || age >= MIN_PIN_AGE_DAYS;
+    // No pinnedAt → treat as mature (legacy rows); metric-backed always keep.
+    if (age == null) return true;
+    return age >= minDays;
   });
-  const preferredMature = mature.filter((item) =>
-    (PREFERRED_FORMATS as readonly string[]).includes(item.format),
-  );
-  if (preferredMature.length >= PINS_PER_EMAIL) return preferredMature;
-  if (mature.length >= PINS_PER_EMAIL) return mature;
+}
 
-  const preferredAny = all.filter((item) =>
+function preferredOf(pool: ExpressionPinCandidate[]): ExpressionPinCandidate[] {
+  return pool.filter((item) =>
     (PREFERRED_FORMATS as readonly string[]).includes(item.format),
   );
+}
+
+function pickPool(
+  all: ExpressionPinCandidate[],
+  nowMs: number,
+): ExpressionPinCandidate[] {
+  // Real engagement: whole ranked pool (any format). Do not force phrase_stack.
+  const withMetrics = all.filter((item) => {
+    const s = Number(item.saveCount) || 0;
+    const i = Number(item.impressionCount) || 0;
+    return s > 0 || i > 0;
+  });
+  if (withMetrics.length >= PINS_PER_EMAIL) {
+    return withMetrics;
+  }
+
+  // Ladder of maturity floors — expression pins when metrics are missing.
+  for (const days of MATURITY_LADDER_DAYS) {
+    const mature = byAgeMature(all, days, nowMs);
+    const preferred = preferredOf(mature);
+    if (preferred.length >= PINS_PER_EMAIL) return preferred;
+    if (mature.length >= PINS_PER_EMAIL) return mature;
+  }
+
+  const preferredAny = preferredOf(all);
   if (preferredAny.length >= PINS_PER_EMAIL) return preferredAny;
   return all;
 }
@@ -131,7 +202,26 @@ export function buildPopularExpressionsDigest(
   }
 
   const pool = pickPool(all, nowMs);
-  const shuffled = seededShuffle(pool, hashString(`popular-expr:${weekKey}`));
+  const scored = pool
+    .map((pin) => {
+      const age = pinAgeDays(pin.pinnedAt, nowMs);
+      return {
+        ...pin,
+        pinAgeDays: age ?? undefined,
+        popularityScore: popularityScore(pin, nowMs),
+      };
+    })
+    .sort((a, b) => (b.popularityScore ?? 0) - (a.popularityScore ?? 0));
+
+  const shortlist = scored.slice(
+    0,
+    Math.min(TOP_CANDIDATE_WINDOW, scored.length),
+  );
+  // Rotate among top candidates each week (not pure random over the whole pool).
+  const shuffled = seededShuffle(
+    shortlist,
+    hashString(`popular-expr:${weekKey}`),
+  );
   const pins = shuffled.slice(0, PINS_PER_EMAIL).map((pin) => ({
     ...pin,
     words: (pin.words ?? []).slice(0, 5),
@@ -151,7 +241,7 @@ export function buildPopularExpressionsEmail(args: {
   const unsubscribeUrl = newsletterUnsubscribeUrl(recipientEmail, base);
   const hubUrl = `${base}/vocab?utm_source=newsletter&utm_campaign=popular-expressions`;
 
-  const subject = "This week's popular Korean expression";
+  const subject = NEWSLETTER_SUBJECT.popularExpressions;
 
   const pinBlocksText = digest.pins
     .map((pin) => {
@@ -175,7 +265,7 @@ export function buildPopularExpressionsEmail(args: {
     .join("\n\n");
 
   const text = [
-    "This week's popular Korean expression from What is this in Korean",
+    "This week's popular Korean expression from Kaja Korean",
     "",
     "One of our popular expression pins — save it and practice out loud.",
     "",
@@ -266,7 +356,7 @@ export function buildPopularExpressionsEmail(args: {
       </div>
 
       <p style="margin:28px 0 0;font-size:12px;line-height:1.6;color:#86868b;text-align:center;">
-        You are receiving this because you subscribed at What is this in Korean.<br />
+        You are receiving this because you subscribed at Kaja Korean.<br />
         <a href="${escapeHtml(unsubscribeUrl)}" style="color:#0071e3;">Unsubscribe</a>
       </p>
     </div>

@@ -29,9 +29,15 @@ async function main() {
   console.log("weekKey:", digest.weekKey);
   console.log(
     "pins:",
-    digest.pins.map(
-      (p) => `${p.bundleId} (${p.format}, ${p.pinnedAt || "n/a"})`,
-    ),
+    digest.pins.map((p) => ({
+      id: p.bundleId,
+      format: p.format,
+      ageDays: p.pinAgeDays != null ? Number(p.pinAgeDays.toFixed(1)) : null,
+      score: p.popularityScore != null ? Number(p.popularityScore.toFixed(2)) : null,
+      saves: p.saveCount ?? null,
+      impressions: p.impressionCount ?? null,
+      pinnedAt: p.pinnedAt || null,
+    })),
   );
   console.log("subject:", mail.subject);
   console.log("--- text ---");
