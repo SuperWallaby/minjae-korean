@@ -378,8 +378,9 @@
 
 @media (max-width: 767px) {
   .stackInteractiveWrapHero {
-    --stack-w: min(82vw, 18rem);
-    --stack-h: clamp(24.5rem, 112vw, 27.5rem);
+    /* Slightly smaller on phones — height was dominating the first viewport. */
+    --stack-w: min(74vw, 16rem);
+    --stack-h: clamp(20.5rem, 94vw, 23.25rem);
   }
 }
 

@@ -1,6 +1,7 @@
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 
+import { AboutMeHomeSection } from "@/components/site/AboutMeHomeSection";
 import { BookHomeSection } from "@/components/site/BookHomeSection";
 import { BuyMeCoffeeHomeSection } from "@/components/site/BuyMeCoffeeHomeSection";
 import { GrammarHomeSection } from "@/components/site/GrammarHomeSection";
@@ -107,10 +108,12 @@ export default async function Home() {
         {/* 3) Support */}
         <BuyMeCoffeeHomeSection />
 
-        {/* 4) Vocab / grammar hubs (lower priority) */}
+        {/* 4) About me */}
+        <AboutMeHomeSection />
+
+        {/* 5+) Vocab / grammar hubs, news, blog */}
         <VocabHomeSection />
         <GrammarHomeSection />
-
         <HomeRenewalSections news={news} blog={blog} />
       </div>
     </>
