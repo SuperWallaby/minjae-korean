@@ -33,7 +33,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const page = Math.max(1, parseInt(String(sp.page ?? "1"), 10) || 1);
   const path = page > 1 ? `/vocab?page=${page}` : "/vocab";
   const canonical = `${SITE_URL}${path}`;
-  const title = `Korean Vocab Charts${page > 1 ? ` — Page ${page}` : ""} | What is this in Korean`;
+  const title = `Korean Vocab Charts${page > 1 ? ` — Page ${page}` : ""} | Kaja Korean`;
   const description =
     "Picture-backed Korean vocabulary groups and comparisons — antonyms, themed word grids, and learner charts.";
 

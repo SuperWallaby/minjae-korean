@@ -18,11 +18,11 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean Expressions";
 
 export const metadata: Metadata = {
-  title: { absolute: `Korean Expressions | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Korean Expressions | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean Expressions: essential expressions with ready-to-use frames. Perfect for beginners who want to speak immediately.",
   openGraph: {
-    title: `Korean Expressions | ${META_KEYWORD} | What is this in Korean`,
+    title: `Korean Expressions | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Expressions: essential expressions with ready-to-use frames.",
     url: `${SITE_URL}/expressions`,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Korean Expressions | ${META_KEYWORD} | What is this in Korean`,
+    title: `Korean Expressions | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Expressions: essential expressions with ready-to-use frames.",
   },

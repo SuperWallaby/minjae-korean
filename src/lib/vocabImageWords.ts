@@ -272,7 +272,7 @@ Return JSON only: {"words":[{"hangul":"...","romanization":"...","english":"..."
 Rules:
 - List EVERY distinct Korean vocab item printed on the card (Hangul labels in cells / split panels / list rows / quiz options).
 - Do NOT invent words that are not visible.
-- Skip UI chrome: "KOREAN", "What is this in Korean?", badges, CTA bars.
+- Skip UI chrome: "KOREAN", "Kaja Korean", badges, CTA bars.
 - Prefer the main dictionary form shown (large Hangul), not tiny decorative text.
 - romanization/english: copy from the image when present; else best short guess.
 - Max 24 words. Order top-to-bottom, left-to-right.`;

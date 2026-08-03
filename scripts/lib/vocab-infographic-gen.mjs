@@ -5,7 +5,7 @@ import sharp from "sharp";
 
 export const IMAGE_DEPLOY = "gpt-image-2";
 export const LOGO_PATH = "public/brand/logo-for-footer.png";
-export const FOOTER_TAGLINE = "What is this in Korean?";
+export const FOOTER_TAGLINE = "Kaja Korean";
 
 /**
  * Brand capybara from capybara-style-ref.png / AVK brand-mascots sheet —

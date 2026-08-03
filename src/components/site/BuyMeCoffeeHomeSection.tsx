@@ -27,14 +27,14 @@ export function BuyMeCoffeeHomeSection() {
 
             <div className="max-w-2xl text-[#1a1400]">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1400]/65">
-                Support
+                Optional support
               </p>
               <h2 className="mt-3 font-serif text-3xl font-semibold leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl">
-                If my content helps you, support me please :)
+                If a quiz or chart helped you today, you can say thanks with a coffee
               </h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-[#1a1400]/78 sm:text-lg">
-                Free quizzes, vocab charts, and grammar guides take time to make.
-                A little support goes a long way.
+                These stay free on purpose. One coffee helps fund the next quiz
+                or chart — for you, and for the next learner who finds this page.
               </p>
               <div className="mt-8">
                 <Button
@@ -49,7 +49,7 @@ export function BuyMeCoffeeHomeSection() {
                     rel="noopener noreferrer"
                   >
                     <Coffee className="size-4" />
-                    Support me
+                    Buy me a coffee
                   </a>
                 </Button>
               </div>

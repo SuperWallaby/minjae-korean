@@ -6,7 +6,7 @@
 
 export const VOCAB_INFOGRAPHIC_BRAND = {
   siteUrl: "kajakorean.com",
-  tagline: "What is this in Korean?",
+  tagline: "Kaja Korean",
   logoPath: "public/brand/logo-for-footer.png",
   /** Footer: centered icon + tagline */
   footerPlacement: "bottom-center" as const,

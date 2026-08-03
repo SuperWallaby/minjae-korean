@@ -20,11 +20,11 @@ const SITE_URL = SITE_ORIGIN;
 const PAGE_SIZE = 24;
 
 export const metadata: Metadata = {
-  title: { absolute: "How to Say It in Korean | What is this in Korean" },
+  title: { absolute: "How to Say It in Korean | Kaja Korean" },
   description:
     "How to say everyday English phrases in Korean — natural expressions, formality tips, examples, and a quick quiz.",
   openGraph: {
-    title: "How to Say It in Korean | What is this in Korean",
+    title: "How to Say It in Korean | Kaja Korean",
     description:
       "How to say everyday English phrases in Korean — natural expressions with examples.",
     url: `${SITE_URL}/grammar/how-to-say`,

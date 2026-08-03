@@ -1,8 +1,8 @@
-/** Public site display name (formerly "Kaja Korean"). */
-export const SITE_NAME = "What is this in Korean";
+/** Public site display name. */
+export const SITE_NAME = "Kaja Korean";
 
 /** PWA / compact UI label. */
-export const SITE_SHORT_NAME = "In Korean";
+export const SITE_SHORT_NAME = "Kaja";
 
 export const SITE_DESCRIPTION =
   "Learn Korean with nuance — vocab quiz, news readings, grammar, and resources.";

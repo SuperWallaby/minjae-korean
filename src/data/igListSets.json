@@ -1,0 +1,541 @@
+{
+  "generatedFrom": "auto-video-korean/output/instagram-list-carousels",
+  "sets": [
+    {
+      "id": "20260731-054536-cancel-kindly-recharge-fully",
+      "title": "Cancel Kindly, Recharge Fully",
+      "subtitle": "Korean texts for protecting your energy",
+      "coverUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "미안한데 오늘은 좀 쉬어야 할 것 같아요.",
+          "romanization": "mianhande oneureun jom swieoya hal geot gatayo",
+          "english": "Sorry, need rest",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "컨디션이 별로라서 오늘은 못 나갈 것 같아요.",
+          "romanization": "keondisyeoni byeolloraseo oneureun mot nagal geot gatayo",
+          "english": "Not up for going out",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "오늘은 집에서 푹 쉬려고요.",
+          "romanization": "oneureun jibeseo puk swiryeogoyo",
+          "english": "Staying in to rest",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/04-slide.png"
+        },
+        {
+          "file": "05-slide.png",
+          "kind": "body",
+          "hangul": "약속을 다른 날로 옮겨도 될까요?",
+          "romanization": "yaksogeul dareun nallo omgyeodo doelkkayo",
+          "english": "Can we move it?",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/05-slide.png"
+        },
+        {
+          "file": "06-slide.png",
+          "kind": "body",
+          "hangul": "이번 주는 약속 좀 줄이려고 해요.",
+          "romanization": "ibeon juneun yaksok jom juriryeogo haeyo",
+          "english": "Cutting back this week",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/06-slide.png"
+        },
+        {
+          "file": "07-slide.png",
+          "kind": "body",
+          "hangul": "다음에 제가 좀 여유 있을 때 봐요.",
+          "romanization": "daeume jega jom yeoyu isseul ttae bwayo",
+          "english": "Let’s meet later",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/07-slide.png"
+        },
+        {
+          "file": "08-slide.png",
+          "kind": "body",
+          "hangul": "이해해 주셔서 감사해요.",
+          "romanization": "ihaehae jusyeoseo gamsahaeyo",
+          "english": "Thanks for understanding",
+          "imageUrl": "/ig-list/20260731-054536-cancel-kindly-recharge-fully/08-slide.png"
+        }
+      ]
+    },
+    {
+      "id": "20260731-042301-oops-wrong-person",
+      "title": "Oops, Wrong Person",
+      "subtitle": "Korean for the accidental wave",
+      "coverUrl": "/ig-list/20260731-042301-oops-wrong-person/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "아, 아는 사람인 줄 알았어요.",
+          "romanization": "a, a-neun sa-lam-in jul al-ass-eo-yo",
+          "english": "I thought I knew you.",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "사람 잘못 봤어요.",
+          "romanization": "saram jalmot bwasseoyo",
+          "english": "saw the wrong person",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "죄송해요, 착각했어요.",
+          "romanization": "joesonghaeyo, chakgakhaesseoyo",
+          "english": "sorry, my mistake",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/04-slide.png"
+        },
+        {
+          "file": "05-slide.png",
+          "kind": "body",
+          "hangul": "저한테 인사하신 줄 알았어요.",
+          "romanization": "jeohante insa hasin jul arasseoyo",
+          "english": "thought it was for me",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/05-slide.png"
+        },
+        {
+          "file": "06-slide.png",
+          "kind": "body",
+          "hangul": "괜히 아는 척했네요.",
+          "romanization": "gwaenhi aneun cheok haetneyo",
+          "english": "I acted familiar",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/06-slide.png"
+        },
+        {
+          "file": "07-slide.png",
+          "kind": "body",
+          "hangul": "민망해서 도망갈 뻔했어요.",
+          "romanization": "minmanghaeseo domanggal ppeonhaesseoyo",
+          "english": "almost ran away",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/07-slide.png"
+        },
+        {
+          "file": "08-slide.png",
+          "kind": "body",
+          "hangul": "그냥 지나칠걸 그랬어요.",
+          "romanization": "geunyang jinachil geol geuraesseoyo",
+          "english": "should've kept walking",
+          "imageUrl": "/ig-list/20260731-042301-oops-wrong-person/08-slide.png"
+        }
+      ]
+    },
+    {
+      "id": "20260731-040451-under-one-umbrella",
+      "title": "Under One Umbrella",
+      "subtitle": "Rainy-street Korean that feels smooth",
+      "coverUrl": "/ig-list/20260731-040451-under-one-umbrella/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "비가 갑자기 쏟아지네요.",
+          "romanization": "bi-ga gapjagi ssodajineyo",
+          "english": "It's pouring suddenly",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "잠깐만 같이 써도 될까요?",
+          "romanization": "jamkkanman gachi sseodo doelkkayo",
+          "english": "Can I share?",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "그럼요, 이쪽으로 오세요.",
+          "romanization": "geureomyo, ijjogeuro oseyo",
+          "english": "Sure, come here",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/04-slide.png"
+        },
+        {
+          "file": "05-slide.png",
+          "kind": "body",
+          "hangul": "우산이 생각보다 작네요.",
+          "romanization": "usan-i saenggakboda jakneyo",
+          "english": "This umbrella's tiny",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/05-slide.png"
+        },
+        {
+          "file": "06-slide.png",
+          "kind": "body",
+          "hangul": "어깨 젖어요, 더 들어오세요.",
+          "romanization": "eokkae jeojeoyo, deo deureo-oseyo",
+          "english": "Your shoulder's getting wet",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/06-slide.png"
+        },
+        {
+          "file": "07-slide.png",
+          "kind": "body",
+          "hangul": "어디까지 가세요?",
+          "romanization": "eodikkaji gaseyo",
+          "english": "How far are you going?",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/07-slide.png"
+        },
+        {
+          "file": "08-slide.png",
+          "kind": "body",
+          "hangul": "역 앞까진 같이 가요.",
+          "romanization": "yeok apkkajin gachi gayo",
+          "english": "Let's go to the station",
+          "imageUrl": "/ig-list/20260731-040451-under-one-umbrella/08-slide.png"
+        }
+      ]
+    },
+    {
+      "id": "20260731-034552-courier-came-you-didn-t",
+      "title": "Courier Came. You Didn’t.",
+      "subtitle": "Korean for missed package drop-offs",
+      "coverUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "택배 놓쳤어요.",
+          "romanization": "taekbae nochyeosseoyo",
+          "english": "Missed the delivery",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "부재중이었어요.",
+          "romanization": "bujaejungieosseoyo",
+          "english": "I wasn’t home",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "문자 이제 봤어요.",
+          "romanization": "munja ije bwasseoyo",
+          "english": "Just saw the text",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/04-slide.png"
+        },
+        {
+          "file": "05-slide.png",
+          "kind": "body",
+          "hangul": "문 앞에 두고 가셔도 돼요?",
+          "romanization": "mun ape dugo gasyeodo dwaeyo?",
+          "english": "Leave it at my door?",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/05-slide.png"
+        },
+        {
+          "file": "06-slide.png",
+          "kind": "body",
+          "hangul": "경비실에 맡겨 주세요.",
+          "romanization": "gyeongbisire matgyeo juseyo",
+          "english": "Leave it with security",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/06-slide.png"
+        },
+        {
+          "file": "07-slide.png",
+          "kind": "body",
+          "hangul": "오늘 다시 오실 수 있나요?",
+          "romanization": "oneul dasi osil su innayo?",
+          "english": "Can you come again today?",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/07-slide.png"
+        },
+        {
+          "file": "08-slide.png",
+          "kind": "body",
+          "hangul": "재배송 부탁드려요.",
+          "romanization": "jaebaesong butakdeuryeoyo",
+          "english": "Please redeliver it",
+          "imageUrl": "/ig-list/20260731-034552-courier-came-you-didn-t/08-slide.png"
+        }
+      ]
+    },
+    {
+      "id": "20260730-133048-korean-phrases-for-dramatic-days",
+      "title": "Korean Phrases for Dramatic Days",
+      "subtitle": "Everyday lines with main-character energy",
+      "coverUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "대박이야",
+          "romanization": "dae-bak-i-ya",
+          "english": "That's insane",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "실화야?",
+          "romanization": "sil-hwa-ya",
+          "english": "Is this real?",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "말도 안 돼",
+          "romanization": "mal-do an dwae",
+          "english": "No way",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/04-slide.png"
+        },
+        {
+          "file": "05-slide.png",
+          "kind": "body",
+          "hangul": "미치겠다",
+          "romanization": "mi-chi-get-da",
+          "english": "I'm losing it",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/05-slide.png"
+        },
+        {
+          "file": "06-slide.png",
+          "kind": "body",
+          "hangul": "어떡해",
+          "romanization": "eo-tteok-hae",
+          "english": "What do I do?",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/06-slide.png"
+        },
+        {
+          "file": "07-slide.png",
+          "kind": "body",
+          "hangul": "큰일 났다",
+          "romanization": "keun-il nat-da",
+          "english": "This is bad",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/07-slide.png"
+        },
+        {
+          "file": "08-slide.png",
+          "kind": "body",
+          "hangul": "망했다",
+          "romanization": "mang-haet-da",
+          "english": "I'm doomed",
+          "imageUrl": "/ig-list/20260730-133048-korean-phrases-for-dramatic-days/08-slide.png"
+        }
+      ]
+    },
+    {
+      "id": "20260730-121112-tiny-problems-k-drama-reactions",
+      "title": "Tiny Problems, K-Drama Reactions",
+      "subtitle": "Daily Korean with full chaos",
+      "coverUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "큰일 났다",
+          "romanization": "keun-il nat-da",
+          "english": "This is bad",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "망했다",
+          "romanization": "mang-haet-da",
+          "english": "I'm screwed",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "죽겠다",
+          "romanization": "juk-get-da",
+          "english": "I'm dying",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/04-slide.png"
+        },
+        {
+          "file": "05-slide.png",
+          "kind": "body",
+          "hangul": "미치겠다",
+          "romanization": "mi-chi-get-da",
+          "english": "I'm losing it",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/05-slide.png"
+        },
+        {
+          "file": "06-slide.png",
+          "kind": "body",
+          "hangul": "어이없어",
+          "romanization": "eo-i eop-seo",
+          "english": "I can't even",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/06-slide.png"
+        },
+        {
+          "file": "07-slide.png",
+          "kind": "body",
+          "hangul": "실화야?",
+          "romanization": "sil-hwa-ya?",
+          "english": "Is this real?",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/07-slide.png"
+        },
+        {
+          "file": "08-slide.png",
+          "kind": "body",
+          "hangul": "난리 났다",
+          "romanization": "nal-li nat-da",
+          "english": "It's total chaos",
+          "imageUrl": "/ig-list/20260730-121112-tiny-problems-k-drama-reactions/08-slide.png"
+        }
+      ]
+    },
+    {
+      "id": "20260730-103848-sticker-shock-in-korean",
+      "title": "Sticker Shock in Korean",
+      "subtitle": "For when the price tag attacks",
+      "coverUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "가격 실화예요?",
+          "romanization": "Gagyeok silhwayeyo?",
+          "english": "Is that price real?",
+          "imageUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "이거 왜 이렇게 비싸요?",
+          "romanization": "Igeo wae ireoke bissayo?",
+          "english": "Why is this so expensive?",
+          "imageUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "너무 비싼 거 아니에요?",
+          "romanization": "Neomu bissan geo anieyo?",
+          "english": "Isn't this too expensive?",
+          "imageUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/04-slide.png"
+        },
+        {
+          "file": "05-slide.png",
+          "kind": "body",
+          "hangul": "좀 깎아주실 수 있어요?",
+          "romanization": "Jom kkakkajusil su isseoyo?",
+          "english": "Can you lower it?",
+          "imageUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/05-slide.png"
+        },
+        {
+          "file": "06-slide.png",
+          "kind": "body",
+          "hangul": "가격이 좀 센데요...",
+          "romanization": "Gagyeogi jom sen-deyo...",
+          "english": "That's kinda steep.",
+          "imageUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/06-slide.png"
+        },
+        {
+          "file": "07-slide.png",
+          "kind": "body",
+          "hangul": "그냥 구경만 할게요.",
+          "romanization": "Geunyang gugyeongman halgeyo.",
+          "english": "I'll just browse.",
+          "imageUrl": "/ig-list/20260730-103848-sticker-shock-in-korean/07-slide.png"
+        }
+      ]
+    },
+    {
+      "id": "20260730-070330-annoyed-in-korea-duo",
+      "title": "Annoyed in Korea?",
+      "subtitle": "Say it like a local",
+      "coverUrl": "/ig-list/20260730-070330-annoyed-in-korea-duo/01-cover.png",
+      "cards": [
+        {
+          "file": "01-cover.png",
+          "kind": "cover",
+          "hangul": "",
+          "romanization": "",
+          "english": "",
+          "imageUrl": "/ig-list/20260730-070330-annoyed-in-korea-duo/01-cover.png"
+        },
+        {
+          "file": "02-slide.png",
+          "kind": "body",
+          "hangul": "아 진짜?",
+          "romanization": "",
+          "english": "Are you serious?",
+          "imageUrl": "/ig-list/20260730-070330-annoyed-in-korea-duo/02-slide.png"
+        },
+        {
+          "file": "03-slide.png",
+          "kind": "body",
+          "hangul": "짜증나",
+          "romanization": "",
+          "english": "So annoying",
+          "imageUrl": "/ig-list/20260730-070330-annoyed-in-korea-duo/03-slide.png"
+        },
+        {
+          "file": "04-slide.png",
+          "kind": "body",
+          "hangul": "어이없어",
+          "romanization": "",
+          "english": "That’s ridiculous",
+          "imageUrl": "/ig-list/20260730-070330-annoyed-in-korea-duo/04-slide.png"
+        }
+      ]
+    }
+  ]
+}

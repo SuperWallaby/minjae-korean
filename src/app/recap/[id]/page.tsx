@@ -47,7 +47,7 @@ export async function generateMetadata({
   ]
     .filter(Boolean)
     .join(" · ");
-  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja Korean`;
 
   const descParts: string[] = [];
   if (recap.expression.length > 0) {

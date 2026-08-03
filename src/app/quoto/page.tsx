@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title: "Quoto",
   description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
   openGraph: {
-    title: { absolute: "Quoto | What is this in Korean" },
+    title: { absolute: "Quoto | Kaja Korean" },
     description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
     url: `${SITE_URL}/quoto`,
     siteName: SITE_NAME,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Quoto | What is this in Korean",
+    title: "Quoto | Kaja Korean",
     description: "매일 다른 한글 명언. 언어와 배움에 대한 짧은 영감.",
   },
   alternates: { canonical: `${SITE_URL}/quoto` },

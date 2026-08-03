@@ -30,6 +30,13 @@ type ArticleFeedProps = {
   basePath?: string;
   /** Optional fallback when a card has no image fields */
   fallbackCover?: string;
+  /**
+   * On viewports below `sm`, only the first N items render visibly;
+   * the rest stay for desktop. Pair with `moreHref` for a mobile CTA.
+   */
+  mobileVisibleCount?: number;
+  moreHref?: string;
+  moreLabel?: string;
 };
 
 function resolveFeedCover(
@@ -48,12 +55,18 @@ export function ArticleFeed({
   showMajor = true,
   basePath = "/news/article",
   fallbackCover = BLOG_FALLBACK_COVER,
+  mobileVisibleCount,
+  moreHref,
+  moreLabel = "More",
 }: ArticleFeedProps) {
   if (articles.length === 0) return null;
 
   const major = showMajor ? articles[0] : null;
   const rest = showMajor ? articles.slice(1) : articles;
   const majorCover = major ? resolveFeedCover(major, fallbackCover) : "";
+  const hideOnMobile = (absoluteIndex: number) =>
+    typeof mobileVisibleCount === "number" &&
+    absoluteIndex >= mobileVisibleCount;
 
   return (
     <div className="space-y-6">
@@ -61,7 +74,10 @@ export function ArticleFeed({
       {major ? (
         <Link
           href={`${basePath}/${encodeURIComponent(major.slug)}`}
-          className="group block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className={cn(
+            "group block overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            hideOnMobile(0) && "max-sm:hidden",
+          )}
         >
           <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
             <Image
@@ -103,44 +119,63 @@ export function ArticleFeed({
             "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
           )}
         >
-          {rest.map((p) => (
-            <Link
-              key={p.slug}
-              href={`${basePath}/${encodeURIComponent(p.slug)}`}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted/20">
-                <Image
-                  src={resolveFeedCover(p, fallbackCover)}
-                  alt={p.title}
-                  fill
-                  className="object-cover transition group-hover:scale-[1.02]"
-                  unoptimized
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-              <div className="flex min-h-0 flex-1 flex-col p-4">
-                <h4 className="font-serif font-semibold tracking-tight line-clamp-2">
-                  {p.title}
-                </h4>
-                <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3">
-                  <span
-                    className={cn(
-                      "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
-                      levelBadgeClass((p.level ?? 1) as ReadingLevel),
-                    )}
-                  >
-                    {displayLevel((p.level ?? 1) as ReadingLevel)}{" "}
-                    {levelLabel((p.level ?? 1) as ReadingLevel)}
-                  </span>
-                  <RelativeDate
-                    iso={p.createdAt}
-                    className="text-xs text-muted-foreground"
+          {rest.map((p, index) => {
+            const absoluteIndex = showMajor ? index + 1 : index;
+            return (
+              <Link
+                key={p.slug}
+                href={`${basePath}/${encodeURIComponent(p.slug)}`}
+                className={cn(
+                  "group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                  hideOnMobile(absoluteIndex) && "max-sm:hidden",
+                )}
+              >
+                <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted/20">
+                  <Image
+                    src={resolveFeedCover(p, fallbackCover)}
+                    alt={p.title}
+                    fill
+                    className="object-cover transition group-hover:scale-[1.02]"
+                    unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="flex min-h-0 flex-1 flex-col p-4">
+                  <h4 className="font-serif font-semibold tracking-tight line-clamp-2">
+                    {p.title}
+                  </h4>
+                  <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3">
+                    <span
+                      className={cn(
+                        "inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-medium",
+                        levelBadgeClass((p.level ?? 1) as ReadingLevel),
+                      )}
+                    >
+                      {displayLevel((p.level ?? 1) as ReadingLevel)}{" "}
+                      {levelLabel((p.level ?? 1) as ReadingLevel)}
+                    </span>
+                    <RelativeDate
+                      iso={p.createdAt}
+                      className="text-xs text-muted-foreground"
+                    />
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      ) : null}
+
+      {moreHref &&
+      typeof mobileVisibleCount === "number" &&
+      articles.length > mobileVisibleCount ? (
+        <div className="flex justify-center sm:hidden">
+          <Link
+            href={moreHref}
+            className="inline-flex items-center gap-1.5 rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-2 text-sm font-semibold text-[var(--quiz-text)]"
+          >
+            {moreLabel}
+          </Link>
         </div>
       ) : null}
     </div>

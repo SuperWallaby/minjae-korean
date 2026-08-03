@@ -17,13 +17,13 @@ export function Logo({
         "inline-flex items-center rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className,
       )}
-      aria-label="What is this in Korean home"
+      aria-label="Kaja Korean home"
     >
       <Image
         width={size}
         height={size}
         src="/brand/logo.webp"
-        alt="What is this in Korean logo"
+        alt="Kaja Korean logo"
         className="rounded-full"
       />
     </Link>

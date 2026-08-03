@@ -51,7 +51,7 @@ async function main() {
     const unsubscribeUrl = newsletterUnsubscribeUrl(email, siteUrl);
     const subject = NEWSLETTER_SUBJECT.welcomePdf;
     const text = [
-      "Thanks for subscribing to What is this in Korean!",
+      "Thanks for subscribing to Kaja Korean!",
       "",
       "Here is your free Korean learning PDF:",
       pdfUrl,
@@ -60,7 +60,7 @@ async function main() {
     ].join("\n");
     const html = `<div style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.55;color:#1d1d1f;max-width:520px;">
       <h2 style="margin:0 0 12px;font-size:20px;">Thanks for subscribing!</h2>
-      <p style="margin:0 0 14px;">As promised, here is your free Korean learning PDF from What is this in Korean.</p>
+      <p style="margin:0 0 14px;">As promised, here is your free Korean learning PDF from Kaja Korean.</p>
       <div style="margin:22px 0 18px;text-align:center;">
         <a href="${pdfUrl}" style="text-decoration:none;">
           <img src="${bookCoverUrl}" alt="Korean Beyond Translation" width="200" style="display:block;margin:0 auto 14px;max-width:200px;width:100%;height:auto;border-radius:10px;border:1px solid #e5e5ea;" />

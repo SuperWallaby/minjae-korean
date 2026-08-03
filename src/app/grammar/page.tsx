@@ -19,11 +19,11 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean Grammar";
 
 export const metadata: Metadata = {
-  title: { absolute: `Korean Grammar | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Korean Grammar | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean Grammar: particles, tense, speech levels, and more. Short chapters with simple examples and quick practice.",
   openGraph: {
-    title: `Korean Grammar | ${META_KEYWORD} | What is this in Korean`,
+    title: `Korean Grammar | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Grammar: particles, tense, speech levels, and more in short chapters.",
     url: `${SITE_URL}/grammar`,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Korean Grammar | ${META_KEYWORD} | What is this in Korean`,
+    title: `Korean Grammar | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Grammar: particles, tense, speech levels, and more in short chapters.",
   },

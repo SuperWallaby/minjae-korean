@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `Study Korean with Songs: learn Korean with "${s.title}" by ${s.artist}. Click on lyrics to see translations and explanations.`;
   const mainImage = s.images?.large?.trim() || s.images?.thumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/songs/${encodeURIComponent(slug)}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja Korean`;
 
   const keywords = [s.level, ...(s.tags ?? [])].filter(Boolean).join(", ");
   return {

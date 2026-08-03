@@ -228,7 +228,7 @@ export function SiteFooter() {
               </a>
             </div>
             <div className="mt-3 text-xs text-[var(--quiz-text-muted)]">
-              © {new Date().getFullYear()} What is this in Korean. All rights reserved.
+              © {new Date().getFullYear()} Kaja Korean. All rights reserved.
             </div>
           </div>
         </div>

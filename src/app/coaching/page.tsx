@@ -19,14 +19,14 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean - Coaching";
 
 export const metadata: Metadata = {
-  title: { absolute: `Coaching | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Coaching | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean - Coaching: 1:1 Korean coaching with Minjae. Set a clear direction, stay on track with encouragement, and grow with targeted practice. Not just a class—real coaching.",
   alternates: { canonical: `${SITE_URL}/coaching` },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: `Coaching | ${META_KEYWORD} | What is this in Korean`,
+    title: `Coaching | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean - Coaching: 1:1 Korean coaching with Minjae. Set a clear direction, stay on track with encouragement, and grow with targeted practice.",
     url: `${SITE_URL}/coaching`,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Coaching | ${META_KEYWORD} | What is this in Korean`,
+    title: `Coaching | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean - Coaching: 1:1 Korean coaching with Minjae. Set a clear direction, stay on track with encouragement, and grow with targeted practice.",
     images: ["/brand/og.png"],

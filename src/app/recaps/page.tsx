@@ -11,12 +11,12 @@ export const dynamic = "force-dynamic";
 const META_KEYWORD = "Study Korean - Lesson Recaps";
 
 export const metadata: Metadata = {
-  title: { absolute: `Recaps | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Recaps | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
   robots: { index: false, follow: false },
   openGraph: {
-    title: `Recaps | ${META_KEYWORD} | What is this in Korean`,
+    title: `Recaps | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Recaps | ${META_KEYWORD} | What is this in Korean`,
+    title: `Recaps | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean - Lesson Recaps: expressions, vocabulary, and grammar from Korean lessons.",
     images: ["/kaja-recap.png"],

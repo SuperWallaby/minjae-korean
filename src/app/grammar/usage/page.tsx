@@ -21,11 +21,11 @@ const SITE_URL = SITE_ORIGIN;
 const PAGE_SIZE = 24;
 
 export const metadata: Metadata = {
-  title: { absolute: "How to Use Korean Grammar | What is this in Korean" },
+  title: { absolute: "How to Use Korean Grammar | Kaja Korean" },
   description:
     "Practical usage guides for Korean words and grammar patterns — when and how to use them, with real examples.",
   openGraph: {
-    title: "How to Use Korean Grammar | What is this in Korean",
+    title: "How to Use Korean Grammar | Kaja Korean",
     description:
       "Practical usage guides for Korean words and grammar patterns — when and how to use them.",
     url: `${SITE_URL}/grammar/usage`,

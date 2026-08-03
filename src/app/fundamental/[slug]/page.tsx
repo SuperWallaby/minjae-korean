@@ -54,7 +54,7 @@ export async function generateMetadata({
     chapter.description ??
     `Study Korean Fundamentals: ${chapter.title}. Short chapter with examples.`;
   const url = `${SITE_URL}/fundamental/${slug}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja Korean`;
 
   return {
     title: { absolute: metaTitle },

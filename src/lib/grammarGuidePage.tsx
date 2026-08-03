@@ -103,7 +103,7 @@ export function createGuideMetadata(type: GrammarGuideType) {
     ].join(", ");
 
     return {
-      title: { absolute: `${title} | What is this in Korean` },
+      title: { absolute: `${title} | Kaja Korean` },
       description,
       keywords,
       openGraph: {

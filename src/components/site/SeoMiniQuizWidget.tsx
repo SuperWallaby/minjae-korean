@@ -141,7 +141,7 @@ export function SeoMiniQuizWidget() {
       <div className={styles.header}>
         <div>
           <p className={styles.eyebrow}>60-second Korean</p>
-          <h2 className={styles.title}>What is this in Korean?</h2>
+          <h2 className={styles.title}>What is this?</h2>
         </div>
         <button
           type="button"

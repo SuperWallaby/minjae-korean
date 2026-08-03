@@ -20,11 +20,11 @@ const SITE_URL = SITE_ORIGIN;
 const PAGE_SIZE = 24;
 
 export const metadata: Metadata = {
-  title: { absolute: "What Does It Mean? | Korean Grammar | What is this in Korean" },
+  title: { absolute: "What Does It Mean? | Korean Grammar | Kaja Korean" },
   description:
     "Clear explanations of Korean words and grammar patterns — what they mean, with real examples and quick quizzes.",
   openGraph: {
-    title: "What Does It Mean? | Korean Grammar | What is this in Korean",
+    title: "What Does It Mean? | Korean Grammar | Kaja Korean",
     description:
       "Clear explanations of Korean words and grammar patterns — what they mean.",
     url: `${SITE_URL}/grammar/meaning`,

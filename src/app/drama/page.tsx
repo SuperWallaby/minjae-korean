@@ -22,12 +22,12 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean with Dramas";
 
 export const metadata: Metadata = {
-  title: { absolute: `Drama | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Drama | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
   alternates: { canonical: `${SITE_URL.replace(/\/+$/, "")}/drama` },
   openGraph: {
-    title: `Drama | ${META_KEYWORD} | What is this in Korean`,
+    title: `Drama | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
     url: `${SITE_URL.replace(/\/+$/, "")}/drama`,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Drama | ${META_KEYWORD} | What is this in Korean`,
+    title: `Drama | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean with Dramas: learn Korean through drama clips. Click on lines to see translations, explanations, and vocabulary.",
   },

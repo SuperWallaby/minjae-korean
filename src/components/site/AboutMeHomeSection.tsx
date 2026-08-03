@@ -44,7 +44,7 @@ export function AboutMeHomeSection() {
                 I kept researching how to teach Korean more accessibly — and that
                 became{" "}
                 <strong className="font-semibold text-[var(--quiz-text)]">
-                  What is this in Korean
+                  Kaja Korean
                 </strong>
                 .
               </p>

@@ -31,7 +31,7 @@ export async function generateMetadata({
   if (!exam) return { title: "Not Found" };
   const META_KEYWORD = "Study Korean - Exams";
   const url = `${SITE_URL}/exams/topic/${slug}`;
-  const metaTitle = `${exam.title} | ${META_KEYWORD} | What is this in Korean`;
+  const metaTitle = `${exam.title} | ${META_KEYWORD} | Kaja Korean`;
   const metaDescription =
     exam.description ?? `Study Korean - topic quiz ${exam.title}.`;
   return {

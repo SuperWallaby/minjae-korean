@@ -95,7 +95,7 @@ const structuredData = {
       "@id": `${PAGE_URL}#app`,
       name: VOCAB_QUIZ_APP_NAME,
       alternateName: [
-        "What is this in Korean Word Game",
+        "Kaja Korean Word Game",
         "Korean Vocab Quiz",
         "Korean Vocabulary Game",
       ],

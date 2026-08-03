@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
 
   return {
-    title: { absolute: `${page.titleEn} | What is this in Korean` },
+    title: { absolute: `${page.titleEn} | Kaja Korean` },
     description: page.description,
     robots:
       source.contrastSource === "cached"

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const META_KEYWORD = "Study Korean Expressions";
   const canonical = `${SITE_URL}/expressions/${slug}`;
-  const metaTitle = `${chapter.title} | ${META_KEYWORD} | What is this in Korean`;
+  const metaTitle = `${chapter.title} | ${META_KEYWORD} | Kaja Korean`;
   const metaDescription =
     chapter.description ??
     "Study Korean Expressions: ready-to-use frames for speaking.";

@@ -11,7 +11,7 @@ import { siteUrl } from "@/lib/siteUrl";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy policy for What is this in Korean and the Korean Quiz app.",
+    "Privacy policy for Kaja Korean and the Korean Quiz app.",
   alternates: { canonical: siteUrl("/privacy") },
 };
 
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              The What is this in Korean quiz app does not require an account.
+              The Kaja Korean quiz app does not require an account.
               It may use a random device identifier and quiz activity to serve
               questions, remember difficulty preferences, and improve learning
               progress. Favorites and history may also be stored locally on

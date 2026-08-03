@@ -52,7 +52,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     : "Compare similar Korean words with clear contrast explanations, pictures, and links to each word guide.";
   const path = pageHref(tab, page);
   const canonical = `${SITE_URL}${path}`;
-  const title = `${pageTitle}${page > 1 ? ` — Page ${page}` : ""} | What is this in Korean`;
+  const title = `${pageTitle}${page > 1 ? ` — Page ${page}` : ""} | Kaja Korean`;
 
   return {
     title: { absolute: title },

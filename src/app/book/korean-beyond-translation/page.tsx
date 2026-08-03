@@ -19,14 +19,14 @@ import { BOOK_GALLERY_SLIDES } from "@/data/bookSamples";
 const SITE_URL = SITE_ORIGIN;
 
 export const metadata: Metadata = {
-  title: { absolute: "Korean, Beyond Translation | Book Samples | What is this in Korean" },
+  title: { absolute: "Korean, Beyond Translation | Book Samples | Kaja Korean" },
   description:
     "Read sample pages from Korean, Beyond Translation by Minjae. Explore how the book teaches tone, nuance, and real Korean feeling beyond direct translation.",
   alternates: {
     canonical: `${SITE_URL}/book/korean-beyond-translation`,
   },
   openGraph: {
-    title: "Korean, Beyond Translation | Book Samples | What is this in Korean",
+    title: "Korean, Beyond Translation | Book Samples | Kaja Korean",
     description:
       "Read sample pages from Korean, Beyond Translation by Minjae.",
     url: `${SITE_URL.replace(/\/+$/, "")}/book/korean-beyond-translation`,

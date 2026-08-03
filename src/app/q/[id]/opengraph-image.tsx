@@ -75,7 +75,7 @@ export default async function SharedQuizOgImage({ params }: Props) {
             Kaja Korean
           </div>
           <div style={{ fontSize: 54, fontWeight: 800, lineHeight: 1.15 }}>
-            What is this in Korean?
+            What is this?
           </div>
           <div style={{ fontSize: 32, fontWeight: 600, color: "#6e6e73" }}>
             {gloss}

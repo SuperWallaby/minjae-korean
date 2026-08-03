@@ -18,12 +18,12 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean Fundamentals";
 
 export const metadata: Metadata = {
-  title: { absolute: `Fundamental | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Fundamental | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
   robots: { index: false, follow: false },
   openGraph: {
-    title: `Fundamental | ${META_KEYWORD} | What is this in Korean`,
+    title: `Fundamental | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
     url: `${SITE_URL}/fundamental`,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Fundamental | ${META_KEYWORD} | What is this in Korean`,
+    title: `Fundamental | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Fundamentals: Hangeul, pronunciation, numbers, time, and essential words for complete beginners.",
     images: [`${SITE_URL}/brand/og.png`],

@@ -90,7 +90,7 @@ export async function scheduleIgVocabPost(input: {
     process.env.R2_PUBLIC_BASE_URL?.trim().replace(/\/$/, "") ||
     `https://${mustEnv("R2_ACCOUNT_ID")}.r2.cloudflarestorage.com/${r2Bucket()}`;
   const imageUrl = `${publicBase}/${key}`;
-  const imageAlt = `${topic} — Korean vocabulary infographic by What is this in Korean`;
+  const imageAlt = `${topic} — Korean vocabulary infographic by Kaja Korean`;
   const tweetText = buildTweetText(topic);
 
   const item = await enqueueGrammarXManual({

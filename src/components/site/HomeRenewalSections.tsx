@@ -52,7 +52,13 @@ export function HomeRenewalSections({ news, blog }: Props) {
                   staggerMs={90}
                   delayMs={80}
                 >
-                  <ArticleFeed articles={news} showMajor={false} />
+                  <ArticleFeed
+                    articles={news}
+                    showMajor={false}
+                    mobileVisibleCount={1}
+                    moreHref="/news"
+                    moreLabel="More articles"
+                  />
                 </StaggerReveal>
               ) : null}
             </MarketingShellBody>
@@ -92,7 +98,10 @@ export function HomeRenewalSections({ news, blog }: Props) {
                   <ArticleFeed
                     articles={blog}
                     basePath="/blog/article"
-                    showMajor
+                    showMajor={false}
+                    mobileVisibleCount={1}
+                    moreHref="/blog"
+                    moreLabel="More posts"
                   />
                 </StaggerReveal>
               ) : null}

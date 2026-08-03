@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .join(", ");
 
   return {
-    title: { absolute: `${page.titleEn} | What is this in Korean` },
+    title: { absolute: `${page.titleEn} | Kaja Korean` },
     description: page.description,
     keywords,
     openGraph: {

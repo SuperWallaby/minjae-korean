@@ -4,10 +4,12 @@ import type { Metadata } from "next";
 import { AboutMeHomeSection } from "@/components/site/AboutMeHomeSection";
 import { BookHomeSection } from "@/components/site/BookHomeSection";
 import { BuyMeCoffeeHomeSection } from "@/components/site/BuyMeCoffeeHomeSection";
+import { ExpressionCardsHomeSection } from "@/components/site/ExpressionCardsHomeSection";
 import { GrammarHomeSection } from "@/components/site/GrammarHomeSection";
 import { HomeRenewalSections } from "@/components/site/HomeRenewalSections";
 import { VocabHomeSection } from "@/components/site/VocabHomeSection";
 import { VocabQuizHomeSection } from "@/components/site/VocabQuizHomeSection";
+import { getExpressionCardSets } from "@/data/expressionCardSets";
 import { listArticles } from "@/lib/articlesRepo";
 import { listBlogPosts } from "@/data/blogPosts";
 import { sampleKoreanQuizHomeCards } from "@/lib/koreanQuiz/store";
@@ -46,12 +48,12 @@ export default async function Home() {
   let blog: Awaited<ReturnType<typeof listBlogPosts>> = [];
   let vocabQuizCards: Awaited<ReturnType<typeof sampleKoreanQuizHomeCards>> = [];
   try {
-    news = await listArticles(6);
+    news = await listArticles(3);
   } catch {
     news = [];
   }
   try {
-    blog = await listBlogPosts(4);
+    blog = await listBlogPosts(3);
   } catch {
     blog = [];
   }
@@ -111,7 +113,10 @@ export default async function Home() {
         {/* 4) About me */}
         <AboutMeHomeSection />
 
-        {/* 5+) Vocab / grammar hubs, news, blog */}
+        {/* 5) Expression cards — auto-video IG List (capybara carousels) */}
+        <ExpressionCardsHomeSection sets={getExpressionCardSets()} />
+
+        {/* 6+) Vocab / grammar hubs, news, blog */}
         <VocabHomeSection />
         <GrammarHomeSection />
         <HomeRenewalSections news={news} blog={blog} />

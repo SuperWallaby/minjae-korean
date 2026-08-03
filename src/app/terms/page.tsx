@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/siteUrl";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of service for What is this in Korean.",
+  description: "Terms of service for Kaja Korean.",
   alternates: { canonical: siteUrl("/terms") },
 };
 
@@ -25,7 +25,7 @@ export default function TermsPage() {
             <p>Last updated: {new Date().getFullYear()}</p>
 
             <p>
-              By using What is this in Korean, you agree to these Terms of Service. Please read
+              By using Kaja Korean, you agree to these Terms of Service. Please read
               them carefully.
             </p>
 
@@ -34,7 +34,7 @@ export default function TermsPage() {
             </h2>
 
             <p>
-              What is this in Korean provides Korean learning content and related features. You
+              Kaja Korean provides Korean learning content and related features. You
               agree to use the service only for lawful purposes and in a
               respectful manner.
             </p>
@@ -58,7 +58,7 @@ export default function TermsPage() {
             <h2 className="font-medium text-[var(--quiz-text)]">Content</h2>
 
             <p>
-              All videos and materials provided by What is this in Korean are protected by copyright
+              All videos and materials provided by Kaja Korean are protected by copyright
               and are for personal use only.
             </p>
 

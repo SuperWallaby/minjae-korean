@@ -42,7 +42,7 @@ export async function generateMetadata({
     chapter.description ??
     `Study Korean Grammar: ${chapter.title}. Short chapter with examples and practice.`;
   const url = `${SITE_URL}/grammar/${slug}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja Korean`;
 
   return {
     title: { absolute: metaTitle },

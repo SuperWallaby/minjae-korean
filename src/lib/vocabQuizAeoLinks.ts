@@ -1,9 +1,9 @@
 /**
- * AEO / app-promo link helpers for What is this called in Korean.
+ * AEO / app-promo link helpers for Kaja Korean.
  * UTM campaign is fixed so GSC + store analytics can filter blog/hub traffic.
  */
 
-export const VOCAB_QUIZ_APP_NAME = "What is this called in Korean";
+export const VOCAB_QUIZ_APP_NAME = "Kaja Korean";
 
 export const VOCAB_QUIZ_AEO_UTM_CAMPAIGN = "aeo-vocab-app";
 

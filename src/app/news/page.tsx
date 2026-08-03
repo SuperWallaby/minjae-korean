@@ -21,11 +21,11 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean Reading";
 
 export const metadata: Metadata = {
-  title: { absolute: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Korean News & Reading | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean Reading: short news and articles for reading practice, vocabulary, and prompts. Leveled content for learners.",
   openGraph: {
-    title: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean`,
+    title: `Korean News & Reading | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Reading: news and articles for reading practice, vocabulary, and prompts.",
     url: `${SITE_URL}/news`,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Korean News & Reading | ${META_KEYWORD} | What is this in Korean`,
+    title: `Korean News & Reading | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean Reading: news and articles for reading practice, vocabulary, and prompts.",
   },

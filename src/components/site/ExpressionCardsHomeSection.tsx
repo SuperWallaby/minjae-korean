@@ -1,0 +1,170 @@
+"use client";
+
+import * as React from "react";
+
+import { Container } from "@/components/site/Container";
+import { MarketingHeader } from "@/components/site/MarketingShell";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import type { ExpressionCardSet } from "@/data/expressionCardSets";
+
+import homeStyles from "./home-renewal.module.css";
+import styles from "./expression-cards-home.module.css";
+
+type Props = {
+  sets: ExpressionCardSet[];
+};
+
+function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
+  const [index, setIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    setIndex(0);
+  }, [set.id]);
+
+  const card = set.cards[index];
+  if (!card) return null;
+
+  const isLast = index >= set.cards.length - 1;
+
+  const goNext = () => {
+    setIndex((value) => (isLast ? 0 : value + 1));
+  };
+
+  const goPrev = () => {
+    if (index <= 0) return;
+    setIndex((value) => value - 1);
+  };
+
+  return (
+    <div className={styles.stage}>
+      <div className={styles.metaRow}>
+        <h3 className={styles.setTitle}>{set.shortTitle}</h3>
+        <p className={styles.progress}>
+          {index + 1} / {set.cards.length}
+        </p>
+      </div>
+
+      <button
+        type="button"
+        className={styles.slideButton}
+        onClick={goNext}
+        aria-label={isLast ? "Restart set" : "Next slide"}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={styles.slideImage}
+          src={card.imageUrl}
+          alt={
+            card.hangul
+              ? `${card.hangul}${card.english ? ` — ${card.english}` : ""}`
+              : set.title
+          }
+          loading="lazy"
+          decoding="async"
+        />
+      </button>
+
+      {(card.hangul || card.english) && (
+        <div className={styles.caption}>
+          {card.hangul ? <p className={styles.captionHangul}>{card.hangul}</p> : null}
+          {card.romanization ? (
+            <p className={styles.captionRom}>[{card.romanization}]</p>
+          ) : null}
+          {card.english ? (
+            <p className={styles.captionEn}>{card.english}</p>
+          ) : null}
+        </div>
+      )}
+
+      <div className={styles.controls}>
+        <button
+          type="button"
+          className={styles.navBtn}
+          onClick={goPrev}
+          disabled={index === 0}
+        >
+          Prev
+        </button>
+        <button
+          type="button"
+          className={`${styles.navBtn} ${styles.navBtnPrimary}`}
+          onClick={goNext}
+        >
+          {isLast ? "Restart" : "Next"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function ExpressionCardsHomeSection({ sets }: Props) {
+  const [activeId, setActiveId] = React.useState(sets[0]?.id ?? "");
+  const activeSet = sets.find((set) => set.id === activeId) ?? sets[0];
+
+  if (!activeSet) return null;
+
+  return (
+    <RevealOnScroll
+      as="section"
+      id="expression-cards"
+      className={`scroll-mt-24 ${homeStyles.sectionBlock}`}
+    >
+      <Container>
+        <StaggerReveal className={homeStyles.sectionShell}>
+          <div className={homeStyles.sectionShellPad}>
+            <div className={styles.layout}>
+              <div>
+                <MarketingHeader
+                  eyebrow="Expression cards"
+                  title="IG List flashcards"
+                  titleAs="h2"
+                />
+                <p className={styles.lead}>
+                  Capybara Instagram list carousels — pick a set, then flip
+                  through the slides.
+                </p>
+
+                <div
+                  className={styles.setScroller}
+                  role="listbox"
+                  aria-label="IG List sets"
+                >
+                  {sets.map((set) => {
+                    const active = set.id === activeSet.id;
+                    return (
+                      <button
+                        key={set.id}
+                        type="button"
+                        role="option"
+                        aria-selected={active}
+                        className={`${styles.setTile} ${
+                          active ? styles.setTileActive : ""
+                        }`}
+                        onClick={() => setActiveId(set.id)}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={set.coverUrl}
+                          alt=""
+                          className={styles.setThumb}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <span className={styles.setTileLabel}>
+                          {set.shortTitle}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <ExpressionCardStage set={activeSet} />
+            </div>
+          </div>
+        </StaggerReveal>
+      </Container>
+    </RevealOnScroll>
+  );
+}

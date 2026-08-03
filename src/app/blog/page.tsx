@@ -18,11 +18,11 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean";
 
 export const metadata: Metadata = {
-  title: { absolute: `Blog | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Blog | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean: notes and posts about Korean learning, teaching, and practice.",
   openGraph: {
-    title: `Blog | ${META_KEYWORD} | What is this in Korean`,
+    title: `Blog | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean: notes and posts about Korean learning, teaching, and practice.",
     url: `${SITE_URL}/blog`,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Blog | ${META_KEYWORD} | What is this in Korean`,
+    title: `Blog | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean: notes and posts about Korean learning, teaching, and practice.",
     images: [`${SITE_URL}/brand/og.png`],

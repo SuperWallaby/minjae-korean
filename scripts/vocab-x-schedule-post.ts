@@ -20,7 +20,9 @@ import { markVocabXApproved, upsertVocabXPending } from "../src/lib/vocabXReview
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
-const OUT = path.join(ROOT, ".tmp", "vocab-infographic-gen");
+const OUT =
+  (process.env.VOCAB_OUT || "").trim() ||
+  path.join(ROOT, ".tmp", "vocab-infographic-gen");
 const SCHEDULED_PATH = path.join(OUT, "vocab-x-scheduled.json");
 
 async function imageWordsForBundle(
@@ -135,7 +137,7 @@ async function uploadBrandedImage(bundleId: string): Promise<{
     `https://${mustEnv("R2_ACCOUNT_ID")}.r2.cloudflarestorage.com/${bucket}`;
   const imageUrl = `${publicBase}/${heroKey}`;
   const imageThumbUrl = `${publicBase}/${thumbKey}`;
-  const imageAlt = `${bundle.title} — Korean vocabulary by What is this in Korean`;
+  const imageAlt = `${bundle.title} — Korean vocabulary by Kaja Korean`;
   return { imageUrl, imageThumbUrl, imageAlt };
 }
 

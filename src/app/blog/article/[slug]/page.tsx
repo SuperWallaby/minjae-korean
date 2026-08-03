@@ -50,7 +50,7 @@ export async function generateMetadata({
   const description = buildDescription(a);
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(slug)}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | What is this in Korean`;
+  const metaTitle = `${title} | ${META_KEYWORD} | Kaja Korean`;
   const metaDescription = description.includes(META_KEYWORD) ? description : `${META_KEYWORD}. ${description}`;
 
   return {

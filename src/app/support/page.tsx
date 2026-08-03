@@ -13,12 +13,12 @@ import { siteUrl } from "@/lib/siteUrl";
 const SUPPORT_URL = siteUrl("/support");
 
 export const metadata: Metadata = {
-  title: { absolute: "Support | What is this in Korean" },
-  description: "Get help with the What is this in Korean quiz app.",
+  title: { absolute: "Support | Kaja Korean" },
+  description: "Get help with the Kaja Korean quiz app.",
   alternates: { canonical: SUPPORT_URL },
   openGraph: {
     type: "website",
-    title: "Support | What is this in Korean",
+    title: "Support | Kaja Korean",
     description: "Get help with quizzes, audio, and your learning history.",
     url: SUPPORT_URL,
   },

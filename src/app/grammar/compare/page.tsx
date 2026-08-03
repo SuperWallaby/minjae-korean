@@ -21,11 +21,11 @@ const SITE_URL = SITE_ORIGIN;
 const PAGE_SIZE = 24;
 
 export const metadata: Metadata = {
-  title: { absolute: "Korean Word Comparisons | Grammar | What is this in Korean" },
+  title: { absolute: "Korean Word Comparisons | Grammar | Kaja Korean" },
   description:
     "Compare easily confused Korean words and grammar patterns side by side — with real examples and quick quizzes.",
   openGraph: {
-    title: "Korean Word Comparisons | What is this in Korean",
+    title: "Korean Word Comparisons | Kaja Korean",
     description:
       "Compare easily confused Korean words and grammar patterns side by side.",
     url: `${SITE_URL}/grammar/compare`,

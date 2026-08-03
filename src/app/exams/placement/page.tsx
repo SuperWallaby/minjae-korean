@@ -19,11 +19,11 @@ const SITE_URL = SITE_ORIGIN;
 const META_KEYWORD = "Study Korean - Exams";
 
 export const metadata: Metadata = {
-  title: { absolute: `Check my level | ${META_KEYWORD} | What is this in Korean` },
+  title: { absolute: `Check my level | ${META_KEYWORD} | Kaja Korean` },
   description:
     "Study Korean - Exams: find your Korean level with a short placement test. Interactive assessment.",
   openGraph: {
-    title: `Check my level | ${META_KEYWORD} | What is this in Korean`,
+    title: `Check my level | ${META_KEYWORD} | Kaja Korean`,
     description:
       "Study Korean - Exams: find your Korean level with a short placement test.",
     url: `${SITE_URL}/exams/placement`,
