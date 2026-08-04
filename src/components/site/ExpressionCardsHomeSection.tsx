@@ -11,9 +11,59 @@ import type { ExpressionCardSet } from "@/data/expressionCardSets";
 import homeStyles from "./home-renewal.module.css";
 import styles from "./expression-cards-home.module.css";
 
+const CHARACTER_CREDIT_HREF = "https://www.instagram.com/chico._.pu";
+
 type Props = {
   sets: ExpressionCardSet[];
 };
+
+function prefetchImage(url: string) {
+  if (!url || typeof window === "undefined") return;
+  const img = new window.Image();
+  img.decoding = "async";
+  img.src = url;
+}
+
+function SoftImage({
+  src,
+  alt,
+  className,
+  priority = false,
+  width,
+  height,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  priority?: boolean;
+  width?: number;
+  height?: number;
+}) {
+  const [loaded, setLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    setLoaded(false);
+  }, [src]);
+
+  return (
+    <span
+      className={`${styles.softImageWrap} ${loaded ? styles.softImageLoaded : ""}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className={className}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={priority ? "high" : "low"}
+        onLoad={() => setLoaded(true)}
+      />
+    </span>
+  );
+}
 
 function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
   const [index, setIndex] = React.useState(0);
@@ -21,6 +71,17 @@ function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
   React.useEffect(() => {
     setIndex(0);
   }, [set.id]);
+
+  // Prefetch current + neighbors for the active set only.
+  React.useEffect(() => {
+    const urls = [
+      set.cards[index]?.imageUrl,
+      set.cards[index + 1]?.imageUrl,
+      set.cards[index - 1]?.imageUrl,
+      set.cards[index + 2]?.imageUrl,
+    ].filter(Boolean) as string[];
+    for (const url of urls) prefetchImage(url);
+  }, [set.id, set.cards, index]);
 
   const card = set.cards[index];
   if (!card) return null;
@@ -51,8 +112,7 @@ function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
         onClick={goNext}
         aria-label={isLast ? "Restart set" : "Next slide"}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <SoftImage
           className={styles.slideImage}
           src={card.imageUrl}
           alt={
@@ -60,14 +120,17 @@ function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
               ? `${card.hangul}${card.english ? ` — ${card.english}` : ""}`
               : set.title
           }
-          loading="lazy"
-          decoding="async"
+          priority
+          width={720}
+          height={900}
         />
       </button>
 
       {(card.hangul || card.english) && (
         <div className={styles.caption}>
-          {card.hangul ? <p className={styles.captionHangul}>{card.hangul}</p> : null}
+          {card.hangul ? (
+            <p className={styles.captionHangul}>{card.hangul}</p>
+          ) : null}
           {card.romanization ? (
             <p className={styles.captionRom}>[{card.romanization}]</p>
           ) : null}
@@ -98,9 +161,33 @@ function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
   );
 }
 
+function CharacterCredit() {
+  return (
+    <p className={styles.credit}>
+      Characters by{" "}
+      <a
+        href={CHARACTER_CREDIT_HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.creditLink}
+      >
+        @chico._.pu
+      </a>{" "}
+      (Jeomjeommi).
+    </p>
+  );
+}
+
 export function ExpressionCardsHomeSection({ sets }: Props) {
   const [activeId, setActiveId] = React.useState(sets[0]?.id ?? "");
   const activeSet = sets.find((set) => set.id === activeId) ?? sets[0];
+
+  // Warm the active set's first slide when picker changes.
+  React.useEffect(() => {
+    if (!activeSet) return;
+    prefetchImage(activeSet.cards[0]?.imageUrl ?? "");
+    prefetchImage(activeSet.cards[1]?.imageUrl ?? "");
+  }, [activeSet]);
 
   if (!activeSet) return null;
 
@@ -124,13 +211,14 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
                   Capybara Instagram list carousels — pick a set, then flip
                   through the slides.
                 </p>
+                <CharacterCredit />
 
                 <div
                   className={styles.setScroller}
                   role="listbox"
                   aria-label="IG List sets"
                 >
-                  {sets.map((set) => {
+                  {sets.map((set, i) => {
                     const active = set.id === activeSet.id;
                     return (
                       <button
@@ -142,14 +230,22 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
                           active ? styles.setTileActive : ""
                         }`}
                         onClick={() => setActiveId(set.id)}
+                        onMouseEnter={() => {
+                          prefetchImage(set.cards[0]?.imageUrl ?? "");
+                          prefetchImage(set.cards[1]?.imageUrl ?? "");
+                        }}
+                        onFocus={() => {
+                          prefetchImage(set.cards[0]?.imageUrl ?? "");
+                          prefetchImage(set.cards[1]?.imageUrl ?? "");
+                        }}
                       >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={set.coverUrl}
+                        <SoftImage
+                          src={set.coverThumbUrl || set.coverUrl}
                           alt=""
                           className={styles.setThumb}
-                          loading="lazy"
-                          decoding="async"
+                          priority={i < 4}
+                          width={160}
+                          height={200}
                         />
                         <span className={styles.setTileLabel}>
                           {set.shortTitle}

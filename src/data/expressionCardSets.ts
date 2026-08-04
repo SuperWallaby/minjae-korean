@@ -13,6 +13,7 @@ export type ExpressionCardSet = {
   title: string;
   shortTitle: string;
   coverUrl: string;
+  coverThumbUrl: string;
   cards: ExpressionCard[];
 };
 
@@ -22,6 +23,7 @@ type IgListCatalog = {
     title: string;
     subtitle?: string;
     coverUrl: string;
+    coverThumbUrl?: string;
     cards: Array<{
       hangul?: string;
       romanization?: string;
@@ -40,6 +42,7 @@ export function getExpressionCardSets(): ExpressionCardSet[] {
     title: set.title,
     shortTitle: set.title,
     coverUrl: set.coverUrl,
+    coverThumbUrl: set.coverThumbUrl || set.coverUrl,
     cards: (set.cards ?? []).map((card) => ({
       hangul: card.hangul ?? "",
       romanization: card.romanization ?? "",
