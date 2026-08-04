@@ -12,6 +12,16 @@ When the user asks to upload/register Pinterest pins (especially “25개”, �
   - Board default: `Korean words`
 - **Do NOT** run `auto-video-korean` `./scripts/pin-batch.sh` / `npm run pin` for this — that path is GPU **format4/format8 video** pins and is deprecated for format4.
 
+## Destination URL (critical)
+
+**SEO page first, pin second.** See `pinterest-vocab-seo-links.mdc`.
+
+1. `yarn vocab:publish` → `published.json`
+2. Deploy (commit) until `https://kajakorean.com/vocab/{id}/{slug}` is live
+3. Then pin — link must be that `/vocab/...` URL with UTM (never homepage)
+
+`pin-vocab-infographics.mjs` skips IDs without a published slug and without a live SEO page (unless explicit override flags).
+
 ## Title / description
 
 - Pin **title** = tweet first line

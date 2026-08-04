@@ -1,0 +1,39 @@
+---
+description: Vocab pin + SEO — publish page, deploy live, then pin link
+alwaysApply: true
+---
+
+# Vocab Pinterest pins ↔ SEO destination links
+
+## Required end-to-end order
+
+Every **new** pin must land on a **live** Kaja Korean vocab SEO page — **never** pin first with a homepage fallback.
+
+1. **Image ready** — branded PNG + `vocab-x-scheduled.json` entry with **`imageUrl`** (R2).
+2. **SEO catalog** — `yarn vocab:publish` writes `src/data/vocabInfographic/published.json` (`/vocab/{bundleId}/{slug}`).
+3. **Deploy confirmed** — commit/push `published.json` so Vercel ships **kajakorean.com**. Verify with `HEAD`/`GET` 200 on the live URL **before** uploading the pin.
+4. **Pin** — `./scripts/pin-vocab-batch.sh N` only after step 3. Destination =  
+   `https://kajakorean.com/vocab/{bundleId}/{slug}?utm_source=pinterest&utm_campaign=vocab-pin`
+
+## Hard rules
+
+- **Do not** pin a bundle missing from `published.json` or whose live `/vocab/...` page is not 200.
+- **Do not** use homepage `https://kajakorean.com/?utm_...` as pin destination (legacy mistakes stay historical only).
+- **Do not** treat local-only `published.json` as enough — production must serve the page.
+- Pin upload command remains `./scripts/pin-vocab-batch.sh` in `korean-teacher-mj` (not AVK format4 video pins).
+
+## When generating new pin content
+
+After gen + R2 schedule (`imageUrl` set): **always** run publish → deploy/verify → only then pin. Prefer preparing many SEO pages together, deploy once, then batch-pin.
+
+## Quick prep checklist
+
+```bash
+cd korean-teacher-mj
+yarn vocab:publish
+# commit+deploy published.json; wait for Vercel
+# smoke: curl -sI "https://kajakorean.com/vocab/{id}/{slug}" | head -1
+./scripts/pin-vocab-batch.sh 25
+```
+
+Pin scripts enforce published SEO + optional live URL check (see `pin-vocab-infographics.mjs`).
