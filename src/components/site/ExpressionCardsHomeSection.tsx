@@ -339,8 +339,8 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
                             alt=""
                             className={styles.setThumb}
                             enabled={mediaReady}
-                            width={160}
-                            height={200}
+                            width={400}
+                            height={500}
                           />
                           <span className={styles.setTileLabel}>
                             {set.shortTitle}
