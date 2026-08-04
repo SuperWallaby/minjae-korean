@@ -12,6 +12,8 @@ import homeStyles from "./home-renewal.module.css";
 import styles from "./expression-cards-home.module.css";
 
 const CHARACTER_CREDIT_HREF = "https://www.instagram.com/chico._.pu";
+/** Start loading a bit before the section enters the viewport. */
+const MEDIA_ROOT_MARGIN = "320px 0px";
 
 type Props = {
   sets: ExpressionCardSet[];
@@ -28,52 +30,62 @@ function SoftImage({
   src,
   alt,
   className,
-  priority = false,
   width,
   height,
+  enabled = true,
 }: {
   src: string;
   alt: string;
   className?: string;
-  priority?: boolean;
   width?: number;
   height?: number;
+  /** When false, keep the aspect box but do not request the image. */
+  enabled?: boolean;
 }) {
   const [loaded, setLoaded] = React.useState(false);
 
   React.useEffect(() => {
     setLoaded(false);
-  }, [src]);
+  }, [src, enabled]);
 
   return (
     <span
       className={`${styles.softImageWrap} ${loaded ? styles.softImageLoaded : ""}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        className={className}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={priority ? "eager" : "lazy"}
-        decoding="async"
-        fetchPriority={priority ? "high" : "low"}
-        onLoad={() => setLoaded(true)}
-      />
+      {enabled ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          className={className}
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
+          onLoad={() => setLoaded(true)}
+        />
+      ) : null}
     </span>
   );
 }
 
-function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
+function ExpressionCardStage({
+  set,
+  enabled,
+}: {
+  set: ExpressionCardSet;
+  enabled: boolean;
+}) {
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
     setIndex(0);
   }, [set.id]);
 
-  // Prefetch current + neighbors for the active set only.
+  // Prefetch current + neighbors only after the section is near the viewport.
   React.useEffect(() => {
+    if (!enabled) return;
     const urls = [
       set.cards[index]?.imageUrl,
       set.cards[index + 1]?.imageUrl,
@@ -81,7 +93,7 @@ function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
       set.cards[index + 2]?.imageUrl,
     ].filter(Boolean) as string[];
     for (const url of urls) prefetchImage(url);
-  }, [set.id, set.cards, index]);
+  }, [enabled, set.id, set.cards, index]);
 
   const card = set.cards[index];
   if (!card) return null;
@@ -120,7 +132,7 @@ function ExpressionCardStage({ set }: { set: ExpressionCardSet }) {
               ? `${card.hangul}${card.english ? ` — ${card.english}` : ""}`
               : set.title
           }
-          priority
+          enabled={enabled}
           width={720}
           height={900}
         />
@@ -180,87 +192,118 @@ function CharacterCredit() {
 
 export function ExpressionCardsHomeSection({ sets }: Props) {
   const [activeId, setActiveId] = React.useState(sets[0]?.id ?? "");
+  const [mediaReady, setMediaReady] = React.useState(false);
+  const sectionRef = React.useRef<HTMLElement | null>(null);
   const activeSet = sets.find((set) => set.id === activeId) ?? sets[0];
 
-  // Warm the active set's first slide when picker changes.
   React.useEffect(() => {
-    if (!activeSet) return;
+    if (mediaReady) return;
+    if (typeof window === "undefined" || typeof IntersectionObserver === "undefined") {
+      setMediaReady(true);
+      return;
+    }
+    const el = sectionRef.current;
+    if (!el) {
+      setMediaReady(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setMediaReady(true);
+            observer.disconnect();
+            break;
+          }
+        }
+      },
+      { root: null, rootMargin: MEDIA_ROOT_MARGIN, threshold: 0 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [mediaReady]);
+
+  // Warm the active set only after the section is near view.
+  React.useEffect(() => {
+    if (!mediaReady || !activeSet) return;
     prefetchImage(activeSet.cards[0]?.imageUrl ?? "");
     prefetchImage(activeSet.cards[1]?.imageUrl ?? "");
-  }, [activeSet]);
+  }, [mediaReady, activeSet]);
 
   if (!activeSet) return null;
 
+  const warmSet = (set: ExpressionCardSet) => {
+    if (!mediaReady) return;
+    prefetchImage(set.cards[0]?.imageUrl ?? "");
+    prefetchImage(set.cards[1]?.imageUrl ?? "");
+  };
+
   return (
-    <RevealOnScroll
-      as="section"
+    <section
+      ref={sectionRef}
       id="expression-cards"
       className={`scroll-mt-24 ${homeStyles.sectionBlock}`}
     >
-      <Container>
-        <StaggerReveal className={homeStyles.sectionShell}>
-          <div className={homeStyles.sectionShellPad}>
-            <div className={styles.layout}>
-              <div>
-                <MarketingHeader
-                  eyebrow="Expression cards"
-                  title="IG List flashcards"
-                  titleAs="h2"
-                />
-                <p className={styles.lead}>
-                  Capybara Instagram list carousels — pick a set, then flip
-                  through the slides.
-                </p>
-                <CharacterCredit />
+      <RevealOnScroll>
+        <Container>
+          <StaggerReveal className={homeStyles.sectionShell}>
+            <div className={homeStyles.sectionShellPad}>
+              <div className={styles.layout}>
+                <div>
+                  <MarketingHeader
+                    eyebrow="Expression cards"
+                    title="IG List flashcards"
+                    titleAs="h2"
+                  />
+                  <p className={styles.lead}>
+                    Capybara Instagram list carousels — pick a set, then flip
+                    through the slides.
+                  </p>
+                  <CharacterCredit />
 
-                <div
-                  className={styles.setScroller}
-                  role="listbox"
-                  aria-label="IG List sets"
-                >
-                  {sets.map((set, i) => {
-                    const active = set.id === activeSet.id;
-                    return (
-                      <button
-                        key={set.id}
-                        type="button"
-                        role="option"
-                        aria-selected={active}
-                        className={`${styles.setTile} ${
-                          active ? styles.setTileActive : ""
-                        }`}
-                        onClick={() => setActiveId(set.id)}
-                        onMouseEnter={() => {
-                          prefetchImage(set.cards[0]?.imageUrl ?? "");
-                          prefetchImage(set.cards[1]?.imageUrl ?? "");
-                        }}
-                        onFocus={() => {
-                          prefetchImage(set.cards[0]?.imageUrl ?? "");
-                          prefetchImage(set.cards[1]?.imageUrl ?? "");
-                        }}
-                      >
-                        <SoftImage
-                          src={set.coverThumbUrl || set.coverUrl}
-                          alt=""
-                          className={styles.setThumb}
-                          priority={i < 4}
-                          width={160}
-                          height={200}
-                        />
-                        <span className={styles.setTileLabel}>
-                          {set.shortTitle}
-                        </span>
-                      </button>
-                    );
-                  })}
+                  <div
+                    className={styles.setScroller}
+                    role="listbox"
+                    aria-label="IG List sets"
+                  >
+                    {sets.map((set) => {
+                      const active = set.id === activeSet.id;
+                      return (
+                        <button
+                          key={set.id}
+                          type="button"
+                          role="option"
+                          aria-selected={active}
+                          className={`${styles.setTile} ${
+                            active ? styles.setTileActive : ""
+                          }`}
+                          onClick={() => setActiveId(set.id)}
+                          onMouseEnter={() => warmSet(set)}
+                          onFocus={() => warmSet(set)}
+                        >
+                          <SoftImage
+                            src={set.coverThumbUrl || set.coverUrl}
+                            alt=""
+                            className={styles.setThumb}
+                            enabled={mediaReady}
+                            width={160}
+                            height={200}
+                          />
+                          <span className={styles.setTileLabel}>
+                            {set.shortTitle}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
 
-              <ExpressionCardStage set={activeSet} />
+                <ExpressionCardStage set={activeSet} enabled={mediaReady} />
+              </div>
             </div>
-          </div>
-        </StaggerReveal>
-      </Container>
-    </RevealOnScroll>
+          </StaggerReveal>
+        </Container>
+      </RevealOnScroll>
+    </section>
   );
 }
