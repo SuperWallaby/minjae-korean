@@ -14,6 +14,8 @@ import styles from "./expression-cards-home.module.css";
 const CHARACTER_CREDIT_HREF = "https://www.instagram.com/chico._.pu";
 /** Start loading a bit before the section enters the viewport. */
 const MEDIA_ROOT_MARGIN = "320px 0px";
+/** How many neighbors around the active slide may fetch images. */
+const SLIDE_LOAD_RADIUS = 1;
 
 type Props = {
   sets: ExpressionCardSet[];
@@ -63,6 +65,7 @@ function SoftImage({
           loading="lazy"
           decoding="async"
           fetchPriority="low"
+          draggable={false}
           onLoad={() => setLoaded(true)}
         />
       ) : null}
@@ -78,36 +81,57 @@ function ExpressionCardStage({
   enabled: boolean;
 }) {
   const [index, setIndex] = React.useState(0);
+  const scrollerRef = React.useRef<HTMLDivElement | null>(null);
+  const ignoreScrollSync = React.useRef(false);
 
   React.useEffect(() => {
     setIndex(0);
+    const el = scrollerRef.current;
+    if (el) {
+      ignoreScrollSync.current = true;
+      el.scrollTo({ left: 0, behavior: "auto" });
+      requestAnimationFrame(() => {
+        ignoreScrollSync.current = false;
+      });
+    }
   }, [set.id]);
 
   // Prefetch current + neighbors only after the section is near the viewport.
   React.useEffect(() => {
     if (!enabled) return;
-    const urls = [
-      set.cards[index]?.imageUrl,
-      set.cards[index + 1]?.imageUrl,
-      set.cards[index - 1]?.imageUrl,
-      set.cards[index + 2]?.imageUrl,
-    ].filter(Boolean) as string[];
-    for (const url of urls) prefetchImage(url);
+    for (let i = index - SLIDE_LOAD_RADIUS; i <= index + SLIDE_LOAD_RADIUS; i++) {
+      const url = set.cards[i]?.imageUrl;
+      if (url) prefetchImage(url);
+    }
   }, [enabled, set.id, set.cards, index]);
+
+  const scrollToIndex = React.useCallback((next: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const slide = el.children[next] as HTMLElement | undefined;
+    if (!slide) return;
+    ignoreScrollSync.current = true;
+    el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+    setIndex(next);
+    window.setTimeout(() => {
+      ignoreScrollSync.current = false;
+    }, 380);
+  }, []);
+
+  const onScroll = () => {
+    if (ignoreScrollSync.current) return;
+    const el = scrollerRef.current;
+    if (!el || el.clientWidth <= 0) return;
+    const next = Math.round(el.scrollLeft / el.clientWidth);
+    const clamped = Math.max(0, Math.min(set.cards.length - 1, next));
+    if (clamped !== index) setIndex(clamped);
+  };
 
   const card = set.cards[index];
   if (!card) return null;
 
+  const isFirst = index <= 0;
   const isLast = index >= set.cards.length - 1;
-
-  const goNext = () => {
-    setIndex((value) => (isLast ? 0 : value + 1));
-  };
-
-  const goPrev = () => {
-    if (index <= 0) return;
-    setIndex((value) => value - 1);
-  };
 
   return (
     <div className={styles.stage}>
@@ -118,25 +142,50 @@ function ExpressionCardStage({
         </p>
       </div>
 
-      <button
-        type="button"
-        className={styles.slideButton}
-        onClick={goNext}
-        aria-label={isLast ? "Restart set" : "Next slide"}
+      <div
+        ref={scrollerRef}
+        className={styles.slideTrack}
+        onScroll={onScroll}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={`${set.shortTitle} slides`}
       >
-        <SoftImage
-          className={styles.slideImage}
-          src={card.imageUrl}
-          alt={
-            card.hangul
-              ? `${card.hangul}${card.english ? ` — ${card.english}` : ""}`
-              : set.title
-          }
-          enabled={enabled}
-          width={720}
-          height={900}
-        />
-      </button>
+        {set.cards.map((slide, i) => {
+          const near = Math.abs(i - index) <= SLIDE_LOAD_RADIUS;
+          return (
+            <div
+              key={`${set.id}-${slide.imageUrl}-${i}`}
+              className={styles.slidePane}
+              aria-hidden={i !== index}
+            >
+              <SoftImage
+                className={styles.slideImage}
+                src={slide.imageUrl}
+                alt={
+                  slide.hangul
+                    ? `${slide.hangul}${slide.english ? ` — ${slide.english}` : ""}`
+                    : set.title
+                }
+                enabled={enabled && near}
+                width={720}
+                height={900}
+              />
+            </div>
+          );
+        })}
+      </div>
+
+      <div className={styles.dots} aria-hidden>
+        {set.cards.map((_, i) => (
+          <button
+            key={`${set.id}-dot-${i}`}
+            type="button"
+            className={`${styles.dot} ${i === index ? styles.dotActive : ""}`}
+            onClick={() => scrollToIndex(i)}
+            tabIndex={-1}
+          />
+        ))}
+      </div>
 
       {(card.hangul || card.english) && (
         <div className={styles.caption}>
@@ -156,15 +205,17 @@ function ExpressionCardStage({
         <button
           type="button"
           className={styles.navBtn}
-          onClick={goPrev}
-          disabled={index === 0}
+          onClick={() => scrollToIndex(index - 1)}
+          disabled={isFirst}
         >
           Prev
         </button>
         <button
           type="button"
           className={`${styles.navBtn} ${styles.navBtnPrimary}`}
-          onClick={goNext}
+          onClick={() =>
+            scrollToIndex(isLast ? 0 : index + 1)
+          }
         >
           {isLast ? "Restart" : "Next"}
         </button>
@@ -198,7 +249,10 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
 
   React.useEffect(() => {
     if (mediaReady) return;
-    if (typeof window === "undefined" || typeof IntersectionObserver === "undefined") {
+    if (
+      typeof window === "undefined" ||
+      typeof IntersectionObserver === "undefined"
+    ) {
       setMediaReady(true);
       return;
     }
@@ -223,7 +277,6 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
     return () => observer.disconnect();
   }, [mediaReady]);
 
-  // Warm the active set only after the section is near view.
   React.useEffect(() => {
     if (!mediaReady || !activeSet) return;
     prefetchImage(activeSet.cards[0]?.imageUrl ?? "");
@@ -256,7 +309,7 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
                     titleAs="h2"
                   />
                   <p className={styles.lead}>
-                    Capybara Instagram list carousels — pick a set, then flip
+                    Capybara Instagram list carousels — pick a set, then swipe
                     through the slides.
                   </p>
                   <CharacterCredit />

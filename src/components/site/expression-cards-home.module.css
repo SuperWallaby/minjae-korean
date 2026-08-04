@@ -162,23 +162,40 @@
   white-space: nowrap;
 }
 
-.slideButton {
+.slideTrack {
   width: min(100%, 20rem);
-  border: 0;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.slideButton .softImageWrap {
-  aspect-ratio: 4 / 5;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   border-radius: 1.25rem;
   border: 1px solid var(--quiz-border);
-  overflow: hidden;
   background: #fff;
   box-shadow: 0 18px 40px -24px rgba(40, 28, 18, 0.45);
-  transition: transform 180ms ease;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  touch-action: pan-x;
+}
+
+.slideTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.slidePane {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  width: 100%;
+}
+
+.slidePane .softImageWrap {
+  aspect-ratio: 4 / 5;
+  border-radius: 0;
+  border: 0;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--quiz-canvas) 70%, #e8e2d8);
 }
 
 .slideImage {
@@ -187,14 +204,31 @@
   height: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.slideButton:hover .softImageWrap {
-  transform: translateY(-2px);
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  width: min(100%, 20rem);
 }
 
-.slideButton:active .softImageWrap {
-  transform: translateY(1px) scale(0.995);
+.dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--quiz-text-muted) 45%, transparent);
+  cursor: pointer;
+}
+
+.dotActive {
+  background: var(--quiz-primary);
+  transform: scale(1.15);
 }
 
 .caption {
