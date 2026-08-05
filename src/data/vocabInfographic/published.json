@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T15:44:31.284Z",
+  "generatedAt": "2026-08-05T16:43:05.550Z",
   "pages": [
     {
       "bundleId": "ant-accept-reject",
@@ -7,7 +7,7 @@
       "format": "antonym_split",
       "title": "Accept vs Reject",
       "titleEn": "Accept vs Reject in Korean",
-      "description": "Accept vs Reject in Korean — 받아들이다 (accept), 거절하다 (reject). Picture vocab chart for Korean learners.",
+      "description": "This chart shows two opposite actions in Korean: accepting and rejecting. '받아들이다' means to accept something, like an idea or offer. '거절하다' means to reject or…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785697063647-ant-accept-reject.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785697063647-ant-accept-reject-thumb.webp",
       "imageAlt": "Accept vs Reject in Korean — Korean vocab chart",
@@ -28,7 +28,23 @@
         "decision"
       ],
       "intro": "Deciding is hard, right? 🔴 받아들이다 [bada-deul-ida] - accept",
-      "updatedAt": "2026-08-02T18:57:51.412Z"
+      "updatedAt": "2026-08-05T16:43:05.550Z",
+      "explanationEn": "This chart shows two opposite actions in Korean: accepting and rejecting. '받아들이다' means to accept something, like an idea or offer. '거절하다' means to reject or refuse something. These words are useful when making decisions or responding to requests.",
+      "examples": [
+        {
+          "korean": "나는 그의 제안을 받아들였어요.",
+          "english": "I accepted his proposal."
+        },
+        {
+          "korean": "그녀는 초대를 거절했어요.",
+          "english": "She rejected the invitation."
+        },
+        {
+          "korean": "우리는 새로운 조건을 받아들일지 고민 중이에요.",
+          "english": "We are thinking about whether to accept the new terms."
+        }
+      ],
+      "enrichedAt": "2026-08-05T16:43:05.549Z"
     },
     {
       "bundleId": "ant-angry-calm",
@@ -11902,6 +11918,69 @@
       "enrichedAt": "2026-07-30T05:25:53.610Z"
     },
     {
+      "bundleId": "grid-alcohol-drinks",
+      "slug": "alcoholic-drinks-in-korean",
+      "format": "grid_cluster",
+      "title": "Alcoholic drinks in Korean",
+      "titleEn": "Alcoholic drinks in Korean",
+      "description": "Alcoholic drinks in Korean — 소주 (Soju), 맥주 (Beer), 막걸리 (Makgeolli), 와인 (Wine). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947911186-grid-alcohol-drinks.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947911186-grid-alcohol-drinks-thumb.webp",
+      "imageAlt": "Alcoholic drinks in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "소주",
+          "romanization": "soju",
+          "english": "Soju"
+        },
+        {
+          "hangul": "맥주",
+          "romanization": "maekju",
+          "english": "Beer"
+        },
+        {
+          "hangul": "막걸리",
+          "romanization": "makgeolli",
+          "english": "Makgeolli"
+        },
+        {
+          "hangul": "와인",
+          "romanization": "wain",
+          "english": "Wine"
+        },
+        {
+          "hangul": "위스키",
+          "romanization": "wiseuki",
+          "english": "Whiskey"
+        },
+        {
+          "hangul": "보드카",
+          "romanization": "bodeuka",
+          "english": "Vodka"
+        },
+        {
+          "hangul": "샴페인",
+          "romanization": "syampein",
+          "english": "Champagne"
+        },
+        {
+          "hangul": "칵테일",
+          "romanization": "kaketeil",
+          "english": "Cocktail"
+        },
+        {
+          "hangul": "하이볼",
+          "romanization": "haibol",
+          "english": "Highball"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Alcoholic drinks 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.933Z"
+    },
+    {
       "bundleId": "grid-amphibians",
       "slug": "amphibians-in-korean",
       "format": "grid_cluster",
@@ -13440,6 +13519,69 @@
       "enrichedAt": "2026-07-30T05:28:36.773Z"
     },
     {
+      "bundleId": "grid-bbq-grill-items",
+      "slug": "bbq-and-grill-items-in-korean",
+      "format": "grid_cluster",
+      "title": "BBQ & grill items in Korean",
+      "titleEn": "BBQ & grill items in Korean",
+      "description": "BBQ & grill items in Korean — 고기 (Meat), 상추 (Lettuce), 마늘 (Garlic), 양파 (Onion). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947920121-grid-bbq-grill-items.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947920121-grid-bbq-grill-items-thumb.webp",
+      "imageAlt": "BBQ & grill items in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "고기",
+          "romanization": "gogi",
+          "english": "Meat"
+        },
+        {
+          "hangul": "상추",
+          "romanization": "sangchu",
+          "english": "Lettuce"
+        },
+        {
+          "hangul": "마늘",
+          "romanization": "maneul",
+          "english": "Garlic"
+        },
+        {
+          "hangul": "양파",
+          "romanization": "yangpa",
+          "english": "Onion"
+        },
+        {
+          "hangul": "김치",
+          "romanization": "kimchi",
+          "english": "Kimchi"
+        },
+        {
+          "hangul": "쌈장",
+          "romanization": "ssamjang",
+          "english": "Ssamjang"
+        },
+        {
+          "hangul": "청양고추",
+          "romanization": "cheongyang gochu",
+          "english": "Green Chili"
+        },
+        {
+          "hangul": "숯",
+          "romanization": "sut",
+          "english": "Charcoal"
+        },
+        {
+          "hangul": "집게",
+          "romanization": "jipge",
+          "english": "Tongs"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: BBQ & grill items 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.934Z"
+    },
+    {
       "bundleId": "grid-beach-travel",
       "slug": "beach-travel-in-korean",
       "format": "grid_cluster",
@@ -13889,6 +14031,134 @@
         }
       ],
       "enrichedAt": "2026-07-23T09:08:47.040Z"
+    },
+    {
+      "bundleId": "grid-birds-backyard",
+      "slug": "birds-backyard-in-korean",
+      "format": "grid_cluster",
+      "title": "Birds Backyard in Korean",
+      "titleEn": "Birds Backyard in Korean",
+      "description": "Birds Backyard in Korean — 새 (Bird), 둥지 (Nest), 깃털 (Feather), 새 모이통 (Feeder). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947927426-grid-birds-backyard.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947927426-grid-birds-backyard-thumb.webp",
+      "imageAlt": "Birds Backyard in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "새",
+          "romanization": "sae",
+          "english": "Bird"
+        },
+        {
+          "hangul": "둥지",
+          "romanization": "dungji",
+          "english": "Nest"
+        },
+        {
+          "hangul": "깃털",
+          "romanization": "gitteol",
+          "english": "Feather"
+        },
+        {
+          "hangul": "새 모이통",
+          "romanization": "sae mo-itong",
+          "english": "Feeder"
+        },
+        {
+          "hangul": "새 목욕통",
+          "romanization": "sae mog-yoktong",
+          "english": "Bird Bath"
+        },
+        {
+          "hangul": "앉을 가지",
+          "romanization": "anjeul gaji",
+          "english": "Perch"
+        },
+        {
+          "hangul": "쌍안경",
+          "romanization": "ssang-ankyeong",
+          "english": "Binoculars"
+        },
+        {
+          "hangul": "새집",
+          "romanization": "saejip",
+          "english": "Birdhouse"
+        },
+        {
+          "hangul": "새 씨앗",
+          "romanization": "sae ssi-at",
+          "english": "Seeds"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Birds Backyard 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.935Z"
+    },
+    {
+      "bundleId": "grid-birds-waterfowl",
+      "slug": "birds-waterfowl-in-korean",
+      "format": "grid_cluster",
+      "title": "Birds Waterfowl in Korean",
+      "titleEn": "Birds Waterfowl in Korean",
+      "description": "Birds Waterfowl in Korean — 오리 (Duck), 백조 (Swan), 거위 (Goose), 원앙 (Mandarin Duck). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947933824-grid-birds-waterfowl.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947933824-grid-birds-waterfowl-thumb.webp",
+      "imageAlt": "Birds Waterfowl in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "오리",
+          "romanization": "ori",
+          "english": "Duck"
+        },
+        {
+          "hangul": "백조",
+          "romanization": "baekjo",
+          "english": "Swan"
+        },
+        {
+          "hangul": "거위",
+          "romanization": "geowi",
+          "english": "Goose"
+        },
+        {
+          "hangul": "원앙",
+          "romanization": "wonang",
+          "english": "Mandarin Duck"
+        },
+        {
+          "hangul": "왜가리",
+          "romanization": "waegari",
+          "english": "Heron"
+        },
+        {
+          "hangul": "플라밍고",
+          "romanization": "peullamingo",
+          "english": "Flamingo"
+        },
+        {
+          "hangul": "두루미",
+          "romanization": "durumi",
+          "english": "Crane"
+        },
+        {
+          "hangul": "펠리컨",
+          "romanization": "pellikeon",
+          "english": "Pelican"
+        },
+        {
+          "hangul": "갈매기",
+          "romanization": "galmaegi",
+          "english": "Seagull"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Birds Waterfowl 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.935Z"
     },
     {
       "bundleId": "grid-body-head",
@@ -15748,6 +16018,69 @@
         }
       ],
       "enrichedAt": "2026-07-23T09:38:42.693Z"
+    },
+    {
+      "bundleId": "grid-coffee-menu",
+      "slug": "coffee-shop-menu-in-korean",
+      "format": "grid_cluster",
+      "title": "Coffee shop menu in Korean",
+      "titleEn": "Coffee shop menu in Korean",
+      "description": "Coffee shop menu in Korean — 아메리카노 (Americano), 라떼 (Latte), 아이스 커피 (Iced Coffee), 바닐라 라떼 (Vanilla Latte). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947940393-grid-coffee-menu.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947940393-grid-coffee-menu-thumb.webp",
+      "imageAlt": "Coffee shop menu in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "아메리카노",
+          "romanization": "amerikano",
+          "english": "Americano"
+        },
+        {
+          "hangul": "라떼",
+          "romanization": "latte",
+          "english": "Latte"
+        },
+        {
+          "hangul": "아이스 커피",
+          "romanization": "aiseu keopi",
+          "english": "Iced Coffee"
+        },
+        {
+          "hangul": "바닐라 라떼",
+          "romanization": "banilla latte",
+          "english": "Vanilla Latte"
+        },
+        {
+          "hangul": "카라멜 마끼아또",
+          "romanization": "karamel makkiatto",
+          "english": "Caramel Macchiato"
+        },
+        {
+          "hangul": "모카",
+          "romanization": "moka",
+          "english": "Mocha"
+        },
+        {
+          "hangul": "치즈케이크",
+          "romanization": "chijeu keikeu",
+          "english": "Cheesecake"
+        },
+        {
+          "hangul": "초코 케이크",
+          "romanization": "choko keikeu",
+          "english": "Chocolate Cake"
+        },
+        {
+          "hangul": "머핀",
+          "romanization": "mufin",
+          "english": "Muffin"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Coffee shop menu 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.935Z"
     },
     {
       "bundleId": "grid-color-impression-adj",
@@ -18988,6 +19321,132 @@
       "enrichedAt": "2026-07-23T09:58:02.834Z"
     },
     {
+      "bundleId": "grid-drinks-hot",
+      "slug": "hot-drinks-in-korean",
+      "format": "grid_cluster",
+      "title": "Hot drinks in Korean",
+      "titleEn": "Hot drinks in Korean",
+      "description": "Hot drinks in Korean — 커피 (Coffee), 녹차 (Green tea), 홍차 (Black tea), 우유 (Milk). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947948324-grid-drinks-hot.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947948324-grid-drinks-hot-thumb.webp",
+      "imageAlt": "Hot drinks in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "커피",
+          "romanization": "keopi",
+          "english": "Coffee"
+        },
+        {
+          "hangul": "녹차",
+          "romanization": "nokcha",
+          "english": "Green tea"
+        },
+        {
+          "hangul": "홍차",
+          "romanization": "hongcha",
+          "english": "Black tea"
+        },
+        {
+          "hangul": "우유",
+          "romanization": "uyu",
+          "english": "Milk"
+        },
+        {
+          "hangul": "핫초코",
+          "romanization": "hatchoko",
+          "english": "Hot chocolate"
+        },
+        {
+          "hangul": "레몬차",
+          "romanization": "lemoncha",
+          "english": "Lemon tea"
+        },
+        {
+          "hangul": "생강차",
+          "romanization": "saenggangcha",
+          "english": "Ginger tea"
+        },
+        {
+          "hangul": "대추차",
+          "romanization": "daechucha",
+          "english": "Jujube tea"
+        },
+        {
+          "hangul": "보리차",
+          "romanization": "boricha",
+          "english": "Barley tea"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Hot drinks 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
+    },
+    {
+      "bundleId": "grid-drinks-soft",
+      "slug": "soft-drinks-in-korean",
+      "format": "grid_cluster",
+      "title": "Soft drinks in Korean",
+      "titleEn": "Soft drinks in Korean",
+      "description": "Soft drinks in Korean — 소다 (Soda), 콜라 (Cola), 레모네이드 (Lemonade), 오렌지 주스 (Orange juice). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947954958-grid-drinks-soft.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947954958-grid-drinks-soft-thumb.webp",
+      "imageAlt": "Soft drinks in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "소다",
+          "romanization": "soda",
+          "english": "Soda"
+        },
+        {
+          "hangul": "콜라",
+          "romanization": "kolla",
+          "english": "Cola"
+        },
+        {
+          "hangul": "레모네이드",
+          "romanization": "lemon-e-i-deu",
+          "english": "Lemonade"
+        },
+        {
+          "hangul": "오렌지 주스",
+          "romanization": "o-ren-ji ju-seu",
+          "english": "Orange juice"
+        },
+        {
+          "hangul": "사과 주스",
+          "romanization": "sa-gwa ju-seu",
+          "english": "Apple juice"
+        },
+        {
+          "hangul": "아이스티",
+          "romanization": "a-i-seu-ti",
+          "english": "Iced tea"
+        },
+        {
+          "hangul": "우유",
+          "romanization": "u-yu",
+          "english": "Milk"
+        },
+        {
+          "hangul": "초코우유",
+          "romanization": "cho-ko-u-yu",
+          "english": "Chocolate milk"
+        },
+        {
+          "hangul": "탄산수",
+          "romanization": "tan-san-su",
+          "english": "Sparkling water"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Soft drinks 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
+    },
+    {
       "bundleId": "grid-driving-verbs",
       "slug": "driving-verbs-in-korean",
       "format": "grid_cluster",
@@ -20339,6 +20798,133 @@
         }
       ],
       "enrichedAt": "2026-07-23T10:09:10.804Z"
+    },
+    {
+      "bundleId": "grid-farm-animals",
+      "slug": "farm-animals-in-korean",
+      "format": "grid_cluster",
+      "title": "Farm Animals in Korean",
+      "titleEn": "Farm Animals in Korean",
+      "description": "Farm Animals in Korean — 소 (Cow), 돼지 (Pig), 말 (Horse), 양 (Sheep). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947962318-grid-farm-animals.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947962318-grid-farm-animals-thumb.webp",
+      "imageAlt": "Farm Animals in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "소",
+          "romanization": "so",
+          "english": "Cow"
+        },
+        {
+          "hangul": "돼지",
+          "romanization": "dwaeji",
+          "english": "Pig"
+        },
+        {
+          "hangul": "말",
+          "romanization": "mal",
+          "english": "Horse"
+        },
+        {
+          "hangul": "양",
+          "romanization": "yang",
+          "english": "Sheep"
+        },
+        {
+          "hangul": "염소",
+          "romanization": "yeomso",
+          "english": "Goat"
+        },
+        {
+          "hangul": "닭",
+          "romanization": "dak",
+          "english": "Chicken"
+        },
+        {
+          "hangul": "오리",
+          "romanization": "ori",
+          "english": "Duck"
+        },
+        {
+          "hangul": "거위",
+          "romanization": "geowi",
+          "english": "Goose"
+        },
+        {
+          "hangul": "병아리",
+          "romanization": "byeongari",
+          "english": "Chick"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Farm Animals 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
+    },
+    {
+      "bundleId": "grid-fast-food",
+      "slug": "fast-food-in-korean",
+      "format": "grid_cluster",
+      "title": "Fast food in Korean",
+      "titleEn": "Fast food in Korean",
+      "description": "Fast food in Korean — 햄버거 (Burger), 감자튀김 (French fries), 치킨 (Fried chicken), 피자 (Pizza). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947969677-grid-fast-food.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947969677-grid-fast-food-thumb.webp",
+      "imageAlt": "Fast food in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "햄버거",
+          "romanization": "haem-beo-geo",
+          "english": "Burger"
+        },
+        {
+          "hangul": "감자튀김",
+          "romanization": "gam-ja-twi-gim",
+          "english": "French fries"
+        },
+        {
+          "hangul": "치킨",
+          "romanization": "chi-kin",
+          "english": "Fried chicken"
+        },
+        {
+          "hangul": "피자",
+          "romanization": "pi-ja",
+          "english": "Pizza"
+        },
+        {
+          "hangul": "핫도그",
+          "romanization": "hat-do-geu",
+          "english": "Hot dog"
+        },
+        {
+          "hangul": "치킨샌드위치",
+          "romanization": "chi-kin-saen-deu-wi-chi",
+          "english": "Chicken sandwich"
+        },
+        {
+          "hangul": "탄산음료",
+          "romanization": "tan-san-eum-ryo",
+          "english": "Soda"
+        },
+        {
+          "hangul": "밀크쉐이크",
+          "romanization": "mil-keu-swe-i-keu",
+          "english": "Milkshake"
+        },
+        {
+          "hangul": "치킨너겟",
+          "romanization": "chi-kin-neo-get",
+          "english": "Chicken nuggets"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Fast food 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
     },
     {
       "bundleId": "grid-fermented-foods",
@@ -24617,6 +25203,134 @@
       "enrichedAt": "2026-07-23T10:41:23.543Z"
     },
     {
+      "bundleId": "grid-insects-garden",
+      "slug": "insects-garden-in-korean",
+      "format": "grid_cluster",
+      "title": "Insects Garden in Korean",
+      "titleEn": "Insects Garden in Korean",
+      "description": "Insects Garden in Korean — 나비 (Butterfly), 벌 (Bee), 무당벌레 (Ladybug), 메뚜기 (Grasshopper). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947976747-grid-insects-garden.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947976747-grid-insects-garden-thumb.webp",
+      "imageAlt": "Insects Garden in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "나비",
+          "romanization": "nabi",
+          "english": "Butterfly"
+        },
+        {
+          "hangul": "벌",
+          "romanization": "beol",
+          "english": "Bee"
+        },
+        {
+          "hangul": "무당벌레",
+          "romanization": "mudangbeolle",
+          "english": "Ladybug"
+        },
+        {
+          "hangul": "메뚜기",
+          "romanization": "meddugi",
+          "english": "Grasshopper"
+        },
+        {
+          "hangul": "잠자리",
+          "romanization": "jamjari",
+          "english": "Dragonfly"
+        },
+        {
+          "hangul": "개미",
+          "romanization": "gaemi",
+          "english": "Ant"
+        },
+        {
+          "hangul": "사마귀",
+          "romanization": "samagwi",
+          "english": "Praying Mantis"
+        },
+        {
+          "hangul": "장수풍뎅이",
+          "romanization": "jangsupungdengi",
+          "english": "Beetle"
+        },
+        {
+          "hangul": "애벌레",
+          "romanization": "aebeolle",
+          "english": "Caterpillar"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Insects Garden 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
+    },
+    {
+      "bundleId": "grid-insects-household",
+      "slug": "insects-household-in-korean",
+      "format": "grid_cluster",
+      "title": "Insects Household in Korean",
+      "titleEn": "Insects Household in Korean",
+      "description": "Insects Household in Korean — 개미 (Ant), 벌 (Bee), 나비 (Butterfly), 파리 (Fly). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947982718-grid-insects-household.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947982718-grid-insects-household-thumb.webp",
+      "imageAlt": "Insects Household in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "개미",
+          "romanization": "gaemi",
+          "english": "Ant"
+        },
+        {
+          "hangul": "벌",
+          "romanization": "beol",
+          "english": "Bee"
+        },
+        {
+          "hangul": "나비",
+          "romanization": "nabi",
+          "english": "Butterfly"
+        },
+        {
+          "hangul": "파리",
+          "romanization": "pari",
+          "english": "Fly"
+        },
+        {
+          "hangul": "모기",
+          "romanization": "mogi",
+          "english": "Mosquito"
+        },
+        {
+          "hangul": "바퀴벌레",
+          "romanization": "bakwibeolle",
+          "english": "Cockroach"
+        },
+        {
+          "hangul": "무당벌레",
+          "romanization": "mudangbeolle",
+          "english": "Ladybug"
+        },
+        {
+          "hangul": "사마귀",
+          "romanization": "samagwi",
+          "english": "Praying Mantis"
+        },
+        {
+          "hangul": "집게벌레",
+          "romanization": "jipgibeolle",
+          "english": "Earwig"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Insects Household 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
+    },
+    {
       "bundleId": "grid-intensity-adj",
       "slug": "intensity-adj-in-korean",
       "format": "grid_cluster",
@@ -26193,6 +26907,69 @@
         }
       ],
       "enrichedAt": "2026-07-30T05:48:05.013Z"
+    },
+    {
+      "bundleId": "grid-meats-common",
+      "slug": "meats-in-korean",
+      "format": "grid_cluster",
+      "title": "Meats in Korean",
+      "titleEn": "Meats in Korean",
+      "description": "Meats in Korean — 돼지고기 (Pork), 소고기 (Beef), 닭고기 (Chicken), 오리고기 (Duck). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947988975-grid-meats-common.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947988975-grid-meats-common-thumb.webp",
+      "imageAlt": "Meats in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "돼지고기",
+          "romanization": "dwaeji-gogi",
+          "english": "Pork"
+        },
+        {
+          "hangul": "소고기",
+          "romanization": "so-gogi",
+          "english": "Beef"
+        },
+        {
+          "hangul": "닭고기",
+          "romanization": "dak-gogi",
+          "english": "Chicken"
+        },
+        {
+          "hangul": "오리고기",
+          "romanization": "o-ri-gogi",
+          "english": "Duck"
+        },
+        {
+          "hangul": "양고기",
+          "romanization": "yang-gogi",
+          "english": "Lamb"
+        },
+        {
+          "hangul": "염소고기",
+          "romanization": "yeomso-gogi",
+          "english": "Goat"
+        },
+        {
+          "hangul": "칠면조고기",
+          "romanization": "chil-myeonjo-gogi",
+          "english": "Turkey"
+        },
+        {
+          "hangul": "소시지",
+          "romanization": "so-si-ji",
+          "english": "Sausage"
+        },
+        {
+          "hangul": "베이컨",
+          "romanization": "bei-keon",
+          "english": "Bacon"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Meats 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
     },
     {
       "bundleId": "grid-medicine-types",
@@ -28220,6 +28997,134 @@
       "enrichedAt": "2026-07-30T06:07:52.161Z"
     },
     {
+      "bundleId": "grid-pets-common",
+      "slug": "pets-common-in-korean",
+      "format": "grid_cluster",
+      "title": "Pets Common in Korean",
+      "titleEn": "Pets Common in Korean",
+      "description": "Pets Common in Korean — 개 (Dog), 고양이 (Cat), 토끼 (Rabbit), 햄스터 (Hamster). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947994741-grid-pets-common.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785947994741-grid-pets-common-thumb.webp",
+      "imageAlt": "Pets Common in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "개",
+          "romanization": "gae",
+          "english": "Dog"
+        },
+        {
+          "hangul": "고양이",
+          "romanization": "goyangi",
+          "english": "Cat"
+        },
+        {
+          "hangul": "토끼",
+          "romanization": "tokki",
+          "english": "Rabbit"
+        },
+        {
+          "hangul": "햄스터",
+          "romanization": "haemseuteo",
+          "english": "Hamster"
+        },
+        {
+          "hangul": "앵무새",
+          "romanization": "aengmusae",
+          "english": "Parrot"
+        },
+        {
+          "hangul": "물고기",
+          "romanization": "mulgogi",
+          "english": "Fish"
+        },
+        {
+          "hangul": "거북이",
+          "romanization": "geobugi",
+          "english": "Turtle"
+        },
+        {
+          "hangul": "페럿",
+          "romanization": "peret",
+          "english": "Ferret"
+        },
+        {
+          "hangul": "기니피그",
+          "romanization": "ginipigeu",
+          "english": "Guinea Pig"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Pets Common 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.936Z"
+    },
+    {
+      "bundleId": "grid-pets-exotic",
+      "slug": "pets-exotic-in-korean",
+      "format": "grid_cluster",
+      "title": "Pets Exotic in Korean",
+      "titleEn": "Pets Exotic in Korean",
+      "description": "Pets Exotic in Korean — 고슴도치 (Hedgehog), 슈가 글라이더 (Sugar Glider), 페럿 (Ferret), 카멜레온 (Chameleon). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948001184-grid-pets-exotic.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948001184-grid-pets-exotic-thumb.webp",
+      "imageAlt": "Pets Exotic in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "고슴도치",
+          "romanization": "goseumdochi",
+          "english": "Hedgehog"
+        },
+        {
+          "hangul": "슈가 글라이더",
+          "romanization": "syuga geullideo",
+          "english": "Sugar Glider"
+        },
+        {
+          "hangul": "페럿",
+          "romanization": "peret",
+          "english": "Ferret"
+        },
+        {
+          "hangul": "카멜레온",
+          "romanization": "kamelleon",
+          "english": "Chameleon"
+        },
+        {
+          "hangul": "턱수염 도마뱀",
+          "romanization": "teogsuyeom domabaem",
+          "english": "Bearded Dragon"
+        },
+        {
+          "hangul": "앵무새",
+          "romanization": "aengmusae",
+          "english": "Parrot"
+        },
+        {
+          "hangul": "기니피그",
+          "romanization": "ginipigeu",
+          "english": "Guinea Pig"
+        },
+        {
+          "hangul": "거북이",
+          "romanization": "geobugi",
+          "english": "Turtle"
+        },
+        {
+          "hangul": "토끼",
+          "romanization": "tokki",
+          "english": "Rabbit"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Pets Exotic 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.937Z"
+    },
+    {
       "bundleId": "grid-phone-call-verbs",
       "slug": "phone-call-verbs-in-korean",
       "format": "grid_cluster",
@@ -29005,6 +29910,69 @@
       "enrichedAt": "2026-07-30T06:16:13.215Z"
     },
     {
+      "bundleId": "grid-popular-kfood-icons",
+      "slug": "iconic-korean-foods-in-korean",
+      "format": "grid_cluster",
+      "title": "Iconic Korean foods in Korean",
+      "titleEn": "Iconic Korean foods in Korean",
+      "description": "Iconic Korean foods in Korean — 비빔밥 (Bibimbap), 김치찌개 (Kimchi Stew), 김밥 (Kimbap), 떡볶이 (Tteokbokki). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948009140-grid-popular-kfood-icons.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948009140-grid-popular-kfood-icons-thumb.webp",
+      "imageAlt": "Iconic Korean foods in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "비빔밥",
+          "romanization": "bibimbap",
+          "english": "Bibimbap"
+        },
+        {
+          "hangul": "김치찌개",
+          "romanization": "kimchi jjigae",
+          "english": "Kimchi Stew"
+        },
+        {
+          "hangul": "김밥",
+          "romanization": "gimbap",
+          "english": "Kimbap"
+        },
+        {
+          "hangul": "떡볶이",
+          "romanization": "tteokbokki",
+          "english": "Tteokbokki"
+        },
+        {
+          "hangul": "치킨",
+          "romanization": "chikin",
+          "english": "Korean Fried Chicken"
+        },
+        {
+          "hangul": "냉면",
+          "romanization": "naengmyeon",
+          "english": "Naengmyeon"
+        },
+        {
+          "hangul": "삼겹살",
+          "romanization": "samgyeopsal",
+          "english": "Samgyeopsal"
+        },
+        {
+          "hangul": "잡채",
+          "romanization": "japchae",
+          "english": "Japchae"
+        },
+        {
+          "hangul": "빙수",
+          "romanization": "bingsu",
+          "english": "Bingsu"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Iconic Korean foods 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.937Z"
+    },
+    {
       "bundleId": "grid-reaction-adj",
       "slug": "reaction-adj-in-korean",
       "format": "grid_cluster",
@@ -29712,6 +30680,132 @@
         }
       ],
       "enrichedAt": "2026-07-30T06:24:42.586Z"
+    },
+    {
+      "bundleId": "grid-seafood-fish",
+      "slug": "fish-in-korean",
+      "format": "grid_cluster",
+      "title": "Fish in Korean",
+      "titleEn": "Fish in Korean",
+      "description": "Fish in Korean — 참치 (Tuna), 연어 (Salmon), 고등어 (Mackerel), 방어 (Yellowtail). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948016479-grid-seafood-fish.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948016479-grid-seafood-fish-thumb.webp",
+      "imageAlt": "Fish in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "참치",
+          "romanization": "chamchi",
+          "english": "Tuna"
+        },
+        {
+          "hangul": "연어",
+          "romanization": "yeoneo",
+          "english": "Salmon"
+        },
+        {
+          "hangul": "고등어",
+          "romanization": "godeungeo",
+          "english": "Mackerel"
+        },
+        {
+          "hangul": "방어",
+          "romanization": "bangeo",
+          "english": "Yellowtail"
+        },
+        {
+          "hangul": "광어",
+          "romanization": "gwangeo",
+          "english": "Flounder"
+        },
+        {
+          "hangul": "도미",
+          "romanization": "domi",
+          "english": "Sea Bream"
+        },
+        {
+          "hangul": "멸치",
+          "romanization": "myeolchi",
+          "english": "Sardine"
+        },
+        {
+          "hangul": "명태",
+          "romanization": "myeongtae",
+          "english": "Pollock"
+        },
+        {
+          "hangul": "장어",
+          "romanization": "jangeo",
+          "english": "Eel"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Fish 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.937Z"
+    },
+    {
+      "bundleId": "grid-seafood-shellfish",
+      "slug": "shellfish-in-korean",
+      "format": "grid_cluster",
+      "title": "Shellfish in Korean",
+      "titleEn": "Shellfish in Korean",
+      "description": "Shellfish in Korean — 조개 (Clam), 가리비 (Scallop), 홍합 (Mussel), 굴 (Oyster). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948021830-grid-seafood-shellfish.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948021830-grid-seafood-shellfish-thumb.webp",
+      "imageAlt": "Shellfish in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "조개",
+          "romanization": "jogae",
+          "english": "Clam"
+        },
+        {
+          "hangul": "가리비",
+          "romanization": "garibi",
+          "english": "Scallop"
+        },
+        {
+          "hangul": "홍합",
+          "romanization": "honghap",
+          "english": "Mussel"
+        },
+        {
+          "hangul": "굴",
+          "romanization": "gul",
+          "english": "Oyster"
+        },
+        {
+          "hangul": "전복",
+          "romanization": "jeonbok",
+          "english": "Abalone"
+        },
+        {
+          "hangul": "꼬막",
+          "romanization": "kkomak",
+          "english": "Cockle"
+        },
+        {
+          "hangul": "소라",
+          "romanization": "sora",
+          "english": "Whelk"
+        },
+        {
+          "hangul": "고둥",
+          "romanization": "godung",
+          "english": "Periwinkle"
+        },
+        {
+          "hangul": "바지락",
+          "romanization": "bajirak",
+          "english": "Razor Clam"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Shellfish 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.937Z"
     },
     {
       "bundleId": "grid-shape-adj",
@@ -33305,6 +34399,69 @@
       "enrichedAt": "2026-07-30T07:01:11.499Z"
     },
     {
+      "bundleId": "grid-tea-types",
+      "slug": "tea-types-in-korean",
+      "format": "grid_cluster",
+      "title": "Tea types in Korean",
+      "titleEn": "Tea types in Korean",
+      "description": "Tea types in Korean — 녹차 (Green tea), 보리차 (Barley tea), 옥수수차 (Corn tea), 홍차 (Black tea). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948121789-grid-tea-types.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948121789-grid-tea-types-thumb.webp",
+      "imageAlt": "Tea types in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "녹차",
+          "romanization": "nok-cha",
+          "english": "Green tea"
+        },
+        {
+          "hangul": "보리차",
+          "romanization": "bo-ri-cha",
+          "english": "Barley tea"
+        },
+        {
+          "hangul": "옥수수차",
+          "romanization": "ok-su-su-cha",
+          "english": "Corn tea"
+        },
+        {
+          "hangul": "홍차",
+          "romanization": "hong-cha",
+          "english": "Black tea"
+        },
+        {
+          "hangul": "국화차",
+          "romanization": "guk-hwa-cha",
+          "english": "Chrysanthemum tea"
+        },
+        {
+          "hangul": "히비스커스차",
+          "romanization": "hi-bi-seu-keo-seu-cha",
+          "english": "Hibiscus tea"
+        },
+        {
+          "hangul": "유자차",
+          "romanization": "yu-ja-cha",
+          "english": "Yuzu tea"
+        },
+        {
+          "hangul": "생강차",
+          "romanization": "saeng-gang-cha",
+          "english": "Ginger tea"
+        },
+        {
+          "hangul": "민트차",
+          "romanization": "min-teu-cha",
+          "english": "Mint tea"
+        }
+      ],
+      "tags": [
+        "food"
+      ],
+      "intro": "Snack-size Korean: Tea types 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.937Z"
+    },
+    {
       "bundleId": "grid-temperature-adj",
       "slug": "temperature-adj-in-korean",
       "format": "grid_cluster",
@@ -36097,6 +37254,70 @@
         }
       ],
       "enrichedAt": "2026-07-23T08:51:28.874Z"
+    },
+    {
+      "bundleId": "grid-wild-mammals",
+      "slug": "wild-mammals-in-korean",
+      "format": "grid_cluster",
+      "title": "Wild Mammals in Korean",
+      "titleEn": "Wild Mammals in Korean",
+      "description": "Wild Mammals in Korean — 호랑이 (Tiger), 곰 (Bear), 사슴 (Deer), 늑대 (Wolf). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948130424-grid-wild-mammals.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785948130424-grid-wild-mammals-thumb.webp",
+      "imageAlt": "Wild Mammals in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "호랑이",
+          "romanization": "horang-i",
+          "english": "Tiger"
+        },
+        {
+          "hangul": "곰",
+          "romanization": "gom",
+          "english": "Bear"
+        },
+        {
+          "hangul": "사슴",
+          "romanization": "saseum",
+          "english": "Deer"
+        },
+        {
+          "hangul": "늑대",
+          "romanization": "neukdae",
+          "english": "Wolf"
+        },
+        {
+          "hangul": "여우",
+          "romanization": "yeou",
+          "english": "Fox"
+        },
+        {
+          "hangul": "멧돼지",
+          "romanization": "maetdwaeji",
+          "english": "Wild Boar"
+        },
+        {
+          "hangul": "라쿤",
+          "romanization": "rakun",
+          "english": "Raccoon"
+        },
+        {
+          "hangul": "수달",
+          "romanization": "sudal",
+          "english": "Otter"
+        },
+        {
+          "hangul": "다람쥐",
+          "romanization": "daramjwi",
+          "english": "Squirrel"
+        }
+      ],
+      "tags": [
+        "animals",
+        "noun"
+      ],
+      "intro": "Snack-size Korean: Wild Mammals 🇰🇷 Scan the card for Hangul, English, and romanization.",
+      "updatedAt": "2026-07-25T17:20:51.937Z"
     },
     {
       "bundleId": "grid-winter-clothes",

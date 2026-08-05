@@ -86,7 +86,7 @@ function findBundle(bundleId: string) {
   return bundle;
 }
 
-async function uploadBrandedImage(bundleId: string): Promise<{
+export async function uploadBrandedImage(bundleId: string): Promise<{
   imageUrl: string;
   imageThumbUrl: string;
   imageAlt: string;
@@ -200,6 +200,48 @@ export async function registerVocabXForReview(input: {
     tweetText,
     caption,
     replyText,
+  };
+}
+
+/**
+ * Ensure scheduled entry has R2 imageUrl for SEO publish / pin destination.
+ * Does NOT enqueue X review (safe for historical pin backfill).
+ */
+export async function ensureVocabScheduledImage(input: {
+  bundleId: string;
+  force?: boolean;
+}) {
+  const bundleId = input.bundleId.trim();
+  findBundle(bundleId);
+  const scheduled = loadScheduled();
+  const prev = (scheduled[bundleId] || {}) as Record<string, unknown>;
+  const existing = String(prev.imageUrl || "").trim();
+  if (existing && !input.force) {
+    return {
+      skipped: true as const,
+      bundleId,
+      imageUrl: existing,
+      imageThumbUrl: String(prev.imageThumbUrl || ""),
+    };
+  }
+
+  const { imageUrl, imageThumbUrl, imageAlt } = await uploadBrandedImage(bundleId);
+  const imagePayload = await imageWordsForBundle(bundleId, imageUrl);
+  scheduled[bundleId] = {
+    ...prev,
+    imageUrl,
+    imageThumbUrl,
+    imageAlt,
+    imageWords: imagePayload.words,
+    imageWordsSource: imagePayload.source,
+    imageUploadedAt: new Date().toISOString(),
+  };
+  saveScheduled(scheduled);
+  return {
+    skipped: false as const,
+    bundleId,
+    imageUrl,
+    imageThumbUrl,
   };
 }
 

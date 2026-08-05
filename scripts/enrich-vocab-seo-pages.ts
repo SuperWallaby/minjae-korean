@@ -71,14 +71,18 @@ function parseArgs(argv: string[]) {
   let limit = 0;
   let force = false;
   let onlyId: string | undefined;
+  let copyOnly = false;
+  let pinnedOnly = false;
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === "--limit" && argv[i + 1]) {
       limit = Math.max(0, Number(argv[++i]) || 0);
     } else if (a === "--force") force = true;
     else if (a === "--id" && argv[i + 1]) onlyId = argv[++i];
+    else if (a === "--copy-only") copyOnly = true;
+    else if (a === "--pinned-only") pinnedOnly = true;
   }
-  return { limit, force, onlyId };
+  return { limit, force, onlyId, copyOnly, pinnedOnly };
 }
 
 function loadExtraEnv(filePath: string) {
@@ -369,9 +373,29 @@ Rules:
   return { explanationEn, examples };
 }
 
-async function enrichPage(page: VocabSeoPage): Promise<VocabSeoPage> {
+async function enrichPage(
+  page: VocabSeoPage,
+  opts: { copyOnly?: boolean } = {},
+): Promise<VocabSeoPage> {
   const copy = await generateCopy(page);
   const stamp = Date.now();
+
+  if (opts.copyOnly) {
+    return {
+      ...page,
+      explanationEn: copy.explanationEn,
+      examples: copy.examples.map((ex) => ({
+        korean: ex.korean,
+        english: ex.english,
+      })),
+      enrichedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      description:
+        copy.explanationEn.length > 160
+          ? `${copy.explanationEn.slice(0, 157).trimEnd()}…`
+          : copy.explanationEn,
+    };
+  }
 
   const words: VocabSeoWord[] = [];
   for (const w of page.words) {
@@ -416,7 +440,9 @@ async function enrichPage(page: VocabSeoPage): Promise<VocabSeoPage> {
 async function main() {
   loadEnvLocal(ROOT);
   loadExtraEnv(AVK_ENV);
-  const { limit, force, onlyId } = parseArgs(process.argv.slice(2));
+  const { limit, force, onlyId, copyOnly, pinnedOnly } = parseArgs(
+    process.argv.slice(2),
+  );
 
   if (!existsSync(PUBLISHED_PATH)) {
     throw new Error(`Missing ${PUBLISHED_PATH} — run yarn vocab:publish first`);
@@ -428,13 +454,32 @@ async function main() {
 
   let candidates = [...(file.pages || [])];
   if (onlyId) candidates = candidates.filter((p) => p.bundleId === onlyId);
+  if (pinnedOnly) {
+    const pinnedPath = path.join(
+      ROOT,
+      ".tmp/vocab-infographic-gen/pinterest-pinned.json",
+    );
+    if (!existsSync(pinnedPath)) {
+      throw new Error(`Missing ${pinnedPath} for --pinned-only`);
+    }
+    const pinned = JSON.parse(readFileSync(pinnedPath, "utf8")) as Record<
+      string,
+      unknown
+    >;
+    const set = new Set(Object.keys(pinned));
+    candidates = candidates.filter((p) => set.has(p.bundleId));
+  }
   if (!force) {
-    candidates = candidates.filter(
-      (p) =>
+    candidates = candidates.filter((p) => {
+      if (copyOnly) {
+        return !p.explanationEn || !(p.examples && p.examples.length >= 2);
+      }
+      return (
         !p.explanationEn ||
         !p.examples?.length ||
-        p.words.some((w) => w.hangul && !w.ttsUrl),
-    );
+        p.words.some((w) => w.hangul && !w.ttsUrl)
+      );
+    });
   }
   // Prefer pages with words, then fewer words (antonyms finish faster).
   candidates.sort((a, b) => {
@@ -448,7 +493,7 @@ async function main() {
   if (limit > 0) candidates = candidates.slice(0, limit);
 
   console.log(
-    `[vocab:enrich] ${candidates.length} pages (force=${force} voice=${SOVITS_VOICE} avkEnv=${existsSync(AVK_ENV)})`,
+    `[vocab:enrich] ${candidates.length} pages (force=${force} copyOnly=${copyOnly} pinnedOnly=${pinnedOnly} voice=${SOVITS_VOICE} avkEnv=${existsSync(AVK_ENV)})`,
   );
 
   const byId = new Map(file.pages.map((p) => [p.bundleId, p]));
@@ -461,7 +506,7 @@ async function main() {
       `\n→ [${i + 1}/${candidates.length}] ${page.bundleId} (${page.words.length} words)`,
     );
     try {
-      const enriched = await enrichPage(page);
+      const enriched = await enrichPage(page, { copyOnly });
       byId.set(page.bundleId, enriched);
       file.pages = [...byId.values()].sort((a, b) =>
         a.bundleId.localeCompare(b.bundleId),
@@ -473,7 +518,7 @@ async function main() {
         (w) => w.ttsProvider === "edge",
       ).length;
       console.log(
-        `  ok explanation=${enriched.explanationEn!.slice(0, 60)}… examples=${enriched.examples!.length} edgeWords=${edgeWords}`,
+        `  ok explanation=${enriched.explanationEn!.slice(0, 60)}… examples=${enriched.examples!.length}${copyOnly ? " copy-only" : ` edgeWords=${edgeWords}`}`,
       );
     } catch (err) {
       fail += 1;
