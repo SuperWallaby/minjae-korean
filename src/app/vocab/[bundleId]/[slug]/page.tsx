@@ -7,6 +7,7 @@ import {
   MarketingShell,
   MarketingShellBody,
 } from "@/components/site/MarketingShell";
+import { VocabNativeQA } from "@/components/vocab-infographic/VocabNativeQA";
 import { VocabSeoArticle } from "@/components/vocab-infographic/VocabSeoArticle";
 import { VocabSeoRelated } from "@/components/vocab-infographic/VocabSeoRelated";
 import { SITE_NAME } from "@/lib/siteBrand";
@@ -127,6 +128,11 @@ export default async function VocabSeoDetailPage({ params }: Props) {
           <div className="space-y-10">
             <VocabSeoArticle page={page} />
             <VocabSeoRelated items={related} />
+            <VocabNativeQA
+              bundleId={page.bundleId}
+              pageTitle={page.titleEn}
+              pagePath={vocabSeoPath(page.bundleId, page.slug)}
+            />
           </div>
         </MarketingShellBody>
       </MarketingShell>
