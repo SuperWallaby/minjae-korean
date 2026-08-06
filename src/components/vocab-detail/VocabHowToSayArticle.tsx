@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
 import { vocabQuizPlayPath } from "@/lib/vocabQuizAeoLinks";
 import type { WhenToUsePage } from "@/lib/whenToUse/types";
 import { vocabHowToSayPath } from "@/lib/vocabDetail/slug";
@@ -64,6 +65,8 @@ export function VocabHowToSayArticle({ page }: Props) {
           {page.explanation}
         </p>
       </section>
+
+      <ItalkiTutorBanner variant="wide" />
 
       <section className="space-y-4" aria-labelledby="vocab-how-to-say-examples">
         <h2

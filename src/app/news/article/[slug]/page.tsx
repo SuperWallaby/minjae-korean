@@ -13,6 +13,7 @@ import { ReadingAudioSync } from "@/components/article/ReadingAudioSync";
 import { VocabularySection } from "@/components/article/VocabularySection";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
 import { TailwindClassCheck } from "@/components/debug/TailwindClassCheck";
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
 import {
   MarketingPage,
   MarketingShell,
@@ -273,6 +274,8 @@ export default async function ArticlePage({
             </>
           )}
         </section>
+
+        <ItalkiTutorBanner variant="wide" className="mt-10" />
 
         {/* 3. Vocabulary zone (table) */}
         <VocabularySection

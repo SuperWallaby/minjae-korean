@@ -9,6 +9,7 @@ import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAn
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
 import {
   MarketingPage,
   MarketingShell,
@@ -239,57 +240,62 @@ export default async function BlogArticlePage({
             {(a.paragraphs ?? []).length === 0 ? (
               <p className="text-muted-foreground">No content yet.</p>
             ) : (
-              (a.paragraphs ?? []).map((p, idx) => (
-                <div
-                  key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`}
-                  className="space-y-3"
-                >
-                  {p.subtitle ? (
-                    <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                      {p.subtitle}
-                    </h2>
-                  ) : null}
-                  {p.audio ? (
-                    <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/20 px-3 py-2">
-                      <audio
-                        controls
-                        src={p.audio}
-                        className="h-10 flex-1 min-w-0"
-                      />
-                    </div>
-                  ) : null}
-                  <div className="whitespace-pre-wrap text-foreground/90">
-                    {p.content}
-                  </div>
-                  {p.image ? (
-                    <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-border bg-muted/10">
-                      <div
-                        className="relative w-full"
-                        style={{
-                          aspectRatio:
-                            typeof p.imageAspect === "number" &&
-                            p.imageAspect > 0
-                              ? p.imageAspect
-                              : 16 / 9,
-                        }}
-                      >
-                        <Image
-                          src={p.image}
-                          alt={a.title}
-                          fill
-                          className="object-cover object-center"
-                          unoptimized
-                        />
+              (a.paragraphs ?? []).map((p, idx) => {
+                const midIndex = Math.floor((a.paragraphs!.length - 1) / 2);
+                return (
+                  <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`}>
+                    <div className="space-y-3">
+                      {p.subtitle ? (
+                        <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                          {p.subtitle}
+                        </h2>
+                      ) : null}
+                      {p.audio ? (
+                        <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/20 px-3 py-2">
+                          <audio
+                            controls
+                            src={p.audio}
+                            className="h-10 flex-1 min-w-0"
+                          />
+                        </div>
+                      ) : null}
+                      <div className="whitespace-pre-wrap text-foreground/90">
+                        {p.content}
                       </div>
+                      {p.image ? (
+                        <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-border bg-muted/10">
+                          <div
+                            className="relative w-full"
+                            style={{
+                              aspectRatio:
+                                typeof p.imageAspect === "number" &&
+                                p.imageAspect > 0
+                                  ? p.imageAspect
+                                  : 16 / 9,
+                            }}
+                          >
+                            <Image
+                              src={p.image}
+                              alt={a.title}
+                              fill
+                              className="object-cover object-center"
+                              unoptimized
+                            />
+                          </div>
+                        </div>
+                      ) : null}
+                      {p.youtube ? (
+                        <div className="mt-4 mb-10">
+                          <YouTubeEmbed urlOrId={p.youtube} />
+                        </div>
+                      ) : null}
                     </div>
-                  ) : null}
-                  {p.youtube ? (
-                    <div className="mt-4 mb-10">
-                      <YouTubeEmbed urlOrId={p.youtube} />
-                    </div>
-                  ) : null}
-                </div>
-              ))
+                    {idx === midIndex ? (
+                      <ItalkiTutorBanner variant="wide" className="mt-14" />
+                    ) : null}
+                  </div>
+                );
+              })
             )}
           </div>
         </section>

@@ -10,6 +10,7 @@ import { GrammarGuideHero } from "@/components/grammar-guide/GrammarGuideHero";
 import { GrammarGuideInfographic } from "@/components/grammar-guide/GrammarGuideInfographic";
 import { GrammarGuideRelated } from "@/components/grammar-guide/GrammarGuideRelated";
 import { Breadcrumb } from "@/components/site/Breadcrumb";
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
 import {
   MarketingPage,
   MarketingShell,
@@ -195,6 +196,7 @@ export function createGuidePage(type: GrammarGuideType) {
               <GrammarGuideHero guide={guide} />
               <GrammarGuideInfographic guide={guide} />
               <GrammarGuideContent guide={guide} />
+              <ItalkiTutorBanner variant="wide" />
               <GrammarComparisonExamples examples={guide.examples} />
               <GrammarComparisonQuiz quizzes={guide.quizzes} />
               <GrammarGuideRelated

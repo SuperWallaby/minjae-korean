@@ -10,6 +10,7 @@ import { GrammarComparisonQuiz } from "@/components/grammar-comparison/GrammarCo
 import { GrammarComparisonRelated } from "@/components/grammar-comparison/GrammarComparisonRelated";
 import { GrammarComparisonTable } from "@/components/grammar-comparison/GrammarComparisonTable";
 import { Breadcrumb } from "@/components/site/Breadcrumb";
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
 import {
   MarketingPage,
   MarketingShell,
@@ -169,6 +170,7 @@ export default async function GrammarComparisonPage({
             <GrammarComparisonInfographic comparison={comparison} />
             <GrammarComparisonTable items={comparison.items} />
             <GrammarComparisonExamples examples={comparison.examples} />
+            <ItalkiTutorBanner variant="wide" />
             <GrammarComparisonQuiz quizzes={comparison.quizzes} />
             <GrammarComparisonRelated
               currentId={comparison.id}

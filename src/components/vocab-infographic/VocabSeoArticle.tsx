@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { VocabSeoPage } from "@/lib/vocabInfographic/seoTypes";
 import { vocabSeoPath } from "@/lib/vocabInfographic/seo";
 import { vocabQuizPlayPath } from "@/lib/vocabQuizAeoLinks";
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
 import { VocabSeoPlayButton } from "@/components/vocab-infographic/VocabSeoPlayButton";
 
 export function VocabSeoHubCard({ page }: { page: VocabSeoPage }) {
@@ -135,6 +136,8 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
           </div>
         </section>
       ) : null}
+
+      <ItalkiTutorBanner variant="wide" />
 
       {examples.length > 0 ? (
         <section className="space-y-4" aria-labelledby="vocab-examples">

@@ -5,6 +5,7 @@ import { AboutMeHomeSection } from "@/components/site/AboutMeHomeSection";
 import { BookHomeSection } from "@/components/site/BookHomeSection";
 import { BuyMeCoffeeHomeSection } from "@/components/site/BuyMeCoffeeHomeSection";
 import { ExpressionCardsHomeSection } from "@/components/site/ExpressionCardsHomeSection";
+import { FindTutorHomeSection } from "@/components/site/FindTutorHomeSection";
 import { GrammarHomeSection } from "@/components/site/GrammarHomeSection";
 import { HomeRenewalSections } from "@/components/site/HomeRenewalSections";
 import { VocabHomeSection } from "@/components/site/VocabHomeSection";
@@ -113,10 +114,13 @@ export default async function Home() {
         {/* 4) About me */}
         <AboutMeHomeSection />
 
-        {/* 5) Expression cards — auto-video IG List (capybara carousels) */}
+        {/* 5) 1:1 tutor — Minjae coaching + affiliate (italki/Preply 50/50) */}
+        <FindTutorHomeSection />
+
+        {/* 6) Expression cards — auto-video IG List (capybara carousels) */}
         <ExpressionCardsHomeSection sets={getExpressionCardSets()} />
 
-        {/* 6+) Vocab / grammar hubs, news, blog */}
+        {/* 7+) Vocab / grammar hubs, news, blog */}
         <VocabHomeSection />
         <GrammarHomeSection />
         <HomeRenewalSections news={news} blog={blog} />

@@ -11,6 +11,7 @@ import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { TeachingSpotlight } from "@/components/site/TeachingSpotlight";
 import { QuickNote } from "@/components/QuickNote";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { ItalkiTutorStickyRail } from "@/components/site/ItalkiTutorStickyRail";
 import { SeoMiniQuizWidget } from "@/components/site/SeoMiniQuizWidget";
 import { SITE_ORIGIN } from "@/lib/siteUrl";
 import NextTopLoader from "nextjs-toploader";
@@ -115,6 +116,7 @@ export default function RootLayout({
               <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
               <SiteFooter />
               <SeoMiniQuizWidget />
+              <ItalkiTutorStickyRail />
               <QuickNote />
             </div>
           </EducationModeProvider>

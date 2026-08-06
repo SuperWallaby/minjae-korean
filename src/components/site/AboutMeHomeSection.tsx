@@ -52,6 +52,18 @@ export function AboutMeHomeSection() {
                 Stick with me, and I&apos;ll help you level up your Korean.
               </p>
               <p className={`${styles.sectionLead} mt-4`}>
+                I also offer{" "}
+                <strong className="font-semibold text-[var(--quiz-text)]">
+                  1:1 coaching
+                </strong>
+                — level diagnosis, focused practice, and a clear plan you can
+                follow. Prefer marketplace tutors? There&apos;s a{" "}
+                <strong className="font-semibold text-[var(--quiz-text)]">
+                  $10 OFF
+                </strong>{" "}
+                path below when the offer applies.
+              </p>
+              <p className={`${styles.sectionLead} mt-4`}>
                 You can find me on{" "}
                 <Link
                   href="https://instagram.com/kaja_minjae"
@@ -72,6 +84,20 @@ export function AboutMeHomeSection() {
                 </Link>
                 , where I teach Korean in live sessions.
               </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/coaching"
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--quiz-primary)] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+                >
+                  Book 1:1 with Minjae
+                </Link>
+                <Link
+                  href="/#find-tutor"
+                  className="inline-flex items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white px-5 py-2.5 text-sm font-semibold text-[var(--quiz-text)] transition hover:bg-[var(--quiz-surface-muted)]"
+                >
+                  Find a tutor ($10 OFF)
+                </Link>
+              </div>
             </div>
 
             <StaggerReveal

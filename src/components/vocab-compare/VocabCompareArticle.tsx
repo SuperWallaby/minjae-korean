@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { vocabQuizPlayPath } from "@/lib/vocabQuizAeoLinks";
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
 import type { VocabCompareListItem, VocabComparePage } from "@/lib/vocabCompare/types";
 import { vocabComparePath } from "@/lib/vocabCompare/slug";
 
@@ -105,6 +106,8 @@ export function VocabCompareArticle({ page }: Props) {
           {page.contrast}
         </p>
       </section>
+
+      <ItalkiTutorBanner variant="wide" />
 
       <aside className="rounded-[1.25rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface-muted)] px-5 py-5">
         <p className="text-sm font-semibold text-[var(--quiz-text)]">

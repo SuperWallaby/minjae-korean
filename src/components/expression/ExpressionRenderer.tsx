@@ -3,6 +3,8 @@
 import * as React from "react";
 import type { ExpressionChapterContent } from "@/data/expressionTypes";
 
+import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
+
 import { ChallengeBlock } from "./ChallengeBlock";
 import { CoreFrameCard } from "./CoreFrameCard";
 import { QuestionReplyBlock } from "./QuestionReplyBlock";
@@ -115,6 +117,8 @@ export function ExpressionRenderer({ content }: Props) {
           ))}
         </div>
       </section>
+
+      <ItalkiTutorBanner variant="wide" />
 
       {/* Questions & Replies - Paired Q&A */}
       {questionReplyPairs.length > 0 && (
