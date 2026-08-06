@@ -76,7 +76,6 @@ export const metadata: Metadata = {
   },
   other: {
     "p:domain_verify": "7a6bc7a84bb2c6c634bf33f0618b07d7",
-    "impact-site-verification": "3f86dcd5-109f-474f-bb4d-6e29ec5a2682",
   },
 };
 
@@ -88,10 +87,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Impact.com checklist uses name + value; metadata.other also emits content. */}
+        {/* Impact.com: exact name + value only (no content), once in <head>. */}
         <meta
           name="impact-site-verification"
-          content="3f86dcd5-109f-474f-bb4d-6e29ec5a2682"
           {...{ value: "3f86dcd5-109f-474f-bb4d-6e29ec5a2682" }}
         />
       </head>
