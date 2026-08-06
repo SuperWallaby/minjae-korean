@@ -125,17 +125,19 @@ export default async function VocabSeoDetailPage({ params }: Props) {
       <MarketingShell>
         <MarketingShellBody>
           <Breadcrumb items={breadcrumbItems} />
-          <div className="space-y-10">
+          <div className="mt-6">
             <VocabSeoArticle page={page} />
-            <VocabSeoRelated items={related} />
-            <VocabNativeQA
-              bundleId={page.bundleId}
-              pageTitle={page.titleEn}
-              pagePath={vocabSeoPath(page.bundleId, page.slug)}
-            />
           </div>
         </MarketingShellBody>
       </MarketingShell>
+      <div className="mt-10 space-y-12">
+        <VocabSeoRelated items={related} />
+        <VocabNativeQA
+          bundleId={page.bundleId}
+          pageTitle={page.titleEn}
+          pagePath={vocabSeoPath(page.bundleId, page.slug)}
+        />
+      </div>
     </MarketingPage>
   );
 }
