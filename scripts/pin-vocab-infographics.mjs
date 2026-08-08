@@ -11,9 +11,15 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import {
+  optimizePinterestPin,
+  optimizedPinPath,
+} from "./lib/optimize-pinterest-pin.mjs";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = path.join(ROOT, ".tmp", "vocab-infographic-gen");
+const PIN_OPT_DIR = path.join(OUT, "pin-optimized");
 const SCHEDULED = path.join(OUT, "vocab-x-scheduled.json");
 const PINNED = path.join(OUT, "pinterest-pinned.json");
 const PUBLISHED = path.join(
@@ -538,7 +544,7 @@ async function main() {
       continue;
     }
     const entry = scheduled[bundleId];
-    const media = path.join(OUT, `${bundleId}.png`);
+    const sourcePng = path.join(OUT, `${bundleId}.png`);
     const title = titleFromEntry(bundleId, entry);
     const description = descriptionFromEntry(entry, title);
     const topicList = topicCandidatesForPin();
@@ -585,6 +591,21 @@ async function main() {
     console.log(`   alt: ${alt}`);
     console.log(`   link: ${link}`);
     console.log(`   desc: ${description.slice(0, 120).replace(/\n/g, " / ")}…`);
+
+    let media = sourcePng;
+    try {
+      const optPath = optimizedPinPath(sourcePng, PIN_OPT_DIR);
+      const opt = await optimizePinterestPin(sourcePng, optPath);
+      media = opt.path;
+      console.log(
+        `   media: ${opt.width}×${opt.height} ${opt.kind} jpeg ${opt.outputKb}KB (from png ${opt.inputKb}KB)`,
+      );
+    } catch (e) {
+      console.warn(
+        `   media optimize failed, using source png: ${e?.message || e}`,
+      );
+      media = sourcePng;
+    }
 
     if (dryRun) {
       ok += 1;

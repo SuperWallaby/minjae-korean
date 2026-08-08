@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { CoachingComingSoonButton } from "@/components/site/CoachingComingSoonButton";
 import { Container } from "@/components/site/Container";
 import {
   MarketingHeader,
@@ -57,11 +58,11 @@ export function AboutMeHomeSection() {
                   1:1 coaching
                 </strong>
                 — level diagnosis, focused practice, and a clear plan you can
-                follow. Prefer marketplace tutors? There&apos;s a{" "}
+                follow. Prefer marketplace tutors? See the{" "}
                 <strong className="font-semibold text-[var(--quiz-text)]">
                   $10 OFF
                 </strong>{" "}
-                path below when the offer applies.
+                italki offer below (Preply has no discount).
               </p>
               <p className={`${styles.sectionLead} mt-4`}>
                 You can find me on{" "}
@@ -85,15 +86,12 @@ export function AboutMeHomeSection() {
                 , where I teach Korean in live sessions.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/coaching"
-                  className="inline-flex items-center justify-center rounded-full bg-[var(--quiz-primary)] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
-                >
+                <CoachingComingSoonButton variant="primary">
                   Book 1:1 with Minjae
-                </Link>
+                </CoachingComingSoonButton>
                 <Link
                   href="/#find-tutor"
-                  className="inline-flex items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white px-5 py-2.5 text-sm font-semibold text-[var(--quiz-text)] transition hover:bg-[var(--quiz-surface-muted)]"
+                  className="inline-flex h-11 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white px-5 text-sm font-semibold text-[var(--quiz-text)] transition hover:bg-[var(--quiz-surface-muted)]"
                 >
                   Find a tutor ($10 OFF)
                 </Link>

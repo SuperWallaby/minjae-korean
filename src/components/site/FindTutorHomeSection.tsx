@@ -1,11 +1,14 @@
-import Link from "next/link";
+"use client";
+
+import * as React from "react";
 
 import { AffiliateTutorBanner } from "@/components/site/ItalkiTutorBanner";
+import { CoachingComingSoonButton } from "@/components/site/CoachingComingSoonButton";
 import { Container } from "@/components/site/Container";
 import { MarketingHeader } from "@/components/site/MarketingShell";
-import { Button } from "@/components/ui/Button";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { ITALKI_AFFILIATE_URL } from "@/lib/affiliateTutor";
 
 import styles from "./home-renewal.module.css";
 
@@ -32,28 +35,27 @@ export function FindTutorHomeSection() {
                 <strong className="font-semibold text-[var(--quiz-text)]">
                   1:1 lessons with me
                 </strong>
-                , or browse marketplace tutors — including offers like{" "}
+                , or find a marketplace tutor on italki with{" "}
                 <strong className="font-semibold text-[var(--quiz-text)]">
                   $10 OFF
-                </strong>{" "}
-                when available.
+                </strong>
+                . Preply has no discount on this link.
               </p>
               <p className={`${styles.sectionLead} mt-4`}>
-                Start with a short diagnosis, or jump into a focused session.
                 Free quizzes and charts stay free either way.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Button asChild size="md" variant="gradient" className="w-fit px-5">
-                  <Link href="/coaching">Study 1:1 with Minjae</Link>
-                </Button>
-                <Button
-                  asChild
-                  size="md"
-                  variant="outline"
-                  className="w-fit px-5"
+                <CoachingComingSoonButton>
+                  Study 1:1 with Minjae
+                </CoachingComingSoonButton>
+                <a
+                  href={ITALKI_AFFILIATE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex h-11 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white px-5 text-sm font-semibold text-[var(--quiz-text)] transition hover:bg-[var(--quiz-surface-muted)]"
                 >
-                  <Link href="/coaching">See coaching options</Link>
-                </Button>
+                  Find a tutor · $10 OFF
+                </a>
               </div>
             </div>
 
@@ -61,7 +63,8 @@ export function FindTutorHomeSection() {
               className="flex w-full justify-center lg:justify-end"
               delayMs={80}
             >
-              <AffiliateTutorBanner variant="square" />
+              {/* Home section always shows italki $10 OFF creative */}
+              <AffiliateTutorBanner variant="square" partner="italki" />
             </StaggerReveal>
           </div>
         </StaggerReveal>

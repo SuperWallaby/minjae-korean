@@ -4,11 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-import {
-  getAffiliateTutorCreative,
-  pickAffiliateTutorPartner,
-  type AffiliateTutorPartner,
-} from "@/lib/affiliateTutor";
+import { getAffiliateTutorCreative } from "@/lib/affiliateTutor";
 
 import styles from "./italki-tutor-sticky.module.css";
 
@@ -29,6 +25,8 @@ const SKIP_PREFIXES = [
 ] as const;
 
 function shouldSkipPath(pathname: string): boolean {
+  // Home already has the Find Tutor section — no sticky rail there.
+  if (pathname === "/") return true;
   return SKIP_PREFIXES.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
@@ -40,16 +38,10 @@ function measureLeftGutter(): number {
   return el.getBoundingClientRect().left;
 }
 
+/** Left sticky rail always uses italki ($10 OFF creative), not Preply. */
 export function ItalkiTutorStickyRail() {
   const pathname = usePathname();
   const [hasRoom, setHasRoom] = React.useState(false);
-  const [partner, setPartner] = React.useState<AffiliateTutorPartner | null>(
-    null,
-  );
-
-  React.useEffect(() => {
-    setPartner(pickAffiliateTutorPartner());
-  }, []);
 
   React.useEffect(() => {
     if (shouldSkipPath(pathname)) {
@@ -81,15 +73,15 @@ export function ItalkiTutorStickyRail() {
     };
   }, [pathname]);
 
-  if (shouldSkipPath(pathname) || !hasRoom || !partner) return null;
+  if (shouldSkipPath(pathname) || !hasRoom) return null;
 
-  const creative = getAffiliateTutorCreative(partner);
+  const creative = getAffiliateTutorCreative("italki");
 
   return (
     <aside
       className={styles.rail}
-      aria-label="Find a Korean tutor — affiliate offer"
-      data-affiliate={partner}
+      aria-label="Find a Korean tutor on italki — $10 OFF"
+      data-affiliate="italki"
     >
       <a
         href={creative.href}

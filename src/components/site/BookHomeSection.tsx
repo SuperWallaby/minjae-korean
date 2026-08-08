@@ -40,16 +40,6 @@ export function BookHomeSection() {
                     Read sample content
                   </Link>
                 </Button>
-                <Button
-                  asChild
-                  size="md"
-                  variant="outline"
-                  className="w-fit border-white/45 bg-white/8 px-5 text-white hover:bg-white/14"
-                >
-                  <Link href="/book/korean-beyond-translation">
-                    Buy for $9.90
-                  </Link>
-                </Button>
               </div>
             </div>
           </div>

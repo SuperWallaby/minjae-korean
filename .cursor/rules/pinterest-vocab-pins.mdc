@@ -10,6 +10,9 @@ When the user asks to upload/register Pinterest pins (especially “25개”, �
 - **Correct command**: in `korean-teacher-mj`, run `./scripts/pin-vocab-batch.sh 25`
   - Source: X 승인대기 보캡 이미지 (`.tmp/vocab-infographic-gen/`, `vocab-x-scheduled.json`)
   - Board default: `Korean words`
+  - **Upload media**: auto-optimized JPEG via `scripts/lib/optimize-pinterest-pin.mjs`
+    - 2:3 → `1000×1500`, square → `1000×1000`, JPEG q90 / 4:4:4 (cache: `.tmp/.../pin-optimized/`)
+    - Manual batch: `node scripts/optimize-pinterest-pins.mjs`
 - **Do NOT** run `auto-video-korean` `./scripts/pin-batch.sh` / `npm run pin` for this — that path is GPU **format4/format8 video** pins and is deprecated for format4.
 
 ## Destination URL (critical)
