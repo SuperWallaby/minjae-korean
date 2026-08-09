@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Global Pinterest (Account B / multilingual Chrome :9224).
- * Pins teach TARGET lang via English → destination = global.kajakorean.com/pin/{id}
+ * Pins teach TARGET lang via English → site pin page (never affiliate URL).
  * Affiliate is only reached via the on-site /go/preply|italki hop (never pin link).
  *
  *   node scripts/pin-global-lang-samples.mjs --count 4
@@ -40,8 +40,10 @@ const BROWSER_URL =
   process.env.CHROME_GLOBAL_DEBUG_URL ||
   "http://127.0.0.1:9224";
 /** Pinterest destination — never affiliate direct; hop via global site content pages. */
+// Path works on kajakorean.com today; custom host after DNS:
+// GLOBAL_SITE_URL=https://global.kajakorean.com
 const GLOBAL_SITE = (
-  process.env.GLOBAL_SITE_URL || "https://global.kajakorean.com"
+  process.env.GLOBAL_SITE_URL || "https://kajakorean.com/global-site"
 ).replace(/\/+$/, "");
 
 const DELAY_MIN_SEC = Math.max(
