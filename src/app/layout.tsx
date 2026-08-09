@@ -1,6 +1,7 @@
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 // NOTE: LiveKit removed (pure WebRTC implementation). Keep this file free of LiveKit imports.
 import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
@@ -80,11 +81,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const h = await headers();
+  const isGlobalSite = h.get("x-kaja-site") === "global";
+
+  if (isGlobalSite) {
+    return (
+      <html lang="en">
+        <body className={`${plusJakarta.variable} ${bricolage.variable}`}>
+          <GoogleAnalytics />
+          {children}
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html lang="en">
       <head>

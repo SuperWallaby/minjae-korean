@@ -1,0 +1,68 @@
+import { NextRequest, NextResponse } from "next/server";
+
+const GLOBAL_HOSTS = new Set([
+  "global.kajakorean.com",
+  "global.localhost",
+  "global.localhost:3000",
+  "global.127.0.0.1",
+  "global.127.0.0.1:3000",
+]);
+
+function isGlobalHost(host: string): boolean {
+  const h = host.split(":")[0]?.toLowerCase() || "";
+  if (GLOBAL_HOSTS.has(host.toLowerCase()) || GLOBAL_HOSTS.has(h)) return true;
+  if (h.startsWith("global.")) return true;
+  return false;
+}
+
+function nextAsGlobal(request: NextRequest) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-kaja-site", "global");
+  return NextResponse.next({
+    request: { headers: requestHeaders },
+  });
+}
+
+function rewriteAsGlobal(request: NextRequest, url: URL) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-kaja-site", "global");
+  return NextResponse.rewrite(url, {
+    request: { headers: requestHeaders },
+  });
+}
+
+export function middleware(request: NextRequest) {
+  const host = request.headers.get("host") || "";
+  const { pathname } = request.nextUrl;
+  const globalHost = isGlobalHost(host);
+  const globalPath = pathname.startsWith("/global-site");
+
+  if (!globalHost && !globalPath) {
+    return NextResponse.next();
+  }
+
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/brand") ||
+    pathname.startsWith("/global/") ||
+    pathname.startsWith("/favicon") ||
+    pathname.match(
+      /\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|map|txt|xml|webmanifest)$/i,
+    )
+  ) {
+    return globalHost || globalPath ? nextAsGlobal(request) : NextResponse.next();
+  }
+
+  if (globalPath) {
+    return nextAsGlobal(request);
+  }
+
+  // Host rewrite: global.kajakorean.com/* → /global-site/*
+  const url = request.nextUrl.clone();
+  url.pathname = pathname === "/" ? "/global-site" : `/global-site${pathname}`;
+  return rewriteAsGlobal(request, url);
+}
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image).*)"],
+};

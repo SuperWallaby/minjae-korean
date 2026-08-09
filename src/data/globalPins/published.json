@@ -1,0 +1,422 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-09T03:31:57.780Z",
+  "site": "https://global.kajakorean.com",
+  "languages": [
+    {
+      "code": "es",
+      "name": "Spanish"
+    },
+    {
+      "code": "fr",
+      "name": "French"
+    },
+    {
+      "code": "de",
+      "name": "German"
+    },
+    {
+      "code": "it",
+      "name": "Italian"
+    },
+    {
+      "code": "ar",
+      "name": "Arabic"
+    },
+    {
+      "code": "ja",
+      "name": "Japanese"
+    }
+  ],
+  "pages": [
+    {
+      "id": "01_eye-colors__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Eye colors in Spanish",
+      "slug": "eye-colors-in-spanish",
+      "imagePath": "/global/pins/01_eye-colors__es.png",
+      "words": [
+        {
+          "english": "black",
+          "target": "negro",
+          "romanization": "NEH-groh"
+        },
+        {
+          "english": "brown",
+          "target": "marrón",
+          "romanization": "mah-RON"
+        },
+        {
+          "english": "hazel",
+          "target": "avellana",
+          "romanization": "ah-veh-YAH-nah"
+        },
+        {
+          "english": "green",
+          "target": "verde",
+          "romanization": "BEHR-deh"
+        },
+        {
+          "english": "blue",
+          "target": "azul",
+          "romanization": "ah-SOOL"
+        },
+        {
+          "english": "gray",
+          "target": "gris",
+          "romanization": "grees"
+        },
+        {
+          "english": "light blue",
+          "target": "azul claro",
+          "romanization": "ah-SOOL KLAH-roh"
+        },
+        {
+          "english": "violet",
+          "target": "violeta",
+          "romanization": "vee-oh-LEH-tah"
+        },
+        {
+          "english": "amber",
+          "target": "ámbar",
+          "romanization": "AHM-bar"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: black, brown, hazel, green, blue, gray…. Save-friendly chart with pronunciation.",
+      "topicSlug": "eye-colors",
+      "publishedAt": "2026-08-08T15:04:23.903Z"
+    },
+    {
+      "id": "03_foods__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Foods in French",
+      "slug": "foods-in-french",
+      "imagePath": "/global/pins/03_foods__fr.png",
+      "words": [
+        {
+          "english": "bread",
+          "target": "pain",
+          "romanization": "pan"
+        },
+        {
+          "english": "cheese",
+          "target": "fromage",
+          "romanization": "fro-mazh"
+        },
+        {
+          "english": "wine",
+          "target": "vin",
+          "romanization": "van"
+        },
+        {
+          "english": "coffee",
+          "target": "café",
+          "romanization": "ka-fay"
+        },
+        {
+          "english": "croissant",
+          "target": "croissant",
+          "romanization": "krwa-san"
+        },
+        {
+          "english": "soup",
+          "target": "soupe",
+          "romanization": "soop"
+        },
+        {
+          "english": "salad",
+          "target": "salade",
+          "romanization": "sa-lad"
+        },
+        {
+          "english": "chicken",
+          "target": "poulet",
+          "romanization": "poo-lay"
+        },
+        {
+          "english": "fish",
+          "target": "poisson",
+          "romanization": "pwa-son"
+        },
+        {
+          "english": "dessert",
+          "target": "dessert",
+          "romanization": "deh-ser"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: bread, cheese, wine, coffee, croissant, soup…. Save-friendly chart with pronunciation.",
+      "topicSlug": "foods",
+      "publishedAt": "2026-08-08T15:59:57.768Z"
+    },
+    {
+      "id": "04_emotions__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Emotions in German",
+      "slug": "emotions-in-german",
+      "imagePath": "/global/pins/04_emotions__de.png",
+      "words": [
+        {
+          "english": "happy",
+          "target": "glücklich",
+          "romanization": "GLUEK-likh"
+        },
+        {
+          "english": "sad",
+          "target": "traurig",
+          "romanization": "TROW-rikh"
+        },
+        {
+          "english": "angry",
+          "target": "wütend",
+          "romanization": "VUE-tent"
+        },
+        {
+          "english": "tired",
+          "target": "müde",
+          "romanization": "MUE-duh"
+        },
+        {
+          "english": "surprised",
+          "target": "überrascht",
+          "romanization": "UE-ber-rasht"
+        },
+        {
+          "english": "scared",
+          "target": "ängstlich",
+          "romanization": "ENGST-likh"
+        },
+        {
+          "english": "proud",
+          "target": "stolz",
+          "romanization": "shtolts"
+        },
+        {
+          "english": "lonely",
+          "target": "einsam",
+          "romanization": "INE-zahm"
+        },
+        {
+          "english": "excited",
+          "target": "aufgeregt",
+          "romanization": "OWF-ge-raykt"
+        },
+        {
+          "english": "calm",
+          "target": "ruhig",
+          "romanization": "ROO-ikh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: happy, sad, angry, tired, surprised, scared…. Save-friendly chart with pronunciation.",
+      "topicSlug": "emotions",
+      "publishedAt": "2026-08-08T16:01:32.301Z"
+    },
+    {
+      "id": "05_family__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Family in Italian",
+      "slug": "family-in-italian",
+      "imagePath": "/global/pins/05_family__it.png",
+      "words": [
+        {
+          "english": "mom",
+          "target": "mamma",
+          "romanization": "MAHM-mah"
+        },
+        {
+          "english": "dad",
+          "target": "papà",
+          "romanization": "pah-PAH"
+        },
+        {
+          "english": "brother",
+          "target": "fratello",
+          "romanization": "fra-TEL-lo"
+        },
+        {
+          "english": "sister",
+          "target": "sorella",
+          "romanization": "so-REL-la"
+        },
+        {
+          "english": "grandma",
+          "target": "nonna",
+          "romanization": "NON-na"
+        },
+        {
+          "english": "grandpa",
+          "target": "nonno",
+          "romanization": "NON-no"
+        },
+        {
+          "english": "baby",
+          "target": "bambino",
+          "romanization": "bam-BEE-no"
+        },
+        {
+          "english": "uncle",
+          "target": "zio",
+          "romanization": "TSYO"
+        },
+        {
+          "english": "aunt",
+          "target": "zia",
+          "romanization": "TSYA"
+        },
+        {
+          "english": "cousin",
+          "target": "cugino",
+          "romanization": "koo-JEE-no"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: mom, dad, brother, sister, grandma, grandpa…. Save-friendly chart with pronunciation.",
+      "topicSlug": "family",
+      "publishedAt": "2026-08-08T23:22:27.914Z"
+    },
+    {
+      "id": "06_numbers__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Numbers 1–10 in Arabic",
+      "slug": "numbers-1-10-in-arabic",
+      "imagePath": "/global/pins/06_numbers__ar.png",
+      "words": [
+        {
+          "english": "one",
+          "target": "واحد",
+          "romanization": "waahid"
+        },
+        {
+          "english": "two",
+          "target": "اثنان",
+          "romanization": "ithnayn"
+        },
+        {
+          "english": "three",
+          "target": "ثلاثة",
+          "romanization": "thalaatha"
+        },
+        {
+          "english": "four",
+          "target": "أربعة",
+          "romanization": "arba'a"
+        },
+        {
+          "english": "five",
+          "target": "خمسة",
+          "romanization": "khamsa"
+        },
+        {
+          "english": "six",
+          "target": "ستة",
+          "romanization": "sitta"
+        },
+        {
+          "english": "seven",
+          "target": "سبعة",
+          "romanization": "sab'a"
+        },
+        {
+          "english": "eight",
+          "target": "ثمانية",
+          "romanization": "thamaaniya"
+        },
+        {
+          "english": "nine",
+          "target": "تسعة",
+          "romanization": "tis'a"
+        },
+        {
+          "english": "ten",
+          "target": "عشرة",
+          "romanization": "ashara"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: one, two, three, four, five, six…. Save-friendly chart with pronunciation.",
+      "topicSlug": "numbers",
+      "publishedAt": "2026-08-08T23:23:57.015Z"
+    },
+    {
+      "id": "02_months__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Months in Japanese",
+      "slug": "months-in-japanese",
+      "imagePath": "/global/pins/02_months__ja.png",
+      "words": [
+        {
+          "english": "January",
+          "target": "一月",
+          "romanization": "ichigatsu"
+        },
+        {
+          "english": "February",
+          "target": "二月",
+          "romanization": "nigatsu"
+        },
+        {
+          "english": "March",
+          "target": "三月",
+          "romanization": "sangatsu"
+        },
+        {
+          "english": "April",
+          "target": "四月",
+          "romanization": "shigatsu"
+        },
+        {
+          "english": "May",
+          "target": "五月",
+          "romanization": "gogatsu"
+        },
+        {
+          "english": "June",
+          "target": "六月",
+          "romanization": "rokugatsu"
+        },
+        {
+          "english": "July",
+          "target": "七月",
+          "romanization": "shichigatsu"
+        },
+        {
+          "english": "August",
+          "target": "八月",
+          "romanization": "hachigatsu"
+        },
+        {
+          "english": "September",
+          "target": "九月",
+          "romanization": "kugatsu"
+        },
+        {
+          "english": "October",
+          "target": "十月",
+          "romanization": "juugatsu"
+        },
+        {
+          "english": "November",
+          "target": "十一月",
+          "romanization": "juuichigatsu"
+        },
+        {
+          "english": "December",
+          "target": "十二月",
+          "romanization": "juunigatsu"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: January, February, March, April, May, June…. Save-friendly chart with pronunciation.",
+      "topicSlug": "months",
+      "publishedAt": "2026-08-08T15:06:08.844Z"
+    }
+  ]
+}

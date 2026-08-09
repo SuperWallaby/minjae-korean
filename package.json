@@ -42,12 +42,18 @@
     "when-to-use:pipeline": "npx tsx scripts/when-to-use-pipeline.ts",
     "vocab-compare:pipeline": "npx tsx scripts/vocab-compare-pipeline.ts",
     "vocab-detail:pipeline": "npx tsx scripts/vocab-detail-pipeline.ts",
+    "vocab:audit-hanja": "npx tsx scripts/audit-hanja-hubs.ts",
     "vocab:publish": "npx tsx scripts/publish-vocab-seo-pages.ts",
     "list:publish": "npx tsx scripts/publish-ig-list-seo-pages.ts",
     "vocab:enrich": "npx tsx scripts/enrich-vocab-seo-pages.ts",
+    "vocab:tts-pinned": "bash scripts/run-pinned-vocab-tts.sh",
+    "vocab:tts-daemon:install": "bash scripts/install-pinned-vocab-tts-daemon.sh",
     "vocab:pipeline": "npx tsx scripts/vocab-seo-pipeline.ts",
     "vocab:ensure-pinned": "npx tsx scripts/ensure-pinned-vocab-seo.ts",
     "vocab:optimize-images": "npx tsx scripts/optimize-vocab-infographic-images.ts",
+    "blog:promo-pins": "node scripts/gen-content-promo-pins.mjs --blog",
+    "news:promo-pins": "node scripts/gen-content-promo-pins.mjs --news",
+    "quiz:word-pins": "node scripts/gen-quiz-word-pins.mjs",
     "generate-grammar-batch": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100.txt",
     "generate-grammar-batch-2": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-2.txt",
     "generate-grammar-batch-3": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-3.txt",
@@ -57,7 +63,8 @@
     "x-oauth2-setup:manual": "npx tsx scripts/x-oauth2-setup.ts --manual",
     "x-oauth1-setup": "npx tsx scripts/x-oauth1-setup.ts",
     "x-oauth1-setup:manual": "npx tsx scripts/x-oauth1-setup.ts --manual",
-    "deploy-x-poster": "bash scripts/deploy-x-poster.sh"
+    "deploy-x-poster": "bash scripts/deploy-x-poster.sh",
+    "global:publish-pins": "node scripts/publish-global-pins.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",
