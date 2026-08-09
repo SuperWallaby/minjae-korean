@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-09T06:02:09.528Z",
+  "generatedAt": "2026-08-09T06:14:56.876Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -101,11 +101,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: black, brown, hazel, green, blue, gray…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "eye-colors",
-      "publishedAt": "2026-08-08T15:04:23.903Z",
-      "explanationEn": "These are common eye colors in Spanish. You can use these words to describe someone's eyes or talk about eye color in general.",
       "examples": [
         {
           "target": "Ella tiene los ojos marrón.",
@@ -143,7 +138,12 @@
           "ttsUrl": "/global/audio/01_eye-colors__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These are common eye colors in Spanish. You can use these words to describe someone's eyes or talk about eye color in general.",
+      "partner": "preply",
+      "description": "Learn Spanish: black, brown, hazel, green, blue, gray…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "eye-colors",
+      "publishedAt": "2026-08-08T15:04:23.903Z"
     },
     {
       "id": "03_foods__fr",
@@ -224,11 +224,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn French: bread, cheese, wine, coffee, croissant, soup…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "foods",
-      "publishedAt": "2026-08-08T15:59:57.768Z",
-      "explanationEn": "These are common French foods and drinks you can find in restaurants or markets. Use these words to talk about meals, order food, or describe what you like to eat.",
       "examples": [
         {
           "target": "Je mange un croissant au petit déjeuner.",
@@ -266,7 +261,12 @@
           "ttsUrl": "/global/audio/03_foods__fr/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These are common French foods and drinks you can find in restaurants or markets. Use these words to talk about meals, order food, or describe what you like to eat.",
+      "partner": "preply",
+      "description": "Learn French: bread, cheese, wine, coffee, croissant, soup…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "foods",
+      "publishedAt": "2026-08-08T15:59:57.768Z"
     },
     {
       "id": "04_emotions__de",
@@ -347,11 +347,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn German: happy, sad, angry, tired, surprised, scared…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "emotions",
-      "publishedAt": "2026-08-08T16:01:32.301Z",
-      "explanationEn": "These words describe different emotions you can feel. Use them to talk about how you or others feel in different situations.",
       "examples": [
         {
           "target": "Ich bin heute sehr glücklich.",
@@ -389,7 +384,12 @@
           "ttsUrl": "/global/audio/04_emotions__de/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words describe different emotions you can feel. Use them to talk about how you or others feel in different situations.",
+      "partner": "preply",
+      "description": "Learn German: happy, sad, angry, tired, surprised, scared…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "emotions",
+      "publishedAt": "2026-08-08T16:01:32.301Z"
     },
     {
       "id": "05_family__it",
@@ -470,11 +470,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Italian: mom, dad, brother, sister, grandma, grandpa…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "family",
-      "publishedAt": "2026-08-08T23:22:27.914Z",
-      "explanationEn": "These are common family words in Italian. Use them to talk about your relatives and family members in everyday conversations.",
       "examples": [
         {
           "target": "La mamma cucina la cena.",
@@ -512,7 +507,12 @@
           "ttsUrl": "/global/audio/05_family__it/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These are common family words in Italian. Use them to talk about your relatives and family members in everyday conversations.",
+      "partner": "preply",
+      "description": "Learn Italian: mom, dad, brother, sister, grandma, grandpa…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "family",
+      "publishedAt": "2026-08-08T23:22:27.914Z"
     },
     {
       "id": "06_numbers__ar",
@@ -593,11 +593,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Arabic: one, two, three, four, five, six…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "numbers",
-      "publishedAt": "2026-08-08T23:23:57.015Z",
-      "explanationEn": "These are the numbers from one to ten in Arabic. You can use them to count objects, tell your age, or say the time. Practice these numbers to build a strong foundation in Arabic.",
       "examples": [
         {
           "target": "لدي ثلاثة كتب.",
@@ -629,7 +624,12 @@
           "ttsUrl": "/global/audio/06_numbers__ar/ex4.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These are the numbers from one to ten in Arabic. You can use them to count objects, tell your age, or say the time. Practice these numbers to build a strong foundation in Arabic.",
+      "partner": "preply",
+      "description": "Learn Arabic: one, two, three, four, five, six…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "numbers",
+      "publishedAt": "2026-08-08T23:23:57.015Z"
     },
     {
       "id": "02_months__ja",
@@ -724,11 +724,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Japanese: January, February, March, April, May, June…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "months",
-      "publishedAt": "2026-08-08T15:06:08.844Z",
-      "explanationEn": "In Japanese, months are named by combining numbers with the word '月' (gatsu), which means 'month.' For example, January is 一月 (first month), February is 二月 (second month), and so on. You can use these words to talk about dates and seasons.",
       "examples": [
         {
           "target": "私は四月に日本へ行きます。",
@@ -760,7 +755,12 @@
           "ttsUrl": "/global/audio/02_months__ja/ex4.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "In Japanese, months are named by combining numbers with the word '月' (gatsu), which means 'month.' For example, January is 一月 (first month), February is 二月 (second month), and so on. You can use these words to talk about dates and seasons.",
+      "partner": "preply",
+      "description": "Learn Japanese: January, February, March, April, May, June…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "months",
+      "publishedAt": "2026-08-08T15:06:08.844Z"
     }
   ]
 }
