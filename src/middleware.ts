@@ -47,7 +47,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/global/") ||
     pathname.startsWith("/favicon") ||
     pathname.match(
-      /\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|map|txt|xml|webmanifest)$/i,
+      /\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|map|mp3|woff2?)$/i,
     )
   ) {
     return globalHost || globalPath ? nextAsGlobal(request) : NextResponse.next();
@@ -58,6 +58,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Host rewrite: global.kajakorean.com/* → /global-site/*
+  // Includes /sitemap.xml and /robots.txt for SEO.
   const url = request.nextUrl.clone();
   url.pathname = pathname === "/" ? "/global-site" : `/global-site${pathname}`;
   return rewriteAsGlobal(request, url);

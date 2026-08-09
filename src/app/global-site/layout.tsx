@@ -22,15 +22,23 @@ export const metadata: Metadata = {
     template: "%s · Kaja Global",
   },
   description:
-    "Save-worthy vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, and Japanese. Book a tutor with our partner offers.",
+    "Save-worthy vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, and Japanese — with pronunciation audio, examples, and tutor offers.",
   applicationName: "Kaja Global",
   openGraph: {
     type: "website",
     siteName: "Kaja Global",
     title: "Kaja Global · Vocabulary charts that stick",
     description:
-      "Free language charts from Pinterest — with clear words, pronunciation, and tutor booking offers.",
+      "Free language charts from Pinterest — clear words, audio, examples, and tutor booking.",
+    url: "https://global.kajakorean.com",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kaja Global · Vocabulary charts that stick",
+    description:
+      "Free language charts with audio and examples for English speakers.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function GlobalSiteLayout({

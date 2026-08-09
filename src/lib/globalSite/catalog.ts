@@ -4,6 +4,17 @@ export type GlobalPinWord = {
   english: string;
   target: string;
   romanization: string;
+  /** Static path e.g. /global/audio/{id}/w0.mp3 */
+  ttsUrl?: string;
+  ttsProvider?: string;
+};
+
+export type GlobalPinExample = {
+  /** Sentence in the target language */
+  target: string;
+  english: string;
+  ttsUrl?: string;
+  ttsProvider?: string;
 };
 
 export type GlobalPinPage = {
@@ -14,10 +25,13 @@ export type GlobalPinPage = {
   slug: string;
   imagePath: string;
   words: GlobalPinWord[];
+  examples?: GlobalPinExample[];
   partner: "preply" | "italki" | string;
   description: string;
   topicSlug?: string;
   publishedAt?: string;
+  /** Longer SEO blurb (optional). */
+  explanationEn?: string;
 };
 
 export type GlobalPinCatalog = {
@@ -30,6 +44,13 @@ export type GlobalPinCatalog = {
 
 export function getGlobalCatalog(): GlobalPinCatalog {
   return catalog as GlobalPinCatalog;
+}
+
+export function globalSiteBase(): string {
+  return (
+    getGlobalCatalog().site?.replace(/\/+$/, "") ||
+    "https://global.kajakorean.com"
+  );
 }
 
 export function listGlobalPins(opts?: {
@@ -56,4 +77,31 @@ export function getGlobalLang(code: string) {
     .trim()
     .toLowerCase();
   return getGlobalCatalog().languages.find((l) => l.code === c) || null;
+}
+
+/** Same language + other-language versions of the same topic. */
+export function relatedGlobalPins(
+  pin: GlobalPinPage,
+  limit = 8,
+): GlobalPinPage[] {
+  const pages = getGlobalCatalog().pages || [];
+  const sameLang = pages.filter(
+    (p) => p.id !== pin.id && p.lang === pin.lang,
+  );
+  const sameTopic = pages.filter(
+    (p) =>
+      p.id !== pin.id &&
+      pin.topicSlug &&
+      p.topicSlug === pin.topicSlug &&
+      p.lang !== pin.lang,
+  );
+  const out: GlobalPinPage[] = [];
+  const seen = new Set<string>();
+  for (const p of [...sameTopic, ...sameLang, ...pages]) {
+    if (p.id === pin.id || seen.has(p.id)) continue;
+    seen.add(p.id);
+    out.push(p);
+    if (out.length >= limit) break;
+  }
+  return out;
 }

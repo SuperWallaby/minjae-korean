@@ -27,6 +27,13 @@ const langOrder = ["es", "fr", "de", "it", "ar", "ja"];
 fs.mkdirSync(OUT_IMG, { recursive: true });
 fs.mkdirSync(path.dirname(OUT_JSON), { recursive: true });
 
+const existing = fs.existsSync(OUT_JSON)
+  ? JSON.parse(fs.readFileSync(OUT_JSON, "utf8"))
+  : { pages: [] };
+const prevById = new Map(
+  (existing.pages || []).map((p) => [p.id, p]),
+);
+
 const pages = [];
 for (const f of fs.readdirSync(SRC)) {
   if (!f.endsWith(".json")) continue;
@@ -37,11 +44,22 @@ for (const f of fs.readdirSync(SRC)) {
   const png = path.join(SRC, `${id}.png`);
   if (!fs.existsSync(png)) continue;
   fs.copyFileSync(png, path.join(OUT_IMG, `${id}.png`));
-  const words = (meta.words || []).map((w) => ({
-    english: w.english || "",
-    target: w.target || "",
-    romanization: w.romanization || "",
-  }));
+  const prev = prevById.get(id) || {};
+  const words = (meta.words || []).map((w, i) => {
+    const pw = prev.words?.[i];
+    const same =
+      pw &&
+      pw.target === (w.target || "") &&
+      pw.english === (w.english || "");
+    return {
+      english: w.english || "",
+      target: w.target || "",
+      romanization: w.romanization || "",
+      ...(same && pw?.ttsUrl
+        ? { ttsUrl: pw.ttsUrl, ttsProvider: pw.ttsProvider }
+        : {}),
+    };
+  });
   const partner =
     String(meta.footer?.partner || "preply").toLowerCase() === "italki"
       ? "italki"
@@ -60,19 +78,23 @@ for (const f of fs.readdirSync(SRC)) {
     slug,
     imagePath: `/global/pins/${id}.png`,
     words,
+    ...(prev.examples?.length ? { examples: prev.examples } : {}),
+    ...(prev.explanationEn ? { explanationEn: prev.explanationEn } : {}),
     partner,
-    description: `Learn ${langName} vocabulary: ${words
-      .slice(0, 6)
-      .map((w) => w.english)
-      .filter(Boolean)
-      .join(", ")}${words.length > 6 ? "…" : ""}. Save-friendly chart with pronunciation.`,
+    description:
+      prev.description ||
+      `Learn ${langName} vocabulary: ${words
+        .slice(0, 6)
+        .map((w) => w.english)
+        .filter(Boolean)
+        .join(", ")}${words.length > 6 ? "…" : ""}. Save-friendly chart with pronunciation.`,
     topicSlug:
       meta.topicSlug ||
       String(id)
         .split("__")[0]
         ?.replace(/^\d+_/, "") ||
       "",
-    publishedAt: meta.at || new Date().toISOString(),
+    publishedAt: meta.at || prev.publishedAt || new Date().toISOString(),
   });
 }
 
