@@ -312,8 +312,9 @@
   gap: 0.35rem 1rem;
   padding: 0.7rem 0.85rem;
   border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--g-mist) 70%, white);
-  border: 1px solid var(--g-line);
+  background: var(--g-card);
+  border: 1px solid color-mix(in srgb, var(--g-accent) 18%, var(--g-line));
+  box-shadow: 0 1px 0 rgba(20, 32, 28, 0.03), 0 8px 20px rgba(20, 32, 28, 0.05);
 }
 
 .global-word-main {
