@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   getGlobalCatalog,
   listGlobalPins,
@@ -30,7 +31,7 @@ export default function GlobalHomePage() {
         {catalog.languages.map((lang) => {
           const count = pins.filter((p) => p.lang === lang.code).length;
           return (
-            <a
+            <Link
               key={lang.code}
               className="global-lang-chip"
               href={`/lang/${lang.code}`}
@@ -39,7 +40,7 @@ export default function GlobalHomePage() {
               <span>
                 {count} chart{count === 1 ? "" : "s"}
               </span>
-            </a>
+            </Link>
           );
         })}
       </div>
@@ -49,14 +50,18 @@ export default function GlobalHomePage() {
       </h2>
       <div className="global-pin-grid">
         {pins.map((pin) => (
-          <a key={pin.id} className="global-pin-card" href={`/pin/${pin.id}`}>
+          <Link
+            key={pin.id}
+            className="global-pin-card"
+            href={`/pin/${pin.id}`}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={pin.imagePath} alt={pin.titleEn} loading="lazy" />
             <div className="global-pin-card-body">
               <h2>{pin.titleEn}</h2>
               <div className="global-pin-card-meta">{pin.langName}</div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </>

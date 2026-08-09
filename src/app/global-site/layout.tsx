@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
+import Link from "next/link";
 import "./global.css";
 
 const dm = DM_Sans({
@@ -40,17 +41,17 @@ export default function GlobalSiteLayout({
   return (
     <div className={`global-root ${dm.variable} ${display.variable}`}>
       <header className="global-header">
-        <a className="global-brand" href="/">
+        <Link className="global-brand" href="/">
           <span className="global-brand-mark">Kaja</span>
           <span className="global-brand-sub">Global</span>
-        </a>
+        </Link>
         <nav className="global-nav" aria-label="Languages">
-          <a href="/lang/es">Spanish</a>
-          <a href="/lang/fr">French</a>
-          <a href="/lang/de">German</a>
-          <a href="/lang/it">Italian</a>
-          <a href="/lang/ar">Arabic</a>
-          <a href="/lang/ja">Japanese</a>
+          <Link href="/lang/es">Spanish</Link>
+          <Link href="/lang/fr">French</Link>
+          <Link href="/lang/de">German</Link>
+          <Link href="/lang/it">Italian</Link>
+          <Link href="/lang/ar">Arabic</Link>
+          <Link href="/lang/ja">Japanese</Link>
         </nav>
       </header>
       <main className="global-main">{children}</main>

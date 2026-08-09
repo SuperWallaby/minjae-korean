@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getGlobalLang, listGlobalPins } from "@/lib/globalSite/catalog";
 import { globalGoPath } from "@/lib/globalSite/affiliate";
@@ -28,7 +29,7 @@ export default async function GlobalLangPage({ params }: Props) {
   return (
     <>
       <p className="global-crumbs">
-        <a href="/">Home</a> / {lang.name}
+        <Link href="/">Home</Link> / {lang.name}
       </p>
       <section className="global-hero">
         <h1>{lang.name} vocabulary charts</h1>
@@ -52,7 +53,7 @@ export default async function GlobalLangPage({ params }: Props) {
       ) : (
         <div className="global-pin-grid">
           {pins.map((pin) => (
-            <a
+            <Link
               key={pin.id}
               className="global-pin-card"
               href={`/pin/${pin.id}`}
@@ -65,7 +66,7 @@ export default async function GlobalLangPage({ params }: Props) {
                   {pin.words.length} words
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       )}

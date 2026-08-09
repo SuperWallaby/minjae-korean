@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getGlobalCatalog,
@@ -44,8 +45,8 @@ export default async function GlobalPinPage({ params }: Props) {
   return (
     <>
       <p className="global-crumbs">
-        <a href="/">Home</a> /{" "}
-        <a href={`/lang/${pin.lang}`}>{pin.langName}</a> / {pin.titleEn}
+        <Link href="/">Home</Link> /{" "}
+        <Link href={`/lang/${pin.lang}`}>{pin.langName}</Link> / {pin.titleEn}
       </p>
 
       <div className="global-pin-layout">
