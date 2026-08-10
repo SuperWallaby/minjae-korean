@@ -1,0 +1,34 @@
+[2026-08-08T12:50:14.847Z] ═══ batch runner start — gpt-image-2 quality=high timeout=600s ═══
+[2026-08-08T12:50:14.848Z] capybara cast: always on (VOCAB_JJIBARA_RATE=1)
+[2026-08-08T12:50:14.848Z] style/character ref: /Users/minjaekim/Desktop/korean-teacher-mj/public/brand/capybara-style-ref.png (images/edits + high fidelity)
+[2026-08-08T12:50:14.849Z] Pass #3 — 13 remaining (expr 6 / noun 3 / ant 2 / list 1 / quiz 1)
+[2026-08-08T12:50:14.849Z]   by format: {"grid_cluster":1,"antonym_split":1,"similar_split":1,"super_list":1,"quiz_comment":1,"concept_rows":1,"phrase_stack":1,"topik_upgrade":1,"cute_cast":1,"hanja_hub":1,"pronunciation_grid":1,"grammar_spotlight":1,"compound_word":1}
+[2026-08-08T12:50:14.849Z]   next up: grid_cluster:grid-fruits-tropical → antonym_split:ant-early-late → similar_split:sim-know-understand → super_list:list-numbers-powers-ten → quiz_comment:quiz-consider-vs-think → concept_rows:concept-indefinite-pronouns → phrase_stack:phrase-how-are-you-feeling → topik_upgrade:topik-speaking-verbs
+[2026-08-08T12:50:14.849Z] [1/13] grid-fruits-tropical (grid_cluster)
+[2026-08-08T12:52:15.747Z]   ✓ grid-fruits-tropical (120.9s) jjibara=1
+[2026-08-08T12:52:17.747Z] [2/13] ant-early-late (antonym_split)
+[2026-08-08T12:53:44.860Z]   ✓ ant-early-late (87.1s) jjibara=1
+[2026-08-08T12:53:46.862Z] [3/13] sim-know-understand (similar_split)
+[2026-08-08T12:55:15.917Z]   ✓ sim-know-understand (89.1s) jjibara=1
+[2026-08-08T12:55:17.919Z] [4/13] list-numbers-powers-ten (super_list)
+[2026-08-08T12:56:53.576Z]   ✓ list-numbers-powers-ten (95.7s) jjibara=1
+[2026-08-08T12:56:55.579Z] [5/13] quiz-consider-vs-think (quiz_comment)
+[2026-08-08T12:58:32.048Z]   ✓ quiz-consider-vs-think (96.5s) jjibara=1
+[2026-08-08T12:58:34.049Z] [6/13] concept-indefinite-pronouns (concept_rows)
+[2026-08-08T13:00:07.765Z]   ✓ concept-indefinite-pronouns (93.7s) jjibara=1
+[2026-08-08T13:00:09.767Z] [7/13] phrase-how-are-you-feeling (phrase_stack)
+[2026-08-08T13:01:44.941Z]   ✓ phrase-how-are-you-feeling (95.2s) jjibara=1
+[2026-08-08T13:01:46.947Z] [8/13] topik-speaking-verbs (topik_upgrade)
+[2026-08-08T13:03:21.552Z]   ✓ topik-speaking-verbs (94.6s) jjibara=1
+[2026-08-08T13:03:23.554Z] [9/13] cute-filler-words (cute_cast)
+[2026-08-08T13:05:26.675Z]   ✓ cute-filler-words (123.1s) cast=capybara
+[2026-08-08T13:05:28.678Z] [10/13] hanja-ji-paper (hanja_hub)
+[2026-08-08T13:07:21.787Z]   ✓ hanja-ji-paper (113.1s) jjibara=1
+[2026-08-08T13:07:23.790Z] [11/13] pron-s-sound (pronunciation_grid)
+[2026-08-08T13:09:29.511Z]   ✓ pron-s-sound (125.7s) jjibara=1
+[2026-08-08T13:09:31.514Z] [12/13] gram-progressive-sleeping (grammar_spotlight)
+[2026-08-08T13:10:41.409Z]   ✓ gram-progressive-sleeping (69.9s) jjibara=1
+[2026-08-08T13:10:43.410Z] [13/13] cmp-sul-gorae (compound_word)
+[2026-08-08T13:13:58.049Z]   ✓ cmp-sul-gorae (194.6s) compound
+[2026-08-08T13:14:00.053Z] Pass #3 done — 0 still remaining
+[2026-08-08T13:14:00.053Z] batch finished cleanly — exiting

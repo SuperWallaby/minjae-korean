@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Daily safety-net: pinned /vocab SEO TTS (SoVITS on lab-worker + Edge).
+  Also queued automatically after ./scripts/pin-vocab-batch.sh finishes.
+  Install:
+    cp scripts/com.kaja.pinned-vocab-tts.plist ~/Library/LaunchAgents/
+    launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.kaja.pinned-vocab-tts.plist 2>/dev/null || true
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.kaja.pinned-vocab-tts.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kaja.pinned-vocab-tts</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/minjaekim/Desktop/korean-teacher-mj/scripts/run-pinned-vocab-tts.sh</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj</string>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>1</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/vocab-infographic-gen/logs/launchd-pinned-vocab-tts.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/vocab-infographic-gen/logs/launchd-pinned-vocab-tts.err.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HOME</key>
+    <string>/Users/minjaekim</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

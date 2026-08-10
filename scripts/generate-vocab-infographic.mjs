@@ -129,9 +129,9 @@ Empty footer band blank.`,
   },
 ];
 
-async function rebrandRaw(rawPath, logoPath) {
+async function rebrandRaw(rawPath, logoPath, opts = {}) {
   const base = rawPath.replace(/_raw\.png$/i, "");
-  const branded = await compositeFooter(readFileSync(rawPath), logoPath);
+  const branded = await compositeFooter(readFileSync(rawPath), logoPath, opts);
   writeFileSync(`${base}.png`, branded);
   return base.split("/").pop();
 }

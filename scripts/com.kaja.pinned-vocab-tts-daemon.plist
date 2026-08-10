@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Cursor-independent pinned SEO TTS daemon (launchd KeepAlive).
+  Words: Edge · examples: lab-worker SoVITS (V100).
+
+  Install / restart:
+    /bin/bash /Users/minjaekim/Desktop/korean-teacher-mj/scripts/install-pinned-vocab-tts-daemon.sh
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kaja.pinned-vocab-tts-daemon</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/minjaekim/Desktop/korean-teacher-mj/scripts/run-pinned-vocab-tts-daemon.sh</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>15</integer>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>StandardOutPath</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/vocab-infographic-gen/logs/tts-daemon-launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/vocab-infographic-gen/logs/tts-daemon-launchd.err.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/minjaekim/.nvm/versions/node/v22.22.1/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HOME</key>
+    <string>/Users/minjaekim</string>
+    <key>LIMIT_PER_ROUND</key>
+    <string>12</string>
+    <key>ROUND_PAUSE_SEC</key>
+    <string>2</string>
+    <key>IDLE_SLEEP_SEC</key>
+    <string>300</string>
+    <key>VOCAB_TTS_SSH</key>
+    <string>lab-worker</string>
+  </dict>
+</dict>
+</plist>

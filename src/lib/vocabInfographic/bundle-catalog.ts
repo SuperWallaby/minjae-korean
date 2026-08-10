@@ -21,6 +21,41 @@ import {
   EXPR_WAVE3_SIMILAR_BUNDLES,
   EXPR_WAVE3_TOPIK_BUNDLES,
 } from "./bundle-catalog-expr-wave3";
+import {
+  CUTE_RESTOCK_WAVE_BUNDLES,
+  CUTE_RESTOCK_WAVE_ANT,
+  CUTE_RESTOCK_WAVE_CONCEPT,
+  CUTE_RESTOCK_WAVE_CUTE,
+  CUTE_RESTOCK_WAVE_GRID,
+  CUTE_RESTOCK_WAVE_LIST,
+  CUTE_RESTOCK_WAVE_PHRASE,
+  CUTE_RESTOCK_WAVE_QUIZ,
+  CUTE_RESTOCK_WAVE_SIM,
+  CUTE_RESTOCK_WAVE_TOPIK,
+} from "./bundle-catalog-cute-restock-wave";
+import { CUTE_WAVE2_BUNDLES } from "./bundle-catalog-cute-wave2";
+import { HANJA_HUB_WAVE_BUNDLES } from "./bundle-catalog-hanja-hub-wave";
+import {
+  PIN_BALANCE_WAVE_BUNDLES,
+  PIN_BALANCE_WAVE_ANT,
+  PIN_BALANCE_WAVE_LIST,
+  PIN_BALANCE_WAVE_QUIZ,
+  PIN_BALANCE_WAVE_TOPIK,
+  PIN_BALANCE_WAVE_HANJA,
+} from "./bundle-catalog-pin-balance-wave";
+import { PRONUNCIATION_GRID_WAVE_BUNDLES } from "./bundle-catalog-pronunciation-grid-wave";
+import { GRAMMAR_SPOTLIGHT_WAVE_BUNDLES } from "./bundle-catalog-grammar-spotlight-wave";
+import { COMPOUND_WORD_WAVE_BUNDLES } from "./bundle-catalog-compound-word-wave";
+import { STOCK10_WAVE_BUNDLES } from "./bundle-catalog-stock10-wave";
+import {
+  THIN_RESTOCK_WAVE_BUNDLES,
+  THIN_RESTOCK_COMPOUND,
+  THIN_RESTOCK_GRAMMAR,
+  THIN_RESTOCK_PRON,
+  THIN_RESTOCK_CUTE,
+} from "./bundle-catalog-thin-restock-wave";
+import { TRENDS_KR_2026_08_BUNDLES } from "./bundle-catalog-trends-kr-2026-08";
+import { assertHanjaCatalogAudited } from "./hanjaHubAudit";
 
 export type BundlePriority = "high" | "medium" | "low";
 
@@ -73,6 +108,49 @@ export type TopikUpgradeRow = {
   topikII: { hangul: string; romanization: string };
 };
 
+/** One cell for cute_cast 3×3 mascot sticker grids. */
+export type CuteCastCell = {
+  hangul: string;
+  romanization: string;
+  english: string;
+  pose: string;
+};
+
+/** One orbiting compound for hanja_hub radial pins. */
+export type HanjaHubSatellite = {
+  hangul: string;
+  romanization: string;
+  english: string;
+  /** Simple object illustration cue for the image model. */
+  icon: string;
+};
+
+export type HanjaHubData = {
+  syllable: string;
+  hanja: string;
+  english: string;
+  /** Hangul readings of this Hanja that compounds may use (e.g. 車 → 차|거). */
+  readings?: string[];
+  satellites: HanjaHubSatellite[];
+};
+
+/** One flashcard tile for pronunciation_grid 2×4 pins. */
+export type PronunciationGridCell = {
+  hangul: string;
+  romanization: string;
+  english: string;
+  /** Simple object illustration cue for the image model. */
+  icon: string;
+};
+
+/** pronunciation_grid — one Hangul sound unit + exactly 8 word tiles. */
+export type PronunciationUnitData = {
+  hangulUnit: string;
+  romanUnit: string;
+  unitLabel: string;
+  cells: PronunciationGridCell[];
+};
+
 export type VocabBundle = {
   id: string;
   format: VocabInfographicFormatId;
@@ -87,6 +165,43 @@ export type VocabBundle = {
   phraseLines?: PhraseLine[];
   similarPair?: SimilarPairData;
   topikRows?: TopikUpgradeRow[];
+  /** cute_cast only — whole grid is ONE cast (never mix). */
+  cuteCast?: "capybara" | "otter";
+  cuteCells?: CuteCastCell[];
+  /** hanja_hub only — center syllable + orbiting compounds. */
+  hanjaHub?: HanjaHubData;
+  /** pronunciation_grid only — sound unit + 8 locked tiles. */
+  pronunciationUnit?: PronunciationUnitData;
+  /** grammar_spotlight only — one sentence with parallel KO/EN highlight. */
+  grammarSpotlight?: {
+    grammarLabel: string;
+    grammarEnglish: string;
+    koreanBefore: string;
+    koreanHighlight: string;
+    koreanAfter: string;
+    englishBefore: string;
+    englishHighlight: string;
+    englishAfter: string;
+    scene: string;
+  };
+  /** compound_word only — A + B → AB equation. */
+  compoundWord?: {
+    left: {
+      hangul: string;
+      romanization: string;
+      english: string;
+      icon: string;
+    };
+    right: {
+      hangul: string;
+      romanization: string;
+      english: string;
+      icon: string;
+    };
+    resultHangul: string;
+    resultRomanization: string;
+    resultMeaning: string;
+  };
 };
 
 type GridSeed = {
@@ -2782,7 +2897,26 @@ export const ALL_VOCAB_BUNDLES: VocabBundle[] = [
   ...(EXPR_WAVE_BUNDLES as VocabBundle[]),
   ...(EXPR_WAVE2_BUNDLES as VocabBundle[]),
   ...(EXPR_WAVE3_BUNDLES as VocabBundle[]),
+  ...(CUTE_RESTOCK_WAVE_BUNDLES as VocabBundle[]),
+  ...(CUTE_WAVE2_BUNDLES as VocabBundle[]),
+  ...(HANJA_HUB_WAVE_BUNDLES as VocabBundle[]),
+  ...(PIN_BALANCE_WAVE_BUNDLES as VocabBundle[]),
+  ...(PRONUNCIATION_GRID_WAVE_BUNDLES as VocabBundle[]),
+  ...(GRAMMAR_SPOTLIGHT_WAVE_BUNDLES as VocabBundle[]),
+  ...(COMPOUND_WORD_WAVE_BUNDLES as VocabBundle[]),
+  ...(STOCK10_WAVE_BUNDLES as VocabBundle[]),
+  ...(THIN_RESTOCK_WAVE_BUNDLES as VocabBundle[]),
+  ...(TRENDS_KR_2026_08_BUNDLES as VocabBundle[]),
 ];
+
+// Auto-run hanja compound audit whenever the catalog is loaded (gen / publish / Next).
+// Skip only for emergency: VOCAB_SKIP_HANJA_AUDIT=1
+if (
+  typeof process !== "undefined" &&
+  process.env.VOCAB_SKIP_HANJA_AUDIT !== "1"
+) {
+  assertHanjaCatalogAudited(ALL_VOCAB_BUNDLES);
+}
 
 export type BundleCatalogValidation = {
   total: number;
@@ -2791,6 +2925,8 @@ export type BundleCatalogValidation = {
   duplicateTitles: string[];
   highPriority: number;
   ok: boolean;
+  /** Present when hanja compound allowlist audit failed. */
+  hanjaError?: string;
 };
 
 export function validateBundleCatalog(minTotal = 300): BundleCatalogValidation {
@@ -2800,35 +2936,76 @@ export function validateBundleCatalog(minTotal = 300): BundleCatalogValidation {
   const duplicateIds = ids.filter((id, i) => ids.indexOf(id) !== i);
   const duplicateTitles = titles.filter((t, i) => titles.indexOf(t) !== i);
 
+  let hanjaOk = true;
+  let hanjaError: string | undefined;
+  try {
+    if (process.env.VOCAB_SKIP_HANJA_AUDIT !== "1") {
+      assertHanjaCatalogAudited(ALL_VOCAB_BUNDLES);
+    }
+  } catch (e) {
+    hanjaOk = false;
+    hanjaError = e instanceof Error ? e.message : String(e);
+  }
+
   const byFormat = {
-    grid_cluster: GRID_CLUSTER_BUNDLES.length + WAVE2_GRID_BUNDLES.length,
-    antonym_split: ANTONYM_SPLIT_BUNDLES.length,
+    grid_cluster:
+      GRID_CLUSTER_BUNDLES.length + WAVE2_GRID_BUNDLES.length + CUTE_RESTOCK_WAVE_GRID.length,
+    antonym_split:
+      ANTONYM_SPLIT_BUNDLES.length +
+      CUTE_RESTOCK_WAVE_ANT.length +
+      PIN_BALANCE_WAVE_ANT.length,
     similar_split:
       SIMILAR_SPLIT_BUNDLES.length +
       EXPR_WAVE_SIMILAR_BUNDLES.length +
       EXPR_WAVE2_SIMILAR_BUNDLES.length +
-      EXPR_WAVE3_SIMILAR_BUNDLES.length,
-    super_list: SUPER_LIST_BUNDLES.length,
-    quiz_comment: QUIZ_COMMENT_BUNDLES.length,
+      EXPR_WAVE3_SIMILAR_BUNDLES.length +
+      CUTE_RESTOCK_WAVE_SIM.length,
+    super_list:
+      SUPER_LIST_BUNDLES.length +
+      CUTE_RESTOCK_WAVE_LIST.length +
+      PIN_BALANCE_WAVE_LIST.length,
+    quiz_comment:
+      QUIZ_COMMENT_BUNDLES.length +
+      CUTE_RESTOCK_WAVE_QUIZ.length +
+      PIN_BALANCE_WAVE_QUIZ.length,
     concept_rows:
       CONCEPT_ROWS_BUNDLES.length +
       EXPR_WAVE_CONCEPT_BUNDLES.length +
       EXPR_WAVE2_CONCEPT_BUNDLES.length +
-      EXPR_WAVE3_CONCEPT_BUNDLES.length,
+      EXPR_WAVE3_CONCEPT_BUNDLES.length +
+      CUTE_RESTOCK_WAVE_CONCEPT.length,
     phrase_stack:
       PHRASE_STACK_BUNDLES.length +
       EXPR_WAVE_PHRASE_BUNDLES.length +
       EXPR_WAVE2_PHRASE_BUNDLES.length +
-      EXPR_WAVE3_PHRASE_BUNDLES.length,
+      EXPR_WAVE3_PHRASE_BUNDLES.length +
+      CUTE_RESTOCK_WAVE_PHRASE.length,
     topik_upgrade:
       TOPIK_UPGRADE_BUNDLES.length +
       EXPR_WAVE_TOPIK_BUNDLES.length +
       EXPR_WAVE2_TOPIK_BUNDLES.length +
-      EXPR_WAVE3_TOPIK_BUNDLES.length,
+      EXPR_WAVE3_TOPIK_BUNDLES.length +
+      CUTE_RESTOCK_WAVE_TOPIK.length +
+      PIN_BALANCE_WAVE_TOPIK.length,
+    cute_cast:
+      CUTE_RESTOCK_WAVE_CUTE.length +
+      CUTE_WAVE2_BUNDLES.length +
+      THIN_RESTOCK_CUTE.length,
+    hanja_hub: HANJA_HUB_WAVE_BUNDLES.length + PIN_BALANCE_WAVE_HANJA.length,
+    pronunciation_grid:
+      PRONUNCIATION_GRID_WAVE_BUNDLES.length + THIN_RESTOCK_PRON.length,
+    grammar_spotlight:
+      GRAMMAR_SPOTLIGHT_WAVE_BUNDLES.length + THIN_RESTOCK_GRAMMAR.length,
+    compound_word:
+      COMPOUND_WORD_WAVE_BUNDLES.length + THIN_RESTOCK_COMPOUND.length,
   };
 
   const total = ALL_VOCAB_BUNDLES.length;
-  const ok = duplicateIds.length === 0 && duplicateTitles.length === 0 && total >= minTotal;
+  const ok =
+    hanjaOk &&
+    duplicateIds.length === 0 &&
+    duplicateTitles.length === 0 &&
+    total >= minTotal;
 
   return {
     total,
@@ -2837,6 +3014,7 @@ export function validateBundleCatalog(minTotal = 300): BundleCatalogValidation {
     duplicateTitles: [...new Set(duplicateTitles)],
     highPriority: ALL_VOCAB_BUNDLES.filter((b) => b.priority === "high").length,
     ok,
+    hanjaError,
   };
 }
 

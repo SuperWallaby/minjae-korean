@@ -23,6 +23,7 @@ import type {
   VocabSeoPublishedFile,
   VocabSeoWord,
 } from "../src/lib/vocabInfographic/seoTypes";
+import { catalogHanjaImageWords } from "../src/lib/vocabInfographic/hanjaHubAudit";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const GEN_DIR = path.join(ROOT, ".tmp/vocab-infographic-gen");
@@ -162,10 +163,17 @@ function main() {
     const title = bundle?.title ?? bundleId.replace(/^(grid|ant|list|quiz)-/, "").replace(/-/g, " ");
     const titleEn = vocabSeoTitleEn(title);
     const slug = slugifyVocabBundleTitle(title);
+    // Hanja: always use catalog-audited compounds (ignore vision / padded imageWords).
     const words =
-      normalizeWords(entry.imageWords).length > 0
-        ? normalizeWords(entry.imageWords)
-        : loadWordsJson(bundleId);
+      bundle?.format === "hanja_hub" && bundle.hanjaHub
+        ? catalogHanjaImageWords(bundle.hanjaHub).map((w) => ({
+            hangul: w.hangul,
+            romanization: w.romanization || undefined,
+            english: w.english,
+          }))
+        : normalizeWords(entry.imageWords).length > 0
+          ? normalizeWords(entry.imageWords)
+          : loadWordsJson(bundleId);
 
     const tweet = String(entry.tweetText ?? "").trim();
     const intro =

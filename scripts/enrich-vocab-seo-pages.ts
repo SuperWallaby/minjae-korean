@@ -5,6 +5,12 @@
  * Word TTS: SoVITS (v100) → Azure Whisper STT verify → Edge fallback if score low.
  * Example TTS: SoVITS preferred (Edge on failure).
  *
+ * Incremental TTS only (pinned SEO + missing clips):
+ *   yarn vocab:enrich -- --tts-only --pinned-only
+ *   - examples (sentences): GPU SoVITS (Edge on failure)
+ *   - short words (≤SHORT_WORD_MAX hangul): Edge only
+ *   - longer missing words: Edge only (GPU reserved for sentences)
+ *
  *   yarn vocab:enrich -- --limit 5
  *   yarn vocab:enrich -- --id ant-fresh-stale
  *   yarn vocab:enrich -- --force --limit 3
@@ -50,6 +56,11 @@ const REMOTE_PY =
   "~/v100/gpt-sovits/conda-env/bin/python";
 const SOVITS_VOICE = process.env.KOREAN_QUIZ_SOVITS_VOICE_ID || "Mina";
 const EDGE_VOICE = process.env.EDGE_TTS_VOICE || "ko-KR-SunHiNeural";
+/** Hangul letters ≤ this → short word, Edge TTS (default 4). */
+const SHORT_WORD_MAX = Math.max(
+  1,
+  Number(process.env.VOCAB_SHORT_WORD_MAX || "4") || 4,
+);
 const STT_GAP_MS = Math.max(
   0,
   Number(process.env.VOCAB_STT_GAP_MS || "3500") || 3500,
@@ -73,6 +84,7 @@ function parseArgs(argv: string[]) {
   let onlyId: string | undefined;
   let copyOnly = false;
   let pinnedOnly = false;
+  let ttsOnly = false;
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === "--limit" && argv[i + 1]) {
@@ -81,8 +93,24 @@ function parseArgs(argv: string[]) {
     else if (a === "--id" && argv[i + 1]) onlyId = argv[++i];
     else if (a === "--copy-only") copyOnly = true;
     else if (a === "--pinned-only") pinnedOnly = true;
+    else if (a === "--tts-only") ttsOnly = true;
   }
-  return { limit, force, onlyId, copyOnly, pinnedOnly };
+  return { limit, force, onlyId, copyOnly, pinnedOnly, ttsOnly };
+}
+
+function hangulCount(text: string): number {
+  return (String(text || "").match(/[\uAC00-\uD7A3]/g) || []).length;
+}
+
+function isShortWord(hangul: string): boolean {
+  return hangulCount(hangul) > 0 && hangulCount(hangul) <= SHORT_WORD_MAX;
+}
+
+function pageNeedsTts(page: VocabSeoPage): boolean {
+  if (!page.examples?.length) return true;
+  if (page.examples.some((ex) => ex.korean && !ex.ttsUrl)) return true;
+  if (page.words.some((w) => w.hangul?.trim() && !w.ttsUrl)) return true;
+  return false;
 }
 
 function loadExtraEnv(filePath: string) {
@@ -168,8 +196,8 @@ async function synthesizeSovitsMp3(text: string): Promise<Buffer> {
 
   await execFileAsync(
     "ssh",
-    ["-o", "BatchMode=yes", SSH_HOST, remoteCmd],
-    { maxBuffer: 2 * 1024 * 1024, timeout: 180_000 },
+    ["-o", "BatchMode=yes", "-o", "ConnectTimeout=20", "-o", "ServerAliveInterval=15", "-o", "ServerAliveCountMax=12", SSH_HOST, remoteCmd],
+    { maxBuffer: 4 * 1024 * 1024, timeout: 600_000 },
   );
 
   const localDir = mkdtempSync(path.join(tmpdir(), "vocab-seo-tts-"));
@@ -177,8 +205,8 @@ async function synthesizeSovitsMp3(text: string): Promise<Buffer> {
   try {
     await execFileAsync(
       "scp",
-      ["-o", "BatchMode=yes", `${SSH_HOST}:${remoteOut}`, localOut],
-      { timeout: 60_000 },
+      ["-o", "BatchMode=yes", "-o", "ConnectTimeout=20", `${SSH_HOST}:${remoteOut}`, localOut],
+      { timeout: 120_000 },
     );
     const buf = readFileSync(localOut);
     if (!buf.length) throw new Error("SoVITS returned empty audio");
@@ -255,9 +283,24 @@ async function transcribeAzureWhisper(mp3: Buffer): Promise<string> {
   throw lastErr || new Error("Azure STT failed");
 }
 
+async function wordTtsEdge(
+  hangul: string,
+): Promise<{ buffer: Buffer; provider: "edge"; score: number }> {
+  const edge = await synthesizeEdgeTtsMp3(hangul, { voice: EDGE_VOICE });
+  return { buffer: edge, provider: "edge", score: 1 };
+}
+
 async function wordTtsWithVerify(
   hangul: string,
 ): Promise<{ buffer: Buffer; provider: "sovits" | "edge"; score: number }> {
+  // Incremental policy: short words skip GPU → Edge only.
+  if (isShortWord(hangul)) {
+    console.log(
+      `    short word Edge (${hangulCount(hangul)}≤${SHORT_WORD_MAX}): "${hangul}"`,
+    );
+    return wordTtsEdge(hangul);
+  }
+
   const minScore = minScoreForText(hangul);
   let sovits: Buffer | null = null;
   try {
@@ -302,18 +345,23 @@ async function wordTtsWithVerify(
     }
   }
 
-  const edge = await synthesizeEdgeTtsMp3(hangul, { voice: EDGE_VOICE });
-  return { buffer: edge, provider: "edge", score: 1 };
+  return wordTtsEdge(hangul);
 }
 
 async function exampleTts(
   korean: string,
 ): Promise<{ buffer: Buffer; provider: "sovits" | "edge" }> {
+  const t0 = Date.now();
   try {
+    console.log(`      … SoVITS SSH (${korean.length} chars)`);
     const sovits = await synthesizeSovitsMp3(korean);
+    console.log(`      … SoVITS ok ${((Date.now() - t0) / 1000).toFixed(1)}s`);
     return { buffer: sovits, provider: "sovits" };
   } catch (err) {
-    console.warn(`    SoVITS example failed, Edge fallback:`, err);
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn(
+      `      … SoVITS fail ${((Date.now() - t0) / 1000).toFixed(1)}s → Edge: ${msg.slice(0, 180)}`,
+    );
     const edge = await synthesizeEdgeTtsMp3(korean, { voice: EDGE_VOICE });
     return { buffer: edge, provider: "edge" };
   }
@@ -375,10 +423,113 @@ Rules:
 
 async function enrichPage(
   page: VocabSeoPage,
-  opts: { copyOnly?: boolean } = {},
+  opts: { copyOnly?: boolean; ttsOnly?: boolean } = {},
 ): Promise<VocabSeoPage> {
-  const copy = await generateCopy(page);
   const stamp = Date.now();
+
+  // Incremental: keep existing good copy/TTS; only fill holes.
+  if (opts.ttsOnly) {
+    let explanationEn = String(page.explanationEn || "").trim();
+    let exampleSeed: Array<{ korean: string; english: string; ttsUrl?: string; ttsProvider?: string }> =
+      (page.examples || []).map((ex) => ({ ...ex }));
+
+    if (!explanationEn || exampleSeed.length < 2) {
+      const copy = await generateCopy(page);
+      explanationEn = copy.explanationEn;
+      // Keep any existing TTS when Korean matches; otherwise new copy lines.
+      const byKo = new Map(
+        (page.examples || [])
+          .filter((ex) => ex.korean && ex.ttsUrl)
+          .map((ex) => [ex.korean, ex]),
+      );
+      exampleSeed = copy.examples.map((ex) => {
+        const prev = byKo.get(ex.korean);
+        return prev
+          ? { ...ex, ttsUrl: prev.ttsUrl, ttsProvider: prev.ttsProvider }
+          : { ...ex };
+      });
+      console.log(
+        `    generated copy (explanation + ${exampleSeed.length} examples)`,
+      );
+    }
+
+    const words: VocabSeoWord[] = [];
+    let wordsFilled = 0;
+    let wordsKept = 0;
+    for (const w of page.words) {
+      if (!w.hangul.trim()) {
+        words.push(w);
+        continue;
+      }
+      if (w.ttsUrl) {
+        words.push(w);
+        wordsKept += 1;
+        continue;
+      }
+      // All missing word clips → Edge (GPU reserved for example sentences).
+      const kind = isShortWord(w.hangul)
+        ? `short≤${SHORT_WORD_MAX}`
+        : `long=${hangulCount(w.hangul)}`;
+      console.log(`    word Edge (${kind}): "${w.hangul}"`);
+      const { buffer, provider, score } = await wordTtsEdge(w.hangul);
+      const key = `grammar-x/vocab-seo-tts/${stamp}-${page.bundleId}-w${words.length}.mp3`;
+      const ttsUrl = await uploadMp3(key, buffer);
+      words.push({
+        ...w,
+        ttsUrl,
+        ttsProvider: provider,
+        ttsScore: score,
+      });
+      wordsFilled += 1;
+    }
+
+    const examples: VocabSeoExample[] = [];
+    let exFilled = 0;
+    let exKept = 0;
+    for (let i = 0; i < exampleSeed.length; i += 1) {
+      const ex = exampleSeed[i]!;
+      if (ex.ttsUrl) {
+        examples.push({
+          korean: ex.korean,
+          english: ex.english,
+          ttsUrl: ex.ttsUrl,
+          ttsProvider: ex.ttsProvider,
+        });
+        exKept += 1;
+        continue;
+      }
+      console.log(`    example SoVITS: "${ex.korean.slice(0, 40)}…"`);
+      const { buffer, provider } = await exampleTts(ex.korean);
+      const key = `grammar-x/vocab-seo-tts/${stamp}-${page.bundleId}-ex-${i}.mp3`;
+      const ttsUrl = await uploadMp3(key, buffer);
+      examples.push({
+        korean: ex.korean,
+        english: ex.english,
+        ttsUrl,
+        ttsProvider: provider,
+      });
+      exFilled += 1;
+    }
+
+    console.log(
+      `    tts-only filled words=${wordsFilled} kept=${wordsKept} examples=${exFilled} keptEx=${exKept}`,
+    );
+
+    return {
+      ...page,
+      explanationEn,
+      examples,
+      words,
+      enrichedAt: page.enrichedAt || new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      description:
+        explanationEn.length > 160
+          ? `${explanationEn.slice(0, 157).trimEnd()}…`
+          : explanationEn || page.description,
+    };
+  }
+
+  const copy = await generateCopy(page);
 
   if (opts.copyOnly) {
     return {
@@ -440,9 +591,13 @@ async function enrichPage(
 async function main() {
   loadEnvLocal(ROOT);
   loadExtraEnv(AVK_ENV);
-  const { limit, force, onlyId, copyOnly, pinnedOnly } = parseArgs(
+  const { limit, force, onlyId, copyOnly, pinnedOnly, ttsOnly } = parseArgs(
     process.argv.slice(2),
   );
+
+  if (copyOnly && ttsOnly) {
+    throw new Error("Use either --copy-only or --tts-only, not both");
+  }
 
   if (!existsSync(PUBLISHED_PATH)) {
     throw new Error(`Missing ${PUBLISHED_PATH} — run yarn vocab:publish first`);
@@ -474,12 +629,16 @@ async function main() {
       if (copyOnly) {
         return !p.explanationEn || !(p.examples && p.examples.length >= 2);
       }
+      if (ttsOnly) return pageNeedsTts(p);
       return (
         !p.explanationEn ||
         !p.examples?.length ||
         p.words.some((w) => w.hangul && !w.ttsUrl)
       );
     });
+  } else if (ttsOnly) {
+    // force + tts-only still only pages that lack something unless --force alone wants all;
+    // with force we allow redoing pages that already have TTS for targeted --id runs.
   }
   // Prefer pages with words, then fewer words (antonyms finish faster).
   candidates.sort((a, b) => {
@@ -493,7 +652,7 @@ async function main() {
   if (limit > 0) candidates = candidates.slice(0, limit);
 
   console.log(
-    `[vocab:enrich] ${candidates.length} pages (force=${force} copyOnly=${copyOnly} pinnedOnly=${pinnedOnly} voice=${SOVITS_VOICE} avkEnv=${existsSync(AVK_ENV)})`,
+    `[vocab:enrich] ${candidates.length} pages (force=${force} copyOnly=${copyOnly} ttsOnly=${ttsOnly} pinnedOnly=${pinnedOnly} shortMax=${SHORT_WORD_MAX} voice=${SOVITS_VOICE} avkEnv=${existsSync(AVK_ENV)})`,
   );
 
   const byId = new Map(file.pages.map((p) => [p.bundleId, p]));
@@ -506,7 +665,7 @@ async function main() {
       `\n→ [${i + 1}/${candidates.length}] ${page.bundleId} (${page.words.length} words)`,
     );
     try {
-      const enriched = await enrichPage(page, { copyOnly });
+      const enriched = await enrichPage(page, { copyOnly, ttsOnly });
       byId.set(page.bundleId, enriched);
       file.pages = [...byId.values()].sort((a, b) =>
         a.bundleId.localeCompare(b.bundleId),
@@ -517,8 +676,17 @@ async function main() {
       const edgeWords = enriched.words.filter(
         (w) => w.ttsProvider === "edge",
       ).length;
+      const sovitsExamples = enriched.examples?.filter(
+        (e) => e.ttsProvider === "sovits",
+      ).length;
       console.log(
-        `  ok explanation=${enriched.explanationEn!.slice(0, 60)}… examples=${enriched.examples!.length}${copyOnly ? " copy-only" : ` edgeWords=${edgeWords}`}`,
+        `  ok explanation=${(enriched.explanationEn || "").slice(0, 60)}… examples=${enriched.examples!.length}${
+          copyOnly
+            ? " copy-only"
+            : ttsOnly
+              ? ` tts-only edgeWords=${edgeWords} sovitsEx=${sovitsExamples ?? 0}`
+              : ` edgeWords=${edgeWords}`
+        }`,
       );
     } catch (err) {
       fail += 1;

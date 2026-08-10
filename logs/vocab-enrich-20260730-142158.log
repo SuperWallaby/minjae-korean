@@ -1,0 +1,2460 @@
+yarn run v1.22.19
+$ npx tsx scripts/enrich-vocab-seo-pages.ts
+[vocab:enrich] 174 pages (force=false voice=Mina avkEnv=true)
+
+→ [1/174] list-endings-formal-informal (8 words)
+    SoVITS failed for "-요": Error: Command failed: ssh -o BatchMode=yes lab-worker export GPT_SOVITS_API_URL="${GPT_SOVITS_API_URL:-http://127.0.0.1:9880}" && cd ~/v100/auto-video-korean && ~/v100/gpt-sovits/conda-env/bin/python scripts/generate_korean_quiz_tts.py --text "-요" --output /tmp/vocab-seo-tts-1785388923027-5se7a9.mp3 --provider sovits --voice-id "Mina"
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+usage: generate_korean_quiz_tts.py [-h] --text TEXT
+                                   [--tone-prompt TONE_PROMPT]
+                                   [--provider PROVIDER] [--voice-id VOICE_ID]
+                                   --output OUTPUT
+generate_korean_quiz_tts.py: error: argument --text: expected one argument
+
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:456:11)
+    at Socket.emit (node:events:519:28)
+    at Pipe.<anonymous> (node:net:346:12) {
+  code: 2,
+  killed: false,
+  signal: null,
+  cmd: 'ssh -o BatchMode=yes lab-worker export GPT_SOVITS_API_URL="${GPT_SOVITS_API_URL:-http://127.0.0.1:9880}" && cd ~/v100/auto-video-korean && ~/v100/gpt-sovits/conda-env/bin/python scripts/generate_korean_quiz_tts.py --text "-요" --output /tmp/vocab-seo-tts-1785388923027-5se7a9.mp3 --provider sovits --voice-id "Mina"',
+  stdout: '',
+  stderr: '** WARNING: connection is not using a post-quantum key exchange algorithm.\r\n' +
+    '** This session may be vulnerable to "store now, decrypt later" attacks.\r\n' +
+    '** The server may need to be upgraded. See https://openssh.com/pq.html\r\n' +
+    '** WARNING: connection is not using a post-quantum key exchange algorithm.\r\n' +
+    '** This session may be vulnerable to "store now, decrypt later" attacks.\r\n' +
+    '** The server may need to be upgraded. See https://openssh.com/pq.html\r\n' +
+    'usage: generate_korean_quiz_tts.py [-h] --text TEXT\n' +
+    '                                   [--tone-prompt TONE_PROMPT]\n' +
+    '                                   [--provider PROVIDER] [--voice-id VOICE_ID]\n' +
+    '                                   --output OUTPUT\n' +
+    'generate_korean_quiz_tts.py: error: argument --text: expected one argument\n'
+}
+  FAIL list-endings-formal-informal: Error: edge-tts failed. Install with: pip install edge-tts
+    at synthesizeEdgeTtsMp3 (/Users/minjaekim/Desktop/korean-teacher-mj/src/lib/edgeTtsServer.ts:36:13)
+    at async wordTtsWithVerify (/Users/minjaekim/Desktop/korean-teacher-mj/scripts/enrich-vocab-seo-pages.ts:301:16)
+    at async enrichPage (/Users/minjaekim/Desktop/korean-teacher-mj/scripts/enrich-vocab-seo-pages.ts:382:41)
+    at async main (/Users/minjaekim/Desktop/korean-teacher-mj/scripts/enrich-vocab-seo-pages.ts:464:24)
+
+→ [2/174] grid-african-safari (9 words)
+    word STT "사파리 지프" → "사파리 지프" score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "코끼리"
+    STT cooldown 111s — keeping SoVITS for "기린"
+    STT cooldown 106s — keeping SoVITS for "얼룩말"
+    STT cooldown 100s — keeping SoVITS for "코뿔소"
+    STT cooldown 95s — keeping SoVITS for "쌍안경"
+    STT cooldown 91s — keeping SoVITS for "사파리 모자"
+    STT cooldown 86s — keeping SoVITS for "일몰"
+  ok explanation=This chart introduces common Korean words related to an Afri… examples=3 edgeWords=0
+
+→ [3/174] grid-ages-life-stages (9 words)
+    STT cooldown 63s — keeping SoVITS for "아기"
+    STT cooldown 59s — keeping SoVITS for "아이"
+    STT cooldown 55s — keeping SoVITS for "청소년"
+    STT cooldown 51s — keeping SoVITS for "성인 초반"
+    STT cooldown 47s — keeping SoVITS for "성인"
+    STT cooldown 42s — keeping SoVITS for "중년"
+    STT cooldown 38s — keeping SoVITS for "노년"
+    STT cooldown 34s — keeping SoVITS for "노인"
+    STT cooldown 30s — keeping SoVITS for "백세"
+  ok explanation=This chart shows different life stages in Korean, from baby … examples=3 edgeWords=0
+
+→ [4/174] grid-airport (9 words)
+    STT cooldown 8s — keeping SoVITS for "공항"
+    STT cooldown 2s — keeping SoVITS for "체크인"
+    word STT "여권" → "여건" score=0.50 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "보안 검색"
+    STT cooldown 112s — keeping SoVITS for "출발"
+    STT cooldown 108s — keeping SoVITS for "도착"
+    STT cooldown 103s — keeping SoVITS for "수하물 찾는 곳"
+    STT cooldown 99s — keeping SoVITS for "환전소"
+  ok explanation=This chart introduces common Korean nouns related to airport… examples=3 edgeWords=1
+
+→ [5/174] grid-baby-room (9 words)
+    STT cooldown 75s — keeping SoVITS for "아기 침대"
+    STT cooldown 70s — keeping SoVITS for "기저귀 갈이대"
+    STT cooldown 66s — keeping SoVITS for "옷장"
+    STT cooldown 60s — keeping SoVITS for "수유 의자"
+    STT cooldown 55s — keeping SoVITS for "놀이 매트"
+    STT cooldown 49s — keeping SoVITS for "아기 모니터"
+    STT cooldown 43s — keeping SoVITS for "책장"
+    STT cooldown 39s — keeping SoVITS for "무드등"
+    STT cooldown 35s — keeping SoVITS for "장난감 상자"
+  ok explanation=This chart shows common nouns used in a baby room in Korean.… examples=3 edgeWords=0
+
+→ [6/174] grid-bathroom-items (9 words)
+    STT cooldown 12s — keeping SoVITS for "칫솔"
+    STT cooldown 7s — keeping SoVITS for "치약"
+    word STT "샴푸" → "샴푸" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "수건"
+    STT cooldown 112s — keeping SoVITS for "휴지"
+    STT cooldown 108s — keeping SoVITS for "빗"
+    STT cooldown 103s — keeping SoVITS for "목욕용 스펀지"
+    STT cooldown 99s — keeping SoVITS for "변기"
+  ok explanation=This chart introduces common bathroom items in Korean that y… examples=3 edgeWords=0
+
+→ [7/174] grid-beach-travel (9 words)
+    STT cooldown 77s — keeping SoVITS for "해변"
+    STT cooldown 73s — keeping SoVITS for "파라솔"
+    STT cooldown 69s — keeping SoVITS for "선글라스"
+    STT cooldown 65s — keeping SoVITS for "선크림"
+    STT cooldown 61s — keeping SoVITS for "수영복"
+    STT cooldown 57s — keeping SoVITS for "슬리퍼"
+    STT cooldown 53s — keeping SoVITS for "비치타월"
+    STT cooldown 49s — keeping SoVITS for "방수 가방"
+    STT cooldown 45s — keeping SoVITS for "스노클"
+  ok explanation=This chart introduces common Korean nouns used when talking … examples=3 edgeWords=0
+
+→ [8/174] grid-body-torso (9 words)
+    STT cooldown 22s — keeping SoVITS for "가슴"
+    STT cooldown 18s — keeping SoVITS for "배"
+    STT cooldown 14s — keeping SoVITS for "등"
+    STT cooldown 9s — keeping SoVITS for "옆구리"
+    STT cooldown 5s — keeping SoVITS for "어깨"
+    STT cooldown 1s — keeping SoVITS for "쇄골"
+    word STT "목" → "응" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "허리"
+  ok explanation=This chart introduces common Korean words for parts of the b… examples=3 edgeWords=1
+
+→ [9/174] grid-calendar-months-extra (9 words)
+    STT cooldown 95s — keeping SoVITS for "1월"
+    STT cooldown 91s — keeping SoVITS for "2월"
+    STT cooldown 87s — keeping SoVITS for "3월"
+    STT cooldown 83s — keeping SoVITS for "4월"
+    STT cooldown 79s — keeping SoVITS for "5월"
+    STT cooldown 75s — keeping SoVITS for "6월"
+    STT cooldown 71s — keeping SoVITS for "7월"
+    STT cooldown 66s — keeping SoVITS for "8월"
+    STT cooldown 62s — keeping SoVITS for "9월"
+  ok explanation=This chart shows the names of the months in Korean from Janu… examples=3 edgeWords=0
+
+→ [10/174] grid-camera-photo-words (9 words)
+    STT cooldown 40s — keeping SoVITS for "카메라"
+    STT cooldown 36s — keeping SoVITS for "렌즈"
+    STT cooldown 32s — keeping SoVITS for "메모리 카드"
+    STT cooldown 28s — keeping SoVITS for "배터리"
+    STT cooldown 23s — keeping SoVITS for "삼각대"
+    STT cooldown 19s — keeping SoVITS for "플래시"
+    STT cooldown 15s — keeping SoVITS for "셔터 버튼"
+    STT cooldown 11s — keeping SoVITS for "사진"
+    STT cooldown 7s — keeping SoVITS for "줌"
+  ok explanation=This chart introduces common camera-related words in Korean.… examples=3 edgeWords=0
+
+→ [11/174] grid-commute-words (9 words)
+    word STT "버스" → "버스" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "택시"
+    STT cooldown 113s — keeping SoVITS for "자전거"
+    STT cooldown 109s — keeping SoVITS for "걷기"
+    STT cooldown 105s — keeping SoVITS for "기차"
+    STT cooldown 100s — keeping SoVITS for "버스 정류장"
+    STT cooldown 96s — keeping SoVITS for "교통카드"
+    STT cooldown 92s — keeping SoVITS for "교통 체증"
+  ok explanation=This chart introduces common Korean words related to commuti… examples=3 edgeWords=0
+
+→ [12/174] grid-computer-hardware (9 words)
+    STT cooldown 70s — keeping SoVITS for "모니터"
+    STT cooldown 66s — keeping SoVITS for "키보드"
+    STT cooldown 62s — keeping SoVITS for "마우스"
+    STT cooldown 58s — keeping SoVITS for "본체"
+    STT cooldown 54s — keeping SoVITS for "램"
+    STT cooldown 49s — keeping SoVITS for "하드 드라이브"
+    STT cooldown 45s — keeping SoVITS for "그래픽 카드"
+    STT cooldown 40s — keeping SoVITS for "SSD (솔리드 스테이트 드라이브)"
+    STT cooldown 36s — keeping SoVITS for "웹캠"
+  ok explanation=This chart introduces common computer hardware terms in Kore… examples=3 edgeWords=0
+
+→ [13/174] grid-concert-live (9 words)
+    STT cooldown 13s — keeping SoVITS for "티켓"
+    STT cooldown 9s — keeping SoVITS for "무대"
+    STT cooldown 4s — keeping SoVITS for "응원봉"
+    word STT "팬" → "10" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "스피커"
+    STT cooldown 112s — keeping SoVITS for "꽃가루"
+    STT cooldown 108s — keeping SoVITS for "스크린"
+    STT cooldown 104s — keeping SoVITS for "굿즈"
+  ok explanation=This vocabulary chart introduces common words related to att… examples=3 edgeWords=1
+
+→ [14/174] grid-craft-supplies (9 words)
+    STT cooldown 83s — keeping SoVITS for "가위"
+    STT cooldown 79s — keeping SoVITS for "풀"
+    STT cooldown 75s — keeping SoVITS for "테이프"
+    STT cooldown 71s — keeping SoVITS for "색종이"
+    STT cooldown 67s — keeping SoVITS for "마커"
+    STT cooldown 63s — keeping SoVITS for "실"
+    STT cooldown 59s — keeping SoVITS for "물감"
+    STT cooldown 55s — keeping SoVITS for "스티커"
+    STT cooldown 50s — keeping SoVITS for "공예 상자"
+  ok explanation=This chart introduces common craft supplies in Korean. These… examples=3 edgeWords=0
+
+→ [15/174] grid-deadline-words (9 words)
+    STT cooldown 28s — keeping SoVITS for "마감일"
+    STT cooldown 24s — keeping SoVITS for "마감 시간"
+    STT cooldown 20s — keeping SoVITS for "제출 마감일"
+    STT cooldown 15s — keeping SoVITS for "제출 마감 시간"
+    STT cooldown 11s — keeping SoVITS for "최종 마감일"
+    STT cooldown 7s — keeping SoVITS for "마감 기한"
+    STT cooldown 2s — keeping SoVITS for "시간 제한"
+    word STT "시간 제약" → "시간 제압" score=0.75 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=These Korean words are related to deadlines and time limits … examples=3 edgeWords=1
+
+→ [16/174] grid-delivery-package (9 words)
+    STT cooldown 99s — keeping SoVITS for "배달"
+    STT cooldown 95s — keeping SoVITS for "소포"
+    STT cooldown 91s — keeping SoVITS for "배달 기사"
+    STT cooldown 87s — keeping SoVITS for "주문"
+    STT cooldown 82s — keeping SoVITS for "배송 주소"
+    STT cooldown 78s — keeping SoVITS for "문 앞에 두었어요"
+    STT cooldown 74s — keeping SoVITS for "배송 조회"
+    STT cooldown 70s — keeping SoVITS for "언박싱"
+    STT cooldown 66s — keeping SoVITS for "반품"
+  ok explanation=This chart introduces common Korean words related to deliver… examples=3 edgeWords=0
+
+→ [17/174] grid-flowers-spring (9 words)
+    STT cooldown 45s — keeping SoVITS for "벚꽃"
+    STT cooldown 40s — keeping SoVITS for "유채꽃"
+    STT cooldown 36s — keeping SoVITS for "진달래"
+    STT cooldown 32s — keeping SoVITS for "붓꽃"
+    STT cooldown 28s — keeping SoVITS for "프리지아"
+    STT cooldown 24s — keeping SoVITS for "작약"
+    STT cooldown 20s — keeping SoVITS for "튤립"
+    STT cooldown 16s — keeping SoVITS for "수선화"
+    STT cooldown 12s — keeping SoVITS for "히아신스"
+  ok explanation=This chart introduces common spring flowers in Korean. These… examples=3 edgeWords=0
+
+→ [18/174] grid-folk-games-korea (9 words)
+    word STT "사방치기" → "사망치기" score=0.75 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "제기차기"
+    STT cooldown 112s — keeping SoVITS for "팽이치기"
+    STT cooldown 107s — keeping SoVITS for "딱지치기"
+    STT cooldown 103s — keeping SoVITS for "공기놀이"
+    STT cooldown 99s — keeping SoVITS for "씨름"
+    STT cooldown 95s — keeping SoVITS for "널뛰기"
+    STT cooldown 91s — keeping SoVITS for "연날리기"
+  ok explanation=Folk games in Korea are traditional outdoor activities that … examples=3 edgeWords=1
+
+→ [19/174] grid-hobbies-indoor (9 words)
+    STT cooldown 68s — keeping SoVITS for "독서"
+    STT cooldown 63s — keeping SoVITS for "그림 그리기"
+    STT cooldown 59s — keeping SoVITS for "음악 듣기"
+    STT cooldown 55s — keeping SoVITS for "게임하기"
+    STT cooldown 50s — keeping SoVITS for "퍼즐 맞추기"
+    STT cooldown 46s — keeping SoVITS for "글쓰기"
+    STT cooldown 42s — keeping SoVITS for "베이킹"
+    STT cooldown 38s — keeping SoVITS for "뜨개질"
+    STT cooldown 34s — keeping SoVITS for "사진 찍기"
+  ok explanation=Indoor hobbies in Korean include various activities that peo… examples=3 edgeWords=0
+
+→ [20/174] grid-landmarks-seoul (9 words)
+    STT cooldown 8s — keeping SoVITS for "N 서울타워"
+    STT cooldown 4s — keeping SoVITS for "경복궁"
+    word STT "북촌 한옥마을" → "북촌 한옥마을" score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "한강"
+    STT cooldown 112s — keeping SoVITS for "동대문디자인플라자"
+    STT cooldown 108s — keeping SoVITS for "명동성당"
+    STT cooldown 103s — keeping SoVITS for "롯데월드"
+    STT cooldown 99s — keeping SoVITS for "올림픽공원"
+  ok explanation=This chart introduces popular landmarks in Seoul, South Kore… examples=3 edgeWords=0
+
+→ [21/174] grid-landmarks-world (9 words)
+    STT cooldown 77s — keeping SoVITS for "에펠탑"
+    STT cooldown 73s — keeping SoVITS for "만리장성"
+    STT cooldown 69s — keeping SoVITS for "타지마할"
+    STT cooldown 64s — keeping SoVITS for "자유의 여신상"
+    STT cooldown 60s — keeping SoVITS for "빅 벤"
+    STT cooldown 56s — keeping SoVITS for "콜로세움"
+    STT cooldown 52s — keeping SoVITS for "후지산"
+    STT cooldown 47s — keeping SoVITS for "시드니 오페라 하우스"
+    STT cooldown 43s — keeping SoVITS for "마추픽추"
+  ok explanation=This chart introduces famous landmarks around the world in K… examples=3 edgeWords=0
+
+→ [22/174] grid-laundry-clothing-care (9 words)
+    STT cooldown 22s — keeping SoVITS for "세탁기"
+    STT cooldown 18s — keeping SoVITS for "세제"
+    STT cooldown 14s — keeping SoVITS for "섬유 유연제"
+    STT cooldown 10s — keeping SoVITS for "건조대"
+    STT cooldown 7s — keeping SoVITS for "건조기"
+    STT cooldown 3s — keeping SoVITS for "다리미"
+    word STT "빨래" → "빨래" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "세탁 라벨"
+  ok explanation=This chart introduces common Korean words related to laundry… examples=3 edgeWords=0
+
+→ [23/174] grid-lighting-home (9 words)
+    STT cooldown 94s — keeping SoVITS for "천장등"
+    STT cooldown 90s — keeping SoVITS for "스탠드"
+    STT cooldown 86s — keeping SoVITS for "장스탠드"
+    STT cooldown 82s — keeping SoVITS for "벽등"
+    STT cooldown 78s — keeping SoVITS for "책상등"
+    STT cooldown 74s — keeping SoVITS for "샹들리에"
+    STT cooldown 69s — keeping SoVITS for "줄조명"
+    STT cooldown 65s — keeping SoVITS for "매입등"
+    STT cooldown 61s — keeping SoVITS for "무드등"
+  ok explanation=This chart shows different types of lighting used in homes i… examples=3 edgeWords=0
+
+→ [24/174] grid-looking-searching-verbs (9 words)
+    STT cooldown 40s — keeping SoVITS for "보다"
+    STT cooldown 36s — keeping SoVITS for "바라보다"
+    STT cooldown 32s — keeping SoVITS for "찾다"
+    STT cooldown 28s — keeping SoVITS for "멀리보다"
+    STT cooldown 24s — keeping SoVITS for "거울을 보다"
+    STT cooldown 20s — keeping SoVITS for "읽다"
+    STT cooldown 16s — keeping SoVITS for "둘러보다"
+    STT cooldown 12s — keeping SoVITS for "찾아보다"
+    STT cooldown 8s — keeping SoVITS for "올려다보다"
+  ok explanation=This chart shows common Korean verbs related to looking and … examples=3 edgeWords=0
+
+→ [25/174] grid-medicine-types (9 words)
+    word STT "알약" → "아리아" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "시럽"
+    STT cooldown 112s — keeping SoVITS for "캡슐"
+    STT cooldown 108s — keeping SoVITS for "연고"
+    STT cooldown 104s — keeping SoVITS for "안약"
+    STT cooldown 100s — keeping SoVITS for "흡입기"
+    STT cooldown 96s — keeping SoVITS for "파스"
+    STT cooldown 92s — keeping SoVITS for "주사"
+  ok explanation=This chart introduces common types of medicine in Korean. Th… examples=3 edgeWords=1
+
+→ [26/174] grid-memory-learning-adj (9 words)
+    STT cooldown 71s — keeping SoVITS for "밝은"
+    STT cooldown 67s — keeping SoVITS for "흐린"
+    STT cooldown 64s — keeping SoVITS for "새로운"
+    STT cooldown 59s — keeping SoVITS for "강한"
+    STT cooldown 55s — keeping SoVITS for "가벼운"
+    STT cooldown 51s — keeping SoVITS for "차가운"
+    STT cooldown 47s — keeping SoVITS for "따뜻한"
+    STT cooldown 43s — keeping SoVITS for "깨끗한"
+    STT cooldown 39s — keeping SoVITS for "무거운"
+  ok explanation=This chart introduces common Korean adjectives that describe… examples=3 edgeWords=0
+
+→ [27/174] grid-morning-routine-verbs (9 words)
+    STT cooldown 18s — keeping SoVITS for "일어나다"
+    STT cooldown 14s — keeping SoVITS for "세수하다"
+    STT cooldown 10s — keeping SoVITS for "양치하다"
+    STT cooldown 5s — keeping SoVITS for "옷을 입다"
+    STT cooldown 1s — keeping SoVITS for "아침을 먹다"
+    word STT "마시다" → "마시다." score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "신발을 신다"
+    STT cooldown 111s — keeping SoVITS for "집을 나서다"
+  ok explanation=This chart shows common verbs used in a morning routine in K… examples=3 edgeWords=0
+
+→ [28/174] grid-movement-verbs (9 words)
+    STT cooldown 89s — keeping SoVITS for "달리다"
+    STT cooldown 85s — keeping SoVITS for "걷다"
+    STT cooldown 81s — keeping SoVITS for "뛰다"
+    STT cooldown 77s — keeping SoVITS for "수영하다"
+    STT cooldown 73s — keeping SoVITS for "춤추다"
+    STT cooldown 68s — keeping SoVITS for "오르다"
+    STT cooldown 64s — keeping SoVITS for "오다"
+    STT cooldown 60s — keeping SoVITS for "가다"
+    STT cooldown 56s — keeping SoVITS for "앉다"
+  ok explanation=This chart shows common Korean verbs related to movement. Th… examples=3 edgeWords=0
+
+→ [29/174] grid-moving-packing (9 words)
+    STT cooldown 35s — keeping SoVITS for "박스"
+    STT cooldown 31s — keeping SoVITS for "포장 테이프"
+    STT cooldown 27s — keeping SoVITS for "뽁뽁이"
+    STT cooldown 22s — keeping SoVITS for "마커"
+    STT cooldown 17s — keeping SoVITS for "옷"
+    STT cooldown 13s — keeping SoVITS for "책"
+    STT cooldown 8s — keeping SoVITS for "그릇"
+    STT cooldown 5s — keeping SoVITS for "식물"
+    word STT "캐리어" → "캐리어" score=1.00 (need ≥0.8)
+  ok explanation=This chart introduces common Korean words related to moving … examples=3 edgeWords=0
+
+→ [30/174] grid-museum-gallery (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "전시실"
+    STT cooldown 112s — keeping SoVITS for "전시물"
+    STT cooldown 108s — keeping SoVITS for "안내 데스크"
+    STT cooldown 104s — keeping SoVITS for "오디오 가이드"
+    STT cooldown 99s — keeping SoVITS for "안내원"
+    STT cooldown 95s — keeping SoVITS for "입장권"
+    STT cooldown 90s — keeping SoVITS for "사진 촬영 금지"
+    STT cooldown 86s — keeping SoVITS for "기념품점"
+  ok explanation=This vocabulary chart introduces common nouns used in a muse… examples=3 edgeWords=0
+
+→ [31/174] grid-mushrooms-edible (9 words)
+    STT cooldown 63s — keeping SoVITS for "양송이버섯"
+    STT cooldown 59s — keeping SoVITS for "팽이버섯"
+    STT cooldown 55s — keeping SoVITS for "표고버섯"
+    STT cooldown 50s — keeping SoVITS for "새송이버섯"
+    STT cooldown 45s — keeping SoVITS for "느타리버섯"
+    STT cooldown 41s — keeping SoVITS for "느타리버섯"
+    STT cooldown 37s — keeping SoVITS for "목이버섯"
+    STT cooldown 33s — keeping SoVITS for "잎새버섯"
+    STT cooldown 28s — keeping SoVITS for "동충하초"
+  ok explanation=This chart introduces common types of mushrooms in Korean, i… examples=3 edgeWords=0
+
+→ [32/174] grid-musical-instruments (9 words)
+    STT cooldown 6s — keeping SoVITS for "피아노"
+    STT cooldown 2s — keeping SoVITS for "기타"
+    word STT "바이올린" → "다이올린" score=0.75 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "드럼"
+    STT cooldown 112s — keeping SoVITS for "트럼펫"
+    STT cooldown 108s — keeping SoVITS for "색소폰"
+    STT cooldown 104s — keeping SoVITS for "클라리넷"
+    STT cooldown 100s — keeping SoVITS for "첼로"
+  ok explanation=This chart introduces common musical instruments in Korean. … examples=3 edgeWords=1
+
+→ [33/174] grid-neighbor-community (9 words)
+    STT cooldown 80s — keeping SoVITS for "카페"
+    STT cooldown 75s — keeping SoVITS for "편의점"
+    STT cooldown 72s — keeping SoVITS for "공원"
+    STT cooldown 68s — keeping SoVITS for "빵집"
+    STT cooldown 64s — keeping SoVITS for "약국"
+    STT cooldown 59s — keeping SoVITS for "버스 정류장"
+    STT cooldown 55s — keeping SoVITS for "학교"
+    STT cooldown 52s — keeping SoVITS for "우체국"
+    STT cooldown 48s — keeping SoVITS for "도서관"
+  ok explanation=These neighborhood words in Korean help you talk about commo… examples=3 edgeWords=0
+
+→ [34/174] grid-noodles-types (9 words)
+    STT cooldown 25s — keeping SoVITS for "라면"
+    STT cooldown 21s — keeping SoVITS for "짜장면"
+    STT cooldown 17s — keeping SoVITS for "짬뽕"
+    STT cooldown 13s — keeping SoVITS for "냉면"
+    STT cooldown 9s — keeping SoVITS for "우동"
+    STT cooldown 5s — keeping SoVITS for "소바"
+    STT cooldown 1s — keeping SoVITS for "칼국수"
+    word STT "당면" → "당면" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=This chart shows different types of noodles in Korean cuisin… examples=3 edgeWords=0
+
+→ [35/174] grid-office-supplies (9 words)
+    STT cooldown 99s — keeping SoVITS for "펜"
+    STT cooldown 96s — keeping SoVITS for "노트"
+    STT cooldown 91s — keeping SoVITS for "연필"
+    STT cooldown 87s — keeping SoVITS for "스테이플러"
+    STT cooldown 83s — keeping SoVITS for "가위"
+    STT cooldown 80s — keeping SoVITS for "풀"
+    STT cooldown 75s — keeping SoVITS for "포스트잇"
+    STT cooldown 71s — keeping SoVITS for "테이프"
+    STT cooldown 67s — keeping SoVITS for "클립"
+  ok explanation=This chart introduces common office supplies in Korean. Thes… examples=3 edgeWords=0
+
+→ [36/174] grid-opinion-adj (9 words)
+    STT cooldown 47s — keeping SoVITS for "좋아요"
+    STT cooldown 43s — keeping SoVITS for "나빠요"
+    STT cooldown 39s — keeping SoVITS for "재미있어요"
+    STT cooldown 35s — keeping SoVITS for "지루해요"
+    STT cooldown 31s — keeping SoVITS for "친절해요"
+    STT cooldown 26s — keeping SoVITS for "어려워요"
+    STT cooldown 22s — keeping SoVITS for "쉬워요"
+    STT cooldown 18s — keeping SoVITS for "유용해요"
+    STT cooldown 14s — keeping SoVITS for "실망스러워요"
+  ok explanation=This chart shows common Korean adjectives used to express op… examples=3 edgeWords=0
+
+→ [37/174] grid-palaces-korea (9 words)
+    word STT "경복궁" → "정복금" score=0.33 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "경희궁"
+    STT cooldown 112s — keeping SoVITS for "덕수궁"
+    STT cooldown 108s — keeping SoVITS for "창경궁"
+    STT cooldown 104s — keeping SoVITS for "경강궁"
+    STT cooldown 100s — keeping SoVITS for "운현궁"
+    STT cooldown 96s — keeping SoVITS for "화성행궁"
+    STT cooldown 92s — keeping SoVITS for "정릉궁"
+  ok explanation=This chart introduces famous palaces in Korea, showing their… examples=3 edgeWords=1
+
+→ [38/174] grid-park-outdoors (9 words)
+    STT cooldown 70s — keeping SoVITS for "벤치"
+    STT cooldown 67s — keeping SoVITS for "산책로"
+    STT cooldown 62s — keeping SoVITS for "연못"
+    STT cooldown 57s — keeping SoVITS for "놀이터"
+    STT cooldown 53s — keeping SoVITS for "피크닉 장소"
+    STT cooldown 49s — keeping SoVITS for "정자"
+    STT cooldown 45s — keeping SoVITS for "나무"
+    STT cooldown 41s — keeping SoVITS for "꽃"
+    STT cooldown 37s — keeping SoVITS for "분수"
+  ok explanation=This vocabulary chart introduces common words related to par… examples=3 edgeWords=0
+
+→ [39/174] grid-payment-money-verbs (9 words)
+    STT cooldown 14s — keeping SoVITS for "지불하다"
+    STT cooldown 10s — keeping SoVITS for "주다"
+    STT cooldown 6s — keeping SoVITS for "카드를 긁다"
+    STT cooldown 2s — keeping SoVITS for "결제하다"
+    word STT "돈을 꺼내다" → "돈을 꺼내다" score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "계산하다"
+    STT cooldown 112s — keeping SoVITS for "거스름돈을 주다"
+    STT cooldown 108s — keeping SoVITS for "나중에 지불하다"
+  ok explanation=These verbs are commonly used when talking about paying mone… examples=3 edgeWords=0
+
+→ [40/174] grid-perception-verbs (9 words)
+    STT cooldown 89s — keeping SoVITS for "보다"
+    STT cooldown 84s — keeping SoVITS for "듣다"
+    STT cooldown 80s — keeping SoVITS for "맡다"
+    STT cooldown 76s — keeping SoVITS for "맛보다"
+    STT cooldown 72s — keeping SoVITS for "만지다"
+    STT cooldown 68s — keeping SoVITS for "지켜보다"
+    STT cooldown 64s — keeping SoVITS for "생각하다"
+    STT cooldown 60s — keeping SoVITS for "알아차리다"
+    STT cooldown 56s — keeping SoVITS for "느끼다"
+  ok explanation=Perception verbs in Korean describe how we experience the wo… examples=3 edgeWords=0
+
+→ [41/174] grid-personality-negative (9 words)
+    STT cooldown 34s — keeping SoVITS for "화가 난"
+    STT cooldown 30s — keeping SoVITS for "이기적인"
+    STT cooldown 24s — keeping SoVITS for "비관적인"
+    STT cooldown 19s — keeping SoVITS for "참을성이 없는"
+    STT cooldown 15s — keeping SoVITS for "비판적인"
+    STT cooldown 12s — keeping SoVITS for "무례한"
+    STT cooldown 7s — keeping SoVITS for "질투심이 많은"
+    STT cooldown 3s — keeping SoVITS for "게으른"
+    word STT "고집이 센" → "고집이 생" score=0.75 (need ≥0.8)
+    score too low — Edge fallback
+  ok explanation=This chart shows negative personality traits in Korean. Thes… examples=3 edgeWords=1
+
+→ [42/174] grid-personality-positive (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "근면한"
+    STT cooldown 112s — keeping SoVITS for "똑똑한"
+    STT cooldown 108s — keeping SoVITS for "친근한"
+    STT cooldown 103s — keeping SoVITS for "성실한"
+    STT cooldown 99s — keeping SoVITS for "믿음직한"
+    STT cooldown 96s — keeping SoVITS for "배려심 많은"
+    STT cooldown 91s — keeping SoVITS for "긍정적인"
+    STT cooldown 87s — keeping SoVITS for "밝은"
+  ok explanation=This chart introduces positive personality traits in Korean.… examples=3 edgeWords=0
+
+→ [43/174] grid-phone-call-verbs (9 words)
+    STT cooldown 64s — keeping SoVITS for "전화하다"
+    STT cooldown 60s — keeping SoVITS for "받다"
+    STT cooldown 54s — keeping SoVITS for "다시 전화하다"
+    STT cooldown 50s — keeping SoVITS for "나중에 전화하다"
+    STT cooldown 46s — keeping SoVITS for "묻다"
+    STT cooldown 42s — keeping SoVITS for "설명하다"
+    STT cooldown 38s — keeping SoVITS for "듣다"
+    STT cooldown 34s — keeping SoVITS for "사과하다"
+    STT cooldown 31s — keeping SoVITS for "끊다"
+  ok explanation=This chart shows common verbs used when making phone calls i… examples=3 edgeWords=0
+
+→ [44/174] grid-phone-parts (9 words)
+    STT cooldown 11s — keeping SoVITS for "화면"
+    STT cooldown 7s — keeping SoVITS for "카메라"
+    STT cooldown 3s — keeping SoVITS for "스피커"
+    word STT "볼륨 버튼" → "부용 버튼" score=0.50 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "충전 포트"
+    STT cooldown 112s — keeping SoVITS for "이어폰"
+    STT cooldown 108s — keeping SoVITS for "SIM 카드"
+    STT cooldown 104s — keeping SoVITS for "마이크"
+  ok explanation=This chart introduces common phone parts in Korean. These wo… examples=3 edgeWords=1
+
+→ [45/174] grid-phone-text-phrases (9 words)
+    STT cooldown 83s — keeping SoVITS for "전화"
+    STT cooldown 78s — keeping SoVITS for "문자"
+    STT cooldown 74s — keeping SoVITS for "메시지"
+    STT cooldown 70s — keeping SoVITS for "알림"
+    STT cooldown 66s — keeping SoVITS for "배터리"
+    STT cooldown 62s — keeping SoVITS for "와이파이"
+    STT cooldown 58s — keeping SoVITS for "연락처"
+    STT cooldown 54s — keeping SoVITS for "입력 중"
+    STT cooldown 49s — keeping SoVITS for "잘 자"
+  ok explanation=This chart introduces common Korean words and phrases relate… examples=3 edgeWords=0
+
+→ [46/174] grid-photo-video-verbs (9 words)
+    STT cooldown 28s — keeping SoVITS for "사진을 찍다"
+    STT cooldown 24s — keeping SoVITS for "영상을 찍다"
+    STT cooldown 20s — keeping SoVITS for "재생하다"
+    STT cooldown 15s — keeping SoVITS for "사진을 보다"
+    STT cooldown 11s — keeping SoVITS for "편집하다"
+    STT cooldown 7s — keeping SoVITS for "업로드하다"
+    STT cooldown 2s — keeping SoVITS for "다운로드하다"
+    word STT "공유하다" → "고묘하다" score=0.50 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=These verbs are commonly used when talking about photos and … examples=3 edgeWords=1
+
+→ [47/174] grid-plants-houseplant (9 words)
+    STT cooldown 93s — keeping SoVITS for "몬스테라"
+    STT cooldown 89s — keeping SoVITS for "산세베리아"
+    STT cooldown 84s — keeping SoVITS for "스킨답서스"
+    STT cooldown 80s — keeping SoVITS for "스파티필럼"
+    STT cooldown 76s — keeping SoVITS for "떡갈나무"
+    STT cooldown 71s — keeping SoVITS for "고무나무"
+    STT cooldown 67s — keeping SoVITS for "금전수"
+    STT cooldown 63s — keeping SoVITS for "아글라오네마"
+    STT cooldown 59s — keeping SoVITS for "하트줄란"
+  ok explanation=This chart introduces common houseplants in Korean. These pl… examples=3 edgeWords=0
+
+→ [48/174] grid-plants-wild (9 words)
+    STT cooldown 36s — keeping SoVITS for "민들레"
+    STT cooldown 32s — keeping SoVITS for "토끼풀"
+    STT cooldown 28s — keeping SoVITS for "질경이"
+    STT cooldown 23s — keeping SoVITS for "엉겅퀴"
+    STT cooldown 19s — keeping SoVITS for "쑥"
+    STT cooldown 15s — keeping SoVITS for "머루"
+    STT cooldown 10s — keeping SoVITS for "냉이"
+    STT cooldown 6s — keeping SoVITS for "개망초"
+    STT cooldown 2s — keeping SoVITS for "쐐기풀"
+  ok explanation=These are common wild plants found in Korea. They grow natur… examples=3 edgeWords=0
+
+→ [49/174] grid-playing-fun-verbs (9 words)
+    word STT "놀다" → "놀다" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 114s — keeping SoVITS for "던지다"
+    STT cooldown 108s — keeping SoVITS for "잡다"
+    STT cooldown 104s — keeping SoVITS for "뛰다"
+    STT cooldown 97s — keeping SoVITS for "오르다"
+    STT cooldown 91s — keeping SoVITS for "춤추다"
+    STT cooldown 86s — keeping SoVITS for "만들다"
+    STT cooldown 81s — keeping SoVITS for "그리다"
+  ok explanation=This chart introduces common Korean verbs related to playing… examples=3 edgeWords=0
+
+→ [50/174] grid-reaction-adj (9 words)
+    STT cooldown 50s — keeping SoVITS for "행복해요"
+    STT cooldown 42s — keeping SoVITS for "놀랐어요"
+    STT cooldown 31s — keeping SoVITS for "슬퍼요"
+    STT cooldown 23s — keeping SoVITS for "화나요"
+    STT cooldown 17s — keeping SoVITS for "무서워요"
+    STT cooldown 12s — keeping SoVITS for "역겨워요"
+    STT cooldown 5s — keeping SoVITS for "뿌듯해요"
+    word STT "감동했어요" → "단동했어요" score=0.80 (need ≥0.88)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=Reaction adjectives in Korean describe how someone feels in … examples=3 edgeWords=1
+
+→ [51/174] grid-restaurant-phrases (9 words)
+    STT cooldown 88s — keeping SoVITS for "메뉴"
+    STT cooldown 82s — keeping SoVITS for "물"
+    STT cooldown 76s — keeping SoVITS for "밥"
+    STT cooldown 67s — keeping SoVITS for "국"
+    STT cooldown 59s — keeping SoVITS for "반찬"
+    STT cooldown 51s — keeping SoVITS for "메인 요리"
+    STT cooldown 46s — keeping SoVITS for "계산서 주세요"
+    STT cooldown 39s — keeping SoVITS for "수저"
+    STT cooldown 33s — keeping SoVITS for "냅킨"
+  ok explanation=This chart introduces common Korean phrases and words used i… examples=3 edgeWords=0
+
+→ [52/174] grid-rice-dishes (9 words)
+    word STT "밥" → "다" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 114s — keeping SoVITS for "김치볶음밥"
+    STT cooldown 106s — keeping SoVITS for "죽"
+    STT cooldown 100s — keeping SoVITS for "김밥"
+    STT cooldown 95s — keeping SoVITS for "잡곡밥"
+    STT cooldown 89s — keeping SoVITS for "나물밥"
+    STT cooldown 83s — keeping SoVITS for "카레라이스"
+    STT cooldown 76s — keeping SoVITS for "오므라이스"
+  ok explanation=Rice dishes in Korean cuisine come in many varieties, each w… examples=3 edgeWords=1
+
+→ [53/174] grid-science-lab (9 words)
+    STT cooldown 40s — keeping SoVITS for "현미경"
+    STT cooldown 33s — keeping SoVITS for "시험관"
+    STT cooldown 27s — keeping SoVITS for "플라스크"
+    STT cooldown 22s — keeping SoVITS for "비커"
+    STT cooldown 16s — keeping SoVITS for "페트리 접시"
+    STT cooldown 10s — keeping SoVITS for "저울"
+    STT cooldown 3s — keeping SoVITS for "버너"
+    word STT "보안경" → "도안경" score=0.67 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=This chart introduces common science lab equipment in Korean… examples=3 edgeWords=1
+
+→ [54/174] grid-sea-creatures (9 words)
+    STT cooldown 85s — keeping SoVITS for "불가사리"
+    STT cooldown 76s — keeping SoVITS for "게"
+    STT cooldown 70s — keeping SoVITS for "거북이"
+    STT cooldown 65s — keeping SoVITS for "돌고래"
+    STT cooldown 59s — keeping SoVITS for "문어"
+    STT cooldown 53s — keeping SoVITS for "고래"
+    STT cooldown 45s — keeping SoVITS for "해파리"
+    STT cooldown 40s — keeping SoVITS for "해마"
+    STT cooldown 34s — keeping SoVITS for "흰동가리"
+  ok explanation=This chart shows common sea creatures in Korean. These words… examples=3 edgeWords=0
+
+→ [55/174] grid-shape-adj (9 words)
+    STT cooldown 6s — keeping SoVITS for "동근"
+    word STT "네모난" → "네모난" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 114s — keeping SoVITS for "직사각형인"
+    STT cooldown 107s — keeping SoVITS for "타원형인"
+    STT cooldown 97s — keeping SoVITS for "별 모양인"
+    STT cooldown 90s — keeping SoVITS for "하트 모양인"
+    STT cooldown 84s — keeping SoVITS for "마름모 모양인"
+    STT cooldown 78s — keeping SoVITS for "초승달 모양인"
+  ok explanation=This chart shows common Korean adjectives used to describe s… examples=3 edgeWords=0
+
+→ [56/174] grid-shopping-phrases-grid (9 words)
+    STT cooldown 50s — keeping SoVITS for "옷"
+    STT cooldown 44s — keeping SoVITS for "식료품"
+    STT cooldown 39s — keeping SoVITS for "가방"
+    STT cooldown 32s — keeping SoVITS for "신발"
+    STT cooldown 27s — keeping SoVITS for "시계"
+    STT cooldown 21s — keeping SoVITS for "지갑"
+    STT cooldown 13s — keeping SoVITS for "향수"
+    STT cooldown 8s — keeping SoVITS for "선글라스"
+    STT cooldown 2s — keeping SoVITS for "선물"
+  ok explanation=This chart introduces common shopping phrases in Korean rela… examples=3 edgeWords=0
+
+→ [57/174] grid-shopping-verbs (9 words)
+    word STT "구경하다" → "그리웡하다" score=0.25 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 114s — keeping SoVITS for "가격을 확인하다"
+    STT cooldown 108s — keeping SoVITS for "카트에 담다"
+    STT cooldown 103s — keeping SoVITS for "구입하다"
+    STT cooldown 96s — keeping SoVITS for "계산하다"
+    STT cooldown 89s — keeping SoVITS for "받다"
+    STT cooldown 82s — keeping SoVITS for "반품하다"
+    STT cooldown 76s — keeping SoVITS for "추천하다"
+  ok explanation=This chart introduces common shopping verbs in Korean that y… examples=3 edgeWords=1
+
+→ [58/174] grid-situation-adj (9 words)
+    STT cooldown 50s — keeping SoVITS for "화창한"
+    STT cooldown 42s — keeping SoVITS for "비 오는"
+    STT cooldown 34s — keeping SoVITS for "바람 부는"
+    STT cooldown 28s — keeping SoVITS for "눈 오는"
+    STT cooldown 21s — keeping SoVITS for "따뜻한"
+    STT cooldown 14s — keeping SoVITS for "추운"
+    STT cooldown 8s — keeping SoVITS for "조용한"
+    STT cooldown 1s — keeping SoVITS for "바쁜"
+    word STT "평화로운" → "평화로운" score=1.00 (need ≥0.8)
+  ok explanation=This chart introduces common Korean adjectives used to descr… examples=3 edgeWords=0
+
+→ [59/174] grid-size-adj (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 114s — keeping SoVITS for "작다"
+    STT cooldown 109s — keeping SoVITS for "키가 크다"
+    STT cooldown 103s — keeping SoVITS for "키가 작다"
+    STT cooldown 96s — keeping SoVITS for "넓다"
+    STT cooldown 89s — keeping SoVITS for "좁다"
+    STT cooldown 83s — keeping SoVITS for "크다"
+    STT cooldown 76s — keeping SoVITS for "가볍다"
+    STT cooldown 69s — keeping SoVITS for "두껍다"
+  ok explanation=This chart shows common Korean adjectives used to describe s… examples=3 edgeWords=0
+
+→ [60/174] grid-skincare-products (9 words)
+    STT cooldown 37s — keeping SoVITS for "클렌저"
+    STT cooldown 31s — keeping SoVITS for "토너"
+    STT cooldown 25s — keeping SoVITS for "세럼"
+    STT cooldown 20s — keeping SoVITS for "에센스"
+    STT cooldown 15s — keeping SoVITS for "보습제"
+    STT cooldown 10s — keeping SoVITS for "아이크림"
+    STT cooldown 6s — keeping SoVITS for "선크림"
+    STT cooldown 2s — keeping SoVITS for "팩"
+    word STT "립밤" → "리턴" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+  ok explanation=This chart introduces common skincare products in Korean. Th… examples=3 edgeWords=1
+
+→ [61/174] grid-small-talk-openers (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "취미가 뭐예요?"
+    STT cooldown 113s — keeping SoVITS for "어디에서 왔어요?"
+    STT cooldown 108s — keeping SoVITS for "이번 주 어떻게 지내요?"
+    STT cooldown 104s — keeping SoVITS for "오늘 날씨 어때요?"
+    STT cooldown 100s — keeping SoVITS for "맛있는 거 좋아해요?"
+    STT cooldown 96s — keeping SoVITS for "재미있는 여행 다녀왔어요?"
+    STT cooldown 92s — keeping SoVITS for "영화나 드라마 봐요?"
+    STT cooldown 87s — keeping SoVITS for "반려동물 키워요?"
+  ok explanation=These small talk openers in Korean are common phrases used t… examples=3 edgeWords=0
+
+→ [62/174] grid-smartphone-apps (9 words)
+    STT cooldown 66s — keeping SoVITS for "메시지"
+    STT cooldown 62s — keeping SoVITS for "카메라"
+    STT cooldown 58s — keeping SoVITS for "갤러리"
+    STT cooldown 54s — keeping SoVITS for "지도"
+    STT cooldown 50s — keeping SoVITS for "음악"
+    STT cooldown 46s — keeping SoVITS for "비디오"
+    STT cooldown 41s — keeping SoVITS for "캘린더"
+    STT cooldown 37s — keeping SoVITS for "메모"
+    STT cooldown 33s — keeping SoVITS for "날씨"
+  ok explanation=This chart introduces common smartphone app names in Korean.… examples=3 edgeWords=0
+
+→ [63/174] grid-smell-adj (9 words)
+    STT cooldown 11s — keeping SoVITS for "향기로운"
+    STT cooldown 7s — keeping SoVITS for "향긋한"
+    STT cooldown 2s — keeping SoVITS for "냄새 나는"
+    word STT "비린" → "비딘" score=0.50 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "퀴퀴한"
+    STT cooldown 112s — keeping SoVITS for "고약한"
+    STT cooldown 107s — keeping SoVITS for "달걀 냄새 나는"
+    STT cooldown 103s — keeping SoVITS for "스모키한"
+  ok explanation=These adjectives describe different kinds of smells in Korea… examples=3 edgeWords=1
+
+→ [64/174] grid-snacks-korea (9 words)
+    STT cooldown 82s — keeping SoVITS for "떡볶이"
+    STT cooldown 78s — keeping SoVITS for "붕어빵"
+    STT cooldown 73s — keeping SoVITS for "김"
+    STT cooldown 69s — keeping SoVITS for "핫도그"
+    STT cooldown 65s — keeping SoVITS for "단팥빵"
+    STT cooldown 61s — keeping SoVITS for "허니버터칩"
+    STT cooldown 56s — keeping SoVITS for "빼빼로"
+    STT cooldown 52s — keeping SoVITS for "요구르트 젤리"
+    STT cooldown 48s — keeping SoVITS for "과자"
+  ok explanation=This chart shows popular Korean snacks that you can find in … examples=3 edgeWords=0
+
+→ [65/174] grid-social-feelings (9 words)
+    STT cooldown 26s — keeping SoVITS for "고마워요"
+    STT cooldown 22s — keeping SoVITS for "행복해요"
+    STT cooldown 18s — keeping SoVITS for "부끄러워요"
+    STT cooldown 14s — keeping SoVITS for "자랑스러워요"
+    STT cooldown 10s — keeping SoVITS for "걱정돼요"
+    STT cooldown 6s — keeping SoVITS for "슬퍼요"
+    STT cooldown 2s — keeping SoVITS for "신나요"
+    word STT "마음이 따뜻해요" → "마음이 따뜻해요" score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=This chart shows common social feelings expressed in Korean.… examples=3 edgeWords=0
+
+→ [66/174] grid-social-media (9 words)
+    STT cooldown 99s — keeping SoVITS for "게시물"
+    STT cooldown 95s — keeping SoVITS for "좋아요"
+    STT cooldown 91s — keeping SoVITS for "댓글"
+    STT cooldown 87s — keeping SoVITS for "공유"
+    STT cooldown 83s — keeping SoVITS for "팔로우"
+    STT cooldown 79s — keeping SoVITS for "알림"
+    STT cooldown 75s — keeping SoVITS for "라이브"
+    STT cooldown 71s — keeping SoVITS for "해시태그"
+    STT cooldown 67s — keeping SoVITS for "북마크"
+  ok explanation=This chart introduces common social media words in Korean th… examples=3 edgeWords=0
+
+→ [67/174] grid-sound-volume-adj (9 words)
+    STT cooldown 44s — keeping SoVITS for "최대"
+    STT cooldown 40s — keeping SoVITS for "높음"
+    STT cooldown 36s — keeping SoVITS for "보통"
+    STT cooldown 33s — keeping SoVITS for "낮음"
+    STT cooldown 29s — keeping SoVITS for "음소거"
+    STT cooldown 25s — keeping SoVITS for "조금 낮게"
+    STT cooldown 20s — keeping SoVITS for "조금 높게"
+    STT cooldown 16s — keeping SoVITS for "음량 올리기"
+    STT cooldown 12s — keeping SoVITS for "음량 내리기"
+  ok explanation=This chart shows adjectives and phrases used to describe sou… examples=3 edgeWords=0
+
+→ [68/174] grid-soups-korean (9 words)
+    word STT "김치찌개" → "김치찌개" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "미역국"
+    STT cooldown 112s — keeping SoVITS for "된장찌개"
+    STT cooldown 108s — keeping SoVITS for "소고기무국"
+    STT cooldown 104s — keeping SoVITS for "육개장"
+    STT cooldown 100s — keeping SoVITS for "만두국"
+    STT cooldown 97s — keeping SoVITS for "순두부찌개"
+    STT cooldown 92s — keeping SoVITS for "호박죽"
+  ok explanation=This chart shows popular Korean soups and stews, which are c… examples=3 edgeWords=0
+
+→ [69/174] grid-speaking-listening-verbs (9 words)
+    STT cooldown 70s — keeping SoVITS for "말하다"
+    STT cooldown 66s — keeping SoVITS for "듣다"
+    STT cooldown 62s — keeping SoVITS for "전화하다"
+    STT cooldown 58s — keeping SoVITS for "인사하다"
+    STT cooldown 54s — keeping SoVITS for "외치다"
+    STT cooldown 50s — keeping SoVITS for "노래하다"
+    STT cooldown 46s — keeping SoVITS for "속삭이다"
+    STT cooldown 42s — keeping SoVITS for "웃다"
+    STT cooldown 37s — keeping SoVITS for "생각하다"
+  ok explanation=This chart introduces common Korean verbs related to speakin… examples=3 edgeWords=0
+
+→ [70/174] grid-speed-adj (9 words)
+    STT cooldown 16s — keeping SoVITS for "느려요"
+    STT cooldown 12s — keeping SoVITS for "좀 느려요"
+    STT cooldown 7s — keeping SoVITS for "보통이에요"
+    STT cooldown 3s — keeping SoVITS for "빨라요"
+    word STT "아주 빨라요" → "아주 빨라요" score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "정말 빨라요"
+    STT cooldown 112s — keeping SoVITS for "엄청 빨라요"
+    STT cooldown 108s — keeping SoVITS for "순식간이에요"
+  ok explanation=This chart shows adjectives that describe speed in Korean. Y… examples=3 edgeWords=0
+
+→ [71/174] grid-sports-action-verbs (9 words)
+    STT cooldown 86s — keeping SoVITS for "달리다"
+    STT cooldown 81s — keeping SoVITS for "수영하다"
+    STT cooldown 76s — keeping SoVITS for "슛하다"
+    STT cooldown 72s — keeping SoVITS for "패스하다"
+    STT cooldown 67s — keeping SoVITS for "치다"
+    STT cooldown 63s — keeping SoVITS for "들다"
+    STT cooldown 60s — keeping SoVITS for "뛰다"
+    STT cooldown 56s — keeping SoVITS for "미끄러지다"
+    STT cooldown 52s — keeping SoVITS for "차다"
+  ok explanation=This chart shows common Korean verbs used to describe sports… examples=3 edgeWords=0
+
+→ [72/174] grid-sports-martial (9 words)
+    STT cooldown 30s — keeping SoVITS for "태권도"
+    STT cooldown 26s — keeping SoVITS for "유도"
+    STT cooldown 22s — keeping SoVITS for "검도"
+    STT cooldown 18s — keeping SoVITS for "복싱"
+    STT cooldown 14s — keeping SoVITS for "레슬링"
+    STT cooldown 10s — keeping SoVITS for "가라데"
+    STT cooldown 6s — keeping SoVITS for "펜싱"
+    STT cooldown 1s — keeping SoVITS for "무에타이"
+    word STT "주짓수" → "교재서" score=0.00 (need ≥0.8)
+    score too low — Edge fallback
+  ok explanation=This chart introduces popular martial arts sports in Korean.… examples=3 edgeWords=1
+
+→ [73/174] grid-sports-water (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "라임"
+    STT cooldown 112s — keeping SoVITS for "복숭아"
+    STT cooldown 108s — keeping SoVITS for "레몬"
+    STT cooldown 104s — keeping SoVITS for "포도"
+    STT cooldown 100s — keeping SoVITS for "요거트 맛"
+    STT cooldown 96s — keeping SoVITS for "전해질"
+    STT cooldown 92s — keeping SoVITS for "수분 보충"
+    STT cooldown 87s — keeping SoVITS for "상쾌한"
+  ok explanation=This chart introduces common words related to sports water i… examples=3 edgeWords=0
+
+→ [74/174] grid-sports-winter (9 words)
+    STT cooldown 65s — keeping SoVITS for "스키"
+    STT cooldown 61s — keeping SoVITS for "스노보드"
+    STT cooldown 57s — keeping SoVITS for "스케이트"
+    STT cooldown 53s — keeping SoVITS for "아이스하키"
+    STT cooldown 49s — keeping SoVITS for "봅슬레이"
+    STT cooldown 45s — keeping SoVITS for "컬링"
+    STT cooldown 41s — keeping SoVITS for "루지"
+    STT cooldown 37s — keeping SoVITS for "바이애슬론"
+    STT cooldown 32s — keeping SoVITS for "스피드 스케이팅"
+  ok explanation=This chart introduces popular winter sports vocabulary in Ko… examples=3 edgeWords=0
+
+→ [75/174] grid-stews-jjigae (9 words)
+    STT cooldown 8s — keeping SoVITS for "김치찌개"
+    STT cooldown 4s — keeping SoVITS for "된장찌개"
+    word STT "순두부찌개" → "순두부찌개" score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "매운탕"
+    STT cooldown 113s — keeping SoVITS for "닭볶음탕"
+    STT cooldown 108s — keeping SoVITS for "부대찌개"
+    STT cooldown 104s — keeping SoVITS for "감자탕"
+    STT cooldown 100s — keeping SoVITS for "미역국"
+  ok explanation=This chart introduces popular Korean stews and soups, which … examples=3 edgeWords=0
+
+→ [76/174] grid-street-food-korea (9 words)
+    STT cooldown 78s — keeping SoVITS for "떡볶이"
+    STT cooldown 74s — keeping SoVITS for "붕어빵"
+    STT cooldown 70s — keeping SoVITS for "어묵"
+    STT cooldown 66s — keeping SoVITS for "호떡"
+    STT cooldown 62s — keeping SoVITS for "옥수수"
+    STT cooldown 58s — keeping SoVITS for "탕후루"
+    STT cooldown 54s — keeping SoVITS for "김밥"
+    STT cooldown 49s — keeping SoVITS for "오징어튀김"
+    STT cooldown 45s — keeping SoVITS for "빙수"
+  ok explanation=This chart introduces popular Korean street foods that you c… examples=3 edgeWords=0
+
+→ [77/174] grid-stress-anxiety (9 words)
+    STT cooldown 24s — keeping SoVITS for "스트레스"
+    STT cooldown 21s — keeping SoVITS for "불안"
+    STT cooldown 17s — keeping SoVITS for "걱정"
+    STT cooldown 13s — keeping SoVITS for "피로"
+    STT cooldown 9s — keeping SoVITS for "우울"
+    STT cooldown 5s — keeping SoVITS for "짜증"
+    STT cooldown 1s — keeping SoVITS for "긴장"
+    word STT "불면증" → "불면증" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=This chart shows common Korean words related to stress and a… examples=3 edgeWords=0
+
+→ [78/174] grid-study-verbs (9 words)
+    STT cooldown 99s — keeping SoVITS for "읽다"
+    STT cooldown 96s — keeping SoVITS for "공부하다"
+    STT cooldown 92s — keeping SoVITS for "쓰다"
+    STT cooldown 88s — keeping SoVITS for "말하다"
+    STT cooldown 83s — keeping SoVITS for "듣다"
+    STT cooldown 79s — keeping SoVITS for "이해하다"
+    STT cooldown 75s — keeping SoVITS for "생각하다"
+    STT cooldown 71s — keeping SoVITS for "기억하다"
+    STT cooldown 68s — keeping SoVITS for "연습하다"
+  ok explanation=This chart introduces common Korean verbs related to learnin… examples=3 edgeWords=0
+
+→ [79/174] grid-summer-clothes (9 words)
+    STT cooldown 46s — keeping SoVITS for "티셔츠"
+    STT cooldown 42s — keeping SoVITS for "반바지"
+    STT cooldown 38s — keeping SoVITS for "원피스"
+    STT cooldown 34s — keeping SoVITS for "셔츠"
+    STT cooldown 30s — keeping SoVITS for "모자"
+    STT cooldown 26s — keeping SoVITS for "선글라스"
+    STT cooldown 22s — keeping SoVITS for "샌들"
+    STT cooldown 18s — keeping SoVITS for "가방"
+    STT cooldown 14s — keeping SoVITS for "수영복"
+  ok explanation=This chart shows common summer clothes in Korean. These word… examples=3 edgeWords=0
+
+→ [80/174] grid-surprise-shock (9 words)
+    word STT "와" → "우와" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "설마!"
+    STT cooldown 112s — keeping SoVITS for "진짜?!"
+    STT cooldown 108s — keeping SoVITS for "세상에!"
+    STT cooldown 104s — keeping SoVITS for "맙소사!"
+    STT cooldown 100s — keeping SoVITS for "깜짝이야!"
+    STT cooldown 95s — keeping SoVITS for "충격이야!"
+    STT cooldown 91s — keeping SoVITS for "믿을 수 없어!"
+  ok explanation=This chart shows common Korean expressions used to express s… examples=3 edgeWords=1
+
+→ [81/174] grid-symptoms-common (9 words)
+    STT cooldown 69s — keeping SoVITS for "열"
+    STT cooldown 65s — keeping SoVITS for "기침"
+    STT cooldown 61s — keeping SoVITS for "목 아픔"
+    STT cooldown 57s — keeping SoVITS for "두통"
+    STT cooldown 53s — keeping SoVITS for "콧물"
+    STT cooldown 49s — keeping SoVITS for "배 아픔"
+    STT cooldown 45s — keeping SoVITS for "피로"
+    STT cooldown 41s — keeping SoVITS for "근육통"
+    STT cooldown 37s — keeping SoVITS for "오한"
+  ok explanation=This chart shows common symptoms related to health and the b… examples=3 edgeWords=0
+
+→ [82/174] grid-tableware (9 words)
+    STT cooldown 16s — keeping SoVITS for "그릇"
+    STT cooldown 12s — keeping SoVITS for "접시"
+    STT cooldown 8s — keeping SoVITS for "컵"
+    STT cooldown 4s — keeping SoVITS for "젓가락"
+    STT cooldown 1s — keeping SoVITS for "숟가락"
+    word STT "포크" → "포크" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "주전자"
+    STT cooldown 113s — keeping SoVITS for "쟁반"
+  ok explanation=This chart shows common tableware items in Korean used at ho… examples=3 edgeWords=0
+
+→ [83/174] grid-taste-flavor-adj (9 words)
+    STT cooldown 92s — keeping SoVITS for "시다"
+    STT cooldown 88s — keeping SoVITS for "달다"
+    STT cooldown 84s — keeping SoVITS for "짜다"
+    STT cooldown 80s — keeping SoVITS for "매콤하다"
+    STT cooldown 76s — keeping SoVITS for "쓰다"
+    STT cooldown 72s — keeping SoVITS for "고소하다"
+    STT cooldown 68s — keeping SoVITS for "신선하다"
+    STT cooldown 64s — keeping SoVITS for "심심하다"
+    STT cooldown 60s — keeping SoVITS for "새콤하다"
+  ok explanation=This chart shows common Korean adjectives used to describe d… examples=3 edgeWords=0
+
+→ [84/174] grid-taxi-phrases (9 words)
+    STT cooldown 38s — keeping SoVITS for "어디로 가세요?"
+    STT cooldown 34s — keeping SoVITS for "~(으)로 가 주세요."
+    STT cooldown 30s — keeping SoVITS for "여기가 주소예요."
+    STT cooldown 26s — keeping SoVITS for "요금이 얼마예요?"
+    STT cooldown 21s — keeping SoVITS for "미터기로 가 주세요."
+    STT cooldown 17s — keeping SoVITS for "안전하게 운전해 주세요."
+    STT cooldown 13s — keeping SoVITS for "길이 막혀요."
+    STT cooldown 9s — keeping SoVITS for "감사합니다!"
+    STT cooldown 5s — keeping SoVITS for "여기서 세워 주세요."
+  ok explanation=These taxi phrases in Korean help you communicate effectivel… examples=3 edgeWords=0
+
+→ [85/174] grid-taxi-ridehare (9 words)
+    word STT "택시" → "택시" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "기사"
+    STT cooldown 112s — keeping SoVITS for "목적지"
+    STT cooldown 108s — keeping SoVITS for "결제"
+    STT cooldown 104s — keeping SoVITS for "요금"
+    STT cooldown 99s — keeping SoVITS for "타세요"
+    STT cooldown 95s — keeping SoVITS for "도착했어요"
+    STT cooldown 91s — keeping SoVITS for "팁"
+  ok explanation=This chart shows common Korean words related to taking a tax… examples=3 edgeWords=0
+
+→ [86/174] grid-temperature-adj (9 words)
+    STT cooldown 69s — keeping SoVITS for "뜨거운"
+    STT cooldown 65s — keeping SoVITS for "따뜻한"
+    STT cooldown 61s — keeping SoVITS for "온화한"
+    STT cooldown 57s — keeping SoVITS for "시원한"
+    STT cooldown 53s — keeping SoVITS for "쌀쌀한"
+    STT cooldown 49s — keeping SoVITS for "추운"
+    STT cooldown 45s — keeping SoVITS for "얼어붙은"
+    STT cooldown 40s — keeping SoVITS for "얼음 같은"
+    STT cooldown 36s — keeping SoVITS for "매우 추운"
+  ok explanation=This chart shows common Korean adjectives used to describe d… examples=3 edgeWords=0
+
+→ [87/174] grid-temples-korea (9 words)
+    STT cooldown 14s — keeping SoVITS for "절"
+    STT cooldown 10s — keeping SoVITS for "일주문"
+    STT cooldown 7s — keeping SoVITS for "탑"
+    STT cooldown 2s — keeping SoVITS for "대웅전"
+    word STT "범종" → "덩종" score=0.50 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "연등"
+    STT cooldown 112s — keeping SoVITS for "염주"
+    STT cooldown 108s — keeping SoVITS for "석등"
+  ok explanation=This chart introduces common words related to temples in Kor… examples=3 edgeWords=1
+
+→ [88/174] grid-texture-food-adj (9 words)
+    STT cooldown 87s — keeping SoVITS for "바삭해요"
+    STT cooldown 83s — keeping SoVITS for "부드러워요"
+    STT cooldown 79s — keeping SoVITS for "쫄깃해요"
+    STT cooldown 76s — keeping SoVITS for "매끄러워요"
+    STT cooldown 72s — keeping SoVITS for "크리미해요"
+    STT cooldown 68s — keeping SoVITS for "꾸덕해요"
+    STT cooldown 64s — keeping SoVITS for "폭신해요"
+    STT cooldown 60s — keeping SoVITS for "아삭해요"
+    STT cooldown 56s — keeping SoVITS for "차가워요"
+  ok explanation=This chart shows common Korean adjectives used to describe t… examples=3 edgeWords=0
+
+→ [89/174] grid-texture-touch-adj (9 words)
+    STT cooldown 34s — keeping SoVITS for "부드러워요"
+    STT cooldown 30s — keeping SoVITS for "거칠어요"
+    STT cooldown 26s — keeping SoVITS for "매끄러워요"
+    STT cooldown 21s — keeping SoVITS for "폭신해요"
+    STT cooldown 17s — keeping SoVITS for "끈적거려요"
+    STT cooldown 13s — keeping SoVITS for "건조해요"
+    STT cooldown 9s — keeping SoVITS for "차가워요"
+    STT cooldown 5s — keeping SoVITS for "따뜻해요"
+    word STT "기름져요" → "기름져요" score=1.00 (need ≥0.8)
+  ok explanation=This chart shows adjectives that describe different textures… examples=3 edgeWords=0
+
+→ [90/174] grid-thanks-gratitude-phrases (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "고마워요"
+    STT cooldown 111s — keeping SoVITS for "너무 감사합니다"
+    STT cooldown 107s — keeping SoVITS for "감사해요"
+    STT cooldown 103s — keeping SoVITS for "생각해 줘서 고마워요"
+    STT cooldown 99s — keeping SoVITS for "정말 감사해요"
+    STT cooldown 94s — keeping SoVITS for "정말 고마워요"
+    STT cooldown 90s — keeping SoVITS for "모든 것에 감사해요"
+    STT cooldown 86s — keeping SoVITS for "잘 잊지 않을게요"
+  ok explanation=This chart shows common Korean phrases used to express thank… examples=3 edgeWords=0
+
+→ [91/174] grid-theme-park (9 words)
+    STT cooldown 64s — keeping SoVITS for "롤러코스터"
+    STT cooldown 59s — keeping SoVITS for "대관람차"
+    STT cooldown 55s — keeping SoVITS for "회전목마"
+    STT cooldown 51s — keeping SoVITS for "매표소"
+    STT cooldown 47s — keeping SoVITS for "지도"
+    STT cooldown 42s — keeping SoVITS for "간식"
+    STT cooldown 37s — keeping SoVITS for "기념품"
+    STT cooldown 33s — keeping SoVITS for "입구"
+    STT cooldown 27s — keeping SoVITS for "화장실"
+  ok explanation=This chart introduces common nouns used at theme parks in Ko… examples=3 edgeWords=0
+
+→ [92/174] grid-thinking-verbs (9 words)
+    STT cooldown 3s — keeping SoVITS for "생각하다"
+    word STT "궁금하다" → "궁금하다" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "믿다"
+    STT cooldown 112s — keeping SoVITS for "느끼다"
+    STT cooldown 108s — keeping SoVITS for "판단하다"
+    STT cooldown 104s — keeping SoVITS for "깨닫다"
+    STT cooldown 100s — keeping SoVITS for "기억하다"
+    STT cooldown 95s — keeping SoVITS for "바라다"
+  ok explanation=Thinking verbs in Korean describe mental actions or states r… examples=3 edgeWords=0
+
+→ [93/174] grid-tools-diy (9 words)
+    STT cooldown 73s — keeping SoVITS for "망치"
+    STT cooldown 69s — keeping SoVITS for "톱"
+    STT cooldown 64s — keeping SoVITS for "드라이버"
+    STT cooldown 59s — keeping SoVITS for "펜치"
+    STT cooldown 54s — keeping SoVITS for "줄자"
+    STT cooldown 50s — keeping SoVITS for "커터칼"
+    STT cooldown 47s — keeping SoVITS for "드릴"
+    STT cooldown 42s — keeping SoVITS for "렌치"
+    STT cooldown 38s — keeping SoVITS for "사포"
+  ok explanation=This chart shows common DIY tools in Korean that are used fo… examples=3 edgeWords=0
+
+→ [94/174] grid-traditions-korean (9 words)
+    STT cooldown 16s — keeping SoVITS for "한복"
+    STT cooldown 12s — keeping SoVITS for "한옥"
+    STT cooldown 8s — keeping SoVITS for "부채"
+    STT cooldown 4s — keeping SoVITS for "다도"
+    word STT "전통음악" → "전통음악" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "민속신앙"
+    STT cooldown 111s — keeping SoVITS for "설날"
+    STT cooldown 107s — keeping SoVITS for "추석"
+  ok explanation=This chart introduces important Korean traditions and cultur… examples=3 edgeWords=0
+
+→ [95/174] grid-travel-documents (9 words)
+    STT cooldown 85s — keeping SoVITS for "여권"
+    STT cooldown 81s — keeping SoVITS for "탑승권"
+    STT cooldown 77s — keeping SoVITS for "비자"
+    STT cooldown 73s — keeping SoVITS for "신분증"
+    STT cooldown 69s — keeping SoVITS for "운전면허증"
+    STT cooldown 64s — keeping SoVITS for "여행자 보험"
+    STT cooldown 59s — keeping SoVITS for "호텔 바우처"
+    STT cooldown 54s — keeping SoVITS for "여행 일정표"
+    STT cooldown 50s — keeping SoVITS for "세관 신고서"
+  ok explanation=This chart shows common travel documents in Korean. These no… examples=3 edgeWords=0
+
+→ [96/174] grid-travel-verbs (9 words)
+    STT cooldown 25s — keeping SoVITS for "가다"
+    STT cooldown 19s — keeping SoVITS for "걷다"
+    STT cooldown 14s — keeping SoVITS for "찍다"
+    STT cooldown 10s — keeping SoVITS for "보다"
+    STT cooldown 6s — keeping SoVITS for "찾다"
+    STT cooldown 1s — keeping SoVITS for "먹다"
+    word STT "자다" → "자다" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "떠나다"
+  ok explanation=These travel verbs in Korean are essential for describing co… examples=3 edgeWords=0
+
+→ [97/174] grid-uniforms (9 words)
+    STT cooldown 93s — keeping SoVITS for "교복"
+    STT cooldown 89s — keeping SoVITS for "경찰복"
+    STT cooldown 85s — keeping SoVITS for "의사복"
+    STT cooldown 80s — keeping SoVITS for "간호사복"
+    STT cooldown 76s — keeping SoVITS for "셰프복"
+    STT cooldown 72s — keeping SoVITS for "소방복"
+    STT cooldown 68s — keeping SoVITS for "파일럿복"
+    STT cooldown 64s — keeping SoVITS for "군복"
+    STT cooldown 59s — keeping SoVITS for "호텔복"
+  ok explanation=Uniforms in Korean are called 복 (bok) and are used to descri… examples=3 edgeWords=0
+
+→ [98/174] grid-vegetables-gourd (9 words)
+    STT cooldown 32s — keeping SoVITS for "애호박"
+    STT cooldown 28s — keeping SoVITS for "단호박"
+    STT cooldown 24s — keeping SoVITS for "청경채"
+    STT cooldown 20s — keeping SoVITS for "여주"
+    STT cooldown 15s — keeping SoVITS for "오이"
+    STT cooldown 11s — keeping SoVITS for "수세미"
+    STT cooldown 7s — keeping SoVITS for "동아"
+    STT cooldown 3s — keeping SoVITS for "박"
+    word STT "둥근호박" → "둥그노바" score=0.25 (need ≥0.8)
+    score too low — Edge fallback
+  ok explanation=Gourd vegetables are a group of plants that have a similar s… examples=3 edgeWords=1
+
+→ [99/174] grid-vegetables-leafy (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "시금치"
+    STT cooldown 112s — keeping SoVITS for "상추"
+    STT cooldown 107s — keeping SoVITS for "깻잎"
+    STT cooldown 102s — keeping SoVITS for "미나리"
+    STT cooldown 96s — keeping SoVITS for "청경채"
+    STT cooldown 90s — keeping SoVITS for "케일"
+    STT cooldown 86s — keeping SoVITS for "루꼴라"
+    STT cooldown 82s — keeping SoVITS for "근대"
+  ok explanation=Leafy vegetables in Korean include various greens commonly u… examples=3 edgeWords=0
+
+→ [100/174] grid-vegetables-nightshade (9 words)
+    STT cooldown 60s — keeping SoVITS for "가지"
+    STT cooldown 56s — keeping SoVITS for "토마토"
+    STT cooldown 52s — keeping SoVITS for "피망"
+    STT cooldown 48s — keeping SoVITS for "고추"
+    STT cooldown 44s — keeping SoVITS for "감자"
+    STT cooldown 40s — keeping SoVITS for "고구마"
+    STT cooldown 35s — keeping SoVITS for "담배"
+    STT cooldown 31s — keeping SoVITS for "구기자"
+    STT cooldown 27s — keeping SoVITS for "꽈리"
+  ok explanation=Nightshade vegetables are a group of plants that include man… examples=3 edgeWords=0
+
+→ [101/174] grid-vegetables-root (9 words)
+    STT cooldown 3s — keeping SoVITS for "당근"
+    word STT "무" → "이야..." score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "감자"
+    STT cooldown 112s — keeping SoVITS for "양파"
+    STT cooldown 108s — keeping SoVITS for "마늘"
+    STT cooldown 103s — keeping SoVITS for "우엉"
+    STT cooldown 99s — keeping SoVITS for "연근"
+    STT cooldown 94s — keeping SoVITS for "순무"
+  ok explanation=Root vegetables are edible plants that grow underground. In … examples=3 edgeWords=1
+
+→ [102/174] grid-waiting-patience-verbs (9 words)
+    STT cooldown 73s — keeping SoVITS for "기다리다"
+    STT cooldown 69s — keeping SoVITS for "기다리다"
+    STT cooldown 65s — keeping SoVITS for "기다리다"
+    STT cooldown 61s — keeping SoVITS for "참다"
+    STT cooldown 57s — keeping SoVITS for "견디다"
+    STT cooldown 53s — keeping SoVITS for "버티다"
+    STT cooldown 49s — keeping SoVITS for "참아다"
+    STT cooldown 44s — keeping SoVITS for "기다리다"
+    STT cooldown 40s — keeping SoVITS for "기다리다"
+  ok explanation=This chart shows verbs related to waiting and patience in Ko… examples=3 edgeWords=0
+
+→ [103/174] grid-wearing-dressing-verbs (9 words)
+    STT cooldown 17s — keeping SoVITS for "귀걸이를 하다"
+    STT cooldown 11s — keeping SoVITS for "재킷을 입다"
+    STT cooldown 5s — keeping SoVITS for "스카프를 두르다"
+    STT cooldown 1s — keeping SoVITS for "안경을 쓰다"
+    word STT "모자를 쓰다" → "모자를 치다" score=0.80 (need ≥0.88)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "가방을 메다"
+    STT cooldown 112s — keeping SoVITS for "양말을 신다"
+    STT cooldown 107s — keeping SoVITS for "신발을 신다"
+  ok explanation=This chart shows common Korean verbs used for wearing or dre… examples=3 edgeWords=1
+
+→ [104/174] grid-weather-adj (9 words)
+    STT cooldown 83s — keeping SoVITS for "맑은"
+    STT cooldown 80s — keeping SoVITS for "흐린"
+    STT cooldown 75s — keeping SoVITS for "비 오는"
+    STT cooldown 71s — keeping SoVITS for "바람 부는"
+    STT cooldown 66s — keeping SoVITS for "눈 오는"
+    STT cooldown 62s — keeping SoVITS for "더운"
+    STT cooldown 58s — keeping SoVITS for "추운"
+    STT cooldown 54s — keeping SoVITS for "습한"
+    STT cooldown 49s — keeping SoVITS for "건조한"
+  ok explanation=This chart shows common Korean adjectives used to describe d… examples=3 edgeWords=0
+
+→ [105/174] grid-weather-events (9 words)
+    STT cooldown 25s — keeping SoVITS for "맑음"
+    STT cooldown 20s — keeping SoVITS for "비"
+    STT cooldown 16s — keeping SoVITS for "눈"
+    STT cooldown 12s — keeping SoVITS for "바람"
+    STT cooldown 8s — keeping SoVITS for "안개"
+    STT cooldown 4s — keeping SoVITS for "천둥번개"
+    word STT "무지개" → "무지개" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 115s — keeping SoVITS for "가뭄"
+  ok explanation=This chart shows common weather events in Korean. These word… examples=3 edgeWords=0
+
+→ [106/174] grid-wedding-words (9 words)
+    STT cooldown 92s — keeping SoVITS for "신부"
+    STT cooldown 88s — keeping SoVITS for "신랑"
+    STT cooldown 83s — keeping SoVITS for "예식"
+    STT cooldown 79s — keeping SoVITS for "부케"
+    STT cooldown 75s — keeping SoVITS for "반지"
+    STT cooldown 71s — keeping SoVITS for "웨딩드레스"
+    STT cooldown 67s — keeping SoVITS for "예식장"
+    STT cooldown 62s — keeping SoVITS for "초대장"
+    STT cooldown 58s — keeping SoVITS for "결혼 선물"
+  ok explanation=This chart introduces common Korean vocabulary related to we… examples=3 edgeWords=0
+
+→ [107/174] grid-winter-clothes (9 words)
+    STT cooldown 35s — keeping SoVITS for "패딩"
+    STT cooldown 29s — keeping SoVITS for "목도리"
+    STT cooldown 24s — keeping SoVITS for "장갑"
+    STT cooldown 20s — keeping SoVITS for "비니"
+    STT cooldown 16s — keeping SoVITS for "스웨터"
+    STT cooldown 12s — keeping SoVITS for "양말"
+    STT cooldown 8s — keeping SoVITS for "코트"
+    STT cooldown 4s — keeping SoVITS for "부츠"
+    word STT "귀마개" → "김학의" score=0.00 (need ≥0.8)
+    score too low — Edge fallback
+  ok explanation=Winter clothes in Korean include various items that keep you… examples=3 edgeWords=1
+
+→ [108/174] grid-work-verbs (9 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "공부하다"
+    STT cooldown 112s — keeping SoVITS for "가르치다"
+    STT cooldown 108s — keeping SoVITS for "치다"
+    STT cooldown 103s — keeping SoVITS for "요리하다"
+    STT cooldown 99s — keeping SoVITS for "배달하다"
+    STT cooldown 94s — keeping SoVITS for "쓰다"
+    STT cooldown 89s — keeping SoVITS for "전화하다"
+    STT cooldown 83s — keeping SoVITS for "청소하다"
+  ok explanation=This chart introduces common Korean verbs related to work an… examples=3 edgeWords=0
+
+→ [109/174] grid-workplace-rooms (9 words)
+    STT cooldown 59s — keeping SoVITS for "사무실"
+    STT cooldown 55s — keeping SoVITS for "회의실"
+    STT cooldown 51s — keeping SoVITS for "휴게실"
+    STT cooldown 46s — keeping SoVITS for "접수실"
+    STT cooldown 42s — keeping SoVITS for "대표실"
+    STT cooldown 38s — keeping SoVITS for "교육실"
+    STT cooldown 33s — keeping SoVITS for "자료실"
+    STT cooldown 29s — keeping SoVITS for "전산실"
+    STT cooldown 25s — keeping SoVITS for "복사실"
+  ok explanation=This chart shows common rooms found in a workplace in Korean… examples=3 edgeWords=0
+
+→ [110/174] grid-zoo-animals (9 words)
+    STT cooldown 3s — keeping SoVITS for "사자"
+    word STT "코끼리" → "코끼리" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "판다"
+    STT cooldown 111s — keeping SoVITS for "호랑이"
+    STT cooldown 105s — keeping SoVITS for "원숭이"
+    STT cooldown 101s — keeping SoVITS for "펭귄"
+    STT cooldown 97s — keeping SoVITS for "얼룩말"
+    STT cooldown 92s — keeping SoVITS for "하마"
+  ok explanation=This chart introduces common zoo animals in Korean. Each wor… examples=3 edgeWords=0
+
+→ [111/174] list-batchim-basics (9 words)
+    STT cooldown 69s — keeping SoVITS for "가"
+    STT cooldown 65s — keeping SoVITS for "각"
+    STT cooldown 60s — keeping SoVITS for "안"
+    STT cooldown 55s — keeping SoVITS for "닫"
+    STT cooldown 51s — keeping SoVITS for "달"
+    STT cooldown 47s — keeping SoVITS for "맘"
+    STT cooldown 43s — keeping SoVITS for "밥"
+    STT cooldown 39s — keeping SoVITS for "강"
+    STT cooldown 34s — keeping SoVITS for "산"
+  ok explanation=Batchim refers to the final consonant in a Korean syllable b… examples=3 edgeWords=0
+
+→ [112/174] list-demonstratives (9 words)
+    STT cooldown 9s — keeping SoVITS for "이것"
+    STT cooldown 5s — keeping SoVITS for "이것들"
+    STT cooldown 2s — keeping SoVITS for "저것"
+    word STT "저것들" → "저것들" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "이것들이"
+    STT cooldown 113s — keeping SoVITS for "저것이"
+    STT cooldown 108s — keeping SoVITS for "저것들이"
+    STT cooldown 104s — keeping SoVITS for "이런"
+  ok explanation=This and that in Korean are used to point out objects or thi… examples=3 edgeWords=0
+
+→ [113/174] list-directions-compass (9 words)
+    STT cooldown 83s — keeping SoVITS for "직진하세요"
+    STT cooldown 78s — keeping SoVITS for "오른쪽으로 가세요"
+    STT cooldown 73s — keeping SoVITS for "왼쪽으로 가세요"
+    STT cooldown 68s — keeping SoVITS for "유턴하세요"
+    STT cooldown 63s — keeping SoVITS for "오른쪽 대각선으로 가세요"
+    STT cooldown 59s — keeping SoVITS for "왼쪽 대각선으로 가세요"
+    STT cooldown 55s — keeping SoVITS for "오른쪽에 있어요"
+    STT cooldown 51s — keeping SoVITS for "왼쪽에 있어요"
+    STT cooldown 47s — keeping SoVITS for "여기에 있어요"
+  ok explanation=These Korean phrases are useful for giving and understanding… examples=3 edgeWords=0
+
+→ [114/174] list-discount-sale-words (9 words)
+    STT cooldown 25s — keeping SoVITS for "할인"
+    STT cooldown 21s — keeping SoVITS for "세일"
+    STT cooldown 17s — keeping SoVITS for "가격 인하"
+    STT cooldown 14s — keeping SoVITS for "마크다운"
+    STT cooldown 9s — keeping SoVITS for "10% 할인"
+    STT cooldown 4s — keeping SoVITS for "20% 할인"
+    word STT "30% 할인" → "30% 할인" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 115s — keeping SoVITS for "재고 정리 세일"
+  ok explanation=This chart shows common Korean words related to discounts an… examples=3 edgeWords=0
+
+→ [115/174] list-eye-colors (9 words)
+    STT cooldown 95s — keeping SoVITS for "검은색"
+    STT cooldown 91s — keeping SoVITS for "갈색"
+    STT cooldown 87s — keeping SoVITS for "헤이즐색"
+    STT cooldown 84s — keeping SoVITS for "초록색"
+    STT cooldown 80s — keeping SoVITS for "파란색"
+    STT cooldown 76s — keeping SoVITS for "회색"
+    STT cooldown 72s — keeping SoVITS for "연한 파란색"
+    STT cooldown 68s — keeping SoVITS for "보라색"
+    STT cooldown 64s — keeping SoVITS for "호박색"
+  ok explanation=This chart shows common eye colors in Korean. Each color wor… examples=3 edgeWords=0
+
+→ [116/174] list-hair-colors (9 words)
+    STT cooldown 43s — keeping SoVITS for "검은색"
+    STT cooldown 38s — keeping SoVITS for "진한 갈색"
+    STT cooldown 35s — keeping SoVITS for "갈색"
+    STT cooldown 31s — keeping SoVITS for "연한 갈색"
+    STT cooldown 26s — keeping SoVITS for "금발"
+    STT cooldown 21s — keeping SoVITS for "애쉬 그레이"
+    STT cooldown 16s — keeping SoVITS for "플래티넘 블론드"
+    STT cooldown 11s — keeping SoVITS for "빨간색"
+    STT cooldown 7s — keeping SoVITS for "파란색"
+  ok explanation=This chart shows different hair colors in Korean. You can le… examples=3 edgeWords=0
+
+→ [117/174] list-large-number-units (9 words)
+    word STT "만" → "만" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "백만"
+    STT cooldown 112s — keeping SoVITS for "천만"
+    STT cooldown 108s — keeping SoVITS for "억"
+    STT cooldown 105s — keeping SoVITS for "십억"
+    STT cooldown 100s — keeping SoVITS for "백억"
+    STT cooldown 95s — keeping SoVITS for "조"
+    STT cooldown 90s — keeping SoVITS for "십조"
+  ok explanation=In Korean, large numbers are grouped differently than in Eng… examples=3 edgeWords=0
+
+→ [118/174] list-money-krw (9 words)
+    STT cooldown 68s — keeping SoVITS for "돈"
+    STT cooldown 64s — keeping SoVITS for "동전"
+    STT cooldown 61s — keeping SoVITS for "지폐"
+    STT cooldown 57s — keeping SoVITS for "지갑"
+    STT cooldown 53s — keeping SoVITS for "카드"
+    STT cooldown 50s — keeping SoVITS for "가격"
+    STT cooldown 46s — keeping SoVITS for "결제"
+    STT cooldown 43s — keeping SoVITS for "영수증"
+    STT cooldown 38s — keeping SoVITS for "현금 인출기"
+  ok explanation=This chart introduces common Korean words related to money a… examples=3 edgeWords=0
+
+→ [119/174] list-negation-patterns (9 words)
+    STT cooldown 16s — keeping SoVITS for "아니요"
+    STT cooldown 11s — keeping SoVITS for "안 가요"
+    STT cooldown 6s — keeping SoVITS for "가지 않아요"
+    STT cooldown 1s — keeping SoVITS for "좋지 않아요"
+    word STT "학생이 아니에요" → "학생이 아니에요." score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "가지 마"
+    STT cooldown 113s — keeping SoVITS for "그건 아니야"
+    STT cooldown 108s — keeping SoVITS for "맛있는 건 아니에요"
+  ok explanation=This chart shows common ways to express negation in Korean. … examples=3 edgeWords=0
+
+→ [120/174] list-particles-topic-subject (9 words)
+    STT cooldown 87s — keeping SoVITS for "은/는"
+    STT cooldown 84s — keeping SoVITS for "이/가"
+    STT cooldown 80s — keeping SoVITS for "에 대해(서)"
+    STT cooldown 76s — keeping SoVITS for "을/를"
+    STT cooldown 72s — keeping SoVITS for "에 관해(서)"
+    STT cooldown 67s — keeping SoVITS for "중에서"
+    STT cooldown 63s — keeping SoVITS for "입장에서"
+    STT cooldown 58s — keeping SoVITS for "하면"
+    STT cooldown 53s — keeping SoVITS for "에 있어서(는)"
+  ok explanation=Topic and subject particles in Korean help show what the sen… examples=3 edgeWords=0
+
+→ [121/174] list-past-present-future (9 words)
+    STT cooldown 34s — keeping SoVITS for "지금"
+    STT cooldown 31s — keeping SoVITS for "전에"
+    STT cooldown 28s — keeping SoVITS for "이미"
+    STT cooldown 24s — keeping SoVITS for "오늘"
+    STT cooldown 20s — keeping SoVITS for "내일"
+    STT cooldown 17s — keeping SoVITS for "후에"
+    STT cooldown 13s — keeping SoVITS for "나중에"
+    STT cooldown 9s — keeping SoVITS for "최근에"
+    STT cooldown 5s — keeping SoVITS for "오늘 밤"
+  ok explanation=This chart shows common Korean words used to talk about time… examples=3 edgeWords=0
+
+→ [122/174] list-payment-methods (9 words)
+    word STT "현금" → "현금" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "체크카드"
+    STT cooldown 113s — keeping SoVITS for "모바일 결제"
+    STT cooldown 109s — keeping SoVITS for "교통카드"
+    STT cooldown 106s — keeping SoVITS for "QR 코드 결제"
+    STT cooldown 102s — keeping SoVITS for "계좌이체"
+    STT cooldown 98s — keeping SoVITS for "상품권"
+    STT cooldown 94s — keeping SoVITS for "할부 결제"
+  ok explanation=Payment methods in Korean include various ways to pay for go… examples=3 edgeWords=0
+
+→ [123/174] list-phone-number-phrases (9 words)
+    STT cooldown 73s — keeping SoVITS for "전화번호가 뭐예요?"
+    STT cooldown 69s — keeping SoVITS for "번호 좀 알려주세요."
+    STT cooldown 65s — keeping SoVITS for "천천히 말씀해 주세요."
+    STT cooldown 60s — keeping SoVITS for "다시 한 번 말씀해 주세요."
+    STT cooldown 57s — keeping SoVITS for "다시 말씀해 주시겠어요?"
+    STT cooldown 53s — keeping SoVITS for "적어볼게요."
+    STT cooldown 49s — keeping SoVITS for "이 번호가 맞아요?"
+    STT cooldown 45s — keeping SoVITS for "감사합니다!"
+    STT cooldown 41s — keeping SoVITS for "나중에 연락드릴게요."
+  ok explanation=These phrases are useful for asking and sharing phone number… examples=3 edgeWords=0
+
+→ [124/174] list-question-words (9 words)
+    STT cooldown 17s — keeping SoVITS for "뭐"
+    STT cooldown 13s — keeping SoVITS for "언제"
+    STT cooldown 10s — keeping SoVITS for "어디"
+    STT cooldown 6s — keeping SoVITS for "누구"
+    STT cooldown 3s — keeping SoVITS for "왜"
+    word STT "어떻게" → "어떻게?" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "몇"
+    STT cooldown 113s — keeping SoVITS for "얼마나"
+  ok explanation=Question words in Korean are used to ask for specific inform… examples=3 edgeWords=0
+
+→ [125/174] list-receipt-invoice-words (9 words)
+    STT cooldown 94s — keeping SoVITS for "영수증"
+    STT cooldown 89s — keeping SoVITS for "송장"
+    STT cooldown 84s — keeping SoVITS for "품목"
+    STT cooldown 79s — keeping SoVITS for "단가"
+    STT cooldown 76s — keeping SoVITS for "수량"
+    STT cooldown 72s — keeping SoVITS for "금액"
+    STT cooldown 69s — keeping SoVITS for "합계"
+    STT cooldown 65s — keeping SoVITS for "세금"
+    STT cooldown 62s — keeping SoVITS for "결제"
+  ok explanation=This chart shows common Korean words used when dealing with … examples=3 edgeWords=0
+
+→ [126/174] list-seasons-plus-weather (9 words)
+    STT cooldown 41s — keeping SoVITS for "봄"
+    STT cooldown 37s — keeping SoVITS for "여름"
+    STT cooldown 34s — keeping SoVITS for "가을"
+    STT cooldown 29s — keeping SoVITS for "겨울"
+    STT cooldown 25s — keeping SoVITS for "맑아요"
+    STT cooldown 22s — keeping SoVITS for "흐려요"
+    STT cooldown 18s — keeping SoVITS for "비가 와요"
+    STT cooldown 14s — keeping SoVITS for "눈이 와요"
+    STT cooldown 10s — keeping SoVITS for "바람이 불어요"
+  ok explanation=This chart introduces basic Korean vocabulary related to sea… examples=3 edgeWords=0
+
+→ [127/174] list-skin-tones-descriptive (9 words)
+    word STT "아주 하얀 피부" → "아주 하얀 피부" score=1.00 (need ≥0.88)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "밝은 베이지 피부"
+    STT cooldown 113s — keeping SoVITS for "베이지 피부"
+    STT cooldown 110s — keeping SoVITS for "구릿빛 피부"
+    STT cooldown 106s — keeping SoVITS for "탄 피부"
+    STT cooldown 103s — keeping SoVITS for "갈색 피부"
+    STT cooldown 99s — keeping SoVITS for "진한 갈색 피부"
+    STT cooldown 95s — keeping SoVITS for "매우 어두운 피부"
+  ok explanation=This chart shows different words to describe skin tones in K… examples=3 edgeWords=0
+
+→ [128/174] list-tax-tip-words (9 words)
+    STT cooldown 74s — keeping SoVITS for "세금"
+    STT cooldown 70s — keeping SoVITS for "세율"
+    STT cooldown 66s — keeping SoVITS for "부가가치세"
+    STT cooldown 62s — keeping SoVITS for "세금 금액"
+    STT cooldown 58s — keeping SoVITS for "총액 (세금 포함)"
+    STT cooldown 55s — keeping SoVITS for "팁"
+    STT cooldown 51s — keeping SoVITS for "팁은 필요 없어요"
+    STT cooldown 47s — keeping SoVITS for "팁을 드릴게요"
+    STT cooldown 43s — keeping SoVITS for "봉사료 포함인가요?"
+  ok explanation=This chart introduces common Korean words related to taxes a… examples=3 edgeWords=0
+
+→ [129/174] list-time-day-parts (9 words)
+    STT cooldown 25s — keeping SoVITS for "새벽"
+    STT cooldown 22s — keeping SoVITS for "아침"
+    STT cooldown 18s — keeping SoVITS for "오전"
+    STT cooldown 15s — keeping SoVITS for "오후"
+    STT cooldown 11s — keeping SoVITS for "늦은 오후"
+    STT cooldown 7s — keeping SoVITS for "저녁"
+    STT cooldown 4s — keeping SoVITS for "밤"
+    word STT "늦은 밤" → "lesson done" score=0.00 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=This chart shows different parts of the day in Korean, from … examples=3 edgeWords=1
+
+→ [130/174] list-age-expressions (10 words)
+    STT cooldown 101s — keeping SoVITS for "저는 ~살이에요."
+    STT cooldown 97s — keeping SoVITS for "저는 (남자) ~살이에요."
+    STT cooldown 93s — keeping SoVITS for "저는 (여자) ~살이에요."
+    STT cooldown 89s — keeping SoVITS for "그는/그녀는 ~살이에요."
+    STT cooldown 86s — keeping SoVITS for "저는 (연도)에 태어났어요."
+    STT cooldown 81s — keeping SoVITS for "저는 (내년에) ~살이 돼요."
+    STT cooldown 78s — keeping SoVITS for "저는 ~대예요."
+    STT cooldown 74s — keeping SoVITS for "그는/그녀는 ~대예요."
+    STT cooldown 69s — keeping SoVITS for "그는/그녀는 나이가 많아요."
+    STT cooldown 65s — keeping SoVITS for "몇 살이에요?"
+  ok explanation=These Korean expressions help you talk about age in differen… examples=3 edgeWords=0
+
+→ [131/174] list-allergies-diet-labels (10 words)
+    STT cooldown 43s — keeping SoVITS for "땅콩 함유"
+    STT cooldown 40s — keeping SoVITS for "갑각류 함유"
+    STT cooldown 36s — keeping SoVITS for "계란 함유"
+    STT cooldown 32s — keeping SoVITS for "우유 함유"
+    STT cooldown 28s — keeping SoVITS for "밀 함유"
+    STT cooldown 24s — keeping SoVITS for "대두 함유"
+    STT cooldown 21s — keeping SoVITS for "견과류 함유"
+    STT cooldown 17s — keeping SoVITS for "참깨 함유"
+    STT cooldown 13s — keeping SoVITS for "채식 (고기 없음)"
+    STT cooldown 9s — keeping SoVITS for "비건 (동물성 성분 없음)"
+  ok explanation=This chart shows common allergy and diet labels in Korean th… examples=3 edgeWords=0
+
+→ [132/174] list-appointment-scheduling (10 words)
+    word STT "오늘" → "오늘" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "이번 주"
+    STT cooldown 113s — keeping SoVITS for "다음 주"
+    STT cooldown 110s — keeping SoVITS for "이번 달"
+    STT cooldown 106s — keeping SoVITS for "다음 달"
+    STT cooldown 102s — keeping SoVITS for "지금"
+    STT cooldown 99s — keeping SoVITS for "나중에"
+    STT cooldown 95s — keeping SoVITS for "아침에"
+    STT cooldown 92s — keeping SoVITS for "밤에"
+  ok explanation=This chart shows common Korean words used to talk about sche… examples=3 edgeWords=0
+
+→ [133/174] list-emergency-numbers-kr (10 words)
+    STT cooldown 73s — keeping SoVITS for "경찰"
+    STT cooldown 70s — keeping SoVITS for "소방"
+    STT cooldown 66s — keeping SoVITS for "구급"
+    STT cooldown 63s — keeping SoVITS for "해양경찰"
+    STT cooldown 59s — keeping SoVITS for "응급의료정보"
+    STT cooldown 55s — keeping SoVITS for "정부민원안내"
+    STT cooldown 51s — keeping SoVITS for "여성긴급전화"
+    STT cooldown 48s — keeping SoVITS for "청소년전화"
+    STT cooldown 44s — keeping SoVITS for "교통사고신고"
+    STT cooldown 40s — keeping SoVITS for "지하철사고신고"
+  ok explanation=This chart shows important emergency numbers in Korea in Kor… examples=3 edgeWords=0
+
+→ [134/174] list-family-inlaw (10 words)
+    STT cooldown 18s — keeping SoVITS for "시아버지"
+    STT cooldown 14s — keeping SoVITS for "시어머니"
+    STT cooldown 10s — keeping SoVITS for "시동생"
+    STT cooldown 7s — keeping SoVITS for "시누이"
+    STT cooldown 3s — keeping SoVITS for "처남"
+    word STT "처제" → "처제" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "시동생"
+    STT cooldown 112s — keeping SoVITS for "시누나"
+    STT cooldown 107s — keeping SoVITS for "시동서"
+  ok explanation=In Korean, there are specific terms for different in-law fam… examples=3 edgeWords=0
+
+→ [135/174] list-frequency-adverbs (10 words)
+    STT cooldown 88s — keeping SoVITS for "항상"
+    STT cooldown 85s — keeping SoVITS for "보통"
+    STT cooldown 81s — keeping SoVITS for "자주"
+    STT cooldown 77s — keeping SoVITS for "때때로"
+    STT cooldown 73s — keeping SoVITS for "가끔"
+    STT cooldown 68s — keeping SoVITS for "거의 ~지 않다"
+    STT cooldown 64s — keeping SoVITS for "드물게"
+    STT cooldown 58s — keeping SoVITS for "거의 안 하다"
+    STT cooldown 54s — keeping SoVITS for "절대 안 하다"
+    STT cooldown 51s — keeping SoVITS for "매번"
+  ok explanation=Frequency adverbs in Korean describe how often an action hap… examples=3 edgeWords=0
+
+→ [136/174] list-makeup-shades (10 words)
+    STT cooldown 31s — keeping SoVITS for "아이보리"
+    STT cooldown 28s — keeping SoVITS for "베이지"
+    STT cooldown 24s — keeping SoVITS for "내추럴 베이지"
+    STT cooldown 19s — keeping SoVITS for "탄"
+    STT cooldown 15s — keeping SoVITS for "브라운"
+    STT cooldown 12s — keeping SoVITS for "핑크"
+    STT cooldown 7s — keeping SoVITS for "코랄"
+    STT cooldown 3s — keeping SoVITS for "모브"
+    word STT "피치" → "피치" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=This chart shows common makeup shade words in Korean. These … examples=3 edgeWords=0
+
+→ [137/174] list-native-korean-numbers (10 words)
+    STT cooldown 100s — keeping SoVITS for "하나"
+    STT cooldown 96s — keeping SoVITS for "둘"
+    STT cooldown 93s — keeping SoVITS for "셋"
+    STT cooldown 89s — keeping SoVITS for "넷"
+    STT cooldown 86s — keeping SoVITS for "다섯"
+    STT cooldown 82s — keeping SoVITS for "여섯"
+    STT cooldown 78s — keeping SoVITS for "일곱"
+    STT cooldown 75s — keeping SoVITS for "여덟"
+    STT cooldown 71s — keeping SoVITS for "아홉"
+    STT cooldown 67s — keeping SoVITS for "열"
+  ok explanation=Native Korean numbers are used for counting objects, people,… examples=3 edgeWords=0
+
+→ [138/174] list-numbers-powers-ten (10 words)
+    STT cooldown 47s — keeping SoVITS for "십"
+    STT cooldown 43s — keeping SoVITS for "십"
+    STT cooldown 39s — keeping SoVITS for "백"
+    STT cooldown 34s — keeping SoVITS for "천"
+    STT cooldown 29s — keeping SoVITS for "만"
+    STT cooldown 24s — keeping SoVITS for "십만"
+    STT cooldown 20s — keeping SoVITS for "백만"
+    STT cooldown 17s — keeping SoVITS for "천만"
+    STT cooldown 13s — keeping SoVITS for "억"
+    STT cooldown 10s — keeping SoVITS for "십억"
+  ok explanation=This chart shows numbers in Korean using powers of 10. Korea… examples=3 edgeWords=0
+
+→ [139/174] list-numbers-tens (10 words)
+    word STT "십" → "칫" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "삼십"
+    STT cooldown 113s — keeping SoVITS for "사십"
+    STT cooldown 110s — keeping SoVITS for "오십"
+    STT cooldown 105s — keeping SoVITS for "육십"
+    STT cooldown 101s — keeping SoVITS for "칠십"
+    STT cooldown 97s — keeping SoVITS for "팔십"
+    STT cooldown 92s — keeping SoVITS for "구십"
+    STT cooldown 87s — keeping SoVITS for "백"
+  ok explanation=This chart shows the tens in Korean, from ten to one hundred… examples=3 edgeWords=1
+
+→ [140/174] list-ordinal-numbers (10 words)
+    STT cooldown 63s — keeping SoVITS for "첫째"
+    STT cooldown 60s — keeping SoVITS for "둘째"
+    STT cooldown 57s — keeping SoVITS for "셋째"
+    STT cooldown 53s — keeping SoVITS for "넷째"
+    STT cooldown 49s — keeping SoVITS for "다섯째"
+    STT cooldown 46s — keeping SoVITS for "여섯째"
+    STT cooldown 42s — keeping SoVITS for "일곱째"
+    STT cooldown 39s — keeping SoVITS for "여덟째"
+    STT cooldown 35s — keeping SoVITS for "아홉째"
+    STT cooldown 31s — keeping SoVITS for "열째"
+  ok explanation=Ordinal numbers in Korean are used to show the order of thin… examples=3 edgeWords=0
+
+→ [141/174] list-particles-object-location (10 words)
+    STT cooldown 11s — keeping SoVITS for "이/가"
+    STT cooldown 7s — keeping SoVITS for "을/를"
+    STT cooldown 3s — keeping SoVITS for "에"
+    word STT "안에" → "아네" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "뒤에"
+    STT cooldown 113s — keeping SoVITS for "앞에"
+    STT cooldown 110s — keeping SoVITS for "으로/로"
+    STT cooldown 106s — keeping SoVITS for "에서"
+    STT cooldown 102s — keeping SoVITS for "에서"
+  ok explanation=This chart shows common Korean particles that indicate the s… examples=3 edgeWords=1
+
+→ [142/174] list-pronunciation-mistakes (10 words)
+    STT cooldown 83s — keeping SoVITS for "안녕하세요"
+    STT cooldown 78s — keeping SoVITS for "밥"
+    STT cooldown 73s — keeping SoVITS for "연 (연)"
+    STT cooldown 70s — keeping SoVITS for "책"
+    STT cooldown 66s — keeping SoVITS for "가요"
+    STT cooldown 62s — keeping SoVITS for "문"
+    STT cooldown 59s — keeping SoVITS for "주스"
+    STT cooldown 55s — keeping SoVITS for "나무"
+    STT cooldown 52s — keeping SoVITS for "떡볶이"
+    STT cooldown 48s — keeping SoVITS for "읽다"
+  ok explanation=This chart shows common pronunciation tips in Korean, focusi… examples=3 edgeWords=0
+
+→ [143/174] list-sino-korean-numbers (10 words)
+    STT cooldown 27s — keeping SoVITS for "일"
+    STT cooldown 23s — keeping SoVITS for "이"
+    STT cooldown 18s — keeping SoVITS for "삼"
+    STT cooldown 14s — keeping SoVITS for "사"
+    STT cooldown 9s — keeping SoVITS for "오"
+    STT cooldown 5s — keeping SoVITS for "육"
+    STT cooldown 2s — keeping SoVITS for "칠"
+    word STT "팔" → "bye" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "십"
+  ok explanation=Sino-Korean numbers are based on Chinese characters and are … examples=3 edgeWords=1
+
+→ [144/174] list-time-minutes-phrases (10 words)
+    STT cooldown 96s — keeping SoVITS for "1분"
+    STT cooldown 93s — keeping SoVITS for "5분"
+    STT cooldown 89s — keeping SoVITS for "10분"
+    STT cooldown 86s — keeping SoVITS for "15분"
+    STT cooldown 83s — keeping SoVITS for "30분"
+    STT cooldown 79s — keeping SoVITS for "1시간"
+    STT cooldown 75s — keeping SoVITS for "(잠시) 후"
+    STT cooldown 70s — keeping SoVITS for "나중에"
+    STT cooldown 64s — keeping SoVITS for "조금 후에"
+    STT cooldown 59s — keeping SoVITS for "정시에"
+  ok explanation=This chart shows common Korean words and phrases used to tal… examples=3 edgeWords=0
+
+→ [145/174] list-traditional-crafts-order (10 words)
+    STT cooldown 38s — keeping SoVITS for "도자기"
+    STT cooldown 34s — keeping SoVITS for "한지"
+    STT cooldown 31s — keeping SoVITS for "보자기"
+    STT cooldown 27s — keeping SoVITS for "나전칠기"
+    STT cooldown 23s — keeping SoVITS for "매듭"
+    STT cooldown 20s — keeping SoVITS for "부채"
+    STT cooldown 16s — keeping SoVITS for "목공예"
+    STT cooldown 13s — keeping SoVITS for "금속공예"
+    STT cooldown 9s — keeping SoVITS for "한복"
+    STT cooldown 6s — keeping SoVITS for "탈"
+  ok explanation=Traditional crafts in Korean culture include various handmad… examples=3 edgeWords=0
+
+→ [146/174] grid-dating-words (11 words)
+    word STT "데이트" → "데이터" score=0.67 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "선물"
+    STT cooldown 112s — keeping SoVITS for "저녁 식사"
+    STT cooldown 109s — keeping SoVITS for "영화"
+    STT cooldown 105s — keeping SoVITS for "손잡기"
+    STT cooldown 101s — keeping SoVITS for "잘생겼어요"
+    STT cooldown 97s — keeping SoVITS for "예뻐요"
+    STT cooldown 92s — keeping SoVITS for "좋아해요"
+    STT cooldown 88s — keeping SoVITS for "여자친구"
+    STT cooldown 84s — keeping SoVITS for "남자친구"
+  ok explanation=This chart introduces common Korean vocabulary related to da… examples=3 edgeWords=1
+
+→ [147/174] list-bank-words (12 words)
+    STT cooldown 61s — keeping SoVITS for "은행"
+    STT cooldown 57s — keeping SoVITS for "통장"
+    STT cooldown 53s — keeping SoVITS for "현금자동입출금기"
+    STT cooldown 49s — keeping SoVITS for "카드"
+    STT cooldown 45s — keeping SoVITS for "현금"
+    STT cooldown 41s — keeping SoVITS for "영수증"
+    STT cooldown 37s — keeping SoVITS for "예금"
+    STT cooldown 33s — keeping SoVITS for "출금"
+    STT cooldown 30s — keeping SoVITS for "대출"
+    STT cooldown 26s — keeping SoVITS for "이자"
+    STT cooldown 21s — keeping SoVITS for "이체"
+    STT cooldown 18s — keeping SoVITS for "은행원"
+  ok explanation=This chart introduces common bank-related vocabulary in Kore… examples=3 edgeWords=0
+
+→ [148/174] list-colors-basic (12 words)
+    word STT "빨강" → "빨강" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "노랑"
+    STT cooldown 112s — keeping SoVITS for "초록"
+    STT cooldown 107s — keeping SoVITS for "파랑"
+    STT cooldown 102s — keeping SoVITS for "보라"
+    STT cooldown 98s — keeping SoVITS for "분홍"
+    STT cooldown 93s — keeping SoVITS for "갈색"
+    STT cooldown 88s — keeping SoVITS for "검정"
+    STT cooldown 84s — keeping SoVITS for "하양"
+    STT cooldown 81s — keeping SoVITS for "회색"
+    STT cooldown 77s — keeping SoVITS for "베이지"
+  ok explanation=This chart shows basic colors in Korean. Each color has its … examples=3 edgeWords=0
+
+→ [149/174] list-connectors-sentences (12 words)
+    STT cooldown 57s — keeping SoVITS for "그리고"
+    STT cooldown 53s — keeping SoVITS for "그러나"
+    STT cooldown 49s — keeping SoVITS for "하지만"
+    STT cooldown 45s — keeping SoVITS for "그래서"
+    STT cooldown 41s — keeping SoVITS for "왜냐하면"
+    STT cooldown 37s — keeping SoVITS for "만약"
+    STT cooldown 32s — keeping SoVITS for "~할 때"
+    STT cooldown 27s — keeping SoVITS for "~하기 전에"
+    STT cooldown 22s — keeping SoVITS for "~한 후에"
+    STT cooldown 17s — keeping SoVITS for "~하기 위해서"
+    STT cooldown 11s — keeping SoVITS for "예를 들어"
+    STT cooldown 7s — keeping SoVITS for "결과적으로"
+  ok explanation=Sentence connectors in Korean are words or phrases that link… examples=3 edgeWords=0
+
+→ [150/174] list-counters-common (12 words)
+    word STT "개" → "쟤.." score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "자루"
+    STT cooldown 111s — keeping SoVITS for "권"
+    STT cooldown 106s — keeping SoVITS for "장"
+    STT cooldown 102s — keeping SoVITS for "판"
+    STT cooldown 98s — keeping SoVITS for "병"
+    STT cooldown 94s — keeping SoVITS for "그릇"
+    STT cooldown 90s — keeping SoVITS for "조각"
+    STT cooldown 85s — keeping SoVITS for "켤레"
+    STT cooldown 79s — keeping SoVITS for "장"
+    STT cooldown 74s — keeping SoVITS for "대"
+  ok explanation=Korean counters are special words used to count different ty… examples=3 edgeWords=1
+
+→ [151/174] list-counters-people-objects (12 words)
+    STT cooldown 53s — keeping SoVITS for "권"
+    STT cooldown 49s — keeping SoVITS for "자루"
+    STT cooldown 44s — keeping SoVITS for "병"
+    STT cooldown 40s — keeping SoVITS for "잔"
+    STT cooldown 36s — keeping SoVITS for "장"
+    STT cooldown 32s — keeping SoVITS for "개"
+    STT cooldown 28s — keeping SoVITS for "채"
+    STT cooldown 25s — keeping SoVITS for "대"
+    STT cooldown 20s — keeping SoVITS for "명"
+    STT cooldown 15s — keeping SoVITS for "마리"
+    STT cooldown 11s — keeping SoVITS for "벌"
+    STT cooldown 7s — keeping SoVITS for "개"
+  ok explanation=Korean counters are words used with numbers to count differe… examples=3 edgeWords=0
+
+→ [152/174] list-counting-practice-1-12 (12 words)
+    word STT "하나" → "하나" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 117s — keeping SoVITS for "셋"
+    STT cooldown 113s — keeping SoVITS for "넷"
+    STT cooldown 109s — keeping SoVITS for "다섯"
+    STT cooldown 106s — keeping SoVITS for "여섯"
+    STT cooldown 101s — keeping SoVITS for "일곱"
+    STT cooldown 98s — keeping SoVITS for "여덟"
+    STT cooldown 93s — keeping SoVITS for "아홉"
+    STT cooldown 88s — keeping SoVITS for "열"
+    STT cooldown 84s — keeping SoVITS for "열하나"
+    STT cooldown 80s — keeping SoVITS for "열둘"
+  ok explanation=This chart helps you practice counting from one to twelve in… examples=3 edgeWords=0
+
+→ [153/174] list-family-members (12 words)
+    STT cooldown 55s — keeping SoVITS for "할아버지"
+    STT cooldown 49s — keeping SoVITS for "할머니"
+    STT cooldown 45s — keeping SoVITS for "아버지"
+    STT cooldown 41s — keeping SoVITS for "어머니"
+    STT cooldown 37s — keeping SoVITS for "형"
+    STT cooldown 33s — keeping SoVITS for "동생 (남동생)"
+    STT cooldown 29s — keeping SoVITS for "누나"
+    STT cooldown 25s — keeping SoVITS for "동생 (여동생)"
+    STT cooldown 21s — keeping SoVITS for "남편"
+    STT cooldown 17s — keeping SoVITS for "아내"
+    STT cooldown 13s — keeping SoVITS for "아들"
+    STT cooldown 9s — keeping SoVITS for "딸"
+  ok explanation=This chart introduces common family member words in Korean, … examples=3 edgeWords=0
+
+→ [154/174] list-korean-food-unesco (12 words)
+    word STT "김치" → "김치" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 115s — keeping SoVITS for "불고기"
+    STT cooldown 111s — keeping SoVITS for "떡볶이"
+    STT cooldown 106s — keeping SoVITS for "삼겹살"
+    STT cooldown 101s — keeping SoVITS for "잡채"
+    STT cooldown 96s — keeping SoVITS for "순두부찌개"
+    STT cooldown 92s — keeping SoVITS for "냉면"
+    STT cooldown 87s — keeping SoVITS for "양념치킨"
+    STT cooldown 83s — keeping SoVITS for "김밥"
+    STT cooldown 79s — keeping SoVITS for "파전"
+    STT cooldown 74s — keeping SoVITS for "호떡"
+  ok explanation=This chart introduces famous Korean foods in Korean, helping… examples=3 edgeWords=0
+
+→ [155/174] list-korean-ingredients-staples (12 words)
+    STT cooldown 52s — keeping SoVITS for "고추장"
+    STT cooldown 47s — keeping SoVITS for "된장"
+    STT cooldown 44s — keeping SoVITS for "간장"
+    STT cooldown 40s — keeping SoVITS for "참기름"
+    STT cooldown 35s — keeping SoVITS for "깨"
+    STT cooldown 31s — keeping SoVITS for "김가루"
+    STT cooldown 27s — keeping SoVITS for "멸치"
+    STT cooldown 23s — keeping SoVITS for "고춧가루"
+    STT cooldown 19s — keeping SoVITS for "설탕"
+    STT cooldown 15s — keeping SoVITS for "마늘"
+    STT cooldown 11s — keeping SoVITS for "식용유"
+    STT cooldown 7s — keeping SoVITS for "쌀"
+  ok explanation=This chart introduces common Korean pantry staples used in e… examples=3 edgeWords=0
+
+→ [156/174] list-months (12 words)
+    word STT "일월" → "1월" score=0.50 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "삼월"
+    STT cooldown 112s — keeping SoVITS for "사월"
+    STT cooldown 108s — keeping SoVITS for "오월"
+    STT cooldown 104s — keeping SoVITS for "유월"
+    STT cooldown 100s — keeping SoVITS for "칠월"
+    STT cooldown 96s — keeping SoVITS for "팔월"
+    STT cooldown 92s — keeping SoVITS for "구월"
+    STT cooldown 88s — keeping SoVITS for "시월"
+    STT cooldown 84s — keeping SoVITS for "십일월"
+    STT cooldown 80s — keeping SoVITS for "십이월"
+  ok explanation=This chart shows the months of the year in Korean, from Janu… examples=3 edgeWords=1
+
+→ [157/174] list-position-words (12 words)
+    STT cooldown 59s — keeping SoVITS for "안에"
+    STT cooldown 54s — keeping SoVITS for "위에"
+    STT cooldown 49s — keeping SoVITS for "아래에"
+    STT cooldown 46s — keeping SoVITS for "옆에"
+    STT cooldown 42s — keeping SoVITS for "앞에"
+    STT cooldown 38s — keeping SoVITS for "뒤에"
+    STT cooldown 35s — keeping SoVITS for "사이에"
+    STT cooldown 30s — keeping SoVITS for "위에(로)"
+    STT cooldown 27s — keeping SoVITS for "아래에(로)"
+    STT cooldown 22s — keeping SoVITS for "안에(로)"
+    STT cooldown 18s — keeping SoVITS for "밖에"
+    STT cooldown 14s — keeping SoVITS for "쪽으로"
+  ok explanation=Position words in Korean describe where something is located… examples=3 edgeWords=0
+
+→ [158/174] list-symptoms-body-order (12 words)
+    word STT "열이 나요" → "이열이 나요" score=0.75 (need ≥0.8)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "목이 아파요"
+    STT cooldown 112s — keeping SoVITS for "기침이 나요"
+    STT cooldown 107s — keeping SoVITS for "콧물이 나요"
+    STT cooldown 103s — keeping SoVITS for "재채기가 나요"
+    STT cooldown 99s — keeping SoVITS for "배가 아파요"
+    STT cooldown 94s — keeping SoVITS for "허리가 아파요"
+    STT cooldown 90s — keeping SoVITS for "근육이 아파요"
+    STT cooldown 86s — keeping SoVITS for "피로해요"
+    STT cooldown 82s — keeping SoVITS for "설사가 나요"
+    STT cooldown 77s — keeping SoVITS for "어지러워요"
+  ok explanation=This chart shows common body symptoms in Korean that people … examples=3 edgeWords=1
+
+→ [159/174] list-time-hours-12 (12 words)
+    STT cooldown 54s — keeping SoVITS for "한 시"
+    STT cooldown 50s — keeping SoVITS for "두 시"
+    STT cooldown 45s — keeping SoVITS for "세 시"
+    STT cooldown 41s — keeping SoVITS for "네 시"
+    STT cooldown 36s — keeping SoVITS for "다섯 시"
+    STT cooldown 32s — keeping SoVITS for "여섯 시"
+    STT cooldown 27s — keeping SoVITS for "일곱 시"
+    STT cooldown 23s — keeping SoVITS for "여덟 시"
+    STT cooldown 18s — keeping SoVITS for "아홉 시"
+    STT cooldown 14s — keeping SoVITS for "열 시"
+    STT cooldown 9s — keeping SoVITS for "열한 시"
+    STT cooldown 5s — keeping SoVITS for "열두 시"
+  ok explanation=This chart shows how to say the hours from 1 to 12 in Korean… examples=3 edgeWords=0
+
+→ [160/174] list-zodiac-animals (12 words)
+    word STT "쥐" → "취" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "호랑이"
+    STT cooldown 112s — keeping SoVITS for "토끼"
+    STT cooldown 108s — keeping SoVITS for "용"
+    STT cooldown 103s — keeping SoVITS for "뱀"
+    STT cooldown 99s — keeping SoVITS for "말"
+    STT cooldown 95s — keeping SoVITS for "양"
+    STT cooldown 91s — keeping SoVITS for "원숭이"
+    STT cooldown 87s — keeping SoVITS for "닭"
+    STT cooldown 83s — keeping SoVITS for "개"
+    STT cooldown 79s — keeping SoVITS for "돼지"
+  ok explanation=The zodiac animals in Korean represent the 12 animals of the… examples=3 edgeWords=1
+
+→ [161/174] list-calendar-holidays-kr (14 words)
+    STT cooldown 55s — keeping SoVITS for "새해 첫날"
+    STT cooldown 51s — keeping SoVITS for "설날"
+    STT cooldown 46s — keeping SoVITS for "설 연휴"
+    STT cooldown 41s — keeping SoVITS for "삼일절"
+    STT cooldown 37s — keeping SoVITS for "어린이날"
+    STT cooldown 33s — keeping SoVITS for "어버이날"
+    STT cooldown 28s — keeping SoVITS for "부처님 오신 날"
+    STT cooldown 23s — keeping SoVITS for "현충일"
+    STT cooldown 19s — keeping SoVITS for "제헌절"
+    STT cooldown 13s — keeping SoVITS for "광복절"
+    STT cooldown 9s — keeping SoVITS for "추석"
+    STT cooldown 4s — keeping SoVITS for "추석 연휴"
+    word STT "한글날" → "한글날" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+  ok explanation=This chart shows important Korean public holidays. These hol… examples=3 edgeWords=0
+
+→ [162/174] list-body-parts-full (15 words)
+    STT cooldown 98s — keeping SoVITS for "머리"
+    STT cooldown 94s — keeping SoVITS for "눈"
+    STT cooldown 90s — keeping SoVITS for "귀"
+    STT cooldown 87s — keeping SoVITS for "코"
+    STT cooldown 83s — keeping SoVITS for "입"
+    STT cooldown 78s — keeping SoVITS for "목"
+    STT cooldown 74s — keeping SoVITS for "어깨"
+    STT cooldown 70s — keeping SoVITS for "팔"
+    STT cooldown 67s — keeping SoVITS for "손"
+    STT cooldown 63s — keeping SoVITS for "가슴"
+    STT cooldown 59s — keeping SoVITS for "배"
+    STT cooldown 56s — keeping SoVITS for "등"
+    STT cooldown 52s — keeping SoVITS for "다리"
+    STT cooldown 48s — keeping SoVITS for "무릎"
+    STT cooldown 45s — keeping SoVITS for "발"
+  ok explanation=This chart introduces common body parts in Korean, helping y… examples=3 edgeWords=0
+
+→ [163/174] grid-tools-16 (16 words)
+    STT cooldown 20s — keeping SoVITS for "망치"
+    STT cooldown 16s — keeping SoVITS for "드라이버"
+    STT cooldown 12s — keeping SoVITS for "렌치"
+    STT cooldown 8s — keeping SoVITS for "플라이어"
+    STT cooldown 4s — keeping SoVITS for "줄자"
+    word STT "톱" → "끝" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "드릴"
+    STT cooldown 112s — keeping SoVITS for "끌"
+    STT cooldown 107s — keeping SoVITS for "수평계"
+    STT cooldown 97s — keeping SoVITS for "직각자"
+    STT cooldown 93s — keeping SoVITS for "고무망치"
+    STT cooldown 89s — keeping SoVITS for "클램프"
+    STT cooldown 85s — keeping SoVITS for "붓"
+    STT cooldown 80s — keeping SoVITS for "글루건"
+    STT cooldown 76s — keeping SoVITS for "가위"
+  ok explanation=This chart introduces common tools in Korean, including both… examples=3 edgeWords=1
+
+→ [164/174] grid-vegetables-market-16 (16 words)
+    STT cooldown 54s — keeping SoVITS for "무"
+    STT cooldown 50s — keeping SoVITS for "배추"
+    STT cooldown 45s — keeping SoVITS for "파"
+    STT cooldown 41s — keeping SoVITS for "당근"
+    STT cooldown 37s — keeping SoVITS for "양파"
+    STT cooldown 33s — keeping SoVITS for "마늘"
+    STT cooldown 28s — keeping SoVITS for "감자"
+    STT cooldown 23s — keeping SoVITS for "고구마"
+    STT cooldown 18s — keeping SoVITS for "시금치"
+    STT cooldown 12s — keeping SoVITS for "오이"
+    STT cooldown 8s — keeping SoVITS for "호박"
+    STT cooldown 4s — keeping SoVITS for "가지"
+    word STT "청양고추" → "청양고추" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "브로콜리"
+    STT cooldown 113s — keeping SoVITS for "상추"
+  ok explanation=This chart shows common vegetables you can find in Korean ma… examples=3 edgeWords=0
+
+→ [165/174] list-colors-extended (16 words)
+    STT cooldown 91s — keeping SoVITS for "빨강"
+    STT cooldown 86s — keeping SoVITS for "주황"
+    STT cooldown 80s — keeping SoVITS for "노랑"
+    STT cooldown 75s — keeping SoVITS for "초록"
+    STT cooldown 71s — keeping SoVITS for "파랑"
+    STT cooldown 66s — keeping SoVITS for "보라"
+    STT cooldown 62s — keeping SoVITS for "분홍"
+    STT cooldown 57s — keeping SoVITS for "갈색"
+    STT cooldown 54s — keeping SoVITS for "검정"
+    STT cooldown 50s — keeping SoVITS for "회색"
+    STT cooldown 45s — keeping SoVITS for "하양"
+    STT cooldown 41s — keeping SoVITS for "베이지"
+    STT cooldown 37s — keeping SoVITS for "네이비"
+    STT cooldown 33s — keeping SoVITS for "청록"
+    STT cooldown 29s — keeping SoVITS for "버건디"
+    STT cooldown 25s — keeping SoVITS for "은색"
+  ok explanation=This chart shows extended colors in Korean, including basic … examples=3 edgeWords=0
+
+→ [166/174] list-korean-provinces (17 words)
+    STT cooldown 3s — keeping SoVITS for "서울"
+    word STT "부산" → "부산" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 114s — keeping SoVITS for "제주도"
+    STT cooldown 109s — keeping SoVITS for "경기도"
+    STT cooldown 106s — keeping SoVITS for "강원도"
+    STT cooldown 102s — keeping SoVITS for "충청북도"
+    STT cooldown 98s — keeping SoVITS for "충청남도"
+    STT cooldown 94s — keeping SoVITS for "대전"
+    STT cooldown 90s — keeping SoVITS for "전라북도"
+    STT cooldown 86s — keeping SoVITS for "전라남도"
+    STT cooldown 82s — keeping SoVITS for "광주"
+    STT cooldown 78s — keeping SoVITS for "경상북도"
+    STT cooldown 74s — keeping SoVITS for "경상남도"
+    STT cooldown 70s — keeping SoVITS for "대구"
+    STT cooldown 66s — keeping SoVITS for "울산"
+    STT cooldown 62s — keeping SoVITS for "세종특별자치시"
+  ok explanation=This chart shows the names of different regions in Korea wri… examples=3 edgeWords=0
+
+→ [167/174] list-hangul-vowels (20 words)
+    STT cooldown 40s — keeping SoVITS for "아"
+    STT cooldown 34s — keeping SoVITS for "사과"
+    STT cooldown 28s — keeping SoVITS for "야"
+    STT cooldown 23s — keeping SoVITS for "야구"
+    STT cooldown 18s — keeping SoVITS for "어"
+    STT cooldown 13s — keeping SoVITS for "어책"
+    STT cooldown 10s — keeping SoVITS for "여"
+    STT cooldown 5s — keeping SoVITS for "여자"
+    STT cooldown 1s — keeping SoVITS for "오"
+    word STT "오늘" → "오늘" score=1.00 (need ≥0.7)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 115s — keeping SoVITS for "요요"
+    STT cooldown 110s — keeping SoVITS for "우"
+    STT cooldown 106s — keeping SoVITS for "우산"
+    STT cooldown 102s — keeping SoVITS for "으"
+    STT cooldown 99s — keeping SoVITS for "으쥐"
+    STT cooldown 95s — keeping SoVITS for "이"
+    STT cooldown 91s — keeping SoVITS for "이름"
+    STT cooldown 87s — keeping SoVITS for "애"
+    STT cooldown 81s — keeping SoVITS for "고양이"
+  ok explanation=This chart shows common Korean vowels and example words to h… examples=3 edgeWords=0
+
+→ [168/174] list-numbers-1-20 (20 words)
+    STT cooldown 54s — keeping SoVITS for "하나"
+    STT cooldown 50s — keeping SoVITS for "둘"
+    STT cooldown 46s — keeping SoVITS for "셋"
+    STT cooldown 42s — keeping SoVITS for "넷"
+    STT cooldown 38s — keeping SoVITS for "다섯"
+    STT cooldown 35s — keeping SoVITS for "여섯"
+    STT cooldown 31s — keeping SoVITS for "일곱"
+    STT cooldown 27s — keeping SoVITS for "여덟"
+    STT cooldown 23s — keeping SoVITS for "아홉"
+    STT cooldown 19s — keeping SoVITS for "열"
+    STT cooldown 15s — keeping SoVITS for "열하나"
+    STT cooldown 11s — keeping SoVITS for "열둘"
+    STT cooldown 5s — keeping SoVITS for "열셋"
+    STT cooldown 1s — keeping SoVITS for "열넷"
+    word STT "열다섯" → "열다섯" score=1.00 (need ≥0.8)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 116s — keeping SoVITS for "열일곱"
+    STT cooldown 111s — keeping SoVITS for "열여덟"
+    STT cooldown 106s — keeping SoVITS for "열아홉"
+    STT cooldown 101s — keeping SoVITS for "스물"
+  ok explanation=This chart shows the numbers from one to twenty in Korean us… examples=3 edgeWords=0
+
+→ [169/174] quiz-like-vs-love (0 words)
+  ok explanation=This quiz helps you understand the difference between 'like'… examples=3 edgeWords=0
+
+→ [170/174] quiz-pretty-vs-beautiful (0 words)
+  ok explanation=This quiz helps you understand the difference between the Ko… examples=3 edgeWords=0
+
+→ [171/174] quiz-sad-vs-lonely (0 words)
+  ok explanation=This quiz helps you understand the difference between 'sad' … examples=3 edgeWords=0
+
+→ [172/174] quiz-see-vs-look (0 words)
+  ok explanation=In Korean, 'see' and 'look' are expressed with different ver… examples=3 edgeWords=0
+
+→ [173/174] quiz-speak-vs-say (0 words)
+  ok explanation=In Korean, both 'speak' and 'say' relate to talking, but the… examples=3 edgeWords=0
+
+→ [174/174] quiz-want-vs-need (0 words)
+  ok explanation=This quiz helps you understand the difference between 'want'… examples=3 edgeWords=0
+
+[vocab:enrich] done ok=173 fail=1
+Done in 12139.85s.

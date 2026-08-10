@@ -65,7 +65,9 @@
     "x-oauth1-setup:manual": "npx tsx scripts/x-oauth1-setup.ts --manual",
     "deploy-x-poster": "bash scripts/deploy-x-poster.sh",
     "global:publish-pins": "node scripts/publish-global-pins.mjs",
-    "global:enrich": "npx tsx scripts/enrich-global-pins.ts"
+    "global:enrich": "npx tsx scripts/enrich-global-pins.ts",
+    "global:pipeline": "bash scripts/run-global-pin-pipeline.sh",
+    "global:enrich-daemon:install": "bash scripts/install-global-pin-enrich-daemon.sh"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",

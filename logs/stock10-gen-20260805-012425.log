@@ -1,0 +1,7 @@
+[2026-08-04T16:24:26.299Z] ═══ batch runner start — gpt-image-2 quality=high timeout=600s ═══
+[2026-08-04T16:24:26.301Z] 찌바라 cameo rate: 15% (VOCAB_JJIBARA_RATE)
+[2026-08-04T16:24:26.301Z] style/character ref: /Users/minjaekim/Desktop/korean-teacher-mj/public/brand/capybara-style-ref.png (images/edits + high fidelity)
+[2026-08-04T16:24:26.311Z] Pass #7684 — 109 remaining (expr 50 / noun 20 / ant 20 / list 10 / quiz 9)
+[2026-08-04T16:24:26.311Z]   by format: {"cute_cast":10,"hanja_hub":10,"pronunciation_grid":10,"topik_upgrade":10,"similar_split":10,"phrase_stack":10,"concept_rows":10,"quiz_comment":9,"super_list":10,"antonym_split":10,"grid_cluster":10}
+[2026-08-04T16:24:26.311Z]   next up: cute_cast:cute-encouragement → hanja_hub:hanja-jeom-shop → pronunciation_grid:pron-a-vowel → topik_upgrade:topik-emotion-words2 → similar_split:sim-start-시작하다-출발하다 → phrase_stack:phrase-delivery-door → concept_rows:concept-too-only-even → quiz_comment:quiz-upload-vs-download
+[2026-08-04T16:24:26.313Z] [1/109] cute-encouragement (cute_cast)

@@ -1,0 +1,37 @@
+yarn run v1.22.19
+warning From Yarn 1.0 onwards, scripts don't require "--" for options to be forwarded. In a future version, any explicit "--" will be forwarded as-is to the scripts.
+$ npx tsx scripts/enrich-vocab-seo-pages.ts --id list-endings-formal-informal
+[vocab:enrich] 1 pages (force=false voice=Mina avkEnv=true)
+
+→ [1/1] list-endings-formal-informal (8 words)
+    word STT "-요" → "Yo!" score=0.00 (need ≥0.7)
+    score too low — Edge fallback
+  FAIL list-endings-formal-informal: Error: edge-tts failed. Install with: pip install edge-tts
+    at synthesizeEdgeTtsMp3 (/Users/minjaekim/Desktop/korean-teacher-mj/src/lib/edgeTtsServer.ts:48:13)
+    at async wordTtsWithVerify (/Users/minjaekim/Desktop/korean-teacher-mj/scripts/enrich-vocab-seo-pages.ts:301:16)
+    at async enrichPage (/Users/minjaekim/Desktop/korean-teacher-mj/scripts/enrich-vocab-seo-pages.ts:382:41)
+    at async main (/Users/minjaekim/Desktop/korean-teacher-mj/scripts/enrich-vocab-seo-pages.ts:464:24)
+
+[vocab:enrich] done ok=0 fail=1
+Done in 18.96s.
+yarn run v1.22.19
+warning From Yarn 1.0 onwards, scripts don't require "--" for options to be forwarded. In a future version, any explicit "--" will be forwarded as-is to the scripts.
+$ npx tsx scripts/enrich-vocab-seo-pages.ts --id list-endings-formal-informal
+[vocab:enrich] 1 pages (force=false voice=Mina avkEnv=true)
+
+→ [1/1] list-endings-formal-informal (8 words)
+    STT 429, retry in 2000ms…
+    STT 429, retry in 4000ms…
+    STT 429, retry in 8000ms…
+    STT rate-limited — cooldown 120s, keeping SoVITS
+    STT cooldown 115s — keeping SoVITS for "-습니다"
+    STT cooldown 109s — keeping SoVITS for "-요?"
+    STT cooldown 105s — keeping SoVITS for "-습니까?"
+    STT cooldown 101s — keeping SoVITS for "-죠?"
+    STT cooldown 96s — keeping SoVITS for "-어요/어요?"
+    STT cooldown 92s — keeping SoVITS for "-주세요"
+    STT cooldown 88s — keeping SoVITS for "-네요!"
+  ok explanation=This chart shows common sentence endings in Korean that chan… examples=3 edgeWords=0
+
+[vocab:enrich] done ok=1 fail=0
+Done in 73.35s.

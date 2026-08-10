@@ -19,21 +19,30 @@ import { fileURLToPath } from "node:url";
 
 import { ALL_VOCAB_BUNDLES } from "../src/lib/vocabInfographic/bundle-catalog.ts";
 import { mixedBundleQueue, summarizeBundleTiers, summarizeByFormat } from "../src/lib/vocabInfographic/bundle-queue.ts";
+import { auditHanjaHub, catalogHanjaImageWords } from "../src/lib/vocabInfographic/hanjaHubAudit.ts";
 import {
   IMAGE_DEPLOY,
   LOGO_PATH,
   FOOTER_TAGLINE,
-  buildImagePrompt,
+  preparePinGeneration,
   compositeFooter,
   generateWithRetry,
   isPromptContentError,
   resolveCharacterRefPath,
+  resolveFooterLogoPath,
   sizeForFormat,
   sleep,
+  JJIBARA_APPEAR_RATE,
+  STYLE_BASE,
 } from "./lib/vocab-infographic-gen.mjs";
+import { composeGrammarSpotlightPin } from "./lib/grammar_spotlight_pin.mjs";
+import {
+  composeCompoundWordPin,
+  compoundIconPrompt,
+} from "./lib/compound_word_pin.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const OUT = join(ROOT, ".tmp", "vocab-infographic-gen");
+const OUT = (process.env.VOCAB_OUT || "").trim() || join(ROOT, ".tmp", "vocab-infographic-gen");
 const LOG = join(OUT, "batch.log");
 const PROGRESS = join(OUT, "progress.json");
 
@@ -61,7 +70,17 @@ loadEnvFile(join(ROOT, ".env"));
 import { DROP_IDS } from "./lib/vocab-batch-config.mjs";
 
 type Progress = {
-  done: Record<string, { at: string; sec: string; outPath: string; rawPath: string }>;
+  done: Record<
+    string,
+    {
+      at: string;
+      sec: string;
+      outPath: string;
+      rawPath: string;
+      includeJjibara?: boolean;
+      cuteCast?: string | null;
+    }
+  >;
   failed: Record<string, { at: string; error: string; attempts?: number }>;
   skipped: Record<string, { at: string; error: string; reason: "prompt" }>;
   startedAt: string;
@@ -131,13 +150,111 @@ function buildQueue(priorityFilter: string | null, progress: Progress) {
 }
 
 async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Progress) {
-  const size = sizeForFormat(bundle.format);
-  const logoPath = join(ROOT, LOGO_PATH);
-  const prompt = await buildImagePrompt(bundle, ROOT);
+  // Hanja hubs: only generate from pre-audited locked compound packs.
+  if (bundle.format === "hanja_hub" && bundle.hanjaHub) {
+    const issues = auditHanjaHub(bundle.id, bundle.hanjaHub, { allowlistStrict: true });
+    if (issues.length) {
+      const msg = issues.map((i) => i.message).join("; ");
+      log(`  ✗ ${bundle.id} hanja audit failed — skip gen: ${msg}`);
+      if (!progress.skipped) progress.skipped = {};
+      progress.skipped[bundle.id] = {
+        at: new Date().toISOString(),
+        error: msg,
+        reason: "prompt",
+      };
+      saveProgress(progress);
+      return;
+    }
+  }
+
+  const logoPath = resolveFooterLogoPath(ROOT, bundle.format);
   const t0 = Date.now();
 
+  // Compound word: two icon gens → SVG equation compose
+  if (bundle.format === "compound_word" && bundle.compoundWord) {
+    const cw = bundle.compoundWord;
+    const leftPrompt = compoundIconPrompt(cw.left.icon, STYLE_BASE, "LEFT");
+    const rightPrompt = compoundIconPrompt(cw.right.icon, STYLE_BASE, "RIGHT");
+    const leftIcon = await generateWithRetry(
+      {
+        prompt: leftPrompt,
+        size: "1024x1024",
+        root: ROOT,
+        format: "grid_cluster",
+        includeJjibara: false,
+      },
+      {
+        onRetry: ({ attempt, wait, error }) => {
+          if (isPromptContentError(error)) throw error;
+          log(
+            `  ⏳ retry ${bundle.id} left #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`,
+          );
+        },
+      },
+    );
+    const rightIcon = await generateWithRetry(
+      {
+        prompt: rightPrompt,
+        size: "1024x1024",
+        root: ROOT,
+        format: "grid_cluster",
+        includeJjibara: false,
+      },
+      {
+        onRetry: ({ attempt, wait, error }) => {
+          if (isPromptContentError(error)) throw error;
+          log(
+            `  ⏳ retry ${bundle.id} right #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`,
+          );
+        },
+      },
+    );
+    writeFileSync(join(OUT, `${bundle.id}_left.png`), leftIcon);
+    writeFileSync(join(OUT, `${bundle.id}_right.png`), rightIcon);
+    const composed = await composeCompoundWordPin({
+      leftIconPng: leftIcon,
+      rightIconPng: rightIcon,
+      left: cw.left,
+      right: cw.right,
+      resultHangul: cw.resultHangul,
+      resultRomanization: cw.resultRomanization,
+      resultMeaning: cw.resultMeaning,
+    });
+    const rawPath = join(OUT, `${bundle.id}_raw.png`);
+    writeFileSync(rawPath, composed);
+    const branded = await compositeFooter(composed, logoPath, {
+      cuteCast: undefined,
+    });
+    const outPath = join(OUT, `${bundle.id}.png`);
+    writeFileSync(outPath, branded);
+    const sec = ((Date.now() - t0) / 1000).toFixed(1);
+    log(`  ✓ ${bundle.id} (${sec}s) compound`);
+    progress.done[bundle.id] = {
+      at: new Date().toISOString(),
+      sec,
+      outPath,
+      rawPath,
+      includeJjibara: false,
+      cuteCast: null,
+    };
+    delete progress.failed[bundle.id];
+    saveProgress(progress);
+    await sleep(2000);
+    return;
+  }
+
+  const size = sizeForFormat(bundle.format);
+  const { prompt, includeJjibara, cuteCast } = await preparePinGeneration(bundle, ROOT);
+
   const raw = await generateWithRetry(
-    { prompt, size, root: ROOT },
+    {
+      prompt,
+      size,
+      root: ROOT,
+      format: bundle.format,
+      cuteCast,
+      includeJjibara,
+    },
     {
       onRetry: ({ attempt, wait, error }) => {
         if (isPromptContentError(error)) throw error;
@@ -154,13 +271,68 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
 
   const rawPath = join(OUT, `${bundle.id}_raw.png`);
   writeFileSync(rawPath, raw);
-  const branded = await compositeFooter(raw, logoPath);
+
+  let composed = raw;
+  if (bundle.format === "grammar_spotlight" && bundle.grammarSpotlight) {
+    const g = bundle.grammarSpotlight;
+    composed = await composeGrammarSpotlightPin({
+      illustrationPng: raw,
+      koreanBefore: g.koreanBefore,
+      koreanHighlight: g.koreanHighlight,
+      koreanAfter: g.koreanAfter,
+      englishBefore: g.englishBefore,
+      englishHighlight: g.englishHighlight,
+      englishAfter: g.englishAfter,
+      grammarLabel: g.grammarLabel,
+    });
+    writeFileSync(join(OUT, `${bundle.id}_ill.png`), raw);
+  }
+
+  // Chico watermark only when jibara/cameo was actually rolled in, or full cute_cast capybara pin.
+  const chicoCredit =
+    includeJjibara === true ||
+    (bundle.format === "cute_cast" && cuteCast === "capybara");
+  const branded = await compositeFooter(composed, logoPath, {
+    cuteCast,
+    chicoCredit,
+  });
   const outPath = join(OUT, `${bundle.id}.png`);
   writeFileSync(outPath, branded);
 
+  // Hanja: lock SEO/pin word list to audited catalog (never vision invent).
+  if (bundle.format === "hanja_hub" && bundle.hanjaHub) {
+    const words = catalogHanjaImageWords(bundle.hanjaHub);
+    writeFileSync(
+      join(OUT, `${bundle.id}.words.json`),
+      JSON.stringify(
+        {
+          bundleId: bundle.id,
+          extractedAt: new Date().toISOString(),
+          source: "catalog-audited",
+          words,
+        },
+        null,
+        2,
+      ),
+    );
+  }
+
   const sec = ((Date.now() - t0) / 1000).toFixed(1);
-  log(`  ✓ ${bundle.id} (${sec}s)`);
-  progress.done[bundle.id] = { at: new Date().toISOString(), sec, outPath, rawPath };
+  const castNote =
+    bundle.format === "cute_cast"
+      ? ` cast=${cuteCast}`
+      : includeJjibara
+        ? " jjibara=1"
+        : " jjibara=0";
+  log(`  ✓ ${bundle.id} (${sec}s)${castNote}`);
+  progress.done[bundle.id] = {
+    at: new Date().toISOString(),
+    sec,
+    outPath,
+    rawPath,
+    includeJjibara,
+    cuteCast: cuteCast ?? null,
+  };
   delete progress.failed[bundle.id];
   saveProgress(progress);
 
@@ -194,10 +366,18 @@ async function runBatch() {
   })();
 
   mkdirSync(OUT, { recursive: true });
+  // Catalog import already auto-asserts hanja allowlist; log for operators.
+  const { assertHanjaCatalogAudited } = await import(
+    "../src/lib/vocabInfographic/hanjaHubAudit.ts"
+  );
+  const { hubCount } = assertHanjaCatalogAudited(ALL_VOCAB_BUNDLES);
+  log(`hanja audit auto-OK (${hubCount} hubs, allowlist-locked)`);
+
   const progress = loadProgress();
 
   const styleRef = resolveCharacterRefPath(ROOT);
   log(`═══ batch runner start — ${IMAGE_DEPLOY} quality=high timeout=600s ═══`);
+  log(`capybara cast: always on (VOCAB_JJIBARA_RATE=${JJIBARA_APPEAR_RATE})`);
   log(
     styleRef
       ? `style/character ref: ${styleRef} (images/edits + high fidelity)`

@@ -373,6 +373,11 @@ function main() {
     "concept_rows",
     "phrase_stack",
     "topik_upgrade",
+    "cute_cast",
+    "hanja_hub",
+    "pronunciation_grid",
+    "grammar_spotlight",
+    "compound_word",
   ];
 
   const byFormat: Record<string, MasterEntry[]> = {};

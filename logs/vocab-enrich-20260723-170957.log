@@ -1,0 +1,31 @@
+yarn run v1.22.19
+$ npx tsx scripts/enrich-vocab-seo-pages.ts
+[vocab:enrich] 344 pages (force=false voice=Mina avkEnv=true)
+
+→ [1/344] list-hangul-consonants (0 words)
+  ok explanation=Korean consonants are the basic building blocks of Hangul, t… examples=3 edgeWords=0
+
+→ [2/344] list-hangul-diphthongs (0 words)
+  ok explanation=Korean vowel combinations are formed by joining simple vowel… examples=3 edgeWords=0
+
+→ [3/344] quiz-ask-vs-request (0 words)
+  ok explanation=In Korean, both 'ask' and 'request' involve asking for somet… examples=3 edgeWords=0
+
+→ [4/344] quiz-big-vs-large (0 words)
+  ok explanation=In Korean, both 'big' and 'large' can be translated as '크다',… examples=3 edgeWords=0
+
+→ [5/344] quiz-consider-vs-think (0 words)
+  ok explanation=In Korean, both 'consider' and 'think' relate to mental proc… examples=3 edgeWords=0
+
+→ [6/344] quiz-go-vs-come (0 words)
+  ok explanation=This quiz helps you understand the difference between the Ko… examples=3 edgeWords=0
+
+→ [7/344] quiz-hear-vs-listen (0 words)
+  ok explanation=In Korean, 'hear' and 'listen' are different verbs that show… examples=3 edgeWords=0
+
+→ [8/344] quiz-learn-vs-study (0 words)
+  ok explanation=In Korean, 'learn' and 'study' are different verbs that desc… examples=3 edgeWords=0
+
+→ [9/344] quiz-like-vs-love (0 words)
+error Command failed with exit code 143.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

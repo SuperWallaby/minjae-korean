@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * Global Pinterest (Account B / multilingual Chrome :9224).
- * Pins teach TARGET lang via English → site pin page (never affiliate URL).
- * Affiliate is only reached via the on-site /go/preply|italki hop (never pin link).
+ * Pins teach TARGET lang via English → destination:
+ *   ~25% Preply/italki direct, rest → global site /pin/{id}
  *
  *   node scripts/pin-global-lang-samples.mjs --count 4
  *   node scripts/pin-global-lang-samples.mjs --dry-run
@@ -11,10 +11,11 @@
  * Requires: Chrome profile chrome-pinterest-multilingual logged in on :9224
  *   auto-video-korean/scripts/launch-chrome-pinterest-multilingual.sh
  *
- * Boards: one board named by language (e.g. "Spanish vocabulary") unless
+ * Boards: one board named by language (e.g. "Spanish words") unless
  * PINTEREST_BOARD_NAME / --board is set (shared board).
  */
 import { spawnSync } from "node:child_process";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -34,17 +35,34 @@ const UPLOAD_PIN = path.join(
   "..",
   "projects/neo-project/auto-video-korean/scripts/pinterest-browser/upload-pin.mjs",
 );
+const DELETE_DRAFTS = path.join(
+  path.dirname(UPLOAD_PIN),
+  "delete-drafts.mjs",
+);
+const DRAFT_MIN_COUNT = Math.max(
+  1,
+  Number(process.env.PINTEREST_DRAFT_MIN_COUNT ?? 50) || 50,
+);
 
 const BROWSER_URL =
   process.env.CHROME_PINTEREST_ML_DEBUG_URL ||
   process.env.CHROME_GLOBAL_DEBUG_URL ||
   "http://127.0.0.1:9224";
 /** Pinterest destination — never affiliate direct; hop via global site content pages. */
-// Path works on kajakorean.com today; custom host after DNS:
-// GLOBAL_SITE_URL=https://global.kajakorean.com
+// Canonical destination host (DNS may lag; pins use this ahead of time).
 const GLOBAL_SITE = (
-  process.env.GLOBAL_SITE_URL || "https://kajakorean.com/global-site"
+  process.env.GLOBAL_SITE_URL || "https://global.kajakorean.com"
 ).replace(/\/+$/, "");
+const PREPLY =
+  process.env.PINTEREST_AFFILIATE_PREPLY ||
+  "https://preply.sjv.io/c/7574725/1987575/24422";
+const ITALKI =
+  process.env.PINTEREST_AFFILIATE_ITALKI ||
+  "https://www.italki.com/en/affshare?ref=af33117569";
+const AFFILIATE_RATE = Math.min(
+  1,
+  Math.max(0, Number(process.env.PINTEREST_AFFILIATE_RATE ?? 0.25) || 0),
+);
 
 const DELAY_MIN_SEC = Math.max(
   0,
@@ -106,8 +124,83 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function shuffleInPlace(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = crypto.randomInt(0, i + 1);
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+/** topic slug from id like 01_eye-colors__es → eye-colors */
+function topicKey(meta) {
+  const id = String(meta?.id || "");
+  const m = id.match(/^\d+_(.+)__[a-z]{2}$/i);
+  if (m) return m[1];
+  return meta?.topicSlug || id.split("__")[0] || "other";
+}
+
+function langKey(meta) {
+  return String(meta?.lang || meta?.langName || "xx").toLowerCase();
+}
+
+/**
+ * Pin upload order = random, NEVER generation/id sequence.
+ * Round-robin languages so boards/topics don't get dumped in catalog order.
+ */
+function pickCandidatesRandom(metas, count) {
+  const byLang = new Map();
+  for (const m of metas) {
+    const k = langKey(m);
+    if (!byLang.has(k)) byLang.set(k, []);
+    byLang.get(k).push(m);
+  }
+
+  const queues = new Map();
+  for (const [lang, list] of byLang) {
+    const byTopic = new Map();
+    for (const m of list) {
+      const t = topicKey(m);
+      if (!byTopic.has(t)) byTopic.set(t, []);
+      byTopic.get(t).push(m);
+    }
+    for (const tList of byTopic.values()) shuffleInPlace(tList);
+    const topicKeys = shuffleInPlace([...byTopic.keys()]);
+    const spread = [];
+    while (true) {
+      let hit = false;
+      for (const t of topicKeys) {
+        const tList = byTopic.get(t);
+        if (tList?.length) {
+          spread.push(tList.shift());
+          hit = true;
+        }
+      }
+      if (!hit) break;
+    }
+    queues.set(lang, spread);
+  }
+
+  const langs = shuffleInPlace([...queues.keys()]);
+  const out = [];
+  while (out.length < count) {
+    let progressed = false;
+    for (const k of langs) {
+      const q = queues.get(k);
+      if (q?.length) {
+        out.push(q.shift());
+        progressed = true;
+        if (out.length >= count) break;
+      }
+    }
+    if (!progressed) break;
+  }
+  return out;
+}
+
 function listReady() {
   if (!fs.existsSync(OUT)) return [];
+  // Unsorted — pin order is decided only by pickCandidatesRandom().
   return fs
     .readdirSync(OUT)
     .filter((f) => f.endsWith(".json") && !f.includes("pinned"))
@@ -118,14 +211,13 @@ function listReady() {
       if (!fs.existsSync(png)) return null;
       return { ...meta, pngPath: png };
     })
-    .filter(Boolean)
-    .sort((a, b) => String(a.id).localeCompare(String(b.id)));
+    .filter(Boolean);
 }
 
 function boardFor(meta, forcedBoard) {
   if (forcedBoard) return forcedBoard;
   const name = String(meta.langName || meta.lang || "Language").trim();
-  return `${name} vocabulary`;
+  return `${name} words`;
 }
 
 function topicFor(meta) {
@@ -133,8 +225,31 @@ function topicFor(meta) {
   return `${name} language`;
 }
 
+function withUtm(url, campaign) {
+  try {
+    const u = new URL(url);
+    if (!u.searchParams.get("utm_source"))
+      u.searchParams.set("utm_source", "pinterest");
+    if (!u.searchParams.get("utm_medium"))
+      u.searchParams.set("utm_medium", "pin");
+    if (!u.searchParams.get("utm_campaign"))
+      u.searchParams.set("utm_campaign", campaign);
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
 function affiliateLink(meta) {
-  // Pinterest destination = global site pin page (affiliate only via /go/*)
+  // ~25% direct Preply/italki; otherwise global site pin page
+  if (AFFILIATE_RATE > 0 && Math.random() < AFFILIATE_RATE) {
+    const usePreply = Math.random() < 0.5;
+    const raw = usePreply ? PREPLY : ITALKI;
+    return {
+      url: withUtm(raw, usePreply ? "global-aff-preply" : "global-aff-italki"),
+      partner: usePreply ? "preply" : "italki",
+    };
+  }
   const id = String(meta.id || "").trim();
   if (!id) return { url: GLOBAL_SITE, partner: "site" };
   try {
@@ -150,8 +265,22 @@ function affiliateLink(meta) {
   }
 }
 
+function pickOne(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+function topicAndLang(meta) {
+  const lang = String(meta.langName || meta.lang || "Language").trim();
+  let topic = String(meta.titleEn || "").trim();
+  const re = new RegExp(`\\s+in\\s+${lang.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i");
+  topic = topic.replace(re, "").trim();
+  if (!topic) topic = "words";
+  return { topic, lang };
+}
+
 function descriptionFromMeta(meta) {
   const words = Array.isArray(meta.words) ? meta.words : [];
+  const useEmoji = Math.random() < 0.7;
   const lines = words
     .slice(0, 10)
     .map((w, i) => {
@@ -159,20 +288,18 @@ function descriptionFromMeta(meta) {
       const tgt = String(w.target || "").trim();
       const rom = String(w.romanization || "").trim();
       if (!eng && !tgt) return "";
-      const emoji = WORD_EMOJIS[i % WORD_EMOJIS.length];
-      if (eng && tgt && rom) return `${emoji} ${eng} — ${tgt} [${rom}]`;
-      if (eng && tgt) return `${emoji} ${eng} — ${tgt}`;
-      return `${emoji} ${tgt || eng}`;
+      const emoji = useEmoji ? `${WORD_EMOJIS[i % WORD_EMOJIS.length]} ` : "";
+      const style = Math.floor(Math.random() * 3);
+      if (eng && tgt && rom) {
+        if (style === 0) return `${emoji}${eng} — ${tgt} [${rom}]`;
+        if (style === 1) return `${emoji}${tgt} (${rom}) = ${eng}`;
+        return `${emoji}${eng}: ${tgt}`;
+      }
+      if (eng && tgt) return `${emoji}${eng} — ${tgt}`;
+      return `${emoji}${tgt || eng}`;
     })
     .filter(Boolean);
 
-  const tags = [
-    "#learnspanish",
-    "#languagelearning",
-    "#vocabulary",
-    `#${String(meta.langName || "lang").toLowerCase().replace(/\s+/g, "")}`,
-  ];
-  // Tag match language
   const langTagMap = {
     es: "#learnspanish",
     fr: "#learnfrench",
@@ -181,18 +308,62 @@ function descriptionFromMeta(meta) {
     it: "#learnitalian",
     ar: "#learnarabic",
   };
-  tags[0] = langTagMap[meta.lang] || tags[0];
+  const langTag =
+    langTagMap[meta.lang] ||
+    `#learn${String(meta.langName || "lang")
+      .toLowerCase()
+      .replace(/\s+/g, "")}`;
+  const tagPools = [
+    [langTag, "#languagelearning", "#vocabulary"],
+    [langTag, "#polyglot", "#wordsoftheday"],
+    [langTag, "#studytok", "#languagelearning"],
+    [langTag, "#vocabulary", `#${String(meta.langName || "lang").toLowerCase().replace(/\s+/g, "")}`],
+  ];
+  const tags = pickOne(tagPools);
 
-  let body = lines.join(" / ");
-  const budget = DESC_MAX - tags.join(" ").length - 8;
-  if (body.length > budget) body = `${body.slice(0, budget - 1).trim()}…`;
-  return `${body}\n\n${tags.join(" ")}`.slice(0, DESC_MAX);
+  const intros = [
+    "",
+    "Save for later 👇",
+    "Quick scan:",
+    "Tap through these:",
+    "Useful everyday words:",
+  ];
+  const outros = [
+    "",
+    "Which one will you use first?",
+    "Practice saying them out loud.",
+    "Screenshot + review later.",
+  ];
+  const intro = pickOne(intros);
+  const outro = Math.random() < 0.45 ? pickOne(outros.filter(Boolean).concat("")) : "";
+  const joiner = pickOne(["\n", "\n", " / ", " · "]);
+
+  let body = lines.join(joiner);
+  const head = intro ? `${intro}\n` : "";
+  const tail = outro ? `\n${outro}` : "";
+  const tagLine = tags.join(" ");
+  const budget = DESC_MAX - head.length - tail.length - tagLine.length - 8;
+  if (body.length > budget) body = `${body.slice(0, Math.max(0, budget - 1)).trim()}…`;
+  return `${head}${body}${tail}\n\n${tagLine}`.slice(0, DESC_MAX);
 }
 
 function titleFromMeta(meta) {
-  const t = String(meta.titleEn || "").trim();
-  if (t) return t.slice(0, 100);
-  return `${meta.langName || "Language"} vocabulary`.slice(0, 100);
+  const { topic, lang } = topicAndLang(meta);
+  const templates = [
+    () => `${topic} in ${lang}`,
+    () => `Everyday ${lang}: ${topic}`,
+    () => `${lang} vocab — ${topic}`,
+    () => `Learn ${topic.toLowerCase()} in ${lang}`,
+    () => `Quick ${lang} words: ${topic}`,
+    () => `${lang} starter: ${topic}`,
+    () => `${topic}? Say it in ${lang}`,
+    () => `Need ${topic.toLowerCase()} in ${lang}?`,
+    () => `${lang} cheat sheet: ${topic}`,
+  ];
+  const raw = String(meta.titleEn || "").trim();
+  // Sometimes keep catalog title as-is for natural mix.
+  if (raw && Math.random() < 0.28) return raw.slice(0, 100);
+  return pickOne(templates)().slice(0, 100);
 }
 
 function altFromMeta(meta) {
@@ -303,7 +474,12 @@ function runUpload({
 }
 
 async function main() {
-  const { count, id, dryRun, board: forcedBoard } = parseArgs(process.argv.slice(2));
+  const {
+    count,
+    id,
+    dryRun,
+    board: forcedBoard,
+  } = parseArgs(process.argv.slice(2));
 
   if (!fs.existsSync(UPLOAD_PIN)) {
     throw new Error(`upload-pin not found: ${UPLOAD_PIN}`);
@@ -314,21 +490,53 @@ async function main() {
 
   const pinned = loadJson(PINNED, {});
   const ready = listReady();
-  let candidates = id
+  const unpinned = id
     ? ready.filter((m) => m.id === id)
     : ready.filter((m) => !pinned[m.id]);
-  candidates = candidates.slice(0, count);
+  const genOrder = [...unpinned]
+    .map((m) => m.id)
+    .sort((a, b) => String(a).localeCompare(String(b)));
+  // PIN order only — never upload in generation/id sequence.
+  const candidates = id
+    ? unpinned.slice(0, 1)
+    : pickCandidatesRandom(unpinned, count);
 
   console.log(
     `==> Global Pinterest (Account B): ${candidates.length} of ${ready.length} ready, ${Object.keys(pinned).length} already pinned`,
   );
   console.log(
-    `    browser=${BROWSER_URL} delay=${DELAY_MIN_SEC}–${DELAY_MAX_SEC}s dryRun=${dryRun} board=${forcedBoard || "(per language)"}`,
+    `    browser=${BROWSER_URL} delay=${DELAY_MIN_SEC}–${DELAY_MAX_SEC}s dryRun=${dryRun} board=${forcedBoard || "(per language)"} order=random-lang-rr`,
   );
+  if (candidates.length) {
+    console.log(`    gen-order (NOT used): ${genOrder.slice(0, 12).join(" → ")}${genOrder.length > 12 ? "…" : ""}`);
+    console.log(`    pin-order (upload):   ${candidates.map((m) => m.id).join(" → ")}`);
+  }
 
   if (!candidates.length) {
     console.log("nothing to pin");
     return;
+  }
+
+  if (!dryRun && fs.existsSync(DELETE_DRAFTS)) {
+    console.log(
+      `    draft cleanup if ≥${DRAFT_MIN_COUNT} (browser=${BROWSER_URL})`,
+    );
+    const dr = spawnSync(
+      process.execPath,
+      [
+        DELETE_DRAFTS,
+        "--browser-url",
+        BROWSER_URL,
+        "--min-count",
+        String(DRAFT_MIN_COUNT),
+      ],
+      { encoding: "utf8", timeout: 180_000 },
+    );
+    if (dr.stderr) process.stderr.write(dr.stderr);
+    if (dr.stdout) process.stdout.write(dr.stdout);
+    if (dr.status !== 0) {
+      console.error("    WARN draft cleanup failed — continuing upload");
+    }
   }
 
   let ok = 0;

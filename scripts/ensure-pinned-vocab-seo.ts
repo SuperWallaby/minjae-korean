@@ -215,6 +215,21 @@ async function main() {
     console.log("\n==> enrich skipped (--no-enrich)");
   }
 
+  // 4) TTS for pinned pages missing clips (SoVITS on V100 for examples)
+  if (!noEnrich) {
+    const ttsArgs = ["vocab:enrich", "--", "--tts-only", "--pinned-only"];
+    if (enrichLimit > 0) {
+      ttsArgs.push("--limit", String(enrichLimit));
+    }
+    console.log(`\n==> yarn ${ttsArgs.join(" ")}`);
+    try {
+      execFileSync("yarn", ttsArgs, { cwd: ROOT, stdio: "inherit" });
+    } catch (e) {
+      console.error("TTS enrich failed (non-fatal for SEO catalog):", e);
+    }
+    a = audit();
+  }
+
   const report = writeReport(a, {
     phase: "done",
     noEnrich,

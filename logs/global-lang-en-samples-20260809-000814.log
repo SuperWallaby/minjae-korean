@@ -1,0 +1,24 @@
+[2026-08-08T15:08:15.295Z] ==> global lang-in-English samples count=4 model=gpt-image-2
+[2026-08-08T15:08:15.296Z]     out=/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/global-lang-en-samples
+[2026-08-08T15:08:15.297Z] 
+[1/4] 01_eye-colors__es — teach Spanish via English
+[2026-08-08T15:08:15.297Z]   skip (exists)
+[2026-08-08T15:08:15.297Z] 
+[2/4] 02_months__ja — teach Japanese via English
+[2026-08-08T15:08:15.297Z]   skip (exists)
+[2026-08-08T15:08:15.297Z] 
+[3/4] 03_foods__fr — teach French via English
+[2026-08-08T15:08:19.291Z]   title: Foods in French
+[2026-08-08T15:08:19.292Z]     bread → pain [pan]
+[2026-08-08T15:08:19.292Z]     cheese → fromage [fro-mazh]
+[2026-08-08T15:08:19.292Z]     wine → vin [van]
+[2026-08-08T15:09:50.917Z]   ok 91.6s → /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/global-lang-en-samples/03_foods__fr.png
+[2026-08-08T15:09:50.918Z] 
+[4/4] 04_emotions__de — teach German via English
+[2026-08-08T15:09:54.313Z]   title: Emotions in German
+[2026-08-08T15:09:54.313Z]     happy → glücklich [GLUEK-likh]
+[2026-08-08T15:09:54.314Z]     sad → traurig [TROW-rikh]
+[2026-08-08T15:09:54.314Z]     angry → wütend [VUE-tent]
+[2026-08-08T15:11:26.095Z]   ok 91.8s → /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/global-lang-en-samples/04_emotions__de.png
+[2026-08-08T15:11:26.095Z] 
+==> sample batch done

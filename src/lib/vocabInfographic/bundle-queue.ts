@@ -11,6 +11,11 @@ export function bundleQueueTier(bundle: VocabBundle): BundleQueueTier {
   if (bundle.format === "concept_rows") return "expression";
   if (bundle.format === "phrase_stack") return "expression";
   if (bundle.format === "topik_upgrade") return "expression";
+  if (bundle.format === "cute_cast") return "expression";
+  if (bundle.format === "hanja_hub") return "expression";
+  if (bundle.format === "pronunciation_grid") return "noun";
+  if (bundle.format === "grammar_spotlight") return "expression";
+  if (bundle.format === "compound_word") return "noun";
   if (bundle.format === "super_list") {
     const expressionList =
       bundle.tags.includes("grammar") ||
@@ -60,6 +65,11 @@ export function formatRotatedQueue(
 
   // Non-grid formats first in rotation; grid appears once per full pass.
   const preferred: VocabInfographicFormatId[] = [
+    "cute_cast",
+    "hanja_hub",
+    "pronunciation_grid",
+    "grammar_spotlight",
+    "compound_word",
     "topik_upgrade",
     "similar_split",
     "phrase_stack",

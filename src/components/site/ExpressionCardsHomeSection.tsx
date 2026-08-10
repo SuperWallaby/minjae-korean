@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Container } from "@/components/site/Container";
 import { MarketingHeader } from "@/components/site/MarketingShell";
@@ -15,7 +16,7 @@ const CHARACTER_CREDIT_HREF = "https://www.instagram.com/chico._.pu";
 /** Start loading a bit before the section enters the viewport. */
 const MEDIA_ROOT_MARGIN = "320px 0px";
 /** How many neighbors around the active slide may fetch images. */
-const SLIDE_LOAD_RADIUS = 1;
+const SLIDE_LOAD_RADIUS = 2;
 
 type Props = {
   sets: ExpressionCardSet[];
@@ -35,6 +36,7 @@ function SoftImage({
   width,
   height,
   enabled = true,
+  eager = false,
 }: {
   src: string;
   alt: string;
@@ -43,11 +45,27 @@ function SoftImage({
   height?: number;
   /** When false, keep the aspect box but do not request the image. */
   enabled?: boolean;
+  /** Prefer for carousel slides — native lazy inside overflow-x is flaky. */
+  eager?: boolean;
 }) {
   const [loaded, setLoaded] = React.useState(false);
+  const imgRef = React.useRef<HTMLImageElement | null>(null);
+
+  const markLoaded = React.useCallback(() => {
+    setLoaded(true);
+  }, []);
 
   React.useEffect(() => {
     setLoaded(false);
+  }, [src]);
+
+  // Cached images often skip onLoad — check complete after mount/src change.
+  React.useEffect(() => {
+    if (!enabled) return;
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth > 0) {
+      setLoaded(true);
+    }
   }, [src, enabled]);
 
   return (
@@ -57,16 +75,18 @@ function SoftImage({
       {enabled ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
+          ref={imgRef}
           className={className}
           src={src}
           alt={alt}
           width={width}
           height={height}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
           decoding="async"
-          fetchPriority="low"
+          fetchPriority={eager ? "high" : "low"}
           draggable={false}
-          onLoad={() => setLoaded(true)}
+          onLoad={markLoaded}
+          onError={markLoaded}
         />
       ) : null}
     </span>
@@ -81,11 +101,15 @@ function ExpressionCardStage({
   enabled: boolean;
 }) {
   const [index, setIndex] = React.useState(0);
+  const [unlocked, setUnlocked] = React.useState<Set<number>>(
+    () => new Set([0, 1]),
+  );
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
   const ignoreScrollSync = React.useRef(false);
 
   React.useEffect(() => {
     setIndex(0);
+    setUnlocked(new Set([0, 1, 2]));
     const el = scrollerRef.current;
     if (el) {
       ignoreScrollSync.current = true;
@@ -96,10 +120,20 @@ function ExpressionCardStage({
     }
   }, [set.id]);
 
+  React.useEffect(() => {
+    setUnlocked((prev) => {
+      const next = new Set(prev);
+      for (let i = index - SLIDE_LOAD_RADIUS; i <= index + SLIDE_LOAD_RADIUS; i++) {
+        if (i >= 0 && i < set.cards.length) next.add(i);
+      }
+      return next;
+    });
+  }, [index, set.cards.length]);
+
   // Prefetch current + neighbors only after the section is near the viewport.
   React.useEffect(() => {
     if (!enabled) return;
-    for (let i = index - SLIDE_LOAD_RADIUS; i <= index + SLIDE_LOAD_RADIUS; i++) {
+    for (let i = index - SLIDE_LOAD_RADIUS; i <= index + SLIDE_LOAD_RADIUS + 1; i++) {
       const url = set.cards[i]?.imageUrl;
       if (url) prefetchImage(url);
     }
@@ -111,15 +145,14 @@ function ExpressionCardStage({
     const slide = el.children[next] as HTMLElement | undefined;
     if (!slide) return;
     ignoreScrollSync.current = true;
-    el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
     setIndex(next);
+    el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
     window.setTimeout(() => {
       ignoreScrollSync.current = false;
-    }, 380);
+    }, 420);
   }, []);
 
   const onScroll = () => {
-    if (ignoreScrollSync.current) return;
     const el = scrollerRef.current;
     if (!el || el.clientWidth <= 0) return;
     const next = Math.round(el.scrollLeft / el.clientWidth);
@@ -142,37 +175,58 @@ function ExpressionCardStage({
         </p>
       </div>
 
-      <div
-        ref={scrollerRef}
-        className={styles.slideTrack}
-        onScroll={onScroll}
-        role="region"
-        aria-roledescription="carousel"
-        aria-label={`${set.shortTitle} slides`}
-      >
-        {set.cards.map((slide, i) => {
-          const near = Math.abs(i - index) <= SLIDE_LOAD_RADIUS;
-          return (
-            <div
-              key={`${set.id}-${slide.imageUrl}-${i}`}
-              className={styles.slidePane}
-              aria-hidden={i !== index}
-            >
-              <SoftImage
-                className={styles.slideImage}
-                src={slide.imageUrl}
-                alt={
-                  slide.hangul
-                    ? `${slide.hangul}${slide.english ? ` — ${slide.english}` : ""}`
-                    : set.title
-                }
-                enabled={enabled && near}
-                width={720}
-                height={900}
-              />
-            </div>
-          );
-        })}
+      <div className={styles.slideFrame}>
+        <div
+          ref={scrollerRef}
+          className={styles.slideTrack}
+          onScroll={onScroll}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={`${set.shortTitle} slides`}
+        >
+          {set.cards.map((slide, i) => {
+            const shouldLoad = enabled && unlocked.has(i);
+            return (
+              <div
+                key={`${set.id}-${slide.imageUrl}-${i}`}
+                className={styles.slidePane}
+                aria-hidden={i !== index}
+              >
+                <SoftImage
+                  className={styles.slideImage}
+                  src={slide.imageUrl}
+                  alt={
+                    slide.hangul
+                      ? `${slide.hangul}${slide.english ? ` — ${slide.english}` : ""}`
+                      : set.title
+                  }
+                  enabled={shouldLoad}
+                  eager={shouldLoad && Math.abs(i - index) <= 1}
+                  width={720}
+                  height={900}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        <button
+          type="button"
+          className={`${styles.arrowBtn} ${styles.arrowPrev}`}
+          onClick={() => scrollToIndex(index - 1)}
+          disabled={isFirst}
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="size-5" strokeWidth={2.25} aria-hidden />
+        </button>
+        <button
+          type="button"
+          className={`${styles.arrowBtn} ${styles.arrowNext}`}
+          onClick={() => scrollToIndex(isLast ? 0 : index + 1)}
+          aria-label={isLast ? "Restart set" : "Next slide"}
+        >
+          <ChevronRight className="size-5" strokeWidth={2.25} aria-hidden />
+        </button>
       </div>
 
       <div className={styles.dots} aria-hidden>
@@ -200,26 +254,6 @@ function ExpressionCardStage({
           ) : null}
         </div>
       )}
-
-      <div className={styles.controls}>
-        <button
-          type="button"
-          className={styles.navBtn}
-          onClick={() => scrollToIndex(index - 1)}
-          disabled={isFirst}
-        >
-          Prev
-        </button>
-        <button
-          type="button"
-          className={`${styles.navBtn} ${styles.navBtnPrimary}`}
-          onClick={() =>
-            scrollToIndex(isLast ? 0 : index + 1)
-          }
-        >
-          {isLast ? "Restart" : "Next"}
-        </button>
-      </div>
     </div>
   );
 }
@@ -310,7 +344,10 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
                   />
                   <p className={styles.lead}>
                     Capybara Instagram list carousels — pick a set, then swipe
-                    through the slides.
+                    through the slides.{" "}
+                    <a href={activeSet.href} className={styles.creditLink}>
+                      Open full page →
+                    </a>
                   </p>
                   <CharacterCredit />
 

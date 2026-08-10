@@ -16,7 +16,7 @@ export type VocabImageWord = {
 export type VocabImageWordsPayload = {
   bundleId: string;
   extractedAt: string;
-  source: "quiz" | "vision" | "cache" | "preview";
+  source: "quiz" | "vision" | "cache" | "preview" | "catalog";
   words: VocabImageWord[];
 };
 
@@ -401,6 +401,28 @@ export async function resolveVocabImageWords(input: {
   forceRefresh?: boolean;
 }): Promise<VocabImageWordsPayload> {
   const { bundle } = input;
+
+  // Hanja hubs: locked audited catalog only — never vision invent.
+  if (bundle.format === "hanja_hub" && bundle.hanjaHub) {
+    const { auditHanjaHub, catalogHanjaImageWords } = await import(
+      "./vocabInfographic/hanjaHubAudit"
+    );
+    const issues = auditHanjaHub(bundle.id, bundle.hanjaHub, {
+      allowlistStrict: true,
+    });
+    if (issues.length) {
+      throw new Error(issues.map((i) => i.message).join("; "));
+    }
+    const payload: VocabImageWordsPayload = {
+      bundleId: bundle.id,
+      extractedAt: new Date().toISOString(),
+      source: "catalog",
+      words: catalogHanjaImageWords(bundle.hanjaHub),
+    };
+    if (input.cacheDir) saveVocabImageWords(input.cacheDir, payload);
+    return payload;
+  }
+
   const quizWords = wordsFromQuizBundle(bundle);
   if (quizWords.length) {
     const payload: VocabImageWordsPayload = {

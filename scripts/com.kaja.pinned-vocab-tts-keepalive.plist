@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Every 10 minutes: if pinned SEO TTS loop is dead, start it. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kaja.pinned-vocab-tts-keepalive</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/minjaekim/Desktop/korean-teacher-mj/scripts/start-pinned-vocab-tts-if-needed.sh</string>
+  </array>
+  <key>StartInterval</key>
+  <integer>600</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/vocab-infographic-gen/logs/keepalive-launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/vocab-infographic-gen/logs/keepalive-launchd.err.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/local/bin:/opt/homebrew/bin:/Users/minjaekim/.nvm/versions/node/v22.22.1/bin:/usr/bin:/bin</string>
+    <key>HOME</key>
+    <string>/Users/minjaekim</string>
+  </dict>
+</dict>
+</plist>

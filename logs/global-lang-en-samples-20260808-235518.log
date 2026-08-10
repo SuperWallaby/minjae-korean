@@ -1,0 +1,18 @@
+[2026-08-08T14:55:19.464Z] ==> global lang-in-English samples count=2 model=gpt-image-2
+[2026-08-08T14:55:19.465Z]     out=/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/global-lang-en-samples
+[2026-08-08T14:55:19.465Z] 
+[1/2] 01_eye-colors__es — teach Spanish via English
+[2026-08-08T14:55:23.082Z]   title: Eye colors in Spanish
+[2026-08-08T14:55:23.083Z]     black → negro [NEH-groh]
+[2026-08-08T14:55:23.083Z]     brown → marrón [mah-RON]
+[2026-08-08T14:55:23.105Z]     hazel → avellana [ah-veh-YAH-nah]
+[2026-08-08T14:57:01.122Z]   ok 98.0s → /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/global-lang-en-samples/01_eye-colors__es.png
+[2026-08-08T14:57:01.123Z] 
+[2/2] 02_months__ja — teach Japanese via English
+[2026-08-08T14:57:04.960Z]   title: Months in Japanese
+[2026-08-08T14:57:04.960Z]     January → 一月 [ichigatsu]
+[2026-08-08T14:57:04.960Z]     February → 二月 [nigatsu]
+[2026-08-08T14:57:04.960Z]     March → 三月 [sangatsu]
+[2026-08-08T14:58:43.044Z]   ok 98.1s → /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/global-lang-en-samples/02_months__ja.png
+[2026-08-08T14:58:43.045Z] 
+==> sample batch done

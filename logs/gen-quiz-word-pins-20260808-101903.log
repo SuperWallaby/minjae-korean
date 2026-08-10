@@ -1,0 +1,326 @@
+======== round 1 batch=80 c=2 2026-08-08T10:19:03+09:00 ========
+==> quiz word pins n=80 concurrency=2 seoOnly=true out=/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins
+
+→ [1/80] book / 책 (e5575461…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/e5575461-a0d3-4223-a63d-b8b73fb07417/book?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+
+→ [2/80] horse / 말,,,,,이말을 타고 나아가볼까나 (1681eff6…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/1681eff6-63f4-418f-a620-cbe6da688791/horse?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/e5575461-a0d3-4223-a63d-b8b73fb07417/book-e5575461-word-pin.jpg
+
+→ [3/80] pajamas / 잠옷 (ec280c7b…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/ec280c7b-f663-4b5b-a7e2-cf1f7931ffd5/pajamas?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/1681eff6-63f4-418f-a620-cbe6da688791/horse-1681eff6-word-pin.jpg
+
+→ [4/80] window / 창문 (04b37feb…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/04b37feb-64aa-4b7c-9374-ee41f565e3a1/window?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/ec280c7b-f663-4b5b-a7e2-cf1f7931ffd5/pajamas-ec280c7b-word-pin.jpg
+
+→ [5/80] tteokbokki / 떡볶이 (cc0c7cb4…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/cc0c7cb4-4a24-4f65-bdeb-bd1dd6f7d6c7/tteokbokki?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/04b37feb-64aa-4b7c-9374-ee41f565e3a1/window-04b37feb-word-pin.jpg
+
+→ [6/80] soup / 국 (65ee77c9…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/65ee77c9-e13c-4888-8262-4cabc75522dd/soup?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/65ee77c9-e13c-4888-8262-4cabc75522dd/soup-65ee77c9-word-pin.jpg
+
+→ [7/80] hoodie / 후드티 (7b29fcd4…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/7b29fcd4-8546-4728-b36b-e2b33115091b/hoodie?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/cc0c7cb4-4a24-4f65-bdeb-bd1dd6f7d6c7/tteokbokki-cc0c7cb4-word-pin.jpg
+
+→ [8/80] to do laundry / 빨래하다 (958ed776…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/958ed776-35ae-4693-b081-b367b3d8d7cb/to-do-laundry?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/7b29fcd4-8546-4728-b36b-e2b33115091b/hoodie-7b29fcd4-word-pin.jpg
+
+→ [9/80] to wash one's face / 세수하다 (459ad98a…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/459ad98a-35a3-42c9-92c6-97fee791ddfd/to-wash-one-s-face?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/958ed776-35ae-4693-b081-b367b3d8d7cb/to-do-laundry-958ed776-word-pin.jpg
+
+→ [10/80] grandfather / 할아버지 (12d2a9c7…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/12d2a9c7-421d-4a3b-abe3-f79a092576a2/grandfather?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/12d2a9c7-421d-4a3b-abe3-f79a092576a2/grandfather-12d2a9c7-word-pin.jpg
+
+→ [11/80] grandmother / 할머니 (16242d5f…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/16242d5f-c2a9-416b-87ff-7d63841457ee/grandmother?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/459ad98a-35a3-42c9-92c6-97fee791ddfd/to-wash-one-s-face-459ad98a-word-pin.jpg
+
+→ [12/80] lightning / 번개 (7a60d838…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/7a60d838-eedf-4f1d-b21f-4dba162bbb92/lightning?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/7a60d838-eedf-4f1d-b21f-4dba162bbb92/lightning-7a60d838-word-pin.jpg
+
+→ [13/80] mushroom / 버섯 (40c52e50…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/40c52e50-8ec1-444a-b732-09d45da4320b/mushroom?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/40c52e50-8ec1-444a-b732-09d45da4320b/mushroom-40c52e50-word-pin.jpg
+
+→ [14/80] spoon / 숟가락 (d48d8e17…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/d48d8e17-a6d9-4b4d-a0f1-c5a9dbc3298c/spoon?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/16242d5f-c2a9-416b-87ff-7d63841457ee/grandmother-16242d5f-word-pin.jpg
+
+→ [15/80] dog / 개 (3a4a7369…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/3a4a7369-9019-4f3c-9ae3-b46cd01a4515/dog?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/d48d8e17-a6d9-4b4d-a0f1-c5a9dbc3298c/spoon-d48d8e17-word-pin.jpg
+
+→ [16/80] toast / 토스트 (78ffc4ff…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/78ffc4ff-0a84-42b2-9007-cec6282a4923/toast?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/3a4a7369-9019-4f3c-9ae3-b46cd01a4515/dog-3a4a7369-word-pin.jpg
+
+→ [17/80] pear / 배 (b6124ddc…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/b6124ddc-7106-4860-a851-170bd6cf9c58/pear?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/78ffc4ff-0a84-42b2-9007-cec6282a4923/toast-78ffc4ff-word-pin.jpg
+
+→ [18/80] tangerine / 귤 (8758b822…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/8758b822-d390-43f1-961e-a13e193522e4/tangerine?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/b6124ddc-7106-4860-a851-170bd6cf9c58/pear-b6124ddc-word-pin.jpg
+
+→ [19/80] pencil case / 필통 (491fc4a3…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/491fc4a3-a52c-477e-bf53-144ba9108e87/pencil-case?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/8758b822-d390-43f1-961e-a13e193522e4/tangerine-8758b822-word-pin.jpg
+
+→ [20/80] chalk / 분필 (730e7770…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/730e7770-1305-4f5c-aafd-c68adb249e7d/chalk?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/491fc4a3-a52c-477e-bf53-144ba9108e87/pencil-case-491fc4a3-word-pin.jpg
+
+→ [21/80] chair / 의자 (dc3f614b…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/dc3f614b-efee-4bbb-a74f-6035871b0dcc/chair?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/730e7770-1305-4f5c-aafd-c68adb249e7d/chalk-730e7770-word-pin.jpg
+
+→ [22/80] truck / 트럭 (29433b9d…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/29433b9d-34de-422d-809b-ab6ce4364148/truck?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/dc3f614b-efee-4bbb-a74f-6035871b0dcc/chair-dc3f614b-word-pin.jpg
+
+→ [23/80] traffic light / 신호등 (82dfa6f6…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/82dfa6f6-ce6a-4ca8-8997-3c56beb74856/traffic-light?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/29433b9d-34de-422d-809b-ab6ce4364148/truck-29433b9d-word-pin.jpg
+
+→ [24/80] salad / 샐러드 (48aa32c6…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/48aa32c6-da02-4592-97ab-243c85662293/salad?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/82dfa6f6-ce6a-4ca8-8997-3c56beb74856/traffic-light-82dfa6f6-word-pin.jpg
+
+→ [25/80] water / 물 (d5432ab2…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/d5432ab2-c38b-4afe-a000-baa7990f7f73/water?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/48aa32c6-da02-4592-97ab-243c85662293/salad-48aa32c6-word-pin.jpg
+
+→ [26/80] earphones / 이어폰 (39583651…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/39583651-78d3-460e-a173-22ccddfea595/earphones?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/d5432ab2-c38b-4afe-a000-baa7990f7f73/water-d5432ab2-word-pin.jpg
+
+→ [27/80] udon noodles / 우동 (d41e56bc…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/d41e56bc-60d5-406b-ae2a-40aae0fb2b06/udon-noodles?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/39583651-78d3-460e-a173-22ccddfea595/earphones-39583651-word-pin.jpg
+
+→ [28/80] title / 제목 (382e2e26…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/382e2e26-8459-49fb-b3f7-8a4d8530095f/title?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/382e2e26-8459-49fb-b3f7-8a4d8530095f/title-382e2e26-word-pin.jpg
+
+→ [29/80] to cough / 기침하다 (3abe3def…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/3abe3def-38ff-4f4c-864e-e17ea4a2fd80/to-cough?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/d41e56bc-60d5-406b-ae2a-40aae0fb2b06/udon-noodles-d41e56bc-word-pin.jpg
+
+→ [30/80] to make a mistake / 실수하다 (8a24fc38…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/8a24fc38-d547-4805-a666-4e2fb2c94fe7/to-make-a-mistake?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/8a24fc38-d547-4805-a666-4e2fb2c94fe7/to-make-a-mistake-8a24fc38-word-pin.jpg
+
+→ [31/80] go rotten / 상하다 (91056b5a…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/91056b5a-2337-4a89-8d89-899f5e925c5c/go-rotten?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/3abe3def-38ff-4f4c-864e-e17ea4a2fd80/to-cough-3abe3def-word-pin.jpg
+
+→ [32/80] colored paper / 색종이 (a05be89e…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/a05be89e-989a-4d07-ab9c-a9fbf4a5febc/colored-paper?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/a05be89e-989a-4d07-ab9c-a9fbf4a5febc/colored-paper-a05be89e-word-pin.jpg
+
+→ [33/80] to shiver / 떨다 (f109a1ab…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/f109a1ab-8316-46ea-a18e-cb2f3be5c78a/to-shiver?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/f109a1ab-8316-46ea-a18e-cb2f3be5c78a/to-shiver-f109a1ab-word-pin.jpg
+
+→ [34/80] ginger tea / 생강차 (a5e6e455…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/a5e6e455-f17f-4217-9dfd-471f45d3ecb4/ginger-tea?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/91056b5a-2337-4a89-8d89-899f5e925c5c/go-rotten-91056b5a-word-pin.jpg
+
+→ [35/80] ring / 반지 (dac02b57…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/dac02b57-6e50-41d7-9ead-1b75a953782f/ring?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/dac02b57-6e50-41d7-9ead-1b75a953782f/ring-dac02b57-word-pin.jpg
+
+→ [36/80] parking / 주차 (bc7791e3…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/bc7791e3-4fa0-4954-b994-d4ae71c10e04/parking?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/a5e6e455-f17f-4217-9dfd-471f45d3ecb4/ginger-tea-a5e6e455-word-pin.jpg
+
+→ [37/80] octopus / 문어 (c286795a…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/c286795a-bf8e-4a9b-aab1-e8aa52cb504b/octopus?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/bc7791e3-4fa0-4954-b994-d4ae71c10e04/parking-bc7791e3-word-pin.jpg
+
+→ [38/80] chick / 병아리 (90c4c818…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/90c4c818-8409-4c6c-a15e-b295aaf35f3d/chick?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/90c4c818-8409-4c6c-a15e-b295aaf35f3d/chick-90c4c818-word-pin.jpg
+
+→ [39/80] nail clipper / 손톱깎이 (67ddbcd4…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/67ddbcd4-ad76-4ca3-a551-1e01ba79eded/nail-clipper?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/c286795a-bf8e-4a9b-aab1-e8aa52cb504b/octopus-c286795a-word-pin.jpg
+
+→ [40/80] green / 초록 (f48e161e…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/f48e161e-073d-434a-9e19-035657f3e64b/green?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/67ddbcd4-ad76-4ca3-a551-1e01ba79eded/nail-clipper-67ddbcd4-word-pin.jpg
+
+→ [41/80] plastic bag / 비닐봉투 (8ac406b6…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/8ac406b6-3192-4a9f-8806-0b7e0917a682/plastic-bag?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/f48e161e-073d-434a-9e19-035657f3e64b/green-f48e161e-word-pin.jpg
+
+→ [42/80] sunflower / 해바라기 (387cdb6a…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/387cdb6a-227d-4c26-a89d-a782f33c7f78/sunflower?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/387cdb6a-227d-4c26-a89d-a782f33c7f78/sunflower-387cdb6a-word-pin.jpg
+
+→ [43/80] good luck / 행운 (9f3fba8a…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/9f3fba8a-94bf-4a16-83aa-4d4cd70b8aa3/good-luck?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/8ac406b6-3192-4a9f-8806-0b7e0917a682/plastic-bag-8ac406b6-word-pin.jpg
+
+→ [44/80] seat belt / 안전벨트 (0f7957a1…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/0f7957a1-ddb9-449f-8697-3c1b55984931/seat-belt?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/0f7957a1-ddb9-449f-8697-3c1b55984931/seat-belt-0f7957a1-word-pin.jpg
+
+→ [45/80] to shine / 빛나다 (afdd62d6…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/afdd62d6-4e51-4c04-a04e-c1d5620cdab3/to-shine?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/9f3fba8a-94bf-4a16-83aa-4d4cd70b8aa3/good-luck-9f3fba8a-word-pin.jpg
+
+→ [46/80] goldfish / 금붕어 (a37800e2…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/a37800e2-6f46-4733-9b79-4a152f70b3a6/goldfish?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/afdd62d6-4e51-4c04-a04e-c1d5620cdab3/to-shine-afdd62d6-word-pin.jpg
+
+→ [47/80] crayon / 크레파스 (b90c4632…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/b90c4632-8ff5-4088-8e63-a901501ea221/crayon?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/a37800e2-6f46-4733-9b79-4a152f70b3a6/goldfish-a37800e2-word-pin.jpg
+
+→ [48/80] seaweed / 미역 (87098799…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/87098799-af88-4a23-a2b5-fd92fad76bfe/seaweed?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/b90c4632-8ff5-4088-8e63-a901501ea221/crayon-b90c4632-word-pin.jpg
+
+→ [49/80] mango / 망고 (32eb19e3…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/32eb19e3-0bf0-4b44-a344-4aee8bdec59c/mango?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/32eb19e3-0bf0-4b44-a344-4aee8bdec59c/mango-32eb19e3-word-pin.jpg
+
+→ [50/80] blueberry / 블루베리 (443d578b…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/443d578b-104f-4a80-b5d0-6f4e6eab0449/blueberry?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/87098799-af88-4a23-a2b5-fd92fad76bfe/seaweed-87098799-word-pin.jpg
+
+→ [51/80] hot dog (korean style) / 핫도그 (0ece3bef…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/0ece3bef-550d-4138-a398-7f61456ce41d/hot-dog-korean-style?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/443d578b-104f-4a80-b5d0-6f4e6eab0449/blueberry-443d578b-word-pin.jpg
+
+→ [52/80] fish cake / 어묵 (df70fc60…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/df70fc60-9573-4b4c-a451-00df21bec2fe/fish-cake?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/0ece3bef-550d-4138-a398-7f61456ce41d/hot-dog-korean-style-0ece3bef-word-pin.jpg
+
+→ [53/80] shaved ice dessert / 빙수 (4592d334…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/4592d334-709b-44d2-b1f7-dd58593179de/shaved-ice-dessert?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/df70fc60-9573-4b4c-a451-00df21bec2fe/fish-cake-df70fc60-word-pin.jpg
+
+→ [54/80] stir-fried glass noodles / 잡채 (1cba3ec7…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/1cba3ec7-10c0-41d5-abbf-20a5ffef5d3f/stir-fried-glass-noodles?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/4592d334-709b-44d2-b1f7-dd58593179de/shaved-ice-dessert-4592d334-word-pin.jpg
+
+→ [55/80] grilled pork belly / 삼겹살 (d5c97932…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/d5c97932-f5c4-43cb-8cb7-f4af2929582d/grilled-pork-belly?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/d5c97932-f5c4-43cb-8cb7-f4af2929582d/grilled-pork-belly-d5c97932-word-pin.jpg
+
+→ [56/80] cookie / 쿠키 (c61eac7b…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/c61eac7b-ad5e-4562-a2b2-33e72f27aef0/cookie?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/1cba3ec7-10c0-41d5-abbf-20a5ffef5d3f/stir-fried-glass-noodles-1cba3ec7-word-pin.jpg
+
+→ [57/80] to win / 이기다 (2482524d…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/2482524d-9732-4050-b0fe-2eb7d44107a5/to-win?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/2482524d-9732-4050-b0fe-2eb7d44107a5/to-win-2482524d-word-pin.jpg
+
+→ [58/80] floor level / 층 (14ed1616…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/14ed1616-fa49-4716-86a9-40a731c6e336/floor-level?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/c61eac7b-ad5e-4562-a2b2-33e72f27aef0/cookie-c61eac7b-word-pin.jpg
+
+→ [59/80] to like / 좋아하다 (0bca47e8…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/0bca47e8-8ba9-4f80-b07c-7c9db39d601d/to-like?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/0bca47e8-8ba9-4f80-b07c-7c9db39d601d/to-like-0bca47e8-word-pin.jpg
+
+→ [60/80] sand / 모래 (14eeee80…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/14eeee80-e37d-4d67-820a-e7e73dd397e2/sand?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/14ed1616-fa49-4716-86a9-40a731c6e336/floor-level-14ed1616-word-pin.jpg
+
+→ [61/80] lunchtime / 점심시간 (d7e1c732…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/d7e1c732-5592-4871-a0a9-b8fab3a9083f/lunchtime?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/14eeee80-e37d-4d67-820a-e7e73dd397e2/sand-14eeee80-word-pin.jpg
+
+→ [62/80] washing machine / 세탁기 (e468ed9e…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/e468ed9e-2fe9-493b-be33-a8a31ab5d745/washing-machine?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/d7e1c732-5592-4871-a0a9-b8fab3a9083f/lunchtime-d7e1c732-word-pin.jpg
+
+→ [63/80] last week / 지난주 (210fcd37…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/210fcd37-7480-4698-b23c-12984a394cc6/last-week?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/e468ed9e-2fe9-493b-be33-a8a31ab5d745/washing-machine-e468ed9e-word-pin.jpg
+
+→ [64/80] mistake / 실수 (5eb5b783…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/5eb5b783-ad43-4475-891d-f61c97d1c189/mistake?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/210fcd37-7480-4698-b23c-12984a394cc6/last-week-210fcd37-word-pin.jpg
+
+→ [65/80] november / 십일월 (2e60458b…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/2e60458b-820b-42a3-a824-d3d70eb69357/november?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/5eb5b783-ad43-4475-891d-f61c97d1c189/mistake-5eb5b783-word-pin.jpg
+
+→ [66/80] cigarette / 담배 (2a644946…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/2a644946-d6b4-4cff-98ca-6096d835f59a/cigarette?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/2e60458b-820b-42a3-a824-d3d70eb69357/november-2e60458b-word-pin.jpg
+
+→ [67/80] pork / 돼지고기 (d2bced89…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/d2bced89-91e7-49c5-98e6-c9cca27a754e/pork?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/2a644946-d6b4-4cff-98ca-6096d835f59a/cigarette-2a644946-word-pin.jpg
+
+→ [68/80] to put on shoes / 신다. (8f9afbee…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/8f9afbee-a212-49d7-b02f-c5db665df0dc/to-put-on-shoes?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/d2bced89-91e7-49c5-98e6-c9cca27a754e/pork-d2bced89-word-pin.jpg
+
+→ [69/80] baby / 아기 (6764ff73…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/6764ff73-7fbf-476d-8ae8-f4fe80e630a3/baby?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/8f9afbee-a212-49d7-b02f-c5db665df0dc/to-put-on-shoes-8f9afbee-word-pin.jpg
+
+→ [70/80] to be surprised / 놀라다 (ef7f6106…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/ef7f6106-6d4a-484d-a59c-ce0109d58e6b/to-be-surprised?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/6764ff73-7fbf-476d-8ae8-f4fe80e630a3/baby-6764ff73-word-pin.jpg
+
+→ [71/80] to promise / 약속하다 (56dd1f23…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/56dd1f23-235d-468a-8082-789af0a256f4/to-promise?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/56dd1f23-235d-468a-8082-789af0a256f4/to-promise-56dd1f23-word-pin.jpg
+
+→ [72/80] passport / 여권 (03f11c88…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/03f11c88-2ef6-4721-8288-b3e0745dd990/passport?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/ef7f6106-6d4a-484d-a59c-ce0109d58e6b/to-be-surprised-ef7f6106-word-pin.jpg
+
+→ [73/80] to open / 열다 (74a29b0c…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/74a29b0c-24ee-4fba-9831-44d21c4acff0/to-open?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/03f11c88-2ef6-4721-8288-b3e0745dd990/passport-03f11c88-word-pin.jpg
+
+→ [74/80] to get hurt / 다치다 (69e56a88…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/69e56a88-384d-4082-8f7c-200aaca189b1/to-get-hurt?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/74a29b0c-24ee-4fba-9831-44d21c4acff0/to-open-74a29b0c-word-pin.jpg
+
+→ [75/80] to greet / 인사하다 (d7839288…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/d7839288-4599-4c0e-a3f1-5bcbaf6c3135/to-greet?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/69e56a88-384d-4082-8f7c-200aaca189b1/to-get-hurt-69e56a88-word-pin.jpg
+
+→ [76/80] side / 옆 (de0c8a79…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/de0c8a79-590c-4d15-a8e0-8528d701e70a/side?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/d7839288-4599-4c0e-a3f1-5bcbaf6c3135/to-greet-d7839288-word-pin.jpg
+
+→ [77/80] preparation / 준비 (30d0ccff…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/30d0ccff-8b53-4681-85d9-20ca85042a54/preparation?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/de0c8a79-590c-4d15-a8e0-8528d701e70a/side-de0c8a79-word-pin.jpg
+
+→ [78/80] to be born / 태어나다 (36252fa3…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/36252fa3-12ea-4c60-8938-1760a16fe256/to-be-born?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/30d0ccff-8b53-4681-85d9-20ca85042a54/preparation-30d0ccff-word-pin.jpg
+
+→ [79/80] taekwondo / 태권도 (e1a44db9…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/e1a44db9-9e2f-475a-b9ec-8a62808b1906/taekwondo?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/36252fa3-12ea-4c60-8938-1760a16fe256/to-be-born-36252fa3-word-pin.jpg
+
+→ [80/80] order / 순서 (f787a697…)
+   dest: https://kajakorean.com/vocab/detail/how-to-say/f787a697-0924-43e8-9a3a-24ef78c1a11f/order?utm_source=pinterest&utm_medium=pin&utm_campaign=quiz-word-pin
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/e1a44db9-9e2f-475a-b9ec-8a62808b1906/taekwondo-e1a44db9-word-pin.jpg
+  ok /Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/f787a697-0924-43e8-9a3a-24ef78c1a11f/order-f787a697-word-pin.jpg
+
+[done] ok=80 fail=0 ledger=/Users/minjaekim/Desktop/korean-teacher-mj/.tmp/quiz-word-pins/word-pin-ledger.json
+round 1 exit=0 ok_before=228 ok_after=308
+======== round 2 batch=80 c=2 2026-08-08T10:19:20+09:00 ========

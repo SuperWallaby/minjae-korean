@@ -1,0 +1,7 @@
+[2026-08-08T12:45:39.029Z] ═══ batch runner start — gpt-image-2 quality=high timeout=600s ═══
+[2026-08-08T12:45:39.031Z] capybara cast: always on (VOCAB_JJIBARA_RATE=1)
+[2026-08-08T12:45:39.031Z] style/character ref: /Users/minjaekim/Desktop/korean-teacher-mj/public/brand/capybara-style-ref.png (images/edits + high fidelity)
+[2026-08-08T12:45:39.032Z] Pass #2 — 13 remaining (expr 6 / noun 3 / ant 2 / list 1 / quiz 1)
+[2026-08-08T12:45:39.033Z]   by format: {"grid_cluster":1,"antonym_split":1,"similar_split":1,"super_list":1,"quiz_comment":1,"concept_rows":1,"phrase_stack":1,"topik_upgrade":1,"cute_cast":1,"hanja_hub":1,"pronunciation_grid":1,"grammar_spotlight":1,"compound_word":1}
+[2026-08-08T12:45:39.033Z]   next up: grid_cluster:grid-fruits-tropical → antonym_split:ant-early-late → similar_split:sim-know-understand → super_list:list-numbers-powers-ten → quiz_comment:quiz-consider-vs-think → concept_rows:concept-indefinite-pronouns → phrase_stack:phrase-how-are-you-feeling → topik_upgrade:topik-speaking-verbs
+[2026-08-08T12:45:39.033Z] [1/13] grid-fruits-tropical (grid_cluster)

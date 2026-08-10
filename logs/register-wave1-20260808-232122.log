@@ -1,0 +1,243 @@
+[2026-08-08T14:21:23.690Z] ═══ batch runner start — gpt-image-2 quality=high timeout=600s ═══
+[2026-08-08T14:21:23.692Z] capybara cast: always on (VOCAB_JJIBARA_RATE=1)
+[2026-08-08T14:21:23.692Z] style/character ref: /Users/minjaekim/Desktop/korean-teacher-mj/public/brand/capybara-style-ref.png (images/edits + high fidelity)
+[2026-08-08T14:21:23.694Z] Pass #7687 — 80 remaining (expr 39 / noun 22 / ant 7 / list 3 / quiz 9)
+[2026-08-08T14:21:23.694Z]   by format: {"cute_cast":10,"hanja_hub":10,"pronunciation_grid":10,"grammar_spotlight":9,"compound_word":9,"topik_upgrade":4,"similar_split":4,"phrase_stack":3,"concept_rows":3,"quiz_comment":9,"super_list":3,"antonym_split":3,"grid_cluster":3}
+[2026-08-08T14:21:23.694Z]   next up: cute_cast:cute-encouragement → hanja_hub:hanja-jeom-shop → pronunciation_grid:pron-a-vowel → grammar_spotlight:gram-before-sleep → compound_word:cmp-ip-mat → topik_upgrade:topik-travel-words2 → similar_split:sim-wash-씻다-닦다 → phrase_stack:phrase-delivery-door
+[2026-08-08T14:21:23.695Z] [1/80] cute-encouragement (cute_cast)
+[2026-08-08T14:23:26.400Z]   ✓ cute-encouragement (122.7s) cast=capybara
+[2026-08-08T14:23:35.274Z]   📝 X review pending cute-encouragement → d910d1cd-11a2-46df-a325-24941fa2babb
+[2026-08-08T14:23:37.277Z] [2/80] hanja-jeom-shop (hanja_hub)
+[2026-08-08T14:25:38.801Z]   ✓ hanja-jeom-shop (121.5s) jjibara=1
+[2026-08-08T14:25:45.822Z]   📝 X review pending hanja-jeom-shop → 4959ca0b-7f69-4853-b75d-444fa94456b2
+[2026-08-08T14:25:47.825Z] [3/80] pron-a-vowel (pronunciation_grid)
+[2026-08-08T14:27:53.259Z]   ✓ pron-a-vowel (125.4s) jjibara=1
+[2026-08-08T14:27:59.997Z]   📝 X review pending pron-a-vowel → 2c80cdb4-2d82-4746-8784-d3321d6ef2eb
+[2026-08-08T14:28:01.999Z] [4/80] gram-before-sleep (grammar_spotlight)
+[2026-08-08T14:29:27.454Z]   ✓ gram-before-sleep (85.5s) jjibara=1
+[2026-08-08T14:29:33.027Z]   📝 X review pending gram-before-sleep → 8ae01143-2de9-4c24-8bde-ae0ba6d092bb
+[2026-08-08T14:29:35.029Z] [5/80] cmp-ip-mat (compound_word)
+[2026-08-08T14:32:57.895Z]   ✓ cmp-ip-mat (202.9s) compound
+[2026-08-08T14:32:59.897Z] [6/80] topik-travel-words2 (topik_upgrade)
+[2026-08-08T14:34:45.647Z]   ✓ topik-travel-words2 (105.7s) jjibara=1
+[2026-08-08T14:34:48.184Z]   📝 X review pending topik-travel-words2 → 654bcc35-3acc-4a5b-adc5-e105ff6dd5d8
+[2026-08-08T14:34:50.192Z] [7/80] sim-wash-씻다-닦다 (similar_split)
+[2026-08-08T14:36:28.535Z]   ✓ sim-wash-씻다-닦다 (98.3s) jjibara=1
+[2026-08-08T14:36:30.560Z]   📝 X review pending sim-wash-씻다-닦다 → f28b25c4-e4bc-428f-9b66-a7cd592a9e2c
+[2026-08-08T14:36:32.561Z] [8/80] phrase-delivery-door (phrase_stack)
+[2026-08-08T14:38:08.408Z]   ✓ phrase-delivery-door (95.8s) jjibara=1
+[2026-08-08T14:38:10.906Z]   📝 X review pending phrase-delivery-door → c3809d83-949a-458d-bab8-ac48eb54f827
+[2026-08-08T14:38:12.909Z] [9/80] concept-too-only-even (concept_rows)
+[2026-08-08T14:39:40.703Z]   ✓ concept-too-only-even (87.8s) jjibara=1
+[2026-08-08T14:39:42.694Z]   📝 X review pending concept-too-only-even → 16c9b1bd-259e-45cd-92f5-738382c99aa5
+[2026-08-08T14:39:44.698Z] [10/80] quiz-upload-vs-download (quiz_comment)
+[2026-08-08T14:41:21.193Z]   ✓ quiz-upload-vs-download (96.5s) jjibara=1
+[2026-08-08T14:41:24.109Z]   📝 X review pending quiz-upload-vs-download → e94ac719-24ae-46de-be30-2de6691f2c55
+[2026-08-08T14:41:26.115Z] [11/80] list-tax-season (super_list)
+[2026-08-08T14:43:08.384Z]   ✓ list-tax-season (102.3s) jjibara=1
+[2026-08-08T14:43:17.255Z]   📝 X review pending list-tax-season → 1bd80f6e-7cfd-4bf5-bcf8-9087d74c4997
+[2026-08-08T14:43:19.257Z] [12/80] ant-upstream-downstream (antonym_split)
+[2026-08-08T14:44:54.654Z]   ✓ ant-upstream-downstream (95.4s) jjibara=1
+[2026-08-08T14:45:02.078Z]   📝 X review pending ant-upstream-downstream → 95b17f02-7fd2-483a-bb2c-35fe55b5eff4
+[2026-08-08T14:45:04.080Z] [13/80] grid-beach-nature (grid_cluster)
+[2026-08-08T14:47:06.252Z]   ✓ grid-beach-nature (122.2s) jjibara=1
+[2026-08-08T14:47:13.300Z]   📝 X review pending grid-beach-nature → cd4ed7a0-7d39-47be-bcfd-4fabb6fc676e
+[2026-08-08T14:47:15.301Z] [14/80] cute-weather-chat2 (cute_cast)
+[2026-08-08T14:49:29.193Z]   ✓ cute-weather-chat2 (133.9s) cast=capybara
+[2026-08-08T14:49:36.284Z]   📝 X review pending cute-weather-chat2 → f12cd3aa-4b59-454a-9685-a30ffc44f34e
+[2026-08-08T14:49:38.287Z] [15/80] hanja-mun-gate (hanja_hub)
+[2026-08-08T14:51:33.008Z]   ✓ hanja-mun-gate (114.7s) jjibara=1
+[2026-08-08T14:51:40.172Z]   📝 X review pending hanja-mun-gate → 00f15bc1-ef59-4bf6-b879-405723158ccb
+[2026-08-08T14:51:42.176Z] [16/80] pron-n-sound (pronunciation_grid)
+[2026-08-08T14:53:40.290Z]   ✓ pron-n-sound (118.1s) jjibara=1
+[2026-08-08T14:53:47.036Z]   📝 X review pending pron-n-sound → 5890e36c-3c1c-4e12-91a0-37c0095eb59c
+[2026-08-08T14:53:49.040Z] [17/80] gram-want-to-go (grammar_spotlight)
+[2026-08-08T14:55:08.823Z]   ✓ gram-want-to-go (79.8s) jjibara=1
+[2026-08-08T14:55:13.822Z]   📝 X review pending gram-want-to-go → 8a5bbbc4-a1ad-4b02-80e5-4b1690fbdf39
+[2026-08-08T14:55:15.824Z] [18/80] cmp-nun-saram (compound_word)
+[2026-08-08T14:58:32.118Z]   ✓ cmp-nun-saram (196.3s) compound
+[2026-08-08T14:58:34.122Z] [19/80] topik-meeting-words (topik_upgrade)
+[2026-08-08T15:00:14.611Z]   ✓ topik-meeting-words (100.5s) jjibara=1
+[2026-08-08T15:00:17.381Z]   📝 X review pending topik-meeting-words → 5ac4c516-8213-4f7d-b7ce-c98b64bc7766
+[2026-08-08T15:00:19.383Z] [20/80] sim-put-담다-넣다 (similar_split)
+[2026-08-08T15:01:41.348Z]   ✓ sim-put-담다-넣다 (82.0s) jjibara=1
+[2026-08-08T15:01:44.100Z]   📝 X review pending sim-put-담다-넣다 → a31e603b-7173-4212-be35-388a939bcd0d
+[2026-08-08T15:01:46.103Z] [21/80] phrase-kiosk-order (phrase_stack)
+[2026-08-08T15:03:27.483Z]   ✓ phrase-kiosk-order (101.4s) jjibara=1
+[2026-08-08T15:03:30.273Z]   📝 X review pending phrase-kiosk-order → 7041c24c-5536-4f4a-a593-08b699e6d52a
+[2026-08-08T15:03:32.278Z] [22/80] concept-borrow-lend-return (concept_rows)
+[2026-08-08T15:05:00.361Z]   ✓ concept-borrow-lend-return (88.1s) jjibara=1
+[2026-08-08T15:05:03.215Z]   📝 X review pending concept-borrow-lend-return → d1bc3420-09e2-400b-bea6-f25177c3f9ce
+[2026-08-08T15:05:05.218Z] [23/80] quiz-stock-refund-vs-exchange (quiz_comment)
+[2026-08-08T15:06:36.968Z]   ✓ quiz-stock-refund-vs-exchange (91.7s) jjibara=1
+[2026-08-08T15:06:39.933Z]   📝 X review pending quiz-stock-refund-vs-exchange → 2774085e-2ed4-4999-b573-78057f2524a8
+[2026-08-08T15:06:41.935Z] [24/80] list-desk-reset (super_list)
+[2026-08-08T15:08:24.629Z]   ✓ list-desk-reset (102.7s) jjibara=1
+[2026-08-08T15:08:35.916Z]   📝 X review pending list-desk-reset → 6ff8c273-4c56-4756-8ebb-3fcb2b917c4c
+[2026-08-08T15:08:37.920Z] [25/80] ant-stock-enter-exit (antonym_split)
+[2026-08-08T15:10:05.353Z]   ✓ ant-stock-enter-exit (87.4s) jjibara=1
+[2026-08-08T15:10:13.164Z]   📝 X review pending ant-stock-enter-exit → 26e28a42-06cd-4fd2-98ea-9d5051fc992a
+[2026-08-08T15:10:15.165Z] [26/80] grid-bakery-cafe-words (grid_cluster)
+[2026-08-08T15:12:22.723Z]   ✓ grid-bakery-cafe-words (127.6s) jjibara=1
+[2026-08-08T15:12:30.889Z]   📝 X review pending grid-bakery-cafe-words → d72960e6-7bb5-4a04-9877-e13e93affc2e
+[2026-08-08T15:12:32.892Z] [27/80] cute-desk-stretch (cute_cast)
+[2026-08-08T15:14:38.189Z]   ✓ cute-desk-stretch (125.3s) cast=capybara
+[2026-08-08T15:14:46.225Z]   📝 X review pending cute-desk-stretch → b85346d3-411e-4473-8514-4c921c0469be
+[2026-08-08T15:14:48.226Z] [28/80] hanja-gi-energy (hanja_hub)
+[2026-08-08T15:16:41.817Z]   ✓ hanja-gi-energy (113.6s) jjibara=1
+[2026-08-08T15:16:48.275Z]   📝 X review pending hanja-gi-energy → 7e3a86b1-9006-4b98-b23c-cf1b5f236247
+[2026-08-08T15:16:50.278Z] [29/80] pron-m-sound (pronunciation_grid)
+[2026-08-08T15:18:45.559Z]   ✓ pron-m-sound (115.3s) jjibara=1
+[2026-08-08T15:18:51.838Z]   📝 X review pending pron-m-sound → 140f4eed-d4d7-4415-99a4-7c8e105cf940
+[2026-08-08T15:18:53.840Z] [30/80] gram-must-go (grammar_spotlight)
+[2026-08-08T15:20:13.661Z]   ✓ gram-must-go (79.8s) jjibara=1
+[2026-08-08T15:20:18.973Z]   📝 X review pending gram-must-go → ec85e44e-779d-4640-93d8-05ed65f71b27
+[2026-08-08T15:20:20.979Z] [31/80] cmp-bul-gogi (compound_word)
+[2026-08-08T15:23:32.318Z]   ✓ cmp-bul-gogi (191.3s) compound
+[2026-08-08T15:23:34.324Z] [32/80] topik-emotion-words2 (topik_upgrade)
+[2026-08-08T15:25:28.476Z]   ✓ topik-emotion-words2 (114.2s) jjibara=1
+[2026-08-08T15:25:31.001Z]   📝 X review pending topik-emotion-words2 → e8f30c57-b107-4136-96c0-44944a8b1814
+[2026-08-08T15:25:33.003Z] [33/80] sim-start-시작하다-출발하다 (similar_split)
+[2026-08-08T15:27:05.734Z]   ✓ sim-start-시작하다-출발하다 (92.7s) jjibara=1
+[2026-08-08T15:27:08.378Z]   📝 X review pending sim-start-시작하다-출발하다 → ab521c98-c94c-4b08-bced-d1c89505ab3c
+[2026-08-08T15:27:10.380Z] [34/80] phrase-wifi-cafe (phrase_stack)
+[2026-08-08T15:28:53.023Z]   ✓ phrase-wifi-cafe (102.6s) jjibara=1
+[2026-08-08T15:28:57.706Z]   📝 X review pending phrase-wifi-cafe → 75889ea4-c6f5-430f-be09-c1cb9c5d460a
+[2026-08-08T15:28:59.760Z] [35/80] concept-give-receive-favor (concept_rows)
+[2026-08-08T15:30:33.911Z]   ✓ concept-give-receive-favor (94.2s) jjibara=1
+[2026-08-08T15:30:36.336Z]   📝 X review pending concept-give-receive-favor → 89564226-9335-4349-a02d-7be17b32d1a3
+[2026-08-08T15:30:38.338Z] [36/80] quiz-schedule-vs-cancel (quiz_comment)
+[2026-08-08T15:32:14.034Z]   ✓ quiz-schedule-vs-cancel (95.7s) jjibara=1
+[2026-08-08T15:32:17.243Z]   📝 X review pending quiz-schedule-vs-cancel → b9d9d090-31f5-431a-bb7d-9e22ae48313e
+[2026-08-08T15:32:19.246Z] [37/80] list-pet-vet (super_list)
+[2026-08-08T15:34:04.218Z]   ✓ list-pet-vet (105.0s) jjibara=1
+[2026-08-08T15:34:14.749Z]   📝 X review pending list-pet-vet → 0f4c24f8-57cc-40ed-a6b1-12200ce65e60
+[2026-08-08T15:34:16.750Z] [38/80] ant-stock-public-private (antonym_split)
+[2026-08-08T15:35:52.599Z]   ✓ ant-stock-public-private (95.8s) jjibara=1
+[2026-08-08T15:36:00.924Z]   📝 X review pending ant-stock-public-private → c18c979c-408e-4c6a-8b4d-c495801f4398
+[2026-08-08T15:36:02.926Z] [39/80] grid-photography-digital (grid_cluster)
+[2026-08-08T15:38:06.958Z]   ✓ grid-photography-digital (124.0s) jjibara=1
+[2026-08-08T15:38:13.924Z]   📝 X review pending grid-photography-digital → 34bd5f76-abee-4473-8224-cd5419ffe1fc
+[2026-08-08T15:38:15.928Z] [40/80] cute-office-soft2 (cute_cast)
+[2026-08-08T15:40:22.217Z]   ✓ cute-office-soft2 (126.3s) cast=capybara
+[2026-08-08T15:40:28.956Z]   📝 X review pending cute-office-soft2 → c53b6eca-b3d0-4818-a214-30137e39e33d
+[2026-08-08T15:40:30.958Z] [41/80] hanja-cha-car (hanja_hub)
+[2026-08-08T15:42:28.447Z]   ✓ hanja-cha-car (117.5s) jjibara=1
+[2026-08-08T15:42:35.904Z]   📝 X review pending hanja-cha-car → 1a67ef6c-4ea6-4510-bea0-0e6a11f9b2e3
+[2026-08-08T15:42:37.908Z] [42/80] pron-s-sound (pronunciation_grid)
+[2026-08-08T15:44:37.969Z]   ✓ pron-s-sound (120.1s) jjibara=1
+[2026-08-08T15:44:44.797Z]   📝 X review pending pron-s-sound → 645e778c-ccf9-4edd-91b8-1e2a8700bae8
+[2026-08-08T15:44:46.800Z] [43/80] gram-because (grammar_spotlight)
+[2026-08-08T15:46:13.236Z]   ✓ gram-because (86.4s) jjibara=1
+[2026-08-08T15:46:19.531Z]   📝 X review pending gram-because → 0b5b7ccd-cd77-4df6-8c05-4ea1a06b6a98
+[2026-08-08T15:46:21.533Z] [44/80] cmp-bam-haneul (compound_word)
+[2026-08-08T15:49:32.774Z]   ✓ cmp-bam-haneul (191.2s) compound
+[2026-08-08T15:49:34.777Z] [45/80] topik-stock-health-words (topik_upgrade)
+[2026-08-08T15:51:16.867Z]   ✓ topik-stock-health-words (102.1s) jjibara=1
+[2026-08-08T15:51:19.299Z]   📝 X review pending topik-stock-health-words → 272abf52-d844-4a12-9a8d-806307c3bd50
+[2026-08-08T15:51:21.302Z] [46/80] sim-cut-자르다-썰다 (similar_split)
+[2026-08-08T15:52:48.551Z]   ✓ sim-cut-자르다-썰다 (87.2s) jjibara=1
+[2026-08-08T15:52:50.748Z]   📝 X review pending sim-cut-자르다-썰다 → 63f2f3a9-18da-4ea7-b05e-373593dfa0f6
+[2026-08-08T15:52:52.753Z] [47/80] quiz-spicy-vs-salty (quiz_comment)
+[2026-08-08T15:54:23.849Z]   ✓ quiz-spicy-vs-salty (91.1s) jjibara=1
+[2026-08-08T15:54:27.049Z]   📝 X review pending quiz-spicy-vs-salty → c0c5b5ca-6d2c-4929-9f87-0e765f3dd185
+[2026-08-08T15:54:29.051Z] [48/80] cute-date-soft (cute_cast)
+[2026-08-08T15:56:34.043Z]   ✓ cute-date-soft (125.0s) cast=capybara
+[2026-08-08T15:56:41.321Z]   📝 X review pending cute-date-soft → c5fd31e0-558b-48b2-a5d6-64cf63276bdf
+[2026-08-08T15:56:43.321Z] [49/80] hanja-stock-su-water (hanja_hub)
+[2026-08-08T15:58:42.255Z]   ✓ hanja-stock-su-water (118.9s) jjibara=1
+[2026-08-08T15:58:49.141Z]   📝 X review pending hanja-stock-su-water → a9924e0a-785f-414f-9259-1722849b6a0d
+[2026-08-08T15:58:51.142Z] [50/80] pron-b-sound (pronunciation_grid)
+[2026-08-08T16:00:50.251Z]   ✓ pron-b-sound (119.1s) jjibara=1
+[2026-08-08T16:00:56.821Z]   📝 X review pending pron-b-sound → a5b71579-17f9-42c2-bf9e-1cf7c2261684
+[2026-08-08T16:00:58.825Z] [51/80] gram-future-meet (grammar_spotlight)
+[2026-08-08T16:02:22.268Z]   ✓ gram-future-meet (83.4s) jjibara=1
+[2026-08-08T16:02:28.476Z]   📝 X review pending gram-future-meet → 8a75d491-2b11-4659-af26-ba25b52d4221
+[2026-08-08T16:02:30.478Z] [52/80] cmp-chaek-bang (compound_word)
+[2026-08-08T16:05:50.831Z]   ✓ cmp-chaek-bang (200.4s) compound
+[2026-08-08T16:05:52.834Z] [53/80] quiz-subscribe-vs-unsubscribe (quiz_comment)
+[2026-08-08T16:07:31.380Z]   ✓ quiz-subscribe-vs-unsubscribe (98.5s) jjibara=1
+[2026-08-08T16:07:34.243Z]   📝 X review pending quiz-subscribe-vs-unsubscribe → 8078cea1-3fe8-4288-a83f-acfdd9f808d5
+[2026-08-08T16:07:36.244Z] [54/80] cute-weekend-plan (cute_cast)
+[2026-08-08T16:09:38.831Z]   ✓ cute-weekend-plan (122.6s) cast=capybara
+[2026-08-08T16:09:47.280Z]   📝 X review pending cute-weekend-plan → 1574cc00-c68c-4e6c-bce6-890575a120ad
+[2026-08-08T16:09:49.283Z] [55/80] hanja-stock-hak-study (hanja_hub)
+[2026-08-08T16:11:45.445Z]   ✓ hanja-stock-hak-study (116.2s) jjibara=1
+[2026-08-08T16:11:51.812Z]   📝 X review pending hanja-stock-hak-study → d27a8876-deb5-43cf-854e-fb498cc3a2ea
+[2026-08-08T16:11:53.814Z] [56/80] pron-batchim-ng (pronunciation_grid)
+[2026-08-08T16:13:59.974Z]   ✓ pron-batchim-ng (126.2s) jjibara=1
+[2026-08-08T16:14:06.437Z]   📝 X review pending pron-batchim-ng → e3193ae0-ada7-4be1-8a78-0db3c7481b1e
+[2026-08-08T16:14:08.437Z] [57/80] gram-progressive-raining (grammar_spotlight)
+[2026-08-08T16:15:35.557Z]   ✓ gram-progressive-raining (87.1s) jjibara=1
+[2026-08-08T16:15:41.054Z]   📝 X review pending gram-progressive-raining → 6185c539-8acf-4e1a-8e2b-259d8de3510f
+[2026-08-08T16:15:43.058Z] [58/80] cmp-mul-gae (compound_word)
+[2026-08-08T16:19:02.065Z]   ✓ cmp-mul-gae (199.0s) compound
+[2026-08-08T16:19:04.072Z] [59/80] quiz-password-vs-id (quiz_comment)
+[2026-08-08T16:20:36.961Z]   ✓ quiz-password-vs-id (92.9s) jjibara=1
+[2026-08-08T16:20:39.876Z]   📝 X review pending quiz-password-vs-id → 9b067509-7505-4e8b-b4ac-f6a0fcd2b7d3
+[2026-08-08T16:20:41.878Z] [60/80] cute-hobby-soft (cute_cast)
+[2026-08-08T16:22:42.694Z]   ✓ cute-hobby-soft (120.8s) cast=capybara
+[2026-08-08T16:22:49.820Z]   📝 X review pending cute-hobby-soft → b05d265f-e91c-4b97-891c-cc631efe41b8
+[2026-08-08T16:22:51.824Z] [61/80] hanja-stock-sik-food (hanja_hub)
+[2026-08-08T16:24:49.565Z]   ✓ hanja-stock-sik-food (117.7s) jjibara=1
+[2026-08-08T16:24:55.875Z]   📝 X review pending hanja-stock-sik-food → 2e9221a6-1f09-4aae-818c-92393342b4a2
+[2026-08-08T16:24:57.876Z] [62/80] pron-g-sound (pronunciation_grid)
+[2026-08-08T16:27:06.371Z]   ✓ pron-g-sound (128.5s) jjibara=1
+[2026-08-08T16:27:12.543Z]   📝 X review pending pron-g-sound → 87b5e26f-3819-4d98-a4b0-58d84c1c57e9
+[2026-08-08T16:27:14.546Z] [63/80] gram-try-please (grammar_spotlight)
+[2026-08-08T16:28:27.877Z]   ✓ gram-try-please (73.3s) jjibara=1
+[2026-08-08T16:28:32.715Z]   📝 X review pending gram-try-please → 951b6c3a-eaa1-43bf-bd92-d391b54150c1
+[2026-08-08T16:28:34.718Z] [64/80] cmp-son-top (compound_word)
+[2026-08-08T16:31:48.037Z]   ✓ cmp-son-top (193.3s) compound
+[2026-08-08T16:31:50.042Z] [65/80] quiz-borrow-vs-lend (quiz_comment)
+[2026-08-08T16:33:25.200Z]   ✓ quiz-borrow-vs-lend (95.2s) jjibara=1
+[2026-08-08T16:33:28.236Z]   📝 X review pending quiz-borrow-vs-lend → bb1245e7-5100-4c1a-985e-7f2fdc6c7653
+[2026-08-08T16:33:30.238Z] [66/80] cute-snack-break (cute_cast)
+[2026-08-08T16:35:29.844Z]   ✓ cute-snack-break (119.6s) cast=capybara
+[2026-08-08T16:35:36.789Z]   📝 X review pending cute-snack-break → bc7a521f-79de-488b-91a1-66b40caa1d79
+[2026-08-08T16:35:38.790Z] [67/80] hanja-sil-room (hanja_hub)
+[2026-08-08T16:37:40.778Z]   ✓ hanja-sil-room (122.0s) jjibara=1
+[2026-08-08T16:37:47.455Z]   📝 X review pending hanja-sil-room → 929b04c5-8393-4467-9ad1-847dffa28c10
+[2026-08-08T16:37:49.457Z] [68/80] pron-ch-sound (pronunciation_grid)
+[2026-08-08T16:39:54.638Z]   ✓ pron-ch-sound (125.2s) jjibara=1
+[2026-08-08T16:40:01.761Z]   📝 X review pending pron-ch-sound → c13f927e-5883-4a83-bf4f-4817ef74afbe
+[2026-08-08T16:40:03.763Z] [69/80] gram-please-help (grammar_spotlight)
+[2026-08-08T16:41:29.154Z]   ✓ gram-please-help (85.4s) jjibara=1
+[2026-08-08T16:41:34.185Z]   📝 X review pending gram-please-help → b38fea8f-ec2d-449f-b876-10c8ab946dae
+[2026-08-08T16:41:36.192Z] [70/80] cmp-ko-kkiri (compound_word)
+[2026-08-08T16:44:54.687Z]   ✓ cmp-ko-kkiri (198.5s) compound
+[2026-08-08T16:44:56.692Z] [71/80] quiz-arrive-vs-depart (quiz_comment)
+[2026-08-08T16:46:28.288Z]   ✓ quiz-arrive-vs-depart (91.6s) jjibara=1
+[2026-08-08T16:46:30.945Z]   📝 X review pending quiz-arrive-vs-depart → b20cae98-a5ba-4c84-976b-7f30c67cb3b5
+[2026-08-08T16:46:32.950Z] [72/80] cute-hospital-soft (cute_cast)
+  ⚠ style-ref edit failed, falling back to generations: The operation was aborted due to timeout
+[2026-08-08T17:19:22.500Z]   ⏳ retry cute-hospital-soft #1 in 30s — The operation was aborted due to timeout
+  ⚠ style-ref edit failed, falling back to generations: gpt-image-2 HTTP 200
+[2026-08-08T17:39:15.751Z]   ✓ cute-hospital-soft (3162.8s) cast=capybara
+[2026-08-08T17:39:25.302Z]   📝 X review pending cute-hospital-soft → 461c7057-dbe7-414d-ad5f-156d3abd927f
+[2026-08-08T17:39:27.308Z] [73/80] hanja-hwa-fire (hanja_hub)
+  ⚠ style-ref edit failed, falling back to generations: The operation was aborted due to timeout
+[2026-08-08T17:56:56.260Z]   ✓ hanja-hwa-fire (1049.0s) jjibara=1
+[2026-08-08T17:57:04.526Z]   📝 X review pending hanja-hwa-fire → 7da97916-200a-497d-8e47-4d8752011b5b
+[2026-08-08T17:57:06.530Z] [74/80] pron-h-sound (pronunciation_grid)
+[2026-08-08T17:59:07.241Z]   ✓ pron-h-sound (120.7s) jjibara=1
+[2026-08-08T17:59:14.114Z]   📝 X review pending pron-h-sound → c5b72813-fd7f-4f96-9590-430b11bd2a42
+[2026-08-08T17:59:16.117Z] [75/80] gram-dont-worry (grammar_spotlight)
+[2026-08-08T18:00:40.562Z]   ✓ gram-dont-worry (84.4s) jjibara=1
+[2026-08-08T18:00:46.455Z]   📝 X review pending gram-dont-worry → 179144e5-2099-43f6-85ff-8e3718523ae4
+[2026-08-08T18:00:48.459Z] [76/80] cmp-sin-bal (compound_word)
+[2026-08-08T18:04:11.355Z]   ✓ cmp-sin-bal (202.9s) compound
+[2026-08-08T18:04:13.361Z] [77/80] quiz-rent-vs-buy (quiz_comment)
+[2026-08-08T18:05:47.760Z]   ✓ quiz-rent-vs-buy (94.4s) jjibara=1
+[2026-08-08T18:05:51.324Z]   📝 X review pending quiz-rent-vs-buy → 61ceaa22-9d3f-4722-b69a-d12c9df7796c
+[2026-08-08T18:05:53.326Z] [78/80] cute-family-soft (cute_cast)
+[2026-08-08T18:08:00.839Z]   ✓ cute-family-soft (127.5s) cast=capybara
+[2026-08-08T18:08:08.114Z]   📝 X review pending cute-family-soft → ee77917e-d8b9-4bfe-8e62-cdb789f77ee9
+[2026-08-08T18:08:10.114Z] [79/80] hanja-stock-jeon-electric (hanja_hub)
+[2026-08-08T18:10:04.146Z]   ✓ hanja-stock-jeon-electric (114.0s) jjibara=1
+[2026-08-08T18:10:09.945Z]   📝 X review pending hanja-stock-jeon-electric → f1a30358-b8d4-4764-9e12-152aa1b2c649
+[2026-08-08T18:10:11.946Z] [80/80] pron-j-sound (pronunciation_grid)
+[2026-08-08T18:12:18.734Z]   ✓ pron-j-sound (126.8s) jjibara=1
+[2026-08-08T18:12:25.626Z]   📝 X review pending pron-j-sound → a7e60ee0-a740-4d67-985e-2ded03b83921
+[2026-08-08T18:12:27.640Z] Pass #7687 done — 0 still remaining
+[2026-08-08T18:12:27.640Z] batch finished cleanly — exiting

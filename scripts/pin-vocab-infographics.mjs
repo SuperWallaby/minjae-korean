@@ -2,7 +2,7 @@
 /**
  * Pin ready vocab infographics to Pinterest (work Chrome) with title + description + topic.
  *
- *   node scripts/pin-vocab-infographics.mjs --count 30
+ *   node scripts/pin-vocab-infographics.mjs --count 8   # one wave (default)
  *   node scripts/pin-vocab-infographics.mjs --count 1 --dry-run
  *   node scripts/pin-vocab-infographics.mjs --id ant-inside-outside
  */
@@ -34,17 +34,56 @@ const UPLOAD_PIN = path.join(
   "..",
   "projects/neo-project/auto-video-korean/scripts/pinterest-browser/upload-pin.mjs",
 );
+const DELETE_DRAFTS = path.join(
+  path.dirname(UPLOAD_PIN),
+  "delete-drafts.mjs",
+);
+const DRAFT_MIN_COUNT = Math.max(
+  1,
+  Number(process.env.PINTEREST_DRAFT_MIN_COUNT ?? 50) || 50,
+);
 const DEFAULT_BOARD = process.env.PINTEREST_BOARD_NAME || "Korean words";
 const SITE_URL = "https://kajakorean.com";
+const PREPLY =
+  process.env.PINTEREST_AFFILIATE_PREPLY ||
+  "https://preply.sjv.io/c/7574725/1987575/24422";
+const ITALKI =
+  process.env.PINTEREST_AFFILIATE_ITALKI ||
+  "https://www.italki.com/en/affshare?ref=af33117569";
+/** Direct Preply/italki on pin vs SEO page (default 25%). */
+const AFFILIATE_RATE = Math.min(
+  1,
+  Math.max(0, Number(process.env.PINTEREST_AFFILIATE_RATE ?? 0.25) || 0),
+);
 const DEFAULT_TOPIC =
   process.env.PINTEREST_TOPIC?.trim() || "Korean language";
 const BROWSER_URL = process.env.CHROME_WORK_DEBUG_URL || "http://127.0.0.1:9222";
-const DELAY_SEC = Number(process.env.PINTEREST_UPLOAD_DELAY_SEC || 10);
+/** Inter-pin pause: random whole seconds in [min, max]. Fixed delay via PINTEREST_UPLOAD_DELAY_SEC. */
+const DELAY_MIN_SEC = Math.max(
+  0,
+  Number(process.env.PINTEREST_UPLOAD_DELAY_MIN_SEC || 10),
+);
+const DELAY_MAX_SEC = Math.max(
+  DELAY_MIN_SEC,
+  Number(process.env.PINTEREST_UPLOAD_DELAY_MAX_SEC || 30),
+);
+const DELAY_FIXED_SEC = process.env.PINTEREST_UPLOAD_DELAY_SEC
+  ? Number(process.env.PINTEREST_UPLOAD_DELAY_SEC)
+  : null;
+
+function nextUploadDelaySec() {
+  if (DELAY_FIXED_SEC != null && Number.isFinite(DELAY_FIXED_SEC) && DELAY_FIXED_SEC >= 0) {
+    return DELAY_FIXED_SEC;
+  }
+  const lo = Math.floor(DELAY_MIN_SEC);
+  const hi = Math.floor(DELAY_MAX_SEC);
+  return lo + Math.floor(Math.random() * (hi - lo + 1));
+}
 const ATTEMPT_TIMEOUT_MS = Number(process.env.PINTEREST_ATTEMPT_TIMEOUT_MS || 180_000);
 const MAX_RETRIES = Number(process.env.PINTEREST_MAX_RETRIES || 2);
 
 function parseArgs(argv) {
-  let count = 30;
+  let count = 8;
   let id = "";
   let prefix = "";
   let dryRun = false;
@@ -57,13 +96,13 @@ function parseArgs(argv) {
     if (a === "--dry-run") dryRun = true;
     else if (a === "--allow-home-link") allowHomeLink = true;
     else if (a === "--skip-live-check") skipLiveCheck = true;
-    else if (a === "--count" && argv[i + 1]) count = Math.max(1, parseInt(argv[++i], 10) || 30);
-    else if (a.startsWith("--count=")) count = Math.max(1, parseInt(a.slice(8), 10) || 30);
+    else if (a === "--count" && argv[i + 1]) count = Math.max(1, parseInt(argv[++i], 10) || 8);
+    else if (a.startsWith("--count=")) count = Math.max(1, parseInt(a.slice(8), 10) || 8);
     else if (a === "--id" && argv[i + 1]) id = argv[++i];
     else if (a.startsWith("--id=")) id = a.slice(5);
     else if (a === "--prefix" && argv[i + 1]) prefix = argv[++i];
     else if (a.startsWith("--prefix=")) prefix = a.slice(9);
-    else if (/^\d+$/.test(a)) count = Math.max(1, parseInt(a, 10) || 30);
+    else if (/^\d+$/.test(a)) count = Math.max(1, parseInt(a, 10) || 8);
   }
   return { count, id, prefix, dryRun, allowHomeLink, skipLiveCheck };
 }
@@ -82,7 +121,34 @@ function saveJson(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
+function withUtm(url, campaign) {
+  try {
+    const u = new URL(url);
+    if (!u.searchParams.get("utm_source"))
+      u.searchParams.set("utm_source", "pinterest");
+    if (!u.searchParams.get("utm_medium"))
+      u.searchParams.set("utm_medium", "pin");
+    if (!u.searchParams.get("utm_campaign"))
+      u.searchParams.set("utm_campaign", campaign);
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+function pickAffiliateLink() {
+  const usePreply = Math.random() < 0.5;
+  const raw = usePreply ? PREPLY : ITALKI;
+  return {
+    url: withUtm(raw, usePreply ? "aff-preply-pin" : "aff-italki-pin"),
+    partner: usePreply ? "preply" : "italki",
+  };
+}
+
 function linkForBundle(bundleId, publishedById, { allowHomeLink = false } = {}) {
+  if (AFFILIATE_RATE > 0 && Math.random() < AFFILIATE_RATE) {
+    return pickAffiliateLink().url;
+  }
   const page = publishedById.get(bundleId);
   if (!page?.slug) {
     if (!allowHomeLink) {
@@ -132,11 +198,17 @@ async function isLiveSeoPage(urlPath) {
   }
 }
 
+function pickOne(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
 function titleFromEntry(bundleId, entry) {
   const tweet = String(entry.tweetText || "");
   const first = tweet.split("\n").map((l) => l.trim()).find(Boolean) || "";
   let cleaned = first.replace(/^🇰🇷\s*/, "").trim();
-  if (!cleaned) return bundleId.replace(/-/g, " ").slice(0, 60);
+  if (!cleaned) {
+    cleaned = bundleId.replace(/-/g, " ").slice(0, 60);
+  }
 
   // Pinterest titles scan best short — never paste a long sentence wall.
   const TITLE_MAX = 64;
@@ -153,13 +225,56 @@ function titleFromEntry(bundleId, entry) {
     cleaned = (breakAt >= 28 ? cut.slice(0, breakAt) : cut).trim();
     cleaned = cleaned.replace(/[—,:;\-–\s]+$/u, "").trim();
   }
+
+  // Light wrappers — keep most titles as-is, remix a minority.
+  if (cleaned.length <= 48 && Math.random() < 0.35) {
+    const wrappers = [
+      (t) => t,
+      (t) => `${t} ✨`,
+      (t) => `Save this: ${t}`,
+      (t) => `${t} 👇`,
+      (t) => `Korean tip — ${t}`,
+      (t) => `Pin for later: ${t}`,
+    ];
+    cleaned = pickOne(wrappers)(cleaned);
+  }
   return cleaned.slice(0, TITLE_MAX);
 }
 
 const DESC_MAX = 500;
-const PIN_TAGS = "#koreanvocab #learnkorean #kajakorean #한국어";
+const PIN_TAG_SETS = [
+  "#koreanvocab #learnkorean #kajakorean #한국어",
+  "#learnkorean #koreanlanguage #vocabulary #한국어공부",
+  "#kajakorean #studykorean #koreanvocab #한국어",
+  "#koreanwords #languagelearning #learnkorean #한국어단어",
+];
+/** Optional — omit sometimes so not every pin repeats the same CTA. */
+const SITE_AUDIO_LINES = [
+  "Pronunciations are on the website 🎙️",
+  "Audio + examples on the site 🎙️",
+  "Hear them on the website 🔊",
+];
 const CHICO_DESC_CREDIT = "Charactor by @chico._.pu";
 const WORD_EMOJIS = ["🔴", "🔵", "🟢", "🟡", "🟣", "🟠", "⚫️", "⚪️"];
+
+/**
+ * Designer credit (점점이 / @chico._.pu) only when the pin actually features
+ * the brand capybara cast or a 찌바라 cameo — never default-on.
+ *
+ * @param {{ bundleId?: string, cuteCast?: string|null, includeJjibara?: boolean|null, format?: string|null }} opts
+ */
+function shouldChicoDescCredit(opts = {}) {
+  const cast = String(opts.cuteCast || "").toLowerCase().trim();
+  if (cast === "otter") return false;
+  if (opts.includeJjibara === true) return true;
+  if (opts.includeJjibara === false) return false;
+  const format = String(opts.format || "");
+  if (format === "quiz_comment") return true;
+  // Full cute_cast grid with capybara as the pin species
+  if (format === "cute_cast" && cast === "capybara") return true;
+  // Unknown / phrase / list / hanja without progress flag — do not credit
+  return false;
+}
 
 function formatWordGloss(word, index) {
   const hangul = String(word?.hangul || "").trim();
@@ -211,17 +326,32 @@ function packLines(lines, budget) {
 /**
  * Pin description: short lines + real newlines.
  * Never dump a long middle-dot (·) wall — hard to scan on Pinterest.
+ * @param {object} entry
+ * @param {string} title
+ * @param {{ cuteCast?: string, bundleId?: string, castMap?: Record<string, string|null> }} [opts]
  */
 function descriptionFromEntry(entry, title = "", opts = {}) {
-  const tags = PIN_TAGS;
-  const credit =
-    String(opts.cuteCast || entry?.cuteCast || "").toLowerCase() === "otter"
-      ? ""
-      : CHICO_DESC_CREDIT;
+  const tags = pickOne(PIN_TAG_SETS);
+  const bundleId = String(opts.bundleId || entry?.bundleId || "").trim();
+  const cuteCast =
+    opts.cuteCast ??
+    entry?.cuteCast ??
+    (bundleId && opts.castMap ? opts.castMap[bundleId] : undefined);
+  const credit = shouldChicoDescCredit({
+    bundleId,
+    cuteCast,
+    includeJjibara: opts.includeJjibara ?? entry?.includeJjibara,
+    format: opts.format ?? entry?.format,
+  })
+    ? CHICO_DESC_CREDIT
+    : "";
   const creditBlock = credit ? `\n\n${credit}` : "";
+  const audioLine =
+    Math.random() < 0.72 ? pickOne(SITE_AUDIO_LINES) : "";
+  const audioBlock = audioLine ? `\n\n${audioLine}` : "";
   const budget = Math.max(
     40,
-    DESC_MAX - tags.length - creditBlock.length - 4,
+    DESC_MAX - tags.length - creditBlock.length - audioBlock.length - 4,
   );
   const titleNorm = String(title || "")
     .trim()
@@ -273,9 +403,10 @@ function descriptionFromEntry(entry, title = "", opts = {}) {
     body = parts.join("\n");
   }
 
+  const fallbackAudio = audioLine || pickOne(SITE_AUDIO_LINES);
   const text = body
-    ? `${body}${creditBlock}\n\n${tags}`
-    : `${credit}${credit ? "\n\n" : ""}${tags}`;
+    ? `${body}${audioBlock}${creditBlock}\n\n${tags}`
+    : `${fallbackAudio}${creditBlock}\n\n${tags}`;
   return text.slice(0, DESC_MAX);
 }
 
@@ -318,6 +449,95 @@ function topicCandidatesForPin() {
 
 function topicsArgFromCandidates(candidates) {
   return candidates.join("|");
+}
+
+/** Catalog cuteCast map (id → "capybara" | "otter" | null). Cached on disk. */
+function loadCuteCastMap() {
+  const cachePath = path.join(OUT, "cute-cast-map.json");
+  if (fs.existsSync(cachePath)) {
+    try {
+      const st = fs.statSync(cachePath);
+      // Refresh at most once a day
+      if (Date.now() - st.mtimeMs < 24 * 60 * 60 * 1000) {
+        return JSON.parse(fs.readFileSync(cachePath, "utf8"));
+      }
+    } catch {
+      /* rebuild */
+    }
+  }
+  const probe = `
+    import { ALL_VOCAB_BUNDLES } from ${JSON.stringify(
+      path.join(ROOT, "src/lib/vocabInfographic/bundle-catalog.ts"),
+    )};
+    const m = {};
+    for (const b of ALL_VOCAB_BUNDLES) {
+      if (b?.id) m[b.id] = b.cuteCast ?? null;
+    }
+    process.stdout.write(JSON.stringify(m));
+  `;
+  const r = spawnSync("npx", ["tsx", "--eval", probe], {
+    cwd: ROOT,
+    encoding: "utf8",
+    maxBuffer: 32 * 1024 * 1024,
+  });
+  if (r.status !== 0) {
+    console.warn("    warn: cuteCast catalog load failed — credit only when progress says jibara");
+    if (r.stderr) console.warn(String(r.stderr).slice(0, 300));
+    return {};
+  }
+  try {
+    const map = JSON.parse(r.stdout || "{}");
+    fs.mkdirSync(OUT, { recursive: true });
+    fs.writeFileSync(cachePath, JSON.stringify(map));
+    return map;
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Per-bundle flags from batch progress + catalog format.
+ * includeJjibara: true only when generation recorded a cameo.
+ */
+function loadProgressFlagsById() {
+  const progressPath = path.join(OUT, "progress.json");
+  const progress = loadJson(progressPath, { done: {} });
+  const out = {};
+  for (const [id, row] of Object.entries(progress.done || {})) {
+    out[id] = {
+      includeJjibara:
+        typeof row?.includeJjibara === "boolean" ? row.includeJjibara : undefined,
+      cuteCast: row?.cuteCast ?? undefined,
+    };
+  }
+  // Catalog format for cute_cast credit
+  const probe = `
+    import { ALL_VOCAB_BUNDLES } from ${JSON.stringify(
+      path.join(ROOT, "src/lib/vocabInfographic/bundle-catalog.ts"),
+    )};
+    const m = {};
+    for (const b of ALL_VOCAB_BUNDLES) {
+      if (b?.id) m[b.id] = b.format ?? null;
+    }
+    process.stdout.write(JSON.stringify(m));
+  `;
+  const r = spawnSync("npx", ["tsx", "--eval", probe], {
+    cwd: ROOT,
+    encoding: "utf8",
+    maxBuffer: 32 * 1024 * 1024,
+  });
+  if (r.status === 0) {
+    try {
+      const formats = JSON.parse(r.stdout || "{}");
+      for (const [id, format] of Object.entries(formats)) {
+        if (!out[id]) out[id] = {};
+        out[id].format = format;
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+  return out;
 }
 
 function sleep(ms) {
@@ -478,6 +698,8 @@ async function main() {
       .filter((page) => page?.bundleId && page?.slug)
       .map((page) => [String(page.bundleId), page]),
   );
+  const castMap = loadCuteCastMap();
+  const progressFlagsById = loadProgressFlagsById();
 
   let candidates;
   if (id) {
@@ -508,7 +730,11 @@ async function main() {
     `==> Vocab Pinterest: ${candidates.length} (of ${Object.keys(scheduled).length} scheduled, ${Object.keys(pinned).length} already pinned, published=${publishedById.size})`,
   );
   console.log(
-    `    board=${DEFAULT_BOARD} site=${SITE_URL} topic~=${DEFAULT_TOPIC} delay=${DELAY_SEC}s timeout=${ATTEMPT_TIMEOUT_MS}ms retries=${MAX_RETRIES} dryRun=${dryRun} liveCheck=${!skipLiveCheck} allowHome=${allowHomeLink}`,
+    `    board=${DEFAULT_BOARD} site=${SITE_URL} topic~=${DEFAULT_TOPIC} delay=${
+      DELAY_FIXED_SEC != null && Number.isFinite(DELAY_FIXED_SEC)
+        ? `${DELAY_FIXED_SEC}s fixed`
+        : `${DELAY_MIN_SEC}–${DELAY_MAX_SEC}s random`
+    } timeout=${ATTEMPT_TIMEOUT_MS}ms retries=${MAX_RETRIES} dryRun=${dryRun} liveCheck=${!skipLiveCheck} allowHome=${allowHomeLink}`,
   );
   if (candidates.length) {
     const mix = {};
@@ -530,6 +756,28 @@ async function main() {
     return;
   }
 
+  if (!dryRun && fs.existsSync(DELETE_DRAFTS)) {
+    console.log(
+      `    draft cleanup if ≥${DRAFT_MIN_COUNT} (browser=${BROWSER_URL})`,
+    );
+    const dr = spawnSync(
+      process.execPath,
+      [
+        DELETE_DRAFTS,
+        "--browser-url",
+        BROWSER_URL,
+        "--min-count",
+        String(DRAFT_MIN_COUNT),
+      ],
+      { encoding: "utf8", timeout: 180_000 },
+    );
+    if (dr.stderr) process.stderr.write(dr.stderr);
+    if (dr.stdout) process.stdout.write(dr.stdout);
+    if (dr.status !== 0) {
+      console.error("    WARN draft cleanup failed — continuing upload");
+    }
+  }
+
   let ok = 0;
   let failed = 0;
   let consecutiveFails = 0;
@@ -546,7 +794,25 @@ async function main() {
     const entry = scheduled[bundleId];
     const sourcePng = path.join(OUT, `${bundleId}.png`);
     const title = titleFromEntry(bundleId, entry);
-    const description = descriptionFromEntry(entry, title);
+    const progressFlags = progressFlagsById[bundleId] || {};
+    const description = descriptionFromEntry(entry, title, {
+      bundleId,
+      castMap,
+      cuteCast: entry?.cuteCast ?? progressFlags.cuteCast ?? castMap[bundleId] ?? undefined,
+      includeJjibara:
+        entry?.includeJjibara ?? progressFlags.includeJjibara ?? undefined,
+      format: entry?.format ?? progressFlags.format ?? undefined,
+    });
+    if (
+      shouldChicoDescCredit({
+        bundleId,
+        cuteCast: entry?.cuteCast ?? progressFlags.cuteCast ?? castMap[bundleId],
+        includeJjibara: entry?.includeJjibara ?? progressFlags.includeJjibara,
+        format: entry?.format ?? progressFlags.format,
+      })
+    ) {
+      console.log(`   credit: ${CHICO_DESC_CREDIT}`);
+    }
     const topicList = topicCandidatesForPin();
     const topic = topicsArgFromCandidates(topicList);
     const alt = altTextFromEntry(title, bundleId);
@@ -653,8 +919,9 @@ async function main() {
     ok += 1;
 
     if (i < candidates.length - 1) {
-      console.log(`  wait ${DELAY_SEC}s…`);
-      await sleep(DELAY_SEC * 1000);
+      const waitSec = nextUploadDelaySec();
+      console.log(`  wait ${waitSec}s…`);
+      await sleep(waitSec * 1000);
     }
   }
 

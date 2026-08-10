@@ -15,6 +15,7 @@ import { buildVocabCompareCatalog } from "@/lib/vocabCompare/repo";
 import { toVocabDifferencePage } from "@/lib/vocabDetail/project";
 import { vocabDetailSiteBaseUrl } from "@/lib/vocabDetail/slug";
 import { listAllVocabSeoPages } from "@/lib/vocabInfographic/repo";
+import { listAllIgListSeoPages } from "@/lib/igList/repo";
 import { listTopWhenToUseForStaticParams } from "@/lib/whenToUse/repo";
 import { listSongs } from "@/lib/songsRepo";
 import { listDramas } from "@/lib/dramaRepo";
@@ -42,6 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/grammar/how-to-say`, changeFrequency: "monthly", priority: 0.75 },
     { url: `${baseUrl}/vocab-quiz`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/vocab`, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${baseUrl}/list`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/vocab/detail`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/vocab/detail?tab=how-to-say`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/expressions`, changeFrequency: "monthly", priority: 0.7 },
@@ -244,6 +246,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.72,
   }));
 
+  const igListSeoPages = listAllIgListSeoPages();
+  const igListSeoRoutes: MetadataRoute.Sitemap = igListSeoPages.map((row) => ({
+    url: `${baseUrl}/list/${encodeURIComponent(row.setId)}/${encodeURIComponent(row.slug)}`,
+    lastModified: row.updatedAt ? new Date(row.updatedAt) : undefined,
+    changeFrequency: "weekly" as const,
+    priority: 0.78,
+  }));
+
   const routes: MetadataRoute.Sitemap = [
     ...staticRoutes,
     ...grammarRoutes,
@@ -254,6 +264,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...vocabDetailDifferenceRoutes,
     ...vocabDetailHowToSayRoutes,
     ...vocabSeoRoutes,
+    ...igListSeoRoutes,
     ...articleRoutes,
     ...blogRoutes,
     ...expressionRoutes,

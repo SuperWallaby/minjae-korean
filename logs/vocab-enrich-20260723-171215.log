@@ -1,0 +1,5 @@
+yarn run v1.22.19
+$ npx tsx scripts/enrich-vocab-seo-pages.ts
+[vocab:enrich] 336 pages (force=false voice=Mina avkEnv=true)
+
+→ [1/336] ant-angry-calm (2 words)

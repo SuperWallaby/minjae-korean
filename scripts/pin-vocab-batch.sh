@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # Resilient vocab Pinterest batch — resumes until COUNT new pins succeed.
 #
-#   ./scripts/pin-vocab-batch.sh 25
-#   COUNT=25 ./scripts/pin-vocab-batch.sh
+# Policy (dispersed): ≤8 pins per wave, up to 3 waves/day when instructed.
+# Inter-pin delay is random 10–30s (see pin-vocab-infographics.mjs).
+#
+#   ./scripts/pin-vocab-batch.sh        # +8 (default wave)
+#   ./scripts/pin-vocab-batch.sh 8
+#   COUNT=8 ./scripts/pin-vocab-batch.sh
 #
 # Per-pin retries live in pin-vocab-infographics.mjs.
 # This wrapper restarts the batch if the Node process dies mid-run.
@@ -16,7 +20,7 @@ PINNED="$OUT/pinterest-pinned.json"
 LOG_DIR="$OUT/logs"
 mkdir -p "$LOG_DIR"
 
-COUNT="${COUNT:-${1:-25}}"
+COUNT="${COUNT:-${1:-8}}"
 if [[ "${1:-}" =~ ^[0-9]+$ ]]; then
   shift || true
 fi
@@ -66,6 +70,27 @@ echo "    log=${LOG}"
 
 ensure_chrome
 
+# After pins land, fill SEO page TTS (examples SoVITS on V100; words Edge).
+# Runs detached so a long TTS backfill never blocks the pin loop.
+queue_pinned_tts() {
+  local tts_script="${ROOT}/scripts/run-pinned-vocab-tts.sh"
+  if [[ ! -x "$tts_script" ]]; then
+    chmod +x "$tts_script" 2>/dev/null || true
+  fi
+  if [[ ! -f "$tts_script" ]]; then
+    echo "    (no run-pinned-vocab-tts.sh — skip TTS queue)" | tee -a "$LOG"
+    return 0
+  fi
+  local tts_log="${LOG_DIR}/pinned-vocab-tts-after-pin-$(date +%Y%m%d-%H%M%S).console.log"
+  echo "    queue pinned SEO TTS → ${tts_log}" | tee -a "$LOG"
+  (
+    # small pause so ledger flush finishes
+    sleep 3
+    FORCE_UNLOCK=1 bash "$tts_script" >>"$tts_log" 2>&1 || true
+  ) &
+  disown || true
+}
+
 round=0
 while (( round < MAX_ROUNDS )); do
   round=$((round + 1))
@@ -73,6 +98,7 @@ while (( round < MAX_ROUNDS )); do
   need=$((TARGET - now))
   if (( need <= 0 )); then
     echo "done: reached +${COUNT} (pinned=${now})"
+    queue_pinned_tts
     exit 0
   fi
 
@@ -95,6 +121,7 @@ while (( round < MAX_ROUNDS )); do
 
   if (( after >= TARGET )); then
     echo "done: reached +${COUNT} (pinned=${after})"
+    queue_pinned_tts
     exit 0
   fi
 
@@ -107,4 +134,6 @@ while (( round < MAX_ROUNDS )); do
 done
 
 echo "gave up after ${MAX_ROUNDS} rounds (pinned=$(pinned_count), target=${TARGET})" >&2
+# Still try TTS for whatever was pinned this session
+queue_pinned_tts
 exit 1
