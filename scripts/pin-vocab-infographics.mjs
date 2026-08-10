@@ -552,9 +552,56 @@ function shuffleInPlace(arr) {
   return arr;
 }
 
-/** Bundle id prefix → format bucket (so mixed pins feel "even"). */
-function formatBucket(bundleId) {
+/** Catalog format_id → even-mix bucket (trends share the same format bucket). */
+function bucketFromCatalogFormat(format) {
+  const f = String(format || "").toLowerCase();
+  const map = {
+    grid_cluster: "grid",
+    antonym_split: "antonym",
+    similar_split: "similar",
+    super_list: "list",
+    phrase_stack: "phrase",
+    concept_rows: "concept",
+    topik_upgrade: "topik",
+    quiz_comment: "quiz",
+    cute_cast: "cute",
+    hanja_hub: "hanja",
+    pronunciation_grid: "pronunciation",
+    grammar_spotlight: "grammar",
+    compound_word: "compound",
+    phrase_square: "phrase_square",
+  };
+  return map[f] || null;
+}
+
+/**
+ * Bundle id → format bucket (so mixed pins feel "even").
+ * Prefer catalog format when known so tr-* / cmp-* / gram-* land in the
+ * same buckets as their non-trend siblings.
+ */
+function formatBucket(bundleId, formatById = null) {
   const id = String(bundleId || "").toLowerCase();
+  const fromCatalog = bucketFromCatalogFormat(formatById?.get?.(id) || formatById?.[id]);
+  if (fromCatalog) return fromCatalog;
+
+  // Trend wave ids: tr-{fmt}-{slug}
+  if (id.startsWith("tr-")) {
+    const rest = id.slice(3);
+    if (rest.startsWith("ant-")) return "antonym";
+    if (rest.startsWith("sim-")) return "similar";
+    if (rest.startsWith("grid-")) return "grid";
+    if (rest.startsWith("list-")) return "list";
+    if (rest.startsWith("phrase-")) return "phrase";
+    if (rest.startsWith("concept-")) return "concept";
+    if (rest.startsWith("quiz-")) return "quiz";
+    if (rest.startsWith("cute-")) return "cute";
+    if (rest.startsWith("cmp-") || rest.startsWith("compound-")) return "compound";
+    if (rest.startsWith("gram-")) return "grammar";
+    if (rest.startsWith("hanja-")) return "hanja";
+    if (rest.startsWith("topik-")) return "topik";
+    if (rest.startsWith("pron-")) return "pronunciation";
+  }
+
   if (id.startsWith("hanja-")) return "hanja";
   if (id.startsWith("cute-") || id.startsWith("cute_")) return "cute";
   if (id.startsWith("grid-")) return "grid";
@@ -565,6 +612,9 @@ function formatBucket(bundleId) {
   if (id.startsWith("concept-")) return "concept";
   if (id.startsWith("phrase-")) return "phrase";
   if (id.startsWith("topik-")) return "topik";
+  if (id.startsWith("gram-")) return "grammar";
+  if (id.startsWith("cmp-") || id.startsWith("compound-")) return "compound";
+  if (id.startsWith("pron-")) return "pronunciation";
   const head = id.split("-")[0] || "other";
   return head || "other";
 }
@@ -572,11 +622,14 @@ function formatBucket(bundleId) {
 /**
  * Random order across unpinned ready pins, round-robin by format
  * so one format doesn't dump a streak onto the board.
+ * @param {string[]} ids
+ * @param {number} count
+ * @param {Map<string,string>|Record<string,string>|null} [formatById]
  */
-function pickCandidatesEvenly(ids, count) {
+function pickCandidatesEvenly(ids, count, formatById = null) {
   const buckets = new Map();
   for (const id of ids) {
-    const k = formatBucket(id);
+    const k = formatBucket(id, formatById);
     if (!buckets.has(k)) buckets.set(k, []);
     buckets.get(k).push(id);
   }
@@ -700,6 +753,11 @@ async function main() {
   );
   const castMap = loadCuteCastMap();
   const progressFlagsById = loadProgressFlagsById();
+  const formatById = new Map(
+    Object.entries(progressFlagsById)
+      .filter(([, v]) => v?.format)
+      .map(([k, v]) => [k, String(v.format)]),
+  );
 
   let candidates;
   if (id) {
@@ -723,7 +781,7 @@ async function main() {
         `    note: ${missingSeo.length} unpinned PNG(s) skipped — not in published.json (yarn vocab:publish + deploy first)`,
       );
     }
-    candidates = pickCandidatesEvenly(ready, count);
+    candidates = pickCandidatesEvenly(ready, count, formatById);
   }
 
   console.log(
@@ -739,7 +797,7 @@ async function main() {
   if (candidates.length) {
     const mix = {};
     for (const c of candidates) {
-      const k = formatBucket(c);
+      const k = formatBucket(c, formatById);
       mix[k] = (mix[k] || 0) + 1;
     }
     console.log(`    order=random-even mix=${JSON.stringify(mix)}`);

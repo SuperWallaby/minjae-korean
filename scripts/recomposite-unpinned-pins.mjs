@@ -3,16 +3,21 @@
  * Re-apply brand footer. Chico watermark only when generation had includeJjibara
  * or the pin is cute_cast with capybara cast — never default-on.
  *
+ * grammar_spotlight: `_raw.png` / `_ill.png` are illustration-only. This script
+ * re-runs SVG text compose before the footer (raw+footer alone strips Hangul).
+ *
  *   node scripts/recomposite-unpinned-pins.mjs
  *   node scripts/recomposite-unpinned-pins.mjs --dry-run
  *   node scripts/recomposite-unpinned-pins.mjs --id phrase-foo
  *   node scripts/recomposite-unpinned-pins.mjs --all
+ *   node scripts/recomposite-unpinned-pins.mjs --prefix gram-
  */
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { compositeFooter, LOGO_PATH } from "./lib/vocab-infographic-gen.mjs";
+import { composeGrammarSpotlightPin } from "./lib/grammar_spotlight_pin.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, ".tmp", "vocab-infographic-gen");
@@ -25,6 +30,7 @@ const LOG_DIR = join(OUT, "logs");
 function parseArgs(argv) {
   let dryRun = false;
   let onlyId = "";
+  let prefix = "";
   let concurrency = 6;
   let all = false;
   for (let i = 0; i < argv.length; i++) {
@@ -33,11 +39,13 @@ function parseArgs(argv) {
     else if (a === "--all") all = true;
     else if (a === "--id" && argv[i + 1]) onlyId = argv[++i];
     else if (a.startsWith("--id=")) onlyId = a.slice(5);
+    else if (a === "--prefix" && argv[i + 1]) prefix = argv[++i];
+    else if (a.startsWith("--prefix=")) prefix = a.slice(9);
     else if (a === "--concurrency" && argv[i + 1]) {
       concurrency = Math.max(1, parseInt(argv[++i], 10) || 6);
     }
   }
-  return { dryRun, onlyId, concurrency, all };
+  return { dryRun, onlyId, prefix, concurrency, all };
 }
 
 function loadJson(path, fallback) {
@@ -49,13 +57,18 @@ function loadJson(path, fallback) {
   }
 }
 
-/** id → { cuteCast, format, includeJjibara } */
+/** id → { cuteCast, format, includeJjibara, grammarSpotlight? } */
 function loadFlagsById() {
   const probe = `
     import { ALL_VOCAB_BUNDLES } from ${JSON.stringify(join(ROOT, "src/lib/vocabInfographic/bundle-catalog.ts"))};
     const m = {};
     for (const b of ALL_VOCAB_BUNDLES) {
-      if (b?.id) m[b.id] = { cuteCast: b.cuteCast ?? null, format: b.format ?? null };
+      if (!b?.id) continue;
+      m[b.id] = {
+        cuteCast: b.cuteCast ?? null,
+        format: b.format ?? null,
+        grammarSpotlight: b.grammarSpotlight ?? null,
+      };
     }
     process.stdout.write(JSON.stringify(m));
   `;
@@ -72,7 +85,7 @@ function loadFlagsById() {
       catalog = {};
     }
   } else {
-    console.warn("[warn] catalog load failed");
+    console.warn("[warn] catalog load failed", (r.stderr || "").slice(0, 400));
   }
   const progress = loadJson(PROGRESS, { done: {} });
   const out = {};
@@ -88,9 +101,46 @@ function loadFlagsById() {
       cuteCast: done.cuteCast ?? cat.cuteCast ?? null,
       includeJjibara:
         typeof done.includeJjibara === "boolean" ? done.includeJjibara : undefined,
+      grammarSpotlight: cat.grammarSpotlight ?? null,
     };
   }
   return out;
+}
+
+function illustrationPathFor(id, format) {
+  // grammar_spotlight stores illustration-only as _ill.png (and _raw.png).
+  if (format === "grammar_spotlight") {
+    const ill = join(OUT, `${id}_ill.png`);
+    if (existsSync(ill)) return ill;
+  }
+  return join(OUT, `${id}_raw.png`);
+}
+
+async function buildBasePng(id, flags) {
+  const format = String(flags.format || "");
+  const rawPath = illustrationPathFor(id, format);
+  const raw = readFileSync(rawPath);
+
+  if (format === "grammar_spotlight") {
+    const g = flags.grammarSpotlight;
+    if (!g) {
+      throw new Error(
+        `grammar_spotlight missing catalog fields for ${id} — refuse raw+footer (would strip text)`,
+      );
+    }
+    return composeGrammarSpotlightPin({
+      illustrationPng: raw,
+      koreanBefore: g.koreanBefore,
+      koreanHighlight: g.koreanHighlight,
+      koreanAfter: g.koreanAfter,
+      englishBefore: g.englishBefore,
+      englishHighlight: g.englishHighlight,
+      englishAfter: g.englishAfter,
+      grammarLabel: g.grammarLabel,
+    });
+  }
+
+  return raw;
 }
 
 /**
@@ -122,7 +172,9 @@ async function mapPool(items, concurrency, fn) {
 }
 
 async function main() {
-  const { dryRun, onlyId, concurrency, all } = parseArgs(process.argv.slice(2));
+  const { dryRun, onlyId, prefix, concurrency, all } = parseArgs(
+    process.argv.slice(2),
+  );
   if (!existsSync(LOGO)) throw new Error(`logo missing: ${LOGO}`);
   mkdirSync(LOG_DIR, { recursive: true });
 
@@ -137,15 +189,24 @@ async function main() {
     ids = Object.keys(scheduled).filter((id) => !pinned[id]);
   }
   if (onlyId) ids = ids.filter((id) => id === onlyId);
-  ids = ids.filter((id) => existsSync(join(OUT, `${id}_raw.png`)));
+  if (prefix) ids = ids.filter((id) => id.startsWith(prefix));
+  ids = ids.filter(
+    (id) =>
+      existsSync(join(OUT, `${id}_raw.png`)) ||
+      existsSync(join(OUT, `${id}_ill.png`)),
+  );
 
   const flagsMap = loadFlagsById();
   const withChico = ids.filter((id) => shouldChico(flagsMap[id]));
+  const grammarN = ids.filter(
+    (id) => String(flagsMap[id]?.format || "") === "grammar_spotlight",
+  ).length;
 
   console.log(
     `==> recomposite ${all ? "all raw" : "unpinned"}: ${ids.length} (pinned ${Object.keys(pinned).length})`,
   );
   console.log(`    chico credit: ${withChico.length} · no-credit: ${ids.length - withChico.length}`);
+  console.log(`    grammar_spotlight recompose: ${grammarN}`);
   console.log(`    logo=${LOGO}`);
   console.log(`    concurrency=${concurrency} dryRun=${dryRun}`);
 
@@ -160,20 +221,22 @@ async function main() {
   const errors = [];
 
   await mapPool(ids, concurrency, async (id, idx) => {
-    const rawPath = join(OUT, `${id}_raw.png`);
     const outPath = join(OUT, `${id}.png`);
     const flags = flagsMap[id] || {};
     const chico = shouldChico(flags);
+    const format = String(flags.format || "");
     try {
       if (dryRun) {
         ok += 1;
         if ((idx + 1) % 50 === 0 || idx === 0) {
-          console.log(`  [dry] ${idx + 1}/${ids.length} ${id} chico=${chico}`);
+          console.log(
+            `  [dry] ${idx + 1}/${ids.length} ${id} format=${format || "?"} chico=${chico}`,
+          );
         }
         return;
       }
-      const raw = readFileSync(rawPath);
-      const branded = await compositeFooter(raw, LOGO, {
+      const base = await buildBasePng(id, flags);
+      const branded = await compositeFooter(base, LOGO, {
         cuteCast: flags.cuteCast || undefined,
         chicoCredit: chico,
       });
@@ -181,7 +244,7 @@ async function main() {
       ok += 1;
       if ((idx + 1) % 25 === 0 || idx === 0 || idx === ids.length - 1) {
         console.log(
-          `  ✓ ${idx + 1}/${ids.length} ${id} chico=${chico}${flags.includeJjibara === true ? " jjibara" : ""}`,
+          `  ✓ ${idx + 1}/${ids.length} ${id} format=${format || "?"} chico=${chico}${flags.includeJjibara === true ? " jjibara" : ""}`,
         );
       }
     } catch (e) {

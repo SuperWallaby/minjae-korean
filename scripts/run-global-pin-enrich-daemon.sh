@@ -95,26 +95,13 @@ run_pipeline_round() {
     echo "[$(date '+%Y-%m-%dT%H:%M:%S%z')] enrich exit=$en_rc"
 
     if [[ "${GLOBAL_ENRICH_AUTO_COMMIT:-1}" == "1" ]]; then
-      local changed
-      changed="$(git -C "$ROOT" status --porcelain -- src/data/globalPins/published.json public/global 2>/dev/null || true)"
-      if [[ -n "$changed" ]]; then
-        echo "[$(date '+%Y-%m-%dT%H:%M:%S%z')] auto-commit catalog (+media)"
-        git -C "$ROOT" add src/data/globalPins/published.json public/global 2>/dev/null || true
-        if ! git -C "$ROOT" diff --cached --quiet 2>/dev/null; then
-          git -C "$ROOT" commit -m "$(cat <<'EOF'
-chore(global): auto-publish pin catalog and enrich audio.
-
-EOF
-)" || true
-          if [[ "${GLOBAL_ENRICH_AUTO_PUSH:-1}" == "1" ]]; then
-            git -C "$ROOT" push origin HEAD 2>&1 || echo "push failed (retry next round)"
-          fi
-        else
-          echo "[$(date '+%Y-%m-%dT%H:%M:%S%z')] nothing staged"
-        fi
-      else
-        echo "[$(date '+%Y-%m-%dT%H:%M:%S%z')] no git changes"
-      fi
+      # launchd cannot `git` a Desktop repo (TCC). Push via gh API instead.
+      echo "[$(date '+%Y-%m-%dT%H:%M:%S%z')] ==> auto-push catalog (gh api)"
+      set +e
+      /usr/bin/caffeinate -dims "$NODE" "$ROOT/scripts/auto-push-global-catalog.mjs"
+      local push_rc=$?
+      set -e
+      echo "[$(date '+%Y-%m-%dT%H:%M:%S%z')] auto-push exit=$push_rc"
     fi
     return "${en_rc:-0}"
   } >>"$round_log" 2>&1

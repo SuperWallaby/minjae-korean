@@ -378,6 +378,7 @@ function main() {
     "pronunciation_grid",
     "grammar_spotlight",
     "compound_word",
+    "phrase_square",
   ];
 
   const byFormat: Record<string, MasterEntry[]> = {};

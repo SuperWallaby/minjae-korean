@@ -113,5 +113,26 @@ const catalog = {
   pages,
 };
 
-fs.writeFileSync(OUT_JSON, JSON.stringify(catalog, null, 2));
-console.log(`published ${pages.length} global pins → ${OUT_JSON}`);
+// Avoid churning generatedAt (and useless git noise) when content is unchanged.
+let prevCatalog = null;
+try {
+  prevCatalog = JSON.parse(fs.readFileSync(OUT_JSON, "utf8"));
+} catch {
+  /* first publish */
+}
+const stripTs = (c) => {
+  if (!c || typeof c !== "object") return c;
+  const { generatedAt: _g, ...rest } = c;
+  return rest;
+};
+if (
+  prevCatalog &&
+  JSON.stringify(stripTs(prevCatalog)) === JSON.stringify(stripTs(catalog))
+) {
+  console.log(
+    `published ${pages.length} global pins (unchanged, skip write) → ${OUT_JSON}`,
+  );
+} else {
+  fs.writeFileSync(OUT_JSON, JSON.stringify(catalog, null, 2));
+  console.log(`published ${pages.length} global pins → ${OUT_JSON}`);
+}

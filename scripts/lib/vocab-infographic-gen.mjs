@@ -279,10 +279,22 @@ async function generateGptImage2WithRef({ prompt, size, root, endpoint, apiKey }
 }
 
 export async function generateGptImage2({ prompt, size, root }) {
-  const endpoint = process.env.AZURE_OPENAI_ENDPOINT?.trim().replace(/\/+$/, "");
-  const apiKey = process.env.AZURE_OPENAI_API_KEY?.trim();
+  const endpoint = (
+    process.env.AZURE_OPENAI_IMAGE_ENDPOINT ||
+    process.env.AZURE_OPENAI_ENDPOINT ||
+    ""
+  )
+    .trim()
+    .replace(/\/+$/, "");
+  const apiKey = (
+    process.env.AZURE_OPENAI_IMAGE_API_KEY ||
+    process.env.AZURE_OPENAI_API_KEY ||
+    ""
+  ).trim();
   if (!endpoint || !apiKey) {
-    throw new Error("Missing AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY");
+    throw new Error(
+      "Missing AZURE_OPENAI_IMAGE_ENDPOINT/API_KEY (or AZURE_OPENAI_ENDPOINT/API_KEY)",
+    );
   }
 
   const useRef =
@@ -348,7 +360,7 @@ export async function generateWithRetry(
 }
 
 export function sizeForFormat(format) {
-  if (format === "grid_cluster") return "1024x1024";
+  if (format === "grid_cluster" || format === "phrase_square") return "1024x1024";
   return "1024x1536";
 }
 

@@ -40,6 +40,11 @@ import {
   composeCompoundWordPin,
   compoundIconPrompt,
 } from "./lib/compound_word_pin.mjs";
+import {
+  composePhraseSquarePin,
+  phraseSquareIllustrationPrompt,
+  pickPhraseSquareBg,
+} from "./lib/phrase_square_pin.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = (process.env.VOCAB_OUT || "").trim() || join(ROOT, ".tmp", "vocab-infographic-gen");
@@ -169,6 +174,61 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
 
   const logoPath = resolveFooterLogoPath(ROOT, bundle.format);
   const t0 = Date.now();
+
+  // Phrase square: illustration-only gen → SVG L1/Hangul/(rom) compose (no footer band)
+  if (bundle.format === "phrase_square" && bundle.phraseSquare) {
+    const ps = bundle.phraseSquare;
+    const bgColor = ps.bgColor || pickPhraseSquareBg(bundle.id);
+    const illPrompt = phraseSquareIllustrationPrompt({
+      scene: ps.scene,
+      bgColor,
+      styleBase: STYLE_BASE,
+    });
+    const ill = await generateWithRetry(
+      {
+        prompt: illPrompt,
+        size: "1024x1024",
+        root: ROOT,
+        format: "phrase_square",
+        includeJjibara: false,
+      },
+      {
+        onRetry: ({ attempt, wait, error }) => {
+          if (isPromptContentError(error)) throw error;
+          log(
+            `  ⏳ retry ${bundle.id} ill #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`,
+          );
+        },
+      },
+    );
+    const illPath = join(OUT, `${bundle.id}_ill.png`);
+    writeFileSync(illPath, ill);
+    const composed = await composePhraseSquarePin({
+      gloss: ps.gloss,
+      hangul: ps.hangul,
+      romanization: ps.romanization,
+      illustrationPng: ill,
+      bgColor,
+    });
+    const rawPath = join(OUT, `${bundle.id}_raw.png`);
+    writeFileSync(rawPath, composed);
+    const outPath = join(OUT, `${bundle.id}.png`);
+    writeFileSync(outPath, composed);
+    const sec = ((Date.now() - t0) / 1000).toFixed(1);
+    log(`  ✓ ${bundle.id} (${sec}s) phrase_square`);
+    progress.done[bundle.id] = {
+      at: new Date().toISOString(),
+      sec,
+      outPath,
+      rawPath,
+      includeJjibara: false,
+      cuteCast: null,
+    };
+    delete progress.failed[bundle.id];
+    saveProgress(progress);
+    await sleep(2000);
+    return;
+  }
 
   // Compound word: two icon gens → SVG equation compose
   if (bundle.format === "compound_word" && bundle.compoundWord) {

@@ -20,8 +20,10 @@ echo "log=$LOG" | tee "$LOG"
 echo "genLimit=$GEN_LIMIT pinCount=$PIN_COUNT" | tee -a "$LOG"
 
 # Ensure multilingual Chrome
-if [[ -x "$AVK/scripts/launch-chrome-pinterest-multilingual.sh" ]]; then
-  bash "$AVK/scripts/launch-chrome-pinterest-multilingual.sh" "https://www.pinterest.com/" >>"$LOG" 2>&1 || true
+ML_LAUNCH="$HOME/Library/Application Support/kaja/launch-chrome-pinterest-multilingual.sh"
+if [[ ! -x "$ML_LAUNCH" ]]; then ML_LAUNCH="$AVK/scripts/launch-chrome-pinterest-multilingual.sh"; fi
+if [[ -x "$ML_LAUNCH" ]]; then
+  bash "$ML_LAUNCH" "https://www.pinterest.com/" >>"$LOG" 2>&1 || true
 fi
 for _ in $(seq 1 30); do
   curl -sf http://127.0.0.1:9224/json/version >/dev/null && break

@@ -40,28 +40,14 @@ set -e
 log "enrich exit=$en_rc"
 tail -20 "$LOG" || true
 
-# Deploy via git when catalog/audio changed (CI). Off with GLOBAL_ENRICH_AUTO_COMMIT=0
+# Deploy via GitHub API (launchd cannot git Desktop repos). Off with GLOBAL_ENRICH_AUTO_COMMIT=0
 if [[ "${GLOBAL_ENRICH_AUTO_COMMIT:-1}" == "1" ]]; then
-  cd "$ROOT"
-  changed="$(git status --porcelain -- src/data/globalPins/published.json public/global 2>/dev/null || true)"
-  if [[ -n "$changed" ]]; then
-    log "auto-commit catalog (+media if local)"
-    git add src/data/globalPins/published.json public/global 2>/dev/null || true
-    if git diff --cached --quiet; then
-      log "nothing staged"
-    else
-      git commit -m "$(cat <<'EOF'
-chore(global): auto-publish pin catalog and enrich audio.
-
-EOF
-)" || true
-      if [[ "${GLOBAL_ENRICH_AUTO_PUSH:-1}" == "1" ]]; then
-        git push origin HEAD 2>&1 | tee -a "$LOG" || log "push failed (will retry next round)"
-      fi
-    fi
-  else
-    log "no git changes"
-  fi
+  log "auto-push catalog (gh api)"
+  set +e
+  "$NODE" scripts/auto-push-global-catalog.mjs >>"$LOG" 2>&1
+  push_rc=$?
+  set -e
+  log "auto-push exit=$push_rc"
 fi
 
 if [[ "$en_rc" -ne 0 ]]; then

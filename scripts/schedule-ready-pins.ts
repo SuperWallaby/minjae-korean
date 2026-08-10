@@ -4,18 +4,23 @@
  *
  *   npx tsx scripts/schedule-ready-pins.ts
  *   npx tsx scripts/schedule-ready-pins.ts --prefix grid-
+ *   npx tsx scripts/schedule-ready-pins.ts --prefix tr-
+ *   npx tsx scripts/schedule-ready-pins.ts --prefix cmp-
  */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { ALL_VOCAB_BUNDLES } from "../src/lib/vocabInfographic/bundle-catalog.ts";
+import type { VocabBundle } from "../src/lib/vocabInfographic/bundle-catalog.ts";
 import {
   wordsFromConceptRowsBundle,
   wordsFromPhraseStackBundle,
   wordsFromQuizBundle,
+  wordsFromSimilarPairBundle,
   wordsFromTopikUpgradeBundle,
   loadCachedVocabImageWords,
+  type VocabImageWord,
 } from "../src/lib/vocabImageWords.ts";
 import { buildVocabXPostText } from "../src/lib/vocabXCaption.ts";
 import { DROP_IDS } from "./lib/vocab-batch-config.mjs";
@@ -30,7 +35,47 @@ function loadJson(file: string) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
-async function wordsForBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0]) {
+function wordsFromCompoundBundle(bundle: VocabBundle): VocabImageWord[] {
+  const cw = bundle.compoundWord;
+  if (!cw) return [];
+  return [
+    {
+      hangul: cw.left.hangul,
+      romanization: cw.left.romanization,
+      english: cw.left.english,
+    },
+    {
+      hangul: cw.right.hangul,
+      romanization: cw.right.romanization,
+      english: cw.right.english,
+    },
+    {
+      hangul: cw.resultHangul,
+      romanization: cw.resultRomanization,
+      english: cw.resultMeaning,
+    },
+  ];
+}
+
+function wordsFromGrammarBundle(bundle: VocabBundle): VocabImageWord[] {
+  const g = bundle.grammarSpotlight;
+  if (!g) return [];
+  const ko = `${g.koreanBefore}${g.koreanHighlight}${g.koreanAfter}`.trim();
+  const en = `${g.englishBefore}${g.englishHighlight}${g.englishAfter}`.trim();
+  const words: VocabImageWord[] = [];
+  if (g.koreanHighlight) {
+    words.push({
+      hangul: g.koreanHighlight,
+      english: g.englishHighlight || g.grammarEnglish,
+    });
+  }
+  if (ko && ko !== g.koreanHighlight) {
+    words.push({ hangul: ko, english: en || g.grammarEnglish });
+  }
+  return words;
+}
+
+async function wordsForBundle(bundle: VocabBundle) {
   const fromQuiz = wordsFromQuizBundle(bundle);
   if (fromQuiz.length) return fromQuiz;
   const fromConcept = wordsFromConceptRowsBundle(bundle);
@@ -39,6 +84,12 @@ async function wordsForBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0]) {
   if (fromPhrase.length) return fromPhrase;
   const fromTopik = wordsFromTopikUpgradeBundle(bundle);
   if (fromTopik.length) return fromTopik;
+  const fromSimilar = wordsFromSimilarPairBundle(bundle);
+  if (fromSimilar.length) return fromSimilar;
+  const fromCompound = wordsFromCompoundBundle(bundle);
+  if (fromCompound.length) return fromCompound;
+  const fromGrammar = wordsFromGrammarBundle(bundle);
+  if (fromGrammar.length) return fromGrammar;
   const cached = loadCachedVocabImageWords(OUT, bundle.id);
   if (cached?.words?.length) return cached.words;
   return [];
@@ -57,7 +108,15 @@ async function main() {
 
   const pngIds = fs
     .readdirSync(OUT)
-    .filter((f) => f.endsWith(".png") && !f.includes("_raw") && !f.startsWith("_"))
+    .filter(
+      (f) =>
+        f.endsWith(".png") &&
+        !f.startsWith("_") &&
+        !f.includes("_raw") &&
+        !f.includes("_ill") &&
+        !f.includes("_left") &&
+        !f.includes("_right"),
+    )
     .map((f) => f.replace(/\.png$/, ""))
     .filter((id) => byId.has(id))
     .filter((id) => !DROP_IDS.has(id))

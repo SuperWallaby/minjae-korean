@@ -47,6 +47,7 @@ export const GLOBAL_AFFILIATE_OK = Object.freeze([
   "pronunciation_grid",
   "grammar_spotlight",
   "compound_word",
+  "phrase_square",
   // Single-word quiz card — OK if image has no site/app “read more” CTA
   // (EN quiz_word_pin currently stamps kajakorean.com; global needs a CTA-free variant)
   "quiz_word_pin",
