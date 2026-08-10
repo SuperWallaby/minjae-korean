@@ -30,56 +30,66 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_ORIGIN),
-  title: {
-    default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`,
-  },
-  description: SITE_DESCRIPTION,
-  applicationName: SITE_NAME,
-  manifest: "/brand/site.webmanifest",
-  icons: {
-    icon: [
-      { url: "/brand/favicon.ico", type: "image/x-icon" },
-      {
-        url: "/brand/favicon-32x32.png",
-        type: "image/png",
-        sizes: "32x32",
-      },
-      {
-        url: "/brand/favicon-16x16.png",
-        type: "image/png",
-        sizes: "16x16",
-      },
-      { url: "/brand/icon.png", type: "image/png", sizes: "512x512" },
-    ],
-    shortcut: [{ url: "/brand/favicon.ico", type: "image/x-icon" }],
-    apple: [
-      {
-        url: "/brand/apple-touch-icon.png",
-        type: "image/png",
-        sizes: "180x180",
-      },
-    ],
-  },
-  openGraph: {
-    type: "website",
-    siteName: SITE_NAME,
-    title: SITE_NAME,
+export async function generateMetadata(): Promise<Metadata> {
+  const h = await headers();
+  const isGlobalSite = h.get("x-kaja-site") === "global";
+
+  return {
+    metadataBase: new URL(SITE_ORIGIN),
+    title: {
+      default: SITE_NAME,
+      template: `%s | ${SITE_NAME}`,
+    },
     description: SITE_DESCRIPTION,
-    images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: SITE_NAME }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    images: ["/brand/og.png"],
-  },
-  other: {
-    "p:domain_verify": "7a6bc7a84bb2c6c634bf33f0618b07d7",
-  },
-};
+    applicationName: SITE_NAME,
+    manifest: "/brand/site.webmanifest",
+    icons: {
+      icon: [
+        { url: "/brand/favicon.ico", type: "image/x-icon" },
+        {
+          url: "/brand/favicon-32x32.png",
+          type: "image/png",
+          sizes: "32x32",
+        },
+        {
+          url: "/brand/favicon-16x16.png",
+          type: "image/png",
+          sizes: "16x16",
+        },
+        { url: "/brand/icon.png", type: "image/png", sizes: "512x512" },
+      ],
+      shortcut: [{ url: "/brand/favicon.ico", type: "image/x-icon" }],
+      apple: [
+        {
+          url: "/brand/apple-touch-icon.png",
+          type: "image/png",
+          sizes: "180x180",
+        },
+      ],
+    },
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      title: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      images: [
+        { url: "/brand/og.png", width: 1200, height: 630, alt: SITE_NAME },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      images: ["/brand/og.png"],
+    },
+    other: {
+      // Main kajakorean.com vs global.kajakorean.com need different tokens.
+      "p:domain_verify": isGlobalSite
+        ? "86705510fceea49d9e5298e3a6f4df6d"
+        : "7a6bc7a84bb2c6c634bf33f0618b07d7",
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

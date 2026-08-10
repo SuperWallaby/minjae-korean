@@ -39,6 +39,9 @@ export const metadata: Metadata = {
       "Free language charts with audio and examples for English speakers.",
   },
   robots: { index: true, follow: true },
+  other: {
+    "p:domain_verify": "86705510fceea49d9e5298e3a6f4df6d",
+  },
 };
 
 export default function GlobalSiteLayout({
