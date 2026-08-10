@@ -133,7 +133,12 @@ export type VocabInfographicFormatId =
   | "concept_rows"
   | "phrase_stack"
   | "topik_upgrade"
-  | "phrase_square";
+  | "phrase_square"
+  | "cute_cast"
+  | "hanja_hub"
+  | "pronunciation_grid"
+  | "grammar_spotlight"
+  | "compound_word";
 
 export const VOCAB_GRID_CLUSTER_FORMAT: VocabGridFormat = {
   id: "grid_cluster",
