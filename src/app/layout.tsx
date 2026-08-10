@@ -30,9 +30,19 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
+const GLOBAL_PINTEREST_VERIFY = "86705510fceea49d9e5298e3a6f4df6d";
+const MAIN_PINTEREST_VERIFY = "7a6bc7a84bb2c6c634bf33f0618b07d7";
+
+/** Middleware sets x-kaja-site; also match Host for SSR/metadata on Vercel. */
+function isGlobalSiteRequest(h: Headers): boolean {
+  if (h.get("x-kaja-site") === "global") return true;
+  const host = (h.get("host") || "").toLowerCase();
+  return host.startsWith("global.");
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const h = await headers();
-  const isGlobalSite = h.get("x-kaja-site") === "global";
+  const isGlobalSite = isGlobalSiteRequest(h);
 
   return {
     metadataBase: new URL(SITE_ORIGIN),
@@ -85,8 +95,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       // Main kajakorean.com vs global.kajakorean.com need different tokens.
       "p:domain_verify": isGlobalSite
-        ? "86705510fceea49d9e5298e3a6f4df6d"
-        : "7a6bc7a84bb2c6c634bf33f0618b07d7",
+        ? GLOBAL_PINTEREST_VERIFY
+        : MAIN_PINTEREST_VERIFY,
     },
   };
 }
@@ -97,11 +107,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const h = await headers();
-  const isGlobalSite = h.get("x-kaja-site") === "global";
+  const isGlobalSite = isGlobalSiteRequest(h);
 
   if (isGlobalSite) {
     return (
       <html lang="en">
+        <head>
+          <meta
+            name="p:domain_verify"
+            content={GLOBAL_PINTEREST_VERIFY}
+          />
+        </head>
         <body className={`${plusJakarta.variable} ${bricolage.variable}`}>
           <GoogleAnalytics />
           {children}
