@@ -132,7 +132,8 @@ export type VocabInfographicFormatId =
   | "quiz_comment"
   | "concept_rows"
   | "phrase_stack"
-  | "topik_upgrade";
+  | "topik_upgrade"
+  | "phrase_square";
 
 export const VOCAB_GRID_CLUSTER_FORMAT: VocabGridFormat = {
   id: "grid_cluster",
@@ -283,6 +284,41 @@ export const VOCAB_TOPIK_UPGRADE_FORMAT: VocabTopikUpgradeFormat = {
     "One theme per card — do not mix unrelated domains.",
 };
 
+/**
+ * Single everyday phrase on a vibrant 1:1 solid — L1 gloss → Hangul → (rom) → ill.
+ * Sharp compositor (`phrase_square_pin.mjs`); AI draws illustration only.
+ */
+export type VocabPhraseSquareFormat = {
+  id: "phrase_square";
+  name: string;
+  pattern: string;
+  structure: string;
+  visualStyle: string;
+  titlePattern: string;
+  aspectRatio: "1:1";
+  whenToUse: string;
+};
+
+export const VOCAB_PHRASE_SQUARE_FORMAT: VocabPhraseSquareFormat = {
+  id: "phrase_square",
+  name: "한마디 스퀘어",
+  pattern:
+    "One spoken Korean phrase for L2 learners. Top = meaning in the learner's language " +
+    "(English or localized gloss), center = large Hangul, under it = romanization in parentheses, " +
+    "lower half = one cute scene illustration on a flat solid color background.",
+  structure: "L1 gloss → Hangul (hero) → (romanization) → illustration → brand corner",
+  visualStyle:
+    "Vibrant solid square (pink/blue/coral/teal…), all text white, no cream card frame. " +
+    "Illustration = gpt-image-2 brand CAPYBARA doodle painted into the solid bg (not a pasted sticker). " +
+    "Brand mark = logo-for-footer.png + Kaja Korean. " +
+    "FORBIDDEN: sticker cutouts, Korea flag badges, competitor watermarks, dense lists, portrait 2:3.",
+  titlePattern: "{Phrase meaning}",
+  aspectRatio: "1:1",
+  whenToUse:
+    "Snackable everyday lines (can't sleep, I'm hungry, let's go). One phrase per pin. " +
+    "Great for multilingual boards — swap only the L1 gloss.",
+};
+
 export const VOCAB_INFOGRAPHIC_FORMATS = {
   grid_cluster: VOCAB_GRID_CLUSTER_FORMAT,
   antonym_split: VOCAB_ANTONYM_SPLIT_FORMAT,
@@ -292,4 +328,5 @@ export const VOCAB_INFOGRAPHIC_FORMATS = {
   concept_rows: VOCAB_CONCEPT_ROWS_FORMAT,
   phrase_stack: VOCAB_PHRASE_STACK_FORMAT,
   topik_upgrade: VOCAB_TOPIK_UPGRADE_FORMAT,
+  phrase_square: VOCAB_PHRASE_SQUARE_FORMAT,
 } as const;

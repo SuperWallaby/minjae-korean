@@ -54,6 +54,7 @@ import {
   THIN_RESTOCK_PRON,
   THIN_RESTOCK_CUTE,
 } from "./bundle-catalog-thin-restock-wave";
+import { PHRASE_SQUARE_WAVE_BUNDLES } from "./bundle-catalog-phrase-square-wave";
 import { TRENDS_KR_2026_08_BUNDLES } from "./bundle-catalog-trends-kr-2026-08";
 import { assertHanjaCatalogAudited } from "./hanjaHubAudit";
 
@@ -201,6 +202,15 @@ export type VocabBundle = {
     resultHangul: string;
     resultRomanization: string;
     resultMeaning: string;
+  };
+  /** phrase_square only — one spoken line on a 1:1 solid. */
+  phraseSquare?: {
+    gloss: string;
+    hangul: string;
+    romanization: string;
+    scene: string;
+    bgColor?: string;
+    lang?: string;
   };
 };
 
@@ -2907,6 +2917,7 @@ export const ALL_VOCAB_BUNDLES: VocabBundle[] = [
   ...(STOCK10_WAVE_BUNDLES as VocabBundle[]),
   ...(THIN_RESTOCK_WAVE_BUNDLES as VocabBundle[]),
   ...(TRENDS_KR_2026_08_BUNDLES as VocabBundle[]),
+  ...(PHRASE_SQUARE_WAVE_BUNDLES as VocabBundle[]),
 ];
 
 // Auto-run hanja compound audit whenever the catalog is loaded (gen / publish / Next).
@@ -2998,7 +3009,8 @@ export function validateBundleCatalog(minTotal = 300): BundleCatalogValidation {
       GRAMMAR_SPOTLIGHT_WAVE_BUNDLES.length + THIN_RESTOCK_GRAMMAR.length,
     compound_word:
       COMPOUND_WORD_WAVE_BUNDLES.length + THIN_RESTOCK_COMPOUND.length,
-  };
+    phrase_square: PHRASE_SQUARE_WAVE_BUNDLES.length,
+  } as Record<VocabInfographicFormatId, number>;
 
   const total = ALL_VOCAB_BUNDLES.length;
   const ok =
