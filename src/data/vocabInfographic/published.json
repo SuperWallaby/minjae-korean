@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T12:56:39.544Z",
+  "generatedAt": "2026-08-11T11:00:56.678Z",
   "pages": [
     {
       "bundleId": "ant-accept-reject",
@@ -5344,7 +5344,7 @@
       "format": "compound_word",
       "title": "물 + 개 = 물개",
       "titleEn": "물 + 개 = 물개 in Korean",
-      "description": "물 + 개 = 물개 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows a compound word made by combining two Korean words: 물 (water) and 개 (dog). The new word 물개 means 'seal,' an animal that lives both in water…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341867950-cmp-mul-gae.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341867950-cmp-mul-gae-thumb.webp",
       "imageAlt": "물 + 개 = 물개 in Korean — Korean vocab chart",
@@ -5356,7 +5356,29 @@
         "물개"
       ],
       "intro": "Handy Korean for 물 + 개 = 물개 ✨ 🔴 물 [mul] - Water",
-      "updatedAt": "2026-08-10T06:01:39.866Z"
+      "updatedAt": "2026-08-11T11:00:56.495Z",
+      "explanationEn": "This chart shows a compound word made by combining two Korean words: 물 (water) and 개 (dog). The new word 물개 means 'seal,' an animal that lives both in water and on land. Compound words like this are common in Korean and help describe new ideas by blending simple words.",
+      "examples": [
+        {
+          "korean": "물개는 바다에서 살아요.",
+          "english": "Seals live in the sea.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786446024350-cmp-mul-gae-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "동물원에서 물개를 봤어요.",
+          "english": "I saw a seal at the zoo.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786446024350-cmp-mul-gae-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "물개가 물속에서 헤엄쳐요.",
+          "english": "The seal swims in the water.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786446024350-cmp-mul-gae-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T11:00:56.495Z"
     },
     {
       "bundleId": "cmp-nun-saram",
@@ -66391,7 +66413,7 @@
       "format": "pronunciation_grid",
       "title": "ㅎ words in Korean",
       "titleEn": "ㅎ words in Korean",
-      "description": "ㅎ words in Korean — 하늘 (sky), 학교 (school), 호수 (lake), 핸드폰 (phone). Picture vocab chart for Korean learners.",
+      "description": "This chart shows Korean words that start with the consonant ㅎ (h). The ㅎ sound is a soft 'h' sound in Korean, similar to the English 'h' in 'hat'. These word…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786211947360-pron-h-sound.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786211947360-pron-h-sound-thumb.webp",
       "imageAlt": "ㅎ words in Korean — Korean vocab chart",
@@ -66399,42 +66421,66 @@
         {
           "hangul": "하늘",
           "romanization": "haneul",
-          "english": "sky"
+          "english": "sky",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "학교",
           "romanization": "hakgyo",
-          "english": "school"
+          "english": "school",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "호수",
           "romanization": "hosu",
-          "english": "lake"
+          "english": "lake",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "핸드폰",
           "romanization": "haendeupon",
-          "english": "phone"
+          "english": "phone",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "휴지",
           "romanization": "hyuji",
-          "english": "tissue"
+          "english": "tissue",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "호텔",
           "romanization": "hotel",
-          "english": "hotel"
+          "english": "hotel",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "행복",
           "romanization": "haengbok",
-          "english": "happiness"
+          "english": "happiness",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "하루",
           "romanization": "haru",
-          "english": "one day"
+          "english": "one day",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -66446,7 +66492,29 @@
         "ㅎ"
       ],
       "intro": "Master the ㅎ sound in Korean with these everyday words👇 🔴 하늘 [haneul] - sky",
-      "updatedAt": "2026-08-08T17:59:14.097Z"
+      "updatedAt": "2026-08-08T17:59:14.097Z",
+      "explanationEn": "This chart shows Korean words that start with the consonant ㅎ (h). The ㅎ sound is a soft 'h' sound in Korean, similar to the English 'h' in 'hat'. These words include everyday nouns and concepts, helping learners recognize and pronounce the ㅎ sound in different contexts. Practicing these words can improve your Korean pronunciation and vocabulary.",
+      "examples": [
+        {
+          "korean": "오늘 하늘이 정말 파래요.",
+          "english": "The sky is really blue today.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저는 학교에 매일 갑니다.",
+          "english": "I go to school every day.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "핸드폰을 잃어버렸어요.",
+          "english": "I lost my phone.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786416412700-pron-h-sound-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T02:47:33.323Z"
     },
     {
       "bundleId": "pron-j-sound",
@@ -69432,15 +69500,15 @@
       "enrichedAt": "2026-07-27T13:01:45.486Z"
     },
     {
-      "bundleId": "sim-cut-자르다-썰다",
-      "slug": "cut-vs-slice-food",
-      "format": "similar_split",
-      "title": "Cut vs Slice (food)",
-      "titleEn": "Cut vs Slice (food) in Korean",
-      "description": "Cut vs Slice (food) in Korean — 자르다 (Cut), 썰다 (Slice (food)). Picture vocab chart for Korean learners.",
+      "bundleId": "sim-cut-vs-slice",
+      "slug": "sim-cut-vs-slice",
+      "format": "grid_cluster",
+      "title": "sim cut vs slice",
+      "titleEn": "sim cut vs slice in Korean",
+      "description": "sim cut vs slice in Korean — 자르다 (Cut), 썰다 (Slice (food)). Picture vocab chart for Korean learners.",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786204368715-sim-cut-자르다-썰다.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786204368715-sim-cut-자르다-썰다-thumb.webp",
-      "imageAlt": "Cut vs Slice (food) in Korean — Korean vocab chart",
+      "imageAlt": "sim cut vs slice in Korean — Korean vocab chart",
       "words": [
         {
           "hangul": "자르다",
@@ -69453,10 +69521,7 @@
           "english": "Slice (food)"
         }
       ],
-      "tags": [
-        "similar",
-        "food"
-      ],
+      "tags": [],
       "intro": "Need to prep food like a pro? Use these words when handling knives 👇 🔴 자르다 [jareuda] - Cut (general cut)",
       "updatedAt": "2026-08-08T15:52:50.718Z"
     },
@@ -71519,6 +71584,32 @@
       "enrichedAt": "2026-08-05T16:44:11.272Z"
     },
     {
+      "bundleId": "sim-put-in-vs-into",
+      "slug": "sim-put-in-vs-into",
+      "format": "grid_cluster",
+      "title": "sim put in vs into",
+      "titleEn": "sim put in vs into in Korean",
+      "description": "sim put in vs into in Korean — 담다 (Put in (container)), 넣다 (Put in (general)). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201301502-sim-put-담다-넣다.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201301502-sim-put-담다-넣다-thumb.webp",
+      "imageAlt": "sim put in vs into in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "담다",
+          "romanization": "damda",
+          "english": "Put in (container)"
+        },
+        {
+          "hangul": "넣다",
+          "romanization": "neota",
+          "english": "Put in (general)"
+        }
+      ],
+      "tags": [],
+      "intro": "Struggling with 담다 vs 넣다? 🤔 🔴 담다 [damda] - Put in (container)",
+      "updatedAt": "2026-08-08T15:01:44.085Z"
+    },
+    {
       "bundleId": "sim-put-on-take-off",
       "slug": "put-on-vs-take-off",
       "format": "similar_split",
@@ -71574,35 +71665,6 @@
         }
       ],
       "enrichedAt": "2026-08-05T16:44:15.126Z"
-    },
-    {
-      "bundleId": "sim-put-담다-넣다",
-      "slug": "put-in-container-vs-put-in-general",
-      "format": "similar_split",
-      "title": "Put in (container) vs Put in (general)",
-      "titleEn": "Put in (container) vs Put in (general) in Korean",
-      "description": "Put in (container) vs Put in (general) in Korean — 담다 (Put in (container)), 넣다 (Put in (general)). Picture vocab chart for Korean learners.",
-      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201301502-sim-put-담다-넣다.webp",
-      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201301502-sim-put-담다-넣다-thumb.webp",
-      "imageAlt": "Put in (container) vs Put in (general) in Korean — Korean vocab chart",
-      "words": [
-        {
-          "hangul": "담다",
-          "romanization": "damda",
-          "english": "Put in (container)"
-        },
-        {
-          "hangul": "넣다",
-          "romanization": "neota",
-          "english": "Put in (general)"
-        }
-      ],
-      "tags": [
-        "similar",
-        "verbs"
-      ],
-      "intro": "Struggling with 담다 vs 넣다? 🤔 🔴 담다 [damda] - Put in (container)",
-      "updatedAt": "2026-08-08T15:01:44.085Z"
     },
     {
       "bundleId": "sim-receive-obtain",
@@ -72461,15 +72523,15 @@
       "enrichedAt": "2026-07-27T13:09:14.080Z"
     },
     {
-      "bundleId": "sim-start-시작하다-출발하다",
-      "slug": "start-vs-depart",
-      "format": "similar_split",
-      "title": "Start vs Depart",
-      "titleEn": "Start vs Depart in Korean",
-      "description": "Start vs Depart in Korean — 시작하다 (Start), 출발하다 (Depart). Picture vocab chart for Korean learners.",
+      "bundleId": "sim-start-vs-depart",
+      "slug": "sim-start-vs-depart",
+      "format": "grid_cluster",
+      "title": "sim start vs depart",
+      "titleEn": "sim start vs depart in Korean",
+      "description": "sim start vs depart in Korean — 시작하다 (Start), 출발하다 (Depart). Picture vocab chart for Korean learners.",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786202825927-sim-start-시작하다-출발하다.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786202825927-sim-start-시작하다-출발하다-thumb.webp",
-      "imageAlt": "Start vs Depart in Korean — Korean vocab chart",
+      "imageAlt": "sim start vs depart in Korean — Korean vocab chart",
       "words": [
         {
           "hangul": "시작하다",
@@ -72482,10 +72544,7 @@
           "english": "Depart"
         }
       ],
-      "tags": [
-        "similar",
-        "travel"
-      ],
+      "tags": [],
       "intro": "🗣️ When your K-drama plot twists ➡️ 시작하다 [sijakhada] (Start) a new mission",
       "updatedAt": "2026-08-08T15:27:08.346Z"
     },
@@ -72975,15 +73034,15 @@
       "enrichedAt": "2026-07-27T13:13:34.487Z"
     },
     {
-      "bundleId": "sim-wash-씻다-닦다",
-      "slug": "wash-vs-wipe-clean",
-      "format": "similar_split",
-      "title": "Wash vs Wipe/clean",
-      "titleEn": "Wash vs Wipe/clean in Korean",
-      "description": "Wash vs Wipe/clean in Korean — 씻다 (Wash), 닦다 (Wipe/clean). Picture vocab chart for Korean learners.",
+      "bundleId": "sim-wash-vs-wipe",
+      "slug": "sim-wash-vs-wipe",
+      "format": "grid_cluster",
+      "title": "sim wash vs wipe",
+      "titleEn": "sim wash vs wipe in Korean",
+      "description": "sim wash vs wipe in Korean — 씻다 (Wash), 닦다 (Wipe/clean). Picture vocab chart for Korean learners.",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786199788706-sim-wash-씻다-닦다.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786199788706-sim-wash-씻다-닦다-thumb.webp",
-      "imageAlt": "Wash vs Wipe/clean in Korean — Korean vocab chart",
+      "imageAlt": "sim wash vs wipe in Korean — Korean vocab chart",
       "words": [
         {
           "hangul": "씻다",
@@ -72996,10 +73055,7 @@
           "english": "Wipe/clean"
         }
       ],
-      "tags": [
-        "similar",
-        "home"
-      ],
+      "tags": [],
       "intro": "Use these when cleaning at home 👇 🔴 씻다 [ssitda] - Wash (with water)",
       "updatedAt": "2026-08-08T14:36:30.544Z"
     },
@@ -77206,7 +77262,7 @@
         "hobby"
       ],
       "intro": "Handy Korean for gaming: topik i → ii ✨ 🔴 게임할래? [geimhallaee?] - want to play (TOPIK I)",
-      "updatedAt": "2026-08-10T12:56:39.502Z",
+      "updatedAt": "2026-08-02T19:15:05.297Z",
       "explanationEn": "This chart shows common Korean phrases used in gaming, comparing expressions from TOPIK I to more formal or advanced versions in TOPIK II. These phrases help you talk about playing games, skill levels, lag, and ending a game session. Learning both levels lets you communicate naturally with friends and in more polite or formal settings.",
       "examples": [
         {

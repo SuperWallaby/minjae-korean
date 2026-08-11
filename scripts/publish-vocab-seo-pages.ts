@@ -147,7 +147,17 @@ function main() {
   let skippedUnknownBundle = 0;
   let keptEnrichment = 0;
 
-  for (const [bundleId, entry] of Object.entries(scheduled)) {
+  for (const [rawBundleId, entry] of Object.entries(scheduled)) {
+    // Non-ASCII path segments break Vercel/Next routing for /vocab/{id}/{slug}.
+    const bundleId = String(rawBundleId || "").trim();
+    if (!bundleId || /[^\x00-\x7F]/.test(bundleId)) {
+      console.warn(
+        `[vocab:publish] skip non-ascii bundleId: ${JSON.stringify(rawBundleId)}`,
+      );
+      skippedUnknownBundle += 1;
+      continue;
+    }
+
     const imageUrl = String(entry.imageUrl ?? "").trim();
     if (!imageUrl) {
       skippedNoImage += 1;

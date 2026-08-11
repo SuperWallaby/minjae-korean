@@ -13,8 +13,8 @@ import { VocabSeoRelated } from "@/components/vocab-infographic/VocabSeoRelated"
 import { SITE_NAME } from "@/lib/siteBrand";
 import {
   getVocabSeoPageById,
+  listAllVocabSeoPages,
   listRelatedVocabSeoPages,
-  listTopVocabSeoForStaticParams,
 } from "@/lib/vocabInfographic/repo";
 import {
   buildVocabSeoArticleJsonLd,
@@ -36,7 +36,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return listTopVocabSeoForStaticParams(800).map((row) => ({
+  return listAllVocabSeoPages().map((row) => ({
     bundleId: row.bundleId,
     slug: row.slug,
   }));

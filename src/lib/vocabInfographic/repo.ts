@@ -38,7 +38,18 @@ export function listVocabSeoPages(options?: {
 }
 
 export function getVocabSeoPageById(bundleId: string): VocabSeoPage | null {
-  return idIndex.get(bundleId) ?? null;
+  const raw = String(bundleId || "").trim();
+  if (!raw) return null;
+  if (idIndex.has(raw)) return idIndex.get(raw) ?? null;
+  try {
+    const decoded = decodeURIComponent(raw);
+    if (decoded !== raw && idIndex.has(decoded)) {
+      return idIndex.get(decoded) ?? null;
+    }
+  } catch {
+    // ignore malformed percent-encoding
+  }
+  return null;
 }
 
 export function listAllVocabSeoPages(): VocabSeoPage[] {
