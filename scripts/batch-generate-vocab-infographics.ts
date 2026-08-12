@@ -39,6 +39,7 @@ import { composeGrammarSpotlightPin } from "./lib/grammar_spotlight_pin.mjs";
 import {
   composeCompoundWordPin,
   compoundIconPrompt,
+  defaultCompoundResultIcon,
 } from "./lib/compound_word_pin.mjs";
 import {
   composePhraseSquarePin,
@@ -71,6 +72,14 @@ function loadEnvFile(file: string) {
 }
 loadEnvFile(join(ROOT, ".env.local"));
 loadEnvFile(join(ROOT, ".env"));
+loadEnvFile(join(ROOT, ".env.development.local"));
+// Image keys usually live on sibling projects
+loadEnvFile(
+  join(ROOT, "..", "projects", "neo-project", "korean-quiz", ".env.local"),
+);
+loadEnvFile(
+  join(ROOT, "..", "projects", "neo-project", "auto-video-korean", ".env"),
+);
 
 import { DROP_IDS } from "./lib/vocab-batch-config.mjs";
 
@@ -230,75 +239,105 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
     return;
   }
 
-  // Compound word: two icon gens → SVG equation compose
+  // Compound word: 3 icon gens (L/R/result) → knockout bg → SVG equation compose
+  // Style = doodle text style only (no capybara cast / no style-ref edits).
   if (bundle.format === "compound_word" && bundle.compoundWord) {
     const cw = bundle.compoundWord;
-    const leftPrompt = compoundIconPrompt(cw.left.icon, STYLE_BASE, "LEFT");
-    const rightPrompt = compoundIconPrompt(cw.right.icon, STYLE_BASE, "RIGHT");
-    const leftIcon = await generateWithRetry(
-      {
-        prompt: leftPrompt,
-        size: "1024x1024",
-        root: ROOT,
-        format: "grid_cluster",
-        includeJjibara: false,
-      },
-      {
-        onRetry: ({ attempt, wait, error }) => {
+    const resultScene =
+      (cw as { resultIcon?: string }).resultIcon || defaultCompoundResultIcon(cw);
+    const leftPrompt = compoundIconPrompt(cw.left.icon, "LEFT");
+    const rightPrompt = compoundIconPrompt(cw.right.icon, "RIGHT");
+    const resultPrompt = compoundIconPrompt(resultScene, "RESULT");
+    const prevUseRef = process.env.VOCAB_IMAGE_USE_REF;
+    process.env.VOCAB_IMAGE_USE_REF = "0";
+    // Simple sticker props — low is enough (gpt-image-2 quality ≈ effort; no separate effort param).
+    const iconQuality = (process.env.VOCAB_COMPOUND_ICON_QUALITY || "low").trim() || "low";
+    try {
+      const iconRetry = (slot: string) => ({
+        onRetry: ({
+          attempt,
+          wait,
+          error,
+        }: {
+          attempt: number;
+          wait: number;
+          error: Error;
+        }) => {
           if (isPromptContentError(error)) throw error;
           log(
-            `  ⏳ retry ${bundle.id} left #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`,
+            `  ⏳ retry ${bundle.id} ${slot} #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`,
           );
         },
-      },
-    );
-    const rightIcon = await generateWithRetry(
-      {
-        prompt: rightPrompt,
-        size: "1024x1024",
-        root: ROOT,
-        format: "grid_cluster",
+      });
+      const [leftIcon, rightIcon, resultIcon] = await Promise.all([
+        generateWithRetry(
+          {
+            prompt: leftPrompt,
+            size: "1024x1024",
+            root: ROOT,
+            format: "grid_cluster",
+            includeJjibara: false,
+            quality: iconQuality,
+          },
+          iconRetry("left"),
+        ),
+        generateWithRetry(
+          {
+            prompt: rightPrompt,
+            size: "1024x1024",
+            root: ROOT,
+            format: "grid_cluster",
+            includeJjibara: false,
+            quality: iconQuality,
+          },
+          iconRetry("right"),
+        ),
+        generateWithRetry(
+          {
+            prompt: resultPrompt,
+            size: "1024x1024",
+            root: ROOT,
+            format: "grid_cluster",
+            includeJjibara: false,
+            quality: iconQuality,
+          },
+          iconRetry("result"),
+        ),
+      ]);
+      writeFileSync(join(OUT, `${bundle.id}_left.png`), leftIcon);
+      writeFileSync(join(OUT, `${bundle.id}_right.png`), rightIcon);
+      writeFileSync(join(OUT, `${bundle.id}_result.png`), resultIcon);
+      const composed = await composeCompoundWordPin({
+        leftIconPng: leftIcon,
+        rightIconPng: rightIcon,
+        resultIconPng: resultIcon,
+        left: cw.left,
+        right: cw.right,
+        resultHangul: cw.resultHangul,
+        resultRomanization: cw.resultRomanization,
+        resultMeaning: cw.resultMeaning,
+      });
+      const rawPath = join(OUT, `${bundle.id}_raw.png`);
+      writeFileSync(rawPath, composed);
+      const branded = await compositeFooter(composed, logoPath);
+      const outPath = join(OUT, `${bundle.id}.png`);
+      writeFileSync(outPath, branded);
+      const sec = ((Date.now() - t0) / 1000).toFixed(1);
+      log(`  ✓ ${bundle.id} (${sec}s) compound`);
+      progress.done[bundle.id] = {
+        at: new Date().toISOString(),
+        sec,
+        outPath,
+        rawPath,
         includeJjibara: false,
-      },
-      {
-        onRetry: ({ attempt, wait, error }) => {
-          if (isPromptContentError(error)) throw error;
-          log(
-            `  ⏳ retry ${bundle.id} right #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`,
-          );
-        },
-      },
-    );
-    writeFileSync(join(OUT, `${bundle.id}_left.png`), leftIcon);
-    writeFileSync(join(OUT, `${bundle.id}_right.png`), rightIcon);
-    const composed = await composeCompoundWordPin({
-      leftIconPng: leftIcon,
-      rightIconPng: rightIcon,
-      left: cw.left,
-      right: cw.right,
-      resultHangul: cw.resultHangul,
-      resultRomanization: cw.resultRomanization,
-      resultMeaning: cw.resultMeaning,
-    });
-    const rawPath = join(OUT, `${bundle.id}_raw.png`);
-    writeFileSync(rawPath, composed);
-    const branded = await compositeFooter(composed, logoPath, {
-      cuteCast: undefined,
-    });
-    const outPath = join(OUT, `${bundle.id}.png`);
-    writeFileSync(outPath, branded);
-    const sec = ((Date.now() - t0) / 1000).toFixed(1);
-    log(`  ✓ ${bundle.id} (${sec}s) compound`);
-    progress.done[bundle.id] = {
-      at: new Date().toISOString(),
-      sec,
-      outPath,
-      rawPath,
-      includeJjibara: false,
-      cuteCast: null,
-    };
-    delete progress.failed[bundle.id];
-    saveProgress(progress);
+        cuteCast: null,
+      };
+      delete progress.failed[bundle.id];
+      saveProgress(progress);
+    } finally {
+      if (prevUseRef === undefined) delete process.env.VOCAB_IMAGE_USE_REF;
+      else process.env.VOCAB_IMAGE_USE_REF = prevUseRef;
+    }
     await sleep(2000);
     return;
   }

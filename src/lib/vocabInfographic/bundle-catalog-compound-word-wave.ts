@@ -21,6 +21,8 @@ export type CompoundWordData = {
   resultRomanization: string;
   /** Short meaning sentence in English (why A+B). */
   resultMeaning: string;
+  /** Small result-slot sticker (the compound concept). */
+  resultIcon?: string;
 };
 
 type VocabBundle = {
@@ -75,6 +77,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultRomanization: "sul-gorae",
     resultMeaning:
       "People who drink a lot of alcohol — like whales drink a lot of water.",
+    resultIcon: "tipsy person with soju glass (human, not mascot animal)",
   }),
   c("nun-saram", {
     left: part("눈", "nun", "Snow", "soft snowflake"),
@@ -82,6 +85,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "눈사람",
     resultRomanization: "nun-saram",
     resultMeaning: "A snowman — a person made of snow.",
+    resultIcon: "classic three-ball snowman with stick arms",
   }),
   c("bul-gogi", {
     left: part("불", "bul", "Fire", "small flame"),
@@ -89,6 +93,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "불고기",
     resultRomanization: "bul-gogi",
     resultMeaning: "Korean BBQ beef — meat cooked over fire.",
+    resultIcon: "sizzling bulgogi plate with grill marks",
   }),
   c("mul-gae", {
     left: part("물", "mul", "Water", "water drop"),
@@ -96,6 +101,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "물개",
     resultRomanization: "mul-gae",
     resultMeaning: "A seal — like a dog that lives in water.",
+    resultIcon: "cute seal on a rock",
   }),
   c("son-top", {
     left: part("손", "son", "Hand", "open hand"),
@@ -103,6 +109,8 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "손톱",
     resultRomanization: "son-top",
     resultMeaning: "A fingernail — the hard tip on your hand.",
+    resultIcon:
+      "cute sticker of ONE glossy almond-shaped fingernail / nail tip alone with soft pastel polish and tiny sparkles — NO finger, NO fingertip, NO skin, NO hand, NO close-up flesh",
   }),
   c("sin-bal", {
     left: part("신", "sin", "Shoe (bound form)", "sneaker silhouette"),
@@ -110,6 +118,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "신발",
     resultRomanization: "sin-bal",
     resultMeaning: "Shoes — what you put on your feet.",
+    resultIcon: "pair of sneakers",
   }),
   c("chaek-bang", {
     left: part("책", "chaek", "Book", "closed book"),
@@ -117,6 +126,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "책방",
     resultRomanization: "chaek-bang",
     resultMeaning: "A bookstore — a room full of books.",
+    resultIcon: "bookstore shelf packed with books",
   }),
   c("bam-haneul", {
     left: part("밤", "bam", "Night", "crescent moon"),
@@ -124,6 +134,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "밤하늘",
     resultRomanization: "bam-haneul",
     resultMeaning: "The night sky.",
+    resultIcon: "starry night sky with crescent moon",
   }),
   c("ip-mat", {
     left: part("입", "ip", "Mouth", "simple smiling mouth"),
@@ -131,12 +142,7 @@ export const COMPOUND_WORD_WAVE_BUNDLES: VocabBundle[] = [
     resultHangul: "입맛",
     resultRomanization: "ip-mat",
     resultMeaning: "Appetite — the taste your mouth wants.",
+    resultIcon: "hungry mouth with tasty sparkles over a meal",
   }),
-  c("ko-kkiri", {
-    left: part("코", "ko", "Nose", "cute nose"),
-    right: part("끼리", "kkiri", "(sound / chunk)", "long curly trunk doodle"),
-    resultHangul: "코끼리",
-    resultRomanization: "ko-kkiri",
-    resultMeaning: "An elephant — the animal with a long nose.",
-  }),
+  // Removed cmp-ko-kkiri (코끼리): "끼리" isn't a free morpheme Koreans know alone.
 ];

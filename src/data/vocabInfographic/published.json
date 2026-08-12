@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T11:00:56.678Z",
+  "generatedAt": "2026-08-12T12:56:40.519Z",
   "pages": [
     {
       "bundleId": "ant-accept-reject",
@@ -5239,12 +5239,32 @@
       "enrichedAt": "2026-07-23T08:47:20.224Z"
     },
     {
+      "bundleId": "cmp-bal-mok",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "발 + 목 = 발목",
+      "titleEn": "발 + 목 = 발목 in Korean",
+      "description": "발 + 목 = 발목 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539391546-cmp-bal-mok.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539391546-cmp-bal-mok-thumb.webp",
+      "imageAlt": "발 + 목 = 발목 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "발목"
+      ],
+      "intro": "Handy Korean for 발 + 목 = 발목 ✨ 🔴 발 [bal] - Foot",
+      "updatedAt": "2026-08-12T12:56:29.925Z"
+    },
+    {
       "bundleId": "cmp-bam-haneul",
       "slug": "vocab",
       "format": "compound_word",
       "title": "밤 + 하늘 = 밤하늘",
       "titleEn": "밤 + 하늘 = 밤하늘 in Korean",
-      "description": "밤 + 하늘 = 밤하늘 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new compound word. '밤' means 'night' and '하늘' means 'sky.' When combined, they create '밤하늘,' which me…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341864103-cmp-bam-haneul.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341864103-cmp-bam-haneul-thumb.webp",
       "imageAlt": "밤 + 하늘 = 밤하늘 in Korean — Korean vocab chart",
@@ -5256,7 +5276,29 @@
         "밤하늘"
       ],
       "intro": "Handy Korean for 밤 + 하늘 = 밤하늘 ✨ 🔴 밤 [bam] - Night",
-      "updatedAt": "2026-08-10T06:01:39.863Z"
+      "updatedAt": "2026-08-10T06:01:39.863Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new compound word. '밤' means 'night' and '하늘' means 'sky.' When combined, they create '밤하늘,' which means 'night sky.' This is a common way to make new words in Korean by blending two related words together.",
+      "examples": [
+        {
+          "korean": "밤하늘에 별이 많이 보여요.",
+          "english": "There are many stars in the night sky.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786455436904-cmp-bam-haneul-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "우리는 밤하늘을 보면서 이야기했어요.",
+          "english": "We talked while looking at the night sky.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786455436904-cmp-bam-haneul-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "밤하늘이 정말 아름다워요.",
+          "english": "The night sky is really beautiful.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786455436904-cmp-bam-haneul-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T13:37:41.468Z"
     },
     {
       "bundleId": "cmp-bul-gogi",
@@ -5264,7 +5306,7 @@
       "format": "compound_word",
       "title": "불 + 고기 = 불고기",
       "titleEn": "불 + 고기 = 불고기 in Korean",
-      "description": "불 + 고기 = 불고기 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new word. '불' means 'fire' and '고기' means 'meat.' When combined, they create '불고기,' which is a popula…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341864873-cmp-bul-gogi.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341864873-cmp-bul-gogi-thumb.webp",
       "imageAlt": "불 + 고기 = 불고기 in Korean — Korean vocab chart",
@@ -5276,7 +5318,49 @@
         "불고기"
       ],
       "intro": "Handy Korean for 불 + 고기 = 불고기 ✨ 🔴 불 [bul] - Fire",
-      "updatedAt": "2026-08-10T06:01:39.865Z"
+      "updatedAt": "2026-08-10T06:01:39.865Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new word. '불' means 'fire' and '고기' means 'meat.' When combined, they create '불고기,' which is a popular Korean dish made by grilling marinated meat over fire. This is an example of a compound word where the meaning comes from both parts together.",
+      "examples": [
+        {
+          "korean": "저녁에 불고기를 먹었어요.",
+          "english": "I ate bulgogi for dinner.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458676665-cmp-bul-gogi-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "불고기는 한국에서 유명한 음식이에요.",
+          "english": "Bulgogi is a famous food in Korea.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458676665-cmp-bul-gogi-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "불고기를 불에 구워서 맛있어요.",
+          "english": "Grilling bulgogi over fire makes it delicious.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458676665-cmp-bul-gogi-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T14:31:41.052Z"
+    },
+    {
+      "bundleId": "cmp-byeol-bit",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "별 + 빛 = 별빛",
+      "titleEn": "별 + 빛 = 별빛 in Korean",
+      "description": "별 + 빛 = 별빛 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539392377-cmp-byeol-bit.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539392377-cmp-byeol-bit-thumb.webp",
+      "imageAlt": "별 + 빛 = 별빛 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "별빛"
+      ],
+      "intro": "Handy Korean for 별 + 빛 = 별빛 ✨ 🔴 별 [byeol] - Star",
+      "updatedAt": "2026-08-12T12:56:29.928Z"
     },
     {
       "bundleId": "cmp-chaek-bang",
@@ -5284,7 +5368,7 @@
       "format": "compound_word",
       "title": "책 + 방 = 책방",
       "titleEn": "책 + 방 = 책방 in Korean",
-      "description": "책 + 방 = 책방 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The word '책방' is a compound word made by combining '책' (book) and '방' (room). Together, they form '책방,' which means 'bookstore' or 'bookshop' in Korean. This…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341865695-cmp-chaek-bang.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341865695-cmp-chaek-bang-thumb.webp",
       "imageAlt": "책 + 방 = 책방 in Korean — Korean vocab chart",
@@ -5296,7 +5380,89 @@
         "책방"
       ],
       "intro": "Handy Korean for 책 + 방 = 책방 ✨ 🔴 책 [chaek] - Book",
-      "updatedAt": "2026-08-10T06:01:39.865Z"
+      "updatedAt": "2026-08-10T06:01:39.865Z",
+      "explanationEn": "The word '책방' is a compound word made by combining '책' (book) and '방' (room). Together, they form '책방,' which means 'bookstore' or 'bookshop' in Korean. This shows how two simple words can blend to create a new meaning. Compound words like this are common in Korean vocabulary and help learners understand how words connect.",
+      "examples": [
+        {
+          "korean": "나는 주말에 책방에 가서 책을 샀어요.",
+          "english": "I went to the bookstore on the weekend and bought a book.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457914341-cmp-chaek-bang-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "우리 동네에 작은 책방이 있어요.",
+          "english": "There is a small bookstore in our neighborhood.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457914341-cmp-chaek-bang-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "책방에서 새로운 소설을 찾았어요.",
+          "english": "I found a new novel at the bookstore.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457914341-cmp-chaek-bang-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T14:18:59.461Z"
+    },
+    {
+      "bundleId": "cmp-chaek-sang",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "책 + 상 = 책상",
+      "titleEn": "책 + 상 = 책상 in Korean",
+      "description": "책 + 상 = 책상 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539393884-cmp-chaek-sang.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539393884-cmp-chaek-sang-thumb.webp",
+      "imageAlt": "책 + 상 = 책상 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "책상"
+      ],
+      "intro": "Handy Korean for 책 + 상 = 책상 ✨ 🔴 책 [chaek] - Book",
+      "updatedAt": "2026-08-12T12:56:29.928Z"
+    },
+    {
+      "bundleId": "cmp-dal-bit",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "달 + 빛 = 달빛",
+      "titleEn": "달 + 빛 = 달빛 in Korean",
+      "description": "달 + 빛 = 달빛 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539394889-cmp-dal-bit.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539394889-cmp-dal-bit-thumb.webp",
+      "imageAlt": "달 + 빛 = 달빛 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "달빛"
+      ],
+      "intro": "Handy Korean for 달 + 빛 = 달빛 ✨ 🔴 달 [dal] - Moon",
+      "updatedAt": "2026-08-12T12:56:29.928Z"
+    },
+    {
+      "bundleId": "cmp-hae-bit",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "해 + 빛 = 햇빛",
+      "titleEn": "해 + 빛 = 햇빛 in Korean",
+      "description": "해 + 빛 = 햇빛 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539395900-cmp-hae-bit.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539395900-cmp-hae-bit-thumb.webp",
+      "imageAlt": "해 + 빛 = 햇빛 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "햇빛"
+      ],
+      "intro": "Handy Korean for 해 + 빛 = 햇빛 ✨ 🔴 해 [hae] - Sun",
+      "updatedAt": "2026-08-12T12:56:29.928Z"
     },
     {
       "bundleId": "cmp-ip-mat",
@@ -5304,7 +5470,7 @@
       "format": "compound_word",
       "title": "입 + 맛 = 입맛",
       "titleEn": "입 + 맛 = 입맛 in Korean",
-      "description": "입 + 맛 = 입맛 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new word with a related meaning. The word '입' means 'mouth' and '맛' means 'taste.' When combined as '…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341866554-cmp-ip-mat.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341866554-cmp-ip-mat-thumb.webp",
       "imageAlt": "입 + 맛 = 입맛 in Korean — Korean vocab chart",
@@ -5316,27 +5482,49 @@
         "입맛"
       ],
       "intro": "Handy Korean for 입 + 맛 = 입맛 ✨ 🔴 입 [ip] - Mouth",
-      "updatedAt": "2026-08-10T06:01:39.865Z"
+      "updatedAt": "2026-08-10T06:01:39.865Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new word with a related meaning. The word '입' means 'mouth' and '맛' means 'taste.' When combined as '입맛,' it refers to one's appetite or taste preference. This is an example of a compound word where the meaning is created by blending the original words.",
+      "examples": [
+        {
+          "korean": "오늘은 입맛이 없어요.",
+          "english": "I have no appetite today.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458627601-cmp-ip-mat-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "매운 음식을 좋아해서 입맛이 돋아요.",
+          "english": "I like spicy food, so my appetite is stimulated.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458627601-cmp-ip-mat-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "새로운 음식을 먹으면 입맛이 바뀔 수 있어요.",
+          "english": "Eating new food can change your taste preference.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458627601-cmp-ip-mat-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T14:30:57.294Z"
     },
     {
-      "bundleId": "cmp-ko-kkiri",
+      "bundleId": "cmp-kkot-byeong",
       "slug": "vocab",
       "format": "compound_word",
-      "title": "코 + 끼리 = 코끼리",
-      "titleEn": "코 + 끼리 = 코끼리 in Korean",
-      "description": "코 + 끼리 = 코끼리 in Korean. Picture-backed Korean vocabulary group for learners.",
-      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341867243-cmp-ko-kkiri.webp",
-      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341867243-cmp-ko-kkiri-thumb.webp",
-      "imageAlt": "코 + 끼리 = 코끼리 in Korean — Korean vocab chart",
+      "title": "꽃 + 병 = 꽃병",
+      "titleEn": "꽃 + 병 = 꽃병 in Korean",
+      "description": "꽃 + 병 = 꽃병 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539396659-cmp-kkot-byeong.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539396659-cmp-kkot-byeong-thumb.webp",
+      "imageAlt": "꽃 + 병 = 꽃병 in Korean — Korean vocab chart",
       "words": [],
       "tags": [
         "compound",
         "word-blend",
         "vocabulary",
-        "코끼리"
+        "꽃병"
       ],
-      "intro": "Handy Korean for 코 + 끼리 = 코끼리 ✨ 🔴 코 [ko] - Nose",
-      "updatedAt": "2026-08-10T06:01:39.865Z"
+      "intro": "Handy Korean for 꽃 + 병 = 꽃병 ✨ 🔴 꽃 [kkot] - Flower",
+      "updatedAt": "2026-08-12T12:56:29.928Z"
     },
     {
       "bundleId": "cmp-mul-gae",
@@ -5356,7 +5544,7 @@
         "물개"
       ],
       "intro": "Handy Korean for 물 + 개 = 물개 ✨ 🔴 물 [mul] - Water",
-      "updatedAt": "2026-08-11T11:00:56.495Z",
+      "updatedAt": "2026-08-10T06:01:39.866Z",
       "explanationEn": "This chart shows a compound word made by combining two Korean words: 물 (water) and 개 (dog). The new word 물개 means 'seal,' an animal that lives both in water and on land. Compound words like this are common in Korean and help describe new ideas by blending simple words.",
       "examples": [
         {
@@ -5381,12 +5569,32 @@
       "enrichedAt": "2026-08-11T11:00:56.495Z"
     },
     {
+      "bundleId": "cmp-nun-mul",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "눈 + 물 = 눈물",
+      "titleEn": "눈 + 물 = 눈물 in Korean",
+      "description": "눈 + 물 = 눈물 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539397434-cmp-nun-mul.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539397434-cmp-nun-mul-thumb.webp",
+      "imageAlt": "눈 + 물 = 눈물 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "눈물"
+      ],
+      "intro": "Handy Korean for 눈 + 물 = 눈물 ✨ 🔴 눈 [nun] - Eye",
+      "updatedAt": "2026-08-12T12:56:29.928Z"
+    },
+    {
       "bundleId": "cmp-nun-saram",
       "slug": "vocab",
       "format": "compound_word",
       "title": "눈 + 사람 = 눈사람",
       "titleEn": "눈 + 사람 = 눈사람 in Korean",
-      "description": "눈 + 사람 = 눈사람 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The compound word '눈사람' combines '눈' meaning 'snow' and '사람' meaning 'person.' This type of word blend creates a new word that describes a snowman. In Korean…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341868618-cmp-nun-saram.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341868618-cmp-nun-saram-thumb.webp",
       "imageAlt": "눈 + 사람 = 눈사람 in Korean — Korean vocab chart",
@@ -5398,7 +5606,29 @@
         "눈사람"
       ],
       "intro": "Handy Korean for 눈 + 사람 = 눈사람 ✨ 🔴 눈 [nun] - Snow",
-      "updatedAt": "2026-08-10T06:01:39.866Z"
+      "updatedAt": "2026-08-10T06:01:39.866Z",
+      "explanationEn": "The compound word '눈사람' combines '눈' meaning 'snow' and '사람' meaning 'person.' This type of word blend creates a new word that describes a snowman. In Korean, many compound words are formed by joining two simple words to express a new idea or object.",
+      "examples": [
+        {
+          "korean": "어제 눈이 많이 와서 눈사람을 만들었어요.",
+          "english": "It snowed a lot yesterday, so I made a snowman.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457939543-cmp-nun-saram-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "아이들이 공원에서 눈사람을 즐겁게 만들고 있어요.",
+          "english": "The children are happily making snowmen in the park.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457939543-cmp-nun-saram-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "눈사람은 겨울에만 볼 수 있는 재미있는 모양이에요.",
+          "english": "A snowman is a fun shape that you can only see in winter.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457939543-cmp-nun-saram-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T14:19:25.256Z"
     },
     {
       "bundleId": "cmp-sin-bal",
@@ -5406,7 +5636,7 @@
       "format": "compound_word",
       "title": "신 + 발 = 신발",
       "titleEn": "신 + 발 = 신발 in Korean",
-      "description": "신 + 발 = 신발 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new compound word. The word 신 (shin) means \"to wear\" or \"put on,\" and 발 (bal) means \"foot.\" When comb…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341869386-cmp-sin-bal.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341869386-cmp-sin-bal-thumb.webp",
       "imageAlt": "신 + 발 = 신발 in Korean — Korean vocab chart",
@@ -5418,7 +5648,49 @@
         "신발"
       ],
       "intro": "Handy Korean for 신 + 발 = 신발 ✨ 🔴 신 [sin] - Shoe (bound form)",
-      "updatedAt": "2026-08-10T06:01:39.866Z"
+      "updatedAt": "2026-08-10T06:01:39.866Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new compound word. The word 신 (shin) means \"to wear\" or \"put on,\" and 발 (bal) means \"foot.\" When combined, 신발 (sinbal) means \"shoes.\" This is a common way Korean forms new words by blending two related words.",
+      "examples": [
+        {
+          "korean": "나는 새 신발을 샀어요.",
+          "english": "I bought new shoes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457965331-cmp-sin-bal-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "신발이 너무 작아요.",
+          "english": "The shoes are too small.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457965331-cmp-sin-bal-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "학교에 갈 때 신발을 신어요.",
+          "english": "I wear shoes when I go to school.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786457965331-cmp-sin-bal-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T14:19:47.676Z"
+    },
+    {
+      "bundleId": "cmp-son-mok",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "손 + 목 = 손목",
+      "titleEn": "손 + 목 = 손목 in Korean",
+      "description": "손 + 목 = 손목 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539398249-cmp-son-mok.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539398249-cmp-son-mok-thumb.webp",
+      "imageAlt": "손 + 목 = 손목 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "손목"
+      ],
+      "intro": "Handy Korean for 손 + 목 = 손목 ✨ 🔴 손 [son] - Hand",
+      "updatedAt": "2026-08-12T12:56:29.928Z"
     },
     {
       "bundleId": "cmp-son-top",
@@ -5426,7 +5698,7 @@
       "format": "compound_word",
       "title": "손 + 톱 = 손톱",
       "titleEn": "손 + 톱 = 손톱 in Korean",
-      "description": "손 + 톱 = 손톱 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The compound word 손톱 is made by combining 손 (hand) and 톱 (nail). It refers to the fingernail or toenail on your hand or foot. This shows how Korean forms new…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341870231-cmp-son-top.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341870231-cmp-son-top-thumb.webp",
       "imageAlt": "손 + 톱 = 손톱 in Korean — Korean vocab chart",
@@ -5438,7 +5710,29 @@
         "손톱"
       ],
       "intro": "Handy Korean for 손 + 톱 = 손톱 ✨ 🔴 손 [son] - Hand",
-      "updatedAt": "2026-08-10T06:01:39.866Z"
+      "updatedAt": "2026-08-10T06:01:39.866Z",
+      "explanationEn": "The compound word 손톱 is made by combining 손 (hand) and 톱 (nail). It refers to the fingernail or toenail on your hand or foot. This shows how Korean forms new words by blending two simple words to create a specific meaning. Understanding these compounds helps learners expand their vocabulary quickly.",
+      "examples": [
+        {
+          "korean": "손톱을 깎았어요.",
+          "english": "I cut my fingernails.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786455462262-cmp-son-top-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "손톱이 길어서 불편해요.",
+          "english": "My fingernails are long, so it's uncomfortable.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786455462262-cmp-son-top-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "손톱에 매니큐어를 발랐어요.",
+          "english": "I applied nail polish on my fingernails.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786455462262-cmp-son-top-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T13:38:08.284Z"
     },
     {
       "bundleId": "cmp-sul-gorae",
@@ -5446,7 +5740,7 @@
       "format": "compound_word",
       "title": "술 + 고래 = 술고래",
       "titleEn": "술 + 고래 = 술고래 in Korean",
-      "description": "술 + 고래 = 술고래 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The word '술고래' is a compound word made by combining '술' (alcohol) and '고래' (whale). It is a playful term used to describe someone who drinks a lot, similar t…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341871187-cmp-sul-gorae.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341871187-cmp-sul-gorae-thumb.webp",
       "imageAlt": "술 + 고래 = 술고래 in Korean — Korean vocab chart",
@@ -5458,7 +5752,29 @@
         "술고래"
       ],
       "intro": "Handy Korean for 술 + 고래 = 술고래 ✨ 🔴 술 [sul] - Alcohol",
-      "updatedAt": "2026-08-10T06:01:39.866Z"
+      "updatedAt": "2026-08-10T06:01:39.866Z",
+      "explanationEn": "The word '술고래' is a compound word made by combining '술' (alcohol) and '고래' (whale). It is a playful term used to describe someone who drinks a lot, similar to how a whale consumes a large amount of water. This word is often used in casual conversations to talk about heavy drinkers in a friendly way.",
+      "examples": [
+        {
+          "korean": "우리 형은 술고래라서 술자리에서 항상 끝까지 있어요.",
+          "english": "My older brother is a heavy drinker, so he always stays until the end at drinking parties.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458595815-cmp-sul-gorae-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "술고래 친구 때문에 술 마시는 게 힘들어요.",
+          "english": "Drinking is hard because of my friend who drinks a lot.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458595815-cmp-sul-gorae-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "그는 술고래지만 건강을 잘 챙겨요.",
+          "english": "He is a heavy drinker but takes good care of his health.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786458595815-cmp-sul-gorae-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-11T14:30:19.898Z"
     },
     {
       "bundleId": "concept-a-vs-the-feel",
@@ -15097,7 +15413,7 @@
       "format": "grammar_spotlight",
       "title": "-고 있다 — present progressive",
       "titleEn": "-고 있다 — present progressive in Korean",
-      "description": "-고 있다 — present progressive in Korean — 밖에 (outside), 비가 (rain (subject)), 오고 있다 (is raining / is coming). Picture vocab chart for Korean learners.",
+      "description": "-고 있다 is a Korean grammar pattern used to describe actions that are currently happening, similar to the present progressive tense in English. It shows that a…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341909317-gram-progressive-raining.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341909317-gram-progressive-raining-thumb.webp",
       "imageAlt": "-고 있다 — present progressive in Korean — Korean vocab chart",
@@ -15105,17 +15421,26 @@
         {
           "hangul": "밖에",
           "romanization": "bakke",
-          "english": "outside"
+          "english": "outside",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786505382675-gram-progressive-raining-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "비가",
           "romanization": "biga",
-          "english": "rain (subject)"
+          "english": "rain (subject)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786505382675-gram-progressive-raining-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "오고 있다",
           "romanization": "ogo itda",
-          "english": "is raining / is coming"
+          "english": "is raining / is coming",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786505382675-gram-progressive-raining-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -15125,7 +15450,29 @@
         "-고 있다"
       ],
       "intro": "Handy Korean for -고 있다 — present progressive ✨ 🔴 밖에 [bakke] - outside",
-      "updatedAt": "2026-08-08T16:15:41.034Z"
+      "updatedAt": "2026-08-08T16:15:41.034Z",
+      "explanationEn": "-고 있다 is a Korean grammar pattern used to describe actions that are currently happening, similar to the present progressive tense in English. It shows that an action is in progress right now. This structure is often used with verbs to express ongoing activities or states.",
+      "examples": [
+        {
+          "korean": "밖에 비가 오고 있다.",
+          "english": "It is raining outside.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786505382675-gram-progressive-raining-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "지금 밖에 비가 많이 오고 있다.",
+          "english": "It is raining a lot outside right now.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786505382675-gram-progressive-raining-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "밖에 사람들이 걷고 있다.",
+          "english": "People are walking outside.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786505382675-gram-progressive-raining-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T03:30:14.038Z"
     },
     {
       "bundleId": "gram-progressive-sleeping",
@@ -47421,6 +47768,69 @@
       "enrichedAt": "2026-08-08T22:52:24.073Z"
     },
     {
+      "bundleId": "list-car-wash",
+      "slug": "car-wash-steps-in-korean",
+      "format": "super_list",
+      "title": "Car wash steps in Korean",
+      "titleEn": "Car wash steps in Korean",
+      "description": "Car wash steps in Korean — 헹구다 (Rinse), 거품을 내다 (Soap Up), 세차하다 (Wash), 다시 헹구다 (Rinse Again). Picture vocab chart for Korean learners.",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786458317946-list-car-wash.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786458317946-list-car-wash-thumb.webp",
+      "imageAlt": "Car wash steps in Korean — Korean vocab chart",
+      "words": [
+        {
+          "hangul": "헹구다",
+          "romanization": "haeng-guda",
+          "english": "Rinse"
+        },
+        {
+          "hangul": "거품을 내다",
+          "romanization": "geo-pumeul naeda",
+          "english": "Soap Up"
+        },
+        {
+          "hangul": "세차하다",
+          "romanization": "se-cha-ha-da",
+          "english": "Wash"
+        },
+        {
+          "hangul": "다시 헹구다",
+          "romanization": "dasi haeng-guda",
+          "english": "Rinse Again"
+        },
+        {
+          "hangul": "말리다",
+          "romanization": "mal-li-da",
+          "english": "Dry"
+        },
+        {
+          "hangul": "유리를 닦다",
+          "romanization": "yu-ri-reul dak-da",
+          "english": "Clean Windows"
+        },
+        {
+          "hangul": "청소기로 청소하다",
+          "romanization": "cheong-so-gi-ro cheong-so-ha-da",
+          "english": "Vacuum"
+        },
+        {
+          "hangul": "왁스를 바르다",
+          "romanization": "wak-seu-reul ba-reu-da",
+          "english": "Wax"
+        },
+        {
+          "hangul": "끝났어요",
+          "romanization": "kkeut-na-sseo-yo",
+          "english": "Finished"
+        }
+      ],
+      "tags": [
+        "daily"
+      ],
+      "intro": "How to wash your car in Korean 🚗 🔵 헹구다 [haeng-guda] - Rinse",
+      "updatedAt": "2026-08-11T14:25:36.262Z"
+    },
+    {
       "bundleId": "list-colors-basic",
       "slug": "basic-colors-in-korean",
       "format": "super_list",
@@ -57671,7 +58081,7 @@
       "format": "phrase_stack",
       "title": "More study café phrases in Korean",
       "titleEn": "More study café phrases in Korean",
-      "description": "More study café phrases in Korean — 조용한 자리 있어요? (Is there a quiet seat?), 콘센트 있는 자리요 (A seat with an outlet), 몇 시간 이용할게요 (I'll stay a few hours), 음료 필수예요? (Is a drink required?). Picture vocab chart for Korean learners.",
+      "description": "These phrases are useful when studying at a café in Korea. They help you ask about seating options, facilities, and rules in a polite and natural way. Using…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785291065799-phrase-cafe-study2.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785291065799-phrase-cafe-study2-thumb.webp",
       "imageAlt": "More study café phrases in Korean — Korean vocab chart",
@@ -57679,42 +58089,66 @@
         {
           "hangul": "조용한 자리 있어요?",
           "romanization": "joyonghan jari isseoyo?",
-          "english": "Is there a quiet seat?"
+          "english": "Is there a quiet seat?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "콘센트 있는 자리요",
           "romanization": "konsenteu inneun jariyo",
-          "english": "A seat with an outlet"
+          "english": "A seat with an outlet",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "몇 시간 이용할게요",
           "romanization": "myeot sigan iyonghalgeyo",
-          "english": "I'll stay a few hours"
+          "english": "I'll stay a few hours",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "음료 필수예요?",
           "romanization": "eumnyo pilsuyeyo?",
-          "english": "Is a drink required?"
+          "english": "Is a drink required?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "와이파이 비밀번호요",
           "romanization": "waipai bimilbeonhoyyo",
-          "english": "Wi-Fi password?"
+          "english": "Wi-Fi password?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "짐 두고 나갔다 와도 돼요?",
           "romanization": "jim dugo nagatda wado dwaeyo?",
-          "english": "Can I leave my stuff and come back?"
+          "english": "Can I leave my stuff and come back?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "프린트 되나요?",
           "romanization": "peurinteu doenayo?",
-          "english": "Can I print?"
+          "english": "Can I print?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "자리 맡아 주세요",
           "romanization": "jari mata juseyo",
-          "english": "Please save my seat"
+          "english": "Please save my seat",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -57723,7 +58157,29 @@
         "study"
       ],
       "intro": "Handy Korean for more study café phrases ✨ 🔴 조용한 자리 있어요? [joyonghan jari isseoyo?] - Is there a quiet seat?",
-      "updatedAt": "2026-07-29T02:11:07.914Z"
+      "updatedAt": "2026-07-29T02:11:07.914Z",
+      "explanationEn": "These phrases are useful when studying at a café in Korea. They help you ask about seating options, facilities, and rules in a polite and natural way. Using these expressions will make your study time more comfortable and convenient. They are commonly used by students and people who work in cafés.",
+      "examples": [
+        {
+          "korean": "조용한 자리 있어요? 공부하기 좋아 보여서요.",
+          "english": "Is there a quiet seat? It looks good for studying.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "와이파이 비밀번호요? 인터넷이 필요해요.",
+          "english": "Wi-Fi password? I need internet.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "몇 시간 이용할게요. 프린트도 할 수 있나요?",
+          "english": "I'll stay a few hours. Can I also print?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786536936424-phrase-cafe-study2-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T12:16:18.742Z"
     },
     {
       "bundleId": "phrase-celebration",

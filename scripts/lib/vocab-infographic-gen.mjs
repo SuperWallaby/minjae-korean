@@ -239,7 +239,14 @@ async function downloadIfUrl(result) {
 }
 
 /** Prefer images/edits with the capybara style sheet so the model actually sees the brand look. */
-async function generateGptImage2WithRef({ prompt, size, root, endpoint, apiKey }) {
+async function generateGptImage2WithRef({
+  prompt,
+  size,
+  root,
+  endpoint,
+  apiKey,
+  quality = "high",
+}) {
   const refPath = resolveCharacterRefPath(root);
   if (!refPath) return null;
 
@@ -258,7 +265,7 @@ async function generateGptImage2WithRef({ prompt, size, root, endpoint, apiKey }
       model: IMAGE_DEPLOY,
       n: "1",
       size: String(size),
-      quality: "high",
+      quality: String(quality),
       input_fidelity: "high",
     },
     [["image[]", "capybara-style-ref.png", refBuf, ctype]],
@@ -278,7 +285,7 @@ async function generateGptImage2WithRef({ prompt, size, root, endpoint, apiKey }
   return downloadIfUrl(parseImageResponse(data, res.status));
 }
 
-export async function generateGptImage2({ prompt, size, root }) {
+export async function generateGptImage2({ prompt, size, root, quality = "high" }) {
   const endpoint = (
     process.env.AZURE_OPENAI_IMAGE_ENDPOINT ||
     process.env.AZURE_OPENAI_ENDPOINT ||
@@ -301,7 +308,14 @@ export async function generateGptImage2({ prompt, size, root }) {
     process.env.VOCAB_IMAGE_USE_REF !== "0" && Boolean(resolveCharacterRefPath(root));
   if (useRef) {
     try {
-      return await generateGptImage2WithRef({ prompt, size, root, endpoint, apiKey });
+      return await generateGptImage2WithRef({
+        prompt,
+        size,
+        root,
+        endpoint,
+        apiKey,
+        quality,
+      });
     } catch (e) {
       // Fall back to text-only generations if edits reject the payload.
       if (isPromptContentError(e)) throw e;
@@ -322,7 +336,7 @@ export async function generateGptImage2({ prompt, size, root }) {
       model: IMAGE_DEPLOY,
       n: 1,
       size,
-      quality: "high",
+      quality,
       output_format: "png",
     }),
     signal: AbortSignal.timeout(IMAGE_TIMEOUT_MS),
@@ -373,6 +387,35 @@ function formatQuizOptions(quiz) {
 export function buildPrompt(bundle) {
   const title = bundle.title.replace(/ in Korean$/i, "").trim();
   const upperTitle = title.toUpperCase();
+
+  if (bundle.format === "compound_word" && bundle.compoundWord) {
+    const cw = bundle.compoundWord;
+    const L = cw.left;
+    const R = cw.right;
+    return `${STYLE_BASE}
+
+FORMAT: Portrait COMPOUND WORD equation pin (A + B → AB). Soft cream / warm beige background (#FBF3E6).
+ONE seamless painted graphic — do NOT look like pasted cutouts or photo collage.
+
+LAYOUT (top → bottom):
+1) TWO rounded white cards side-by-side with a large "+" between them.
+   LEFT card: cute sticker illustration of ${L.icon} (NO text inside the illustration), then below it EXACTLY:
+     [${L.romanization}]  /  Hangul "${L.hangul}" large orange  /  English "${L.english}"
+   RIGHT card: cute sticker illustration of ${R.icon} (NO text inside the illustration), then below it EXACTLY:
+     [${R.romanization}]  /  Hangul "${R.hangul}" large orange  /  English "${R.english}"
+2) Large orange downward arrow "↓" centered under the cards.
+3) Result block centered:
+     [${cw.resultRomanization}]
+     Hangul "${cw.resultHangul}" very large black
+     Meaning: "${cw.resultMeaning}"
+
+HARD RULES:
+- Icons sit cleanly ON the white cards with NO cream/beige rectangle boxes around them (paint icons with transparent/matching white card fill).
+- Accurate Hangul only — use the exact strings above.
+- NO mascot / NO people unless an icon scene needs a tiny stick figure.
+- NO logos, URLs, watermarks, footer text.
+- Leave ~10% bottom band completely blank for brand footer overlay.`;
+  }
 
   if (bundle.format === "quiz_comment" && bundle.quiz) {
     const q = bundle.quiz;
@@ -571,4 +614,31 @@ export async function buildImagePrompt(bundle, root) {
     return buildQuizPromptWithRef(bundle, root);
   }
   return buildPrompt(bundle);
+}
+
+/** @deprecated alias — rate kept for batch logging only. */
+export const JJIBARA_APPEAR_RATE = Number(process.env.VOCAB_JJIBARA_RATE) || 0;
+
+export function resolveFooterLogoPath(root, _format) {
+  const candidates = [
+    process.env.VOCAB_FOOTER_LOGO?.trim(),
+    root ? join(root, LOGO_PATH) : null,
+  ].filter(Boolean);
+  for (const p of candidates) {
+    if (existsSync(p)) return p;
+  }
+  return root ? join(root, LOGO_PATH) : LOGO_PATH;
+}
+
+/**
+ * Shared prep for batch pin generation.
+ * Compound / most formats: text prompt only (no cameo roll).
+ */
+export async function preparePinGeneration(bundle, root) {
+  const prompt = await buildImagePrompt(bundle, root);
+  return {
+    prompt,
+    includeJjibara: false,
+    cuteCast: bundle.format === "cute_cast" ? bundle.cuteCast || "capybara" : null,
+  };
 }
