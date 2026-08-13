@@ -16,6 +16,8 @@ import { GlobalTtsButton } from "@/components/global-site/GlobalTtsButton";
 
 type Props = { params: Promise<{ id: string }> };
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   return listGlobalPins().map((p) => ({ id: p.id }));
 }

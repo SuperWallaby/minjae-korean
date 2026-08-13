@@ -1,4 +1,5 @@
 import catalog from "@/data/globalPins/published.json";
+import { globalPinCdnOrigin } from "@/lib/mediaUrl";
 
 export type GlobalPinWord = {
   english: string;
@@ -62,14 +63,18 @@ export function listGlobalPins(opts?: {
   return pages.filter((p) => p.lang.toLowerCase() === code);
 }
 
-/** Listing thumb: `/global/pins/{id}.card.webp` */
+/** Listing thumb: CDN `/global/pins/{id}.card.webp` */
 export function globalPinCardImagePath(imagePath: string): string {
-  return imagePath.replace(/\.png$/i, ".card.webp");
+  const path = imagePath.replace(/\.png$/i, ".card.webp");
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${globalPinCdnOrigin()}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-/** Detail / OG: `/global/pins/{id}.webp` */
+/** Detail / OG: CDN `/global/pins/{id}.webp` */
 export function globalPinPageImagePath(imagePath: string): string {
-  return imagePath.replace(/\.png$/i, ".webp");
+  const path = imagePath.replace(/\.png$/i, ".webp");
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${globalPinCdnOrigin()}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 /** Mix of languages for the homepage — avoids dumping all 84 full charts. */

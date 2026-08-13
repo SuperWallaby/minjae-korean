@@ -8,6 +8,10 @@ const GLOBAL_HOSTS = new Set([
   "global.127.0.0.1:3000",
 ]);
 
+/** Edge-cache HTML for the public atlas (browser can still revalidate). */
+const GLOBAL_HTML_CACHE =
+  "public, s-maxage=3600, stale-while-revalidate=86400";
+
 function isGlobalHost(host: string): boolean {
   const h = host.split(":")[0]?.toLowerCase() || "";
   if (GLOBAL_HOSTS.has(host.toLowerCase()) || GLOBAL_HOSTS.has(h)) return true;
@@ -15,20 +19,30 @@ function isGlobalHost(host: string): boolean {
   return false;
 }
 
+function withGlobalCdnCache(res: NextResponse) {
+  res.headers.set("CDN-Cache-Control", GLOBAL_HTML_CACHE);
+  res.headers.set("Vercel-CDN-Cache-Control", GLOBAL_HTML_CACHE);
+  return res;
+}
+
 function nextAsGlobal(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-kaja-site", "global");
-  return NextResponse.next({
-    request: { headers: requestHeaders },
-  });
+  return withGlobalCdnCache(
+    NextResponse.next({
+      request: { headers: requestHeaders },
+    }),
+  );
 }
 
 function rewriteAsGlobal(request: NextRequest, url: URL) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-kaja-site", "global");
-  return NextResponse.rewrite(url, {
-    request: { headers: requestHeaders },
-  });
+  return withGlobalCdnCache(
+    NextResponse.rewrite(url, {
+      request: { headers: requestHeaders },
+    }),
+  );
 }
 
 export function middleware(request: NextRequest) {
@@ -51,6 +65,18 @@ export function middleware(request: NextRequest) {
     )
   ) {
     return globalHost || globalPath ? nextAsGlobal(request) : NextResponse.next();
+  }
+
+  // Affiliate hops must not be CDN-cached.
+  if (pathname.startsWith("/go/") || pathname.startsWith("/global-site/go/")) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-kaja-site", "global");
+    if (globalPath) {
+      return NextResponse.next({ request: { headers: requestHeaders } });
+    }
+    const url = request.nextUrl.clone();
+    url.pathname = `/global-site${pathname}`;
+    return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
   }
 
   if (globalPath) {

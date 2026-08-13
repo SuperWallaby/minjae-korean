@@ -14,6 +14,8 @@ type Props = { params: Promise<{ code: string }> };
 
 const LANGS = ["es", "fr", "de", "it", "ar", "ja"] as const;
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   return LANGS.map((code) => ({ code }));
 }

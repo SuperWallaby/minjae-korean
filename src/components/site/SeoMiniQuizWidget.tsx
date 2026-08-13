@@ -10,6 +10,7 @@ import type {
   KoreanQuizPreparedChoice,
 } from "@/lib/koreanQuiz/types";
 import { withVocabQuizUtm } from "@/lib/vocabQuizAeoLinks";
+import { normalizePublicMediaUrl } from "@/lib/mediaUrl";
 
 import styles from "./seo-mini-quiz-widget.module.css";
 
@@ -155,7 +156,11 @@ export function SeoMiniQuizWidget() {
         <>
           <div className={styles.imageWrap}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className={styles.image} src={quiz.imageUrl} alt="" />
+            <img
+              className={styles.image}
+              src={normalizePublicMediaUrl(quiz.imageUrl)}
+              alt=""
+            />
           </div>
 
           <div className={styles.choices}>

@@ -396,7 +396,8 @@
   box-shadow: none;
 }
 
-.global-pin-card picture {
+.global-pin-card picture,
+.global-pin-card > img {
   display: block;
   width: 100%;
   border: 1px solid var(--g-ink);

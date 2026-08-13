@@ -24,20 +24,19 @@ export function GlobalPinImage({
     variant === "card"
       ? globalPinCardImagePath(imagePath)
       : globalPinPageImagePath(imagePath);
+  // Local PNG remains a rare fallback if CDN miss; prefer CDN webp as src too.
+  const src = webp;
 
   return (
-    <picture>
-      <source type="image/webp" srcSet={webp} />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={imagePath}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"}
-        decoding="async"
-      />
-    </picture>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "auto"}
+      decoding="async"
+    />
   );
 }

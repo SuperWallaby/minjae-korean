@@ -11,6 +11,7 @@ import {
   levelLabel,
   type ReadingLevel,
 } from "@/lib/levelDisplay";
+import { normalizePublicMediaUrl } from "@/lib/mediaUrl";
 import { cn } from "@/lib/utils";
 
 export type ArticleFeedItem = {
@@ -43,10 +44,10 @@ function resolveFeedCover(
   item: ArticleFeedItem,
   fallbackCover: string,
 ): string {
-  return (
+  return normalizePublicMediaUrl(
     item.imageThumb?.trim() ||
-    item.imageLarge?.trim() ||
-    fallbackCover
+      item.imageLarge?.trim() ||
+      fallbackCover,
   );
 }
 
@@ -85,7 +86,7 @@ export function ArticleFeed({
               alt={major.title}
               fill
               className="object-cover transition group-hover:scale-[1.02]"
-              unoptimized
+              unoptimized={false}
               sizes="(max-width: 1024px) 100vw, 1024px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -136,7 +137,6 @@ export function ArticleFeed({
                     alt={p.title}
                     fill
                     className="object-cover transition group-hover:scale-[1.02]"
-                    unoptimized
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>

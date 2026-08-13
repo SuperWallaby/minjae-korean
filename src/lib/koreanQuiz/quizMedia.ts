@@ -1,12 +1,13 @@
+import { normalizePublicMediaUrl, QUIZ_MEDIA_CDN } from "@/lib/mediaUrl";
 import type { KoreanQuizItem } from "./types";
 
 /** CDN where korean-quiz app stores quiz images + answer/example TTS. */
-export const DEFAULT_QUIZ_MEDIA_CDN = "https://quiz-media.kajakorean.com";
+export const DEFAULT_QUIZ_MEDIA_CDN = QUIZ_MEDIA_CDN;
 
 export function quizCdnOriginFromImageUrl(
   imageUrl?: string | null,
 ): string | undefined {
-  const raw = imageUrl?.trim();
+  const raw = normalizePublicMediaUrl(imageUrl?.trim());
   if (!raw || raw.startsWith("data:")) return undefined;
   try {
     return new URL(raw).origin;
@@ -58,14 +59,14 @@ export function publicUrlForR2Key(
 /** True when the quiz CDN already has this object (HEAD 2xx). */
 export async function quizMediaObjectExists(url: string): Promise<boolean> {
   try {
-    const res = await fetch(url, {
+    const res = await fetch(normalizePublicMediaUrl(url), {
       method: "HEAD",
       signal: AbortSignal.timeout(8_000),
     });
     if (res.ok) return true;
     // Some CDNs disallow HEAD — try a tiny range GET.
     if (res.status === 403 || res.status === 405) {
-      const get = await fetch(url, {
+      const get = await fetch(normalizePublicMediaUrl(url), {
         method: "GET",
         headers: { Range: "bytes=0-1" },
         signal: AbortSignal.timeout(8_000),

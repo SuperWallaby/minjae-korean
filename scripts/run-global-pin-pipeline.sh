@@ -39,6 +39,13 @@ opt_rc=$?
 set -e
 log "optimize-images exit=$opt_rc"
 
+log "==> upload global pin webp to R2"
+set +e
+"$NODE" scripts/upload-global-pins-r2.mjs >>"$LOG" 2>&1
+up_rc=$?
+set -e
+log "upload-pins exit=$up_rc"
+
 log "==> global pin pipeline enrich ${LIMIT_ARGS[*]:-}"
 set +e
 npx tsx scripts/enrich-global-pins.ts "${LIMIT_ARGS[@]}" >>"$LOG" 2>&1

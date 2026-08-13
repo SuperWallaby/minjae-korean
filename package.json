@@ -51,6 +51,8 @@
     "vocab:pipeline": "npx tsx scripts/vocab-seo-pipeline.ts",
     "vocab:ensure-pinned": "npx tsx scripts/ensure-pinned-vocab-seo.ts",
     "vocab:optimize-images": "npx tsx scripts/optimize-vocab-infographic-images.ts",
+    "pin:review": "node scripts/pin-review-dashboard.mjs --open",
+    "pin:review:daemon": "bash scripts/install-pin-review-daemon.sh",
     "blog:promo-pins": "node scripts/gen-content-promo-pins.mjs --blog",
     "news:promo-pins": "node scripts/gen-content-promo-pins.mjs --news",
     "quiz:word-pins": "node scripts/gen-quiz-word-pins.mjs",
@@ -66,6 +68,7 @@
     "deploy-x-poster": "bash scripts/deploy-x-poster.sh",
     "global:publish-pins": "node scripts/publish-global-pins.mjs",
     "global:optimize-images": "node scripts/optimize-global-pin-web-images.mjs",
+    "global:upload-pins": "node scripts/upload-global-pins-r2.mjs",
     "global:enrich": "npx tsx scripts/enrich-global-pins.ts",
     "global:pipeline": "bash scripts/run-global-pin-pipeline.sh",
     "global:enrich-daemon:install": "bash scripts/install-global-pin-enrich-daemon.sh"

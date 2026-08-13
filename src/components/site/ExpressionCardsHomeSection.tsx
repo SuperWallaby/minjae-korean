@@ -8,6 +8,7 @@ import { MarketingHeader } from "@/components/site/MarketingShell";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 import type { ExpressionCardSet } from "@/data/expressionCardSets";
+import { normalizePublicMediaUrl } from "@/lib/mediaUrl";
 
 import homeStyles from "./home-renewal.module.css";
 import styles from "./expression-cards-home.module.css";
@@ -26,7 +27,7 @@ function prefetchImage(url: string) {
   if (!url || typeof window === "undefined") return;
   const img = new window.Image();
   img.decoding = "async";
-  img.src = url;
+  img.src = normalizePublicMediaUrl(url);
 }
 
 function SoftImage({
@@ -194,7 +195,7 @@ function ExpressionCardStage({
               >
                 <SoftImage
                   className={styles.slideImage}
-                  src={slide.imageUrl}
+                  src={normalizePublicMediaUrl(slide.imageUrl)}
                   alt={
                     slide.hangul
                       ? `${slide.hangul}${slide.english ? ` — ${slide.english}` : ""}`
@@ -372,7 +373,9 @@ export function ExpressionCardsHomeSection({ sets }: Props) {
                           onFocus={() => warmSet(set)}
                         >
                           <SoftImage
-                            src={set.coverThumbUrl || set.coverUrl}
+                            src={normalizePublicMediaUrl(
+                              set.coverThumbUrl || set.coverUrl,
+                            )}
                             alt=""
                             className={styles.setThumb}
                             enabled={mediaReady}
