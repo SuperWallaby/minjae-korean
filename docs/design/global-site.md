@@ -61,9 +61,11 @@ Already loaded on the root layout — **do not add Google fonts**.
 ## Shell
 
 - Full-bleed paper ground. Inner column `max-width: 1180px`.
+- Gutter: `1.5rem` on small screens (plus `safe-area-inset`), `2.25rem` from 720px. Charts and the language index must sit inside this gutter — not flush to the viewport.
 - Header is a **masthead**, not a sticky glass bar: top + bottom hairline, no `backdrop-filter`, not sticky.
+- Top row: wordmark left, **`1:1 tutor` text link** right (`/go/preply`, stamp color, underline — not a button).
 - Wordmark: `Kaja` (Bricolage) + `Global` (small caps, tracking). Not a logo mark.
-- Nav: native names in a single row (`Español Français Deutsch Italiano العربية 日本語`). Horizontal scroll on small screens. Active lang uses `--g-lang` underline.
+- Nav: native names in a row under the top bar (`Español Français Deutsch Italiano العربية 日本語`). Horizontal scroll on small screens. Active lang uses `--g-lang` underline.
 - Footer is a colophon: small type, hairline, kajakorean.com + tutor link. No big marketing block.
 
 ---

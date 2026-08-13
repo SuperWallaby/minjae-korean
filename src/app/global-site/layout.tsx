@@ -46,10 +46,15 @@ export default function GlobalSiteLayout({
     <div className="global-root">
       <header className="global-header">
         <div className="global-shell global-header-inner">
-          <Link className="global-brand" href="/">
-            <span className="global-brand-mark">Kaja</span>
-            <span className="global-brand-sub">Global</span>
-          </Link>
+          <div className="global-header-top">
+            <Link className="global-brand" href="/">
+              <span className="global-brand-mark">Kaja</span>
+              <span className="global-brand-sub">Global</span>
+            </Link>
+            <a className="global-header-tutor" href="/go/preply">
+              1:1 tutor
+            </a>
+          </div>
           <nav className="global-nav" aria-label="Languages">
             {LANG_NAV.map((code) => {
               const meta = globalLangMeta(code);
