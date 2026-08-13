@@ -52,7 +52,7 @@ export default function GlobalSiteLayout({
               <span className="global-brand-sub">Global</span>
             </Link>
             <a className="global-header-tutor" href="/go/preply">
-              1:1 tutor
+              1:1 tutor <span>(50% off)</span>
             </a>
           </div>
           <nav className="global-nav" aria-label="Languages">
