@@ -62,18 +62,18 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
         ) : null}
       </header>
 
-      <figure className="overflow-hidden rounded-[1.25rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)]">
+      <figure className="mx-auto w-full max-w-xl overflow-hidden rounded-[1.25rem] border border-[var(--quiz-border)] bg-[var(--quiz-canvas)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={page.imageUrl}
           alt={page.imageAlt}
           width={1024}
           height={1024}
-          className="mx-auto w-full max-w-xl object-contain bg-[var(--quiz-canvas)]"
+          className="block h-auto w-full object-contain"
           loading="eager"
           decoding="async"
         />
-        <figcaption className="border-t border-[var(--quiz-border)] px-4 py-3 text-center text-sm text-[var(--quiz-text-sub)]">
+        <figcaption className="border-t border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3 text-center text-sm text-[var(--quiz-text-sub)]">
           {page.title}
         </figcaption>
       </figure>

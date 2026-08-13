@@ -73,10 +73,6 @@ export function SeoMiniQuizWidget() {
   const sessionComplete = answered && quizIndex >= sessionQuizCount - 1;
 
   React.useEffect(() => {
-    setOpen(window.matchMedia("(min-width: 768px)").matches);
-  }, []);
-
-  React.useEffect(() => {
     if (!eligible || queueRequestedRef.current) return;
     queueRequestedRef.current = true;
     const controller = new AbortController();

@@ -17,7 +17,7 @@ function wordPreview(page: VocabSeoPage): string {
   return page.intro.slice(0, 80);
 }
 
-/** Related charts — page-level section (not inside the main white card). */
+/** Related charts — rendered inside MarketingShell on the vocab SEO page. */
 export function VocabSeoRelated({ items }: Props) {
   if (items.length === 0) return null;
 
@@ -45,7 +45,7 @@ export function VocabSeoRelated({ items }: Props) {
           <li key={page.bundleId}>
             <Link
               href={vocabSeoPath(page.bundleId, page.slug)}
-              className="flex h-full flex-col gap-0.5 rounded-xl px-3 py-3 transition hover:bg-[var(--quiz-surface)] sm:px-3.5"
+              className="flex h-full flex-col gap-0.5 rounded-xl border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-3.5 py-3 transition hover:border-[var(--quiz-primary)]/35 hover:bg-[var(--quiz-surface-muted)]"
             >
               <span className="font-semibold text-[var(--quiz-text)]">
                 {page.titleEn}

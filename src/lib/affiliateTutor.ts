@@ -38,7 +38,7 @@ const PARTNERS = {
       width: 1024,
       height: 1024,
     },
-    alt: "Find my Korean tutor — 1:1 Korean lessons",
+    alt: "Find my Korean tutor — 50% off link on 1:1 Korean lessons",
   },
 } as const;
 
