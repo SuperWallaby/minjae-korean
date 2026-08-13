@@ -78,6 +78,28 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
         </figcaption>
       </figure>
 
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
+        <ItalkiTutorBanner
+          variant="wide"
+          className="sm:flex-1"
+          placement="vocab_seo_after_image"
+        />
+        <aside className="flex max-w-md flex-col justify-center rounded-[1.25rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-5 py-5 sm:w-72 sm:shrink-0">
+          <p className="text-sm font-semibold text-[var(--quiz-text)]">
+            Free Korean PDF
+          </p>
+          <p className="mt-1 text-sm leading-relaxed text-[var(--quiz-text-sub)]">
+            Weekly quizzes + a free book when you subscribe.
+          </p>
+          <Link
+            href="/subscribe?utm_source=vocab_seo&utm_campaign=cta-strip"
+            className="mt-4 inline-flex h-10 items-center justify-center rounded-full bg-[var(--quiz-primary)] px-4 text-sm font-semibold text-white transition hover:opacity-90"
+          >
+            Get free book
+          </Link>
+        </aside>
+      </div>
+
       {explanation ? (
         <section className="space-y-3" aria-labelledby="vocab-explain">
           <h2
@@ -136,8 +158,6 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
           </div>
         </section>
       ) : null}
-
-      <ItalkiTutorBanner variant="wide" />
 
       {examples.length > 0 ? (
         <section className="space-y-4" aria-labelledby="vocab-examples">

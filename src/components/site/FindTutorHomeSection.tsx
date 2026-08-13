@@ -28,27 +28,28 @@ export function FindTutorHomeSection() {
             <div className="max-w-2xl">
               <MarketingHeader
                 eyebrow="1:1 Korean"
-                title="Find a Korean tutor"
+                title="Practice Korean with a real tutor"
                 titleAs="h2"
               />
               <p className={`${styles.sectionLead} mt-4`}>
-                Want real conversation practice? Book{" "}
+                Charts and quizzes get you started. A tutor gets you speaking —{" "}
                 <strong className="font-semibold text-[var(--quiz-text)]">
-                  1:1 lessons with me
-                </strong>
-                , or find a marketplace tutor on italki with{" "}
-                <strong className="font-semibold text-[var(--quiz-text)]">
-                  $10 OFF
-                </strong>
-                . Preply has no discount on this link.
+                  italki $10 OFF
+                </strong>{" "}
+                for marketplace lessons, or book 1:1 with me when you want a
+                custom plan.
               </p>
               <p className={`${styles.sectionLead} mt-4`}>
-                Free quizzes and charts stay free either way.
+                Prefer email lessons first?{" "}
+                <a
+                  href="/subscribe"
+                  className="font-semibold text-[var(--quiz-primary)] underline-offset-2 hover:underline"
+                >
+                  Get the free book
+                </a>
+                .
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <CoachingComingSoonButton>
-                  Study 1:1 with Minjae
-                </CoachingComingSoonButton>
                 <a
                   href={ITALKI_AFFILIATE_URL}
                   target="_blank"
@@ -59,10 +60,13 @@ export function FindTutorHomeSection() {
                       placement: "home_section",
                     })
                   }
-                  className="inline-flex h-11 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white px-5 text-sm font-semibold text-[var(--quiz-text)] transition hover:bg-[var(--quiz-surface-muted)]"
+                  className="inline-flex h-11 items-center justify-center rounded-full bg-[var(--quiz-primary)] px-5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
                 >
                   Find a tutor · $10 OFF
                 </a>
+                <CoachingComingSoonButton variant="outline">
+                  Study 1:1 with Minjae
+                </CoachingComingSoonButton>
               </div>
             </div>
 

@@ -105,17 +105,17 @@ export default async function Home() {
         {/* 1) Hero — vocab quiz app */}
         <VocabQuizHomeSection cards={vocabQuizCards} />
 
-        {/* 2) Book */}
+        {/* 2) 1:1 tutor — higher for conversion (affiliate + coaching) */}
+        <FindTutorHomeSection />
+
+        {/* 3) Book */}
         <BookHomeSection />
 
-        {/* 3) Support */}
+        {/* 4) Support */}
         <BuyMeCoffeeHomeSection />
 
-        {/* 4) About me */}
+        {/* 5) About me */}
         <AboutMeHomeSection />
-
-        {/* 5) 1:1 tutor — Minjae coaching + affiliate (italki/Preply 50/50) */}
-        <FindTutorHomeSection />
 
         {/* 6) Expression cards — auto-video IG List (capybara carousels) */}
         <ExpressionCardsHomeSection sets={getExpressionCardSets()} />

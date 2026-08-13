@@ -3,7 +3,7 @@
  * Bulk-edit Website destination on already-uploaded vocab pins (Plantweb Chrome).
  *
  * Policy (2026-08): ~25% Preply/italki direct on pin; rest → kajakorean.com /vocab.
- *   --affiliate-rate 0.25 (default)
+ *   --affiliate-rate 0.1 (default)
  *   --site-only  → force 100% site (affiliate-rate ignored)
  *
  * Match strategy:
@@ -54,10 +54,10 @@ const { values: args } = parseArgs({
       default: process.env.CHROME_WORK_DEBUG_URL || "http://127.0.0.1:9222",
     },
     limit: { type: "string", default: "0" },
-    /** Fraction of edits that stay Preply/italki on the pin (default 0.25). */
+    /** Fraction of edits that stay Preply/italki on the pin (default 0.1). */
     "affiliate-rate": {
       type: "string",
-      default: process.env.PINTEREST_AFFILIATE_RATE || "0.25",
+      default: process.env.PINTEREST_AFFILIATE_RATE || "0.1",
     },
     "site-only": { type: "boolean", default: false },
     delay: { type: "string", default: "6" },
@@ -76,6 +76,8 @@ const { values: args } = parseArgs({
     timeout: { type: "string", default: "120000" },
     "skip-index": { type: "boolean", default: false },
     "only-with-id": { type: "boolean", default: false },
+    /** Only rewrite pins whose current link is homepage (not /vocab, not affiliate). */
+    "homepage-only": { type: "boolean", default: false },
   },
 });
 
@@ -86,7 +88,7 @@ const affiliateRate = siteOnly
   ? 0
   : Math.min(
       1,
-      Math.max(0, Number(args["affiliate-rate"] ?? 0.25) || 0),
+      Math.max(0, Number(args["affiliate-rate"] ?? 0.1) || 0),
     );
 const delaySec = Math.max(2, Number(args.delay) || 6);
 const dryRun = Boolean(args["dry-run"]);
@@ -98,7 +100,7 @@ const scrollRounds = Math.max(10, Number(args["scroll-rounds"]) || 80);
 const timeoutMs = Math.max(30_000, Number(args.timeout) || 120_000);
 const skipIndex = Boolean(args["skip-index"]);
 const onlyWithId = Boolean(args["only-with-id"]);
-
+const homepageOnly = Boolean(args["homepage-only"]);
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -295,6 +297,20 @@ function isSiteSeoLink(link) {
   return /kajakorean\.com\/vocab\//i.test(s) || /\/vocab\//i.test(s);
 }
 
+function isHomepageLink(link) {
+  const s = String(link || "").trim();
+  if (!s) return false;
+  if (isSiteSeoLink(s) || isAffiliateLink(s)) return false;
+  try {
+    const u = new URL(s);
+    const host = u.hostname.replace(/^www\./, "");
+    if (host !== "kajakorean.com") return false;
+    return u.pathname === "/" || u.pathname === "";
+  } catch {
+    return /^https?:\/\/(www\.)?kajakorean\.com\/?(\?|$)/i.test(s);
+  }
+}
+
 /** Site-only: link must be SEO. Mixed: site is final; affiliates still need a 25/75 roll unless already ok. */
 function alreadyLooksDesired(link) {
   if (siteOnly || affiliateRate <= 0) {
@@ -325,6 +341,8 @@ function buildQueue(pinned, publishedById, state) {
       if (!force && st?.status === "ok") continue;
     }
 
+    if (homepageOnly && !isHomepageLink(link)) continue;
+
     rows.push({
       bundleId,
       meta,
@@ -332,14 +350,35 @@ function buildQueue(pinned, publishedById, state) {
       pinId: String(meta?.pin_id || st?.pin_id || "").trim(),
       title: String(meta?.title || page.titleEn || "").trim(),
       alt: String(meta?.alt || "").trim(),
+      link,
     });
   }
   rows.sort((a, b) => {
+    const aHome = isHomepageLink(a.link) ? 0 : 1;
+    const bHome = isHomepageLink(b.link) ? 0 : 1;
+    if (aHome !== bHome) return aHome - bHome;
     if (a.pinId && !b.pinId) return -1;
     if (!a.pinId && b.pinId) return 1;
     return a.bundleId.localeCompare(b.bundleId);
   });
   return rows;
+}
+
+/** After board crawl: overwrite stale ledger links from live pin.link so homepage pins re-enter the queue. */
+function syncLedgerLinksFromIndex(pinned, indexPins) {
+  const byId = new Map(indexPins.map((p) => [String(p.pinId), p]));
+  let synced = 0;
+  for (const meta of Object.values(pinned)) {
+    const pinId = String(meta?.pin_id || "").trim();
+    if (!pinId) continue;
+    const live = byId.get(pinId);
+    if (!live?.link) continue;
+    const prev = String(meta.link || "");
+    if (prev === live.link) continue;
+    meta.link = live.link;
+    synced += 1;
+  }
+  return synced;
 }
 
 function mergePinRecord(prev, next) {
@@ -903,9 +942,20 @@ async function main() {
           pinned[row.bundleId].pin_id = row.pinId;
         }
       }
+      const synced = syncLedgerLinksFromIndex(pinned, indexPins);
+      console.log(`  synced ledger links from index: ${synced}`);
       saveJson(PINNED_PATH, pinned);
+
+      // Rebuild queue after sync so homepage-only / stale SEO ledger rows are correct
+      queue = buildQueue(pinned, publishedById, state);
+      if (onlyWithId) queue = queue.filter((q) => q.pinId);
+      if (limit > 0) queue = queue.slice(0, limit);
+      console.log(
+        `  queue after sync=${queue.length} (homepage=${queue.filter((q) => isHomepageLink(q.link)).length})`,
+      );
+
       if (indexOnly) {
-        console.log("index-only: pin_ids saved to pinterest-pinned.json");
+        console.log("index-only: pin_ids + links saved to pinterest-pinned.json");
         return;
       }
     }
