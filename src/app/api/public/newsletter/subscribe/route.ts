@@ -1,7 +1,10 @@
 import { NextRequest } from "next/server";
 
 import { upsertNewsletterSubscriber } from "@/lib/newsletterSubscribersRepo";
-import { newsletterUnsubscribeUrl } from "@/lib/newsletterUnsubscribe";
+import {
+  newsletterEmailFooterHtml,
+  newsletterEmailFooterText,
+} from "@/lib/newsletterEmailFooter";
 import { NEWSLETTER_SUBJECT } from "@/lib/newsletterSubjects";
 import {
   resolveNewsletterWelcomeBookCoverUrl,
@@ -23,9 +26,18 @@ function welcomePdfUrl() {
 function buildWelcomeEmail(pdfUrl: string, email: string) {
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
-  const unsubscribeUrl = newsletterUnsubscribeUrl(email, siteUrl);
   const bookCoverUrl = resolveNewsletterWelcomeBookCoverUrl();
   const subject = NEWSLETTER_SUBJECT.welcomePdf;
+  const footerHtml = newsletterEmailFooterHtml({
+    recipientEmail: email,
+    siteUrl,
+    campaign: "welcome-pdf",
+  });
+  const footerText = newsletterEmailFooterText({
+    recipientEmail: email,
+    siteUrl,
+    campaign: "welcome-pdf",
+  });
   const text = [
     "Thanks for subscribing to Kaja Korean!",
     "",
@@ -35,10 +47,10 @@ function buildWelcomeEmail(pdfUrl: string, email: string) {
     "You'll also receive a weekly Korean quiz and a popular-expressions pin roundup — so you can keep practicing.",
     "If you don't see this email, check your spam or promotions folder.",
     "",
-    `Unsubscribe: ${unsubscribeUrl}`,
-    "",
     "Happy studying!",
     "— Minjae / Kaja Korean",
+    "",
+    footerText,
   ].join("\n");
   const html = `
     <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.55; color: #1d1d1f; max-width: 520px;">
@@ -63,12 +75,11 @@ function buildWelcomeEmail(pdfUrl: string, email: string) {
       <p style="margin: 0; font-size: 13px; word-break: break-all;"><a href="${pdfUrl}">${pdfUrl}</a></p>
       <p style="margin: 16px 0 0; font-size: 13px; color: #6e6e73;">Don't see the email? Check your spam or promotions folder.</p>
       <p style="margin: 20px 0 0; font-size: 12px; color: #86868b;">Happy studying!<br>— Minjae / Kaja Korean</p>
-      <p style="margin: 14px 0 0; font-size: 12px; color: #86868b;"><a href="${unsubscribeUrl}" style="color:#0071e3;">Unsubscribe</a></p>
+      ${footerHtml}
     </div>
   `.trim();
   return { subject, text, html };
 }
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => null);

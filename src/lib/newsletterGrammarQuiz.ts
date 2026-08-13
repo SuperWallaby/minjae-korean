@@ -3,7 +3,12 @@ import { DateTime } from "luxon";
 import photoQuizTrialsFile from "@/data/newsletter/photo-quiz-trials.json";
 import { getKoreanQuizAppStoreLinks } from "@/lib/koreanQuizAppLinks";
 import { NEWSLETTER_SUBJECT } from "@/lib/newsletterSubjects";
-import { newsletterUnsubscribeUrl } from "@/lib/newsletterUnsubscribe";
+import {
+  newsletterTutorCtaHtml,
+  newsletterTutorCtaText,
+  newsletterUnsubscribeHtml,
+  newsletterUnsubscribeText,
+} from "@/lib/newsletterEmailFooter";
 
 const BUSINESS_TIME_ZONE = "Asia/Seoul";
 
@@ -109,8 +114,17 @@ export function buildGrammarQuizEmail(args: {
   const { trial } = digest;
   const base = siteUrl.replace(/\/+$/, "");
   const { appStoreUrl, playStoreUrl } = getKoreanQuizAppStoreLinks();
-  const unsubscribeUrl = newsletterUnsubscribeUrl(recipientEmail, base);
   const practiceUrl = `${base}/vocab-quiz?utm_source=newsletter&utm_campaign=grammar-quiz`;
+  const tutorHtml = newsletterTutorCtaHtml("grammar-quiz");
+  const tutorText = newsletterTutorCtaText("grammar-quiz");
+  const unsubHtml = newsletterUnsubscribeHtml({
+    recipientEmail,
+    siteUrl: base,
+  });
+  const unsubText = newsletterUnsubscribeText({
+    recipientEmail,
+    siteUrl: base,
+  });
 
   const choices = trial.choices ?? [];
   const correctIndex =
@@ -140,10 +154,12 @@ export function buildGrammarQuizEmail(args: {
     "",
     `Image: ${trial.imageUrl}`,
     `Practice more: ${practiceUrl}`,
+    tutorText,
+    "",
     `App Store: ${appStoreUrl}`,
     playStoreUrl ? `Google Play: ${playStoreUrl}` : "",
     "",
-    `Unsubscribe: ${unsubscribeUrl}`,
+    unsubText,
   ]
     .filter(Boolean)
     .join("\n");
@@ -210,6 +226,8 @@ export function buildGrammarQuizEmail(args: {
         </a>
       </div>
 
+      ${tutorHtml}
+
       <div style="margin:24px 0 0;text-align:center;">
         <div style="font-size:13px;color:#6e6e73;margin-bottom:12px;">Get the vocab quiz app</div>
         <a href="${escapeHtml(appStoreUrl)}" style="display:inline-block;">
@@ -218,10 +236,7 @@ export function buildGrammarQuizEmail(args: {
         ${playStoreHtml}
       </div>
 
-      <p style="margin:28px 0 0;font-size:12px;line-height:1.6;color:#86868b;text-align:center;">
-        You are receiving this because you subscribed at Kaja Korean.<br />
-        <a href="${escapeHtml(unsubscribeUrl)}" style="color:#0071e3;">Unsubscribe</a>
-      </p>
+      ${unsubHtml}
     </div>
   `.trim();
 

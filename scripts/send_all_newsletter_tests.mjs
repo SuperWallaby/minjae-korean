@@ -24,9 +24,10 @@ async function main() {
   const { NEWSLETTER_SUBJECT } = await import(
     "../src/lib/newsletterSubjects.ts"
   );
-  const { newsletterUnsubscribeUrl } = await import(
-    "../src/lib/newsletterUnsubscribe.ts"
-  );
+  const {
+    newsletterEmailFooterHtml,
+    newsletterEmailFooterText,
+  } = await import("../src/lib/newsletterEmailFooter.ts");
   const {
     resolveNewsletterWelcomeBookCoverUrl,
     resolveNewsletterWelcomePdfUrl,
@@ -48,7 +49,16 @@ async function main() {
   {
     const pdfUrl = resolveNewsletterWelcomePdfUrl();
     const bookCoverUrl = resolveNewsletterWelcomeBookCoverUrl(siteUrl);
-    const unsubscribeUrl = newsletterUnsubscribeUrl(email, siteUrl);
+    const footerHtml = newsletterEmailFooterHtml({
+      recipientEmail: email,
+      siteUrl,
+      campaign: "welcome-pdf",
+    });
+    const footerText = newsletterEmailFooterText({
+      recipientEmail: email,
+      siteUrl,
+      campaign: "welcome-pdf",
+    });
     const subject = NEWSLETTER_SUBJECT.welcomePdf;
     const text = [
       "Thanks for subscribing to Kaja Korean!",
@@ -56,7 +66,7 @@ async function main() {
       "Here is your free Korean learning PDF:",
       pdfUrl,
       "",
-      `Unsubscribe: ${unsubscribeUrl}`,
+      footerText,
     ].join("\n");
     const html = `<div style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.55;color:#1d1d1f;max-width:520px;">
       <h2 style="margin:0 0 12px;font-size:20px;">Thanks for subscribing!</h2>
@@ -67,7 +77,7 @@ async function main() {
         </a>
         <a href="${pdfUrl}" style="display:inline-block;background:#0071e3;color:white;padding:11px 16px;border-radius:999px;text-decoration:none;font-weight:600;">Download your PDF</a>
       </div>
-      <p style="margin:14px 0 0;font-size:12px;color:#86868b;"><a href="${unsubscribeUrl}" style="color:#0071e3;">Unsubscribe</a></p>
+      ${footerHtml}
     </div>`;
     await sendResendEmail({ to: email, subject, html, text });
     results.push({ kind: "welcomePdf", subject });

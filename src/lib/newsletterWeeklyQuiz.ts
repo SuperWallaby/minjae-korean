@@ -9,8 +9,13 @@ import {
   listApprovedKoreanQuizzes,
 } from "@/lib/koreanQuiz/store";
 import type { KoreanQuizItem } from "@/lib/koreanQuiz/types";
+import {
+  newsletterTutorCtaHtml,
+  newsletterTutorCtaText,
+  newsletterUnsubscribeHtml,
+  newsletterUnsubscribeText,
+} from "@/lib/newsletterEmailFooter";
 import { NEWSLETTER_SUBJECT } from "@/lib/newsletterSubjects";
-import { newsletterUnsubscribeUrl } from "@/lib/newsletterUnsubscribe";
 
 export type WeeklyPictureQuizOption = {
   letter: string;
@@ -171,9 +176,17 @@ export function buildWeeklyQuizEmail(args: {
   const { quiz, siteUrl, recipientEmail } = args;
   const base = siteUrl.replace(/\/+$/, "");
   const { appStoreUrl, playStoreUrl } = getKoreanQuizAppStoreLinks();
-  const vocabQuizUrl = `${base}/vocab-quiz?utm_source=newsletter&utm_campaign=weekly-quiz`;
-  const unsubscribeUrl = newsletterUnsubscribeUrl(recipientEmail, base);
   const answer = quiz.options.find((o) => o.correct)?.letter ?? "?";
+  const tutorHtml = newsletterTutorCtaHtml("weekly-quiz");
+  const tutorText = newsletterTutorCtaText("weekly-quiz");
+  const unsubHtml = newsletterUnsubscribeHtml({
+    recipientEmail,
+    siteUrl: base,
+  });
+  const unsubText = newsletterUnsubscribeText({
+    recipientEmail,
+    siteUrl: base,
+  });
 
   const romanizationLine = quiz.romanization
     ? `<div style="margin-top:6px;font-size:15px;color:#6e6e73;">${escapeHtml(quiz.romanization)}</div>`
@@ -210,11 +223,12 @@ export function buildWeeklyQuizEmail(args: {
     quiz.examples.length > 0 ? "Examples:" : "",
     examplesText,
     "",
-    `Practice more: ${vocabQuizUrl}`,
+    tutorText,
+    "",
     `App Store: ${appStoreUrl}`,
     playStoreUrl ? `Google Play: ${playStoreUrl}` : "",
     "",
-    `Unsubscribe: ${unsubscribeUrl}`,
+    unsubText,
   ]
     .filter(Boolean)
     .join("\n");
@@ -281,11 +295,7 @@ export function buildWeeklyQuizEmail(args: {
         </p>
       </div>
 
-      <div style="margin:26px 0 0;text-align:center;">
-        <a href="${escapeHtml(vocabQuizUrl)}" style="display:inline-block;background:#0071e3;color:#ffffff;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;">
-          Play in browser
-        </a>
-      </div>
+      ${tutorHtml}
 
       <div style="margin:24px 0 0;text-align:center;">
         <div style="font-size:13px;color:#6e6e73;margin-bottom:12px;">Get the vocab quiz app</div>
@@ -295,10 +305,7 @@ export function buildWeeklyQuizEmail(args: {
         ${playStoreHtml}
       </div>
 
-      <p style="margin:28px 0 0;font-size:12px;line-height:1.6;color:#86868b;text-align:center;">
-        You are receiving this because you subscribed at Kaja Korean.<br />
-        <a href="${escapeHtml(unsubscribeUrl)}" style="color:#0071e3;">Unsubscribe</a>
-      </p>
+      ${unsubHtml}
     </div>
   `.trim();
 
