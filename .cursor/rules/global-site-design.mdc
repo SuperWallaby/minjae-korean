@@ -1,0 +1,15 @@
+---
+description: Visual system for global.kajakorean.com (Word Atlas) — not the Korean quiz site.
+globs: src/app/global-site/**,src/components/global-site/**,src/lib/globalSite/**
+alwaysApply: false
+---
+
+# Global site = Word Atlas
+
+Follow `docs/design/global-site.md`. Never apply kajakorean.com `--quiz-*`, teal, pill CTAs, or mint gradients here.
+
+- Paper `#f4efe6`, ink `#1b1511`, tutor stamp `#c43c1a`
+- Language rail colors via `data-lang` (es/fr/de/it/ar/ja)
+- Radius 4–8px; hairline borders; no drop shadows; no sticky glass header
+- Fonts already on the root layout: Bricolage (display) + Plus Jakarta (body). Do not add Google fonts.
+- Nav uses native names (Español, Français, …). Charts are plates with captions, not SaaS cards.

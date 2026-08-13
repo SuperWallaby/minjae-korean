@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
 import {
   getGlobalLang,
+  globalLangMeta,
   globalSiteBase,
   listGlobalPins,
 } from "@/lib/globalSite/catalog";
@@ -11,8 +12,10 @@ import { globalGoPath } from "@/lib/globalSite/affiliate";
 
 type Props = { params: Promise<{ code: string }> };
 
+const LANGS = ["es", "fr", "de", "it", "ar", "ja"] as const;
+
 export async function generateStaticParams() {
-  return ["es", "fr", "de", "it", "ar", "ja"].map((code) => ({ code }));
+  return LANGS.map((code) => ({ code }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -42,28 +45,35 @@ export default async function GlobalLangPage({ params }: Props) {
   const lang = getGlobalLang(code);
   if (!lang) notFound();
   const pins = listGlobalPins({ lang: code });
+  const meta = globalLangMeta(code);
 
   return (
-    <>
+    <div data-lang={code}>
       <nav className="global-crumbs" aria-label="Breadcrumb">
-        <Link href="/">Home</Link>
+        <Link href="/">Atlas</Link>
         <span aria-hidden> / </span>
-        <span>{lang.name}</span>
+        <span lang={code} dir={meta.dir}>
+          {meta.native}
+        </span>
       </nav>
       <section className="global-hero">
-        <h1>{lang.name} vocabulary charts</h1>
-        <p>
-          Charts made for English speakers learning {lang.name}. Each chart
-          includes word audio, example sentences, and a path to practice with a
-          tutor.
-        </p>
-        <div className="global-cta-row">
-          <a
-            className="global-btn global-btn-hot"
-            href={globalGoPath("preply", { lang: code })}
-          >
-            Book a {lang.name} tutor · 50% off
-          </a>
+        <div>
+          <p className="global-kicker">{lang.name} · {pins.length} plates</p>
+          <h1 className="global-lang-hero-native" lang={code} dir={meta.dir}>
+            {meta.native}
+          </h1>
+          <p>
+            Charts for English speakers learning {lang.name}. Audio, example
+            sentences, then a tutor when you want to speak.
+          </p>
+          <div className="global-cta-row">
+            <a
+              className="global-btn global-btn-stamp"
+              href={globalGoPath("preply", { lang: code })}
+            >
+              Book a {lang.name} tutor · 50% off
+            </a>
+          </div>
         </div>
       </section>
 
@@ -85,21 +95,22 @@ export default async function GlobalLangPage({ params }: Props) {
       )}
 
       <section className="global-related">
-        <h2 className="global-section-title">Other languages</h2>
+        <p className="global-related-lede">Other languages</p>
         <ul className="global-related-links">
-          {["es", "fr", "de", "it", "ar", "ja"]
-            .filter((c) => c !== code)
-            .map((c) => {
-              const l = getGlobalLang(c);
-              if (!l) return null;
-              return (
-                <li key={c}>
-                  <Link href={`/lang/${c}`}>{l.name} vocabulary</Link>
-                </li>
-              );
-            })}
+          {LANGS.filter((c) => c !== code).map((c) => {
+            const l = getGlobalLang(c);
+            const m = globalLangMeta(c);
+            if (!l) return null;
+            return (
+              <li key={c}>
+                <Link href={`/lang/${c}`} lang={c} dir={m.dir}>
+                  {m.native}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </section>
-    </>
+    </div>
   );
 }

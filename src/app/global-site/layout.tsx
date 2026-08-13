@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  GLOBAL_LANG_META,
+  globalLangMeta,
+} from "@/lib/globalSite/catalog";
 import "./global.css";
+
+const LANG_NAV = ["es", "fr", "de", "it", "ar", "ja"] as const;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://global.kajakorean.com"),
@@ -39,29 +45,41 @@ export default function GlobalSiteLayout({
   return (
     <div className="global-root">
       <header className="global-header">
-        <Link className="global-brand" href="/">
-          <span className="global-brand-mark">Kaja</span>
-          <span className="global-brand-sub">Global</span>
-        </Link>
-        <nav className="global-nav" aria-label="Languages">
-          <Link href="/lang/es">Spanish</Link>
-          <Link href="/lang/fr">French</Link>
-          <Link href="/lang/de">German</Link>
-          <Link href="/lang/it">Italian</Link>
-          <Link href="/lang/ar">Arabic</Link>
-          <Link href="/lang/ja">Japanese</Link>
-        </nav>
+        <div className="global-shell global-header-inner">
+          <Link className="global-brand" href="/">
+            <span className="global-brand-mark">Kaja</span>
+            <span className="global-brand-sub">Global</span>
+          </Link>
+          <nav className="global-nav" aria-label="Languages">
+            {LANG_NAV.map((code) => {
+              const meta = globalLangMeta(code);
+              return (
+                <Link
+                  key={code}
+                  href={`/lang/${code}`}
+                  data-lang={code}
+                  lang={code}
+                  dir={meta.dir}
+                >
+                  {GLOBAL_LANG_META[code]?.native ?? code}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
       </header>
-      <main className="global-main">{children}</main>
+      <main className="global-shell global-main">{children}</main>
       <footer className="global-footer">
-        <p>
-          Charts for English speakers learning a new language. Tutor offers via{" "}
-          Preply &amp; italki.
-        </p>
-        <p className="global-footer-meta">
-          A <a href="https://kajakorean.com">kajakorean.com</a> product ·{" "}
-          <a href="/go/preply">Book a tutor (50% off)</a>
-        </p>
+        <div className="global-shell">
+          <p>
+            A word atlas for English speakers. Tutor offers via Preply &amp;
+            italki.
+          </p>
+          <p className="global-footer-meta">
+            A <a href="https://kajakorean.com">kajakorean.com</a> product ·{" "}
+            <a href="/go/preply">Book a tutor (50% off)</a>
+          </p>
+        </div>
       </footer>
     </div>
   );

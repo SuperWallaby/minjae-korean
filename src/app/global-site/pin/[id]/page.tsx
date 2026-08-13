@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getGlobalPin,
+  globalLangMeta,
   globalPinPageImagePath,
   listGlobalPins,
   relatedGlobalPins,
@@ -60,14 +61,16 @@ export default async function GlobalPinPage({ params }: Props) {
       />
 
       <nav className="global-crumbs" aria-label="Breadcrumb">
-        <Link href="/">Home</Link>
+        <Link href="/">Atlas</Link>
         <span aria-hidden> / </span>
-        <Link href={`/lang/${pin.lang}`}>{pin.langName}</Link>
+        <Link href={`/lang/${pin.lang}`} lang={pin.lang} dir={globalLangMeta(pin.lang).dir}>
+          {globalLangMeta(pin.lang).native}
+        </Link>
         <span aria-hidden> / </span>
         <span>{pin.titleEn}</span>
       </nav>
 
-      <article className="global-pin-layout">
+      <article className="global-pin-layout" data-lang={pin.lang}>
         <div className="global-pin-visual">
           <GlobalPinImage
             imagePath={pin.imagePath}
@@ -85,22 +88,27 @@ export default async function GlobalPinPage({ params }: Props) {
             {pin.explanationEn || pin.description}
           </p>
 
-          <h2 className="global-subhead">Word list · tap play for {pin.langName}</h2>
+          <h2 className="global-subhead">Glossary · {pin.langName}</h2>
           <ul className="global-word-list">
             {pin.words.map((w, i) => (
               <li key={`${w.english}-${w.target}-${i}`}>
-                <div className="global-word-main">
-                  <span className="global-word-target">{w.target}</span>
-                  {w.ttsUrl ? (
-                    <GlobalTtsButton
-                      src={w.ttsUrl}
-                      label={`Play ${w.target} in ${pin.langName}`}
-                    />
-                  ) : null}
-                </div>
-                <span className="global-word-roma">
-                  {w.romanization ? `[${w.romanization}]` : ""}
+                <span className="global-word-index">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
+                <div className="global-word-main">
+                  <span className="global-word-target" lang={pin.lang}>
+                    {w.target}
+                  </span>
+                  <span className="global-word-roma">
+                    {w.romanization ? `[${w.romanization}]` : ""}
+                  </span>
+                </div>
+                {w.ttsUrl ? (
+                  <GlobalTtsButton
+                    src={w.ttsUrl}
+                    label={`Play ${w.target} in ${pin.langName}`}
+                  />
+                ) : null}
                 <span className="global-word-en">{w.english}</span>
               </li>
             ))}
@@ -133,13 +141,11 @@ export default async function GlobalPinPage({ params }: Props) {
           ) : null}
 
           <aside className="global-tutor-panel">
+            <p className="global-tutor-kicker">{offer}</p>
             <h2>Practice with a {pin.langName} tutor</h2>
             <p>
               Charts get you started — conversation locks it in. Book a{" "}
               {pin.langName} tutor and use these words in a real lesson.
-            </p>
-            <p>
-              <strong>{offer}</strong> via our partner.
             </p>
             <a className="global-btn" href={goHref}>
               Continue · {partner === "italki" ? "italki" : "Preply"}
@@ -161,7 +167,9 @@ export default async function GlobalPinPage({ params }: Props) {
               <ul className="global-related-links">
                 {relatedOtherLang.map((p) => (
                   <li key={p.id}>
-                    <Link href={`/pin/${p.id}`}>{p.titleEn}</Link>
+                    <Link href={`/pin/${p.id}`} data-lang={p.lang}>
+                      {p.titleEn}
+                    </Link>
                   </li>
                 ))}
               </ul>

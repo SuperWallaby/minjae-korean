@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
+import { GlobalPinImage } from "@/components/global-site/GlobalPinImage";
 import {
   featuredHomePins,
   getGlobalCatalog,
+  globalLangMeta,
   globalPinCardImagePath,
   globalSiteBase,
   listGlobalPins,
@@ -32,7 +34,8 @@ export default function GlobalHomePage() {
   const catalog = getGlobalCatalog();
   const allPins = listGlobalPins();
   const pins = featuredHomePins(2);
-  const lcp = pins[0];
+  const poster = pins[0];
+  const grid = pins.slice(1);
   const base = globalSiteBase();
   const jsonLd = {
     "@context": "https://schema.org",
@@ -49,11 +52,11 @@ export default function GlobalHomePage() {
 
   return (
     <>
-      {lcp ? (
+      {poster ? (
         <link
           rel="preload"
           as="image"
-          href={globalPinCardImagePath(lcp.imagePath)}
+          href={globalPinCardImagePath(poster.imagePath)}
           type="image/webp"
           fetchPriority="high"
         />
@@ -63,46 +66,75 @@ export default function GlobalHomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <section className="global-hero">
-        <h1>Vocabulary charts that make language stick</h1>
-        <p>
-          Free, scannable word lists for English speakers — Spanish, French,
-          German, Italian, Arabic, Japanese. Hear pronunciations, read example
-          sentences, then book a real tutor when you&apos;re ready to practice.
-        </p>
-        <div className="global-cta-row">
-          <a className="global-btn global-btn-hot" href="/go/preply">
-            Book a tutor · 50% off first lesson
-          </a>
-          <a className="global-btn global-btn-secondary" href="#charts">
-            Browse charts
-          </a>
+        <div>
+          <p className="global-kicker">Word atlas · 6 languages</p>
+          <h1>Charts you can pin — and actually remember.</h1>
+          <p>
+            Free plates for English speakers: Spanish, French, German, Italian,
+            Arabic, Japanese. Hear the word, read a sentence, then talk to a
+            tutor when you&apos;re ready.
+          </p>
+          <div className="global-cta-row">
+            <a className="global-btn global-btn-stamp" href="/go/preply">
+              Book a tutor · 50% off
+            </a>
+            <a className="global-btn global-btn-secondary" href="#charts">
+              Browse the atlas
+            </a>
+          </div>
         </div>
+        {poster ? (
+          <Link
+            className="global-hero-poster"
+            href={`/pin/${poster.id}`}
+            data-lang={poster.lang}
+          >
+            <figure>
+              <GlobalPinImage
+                imagePath={poster.imagePath}
+                alt={`${poster.titleEn} vocabulary chart`}
+                variant="card"
+                priority
+                width={480}
+                height={720}
+              />
+              <figcaption>
+                {globalLangMeta(poster.lang).native} · {poster.titleEn}
+              </figcaption>
+            </figure>
+          </Link>
+        ) : null}
       </section>
 
-      <div className="global-lang-grid">
+      <div className="global-lang-index">
         {catalog.languages.map((lang) => {
           const count = allPins.filter((p) => p.lang === lang.code).length;
+          const meta = globalLangMeta(lang.code);
           return (
             <Link
               key={lang.code}
               className="global-lang-chip"
               href={`/lang/${lang.code}`}
+              data-lang={lang.code}
             >
-              <strong>{lang.name}</strong>
+              <strong lang={lang.code} dir={meta.dir}>
+                {meta.native}
+              </strong>
               <span>
-                {count} chart{count === 1 ? "" : "s"}
+                {lang.name} · {count} charts
               </span>
             </Link>
           );
         })}
       </div>
 
-      <h2 id="charts" className="global-section-title">
-        Featured charts
-      </h2>
+      <div className="global-section-head" id="charts">
+        <h2 className="global-section-title">From the atlas</h2>
+        <p>Selected plates</p>
+      </div>
       <div className="global-pin-grid">
-        {pins.map((pin, i) => (
-          <GlobalPinCard key={pin.id} pin={pin} priority={i === 0} />
+        {grid.map((pin) => (
+          <GlobalPinCard key={pin.id} pin={pin} />
         ))}
       </div>
     </>

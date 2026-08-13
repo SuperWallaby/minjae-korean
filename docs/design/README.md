@@ -33,6 +33,7 @@ Update the **Status** column when you migrate a route group.
 | `/payment/*` | ✅ | Success + cancel use `MarketingShell` |
 | `/recap/*` | — | Session recaps; not migrated |
 | `/admin/*` | — | Separate admin design |
+| `global.kajakorean.com` | ✅ | [global-site.md](./global-site.md) — Word Atlas, not quiz chrome |
 
 ## Shared components
 

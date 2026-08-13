@@ -35,7 +35,7 @@ export function GlobalAffiliateGoClient({
   }, [partner, destination, lang, pinId]);
 
   return (
-    <div className="global-go-hop" style={{ padding: "2rem 1rem" }}>
+    <div className="global-go-hop">
       <p>Taking you to {partner === "italki" ? "italki" : "Preply"}…</p>
       <p>
         <a href={destination}>Continue</a>

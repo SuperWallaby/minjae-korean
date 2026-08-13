@@ -31,7 +31,7 @@ export function GlobalTtsButton({
   };
 
   return (
-    <>
+    <span className={`global-tts ${className}`.trim()}>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio
         ref={audioRef}
@@ -42,13 +42,13 @@ export function GlobalTtsButton({
       />
       <button
         type="button"
-        className={`global-tts-btn ${className}`.trim()}
+        className="global-tts-btn"
         onClick={onClick}
         aria-label={label}
         title={label}
       >
         {playing ? "■" : "▶"}
       </button>
-    </>
+    </span>
   );
 }

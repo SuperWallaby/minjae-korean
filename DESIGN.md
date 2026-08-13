@@ -64,3 +64,4 @@ Detailed specs and migration status live in [`docs/design/`](docs/design/README.
 - **`/admin/*`** — operational dark UI; do not force marketing renewal here.
 - **Booking / call / join flows** — hidden or legacy; migrate only if re-enabled.
 - **Korean Quiz in-app screens** — follow `vocab-quiz.module.css` + flutter `DESIGN.md` where applicable.
+- **`global.kajakorean.com`** — separate Word Atlas system: [`docs/design/global-site.md`](docs/design/global-site.md).

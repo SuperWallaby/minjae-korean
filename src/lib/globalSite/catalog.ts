@@ -98,6 +98,23 @@ export function getGlobalLang(code: string) {
   return getGlobalCatalog().languages.find((l) => l.code === c) || null;
 }
 
+export const GLOBAL_LANG_META: Record<
+  string,
+  { native: string; dir?: "rtl"; rail: string }
+> = {
+  es: { native: "Español", rail: "#b4471e" },
+  fr: { native: "Français", rail: "#2f4d73" },
+  de: { native: "Deutsch", rail: "#9a6b12" },
+  it: { native: "Italiano", rail: "#2c6a4a" },
+  ar: { native: "العربية", dir: "rtl", rail: "#5b3d86" },
+  ja: { native: "日本語", rail: "#a31d18" },
+};
+
+export function globalLangMeta(code: string) {
+  const c = String(code || "").toLowerCase();
+  return GLOBAL_LANG_META[c] || { native: code, rail: "#1b1511" };
+}
+
 /** Same language + other-language versions of the same topic. */
 export function relatedGlobalPins(
   pin: GlobalPinPage,
