@@ -8,6 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { optimizeGlobalPinWeb } from "./lib/optimize-global-pin-web.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(ROOT, ".tmp", "global-lang-en-samples");
@@ -43,7 +44,13 @@ for (const f of fs.readdirSync(SRC)) {
   if (!id) continue;
   const png = path.join(SRC, `${id}.png`);
   if (!fs.existsSync(png)) continue;
-  fs.copyFileSync(png, path.join(OUT_IMG, `${id}.png`));
+  const destPng = path.join(OUT_IMG, `${id}.png`);
+  fs.copyFileSync(png, destPng);
+  try {
+    await optimizeGlobalPinWeb(destPng);
+  } catch (e) {
+    console.warn(`webp skip ${id}:`, e instanceof Error ? e.message : e);
+  }
   const prev = prevById.get(id) || {};
   const words = (meta.words || []).map((w, i) => {
     const pw = prev.words?.[i];

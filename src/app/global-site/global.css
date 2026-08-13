@@ -16,7 +16,7 @@
     radial-gradient(1200px 600px at 10% -10%, #d8ebe3 0%, transparent 55%),
     radial-gradient(900px 500px at 100% 0%, #f3e6d8 0%, transparent 50%),
     linear-gradient(180deg, var(--g-paper) 0%, #eef3ef 100%);
-  font-family: var(--font-global-sans), system-ui, sans-serif;
+  font-family: var(--font-plus-jakarta), var(--font-global-sans), system-ui, sans-serif;
 }
 
 .global-header {
@@ -43,7 +43,7 @@
 }
 
 .global-brand-mark {
-  font-family: var(--font-global-display), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-global-display), Georgia, serif;
   font-size: 1.65rem;
   font-weight: 650;
   letter-spacing: -0.03em;
@@ -109,7 +109,7 @@
 }
 
 .global-hero h1 {
-  font-family: var(--font-global-display), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-global-display), Georgia, serif;
   font-size: clamp(2.1rem, 5vw, 3.4rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -190,7 +190,7 @@
 
 .global-lang-chip strong {
   display: block;
-  font-family: var(--font-global-display), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-global-display), Georgia, serif;
   font-size: 1.15rem;
 }
 
@@ -201,7 +201,7 @@
 
 /* Pin cards */
 .global-section-title {
-  font-family: var(--font-global-display), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-global-display), Georgia, serif;
   font-size: 1.45rem;
   margin: 0 0 1rem;
   letter-spacing: -0.02em;
@@ -228,6 +228,11 @@
 
 .global-pin-card:hover {
   transform: translateY(-3px);
+}
+
+.global-pin-card picture {
+  display: block;
+  width: 100%;
 }
 
 .global-pin-card img {
@@ -278,6 +283,10 @@
   box-shadow: var(--g-shadow);
 }
 
+.global-pin-visual picture {
+  display: block;
+}
+
 .global-pin-visual img {
   width: 100%;
   height: auto;
@@ -285,7 +294,7 @@
 }
 
 .global-pin-copy h1 {
-  font-family: var(--font-global-display), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-global-display), Georgia, serif;
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   line-height: 1.1;
   margin: 0 0 0.75rem;
@@ -353,7 +362,7 @@
 }
 
 .global-subhead {
-  font-family: var(--font-global-display), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-global-display), Georgia, serif;
   font-size: 1.2rem;
   margin: 1.5rem 0 0.75rem;
   letter-spacing: -0.02em;
@@ -465,7 +474,7 @@
 
 .global-tutor-panel h2 {
   margin: 0;
-  font-family: var(--font-global-display), Georgia, serif;
+  font-family: var(--font-bricolage), var(--font-global-display), Georgia, serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }

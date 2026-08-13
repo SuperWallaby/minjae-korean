@@ -62,6 +62,25 @@ export function listGlobalPins(opts?: {
   return pages.filter((p) => p.lang.toLowerCase() === code);
 }
 
+/** Listing thumb: `/global/pins/{id}.card.webp` */
+export function globalPinCardImagePath(imagePath: string): string {
+  return imagePath.replace(/\.png$/i, ".card.webp");
+}
+
+/** Detail / OG: `/global/pins/{id}.webp` */
+export function globalPinPageImagePath(imagePath: string): string {
+  return imagePath.replace(/\.png$/i, ".webp");
+}
+
+/** Mix of languages for the homepage — avoids dumping all 84 full charts. */
+export function featuredHomePins(perLang = 2): GlobalPinPage[] {
+  const out: GlobalPinPage[] = [];
+  for (const lang of getGlobalCatalog().languages) {
+    out.push(...listGlobalPins({ lang: lang.code }).slice(0, perLang));
+  }
+  return out;
+}
+
 export function getGlobalPin(id: string): GlobalPinPage | null {
   const needle = String(id || "").trim();
   if (!needle) return null;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
 import {
   getGlobalLang,
   globalSiteBase,
@@ -70,29 +71,15 @@ export default async function GlobalLangPage({ params }: Props) {
         <p className="global-pin-lede">More charts coming soon.</p>
       ) : (
         <div className="global-pin-grid">
-          {pins.map((pin) => (
-            <Link
+          {pins.map((pin, i) => (
+            <GlobalPinCard
               key={pin.id}
-              className="global-pin-card"
-              href={`/pin/${pin.id}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={pin.imagePath}
-                alt={`${pin.titleEn} vocabulary chart`}
-                loading="lazy"
-                width={400}
-                height={600}
-              />
-              <div className="global-pin-card-body">
-                <h2>{pin.titleEn}</h2>
-                <div className="global-pin-card-meta">
-                  {pin.words.length} words
-                  {pin.examples?.length ? " · examples" : ""}
-                  {pin.words.some((w) => w.ttsUrl) ? " · audio" : ""}
-                </div>
-              </div>
-            </Link>
+              pin={pin}
+              priority={i === 0}
+              meta={`${pin.words.length} words${
+                pin.examples?.length ? " · examples" : ""
+              }${pin.words.some((w) => w.ttsUrl) ? " · audio" : ""}`}
+            />
           ))}
         </div>
       )}

@@ -1,19 +1,6 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
 import Link from "next/link";
 import "./global.css";
-
-const dm = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-global-sans",
-  display: "swap",
-});
-
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-global-display",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://global.kajakorean.com"),
@@ -50,7 +37,7 @@ export default function GlobalSiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`global-root ${dm.variable} ${display.variable}`}>
+    <div className="global-root">
       <header className="global-header">
         <Link className="global-brand" href="/">
           <span className="global-brand-mark">Kaja</span>

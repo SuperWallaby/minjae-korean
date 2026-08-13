@@ -3,11 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getGlobalPin,
+  globalPinPageImagePath,
   listGlobalPins,
   relatedGlobalPins,
 } from "@/lib/globalSite/catalog";
 import { globalGoPath, type AffiliatePartner } from "@/lib/globalSite/affiliate";
 import { buildPinMetadata, pinJsonLd } from "@/lib/globalSite/seo";
+import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
+import { GlobalPinImage } from "@/components/global-site/GlobalPinImage";
 import { GlobalTtsButton } from "@/components/global-site/GlobalTtsButton";
 
 type Props = { params: Promise<{ id: string }> };
@@ -44,6 +47,13 @@ export default async function GlobalPinPage({ params }: Props) {
 
   return (
     <>
+      <link
+        rel="preload"
+        as="image"
+        href={globalPinPageImagePath(pin.imagePath)}
+        type="image/webp"
+        fetchPriority="high"
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -59,10 +69,11 @@ export default async function GlobalPinPage({ params }: Props) {
 
       <article className="global-pin-layout">
         <div className="global-pin-visual">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={pin.imagePath}
+          <GlobalPinImage
+            imagePath={pin.imagePath}
             alt={`${pin.titleEn} — vocabulary chart for English speakers`}
+            variant="page"
+            priority
             width={1000}
             height={1500}
           />
@@ -161,26 +172,12 @@ export default async function GlobalPinPage({ params }: Props) {
               <p className="global-related-lede">More {pin.langName} charts</p>
               <div className="global-pin-grid global-related-grid">
                 {relatedSameLang.map((p) => (
-                  <Link
+                  <GlobalPinCard
                     key={p.id}
-                    className="global-pin-card"
-                    href={`/pin/${p.id}`}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={p.imagePath}
-                      alt={p.titleEn}
-                      loading="lazy"
-                      width={400}
-                      height={600}
-                    />
-                    <div className="global-pin-card-body">
-                      <h3>{p.titleEn}</h3>
-                      <div className="global-pin-card-meta">
-                        {p.words.length} words
-                      </div>
-                    </div>
-                  </Link>
+                    pin={p}
+                    heading="h3"
+                    meta={`${p.words.length} words`}
+                  />
                 ))}
               </div>
             </>

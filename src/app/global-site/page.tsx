@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
 import {
+  featuredHomePins,
   getGlobalCatalog,
+  globalPinCardImagePath,
   globalSiteBase,
   listGlobalPins,
 } from "@/lib/globalSite/catalog";
 
+const HOME_TITLE = "Kaja Global · Vocabulary charts that stick";
+const HOME_DESC =
+  "Free language vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, and Japanese — with pronunciation audio and examples.";
+
 export const metadata: Metadata = {
-  title: "Kaja Global · Vocabulary charts that stick",
-  description:
-    "Free language vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, and Japanese — with pronunciation audio and examples.",
+  title: { absolute: HOME_TITLE },
+  description: HOME_DESC,
   alternates: { canonical: "https://global.kajakorean.com/" },
   openGraph: {
-    title: "Kaja Global · Vocabulary charts that stick",
+    title: HOME_TITLE,
     description:
       "Save-worthy word charts with audio, examples, and tutor offers.",
     url: "https://global.kajakorean.com/",
@@ -24,14 +30,16 @@ export const metadata: Metadata = {
 
 export default function GlobalHomePage() {
   const catalog = getGlobalCatalog();
-  const pins = listGlobalPins();
+  const allPins = listGlobalPins();
+  const pins = featuredHomePins(2);
+  const lcp = pins[0];
   const base = globalSiteBase();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Kaja Global",
     url: base,
-    description: metadata.description,
+    description: HOME_DESC,
     potentialAction: {
       "@type": "SearchAction",
       target: `${base}/lang/{language}`,
@@ -41,6 +49,15 @@ export default function GlobalHomePage() {
 
   return (
     <>
+      {lcp ? (
+        <link
+          rel="preload"
+          as="image"
+          href={globalPinCardImagePath(lcp.imagePath)}
+          type="image/webp"
+          fetchPriority="high"
+        />
+      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -64,7 +81,7 @@ export default function GlobalHomePage() {
 
       <div className="global-lang-grid">
         {catalog.languages.map((lang) => {
-          const count = pins.filter((p) => p.lang === lang.code).length;
+          const count = allPins.filter((p) => p.lang === lang.code).length;
           return (
             <Link
               key={lang.code}
@@ -81,28 +98,11 @@ export default function GlobalHomePage() {
       </div>
 
       <h2 id="charts" className="global-section-title">
-        Latest charts
+        Featured charts
       </h2>
       <div className="global-pin-grid">
-        {pins.map((pin) => (
-          <Link
-            key={pin.id}
-            className="global-pin-card"
-            href={`/pin/${pin.id}`}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={pin.imagePath}
-              alt={`${pin.titleEn} vocabulary chart`}
-              loading="lazy"
-              width={400}
-              height={600}
-            />
-            <div className="global-pin-card-body">
-              <h2>{pin.titleEn}</h2>
-              <div className="global-pin-card-meta">{pin.langName}</div>
-            </div>
-          </Link>
+        {pins.map((pin, i) => (
+          <GlobalPinCard key={pin.id} pin={pin} priority={i === 0} />
         ))}
       </div>
     </>

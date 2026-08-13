@@ -32,6 +32,13 @@ pub_rc=$?
 set -e
 log "publish exit=$pub_rc"
 
+log "==> global pin web images"
+set +e
+"$NODE" scripts/optimize-global-pin-web-images.mjs >>"$LOG" 2>&1
+opt_rc=$?
+set -e
+log "optimize-images exit=$opt_rc"
+
 log "==> global pin pipeline enrich ${LIMIT_ARGS[*]:-}"
 set +e
 npx tsx scripts/enrich-global-pins.ts "${LIMIT_ARGS[@]}" >>"$LOG" 2>&1

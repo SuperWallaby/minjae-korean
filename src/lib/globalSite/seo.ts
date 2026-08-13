@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   getGlobalPin,
+  globalPinPageImagePath,
   globalSiteBase,
   type GlobalPinPage,
 } from "@/lib/globalSite/catalog";
@@ -13,11 +14,14 @@ export function pinAbsoluteUrl(pin: GlobalPinPage): string {
   return `${globalSiteBase()}${pinCanonicalPath(pin)}`;
 }
 
+function pinShareImage(pin: GlobalPinPage): string {
+  const rel = globalPinPageImagePath(pin.imagePath);
+  return rel.startsWith("http") ? rel : `${globalSiteBase()}${rel}`;
+}
+
 export function buildPinMetadata(pin: GlobalPinPage): Metadata {
   const url = pinAbsoluteUrl(pin);
-  const image = pin.imagePath.startsWith("http")
-    ? pin.imagePath
-    : `${globalSiteBase()}${pin.imagePath}`;
+  const image = pinShareImage(pin);
   const words = pin.words
     .slice(0, 8)
     .map((w) => w.english)
@@ -62,9 +66,7 @@ export function buildPinMetadata(pin: GlobalPinPage): Metadata {
 
 export function pinJsonLd(pin: GlobalPinPage) {
   const url = pinAbsoluteUrl(pin);
-  const image = pin.imagePath.startsWith("http")
-    ? pin.imagePath
-    : `${globalSiteBase()}${pin.imagePath}`;
+  const image = pinShareImage(pin);
   const words = pin.words.map((w) => ({
     "@type": "DefinedTerm",
     name: w.target,

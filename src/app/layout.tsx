@@ -44,6 +44,60 @@ export async function generateMetadata(): Promise<Metadata> {
   const h = await headers();
   const isGlobalSite = isGlobalSiteRequest(h);
 
+  if (isGlobalSite) {
+    return {
+      metadataBase: new URL("https://global.kajakorean.com"),
+      title: {
+        default: "Kaja Global · Learn languages with clear vocab charts",
+        template: "%s · Kaja Global",
+      },
+      description:
+        "Save-worthy vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, and Japanese — with pronunciation audio, examples, and tutor offers.",
+      applicationName: "Kaja Global",
+      manifest: "/brand/site.webmanifest",
+      icons: {
+        icon: [
+          { url: "/brand/favicon.ico", type: "image/x-icon" },
+          {
+            url: "/brand/favicon-32x32.png",
+            type: "image/png",
+            sizes: "32x32",
+          },
+          {
+            url: "/brand/favicon-16x16.png",
+            type: "image/png",
+            sizes: "16x16",
+          },
+          { url: "/brand/icon.png", type: "image/png", sizes: "512x512" },
+        ],
+        shortcut: [{ url: "/brand/favicon.ico", type: "image/x-icon" }],
+        apple: [
+          {
+            url: "/brand/apple-touch-icon.png",
+            type: "image/png",
+            sizes: "180x180",
+          },
+        ],
+      },
+      openGraph: {
+        type: "website",
+        siteName: "Kaja Global",
+        title: "Kaja Global · Vocabulary charts that stick",
+        description:
+          "Free language charts from Pinterest — clear words, audio, examples, and tutor booking.",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Kaja Global · Vocabulary charts that stick",
+        description:
+          "Free language charts with audio and examples for English speakers.",
+      },
+      other: {
+        "p:domain_verify": GLOBAL_PINTEREST_VERIFY,
+      },
+    };
+  }
+
   return {
     metadataBase: new URL(SITE_ORIGIN),
     title: {
