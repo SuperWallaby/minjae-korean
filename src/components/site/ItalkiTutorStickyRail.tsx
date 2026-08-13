@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 import { getAffiliateTutorCreative } from "@/lib/affiliateTutor";
+import { trackAffiliateClick } from "@/lib/ga";
 
 import styles from "./italki-tutor-sticky.module.css";
 
@@ -88,6 +89,12 @@ export function ItalkiTutorStickyRail() {
         target="_blank"
         rel="noopener noreferrer sponsored"
         className={styles.link}
+        onClick={() =>
+          trackAffiliateClick({
+            partner: "italki",
+            placement: "sticky_rail",
+          })
+        }
       >
         <Image
           src={creative.square.src}

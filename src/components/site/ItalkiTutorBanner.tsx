@@ -10,6 +10,7 @@ import {
   PREPLY_AFFILIATE_URL,
   type AffiliateTutorPartner,
 } from "@/lib/affiliateTutor";
+import { trackAffiliateClick } from "@/lib/ga";
 
 export { ITALKI_AFFILIATE_URL, PREPLY_AFFILIATE_URL };
 
@@ -20,12 +21,15 @@ type Props = {
   className?: string;
   /** Force a partner (tests). Default: session 50/50. */
   partner?: AffiliateTutorPartner;
+  /** GA placement label. Defaults from variant. */
+  placement?: string;
 };
 
 export function AffiliateTutorBanner({
   variant = "wide",
   className = "",
   partner: partnerProp,
+  placement: placementProp,
 }: Props) {
   const [partner, setPartner] = React.useState<AffiliateTutorPartner | null>(
     partnerProp ?? null,
@@ -56,6 +60,9 @@ export function AffiliateTutorBanner({
   // Preply has square art only — keep layout compact when that partner wins.
   const useSquareLayout = variant === "square" || partner === "preply";
   const asset = useSquareLayout ? creative.square : creative.wide;
+  const placement =
+    placementProp ||
+    (useSquareLayout ? "banner_square" : "banner_wide");
 
   return (
     <aside
@@ -67,6 +74,9 @@ export function AffiliateTutorBanner({
         href={creative.href}
         target="_blank"
         rel="noopener noreferrer sponsored"
+        onClick={() =>
+          trackAffiliateClick({ partner, placement })
+        }
         className="group block overflow-hidden rounded-2xl border border-black/8 bg-muted/20 shadow-sm transition hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--quiz-primary,#2A7FFC)]"
       >
         <Image

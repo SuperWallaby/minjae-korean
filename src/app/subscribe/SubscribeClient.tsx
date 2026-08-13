@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { trackNewsletterSubscribe } from "@/lib/ga";
 
 export function SubscribeClient() {
   const [email, setEmail] = React.useState("");
@@ -40,6 +41,7 @@ export function SubscribeClient() {
         setError(json?.error || "Something went wrong. Please try again.");
         return;
       }
+      trackNewsletterSubscribe("subscribe_page");
       setSent(true);
     } catch {
       setError("Something went wrong. Please try again.");

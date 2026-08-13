@@ -9,6 +9,7 @@ import { MarketingHeader } from "@/components/site/MarketingShell";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 import { ITALKI_AFFILIATE_URL } from "@/lib/affiliateTutor";
+import { trackAffiliateClick } from "@/lib/ga";
 
 import styles from "./home-renewal.module.css";
 
@@ -52,6 +53,12 @@ export function FindTutorHomeSection() {
                   href={ITALKI_AFFILIATE_URL}
                   target="_blank"
                   rel="noopener noreferrer sponsored"
+                  onClick={() =>
+                    trackAffiliateClick({
+                      partner: "italki",
+                      placement: "home_section",
+                    })
+                  }
                   className="inline-flex h-11 items-center justify-center rounded-full border border-[var(--quiz-border)] bg-white px-5 text-sm font-semibold text-[var(--quiz-text)] transition hover:bg-[var(--quiz-surface-muted)]"
                 >
                   Find a tutor · $10 OFF
@@ -64,7 +71,11 @@ export function FindTutorHomeSection() {
               delayMs={80}
             >
               {/* Home section always shows italki $10 OFF creative */}
-              <AffiliateTutorBanner variant="square" partner="italki" />
+              <AffiliateTutorBanner
+                variant="square"
+                partner="italki"
+                placement="home_section_banner"
+              />
             </StaggerReveal>
           </div>
         </StaggerReveal>
