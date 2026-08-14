@@ -62,6 +62,7 @@ Already loaded on the root layout — **do not add Google fonts**.
 
 - Full-bleed paper ground. Inner column `max-width: 1180px`.
 - Gutter: `1.5rem` on small screens (plus `safe-area-inset`), `2.25rem` from 720px. Charts and the language index must sit inside this gutter — not flush to the viewport.
+- Implement gutters as `padding-left/right` on `.global-shell` (or `--g-pad-l/r`). **Never** use a `padding:` shorthand on the same element (`.global-main`, `.global-header-inner`) — it zeros the horizontal gutters.
 - Header is a **masthead**, not a sticky glass bar: top + bottom hairline, no `backdrop-filter`, not sticky.
 - Top row: wordmark left, **`1:1 tutor` text link** right (`/go/preply`, stamp color, underline — not a button). Offer `(50% off)` sits in the same link, smaller and `--g-ink-soft`.
 - Wordmark: `Kaja` (Bricolage) + `Global` (small caps, tracking). Not a logo mark.

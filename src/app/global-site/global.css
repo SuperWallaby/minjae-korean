@@ -12,10 +12,21 @@
   --g-lang: #1b1511;
   --g-display: var(--font-bricolage), "Iowan Old Style", Georgia, serif;
   --g-sans: var(--font-plus-jakarta), "Helvetica Neue", system-ui, sans-serif;
+  /* Gutter lives on --g-* so child padding-block can't wipe shell edges. */
+  --g-pad-l: max(1.5rem, env(safe-area-inset-left, 0px));
+  --g-pad-r: max(1.5rem, env(safe-area-inset-right, 0px));
   min-height: 100vh;
   color: var(--g-ink);
   background: var(--g-paper);
   font-family: var(--g-sans);
+  overflow-x: clip;
+}
+
+@media (min-width: 720px) {
+  .global-root {
+    --g-pad-l: max(2.25rem, env(safe-area-inset-left, 0px));
+    --g-pad-r: max(2.25rem, env(safe-area-inset-right, 0px));
+  }
 }
 
 .global-root[data-lang="es"],
@@ -46,15 +57,9 @@
 .global-shell {
   max-width: 1180px;
   margin: 0 auto;
-  padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
-  padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
-}
-
-@media (min-width: 720px) {
-  .global-shell {
-    padding-left: max(2.25rem, env(safe-area-inset-left, 0px));
-    padding-right: max(2.25rem, env(safe-area-inset-right, 0px));
-  }
+  padding-left: var(--g-pad-l);
+  padding-right: var(--g-pad-r);
+  box-sizing: border-box;
 }
 
 /* Masthead */
@@ -68,7 +73,8 @@
   flex-direction: column;
   align-items: stretch;
   gap: 0.75rem;
-  padding: 1.1rem 0 0.95rem;
+  /* padding-block only — never shorthand, or shell gutters get zeroed */
+  padding-block: 1.1rem 0.95rem;
   border-top: 1px solid var(--g-ink);
   margin-top: 0.65rem;
 }
@@ -159,12 +165,12 @@
 }
 
 .global-main {
-  padding: clamp(1.75rem, 4vw, 3.25rem) 0 4.5rem;
+  padding-block: clamp(1.5rem, 4vw, 3.25rem) 4rem;
 }
 
 .global-footer {
   border-top: 1px solid var(--g-ink);
-  padding: 1.35rem 0 2.5rem;
+  padding-block: 1.35rem 2.5rem;
   color: var(--g-ink-soft);
   font-size: 0.82rem;
   letter-spacing: 0.01em;
@@ -250,6 +256,30 @@
   flex-wrap: wrap;
   gap: 0.65rem;
   margin-top: 1.35rem;
+}
+
+@media (max-width: 479px) {
+  .global-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .global-cta-row .global-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .global-hero h1 {
+    font-size: clamp(2.05rem, 9.5vw, 2.6rem);
+  }
+
+  .global-header-tutor {
+    font-size: 0.72rem;
+  }
+
+  .global-header-tutor span {
+    display: none;
+  }
 }
 
 .global-btn {
@@ -350,7 +380,7 @@
 .global-lang-chip {
   display: grid;
   gap: 0.2rem;
-  padding: 1.05rem 1rem 1.1rem;
+  padding: 0.95rem 0.85rem 1rem;
   border-right: 1px solid var(--g-ink);
   border-bottom: 1px solid var(--g-ink);
   text-decoration: none;
@@ -358,6 +388,12 @@
   box-shadow: inset 4px 0 0 var(--g-lang);
   background: var(--g-paper);
   transition: background 0.12s ease;
+}
+
+@media (min-width: 720px) {
+  .global-lang-chip {
+    padding: 1.05rem 1rem 1.1rem;
+  }
 }
 
 .global-lang-chip:hover {
@@ -381,8 +417,15 @@
 /* Pin plates */
 .global-pin-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem 1.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 168px), 1fr));
+  gap: 1.35rem 0.9rem;
+}
+
+@media (min-width: 720px) {
+  .global-pin-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem 1.1rem;
+  }
 }
 
 .global-pin-card {
@@ -499,8 +542,8 @@
 
 .global-word-list li {
   display: grid;
-  grid-template-columns: 2rem 1fr auto;
-  gap: 0.2rem 0.75rem;
+  grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+  gap: 0.15rem 0.55rem;
   padding: 0.7rem 0;
   border-bottom: 1px solid var(--g-rule);
   border-radius: 0;
@@ -508,6 +551,13 @@
   box-shadow: none;
   border-left: 0;
   border-right: 0;
+}
+
+@media (min-width: 480px) {
+  .global-word-list li {
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    gap: 0.2rem 0.75rem;
+  }
 }
 
 .global-word-index {
@@ -670,13 +720,19 @@
 
 .global-tutor-panel {
   margin-top: 0.35rem;
-  padding: 1.25rem 1.3rem 1.35rem;
+  padding: 1.15rem 1.1rem 1.25rem;
   border-radius: 0;
   background: var(--g-ink);
   color: var(--g-paper);
   display: grid;
   gap: 0.65rem;
   border: 1px solid var(--g-ink);
+}
+
+@media (min-width: 720px) {
+  .global-tutor-panel {
+    padding: 1.25rem 1.3rem 1.35rem;
+  }
 }
 
 .global-tutor-kicker {
@@ -739,7 +795,7 @@
 }
 
 .global-go-hop {
-  padding: 3rem 0;
+  padding-block: 3rem;
 }
 
 .global-go-hop a {
