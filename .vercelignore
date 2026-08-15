@@ -1,0 +1,8 @@
+.tmp
+.next
+node_modules
+.turbo
+coverage
+*.log
+.DS_Store
+.git

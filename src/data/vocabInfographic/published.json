@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T12:56:40.519Z",
+  "generatedAt": "2026-08-15T02:26:17.183Z",
   "pages": [
     {
       "bundleId": "ant-accept-reject",
@@ -235,7 +235,7 @@
       "format": "antonym_split",
       "title": "Ask vs Answer",
       "titleEn": "Ask vs Answer in Korean",
-      "description": "Ask vs Answer in Korean — 묻다 (Ask), 답하다 (Answer). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the difference between two opposite actions in Korean: '묻다' means to ask a question, and '답하다' means to answer a question. These words are o…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785709846966-ant-ask-answer.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785709846966-ant-ask-answer-thumb.webp",
       "imageAlt": "Ask vs Answer in Korean — Korean vocab chart",
@@ -243,12 +243,18 @@
         {
           "hangul": "묻다",
           "romanization": "mut-da",
-          "english": "Ask"
+          "english": "Ask",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591252267-ant-ask-answer-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "답하다",
           "romanization": "dap-ha-da",
-          "english": "Answer"
+          "english": "Answer",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591252267-ant-ask-answer-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -256,7 +262,29 @@
         "conversation"
       ],
       "intro": "Need to keep a convo smooth? Use these words when talking! 🔴 묻다 [mut-da] - Ask",
-      "updatedAt": "2026-08-02T22:30:54.110Z"
+      "updatedAt": "2026-08-02T22:30:54.110Z",
+      "explanationEn": "This chart shows the difference between two opposite actions in Korean: '묻다' means to ask a question, and '답하다' means to answer a question. These words are often used in conversations when people want to get or give information. Understanding these verbs helps you participate better in everyday Korean dialogues.",
+      "examples": [
+        {
+          "korean": "저에게 질문을 묻어도 돼요?",
+          "english": "Can I ask you a question?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591252267-ant-ask-answer-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "선생님이 학생들에게 답하셨어요.",
+          "english": "The teacher answered the students.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591252267-ant-ask-answer-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "친구가 묻고 저는 답했어요.",
+          "english": "My friend asked, and I answered.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591252267-ant-ask-answer-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T03:21:14.845Z"
     },
     {
       "bundleId": "ant-attach-detach",
@@ -492,7 +520,7 @@
       "format": "antonym_split",
       "title": "Borrow vs Lend",
       "titleEn": "Borrow vs Lend in Korean",
-      "description": "Borrow vs Lend in Korean — 빌리다 (Borrow), 빌려주다 (Lend). Picture vocab chart for Korean learners.",
+      "description": "In Korean, 빌리다 means 'to borrow,' which is when you take something from someone temporarily. 빌려주다 means 'to lend,' which is when you give something to someon…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785707875692-ant-borrow-lend.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785707875692-ant-borrow-lend-thumb.webp",
       "imageAlt": "Borrow vs Lend in Korean — Korean vocab chart",
@@ -500,12 +528,18 @@
         {
           "hangul": "빌리다",
           "romanization": "billida",
-          "english": "Borrow"
+          "english": "Borrow",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591169574-ant-borrow-lend-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "빌려주다",
           "romanization": "billyeojuda",
-          "english": "Lend"
+          "english": "Lend",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591169574-ant-borrow-lend-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -513,7 +547,29 @@
         "transfer"
       ],
       "intro": "🗣️ Real-life Korean vibes: ➡️ Borrow: 빌리다 [billida] (Borrow) 📈🔥",
-      "updatedAt": "2026-08-02T21:58:05.334Z"
+      "updatedAt": "2026-08-02T21:58:05.334Z",
+      "explanationEn": "In Korean, 빌리다 means 'to borrow,' which is when you take something from someone temporarily. 빌려주다 means 'to lend,' which is when you give something to someone for a short time. These two words are opposites and are used when talking about transferring items between people.",
+      "examples": [
+        {
+          "korean": "친구한테 책을 빌렸어요.",
+          "english": "I borrowed a book from my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591169574-ant-borrow-lend-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "나는 동생에게 연필을 빌려줬어요.",
+          "english": "I lent a pencil to my younger sibling.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591169574-ant-borrow-lend-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "필요하면 내 자전거를 빌릴 수 있어요.",
+          "english": "If you need it, you can borrow my bicycle.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591169574-ant-borrow-lend-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T03:19:55.334Z"
     },
     {
       "bundleId": "ant-brave-scared",
@@ -578,7 +634,7 @@
       "format": "antonym_split",
       "title": "Bright vs Dark",
       "titleEn": "Bright vs Dark in Korean",
-      "description": "Bright vs Dark in Korean — 밝다 (Bright), 어둡다 (Dark). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the antonyms 밝다 and 어둡다, which mean bright and dark in Korean. These words describe the amount of light in a place or object. 밝다 is used whe…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785703847138-ant-bright-dark.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785703847138-ant-bright-dark-thumb.webp",
       "imageAlt": "Bright vs Dark in Korean — Korean vocab chart",
@@ -586,12 +642,18 @@
         {
           "hangul": "밝다",
           "romanization": "balkda",
-          "english": "Bright"
+          "english": "Bright",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591195401-ant-bright-dark-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "어둡다",
           "romanization": "eodupda",
-          "english": "Dark"
+          "english": "Dark",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591195401-ant-bright-dark-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -599,7 +661,29 @@
         "light"
       ],
       "intro": "Need to describe the weather or a room? 🔴 밝다 [balkda] - Bright",
-      "updatedAt": "2026-08-02T20:50:58.267Z"
+      "updatedAt": "2026-08-02T20:50:58.267Z",
+      "explanationEn": "This chart shows the antonyms 밝다 and 어둡다, which mean bright and dark in Korean. These words describe the amount of light in a place or object. 밝다 is used when something has a lot of light, and 어둡다 is used when something has little or no light. Learning these words helps you talk about lighting and colors in everyday situations.",
+      "examples": [
+        {
+          "korean": "이 방은 밝아서 공부하기 좋아요.",
+          "english": "This room is bright, so it's good for studying.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591195401-ant-bright-dark-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "밤에는 길이 어두워서 조심해야 해요.",
+          "english": "At night, the street is dark, so you have to be careful.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591195401-ant-bright-dark-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "창문이 커서 거실이 아주 밝아요.",
+          "english": "The living room is very bright because the windows are big.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591195401-ant-bright-dark-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T03:20:18.926Z"
     },
     {
       "bundleId": "ant-broad-slim",
@@ -2260,7 +2344,7 @@
       "format": "antonym_split",
       "title": "Include vs Exclude",
       "titleEn": "Include vs Exclude in Korean",
-      "description": "Include vs Exclude in Korean — 포함하다 (include), 제외하다 (exclude). Picture vocab chart for Korean learners.",
+      "description": "The words 포함하다 and 제외하다 are opposites in Korean. 포함하다 means to include something, while 제외하다 means to exclude or leave something out. These words are useful…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785703157380-ant-include-exclude.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785703157380-ant-include-exclude-thumb.webp",
       "imageAlt": "Include vs Exclude in Korean — Korean vocab chart",
@@ -2268,12 +2352,18 @@
         {
           "hangul": "포함하다",
           "romanization": "poham-hada",
-          "english": "include"
+          "english": "include",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591218976-ant-include-exclude-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "제외하다",
           "romanization": "je-oe-hada",
-          "english": "exclude"
+          "english": "exclude",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591218976-ant-include-exclude-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -2281,7 +2371,29 @@
         "set"
       ],
       "intro": "Need to decide what to add or leave out? 🔴 포함하다 [poham-hada] - include",
-      "updatedAt": "2026-08-02T20:39:24.237Z"
+      "updatedAt": "2026-08-02T20:39:24.237Z",
+      "explanationEn": "The words 포함하다 and 제외하다 are opposites in Korean. 포함하다 means to include something, while 제외하다 means to exclude or leave something out. These words are useful when talking about what is or isn't part of a group or list. Understanding these helps you describe what is included or excluded in different situations.",
+      "examples": [
+        {
+          "korean": "이 가격에는 세금이 포함되어 있어요.",
+          "english": "This price includes tax.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591218976-ant-include-exclude-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "회의에서 몇 명을 제외했어요.",
+          "english": "We excluded a few people from the meeting.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591218976-ant-include-exclude-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "이 상품은 배송비가 포함되어 있지 않습니다.",
+          "english": "This product does not include shipping fees.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786591218976-ant-include-exclude-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T03:20:47.895Z"
     },
     {
       "bundleId": "ant-increase-decrease",
@@ -3144,7 +3256,7 @@
       "format": "antonym_split",
       "title": "Noisy vs Silent",
       "titleEn": "Noisy vs Silent in Korean",
-      "description": "Noisy vs Silent in Korean — 시끄러운 (Noisy), 조용한 (Silent). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the opposite words for describing sound levels in Korean. '시끄러운' means noisy, and '조용한' means silent or quiet. These words help you talk abo…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785691817205-ant-noisy-silent.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785691817205-ant-noisy-silent-thumb.webp",
       "imageAlt": "Noisy vs Silent in Korean — Korean vocab chart",
@@ -3152,12 +3264,18 @@
         {
           "hangul": "시끄러운",
           "romanization": "sikkeureoun",
-          "english": "Noisy"
+          "english": "Noisy",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594385745-ant-noisy-silent-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "조용한",
           "romanization": "joyonghan",
-          "english": "Silent"
+          "english": "Silent",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594385745-ant-noisy-silent-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -3165,7 +3283,29 @@
         "sound"
       ],
       "intro": "Need to describe your day at the cafe or library? 🔴 시끄러운 [sikkeureoun] - Noisy",
-      "updatedAt": "2026-08-02T17:30:27.379Z"
+      "updatedAt": "2026-08-02T17:30:27.379Z",
+      "explanationEn": "This chart shows the opposite words for describing sound levels in Korean. '시끄러운' means noisy, and '조용한' means silent or quiet. These words help you talk about places, people, or situations based on how loud or quiet they are. Learning these antonyms will improve your everyday Korean conversations.",
+      "examples": [
+        {
+          "korean": "도서관은 항상 조용한 곳이에요.",
+          "english": "The library is always a quiet place.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594385745-ant-noisy-silent-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "아이들이 너무 시끄러워서 집중할 수 없어요.",
+          "english": "The children are so noisy that I can't concentrate.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594385745-ant-noisy-silent-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저녁에는 집이 조용해서 좋아요.",
+          "english": "I like that the house is quiet in the evening.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594385745-ant-noisy-silent-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T04:13:36.923Z"
     },
     {
       "bundleId": "ant-open-closed",
@@ -3487,7 +3627,7 @@
       "format": "antonym_split",
       "title": "Remember vs Forget",
       "titleEn": "Remember vs Forget in Korean",
-      "description": "Remember vs Forget in Korean — 기억하다 (Remember), 잊다 (Forget). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the antonyms 'Remember' and 'Forget' in Korean. '기억하다' means to remember something, while '잊다' means to forget. These words are often used w…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785704511294-ant-remember-forget.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785704511294-ant-remember-forget-thumb.webp",
       "imageAlt": "Remember vs Forget in Korean — Korean vocab chart",
@@ -3495,12 +3635,18 @@
         {
           "hangul": "기억하다",
           "romanization": "gieokhada",
-          "english": "Remember"
+          "english": "Remember",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786608962430-ant-remember-forget-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "잊다",
           "romanization": "itda",
-          "english": "Forget"
+          "english": "Forget",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786608962430-ant-remember-forget-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -3508,7 +3654,29 @@
         "memory"
       ],
       "intro": "Struggling to remember or forget something? Use these words when chatting about memory 👇 🔴 기억하다 [gieokhada] - Remember",
-      "updatedAt": "2026-08-02T21:01:58.981Z"
+      "updatedAt": "2026-08-02T21:01:58.981Z",
+      "explanationEn": "This chart shows the antonyms 'Remember' and 'Forget' in Korean. '기억하다' means to remember something, while '잊다' means to forget. These words are often used when talking about memories or information. Learning both helps you express whether you recall or do not recall something.",
+      "examples": [
+        {
+          "korean": "나는 그 사람 이름을 기억해요.",
+          "english": "I remember that person's name.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786608962430-ant-remember-forget-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "숙제를 잊었어요.",
+          "english": "I forgot the homework.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786608962430-ant-remember-forget-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "중요한 약속을 기억하세요.",
+          "english": "Please remember the important appointment.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786608962430-ant-remember-forget-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T08:16:49.406Z"
     },
     {
       "bundleId": "ant-rich-poor-money",
@@ -3915,7 +4083,7 @@
       "format": "antonym_split",
       "title": "Simple vs Complex",
       "titleEn": "Simple vs Complex in Korean",
-      "description": "Simple vs Complex in Korean — 간단하다 (simple), 복잡하다 (complex). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the difference between simple and complex in Korean. '간단하다' means something is easy or simple, while '복잡하다' means something is complicated o…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785698425350-ant-simple-complex.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785698425350-ant-simple-complex-thumb.webp",
       "imageAlt": "Simple vs Complex in Korean — Korean vocab chart",
@@ -3923,12 +4091,18 @@
         {
           "hangul": "간단하다",
           "romanization": "gandanhada",
-          "english": "simple"
+          "english": "simple",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594026294-ant-simple-complex-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "복잡하다",
           "romanization": "bokjabhada",
-          "english": "complex"
+          "english": "complex",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594026294-ant-simple-complex-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -3936,7 +4110,29 @@
         "difficulty"
       ],
       "intro": "🗣️ When you want to explain your K-drama plot: ➡️ 간단하다 [gandanhada] (simple) for quick recaps",
-      "updatedAt": "2026-08-02T19:20:33.046Z"
+      "updatedAt": "2026-08-02T19:20:33.046Z",
+      "explanationEn": "This chart shows the difference between simple and complex in Korean. '간단하다' means something is easy or simple, while '복잡하다' means something is complicated or complex. These words are often used to describe tasks, instructions, or situations based on their difficulty level.",
+      "examples": [
+        {
+          "korean": "이 문제는 간단해서 금방 풀 수 있어요.",
+          "english": "This problem is simple, so I can solve it quickly.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594026294-ant-simple-complex-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "복잡한 길 대신 간단한 길로 가요.",
+          "english": "Let's take the simple road instead of the complex one.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594026294-ant-simple-complex-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "설명이 복잡해서 이해하기 어려워요.",
+          "english": "The explanation is complex, so it's hard to understand.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786594026294-ant-simple-complex-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T04:07:53.625Z"
     },
     {
       "bundleId": "ant-smooth-rough-touch",
@@ -4258,7 +4454,7 @@
       "format": "antonym_split",
       "title": "Enter vs Exit",
       "titleEn": "Enter vs Exit in Korean",
-      "description": "Enter vs Exit in Korean — 들어가다 (Enter), 나가다 (Exit). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the antonyms 'enter' and 'exit' in Korean. '들어가다' means to go inside or enter a place, while '나가다' means to go outside or exit. These verbs…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201805536-ant-stock-enter-exit.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201805536-ant-stock-enter-exit-thumb.webp",
       "imageAlt": "Enter vs Exit in Korean — Korean vocab chart",
@@ -4266,12 +4462,18 @@
         {
           "hangul": "들어가다",
           "romanization": "deureogada",
-          "english": "Enter"
+          "english": "Enter",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609009488-ant-stock-enter-exit-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "나가다",
           "romanization": "nagada",
-          "english": "Exit"
+          "english": "Exit",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609009488-ant-stock-enter-exit-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -4280,7 +4482,29 @@
         "stock10"
       ],
       "intro": "Need to know how to say enter and exit in Korean? 🔴 들어가다 [deureogada] - Enter",
-      "updatedAt": "2026-08-08T15:10:13.125Z"
+      "updatedAt": "2026-08-08T15:10:13.125Z",
+      "explanationEn": "This chart shows the antonyms 'enter' and 'exit' in Korean. '들어가다' means to go inside or enter a place, while '나가다' means to go outside or exit. These verbs are commonly used when talking about doors, rooms, or buildings. Understanding these opposite actions helps you describe movement in and out of spaces.",
+      "examples": [
+        {
+          "korean": "학교에 들어가다.",
+          "english": "Enter the school.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609009488-ant-stock-enter-exit-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "집에서 나가다.",
+          "english": "Exit from the house.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609009488-ant-stock-enter-exit-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "문을 열고 들어가세요.",
+          "english": "Open the door and enter.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609009488-ant-stock-enter-exit-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T08:17:19.831Z"
     },
     {
       "bundleId": "ant-stock-public-private",
@@ -4288,7 +4512,7 @@
       "format": "antonym_split",
       "title": "Public vs Private",
       "titleEn": "Public vs Private in Korean",
-      "description": "Public vs Private in Korean — 공공 (Public), 사적 (Private). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the difference between public and private in Korean. '공공' means something that belongs to or is shared by the community, like public spaces…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786203352780-ant-stock-public-private.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786203352780-ant-stock-public-private-thumb.webp",
       "imageAlt": "Public vs Private in Korean — Korean vocab chart",
@@ -4296,12 +4520,18 @@
         {
           "hangul": "공공",
           "romanization": "gong-gong",
-          "english": "Public"
+          "english": "Public",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609041815-ant-stock-public-private-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "사적",
           "romanization": "sa-jeog",
-          "english": "Private"
+          "english": "Private",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609041815-ant-stock-public-private-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -4310,7 +4540,29 @@
         "stock10"
       ],
       "intro": "Need to talk about space in Korean? Use these words when you want to be clear 👇 🔴 공공 [gong-gong] - Public",
-      "updatedAt": "2026-08-08T15:36:00.891Z"
+      "updatedAt": "2026-08-08T15:36:00.891Z",
+      "explanationEn": "This chart shows the difference between public and private in Korean. '공공' means something that belongs to or is shared by the community, like public spaces or services. '사적' refers to something personal or private, like private property or personal matters. Understanding these words helps you talk about shared versus personal things in Korean.",
+      "examples": [
+        {
+          "korean": "공공 도서관에서 책을 빌릴 수 있어요.",
+          "english": "You can borrow books at the public library.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609041815-ant-stock-public-private-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "사적인 이야기는 친구에게만 해요.",
+          "english": "I only share private stories with my friends.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609041815-ant-stock-public-private-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "공공 장소에서는 조용히 해야 합니다.",
+          "english": "You should be quiet in public places.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609041815-ant-stock-public-private-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T08:17:53.142Z"
     },
     {
       "bundleId": "ant-straight-curly-hair",
@@ -4700,7 +4952,7 @@
       "format": "antonym_split",
       "title": "Tidy vs Messy",
       "titleEn": "Tidy vs Messy in Korean",
-      "description": "Tidy vs Messy in Korean — 깨끗해요 (Tidy), 지저분해요 (Messy). Picture vocab chart for Korean learners.",
+      "description": "This chart shows two opposite words used to describe the state of a place or room. 'Tidy' means everything is clean and organized, while 'Messy' means things…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785705915953-ant-tidy-messy.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785705915953-ant-tidy-messy-thumb.webp",
       "imageAlt": "Tidy vs Messy in Korean — Korean vocab chart",
@@ -4708,12 +4960,18 @@
         {
           "hangul": "깨끗해요",
           "romanization": "kkae-kkeu-tae-yo",
-          "english": "Tidy"
+          "english": "Tidy",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609113664-ant-tidy-messy-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "지저분해요",
           "romanization": "ji-jeo-bun-hae-yo",
-          "english": "Messy"
+          "english": "Messy",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609113664-ant-tidy-messy-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -4721,7 +4979,29 @@
         "home"
       ],
       "intro": "Is your room 🏠 today? ➡️ 깨끗해요 [kkae-kkeu-tae-yo] (Tidy) vibes",
-      "updatedAt": "2026-08-02T21:25:24.541Z"
+      "updatedAt": "2026-08-02T21:25:24.541Z",
+      "explanationEn": "This chart shows two opposite words used to describe the state of a place or room. 'Tidy' means everything is clean and organized, while 'Messy' means things are scattered and not neat. These words are useful when talking about home or personal spaces.",
+      "examples": [
+        {
+          "korean": "내 방은 항상 깨끗해요.",
+          "english": "My room is always tidy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609113664-ant-tidy-messy-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "책상이 너무 지저분해요.",
+          "english": "The desk is very messy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609113664-ant-tidy-messy-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "청소를 해서 집이 깨끗해졌어요.",
+          "english": "I cleaned, so the house became tidy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609113664-ant-tidy-messy-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T08:19:05.940Z"
     },
     {
       "bundleId": "ant-tight-loose",
@@ -4786,7 +5066,7 @@
       "format": "antonym_split",
       "title": "Tighten vs Loosen",
       "titleEn": "Tighten vs Loosen in Korean",
-      "description": "Tighten vs Loosen in Korean — 조이다 (Tighten), 풀다 (Loosen). Picture vocab chart for Korean learners.",
+      "description": "This chart shows two opposite actions in Korean: '조이다' means to tighten something, and '풀다' means to loosen it. These verbs are often used when adjusting thi…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785700447335-ant-tighten-loosen.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785700447335-ant-tighten-loosen-thumb.webp",
       "imageAlt": "Tighten vs Loosen in Korean — Korean vocab chart",
@@ -4794,12 +5074,18 @@
         {
           "hangul": "조이다",
           "romanization": "joida",
-          "english": "Tighten"
+          "english": "Tighten",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609073191-ant-tighten-loosen-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "풀다",
           "romanization": "pulda",
-          "english": "Loosen"
+          "english": "Loosen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609073191-ant-tighten-loosen-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -4807,7 +5093,29 @@
         "adjust"
       ],
       "intro": "Struggling with your backpack straps or jar lids? Use these words when you fix things! 👇 🔴 조이다 [joida] - Tighten",
-      "updatedAt": "2026-08-02T19:54:15.544Z"
+      "updatedAt": "2026-08-02T19:54:15.544Z",
+      "explanationEn": "This chart shows two opposite actions in Korean: '조이다' means to tighten something, and '풀다' means to loosen it. These verbs are often used when adjusting things like screws, belts, or knots. Understanding these words helps you describe how to make something tighter or looser in everyday situations.",
+      "examples": [
+        {
+          "korean": "너무 꽉 조이지 마세요.",
+          "english": "Don't tighten it too much.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609073191-ant-tighten-loosen-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "벨트를 조금 풀어 주세요.",
+          "english": "Please loosen the belt a little.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609073191-ant-tighten-loosen-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "나사가 느슨하면 조여야 해요.",
+          "english": "If the screw is loose, you need to tighten it.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786609073191-ant-tighten-loosen-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T08:18:18.776Z"
     },
     {
       "bundleId": "ant-together-apart",
@@ -4986,7 +5294,7 @@
       "format": "antonym_split",
       "title": "Upstream vs Downstream",
       "titleEn": "Upstream vs Downstream in Korean",
-      "description": "Upstream vs Downstream in Korean — 상류 (Upstream), 하류 (Downstream). Picture vocab chart for Korean learners.",
+      "description": "This chart shows the Korean words for 'upstream' and 'downstream,' which are opposites related to rivers. '상류' means the part of the river closer to its sour…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786200294855-ant-upstream-downstream.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786200294855-ant-upstream-downstream-thumb.webp",
       "imageAlt": "Upstream vs Downstream in Korean — Korean vocab chart",
@@ -4994,12 +5302,18 @@
         {
           "hangul": "상류",
           "romanization": "sang-ryu",
-          "english": "Upstream"
+          "english": "Upstream",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668767150-ant-upstream-downstream-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "하류",
           "romanization": "ha-ryu",
-          "english": "Downstream"
+          "english": "Downstream",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668767150-ant-upstream-downstream-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -5008,7 +5322,29 @@
         "stock10"
       ],
       "intro": "Learn about rivers? Use these when you talk about water flow 👇 🔴 상류 [sang-ryu] - Upstream",
-      "updatedAt": "2026-08-08T14:45:02.061Z"
+      "updatedAt": "2026-08-08T14:45:02.061Z",
+      "explanationEn": "This chart shows the Korean words for 'upstream' and 'downstream,' which are opposites related to rivers. '상류' means the part of the river closer to its source, while '하류' means the part closer to where the river flows out. These words are useful when talking about directions or locations along a river.",
+      "examples": [
+        {
+          "korean": "우리는 강의 상류에서 낚시를 했어요.",
+          "english": "We fished upstream of the river.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668767150-ant-upstream-downstream-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "하류 쪽에는 작은 마을이 있어요.",
+          "english": "There is a small village downstream.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668767150-ant-upstream-downstream-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "비가 많이 와서 상류가 불었어요.",
+          "english": "It rained a lot, so the upstream area flooded.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668767150-ant-upstream-downstream-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:53:09.743Z"
     },
     {
       "bundleId": "ant-warm-cool",
@@ -5244,7 +5580,7 @@
       "format": "compound_word",
       "title": "발 + 목 = 발목",
       "titleEn": "발 + 목 = 발목 in Korean",
-      "description": "발 + 목 = 발목 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new word. '발' means 'foot' and '목' means 'neck.' When combined, they create '발목,' which means 'ankle.…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539391546-cmp-bal-mok.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539391546-cmp-bal-mok-thumb.webp",
       "imageAlt": "발 + 목 = 발목 in Korean — Korean vocab chart",
@@ -5256,7 +5592,29 @@
         "발목"
       ],
       "intro": "Handy Korean for 발 + 목 = 발목 ✨ 🔴 발 [bal] - Foot",
-      "updatedAt": "2026-08-12T12:56:29.925Z"
+      "updatedAt": "2026-08-12T12:56:29.925Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new word. '발' means 'foot' and '목' means 'neck.' When combined, they create '발목,' which means 'ankle.' This is an example of a compound word where the meanings of the two parts come together to describe a specific body part.",
+      "examples": [
+        {
+          "korean": "운동할 때 발목을 조심하세요.",
+          "english": "Be careful with your ankle when exercising.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708524054-cmp-bal-mok-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "그는 발목을 다쳐서 걷기 힘들어요.",
+          "english": "He injured his ankle, so it's hard to walk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708524054-cmp-bal-mok-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "발목에 통증이 있으면 병원에 가세요.",
+          "english": "If you have pain in your ankle, go to the hospital.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708524054-cmp-bal-mok-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T11:55:43.858Z"
     },
     {
       "bundleId": "cmp-bam-haneul",
@@ -5348,7 +5706,7 @@
       "format": "compound_word",
       "title": "별 + 빛 = 별빛",
       "titleEn": "별 + 빛 = 별빛 in Korean",
-      "description": "별 + 빛 = 별빛 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The compound word '별빛' is made by combining '별' (star) and '빛' (light). It means 'starlight,' which is the light that comes from stars. This type of word for…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539392377-cmp-byeol-bit.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539392377-cmp-byeol-bit-thumb.webp",
       "imageAlt": "별 + 빛 = 별빛 in Korean — Korean vocab chart",
@@ -5360,7 +5718,29 @@
         "별빛"
       ],
       "intro": "Handy Korean for 별 + 빛 = 별빛 ✨ 🔴 별 [byeol] - Star",
-      "updatedAt": "2026-08-12T12:56:29.928Z"
+      "updatedAt": "2026-08-12T12:56:29.928Z",
+      "explanationEn": "The compound word '별빛' is made by combining '별' (star) and '빛' (light). It means 'starlight,' which is the light that comes from stars. This type of word formation is common in Korean, where two simple words are joined to create a new meaning. Learning compound words helps you understand how Korean builds vocabulary.",
+      "examples": [
+        {
+          "korean": "밤하늘에 별빛이 반짝여요.",
+          "english": "The starlight is twinkling in the night sky.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544390926-cmp-byeol-bit-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "별빛 아래에서 산책을 했어요.",
+          "english": "I took a walk under the starlight.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544390926-cmp-byeol-bit-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "별빛이 너무 아름다워요.",
+          "english": "The starlight is very beautiful.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544390926-cmp-byeol-bit-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T14:20:20.442Z"
     },
     {
       "bundleId": "cmp-chaek-bang",
@@ -5410,7 +5790,7 @@
       "format": "compound_word",
       "title": "책 + 상 = 책상",
       "titleEn": "책 + 상 = 책상 in Korean",
-      "description": "책 + 상 = 책상 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new compound word. The word '책' means 'book' and '상' means 'table.' When combined, they create '책상,'…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539393884-cmp-chaek-sang.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539393884-cmp-chaek-sang-thumb.webp",
       "imageAlt": "책 + 상 = 책상 in Korean — Korean vocab chart",
@@ -5422,7 +5802,29 @@
         "책상"
       ],
       "intro": "Handy Korean for 책 + 상 = 책상 ✨ 🔴 책 [chaek] - Book",
-      "updatedAt": "2026-08-12T12:56:29.928Z"
+      "updatedAt": "2026-08-12T12:56:29.928Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new compound word. The word '책' means 'book' and '상' means 'table.' When combined, they create '책상,' which means 'desk' or 'study table.' This is a common way to form new words in Korean by blending meanings.",
+      "examples": [
+        {
+          "korean": "책상 위에 책이 있어요.",
+          "english": "There is a book on the desk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544429414-cmp-chaek-sang-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저는 새 책상을 샀어요.",
+          "english": "I bought a new desk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544429414-cmp-chaek-sang-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "책상에서 공부해요.",
+          "english": "I study at the desk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544429414-cmp-chaek-sang-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T14:21:16.659Z"
     },
     {
       "bundleId": "cmp-dal-bit",
@@ -5430,7 +5832,7 @@
       "format": "compound_word",
       "title": "달 + 빛 = 달빛",
       "titleEn": "달 + 빛 = 달빛 in Korean",
-      "description": "달 + 빛 = 달빛 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new compound word. The word '달빛' is made by blending '달' meaning 'moon' and '빛' meaning 'light.' Toge…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539394889-cmp-dal-bit.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539394889-cmp-dal-bit-thumb.webp",
       "imageAlt": "달 + 빛 = 달빛 in Korean — Korean vocab chart",
@@ -5442,7 +5844,29 @@
         "달빛"
       ],
       "intro": "Handy Korean for 달 + 빛 = 달빛 ✨ 🔴 달 [dal] - Moon",
-      "updatedAt": "2026-08-12T12:56:29.928Z"
+      "updatedAt": "2026-08-12T12:56:29.928Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new compound word. The word '달빛' is made by blending '달' meaning 'moon' and '빛' meaning 'light.' Together, they create the word for 'moonlight.' This is a common way in Korean to form new vocabulary by joining two meaningful words.",
+      "examples": [
+        {
+          "korean": "밤에 달빛이 아주 밝아요.",
+          "english": "The moonlight is very bright at night.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544796011-cmp-dal-bit-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "달빛 아래에서 산책을 했어요.",
+          "english": "I took a walk under the moonlight.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544796011-cmp-dal-bit-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "달빛이 창문으로 들어와요.",
+          "english": "Moonlight comes through the window.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544796011-cmp-dal-bit-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T14:26:59.210Z"
     },
     {
       "bundleId": "cmp-hae-bit",
@@ -5450,7 +5874,7 @@
       "format": "compound_word",
       "title": "해 + 빛 = 햇빛",
       "titleEn": "해 + 빛 = 햇빛 in Korean",
-      "description": "해 + 빛 = 햇빛 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The compound word '햇빛' is formed by combining '해' meaning 'sun' and '빛' meaning 'light.' Together, they describe the sunlight or the light that comes from th…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539395900-cmp-hae-bit.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539395900-cmp-hae-bit-thumb.webp",
       "imageAlt": "해 + 빛 = 햇빛 in Korean — Korean vocab chart",
@@ -5462,7 +5886,29 @@
         "햇빛"
       ],
       "intro": "Handy Korean for 해 + 빛 = 햇빛 ✨ 🔴 해 [hae] - Sun",
-      "updatedAt": "2026-08-12T12:56:29.928Z"
+      "updatedAt": "2026-08-12T12:56:29.928Z",
+      "explanationEn": "The compound word '햇빛' is formed by combining '해' meaning 'sun' and '빛' meaning 'light.' Together, they describe the sunlight or the light that comes from the sun. This type of compound word blends two simple words to create a new meaning related to nature and daily life. Understanding such compounds helps learners recognize how Korean builds new vocabulary.",
+      "examples": [
+        {
+          "korean": "창문으로 햇빛이 들어와요.",
+          "english": "Sunlight comes in through the window.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544289033-cmp-hae-bit-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "햇빛이 너무 강해서 선글라스를 써요.",
+          "english": "The sunlight is so strong that I wear sunglasses.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544289033-cmp-hae-bit-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "아침에 햇빛을 받으며 산책해요.",
+          "english": "I take a walk in the morning while enjoying the sunlight.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544289033-cmp-hae-bit-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T14:18:55.448Z"
     },
     {
       "bundleId": "cmp-ip-mat",
@@ -5507,12 +5953,54 @@
       "enrichedAt": "2026-08-11T14:30:57.294Z"
     },
     {
+      "bundleId": "cmp-ip-sul",
+      "slug": "vocab",
+      "format": "compound_word",
+      "title": "입 + 술 = 입술",
+      "titleEn": "입 + 술 = 입술 in Korean",
+      "description": "The word '입술' is a compound word made by combining '입' (mouth) and '술' (lip). This type of word formation is common in Korean, where two words join to create…",
+      "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786593411057-cmp-ip-sul.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786593411057-cmp-ip-sul-thumb.webp",
+      "imageAlt": "입 + 술 = 입술 in Korean — Korean vocab chart",
+      "words": [],
+      "tags": [
+        "compound",
+        "word-blend",
+        "vocabulary",
+        "입술"
+      ],
+      "intro": "Handy Korean for 입 + 술 = 입술 ✨ 🔴 입 [ip] - Mouth",
+      "updatedAt": "2026-08-13T03:54:39.313Z",
+      "explanationEn": "The word '입술' is a compound word made by combining '입' (mouth) and '술' (lip). This type of word formation is common in Korean, where two words join to create a new meaning related to both parts. '입술' specifically refers to the lips, an important part of the mouth used for speaking and eating. Understanding compound words like this helps learners expand their vocabulary efficiently.",
+      "examples": [
+        {
+          "korean": "그녀의 입술이 빨갛다.",
+          "english": "Her lips are red.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786593694474-cmp-ip-sul-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "입술에 립밤을 발랐다.",
+          "english": "I applied lip balm on my lips.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786593694474-cmp-ip-sul-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "입술이 말라서 물을 마셨어요.",
+          "english": "My lips were dry, so I drank water.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786593694474-cmp-ip-sul-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-13T04:01:55.867Z"
+    },
+    {
       "bundleId": "cmp-kkot-byeong",
       "slug": "vocab",
       "format": "compound_word",
       "title": "꽃 + 병 = 꽃병",
       "titleEn": "꽃 + 병 = 꽃병 in Korean",
-      "description": "꽃 + 병 = 꽃병 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words, 꽃 (flower) and 병 (vase or bottle), combine to form a new compound word 꽃병, which means flower vase. In Korean, many co…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539396659-cmp-kkot-byeong.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539396659-cmp-kkot-byeong-thumb.webp",
       "imageAlt": "꽃 + 병 = 꽃병 in Korean — Korean vocab chart",
@@ -5524,7 +6012,29 @@
         "꽃병"
       ],
       "intro": "Handy Korean for 꽃 + 병 = 꽃병 ✨ 🔴 꽃 [kkot] - Flower",
-      "updatedAt": "2026-08-12T12:56:29.928Z"
+      "updatedAt": "2026-08-12T12:56:29.928Z",
+      "explanationEn": "This chart shows how two Korean words, 꽃 (flower) and 병 (vase or bottle), combine to form a new compound word 꽃병, which means flower vase. In Korean, many compound words are created by joining two nouns to express a new meaning related to both original words. Understanding these combinations helps learners expand their vocabulary and recognize word patterns.",
+      "examples": [
+        {
+          "korean": "나는 꽃병에 예쁜 꽃을 꽂았어요.",
+          "english": "I put pretty flowers in the vase.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544819297-cmp-kkot-byeong-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "꽃병이 탁자 위에 있어요.",
+          "english": "The flower vase is on the table.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544819297-cmp-kkot-byeong-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "꽃과 병이 만나서 꽃병이 되었어요.",
+          "english": "Flower and vase came together to become a flower vase.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544819297-cmp-kkot-byeong-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T14:27:23.382Z"
     },
     {
       "bundleId": "cmp-mul-gae",
@@ -5574,7 +6084,7 @@
       "format": "compound_word",
       "title": "눈 + 물 = 눈물",
       "titleEn": "눈 + 물 = 눈물 in Korean",
-      "description": "눈 + 물 = 눈물 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The compound word 눈물 combines 눈 (eye) and 물 (water) to mean tears. This shows how two simple words can blend to create a new word with a related meaning. Und…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539397434-cmp-nun-mul.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539397434-cmp-nun-mul-thumb.webp",
       "imageAlt": "눈 + 물 = 눈물 in Korean — Korean vocab chart",
@@ -5586,7 +6096,29 @@
         "눈물"
       ],
       "intro": "Handy Korean for 눈 + 물 = 눈물 ✨ 🔴 눈 [nun] - Eye",
-      "updatedAt": "2026-08-12T12:56:29.928Z"
+      "updatedAt": "2026-08-12T12:56:29.928Z",
+      "explanationEn": "The compound word 눈물 combines 눈 (eye) and 물 (water) to mean tears. This shows how two simple words can blend to create a new word with a related meaning. Understanding such compound words helps learners connect vocabulary and recognize patterns in Korean. 눈물 is a common word used to describe the water that comes from your eyes when you cry or feel emotional.",
+      "examples": [
+        {
+          "korean": "그녀는 감동해서 눈물이 났어요.",
+          "english": "She was moved and tears came out.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544336240-cmp-nun-mul-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "눈물이 나서 휴지를 찾았어요.",
+          "english": "I had tears, so I looked for a tissue.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544336240-cmp-nun-mul-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "아기가 울어서 눈물이 흘렀어요.",
+          "english": "The baby cried and tears flowed.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786544336240-cmp-nun-mul-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T14:19:36.307Z"
     },
     {
       "bundleId": "cmp-nun-saram",
@@ -5678,7 +6210,7 @@
       "format": "compound_word",
       "title": "손 + 목 = 손목",
       "titleEn": "손 + 목 = 손목 in Korean",
-      "description": "손 + 목 = 손목 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new word. \"손\" means \"hand\" and \"목\" means \"neck\". When combined, they create \"손목,\" which means \"wrist.…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539398249-cmp-son-mok.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786539398249-cmp-son-mok-thumb.webp",
       "imageAlt": "손 + 목 = 손목 in Korean — Korean vocab chart",
@@ -5690,7 +6222,29 @@
         "손목"
       ],
       "intro": "Handy Korean for 손 + 목 = 손목 ✨ 🔴 손 [son] - Hand",
-      "updatedAt": "2026-08-12T12:56:29.928Z"
+      "updatedAt": "2026-08-12T12:56:29.928Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new word. \"손\" means \"hand\" and \"목\" means \"neck\". When combined, they create \"손목,\" which means \"wrist.\" This is an example of a compound word where the meaning relates to a part of the body connecting the hand and arm.",
+      "examples": [
+        {
+          "korean": "운동할 때 손목을 조심하세요.",
+          "english": "Be careful with your wrist when exercising.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786539700986-cmp-son-mok-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "손목 시계를 차고 있어요.",
+          "english": "I am wearing a wristwatch.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786539700986-cmp-son-mok-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "손목이 아파서 병원에 갔어요.",
+          "english": "My wrist hurt, so I went to the hospital.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786539700986-cmp-son-mok-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-12T13:02:08.882Z"
     },
     {
       "bundleId": "cmp-son-top",
@@ -6678,7 +7232,7 @@
       "format": "concept_rows",
       "title": "Borrow / lend / return in Korean",
       "titleEn": "Borrow / lend / return in Korean",
-      "description": "Borrow / lend / return in Korean — 빌려요 (Borrow), 빌려줘요 (Lend), 돌려줘요 (Return), 가져요 (Keep). Picture vocab chart for Korean learners.",
+      "description": "These Korean verbs are used when talking about borrowing, lending, returning, and keeping things. 빌려요 means to borrow something from someone. 빌려줘요 means to l…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201500543-concept-borrow-lend-return.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786201500543-concept-borrow-lend-return-thumb.webp",
       "imageAlt": "Borrow / lend / return in Korean — Korean vocab chart",
@@ -6686,22 +7240,34 @@
         {
           "hangul": "빌려요",
           "romanization": "billyeoyo",
-          "english": "Borrow"
+          "english": "Borrow",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668789807-concept-borrow-lend-return-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "빌려줘요",
           "romanization": "billyeojwoyo",
-          "english": "Lend"
+          "english": "Lend",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668789807-concept-borrow-lend-return-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "돌려줘요",
           "romanization": "dollyeojwoyo",
-          "english": "Return"
+          "english": "Return",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668789807-concept-borrow-lend-return-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "가져요",
           "romanization": "gajyeoyo",
-          "english": "Keep"
+          "english": "Keep",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668789807-concept-borrow-lend-return-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -6711,7 +7277,29 @@
         "stock10"
       ],
       "intro": "Need to borrow or lend something in Korean? Use these words in real life 👇 🔴 빌려요 [billyeoyo] - Borrow",
-      "updatedAt": "2026-08-08T15:05:03.187Z"
+      "updatedAt": "2026-08-08T15:05:03.187Z",
+      "explanationEn": "These Korean verbs are used when talking about borrowing, lending, returning, and keeping things. 빌려요 means to borrow something from someone. 빌려줘요 means to lend something to someone. 돌려줘요 means to return something to its owner. 가져요 means to keep or have something with you.",
+      "examples": [
+        {
+          "korean": "친구에게 책을 빌려요.",
+          "english": "I borrow a book from my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668789807-concept-borrow-lend-return-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저는 동생에게 연필을 빌려줘요.",
+          "english": "I lend a pencil to my younger sibling.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668789807-concept-borrow-lend-return-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "책을 다 읽고 친구에게 돌려줘요.",
+          "english": "After reading the book, I return it to my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668789807-concept-borrow-lend-return-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:53:35.974Z"
     },
     {
       "bundleId": "concept-can-cant-scenes",
@@ -6869,7 +7457,7 @@
       "format": "concept_rows",
       "title": "Clean vs dirty in Korean",
       "titleEn": "Clean vs dirty in Korean",
-      "description": "Clean vs dirty in Korean — 깨끗해요 (clean), 더러워요 (dirty), 정리됐어요 (tidy), 지저분해요 (messy). Picture vocab chart for Korean learners.",
+      "description": "This chart shows common Korean words to describe cleanliness and tidiness. You can use 깨끗해요 to say something is clean and 더러워요 to say it is dirty. 정리됐어요 mean…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785292622576-concept-clean-dirty.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785292622576-concept-clean-dirty-thumb.webp",
       "imageAlt": "Clean vs dirty in Korean — Korean vocab chart",
@@ -6877,22 +7465,34 @@
         {
           "hangul": "깨끗해요",
           "romanization": "kkaekkeuthaeyo",
-          "english": "clean"
+          "english": "clean",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "더러워요",
           "romanization": "deoreowoyo",
-          "english": "dirty"
+          "english": "dirty",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "정리됐어요",
           "romanization": "jeongnidwaesseoyo",
-          "english": "tidy"
+          "english": "tidy",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "지저분해요",
           "romanization": "jijeobunhaeyo",
-          "english": "messy"
+          "english": "messy",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -6901,7 +7501,35 @@
         "home"
       ],
       "intro": "Clean or dirty? Learn these easy words to describe your room or clothes👇 🔴 깨끗해요 [kkaekkeuthaeyo] - clean",
-      "updatedAt": "2026-07-29T02:37:06.448Z"
+      "updatedAt": "2026-07-29T02:37:06.448Z",
+      "explanationEn": "This chart shows common Korean words to describe cleanliness and tidiness. You can use 깨끗해요 to say something is clean and 더러워요 to say it is dirty. 정리됐어요 means that something is tidy or organized, while 지저분해요 means it is messy or cluttered. These words help you talk about the state of a room or objects at home.",
+      "examples": [
+        {
+          "korean": "방이 깨끗해요.",
+          "english": "The room is clean.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "책상이 더러워요.",
+          "english": "The desk is dirty.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "옷장이 정리됐어요.",
+          "english": "The closet is tidy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-ex-2.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "거실이 지저분해요.",
+          "english": "The living room is messy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668816043-concept-clean-dirty-ex-3.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:54:09.672Z"
     },
     {
       "bundleId": "concept-come-go2",
@@ -7282,7 +7910,7 @@
       "format": "concept_rows",
       "title": "Easy vs hard in Korean",
       "titleEn": "Easy vs hard in Korean",
-      "description": "Easy vs hard in Korean — 쉬워요 (easy), 어려워요 (hard), 편해요 (comfortable), 불편해요 (uncomfortable). Picture vocab chart for Korean learners.",
+      "description": "This chart shows pairs of Korean adjectives that describe how easy or hard something is, and how comfortable or uncomfortable it feels. 쉬워요 means 'easy' and…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785298232950-concept-easy-hard2.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785298232950-concept-easy-hard2-thumb.webp",
       "imageAlt": "Easy vs hard in Korean — Korean vocab chart",
@@ -7290,22 +7918,34 @@
         {
           "hangul": "쉬워요",
           "romanization": "swiwoyo",
-          "english": "easy"
+          "english": "easy",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668849741-concept-easy-hard2-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "어려워요",
           "romanization": "eoryeowoyo",
-          "english": "hard"
+          "english": "hard",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668849741-concept-easy-hard2-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "편해요",
           "romanization": "pyeonhaeyo",
-          "english": "comfortable"
+          "english": "comfortable",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668849741-concept-easy-hard2-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "불편해요",
           "romanization": "bulpyeonhaeyo",
-          "english": "uncomfortable"
+          "english": "uncomfortable",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668849741-concept-easy-hard2-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -7314,7 +7954,29 @@
         "evaluation"
       ],
       "intro": "Easy or hard? Let's check how to say it in Korean! 🔴 쉬워요 [swiwoyo] - easy",
-      "updatedAt": "2026-07-29T04:10:35.839Z"
+      "updatedAt": "2026-07-29T04:10:35.839Z",
+      "explanationEn": "This chart shows pairs of Korean adjectives that describe how easy or hard something is, and how comfortable or uncomfortable it feels. 쉬워요 means 'easy' and 어려워요 means 'hard.' 편해요 means 'comfortable' and 불편해요 means 'uncomfortable.' These words help you talk about your feelings or experiences with tasks, places, or things.",
+      "examples": [
+        {
+          "korean": "이 문제는 쉬워요.",
+          "english": "This problem is easy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668849741-concept-easy-hard2-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "이 숙제는 어려워요.",
+          "english": "This homework is hard.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668849741-concept-easy-hard2-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "이 의자는 편해요.",
+          "english": "This chair is comfortable.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668849741-concept-easy-hard2-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:54:35.213Z"
     },
     {
       "bundleId": "concept-fast-slow-scenes",
@@ -7322,7 +7984,7 @@
       "format": "concept_rows",
       "title": "Fast vs slow in Korean",
       "titleEn": "Fast vs slow in Korean",
-      "description": "Fast vs slow in Korean — 빨라요 (fast), 느려요 (slow), 서두르세요 (hurry), 천천히 하세요 (take your time). Picture vocab chart for Korean learners.",
+      "description": "This chart shows how to talk about speed in Korean. You can say 빨라요 to mean something is fast and 느려요 to say it is slow. To tell someone to hurry, use 서두르세요,…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785284686005-concept-fast-slow-scenes.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785284686005-concept-fast-slow-scenes-thumb.webp",
       "imageAlt": "Fast vs slow in Korean — Korean vocab chart",
@@ -7330,22 +7992,34 @@
         {
           "hangul": "빨라요",
           "romanization": "ppallayo",
-          "english": "fast"
+          "english": "fast",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668436910-concept-fast-slow-scenes-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "느려요",
           "romanization": "neuryeoyo",
-          "english": "slow"
+          "english": "slow",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668436910-concept-fast-slow-scenes-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "서두르세요",
           "romanization": "seodureuseyo",
-          "english": "hurry"
+          "english": "hurry",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668436910-concept-fast-slow-scenes-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "천천히 하세요",
           "romanization": "cheoncheonhi haseyo",
-          "english": "take your time"
+          "english": "take your time",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668436910-concept-fast-slow-scenes-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -7355,7 +8029,29 @@
         "beginner"
       ],
       "intro": "Need to talk about speed in Korean? Use these handy phrases! 🔴 빨라요 [ppallayo] - fast",
-      "updatedAt": "2026-07-29T00:24:48.226Z"
+      "updatedAt": "2026-07-29T00:24:48.226Z",
+      "explanationEn": "This chart shows how to talk about speed in Korean. You can say 빨라요 to mean something is fast and 느려요 to say it is slow. To tell someone to hurry, use 서두르세요, and to ask someone to take their time, say 천천히 하세요. These phrases help you describe and ask about how fast or slow things happen.",
+      "examples": [
+        {
+          "korean": "버스가 빨라요.",
+          "english": "The bus is fast.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668436910-concept-fast-slow-scenes-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "컴퓨터가 느려요.",
+          "english": "The computer is slow.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668436910-concept-fast-slow-scenes-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "서두르세요! 시간이 없어요.",
+          "english": "Hurry up! There is no time.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668436910-concept-fast-slow-scenes-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:47:42.113Z"
     },
     {
       "bundleId": "concept-first-last-next",
@@ -7363,7 +8059,7 @@
       "format": "concept_rows",
       "title": "First / last / next in Korean",
       "titleEn": "First / last / next in Korean",
-      "description": "First / last / next in Korean — 먼저 (first), 마지막 (last), 다음 (next), 이전 (previous). Picture vocab chart for Korean learners.",
+      "description": "This chart shows common Korean words used to talk about order and sequence. '먼저' means 'first' and is used when something happens before others. '마지막' means…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785288900613-concept-first-last-next.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785288900613-concept-first-last-next-thumb.webp",
       "imageAlt": "First / last / next in Korean — Korean vocab chart",
@@ -7371,22 +8067,34 @@
         {
           "hangul": "먼저",
           "romanization": "meonjeo",
-          "english": "first"
+          "english": "first",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760580795-concept-first-last-next-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "마지막",
           "romanization": "majimak",
-          "english": "last"
+          "english": "last",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760580795-concept-first-last-next-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "다음",
           "romanization": "daeum",
-          "english": "next"
+          "english": "next",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760580795-concept-first-last-next-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "이전",
           "romanization": "ijeon",
-          "english": "previous"
+          "english": "previous",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760580795-concept-first-last-next-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -7396,7 +8104,29 @@
         "beginner"
       ],
       "intro": "Talking about order in Korean? Use these words when you want to say first, last, or next 👇 🔴 먼저 [meonjeo] - first",
-      "updatedAt": "2026-07-29T01:35:02.784Z"
+      "updatedAt": "2026-08-15T02:23:20.554Z",
+      "explanationEn": "This chart shows common Korean words used to talk about order and sequence. '먼저' means 'first' and is used when something happens before others. '마지막' means 'last' and refers to the final item or event. '다음' means 'next' and points to what comes after. '이전' means 'previous' and refers to what came before. These words help you describe the order of events or things in everyday conversation.",
+      "examples": [
+        {
+          "korean": "먼저 손을 씻으세요.",
+          "english": "Wash your hands first.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760580795-concept-first-last-next-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "마지막 버스를 놓쳤어요.",
+          "english": "I missed the last bus.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760580795-concept-first-last-next-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "다음 역에서 내릴 거예요.",
+          "english": "I will get off at the next station.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760580795-concept-first-last-next-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:23:20.554Z"
     },
     {
       "bundleId": "concept-full-empty2",
@@ -7404,7 +8134,7 @@
       "format": "concept_rows",
       "title": "Full vs empty in Korean",
       "titleEn": "Full vs empty in Korean",
-      "description": "Full vs empty in Korean — 가득해요 (full), 비었어요 (empty), 반 (half), 넘쳐요 (overflow). Picture vocab chart for Korean learners.",
+      "description": "This chart shows common Korean words used to describe how full or empty something is. You can say 가득해요 when something is full, 비었어요 when it is empty, 반 for h…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785297138566-concept-full-empty2.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785297138566-concept-full-empty2-thumb.webp",
       "imageAlt": "Full vs empty in Korean — Korean vocab chart",
@@ -7412,22 +8142,34 @@
         {
           "hangul": "가득해요",
           "romanization": "gadeukhaeyo",
-          "english": "full"
+          "english": "full",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760211571-concept-full-empty2-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "비었어요",
           "romanization": "bieosseoyo",
-          "english": "empty"
+          "english": "empty",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760211571-concept-full-empty2-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "반",
           "romanization": "ban",
-          "english": "half"
+          "english": "half",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760211571-concept-full-empty2-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "넘쳐요",
           "romanization": "neomchyeoyo",
-          "english": "overflow"
+          "english": "overflow",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760211571-concept-full-empty2-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -7436,7 +8178,29 @@
         "quantity"
       ],
       "intro": "Full or empty? Learn these easy Korean words to describe it! 🔴 가득해요 [gadeukhaeyo] - full",
-      "updatedAt": "2026-07-29T03:52:20.833Z"
+      "updatedAt": "2026-08-15T02:17:13.202Z",
+      "explanationEn": "This chart shows common Korean words used to describe how full or empty something is. You can say 가득해요 when something is full, 비었어요 when it is empty, 반 for half, and 넘쳐요 when it overflows. These words help you talk about quantity and space in everyday situations.",
+      "examples": [
+        {
+          "korean": "컵이 가득해요.",
+          "english": "The cup is full.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760211571-concept-full-empty2-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "냉장고가 비었어요.",
+          "english": "The refrigerator is empty.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760211571-concept-full-empty2-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "물병이 반만 차 있어요.",
+          "english": "The water bottle is half full.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760211571-concept-full-empty2-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:17:13.202Z"
     },
     {
       "bundleId": "concept-give-receive-favor",
@@ -7444,7 +8208,7 @@
       "format": "concept_rows",
       "title": "Give / receive / favor in Korean",
       "titleEn": "Give / receive / favor in Korean",
-      "description": "Give / receive / favor in Korean — 주다 (give), 받다 (receive), 해 주세요 (do for me), 해 줄게요 (I'll do it for you). Picture vocab chart for Korean learners.",
+      "description": "This chart shows common Korean verbs and expressions related to giving, receiving, and doing favors. '주다' means 'to give,' and '받다' means 'to receive.' The p…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786203034182-concept-give-receive-favor.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786203034182-concept-give-receive-favor-thumb.webp",
       "imageAlt": "Give / receive / favor in Korean — Korean vocab chart",
@@ -7452,22 +8216,34 @@
         {
           "hangul": "주다",
           "romanization": "juda",
-          "english": "give"
+          "english": "give",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760626390-concept-give-receive-favor-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "받다",
           "romanization": "batda",
-          "english": "receive"
+          "english": "receive",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760626390-concept-give-receive-favor-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "해 주세요",
           "romanization": "hae juseyo",
-          "english": "do for me"
+          "english": "do for me",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760626390-concept-give-receive-favor-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "해 줄게요",
           "romanization": "hae julgeyo",
-          "english": "I'll do it for you"
+          "english": "I'll do it for you",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760626390-concept-give-receive-favor-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -7476,7 +8252,29 @@
         "grammar"
       ],
       "intro": "When you want to give or receive help in Korean, these phrases are your best friends 👇 🔴 주다 [juda] - to give",
-      "updatedAt": "2026-08-08T15:30:36.267Z"
+      "updatedAt": "2026-08-15T02:24:06.369Z",
+      "explanationEn": "This chart shows common Korean verbs and expressions related to giving, receiving, and doing favors. '주다' means 'to give,' and '받다' means 'to receive.' The phrases '해 주세요' and '해 줄게요' are polite ways to ask for or offer help, meaning 'please do for me' and 'I'll do it for you,' respectively. These words are useful for everyday conversations when exchanging things or favors.",
+      "examples": [
+        {
+          "korean": "친구가 나에게 선물을 주었어요.",
+          "english": "My friend gave me a gift.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760626390-concept-give-receive-favor-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저는 편지를 받았어요.",
+          "english": "I received a letter.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760626390-concept-give-receive-favor-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "도와 주세요. 숙제가 어려워요.",
+          "english": "Please help me. The homework is difficult.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760626390-concept-give-receive-favor-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:24:06.369Z"
     },
     {
       "bundleId": "concept-give-receive2",
@@ -7484,7 +8282,7 @@
       "format": "concept_rows",
       "title": "Give and receive actions in Korean",
       "titleEn": "Give and receive actions in Korean",
-      "description": "Give and receive actions in Korean — 줘요 (give), 받아요 (receive), 건네요 (pass), 돌려줘요 (return). Picture vocab chart for Korean learners.",
+      "description": "This chart shows common Korean verbs used for giving and receiving actions. It includes verbs like 줘요 (give), 받아요 (receive), 건네요 (pass), and 돌려줘요 (return). T…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785296100998-concept-give-receive2.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785296100998-concept-give-receive2-thumb.webp",
       "imageAlt": "Give and receive actions in Korean — Korean vocab chart",
@@ -7492,22 +8290,34 @@
         {
           "hangul": "줘요",
           "romanization": "jwoyo",
-          "english": "give"
+          "english": "give",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760603445-concept-give-receive2-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "받아요",
           "romanization": "badayo",
-          "english": "receive"
+          "english": "receive",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760603445-concept-give-receive2-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "건네요",
           "romanization": "geonneyo",
-          "english": "pass"
+          "english": "pass",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760603445-concept-give-receive2-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "돌려줘요",
           "romanization": "dollyeojwoyo",
-          "english": "return"
+          "english": "return",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760603445-concept-give-receive2-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -7516,7 +8326,29 @@
         "verbs"
       ],
       "intro": "How to talk about giving and receiving in Korean? Use these in real life 👇 🔴 줘요 [jwoyo] - give",
-      "updatedAt": "2026-07-29T03:35:03.090Z"
+      "updatedAt": "2026-08-15T02:23:44.291Z",
+      "explanationEn": "This chart shows common Korean verbs used for giving and receiving actions. It includes verbs like 줘요 (give), 받아요 (receive), 건네요 (pass), and 돌려줘요 (return). These verbs help express exchanges between people in everyday conversations. Learning them helps you communicate actions involving sharing or transferring things.",
+      "examples": [
+        {
+          "korean": "친구가 책을 줘요.",
+          "english": "My friend gives me a book.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760603445-concept-give-receive2-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저는 편지를 받아요.",
+          "english": "I receive a letter.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760603445-concept-give-receive2-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "선생님께서 시험지를 돌려줘요.",
+          "english": "The teacher returns the test papers.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760603445-concept-give-receive2-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:23:44.291Z"
     },
     {
       "bundleId": "concept-give-vs-receive",
@@ -9887,7 +10719,7 @@
       "format": "concept_rows",
       "title": "Remember vs forget in Korean",
       "titleEn": "Remember vs forget in Korean",
-      "description": "Remember vs forget in Korean — 기억해요 (remember), 잊어버렸어요 (forget), 알려 주세요 (remind me), 잊지 마세요 (don't forget). Picture vocab chart for Korean learners.",
+      "description": "This chart helps you learn how to talk about remembering and forgetting in Korean. You will see words for 'remember,' 'forget,' and useful phrases to ask som…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785289315619-concept-remember-forget2.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785289315619-concept-remember-forget2-thumb.webp",
       "imageAlt": "Remember vs forget in Korean — Korean vocab chart",
@@ -9895,22 +10727,34 @@
         {
           "hangul": "기억해요",
           "romanization": "gieokhaeyo",
-          "english": "remember"
+          "english": "remember",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760755746-concept-remember-forget2-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "잊어버렸어요",
           "romanization": "ijeobeoryeosseoyo",
-          "english": "forget"
+          "english": "forget",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760755746-concept-remember-forget2-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "알려 주세요",
           "romanization": "allyeo juseyo",
-          "english": "remind me"
+          "english": "remind me",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760755746-concept-remember-forget2-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "잊지 마세요",
           "romanization": "itji maseyo",
-          "english": "don't forget"
+          "english": "don't forget",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760755746-concept-remember-forget2-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -9920,7 +10764,29 @@
         "beginner"
       ],
       "intro": "Mixing up 기억해요 and 잊어버렸어요? 🔴 기억해요 [gieokhaeyo] - remember",
-      "updatedAt": "2026-07-29T01:41:57.743Z"
+      "updatedAt": "2026-08-15T02:26:17.163Z",
+      "explanationEn": "This chart helps you learn how to talk about remembering and forgetting in Korean. You will see words for 'remember,' 'forget,' and useful phrases to ask someone to remind you or tell someone not to forget. These expressions are common in daily conversations and important for beginners to understand and use.",
+      "examples": [
+        {
+          "korean": "내일 회의 시간을 기억해요.",
+          "english": "I remember the meeting time tomorrow.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760755746-concept-remember-forget2-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "열쇠를 잊어버렸어요.",
+          "english": "I forgot my keys.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760755746-concept-remember-forget2-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "중요한 약속을 잊지 마세요.",
+          "english": "Don't forget the important appointment.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760755746-concept-remember-forget2-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:26:17.163Z"
     },
     {
       "bundleId": "concept-right-wrong-scenes",
@@ -10003,7 +10869,7 @@
       "format": "concept_rows",
       "title": "Same vs different in Korean",
       "titleEn": "Same vs different in Korean",
-      "description": "Same vs different in Korean — 같아요 (same), 달라요 (different), 비슷해요 (similar), 정확해요 (exactly). Picture vocab chart for Korean learners.",
+      "description": "In Korean, words like 같아요, 달라요, 비슷해요, and 정확해요 help you compare things. 같아요 means two things are the same. 달라요 means they are different. 비슷해요 is used when th…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785284978909-concept-same-different.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785284978909-concept-same-different-thumb.webp",
       "imageAlt": "Same vs different in Korean — Korean vocab chart",
@@ -10011,22 +10877,34 @@
         {
           "hangul": "같아요",
           "romanization": "gatayo",
-          "english": "same"
+          "english": "same",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760734141-concept-same-different-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "달라요",
           "romanization": "dallayo",
-          "english": "different"
+          "english": "different",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760734141-concept-same-different-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "비슷해요",
           "romanization": "biseuthaeyo",
-          "english": "similar"
+          "english": "similar",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760734141-concept-same-different-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "정확해요",
           "romanization": "jeonghwakhaeyo",
-          "english": "exactly"
+          "english": "exactly",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760734141-concept-same-different-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -10036,7 +10914,29 @@
         "beginner"
       ],
       "intro": "How to say SAME or DIFFERENT in Korean? 🔴 같아요 [gatayo] - same",
-      "updatedAt": "2026-07-29T00:29:41.189Z"
+      "updatedAt": "2026-08-15T02:25:53.474Z",
+      "explanationEn": "In Korean, words like 같아요, 달라요, 비슷해요, and 정확해요 help you compare things. 같아요 means two things are the same. 달라요 means they are different. 비슷해요 is used when things are similar but not exactly the same. 정확해요 means something is exact or precise. These words are useful for everyday conversations when you want to talk about comparisons and accuracy.",
+      "examples": [
+        {
+          "korean": "우리 생각이 같아요.",
+          "english": "Our thoughts are the same.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760734141-concept-same-different-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "이 두 가방은 달라요.",
+          "english": "These two bags are different.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760734141-concept-same-different-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "이 그림들은 비슷해요.",
+          "english": "These pictures are similar.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760734141-concept-same-different-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:25:53.474Z"
     },
     {
       "bundleId": "concept-see-look-watch2",
@@ -10044,7 +10944,7 @@
       "format": "concept_rows",
       "title": "See / look / watch in Korean",
       "titleEn": "See / look / watch in Korean",
-      "description": "See / look / watch in Korean — 보여요 (see), 봐요 (look), 시청해요 (watch), 쳐다봐요 (stare). Picture vocab chart for Korean learners.",
+      "description": "In Korean, 'see,' 'look,' and 'watch' are expressed with different verbs depending on the action and intention. '보여요' means 'see' and refers to something bei…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785296449900-concept-see-look-watch2.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785296449900-concept-see-look-watch2-thumb.webp",
       "imageAlt": "See / look / watch in Korean — Korean vocab chart",
@@ -10052,22 +10952,34 @@
         {
           "hangul": "보여요",
           "romanization": "boyeoyo",
-          "english": "see"
+          "english": "see",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760712733-concept-see-look-watch2-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "봐요",
           "romanization": "bwayo",
-          "english": "look"
+          "english": "look",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760712733-concept-see-look-watch2-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "시청해요",
           "romanization": "sicheonghaeyo",
-          "english": "watch"
+          "english": "watch",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760712733-concept-see-look-watch2-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "쳐다봐요",
           "romanization": "chyeodabwayo",
-          "english": "stare"
+          "english": "stare",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760712733-concept-see-look-watch2-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -10076,7 +10988,29 @@
         "verbs"
       ],
       "intro": "How do you say \"see,\" \"look,\" and \"watch\" in Korean? 👀 보여요 [boyeoyo] - see (can you see it?)",
-      "updatedAt": "2026-07-29T03:40:52.133Z"
+      "updatedAt": "2026-08-15T02:25:32.280Z",
+      "explanationEn": "In Korean, 'see,' 'look,' and 'watch' are expressed with different verbs depending on the action and intention. '보여요' means 'see' and refers to something being visible or perceived. '봐요' means 'look' and is used when you direct your eyes intentionally. '시청해요' means 'watch' and is often used for watching TV or videos. '쳐다봐요' means 'stare' and implies looking fixedly or for a longer time.",
+      "examples": [
+        {
+          "korean": "저기 산이 보여요.",
+          "english": "I can see the mountain over there.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760712733-concept-see-look-watch2-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "그림을 잘 봐요.",
+          "english": "Look at the picture carefully.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760712733-concept-see-look-watch2-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저녁에 드라마를 시청해요.",
+          "english": "I watch dramas in the evening.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760712733-concept-see-look-watch2-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:25:32.280Z"
     },
     {
       "bundleId": "concept-see-watch-look",
@@ -10383,7 +11317,7 @@
       "format": "concept_rows",
       "title": "Speak vs say in Korean",
       "titleEn": "Speak vs say in Korean",
-      "description": "Speak vs say in Korean — 말해요 (say), 이야기해요 (speak), 알려 줘요 (tell), 물어봐요 (ask). Picture vocab chart for Korean learners.",
+      "description": "In Korean, 말해요 (malhaeyo) means 'say' and is used when quoting or expressing specific words. 이야기해요 (iyagihaeyo) means 'speak' or 'talk' and is used for gener…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785294261160-concept-speak-say2.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785294261160-concept-speak-say2-thumb.webp",
       "imageAlt": "Speak vs say in Korean — Korean vocab chart",
@@ -10391,22 +11325,34 @@
         {
           "hangul": "말해요",
           "romanization": "malhaeyo",
-          "english": "say"
+          "english": "say",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687012797-concept-speak-say2-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "이야기해요",
           "romanization": "iyagihaeyo",
-          "english": "speak"
+          "english": "speak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687012797-concept-speak-say2-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "알려 줘요",
           "romanization": "allyeo jwoyo",
-          "english": "tell"
+          "english": "tell",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687012797-concept-speak-say2-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "물어봐요",
           "romanization": "mureobwayo",
-          "english": "ask"
+          "english": "ask",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687012797-concept-speak-say2-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -10415,7 +11361,29 @@
         "speech"
       ],
       "intro": "Speak vs say in Korean: when to use 말해요 or 이야기해요? 🔴 말해요 [malhaeyo] - say (a specific thing)",
-      "updatedAt": "2026-07-29T03:04:23.647Z"
+      "updatedAt": "2026-07-29T03:04:23.647Z",
+      "explanationEn": "In Korean, 말해요 (malhaeyo) means 'say' and is used when quoting or expressing specific words. 이야기해요 (iyagihaeyo) means 'speak' or 'talk' and is used for general conversations. 알려 줘요 (allyeo jwoyo) means 'tell' and is used when giving information. 물어봐요 (mureobwayo) means 'ask' and is used when seeking information or questions.",
+      "examples": [
+        {
+          "korean": "친구가 내게 비밀을 말해요.",
+          "english": "My friend says a secret to me.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687012797-concept-speak-say2-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "우리는 매일 학교에서 이야기해요.",
+          "english": "We speak at school every day.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687012797-concept-speak-say2-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "선생님이 숙제를 알려 줘요.",
+          "english": "The teacher tells us the homework.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687012797-concept-speak-say2-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T05:57:19.298Z"
     },
     {
       "bundleId": "concept-start-finish-day",
@@ -10873,7 +11841,7 @@
       "format": "concept_rows",
       "title": "Too / only / even in Korean",
       "titleEn": "Too / only / even in Korean",
-      "description": "Too / only / even in Korean — 도 (too / also), 만 (only), 조차 (even), 부터…까지 (from A to B). Picture vocab chart for Korean learners.",
+      "description": "In Korean, 도, 만, and 조차 are particles used to express inclusion, limitation, and emphasis respectively. 도 means 'too' or 'also' and adds information by inclu…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786199980871-concept-too-only-even.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786199980871-concept-too-only-even-thumb.webp",
       "imageAlt": "Too / only / even in Korean — Korean vocab chart",
@@ -10881,22 +11849,34 @@
         {
           "hangul": "도",
           "romanization": "do",
-          "english": "too / also"
+          "english": "too / also",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760691615-concept-too-only-even-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "만",
           "romanization": "man",
-          "english": "only"
+          "english": "only",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760691615-concept-too-only-even-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "조차",
           "romanization": "jocha",
-          "english": "even"
+          "english": "even",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760691615-concept-too-only-even-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "부터…까지",
           "romanization": "buteo…kkaji",
-          "english": "from A to B"
+          "english": "from A to B",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760691615-concept-too-only-even-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -10905,7 +11885,29 @@
         "grammar"
       ],
       "intro": "Handy Korean for too / only / even ✨ 🔴 도 [do] - too / also",
-      "updatedAt": "2026-08-08T14:39:42.675Z"
+      "updatedAt": "2026-08-15T02:25:10.798Z",
+      "explanationEn": "In Korean, 도, 만, and 조차 are particles used to express inclusion, limitation, and emphasis respectively. 도 means 'too' or 'also' and adds information by including something additional. 만 means 'only' and limits the scope to a specific item or group. 조차 means 'even' and emphasizes an extreme or unexpected case. These particles help clarify relationships and focus in sentences.",
+      "examples": [
+        {
+          "korean": "나도 학교에 갑니다.",
+          "english": "I also go to school.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760691615-concept-too-only-even-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저는 물만 마셔요.",
+          "english": "I only drink water.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760691615-concept-too-only-even-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "어제는 비가 와서 운동조차 못 했어요.",
+          "english": "It rained yesterday, so I couldn't even exercise.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760691615-concept-too-only-even-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:25:10.798Z"
     },
     {
       "bundleId": "concept-topic-vs-subject",
@@ -11063,7 +12065,7 @@
       "format": "concept_rows",
       "title": "Try it out grammar in Korean",
       "titleEn": "Try it out grammar in Korean",
-      "description": "Try it out grammar in Korean — 해요 (do it), 해 봐요 (try doing), 해 봤어요? (have you tried?), 해 볼게요 (I'll try). Picture vocab chart for Korean learners.",
+      "description": "This chart shows different ways to express trying or doing something in Korean. '해요' means 'do it' or 'I do.' '해 봐요' is used to suggest trying something. '해…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785695188652-concept-try-it-out.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785695188652-concept-try-it-out-thumb.webp",
       "imageAlt": "Try it out grammar in Korean — Korean vocab chart",
@@ -11071,22 +12073,34 @@
         {
           "hangul": "해요",
           "romanization": "haeyo",
-          "english": "do it"
+          "english": "do it",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760670062-concept-try-it-out-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "해 봐요",
           "romanization": "hae bwayo",
-          "english": "try doing"
+          "english": "try doing",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760670062-concept-try-it-out-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "해 봤어요?",
           "romanization": "hae bwasseoyo?",
-          "english": "have you tried?"
+          "english": "have you tried?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760670062-concept-try-it-out-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "해 볼게요",
           "romanization": "hae bolgeyo",
-          "english": "I'll try"
+          "english": "I'll try",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760670062-concept-try-it-out-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -11095,7 +12109,29 @@
         "grammar"
       ],
       "intro": "Handy Korean for try it out grammar ✨ 🔴 해요 [haeyo] - do it",
-      "updatedAt": "2026-08-02T18:26:31.048Z"
+      "updatedAt": "2026-08-15T02:24:49.903Z",
+      "explanationEn": "This chart shows different ways to express trying or doing something in Korean. '해요' means 'do it' or 'I do.' '해 봐요' is used to suggest trying something. '해 봤어요?' asks if someone has tried something before. '해 볼게요' means 'I'll try' or 'I will give it a try.' These forms help you talk about actions and experiences in everyday situations.",
+      "examples": [
+        {
+          "korean": "이 음식을 해 봐요.",
+          "english": "Try making this food.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760670062-concept-try-it-out-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "운동을 해 봤어요?",
+          "english": "Have you tried exercising?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760670062-concept-try-it-out-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "네, 해 볼게요!",
+          "english": "Yes, I'll try!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760670062-concept-try-it-out-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:24:49.903Z"
     },
     {
       "bundleId": "concept-try-vs-do",
@@ -11103,7 +12139,7 @@
       "format": "concept_rows",
       "title": "Try vs do in Korean",
       "titleEn": "Try vs do in Korean",
-      "description": "Try vs do in Korean — 해요 (do), 해 봐요 (try), 포기해요 (give up), 계속 해 봐요 (keep trying). Picture vocab chart for Korean learners.",
+      "description": "In Korean, '해요' means 'do' and is used for regular actions. '해 봐요' means 'try' and shows an attempt to do something. When you want to encourage someone not t…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785291631189-concept-try-vs-do.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785291631189-concept-try-vs-do-thumb.webp",
       "imageAlt": "Try vs do in Korean — Korean vocab chart",
@@ -11111,22 +12147,34 @@
         {
           "hangul": "해요",
           "romanization": "haeyo",
-          "english": "do"
+          "english": "do",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760648971-concept-try-vs-do-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "해 봐요",
           "romanization": "hae bwayo",
-          "english": "try"
+          "english": "try",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760648971-concept-try-vs-do-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "포기해요",
           "romanization": "pogihaeyo",
-          "english": "give up"
+          "english": "give up",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760648971-concept-try-vs-do-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "계속 해 봐요",
           "romanization": "gyesok hae bwayo",
-          "english": "keep trying"
+          "english": "keep trying",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760648971-concept-try-vs-do-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -11135,7 +12183,29 @@
         "verbs"
       ],
       "intro": "Want to say \"try\" vs \"do\" in Korean? 🔵 해요 [haeyo] - do (just do it)",
-      "updatedAt": "2026-07-29T02:20:33.425Z"
+      "updatedAt": "2026-08-15T02:24:28.270Z",
+      "explanationEn": "In Korean, '해요' means 'do' and is used for regular actions. '해 봐요' means 'try' and shows an attempt to do something. When you want to encourage someone not to stop, you say '계속 해 봐요' which means 'keep trying.' If you give up, you say '포기해요.' These verbs help express effort and action clearly.",
+      "examples": [
+        {
+          "korean": "숙제를 해요.",
+          "english": "I do my homework.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760648971-concept-try-vs-do-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "새 음식을 해 봐요.",
+          "english": "Try new food.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760648971-concept-try-vs-do-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "포기하지 말고 계속 해 봐요.",
+          "english": "Don't give up and keep trying.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786760648971-concept-try-vs-do-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-15T02:24:28.270Z"
     },
     {
       "bundleId": "concept-want-hope-wish",
@@ -12182,7 +13252,7 @@
       "format": "cute_cast",
       "title": "Soft date words in Korean",
       "titleEn": "Soft date words in Korean",
-      "description": "Soft date words in Korean — 보고 싶었어 (Missed you), 어디 갈까 (Where shall we go?), 주저줘 (Pay for me), 한잔해 (Let's have a drink). Picture vocab chart for Korean learners.",
+      "description": "These soft date words in Korean are casual and friendly expressions often used when talking with close friends or loved ones. They help create a warm and inv…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786204594170-cute-date-soft.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786204594170-cute-date-soft-thumb.webp",
       "imageAlt": "Soft date words in Korean — Korean vocab chart",
@@ -12190,42 +13260,66 @@
         {
           "hangul": "보고 싶었어",
           "romanization": "bogo sipeosseo",
-          "english": "Missed you"
+          "english": "Missed you",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "어디 갈까",
           "romanization": "eodi galkka",
-          "english": "Where shall we go?"
+          "english": "Where shall we go?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "주저줘",
           "romanization": "jujeo-jwo",
-          "english": "Pay for me"
+          "english": "Pay for me",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "한잔해",
           "romanization": "hanjan-hae",
-          "english": "Let's have a drink"
+          "english": "Let's have a drink",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "어떻게 지냈어?",
           "romanization": "eotteoke jinaesseo?",
-          "english": "How have you been?"
+          "english": "How have you been?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "미안해",
           "romanization": "mianhae",
-          "english": "I'm sorry"
+          "english": "I'm sorry",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "언제 날 봐",
           "romanization": "eonjeo nal bwa",
-          "english": "When can I see you?"
+          "english": "When can I see you?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "그래서!",
           "romanization": "geuraesseo!",
-          "english": "So!"
+          "english": "So!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -12236,7 +13330,29 @@
         "social"
       ],
       "intro": "Cute Korean date words to sound soft and sweet 💕 🔴 보고 싶었어 [bogo sipeosseo] - Missed you",
-      "updatedAt": "2026-08-08T15:56:41.290Z"
+      "updatedAt": "2026-08-08T15:56:41.290Z",
+      "explanationEn": "These soft date words in Korean are casual and friendly expressions often used when talking with close friends or loved ones. They help create a warm and inviting atmosphere for making plans, expressing feelings, or apologizing gently. These phrases are common in spoken Korean and add a cute, social touch to conversations.",
+      "examples": [
+        {
+          "korean": "보고 싶었어! 언제 날 봐?",
+          "english": "I missed you! When can I see you?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "어디 갈까? 한잔해?",
+          "english": "Where shall we go? Let's have a drink?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "미안해, 이번에는 네가 주저줘.",
+          "english": "I'm sorry, this time you pay for me.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668875285-cute-date-soft-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:55:08.092Z"
     },
     {
       "bundleId": "cute-desk-stretch",
@@ -13711,7 +14827,7 @@
       "format": "cute_cast",
       "title": "Pet talk words in Korean",
       "titleEn": "Pet talk words in Korean",
-      "description": "Pet talk words in Korean — 귀여워 (So cute), 착하지 (Good kid), 기다려 (Stay), 이리 와 (Come here). Picture vocab chart for Korean learners.",
+      "description": "These pet talk words in Korean are simple and cute expressions often used when talking to pets like dogs, cats, or otters. They include commands, compliments…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785695626337-cute-pet-talk.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785695626337-cute-pet-talk-thumb.webp",
       "imageAlt": "Pet talk words in Korean — Korean vocab chart",
@@ -13719,47 +14835,74 @@
         {
           "hangul": "귀여워",
           "romanization": "gwiyeowo",
-          "english": "So cute"
+          "english": "So cute",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "착하지",
           "romanization": "chakhaji",
-          "english": "Good kid"
+          "english": "Good kid",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "기다려",
           "romanization": "gidaryeo",
-          "english": "Stay"
+          "english": "Stay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "이리 와",
           "romanization": "inae",
-          "english": "Come here"
+          "english": "Come here",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "주세요",
           "romanization": "juseyo",
-          "english": "Please give"
+          "english": "Please give",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "맛있어",
           "romanization": "masisseo",
-          "english": "Yummy"
+          "english": "Yummy",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "더 추워",
           "romanization": "deopusaeo",
-          "english": "So cold"
+          "english": "So cold",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "자요",
           "romanization": "jayo",
-          "english": "Good night"
+          "english": "Good night",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "사랑해",
           "romanization": "saranghae",
-          "english": "I love you"
+          "english": "I love you",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-w8.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -13770,7 +14913,29 @@
         "pet"
       ],
       "intro": "Talk to your pet in Korean! 🐾 🔴 귀여워 [gwiyeowo] - So cute",
-      "updatedAt": "2026-08-02T18:33:53.173Z"
+      "updatedAt": "2026-08-02T18:33:53.173Z",
+      "explanationEn": "These pet talk words in Korean are simple and cute expressions often used when talking to pets like dogs, cats, or otters. They include commands, compliments, and affectionate phrases that help you communicate gently and lovingly with your furry friends. Learning these words makes it easier to bond and interact naturally with pets in Korean.",
+      "examples": [
+        {
+          "korean": "강아지야, 기다려! 맛있어 간식 줄게.",
+          "english": "Doggy, wait! I'll give you a yummy treat.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "귀여워! 착하지? 이리 와.",
+          "english": "So cute! Good kid, come here.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "더 추워? 자요, 사랑해.",
+          "english": "So cold? Good night, I love you.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708487319-cute-pet-talk-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T11:55:23.945Z"
     },
     {
       "bundleId": "cute-phone-texting",
@@ -15212,7 +16377,7 @@
       "format": "grammar_spotlight",
       "title": "-기 전에 — before doing",
       "titleEn": "-기 전에 — before doing in Korean",
-      "description": "-기 전에 — before doing in Korean — 자기 전에 (before sleeping), 이를 닦아요 (brush my teeth). Picture vocab chart for Korean learners.",
+      "description": "-기 전에 is a Korean grammar pattern used to talk about doing something before another action. It connects two actions, showing that the first action happens be…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341905351-gram-before-sleep.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341905351-gram-before-sleep-thumb.webp",
       "imageAlt": "-기 전에 — before doing in Korean — Korean vocab chart",
@@ -15220,12 +16385,18 @@
         {
           "hangul": "자기 전에",
           "romanization": "jagi jeone",
-          "english": "before sleeping"
+          "english": "before sleeping",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786686987588-gram-before-sleep-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "이를 닦아요",
           "romanization": "ireul dakkayo",
-          "english": "brush my teeth"
+          "english": "brush my teeth",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786686987588-gram-before-sleep-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -15235,7 +16406,29 @@
         "-기 전에"
       ],
       "intro": "Handy Korean for -기 전에 — before doing ✨ 🔴 자기 전에 [jagi jeone] - before sleeping",
-      "updatedAt": "2026-08-08T14:29:33.007Z"
+      "updatedAt": "2026-08-08T14:29:33.007Z",
+      "explanationEn": "-기 전에 is a Korean grammar pattern used to talk about doing something before another action. It connects two actions, showing that the first action happens before the second. You can use it to describe routines or plans in everyday life.",
+      "examples": [
+        {
+          "korean": "자기 전에 이를 닦아요.",
+          "english": "I brush my teeth before sleeping.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786686987588-gram-before-sleep-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "공부하기 전에 손을 씻어요.",
+          "english": "I wash my hands before studying.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786686987588-gram-before-sleep-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "운동하기 전에 준비 운동을 해요.",
+          "english": "I do warm-up exercises before working out.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786686987588-gram-before-sleep-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T05:56:52.742Z"
     },
     {
       "bundleId": "gram-dont-worry",
@@ -43585,7 +44778,7 @@
       "format": "hanja_hub",
       "title": "차 (車) — vehicle words in Korean",
       "titleEn": "차 (車) — vehicle words in Korean",
-      "description": "차 (車) — vehicle words in Korean — 차 (vehicle / car), 자동차 (car), 기차 (train), 주차장 (parking lot). Picture vocab chart for Korean learners.",
+      "description": "This chart shows Korean words related to vehicles using the hanja 차 (車), which means vehicle or car. Many Korean words about transportation and vehicles incl…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785704779851-hanja-cha-vehicle.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785704779851-hanja-cha-vehicle-thumb.webp",
       "imageAlt": "차 (車) — vehicle words in Korean — Korean vocab chart",
@@ -43593,42 +44786,66 @@
         {
           "hangul": "차",
           "romanization": "차",
-          "english": "vehicle / car"
+          "english": "vehicle / car",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "자동차",
           "romanization": "jadongcha",
-          "english": "car"
+          "english": "car",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "기차",
           "romanization": "gicha",
-          "english": "train"
+          "english": "train",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "주차장",
           "romanization": "juchajang",
-          "english": "parking lot"
+          "english": "parking lot",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "자전거",
           "romanization": "jajeongeo",
-          "english": "bicycle"
+          "english": "bicycle",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "승차",
           "romanization": "seungcha",
-          "english": "boarding"
+          "english": "boarding",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "하차",
           "romanization": "hacha",
-          "english": "getting off"
+          "english": "getting off",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "차량",
           "romanization": "charyang",
-          "english": "vehicle"
+          "english": "vehicle",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -43640,7 +44857,29 @@
         "noun"
       ],
       "intro": "차 (車) means vehicle or car in Korean 🚗 🔴 자동차 [jadongcha] - automobile",
-      "updatedAt": "2026-08-02T21:06:27.638Z"
+      "updatedAt": "2026-08-02T21:06:27.638Z",
+      "explanationEn": "This chart shows Korean words related to vehicles using the hanja 차 (車), which means vehicle or car. Many Korean words about transportation and vehicles include this character. Learning these words helps you understand how different vehicle-related terms are connected in Korean.",
+      "examples": [
+        {
+          "korean": "저는 매일 자동차로 출근해요.",
+          "english": "I commute to work by car every day.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "기차를 타고 여행을 가고 싶어요.",
+          "english": "I want to travel by train.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "주차장에 차를 주차했어요.",
+          "english": "I parked the car in the parking lot.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669061691-hanja-cha-vehicle-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:58:17.504Z"
     },
     {
       "bundleId": "hanja-dong-same",
@@ -64766,7 +66005,7 @@
       "format": "phrase_stack",
       "title": "Roommate phrases in Korean",
       "titleEn": "Roommate phrases in Korean",
-      "description": "Roommate phrases in Korean — 설거지 차례야 (Your turn for dishes), 빨래 돌려도 돼? (Can I run laundry?), 공과금 나눴어? (Did we split utilities?), 손님 와도 돼? (Can I have guests over?). Picture vocab chart for Korean learners.",
+      "description": "These phrases are useful for roommates living together. They help with daily communication about chores, shared expenses, and house rules. Using these expres…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785297395595-phrase-roommate.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785297395595-phrase-roommate-thumb.webp",
       "imageAlt": "Roommate phrases in Korean — Korean vocab chart",
@@ -64774,42 +66013,66 @@
         {
           "hangul": "설거지 차례야",
           "romanization": "seolgeojj charyeya",
-          "english": "Your turn for dishes"
+          "english": "Your turn for dishes",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "빨래 돌려도 돼?",
           "romanization": "ppallae dollyeodo dwae?",
-          "english": "Can I run laundry?"
+          "english": "Can I run laundry?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "공과금 나눴어?",
           "romanization": "gonggwageum nanwosseoyo?",
-          "english": "Did we split utilities?"
+          "english": "Did we split utilities?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "손님 와도 돼?",
           "romanization": "sonnim wado dwae?",
-          "english": "Can I have guests over?"
+          "english": "Can I have guests over?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "조용히 해야 해",
           "romanization": "joyonghi haeya hae",
-          "english": "We need to be quiet"
+          "english": "We need to be quiet",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "냉장고 칸 나눠 쓰자",
           "romanization": "naengjanggo kan nanwo sseuja",
-          "english": "Let's split fridge shelves"
+          "english": "Let's split fridge shelves",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "청소 요일 정하자",
           "romanization": "cheongso yoil jeonghaja",
-          "english": "Let's set cleaning days"
+          "english": "Let's set cleaning days",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "열쇠 하나 더 있어?",
           "romanization": "yeolsoe hana deo isseo?",
-          "english": "Is there an extra key?"
+          "english": "Is there an extra key?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -64818,7 +66081,29 @@
         "home"
       ],
       "intro": "Handy Korean for roommate phrases ✨ 🔴 설거지 차례야 [seolgeojj charyeya] - Your turn for dishes",
-      "updatedAt": "2026-07-29T03:56:38.578Z"
+      "updatedAt": "2026-07-29T03:56:38.578Z",
+      "explanationEn": "These phrases are useful for roommates living together. They help with daily communication about chores, shared expenses, and house rules. Using these expressions makes living with others easier and more organized. They are common in casual, spoken Korean at home.",
+      "examples": [
+        {
+          "korean": "설거지 차례야. 이번에는 네가 해 줘.",
+          "english": "It's your turn for the dishes. Please do it this time.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "공과금 나눴어? 이번 달은 내가 먼저 냈어.",
+          "english": "Did we split the utilities? I paid first this month.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "손님 와도 돼? 친구가 오늘 저녁에 올 거야.",
+          "english": "Can I have guests over? My friend is coming tonight.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687039357-phrase-roommate-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T05:58:02.919Z"
     },
     {
       "bundleId": "phrase-school-campus",
@@ -65147,7 +66432,7 @@
       "format": "phrase_stack",
       "title": "Soft no phrases in Korean",
       "titleEn": "Soft no phrases in Korean",
-      "description": "Soft no phrases in Korean — 이번에는 힘들 것 같아요 (This time might be hard), 마음이 좀 복잡해요 (I'm a bit conflicted), 다음에 꼭요 (Definitely next time), 지금은 여유가 없어요 (I don't have bandwidth now). Picture vocab chart for Korean learners.",
+      "description": "Soft no phrases in Korean are polite and indirect ways to say no or decline requests. They help maintain harmony and show respect without sounding too harsh…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785695975817-phrase-soft-no.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785695975817-phrase-soft-no-thumb.webp",
       "imageAlt": "Soft no phrases in Korean — Korean vocab chart",
@@ -65155,42 +66440,66 @@
         {
           "hangul": "이번에는 힘들 것 같아요",
           "romanization": "ibeoneun himdeul geot gatayo",
-          "english": "This time might be hard"
+          "english": "This time might be hard",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "마음이 좀 복잡해요",
           "romanization": "maeumi jom bokjaphaeyo",
-          "english": "I'm a bit conflicted"
+          "english": "I'm a bit conflicted",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "다음에 꼭요",
           "romanization": "daeume kkogyo",
-          "english": "Definitely next time"
+          "english": "Definitely next time",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "지금은 여유가 없어요",
           "romanization": "jigeumeun yeoyuga eopseoyo",
-          "english": "I don't have bandwidth now"
+          "english": "I don't have bandwidth now",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "다른 분께 부탁드려도 될까요?",
           "romanization": "dareun bunkke butakdeuryeodo doelkkayo?",
-          "english": "Could someone else take it?"
+          "english": "Could someone else take it?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "제 선에서 어려워요",
           "romanization": "je seonese eoryeowoyo",
-          "english": "It's beyond what I can do"
+          "english": "It's beyond what I can do",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "조금만 생각해 볼게요",
           "romanization": "jogeumman saenggakhae bolgeyo",
-          "english": "Let me think a bit"
+          "english": "Let me think a bit",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "그건 좀 곤란해요",
           "romanization": "geugeon jom gollanhaeyo",
-          "english": "That's a bit difficult"
+          "english": "That's a bit difficult",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -65199,7 +66508,29 @@
         "polite"
       ],
       "intro": "Soft no phrases in Korean to stay polite and clear👇 🔴 이번에는 힘들 것 같아요 [ibeoneun himdeul geot gatayo] - This time might be hard",
-      "updatedAt": "2026-08-02T18:39:39.054Z"
+      "updatedAt": "2026-08-15T01:55:35.227Z",
+      "explanationEn": "Soft no phrases in Korean are polite and indirect ways to say no or decline requests. They help maintain harmony and show respect without sounding too harsh or blunt. These expressions are useful in everyday conversations when you want to refuse or delay something gently.",
+      "examples": [
+        {
+          "korean": "이번에는 힘들 것 같아요. 다음에 꼭 할게요.",
+          "english": "This time might be hard. I'll definitely do it next time.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "마음이 좀 복잡해요. 조금만 생각해 볼게요.",
+          "english": "I'm a bit conflicted. Let me think a bit.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "그건 좀 곤란해요. 다른 분께 부탁드려도 될까요?",
+          "english": "That's a bit difficult. Could someone else take it?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786757277941-phrase-soft-no-ex-2.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "enrichedAt": "2026-08-15T01:55:35.227Z"
     },
     {
       "bundleId": "phrase-study-cafe",
@@ -66743,7 +68074,7 @@
       "format": "pronunciation_grid",
       "title": "ㅊ words in Korean",
       "titleEn": "ㅊ words in Korean",
-      "description": "ㅊ words in Korean — 친구 (friend), 책 (book), 차 (tea / car), 창문 (window). Picture vocab chart for Korean learners.",
+      "description": "The Korean consonant ㅊ is pronounced like 'ch' in English. Words starting with ㅊ often have a clear, sharp sound at the beginning. This chart helps you recog…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786207194774-pron-ch-sound.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786207194774-pron-ch-sound-thumb.webp",
       "imageAlt": "ㅊ words in Korean — Korean vocab chart",
@@ -66751,42 +68082,66 @@
         {
           "hangul": "친구",
           "romanization": "chingu",
-          "english": "friend"
+          "english": "friend",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "책",
           "romanization": "chaek",
-          "english": "book"
+          "english": "book",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "차",
           "romanization": "cha",
-          "english": "tea / car"
+          "english": "tea / car",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "창문",
           "romanization": "changmun",
-          "english": "window"
+          "english": "window",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "초콜릿",
           "romanization": "chokollit",
-          "english": "chocolate"
+          "english": "chocolate",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "치마",
           "romanization": "chima",
-          "english": "skirt"
+          "english": "skirt",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "추위",
           "romanization": "chuwi",
-          "english": "cold weather"
+          "english": "cold weather",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "축제",
           "romanization": "chukje",
-          "english": "festival"
+          "english": "festival",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -66798,7 +68153,29 @@
         "ㅊ"
       ],
       "intro": "Master the ㅊ (ch) sound with these useful words! 🔴 친구 [chingu] - friend",
-      "updatedAt": "2026-08-08T16:40:01.739Z"
+      "updatedAt": "2026-08-08T16:40:01.739Z",
+      "explanationEn": "The Korean consonant ㅊ is pronounced like 'ch' in English. Words starting with ㅊ often have a clear, sharp sound at the beginning. This chart helps you recognize and pronounce common Korean words that begin with ㅊ, improving your understanding of Korean consonants and pronunciation.",
+      "examples": [
+        {
+          "korean": "친구와 함께 책을 읽어요.",
+          "english": "I read a book with my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "창문을 열고 차를 마셨어요.",
+          "english": "I opened the window and drank tea.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "축제에서 초콜릿과 치마를 샀어요.",
+          "english": "I bought chocolate and a skirt at the festival.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708566966-pron-ch-sound-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T11:56:39.233Z"
     },
     {
       "bundleId": "pron-g-sound",
@@ -67041,7 +68418,7 @@
       "format": "pronunciation_grid",
       "title": "ㅁ words in Korean",
       "titleEn": "ㅁ words in Korean",
-      "description": "ㅁ words in Korean — 물 (water), 모자 (hat), 문 (door), 망고 (mango). Picture vocab chart for Korean learners.",
+      "description": "This chart features Korean words that start with the consonant ㅁ (m). These words are useful for practicing pronunciation and recognizing the sound of ㅁ in d…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786202325681-pron-m-sound.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786202325681-pron-m-sound-thumb.webp",
       "imageAlt": "ㅁ words in Korean — Korean vocab chart",
@@ -67049,42 +68426,66 @@
         {
           "hangul": "물",
           "romanization": "mul",
-          "english": "water"
+          "english": "water",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "모자",
           "romanization": "moja",
-          "english": "hat"
+          "english": "hat",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "문",
           "romanization": "mun",
-          "english": "door"
+          "english": "door",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "망고",
           "romanization": "mango",
-          "english": "mango"
+          "english": "mango",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "맛",
           "romanization": "mat",
-          "english": "taste / flavor"
+          "english": "taste / flavor",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "마음",
           "romanization": "maeum",
-          "english": "heart / mind"
+          "english": "heart / mind",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "머리",
           "romanization": "meori",
-          "english": "head / hair"
+          "english": "head / hair",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "목",
           "romanization": "mok",
-          "english": "neck / throat"
+          "english": "neck / throat",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -67096,7 +68497,29 @@
         "ㅁ"
       ],
       "intro": "Master the ㅁ sound with these everyday words! 👇 🔴 물 [mul] - water",
-      "updatedAt": "2026-08-08T15:18:51.807Z"
+      "updatedAt": "2026-08-08T15:18:51.807Z",
+      "explanationEn": "This chart features Korean words that start with the consonant ㅁ (m). These words are useful for practicing pronunciation and recognizing the sound of ㅁ in different contexts. Learning these words helps you understand how ㅁ combines with vowels to form common everyday vocabulary.",
+      "examples": [
+        {
+          "korean": "물 한 잔 주세요.",
+          "english": "Please give me a glass of water.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저는 모자를 쓰고 있어요.",
+          "english": "I am wearing a hat.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "문을 닫아 주세요.",
+          "english": "Please close the door.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668933334-pron-m-sound-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:56:29.630Z"
     },
     {
       "bundleId": "pron-n-sound",
@@ -67460,7 +68883,7 @@
       "format": "quiz_comment",
       "title": "Close vs turn off quiz",
       "titleEn": "Close vs turn off quiz in Korean",
-      "description": "Close vs turn off quiz in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This quiz helps you learn the difference between two common Korean verbs: '닫다' (to close) and '끄다' (to turn off). Both verbs involve stopping or ending somet…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785697542632-quiz-close-vs-turn-off.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785697542632-quiz-close-vs-turn-off-thumb.webp",
       "imageAlt": "Close vs turn off quiz in Korean — Korean vocab chart",
@@ -67470,7 +68893,29 @@
         "verbs"
       ],
       "intro": "Let's practice Korean today! 🇰🇷✨ 🔒 닫다",
-      "updatedAt": "2026-08-02T19:05:45.339Z"
+      "updatedAt": "2026-08-02T19:05:45.339Z",
+      "explanationEn": "This quiz helps you learn the difference between two common Korean verbs: '닫다' (to close) and '끄다' (to turn off). Both verbs involve stopping or ending something, but '닫다' is used for closing physical objects like doors or books, while '끄다' is used for turning off devices like lights or TVs. Understanding when to use each verb will improve your everyday Korean communication.",
+      "examples": [
+        {
+          "korean": "문을 닫아 주세요.",
+          "english": "Please close the door.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687083001-quiz-close-vs-turn-off-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "불을 꺼 주세요.",
+          "english": "Please turn off the light.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687083001-quiz-close-vs-turn-off-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "책을 닫고 공부를 시작했어요.",
+          "english": "I closed the book and started studying.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687083001-quiz-close-vs-turn-off-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T05:58:23.119Z"
     },
     {
       "bundleId": "quiz-complain-vs-suggest",
@@ -80321,7 +81766,7 @@
       "format": "topik_upgrade",
       "title": "Office email: TOPIK I → II",
       "titleEn": "Office email: TOPIK I → II in Korean",
-      "description": "Office email: TOPIK I → II in Korean — 확인해 주세요 (please confirm (TOPIK I)), 확인 부탁드립니다 (please confirm (TOPIK II)), 파일 보냈어요 (attached file (TOPIK I)), 첨부드립니다 (attached file (TOPIK II)). Picture vocab chart for Korean learners.",
+      "description": "This chart shows how to upgrade your office email language from TOPIK I to TOPIK II level. TOPIK I expressions are simpler and more casual, while TOPIK II ph…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785691245834-topik-office-email-upgrade.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785691245834-topik-office-email-upgrade-thumb.webp",
       "imageAlt": "Office email: TOPIK I → II in Korean — Korean vocab chart",
@@ -80329,62 +81774,98 @@
         {
           "hangul": "확인해 주세요",
           "romanization": "hwaginhae juseyo",
-          "english": "please confirm (TOPIK I)"
+          "english": "please confirm (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "확인 부탁드립니다",
           "romanization": "hwagin butakdeurimnida",
-          "english": "please confirm (TOPIK II)"
+          "english": "please confirm (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "파일 보냈어요",
           "romanization": "pail bonaesseoyo",
-          "english": "attached file (TOPIK I)"
+          "english": "attached file (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "첨부드립니다",
           "romanization": "cheombudeurimnida",
-          "english": "attached file (TOPIK II)"
+          "english": "attached file (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "말씀드린 대로요",
           "romanization": "malsseumdeurim daeroyo",
-          "english": "as discussed (TOPIK I)"
+          "english": "as discussed (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "논의한 바와 같이",
           "romanization": "nonuihan bawa gachi",
-          "english": "as discussed (TOPIK II)"
+          "english": "as discussed (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "언제까지예요?",
           "romanization": "eonjekkajiyeyo?",
-          "english": "deadline (TOPIK I)"
+          "english": "deadline (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "마감일이 언제인지요?",
           "romanization": "magamiri eonjeinjiyo?",
-          "english": "deadline (TOPIK II)"
+          "english": "deadline (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "제가 할게요",
           "romanization": "jega halgeyo",
-          "english": "I'll handle it (TOPIK I)"
+          "english": "I'll handle it (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w8.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "제가 처리하겠습니다",
           "romanization": "jega cheorihagetseumnida",
-          "english": "I'll handle it (TOPIK II)"
+          "english": "I'll handle it (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w9.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "시간 내주셔서요",
           "romanization": "sigan naejusyeoseoyo",
-          "english": "thank you for your time (TOPIK I)"
+          "english": "thank you for your time (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w10.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "시간을 내어 주셔서 감사합니다",
           "romanization": "siganeul naeeo jusyeoseo gamsahamnida",
-          "english": "thank you for your time (TOPIK II)"
+          "english": "thank you for your time (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-w11.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -80393,7 +81874,29 @@
         "work"
       ],
       "intro": "Upgrade your office emails from TOPIK I to II 👩‍💼 🔴 확인해 주세요 - please confirm",
-      "updatedAt": "2026-08-02T17:20:49.581Z"
+      "updatedAt": "2026-08-02T17:20:49.581Z",
+      "explanationEn": "This chart shows how to upgrade your office email language from TOPIK I to TOPIK II level. TOPIK I expressions are simpler and more casual, while TOPIK II phrases are more formal and polite, suitable for professional settings. Learning these pairs helps you communicate more respectfully and clearly at work.",
+      "examples": [
+        {
+          "korean": "파일 보냈어요. 확인해 주세요.",
+          "english": "I sent the file. Please confirm.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "첨부드립니다. 확인 부탁드립니다.",
+          "english": "I have attached the file. Please confirm.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "언제까지예요? 제가 할게요.",
+          "english": "When is the deadline? I'll handle it.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687150073-topik-office-email-upgrade-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T05:59:56.631Z"
     },
     {
       "bundleId": "topik-opinion-verbs",
@@ -84959,7 +86462,7 @@
       "format": "topik_upgrade",
       "title": "Weather chat: TOPIK I → II",
       "titleEn": "Weather chat: TOPIK I → II in Korean",
-      "description": "Weather chat: TOPIK I → II in Korean — 더워요 (it's hot (TOPIK I)), 무더운 날씨입니다 (it's hot (TOPIK II)), 추워요 (it's cold (TOPIK I)), 기온이 낮습니다 (it's cold (TOPIK II)). Picture vocab chart for Korean learners.",
+      "description": "This chart helps you upgrade your Korean weather vocabulary from TOPIK I to TOPIK II level. It shows how to express common weather conditions and related phr…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785700823260-topik-weather-chat-upgrade.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1785700823260-topik-weather-chat-upgrade-thumb.webp",
       "imageAlt": "Weather chat: TOPIK I → II in Korean — Korean vocab chart",
@@ -84967,62 +86470,98 @@
         {
           "hangul": "더워요",
           "romanization": "deowoyo",
-          "english": "it's hot (TOPIK I)"
+          "english": "it's hot (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "무더운 날씨입니다",
           "romanization": "mudeoun nalssiimnida",
-          "english": "it's hot (TOPIK II)"
+          "english": "it's hot (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w1.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "추워요",
           "romanization": "chuwoyo",
-          "english": "it's cold (TOPIK I)"
+          "english": "it's cold (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w2.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "기온이 낮습니다",
           "romanization": "gioni natseumnida",
-          "english": "it's cold (TOPIK II)"
+          "english": "it's cold (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w3.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "비 와요",
           "romanization": "bi wayo",
-          "english": "it's raining (TOPIK I)"
+          "english": "it's raining (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w4.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "비가 내리고 있습니다",
           "romanization": "biga naerigo itseumnida",
-          "english": "it's raining (TOPIK II)"
+          "english": "it's raining (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w5.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "우산 가져가요",
           "romanization": "usan gajyeogayo",
-          "english": "bring an umbrella (TOPIK I)"
+          "english": "bring an umbrella (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w6.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "우산을 챙기시기 바랍니다",
           "romanization": "usaneul chaenggisigi baramnida",
-          "english": "bring an umbrella (TOPIK II)"
+          "english": "bring an umbrella (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w7.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "날씨 좋네요",
           "romanization": "nalssi jotneyo",
-          "english": "nice weather (TOPIK I)"
+          "english": "nice weather (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w8.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "날씨가 참 좋습니다",
           "romanization": "nalssiga cham josteumnida",
-          "english": "nice weather (TOPIK II)"
+          "english": "nice weather (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w9.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "미세먼지 많아요",
           "romanization": "misemunji manayo",
-          "english": "dusty air (TOPIK I)"
+          "english": "dusty air (TOPIK I)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w10.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         },
         {
           "hangul": "대기질이 나쁩니다",
           "romanization": "daegijiri nappeumnida",
-          "english": "dusty air (TOPIK II)"
+          "english": "dusty air (TOPIK II)",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-w11.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
         }
       ],
       "tags": [
@@ -85031,7 +86570,29 @@
         "weather"
       ],
       "intro": "Want to sound more natural talking about weather in Korean? 🔴 더워요 [deowoyo] - it's hot",
-      "updatedAt": "2026-08-02T20:00:26.298Z"
+      "updatedAt": "2026-08-02T20:00:26.298Z",
+      "explanationEn": "This chart helps you upgrade your Korean weather vocabulary from TOPIK I to TOPIK II level. It shows how to express common weather conditions and related phrases in both beginner and intermediate Korean. By learning these pairs, you can speak more naturally and politely about the weather in different situations.",
+      "examples": [
+        {
+          "korean": "오늘은 정말 더워요. 무더운 날씨입니다.",
+          "english": "Today is really hot. It's hot weather.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "밖에 비 와요. 우산 가져가요.",
+          "english": "It's raining outside. Bring an umbrella.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "날씨 좋네요. 날씨가 참 좋습니다.",
+          "english": "The weather is nice. The weather is really nice.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668989751-topik-weather-chat-upgrade-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:57:12.494Z"
     },
     {
       "bundleId": "topik-work-formal2",
@@ -85456,7 +87017,7 @@
       "format": "antonym_split",
       "title": "Morning study vs Evening study",
       "titleEn": "Morning study vs Evening study in Korean",
-      "description": "Morning study vs Evening study in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart compares studying in the morning and studying in the evening in Korean. It shows the opposite times of day when people choose to study. Understand…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341736977-tr-ant-morning-evening-study.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341736977-tr-ant-morning-evening-study-thumb.webp",
       "imageAlt": "Morning study vs Evening study in Korean — Korean vocab chart",
@@ -85467,7 +87028,29 @@
         "trends-2026-08"
       ],
       "intro": "🗣️ Real-life Korean vibes: ➡️ Morning study energy 📈🔥",
-      "updatedAt": "2026-08-10T06:01:22.028Z"
+      "updatedAt": "2026-08-10T06:01:22.028Z",
+      "explanationEn": "This chart compares studying in the morning and studying in the evening in Korean. It shows the opposite times of day when people choose to study. Understanding these words helps you talk about daily routines and preferences related to school or work. It is useful for beginners learning how to describe different times for activities.",
+      "examples": [
+        {
+          "korean": "저는 아침 공부를 더 좋아해요.",
+          "english": "I prefer studying in the morning.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669032575-tr-ant-morning-evening-study-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "저녁 공부는 조용해서 집중하기 좋아요.",
+          "english": "Studying in the evening is quiet, so it's good for focusing.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669032575-tr-ant-morning-evening-study-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "아침 공부와 저녁 공부 중에서 어떤 게 더 효과적일까요?",
+          "english": "Which is more effective, morning study or evening study?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669032575-tr-ant-morning-evening-study-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:57:37.071Z"
     },
     {
       "bundleId": "tr-ant-open-closed-store",
@@ -85699,7 +87282,7 @@
       "format": "compound_word",
       "title": "꽃 + 병 = 꽃병",
       "titleEn": "꽃 + 병 = 꽃병 in Korean",
-      "description": "꽃 + 병 = 꽃병 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart shows how two Korean words combine to form a new compound word. The word '꽃' means 'flower' and '병' means 'vase' or 'bottle.' When combined, they…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341747374-tr-cmp-kkot-byeong.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341747374-tr-cmp-kkot-byeong-thumb.webp",
       "imageAlt": "꽃 + 병 = 꽃병 in Korean — Korean vocab chart",
@@ -85709,7 +87292,29 @@
         "trends-2026-08"
       ],
       "intro": "Handy Korean for 꽃 + 병 = 꽃병 ✨ 🔴 꽃 [kkot] - Flower",
-      "updatedAt": "2026-08-10T06:01:22.029Z"
+      "updatedAt": "2026-08-10T06:01:22.029Z",
+      "explanationEn": "This chart shows how two Korean words combine to form a new compound word. The word '꽃' means 'flower' and '병' means 'vase' or 'bottle.' When combined, they create '꽃병,' which means 'flower vase.' This is a common way in Korean to form new words by joining two nouns.",
+      "examples": [
+        {
+          "korean": "나는 꽃병에 꽃을 꽂았어요.",
+          "english": "I put flowers in the flower vase.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669097618-tr-cmp-kkot-byeong-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "이 꽃병은 아주 예뻐요.",
+          "english": "This flower vase is very pretty.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669097618-tr-cmp-kkot-byeong-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "꽃병을 창가에 놓았어요.",
+          "english": "I placed the flower vase by the window.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786669097618-tr-cmp-kkot-byeong-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:58:37.629Z"
     },
     {
       "bundleId": "tr-cmp-nun-mul-tr",
@@ -85931,7 +87536,7 @@
       "format": "cute_cast",
       "title": "Cafe run words in Korean",
       "titleEn": "Cafe run words in Korean",
-      "description": "Cafe run words in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart introduces common Korean words used when running a cafe. These words help you talk about cafe activities, drinks, and customer service in Korean.…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341754394-tr-cute-cafe-run.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341754394-tr-cute-cafe-run-thumb.webp",
       "imageAlt": "Cafe run words in Korean — Korean vocab chart",
@@ -85944,7 +87549,29 @@
         "trends-2026-08"
       ],
       "intro": "Handy Korean for cafe run words ✨ 🔴 How about coffee?",
-      "updatedAt": "2026-08-10T06:01:22.029Z"
+      "updatedAt": "2026-08-10T06:01:22.029Z",
+      "explanationEn": "This chart introduces common Korean words used when running a cafe. These words help you talk about cafe activities, drinks, and customer service in Korean. Learning these terms is useful if you want to work in or visit a cafe in Korea. The words are presented with a cute otter mascot to make learning fun and engaging.",
+      "examples": [
+        {
+          "korean": "카페에서 커피를 주문했어요.",
+          "english": "I ordered coffee at the cafe.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687103194-tr-cute-cafe-run-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "손님이 많아서 바쁘네요.",
+          "english": "There are many customers, so it’s busy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687103194-tr-cute-cafe-run-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "맛있는 디저트를 추천해 주세요.",
+          "english": "Please recommend a delicious dessert.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687103194-tr-cute-cafe-run-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T05:58:43.750Z"
     },
     {
       "bundleId": "tr-cute-craft-day",
@@ -86117,7 +87744,7 @@
       "format": "grid_cluster",
       "title": "Breakfast bowl words in Korean",
       "titleEn": "Breakfast bowl words in Korean",
-      "description": "Breakfast bowl words in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart introduces common Korean words related to breakfast bowls, a popular and trendy meal option. Breakfast bowls typically combine grains, proteins, a…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341761610-tr-grid-breakfast-bowl.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341761610-tr-grid-breakfast-bowl-thumb.webp",
       "imageAlt": "Breakfast bowl words in Korean — Korean vocab chart",
@@ -86127,7 +87754,29 @@
         "trends-2026-08"
       ],
       "intro": "Handy Korean for breakfast bowl words ✨ 🔴 yogurt",
-      "updatedAt": "2026-08-10T06:01:22.030Z"
+      "updatedAt": "2026-08-10T06:01:22.030Z",
+      "explanationEn": "This chart introduces common Korean words related to breakfast bowls, a popular and trendy meal option. Breakfast bowls typically combine grains, proteins, and vegetables in one dish, making them nutritious and convenient. Learning these words helps you talk about healthy eating and modern food trends in Korea.",
+      "examples": [
+        {
+          "korean": "아침에 밥과 계란이 들어간 아침 볼을 먹었어요.",
+          "english": "I ate a breakfast bowl with rice and eggs in the morning.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687123793-tr-grid-breakfast-bowl-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "요즘 건강을 위해 아보카도와 채소가 들어간 아침 볼이 인기가 많아요.",
+          "english": "These days, breakfast bowls with avocado and vegetables are very popular for health.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687123793-tr-grid-breakfast-bowl-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "이 식당은 다양한 아침 볼 메뉴를 제공합니다.",
+          "english": "This restaurant offers various breakfast bowl menus.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687123793-tr-grid-breakfast-bowl-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T05:59:05.099Z"
     },
     {
       "bundleId": "tr-grid-christmas-kitchen",
@@ -86459,7 +88108,7 @@
       "format": "super_list",
       "title": "Cafe drinks in Korean",
       "titleEn": "Cafe drinks in Korean",
-      "description": "Cafe drinks in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart introduces common cafe drinks in Korean. It helps learners recognize and order popular beverages when visiting a cafe in Korea. The list includes…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341813657-tr-list-cafe-drinks.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341813657-tr-list-cafe-drinks-thumb.webp",
       "imageAlt": "Cafe drinks in Korean — Korean vocab chart",
@@ -86469,7 +88118,29 @@
         "trends-2026-08"
       ],
       "intro": "Handy Korean for cafe drinks ✨ 🔴 espresso",
-      "updatedAt": "2026-08-10T06:01:22.031Z"
+      "updatedAt": "2026-08-10T06:01:22.031Z",
+      "explanationEn": "This chart introduces common cafe drinks in Korean. It helps learners recognize and order popular beverages when visiting a cafe in Korea. The list includes various coffee and non-coffee drinks that are trendy and widely enjoyed. Knowing these words makes it easier to understand menus and communicate your preferences.",
+      "examples": [
+        {
+          "korean": "저는 카페에서 아메리카노를 자주 마셔요.",
+          "english": "I often drink Americano at the cafe.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708543945-tr-list-cafe-drinks-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "친구가 라떼를 주문했어요.",
+          "english": "My friend ordered a latte.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708543945-tr-list-cafe-drinks-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "여름에는 아이스티가 정말 맛있어요.",
+          "english": "Iced tea is really delicious in the summer.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786708543945-tr-list-cafe-drinks-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T11:56:02.413Z"
     },
     {
       "bundleId": "tr-list-christmas",
@@ -86623,7 +88294,7 @@
       "format": "super_list",
       "title": "Party decoration words in Korean",
       "titleEn": "Party decoration words in Korean",
-      "description": "Party decoration words in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This chart introduces common Korean words used for party decorations. These words help you describe different items that make a party festive and fun. Learni…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341839183-tr-list-party-decor.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341839183-tr-list-party-decor-thumb.webp",
       "imageAlt": "Party decoration words in Korean — Korean vocab chart",
@@ -86634,7 +88305,29 @@
         "trends-2026-08"
       ],
       "intro": "Handy Korean for party decoration words ✨ 🔴 balloon",
-      "updatedAt": "2026-08-10T06:01:22.031Z"
+      "updatedAt": "2026-08-10T06:01:22.031Z",
+      "explanationEn": "This chart introduces common Korean words used for party decorations. These words help you describe different items that make a party festive and fun. Learning these terms is useful for talking about events, celebrations, and holiday decorations, especially for occasions like Halloween.",
+      "examples": [
+        {
+          "korean": "할로윈 파티에 호박 장식을 많이 사용해요.",
+          "english": "We use a lot of pumpkin decorations for the Halloween party.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687196731-tr-list-party-decor-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "풍선과 리본으로 방을 꾸몄어요.",
+          "english": "I decorated the room with balloons and ribbons.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687196731-tr-list-party-decor-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "파티용 조명은 분위기를 밝게 해 줘요.",
+          "english": "Party lights brighten up the atmosphere.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786687196731-tr-list-party-decor-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T06:00:17.195Z"
     },
     {
       "bundleId": "tr-list-rainy-commute",
@@ -87381,7 +89074,7 @@
       "format": "quiz_comment",
       "title": "Which Halloween word?",
       "titleEn": "Which Halloween word? in Korean",
-      "description": "Which Halloween word? in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "This quiz helps you learn and compare different Halloween-related words in Korean. It focuses on common terms used during Halloween celebrations, such as pum…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341854883-tr-quiz-which-halloween.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341854883-tr-quiz-which-halloween-thumb.webp",
       "imageAlt": "Which Halloween word? in Korean — Korean vocab chart",
@@ -87392,7 +89085,29 @@
         "trends-2026-08"
       ],
       "intro": "Let's practice Korean today! 🇰🇷✨ Look at the picture and answer the question at the bottom!",
-      "updatedAt": "2026-08-10T06:01:22.032Z"
+      "updatedAt": "2026-08-10T06:01:22.032Z",
+      "explanationEn": "This quiz helps you learn and compare different Halloween-related words in Korean. It focuses on common terms used during Halloween celebrations, such as pumpkin, ghost, and costume. By understanding these words, you can better enjoy Halloween events and conversations in Korean. This is a fun way to expand your vocabulary around a popular holiday theme.",
+      "examples": [
+        {
+          "korean": "할로윈에 호박을 장식했어요.",
+          "english": "I decorated a pumpkin for Halloween.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668908197-tr-quiz-which-halloween-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "친구가 유령 분장을 했어요.",
+          "english": "My friend dressed up as a ghost.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668908197-tr-quiz-which-halloween-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "아이들이 할로윈 코스튬을 입고 놀러 다녔어요.",
+          "english": "The kids went around wearing Halloween costumes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1786668908197-tr-quiz-which-halloween-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-14T00:55:28.449Z"
     },
     {
       "bundleId": "tr-quiz-which-school",

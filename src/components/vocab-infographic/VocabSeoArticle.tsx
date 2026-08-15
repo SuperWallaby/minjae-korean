@@ -62,6 +62,51 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
         ) : null}
       </header>
 
+      {page.words.length > 0 ? (
+        <section className="space-y-4" aria-labelledby="vocab-words">
+          <h2
+            id="vocab-words"
+            className="text-lg font-semibold text-[var(--quiz-text)]"
+          >
+            Words in this chart
+          </h2>
+          <div className="overflow-hidden rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)]">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-[var(--quiz-border)] bg-[var(--quiz-surface-muted)] text-[var(--quiz-text-muted)]">
+                <tr>
+                  <th className="px-4 py-2.5 font-semibold">Korean</th>
+                  <th className="px-4 py-2.5 font-semibold">Romanization</th>
+                  <th className="px-4 py-2.5 font-semibold">English</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--quiz-border)]">
+                {page.words.map((w) => (
+                  <tr key={`${w.hangul}-${w.english}`}>
+                    <td className="px-4 py-3">
+                      <span className="inline-flex items-center gap-2 text-base font-semibold text-[var(--quiz-text)]">
+                        {w.hangul}
+                        {w.ttsUrl ? (
+                          <VocabSeoPlayButton
+                            src={w.ttsUrl}
+                            label={`Play pronunciation of ${w.hangul}`}
+                          />
+                        ) : null}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 font-mono text-[var(--quiz-text-sub)]">
+                      {w.romanization || "—"}
+                    </td>
+                    <td className="px-4 py-3 text-[var(--quiz-text-sub)]">
+                      {w.english}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ) : null}
+
       <figure className="mx-auto w-full max-w-xl overflow-hidden rounded-[1.25rem] border border-[var(--quiz-border)] bg-[var(--quiz-canvas)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -111,51 +156,6 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
           <p className="max-w-2xl text-base leading-relaxed text-[var(--quiz-text-sub)]">
             {explanation}
           </p>
-        </section>
-      ) : null}
-
-      {page.words.length > 0 ? (
-        <section className="space-y-4" aria-labelledby="vocab-words">
-          <h2
-            id="vocab-words"
-            className="text-lg font-semibold text-[var(--quiz-text)]"
-          >
-            Words in this chart
-          </h2>
-          <div className="overflow-hidden rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)]">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-[var(--quiz-border)] bg-[var(--quiz-surface-muted)] text-[var(--quiz-text-muted)]">
-                <tr>
-                  <th className="px-4 py-2.5 font-semibold">Korean</th>
-                  <th className="px-4 py-2.5 font-semibold">Romanization</th>
-                  <th className="px-4 py-2.5 font-semibold">English</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[var(--quiz-border)]">
-                {page.words.map((w) => (
-                  <tr key={`${w.hangul}-${w.english}`}>
-                    <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-2 text-base font-semibold text-[var(--quiz-text)]">
-                        {w.hangul}
-                        {w.ttsUrl ? (
-                          <VocabSeoPlayButton
-                            src={w.ttsUrl}
-                            label={`Play pronunciation of ${w.hangul}`}
-                          />
-                        ) : null}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 font-mono text-[var(--quiz-text-sub)]">
-                      {w.romanization || "—"}
-                    </td>
-                    <td className="px-4 py-3 text-[var(--quiz-text-sub)]">
-                      {w.english}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </section>
       ) : null}
 
