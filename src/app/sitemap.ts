@@ -9,19 +9,20 @@ import {
 import { getAllExpressionChapters } from "@/data/expressionChapterList";
 import { getAllChapters, grammarChapterList } from "@/data/grammarChapterList";
 import { listArticles } from "@/lib/articlesRepo";
-import { listTopComparisonsForStaticParams } from "@/lib/grammarComparisonsRepo";
-import { listTopGuidesForStaticParams } from "@/lib/grammarGuidesRepo";
-import { buildVocabCompareCatalog } from "@/lib/vocabCompare/repo";
-import { toVocabDifferencePage } from "@/lib/vocabDetail/project";
 import { vocabDetailSiteBaseUrl } from "@/lib/vocabDetail/slug";
 import { listAllVocabSeoPages } from "@/lib/vocabInfographic/repo";
 import { listAllIgListSeoPages } from "@/lib/igList/repo";
-import { listTopWhenToUseForStaticParams } from "@/lib/whenToUse/repo";
 import { listSongs } from "@/lib/songsRepo";
 import { listDramas } from "@/lib/dramaRepo";
 
 const baseUrl = vocabDetailSiteBaseUrl();
 const MAX_SITEMAP_ENTRIES = 49_000;
+
+/**
+ * Programmatic SEO detail URLs (how-to-say / difference / grammar guides /
+ * compare pairs) stay live but are omitted from the sitemap so crawl budget
+ * focuses on hubs + pin vocab SEO + curated chapters.
+ */
 
 function warnSitemapSource(source: string, error: unknown) {
   console.warn(`[sitemap] Failed to load ${source}:`, error);
@@ -45,7 +46,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/vocab`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/list`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${baseUrl}/vocab/detail`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/vocab/detail?tab=how-to-say`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/expressions`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/songs`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/drama`, changeFrequency: "monthly", priority: 0.7 },
@@ -86,67 +86,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "yearly" as const,
     priority: 0.6,
   }));
-
-  let grammarComparisons: Awaited<
-    ReturnType<typeof listTopComparisonsForStaticParams>
-  > = [];
-  try {
-    grammarComparisons = await listTopComparisonsForStaticParams(2000);
-  } catch (error) {
-    warnSitemapSource("grammar comparisons", error);
-  }
-  const grammarComparisonRoutes: MetadataRoute.Sitemap = grammarComparisons.map(
-    (c) => ({
-      url: `${baseUrl}/grammar/${c.id}/${encodeURIComponent(c.slug)}`,
-      lastModified: c.updatedAt ? new Date(c.updatedAt) : undefined,
-      changeFrequency: "yearly" as const,
-      priority: 0.65,
-    }),
-  );
-
-  let grammarMeaningGuides: Awaited<
-    ReturnType<typeof listTopGuidesForStaticParams>
-  > = [];
-  let grammarUsageGuides: Awaited<
-    ReturnType<typeof listTopGuidesForStaticParams>
-  > = [];
-  let grammarHowToSayGuides: Awaited<
-    ReturnType<typeof listTopGuidesForStaticParams>
-  > = [];
-  try {
-    [grammarMeaningGuides, grammarUsageGuides, grammarHowToSayGuides] =
-      await Promise.all([
-        listTopGuidesForStaticParams("meaning", 2000),
-        listTopGuidesForStaticParams("usage", 2000),
-        listTopGuidesForStaticParams("how-to-say", 2000),
-      ]);
-  } catch (error) {
-    warnSitemapSource("grammar guides", error);
-  }
-  const grammarMeaningRoutes: MetadataRoute.Sitemap = grammarMeaningGuides.map(
-    (g) => ({
-      url: `${baseUrl}/grammar/meaning/${g.id}/${encodeURIComponent(g.slug)}`,
-      lastModified: g.updatedAt ? new Date(g.updatedAt) : undefined,
-      changeFrequency: "yearly" as const,
-      priority: 0.65,
-    }),
-  );
-  const grammarUsageRoutes: MetadataRoute.Sitemap = grammarUsageGuides.map(
-    (g) => ({
-      url: `${baseUrl}/grammar/usage/${g.id}/${encodeURIComponent(g.slug)}`,
-      lastModified: g.updatedAt ? new Date(g.updatedAt) : undefined,
-      changeFrequency: "yearly" as const,
-      priority: 0.65,
-    }),
-  );
-  const grammarHowToSayRoutes: MetadataRoute.Sitemap = grammarHowToSayGuides.map(
-    (g) => ({
-      url: `${baseUrl}/grammar/how-to-say/${g.id}/${encodeURIComponent(g.slug)}`,
-      lastModified: g.updatedAt ? new Date(g.updatedAt) : undefined,
-      changeFrequency: "yearly" as const,
-      priority: 0.65,
-    }),
-  );
 
   let articles: Awaited<ReturnType<typeof listArticles>> = [];
   try {
@@ -201,43 +140,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  let whenToUsePages: Awaited<
-    ReturnType<typeof listTopWhenToUseForStaticParams>
-  > = [];
-  try {
-    whenToUsePages = await listTopWhenToUseForStaticParams(2000);
-  } catch (error) {
-    warnSitemapSource("how-to-say vocab pages", error);
-  }
-
-  let vocabDetailDifferencePages: Awaited<
-    ReturnType<typeof buildVocabCompareCatalog>
-  > = [];
-  try {
-    vocabDetailDifferencePages = await buildVocabCompareCatalog(2000);
-  } catch (error) {
-    warnSitemapSource("cached vocab differences", error);
-  }
-  const vocabDetailDifferenceRoutes: MetadataRoute.Sitemap =
-    vocabDetailDifferencePages.map((row) => {
-      const page = toVocabDifferencePage(row);
-      return {
-        url: `${baseUrl}/vocab/detail/difference/${encodeURIComponent(page.leftId)}/${encodeURIComponent(page.rightId)}/${encodeURIComponent(page.slug)}`,
-        lastModified: page.updatedAt ? new Date(page.updatedAt) : undefined,
-        changeFrequency: "yearly" as const,
-        priority: 0.72,
-      };
-    });
-
-  const vocabDetailHowToSayRoutes: MetadataRoute.Sitemap = whenToUsePages.map(
-    (row) => ({
-      url: `${baseUrl}/vocab/detail/how-to-say/${encodeURIComponent(row.id)}/${encodeURIComponent(row.slug)}`,
-      lastModified: row.updatedAt ? new Date(row.updatedAt) : undefined,
-      changeFrequency: "yearly" as const,
-      priority: 0.72,
-    }),
-  );
-
   const vocabSeoPages = listAllVocabSeoPages();
   const vocabSeoRoutes: MetadataRoute.Sitemap = vocabSeoPages.map((row) => ({
     url: `${baseUrl}/vocab/${encodeURIComponent(row.bundleId)}/${encodeURIComponent(row.slug)}`,
@@ -257,12 +159,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes: MetadataRoute.Sitemap = [
     ...staticRoutes,
     ...grammarRoutes,
-    ...grammarComparisonRoutes,
-    ...grammarMeaningRoutes,
-    ...grammarUsageRoutes,
-    ...grammarHowToSayRoutes,
-    ...vocabDetailDifferenceRoutes,
-    ...vocabDetailHowToSayRoutes,
     ...vocabSeoRoutes,
     ...igListSeoRoutes,
     ...articleRoutes,
