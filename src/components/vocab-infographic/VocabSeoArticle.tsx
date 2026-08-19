@@ -128,32 +128,22 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
         </figcaption>
       </figure>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
+      <div className="space-y-3">
         <ItalkiTutorBanner
           variant="wide"
-          className="sm:flex-1"
           placement="vocab_seo_after_image"
         />
-        <aside className="flex max-w-md flex-col justify-center rounded-[1.25rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-5 py-5 sm:w-72 sm:shrink-0">
-          <p className="text-sm font-semibold text-[var(--quiz-text)]">
-            Free Korean PDF
-          </p>
-          <p className="mt-1 text-sm leading-relaxed text-[var(--quiz-text-sub)]">
-            Weekly quizzes + a free book when you subscribe.
-          </p>
+        <p className="text-center text-xs text-[var(--quiz-text-muted)] sm:text-left">
           <Link
             href="/subscribe?utm_source=vocab_seo&utm_campaign=cta-strip"
-            className="mt-4 inline-flex h-10 items-center justify-center rounded-full bg-[var(--quiz-primary)] px-4 text-sm font-semibold text-white transition hover:opacity-90"
+            className="font-medium text-[var(--quiz-text-sub)] underline-offset-2 transition hover:text-[var(--quiz-primary)] hover:underline"
           >
-            Get free book
+            Get our free Korean PDF
           </Link>
-        </aside>
+        </p>
       </div>
 
-      <AmazonTextbookBanner
-        placement="vocab_seo_textbooks"
-        variant="compact"
-      />
+      <AmazonTextbookBanner placement="vocab_seo_textbooks" />
 
       {explanation ? (
         <section className="space-y-3" aria-labelledby="vocab-explain">
