@@ -4,6 +4,7 @@ import type { VocabSeoPage } from "@/lib/vocabInfographic/seoTypes";
 import { vocabSeoPath } from "@/lib/vocabInfographic/seo";
 import { vocabQuizPlayPath } from "@/lib/vocabQuizAeoLinks";
 import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
+import { AmazonTextbookBanner } from "@/components/site/AmazonTextbookBanner";
 import { VocabSeoPlayButton } from "@/components/vocab-infographic/VocabSeoPlayButton";
 
 export function VocabSeoHubCard({ page }: { page: VocabSeoPage }) {
@@ -44,6 +45,8 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
   const playHref = vocabQuizPlayPath(`vocab-${page.slug}`);
   const explanation = page.explanationEn?.trim() || "";
   const examples = page.examples?.filter((ex) => ex.korean && ex.english) ?? [];
+  const wordsHeading =
+    page.format === "idiom_card" ? "Idiom in this chart" : "Words in this chart";
 
   return (
     <article className="space-y-10">
@@ -68,7 +71,7 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
             id="vocab-words"
             className="text-lg font-semibold text-[var(--quiz-text)]"
           >
-            Words in this chart
+            {wordsHeading}
           </h2>
           <div className="overflow-hidden rounded-[1.125rem] border border-[var(--quiz-border)] bg-[var(--quiz-surface)]">
             <table className="w-full text-left text-sm">
@@ -144,6 +147,11 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
           </Link>
         </aside>
       </div>
+
+      <AmazonTextbookBanner
+        className="mt-4"
+        placement="vocab_seo_textbooks"
+      />
 
       {explanation ? (
         <section className="space-y-3" aria-labelledby="vocab-explain">

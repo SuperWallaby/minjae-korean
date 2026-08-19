@@ -345,6 +345,7 @@
   height: auto;
   aspect-ratio: 2 / 3;
   object-fit: cover;
+  object-position: top;
   background: var(--g-paper-2);
 }
 
@@ -452,6 +453,7 @@
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
+  object-position: top;
   background: var(--g-paper-2);
   display: block;
 }
@@ -770,6 +772,100 @@
   background: transparent;
   color: var(--g-paper);
   border-color: var(--g-paper);
+}
+
+.global-textbook-panel {
+  margin-top: 0.35rem;
+  padding: 1.15rem 1.1rem 1.25rem;
+  border: 1px solid var(--g-rule);
+  background: var(--g-paper);
+  color: var(--g-ink);
+  display: grid;
+  gap: 0.65rem;
+}
+
+@media (min-width: 720px) {
+  .global-textbook-panel {
+    padding: 1.25rem 1.3rem 1.35rem;
+  }
+}
+
+.global-textbook-kicker {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--g-ink-soft);
+}
+
+.global-textbook-panel h2 {
+  margin: 0;
+  font-family: var(--g-display);
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.global-textbook-panel > p {
+  margin: 0;
+  color: var(--g-ink-soft);
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.global-textbook-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--g-rule);
+  background: #faf6ef;
+  color: var(--g-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.global-textbook-link:hover {
+  border-color: var(--g-ink);
+  background: #fff;
+}
+
+.global-textbook-link img {
+  width: 3.25rem;
+  height: auto;
+  flex-shrink: 0;
+  border: 1px solid var(--g-rule);
+  object-fit: cover;
+}
+
+.global-textbook-link strong {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.global-textbook-link small {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--g-ink-soft);
+}
+
+.global-textbook-link em {
+  display: block;
+  margin-top: 0.45rem;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--g-stamp);
+}
+
+.global-textbook-disclosure {
+  margin: 0 !important;
+  font-size: 0.65rem !important;
+  line-height: 1.35 !important;
+  color: var(--g-ink-soft) !important;
 }
 
 .global-crumbs {

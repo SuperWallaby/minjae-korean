@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T19:35:45.165Z",
+  "generatedAt": "2026-08-19T10:25:03.285Z",
   "pages": [
     {
       "bundleId": "ant-accept-reject",
@@ -48189,11 +48189,19 @@
       "format": "idiom_card",
       "title": "등을 돌리다",
       "titleEn": "등을 돌리다 in Korean",
-      "description": "등을 돌리다 in Korean. Picture-backed Korean vocabulary group for learners.",
+      "description": "The Korean idiom '등을 돌리다' literally means 'to turn one's back.' It is used to describe a situation where someone stops supporting or caring about another per…",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786970501921-idiom-turn-back.webp",
       "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786970501921-idiom-turn-back-thumb.webp",
       "imageAlt": "등을 돌리다 in Korean — Korean vocab chart",
-      "words": [],
+      "words": [
+        {
+          "hangul": "등을 돌리다",
+          "english": "To turn one's back on someone",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1787134892163-idiom-turn-back-w0.mp3",
+          "ttsProvider": "edge",
+          "ttsScore": 1
+        }
+      ],
       "tags": [
         "idiom",
         "expression",
@@ -48201,7 +48209,29 @@
         "등을 돌리다"
       ],
       "intro": "Handy Korean for 등을 돌리다 ✨ 🔴 등을 돌리다",
-      "updatedAt": "2026-08-17T12:41:40.867Z"
+      "updatedAt": "2026-08-19T10:25:03.267Z",
+      "explanationEn": "The Korean idiom '등을 돌리다' literally means 'to turn one's back.' It is used to describe a situation where someone stops supporting or caring about another person or thing. This expression often implies feelings of betrayal or abandonment. It is commonly used in everyday conversations to talk about relationships or friendships that have changed.",
+      "examples": [
+        {
+          "korean": "친구가 갑자기 나에게 등을 돌렸어요.",
+          "english": "My friend suddenly turned their back on me.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1787110748960-idiom-turn-back-ex-0.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "그는 회사에 등을 돌리고 다른 일을 시작했어요.",
+          "english": "He turned his back on the company and started a different job.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1787110748960-idiom-turn-back-ex-1.mp3",
+          "ttsProvider": "sovits"
+        },
+        {
+          "korean": "가족이 어려울 때 서로 등을 돌리지 말아야 해요.",
+          "english": "We should not turn our backs on each other when the family is in trouble.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/vocab-seo-tts/1787110748960-idiom-turn-back-ex-2.mp3",
+          "ttsProvider": "sovits"
+        }
+      ],
+      "enrichedAt": "2026-08-19T03:40:18.614Z"
     },
     {
       "bundleId": "list-age-expressions",
@@ -90760,7 +90790,7 @@
       "titleEn": "Photo spot phrases in Korean",
       "description": "Photo spot phrases in Korean — 여기서 찍자 (Let's take it here), 웃어봐 (Smile), 하나 둘 셋 (One two three), 다시 찍자 (Retake). Picture vocab chart for Korean learners.",
       "imageUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786970942413-tr-phrase-photo-spot.webp",
-      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786970942413-tr-phrase-photo-spot-thumb.webp",
+      "imageThumbUrl": "https://file.kajakorean.com/grammar-x/vocab-infographic/1786341850313-tr-phrase-photo-spot-thumb.webp",
       "imageAlt": "Photo spot phrases in Korean — Korean vocab chart",
       "words": [
         {

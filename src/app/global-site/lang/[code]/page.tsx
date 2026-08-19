@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
+import { GlobalAmazonTextbookPanel } from "@/components/global-site/GlobalAmazonTextbookPanel";
 import {
   getGlobalLang,
   globalLangMeta,
@@ -78,6 +79,12 @@ export default async function GlobalLangPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <GlobalAmazonTextbookPanel
+        lang={code}
+        langName={lang.name}
+        placement="global_lang_textbooks"
+      />
 
       {pins.length === 0 ? (
         <p className="global-pin-lede">More charts coming soon.</p>

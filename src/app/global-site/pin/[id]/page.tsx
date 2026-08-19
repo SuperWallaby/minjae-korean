@@ -13,6 +13,7 @@ import { buildPinMetadata, pinJsonLd } from "@/lib/globalSite/seo";
 import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
 import { GlobalPinImage } from "@/components/global-site/GlobalPinImage";
 import { GlobalTtsButton } from "@/components/global-site/GlobalTtsButton";
+import { GlobalAmazonTextbookPanel } from "@/components/global-site/GlobalAmazonTextbookPanel";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -153,6 +154,13 @@ export default async function GlobalPinPage({ params }: Props) {
               Continue · {partner === "italki" ? "italki" : "Preply"}
             </a>
           </aside>
+
+          <GlobalAmazonTextbookPanel
+            lang={pin.lang}
+            langName={pin.langName}
+            placement="global_pin_textbooks"
+            pinId={pin.id}
+          />
         </div>
       </article>
 

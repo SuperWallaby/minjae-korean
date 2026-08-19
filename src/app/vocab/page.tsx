@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { VocabSeoHubCard } from "@/components/vocab-infographic/VocabSeoArticle";
+import { AmazonTextbookBanner } from "@/components/site/AmazonTextbookBanner";
 import { Breadcrumb } from "@/components/site/Breadcrumb";
 import {
   MarketingHeader,
@@ -98,6 +99,11 @@ export default async function VocabSeoIndexPage({ searchParams }: Props) {
             </Link>
             .
           </p>
+
+          <AmazonTextbookBanner
+            className="mt-6"
+            placement="vocab_hub_textbooks"
+          />
 
           {items.length === 0 ? (
             <p className="mt-8 text-sm text-[var(--quiz-text-sub)]">

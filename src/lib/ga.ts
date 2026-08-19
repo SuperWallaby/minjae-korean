@@ -46,6 +46,7 @@ export function trackAffiliateClick(opts: {
   placement: string;
   pinId?: string;
   lang?: string;
+  asin?: string;
 }): void {
   trackGaEvent("affiliate_click", {
     partner: opts.partner,
@@ -54,6 +55,7 @@ export function trackAffiliateClick(opts: {
       typeof window !== "undefined" ? window.location.pathname : undefined,
     pin_id: opts.pinId,
     lang: opts.lang,
+    asin: opts.asin,
   });
 }
 

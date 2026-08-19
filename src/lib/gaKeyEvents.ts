@@ -12,8 +12,8 @@ export const GA_MEASUREMENT_ID_DEFAULT = "G-9D5H1C2BSP";
 export const GA_KEY_EVENTS = [
   {
     name: "affiliate_click",
-    description: "italki / Preply / 1:1 affiliate CTA click",
-    params: ["partner", "placement", "page_path", "pin_id", "lang"],
+    description: "italki / Preply / Amazon / 1:1 affiliate CTA click",
+    params: ["partner", "placement", "page_path", "pin_id", "lang", "asin"],
   },
   {
     name: "newsletter_subscribe",

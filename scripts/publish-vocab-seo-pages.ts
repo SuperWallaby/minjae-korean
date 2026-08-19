@@ -26,7 +26,9 @@ import type {
 import { catalogHanjaImageWords } from "../src/lib/vocabInfographic/hanjaHubAudit";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const GEN_DIR = path.join(ROOT, ".tmp/vocab-infographic-gen");
+const GEN_DIR =
+  (process.env.VOCAB_OUT || "").trim() ||
+  path.join(ROOT, ".tmp/vocab-infographic-gen");
 const SCHEDULED_PATH = path.join(GEN_DIR, "vocab-x-scheduled.json");
 const OUT_PATH = path.join(ROOT, "src/data/vocabInfographic/published.json");
 
@@ -103,6 +105,49 @@ function loadPrevious(): Map<string, VocabSeoPage> {
 }
 
 /** Keep explanation / examples / word TTS across republish. */
+function idiomCardWords(bundle: {
+  idiomCard?: {
+    hangul: string;
+    literalMeaning: string;
+    meanings: string[];
+  };
+}): VocabSeoWord[] {
+  const card = bundle.idiomCard;
+  if (!card?.hangul?.trim()) return [];
+  const english =
+    card.meanings.find(Boolean)?.trim() ||
+    card.literalMeaning.trim() ||
+    "Korean idiom";
+  return [
+    {
+      hangul: card.hangul.trim(),
+      english,
+    },
+  ];
+}
+
+function resolveWords(
+  bundleId: string,
+  bundle: (typeof ALL_VOCAB_BUNDLES)[number] | undefined,
+  entry: ScheduledEntry,
+): VocabSeoWord[] {
+  if (bundle?.format === "hanja_hub" && bundle.hanjaHub) {
+    return catalogHanjaImageWords(bundle.hanjaHub).map((w) => ({
+      hangul: w.hangul,
+      romanization: w.romanization || undefined,
+      english: w.english,
+    }));
+  }
+  if (bundle?.format === "idiom_card" && bundle.idiomCard) {
+    return idiomCardWords(bundle);
+  }
+  if (normalizeWords(entry.imageWords).length > 0) {
+    return normalizeWords(entry.imageWords);
+  }
+  return loadWordsJson(bundleId);
+}
+
+/** Keep explanation / examples / word TTS across republish. */
 function mergeEnrichment(
   next: VocabSeoPage,
   prev: VocabSeoPage | undefined,
@@ -173,17 +218,8 @@ function main() {
     const title = bundle?.title ?? bundleId.replace(/^(grid|ant|list|quiz)-/, "").replace(/-/g, " ");
     const titleEn = vocabSeoTitleEn(title);
     const slug = slugifyVocabBundleTitle(title);
-    // Hanja: always use catalog-audited compounds (ignore vision / padded imageWords).
-    const words =
-      bundle?.format === "hanja_hub" && bundle.hanjaHub
-        ? catalogHanjaImageWords(bundle.hanjaHub).map((w) => ({
-            hangul: w.hangul,
-            romanization: w.romanization || undefined,
-            english: w.english,
-          }))
-        : normalizeWords(entry.imageWords).length > 0
-          ? normalizeWords(entry.imageWords)
-          : loadWordsJson(bundleId);
+    // Hanja + idiom cards use catalog fields (ignore vision / padded imageWords).
+    const words = resolveWords(bundleId, bundle, entry);
 
     const tweet = String(entry.tweetText ?? "").trim();
     const intro =
