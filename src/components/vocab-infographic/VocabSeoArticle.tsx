@@ -46,7 +46,9 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
   const explanation = page.explanationEn?.trim() || "";
   const examples = page.examples?.filter((ex) => ex.korean && ex.english) ?? [];
   const wordsHeading =
-    page.format === "idiom_card" ? "Idiom in this chart" : "Words in this chart";
+    String(page.format) === "idiom_card"
+      ? "Idiom in this chart"
+      : "Words in this chart";
 
   return (
     <article className="space-y-10">
