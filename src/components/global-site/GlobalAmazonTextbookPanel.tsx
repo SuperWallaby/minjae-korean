@@ -1,12 +1,17 @@
 "use client";
 
+import * as React from "react";
+
 import {
   AMAZON_ASSOCIATE_DISCLOSURE,
   amazonAffiliateUrl,
-  amazonCoverImageUrl,
-  pickGlobalTextbook,
+  pickGlobalTextbooks,
+  textbookCoverSrc,
+  type AmazonTextbook,
 } from "@/lib/affiliateAmazon";
 import { trackAffiliateClick } from "@/lib/ga";
+
+const COVER_FALLBACK = "/brand/textbooks/book-placeholder.svg";
 
 type Props = {
   lang: string;
@@ -15,60 +20,87 @@ type Props = {
   pinId?: string;
 };
 
+function TextbookLink({
+  book,
+  lang,
+  placement,
+  pinId,
+}: {
+  book: AmazonTextbook;
+  lang: string;
+  placement: string;
+  pinId?: string;
+}) {
+  const [coverSrc, setCoverSrc] = React.useState(textbookCoverSrc(book));
+
+  return (
+    <a
+      className="global-textbook-link"
+      href={amazonAffiliateUrl(book.asin)}
+      target="_blank"
+      rel="noopener noreferrer sponsored"
+      title={`${book.title} — ${book.subtitle}`}
+      onClick={() =>
+        trackAffiliateClick({
+          partner: "amazon",
+          placement,
+          lang,
+          pinId,
+          asin: book.asin,
+        })
+      }
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={coverSrc}
+        alt=""
+        width={28}
+        height={42}
+        loading="lazy"
+        decoding="async"
+        onError={() => {
+          if (coverSrc !== COVER_FALLBACK) setCoverSrc(COVER_FALLBACK);
+        }}
+      />
+      <span>
+        <strong>{book.title}</strong>
+      </span>
+    </a>
+  );
+}
+
 export function GlobalAmazonTextbookPanel({
   lang,
   langName,
   placement = "global_textbook_panel",
   pinId,
 }: Props) {
-  const book = pickGlobalTextbook(lang);
-  if (!book) return null;
-
-  const href = amazonAffiliateUrl(book.asin);
+  const books = pickGlobalTextbooks(lang);
+  if (books.length === 0) return null;
 
   return (
     <aside
       className="global-textbook-panel"
-      aria-label={`Recommended ${langName} textbook — Amazon affiliate`}
+      aria-label={`Recommended ${langName} textbooks — Amazon affiliate`}
       data-affiliate="amazon"
       data-lang={lang}
     >
-      <p className="global-textbook-kicker">Study next</p>
-      <h2>Textbook for {langName}</h2>
-      <p>
-        Save this chart, then work through a structured course so the words
-        stick.
-      </p>
-      <a
-        className="global-textbook-link"
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer sponsored"
-        onClick={() =>
-          trackAffiliateClick({
-            partner: "amazon",
-            placement,
-            lang,
-            pinId,
-            asin: book.asin,
-          })
-        }
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={amazonCoverImageUrl(book.asin, 140)}
-          alt=""
-          width={56}
-          height={84}
-          loading="lazy"
-          decoding="async"
-        />
-        <span>
-          <strong>{book.title}</strong>
-          <small>{book.subtitle}</small>
-          <em>View on Amazon →</em>
-        </span>
-      </a>
+      <div className="global-textbook-head">
+        <p className="global-textbook-kicker">Study next</p>
+        <h2>Textbooks for {langName}</h2>
+      </div>
+      <ul className="global-textbook-list">
+        {books.map((book) => (
+          <li key={book.asin}>
+            <TextbookLink
+              book={book}
+              lang={lang}
+              placement={placement}
+              pinId={pinId}
+            />
+          </li>
+        ))}
+      </ul>
       <p className="global-textbook-disclosure">{AMAZON_ASSOCIATE_DISCLOSURE}</p>
     </aside>
   );

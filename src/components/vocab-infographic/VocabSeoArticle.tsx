@@ -151,8 +151,8 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
       </div>
 
       <AmazonTextbookBanner
-        className="mt-4"
         placement="vocab_seo_textbooks"
+        variant="compact"
       />
 
       {explanation ? (

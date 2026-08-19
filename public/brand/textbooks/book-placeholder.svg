@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="180" viewBox="0 0 120 180" role="img" aria-label="Book cover">
+  <rect width="120" height="180" fill="#ede6da"/>
+  <rect x="10" y="10" width="100" height="160" fill="#faf6ef" stroke="#cfc6b8" stroke-width="2"/>
+  <path d="M60 52v76M44 68h32M44 92h32M44 116h22" stroke="#b8afa3" stroke-width="3" stroke-linecap="round"/>
+</svg>
