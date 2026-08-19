@@ -23,8 +23,8 @@ export function AmazonTextbookBanner({
   className = "",
   placement = "textbook_banner",
   books = KOREAN_TEXTBOOKS,
-  heading = "Textbooks we recommend",
-  lede = "Pair a chart with a structured course — swipe to browse.",
+  heading = "Recommended Korean textbooks",
+  lede,
   lang,
   pinId,
 }: Props) {
@@ -42,17 +42,17 @@ export function AmazonTextbookBanner({
 
   return (
     <aside
-      className={`rounded-xl border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3.5 ${className}`.trim()}
+      className={`mx-auto w-full max-w-md rounded-xl border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-4 py-3.5 ${className}`.trim()}
       aria-label="Recommended language textbooks — Amazon affiliate"
       data-affiliate="amazon"
     >
-      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-        <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-[var(--quiz-text-muted)]">
-          Study next
-        </p>
+      <div className="flex items-baseline justify-between gap-3">
         <h2 className="text-sm font-semibold text-[var(--quiz-text)]">
           {heading}
         </h2>
+        <span className="shrink-0 text-[0.65rem] text-[var(--quiz-text-muted)]">
+          Swipe →
+        </span>
       </div>
       {lede ? (
         <p className="mt-1 text-xs leading-snug text-[var(--quiz-text-sub)]">

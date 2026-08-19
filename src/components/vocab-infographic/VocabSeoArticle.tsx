@@ -131,12 +131,13 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
       <div className="space-y-3">
         <ItalkiTutorBanner
           variant="wide"
+          className="max-w-[18rem]"
           placement="vocab_seo_after_image"
         />
-        <p className="text-center text-xs text-[var(--quiz-text-muted)] sm:text-left">
+        <p className="text-center text-[0.7rem] text-[var(--quiz-text-muted)]">
           <Link
             href="/subscribe?utm_source=vocab_seo&utm_campaign=cta-strip"
-            className="font-medium text-[var(--quiz-text-sub)] underline-offset-2 transition hover:text-[var(--quiz-primary)] hover:underline"
+            className="underline-offset-2 transition hover:text-[var(--quiz-primary)] hover:underline"
           >
             Get our free Korean PDF
           </Link>

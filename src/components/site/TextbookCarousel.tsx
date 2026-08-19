@@ -26,7 +26,7 @@ function CarouselSlide({ book, onClick, theme = "quiz" }: SlideProps) {
       className={
         isGlobal
           ? "global-textbook-slide"
-          : "w-[6.75rem] shrink-0 snap-start sm:w-[7.5rem]"
+          : "w-[8.5rem] shrink-0 snap-start sm:w-36"
       }
     >
       <a
@@ -95,7 +95,7 @@ export function TextbookCarousel({
   return (
     <div
       className={
-        isGlobal ? "global-textbook-carousel-wrap" : "relative -mx-1 mt-3"
+        isGlobal ? "global-textbook-carousel-wrap" : "relative -mx-1 mt-2.5"
       }
     >
       {!isGlobal ? (
@@ -114,7 +114,7 @@ export function TextbookCarousel({
         className={
           isGlobal
             ? "global-textbook-carousel"
-            : "flex gap-3 overflow-x-auto px-1 pb-1 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            : "flex gap-3 overflow-x-auto px-1 pb-1.5 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         }
         aria-label={ariaLabel}
       >
