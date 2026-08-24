@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-24T17:21:29.510Z",
+  "generatedAt": "2026-08-24T17:42:50.749Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -2722,6 +2722,65 @@
       "publishedAt": "2026-08-14T05:21:58.430Z"
     },
     {
+      "id": "21_garden-plants__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Garden plants in Spanish",
+      "slug": "garden-plants-in-spanish",
+      "imagePath": "/global/pins/21_garden-plants__es.png",
+      "words": [
+        {
+          "english": "flower",
+          "target": "flor",
+          "romanization": "flor"
+        },
+        {
+          "english": "tree",
+          "target": "árbol",
+          "romanization": "ar-bol"
+        },
+        {
+          "english": "grass",
+          "target": "césped",
+          "romanization": "thes-ped"
+        },
+        {
+          "english": "soil",
+          "target": "tierra",
+          "romanization": "tye-rra"
+        },
+        {
+          "english": "seed",
+          "target": "semilla",
+          "romanization": "se-mee-ya"
+        },
+        {
+          "english": "watering can",
+          "target": "regadera",
+          "romanization": "re-ga-de-ra"
+        },
+        {
+          "english": "shovel",
+          "target": "pala",
+          "romanization": "pa-la"
+        },
+        {
+          "english": "pot",
+          "target": "maceta",
+          "romanization": "ma-the-ta"
+        },
+        {
+          "english": "leaf",
+          "target": "hoja",
+          "romanization": "o-ha"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-24T17:08:26.170Z"
+    },
+    {
       "id": "21_hair-colors__es",
       "lang": "es",
       "langName": "Spanish",
@@ -2938,6 +2997,65 @@
       "description": "Learn Spanish: sight, hearing, smell, taste, touch, cold…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "five-senses",
       "publishedAt": "2026-08-14T05:41:23.174Z"
+    },
+    {
+      "id": "22_music-instruments__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Musical instruments in Spanish",
+      "slug": "musical-instruments-in-spanish",
+      "imagePath": "/global/pins/22_music-instruments__es.png",
+      "words": [
+        {
+          "english": "piano",
+          "target": "piano",
+          "romanization": "pee-AH-no"
+        },
+        {
+          "english": "guitar",
+          "target": "guitarra",
+          "romanization": "gee-TAH-rrah"
+        },
+        {
+          "english": "violin",
+          "target": "violín",
+          "romanization": "vee-oh-LEEN"
+        },
+        {
+          "english": "drums",
+          "target": "batería",
+          "romanization": "bah-teh-REE-ah"
+        },
+        {
+          "english": "flute",
+          "target": "flauta",
+          "romanization": "FLAU-tah"
+        },
+        {
+          "english": "trumpet",
+          "target": "trompeta",
+          "romanization": "trom-PEH-tah"
+        },
+        {
+          "english": "microphone",
+          "target": "micrófono",
+          "romanization": "mee-KROH-foh-no"
+        },
+        {
+          "english": "headphones",
+          "target": "auriculares",
+          "romanization": "ow-ree-koo-LAH-res"
+        },
+        {
+          "english": "note",
+          "target": "nota",
+          "romanization": "NOH-tah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:19:09.380Z"
     },
     {
       "id": "23_directions__es",
@@ -10816,6 +10934,65 @@
       "publishedAt": "2026-08-14T05:23:32.308Z"
     },
     {
+      "id": "21_garden-plants__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Garden plants in French",
+      "slug": "garden-plants-in-french",
+      "imagePath": "/global/pins/21_garden-plants__fr.png",
+      "words": [
+        {
+          "english": "flower",
+          "target": "fleur",
+          "romanization": "flœr"
+        },
+        {
+          "english": "tree",
+          "target": "arbre",
+          "romanization": "ar-br"
+        },
+        {
+          "english": "grass",
+          "target": "herbe",
+          "romanization": "airb"
+        },
+        {
+          "english": "soil",
+          "target": "terre",
+          "romanization": "tair"
+        },
+        {
+          "english": "seed",
+          "target": "graine",
+          "romanization": "gren"
+        },
+        {
+          "english": "watering can",
+          "target": "arrosoir",
+          "romanization": "a-ro-swar"
+        },
+        {
+          "english": "shovel",
+          "target": "pelle",
+          "romanization": "pel"
+        },
+        {
+          "english": "pot",
+          "target": "pot",
+          "romanization": "po"
+        },
+        {
+          "english": "leaf",
+          "target": "feuille",
+          "romanization": "fœj"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-24T17:10:08.764Z"
+    },
+    {
       "id": "21_hair-colors__fr",
       "lang": "fr",
       "langName": "French",
@@ -11032,6 +11209,65 @@
       "description": "Learn French: sight, hearing, smell, taste, touch, cold…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "five-senses",
       "publishedAt": "2026-08-14T05:42:54.314Z"
+    },
+    {
+      "id": "22_music-instruments__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Musical instruments in French",
+      "slug": "musical-instruments-in-french",
+      "imagePath": "/global/pins/22_music-instruments__fr.png",
+      "words": [
+        {
+          "english": "piano",
+          "target": "piano",
+          "romanization": "pya-no"
+        },
+        {
+          "english": "guitar",
+          "target": "guitare",
+          "romanization": "gee-tar"
+        },
+        {
+          "english": "violin",
+          "target": "violon",
+          "romanization": "vee-o-lon"
+        },
+        {
+          "english": "drums",
+          "target": "batterie",
+          "romanization": "ba-te-ree"
+        },
+        {
+          "english": "flute",
+          "target": "flûte",
+          "romanization": "floot"
+        },
+        {
+          "english": "trumpet",
+          "target": "trompette",
+          "romanization": "trom-pet"
+        },
+        {
+          "english": "microphone",
+          "target": "microphone",
+          "romanization": "mee-kro-fon"
+        },
+        {
+          "english": "headphones",
+          "target": "casque audio",
+          "romanization": "kask o-dee-o"
+        },
+        {
+          "english": "note",
+          "target": "note",
+          "romanization": "not"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:21:05.147Z"
     },
     {
       "id": "23_directions__fr",
@@ -18742,6 +18978,65 @@
       "publishedAt": "2026-08-24T16:51:02.927Z"
     },
     {
+      "id": "20_laundry-care__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Laundry words in German",
+      "slug": "laundry-words-in-german",
+      "imagePath": "/global/pins/20_laundry-care__de.png",
+      "words": [
+        {
+          "english": "washing machine",
+          "target": "Waschmaschine",
+          "romanization": "Vash-mashee-neh"
+        },
+        {
+          "english": "dryer",
+          "target": "Trockner",
+          "romanization": "Trok-ner"
+        },
+        {
+          "english": "detergent",
+          "target": "Waschmittel",
+          "romanization": "Vash-mit-tel"
+        },
+        {
+          "english": "fabric softener",
+          "target": "Weichspüler",
+          "romanization": "Vike-shpue-ler"
+        },
+        {
+          "english": "hanger",
+          "target": "Kleiderbügel",
+          "romanization": "Kly-der-bue-gel"
+        },
+        {
+          "english": "iron",
+          "target": "Bügeleisen",
+          "romanization": "Bue-ge-lie-zen"
+        },
+        {
+          "english": "lint",
+          "target": "Flusen",
+          "romanization": "Flu-zen"
+        },
+        {
+          "english": "fold",
+          "target": "falten",
+          "romanization": "fal-ten"
+        },
+        {
+          "english": "stain",
+          "target": "Fleck",
+          "romanization": "Flek"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-24T17:01:26.519Z"
+    },
+    {
       "id": "20_life-stages__de",
       "lang": "de",
       "langName": "German",
@@ -18849,6 +19144,65 @@
       "description": "Learn German: baby, child, teenager, young adult, adult, middle-aged…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "life-stages",
       "publishedAt": "2026-08-14T05:25:10.697Z"
+    },
+    {
+      "id": "21_garden-plants__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Garden plants in German",
+      "slug": "garden-plants-in-german",
+      "imagePath": "/global/pins/21_garden-plants__de.png",
+      "words": [
+        {
+          "english": "flower",
+          "target": "Blume",
+          "romanization": "bloo-me"
+        },
+        {
+          "english": "tree",
+          "target": "Baum",
+          "romanization": "baum"
+        },
+        {
+          "english": "grass",
+          "target": "Gras",
+          "romanization": "grahs"
+        },
+        {
+          "english": "soil",
+          "target": "Erde",
+          "romanization": "air-de"
+        },
+        {
+          "english": "seed",
+          "target": "Samen",
+          "romanization": "zah-men"
+        },
+        {
+          "english": "watering can",
+          "target": "Gießkanne",
+          "romanization": "geess-kan-ne"
+        },
+        {
+          "english": "shovel",
+          "target": "Schaufel",
+          "romanization": "shau-fel"
+        },
+        {
+          "english": "pot",
+          "target": "Topf",
+          "romanization": "topf"
+        },
+        {
+          "english": "leaf",
+          "target": "Blatt",
+          "romanization": "blaht"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-24T17:11:55.070Z"
     },
     {
       "id": "21_hair-colors__de",
@@ -19067,6 +19421,65 @@
       "description": "Learn German: sight, hearing, smell, taste, touch, cold…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "five-senses",
       "publishedAt": "2026-08-14T05:44:42.266Z"
+    },
+    {
+      "id": "22_music-instruments__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Musical instruments in German",
+      "slug": "musical-instruments-in-german",
+      "imagePath": "/global/pins/22_music-instruments__de.png",
+      "words": [
+        {
+          "english": "piano",
+          "target": "Klavier",
+          "romanization": "kla-vee-er"
+        },
+        {
+          "english": "guitar",
+          "target": "Gitarre",
+          "romanization": "gee-tar-re"
+        },
+        {
+          "english": "violin",
+          "target": "Violine",
+          "romanization": "vee-oh-lee-neh"
+        },
+        {
+          "english": "drums",
+          "target": "Schlagzeug",
+          "romanization": "shlahg-tsoyk"
+        },
+        {
+          "english": "flute",
+          "target": "Flöte",
+          "romanization": "flur-teh"
+        },
+        {
+          "english": "trumpet",
+          "target": "Trompete",
+          "romanization": "trom-peh-teh"
+        },
+        {
+          "english": "microphone",
+          "target": "Mikrofon",
+          "romanization": "mee-kro-fon"
+        },
+        {
+          "english": "headphones",
+          "target": "Kopfhörer",
+          "romanization": "kopf-hur-er"
+        },
+        {
+          "english": "note",
+          "target": "Note",
+          "romanization": "noh-teh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:22:49.077Z"
     },
     {
       "id": "23_directions__de",
@@ -26771,6 +27184,65 @@
       "publishedAt": "2026-08-24T16:54:35.771Z"
     },
     {
+      "id": "20_laundry-care__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Laundry words in Italian",
+      "slug": "laundry-words-in-italian",
+      "imagePath": "/global/pins/20_laundry-care__it.png",
+      "words": [
+        {
+          "english": "washing machine",
+          "target": "lavatrice",
+          "romanization": "lah-vrah-tee-cheh"
+        },
+        {
+          "english": "dryer",
+          "target": "asciugatrice",
+          "romanization": "ah-shoo-gah-tree-cheh"
+        },
+        {
+          "english": "detergent",
+          "target": "detersivo",
+          "romanization": "deh-ter-see-voh"
+        },
+        {
+          "english": "fabric softener",
+          "target": "ammorbidente",
+          "romanization": "ahm-mor-bee-den-teh"
+        },
+        {
+          "english": "hanger",
+          "target": "gruccia",
+          "romanization": "groo-chah"
+        },
+        {
+          "english": "iron",
+          "target": "ferro da stiro",
+          "romanization": "fehr-roh dah stee-roh"
+        },
+        {
+          "english": "lint",
+          "target": "pelucchio",
+          "romanization": "peh-loo-kkyo"
+        },
+        {
+          "english": "fold",
+          "target": "piegare",
+          "romanization": "pyeh-gah-reh"
+        },
+        {
+          "english": "stain",
+          "target": "macchia",
+          "romanization": "mahk-kee-ah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-24T17:04:57.083Z"
+    },
+    {
       "id": "20_life-stages__it",
       "lang": "it",
       "langName": "Italian",
@@ -26878,6 +27350,65 @@
       "description": "Learn Italian: baby, child, teenager, young adult, adult, middle-aged…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "life-stages",
       "publishedAt": "2026-08-14T05:28:26.165Z"
+    },
+    {
+      "id": "21_garden-plants__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Garden plants in Italian",
+      "slug": "garden-plants-in-italian",
+      "imagePath": "/global/pins/21_garden-plants__it.png",
+      "words": [
+        {
+          "english": "flower",
+          "target": "fiore",
+          "romanization": "FYO-re"
+        },
+        {
+          "english": "tree",
+          "target": "albero",
+          "romanization": "AL-be-ro"
+        },
+        {
+          "english": "grass",
+          "target": "erba",
+          "romanization": "ER-ba"
+        },
+        {
+          "english": "soil",
+          "target": "terreno",
+          "romanization": "te-RE-no"
+        },
+        {
+          "english": "seed",
+          "target": "seme",
+          "romanization": "SE-me"
+        },
+        {
+          "english": "watering can",
+          "target": "annaffiatoio",
+          "romanization": "an-naf-fi-a-TO-io"
+        },
+        {
+          "english": "shovel",
+          "target": "pala",
+          "romanization": "PA-la"
+        },
+        {
+          "english": "pot",
+          "target": "vaso",
+          "romanization": "VA-so"
+        },
+        {
+          "english": "leaf",
+          "target": "foglia",
+          "romanization": "FO-glia"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-24T17:15:31.504Z"
     },
     {
       "id": "21_hair-colors__it",
@@ -34812,6 +35343,65 @@
       "publishedAt": "2026-08-24T16:52:49.854Z"
     },
     {
+      "id": "20_laundry-care__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Laundry words in Arabic",
+      "slug": "laundry-words-in-arabic",
+      "imagePath": "/global/pins/20_laundry-care__ar.png",
+      "words": [
+        {
+          "english": "washing machine",
+          "target": "غسالة",
+          "romanization": "ghassala"
+        },
+        {
+          "english": "dryer",
+          "target": "مجفف",
+          "romanization": "mujaffif"
+        },
+        {
+          "english": "detergent",
+          "target": "منظف",
+          "romanization": "munazzif"
+        },
+        {
+          "english": "fabric softener",
+          "target": "ملطف الأقمشة",
+          "romanization": "mulattif al-aqmisah"
+        },
+        {
+          "english": "hanger",
+          "target": "علاقة ملابس",
+          "romanization": "ʿalaqat malabis"
+        },
+        {
+          "english": "iron",
+          "target": "مكواة",
+          "romanization": "mikwah"
+        },
+        {
+          "english": "lint",
+          "target": "وبر",
+          "romanization": "wabar"
+        },
+        {
+          "english": "fold",
+          "target": "يطوي",
+          "romanization": "yatwi"
+        },
+        {
+          "english": "stain",
+          "target": "بقعة",
+          "romanization": "buqʿa"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-24T17:03:09.997Z"
+    },
+    {
       "id": "20_life-stages__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -34919,6 +35509,65 @@
       "description": "Learn Arabic: baby, child, teenager, young adult, adult, middle-aged…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "life-stages",
       "publishedAt": "2026-08-14T05:26:47.750Z"
+    },
+    {
+      "id": "21_garden-plants__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Garden plants in Arabic",
+      "slug": "garden-plants-in-arabic",
+      "imagePath": "/global/pins/21_garden-plants__ar.png",
+      "words": [
+        {
+          "english": "flower",
+          "target": "زهرة",
+          "romanization": "zahra"
+        },
+        {
+          "english": "tree",
+          "target": "شجرة",
+          "romanization": "shajara"
+        },
+        {
+          "english": "grass",
+          "target": "عشب",
+          "romanization": "ʿushb"
+        },
+        {
+          "english": "soil",
+          "target": "تربة",
+          "romanization": "turba"
+        },
+        {
+          "english": "seed",
+          "target": "بذرة",
+          "romanization": "bidhra"
+        },
+        {
+          "english": "watering can",
+          "target": "رشاشة ماء",
+          "romanization": "rashasha ma'"
+        },
+        {
+          "english": "shovel",
+          "target": "مجرفة",
+          "romanization": "majrafa"
+        },
+        {
+          "english": "pot",
+          "target": "وعاء",
+          "romanization": "wi'aa'"
+        },
+        {
+          "english": "leaf",
+          "target": "ورقة",
+          "romanization": "waraqa"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-24T17:13:40.521Z"
     },
     {
       "id": "21_hair-colors__ar",
@@ -42859,6 +43508,65 @@
       "publishedAt": "2026-08-24T16:56:09.319Z"
     },
     {
+      "id": "20_laundry-care__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Laundry words in Japanese",
+      "slug": "laundry-words-in-japanese",
+      "imagePath": "/global/pins/20_laundry-care__ja.png",
+      "words": [
+        {
+          "english": "washing machine",
+          "target": "せんたくき",
+          "romanization": "sentakuki"
+        },
+        {
+          "english": "dryer",
+          "target": "ふくそうき",
+          "romanization": "fukusouki"
+        },
+        {
+          "english": "detergent",
+          "target": "せんざい",
+          "romanization": "senzai"
+        },
+        {
+          "english": "fabric softener",
+          "target": "やわらかざい",
+          "romanization": "yawarakazai"
+        },
+        {
+          "english": "hanger",
+          "target": "ハンガー",
+          "romanization": "hangā"
+        },
+        {
+          "english": "iron",
+          "target": "アイロン",
+          "romanization": "airon"
+        },
+        {
+          "english": "lint",
+          "target": "ほこり",
+          "romanization": "hokori"
+        },
+        {
+          "english": "fold",
+          "target": "たたむ",
+          "romanization": "tatamu"
+        },
+        {
+          "english": "stain",
+          "target": "しみ",
+          "romanization": "shimi"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-24T17:06:40.579Z"
+    },
+    {
       "id": "20_life-stages__ja",
       "lang": "ja",
       "langName": "Japanese",
@@ -42966,6 +43674,65 @@
       "description": "Learn Japanese: baby, child, teenager, young adult, adult, middle-aged…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "life-stages",
       "publishedAt": "2026-08-14T05:30:00.705Z"
+    },
+    {
+      "id": "21_garden-plants__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Garden plants in Japanese",
+      "slug": "garden-plants-in-japanese",
+      "imagePath": "/global/pins/21_garden-plants__ja.png",
+      "words": [
+        {
+          "english": "flower",
+          "target": "はな",
+          "romanization": "hana"
+        },
+        {
+          "english": "tree",
+          "target": "き",
+          "romanization": "ki"
+        },
+        {
+          "english": "grass",
+          "target": "くさ",
+          "romanization": "kusa"
+        },
+        {
+          "english": "soil",
+          "target": "つち",
+          "romanization": "tsuchi"
+        },
+        {
+          "english": "seed",
+          "target": "たね",
+          "romanization": "tane"
+        },
+        {
+          "english": "watering can",
+          "target": "じょうろ",
+          "romanization": "jourou"
+        },
+        {
+          "english": "shovel",
+          "target": "スコップ",
+          "romanization": "sukoppu"
+        },
+        {
+          "english": "pot",
+          "target": "なべ",
+          "romanization": "nabe"
+        },
+        {
+          "english": "leaf",
+          "target": "は",
+          "romanization": "ha"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-24T17:17:07.309Z"
     },
     {
       "id": "21_hair-colors__ja",
