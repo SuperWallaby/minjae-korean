@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-24T17:42:50.749Z",
+  "generatedAt": "2026-08-24T18:03:25.353Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -3165,6 +3165,65 @@
       "description": "Learn Spanish: north, south, east, west, left, right…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "directions",
       "publishedAt": "2026-08-14T05:51:11.285Z"
+    },
+    {
+      "id": "23_holiday-celebrations__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Holiday words in Spanish",
+      "slug": "holiday-words-in-spanish",
+      "imagePath": "/global/pins/23_holiday-celebrations__es.png",
+      "words": [
+        {
+          "english": "gift",
+          "target": "regalo",
+          "romanization": "reh-GAH-loh"
+        },
+        {
+          "english": "party",
+          "target": "fiesta",
+          "romanization": "fee-EHS-tah"
+        },
+        {
+          "english": "cake",
+          "target": "pastel",
+          "romanization": "pahs-TEHL"
+        },
+        {
+          "english": "candle",
+          "target": "vela",
+          "romanization": "BEH-lah"
+        },
+        {
+          "english": "balloon",
+          "target": "globo",
+          "romanization": "GLOH-boh"
+        },
+        {
+          "english": "fireworks",
+          "target": "fuegos artificiales",
+          "romanization": "FWEH-gohs ahr-tee-fee-SYAH-les"
+        },
+        {
+          "english": "decoration",
+          "target": "decoración",
+          "romanization": "deh-koh-rah-SYON"
+        },
+        {
+          "english": "invite",
+          "target": "invitar",
+          "romanization": "een-bee-TAR"
+        },
+        {
+          "english": "toast",
+          "target": "brindis",
+          "romanization": "BREEN-dees"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: gift, party, cake, candle, balloon, fireworks…. Save-friendly chart with pronunciation.",
+      "topicSlug": "holiday-celebrations",
+      "publishedAt": "2026-08-24T17:29:55.667Z"
     },
     {
       "id": "24_daily-routine__es",
@@ -11377,6 +11436,65 @@
       "description": "Learn French: north, south, east, west, left, right…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "directions",
       "publishedAt": "2026-08-14T05:52:49.021Z"
+    },
+    {
+      "id": "23_holiday-celebrations__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Holiday words in French",
+      "slug": "holiday-words-in-french",
+      "imagePath": "/global/pins/23_holiday-celebrations__fr.png",
+      "words": [
+        {
+          "english": "gift",
+          "target": "cadeau",
+          "romanization": "ka-do"
+        },
+        {
+          "english": "party",
+          "target": "fête",
+          "romanization": "fet"
+        },
+        {
+          "english": "cake",
+          "target": "gâteau",
+          "romanization": "ga-to"
+        },
+        {
+          "english": "candle",
+          "target": "bougie",
+          "romanization": "boo-zhee"
+        },
+        {
+          "english": "balloon",
+          "target": "ballon",
+          "romanization": "ba-lon"
+        },
+        {
+          "english": "fireworks",
+          "target": "feux d'artifice",
+          "romanization": "fuh dar-tee-fees"
+        },
+        {
+          "english": "decoration",
+          "target": "décoration",
+          "romanization": "day-ko-ra-syon"
+        },
+        {
+          "english": "invite",
+          "target": "inviter",
+          "romanization": "an-vee-tay"
+        },
+        {
+          "english": "toast",
+          "target": "toast",
+          "romanization": "tost"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: gift, party, cake, candle, balloon, fireworks…. Save-friendly chart with pronunciation.",
+      "topicSlug": "holiday-celebrations",
+      "publishedAt": "2026-08-24T17:31:34.042Z"
     },
     {
       "id": "24_daily-routine__fr",
@@ -27629,6 +27747,65 @@
       "publishedAt": "2026-08-14T05:47:55.068Z"
     },
     {
+      "id": "22_music-instruments__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Musical instruments in Italian",
+      "slug": "musical-instruments-in-italian",
+      "imagePath": "/global/pins/22_music-instruments__it.png",
+      "words": [
+        {
+          "english": "piano",
+          "target": "pianoforte",
+          "romanization": "pya-no-for-te"
+        },
+        {
+          "english": "guitar",
+          "target": "chitarra",
+          "romanization": "kee-tar-ra"
+        },
+        {
+          "english": "violin",
+          "target": "violino",
+          "romanization": "vee-o-lee-no"
+        },
+        {
+          "english": "drums",
+          "target": "batteria",
+          "romanization": "bat-te-ree-a"
+        },
+        {
+          "english": "flute",
+          "target": "flauto",
+          "romanization": "flau-to"
+        },
+        {
+          "english": "trumpet",
+          "target": "tromba",
+          "romanization": "trom-ba"
+        },
+        {
+          "english": "microphone",
+          "target": "microfono",
+          "romanization": "mee-cro-fo-no"
+        },
+        {
+          "english": "headphones",
+          "target": "cuffie",
+          "romanization": "coo-fee-e"
+        },
+        {
+          "english": "note",
+          "target": "nota",
+          "romanization": "no-ta"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:26:35.592Z"
+    },
+    {
       "id": "23_directions__it",
       "lang": "it",
       "langName": "Italian",
@@ -35786,6 +35963,65 @@
       "description": "Learn Arabic: sight, hearing, smell, taste, touch, cold…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "five-senses",
       "publishedAt": "2026-08-14T05:46:20.074Z"
+    },
+    {
+      "id": "22_music-instruments__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Musical instruments in Arabic",
+      "slug": "musical-instruments-in-arabic",
+      "imagePath": "/global/pins/22_music-instruments__ar.png",
+      "words": [
+        {
+          "english": "piano",
+          "target": "بيانو",
+          "romanization": "biano"
+        },
+        {
+          "english": "guitar",
+          "target": "قيثارة",
+          "romanization": "qithara"
+        },
+        {
+          "english": "violin",
+          "target": "كمان",
+          "romanization": "kaman"
+        },
+        {
+          "english": "drums",
+          "target": "طبول",
+          "romanization": "tubul"
+        },
+        {
+          "english": "flute",
+          "target": "ناي",
+          "romanization": "nay"
+        },
+        {
+          "english": "trumpet",
+          "target": "بوق",
+          "romanization": "buq"
+        },
+        {
+          "english": "microphone",
+          "target": "ميكروفون",
+          "romanization": "mikrofon"
+        },
+        {
+          "english": "headphones",
+          "target": "سماعات رأس",
+          "romanization": "sama'at ra's"
+        },
+        {
+          "english": "note",
+          "target": "نغمة",
+          "romanization": "naghma"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:24:45.299Z"
     },
     {
       "id": "23_directions__ar",
@@ -43951,6 +44187,65 @@
       "description": "Learn Japanese: sight, hearing, smell, taste, touch, cold…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "five-senses",
       "publishedAt": "2026-08-14T05:49:32.138Z"
+    },
+    {
+      "id": "22_music-instruments__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Musical instruments in Japanese",
+      "slug": "musical-instruments-in-japanese",
+      "imagePath": "/global/pins/22_music-instruments__ja.png",
+      "words": [
+        {
+          "english": "piano",
+          "target": "ピアノ",
+          "romanization": "piano"
+        },
+        {
+          "english": "guitar",
+          "target": "ギター",
+          "romanization": "gitaa"
+        },
+        {
+          "english": "violin",
+          "target": "バイオリン",
+          "romanization": "baiorin"
+        },
+        {
+          "english": "drums",
+          "target": "ドラム",
+          "romanization": "doramu"
+        },
+        {
+          "english": "flute",
+          "target": "フルート",
+          "romanization": "furuuto"
+        },
+        {
+          "english": "trumpet",
+          "target": "トランペット",
+          "romanization": "toranpetto"
+        },
+        {
+          "english": "microphone",
+          "target": "マイク",
+          "romanization": "maiku"
+        },
+        {
+          "english": "headphones",
+          "target": "ヘッドホン",
+          "romanization": "heddohon"
+        },
+        {
+          "english": "note",
+          "target": "音符",
+          "romanization": "onpu"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:28:15.626Z"
     },
     {
       "id": "23_directions__ja",
