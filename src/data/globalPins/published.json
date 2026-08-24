@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-24T16:57:53.324Z",
+  "generatedAt": "2026-08-24T17:21:29.510Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -2218,6 +2218,65 @@
       "publishedAt": "2026-08-24T16:26:37.393Z"
     },
     {
+      "id": "18_banking-basics__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Banking basics in Spanish",
+      "slug": "banking-basics-in-spanish",
+      "imagePath": "/global/pins/18_banking-basics__es.png",
+      "words": [
+        {
+          "english": "bank",
+          "target": "banco",
+          "romanization": "BAN-ko"
+        },
+        {
+          "english": "account",
+          "target": "cuenta",
+          "romanization": "KWEN-ta"
+        },
+        {
+          "english": "cash",
+          "target": "efectivo",
+          "romanization": "eh-fek-TEE-vo"
+        },
+        {
+          "english": "card",
+          "target": "tarjeta",
+          "romanization": "tar-HE-ta"
+        },
+        {
+          "english": "deposit",
+          "target": "depósito",
+          "romanization": "deh-PO-see-to"
+        },
+        {
+          "english": "withdraw",
+          "target": "retirar",
+          "romanization": "reh-tee-RAR"
+        },
+        {
+          "english": "transfer",
+          "target": "transferir",
+          "romanization": "trans-fe-REER"
+        },
+        {
+          "english": "balance",
+          "target": "saldo",
+          "romanization": "SAL-do"
+        },
+        {
+          "english": "receipt",
+          "target": "recibo",
+          "romanization": "reh-SEE-bo"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-24T16:37:22.716Z"
+    },
+    {
       "id": "18_phone-parts__es",
       "lang": "es",
       "langName": "Spanish",
@@ -2434,6 +2493,124 @@
       "description": "Learn Spanish: coffee, green tea, black tea, milk, hot chocolate, lemon tea…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hot-drinks",
       "publishedAt": "2026-08-14T05:11:42.875Z"
+    },
+    {
+      "id": "19_post-mail__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Post & mail words in Spanish",
+      "slug": "post-mail-words-in-spanish",
+      "imagePath": "/global/pins/19_post-mail__es.png",
+      "words": [
+        {
+          "english": "letter",
+          "target": "carta",
+          "romanization": "kar-ta"
+        },
+        {
+          "english": "stamp",
+          "target": "sello",
+          "romanization": "se-yo"
+        },
+        {
+          "english": "mailbox",
+          "target": "buzón",
+          "romanization": "bu-son"
+        },
+        {
+          "english": "package",
+          "target": "paquete",
+          "romanization": "pa-ke-te"
+        },
+        {
+          "english": "address",
+          "target": "dirección",
+          "romanization": "dee-rek-syon"
+        },
+        {
+          "english": "post office",
+          "target": "oficina de correos",
+          "romanization": "o-fee-see-na de ko-re-os"
+        },
+        {
+          "english": "signature",
+          "target": "firma",
+          "romanization": "feer-ma"
+        },
+        {
+          "english": "delivery",
+          "target": "entrega",
+          "romanization": "en-tre-ga"
+        },
+        {
+          "english": "tracking",
+          "target": "rastreo",
+          "romanization": "ras-tre-o"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-24T16:47:30.896Z"
+    },
+    {
+      "id": "20_laundry-care__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Laundry words in Spanish",
+      "slug": "laundry-words-in-spanish",
+      "imagePath": "/global/pins/20_laundry-care__es.png",
+      "words": [
+        {
+          "english": "washing machine",
+          "target": "lavadora",
+          "romanization": "lah-vah-DOH-rah"
+        },
+        {
+          "english": "dryer",
+          "target": "secadora",
+          "romanization": "seh-kah-DOH-rah"
+        },
+        {
+          "english": "detergent",
+          "target": "detergente",
+          "romanization": "deh-tehr-HEN-teh"
+        },
+        {
+          "english": "fabric softener",
+          "target": "suavizante",
+          "romanization": "swah-vee-SAHN-teh"
+        },
+        {
+          "english": "hanger",
+          "target": "percha",
+          "romanization": "PEHR-chah"
+        },
+        {
+          "english": "iron",
+          "target": "plancha",
+          "romanization": "PLAN-chah"
+        },
+        {
+          "english": "lint",
+          "target": "pelusa",
+          "romanization": "peh-LOO-sah"
+        },
+        {
+          "english": "fold",
+          "target": "doblar",
+          "romanization": "doh-BLAR"
+        },
+        {
+          "english": "stain",
+          "target": "mancha",
+          "romanization": "MAN-chah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-24T16:57:44.105Z"
     },
     {
       "id": "20_life-stages__es",
@@ -10141,6 +10318,65 @@
       "publishedAt": "2026-08-24T16:28:18.839Z"
     },
     {
+      "id": "18_banking-basics__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Banking basics in French",
+      "slug": "banking-basics-in-french",
+      "imagePath": "/global/pins/18_banking-basics__fr.png",
+      "words": [
+        {
+          "english": "bank",
+          "target": "banque",
+          "romanization": "bahn-k"
+        },
+        {
+          "english": "account",
+          "target": "compte",
+          "romanization": "kohmpt"
+        },
+        {
+          "english": "cash",
+          "target": "espèces",
+          "romanization": "es-pess"
+        },
+        {
+          "english": "card",
+          "target": "carte",
+          "romanization": "kart"
+        },
+        {
+          "english": "deposit",
+          "target": "dépôt",
+          "romanization": "day-poh"
+        },
+        {
+          "english": "withdraw",
+          "target": "retirer",
+          "romanization": "ruh-tee-ray"
+        },
+        {
+          "english": "transfer",
+          "target": "virement",
+          "romanization": "vee-ray-mahn"
+        },
+        {
+          "english": "balance",
+          "target": "solde",
+          "romanization": "sohld"
+        },
+        {
+          "english": "receipt",
+          "target": "reçu",
+          "romanization": "ruh-syoo"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-24T16:39:04.295Z"
+    },
+    {
       "id": "18_phone-parts__fr",
       "lang": "fr",
       "langName": "French",
@@ -10351,6 +10587,124 @@
       "description": "Learn French: coffee, green tea, black tea, milk, hot chocolate, lemon tea…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hot-drinks",
       "publishedAt": "2026-08-14T05:13:22.336Z"
+    },
+    {
+      "id": "19_post-mail__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Post & mail words in French",
+      "slug": "post-mail-words-in-french",
+      "imagePath": "/global/pins/19_post-mail__fr.png",
+      "words": [
+        {
+          "english": "letter",
+          "target": "lettre",
+          "romanization": "le-tr"
+        },
+        {
+          "english": "stamp",
+          "target": "timbre",
+          "romanization": "tam-br"
+        },
+        {
+          "english": "mailbox",
+          "target": "boîte aux lettres",
+          "romanization": "bwat o let-r"
+        },
+        {
+          "english": "package",
+          "target": "colis",
+          "romanization": "ko-li"
+        },
+        {
+          "english": "address",
+          "target": "adresse",
+          "romanization": "a-dres"
+        },
+        {
+          "english": "post office",
+          "target": "bureau de poste",
+          "romanization": "byu-ro de post"
+        },
+        {
+          "english": "signature",
+          "target": "signature",
+          "romanization": "sig-na-tyur"
+        },
+        {
+          "english": "delivery",
+          "target": "livraison",
+          "romanization": "lee-vray-zon"
+        },
+        {
+          "english": "tracking",
+          "target": "suivi",
+          "romanization": "swee-vee"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-24T16:49:15.335Z"
+    },
+    {
+      "id": "20_laundry-care__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Laundry words in French",
+      "slug": "laundry-words-in-french",
+      "imagePath": "/global/pins/20_laundry-care__fr.png",
+      "words": [
+        {
+          "english": "washing machine",
+          "target": "machine à laver",
+          "romanization": "ma-sheen a la-vay"
+        },
+        {
+          "english": "dryer",
+          "target": "sèche-linge",
+          "romanization": "seshe lanj"
+        },
+        {
+          "english": "detergent",
+          "target": "détergent",
+          "romanization": "day-ter-zhon"
+        },
+        {
+          "english": "fabric softener",
+          "target": "adoucissant",
+          "romanization": "a-doo-see-san"
+        },
+        {
+          "english": "hanger",
+          "target": "cintre",
+          "romanization": "san-tr"
+        },
+        {
+          "english": "iron",
+          "target": "fer à repasser",
+          "romanization": "fehr a ruh-pah-say"
+        },
+        {
+          "english": "lint",
+          "target": "peluche",
+          "romanization": "pe-loosh"
+        },
+        {
+          "english": "fold",
+          "target": "plier",
+          "romanization": "plee-ay"
+        },
+        {
+          "english": "stain",
+          "target": "tache",
+          "romanization": "tash"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-24T16:59:31.261Z"
     },
     {
       "id": "20_life-stages__fr",
@@ -18052,6 +18406,65 @@
       "publishedAt": "2026-08-24T16:30:03.208Z"
     },
     {
+      "id": "18_banking-basics__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Banking basics in German",
+      "slug": "banking-basics-in-german",
+      "imagePath": "/global/pins/18_banking-basics__de.png",
+      "words": [
+        {
+          "english": "bank",
+          "target": "Bank",
+          "romanization": "bank"
+        },
+        {
+          "english": "account",
+          "target": "Konto",
+          "romanization": "konto"
+        },
+        {
+          "english": "cash",
+          "target": "Bargeld",
+          "romanization": "bar-gelt"
+        },
+        {
+          "english": "card",
+          "target": "Karte",
+          "romanization": "kar-te"
+        },
+        {
+          "english": "deposit",
+          "target": "einzahlen",
+          "romanization": "ine-tsai-len"
+        },
+        {
+          "english": "withdraw",
+          "target": "abheben",
+          "romanization": "ap-he-ben"
+        },
+        {
+          "english": "transfer",
+          "target": "überweisen",
+          "romanization": "ue-ber-vai-zen"
+        },
+        {
+          "english": "balance",
+          "target": "Kontostand",
+          "romanization": "konto-shtand"
+        },
+        {
+          "english": "receipt",
+          "target": "Quittung",
+          "romanization": "kvit-ung"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-24T16:40:43.445Z"
+    },
+    {
       "id": "18_phone-parts__de",
       "lang": "de",
       "langName": "German",
@@ -18268,6 +18681,65 @@
       "description": "Learn German: coffee, green tea, black tea, milk, hot chocolate, lemon tea…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hot-drinks",
       "publishedAt": "2026-08-14T05:15:04.797Z"
+    },
+    {
+      "id": "19_post-mail__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Post & mail words in German",
+      "slug": "post-mail-words-in-german",
+      "imagePath": "/global/pins/19_post-mail__de.png",
+      "words": [
+        {
+          "english": "letter",
+          "target": "der Brief",
+          "romanization": "dehr brief"
+        },
+        {
+          "english": "stamp",
+          "target": "die Briefmarke",
+          "romanization": "dee brief-mark-uh"
+        },
+        {
+          "english": "mailbox",
+          "target": "der Briefkasten",
+          "romanization": "dehr brief-kas-ten"
+        },
+        {
+          "english": "package",
+          "target": "das Paket",
+          "romanization": "das pa-ket"
+        },
+        {
+          "english": "address",
+          "target": "die Adresse",
+          "romanization": "dee ah-dres-uh"
+        },
+        {
+          "english": "post office",
+          "target": "die Post",
+          "romanization": "dee post"
+        },
+        {
+          "english": "signature",
+          "target": "die Unterschrift",
+          "romanization": "dee oon-ter-shrift"
+        },
+        {
+          "english": "delivery",
+          "target": "die Lieferung",
+          "romanization": "dee lee-fer-oong"
+        },
+        {
+          "english": "tracking",
+          "target": "die Sendungsverfolgung",
+          "romanization": "dee zen-doong-sfer-fol-goong"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-24T16:51:02.927Z"
     },
     {
       "id": "20_life-stages__de",
@@ -25963,6 +26435,65 @@
       "publishedAt": "2026-08-24T16:33:40.765Z"
     },
     {
+      "id": "18_banking-basics__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Banking basics in Italian",
+      "slug": "banking-basics-in-italian",
+      "imagePath": "/global/pins/18_banking-basics__it.png",
+      "words": [
+        {
+          "english": "bank",
+          "target": "banca",
+          "romanization": "BAN-ka"
+        },
+        {
+          "english": "account",
+          "target": "conto",
+          "romanization": "KON-to"
+        },
+        {
+          "english": "cash",
+          "target": "contanti",
+          "romanization": "kon-TAN-tee"
+        },
+        {
+          "english": "card",
+          "target": "carta",
+          "romanization": "KAR-ta"
+        },
+        {
+          "english": "deposit",
+          "target": "deposito",
+          "romanization": "de-PO-zee-to"
+        },
+        {
+          "english": "withdraw",
+          "target": "prelevare",
+          "romanization": "pre-le-VA-re"
+        },
+        {
+          "english": "transfer",
+          "target": "trasferire",
+          "romanization": "tras-fe-REE-re"
+        },
+        {
+          "english": "balance",
+          "target": "saldo",
+          "romanization": "SAL-do"
+        },
+        {
+          "english": "receipt",
+          "target": "ricevuta",
+          "romanization": "ri-che-VOO-ta"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-24T16:43:59.213Z"
+    },
+    {
       "id": "18_phone-parts__it",
       "lang": "it",
       "langName": "Italian",
@@ -26179,6 +26710,65 @@
       "description": "Learn Italian: coffee, green tea, black tea, milk, hot chocolate, lemon tea…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hot-drinks",
       "publishedAt": "2026-08-14T05:18:29.696Z"
+    },
+    {
+      "id": "19_post-mail__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Post & mail words in Italian",
+      "slug": "post-mail-words-in-italian",
+      "imagePath": "/global/pins/19_post-mail__it.png",
+      "words": [
+        {
+          "english": "letter",
+          "target": "lettera",
+          "romanization": "let-te-ra"
+        },
+        {
+          "english": "stamp",
+          "target": "francobollo",
+          "romanization": "fran-co-bol-lo"
+        },
+        {
+          "english": "mailbox",
+          "target": "cassetta della posta",
+          "romanization": "cas-set-ta del-la pos-ta"
+        },
+        {
+          "english": "package",
+          "target": "pacco",
+          "romanization": "pak-ko"
+        },
+        {
+          "english": "address",
+          "target": "indirizzo",
+          "romanization": "in-di-rit-tso"
+        },
+        {
+          "english": "post office",
+          "target": "ufficio postale",
+          "romanization": "uf-fi-cho pos-ta-le"
+        },
+        {
+          "english": "signature",
+          "target": "firma",
+          "romanization": "fir-ma"
+        },
+        {
+          "english": "delivery",
+          "target": "consegna",
+          "romanization": "con-se-gna"
+        },
+        {
+          "english": "tracking",
+          "target": "tracciamento",
+          "romanization": "trac-cia-men-to"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-24T16:54:35.771Z"
     },
     {
       "id": "20_life-stages__it",
@@ -33886,6 +34476,65 @@
       "publishedAt": "2026-08-24T16:31:51.863Z"
     },
     {
+      "id": "18_banking-basics__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Banking Basics in Arabic",
+      "slug": "banking-basics-in-arabic",
+      "imagePath": "/global/pins/18_banking-basics__ar.png",
+      "words": [
+        {
+          "english": "bank",
+          "target": "بنك",
+          "romanization": "bank"
+        },
+        {
+          "english": "account",
+          "target": "حساب",
+          "romanization": "hesab"
+        },
+        {
+          "english": "cash",
+          "target": "نقد",
+          "romanization": "naqd"
+        },
+        {
+          "english": "card",
+          "target": "بطاقة",
+          "romanization": "bitaqa"
+        },
+        {
+          "english": "deposit",
+          "target": "إيداع",
+          "romanization": "idaa'"
+        },
+        {
+          "english": "withdraw",
+          "target": "سحب",
+          "romanization": "sahb"
+        },
+        {
+          "english": "transfer",
+          "target": "تحويل",
+          "romanization": "tahweel"
+        },
+        {
+          "english": "balance",
+          "target": "رصيد",
+          "romanization": "raseed"
+        },
+        {
+          "english": "receipt",
+          "target": "إيصال",
+          "romanization": "eisal"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-24T16:42:25.327Z"
+    },
+    {
       "id": "18_phone-parts__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -34102,6 +34751,65 @@
       "description": "Learn Arabic: coffee, green tea, black tea, milk, hot chocolate, lemon tea…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hot-drinks",
       "publishedAt": "2026-08-14T05:16:43.596Z"
+    },
+    {
+      "id": "19_post-mail__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Post & mail words in Arabic",
+      "slug": "post-mail-words-in-arabic",
+      "imagePath": "/global/pins/19_post-mail__ar.png",
+      "words": [
+        {
+          "english": "letter",
+          "target": "رسالة",
+          "romanization": "risāla"
+        },
+        {
+          "english": "stamp",
+          "target": "طابع بريد",
+          "romanization": "ṭābiʿ barīd"
+        },
+        {
+          "english": "mailbox",
+          "target": "صندوق البريد",
+          "romanization": "ṣundūq al-barīd"
+        },
+        {
+          "english": "package",
+          "target": "طرد",
+          "romanization": "ṭard"
+        },
+        {
+          "english": "address",
+          "target": "عنوان",
+          "romanization": "ʿunwān"
+        },
+        {
+          "english": "post office",
+          "target": "مكتب البريد",
+          "romanization": "maktab al-barīd"
+        },
+        {
+          "english": "signature",
+          "target": "توقيع",
+          "romanization": "tawqīʿ"
+        },
+        {
+          "english": "delivery",
+          "target": "توصيل",
+          "romanization": "tawṣīl"
+        },
+        {
+          "english": "tracking",
+          "target": "تتبع",
+          "romanization": "tatabbaʿ"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-24T16:52:49.854Z"
     },
     {
       "id": "20_life-stages__ar",
@@ -41756,6 +42464,124 @@
       "publishedAt": "2026-08-14T05:00:06.428Z"
     },
     {
+      "id": "17_hotel-stay__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Hotel stay words in Japanese",
+      "slug": "hotel-stay-words-in-japanese",
+      "imagePath": "/global/pins/17_hotel-stay__ja.png",
+      "words": [
+        {
+          "english": "reception",
+          "target": "フロント",
+          "romanization": "furonto"
+        },
+        {
+          "english": "key card",
+          "target": "ルームキー",
+          "romanization": "ruumu kii"
+        },
+        {
+          "english": "elevator",
+          "target": "エレベーター",
+          "romanization": "erebeetaa"
+        },
+        {
+          "english": "luggage",
+          "target": "荷物",
+          "romanization": "nimotsu"
+        },
+        {
+          "english": "towel",
+          "target": "タオル",
+          "romanization": "taoru"
+        },
+        {
+          "english": "breakfast",
+          "target": "朝食",
+          "romanization": "choushoku"
+        },
+        {
+          "english": "checkout",
+          "target": "チェックアウト",
+          "romanization": "chekkuauto"
+        },
+        {
+          "english": "room service",
+          "target": "ルームサービス",
+          "romanization": "ruumu saabisu"
+        },
+        {
+          "english": "wifi",
+          "target": "Wi-Fi",
+          "romanization": "wai fai"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:35:25.758Z"
+    },
+    {
+      "id": "18_banking-basics__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Banking basics in Japanese",
+      "slug": "banking-basics-in-japanese",
+      "imagePath": "/global/pins/18_banking-basics__ja.png",
+      "words": [
+        {
+          "english": "bank",
+          "target": "銀行",
+          "romanization": "ぎんこう"
+        },
+        {
+          "english": "account",
+          "target": "口座",
+          "romanization": "こうざ"
+        },
+        {
+          "english": "cash",
+          "target": "現金",
+          "romanization": "げんきん"
+        },
+        {
+          "english": "card",
+          "target": "カード",
+          "romanization": "カード"
+        },
+        {
+          "english": "deposit",
+          "target": "預金",
+          "romanization": "よきん"
+        },
+        {
+          "english": "withdraw",
+          "target": "引き出す",
+          "romanization": "ひきだす"
+        },
+        {
+          "english": "transfer",
+          "target": "振込",
+          "romanization": "ふりこみ"
+        },
+        {
+          "english": "balance",
+          "target": "残高",
+          "romanization": "ざんだか"
+        },
+        {
+          "english": "receipt",
+          "target": "領収書",
+          "romanization": "りょうしゅうしょ"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-24T16:45:50.592Z"
+    },
+    {
       "id": "18_phone-parts__ja",
       "lang": "ja",
       "langName": "Japanese",
@@ -41972,6 +42798,65 @@
       "description": "Learn Japanese: coffee, green tea, black tea, milk, hot chocolate, lemon tea…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hot-drinks",
       "publishedAt": "2026-08-14T05:20:09.948Z"
+    },
+    {
+      "id": "19_post-mail__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Post & mail words in Japanese",
+      "slug": "post-mail-words-in-japanese",
+      "imagePath": "/global/pins/19_post-mail__ja.png",
+      "words": [
+        {
+          "english": "letter",
+          "target": "手紙",
+          "romanization": "tegami"
+        },
+        {
+          "english": "stamp",
+          "target": "切手",
+          "romanization": "kitte"
+        },
+        {
+          "english": "mailbox",
+          "target": "郵便受け",
+          "romanization": "yuubin-uke"
+        },
+        {
+          "english": "package",
+          "target": "小包",
+          "romanization": "kozutsumi"
+        },
+        {
+          "english": "address",
+          "target": "住所",
+          "romanization": "juusho"
+        },
+        {
+          "english": "post office",
+          "target": "郵便局",
+          "romanization": "yuubinkyoku"
+        },
+        {
+          "english": "signature",
+          "target": "署名",
+          "romanization": "shomei"
+        },
+        {
+          "english": "delivery",
+          "target": "配達",
+          "romanization": "haitatsu"
+        },
+        {
+          "english": "tracking",
+          "target": "追跡",
+          "romanization": "tsuiseki"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-24T16:56:09.319Z"
     },
     {
       "id": "20_life-stages__ja",
