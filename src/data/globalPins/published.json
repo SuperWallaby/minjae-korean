@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-19T19:34:36.780Z",
+  "generatedAt": "2026-08-24T16:57:53.324Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -1720,6 +1720,65 @@
       "publishedAt": "2026-08-09T11:00:18.224Z"
     },
     {
+      "id": "15_kitchen-appliances__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Kitchen appliances in Spanish",
+      "slug": "kitchen-appliances-in-spanish",
+      "imagePath": "/global/pins/15_kitchen-appliances__es.png",
+      "words": [
+        {
+          "english": "stove",
+          "target": "estufa",
+          "romanization": "es-TOO-fa"
+        },
+        {
+          "english": "oven",
+          "target": "horno",
+          "romanization": "OR-no"
+        },
+        {
+          "english": "microwave",
+          "target": "microondas",
+          "romanization": "mee-kro-ON-das"
+        },
+        {
+          "english": "refrigerator",
+          "target": "refrigerador",
+          "romanization": "re-free-he-ra-DOR"
+        },
+        {
+          "english": "blender",
+          "target": "licuadora",
+          "romanization": "lee-kwah-DO-ra"
+        },
+        {
+          "english": "toaster",
+          "target": "tostadora",
+          "romanization": "tos-ta-DO-ra"
+        },
+        {
+          "english": "kettle",
+          "target": "hervidor",
+          "romanization": "er-vee-DOR"
+        },
+        {
+          "english": "dishwasher",
+          "target": "lavavajillas",
+          "romanization": "la-va-va-HEE-yas"
+        },
+        {
+          "english": "pan",
+          "target": "sartén",
+          "romanization": "sar-TEN"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:05:19.287Z"
+    },
+    {
       "id": "15_skin-tones__es",
       "lang": "es",
       "langName": "Spanish",
@@ -1932,6 +1991,65 @@
       "publishedAt": "2026-08-14T04:42:36.065Z"
     },
     {
+      "id": "16_office-desk__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Office desk words in Spanish",
+      "slug": "office-desk-words-in-spanish",
+      "imagePath": "/global/pins/16_office-desk__es.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "escritorio",
+          "romanization": "es-kree-toh-ree-oh"
+        },
+        {
+          "english": "chair",
+          "target": "silla",
+          "romanization": "see-yah"
+        },
+        {
+          "english": "computer",
+          "target": "computadora",
+          "romanization": "kom-poo-tah-doh-rah"
+        },
+        {
+          "english": "keyboard",
+          "target": "teclado",
+          "romanization": "teh-klah-doh"
+        },
+        {
+          "english": "mouse",
+          "target": "ratón",
+          "romanization": "rah-ton"
+        },
+        {
+          "english": "monitor",
+          "target": "monitor",
+          "romanization": "moh-nee-tor"
+        },
+        {
+          "english": "printer",
+          "target": "impresora",
+          "romanization": "im-preh-soh-rah"
+        },
+        {
+          "english": "stapler",
+          "target": "engrapadora",
+          "romanization": "en-grah-pah-doh-rah"
+        },
+        {
+          "english": "folder",
+          "target": "carpeta",
+          "romanization": "kar-peh-tah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:16:31.990Z"
+    },
+    {
       "id": "17_bathroom__es",
       "lang": "es",
       "langName": "Spanish",
@@ -2039,6 +2157,65 @@
       "description": "Learn Spanish: toothbrush, toothpaste, shampoo, soap, towel, toilet paper…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "bathroom",
       "publishedAt": "2026-08-14T04:52:08.596Z"
+    },
+    {
+      "id": "17_hotel-stay__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Hotel stay words in Spanish",
+      "slug": "hotel-stay-words-in-spanish",
+      "imagePath": "/global/pins/17_hotel-stay__es.png",
+      "words": [
+        {
+          "english": "reception",
+          "target": "recepción",
+          "romanization": "reh-sep-see-ON"
+        },
+        {
+          "english": "key card",
+          "target": "tarjeta llave",
+          "romanization": "tar-HE-ta YA-ve"
+        },
+        {
+          "english": "elevator",
+          "target": "ascensor",
+          "romanization": "as-sen-SOR"
+        },
+        {
+          "english": "luggage",
+          "target": "equipaje",
+          "romanization": "eh-kee-PAH-he"
+        },
+        {
+          "english": "towel",
+          "target": "toalla",
+          "romanization": "toh-AH-ya"
+        },
+        {
+          "english": "breakfast",
+          "target": "desayuno",
+          "romanization": "deh-sah-YOO-no"
+        },
+        {
+          "english": "checkout",
+          "target": "salida",
+          "romanization": "sah-LEE-dah"
+        },
+        {
+          "english": "room service",
+          "target": "servicio a la habitación",
+          "romanization": "ser-VEE-see-oh ah lah ah-bee-tah-SYON"
+        },
+        {
+          "english": "wifi",
+          "target": "wifi",
+          "romanization": "wee-fee"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:26:37.393Z"
     },
     {
       "id": "18_phone-parts__es",
@@ -9466,6 +9643,65 @@
       "publishedAt": "2026-08-09T11:01:57.600Z"
     },
     {
+      "id": "15_kitchen-appliances__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Kitchen appliances in French",
+      "slug": "kitchen-appliances-in-french",
+      "imagePath": "/global/pins/15_kitchen-appliances__fr.png",
+      "words": [
+        {
+          "english": "stove",
+          "target": "cuisinière",
+          "romanization": "kwee-zee-nyair"
+        },
+        {
+          "english": "oven",
+          "target": "four",
+          "romanization": "foor"
+        },
+        {
+          "english": "microwave",
+          "target": "micro-ondes",
+          "romanization": "mee-kroh-ond"
+        },
+        {
+          "english": "refrigerator",
+          "target": "réfrigérateur",
+          "romanization": "ray-free-zheh-rah-teur"
+        },
+        {
+          "english": "blender",
+          "target": "mixeur",
+          "romanization": "meex-ur"
+        },
+        {
+          "english": "toaster",
+          "target": "grille-pain",
+          "romanization": "gree-pahn"
+        },
+        {
+          "english": "kettle",
+          "target": "bouilloire",
+          "romanization": "boo-ywar"
+        },
+        {
+          "english": "dishwasher",
+          "target": "lave-vaisselle",
+          "romanization": "lahv-vay-sel"
+        },
+        {
+          "english": "pan",
+          "target": "poêle",
+          "romanization": "pwal"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:07:08.962Z"
+    },
+    {
       "id": "15_skin-tones__fr",
       "lang": "fr",
       "langName": "French",
@@ -9678,6 +9914,65 @@
       "publishedAt": "2026-08-14T04:44:14.242Z"
     },
     {
+      "id": "16_office-desk__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Office desk words in French",
+      "slug": "office-desk-words-in-french",
+      "imagePath": "/global/pins/16_office-desk__fr.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "bureau",
+          "romanization": "byu-ro"
+        },
+        {
+          "english": "chair",
+          "target": "chaise",
+          "romanization": "shez"
+        },
+        {
+          "english": "computer",
+          "target": "ordinateur",
+          "romanization": "or-di-na-teur"
+        },
+        {
+          "english": "keyboard",
+          "target": "clavier",
+          "romanization": "kla-vye"
+        },
+        {
+          "english": "mouse",
+          "target": "souris",
+          "romanization": "soo-ree"
+        },
+        {
+          "english": "monitor",
+          "target": "écran",
+          "romanization": "ay-krahn"
+        },
+        {
+          "english": "printer",
+          "target": "imprimante",
+          "romanization": "am-pree-mant"
+        },
+        {
+          "english": "stapler",
+          "target": "agrafeuse",
+          "romanization": "a-gra-fuz"
+        },
+        {
+          "english": "folder",
+          "target": "dossier",
+          "romanization": "dos-syay"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:18:08.185Z"
+    },
+    {
       "id": "17_bathroom__fr",
       "lang": "fr",
       "langName": "French",
@@ -9785,6 +10080,65 @@
       "description": "Learn French: toothbrush, toothpaste, shampoo, soap, towel, toilet paper…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "bathroom",
       "publishedAt": "2026-08-14T04:53:47.633Z"
+    },
+    {
+      "id": "17_hotel-stay__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Hotel stay words in French",
+      "slug": "hotel-stay-words-in-french",
+      "imagePath": "/global/pins/17_hotel-stay__fr.png",
+      "words": [
+        {
+          "english": "reception",
+          "target": "réception",
+          "romanization": "ray-sep-syon"
+        },
+        {
+          "english": "key card",
+          "target": "carte-clé",
+          "romanization": "kart-klay"
+        },
+        {
+          "english": "elevator",
+          "target": "ascenseur",
+          "romanization": "as-sahn-sur"
+        },
+        {
+          "english": "luggage",
+          "target": "bagages",
+          "romanization": "ba-gazh"
+        },
+        {
+          "english": "towel",
+          "target": "serviette",
+          "romanization": "ser-vyet"
+        },
+        {
+          "english": "breakfast",
+          "target": "petit déjeuner",
+          "romanization": "puh-tee day-zhuh-nay"
+        },
+        {
+          "english": "checkout",
+          "target": "départ",
+          "romanization": "day-par"
+        },
+        {
+          "english": "room service",
+          "target": "service en chambre",
+          "romanization": "ser-vees ahn shahm-br"
+        },
+        {
+          "english": "wifi",
+          "target": "wifi",
+          "romanization": "wee-fee"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:28:18.839Z"
     },
     {
       "id": "18_phone-parts__fr",
@@ -17194,6 +17548,65 @@
       "publishedAt": "2026-08-09T11:03:30.987Z"
     },
     {
+      "id": "15_kitchen-appliances__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Kitchen appliances in German",
+      "slug": "kitchen-appliances-in-german",
+      "imagePath": "/global/pins/15_kitchen-appliances__de.png",
+      "words": [
+        {
+          "english": "stove",
+          "target": "Herd",
+          "romanization": "hert"
+        },
+        {
+          "english": "oven",
+          "target": "Backofen",
+          "romanization": "bahk-oh-fen"
+        },
+        {
+          "english": "microwave",
+          "target": "Mikrowelle",
+          "romanization": "mee-kroh-veh-le"
+        },
+        {
+          "english": "refrigerator",
+          "target": "Kühlschrank",
+          "romanization": "kuehl-shrank"
+        },
+        {
+          "english": "blender",
+          "target": "Mixer",
+          "romanization": "miks-er"
+        },
+        {
+          "english": "toaster",
+          "target": "Toaster",
+          "romanization": "toh-ster"
+        },
+        {
+          "english": "kettle",
+          "target": "Wasserkocher",
+          "romanization": "vah-ser-koh-cher"
+        },
+        {
+          "english": "dishwasher",
+          "target": "Geschirrspüler",
+          "romanization": "geh-shirr-shpyu-ler"
+        },
+        {
+          "english": "pan",
+          "target": "Pfanne",
+          "romanization": "pfan-neh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:08:46.983Z"
+    },
+    {
       "id": "15_skin-tones__de",
       "lang": "de",
       "langName": "German",
@@ -17412,6 +17825,65 @@
       "publishedAt": "2026-08-14T04:45:49.086Z"
     },
     {
+      "id": "16_office-desk__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Office desk words in German",
+      "slug": "office-desk-words-in-german",
+      "imagePath": "/global/pins/16_office-desk__de.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "Schreibtisch",
+          "romanization": "shryb-tish"
+        },
+        {
+          "english": "chair",
+          "target": "Stuhl",
+          "romanization": "shtool"
+        },
+        {
+          "english": "computer",
+          "target": "Computer",
+          "romanization": "kom-pyu-ter"
+        },
+        {
+          "english": "keyboard",
+          "target": "Tastatur",
+          "romanization": "tas-ta-toor"
+        },
+        {
+          "english": "mouse",
+          "target": "Maus",
+          "romanization": "mouse"
+        },
+        {
+          "english": "monitor",
+          "target": "Monitor",
+          "romanization": "mo-ni-tor"
+        },
+        {
+          "english": "printer",
+          "target": "Drucker",
+          "romanization": "droo-ker"
+        },
+        {
+          "english": "stapler",
+          "target": "Tacker",
+          "romanization": "tak-er"
+        },
+        {
+          "english": "folder",
+          "target": "Ordner",
+          "romanization": "ord-ner"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:19:52.237Z"
+    },
+    {
       "id": "17_bathroom__de",
       "lang": "de",
       "langName": "German",
@@ -17519,6 +17991,65 @@
       "description": "Learn German: toothbrush, toothpaste, shampoo, soap, towel, toilet paper…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "bathroom",
       "publishedAt": "2026-08-14T04:55:20.376Z"
+    },
+    {
+      "id": "17_hotel-stay__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Hotel stay words in German",
+      "slug": "hotel-stay-words-in-german",
+      "imagePath": "/global/pins/17_hotel-stay__de.png",
+      "words": [
+        {
+          "english": "reception",
+          "target": "Rezeption",
+          "romanization": "ret-sep-tsi-on"
+        },
+        {
+          "english": "key card",
+          "target": "Schlüsselkarte",
+          "romanization": "shluessel-kar-te"
+        },
+        {
+          "english": "elevator",
+          "target": "Aufzug",
+          "romanization": "owf-tsook"
+        },
+        {
+          "english": "luggage",
+          "target": "Gepäck",
+          "romanization": "geh-peck"
+        },
+        {
+          "english": "towel",
+          "target": "Handtuch",
+          "romanization": "hant-took"
+        },
+        {
+          "english": "breakfast",
+          "target": "Frühstück",
+          "romanization": "frew-shtuek"
+        },
+        {
+          "english": "checkout",
+          "target": "Check-out",
+          "romanization": "check-out"
+        },
+        {
+          "english": "room service",
+          "target": "Zimmerservice",
+          "romanization": "tsim-mer-ser-vice"
+        },
+        {
+          "english": "wifi",
+          "target": "WLAN",
+          "romanization": "veh-lan"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:30:03.208Z"
     },
     {
       "id": "18_phone-parts__de",
@@ -24940,6 +25471,65 @@
       "publishedAt": "2026-08-09T11:06:40.088Z"
     },
     {
+      "id": "15_kitchen-appliances__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Kitchen appliances in Italian",
+      "slug": "kitchen-appliances-in-italian",
+      "imagePath": "/global/pins/15_kitchen-appliances__it.png",
+      "words": [
+        {
+          "english": "stove",
+          "target": "fornello",
+          "romanization": "for-nel-lo"
+        },
+        {
+          "english": "oven",
+          "target": "forno",
+          "romanization": "for-no"
+        },
+        {
+          "english": "microwave",
+          "target": "microonde",
+          "romanization": "mee-kro-on-de"
+        },
+        {
+          "english": "refrigerator",
+          "target": "frigorifero",
+          "romanization": "free-go-ree-fe-ro"
+        },
+        {
+          "english": "blender",
+          "target": "frullatore",
+          "romanization": "froo-la-to-re"
+        },
+        {
+          "english": "toaster",
+          "target": "tostapane",
+          "romanization": "tos-ta-pa-ne"
+        },
+        {
+          "english": "kettle",
+          "target": "bollitore",
+          "romanization": "bol-lee-to-re"
+        },
+        {
+          "english": "dishwasher",
+          "target": "lavastoviglie",
+          "romanization": "la-va-sto-veel-ye"
+        },
+        {
+          "english": "pan",
+          "target": "padella",
+          "romanization": "pa-del-la"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:12:53.137Z"
+    },
+    {
       "id": "15_skin-tones__it",
       "lang": "it",
       "langName": "Italian",
@@ -25152,6 +25742,65 @@
       "publishedAt": "2026-08-14T04:49:01.667Z"
     },
     {
+      "id": "16_office-desk__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Office desk words in Italian",
+      "slug": "office-desk-words-in-italian",
+      "imagePath": "/global/pins/16_office-desk__it.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "scrivania",
+          "romanization": "skree-VAH-nee-ah"
+        },
+        {
+          "english": "chair",
+          "target": "sedia",
+          "romanization": "SEH-dee-ah"
+        },
+        {
+          "english": "computer",
+          "target": "computer",
+          "romanization": "kom-PYOO-ter"
+        },
+        {
+          "english": "keyboard",
+          "target": "tastiera",
+          "romanization": "tas-TYEH-rah"
+        },
+        {
+          "english": "mouse",
+          "target": "mouse",
+          "romanization": "mows"
+        },
+        {
+          "english": "monitor",
+          "target": "monitor",
+          "romanization": "MOH-nee-tor"
+        },
+        {
+          "english": "printer",
+          "target": "stampante",
+          "romanization": "stam-PAHN-teh"
+        },
+        {
+          "english": "stapler",
+          "target": "cucitrice",
+          "romanization": "koo-CHEE-tree-cheh"
+        },
+        {
+          "english": "folder",
+          "target": "cartella",
+          "romanization": "kar-TEL-lah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:23:10.908Z"
+    },
+    {
       "id": "17_bathroom__it",
       "lang": "it",
       "langName": "Italian",
@@ -25253,6 +25902,65 @@
       "description": "Learn Italian: toothbrush, toothpaste, shampoo, soap, towel, toilet paper…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "bathroom",
       "publishedAt": "2026-08-14T04:58:34.638Z"
+    },
+    {
+      "id": "17_hotel-stay__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Hotel stay words in Italian",
+      "slug": "hotel-stay-words-in-italian",
+      "imagePath": "/global/pins/17_hotel-stay__it.png",
+      "words": [
+        {
+          "english": "reception",
+          "target": "reception",
+          "romanization": "re-cep-tione"
+        },
+        {
+          "english": "key card",
+          "target": "chiave elettronica",
+          "romanization": "kee-ah-veh eh-let-tro-nee-kah"
+        },
+        {
+          "english": "elevator",
+          "target": "ascensore",
+          "romanization": "ah-shen-so-re"
+        },
+        {
+          "english": "luggage",
+          "target": "bagaglio",
+          "romanization": "bah-gah-lyo"
+        },
+        {
+          "english": "towel",
+          "target": "asciugamano",
+          "romanization": "ah-shoo-gah-mah-no"
+        },
+        {
+          "english": "breakfast",
+          "target": "colazione",
+          "romanization": "coh-lah-tsee-oh-neh"
+        },
+        {
+          "english": "checkout",
+          "target": "check-out",
+          "romanization": "check-out"
+        },
+        {
+          "english": "room service",
+          "target": "servizio in camera",
+          "romanization": "ser-vee-tsee-oh een kah-meh-rah"
+        },
+        {
+          "english": "wifi",
+          "target": "wifi",
+          "romanization": "wee-fee"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:33:40.765Z"
     },
     {
       "id": "18_phone-parts__it",
@@ -32680,6 +33388,65 @@
       "publishedAt": "2026-08-09T11:05:08.223Z"
     },
     {
+      "id": "15_kitchen-appliances__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Kitchen appliances in Arabic",
+      "slug": "kitchen-appliances-in-arabic",
+      "imagePath": "/global/pins/15_kitchen-appliances__ar.png",
+      "words": [
+        {
+          "english": "stove",
+          "target": "موقد",
+          "romanization": "mawqid"
+        },
+        {
+          "english": "oven",
+          "target": "فرن",
+          "romanization": "furn"
+        },
+        {
+          "english": "microwave",
+          "target": "ميكروويف",
+          "romanization": "mikroweif"
+        },
+        {
+          "english": "refrigerator",
+          "target": "ثلاجة",
+          "romanization": "thallajah"
+        },
+        {
+          "english": "blender",
+          "target": "خلاط",
+          "romanization": "khallat"
+        },
+        {
+          "english": "toaster",
+          "target": "محمصة خبز",
+          "romanization": "mahmasat khobz"
+        },
+        {
+          "english": "kettle",
+          "target": "غلاية",
+          "romanization": "ghallayah"
+        },
+        {
+          "english": "dishwasher",
+          "target": "غسالة صحون",
+          "romanization": "ghassalat suhoon"
+        },
+        {
+          "english": "pan",
+          "target": "مقلاة",
+          "romanization": "miqlah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:11:12.996Z"
+    },
+    {
       "id": "15_skin-tones__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -32892,6 +33659,65 @@
       "publishedAt": "2026-08-14T04:47:21.714Z"
     },
     {
+      "id": "16_office-desk__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Office desk words in Arabic",
+      "slug": "office-desk-words-in-arabic",
+      "imagePath": "/global/pins/16_office-desk__ar.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "مكتب",
+          "romanization": "maktab"
+        },
+        {
+          "english": "chair",
+          "target": "كرسي",
+          "romanization": "kursi"
+        },
+        {
+          "english": "computer",
+          "target": "حاسوب",
+          "romanization": "hasub"
+        },
+        {
+          "english": "keyboard",
+          "target": "لوحة مفاتيح",
+          "romanization": "lawhat mafatih"
+        },
+        {
+          "english": "mouse",
+          "target": "فأرة",
+          "romanization": "fa'ra"
+        },
+        {
+          "english": "monitor",
+          "target": "شاشة",
+          "romanization": "shasha"
+        },
+        {
+          "english": "printer",
+          "target": "طابعة",
+          "romanization": "tabe'a"
+        },
+        {
+          "english": "stapler",
+          "target": "دباسة",
+          "romanization": "dabbasa"
+        },
+        {
+          "english": "folder",
+          "target": "مجلد",
+          "romanization": "mujallad"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:21:28.334Z"
+    },
+    {
       "id": "17_bathroom__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -32999,6 +33825,65 @@
       "description": "Learn Arabic: toothbrush, toothpaste, shampoo, soap, towel, toilet paper…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "bathroom",
       "publishedAt": "2026-08-14T04:56:54.241Z"
+    },
+    {
+      "id": "17_hotel-stay__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Hotel stay words in Arabic",
+      "slug": "hotel-stay-words-in-arabic",
+      "imagePath": "/global/pins/17_hotel-stay__ar.png",
+      "words": [
+        {
+          "english": "reception",
+          "target": "الاستقبال",
+          "romanization": "al-istikbal"
+        },
+        {
+          "english": "key card",
+          "target": "بطاقة المفتاح",
+          "romanization": "bitaqat al-miftah"
+        },
+        {
+          "english": "elevator",
+          "target": "مصعد",
+          "romanization": "mas'ad"
+        },
+        {
+          "english": "luggage",
+          "target": "الأمتعة",
+          "romanization": "al-amti'a"
+        },
+        {
+          "english": "towel",
+          "target": "منشفة",
+          "romanization": "minshafa"
+        },
+        {
+          "english": "breakfast",
+          "target": "الإفطار",
+          "romanization": "al-iftaar"
+        },
+        {
+          "english": "checkout",
+          "target": "تسجيل الخروج",
+          "romanization": "tasjil al-khuruj"
+        },
+        {
+          "english": "room service",
+          "target": "خدمة الغرف",
+          "romanization": "khidmat al-ghuraf"
+        },
+        {
+          "english": "wifi",
+          "target": "واي فاي",
+          "romanization": "wai fai"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:31:51.863Z"
     },
     {
       "id": "18_phone-parts__ar",
@@ -40432,6 +41317,65 @@
       "publishedAt": "2026-08-09T11:08:21.359Z"
     },
     {
+      "id": "15_kitchen-appliances__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Kitchen appliances in Japanese",
+      "slug": "kitchen-appliances-in-japanese",
+      "imagePath": "/global/pins/15_kitchen-appliances__ja.png",
+      "words": [
+        {
+          "english": "stove",
+          "target": "コンロ",
+          "romanization": "konro"
+        },
+        {
+          "english": "oven",
+          "target": "オーブン",
+          "romanization": "oobun"
+        },
+        {
+          "english": "microwave",
+          "target": "電子レンジ",
+          "romanization": "denshi renji"
+        },
+        {
+          "english": "refrigerator",
+          "target": "冷蔵庫",
+          "romanization": "reizōko"
+        },
+        {
+          "english": "blender",
+          "target": "ミキサー",
+          "romanization": "mikisaa"
+        },
+        {
+          "english": "toaster",
+          "target": "トースター",
+          "romanization": "toosutaa"
+        },
+        {
+          "english": "kettle",
+          "target": "やかん",
+          "romanization": "yakan"
+        },
+        {
+          "english": "dishwasher",
+          "target": "食器洗い機",
+          "romanization": "shokki araiki"
+        },
+        {
+          "english": "pan",
+          "target": "フライパン",
+          "romanization": "furaipan"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:14:50.261Z"
+    },
+    {
       "id": "15_skin-tones__ja",
       "lang": "ja",
       "langName": "Japanese",
@@ -40642,6 +41586,65 @@
       "description": "Learn Japanese: dawn, morning, late morning, afternoon, evening, night…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "day-parts",
       "publishedAt": "2026-08-14T04:50:33.751Z"
+    },
+    {
+      "id": "16_office-desk__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Office desk words in Japanese",
+      "slug": "office-desk-words-in-japanese",
+      "imagePath": "/global/pins/16_office-desk__ja.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "つくえ",
+          "romanization": "tsukue"
+        },
+        {
+          "english": "chair",
+          "target": "いす",
+          "romanization": "isu"
+        },
+        {
+          "english": "computer",
+          "target": "コンピューター",
+          "romanization": "konpyuutaa"
+        },
+        {
+          "english": "keyboard",
+          "target": "キーボード",
+          "romanization": "kiiboodo"
+        },
+        {
+          "english": "mouse",
+          "target": "マウス",
+          "romanization": "mausu"
+        },
+        {
+          "english": "monitor",
+          "target": "モニター",
+          "romanization": "monitaa"
+        },
+        {
+          "english": "printer",
+          "target": "プリンター",
+          "romanization": "purintaa"
+        },
+        {
+          "english": "stapler",
+          "target": "ホッチキス",
+          "romanization": "hotchikisu"
+        },
+        {
+          "english": "folder",
+          "target": "フォルダー",
+          "romanization": "forudaa"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:24:49.712Z"
     },
     {
       "id": "17_bathroom__ja",
