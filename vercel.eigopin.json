@@ -1,0 +1,15 @@
+{
+  "framework": "nextjs",
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_SITE_MODE": "eigopin",
+      "NEXT_PUBLIC_JA_SITE_ORIGIN": "https://eigopin.com",
+      "NEXT_PUBLIC_SOUND_SITE_ORIGIN": "https://sound.eigopin.com"
+    }
+  },
+  "env": {
+    "NEXT_PUBLIC_SITE_MODE": "eigopin",
+    "NEXT_PUBLIC_JA_SITE_ORIGIN": "https://eigopin.com",
+    "NEXT_PUBLIC_SOUND_SITE_ORIGIN": "https://sound.eigopin.com"
+  }
+}
