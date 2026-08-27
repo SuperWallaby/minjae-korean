@@ -9,6 +9,7 @@ type Props = {
   destination: string;
   lang?: string;
   pinId?: string;
+  hopText?: string;
 };
 
 /**
@@ -20,6 +21,7 @@ export function GlobalAffiliateGoClient({
   destination,
   lang,
   pinId,
+  hopText,
 }: Props) {
   useEffect(() => {
     trackAffiliateClick({
@@ -36,7 +38,10 @@ export function GlobalAffiliateGoClient({
 
   return (
     <div className="global-go-hop">
-      <p>Taking you to {partner === "italki" ? "italki" : "Preply"}…</p>
+      <p>
+        {hopText ||
+          `Taking you to ${partner === "italki" ? "italki" : "Preply"}…`}
+      </p>
       <p>
         <a href={destination}>Continue</a>
       </p>

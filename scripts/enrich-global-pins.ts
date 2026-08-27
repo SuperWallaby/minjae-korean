@@ -23,14 +23,15 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
 import { synthesizeEdgeTtsMp3 } from "../src/lib/edgeTtsServer";
 import { edgeVoiceForLang } from "../src/lib/globalSite/voices";
+import type { SpanishAccentId } from "../src/lib/globalSite/spanishAccents";
 import { azureChat, stripCodeFence } from "./lib/azure_chat.mjs";
-import { loadEnvLocal } from "./lib/env_local.mjs";
+import { loadEnvStack } from "./lib/env_local.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PUBLISHED = path.join(ROOT, "src/data/globalPins/published.json");
 const AUDIO_ROOT = path.join(ROOT, "public", "global", "audio");
 
-loadEnvLocal(ROOT);
+loadEnvStack(ROOT);
 
 type Word = {
   english: string;
@@ -38,12 +39,16 @@ type Word = {
   romanization: string;
   ttsUrl?: string;
   ttsProvider?: string;
+  ttsLatam?: string;
+  ttsEs?: string;
 };
 type Example = {
   target: string;
   english: string;
   ttsUrl?: string;
   ttsProvider?: string;
+  ttsLatam?: string;
+  ttsEs?: string;
 };
 type Page = {
   id: string;
@@ -68,6 +73,7 @@ function parseArgs(argv: string[]) {
   let limit = 0;
   let force = false;
   let onlyId = "";
+  let onlyLang = "";
   let ttsOnly = false;
   let copyOnly = false;
   for (let i = 0; i < argv.length; i++) {
@@ -75,10 +81,11 @@ function parseArgs(argv: string[]) {
     if (a === "--limit" && argv[i + 1]) limit = Math.max(0, Number(argv[++i]) || 0);
     else if (a === "--force") force = true;
     else if (a === "--id" && argv[i + 1]) onlyId = argv[++i];
+    else if (a === "--lang" && argv[i + 1]) onlyLang = argv[++i];
     else if (a === "--tts-only") ttsOnly = true;
     else if (a === "--copy-only") copyOnly = true;
   }
-  return { limit, force, onlyId, ttsOnly, copyOnly };
+  return { limit, force, onlyId, onlyLang, ttsOnly, copyOnly };
 }
 
 function sleep(ms: number) {
@@ -92,6 +99,22 @@ function hasTts(url?: string): boolean {
   return existsSync(path.join(ROOT, "public", rel)) || existsSync(path.join(ROOT, rel));
 }
 
+function wordNeedsTts(page: Page, w: Word): boolean {
+  if (!w.target?.trim()) return false;
+  if (page.lang === "es") {
+    return !hasTts(w.ttsLatam || w.ttsUrl) || !hasTts(w.ttsEs);
+  }
+  return !hasTts(w.ttsUrl);
+}
+
+function exampleNeedsTts(page: Page, ex: Example): boolean {
+  if (!ex.target?.trim()) return false;
+  if (page.lang === "es") {
+    return !hasTts(ex.ttsLatam || ex.ttsUrl) || !hasTts(ex.ttsEs);
+  }
+  return !hasTts(ex.ttsUrl);
+}
+
 function needsWork(page: Page, force: boolean, ttsOnly: boolean) {
   if (force) return true;
   const words = page.words || [];
@@ -99,8 +122,8 @@ function needsWork(page: Page, force: boolean, ttsOnly: boolean) {
   if (!ttsOnly) {
     if (!ex.length || !page.explanationEn) return true;
   }
-  if (words.some((w) => w.target?.trim() && !hasTts(w.ttsUrl))) return true;
-  if (ex.some((e) => e.target?.trim() && !hasTts(e.ttsUrl))) return true;
+  if (words.some((w) => wordNeedsTts(page, w))) return true;
+  if (ex.some((e) => exampleNeedsTts(page, e))) return true;
   return false;
 }
 
@@ -172,7 +195,7 @@ async function generateCopy(page: Page): Promise<{
   const system = `You write beginner-friendly language-learning page copy for English speakers.
 Return ONLY valid JSON:
 {
-  "explanationEn": "2-3 short sentences about this vocabulary theme and how to use it",
+  "explanationEn": "ONE short sentence about this chart — how these words sound / when you say them",
   "examples": [
     { "target": "natural short sentence IN the target language", "english": "English translation" }
   ]
@@ -180,6 +203,7 @@ Return ONLY valid JSON:
 Rules:
 - Provide 4-6 examples total (not one per word if that is too many; prefer natural sentences using the list words).
 - Target sentences must be correct ${page.langName}, A1–A2 level.
+- explanationEn: exactly ONE sentence (≤ ~25 words). Pronunciation / listen-first framing. Name a few words from THIS chart — no second sentence, no listicles.
 - No romanization in the JSON fields.
 - No markdown.`;
   const user = `Chart title: ${page.titleEn}
@@ -207,28 +231,83 @@ ${wordLines}`;
     .filter((e) => e.target && e.english)
     .slice(0, 6);
   if (!examples.length) throw new Error("no examples from model");
+  const rawExplanation =
+    String(data.explanationEn || "").trim() || page.description || "";
+  const oneSentence =
+    rawExplanation.match(/^[\s\S]+?[.!?。！？](?=\s|$)/)?.[0]?.trim() ||
+    rawExplanation.split(/(?<=[.!?。！？])\s+/)[0]?.trim() ||
+    rawExplanation;
   return {
-    explanationEn:
-      String(data.explanationEn || "").trim() || page.description || "",
+    explanationEn: oneSentence,
     examples,
   };
 }
 
+async function writeEdgeClip(
+  pageId: string,
+  key: string,
+  text: string,
+  lang: string,
+  spanishAccent?: SpanishAccentId,
+) {
+  const voice = edgeVoiceForLang(lang, { spanishAccent });
+  const buf = await synthesizeEdgeTtsMp3(text, { voice });
+  return storeMp3(`${pageId}/${key}.mp3`, buf);
+}
+
 async function writeWordTts(page: Page, word: Word, index: number) {
-  const voice = edgeVoiceForLang(page.lang);
   const text = word.target.trim();
   if (!text) return word;
-  const buf = await synthesizeEdgeTtsMp3(text, { voice });
-  const ttsUrl = await storeMp3(`${page.id}/w${index}.mp3`, buf);
+  if (page.lang === "es") {
+    const ttsLatam = await writeEdgeClip(
+      page.id,
+      `w${index}-latam`,
+      text,
+      "es",
+      "latam",
+    );
+    await sleep(80);
+    const ttsEs = await writeEdgeClip(page.id, `w${index}-es`, text, "es", "es");
+    return {
+      ...word,
+      ttsUrl: ttsLatam,
+      ttsLatam,
+      ttsEs,
+      ttsProvider: "edge",
+    };
+  }
+  const ttsUrl = await writeEdgeClip(page.id, `w${index}`, text, page.lang);
   return { ...word, ttsUrl, ttsProvider: "edge" };
 }
 
 async function writeExampleTts(page: Page, ex: Example, index: number) {
-  const voice = edgeVoiceForLang(page.lang);
   const text = ex.target.trim();
   if (!text) return ex;
-  const buf = await synthesizeEdgeTtsMp3(text, { voice });
-  const ttsUrl = await storeMp3(`${page.id}/ex${index}.mp3`, buf);
+  if (page.lang === "es") {
+    const ttsLatam = await writeEdgeClip(
+      page.id,
+      `ex${index}-latam`,
+      text,
+      "es",
+      "latam",
+    );
+    await sleep(80);
+    const ttsEs = await writeEdgeClip(
+      page.id,
+      `ex${index}-es`,
+      text,
+      "es",
+      "es",
+    );
+    return {
+      ...ex,
+      ttsUrl: ttsLatam,
+      ttsLatam,
+      ttsEs,
+      ttsProvider: "edge",
+    };
+  }
+  const ttsUrl = await writeEdgeClip(page.id, `ex${index}`, text, page.lang);
   return { ...ex, ttsUrl, ttsProvider: "edge" };
 }
 
@@ -265,7 +344,11 @@ async function enrichPage(
   const wordsOut: Word[] = [];
   for (let i = 0; i < next.words.length; i++) {
     const w = next.words[i];
-    if (!opts.force && hasTts(w.ttsUrl)) {
+    const esReady =
+      page.lang === "es" &&
+      hasTts(w.ttsLatam || w.ttsUrl) &&
+      hasTts(w.ttsEs);
+    if (!opts.force && (esReady || (page.lang !== "es" && hasTts(w.ttsUrl)))) {
       wordsOut.push(w);
       continue;
     }
@@ -291,7 +374,14 @@ async function enrichPage(
   const exOut: Example[] = [];
   for (let i = 0; i < exIn.length; i++) {
     const ex = exIn[i];
-    if (!opts.force && hasTts(ex.ttsUrl)) {
+    const esExReady =
+      page.lang === "es" &&
+      hasTts(ex.ttsLatam || ex.ttsUrl) &&
+      hasTts(ex.ttsEs);
+    if (
+      !opts.force &&
+      (esExReady || (page.lang !== "es" && hasTts(ex.ttsUrl)))
+    ) {
       exOut.push(ex);
       continue;
     }
@@ -320,6 +410,7 @@ async function main() {
   const catalog = JSON.parse(readFileSync(PUBLISHED, "utf8")) as Catalog;
   let pages = catalog.pages || [];
   if (args.onlyId) pages = pages.filter((p) => p.id === args.onlyId);
+  if (args.onlyLang) pages = pages.filter((p) => p.lang === args.onlyLang);
   const queue = pages.filter((p) => needsWork(p, args.force, args.ttsOnly));
   const limited = args.limit > 0 ? queue.slice(0, args.limit) : queue;
   console.log(

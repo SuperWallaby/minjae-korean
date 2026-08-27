@@ -1,0 +1,14 @@
+{
+  "framework": "nextjs",
+  "regions": ["hnd1"],
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_SITE_MODE": "pronounce",
+      "NEXT_PUBLIC_PRONOUNCE_SITE_ORIGIN": "https://getpronounce.net"
+    }
+  },
+  "env": {
+    "NEXT_PUBLIC_SITE_MODE": "pronounce",
+    "NEXT_PUBLIC_PRONOUNCE_SITE_ORIGIN": "https://getpronounce.net"
+  }
+}

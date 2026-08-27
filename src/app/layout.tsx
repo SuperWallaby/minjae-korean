@@ -1,20 +1,16 @@
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  Jua,
+  Nanum_Gothic,
+  Noto_Sans_KR,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
-// NOTE: LiveKit removed (pure WebRTC implementation). Keep this file free of LiveKit imports.
-import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
-import { EducationModeProvider } from "@/lib/EducationModeProvider";
 import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SiteNavbar } from "@/components/site/SiteNavbar";
-import { TeachingSpotlight } from "@/components/site/TeachingSpotlight";
-import { QuickNote } from "@/components/QuickNote";
-import { ScrollToTop } from "@/components/ScrollToTop";
-import { ItalkiTutorStickyRail } from "@/components/site/ItalkiTutorStickyRail";
-import { SeoMiniQuizWidget } from "@/components/site/SeoMiniQuizWidget";
-import { SITE_ORIGIN } from "@/lib/siteUrl";
+import { KajaMainLayoutChrome } from "@/components/site/KajaMainLayoutChrome";
 import {
   EIGOCHART_DESCRIPTION,
   EIGOCHART_NAME,
@@ -30,8 +26,23 @@ import {
   soundSiteOrigin,
   soundSiteTitleTemplate,
 } from "@/lib/soundSite/brand";
-import NextTopLoader from "nextjs-toploader";
-import { TeachingCmdDraw } from "@/components/site/MouseDraw";
+import {
+  PRONOUNCE_SITE_DESCRIPTION,
+  PRONOUNCE_SITE_NAME,
+  pronounceSiteHomeTitle,
+  pronounceSiteOrigin,
+  pronounceSiteTitleTemplate,
+  isPronounceSiteDeployment,
+} from "@/lib/pronounceSite/brand";
+import {
+  WORKSHEET_SITE_DESCRIPTION,
+  WORKSHEET_SITE_NAME,
+  isWorksheetSiteDeployment,
+  worksheetSiteHomeTitle,
+  worksheetSiteOrigin,
+  worksheetSiteTitleTemplate,
+} from "@/lib/worksheetSite/brand";
+import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -45,17 +56,47 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
+const notoSansKr = Noto_Sans_KR({
+  variable: "--font-noto-sans-kr",
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  display: "swap",
+});
+
+const jua = Jua({
+  variable: "--font-jua",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const nanumGothic = Nanum_Gothic({
+  variable: "--font-nanum-gothic",
+  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  display: "swap",
+});
+
 const GLOBAL_PINTEREST_VERIFY = "86705510fceea49d9e5298e3a6f4df6d";
 const MAIN_PINTEREST_VERIFY = "7a6bc7a84bb2c6c634bf33f0618b07d7";
 const GLOBAL_IMPACT_VERIFY = "ad7f601e-1ef9-4800-b4ef-d477c480e7f4";
 const JA_IMPACT_VERIFY = "a87ceafc-d968-4565-862d-10234de628b1";
 const SOUND_IMPACT_VERIFY = "a87ceafc-d968-4565-862d-10234de628b1";
+const PRONOUNCE_IMPACT_VERIFY = "b424624e-7600-4de6-99df-310c5c41e237";
 
 function requestHost(h: Headers): string {
   return (h.get("host") || "").toLowerCase().split(":")[0];
 }
 
+function isPronounceSiteRequest(h: Headers): boolean {
+  if (h.get("x-kaja-site") === "pronounce") return true;
+  if (isPronounceSiteDeployment()) return true;
+  const host = requestHost(h);
+  return host === "getpronounce.net" || host.startsWith("getpronounce.");
+}
+
 function isSoundSiteRequest(h: Headers): boolean {
+  if (isPronounceSiteRequest(h)) return false;
   if (h.get("x-kaja-site") === "sound") return true;
   const host = requestHost(h);
   return (
@@ -74,6 +115,8 @@ function isGlobalSiteRequest(h: Headers): boolean {
 
 function isJaSiteRequest(h: Headers): boolean {
   if (isSoundSiteRequest(h)) return false;
+  if (isPronounceSiteRequest(h)) return false;
+  if (isWorksheetSiteRequest(h)) return false;
   if (isJaSiteDeployment()) return true;
   if (h.get("x-kaja-site") === "ja") return true;
   const host = requestHost(h);
@@ -89,11 +132,41 @@ function isJaSiteRequest(h: Headers): boolean {
   );
 }
 
+function isWorksheetSiteRequest(h: Headers): boolean {
+  if (isWorksheetSiteDeployment()) return true;
+  if (h.get("x-kaja-site") === "worksheet") return true;
+  const host = requestHost(h);
+  return host === "worksheet.kajakorean.com" || host.startsWith("worksheet.");
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const h = await headers();
   const isGlobalSite = isGlobalSiteRequest(h);
   const isSoundSite = isSoundSiteRequest(h);
+  const isPronounceSite = isPronounceSiteRequest(h);
   const isJaSite = isJaSiteRequest(h);
+  const isWorksheetSite = isWorksheetSiteRequest(h);
+
+  if (isPronounceSite) {
+    const origin = pronounceSiteOrigin();
+    return {
+      metadataBase: new URL(origin),
+      title: {
+        default: pronounceSiteHomeTitle(),
+        template: pronounceSiteTitleTemplate(),
+      },
+      description: PRONOUNCE_SITE_DESCRIPTION,
+      applicationName: PRONOUNCE_SITE_NAME,
+      themeColor: "#b91c1c",
+      icons: {
+        icon: [
+          { url: "/getpronounce/mark.svg", type: "image/svg+xml" },
+        ],
+        shortcut: [{ url: "/getpronounce/mark.svg", type: "image/svg+xml" }],
+        apple: [{ url: "/getpronounce/mark.svg", type: "image/svg+xml" }],
+      },
+    };
+  }
 
   if (isSoundSite) {
     const origin = soundSiteOrigin();
@@ -117,6 +190,20 @@ export async function generateMetadata(): Promise<Metadata> {
         title: soundSiteHomeTitle(),
         description: SOUND_SITE_DESCRIPTION,
       },
+    };
+  }
+
+  if (isWorksheetSite) {
+    const origin = worksheetSiteOrigin();
+    return {
+      metadataBase: new URL(origin),
+      title: {
+        default: worksheetSiteHomeTitle(),
+        template: worksheetSiteTitleTemplate(),
+      },
+      description: WORKSHEET_SITE_DESCRIPTION,
+      applicationName: WORKSHEET_SITE_NAME,
+      themeColor: "#0071e3",
     };
   }
 
@@ -182,7 +269,7 @@ export async function generateMetadata(): Promise<Metadata> {
         template: "%s · Kaja Global",
       },
       description:
-        "Save-worthy vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, and Japanese — with pronunciation audio, examples, and tutor offers.",
+        "Save-worthy vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, Japanese, and Chinese — with pronunciation audio, examples, and tutor offers.",
       applicationName: "Kaja Global",
       manifest: "/brand/site.webmanifest",
       icons: {
@@ -293,9 +380,11 @@ export default async function RootLayout({
   const h = await headers();
   const isGlobalSite = isGlobalSiteRequest(h);
   const isSoundSite = isSoundSiteRequest(h);
+  const isPronounceSite = isPronounceSiteRequest(h);
   const isJaSite = isJaSiteRequest(h);
+  const isWorksheetSite = isWorksheetSiteRequest(h);
 
-  if (isGlobalSite || isJaSite || isSoundSite) {
+  if (isGlobalSite || isJaSite || isSoundSite || isPronounceSite || isWorksheetSite) {
     return (
       <html lang={isJaSite ? "ja" : "en"}>
         <head>
@@ -323,8 +412,20 @@ export default async function RootLayout({
               {...{ value: JA_IMPACT_VERIFY }}
             />
           ) : null}
+          {isPronounceSite ? (
+            <meta
+              name="impact-site-verification"
+              {...{ value: PRONOUNCE_IMPACT_VERIFY }}
+            />
+          ) : null}
         </head>
-        <body className={`${plusJakarta.variable} ${bricolage.variable}`}>
+        <body
+          className={
+            isWorksheetSite
+              ? `${plusJakarta.variable} ${bricolage.variable} ${notoSansKr.variable} ${jua.variable} ${nanumGothic.variable}`
+              : `${plusJakarta.variable} ${bricolage.variable}`
+          }
+        >
           <GoogleAnalytics />
           {children}
         </body>
@@ -345,29 +446,8 @@ export default async function RootLayout({
         className={`${plusJakarta.variable} ${bricolage.variable} min-h-dvh font-sans`}
         cz-shortcut-listen="true"
       >
-        <MockSessionProvider>
-          <GoogleAnalytics />
-          <EducationModeProvider>
-            <div className="min-h-dvh bg-background">
-              <NextTopLoader
-                color="#0071e3"
-                height={3}
-                showSpinner={false}
-                crawlSpeed={200}
-                speed={200}
-              />
-              <ScrollToTop />
-              <TeachingSpotlight />
-              <TeachingCmdDraw />
-              <SiteNavbar />
-              <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
-              <SiteFooter />
-              <SeoMiniQuizWidget />
-              <ItalkiTutorStickyRail />
-              <QuickNote />
-            </div>
-          </EducationModeProvider>
-        </MockSessionProvider>
+        <GoogleAnalytics />
+        <KajaMainLayoutChrome>{children}</KajaMainLayoutChrome>
       </body>
     </html>
   );

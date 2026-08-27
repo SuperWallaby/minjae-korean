@@ -1,0 +1,28 @@
+---
+description: GetPronounce + atlas SEO — niche tool pages, not slop
+globs:
+  - src/app/pronounce-site/**
+  - src/lib/pronounceSite/**
+  - scripts/*pronounce*
+  - scripts/generate-zh-pronounce*
+  - docs/design/getpronounce.md
+---
+
+# Atlas SEO (GetPronounce / Global / Sound)
+
+## Do
+
+- **One niche per domain** — getpronounce = Chinese *pronunciation* for English speakers. Global = vocab *charts* by target language. Sound = English *pronunciation*.
+- **Tool pages** — each URL is a listenable chart (words + audio + pin image). That is the product.
+- **Concrete copy** — cite the words on *this* page, pinyin, accent slots (“CN / TW / HK voices”). Use catalog data, not generic listicles.
+- **Differentiation** — our multi-accent TTS matrix and pin-linked word sets are the moat; mention them where natural.
+
+## Do not
+
+- Mass-generate thin SEO pages with no audio or duplicate templates (“10 ways to learn Chinese”).
+- Blur niches (random blog posts, unrelated languages on getpronounce.net).
+- Compete on generic advice posts everyone else publishes — Google rewards original utility (working audio tools) and real on-page data.
+
+## Pinterest
+
+SEO page live **before** pin. Destination = site URL only (never homepage fallback). See `pinterest-vocab-seo-links.mdc` pattern.

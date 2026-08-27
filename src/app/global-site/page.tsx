@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
 import { GlobalPinImage } from "@/components/global-site/GlobalPinImage";
+import { atlasLangPath } from "@/lib/atlasRoutes";
 import {
   featuredHomePins,
   getGlobalCatalog,
@@ -13,7 +14,7 @@ import {
 
 const HOME_TITLE = "Kaja Global · Vocabulary charts that stick";
 const HOME_DESC =
-  "Free language vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, and Japanese — with pronunciation audio and examples.";
+  "Free language vocabulary charts for English speakers learning Spanish, French, German, Italian, Arabic, Japanese, and Chinese — with pronunciation audio and examples.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -69,12 +70,11 @@ export default function GlobalHomePage() {
       />
       <section className="global-hero">
         <div>
-          <p className="global-kicker">Word atlas · 6 languages</p>
+          <p className="global-kicker">Word atlas · 7 languages</p>
           <h1>Charts you can pin — and actually remember.</h1>
           <p>
-            Free plates for English speakers: Spanish, French, German, Italian,
-            Arabic, Japanese. Hear the word, read a sentence, then talk to a
-            tutor when you&apos;re ready.
+            Free vocabulary charts for English speakers — seven languages, audio
+            on every word.
           </p>
           <div className="global-cta-row">
             <a className="global-btn global-btn-stamp" href="/go/preply">
@@ -116,7 +116,7 @@ export default function GlobalHomePage() {
             <Link
               key={lang.code}
               className="global-lang-chip"
-              href={`/lang/${lang.code}`}
+              href={atlasLangPath(lang.code)}
               data-lang={lang.code}
             >
               <strong lang={lang.code} dir={meta.dir}>

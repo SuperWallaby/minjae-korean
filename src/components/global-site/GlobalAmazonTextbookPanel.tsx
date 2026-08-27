@@ -3,6 +3,7 @@
 import {
   AMAZON_ASSOCIATE_DISCLOSURE,
   pickGlobalTextbooks,
+  pickJaEnglishTextbooks,
   type AmazonTextbook,
 } from "@/lib/affiliateAmazon";
 import { trackAffiliateClick } from "@/lib/ga";
@@ -13,6 +14,11 @@ type Props = {
   langName: string;
   placement?: string;
   pinId?: string;
+  heading?: string;
+  lede?: string;
+  kicker?: string;
+  disclosure?: string;
+  books?: AmazonTextbook[];
 };
 
 export function GlobalAmazonTextbookPanel({
@@ -20,8 +26,15 @@ export function GlobalAmazonTextbookPanel({
   langName,
   placement = "global_textbook_panel",
   pinId,
+  heading,
+  lede,
+  kicker = "Study next",
+  disclosure = AMAZON_ASSOCIATE_DISCLOSURE,
+  books: booksProp,
 }: Props) {
-  const books = pickGlobalTextbooks(lang);
+  const books =
+    booksProp ??
+    (lang === "en-ja" ? pickJaEnglishTextbooks() : pickGlobalTextbooks(lang));
   if (books.length === 0) return null;
 
   const onBookClick = (book: AmazonTextbook) => {
@@ -42,17 +55,19 @@ export function GlobalAmazonTextbookPanel({
       data-lang={lang}
     >
       <div className="global-textbook-head">
-        <p className="global-textbook-kicker">Study next</p>
-        <h2>Textbooks for {langName}</h2>
+        <p className="global-textbook-kicker">{kicker}</p>
+        <h2>{heading || `Textbooks for ${langName}`}</h2>
       </div>
-      <p className="global-textbook-lede">Swipe to browse beginner picks on Amazon.</p>
+      <p className="global-textbook-lede">
+        {lede || "Swipe to browse beginner picks on Amazon."}
+      </p>
       <TextbookCarousel
         books={books}
         onBookClick={onBookClick}
         theme="global"
         ariaLabel={`${langName} textbook recommendations`}
       />
-      <p className="global-textbook-disclosure">{AMAZON_ASSOCIATE_DISCLOSURE}</p>
+      <p className="global-textbook-disclosure">{disclosure}</p>
     </aside>
   );
 }

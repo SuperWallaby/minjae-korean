@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { globalPathToPronounce } from "@/lib/atlasRoutes";
+
+const PRONOUNCE_ORIGIN = "https://getpronounce.net";
 
 const GLOBAL_HOSTS = new Set([
   "global.kajakorean.com",
@@ -13,6 +16,21 @@ const SOUND_HOSTS = new Set([
   "www.sound.eigopin.com",
   "sound.eigopin.localhost",
   "sound.eigopin.localhost:3000",
+]);
+
+const PRONOUNCE_HOSTS = new Set([
+  "getpronounce.net",
+  "www.getpronounce.net",
+  "getpronounce.localhost",
+  "getpronounce.localhost:3000",
+]);
+
+const WORKSHEET_HOSTS = new Set([
+  "worksheet.kajakorean.com",
+  "worksheet.localhost",
+  "worksheet.localhost:3000",
+  "worksheet.127.0.0.1",
+  "worksheet.127.0.0.1:3000",
 ]);
 
 const JA_HOSTS = new Set([
@@ -32,14 +50,29 @@ const JA_HOSTS = new Set([
   "ja.127.0.0.1:3000",
 ]);
 
-type AtlasSite = "global" | "ja" | "sound";
+type AtlasSite = "global" | "ja" | "sound" | "pronounce" | "worksheet";
 
-/** Edge-cache HTML for the public atlas (browser can still revalidate). */
-const ATLAS_HTML_CACHE =
+/** Edge-cache HTML for public atlas + vocab SEO (browser can still revalidate). */
+const PUBLIC_HTML_CACHE =
   "public, s-maxage=3600, stale-while-revalidate=86400";
+
+/** @deprecated use PUBLIC_HTML_CACHE */
+const ATLAS_HTML_CACHE = PUBLIC_HTML_CACHE;
 
 function hostname(host: string): string {
   return host.split(":")[0]?.toLowerCase() || "";
+}
+
+function isWorksheetSiteMode(): boolean {
+  return process.env.NEXT_PUBLIC_SITE_MODE?.trim() === "worksheet";
+}
+
+function isWorksheetHost(host: string): boolean {
+  if (isWorksheetSiteMode()) return true;
+  const h = hostname(host);
+  if (WORKSHEET_HOSTS.has(host.toLowerCase()) || WORKSHEET_HOSTS.has(h))
+    return true;
+  return h.startsWith("worksheet.");
 }
 
 function isGlobalHost(host: string): boolean {
@@ -52,6 +85,18 @@ function isSoundHost(host: string): boolean {
   const h = hostname(host);
   if (SOUND_HOSTS.has(host.toLowerCase()) || SOUND_HOSTS.has(h)) return true;
   return h === "sound.eigopin.com" || h.startsWith("sound.");
+}
+
+function isPronounceSiteMode(): boolean {
+  return process.env.NEXT_PUBLIC_SITE_MODE?.trim() === "pronounce";
+}
+
+function isPronounceHost(host: string): boolean {
+  if (isPronounceSiteMode()) return true;
+  const h = hostname(host);
+  if (PRONOUNCE_HOSTS.has(host.toLowerCase()) || PRONOUNCE_HOSTS.has(h))
+    return true;
+  return h === "getpronounce.net" || h.startsWith("getpronounce.");
 }
 
 function isJaSiteMode(): boolean {
@@ -73,10 +118,14 @@ function isJaHost(host: string): boolean {
   );
 }
 
-function withAtlasCdnCache(res: NextResponse) {
-  res.headers.set("CDN-Cache-Control", ATLAS_HTML_CACHE);
-  res.headers.set("Vercel-CDN-Cache-Control", ATLAS_HTML_CACHE);
+function withPublicHtmlCache(res: NextResponse) {
+  res.headers.set("CDN-Cache-Control", PUBLIC_HTML_CACHE);
+  res.headers.set("Vercel-CDN-Cache-Control", PUBLIC_HTML_CACHE);
   return res;
+}
+
+function withAtlasCdnCache(res: NextResponse) {
+  return withPublicHtmlCache(res);
 }
 
 function taggedNext(request: NextRequest, site: AtlasSite) {
@@ -106,6 +155,7 @@ function isStaticAsset(pathname: string): boolean {
     pathname.startsWith("/global/") ||
     pathname.startsWith("/ja/") ||
     pathname.startsWith("/sound/") ||
+    pathname.startsWith("/pronounce/") ||
     pathname.startsWith("/favicon") ||
     Boolean(
       pathname.match(
@@ -115,10 +165,68 @@ function isStaticAsset(pathname: string): boolean {
   );
 }
 
+function pronouncePathRedirect(request: NextRequest): NextResponse | null {
+  const { pathname } = request.nextUrl;
+
+  if (pathname === "/jp" || pathname.startsWith("/jp/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace(/^\/jp(?=\/|$)/, "/ja");
+    return NextResponse.redirect(url, 301);
+  }
+
+  if (pathname === "/lang/zh" || pathname === "/lang/zh/") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
+    return NextResponse.redirect(url, 301);
+  }
+
+  const langHub = pathname.match(/^\/lang\/([a-z]{2})\/?$/);
+  if (langHub) {
+    const code = langHub[1]!;
+    const url = request.nextUrl.clone();
+    url.pathname = code === "zh" ? "/" : `/${code}/`;
+    return NextResponse.redirect(url, 301);
+  }
+
+  const langPin = pathname.match(/^\/lang\/([a-z]{2})\/pin\/(.+)$/);
+  if (langPin) {
+    const code = langPin[1]!;
+    const id = langPin[2]!;
+    const url = request.nextUrl.clone();
+    url.pathname = code === "zh" ? `/pin/${id}` : `/${code}/pin/${id}`;
+    return NextResponse.redirect(url, 301);
+  }
+
+  const apexPin = pathname.match(/^\/pin\/([^/]+)$/);
+  if (apexPin) {
+    const id = decodeURIComponent(apexPin[1]!);
+    const lang = id.match(/__([a-z]{2})$/i)?.[1]?.toLowerCase();
+    if (lang && lang !== "zh") {
+      const url = request.nextUrl.clone();
+      url.pathname = `/${lang === "jp" ? "ja" : lang}/pin/${encodeURIComponent(id)}`;
+      return NextResponse.redirect(url, 301);
+    }
+  }
+
+  return null;
+}
+
+function globalToPronounceRedirect(request: NextRequest): NextResponse {
+  const target = new URL(PRONOUNCE_ORIGIN);
+  target.pathname = globalPathToPronounce(request.nextUrl.pathname);
+  target.search = request.nextUrl.search;
+  return NextResponse.redirect(target, 301);
+}
+
 function atlasMiddleware(
   request: NextRequest,
   site: AtlasSite,
-  prefix: "/global-site" | "/ja-site" | "/sound-site",
+  prefix:
+    | "/global-site"
+    | "/ja-site"
+    | "/sound-site"
+    | "/pronounce-site"
+    | "/worksheet-site",
 ) {
   const { pathname } = request.nextUrl;
   const sitePath = pathname.startsWith(prefix);
@@ -128,7 +236,11 @@ function atlasMiddleware(
       ? isGlobalHost(host)
       : site === "sound"
         ? isSoundHost(host)
-        : isJaHost(host);
+        : site === "pronounce"
+          ? isPronounceHost(host)
+          : site === "worksheet"
+            ? isWorksheetHost(host)
+            : isJaHost(host);
 
   if (isStaticAsset(pathname)) {
     return taggedNext(request, site);
@@ -165,10 +277,28 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const soundHost = isSoundHost(host);
   const soundPath = pathname.startsWith("/sound-site");
+  const pronounceHost = isPronounceHost(host);
+  const pronouncePath = pathname.startsWith("/pronounce-site");
   const jaHost = isJaHost(host);
   const jaPath = pathname.startsWith("/ja-site");
   const globalHost = isGlobalHost(host);
   const globalPath = pathname.startsWith("/global-site");
+  const worksheetHost = isWorksheetHost(host);
+  const worksheetPath = pathname.startsWith("/worksheet-site");
+
+  // Worksheet subdomain / dedicated deploy — before ja/global.
+  if (isWorksheetSiteMode() || worksheetHost || worksheetPath) {
+    return atlasMiddleware(request, "worksheet", "/worksheet-site");
+  }
+
+  // Pronounce (getpronounce.net) — own domain.
+  if (pronounceHost || pronouncePath) {
+    if (pronounceHost) {
+      const redirect = pronouncePathRedirect(request);
+      if (redirect) return withAtlasCdnCache(redirect);
+    }
+    return atlasMiddleware(request, "pronounce", "/pronounce-site");
+  }
 
   // Sound first — subdomain of eigopin must not inherit ja rewrite.
   if (soundHost || soundPath) {
@@ -180,7 +310,19 @@ export function middleware(request: NextRequest) {
   }
 
   if (globalHost || globalPath) {
+    if (globalHost && !globalPath) {
+      return withAtlasCdnCache(globalToPronounceRedirect(request));
+    }
     return atlasMiddleware(request, "global", "/global-site");
+  }
+
+  // Kaja vocab SEO — edge-cache HTML like atlas (Pinterest → /vocab/* global traffic).
+  if (
+    pathname.startsWith("/vocab/") &&
+    !isStaticAsset(pathname) &&
+    !pathname.startsWith("/api")
+  ) {
+    return withPublicHtmlCache(NextResponse.next());
   }
 
   return NextResponse.next();

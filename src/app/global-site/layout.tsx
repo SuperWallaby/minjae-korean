@@ -6,6 +6,10 @@ import {
 } from "@/lib/globalSite/catalog";
 import "./global.css";
 
+/** Asia-first (JP/KR/SEA); Hobby plan allows one region — hnd1 beats iad1 for atlas traffic. */
+export const preferredRegion = "hnd1";
+export const revalidate = 3600;
+
 const LANG_NAV = ["es", "fr", "de", "it", "ar", "ja"] as const;
 
 export const metadata: Metadata = {

@@ -2,11 +2,15 @@
   "name": "korean-teacher-mj",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "resolutions": {
     "sharp": "0.34.5"
   },
   "scripts": {
     "dev": "next dev",
+    "dev:worksheet": "NEXT_PUBLIC_SITE_MODE=worksheet next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -44,6 +48,7 @@
     "vocab-detail:pipeline": "npx tsx scripts/vocab-detail-pipeline.ts",
     "vocab:audit-hanja": "npx tsx scripts/audit-hanja-hubs.ts",
     "vocab:publish": "npx tsx scripts/publish-vocab-seo-pages.ts",
+    "vocab:migrate-ascii-ids": "node scripts/migrate-non-ascii-bundle-ids.mjs",
     "list:publish": "npx tsx scripts/publish-ig-list-seo-pages.ts",
     "vocab:enrich": "npx tsx scripts/enrich-vocab-seo-pages.ts",
     "vocab:tts-pinned": "bash scripts/run-pinned-vocab-tts.sh",
@@ -56,6 +61,8 @@
     "blog:promo-pins": "node scripts/gen-content-promo-pins.mjs --blog",
     "news:promo-pins": "node scripts/gen-content-promo-pins.mjs --news",
     "quiz:word-pins": "node scripts/gen-quiz-word-pins.mjs",
+    "worksheet:export": "node scripts/export-worksheet-png.mjs",
+    "worksheet:templates": "node scripts/gen-worksheet-templates.mjs",
     "generate-grammar-batch": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100.txt",
     "generate-grammar-batch-2": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-2.txt",
     "generate-grammar-batch-3": "npx tsx scripts/generate-grammar-data.ts --batch-file scripts/data/grammar-batch-100-3.txt",
@@ -67,6 +74,7 @@
     "x-oauth1-setup:manual": "npx tsx scripts/x-oauth1-setup.ts --manual",
     "deploy-x-poster": "bash scripts/deploy-x-poster.sh",
     "global:publish-pins": "node scripts/publish-global-pins.mjs",
+    "global:audit-pins": "node scripts/audit-global-pin-vision.mjs",
     "global:optimize-images": "node scripts/optimize-global-pin-web-images.mjs",
     "global:upload-pins": "node scripts/upload-global-pins-r2.mjs",
     "global:enrich": "npx tsx scripts/enrich-global-pins.ts",
@@ -90,7 +98,21 @@
     "sound:enrich": "npx tsx scripts/enrich-sound-pins.ts",
     "sound:verify-live": "node scripts/verify-sound-live.mjs",
     "sound:pin": "node scripts/pin-sound-samples.mjs",
-    "sound:pin:catchup": "node scripts/pin-sound-samples.mjs --catch-up"
+    "sound:pin:catchup": "node scripts/pin-sound-samples.mjs --catch-up",
+    "sound:daily": "bash scripts/run-sound-daily.sh",
+    "sound:daily:install": "bash scripts/install-sound-daily.sh",
+    "global:gen-zh": "npx tsx scripts/generate-global-lang-en-samples.ts --langs=zh",
+    "pronounce:gen": "npx tsx scripts/generate-zh-pronounce-samples.ts",
+    "pronounce:publish": "node scripts/publish-pronounce-pins.mjs",
+    "pronounce:enrich": "npx tsx scripts/enrich-pronounce-pins.ts",
+    "pronounce:pin": "node scripts/pin-pronounce-samples.mjs",
+    "pronounce:sovits-bootstrap": "node scripts/prepare-zh-sovits-bootstrap.mjs",
+    "pronounce:sovits-train": "bash scripts/run-zh-sovits-train-lab-worker.sh",
+    "pronounce:es-sovits-bootstrap": "node scripts/prepare-es-sovits-bootstrap.mjs",
+    "pronounce:es-sovits-train": "bash scripts/run-es-sovits-train-lab-worker.sh",
+    "pronounce:post-ready": "bash scripts/post-getpronounce-ready.sh",
+    "pronounce:deploy": "bash scripts/deploy-getpronounce.sh --promote",
+    "pronounce:zh-samples": "node scripts/generate-zh-elevenlabs-samples.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.990.0",
@@ -99,6 +121,7 @@
     "@types/luxon": "^3.7.1",
     "clsx": "^2.1.1",
     "hangul-romanize": "^0.3.2",
+    "html-to-image": "^1.11.13",
     "jose": "^6.1.0",
     "lucide-react": "^0.563.0",
     "luxon": "^3.7.2",
@@ -123,6 +146,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.7",
+    "playwright": "^1.51.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vercel": "^50.39.0"

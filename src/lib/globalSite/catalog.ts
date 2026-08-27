@@ -1,13 +1,28 @@
 import catalog from "@/data/globalPins/published.json";
 import { globalPinCdnOrigin } from "@/lib/mediaUrl";
+import {
+  isPronounceSiteDeployment,
+  pronounceSiteOrigin,
+} from "@/lib/pronounceSite/brand";
 
 export type GlobalPinWord = {
   english: string;
   target: string;
   romanization: string;
-  /** Static path e.g. /global/audio/{id}/w0.mp3 */
+  /** Static path e.g. /global/audio/{id}/w0.mp3 (Spanish: LatAm default). */
   ttsUrl?: string;
   ttsProvider?: string;
+  /** Spanish: Latin America (es-MX) — preferred default for US traffic. */
+  ttsLatam?: string;
+  /** Spanish: Spain (es-ES). */
+  ttsEs?: string;
+  /** Optional multi-region Chinese (enrich-pronounce / SoVITS). */
+  ttsFemaleCn?: string;
+  ttsMaleCn?: string;
+  ttsFemaleTw?: string;
+  ttsMaleTw?: string;
+  ttsFemaleHk?: string;
+  ttsMaleHk?: string;
 };
 
 export type GlobalPinExample = {
@@ -16,6 +31,8 @@ export type GlobalPinExample = {
   english: string;
   ttsUrl?: string;
   ttsProvider?: string;
+  ttsLatam?: string;
+  ttsEs?: string;
 };
 
 export type GlobalPinPage = {
@@ -48,9 +65,12 @@ export function getGlobalCatalog(): GlobalPinCatalog {
 }
 
 export function globalSiteBase(): string {
+  if (isPronounceSiteDeployment()) {
+    return pronounceSiteOrigin();
+  }
   return (
     getGlobalCatalog().site?.replace(/\/+$/, "") ||
-    "https://global.kajakorean.com"
+    "https://getpronounce.net"
   );
 }
 
@@ -117,6 +137,7 @@ export const GLOBAL_LANG_META: Record<
   it: { native: "Italiano", rail: "#2c6a4a" },
   ar: { native: "العربية", dir: "rtl", rail: "#5b3d86" },
   ja: { native: "日本語", rail: "#a31d18" },
+  zh: { native: "中文", rail: "#b91c1c" },
 };
 
 export function globalLangMeta(code: string) {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GlobalPinImage } from "@/components/global-site/GlobalPinImage";
+import { atlasPinPath } from "@/lib/atlasRoutes";
 import {
   globalLangMeta,
   type GlobalPinPage,
@@ -23,7 +24,7 @@ export function GlobalPinCard({
   return (
     <Link
       className="global-pin-card"
-      href={`/pin/${pin.id}`}
+      href={atlasPinPath(pin)}
       data-lang={pin.lang}
     >
       <GlobalPinImage

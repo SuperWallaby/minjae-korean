@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
+import { atlasLangPath, atlasPinPath } from "@/lib/atlasRoutes";
 import {
   getGlobalPin,
   globalPinPageImagePath,
   globalSiteBase,
   type GlobalPinPage,
 } from "@/lib/globalSite/catalog";
+import { firstSentence } from "@/lib/globalSite/copy";
+import { isPronounceSiteDeployment } from "@/lib/pronounceSite/brand";
 
 export function pinCanonicalPath(pin: GlobalPinPage): string {
-  return `/pin/${encodeURIComponent(pin.id)}`;
+  return atlasPinPath(pin);
+}
+
+function atlasSiteName(): string {
+  return isPronounceSiteDeployment() ? "GetPronounce" : "Kaja Global";
 }
 
 export function pinAbsoluteUrl(pin: GlobalPinPage): string {
@@ -27,20 +34,25 @@ export function buildPinMetadata(pin: GlobalPinPage): Metadata {
     .map((w) => w.english)
     .filter(Boolean)
     .join(", ");
+  const title = `${pin.titleEn} — pronunciation & listen`;
   const description =
-    pin.explanationEn?.slice(0, 160) ||
-    pin.description ||
-    `Learn ${pin.langName} vocabulary (${words}) with pronunciation audio and example sentences. Free chart for English speakers.`;
-  const title = `${pin.titleEn} — words, audio & examples`;
+    firstSentence(
+      pin.explanationEn ||
+        pin.description ||
+        `Learn ${pin.langName} vocabulary (${words}) with pronunciation audio.`,
+    ).slice(0, 160) ||
+    `Learn ${pin.langName} vocabulary (${words}) with pronunciation audio.`;
   return {
     title,
     description,
     keywords: [
       pin.langName,
+      "pronunciation",
+      "how to pronounce",
+      "listen",
       "vocabulary",
       "learn",
       pin.topicSlug || "",
-      "pronunciation",
       "English speakers",
       ...pin.words.slice(0, 6).map((w) => w.english),
     ].filter(Boolean),
@@ -50,7 +62,7 @@ export function buildPinMetadata(pin: GlobalPinPage): Metadata {
       url,
       title: pin.titleEn,
       description,
-      siteName: "Kaja Global",
+      siteName: atlasSiteName(),
       images: [{ url: image, alt: pin.titleEn }],
       locale: "en_US",
     },
@@ -89,7 +101,7 @@ export function pinJsonLd(pin: GlobalPinPage) {
             "@type": "ListItem",
             position: 2,
             name: pin.langName,
-            item: `${globalSiteBase()}/lang/${pin.lang}`,
+            item: `${globalSiteBase()}${atlasLangPath(pin.lang)}`,
           },
           {
             "@type": "ListItem",

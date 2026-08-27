@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-27T03:16:45.136Z",
+  "site": "https://getpronounce.net",
+  "teaches": "zh",
+  "audience": "en",
+  "pages": [
+    {
+      "id": "zh_word__dui-bu-qi",
+      "titleEn": "Sorry — 对不起 (duì bu qǐ)",
+      "slug": "dui-bu-qi",
+      "imagePath": "/pronounce/pins/zh_word__dui-bu-qi.png",
+      "words": [
+        {
+          "chinese": "对不起",
+          "pinyin": "duì bu qǐ",
+          "english": "Sorry",
+          "ttsProvider": "elevenlabs",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__dui-bu-qi/w0-cn-female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__dui-bu-qi/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__dui-bu-qi/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__dui-bu-qi/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__dui-bu-qi/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__dui-bu-qi/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__dui-bu-qi/w0-hk-male.mp3"
+        }
+      ],
+      "description": "Hear how to pronounce 对不起 (duì bu qǐ) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "greetings",
+      "publishedAt": "2026-08-27T02:58:34.766Z"
+    },
+    {
+      "id": "zh_word__duo-shao-qian",
+      "titleEn": "How much? — 多少钱 (duō shao qián)",
+      "slug": "duo-shao-qian",
+      "imagePath": "/pronounce/pins/zh_word__duo-shao-qian.png",
+      "words": [
+        {
+          "chinese": "多少钱",
+          "pinyin": "duō shao qián",
+          "english": "How much?",
+          "ttsProvider": "elevenlabs",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__duo-shao-qian/w0-cn-female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__duo-shao-qian/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__duo-shao-qian/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__duo-shao-qian/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__duo-shao-qian/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__duo-shao-qian/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__duo-shao-qian/w0-hk-male.mp3"
+        }
+      ],
+      "description": "Hear how to pronounce 多少钱 (duō shao qián) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "travel",
+      "publishedAt": "2026-08-27T03:01:25.248Z"
+    },
+    {
+      "id": "zh_word__ni-hao",
+      "titleEn": "Hello — 你好 (nǐ hǎo)",
+      "slug": "ni-hao",
+      "imagePath": "/pronounce/pins/zh_word__ni-hao.png",
+      "words": [
+        {
+          "chinese": "你好",
+          "pinyin": "nǐ hǎo",
+          "english": "Hello",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao/w0-cn-female.mp3",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao/w0-hk-male.mp3",
+          "ttsProvider": "elevenlabs"
+        }
+      ],
+      "description": "Hear how to pronounce 你好 (nǐ hǎo) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "greetings",
+      "publishedAt": "2026-08-27T02:46:34.841Z"
+    },
+    {
+      "id": "zh_word__ni-hao-ma",
+      "titleEn": "How are you? — 你好吗 (nǐ hǎo ma)",
+      "slug": "ni-hao-ma",
+      "imagePath": "/pronounce/pins/zh_word__ni-hao-ma.png",
+      "words": [
+        {
+          "chinese": "你好吗",
+          "pinyin": "nǐ hǎo ma",
+          "english": "How are you?",
+          "ttsProvider": "elevenlabs",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao-ma/w0-cn-female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao-ma/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao-ma/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao-ma/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao-ma/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao-ma/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__ni-hao-ma/w0-hk-male.mp3"
+        }
+      ],
+      "description": "Hear how to pronounce 你好吗 (nǐ hǎo ma) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "greetings",
+      "publishedAt": "2026-08-27T03:02:49.183Z"
+    },
+    {
+      "id": "zh_word__wo-ai-ni",
+      "titleEn": "I love you — 我爱你 (wǒ ài nǐ)",
+      "slug": "wo-ai-ni",
+      "imagePath": "/pronounce/pins/zh_word__wo-ai-ni.png",
+      "words": [
+        {
+          "chinese": "我爱你",
+          "pinyin": "wǒ ài nǐ",
+          "english": "I love you",
+          "ttsProvider": "elevenlabs",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__wo-ai-ni/w0-cn-female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__wo-ai-ni/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__wo-ai-ni/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__wo-ai-ni/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__wo-ai-ni/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__wo-ai-ni/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__wo-ai-ni/w0-hk-male.mp3"
+        }
+      ],
+      "description": "Hear how to pronounce 我爱你 (wǒ ài nǐ) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "feelings",
+      "publishedAt": "2026-08-27T03:04:12.437Z"
+    },
+    {
+      "id": "zh_word__xie-xie",
+      "titleEn": "Thank you — 谢谢 (xiè xie)",
+      "slug": "xie-xie",
+      "imagePath": "/pronounce/pins/zh_word__xie-xie.png",
+      "words": [
+        {
+          "chinese": "谢谢",
+          "pinyin": "xiè xie",
+          "english": "Thank you",
+          "ttsProvider": "elevenlabs",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xie-xie/w0-cn-female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xie-xie/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xie-xie/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xie-xie/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xie-xie/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xie-xie/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xie-xie/w0-hk-male.mp3"
+        }
+      ],
+      "description": "Hear how to pronounce 谢谢 (xiè xie) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "greetings",
+      "publishedAt": "2026-08-27T02:55:54.472Z"
+    },
+    {
+      "id": "zh_word__xue-xi",
+      "titleEn": "To study / learn — 学习 (xué xí)",
+      "slug": "xue-xi",
+      "imagePath": "/pronounce/pins/zh_word__xue-xi.png",
+      "words": [
+        {
+          "chinese": "学习",
+          "pinyin": "xué xí",
+          "english": "To study / learn",
+          "ttsProvider": "elevenlabs",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xue-xi/w0-cn-female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xue-xi/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xue-xi/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xue-xi/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xue-xi/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xue-xi/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__xue-xi/w0-hk-male.mp3"
+        }
+      ],
+      "description": "Hear how to pronounce 学习 (xué xí) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "study",
+      "publishedAt": "2026-08-27T02:57:15.896Z"
+    },
+    {
+      "id": "zh_word__zai-jian",
+      "titleEn": "Goodbye — 再见 (zài jiàn)",
+      "slug": "zai-jian",
+      "imagePath": "/pronounce/pins/zh_word__zai-jian.png",
+      "words": [
+        {
+          "chinese": "再见",
+          "pinyin": "zài jiàn",
+          "english": "Goodbye",
+          "ttsProvider": "elevenlabs",
+          "ttsFemaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__zai-jian/w0-cn-female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__zai-jian/w0-cn-female.mp3",
+          "ttsMaleCn": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__zai-jian/w0-cn-male.mp3",
+          "ttsFemaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__zai-jian/w0-tw-female.mp3",
+          "ttsMaleTw": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__zai-jian/w0-tw-male.mp3",
+          "ttsFemaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__zai-jian/w0-hk-female.mp3",
+          "ttsMaleHk": "https://file.kajakorean.com/grammar-x/pronounce-pin-tts/zh_word__zai-jian/w0-hk-male.mp3"
+        }
+      ],
+      "description": "Hear how to pronounce 再见 (zài jiàn) — CN / TW / HK voices on GetPronounce.",
+      "format": "zh_word",
+      "topicSlug": "greetings",
+      "publishedAt": "2026-08-27T02:59:58.521Z"
+    }
+  ]
+}
