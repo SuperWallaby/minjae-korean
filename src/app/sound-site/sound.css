@@ -48,6 +48,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.sound-hero .sound-hero-controls {
   margin-bottom: 1.1rem;
 }
 
@@ -82,17 +87,6 @@
   color: var(--sound-accent);
   font-size: 0.78rem;
   font-weight: 700;
-}
-
-.sound-hero-copy {
-  min-width: 0;
-}
-
-.sound-hero-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-bottom: 1.1rem;
 }
 
 .sound-voice,
@@ -139,14 +133,25 @@
 }
 
 .sound-playlist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 42px;
   border: 1px solid rgba(15, 23, 42, 0.14);
   border-radius: 999px;
-  padding: 0.4rem 0.85rem;
+  padding: 0.4rem 0.95rem;
   background: #fff;
   font-size: 0.82rem;
   font-weight: 650;
-  color: var(--sound-ink);
+  box-sizing: border-box;
   cursor: pointer;
+  color: var(--sound-ink);
+}
+
+.sound-playlist-btn .sound-playlist-icon {
+  font-size: 0.7rem;
+  line-height: 1;
 }
 
 .sound-playlist-btn.is-on,
@@ -300,8 +305,8 @@
 }
 
 .sound-listen-banner {
-  margin: 1rem 0 1.25rem;
-  padding: 0.85rem 1rem;
+  margin: 0 0 0.85rem;
+  padding: 0.75rem 0.9rem;
   border-radius: 0.85rem;
   background: var(--sound-accent-soft);
 }
@@ -313,6 +318,23 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--sound-accent);
+}
+
+/* Sticky listen controls on mobile pin pages */
+@media (max-width: 879px) {
+  .sound-root .global-pin-controls {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    margin: 0 -0.15rem;
+    padding: 0.35rem 0.15rem 0.45rem;
+    background: color-mix(in srgb, var(--g-paper, #f4efe6) 92%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  .sound-root .global-pin-controls .sound-listen-banner {
+    margin-bottom: 0;
+  }
 }
 
 .sound-pin-layout {
@@ -374,5 +396,171 @@
   .sound-pin-layout,
   .sound-tutor-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sound-tutor-banner img {
+    max-width: 260px;
+  }
+}
+
+/* GetPronounce header — compact mobile + hamburger languages */
+.pronounce-header .global-header-inner {
+  gap: 0.55rem;
+  padding-block: 0.7rem 0.65rem;
+}
+
+.pronounce-brand {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pronounce-header .pronounce-brand-mark,
+.pronounce-header .sound-brand-mark.pronounce-brand-mark {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: #b91c1c;
+  color: #fff;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.pronounce-header .pronounce-brand-mark svg {
+  display: block;
+}
+
+.pronounce-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.pronounce-header .global-brand-mark {
+  font-size: clamp(1.05rem, 3.8vw, 1.45rem);
+  letter-spacing: -0.03em;
+}
+
+.pronounce-header .global-header-tutor {
+  font-size: 0.72rem;
+}
+
+.pronounce-header .global-header-tutor span {
+  display: none;
+}
+
+.pronounce-nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 0.55rem;
+  background: #fff;
+  color: var(--sound-ink, #1b1511);
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.pronounce-nav-toggle:focus-visible {
+  outline: 2px solid var(--sound-accent, #b91c1c);
+  outline-offset: 2px;
+}
+
+.pronounce-nav-desktop {
+  display: none;
+}
+
+.pronounce-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 80;
+  width: min(18.5rem, 86vw);
+  height: 100dvh;
+  padding: 1.15rem 1rem 1.5rem;
+  background: #fffdf9;
+  border-left: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: -12px 0 40px rgba(15, 23, 42, 0.12);
+  transform: translateX(105%);
+  transition: transform 0.2s ease;
+  overflow-y: auto;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pronounce-nav-drawer.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.pronounce-nav-drawer-label {
+  margin: 0.35rem 0 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7a736c;
+}
+
+.pronounce-nav-drawer-nav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.pronounce-nav-drawer-nav a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.55rem;
+  border-radius: 0.55rem;
+  text-decoration: none;
+  color: #1b1511;
+  font-weight: 650;
+  font-size: 1.02rem;
+}
+
+.pronounce-nav-drawer-nav a span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #7a736c;
+}
+
+.pronounce-nav-drawer-nav a:hover {
+  background: rgba(185, 28, 28, 0.06);
+}
+
+.pronounce-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  border: 0;
+  background: rgba(15, 23, 42, 0.35);
+  cursor: pointer;
+}
+
+body.pronounce-nav-open {
+  overflow: hidden;
+}
+
+@media (min-width: 880px) {
+  .pronounce-header .global-header-tutor span {
+    display: inline;
+  }
+
+  .pronounce-nav-toggle {
+    display: none;
+  }
+
+  .pronounce-nav-desktop {
+    display: flex;
+  }
+
+  .pronounce-nav-drawer,
+  .pronounce-nav-backdrop {
+    display: none !important;
   }
 }
