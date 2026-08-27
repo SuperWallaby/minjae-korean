@@ -35,7 +35,7 @@ Update the **Status** column when you migrate a route group.
 | `/admin/*` | — | Separate admin design |
 | `global.kajakorean.com` | ✅ | [global-site.md](./global-site.md) — Word Atlas, not quiz chrome |
 | `eigochart.com` | ✅ | [eigochart.md](./eigochart.md) — くすみ文具 for JP learners of English |
-| `getpronounce.net` | 🔄 | [getpronounce.md](./getpronounce.md) — Chinese pronunciation for EN speakers |
+| `getpronounce.net` | ✅ | [getpronounce.md](./getpronounce.md) — Chinese pronunciation for EN speakers |
 | `sound.eigopin.com` | ✅ | EigoSound — EN pronunciation charts (see `src/app/sound-site`) |
 
 ## Shared components
