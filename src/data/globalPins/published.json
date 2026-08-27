@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T16:37:20.240Z",
+  "generatedAt": "2026-08-27T19:54:51.584Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -50749,63 +50749,63 @@
           "english": "black",
           "target": "黑色",
           "romanization": "hēi sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w0.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w0-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "brown",
           "target": "棕色",
           "romanization": "zōng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w1.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w1-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "hazel",
           "target": "榛色",
           "romanization": "zhēn sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w2.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w2-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "green",
           "target": "绿色",
           "romanization": "lǜ sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w3.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w3-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "blue",
           "target": "蓝色",
           "romanization": "lán sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w4.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w4-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "gray",
           "target": "灰色",
           "romanization": "huī sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w5.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w5-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "light blue",
           "target": "浅蓝色",
           "romanization": "qiǎn lán sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w6.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w6-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "violet",
           "target": "紫罗兰色",
           "romanization": "zǐ luó lán sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w7.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w7-cn-female.mp3",
           "ttsProvider": "edge"
         },
         {
           "english": "amber",
           "target": "琥珀色",
           "romanization": "hǔ pò sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w8.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/w8-cn-female.mp3",
           "ttsProvider": "edge"
         }
       ],
@@ -50825,52 +50825,72 @@
         {
           "english": "bread",
           "target": "面包",
-          "romanization": "miàn bāo"
+          "romanization": "miàn bāo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w0-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "cheese",
           "target": "奶酪",
-          "romanization": "nǎi lào"
+          "romanization": "nǎi lào",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w1-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "wine",
           "target": "葡萄酒",
-          "romanization": "pú táo jiǔ"
+          "romanization": "pú táo jiǔ",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w2-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "coffee",
           "target": "咖啡",
-          "romanization": "kā fēi"
+          "romanization": "kā fēi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w3-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "croissant",
           "target": "羊角面包",
-          "romanization": "yáng jiǎo miàn bāo"
+          "romanization": "yáng jiǎo miàn bāo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w4-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "soup",
           "target": "汤",
-          "romanization": "tāng"
+          "romanization": "tāng",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w5-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "salad",
           "target": "沙拉",
-          "romanization": "shā lā"
+          "romanization": "shā lā",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w6-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "chicken",
           "target": "鸡肉",
-          "romanization": "jī ròu"
+          "romanization": "jī ròu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w7-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fish",
           "target": "鱼",
-          "romanization": "yú"
+          "romanization": "yú",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w8-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dessert",
           "target": "甜点",
-          "romanization": "tián diǎn"
+          "romanization": "tián diǎn",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w9-cn-female.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -50889,52 +50909,72 @@
         {
           "english": "happy",
           "target": "快乐",
-          "romanization": "kuài lè"
+          "romanization": "kuài lè",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w0-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "sad",
           "target": "难过",
-          "romanization": "nán guò"
+          "romanization": "nán guò",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w1-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "angry",
           "target": "生气",
-          "romanization": "shēng qì"
+          "romanization": "shēng qì",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w2-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tired",
           "target": "累",
-          "romanization": "lèi"
+          "romanization": "lèi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w3-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "surprised",
           "target": "惊讶",
-          "romanization": "jīng yà"
+          "romanization": "jīng yà",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w4-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "scared",
           "target": "害怕",
-          "romanization": "hài pà"
+          "romanization": "hài pà",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w5-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "proud",
           "target": "骄傲",
-          "romanization": "jiāo ào"
+          "romanization": "jiāo ào",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w6-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "lonely",
           "target": "孤独",
-          "romanization": "gū dú"
+          "romanization": "gū dú",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w7-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "excited",
           "target": "兴奋",
-          "romanization": "xīng fèn"
+          "romanization": "xīng fèn",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w8-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "calm",
           "target": "平静",
-          "romanization": "píng jìng"
+          "romanization": "píng jìng",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w9-cn-female.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -50953,52 +50993,72 @@
         {
           "english": "mom",
           "target": "妈妈",
-          "romanization": "mā ma"
+          "romanization": "mā ma",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w0-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dad",
           "target": "爸爸",
-          "romanization": "bà ba"
+          "romanization": "bà ba",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w1-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "brother",
           "target": "哥哥",
-          "romanization": "gē ge"
+          "romanization": "gē ge",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w2-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "sister",
           "target": "姐姐",
-          "romanization": "jiě jie"
+          "romanization": "jiě jie",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w3-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "grandma",
           "target": "奶奶",
-          "romanization": "nǎi nai"
+          "romanization": "nǎi nai",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w4-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "grandpa",
           "target": "爷爷",
-          "romanization": "yé ye"
+          "romanization": "yé ye",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w5-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "baby",
           "target": "宝宝",
-          "romanization": "bǎo bao"
+          "romanization": "bǎo bao",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w6-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "uncle",
           "target": "叔叔",
-          "romanization": "shū shu"
+          "romanization": "shū shu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w7-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "aunt",
           "target": "阿姨",
-          "romanization": "ā yí"
+          "romanization": "ā yí",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w8-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "cousin",
           "target": "表亲",
-          "romanization": "biǎo qīn"
+          "romanization": "biǎo qīn",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w9-cn-female.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -51017,52 +51077,72 @@
         {
           "english": "head",
           "target": "头",
-          "romanization": "tóu"
+          "romanization": "tóu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w0-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "eye",
           "target": "眼睛",
-          "romanization": "yǎn jīng"
+          "romanization": "yǎn jīng",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w1-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "ear",
           "target": "耳朵",
-          "romanization": "ěr duo"
+          "romanization": "ěr duo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w2-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "nose",
           "target": "鼻子",
-          "romanization": "bí zi"
+          "romanization": "bí zi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w3-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mouth",
           "target": "嘴巴",
-          "romanization": "zuǐ ba"
+          "romanization": "zuǐ ba",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w4-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "hand",
           "target": "手",
-          "romanization": "shǒu"
+          "romanization": "shǒu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w5-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "foot",
           "target": "脚",
-          "romanization": "jiǎo"
+          "romanization": "jiǎo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w6-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "arm",
           "target": "手臂",
-          "romanization": "shǒu bì"
+          "romanization": "shǒu bì",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w7-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "leg",
           "target": "腿",
-          "romanization": "tuǐ"
+          "romanization": "tuǐ",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w8-cn-female.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "heart",
           "target": "心脏",
-          "romanization": "xīn zàng"
+          "romanization": "xīn zàng",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w9-cn-female.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
