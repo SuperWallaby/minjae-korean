@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T03:50:42.420Z",
+  "generatedAt": "2026-08-27T04:06:59.077Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -1795,11 +1795,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "kitchen-appliances",
-      "publishedAt": "2026-08-24T16:05:19.287Z",
-      "explanationEn": "These words are common kitchen appliances and tools you use to cook and prepare food. You can talk about where you cook (estufa, horno), how you heat food (microondas, hervidor), or clean dishes (lavavajillas). Use these words to describe your kitchen or cooking routines.",
       "examples": [
         {
           "target": "La estufa está caliente cuando cocino.",
@@ -1837,7 +1832,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words are common kitchen appliances and tools you use to cook and prepare food. You can talk about where you cook (estufa, horno), how you heat food (microondas, hervidor), or clean dishes (lavavajillas). Use these words to describe your kitchen or cooking routines.",
+      "partner": "preply",
+      "description": "Learn Spanish: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:05:19.287Z"
     },
     {
       "id": "15_skin-tones__es",
@@ -2123,11 +2123,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "office-desk",
-      "publishedAt": "2026-08-24T16:16:31.990Z",
-      "explanationEn": "These words describe common items you find on or near an office desk. Use them to talk about your workspace or what you need for work or study. Listening to these words on the site helps you learn their correct pronunciation.",
       "examples": [
         {
           "target": "Mi escritorio tiene una computadora y un monitor.",
@@ -2165,7 +2160,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words describe common items you find on or near an office desk. Use them to talk about your workspace or what you need for work or study. Listening to these words on the site helps you learn their correct pronunciation.",
+      "partner": "preply",
+      "description": "Learn Spanish: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:16:31.990Z"
     },
     {
       "id": "17_bathroom__es",
@@ -2348,11 +2348,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "hotel-stay",
-      "publishedAt": "2026-08-24T16:26:37.393Z",
-      "explanationEn": "When staying at a hotel in Spanish-speaking countries, it's useful to know words like recepción (reception) to ask for help, tarjeta llave (key card) to enter your room, and ascensor (elevator) to move between floors. You can also talk about equipaje (luggage), pedir toallas (towels), and ask about desayuno (breakfast) or servicio a la habitación (room service). Use these words to communicate easily during your hotel stay and listen carefully to understand hotel staff.",
       "examples": [
         {
           "target": "La recepción está en la entrada del hotel.",
@@ -2390,7 +2385,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "When staying at a hotel in Spanish-speaking countries, it's useful to know words like recepción (reception) to ask for help, tarjeta llave (key card) to enter your room, and ascensor (elevator) to move between floors. You can also talk about equipaje (luggage), pedir toallas (towels), and ask about desayuno (breakfast) or servicio a la habitación (room service). Use these words to communicate easily during your hotel stay and listen carefully to understand hotel staff.",
+      "partner": "preply",
+      "description": "Learn Spanish: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:26:37.393Z"
     },
     {
       "id": "18_banking-basics__es",
@@ -2464,11 +2464,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: bank, account, cash, card, deposit, withdraw…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "banking-basics",
-      "publishedAt": "2026-08-24T16:37:22.716Z",
-      "explanationEn": "These words are useful for everyday banking in Spanish. You can use them to talk about your bank, money transactions, and managing your account. Practice listening and repeating to get comfortable with common banking phrases.",
       "examples": [
         {
           "target": "Voy al banco para abrir una cuenta nueva.",
@@ -2506,7 +2501,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words are useful for everyday banking in Spanish. You can use them to talk about your bank, money transactions, and managing your account. Practice listening and repeating to get comfortable with common banking phrases.",
+      "partner": "preply",
+      "description": "Learn Spanish: bank, account, cash, card, deposit, withdraw…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-24T16:37:22.716Z"
     },
     {
       "id": "18_phone-parts__es",
@@ -2737,53 +2737,110 @@
         {
           "english": "letter",
           "target": "carta",
-          "romanization": "kar-ta"
+          "romanization": "kar-ta",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stamp",
           "target": "sello",
-          "romanization": "se-yo"
+          "romanization": "se-yo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mailbox",
           "target": "buzón",
-          "romanization": "bu-son"
+          "romanization": "bu-son",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "package",
           "target": "paquete",
-          "romanization": "pa-ke-te"
+          "romanization": "pa-ke-te",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "address",
           "target": "dirección",
-          "romanization": "dee-rek-syon"
+          "romanization": "dee-rek-syon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "post office",
           "target": "oficina de correos",
-          "romanization": "o-fee-see-na de ko-re-os"
+          "romanization": "o-fee-see-na de ko-re-os",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "signature",
           "target": "firma",
-          "romanization": "feer-ma"
+          "romanization": "feer-ma",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "delivery",
           "target": "entrega",
-          "romanization": "en-tre-ga"
+          "romanization": "en-tre-ga",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tracking",
           "target": "rastreo",
-          "romanization": "ras-tre-o"
+          "romanization": "ras-tre-o",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: letter, stamp, mailbox, package, address, post office…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "post-mail",
-      "publishedAt": "2026-08-24T16:47:30.896Z"
+      "publishedAt": "2026-08-24T16:47:30.896Z",
+      "explanationEn": "These words help you talk about sending and receiving mail in Spanish. Use them when you write letters, send packages, or visit the post office. You can listen to the pronunciation of each word on the site to improve your speaking skills.",
+      "examples": [
+        {
+          "target": "Voy a enviar una carta con un sello.",
+          "english": "I am going to send a letter with a stamp.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El paquete está en el buzón.",
+          "english": "The package is in the mailbox.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "¿Cuál es la dirección para la entrega?",
+          "english": "What is the address for the delivery?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Fui a la oficina de correos para enviar un paquete.",
+          "english": "I went to the post office to send a package.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Necesito tu firma para completar el rastreo.",
+          "english": "I need your signature to complete the tracking.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La entrega será mañana en la dirección correcta.",
+          "english": "The delivery will be tomorrow at the correct address.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_laundry-care__es",
@@ -2796,53 +2853,110 @@
         {
           "english": "washing machine",
           "target": "lavadora",
-          "romanization": "lah-vah-DOH-rah"
+          "romanization": "lah-vah-DOH-rah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dryer",
           "target": "secadora",
-          "romanization": "seh-kah-DOH-rah"
+          "romanization": "seh-kah-DOH-rah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "detergent",
           "target": "detergente",
-          "romanization": "deh-tehr-HEN-teh"
+          "romanization": "deh-tehr-HEN-teh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fabric softener",
           "target": "suavizante",
-          "romanization": "swah-vee-SAHN-teh"
+          "romanization": "swah-vee-SAHN-teh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "hanger",
           "target": "percha",
-          "romanization": "PEHR-chah"
+          "romanization": "PEHR-chah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "iron",
           "target": "plancha",
-          "romanization": "PLAN-chah"
+          "romanization": "PLAN-chah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "lint",
           "target": "pelusa",
-          "romanization": "peh-LOO-sah"
+          "romanization": "peh-LOO-sah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fold",
           "target": "doblar",
-          "romanization": "doh-BLAR"
+          "romanization": "doh-BLAR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stain",
           "target": "mancha",
-          "romanization": "MAN-chah"
+          "romanization": "MAN-chah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: washing machine, dryer, detergent, fabric softener, hanger, iron…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "laundry-care",
-      "publishedAt": "2026-08-24T16:57:44.105Z"
+      "publishedAt": "2026-08-24T16:57:44.105Z",
+      "explanationEn": "These words help you talk about doing laundry in Spanish. Use them to describe washing clothes, drying, and caring for fabrics. Listening to these words on the site will help you recognize them in everyday conversations about laundry.",
+      "examples": [
+        {
+          "target": "La lavadora está llena de ropa sucia.",
+          "english": "The washing machine is full of dirty clothes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Pon el detergente y el suavizante en la lavadora.",
+          "english": "Put the detergent and fabric softener in the washing machine.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Después de lavar, uso la secadora para secar la ropa.",
+          "english": "After washing, I use the dryer to dry the clothes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Hay una mancha en mi camisa, necesito usar la plancha.",
+          "english": "There is a stain on my shirt, I need to use the iron.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Dobla la ropa y cuélgala en la percha.",
+          "english": "Fold the clothes and hang them on the hanger.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Quita la pelusa de la ropa antes de guardarla.",
+          "english": "Remove the lint from the clothes before putting them away.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_life-stages__es",
@@ -2964,53 +3078,110 @@
         {
           "english": "flower",
           "target": "flor",
-          "romanization": "flor"
+          "romanization": "flor",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tree",
           "target": "árbol",
-          "romanization": "ar-bol"
+          "romanization": "ar-bol",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "grass",
           "target": "césped",
-          "romanization": "thes-ped"
+          "romanization": "thes-ped",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "soil",
           "target": "tierra",
-          "romanization": "tye-rra"
+          "romanization": "tye-rra",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "seed",
           "target": "semilla",
-          "romanization": "se-mee-ya"
+          "romanization": "se-mee-ya",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "watering can",
           "target": "regadera",
-          "romanization": "re-ga-de-ra"
+          "romanization": "re-ga-de-ra",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "shovel",
           "target": "pala",
-          "romanization": "pa-la"
+          "romanization": "pa-la",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "pot",
           "target": "maceta",
-          "romanization": "ma-the-ta"
+          "romanization": "ma-the-ta",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "leaf",
           "target": "hoja",
-          "romanization": "o-ha"
+          "romanization": "o-ha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: flower, tree, grass, soil, seed, watering can…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "garden-plants",
-      "publishedAt": "2026-08-24T17:08:26.170Z"
+      "publishedAt": "2026-08-24T17:08:26.170Z",
+      "explanationEn": "This vocabulary theme introduces common garden plants and tools in Spanish. Use these words to talk about plants like flowers, trees, and grass, as well as gardening items like a watering can and shovel. Listening to these words on site helps you recognize their pronunciation and use in simple sentences.",
+      "examples": [
+        {
+          "target": "La flor es roja y bonita.",
+          "english": "The flower is red and pretty.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El árbol tiene muchas hojas verdes.",
+          "english": "The tree has many green leaves.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El césped está muy verde en el jardín.",
+          "english": "The grass is very green in the garden.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La tierra es buena para plantar semillas.",
+          "english": "The soil is good for planting seeds.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Uso la regadera para dar agua a las plantas.",
+          "english": "I use the watering can to give water to the plants.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La maceta está en la mesa con una planta pequeña.",
+          "english": "The pot is on the table with a small plant.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "21_hair-colors__es",
@@ -3241,53 +3412,110 @@
         {
           "english": "piano",
           "target": "piano",
-          "romanization": "pee-AH-no"
+          "romanization": "pee-AH-no",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "guitar",
           "target": "guitarra",
-          "romanization": "gee-TAH-rrah"
+          "romanization": "gee-TAH-rrah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "violin",
           "target": "violín",
-          "romanization": "vee-oh-LEEN"
+          "romanization": "vee-oh-LEEN",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "drums",
           "target": "batería",
-          "romanization": "bah-teh-REE-ah"
+          "romanization": "bah-teh-REE-ah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "flute",
           "target": "flauta",
-          "romanization": "FLAU-tah"
+          "romanization": "FLAU-tah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "trumpet",
           "target": "trompeta",
-          "romanization": "trom-PEH-tah"
+          "romanization": "trom-PEH-tah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "microphone",
           "target": "micrófono",
-          "romanization": "mee-KROH-foh-no"
+          "romanization": "mee-KROH-foh-no",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "headphones",
           "target": "auriculares",
-          "romanization": "ow-ree-koo-LAH-res"
+          "romanization": "ow-ree-koo-LAH-res",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "note",
           "target": "nota",
-          "romanization": "NOH-tah"
+          "romanization": "NOH-tah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "music-instruments",
-      "publishedAt": "2026-08-24T17:19:09.380Z"
+      "publishedAt": "2026-08-24T17:19:09.380Z",
+      "explanationEn": "This vocabulary theme introduces common musical instruments in Spanish, such as piano, guitarra, and batería. Use these words to talk about music, instruments you play, or sounds you hear. Listening to the pronunciation on the site helps you say these words clearly.",
+      "examples": [
+        {
+          "target": "Me gusta tocar la guitarra en mi tiempo libre.",
+          "english": "I like to play the guitar in my free time.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ella toca el piano muy bien.",
+          "english": "She plays the piano very well.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La batería es un instrumento con muchos tambores.",
+          "english": "The drums are an instrument with many drums.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El violín tiene cuerdas finas y suena muy bonito.",
+          "english": "The violin has thin strings and sounds very beautiful.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Uso auriculares para escuchar música sin molestar a nadie.",
+          "english": "I use headphones to listen to music without bothering anyone.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El cantante usa un micrófono para que todos lo escuchen.",
+          "english": "The singer uses a microphone so everyone can hear him.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "23_directions__es",
