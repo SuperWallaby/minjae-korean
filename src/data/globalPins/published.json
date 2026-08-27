@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T10:53:54.963Z",
-  "site": "https://global.kajakorean.com",
+  "generatedAt": "2026-08-27T11:28:58.866Z",
+  "site": "https://getpronounce.net",
   "languages": [
     {
       "code": "es",
@@ -12257,11 +12257,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn French: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "music-instruments",
-      "publishedAt": "2026-08-24T17:21:05.147Z",
-      "explanationEn": "These French words like piano, guitare, and violon sound similar to English and are easy to pronounce when talking about music.",
       "examples": [
         {
           "target": "Je joue du piano tous les jours.",
@@ -12299,7 +12294,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These French words like piano, guitare, and violon sound similar to English and are easy to pronounce when talking about music.",
+      "partner": "preply",
+      "description": "Learn French: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:21:05.147Z"
     },
     {
       "id": "23_directions__fr",
@@ -12482,11 +12482,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn French: gift, party, cake, candle, balloon, fireworks…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "holiday-celebrations",
-      "publishedAt": "2026-08-24T17:31:34.042Z",
-      "explanationEn": "These French holiday words like cadeau, fête, and gâteau sound soft and festive when you say them aloud.",
       "examples": [
         {
           "target": "Je donne un cadeau à mon ami.",
@@ -12524,7 +12519,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These French holiday words like cadeau, fête, and gâteau sound soft and festive when you say them aloud.",
+      "partner": "preply",
+      "description": "Learn French: gift, party, cake, candle, balloon, fireworks…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "holiday-celebrations",
+      "publishedAt": "2026-08-24T17:31:34.042Z"
     },
     {
       "id": "24_daily-routine__fr",
@@ -19357,11 +19357,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn German: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "kitchen-appliances",
-      "publishedAt": "2026-08-24T16:08:46.983Z",
-      "explanationEn": "These German kitchen appliance words like Herd, Backofen, and Kühlschrank have clear syllables to listen for when you say them.",
       "examples": [
         {
           "target": "Ich koche Suppe auf dem Herd.",
@@ -19399,7 +19394,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These German kitchen appliance words like Herd, Backofen, and Kühlschrank have clear syllables to listen for when you say them.",
+      "partner": "preply",
+      "description": "Learn German: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:08:46.983Z"
     },
     {
       "id": "15_skin-tones__de",
@@ -19691,11 +19691,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn German: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "office-desk",
-      "publishedAt": "2026-08-24T16:19:52.237Z",
-      "explanationEn": "These German words like Schreibtisch, Stuhl, and Computer sound clear and are easy to say when talking about your office desk.",
       "examples": [
         {
           "target": "Der Computer steht auf dem Schreibtisch.",
@@ -19733,7 +19728,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These German words like Schreibtisch, Stuhl, and Computer sound clear and are easy to say when talking about your office desk.",
+      "partner": "preply",
+      "description": "Learn German: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:19:52.237Z"
     },
     {
       "id": "17_bathroom__de",
@@ -19855,53 +19855,110 @@
         {
           "english": "reception",
           "target": "Rezeption",
-          "romanization": "ret-sep-tsi-on"
+          "romanization": "ret-sep-tsi-on",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "key card",
           "target": "Schlüsselkarte",
-          "romanization": "shluessel-kar-te"
+          "romanization": "shluessel-kar-te",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "elevator",
           "target": "Aufzug",
-          "romanization": "owf-tsook"
+          "romanization": "owf-tsook",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "luggage",
           "target": "Gepäck",
-          "romanization": "geh-peck"
+          "romanization": "geh-peck",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "towel",
           "target": "Handtuch",
-          "romanization": "hant-took"
+          "romanization": "hant-took",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "breakfast",
           "target": "Frühstück",
-          "romanization": "frew-shtuek"
+          "romanization": "frew-shtuek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "checkout",
           "target": "Check-out",
-          "romanization": "check-out"
+          "romanization": "check-out",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "room service",
           "target": "Zimmerservice",
-          "romanization": "tsim-mer-ser-vice"
+          "romanization": "tsim-mer-ser-vice",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "wifi",
           "target": "WLAN",
-          "romanization": "veh-lan"
+          "romanization": "veh-lan",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hotel-stay",
-      "publishedAt": "2026-08-24T16:30:03.208Z"
+      "publishedAt": "2026-08-24T16:30:03.208Z",
+      "explanationEn": "These hotel words like Rezeption, Schlüsselkarte, and Aufzug help you talk about your stay and sound natural in German.",
+      "examples": [
+        {
+          "target": "Ich gehe zur Rezeption und bekomme die Schlüsselkarte.",
+          "english": "I go to the reception and get the key card.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Das Gepäck ist schwer, ich benutze den Aufzug.",
+          "english": "The luggage is heavy, I use the elevator.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Das Frühstück ist im Preis inbegriffen.",
+          "english": "Breakfast is included in the price.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Kann ich bitte ein Handtuch haben?",
+          "english": "Can I have a towel, please?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ich möchte den Check-out um elf Uhr machen.",
+          "english": "I want to check out at eleven o'clock.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Zimmerservice bringt das Essen ins Zimmer.",
+          "english": "Room service brings the food to the room.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__de/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "18_banking-basics__de",
@@ -19914,53 +19971,104 @@
         {
           "english": "bank",
           "target": "Bank",
-          "romanization": "bank"
+          "romanization": "bank",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "account",
           "target": "Konto",
-          "romanization": "konto"
+          "romanization": "konto",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "cash",
           "target": "Bargeld",
-          "romanization": "bar-gelt"
+          "romanization": "bar-gelt",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "card",
           "target": "Karte",
-          "romanization": "kar-te"
+          "romanization": "kar-te",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "deposit",
           "target": "einzahlen",
-          "romanization": "ine-tsai-len"
+          "romanization": "ine-tsai-len",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "withdraw",
           "target": "abheben",
-          "romanization": "ap-he-ben"
+          "romanization": "ap-he-ben",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "transfer",
           "target": "überweisen",
-          "romanization": "ue-ber-vai-zen"
+          "romanization": "ue-ber-vai-zen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "balance",
           "target": "Kontostand",
-          "romanization": "konto-shtand"
+          "romanization": "konto-shtand",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "receipt",
           "target": "Quittung",
-          "romanization": "kvit-ung"
+          "romanization": "kvit-ung",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: bank, account, cash, card, deposit, withdraw…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "banking-basics",
-      "publishedAt": "2026-08-24T16:40:43.445Z"
+      "publishedAt": "2026-08-24T16:40:43.445Z",
+      "explanationEn": "These German words like Bank, Konto, Karte, and einzahlen show common banking actions and items you say when you use money or a bank.",
+      "examples": [
+        {
+          "target": "Ich gehe zur Bank und zahle Geld auf mein Konto ein.",
+          "english": "I go to the bank and deposit money into my account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Kann ich mit der Karte Bargeld abheben?",
+          "english": "Can I withdraw cash with the card?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Bitte überweisen Sie das Geld auf dieses Konto.",
+          "english": "Please transfer the money to this account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Wie hoch ist mein Kontostand heute?",
+          "english": "What is my balance today?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ich brauche eine Quittung für die Einzahlung.",
+          "english": "I need a receipt for the deposit.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__de/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "18_phone-parts__de",
@@ -20191,53 +20299,110 @@
         {
           "english": "letter",
           "target": "der Brief",
-          "romanization": "dehr brief"
+          "romanization": "dehr brief",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stamp",
           "target": "die Briefmarke",
-          "romanization": "dee brief-mark-uh"
+          "romanization": "dee brief-mark-uh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mailbox",
           "target": "der Briefkasten",
-          "romanization": "dehr brief-kas-ten"
+          "romanization": "dehr brief-kas-ten",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "package",
           "target": "das Paket",
-          "romanization": "das pa-ket"
+          "romanization": "das pa-ket",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "address",
           "target": "die Adresse",
-          "romanization": "dee ah-dres-uh"
+          "romanization": "dee ah-dres-uh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "post office",
           "target": "die Post",
-          "romanization": "dee post"
+          "romanization": "dee post",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "signature",
           "target": "die Unterschrift",
-          "romanization": "dee oon-ter-shrift"
+          "romanization": "dee oon-ter-shrift",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "delivery",
           "target": "die Lieferung",
-          "romanization": "dee lee-fer-oong"
+          "romanization": "dee lee-fer-oong",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tracking",
           "target": "die Sendungsverfolgung",
-          "romanization": "dee zen-doong-sfer-fol-goong"
+          "romanization": "dee zen-doong-sfer-fol-goong",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: letter, stamp, mailbox, package, address, post office…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "post-mail",
-      "publishedAt": "2026-08-24T16:51:02.927Z"
+      "publishedAt": "2026-08-24T16:51:02.927Z",
+      "explanationEn": "These German words like Brief, Briefmarke, and Post sound clear and are easy to recognize when talking about mail and packages.",
+      "examples": [
+        {
+          "target": "Ich schreibe einen Brief an meine Freundin.",
+          "english": "I am writing a letter to my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Bitte klebe eine Briefmarke auf den Brief.",
+          "english": "Please stick a stamp on the letter.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Briefkasten ist vor dem Haus.",
+          "english": "The mailbox is in front of the house.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Das Paket kommt morgen mit der Lieferung.",
+          "english": "The package is coming tomorrow with the delivery.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ich gehe zur Post, um das Paket abzuholen.",
+          "english": "I am going to the post office to pick up the package.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Die Sendungsverfolgung zeigt den Status des Pakets.",
+          "english": "The tracking shows the status of the package.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__de/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_laundry-care__de",
@@ -20250,53 +20415,110 @@
         {
           "english": "washing machine",
           "target": "Waschmaschine",
-          "romanization": "Vash-mashee-neh"
+          "romanization": "Vash-mashee-neh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dryer",
           "target": "Trockner",
-          "romanization": "Trok-ner"
+          "romanization": "Trok-ner",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "detergent",
           "target": "Waschmittel",
-          "romanization": "Vash-mit-tel"
+          "romanization": "Vash-mit-tel",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fabric softener",
           "target": "Weichspüler",
-          "romanization": "Vike-shpue-ler"
+          "romanization": "Vike-shpue-ler",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "hanger",
           "target": "Kleiderbügel",
-          "romanization": "Kly-der-bue-gel"
+          "romanization": "Kly-der-bue-gel",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "iron",
           "target": "Bügeleisen",
-          "romanization": "Bue-ge-lie-zen"
+          "romanization": "Bue-ge-lie-zen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "lint",
           "target": "Flusen",
-          "romanization": "Flu-zen"
+          "romanization": "Flu-zen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fold",
           "target": "falten",
-          "romanization": "fal-ten"
+          "romanization": "fal-ten",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stain",
           "target": "Fleck",
-          "romanization": "Flek"
+          "romanization": "Flek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: washing machine, dryer, detergent, fabric softener, hanger, iron…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "laundry-care",
-      "publishedAt": "2026-08-24T17:01:26.519Z"
+      "publishedAt": "2026-08-24T17:01:26.519Z",
+      "explanationEn": "These German laundry words like Waschmaschine, Trockner, and Bügeleisen show common sounds you hear when talking about washing and ironing clothes.",
+      "examples": [
+        {
+          "target": "Ich benutze die Waschmaschine für meine Kleidung.",
+          "english": "I use the washing machine for my clothes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Trockner ist sehr schnell.",
+          "english": "The dryer is very fast.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Bitte gib das Waschmittel in die Maschine.",
+          "english": "Please put the detergent in the machine.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ich falte die Hemden nach dem Trocknen.",
+          "english": "I fold the shirts after drying.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Fleck ist auf dem Hemd.",
+          "english": "The stain is on the shirt.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Bügeleisen hilft, die Kleidung glatt zu machen.",
+          "english": "The iron helps to make the clothes smooth.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__de/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_life-stages__de",
@@ -51044,6 +51266,2103 @@
       "description": "Learn Chinese vocabulary: dog, cat, bird, fish, rabbit, hamster…. Save-friendly chart with pronunciation.",
       "topicSlug": "pets",
       "publishedAt": "2026-08-27T03:09:19.475Z"
+    },
+    {
+      "id": "13_cafe__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce café words in Chinese",
+      "slug": "how-to-pronounce-caf-words-in-chinese",
+      "imagePath": "/global/pins/13_cafe__zh.png",
+      "words": [
+        {
+          "english": "coffee",
+          "target": "咖啡",
+          "romanization": "kā fēi"
+        },
+        {
+          "english": "tea",
+          "target": "茶",
+          "romanization": "chá"
+        },
+        {
+          "english": "milk",
+          "target": "牛奶",
+          "romanization": "niú nǎi"
+        },
+        {
+          "english": "sugar",
+          "target": "糖",
+          "romanization": "táng"
+        },
+        {
+          "english": "water",
+          "target": "水",
+          "romanization": "shuǐ"
+        },
+        {
+          "english": "juice",
+          "target": "果汁",
+          "romanization": "guǒ zhī"
+        },
+        {
+          "english": "menu",
+          "target": "菜单",
+          "romanization": "cài dān"
+        },
+        {
+          "english": "bill",
+          "target": "账单",
+          "romanization": "zhàng dān"
+        },
+        {
+          "english": "table",
+          "target": "桌子",
+          "romanization": "zhuō zi"
+        },
+        {
+          "english": "straw",
+          "target": "吸管",
+          "romanization": "xī guǎn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: coffee, tea, milk, sugar, water, juice…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cafe",
+      "publishedAt": "2026-08-27T07:23:54.009Z"
+    },
+    {
+      "id": "15_kitchen-appliances__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce kitchen appliance words in Chinese",
+      "slug": "how-to-pronounce-kitchen-appliance-words-in-chinese",
+      "imagePath": "/global/pins/15_kitchen-appliances__zh.png",
+      "words": [
+        {
+          "english": "stove",
+          "target": "炉子",
+          "romanization": "lú zi"
+        },
+        {
+          "english": "oven",
+          "target": "烤箱",
+          "romanization": "kǎo xiāng"
+        },
+        {
+          "english": "microwave",
+          "target": "微波炉",
+          "romanization": "wēi bō lú"
+        },
+        {
+          "english": "refrigerator",
+          "target": "冰箱",
+          "romanization": "bīng xiāng"
+        },
+        {
+          "english": "blender",
+          "target": "搅拌机",
+          "romanization": "jiǎo bàn jī"
+        },
+        {
+          "english": "toaster",
+          "target": "烤面包机",
+          "romanization": "kǎo miàn bāo jī"
+        },
+        {
+          "english": "kettle",
+          "target": "水壶",
+          "romanization": "shuǐ hú"
+        },
+        {
+          "english": "dishwasher",
+          "target": "洗碗机",
+          "romanization": "xǐ wǎn jī"
+        },
+        {
+          "english": "pan",
+          "target": "平底锅",
+          "romanization": "píng dǐ guō"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-27T07:26:02.179Z"
+    },
+    {
+      "id": "18_banking-basics__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce banking words in Chinese",
+      "slug": "how-to-pronounce-banking-words-in-chinese",
+      "imagePath": "/global/pins/18_banking-basics__zh.png",
+      "words": [
+        {
+          "english": "bank",
+          "target": "银行",
+          "romanization": "yín háng"
+        },
+        {
+          "english": "account",
+          "target": "账户",
+          "romanization": "zhàng hù"
+        },
+        {
+          "english": "cash",
+          "target": "现金",
+          "romanization": "xiàn jīn"
+        },
+        {
+          "english": "card",
+          "target": "卡",
+          "romanization": "kǎ"
+        },
+        {
+          "english": "deposit",
+          "target": "存款",
+          "romanization": "cún kuǎn"
+        },
+        {
+          "english": "withdraw",
+          "target": "取款",
+          "romanization": "qǔ kuǎn"
+        },
+        {
+          "english": "transfer",
+          "target": "转账",
+          "romanization": "zhuǎn zhàng"
+        },
+        {
+          "english": "balance",
+          "target": "余额",
+          "romanization": "yú é"
+        },
+        {
+          "english": "receipt",
+          "target": "收据",
+          "romanization": "shōu jù"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "topicSlug": "banking-basics",
+      "publishedAt": "2026-08-27T07:28:22.194Z"
+    },
+    {
+      "id": "19_post-mail__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce post & mail words in Chinese",
+      "slug": "how-to-pronounce-post-mail-words-in-chinese",
+      "imagePath": "/global/pins/19_post-mail__zh.png",
+      "words": [
+        {
+          "english": "letter",
+          "target": "信",
+          "romanization": "xìn"
+        },
+        {
+          "english": "stamp",
+          "target": "邮票",
+          "romanization": "yóu piào"
+        },
+        {
+          "english": "mailbox",
+          "target": "邮箱",
+          "romanization": "yóu xiāng"
+        },
+        {
+          "english": "package",
+          "target": "包裹",
+          "romanization": "bāo guǒ"
+        },
+        {
+          "english": "address",
+          "target": "地址",
+          "romanization": "dì zhǐ"
+        },
+        {
+          "english": "post office",
+          "target": "邮局",
+          "romanization": "yóu jú"
+        },
+        {
+          "english": "signature",
+          "target": "签名",
+          "romanization": "qiān míng"
+        },
+        {
+          "english": "delivery",
+          "target": "投递",
+          "romanization": "tóu dì"
+        },
+        {
+          "english": "tracking",
+          "target": "追踪",
+          "romanization": "zhuī zōng"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-27T07:30:26.398Z"
+    },
+    {
+      "id": "20_laundry-care__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce laundry words in Chinese",
+      "slug": "how-to-pronounce-laundry-words-in-chinese",
+      "imagePath": "/global/pins/20_laundry-care__zh.png",
+      "words": [
+        {
+          "english": "washing machine",
+          "target": "洗衣机",
+          "romanization": "xǐ yī jī"
+        },
+        {
+          "english": "dryer",
+          "target": "烘干机",
+          "romanization": "hōng gān jī"
+        },
+        {
+          "english": "detergent",
+          "target": "洗衣液",
+          "romanization": "xǐ yī yè"
+        },
+        {
+          "english": "fabric softener",
+          "target": "柔顺剂",
+          "romanization": "róu shùn jì"
+        },
+        {
+          "english": "hanger",
+          "target": "衣架",
+          "romanization": "yī jià"
+        },
+        {
+          "english": "iron",
+          "target": "熨斗",
+          "romanization": "yùn dǒu"
+        },
+        {
+          "english": "lint",
+          "target": "绒毛",
+          "romanization": "róng máo"
+        },
+        {
+          "english": "fold",
+          "target": "折叠",
+          "romanization": "zhé dié"
+        },
+        {
+          "english": "stain",
+          "target": "污渍",
+          "romanization": "wū zì"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-27T07:32:19.895Z"
+    },
+    {
+      "id": "21_garden-plants__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce garden plant words in Chinese",
+      "slug": "how-to-pronounce-garden-plant-words-in-chinese",
+      "imagePath": "/global/pins/21_garden-plants__zh.png",
+      "words": [
+        {
+          "english": "flower",
+          "target": "花",
+          "romanization": "huā"
+        },
+        {
+          "english": "tree",
+          "target": "树",
+          "romanization": "shù"
+        },
+        {
+          "english": "grass",
+          "target": "草",
+          "romanization": "cǎo"
+        },
+        {
+          "english": "soil",
+          "target": "土壤",
+          "romanization": "tǔ rǎng"
+        },
+        {
+          "english": "seed",
+          "target": "种子",
+          "romanization": "zhǒng zi"
+        },
+        {
+          "english": "watering can",
+          "target": "水壶",
+          "romanization": "shuǐ hú"
+        },
+        {
+          "english": "shovel",
+          "target": "铲子",
+          "romanization": "chǎn zi"
+        },
+        {
+          "english": "pot",
+          "target": "花盆",
+          "romanization": "huā pén"
+        },
+        {
+          "english": "leaf",
+          "target": "叶子",
+          "romanization": "yè zi"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-27T07:34:05.242Z"
+    },
+    {
+      "id": "24_noodles__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce noodle dishes in Chinese",
+      "slug": "how-to-pronounce-noodle-dishes-in-chinese",
+      "imagePath": "/global/pins/24_noodles__zh.png",
+      "words": [
+        {
+          "english": "noodles",
+          "target": "面条",
+          "romanization": "miàn tiáo"
+        },
+        {
+          "english": "ramen",
+          "target": "拉面",
+          "romanization": "lā miàn"
+        },
+        {
+          "english": "soup",
+          "target": "汤",
+          "romanization": "tāng"
+        },
+        {
+          "english": "chopsticks",
+          "target": "筷子",
+          "romanization": "kuài zi"
+        },
+        {
+          "english": "spicy",
+          "target": "辣",
+          "romanization": "là"
+        },
+        {
+          "english": "broth",
+          "target": "汤底",
+          "romanization": "tāng dǐ"
+        },
+        {
+          "english": "dumpling",
+          "target": "饺子",
+          "romanization": "jiǎo zi"
+        },
+        {
+          "english": "rice noodles",
+          "target": "米粉",
+          "romanization": "mǐ fěn"
+        },
+        {
+          "english": "stir-fry",
+          "target": "炒",
+          "romanization": "chǎo"
+        },
+        {
+          "english": "sauce",
+          "target": "酱",
+          "romanization": "jiàng"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: noodles, ramen, soup, chopsticks, spicy, broth…. Save-friendly chart with pronunciation.",
+      "topicSlug": "noodles",
+      "publishedAt": "2026-08-27T07:36:23.132Z"
+    },
+    {
+      "id": "25_desserts__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce desserts in Chinese",
+      "slug": "how-to-pronounce-desserts-in-chinese",
+      "imagePath": "/global/pins/25_desserts__zh.png",
+      "words": [
+        {
+          "english": "cake",
+          "target": "蛋糕",
+          "romanization": "dàn gāo"
+        },
+        {
+          "english": "cookie",
+          "target": "饼干",
+          "romanization": "bǐng gān"
+        },
+        {
+          "english": "ice cream",
+          "target": "冰淇淋",
+          "romanization": "bīng qí lín"
+        },
+        {
+          "english": "chocolate",
+          "target": "巧克力",
+          "romanization": "qiǎo kè lì"
+        },
+        {
+          "english": "pudding",
+          "target": "布丁",
+          "romanization": "bù dīng"
+        },
+        {
+          "english": "pie",
+          "target": "馅饼",
+          "romanization": "xiàn bǐng"
+        },
+        {
+          "english": "candy",
+          "target": "糖果",
+          "romanization": "táng guǒ"
+        },
+        {
+          "english": "donut",
+          "target": "甜甜圈",
+          "romanization": "tián tián quān"
+        },
+        {
+          "english": "muffin",
+          "target": "松饼",
+          "romanization": "sōng bǐng"
+        },
+        {
+          "english": "sweet",
+          "target": "甜的",
+          "romanization": "tián de"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: cake, cookie, ice cream, chocolate, pudding, pie…. Save-friendly chart with pronunciation.",
+      "topicSlug": "desserts",
+      "publishedAt": "2026-08-27T07:38:50.292Z"
+    },
+    {
+      "id": "27_condiments__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce sauces & condiments in Chinese",
+      "slug": "how-to-pronounce-sauces-condiments-in-chinese",
+      "imagePath": "/global/pins/27_condiments__zh.png",
+      "words": [
+        {
+          "english": "salt",
+          "target": "盐",
+          "romanization": "yán"
+        },
+        {
+          "english": "pepper",
+          "target": "胡椒",
+          "romanization": "hú jiāo"
+        },
+        {
+          "english": "soy sauce",
+          "target": "酱油",
+          "romanization": "jiàng yóu"
+        },
+        {
+          "english": "vinegar",
+          "target": "醋",
+          "romanization": "cù"
+        },
+        {
+          "english": "oil",
+          "target": "油",
+          "romanization": "yóu"
+        },
+        {
+          "english": "ketchup",
+          "target": "番茄酱",
+          "romanization": "fān qié jiàng"
+        },
+        {
+          "english": "mustard",
+          "target": "芥末",
+          "romanization": "jiè mò"
+        },
+        {
+          "english": "mayonnaise",
+          "target": "蛋黄酱",
+          "romanization": "dàn huáng jiàng"
+        },
+        {
+          "english": "chili sauce",
+          "target": "辣椒酱",
+          "romanization": "là jiāo jiàng"
+        },
+        {
+          "english": "honey",
+          "target": "蜂蜜",
+          "romanization": "fēng mì"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: salt, pepper, soy sauce, vinegar, oil, ketchup…. Save-friendly chart with pronunciation.",
+      "topicSlug": "condiments",
+      "publishedAt": "2026-08-27T07:40:53.263Z"
+    },
+    {
+      "id": "28_first-aid__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce first-aid words in Chinese",
+      "slug": "how-to-pronounce-first-aid-words-in-chinese",
+      "imagePath": "/global/pins/28_first-aid__zh.png",
+      "words": [
+        {
+          "english": "bandage",
+          "target": "绷带",
+          "romanization": "bēng dài"
+        },
+        {
+          "english": "medicine",
+          "target": "药",
+          "romanization": "yào"
+        },
+        {
+          "english": "fever",
+          "target": "发烧",
+          "romanization": "fā shāo"
+        },
+        {
+          "english": "pain",
+          "target": "疼痛",
+          "romanization": "téng tòng"
+        },
+        {
+          "english": "cough",
+          "target": "咳嗽",
+          "romanization": "ké sòu"
+        },
+        {
+          "english": "cold",
+          "target": "感冒",
+          "romanization": "gǎn mào"
+        },
+        {
+          "english": "hospital",
+          "target": "医院",
+          "romanization": "yī yuàn"
+        },
+        {
+          "english": "doctor",
+          "target": "医生",
+          "romanization": "yī shēng"
+        },
+        {
+          "english": "pharmacy",
+          "target": "药房",
+          "romanization": "yào fáng"
+        },
+        {
+          "english": "emergency",
+          "target": "急诊",
+          "romanization": "jí zhěn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: bandage, medicine, fever, pain, cough, cold…. Save-friendly chart with pronunciation.",
+      "topicSlug": "first-aid",
+      "publishedAt": "2026-08-27T07:42:58.119Z"
+    },
+    {
+      "id": "29_travel-documents__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce travel document words in Chinese",
+      "slug": "how-to-pronounce-travel-document-words-in-chinese",
+      "imagePath": "/global/pins/29_travel-documents__zh.png",
+      "words": [
+        {
+          "english": "passport",
+          "target": "护照",
+          "romanization": "hù zhào"
+        },
+        {
+          "english": "visa",
+          "target": "签证",
+          "romanization": "qiān zhèng"
+        },
+        {
+          "english": "ticket",
+          "target": "票",
+          "romanization": "piào"
+        },
+        {
+          "english": "luggage",
+          "target": "行李",
+          "romanization": "xíng lǐ"
+        },
+        {
+          "english": "boarding",
+          "target": "登机",
+          "romanization": "dēng jī"
+        },
+        {
+          "english": "customs",
+          "target": "海关",
+          "romanization": "hǎi guān"
+        },
+        {
+          "english": "ID card",
+          "target": "身份证",
+          "romanization": "shēn fèn zhèng"
+        },
+        {
+          "english": "reservation",
+          "target": "预订",
+          "romanization": "yù dìng"
+        },
+        {
+          "english": "airport",
+          "target": "机场",
+          "romanization": "jī chǎng"
+        },
+        {
+          "english": "hotel",
+          "target": "酒店",
+          "romanization": "jiǔ diàn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: passport, visa, ticket, luggage, boarding, customs…. Save-friendly chart with pronunciation.",
+      "topicSlug": "travel-documents",
+      "publishedAt": "2026-08-27T07:45:03.747Z"
+    },
+    {
+      "id": "31_phone-numbers__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce phone number digits in Chinese",
+      "slug": "how-to-pronounce-phone-number-digits-in-chinese",
+      "imagePath": "/global/pins/31_phone-numbers__zh.png",
+      "words": [
+        {
+          "english": "zero",
+          "target": "零",
+          "romanization": "líng"
+        },
+        {
+          "english": "one",
+          "target": "一",
+          "romanization": "yī"
+        },
+        {
+          "english": "two",
+          "target": "二",
+          "romanization": "èr"
+        },
+        {
+          "english": "three",
+          "target": "三",
+          "romanization": "sān"
+        },
+        {
+          "english": "four",
+          "target": "四",
+          "romanization": "sì"
+        },
+        {
+          "english": "five",
+          "target": "五",
+          "romanization": "wǔ"
+        },
+        {
+          "english": "six",
+          "target": "六",
+          "romanization": "liù"
+        },
+        {
+          "english": "seven",
+          "target": "七",
+          "romanization": "qī"
+        },
+        {
+          "english": "eight",
+          "target": "八",
+          "romanization": "bā"
+        },
+        {
+          "english": "nine",
+          "target": "九",
+          "romanization": "jiǔ"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: zero, one, two, three, four, five…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phone-numbers",
+      "publishedAt": "2026-08-27T07:47:18.815Z"
+    },
+    {
+      "id": "32_zodiac-animals__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce zodiac animals in Chinese",
+      "slug": "how-to-pronounce-zodiac-animals-in-chinese",
+      "imagePath": "/global/pins/32_zodiac-animals__zh.png",
+      "words": [
+        {
+          "english": "rat",
+          "target": "鼠",
+          "romanization": "shǔ"
+        },
+        {
+          "english": "ox",
+          "target": "牛",
+          "romanization": "niú"
+        },
+        {
+          "english": "tiger",
+          "target": "虎",
+          "romanization": "hǔ"
+        },
+        {
+          "english": "rabbit",
+          "target": "兔",
+          "romanization": "tù"
+        },
+        {
+          "english": "dragon",
+          "target": "龙",
+          "romanization": "lóng"
+        },
+        {
+          "english": "snake",
+          "target": "蛇",
+          "romanization": "shé"
+        },
+        {
+          "english": "horse",
+          "target": "马",
+          "romanization": "mǎ"
+        },
+        {
+          "english": "goat",
+          "target": "羊",
+          "romanization": "yáng"
+        },
+        {
+          "english": "monkey",
+          "target": "猴",
+          "romanization": "hóu"
+        },
+        {
+          "english": "rooster",
+          "target": "鸡",
+          "romanization": "jī"
+        },
+        {
+          "english": "dog",
+          "target": "狗",
+          "romanization": "gǒu"
+        },
+        {
+          "english": "pig",
+          "target": "猪",
+          "romanization": "zhū"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: rat, ox, tiger, rabbit, dragon, snake…. Save-friendly chart with pronunciation.",
+      "topicSlug": "zodiac-animals",
+      "publishedAt": "2026-08-27T07:49:17.471Z"
+    },
+    {
+      "id": "34_sports-verbs__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce sports action verbs in Chinese",
+      "slug": "how-to-pronounce-sports-action-verbs-in-chinese",
+      "imagePath": "/global/pins/34_sports-verbs__zh.png",
+      "words": [
+        {
+          "english": "run",
+          "target": "跑",
+          "romanization": "pǎo"
+        },
+        {
+          "english": "jump",
+          "target": "跳",
+          "romanization": "tiào"
+        },
+        {
+          "english": "kick",
+          "target": "踢",
+          "romanization": "tī"
+        },
+        {
+          "english": "throw",
+          "target": "扔",
+          "romanization": "rēng"
+        },
+        {
+          "english": "catch",
+          "target": "接",
+          "romanization": "jiē"
+        },
+        {
+          "english": "swim",
+          "target": "游泳",
+          "romanization": "yóu yǒng"
+        },
+        {
+          "english": "ride",
+          "target": "骑",
+          "romanization": "qí"
+        },
+        {
+          "english": "stretch",
+          "target": "伸展",
+          "romanization": "shēn zhǎn"
+        },
+        {
+          "english": "score",
+          "target": "得分",
+          "romanization": "dé fēn"
+        },
+        {
+          "english": "win",
+          "target": "赢",
+          "romanization": "yíng"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: run, jump, kick, throw, catch, swim…. Save-friendly chart with pronunciation.",
+      "topicSlug": "sports-verbs",
+      "publishedAt": "2026-08-27T07:51:25.799Z"
+    },
+    {
+      "id": "35_anger-frustration__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce anger & frustration words in Chinese",
+      "slug": "how-to-pronounce-anger-frustration-words-in-chinese",
+      "imagePath": "/global/pins/35_anger-frustration__zh.png",
+      "words": [
+        {
+          "english": "angry",
+          "target": "生气",
+          "romanization": "shēng qì"
+        },
+        {
+          "english": "annoyed",
+          "target": "恼火",
+          "romanization": "nǎo huǒ"
+        },
+        {
+          "english": "frustrated",
+          "target": "沮丧",
+          "romanization": "jǔ sàng"
+        },
+        {
+          "english": "upset",
+          "target": "难过",
+          "romanization": "nán guò"
+        },
+        {
+          "english": "mad",
+          "target": "发疯",
+          "romanization": "fā fēng"
+        },
+        {
+          "english": "irritated",
+          "target": "烦躁",
+          "romanization": "fán zào"
+        },
+        {
+          "english": "furious",
+          "target": "愤怒",
+          "romanization": "fèn nù"
+        },
+        {
+          "english": "calm down",
+          "target": "冷静",
+          "romanization": "lěng jìng"
+        },
+        {
+          "english": "argue",
+          "target": "争论",
+          "romanization": "zhēng lùn"
+        },
+        {
+          "english": "complain",
+          "target": "抱怨",
+          "romanization": "bào yuàn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: angry, annoyed, frustrated, upset, mad, irritated…. Save-friendly chart with pronunciation.",
+      "topicSlug": "anger-frustration",
+      "publishedAt": "2026-08-27T07:53:23.947Z"
+    },
+    {
+      "id": "36_surprise-shock__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce surprise & shock words in Chinese",
+      "slug": "how-to-pronounce-surprise-shock-words-in-chinese",
+      "imagePath": "/global/pins/36_surprise-shock__zh.png",
+      "words": [
+        {
+          "english": "surprised",
+          "target": "惊讶",
+          "romanization": "jīng yà"
+        },
+        {
+          "english": "shocked",
+          "target": "震惊",
+          "romanization": "zhèn jīng"
+        },
+        {
+          "english": "amazed",
+          "target": "惊奇",
+          "romanization": "jīng qí"
+        },
+        {
+          "english": "wow",
+          "target": "哇",
+          "romanization": "wā"
+        },
+        {
+          "english": "unexpected",
+          "target": "意外",
+          "romanization": "yì wài"
+        },
+        {
+          "english": "startled",
+          "target": "吃惊",
+          "romanization": "chī jīng"
+        },
+        {
+          "english": "incredible",
+          "target": "难以置信",
+          "romanization": "nán yǐ zhì xìn"
+        },
+        {
+          "english": "unbelievable",
+          "target": "不可思议",
+          "romanization": "bù kě sī yì"
+        },
+        {
+          "english": "sudden",
+          "target": "突然",
+          "romanization": "tū rán"
+        },
+        {
+          "english": "speechless",
+          "target": "无语",
+          "romanization": "wú yǔ"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: surprised, shocked, amazed, wow, unexpected, startled…. Save-friendly chart with pronunciation.",
+      "topicSlug": "surprise-shock",
+      "publishedAt": "2026-08-27T07:55:28.151Z"
+    },
+    {
+      "id": "39_counters__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce counting words in Chinese",
+      "slug": "how-to-pronounce-counting-words-in-chinese",
+      "imagePath": "/global/pins/39_counters__zh.png",
+      "words": [
+        {
+          "english": "one item",
+          "target": "一件",
+          "romanization": "yī jiàn"
+        },
+        {
+          "english": "two people",
+          "target": "两个人",
+          "romanization": "liǎng gè rén"
+        },
+        {
+          "english": "three animals",
+          "target": "三只动物",
+          "romanization": "sān zhī dòng wù"
+        },
+        {
+          "english": "a cup of",
+          "target": "一杯",
+          "romanization": "yī bēi"
+        },
+        {
+          "english": "a bottle of",
+          "target": "一瓶",
+          "romanization": "yī píng"
+        },
+        {
+          "english": "a piece of",
+          "target": "一块",
+          "romanization": "yī kuài"
+        },
+        {
+          "english": "a pair of",
+          "target": "一双",
+          "romanization": "yī shuāng"
+        },
+        {
+          "english": "how many",
+          "target": "多少",
+          "romanization": "duō shǎo"
+        },
+        {
+          "english": "total",
+          "target": "总共",
+          "romanization": "zǒng gòng"
+        },
+        {
+          "english": "each",
+          "target": "每个",
+          "romanization": "měi gè"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: one item, two people, three animals, a cup of, a bottle of, a piece of…. Save-friendly chart with pronunciation.",
+      "topicSlug": "counters",
+      "publishedAt": "2026-08-27T07:57:37.612Z"
+    },
+    {
+      "id": "40_big-numbers__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce big numbers in Chinese",
+      "slug": "how-to-pronounce-big-numbers-in-chinese",
+      "imagePath": "/global/pins/40_big-numbers__zh.png",
+      "words": [
+        {
+          "english": "hundred",
+          "target": "百",
+          "romanization": "bǎi"
+        },
+        {
+          "english": "thousand",
+          "target": "千",
+          "romanization": "qiān"
+        },
+        {
+          "english": "ten thousand",
+          "target": "万",
+          "romanization": "wàn"
+        },
+        {
+          "english": "million",
+          "target": "百万",
+          "romanization": "bǎi wàn"
+        },
+        {
+          "english": "half",
+          "target": "半",
+          "romanization": "bàn"
+        },
+        {
+          "english": "double",
+          "target": "双",
+          "romanization": "shuāng"
+        },
+        {
+          "english": "triple",
+          "target": "三倍",
+          "romanization": "sān bèi"
+        },
+        {
+          "english": "about",
+          "target": "大约",
+          "romanization": "dà yuē"
+        },
+        {
+          "english": "more than",
+          "target": "超过",
+          "romanization": "chāo guò"
+        },
+        {
+          "english": "less than",
+          "target": "少于",
+          "romanization": "shǎo yú"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: hundred, thousand, ten thousand, million, half, double…. Save-friendly chart with pronunciation.",
+      "topicSlug": "big-numbers",
+      "publishedAt": "2026-08-27T07:59:30.244Z"
+    },
+    {
+      "id": "41_age-appearance__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce age & appearance words in Chinese",
+      "slug": "how-to-pronounce-age-appearance-words-in-chinese",
+      "imagePath": "/global/pins/41_age-appearance__zh.png",
+      "words": [
+        {
+          "english": "young",
+          "target": "年轻",
+          "romanization": "nián qīng"
+        },
+        {
+          "english": "old",
+          "target": "老",
+          "romanization": "lǎo"
+        },
+        {
+          "english": "tall",
+          "target": "高",
+          "romanization": "gāo"
+        },
+        {
+          "english": "short",
+          "target": "矮",
+          "romanization": "ǎi"
+        },
+        {
+          "english": "slim",
+          "target": "瘦",
+          "romanization": "shòu"
+        },
+        {
+          "english": "handsome",
+          "target": "帅",
+          "romanization": "shuài"
+        },
+        {
+          "english": "pretty",
+          "target": "漂亮",
+          "romanization": "piào liang"
+        },
+        {
+          "english": "cute",
+          "target": "可爱",
+          "romanization": "kě ài"
+        },
+        {
+          "english": "looks young",
+          "target": "看起来年轻",
+          "romanization": "kàn qǐ lái nián qīng"
+        },
+        {
+          "english": "looks older",
+          "target": "看起来老",
+          "romanization": "kàn qǐ lái lǎo"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: young, old, tall, short, slim, handsome…. Save-friendly chart with pronunciation.",
+      "topicSlug": "age-appearance",
+      "publishedAt": "2026-08-27T08:01:23.446Z"
+    },
+    {
+      "id": "42_stews__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce stew & soup dishes in Chinese",
+      "slug": "how-to-pronounce-stew-soup-dishes-in-chinese",
+      "imagePath": "/global/pins/42_stews__zh.png",
+      "words": [
+        {
+          "english": "stew",
+          "target": "炖",
+          "romanization": "dùn"
+        },
+        {
+          "english": "soup",
+          "target": "汤",
+          "romanization": "tāng"
+        },
+        {
+          "english": "hot pot",
+          "target": "火锅",
+          "romanization": "huǒ guō"
+        },
+        {
+          "english": "broth",
+          "target": "高汤",
+          "romanization": "gāo tāng"
+        },
+        {
+          "english": "spicy stew",
+          "target": "辣炖",
+          "romanization": "là dùn"
+        },
+        {
+          "english": "seafood soup",
+          "target": "海鲜汤",
+          "romanization": "hǎi xiān tāng"
+        },
+        {
+          "english": "vegetable soup",
+          "target": "蔬菜汤",
+          "romanization": "shū cài tāng"
+        },
+        {
+          "english": "miso soup",
+          "target": "味噌汤",
+          "romanization": "wèi cēng tāng"
+        },
+        {
+          "english": "boil",
+          "target": "煮沸",
+          "romanization": "zhǔ fèi"
+        },
+        {
+          "english": "simmer",
+          "target": "慢炖",
+          "romanization": "màn dùn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: stew, soup, hot pot, broth, spicy stew, seafood soup…. Save-friendly chart with pronunciation.",
+      "topicSlug": "stews",
+      "publishedAt": "2026-08-27T08:03:16.543Z"
+    },
+    {
+      "id": "44_looks-adjectives__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce look adjectives in Chinese",
+      "slug": "how-to-pronounce-look-adjectives-in-chinese",
+      "imagePath": "/global/pins/44_looks-adjectives__zh.png",
+      "words": [
+        {
+          "english": "pretty",
+          "target": "漂亮",
+          "romanization": "piàoliang"
+        },
+        {
+          "english": "cool",
+          "target": "酷",
+          "romanization": "kù"
+        },
+        {
+          "english": "stylish",
+          "target": "时尚",
+          "romanization": "shíshàng"
+        },
+        {
+          "english": "messy",
+          "target": "凌乱",
+          "romanization": "língluàn"
+        },
+        {
+          "english": "neat",
+          "target": "整洁",
+          "romanization": "zhěngjié"
+        },
+        {
+          "english": "bright",
+          "target": "明亮",
+          "romanization": "míngliàng"
+        },
+        {
+          "english": "dark",
+          "target": "暗",
+          "romanization": "àn"
+        },
+        {
+          "english": "soft",
+          "target": "柔软",
+          "romanization": "róuruǎn"
+        },
+        {
+          "english": "sharp",
+          "target": "锋利",
+          "romanization": "fēnglì"
+        },
+        {
+          "english": "natural",
+          "target": "自然",
+          "romanization": "zìrán"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: pretty, cool, stylish, messy, neat, bright…. Save-friendly chart with pronunciation.",
+      "topicSlug": "looks-adjectives",
+      "publishedAt": "2026-08-27T08:05:26.101Z"
+    },
+    {
+      "id": "45_airport__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce airport words in Chinese",
+      "slug": "how-to-pronounce-airport-words-in-chinese",
+      "imagePath": "/global/pins/45_airport__zh.png",
+      "words": [
+        {
+          "english": "departure",
+          "target": "出发",
+          "romanization": "chū fā"
+        },
+        {
+          "english": "arrival",
+          "target": "到达",
+          "romanization": "dào dá"
+        },
+        {
+          "english": "gate",
+          "target": "登机口",
+          "romanization": "dēng jī kǒu"
+        },
+        {
+          "english": "security",
+          "target": "安检",
+          "romanization": "ān jiǎn"
+        },
+        {
+          "english": "check-in",
+          "target": "值机",
+          "romanization": "zhí jī"
+        },
+        {
+          "english": "delay",
+          "target": "延误",
+          "romanization": "yán wù"
+        },
+        {
+          "english": "baggage claim",
+          "target": "行李领取",
+          "romanization": "xíng lǐ lǐng qǔ"
+        },
+        {
+          "english": "flight",
+          "target": "航班",
+          "romanization": "háng bān"
+        },
+        {
+          "english": "window seat",
+          "target": "靠窗座位",
+          "romanization": "kào chuāng zuò wèi"
+        },
+        {
+          "english": "aisle seat",
+          "target": "靠过道座位",
+          "romanization": "kào guò dào zuò wèi"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: departure, arrival, gate, security, check-in, delay…. Save-friendly chart with pronunciation.",
+      "topicSlug": "airport",
+      "publishedAt": "2026-08-27T08:07:32.146Z"
+    },
+    {
+      "id": "48_clothes-basics__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce clothing basics in Chinese",
+      "slug": "how-to-pronounce-clothing-basics-in-chinese",
+      "imagePath": "/global/pins/48_clothes-basics__zh.png",
+      "words": [
+        {
+          "english": "shirt",
+          "target": "衬衫",
+          "romanization": "chèn shān"
+        },
+        {
+          "english": "pants",
+          "target": "裤子",
+          "romanization": "kù zi"
+        },
+        {
+          "english": "dress",
+          "target": "连衣裙",
+          "romanization": "lián yī qún"
+        },
+        {
+          "english": "jacket",
+          "target": "夹克",
+          "romanization": "jiá kè"
+        },
+        {
+          "english": "shoes",
+          "target": "鞋子",
+          "romanization": "xié zi"
+        },
+        {
+          "english": "hat",
+          "target": "帽子",
+          "romanization": "mào zi"
+        },
+        {
+          "english": "socks",
+          "target": "袜子",
+          "romanization": "wà zi"
+        },
+        {
+          "english": "coat",
+          "target": "外套",
+          "romanization": "wài tào"
+        },
+        {
+          "english": "skirt",
+          "target": "裙子",
+          "romanization": "qún zi"
+        },
+        {
+          "english": "sneakers",
+          "target": "运动鞋",
+          "romanization": "yùn dòng xié"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: shirt, pants, dress, jacket, shoes, hat…. Save-friendly chart with pronunciation.",
+      "topicSlug": "clothes-basics",
+      "publishedAt": "2026-08-27T08:09:54.311Z"
+    },
+    {
+      "id": "49_time-of-day__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce times of day in Chinese",
+      "slug": "how-to-pronounce-times-of-day-in-chinese",
+      "imagePath": "/global/pins/49_time-of-day__zh.png",
+      "words": [
+        {
+          "english": "dawn",
+          "target": "黎明",
+          "romanization": "lí míng"
+        },
+        {
+          "english": "morning",
+          "target": "早上",
+          "romanization": "zǎo shang"
+        },
+        {
+          "english": "noon",
+          "target": "中午",
+          "romanization": "zhōng wǔ"
+        },
+        {
+          "english": "afternoon",
+          "target": "下午",
+          "romanization": "xià wǔ"
+        },
+        {
+          "english": "evening",
+          "target": "晚上",
+          "romanization": "wǎn shang"
+        },
+        {
+          "english": "night",
+          "target": "夜晚",
+          "romanization": "yè wǎn"
+        },
+        {
+          "english": "midnight",
+          "target": "午夜",
+          "romanization": "wǔ yè"
+        },
+        {
+          "english": "today",
+          "target": "今天",
+          "romanization": "jīn tiān"
+        },
+        {
+          "english": "tomorrow",
+          "target": "明天",
+          "romanization": "míng tiān"
+        },
+        {
+          "english": "yesterday",
+          "target": "昨天",
+          "romanization": "zuó tiān"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: dawn, morning, noon, afternoon, evening, night…. Save-friendly chart with pronunciation.",
+      "topicSlug": "time-of-day",
+      "publishedAt": "2026-08-27T08:11:52.871Z"
+    },
+    {
+      "id": "51_fruits__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce fruit words in Chinese",
+      "slug": "how-to-pronounce-fruit-words-in-chinese",
+      "imagePath": "/global/pins/51_fruits__zh.png",
+      "words": [
+        {
+          "english": "apple",
+          "target": "苹果",
+          "romanization": "píng guǒ"
+        },
+        {
+          "english": "banana",
+          "target": "香蕉",
+          "romanization": "xiāng jiāo"
+        },
+        {
+          "english": "orange",
+          "target": "橙子",
+          "romanization": "chéng zi"
+        },
+        {
+          "english": "grape",
+          "target": "葡萄",
+          "romanization": "pú táo"
+        },
+        {
+          "english": "watermelon",
+          "target": "西瓜",
+          "romanization": "xī guā"
+        },
+        {
+          "english": "peach",
+          "target": "桃子",
+          "romanization": "táo zi"
+        },
+        {
+          "english": "pear",
+          "target": "梨",
+          "romanization": "lí"
+        },
+        {
+          "english": "mango",
+          "target": "芒果",
+          "romanization": "máng guǒ"
+        },
+        {
+          "english": "lemon",
+          "target": "柠檬",
+          "romanization": "níng méng"
+        },
+        {
+          "english": "cherry",
+          "target": "樱桃",
+          "romanization": "yīng táo"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: apple, banana, orange, grape, watermelon, peach…. Save-friendly chart with pronunciation.",
+      "topicSlug": "fruits",
+      "publishedAt": "2026-08-27T08:17:52.518Z"
+    },
+    {
+      "id": "52_breakfast__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce breakfast words in Chinese",
+      "slug": "how-to-pronounce-breakfast-words-in-chinese",
+      "imagePath": "/global/pins/52_breakfast__zh.png",
+      "words": [
+        {
+          "english": "egg",
+          "target": "鸡蛋",
+          "romanization": "jī dàn"
+        },
+        {
+          "english": "toast",
+          "target": "吐司",
+          "romanization": "tǔ sī"
+        },
+        {
+          "english": "butter",
+          "target": "黄油",
+          "romanization": "huáng yóu"
+        },
+        {
+          "english": "jam",
+          "target": "果酱",
+          "romanization": "guǒ jiàng"
+        },
+        {
+          "english": "cereal",
+          "target": "谷物",
+          "romanization": "gǔ wù"
+        },
+        {
+          "english": "yogurt",
+          "target": "酸奶",
+          "romanization": "suān nǎi"
+        },
+        {
+          "english": "pancake",
+          "target": "煎饼",
+          "romanization": "jiān bǐng"
+        },
+        {
+          "english": "bacon",
+          "target": "培根",
+          "romanization": "péi gēn"
+        },
+        {
+          "english": "oatmeal",
+          "target": "燕麦粥",
+          "romanization": "yàn mài zhōu"
+        },
+        {
+          "english": "croissant",
+          "target": "羊角面包",
+          "romanization": "yáng jiǎo miàn bāo"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: egg, toast, butter, jam, cereal, yogurt…. Save-friendly chart with pronunciation.",
+      "topicSlug": "breakfast",
+      "publishedAt": "2026-08-27T08:19:53.751Z"
+    },
+    {
+      "id": "53_drinks__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce drink words in Chinese",
+      "slug": "how-to-pronounce-drink-words-in-chinese",
+      "imagePath": "/global/pins/53_drinks__zh.png",
+      "words": [
+        {
+          "english": "water",
+          "target": "水",
+          "romanization": "shuǐ"
+        },
+        {
+          "english": "juice",
+          "target": "果汁",
+          "romanization": "guǒ zhī"
+        },
+        {
+          "english": "soda",
+          "target": "汽水",
+          "romanization": "qì shuǐ"
+        },
+        {
+          "english": "smoothie",
+          "target": "冰沙",
+          "romanization": "bīng shā"
+        },
+        {
+          "english": "latte",
+          "target": "拿铁",
+          "romanization": "ná tiě"
+        },
+        {
+          "english": "hot chocolate",
+          "target": "热巧克力",
+          "romanization": "rè qiǎo kè lì"
+        },
+        {
+          "english": "lemonade",
+          "target": "柠檬水",
+          "romanization": "níng méng shuǐ"
+        },
+        {
+          "english": "milkshake",
+          "target": "奶昔",
+          "romanization": "nǎi xī"
+        },
+        {
+          "english": "iced tea",
+          "target": "冰茶",
+          "romanization": "bīng chá"
+        },
+        {
+          "english": "sparkling water",
+          "target": "气泡水",
+          "romanization": "qì pào shuǐ"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: water, juice, soda, smoothie, latte, hot chocolate…. Save-friendly chart with pronunciation.",
+      "topicSlug": "drinks",
+      "publishedAt": "2026-08-27T08:21:57.544Z"
+    },
+    {
+      "id": "54_transport__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce transport words in Chinese",
+      "slug": "how-to-pronounce-transport-words-in-chinese",
+      "imagePath": "/global/pins/54_transport__zh.png",
+      "words": [
+        {
+          "english": "bus",
+          "target": "公共汽车",
+          "romanization": "gōng gòng qì chē"
+        },
+        {
+          "english": "train",
+          "target": "火车",
+          "romanization": "huǒ chē"
+        },
+        {
+          "english": "subway",
+          "target": "地铁",
+          "romanization": "dì tiě"
+        },
+        {
+          "english": "taxi",
+          "target": "出租车",
+          "romanization": "chū zū chē"
+        },
+        {
+          "english": "bike",
+          "target": "自行车",
+          "romanization": "zì xíng chē"
+        },
+        {
+          "english": "car",
+          "target": "汽车",
+          "romanization": "qì chē"
+        },
+        {
+          "english": "plane",
+          "target": "飞机",
+          "romanization": "fēi jī"
+        },
+        {
+          "english": "ticket",
+          "target": "票",
+          "romanization": "piào"
+        },
+        {
+          "english": "station",
+          "target": "车站",
+          "romanization": "chē zhàn"
+        },
+        {
+          "english": "map",
+          "target": "地图",
+          "romanization": "dì tú"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: bus, train, subway, taxi, bike, car…. Save-friendly chart with pronunciation.",
+      "topicSlug": "transport",
+      "publishedAt": "2026-08-27T08:24:40.930Z"
+    },
+    {
+      "id": "55_shopping__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce shopping words in Chinese",
+      "slug": "how-to-pronounce-shopping-words-in-chinese",
+      "imagePath": "/global/pins/55_shopping__zh.png",
+      "words": [
+        {
+          "english": "store",
+          "target": "商店",
+          "romanization": "shāng diàn"
+        },
+        {
+          "english": "price",
+          "target": "价格",
+          "romanization": "jià gé"
+        },
+        {
+          "english": "sale",
+          "target": "促销",
+          "romanization": "cù xiāo"
+        },
+        {
+          "english": "cart",
+          "target": "购物车",
+          "romanization": "gòu wù chē"
+        },
+        {
+          "english": "bag",
+          "target": "袋子",
+          "romanization": "dài zi"
+        },
+        {
+          "english": "receipt",
+          "target": "收据",
+          "romanization": "shōu jù"
+        },
+        {
+          "english": "discount",
+          "target": "折扣",
+          "romanization": "zhé kòu"
+        },
+        {
+          "english": "cashier",
+          "target": "收银员",
+          "romanization": "shōu yín yuán"
+        },
+        {
+          "english": "aisle",
+          "target": "过道",
+          "romanization": "guò dào"
+        },
+        {
+          "english": "checkout",
+          "target": "结账",
+          "romanization": "jié zhàng"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: store, price, sale, cart, bag, receipt…. Save-friendly chart with pronunciation.",
+      "topicSlug": "shopping",
+      "publishedAt": "2026-08-27T08:26:52.634Z"
+    },
+    {
+      "id": "56_seasons__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce season words in Chinese",
+      "slug": "how-to-pronounce-season-words-in-chinese",
+      "imagePath": "/global/pins/56_seasons__zh.png",
+      "words": [
+        {
+          "english": "spring",
+          "target": "春天",
+          "romanization": "chūn tiān"
+        },
+        {
+          "english": "summer",
+          "target": "夏天",
+          "romanization": "xià tiān"
+        },
+        {
+          "english": "autumn",
+          "target": "秋天",
+          "romanization": "qiū tiān"
+        },
+        {
+          "english": "winter",
+          "target": "冬天",
+          "romanization": "dōng tiān"
+        },
+        {
+          "english": "sunny",
+          "target": "晴天",
+          "romanization": "qíng tiān"
+        },
+        {
+          "english": "rainy",
+          "target": "雨天",
+          "romanization": "yǔ tiān"
+        },
+        {
+          "english": "snowy",
+          "target": "下雪",
+          "romanization": "xià xuě"
+        },
+        {
+          "english": "windy",
+          "target": "刮风",
+          "romanization": "guā fēng"
+        },
+        {
+          "english": "hot",
+          "target": "热",
+          "romanization": "rè"
+        },
+        {
+          "english": "cold",
+          "target": "冷",
+          "romanization": "lěng"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: spring, summer, autumn, winter, sunny, rainy…. Save-friendly chart with pronunciation.",
+      "topicSlug": "seasons",
+      "publishedAt": "2026-08-27T08:28:50.724Z"
+    },
+    {
+      "id": "57_bathroom__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce bathroom words in Chinese",
+      "slug": "how-to-pronounce-bathroom-words-in-chinese",
+      "imagePath": "/global/pins/57_bathroom__zh.png",
+      "words": [
+        {
+          "english": "towel",
+          "target": "毛巾",
+          "romanization": "máo jīn"
+        },
+        {
+          "english": "soap",
+          "target": "肥皂",
+          "romanization": "féi zào"
+        },
+        {
+          "english": "toothbrush",
+          "target": "牙刷",
+          "romanization": "yá shuā"
+        },
+        {
+          "english": "toothpaste",
+          "target": "牙膏",
+          "romanization": "yá gāo"
+        },
+        {
+          "english": "shampoo",
+          "target": "洗发水",
+          "romanization": "xǐ fà shuǐ"
+        },
+        {
+          "english": "shower",
+          "target": "淋浴",
+          "romanization": "lín yù"
+        },
+        {
+          "english": "mirror",
+          "target": "镜子",
+          "romanization": "jìng zi"
+        },
+        {
+          "english": "sink",
+          "target": "洗手盆",
+          "romanization": "xǐ shǒu pén"
+        },
+        {
+          "english": "comb",
+          "target": "梳子",
+          "romanization": "shū zi"
+        },
+        {
+          "english": "tissue",
+          "target": "纸巾",
+          "romanization": "zhǐ jīn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: towel, soap, toothbrush, toothpaste, shampoo, shower…. Save-friendly chart with pronunciation.",
+      "topicSlug": "bathroom",
+      "publishedAt": "2026-08-27T08:31:31.757Z"
+    },
+    {
+      "id": "58_directions__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce direction words in Chinese",
+      "slug": "how-to-pronounce-direction-words-in-chinese",
+      "imagePath": "/global/pins/58_directions__zh.png",
+      "words": [
+        {
+          "english": "left",
+          "target": "左",
+          "romanization": "zuǒ"
+        },
+        {
+          "english": "right",
+          "target": "右",
+          "romanization": "yòu"
+        },
+        {
+          "english": "straight",
+          "target": "直走",
+          "romanization": "zhí zǒu"
+        },
+        {
+          "english": "near",
+          "target": "近",
+          "romanization": "jìn"
+        },
+        {
+          "english": "far",
+          "target": "远",
+          "romanization": "yuǎn"
+        },
+        {
+          "english": "north",
+          "target": "北",
+          "romanization": "běi"
+        },
+        {
+          "english": "south",
+          "target": "南",
+          "romanization": "nán"
+        },
+        {
+          "english": "east",
+          "target": "东",
+          "romanization": "dōng"
+        },
+        {
+          "english": "west",
+          "target": "西",
+          "romanization": "xī"
+        },
+        {
+          "english": "here",
+          "target": "这里",
+          "romanization": "zhè lǐ"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: left, right, straight, near, far, north…. Save-friendly chart with pronunciation.",
+      "topicSlug": "directions",
+      "publishedAt": "2026-08-27T08:33:40.882Z"
+    },
+    {
+      "id": "59_bedroom__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "How to pronounce bedroom words in Chinese",
+      "slug": "how-to-pronounce-bedroom-words-in-chinese",
+      "imagePath": "/global/pins/59_bedroom__zh.png",
+      "words": [
+        {
+          "english": "bed",
+          "target": "床",
+          "romanization": "chuáng"
+        },
+        {
+          "english": "pillow",
+          "target": "枕头",
+          "romanization": "zhěn tóu"
+        },
+        {
+          "english": "blanket",
+          "target": "毯子",
+          "romanization": "tǎn zi"
+        },
+        {
+          "english": "lamp",
+          "target": "灯",
+          "romanization": "dēng"
+        },
+        {
+          "english": "alarm",
+          "target": "闹钟",
+          "romanization": "nào zhōng"
+        },
+        {
+          "english": "closet",
+          "target": "衣柜",
+          "romanization": "yī guì"
+        },
+        {
+          "english": "drawer",
+          "target": "抽屉",
+          "romanization": "chōu ti"
+        },
+        {
+          "english": "curtain",
+          "target": "窗帘",
+          "romanization": "chuāng lián"
+        },
+        {
+          "english": "mattress",
+          "target": "床垫",
+          "romanization": "chuáng diàn"
+        },
+        {
+          "english": "nightstand",
+          "target": "床头柜",
+          "romanization": "chuáng tóu guì"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: bed, pillow, blanket, lamp, alarm, closet…. Save-friendly chart with pronunciation.",
+      "topicSlug": "bedroom",
+      "publishedAt": "2026-08-27T08:35:52.530Z"
     }
   ]
 }
