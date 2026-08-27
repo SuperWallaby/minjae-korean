@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T15:05:05.297Z",
+  "generatedAt": "2026-08-27T16:37:20.240Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -42,81 +42,63 @@
           "target": "negro",
           "romanization": "NEH-groh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w0-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w0-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w0-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "brown",
           "target": "marrón",
           "romanization": "mah-RON",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w1-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w1-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w1-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "hazel",
           "target": "avellana",
           "romanization": "ah-veh-YAH-nah",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w2-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w2-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w2-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "green",
           "target": "verde",
           "romanization": "BEHR-deh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w3-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w3-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w3-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "blue",
           "target": "azul",
           "romanization": "ah-SOOL",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w4-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w4-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w4-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "gray",
           "target": "gris",
           "romanization": "grees",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w5-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w5-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w5-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "light blue",
           "target": "azul claro",
           "romanization": "ah-SOOL KLAH-roh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w6-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w6-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w6-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "violet",
           "target": "violeta",
           "romanization": "vee-oh-LEH-tah",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w7-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w7-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w7-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "amber",
           "target": "ámbar",
           "romanization": "AHM-bar",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w8-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w8-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w8-es.mp3"
+          "ttsProvider": "edge"
         }
       ],
       "examples": [
@@ -188,108 +170,84 @@
           "target": "enero",
           "romanization": "eh-NEH-ro",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w0-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w0-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w0-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "February",
           "target": "febrero",
           "romanization": "feh-BREH-ro",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w1-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w1-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w1-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "March",
           "target": "marzo",
           "romanization": "MAR-so",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w2-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w2-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w2-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "April",
           "target": "abril",
           "romanization": "ah-BREEL",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w3-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w3-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w3-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "May",
           "target": "mayo",
           "romanization": "MAH-yo",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w4-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w4-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w4-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "June",
           "target": "junio",
           "romanization": "HOO-nee-o",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w5-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w5-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w5-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "July",
           "target": "julio",
           "romanization": "HOO-lee-o",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w6-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w6-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w6-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "August",
           "target": "agosto",
           "romanization": "ah-GOHS-to",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w7-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w7-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w7-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "September",
           "target": "septiembre",
           "romanization": "sep-tee-EM-breh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w8-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w8-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w8-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "October",
           "target": "octubre",
           "romanization": "ok-TOO-breh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w9-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w9-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w9-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "November",
           "target": "noviembre",
           "romanization": "noh-bee-EM-breh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w10-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w10-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w10-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "December",
           "target": "diciembre",
           "romanization": "dee-see-EM-breh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w11-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w11-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/02_months__es/w11-es.mp3"
+          "ttsProvider": "edge"
         }
       ],
       "examples": [
@@ -361,90 +319,70 @@
           "target": "pan",
           "romanization": "pan",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w0-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w0-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w0-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "cheese",
           "target": "queso",
           "romanization": "keh-so",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w1-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w1-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w1-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "wine",
           "target": "vino",
           "romanization": "vee-no",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w2-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w2-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w2-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "coffee",
           "target": "café",
           "romanization": "ka-fe",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w3-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w3-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w3-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "croissant",
           "target": "croissant",
           "romanization": "krwah-san",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w4-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w4-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w4-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "soup",
           "target": "sopa",
           "romanization": "so-pa",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w5-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w5-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w5-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "salad",
           "target": "ensalada",
           "romanization": "en-sa-la-da",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w6-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w6-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w6-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "chicken",
           "target": "pollo",
           "romanization": "po-yo",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w7-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w7-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w7-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "fish",
           "target": "pescado",
           "romanization": "pes-ka-do",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w8-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w8-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w8-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "dessert",
           "target": "postre",
           "romanization": "pos-tre",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w9-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w9-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__es/w9-es.mp3"
+          "ttsProvider": "edge"
         }
       ],
       "examples": [
@@ -516,90 +454,70 @@
           "target": "feliz",
           "romanization": "feh-LEES",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w0-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w0-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w0-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "sad",
           "target": "triste",
           "romanization": "TREES-teh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w1-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w1-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w1-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "angry",
           "target": "enojado",
           "romanization": "eh-noh-HAH-doh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w2-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w2-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w2-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "tired",
           "target": "cansado",
           "romanization": "kahn-SAH-doh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w3-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w3-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w3-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "surprised",
           "target": "sorprendido",
           "romanization": "sohr-prehn-DEE-doh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w4-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w4-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w4-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "scared",
           "target": "asustado",
           "romanization": "ah-soos-TAH-doh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w5-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w5-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w5-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "proud",
           "target": "orgulloso",
           "romanization": "or-goo-YOH-soh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w6-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w6-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w6-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "lonely",
           "target": "solo",
           "romanization": "SOH-loh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w7-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w7-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w7-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "excited",
           "target": "emocionado",
           "romanization": "eh-moh-see-oh-NAH-doh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w8-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w8-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w8-es.mp3"
+          "ttsProvider": "edge"
         },
         {
           "english": "calm",
           "target": "calmado",
           "romanization": "kahl-MAH-doh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w9-latam.mp3",
-          "ttsProvider": "edge",
-          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w9-latam.mp3",
-          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__es/w9-es.mp3"
+          "ttsProvider": "edge"
         }
       ],
       "examples": [
