@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T04:27:04.932Z",
+  "generatedAt": "2026-08-27T04:59:13.759Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -3698,11 +3698,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: gift, party, cake, candle, balloon, fireworks…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "holiday-celebrations",
-      "publishedAt": "2026-08-24T17:29:55.667Z",
-      "explanationEn": "These holiday words help you talk about celebrations in Spanish. Use them to describe parties, decorations, and special moments like giving gifts or making a toast. Practice listening to these words on the site to improve your pronunciation and understanding.",
       "examples": [
         {
           "target": "Vamos a la fiesta esta noche.",
@@ -3740,7 +3735,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These holiday words help you talk about celebrations in Spanish. Use them to describe parties, decorations, and special moments like giving gifts or making a toast. Practice listening to these words on the site to improve your pronunciation and understanding.",
+      "partner": "preply",
+      "description": "Learn Spanish: gift, party, cake, candle, balloon, fireworks…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "holiday-celebrations",
+      "publishedAt": "2026-08-24T17:29:55.667Z"
     },
     {
       "id": "24_daily-routine__es",
@@ -10585,11 +10585,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn French: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "kitchen-appliances",
-      "publishedAt": "2026-08-24T16:07:08.962Z",
-      "explanationEn": "These kitchen appliances are common in French homes and help you prepare and store food. Use these words to talk about cooking, cleaning, and kitchen tasks. Listening to the pronunciation on the site will help you say them correctly.",
       "examples": [
         {
           "target": "Je mets le gâteau dans le four.",
@@ -10627,7 +10622,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These kitchen appliances are common in French homes and help you prepare and store food. Use these words to talk about cooking, cleaning, and kitchen tasks. Listening to the pronunciation on the site will help you say them correctly.",
+      "partner": "preply",
+      "description": "Learn French: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "kitchen-appliances",
+      "publishedAt": "2026-08-24T16:07:08.962Z"
     },
     {
       "id": "15_skin-tones__fr",
@@ -10913,11 +10913,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn French: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "office-desk",
-      "publishedAt": "2026-08-24T16:18:08.185Z",
-      "explanationEn": "These words are common items you find on or near an office desk in French. Use them to describe your workspace or talk about office equipment. Listening to the pronunciation on-site will help you remember and say these words correctly.",
       "examples": [
         {
           "target": "Le bureau est propre et organisé.",
@@ -10955,7 +10950,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words are common items you find on or near an office desk in French. Use them to describe your workspace or talk about office equipment. Listening to the pronunciation on-site will help you remember and say these words correctly.",
+      "partner": "preply",
+      "description": "Learn French: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "office-desk",
+      "publishedAt": "2026-08-24T16:18:08.185Z"
     },
     {
       "id": "17_bathroom__fr",
@@ -11138,11 +11138,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn French: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "hotel-stay",
-      "publishedAt": "2026-08-24T16:28:18.839Z",
-      "explanationEn": "These words help you talk about your hotel stay in French. Use them to ask for your room key, find the elevator, or order room service. Listening to these words on-site will make your hotel experience smoother and more comfortable.",
       "examples": [
         {
           "target": "Je vais à la réception pour avoir ma carte-clé.",
@@ -11180,7 +11175,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words help you talk about your hotel stay in French. Use them to ask for your room key, find the elevator, or order room service. Listening to these words on-site will make your hotel experience smoother and more comfortable.",
+      "partner": "preply",
+      "description": "Learn French: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "hotel-stay",
+      "publishedAt": "2026-08-24T16:28:18.839Z"
     },
     {
       "id": "18_banking-basics__fr",
@@ -11193,53 +11193,110 @@
         {
           "english": "bank",
           "target": "banque",
-          "romanization": "bahn-k"
+          "romanization": "bahn-k",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "account",
           "target": "compte",
-          "romanization": "kohmpt"
+          "romanization": "kohmpt",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "cash",
           "target": "espèces",
-          "romanization": "es-pess"
+          "romanization": "es-pess",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "card",
           "target": "carte",
-          "romanization": "kart"
+          "romanization": "kart",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "deposit",
           "target": "dépôt",
-          "romanization": "day-poh"
+          "romanization": "day-poh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "withdraw",
           "target": "retirer",
-          "romanization": "ruh-tee-ray"
+          "romanization": "ruh-tee-ray",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "transfer",
           "target": "virement",
-          "romanization": "vee-ray-mahn"
+          "romanization": "vee-ray-mahn",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "balance",
           "target": "solde",
-          "romanization": "sohld"
+          "romanization": "sohld",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "receipt",
           "target": "reçu",
-          "romanization": "ruh-syoo"
+          "romanization": "ruh-syoo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: bank, account, cash, card, deposit, withdraw…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "banking-basics",
-      "publishedAt": "2026-08-24T16:39:04.295Z"
+      "publishedAt": "2026-08-24T16:39:04.295Z",
+      "explanationEn": "This vocabulary theme covers basic banking words in French that you will use when managing money, such as opening an account, making deposits, or withdrawing cash. Listen carefully to the pronunciation on the site to practice these common terms and use them when you visit a bank or handle your finances in French.",
+      "examples": [
+        {
+          "target": "Je vais à la banque pour ouvrir un compte.",
+          "english": "I am going to the bank to open an account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je retire des espèces avec ma carte.",
+          "english": "I withdraw cash with my card.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le dépôt est sur votre compte.",
+          "english": "The deposit is in your account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Pouvez-vous faire un virement aujourd'hui ?",
+          "english": "Can you make a transfer today?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le solde de mon compte est faible.",
+          "english": "The balance of my account is low.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Voici votre reçu après le retrait.",
+          "english": "Here is your receipt after the withdrawal.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "18_phone-parts__fr",
@@ -11464,53 +11521,110 @@
         {
           "english": "letter",
           "target": "lettre",
-          "romanization": "le-tr"
+          "romanization": "le-tr",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stamp",
           "target": "timbre",
-          "romanization": "tam-br"
+          "romanization": "tam-br",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mailbox",
           "target": "boîte aux lettres",
-          "romanization": "bwat o let-r"
+          "romanization": "bwat o let-r",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "package",
           "target": "colis",
-          "romanization": "ko-li"
+          "romanization": "ko-li",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "address",
           "target": "adresse",
-          "romanization": "a-dres"
+          "romanization": "a-dres",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "post office",
           "target": "bureau de poste",
-          "romanization": "byu-ro de post"
+          "romanization": "byu-ro de post",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "signature",
           "target": "signature",
-          "romanization": "sig-na-tyur"
+          "romanization": "sig-na-tyur",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "delivery",
           "target": "livraison",
-          "romanization": "lee-vray-zon"
+          "romanization": "lee-vray-zon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tracking",
           "target": "suivi",
-          "romanization": "swee-vee"
+          "romanization": "swee-vee",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: letter, stamp, mailbox, package, address, post office…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "post-mail",
-      "publishedAt": "2026-08-24T16:49:15.335Z"
+      "publishedAt": "2026-08-24T16:49:15.335Z",
+      "explanationEn": "These words help you talk about sending and receiving mail in French. Use them when you write letters, send packages, or visit the post office. Listening to these words on the site can improve your pronunciation and understanding.",
+      "examples": [
+        {
+          "target": "Je mets la lettre dans la boîte aux lettres.",
+          "english": "I put the letter in the mailbox.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le timbre est sur l'enveloppe.",
+          "english": "The stamp is on the envelope.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je vais au bureau de poste pour envoyer un colis.",
+          "english": "I am going to the post office to send a package.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Quelle est votre adresse pour la livraison ?",
+          "english": "What is your address for the delivery?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La signature est obligatoire pour ce colis.",
+          "english": "The signature is required for this package.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je vérifie le suivi de ma livraison en ligne.",
+          "english": "I check the tracking of my delivery online.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_laundry-care__fr",
@@ -11523,53 +11637,110 @@
         {
           "english": "washing machine",
           "target": "machine à laver",
-          "romanization": "ma-sheen a la-vay"
+          "romanization": "ma-sheen a la-vay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dryer",
           "target": "sèche-linge",
-          "romanization": "seshe lanj"
+          "romanization": "seshe lanj",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "detergent",
           "target": "détergent",
-          "romanization": "day-ter-zhon"
+          "romanization": "day-ter-zhon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fabric softener",
           "target": "adoucissant",
-          "romanization": "a-doo-see-san"
+          "romanization": "a-doo-see-san",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "hanger",
           "target": "cintre",
-          "romanization": "san-tr"
+          "romanization": "san-tr",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "iron",
           "target": "fer à repasser",
-          "romanization": "fehr a ruh-pah-say"
+          "romanization": "fehr a ruh-pah-say",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "lint",
           "target": "peluche",
-          "romanization": "pe-loosh"
+          "romanization": "pe-loosh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fold",
           "target": "plier",
-          "romanization": "plee-ay"
+          "romanization": "plee-ay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stain",
           "target": "tache",
-          "romanization": "tash"
+          "romanization": "tash",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: washing machine, dryer, detergent, fabric softener, hanger, iron…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "laundry-care",
-      "publishedAt": "2026-08-24T16:59:31.261Z"
+      "publishedAt": "2026-08-24T16:59:31.261Z",
+      "explanationEn": "These laundry words help you talk about washing and caring for clothes in French. Use them when describing how to clean, dry, or iron clothes, or when mentioning laundry tools and products. Listening to the pronunciation on the site will help you say these words clearly.",
+      "examples": [
+        {
+          "target": "Je mets le linge dans la machine à laver.",
+          "english": "I put the laundry in the washing machine.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "N'oublie pas d'ajouter du détergent et de l'adoucissant.",
+          "english": "Don't forget to add detergent and fabric softener.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Après le lavage, je sèche les vêtements dans le sèche-linge.",
+          "english": "After washing, I dry the clothes in the dryer.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Il y a une tache sur ta chemise, il faut la nettoyer.",
+          "english": "There is a stain on your shirt, it needs to be cleaned.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je plie les vêtements et je les mets sur un cintre.",
+          "english": "I fold the clothes and put them on a hanger.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je repasse la chemise avec le fer à repasser.",
+          "english": "I iron the shirt with the iron.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_life-stages__fr",
@@ -11691,53 +11862,110 @@
         {
           "english": "flower",
           "target": "fleur",
-          "romanization": "flœr"
+          "romanization": "flœr",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tree",
           "target": "arbre",
-          "romanization": "ar-br"
+          "romanization": "ar-br",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "grass",
           "target": "herbe",
-          "romanization": "airb"
+          "romanization": "airb",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "soil",
           "target": "terre",
-          "romanization": "tair"
+          "romanization": "tair",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "seed",
           "target": "graine",
-          "romanization": "gren"
+          "romanization": "gren",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "watering can",
           "target": "arrosoir",
-          "romanization": "a-ro-swar"
+          "romanization": "a-ro-swar",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "shovel",
           "target": "pelle",
-          "romanization": "pel"
+          "romanization": "pel",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "pot",
           "target": "pot",
-          "romanization": "po"
+          "romanization": "po",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "leaf",
           "target": "feuille",
-          "romanization": "fœj"
+          "romanization": "fœj",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: flower, tree, grass, soil, seed, watering can…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "garden-plants",
-      "publishedAt": "2026-08-24T17:10:08.764Z"
+      "publishedAt": "2026-08-24T17:10:08.764Z",
+      "explanationEn": "This vocabulary theme introduces common garden plants and tools in French. Use these words to describe plants like flowers, trees, and grass, or to talk about gardening actions with tools like a shovel or watering can. Listening on the site helps you hear the correct pronunciation of each word.",
+      "examples": [
+        {
+          "target": "La fleur est belle dans le pot.",
+          "english": "The flower is beautiful in the pot.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je plante une graine dans la terre.",
+          "english": "I plant a seed in the soil.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "L'arbre a beaucoup de feuilles vertes.",
+          "english": "The tree has many green leaves.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "J'arrose les plantes avec l'arrosoir.",
+          "english": "I water the plants with the watering can.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La pelle est dans le jardin près de l'herbe.",
+          "english": "The shovel is in the garden near the grass.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "L'herbe est verte et douce sous les pieds.",
+          "english": "The grass is green and soft under the feet.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "21_hair-colors__fr",
