@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T08:40:57.459Z",
-  "site": "https://getpronounce.net",
+  "generatedAt": "2026-08-27T10:53:54.963Z",
+  "site": "https://global.kajakorean.com",
   "languages": [
     {
       "code": "es",
@@ -12196,53 +12196,110 @@
         {
           "english": "piano",
           "target": "piano",
-          "romanization": "pya-no"
+          "romanization": "pya-no",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "guitar",
           "target": "guitare",
-          "romanization": "gee-tar"
+          "romanization": "gee-tar",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "violin",
           "target": "violon",
-          "romanization": "vee-o-lon"
+          "romanization": "vee-o-lon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "drums",
           "target": "batterie",
-          "romanization": "ba-te-ree"
+          "romanization": "ba-te-ree",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "flute",
           "target": "flûte",
-          "romanization": "floot"
+          "romanization": "floot",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "trumpet",
           "target": "trompette",
-          "romanization": "trom-pet"
+          "romanization": "trom-pet",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "microphone",
           "target": "microphone",
-          "romanization": "mee-kro-fon"
+          "romanization": "mee-kro-fon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "headphones",
           "target": "casque audio",
-          "romanization": "kask o-dee-o"
+          "romanization": "kask o-dee-o",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "note",
           "target": "note",
-          "romanization": "not"
+          "romanization": "not",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "music-instruments",
-      "publishedAt": "2026-08-24T17:21:05.147Z"
+      "publishedAt": "2026-08-24T17:21:05.147Z",
+      "explanationEn": "These French words like piano, guitare, and violon sound similar to English and are easy to pronounce when talking about music.",
+      "examples": [
+        {
+          "target": "Je joue du piano tous les jours.",
+          "english": "I play the piano every day.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Elle a une guitare rouge.",
+          "english": "She has a red guitar.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le violon est un instrument classique.",
+          "english": "The violin is a classical instrument.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Nous écoutons la batterie dans la chanson.",
+          "english": "We listen to the drums in the song.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Il chante dans le microphone.",
+          "english": "He sings into the microphone.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Elle porte un casque audio pour écouter de la musique.",
+          "english": "She wears headphones to listen to music.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "23_directions__fr",
@@ -12364,53 +12421,110 @@
         {
           "english": "gift",
           "target": "cadeau",
-          "romanization": "ka-do"
+          "romanization": "ka-do",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "party",
           "target": "fête",
-          "romanization": "fet"
+          "romanization": "fet",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "cake",
           "target": "gâteau",
-          "romanization": "ga-to"
+          "romanization": "ga-to",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "candle",
           "target": "bougie",
-          "romanization": "boo-zhee"
+          "romanization": "boo-zhee",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "balloon",
           "target": "ballon",
-          "romanization": "ba-lon"
+          "romanization": "ba-lon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fireworks",
           "target": "feux d'artifice",
-          "romanization": "fuh dar-tee-fees"
+          "romanization": "fuh dar-tee-fees",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "decoration",
           "target": "décoration",
-          "romanization": "day-ko-ra-syon"
+          "romanization": "day-ko-ra-syon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "invite",
           "target": "inviter",
-          "romanization": "an-vee-tay"
+          "romanization": "an-vee-tay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "toast",
           "target": "toast",
-          "romanization": "tost"
+          "romanization": "tost",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: gift, party, cake, candle, balloon, fireworks…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: gift, party, cake, candle, balloon, fireworks…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "holiday-celebrations",
-      "publishedAt": "2026-08-24T17:31:34.042Z"
+      "publishedAt": "2026-08-24T17:31:34.042Z",
+      "explanationEn": "These French holiday words like cadeau, fête, and gâteau sound soft and festive when you say them aloud.",
+      "examples": [
+        {
+          "target": "Je donne un cadeau à mon ami.",
+          "english": "I give a gift to my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Nous avons une fête ce soir.",
+          "english": "We have a party tonight.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le gâteau est délicieux.",
+          "english": "The cake is delicious.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Allume une bougie sur le gâteau.",
+          "english": "Light a candle on the cake.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Il y a des ballons et des décorations.",
+          "english": "There are balloons and decorations.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Les feux d'artifice sont magnifiques.",
+          "english": "The fireworks are magnificent.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "24_daily-routine__fr",
@@ -19182,53 +19296,110 @@
         {
           "english": "stove",
           "target": "Herd",
-          "romanization": "hert"
+          "romanization": "hert",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "oven",
           "target": "Backofen",
-          "romanization": "bahk-oh-fen"
+          "romanization": "bahk-oh-fen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "microwave",
           "target": "Mikrowelle",
-          "romanization": "mee-kroh-veh-le"
+          "romanization": "mee-kroh-veh-le",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "refrigerator",
           "target": "Kühlschrank",
-          "romanization": "kuehl-shrank"
+          "romanization": "kuehl-shrank",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "blender",
           "target": "Mixer",
-          "romanization": "miks-er"
+          "romanization": "miks-er",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "toaster",
           "target": "Toaster",
-          "romanization": "toh-ster"
+          "romanization": "toh-ster",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "kettle",
           "target": "Wasserkocher",
-          "romanization": "vah-ser-koh-cher"
+          "romanization": "vah-ser-koh-cher",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dishwasher",
           "target": "Geschirrspüler",
-          "romanization": "geh-shirr-shpyu-ler"
+          "romanization": "geh-shirr-shpyu-ler",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "pan",
           "target": "Pfanne",
-          "romanization": "pfan-neh"
+          "romanization": "pfan-neh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "kitchen-appliances",
-      "publishedAt": "2026-08-24T16:08:46.983Z"
+      "publishedAt": "2026-08-24T16:08:46.983Z",
+      "explanationEn": "These German kitchen appliance words like Herd, Backofen, and Kühlschrank have clear syllables to listen for when you say them.",
+      "examples": [
+        {
+          "target": "Ich koche Suppe auf dem Herd.",
+          "english": "I cook soup on the stove.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Backofen ist sehr heiß.",
+          "english": "The oven is very hot.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Die Mikrowelle ist schnell.",
+          "english": "The microwave is fast.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Kühlschrank ist voll mit Essen.",
+          "english": "The refrigerator is full of food.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ich benutze den Mixer für den Saft.",
+          "english": "I use the blender for the juice.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Geschirrspüler macht das Geschirr sauber.",
+          "english": "The dishwasher cleans the dishes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__de/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "15_skin-tones__de",
@@ -19459,53 +19630,110 @@
         {
           "english": "desk",
           "target": "Schreibtisch",
-          "romanization": "shryb-tish"
+          "romanization": "shryb-tish",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "chair",
           "target": "Stuhl",
-          "romanization": "shtool"
+          "romanization": "shtool",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "computer",
           "target": "Computer",
-          "romanization": "kom-pyu-ter"
+          "romanization": "kom-pyu-ter",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "keyboard",
           "target": "Tastatur",
-          "romanization": "tas-ta-toor"
+          "romanization": "tas-ta-toor",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mouse",
           "target": "Maus",
-          "romanization": "mouse"
+          "romanization": "mouse",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "monitor",
           "target": "Monitor",
-          "romanization": "mo-ni-tor"
+          "romanization": "mo-ni-tor",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "printer",
           "target": "Drucker",
-          "romanization": "droo-ker"
+          "romanization": "droo-ker",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stapler",
           "target": "Tacker",
-          "romanization": "tak-er"
+          "romanization": "tak-er",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "folder",
           "target": "Ordner",
-          "romanization": "ord-ner"
+          "romanization": "ord-ner",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "office-desk",
-      "publishedAt": "2026-08-24T16:19:52.237Z"
+      "publishedAt": "2026-08-24T16:19:52.237Z",
+      "explanationEn": "These German words like Schreibtisch, Stuhl, and Computer sound clear and are easy to say when talking about your office desk.",
+      "examples": [
+        {
+          "target": "Der Computer steht auf dem Schreibtisch.",
+          "english": "The computer is on the desk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ich brauche einen neuen Stuhl für mein Büro.",
+          "english": "I need a new chair for my office.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Die Tastatur liegt neben der Maus.",
+          "english": "The keyboard is next to the mouse.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Drucker ist sehr schnell.",
+          "english": "The printer is very fast.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Kannst du mir den Tacker geben?",
+          "english": "Can you give me the stapler?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Die Ordner sind im Schrank.",
+          "english": "The folders are in the cabinet.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__de/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "17_bathroom__de",
@@ -50331,72 +50559,52 @@
         {
           "english": "bread",
           "target": "面包",
-          "romanization": "miàn bāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "miàn bāo"
         },
         {
           "english": "cheese",
           "target": "奶酪",
-          "romanization": "nǎi lào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "nǎi lào"
         },
         {
           "english": "wine",
           "target": "葡萄酒",
-          "romanization": "pú táo jiǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "pú táo jiǔ"
         },
         {
           "english": "coffee",
           "target": "咖啡",
-          "romanization": "kā fēi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "kā fēi"
         },
         {
           "english": "croissant",
           "target": "羊角面包",
-          "romanization": "yáng jiǎo miàn bāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yáng jiǎo miàn bāo"
         },
         {
           "english": "soup",
           "target": "汤",
-          "romanization": "tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tāng"
         },
         {
           "english": "salad",
           "target": "沙拉",
-          "romanization": "shā lā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shā lā"
         },
         {
           "english": "chicken",
           "target": "鸡肉",
-          "romanization": "jī ròu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jī ròu"
         },
         {
           "english": "fish",
           "target": "鱼",
-          "romanization": "yú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yú"
         },
         {
           "english": "dessert",
           "target": "甜点",
-          "romanization": "tián diǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tián diǎn"
         }
       ],
       "partner": "preply",
@@ -50415,72 +50623,52 @@
         {
           "english": "happy",
           "target": "快乐",
-          "romanization": "kuài lè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "kuài lè"
         },
         {
           "english": "sad",
           "target": "难过",
-          "romanization": "nán guò",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "nán guò"
         },
         {
           "english": "angry",
           "target": "生气",
-          "romanization": "shēng qì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shēng qì"
         },
         {
           "english": "tired",
           "target": "累",
-          "romanization": "lèi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "lèi"
         },
         {
           "english": "surprised",
           "target": "惊讶",
-          "romanization": "jīng yà",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jīng yà"
         },
         {
           "english": "scared",
           "target": "害怕",
-          "romanization": "hài pà",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hài pà"
         },
         {
           "english": "proud",
           "target": "骄傲",
-          "romanization": "jiāo ào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiāo ào"
         },
         {
           "english": "lonely",
           "target": "孤独",
-          "romanization": "gū dú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "gū dú"
         },
         {
           "english": "excited",
           "target": "兴奋",
-          "romanization": "xīng fèn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng fèn"
         },
         {
           "english": "calm",
           "target": "平静",
-          "romanization": "píng jìng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "píng jìng"
         }
       ],
       "partner": "preply",
@@ -50499,72 +50687,52 @@
         {
           "english": "mom",
           "target": "妈妈",
-          "romanization": "mā ma",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "mā ma"
         },
         {
           "english": "dad",
           "target": "爸爸",
-          "romanization": "bà ba",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bà ba"
         },
         {
           "english": "brother",
           "target": "哥哥",
-          "romanization": "gē ge",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "gē ge"
         },
         {
           "english": "sister",
           "target": "姐姐",
-          "romanization": "jiě jie",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiě jie"
         },
         {
           "english": "grandma",
           "target": "奶奶",
-          "romanization": "nǎi nai",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "nǎi nai"
         },
         {
           "english": "grandpa",
           "target": "爷爷",
-          "romanization": "yé ye",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yé ye"
         },
         {
           "english": "baby",
           "target": "宝宝",
-          "romanization": "bǎo bao",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bǎo bao"
         },
         {
           "english": "uncle",
           "target": "叔叔",
-          "romanization": "shū shu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shū shu"
         },
         {
           "english": "aunt",
           "target": "阿姨",
-          "romanization": "ā yí",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "ā yí"
         },
         {
           "english": "cousin",
           "target": "表亲",
-          "romanization": "biǎo qīn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "biǎo qīn"
         }
       ],
       "partner": "preply",
@@ -50583,72 +50751,52 @@
         {
           "english": "head",
           "target": "头",
-          "romanization": "tóu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tóu"
         },
         {
           "english": "eye",
           "target": "眼睛",
-          "romanization": "yǎn jīng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yǎn jīng"
         },
         {
           "english": "ear",
           "target": "耳朵",
-          "romanization": "ěr duo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "ěr duo"
         },
         {
           "english": "nose",
           "target": "鼻子",
-          "romanization": "bí zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bí zi"
         },
         {
           "english": "mouth",
           "target": "嘴巴",
-          "romanization": "zuǐ ba",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zuǐ ba"
         },
         {
           "english": "hand",
           "target": "手",
-          "romanization": "shǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shǒu"
         },
         {
           "english": "foot",
           "target": "脚",
-          "romanization": "jiǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiǎo"
         },
         {
           "english": "arm",
           "target": "手臂",
-          "romanization": "shǒu bì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shǒu bì"
         },
         {
           "english": "leg",
           "target": "腿",
-          "romanization": "tuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tuǐ"
         },
         {
           "english": "heart",
           "target": "心脏",
-          "romanization": "xīn zàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīn zàng"
         }
       ],
       "partner": "preply",
@@ -50667,72 +50815,52 @@
         {
           "english": "book",
           "target": "书",
-          "romanization": "shū",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shū"
         },
         {
           "english": "pen",
           "target": "笔",
-          "romanization": "bǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bǐ"
         },
         {
           "english": "pencil",
           "target": "铅笔",
-          "romanization": "qiānbǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "qiānbǐ"
         },
         {
           "english": "notebook",
           "target": "笔记本",
-          "romanization": "bǐjìběn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bǐjìběn"
         },
         {
           "english": "bag",
           "target": "包",
-          "romanization": "bāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bāo"
         },
         {
           "english": "desk",
           "target": "桌子",
-          "romanization": "zhuōzi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zhuōzi"
         },
         {
           "english": "eraser",
           "target": "橡皮",
-          "romanization": "xiàngpí",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xiàngpí"
         },
         {
           "english": "ruler",
           "target": "尺子",
-          "romanization": "chǐzi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "chǐzi"
         },
         {
           "english": "scissors",
           "target": "剪刀",
-          "romanization": "jiǎndāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiǎndāo"
         },
         {
           "english": "glue",
           "target": "胶水",
-          "romanization": "jiāoshuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiāoshuǐ"
         }
       ],
       "partner": "preply",
@@ -50751,72 +50879,52 @@
         {
           "english": "red",
           "target": "红色",
-          "romanization": "hóng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hóng sè"
         },
         {
           "english": "blue",
           "target": "蓝色",
-          "romanization": "lán sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "lán sè"
         },
         {
           "english": "yellow",
           "target": "黄色",
-          "romanization": "huáng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "huáng sè"
         },
         {
           "english": "green",
           "target": "绿色",
-          "romanization": "lǜ sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "lǜ sè"
         },
         {
           "english": "orange",
           "target": "橙色",
-          "romanization": "chéng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "chéng sè"
         },
         {
           "english": "purple",
           "target": "紫色",
-          "romanization": "zǐ sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zǐ sè"
         },
         {
           "english": "pink",
           "target": "粉色",
-          "romanization": "fěn sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "fěn sè"
         },
         {
           "english": "brown",
           "target": "棕色",
-          "romanization": "zōng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zōng sè"
         },
         {
           "english": "black",
           "target": "黑色",
-          "romanization": "hēi sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hēi sè"
         },
         {
           "english": "white",
           "target": "白色",
-          "romanization": "bái sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bái sè"
         }
       ],
       "partner": "preply",
@@ -50835,51 +50943,37 @@
         {
           "english": "Monday",
           "target": "星期一",
-          "romanization": "xīng qī yī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī yī"
         },
         {
           "english": "Tuesday",
           "target": "星期二",
-          "romanization": "xīng qī èr",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī èr"
         },
         {
           "english": "Wednesday",
           "target": "星期三",
-          "romanization": "xīng qī sān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī sān"
         },
         {
           "english": "Thursday",
           "target": "星期四",
-          "romanization": "xīng qī sì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī sì"
         },
         {
           "english": "Friday",
           "target": "星期五",
-          "romanization": "xīng qī wǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī wǔ"
         },
         {
           "english": "Saturday",
           "target": "星期六",
-          "romanization": "xīng qī liù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī liù"
         },
         {
           "english": "Sunday",
           "target": "星期天",
-          "romanization": "xīng qī tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī tiān"
         }
       ],
       "partner": "preply",
@@ -50898,2838 +50992,58 @@
         {
           "english": "dog",
           "target": "狗",
-          "romanization": "gǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "gǒu"
         },
         {
           "english": "cat",
           "target": "猫",
-          "romanization": "māo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "māo"
         },
         {
           "english": "bird",
           "target": "鸟",
-          "romanization": "niǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "niǎo"
         },
         {
           "english": "fish",
           "target": "鱼",
-          "romanization": "yú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yú"
         },
         {
           "english": "rabbit",
           "target": "兔子",
-          "romanization": "tù zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tù zi"
         },
         {
           "english": "hamster",
           "target": "仓鼠",
-          "romanization": "cāng shǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "cāng shǔ"
         },
         {
           "english": "horse",
           "target": "马",
-          "romanization": "mǎ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "mǎ"
         },
         {
           "english": "turtle",
           "target": "乌龟",
-          "romanization": "wū guī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "wū guī"
         },
         {
           "english": "frog",
           "target": "青蛙",
-          "romanization": "qīng wā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "qīng wā"
         },
         {
           "english": "butterfly",
           "target": "蝴蝶",
-          "romanization": "hú dié",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hú dié"
         }
       ],
       "partner": "preply",
       "description": "Learn Chinese vocabulary: dog, cat, bird, fish, rabbit, hamster…. Save-friendly chart with pronunciation.",
       "topicSlug": "pets",
       "publishedAt": "2026-08-27T03:09:19.475Z"
-    },
-    {
-      "id": "13_cafe__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce café words in Chinese",
-      "slug": "how-to-pronounce-caf-words-in-chinese",
-      "imagePath": "/global/pins/13_cafe__zh.png",
-      "words": [
-        {
-          "english": "coffee",
-          "target": "咖啡",
-          "romanization": "kā fēi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "tea",
-          "target": "茶",
-          "romanization": "chá",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "milk",
-          "target": "牛奶",
-          "romanization": "niú nǎi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sugar",
-          "target": "糖",
-          "romanization": "táng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "water",
-          "target": "水",
-          "romanization": "shuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "juice",
-          "target": "果汁",
-          "romanization": "guǒ zhī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "menu",
-          "target": "菜单",
-          "romanization": "cài dān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "bill",
-          "target": "账单",
-          "romanization": "zhàng dān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "table",
-          "target": "桌子",
-          "romanization": "zhuō zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "straw",
-          "target": "吸管",
-          "romanization": "xī guǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/13_cafe__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: coffee, tea, milk, sugar, water, juice…. Save-friendly chart with pronunciation.",
-      "topicSlug": "cafe",
-      "publishedAt": "2026-08-27T07:23:54.009Z"
-    },
-    {
-      "id": "15_kitchen-appliances__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce kitchen appliance words in Chinese",
-      "slug": "how-to-pronounce-kitchen-appliance-words-in-chinese",
-      "imagePath": "/global/pins/15_kitchen-appliances__zh.png",
-      "words": [
-        {
-          "english": "stove",
-          "target": "炉子",
-          "romanization": "lú zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "oven",
-          "target": "烤箱",
-          "romanization": "kǎo xiāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "microwave",
-          "target": "微波炉",
-          "romanization": "wēi bō lú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "refrigerator",
-          "target": "冰箱",
-          "romanization": "bīng xiāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "blender",
-          "target": "搅拌机",
-          "romanization": "jiǎo bàn jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "toaster",
-          "target": "烤面包机",
-          "romanization": "kǎo miàn bāo jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "kettle",
-          "target": "水壶",
-          "romanization": "shuǐ hú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "dishwasher",
-          "target": "洗碗机",
-          "romanization": "xǐ wǎn jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pan",
-          "target": "平底锅",
-          "romanization": "píng dǐ guō",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__zh/w8.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
-      "topicSlug": "kitchen-appliances",
-      "publishedAt": "2026-08-27T07:26:02.179Z"
-    },
-    {
-      "id": "18_banking-basics__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce banking words in Chinese",
-      "slug": "how-to-pronounce-banking-words-in-chinese",
-      "imagePath": "/global/pins/18_banking-basics__zh.png",
-      "words": [
-        {
-          "english": "bank",
-          "target": "银行",
-          "romanization": "yín háng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "account",
-          "target": "账户",
-          "romanization": "zhàng hù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cash",
-          "target": "现金",
-          "romanization": "xiàn jīn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "card",
-          "target": "卡",
-          "romanization": "kǎ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "deposit",
-          "target": "存款",
-          "romanization": "cún kuǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "withdraw",
-          "target": "取款",
-          "romanization": "qǔ kuǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "transfer",
-          "target": "转账",
-          "romanization": "zhuǎn zhàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "balance",
-          "target": "余额",
-          "romanization": "yú é",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "receipt",
-          "target": "收据",
-          "romanization": "shōu jù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__zh/w8.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
-      "topicSlug": "banking-basics",
-      "publishedAt": "2026-08-27T07:28:22.194Z"
-    },
-    {
-      "id": "19_post-mail__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce post & mail words in Chinese",
-      "slug": "how-to-pronounce-post-mail-words-in-chinese",
-      "imagePath": "/global/pins/19_post-mail__zh.png",
-      "words": [
-        {
-          "english": "letter",
-          "target": "信",
-          "romanization": "xìn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "stamp",
-          "target": "邮票",
-          "romanization": "yóu piào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "mailbox",
-          "target": "邮箱",
-          "romanization": "yóu xiāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "package",
-          "target": "包裹",
-          "romanization": "bāo guǒ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "address",
-          "target": "地址",
-          "romanization": "dì zhǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "post office",
-          "target": "邮局",
-          "romanization": "yóu jú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "signature",
-          "target": "签名",
-          "romanization": "qiān míng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "delivery",
-          "target": "投递",
-          "romanization": "tóu dì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "tracking",
-          "target": "追踪",
-          "romanization": "zhuī zōng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__zh/w8.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
-      "topicSlug": "post-mail",
-      "publishedAt": "2026-08-27T07:30:26.398Z"
-    },
-    {
-      "id": "20_laundry-care__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce laundry words in Chinese",
-      "slug": "how-to-pronounce-laundry-words-in-chinese",
-      "imagePath": "/global/pins/20_laundry-care__zh.png",
-      "words": [
-        {
-          "english": "washing machine",
-          "target": "洗衣机",
-          "romanization": "xǐ yī jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "dryer",
-          "target": "烘干机",
-          "romanization": "hōng gān jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "detergent",
-          "target": "洗衣液",
-          "romanization": "xǐ yī yè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "fabric softener",
-          "target": "柔顺剂",
-          "romanization": "róu shùn jì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "hanger",
-          "target": "衣架",
-          "romanization": "yī jià",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "iron",
-          "target": "熨斗",
-          "romanization": "yùn dǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "lint",
-          "target": "绒毛",
-          "romanization": "róng máo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "fold",
-          "target": "折叠",
-          "romanization": "zhé dié",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "stain",
-          "target": "污渍",
-          "romanization": "wū zì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__zh/w8.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
-      "topicSlug": "laundry-care",
-      "publishedAt": "2026-08-27T07:32:19.895Z"
-    },
-    {
-      "id": "21_garden-plants__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce garden plant words in Chinese",
-      "slug": "how-to-pronounce-garden-plant-words-in-chinese",
-      "imagePath": "/global/pins/21_garden-plants__zh.png",
-      "words": [
-        {
-          "english": "flower",
-          "target": "花",
-          "romanization": "huā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "tree",
-          "target": "树",
-          "romanization": "shù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "grass",
-          "target": "草",
-          "romanization": "cǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "soil",
-          "target": "土壤",
-          "romanization": "tǔ rǎng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "seed",
-          "target": "种子",
-          "romanization": "zhǒng zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "watering can",
-          "target": "水壶",
-          "romanization": "shuǐ hú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "shovel",
-          "target": "铲子",
-          "romanization": "chǎn zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pot",
-          "target": "花盆",
-          "romanization": "huā pén",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "leaf",
-          "target": "叶子",
-          "romanization": "yè zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__zh/w8.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
-      "topicSlug": "garden-plants",
-      "publishedAt": "2026-08-27T07:34:05.242Z"
-    },
-    {
-      "id": "24_noodles__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce noodle dishes in Chinese",
-      "slug": "how-to-pronounce-noodle-dishes-in-chinese",
-      "imagePath": "/global/pins/24_noodles__zh.png",
-      "words": [
-        {
-          "english": "noodles",
-          "target": "面条",
-          "romanization": "miàn tiáo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ramen",
-          "target": "拉面",
-          "romanization": "lā miàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "soup",
-          "target": "汤",
-          "romanization": "tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "chopsticks",
-          "target": "筷子",
-          "romanization": "kuài zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "spicy",
-          "target": "辣",
-          "romanization": "là",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "broth",
-          "target": "汤底",
-          "romanization": "tāng dǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "dumpling",
-          "target": "饺子",
-          "romanization": "jiǎo zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "rice noodles",
-          "target": "米粉",
-          "romanization": "mǐ fěn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "stir-fry",
-          "target": "炒",
-          "romanization": "chǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sauce",
-          "target": "酱",
-          "romanization": "jiàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/24_noodles__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: noodles, ramen, soup, chopsticks, spicy, broth…. Save-friendly chart with pronunciation.",
-      "topicSlug": "noodles",
-      "publishedAt": "2026-08-27T07:36:23.132Z"
-    },
-    {
-      "id": "25_desserts__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce desserts in Chinese",
-      "slug": "how-to-pronounce-desserts-in-chinese",
-      "imagePath": "/global/pins/25_desserts__zh.png",
-      "words": [
-        {
-          "english": "cake",
-          "target": "蛋糕",
-          "romanization": "dàn gāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cookie",
-          "target": "饼干",
-          "romanization": "bǐng gān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ice cream",
-          "target": "冰淇淋",
-          "romanization": "bīng qí lín",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "chocolate",
-          "target": "巧克力",
-          "romanization": "qiǎo kè lì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pudding",
-          "target": "布丁",
-          "romanization": "bù dīng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pie",
-          "target": "馅饼",
-          "romanization": "xiàn bǐng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "candy",
-          "target": "糖果",
-          "romanization": "táng guǒ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "donut",
-          "target": "甜甜圈",
-          "romanization": "tián tián quān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "muffin",
-          "target": "松饼",
-          "romanization": "sōng bǐng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sweet",
-          "target": "甜的",
-          "romanization": "tián de",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/25_desserts__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: cake, cookie, ice cream, chocolate, pudding, pie…. Save-friendly chart with pronunciation.",
-      "topicSlug": "desserts",
-      "publishedAt": "2026-08-27T07:38:50.292Z"
-    },
-    {
-      "id": "27_condiments__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce sauces & condiments in Chinese",
-      "slug": "how-to-pronounce-sauces-condiments-in-chinese",
-      "imagePath": "/global/pins/27_condiments__zh.png",
-      "words": [
-        {
-          "english": "salt",
-          "target": "盐",
-          "romanization": "yán",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pepper",
-          "target": "胡椒",
-          "romanization": "hú jiāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "soy sauce",
-          "target": "酱油",
-          "romanization": "jiàng yóu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "vinegar",
-          "target": "醋",
-          "romanization": "cù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "oil",
-          "target": "油",
-          "romanization": "yóu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ketchup",
-          "target": "番茄酱",
-          "romanization": "fān qié jiàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "mustard",
-          "target": "芥末",
-          "romanization": "jiè mò",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "mayonnaise",
-          "target": "蛋黄酱",
-          "romanization": "dàn huáng jiàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "chili sauce",
-          "target": "辣椒酱",
-          "romanization": "là jiāo jiàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "honey",
-          "target": "蜂蜜",
-          "romanization": "fēng mì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/27_condiments__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: salt, pepper, soy sauce, vinegar, oil, ketchup…. Save-friendly chart with pronunciation.",
-      "topicSlug": "condiments",
-      "publishedAt": "2026-08-27T07:40:53.263Z"
-    },
-    {
-      "id": "28_first-aid__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce first-aid words in Chinese",
-      "slug": "how-to-pronounce-first-aid-words-in-chinese",
-      "imagePath": "/global/pins/28_first-aid__zh.png",
-      "words": [
-        {
-          "english": "bandage",
-          "target": "绷带",
-          "romanization": "bēng dài",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "medicine",
-          "target": "药",
-          "romanization": "yào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "fever",
-          "target": "发烧",
-          "romanization": "fā shāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pain",
-          "target": "疼痛",
-          "romanization": "téng tòng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cough",
-          "target": "咳嗽",
-          "romanization": "ké sòu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cold",
-          "target": "感冒",
-          "romanization": "gǎn mào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "hospital",
-          "target": "医院",
-          "romanization": "yī yuàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "doctor",
-          "target": "医生",
-          "romanization": "yī shēng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pharmacy",
-          "target": "药房",
-          "romanization": "yào fáng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "emergency",
-          "target": "急诊",
-          "romanization": "jí zhěn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/28_first-aid__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: bandage, medicine, fever, pain, cough, cold…. Save-friendly chart with pronunciation.",
-      "topicSlug": "first-aid",
-      "publishedAt": "2026-08-27T07:42:58.119Z"
-    },
-    {
-      "id": "29_travel-documents__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce travel document words in Chinese",
-      "slug": "how-to-pronounce-travel-document-words-in-chinese",
-      "imagePath": "/global/pins/29_travel-documents__zh.png",
-      "words": [
-        {
-          "english": "passport",
-          "target": "护照",
-          "romanization": "hù zhào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "visa",
-          "target": "签证",
-          "romanization": "qiān zhèng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ticket",
-          "target": "票",
-          "romanization": "piào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "luggage",
-          "target": "行李",
-          "romanization": "xíng lǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "boarding",
-          "target": "登机",
-          "romanization": "dēng jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "customs",
-          "target": "海关",
-          "romanization": "hǎi guān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ID card",
-          "target": "身份证",
-          "romanization": "shēn fèn zhèng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "reservation",
-          "target": "预订",
-          "romanization": "yù dìng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "airport",
-          "target": "机场",
-          "romanization": "jī chǎng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "hotel",
-          "target": "酒店",
-          "romanization": "jiǔ diàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/29_travel-documents__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: passport, visa, ticket, luggage, boarding, customs…. Save-friendly chart with pronunciation.",
-      "topicSlug": "travel-documents",
-      "publishedAt": "2026-08-27T07:45:03.747Z"
-    },
-    {
-      "id": "31_phone-numbers__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce phone number digits in Chinese",
-      "slug": "how-to-pronounce-phone-number-digits-in-chinese",
-      "imagePath": "/global/pins/31_phone-numbers__zh.png",
-      "words": [
-        {
-          "english": "zero",
-          "target": "零",
-          "romanization": "líng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "one",
-          "target": "一",
-          "romanization": "yī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "two",
-          "target": "二",
-          "romanization": "èr",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "three",
-          "target": "三",
-          "romanization": "sān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "four",
-          "target": "四",
-          "romanization": "sì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "five",
-          "target": "五",
-          "romanization": "wǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "six",
-          "target": "六",
-          "romanization": "liù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "seven",
-          "target": "七",
-          "romanization": "qī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "eight",
-          "target": "八",
-          "romanization": "bā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "nine",
-          "target": "九",
-          "romanization": "jiǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/31_phone-numbers__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: zero, one, two, three, four, five…. Save-friendly chart with pronunciation.",
-      "topicSlug": "phone-numbers",
-      "publishedAt": "2026-08-27T07:47:18.815Z"
-    },
-    {
-      "id": "32_zodiac-animals__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce zodiac animals in Chinese",
-      "slug": "how-to-pronounce-zodiac-animals-in-chinese",
-      "imagePath": "/global/pins/32_zodiac-animals__zh.png",
-      "words": [
-        {
-          "english": "rat",
-          "target": "鼠",
-          "romanization": "shǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ox",
-          "target": "牛",
-          "romanization": "niú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "tiger",
-          "target": "虎",
-          "romanization": "hǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "rabbit",
-          "target": "兔",
-          "romanization": "tù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "dragon",
-          "target": "龙",
-          "romanization": "lóng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "snake",
-          "target": "蛇",
-          "romanization": "shé",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "horse",
-          "target": "马",
-          "romanization": "mǎ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "goat",
-          "target": "羊",
-          "romanization": "yáng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "monkey",
-          "target": "猴",
-          "romanization": "hóu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "rooster",
-          "target": "鸡",
-          "romanization": "jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w9.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "dog",
-          "target": "狗",
-          "romanization": "gǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w10.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pig",
-          "target": "猪",
-          "romanization": "zhū",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/32_zodiac-animals__zh/w11.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: rat, ox, tiger, rabbit, dragon, snake…. Save-friendly chart with pronunciation.",
-      "topicSlug": "zodiac-animals",
-      "publishedAt": "2026-08-27T07:49:17.471Z"
-    },
-    {
-      "id": "34_sports-verbs__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce sports action verbs in Chinese",
-      "slug": "how-to-pronounce-sports-action-verbs-in-chinese",
-      "imagePath": "/global/pins/34_sports-verbs__zh.png",
-      "words": [
-        {
-          "english": "run",
-          "target": "跑",
-          "romanization": "pǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "jump",
-          "target": "跳",
-          "romanization": "tiào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "kick",
-          "target": "踢",
-          "romanization": "tī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "throw",
-          "target": "扔",
-          "romanization": "rēng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "catch",
-          "target": "接",
-          "romanization": "jiē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "swim",
-          "target": "游泳",
-          "romanization": "yóu yǒng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ride",
-          "target": "骑",
-          "romanization": "qí",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "stretch",
-          "target": "伸展",
-          "romanization": "shēn zhǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "score",
-          "target": "得分",
-          "romanization": "dé fēn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "win",
-          "target": "赢",
-          "romanization": "yíng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/34_sports-verbs__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: run, jump, kick, throw, catch, swim…. Save-friendly chart with pronunciation.",
-      "topicSlug": "sports-verbs",
-      "publishedAt": "2026-08-27T07:51:25.799Z"
-    },
-    {
-      "id": "35_anger-frustration__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce anger & frustration words in Chinese",
-      "slug": "how-to-pronounce-anger-frustration-words-in-chinese",
-      "imagePath": "/global/pins/35_anger-frustration__zh.png",
-      "words": [
-        {
-          "english": "angry",
-          "target": "生气",
-          "romanization": "shēng qì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "annoyed",
-          "target": "恼火",
-          "romanization": "nǎo huǒ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "frustrated",
-          "target": "沮丧",
-          "romanization": "jǔ sàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "upset",
-          "target": "难过",
-          "romanization": "nán guò",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "mad",
-          "target": "发疯",
-          "romanization": "fā fēng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "irritated",
-          "target": "烦躁",
-          "romanization": "fán zào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "furious",
-          "target": "愤怒",
-          "romanization": "fèn nù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "calm down",
-          "target": "冷静",
-          "romanization": "lěng jìng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "argue",
-          "target": "争论",
-          "romanization": "zhēng lùn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "complain",
-          "target": "抱怨",
-          "romanization": "bào yuàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/35_anger-frustration__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: angry, annoyed, frustrated, upset, mad, irritated…. Save-friendly chart with pronunciation.",
-      "topicSlug": "anger-frustration",
-      "publishedAt": "2026-08-27T07:53:23.947Z"
-    },
-    {
-      "id": "36_surprise-shock__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce surprise & shock words in Chinese",
-      "slug": "how-to-pronounce-surprise-shock-words-in-chinese",
-      "imagePath": "/global/pins/36_surprise-shock__zh.png",
-      "words": [
-        {
-          "english": "surprised",
-          "target": "惊讶",
-          "romanization": "jīng yà",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "shocked",
-          "target": "震惊",
-          "romanization": "zhèn jīng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "amazed",
-          "target": "惊奇",
-          "romanization": "jīng qí",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "wow",
-          "target": "哇",
-          "romanization": "wā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "unexpected",
-          "target": "意外",
-          "romanization": "yì wài",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "startled",
-          "target": "吃惊",
-          "romanization": "chī jīng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "incredible",
-          "target": "难以置信",
-          "romanization": "nán yǐ zhì xìn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "unbelievable",
-          "target": "不可思议",
-          "romanization": "bù kě sī yì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sudden",
-          "target": "突然",
-          "romanization": "tū rán",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "speechless",
-          "target": "无语",
-          "romanization": "wú yǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/36_surprise-shock__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: surprised, shocked, amazed, wow, unexpected, startled…. Save-friendly chart with pronunciation.",
-      "topicSlug": "surprise-shock",
-      "publishedAt": "2026-08-27T07:55:28.151Z"
-    },
-    {
-      "id": "39_counters__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce counting words in Chinese",
-      "slug": "how-to-pronounce-counting-words-in-chinese",
-      "imagePath": "/global/pins/39_counters__zh.png",
-      "words": [
-        {
-          "english": "one item",
-          "target": "一件",
-          "romanization": "yī jiàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "two people",
-          "target": "两个人",
-          "romanization": "liǎng gè rén",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "three animals",
-          "target": "三只动物",
-          "romanization": "sān zhī dòng wù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "a cup of",
-          "target": "一杯",
-          "romanization": "yī bēi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "a bottle of",
-          "target": "一瓶",
-          "romanization": "yī píng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "a piece of",
-          "target": "一块",
-          "romanization": "yī kuài",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "a pair of",
-          "target": "一双",
-          "romanization": "yī shuāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "how many",
-          "target": "多少",
-          "romanization": "duō shǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "total",
-          "target": "总共",
-          "romanization": "zǒng gòng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "each",
-          "target": "每个",
-          "romanization": "měi gè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/39_counters__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: one item, two people, three animals, a cup of, a bottle of, a piece of…. Save-friendly chart with pronunciation.",
-      "topicSlug": "counters",
-      "publishedAt": "2026-08-27T07:57:37.612Z"
-    },
-    {
-      "id": "40_big-numbers__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce big numbers in Chinese",
-      "slug": "how-to-pronounce-big-numbers-in-chinese",
-      "imagePath": "/global/pins/40_big-numbers__zh.png",
-      "words": [
-        {
-          "english": "hundred",
-          "target": "百",
-          "romanization": "bǎi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "thousand",
-          "target": "千",
-          "romanization": "qiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ten thousand",
-          "target": "万",
-          "romanization": "wàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "million",
-          "target": "百万",
-          "romanization": "bǎi wàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "half",
-          "target": "半",
-          "romanization": "bàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "double",
-          "target": "双",
-          "romanization": "shuāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "triple",
-          "target": "三倍",
-          "romanization": "sān bèi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "about",
-          "target": "大约",
-          "romanization": "dà yuē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "more than",
-          "target": "超过",
-          "romanization": "chāo guò",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "less than",
-          "target": "少于",
-          "romanization": "shǎo yú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/40_big-numbers__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: hundred, thousand, ten thousand, million, half, double…. Save-friendly chart with pronunciation.",
-      "topicSlug": "big-numbers",
-      "publishedAt": "2026-08-27T07:59:30.244Z"
-    },
-    {
-      "id": "41_age-appearance__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce age & appearance words in Chinese",
-      "slug": "how-to-pronounce-age-appearance-words-in-chinese",
-      "imagePath": "/global/pins/41_age-appearance__zh.png",
-      "words": [
-        {
-          "english": "young",
-          "target": "年轻",
-          "romanization": "nián qīng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "old",
-          "target": "老",
-          "romanization": "lǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "tall",
-          "target": "高",
-          "romanization": "gāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "short",
-          "target": "矮",
-          "romanization": "ǎi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "slim",
-          "target": "瘦",
-          "romanization": "shòu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "handsome",
-          "target": "帅",
-          "romanization": "shuài",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pretty",
-          "target": "漂亮",
-          "romanization": "piào liang",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cute",
-          "target": "可爱",
-          "romanization": "kě ài",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "looks young",
-          "target": "看起来年轻",
-          "romanization": "kàn qǐ lái nián qīng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "looks older",
-          "target": "看起来老",
-          "romanization": "kàn qǐ lái lǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/41_age-appearance__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: young, old, tall, short, slim, handsome…. Save-friendly chart with pronunciation.",
-      "topicSlug": "age-appearance",
-      "publishedAt": "2026-08-27T08:01:23.446Z"
-    },
-    {
-      "id": "42_stews__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce stew & soup dishes in Chinese",
-      "slug": "how-to-pronounce-stew-soup-dishes-in-chinese",
-      "imagePath": "/global/pins/42_stews__zh.png",
-      "words": [
-        {
-          "english": "stew",
-          "target": "炖",
-          "romanization": "dùn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "soup",
-          "target": "汤",
-          "romanization": "tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "hot pot",
-          "target": "火锅",
-          "romanization": "huǒ guō",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "broth",
-          "target": "高汤",
-          "romanization": "gāo tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "spicy stew",
-          "target": "辣炖",
-          "romanization": "là dùn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "seafood soup",
-          "target": "海鲜汤",
-          "romanization": "hǎi xiān tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "vegetable soup",
-          "target": "蔬菜汤",
-          "romanization": "shū cài tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "miso soup",
-          "target": "味噌汤",
-          "romanization": "wèi cēng tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "boil",
-          "target": "煮沸",
-          "romanization": "zhǔ fèi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "simmer",
-          "target": "慢炖",
-          "romanization": "màn dùn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/42_stews__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: stew, soup, hot pot, broth, spicy stew, seafood soup…. Save-friendly chart with pronunciation.",
-      "topicSlug": "stews",
-      "publishedAt": "2026-08-27T08:03:16.543Z"
-    },
-    {
-      "id": "44_looks-adjectives__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce look adjectives in Chinese",
-      "slug": "how-to-pronounce-look-adjectives-in-chinese",
-      "imagePath": "/global/pins/44_looks-adjectives__zh.png",
-      "words": [
-        {
-          "english": "pretty",
-          "target": "漂亮",
-          "romanization": "piàoliang",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cool",
-          "target": "酷",
-          "romanization": "kù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "stylish",
-          "target": "时尚",
-          "romanization": "shíshàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "messy",
-          "target": "凌乱",
-          "romanization": "língluàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "neat",
-          "target": "整洁",
-          "romanization": "zhěngjié",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "bright",
-          "target": "明亮",
-          "romanization": "míngliàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "dark",
-          "target": "暗",
-          "romanization": "àn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "soft",
-          "target": "柔软",
-          "romanization": "róuruǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sharp",
-          "target": "锋利",
-          "romanization": "fēnglì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "natural",
-          "target": "自然",
-          "romanization": "zìrán",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/44_looks-adjectives__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: pretty, cool, stylish, messy, neat, bright…. Save-friendly chart with pronunciation.",
-      "topicSlug": "looks-adjectives",
-      "publishedAt": "2026-08-27T08:05:26.101Z"
-    },
-    {
-      "id": "45_airport__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce airport words in Chinese",
-      "slug": "how-to-pronounce-airport-words-in-chinese",
-      "imagePath": "/global/pins/45_airport__zh.png",
-      "words": [
-        {
-          "english": "departure",
-          "target": "出发",
-          "romanization": "chū fā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "arrival",
-          "target": "到达",
-          "romanization": "dào dá",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "gate",
-          "target": "登机口",
-          "romanization": "dēng jī kǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "security",
-          "target": "安检",
-          "romanization": "ān jiǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "check-in",
-          "target": "值机",
-          "romanization": "zhí jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "delay",
-          "target": "延误",
-          "romanization": "yán wù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "baggage claim",
-          "target": "行李领取",
-          "romanization": "xíng lǐ lǐng qǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "flight",
-          "target": "航班",
-          "romanization": "háng bān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "window seat",
-          "target": "靠窗座位",
-          "romanization": "kào chuāng zuò wèi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "aisle seat",
-          "target": "靠过道座位",
-          "romanization": "kào guò dào zuò wèi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/45_airport__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: departure, arrival, gate, security, check-in, delay…. Save-friendly chart with pronunciation.",
-      "topicSlug": "airport",
-      "publishedAt": "2026-08-27T08:07:32.146Z"
-    },
-    {
-      "id": "48_clothes-basics__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce clothing basics in Chinese",
-      "slug": "how-to-pronounce-clothing-basics-in-chinese",
-      "imagePath": "/global/pins/48_clothes-basics__zh.png",
-      "words": [
-        {
-          "english": "shirt",
-          "target": "衬衫",
-          "romanization": "chèn shān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pants",
-          "target": "裤子",
-          "romanization": "kù zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "dress",
-          "target": "连衣裙",
-          "romanization": "lián yī qún",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "jacket",
-          "target": "夹克",
-          "romanization": "jiá kè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "shoes",
-          "target": "鞋子",
-          "romanization": "xié zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "hat",
-          "target": "帽子",
-          "romanization": "mào zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "socks",
-          "target": "袜子",
-          "romanization": "wà zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "coat",
-          "target": "外套",
-          "romanization": "wài tào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "skirt",
-          "target": "裙子",
-          "romanization": "qún zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sneakers",
-          "target": "运动鞋",
-          "romanization": "yùn dòng xié",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/48_clothes-basics__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: shirt, pants, dress, jacket, shoes, hat…. Save-friendly chart with pronunciation.",
-      "topicSlug": "clothes-basics",
-      "publishedAt": "2026-08-27T08:09:54.311Z"
-    },
-    {
-      "id": "49_time-of-day__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce times of day in Chinese",
-      "slug": "how-to-pronounce-times-of-day-in-chinese",
-      "imagePath": "/global/pins/49_time-of-day__zh.png",
-      "words": [
-        {
-          "english": "dawn",
-          "target": "黎明",
-          "romanization": "lí míng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "morning",
-          "target": "早上",
-          "romanization": "zǎo shang",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "noon",
-          "target": "中午",
-          "romanization": "zhōng wǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "afternoon",
-          "target": "下午",
-          "romanization": "xià wǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "evening",
-          "target": "晚上",
-          "romanization": "wǎn shang",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "night",
-          "target": "夜晚",
-          "romanization": "yè wǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "midnight",
-          "target": "午夜",
-          "romanization": "wǔ yè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "today",
-          "target": "今天",
-          "romanization": "jīn tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "tomorrow",
-          "target": "明天",
-          "romanization": "míng tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "yesterday",
-          "target": "昨天",
-          "romanization": "zuó tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/49_time-of-day__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: dawn, morning, noon, afternoon, evening, night…. Save-friendly chart with pronunciation.",
-      "topicSlug": "time-of-day",
-      "publishedAt": "2026-08-27T08:11:52.871Z"
-    },
-    {
-      "id": "51_fruits__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce fruit words in Chinese",
-      "slug": "how-to-pronounce-fruit-words-in-chinese",
-      "imagePath": "/global/pins/51_fruits__zh.png",
-      "words": [
-        {
-          "english": "apple",
-          "target": "苹果",
-          "romanization": "píng guǒ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "banana",
-          "target": "香蕉",
-          "romanization": "xiāng jiāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "orange",
-          "target": "橙子",
-          "romanization": "chéng zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "grape",
-          "target": "葡萄",
-          "romanization": "pú táo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "watermelon",
-          "target": "西瓜",
-          "romanization": "xī guā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "peach",
-          "target": "桃子",
-          "romanization": "táo zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pear",
-          "target": "梨",
-          "romanization": "lí",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "mango",
-          "target": "芒果",
-          "romanization": "máng guǒ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "lemon",
-          "target": "柠檬",
-          "romanization": "níng méng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cherry",
-          "target": "樱桃",
-          "romanization": "yīng táo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/51_fruits__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: apple, banana, orange, grape, watermelon, peach…. Save-friendly chart with pronunciation.",
-      "topicSlug": "fruits",
-      "publishedAt": "2026-08-27T08:17:52.518Z",
-      "examples": []
-    },
-    {
-      "id": "52_breakfast__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce breakfast words in Chinese",
-      "slug": "how-to-pronounce-breakfast-words-in-chinese",
-      "imagePath": "/global/pins/52_breakfast__zh.png",
-      "words": [
-        {
-          "english": "egg",
-          "target": "鸡蛋",
-          "romanization": "jī dàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "toast",
-          "target": "吐司",
-          "romanization": "tǔ sī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "butter",
-          "target": "黄油",
-          "romanization": "huáng yóu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "jam",
-          "target": "果酱",
-          "romanization": "guǒ jiàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cereal",
-          "target": "谷物",
-          "romanization": "gǔ wù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "yogurt",
-          "target": "酸奶",
-          "romanization": "suān nǎi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pancake",
-          "target": "煎饼",
-          "romanization": "jiān bǐng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "bacon",
-          "target": "培根",
-          "romanization": "péi gēn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "oatmeal",
-          "target": "燕麦粥",
-          "romanization": "yàn mài zhōu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "croissant",
-          "target": "羊角面包",
-          "romanization": "yáng jiǎo miàn bāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/52_breakfast__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: egg, toast, butter, jam, cereal, yogurt…. Save-friendly chart with pronunciation.",
-      "topicSlug": "breakfast",
-      "publishedAt": "2026-08-27T08:19:53.751Z",
-      "examples": []
-    },
-    {
-      "id": "53_drinks__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce drink words in Chinese",
-      "slug": "how-to-pronounce-drink-words-in-chinese",
-      "imagePath": "/global/pins/53_drinks__zh.png",
-      "words": [
-        {
-          "english": "water",
-          "target": "水",
-          "romanization": "shuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "juice",
-          "target": "果汁",
-          "romanization": "guǒ zhī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "soda",
-          "target": "汽水",
-          "romanization": "qì shuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "smoothie",
-          "target": "冰沙",
-          "romanization": "bīng shā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "latte",
-          "target": "拿铁",
-          "romanization": "ná tiě",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "hot chocolate",
-          "target": "热巧克力",
-          "romanization": "rè qiǎo kè lì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "lemonade",
-          "target": "柠檬水",
-          "romanization": "níng méng shuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "milkshake",
-          "target": "奶昔",
-          "romanization": "nǎi xī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "iced tea",
-          "target": "冰茶",
-          "romanization": "bīng chá",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sparkling water",
-          "target": "气泡水",
-          "romanization": "qì pào shuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/53_drinks__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: water, juice, soda, smoothie, latte, hot chocolate…. Save-friendly chart with pronunciation.",
-      "topicSlug": "drinks",
-      "publishedAt": "2026-08-27T08:21:57.544Z",
-      "examples": []
-    },
-    {
-      "id": "54_transport__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce transport words in Chinese",
-      "slug": "how-to-pronounce-transport-words-in-chinese",
-      "imagePath": "/global/pins/54_transport__zh.png",
-      "words": [
-        {
-          "english": "bus",
-          "target": "公共汽车",
-          "romanization": "gōng gòng qì chē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "train",
-          "target": "火车",
-          "romanization": "huǒ chē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "subway",
-          "target": "地铁",
-          "romanization": "dì tiě",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "taxi",
-          "target": "出租车",
-          "romanization": "chū zū chē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "bike",
-          "target": "自行车",
-          "romanization": "zì xíng chē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "car",
-          "target": "汽车",
-          "romanization": "qì chē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "plane",
-          "target": "飞机",
-          "romanization": "fēi jī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "ticket",
-          "target": "票",
-          "romanization": "piào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "station",
-          "target": "车站",
-          "romanization": "chē zhàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "map",
-          "target": "地图",
-          "romanization": "dì tú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/54_transport__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: bus, train, subway, taxi, bike, car…. Save-friendly chart with pronunciation.",
-      "topicSlug": "transport",
-      "publishedAt": "2026-08-27T08:24:40.930Z",
-      "examples": []
-    },
-    {
-      "id": "55_shopping__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce shopping words in Chinese",
-      "slug": "how-to-pronounce-shopping-words-in-chinese",
-      "imagePath": "/global/pins/55_shopping__zh.png",
-      "words": [
-        {
-          "english": "store",
-          "target": "商店",
-          "romanization": "shāng diàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "price",
-          "target": "价格",
-          "romanization": "jià gé",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sale",
-          "target": "促销",
-          "romanization": "cù xiāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cart",
-          "target": "购物车",
-          "romanization": "gòu wù chē",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "bag",
-          "target": "袋子",
-          "romanization": "dài zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "receipt",
-          "target": "收据",
-          "romanization": "shōu jù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "discount",
-          "target": "折扣",
-          "romanization": "zhé kòu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cashier",
-          "target": "收银员",
-          "romanization": "shōu yín yuán",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "aisle",
-          "target": "过道",
-          "romanization": "guò dào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "checkout",
-          "target": "结账",
-          "romanization": "jié zhàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/55_shopping__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: store, price, sale, cart, bag, receipt…. Save-friendly chart with pronunciation.",
-      "topicSlug": "shopping",
-      "publishedAt": "2026-08-27T08:26:52.634Z",
-      "examples": []
-    },
-    {
-      "id": "56_seasons__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce season words in Chinese",
-      "slug": "how-to-pronounce-season-words-in-chinese",
-      "imagePath": "/global/pins/56_seasons__zh.png",
-      "words": [
-        {
-          "english": "spring",
-          "target": "春天",
-          "romanization": "chūn tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "summer",
-          "target": "夏天",
-          "romanization": "xià tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "autumn",
-          "target": "秋天",
-          "romanization": "qiū tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "winter",
-          "target": "冬天",
-          "romanization": "dōng tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sunny",
-          "target": "晴天",
-          "romanization": "qíng tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "rainy",
-          "target": "雨天",
-          "romanization": "yǔ tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "snowy",
-          "target": "下雪",
-          "romanization": "xià xuě",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "windy",
-          "target": "刮风",
-          "romanization": "guā fēng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "hot",
-          "target": "热",
-          "romanization": "rè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "cold",
-          "target": "冷",
-          "romanization": "lěng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/56_seasons__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: spring, summer, autumn, winter, sunny, rainy…. Save-friendly chart with pronunciation.",
-      "topicSlug": "seasons",
-      "publishedAt": "2026-08-27T08:28:50.724Z",
-      "examples": []
-    },
-    {
-      "id": "57_bathroom__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce bathroom words in Chinese",
-      "slug": "how-to-pronounce-bathroom-words-in-chinese",
-      "imagePath": "/global/pins/57_bathroom__zh.png",
-      "words": [
-        {
-          "english": "towel",
-          "target": "毛巾",
-          "romanization": "máo jīn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "soap",
-          "target": "肥皂",
-          "romanization": "féi zào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "toothbrush",
-          "target": "牙刷",
-          "romanization": "yá shuā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "toothpaste",
-          "target": "牙膏",
-          "romanization": "yá gāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "shampoo",
-          "target": "洗发水",
-          "romanization": "xǐ fà shuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "shower",
-          "target": "淋浴",
-          "romanization": "lín yù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "mirror",
-          "target": "镜子",
-          "romanization": "jìng zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "sink",
-          "target": "洗手盆",
-          "romanization": "xǐ shǒu pén",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "comb",
-          "target": "梳子",
-          "romanization": "shū zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "tissue",
-          "target": "纸巾",
-          "romanization": "zhǐ jīn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/57_bathroom__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: towel, soap, toothbrush, toothpaste, shampoo, shower…. Save-friendly chart with pronunciation.",
-      "topicSlug": "bathroom",
-      "publishedAt": "2026-08-27T08:31:31.757Z",
-      "examples": []
-    },
-    {
-      "id": "58_directions__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce direction words in Chinese",
-      "slug": "how-to-pronounce-direction-words-in-chinese",
-      "imagePath": "/global/pins/58_directions__zh.png",
-      "words": [
-        {
-          "english": "left",
-          "target": "左",
-          "romanization": "zuǒ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "right",
-          "target": "右",
-          "romanization": "yòu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "straight",
-          "target": "直走",
-          "romanization": "zhí zǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "near",
-          "target": "近",
-          "romanization": "jìn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "far",
-          "target": "远",
-          "romanization": "yuǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "north",
-          "target": "北",
-          "romanization": "běi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "south",
-          "target": "南",
-          "romanization": "nán",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "east",
-          "target": "东",
-          "romanization": "dōng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "west",
-          "target": "西",
-          "romanization": "xī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "here",
-          "target": "这里",
-          "romanization": "zhè lǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/58_directions__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: left, right, straight, near, far, north…. Save-friendly chart with pronunciation.",
-      "topicSlug": "directions",
-      "publishedAt": "2026-08-27T08:33:40.882Z",
-      "examples": []
-    },
-    {
-      "id": "59_bedroom__zh",
-      "lang": "zh",
-      "langName": "Chinese",
-      "titleEn": "How to pronounce bedroom words in Chinese",
-      "slug": "how-to-pronounce-bedroom-words-in-chinese",
-      "imagePath": "/global/pins/59_bedroom__zh.png",
-      "words": [
-        {
-          "english": "bed",
-          "target": "床",
-          "romanization": "chuáng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "pillow",
-          "target": "枕头",
-          "romanization": "zhěn tóu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "blanket",
-          "target": "毯子",
-          "romanization": "tǎn zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "lamp",
-          "target": "灯",
-          "romanization": "dēng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "alarm",
-          "target": "闹钟",
-          "romanization": "nào zhōng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "closet",
-          "target": "衣柜",
-          "romanization": "yī guì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w5.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "drawer",
-          "target": "抽屉",
-          "romanization": "chōu ti",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w6.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "curtain",
-          "target": "窗帘",
-          "romanization": "chuāng lián",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w7.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "mattress",
-          "target": "床垫",
-          "romanization": "chuáng diàn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w8.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "english": "nightstand",
-          "target": "床头柜",
-          "romanization": "chuáng tóu guì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/59_bedroom__zh/w9.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "partner": "preply",
-      "description": "Learn Chinese vocabulary: bed, pillow, blanket, lamp, alarm, closet…. Save-friendly chart with pronunciation.",
-      "topicSlug": "bedroom",
-      "publishedAt": "2026-08-27T08:35:52.530Z",
-      "examples": []
     }
   ]
 }
