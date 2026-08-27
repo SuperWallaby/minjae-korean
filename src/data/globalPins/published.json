@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T03:32:12.234Z",
+  "generatedAt": "2026-08-27T03:50:42.420Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -1734,53 +1734,110 @@
         {
           "english": "stove",
           "target": "estufa",
-          "romanization": "es-TOO-fa"
+          "romanization": "es-TOO-fa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "oven",
           "target": "horno",
-          "romanization": "OR-no"
+          "romanization": "OR-no",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "microwave",
           "target": "microondas",
-          "romanization": "mee-kro-ON-das"
+          "romanization": "mee-kro-ON-das",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "refrigerator",
           "target": "refrigerador",
-          "romanization": "re-free-he-ra-DOR"
+          "romanization": "re-free-he-ra-DOR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "blender",
           "target": "licuadora",
-          "romanization": "lee-kwah-DO-ra"
+          "romanization": "lee-kwah-DO-ra",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "toaster",
           "target": "tostadora",
-          "romanization": "tos-ta-DO-ra"
+          "romanization": "tos-ta-DO-ra",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "kettle",
           "target": "hervidor",
-          "romanization": "er-vee-DOR"
+          "romanization": "er-vee-DOR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dishwasher",
           "target": "lavavajillas",
-          "romanization": "la-va-va-HEE-yas"
+          "romanization": "la-va-va-HEE-yas",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "pan",
           "target": "sartén",
-          "romanization": "sar-TEN"
+          "romanization": "sar-TEN",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "kitchen-appliances",
-      "publishedAt": "2026-08-24T16:05:19.287Z"
+      "publishedAt": "2026-08-24T16:05:19.287Z",
+      "explanationEn": "These words are common kitchen appliances and tools you use to cook and prepare food. You can talk about where you cook (estufa, horno), how you heat food (microondas, hervidor), or clean dishes (lavavajillas). Use these words to describe your kitchen or cooking routines.",
+      "examples": [
+        {
+          "target": "La estufa está caliente cuando cocino.",
+          "english": "The stove is hot when I cook.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Pongo el pollo en el horno para asarlo.",
+          "english": "I put the chicken in the oven to roast it.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Caliento la sopa en el microondas.",
+          "english": "I heat the soup in the microwave.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El refrigerador tiene mucha comida fresca.",
+          "english": "The refrigerator has a lot of fresh food.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Uso la licuadora para hacer jugo.",
+          "english": "I use the blender to make juice.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Después de cenar, limpio todo con el lavavajillas.",
+          "english": "After dinner, I clean everything with the dishwasher.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "15_skin-tones__es",
@@ -2005,53 +2062,110 @@
         {
           "english": "desk",
           "target": "escritorio",
-          "romanization": "es-kree-toh-ree-oh"
+          "romanization": "es-kree-toh-ree-oh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "chair",
           "target": "silla",
-          "romanization": "see-yah"
+          "romanization": "see-yah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "computer",
           "target": "computadora",
-          "romanization": "kom-poo-tah-doh-rah"
+          "romanization": "kom-poo-tah-doh-rah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "keyboard",
           "target": "teclado",
-          "romanization": "teh-klah-doh"
+          "romanization": "teh-klah-doh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mouse",
           "target": "ratón",
-          "romanization": "rah-ton"
+          "romanization": "rah-ton",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "monitor",
           "target": "monitor",
-          "romanization": "moh-nee-tor"
+          "romanization": "moh-nee-tor",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "printer",
           "target": "impresora",
-          "romanization": "im-preh-soh-rah"
+          "romanization": "im-preh-soh-rah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stapler",
           "target": "engrapadora",
-          "romanization": "en-grah-pah-doh-rah"
+          "romanization": "en-grah-pah-doh-rah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "folder",
           "target": "carpeta",
-          "romanization": "kar-peh-tah"
+          "romanization": "kar-peh-tah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "office-desk",
-      "publishedAt": "2026-08-24T16:16:31.990Z"
+      "publishedAt": "2026-08-24T16:16:31.990Z",
+      "explanationEn": "These words describe common items you find on or near an office desk. Use them to talk about your workspace or what you need for work or study. Listening to these words on the site helps you learn their correct pronunciation.",
+      "examples": [
+        {
+          "target": "Mi escritorio tiene una computadora y un monitor.",
+          "english": "My desk has a computer and a monitor.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Uso la silla para sentarme mientras trabajo.",
+          "english": "I use the chair to sit while I work.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El teclado y el ratón están sobre la mesa.",
+          "english": "The keyboard and mouse are on the table.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La impresora está al lado del escritorio.",
+          "english": "The printer is next to the desk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Necesito una carpeta para guardar mis documentos.",
+          "english": "I need a folder to keep my documents.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "La engrapadora está en el cajón del escritorio.",
+          "english": "The stapler is in the desk drawer.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "17_bathroom__es",
@@ -2173,53 +2287,110 @@
         {
           "english": "reception",
           "target": "recepción",
-          "romanization": "reh-sep-see-ON"
+          "romanization": "reh-sep-see-ON",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "key card",
           "target": "tarjeta llave",
-          "romanization": "tar-HE-ta YA-ve"
+          "romanization": "tar-HE-ta YA-ve",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "elevator",
           "target": "ascensor",
-          "romanization": "as-sen-SOR"
+          "romanization": "as-sen-SOR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "luggage",
           "target": "equipaje",
-          "romanization": "eh-kee-PAH-he"
+          "romanization": "eh-kee-PAH-he",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "towel",
           "target": "toalla",
-          "romanization": "toh-AH-ya"
+          "romanization": "toh-AH-ya",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "breakfast",
           "target": "desayuno",
-          "romanization": "deh-sah-YOO-no"
+          "romanization": "deh-sah-YOO-no",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "checkout",
           "target": "salida",
-          "romanization": "sah-LEE-dah"
+          "romanization": "sah-LEE-dah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "room service",
           "target": "servicio a la habitación",
-          "romanization": "ser-VEE-see-oh ah lah ah-bee-tah-SYON"
+          "romanization": "ser-VEE-see-oh ah lah ah-bee-tah-SYON",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "wifi",
           "target": "wifi",
-          "romanization": "wee-fee"
+          "romanization": "wee-fee",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hotel-stay",
-      "publishedAt": "2026-08-24T16:26:37.393Z"
+      "publishedAt": "2026-08-24T16:26:37.393Z",
+      "explanationEn": "When staying at a hotel in Spanish-speaking countries, it's useful to know words like recepción (reception) to ask for help, tarjeta llave (key card) to enter your room, and ascensor (elevator) to move between floors. You can also talk about equipaje (luggage), pedir toallas (towels), and ask about desayuno (breakfast) or servicio a la habitación (room service). Use these words to communicate easily during your hotel stay and listen carefully to understand hotel staff.",
+      "examples": [
+        {
+          "target": "La recepción está en la entrada del hotel.",
+          "english": "The reception is at the hotel entrance.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Necesito una tarjeta llave para mi habitación.",
+          "english": "I need a key card for my room.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El ascensor está al lado de las escaleras.",
+          "english": "The elevator is next to the stairs.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Por favor, traiga más toallas a la habitación.",
+          "english": "Please bring more towels to the room.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El desayuno es de siete a diez de la mañana.",
+          "english": "Breakfast is from seven to ten in the morning.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "¿Hay wifi gratis en el hotel?",
+          "english": "Is there free wifi in the hotel?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "18_banking-basics__es",
@@ -2232,53 +2403,110 @@
         {
           "english": "bank",
           "target": "banco",
-          "romanization": "BAN-ko"
+          "romanization": "BAN-ko",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "account",
           "target": "cuenta",
-          "romanization": "KWEN-ta"
+          "romanization": "KWEN-ta",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "cash",
           "target": "efectivo",
-          "romanization": "eh-fek-TEE-vo"
+          "romanization": "eh-fek-TEE-vo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "card",
           "target": "tarjeta",
-          "romanization": "tar-HE-ta"
+          "romanization": "tar-HE-ta",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "deposit",
           "target": "depósito",
-          "romanization": "deh-PO-see-to"
+          "romanization": "deh-PO-see-to",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "withdraw",
           "target": "retirar",
-          "romanization": "reh-tee-RAR"
+          "romanization": "reh-tee-RAR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "transfer",
           "target": "transferir",
-          "romanization": "trans-fe-REER"
+          "romanization": "trans-fe-REER",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "balance",
           "target": "saldo",
-          "romanization": "SAL-do"
+          "romanization": "SAL-do",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "receipt",
           "target": "recibo",
-          "romanization": "reh-SEE-bo"
+          "romanization": "reh-SEE-bo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: bank, account, cash, card, deposit, withdraw…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "banking-basics",
-      "publishedAt": "2026-08-24T16:37:22.716Z"
+      "publishedAt": "2026-08-24T16:37:22.716Z",
+      "explanationEn": "These words are useful for everyday banking in Spanish. You can use them to talk about your bank, money transactions, and managing your account. Practice listening and repeating to get comfortable with common banking phrases.",
+      "examples": [
+        {
+          "target": "Voy al banco para abrir una cuenta nueva.",
+          "english": "I am going to the bank to open a new account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Quiero retirar efectivo de mi cuenta.",
+          "english": "I want to withdraw cash from my account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Por favor, use mi tarjeta para el depósito.",
+          "english": "Please use my card for the deposit.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Necesito transferir dinero a otra cuenta.",
+          "english": "I need to transfer money to another account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "¿Cuál es el saldo de mi cuenta ahora?",
+          "english": "What is the balance of my account now?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Guarde el recibo después de la transacción.",
+          "english": "Keep the receipt after the transaction.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/18_banking-basics__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "18_phone-parts__es",
@@ -49404,48 +49632,9 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: black, brown, hazel, green, blue, gray…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: black, brown, hazel, green, blue, gray…. Save-friendly chart with pronunciation.",
       "topicSlug": "eye-colors",
-      "publishedAt": "2026-08-27T02:39:33.366Z",
-      "explanationEn": "This vocabulary theme introduces common eye colors in Chinese. You can use these words to describe someone's eyes or to talk about colors in general. Practice by saying simple sentences like 'Her eyes are green' or 'My eyes are brown.'",
-      "examples": [
-        {
-          "target": "她的眼睛是绿色。",
-          "english": "Her eyes are green.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "他的眼睛是黑色的。",
-          "english": "His eyes are black.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "我喜欢蓝色的眼睛。",
-          "english": "I like blue eyes.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "他的眼睛是浅蓝色。",
-          "english": "His eyes are light blue.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "她有灰色的眼睛。",
-          "english": "She has gray eyes.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "我的眼睛是棕色的。",
-          "english": "My eyes are brown.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__zh/ex5.mp3",
-          "ttsProvider": "edge"
-        }
-      ]
+      "publishedAt": "2026-08-27T02:39:33.366Z"
     },
     {
       "id": "03_foods__zh",
@@ -49458,117 +49647,58 @@
         {
           "english": "bread",
           "target": "面包",
-          "romanization": "miàn bāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "miàn bāo"
         },
         {
           "english": "cheese",
           "target": "奶酪",
-          "romanization": "nǎi lào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "nǎi lào"
         },
         {
           "english": "wine",
           "target": "葡萄酒",
-          "romanization": "pú táo jiǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "pú táo jiǔ"
         },
         {
           "english": "coffee",
           "target": "咖啡",
-          "romanization": "kā fēi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "kā fēi"
         },
         {
           "english": "croissant",
           "target": "羊角面包",
-          "romanization": "yáng jiǎo miàn bāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yáng jiǎo miàn bāo"
         },
         {
           "english": "soup",
           "target": "汤",
-          "romanization": "tāng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tāng"
         },
         {
           "english": "salad",
           "target": "沙拉",
-          "romanization": "shā lā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shā lā"
         },
         {
           "english": "chicken",
           "target": "鸡肉",
-          "romanization": "jī ròu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jī ròu"
         },
         {
           "english": "fish",
           "target": "鱼",
-          "romanization": "yú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yú"
         },
         {
           "english": "dessert",
           "target": "甜点",
-          "romanization": "tián diǎn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tián diǎn"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: bread, cheese, wine, coffee, croissant, soup…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: bread, cheese, wine, coffee, croissant, soup…. Save-friendly chart with pronunciation.",
       "topicSlug": "foods",
-      "publishedAt": "2026-08-27T02:56:39.220Z",
-      "examples": [
-        {
-          "target": "我喜欢喝咖啡和吃面包。",
-          "english": "I like to drink coffee and eat bread.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "今天的汤很好喝。",
-          "english": "Today's soup is very tasty.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "你想要沙拉还是鸡肉？",
-          "english": "Do you want salad or chicken?",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "晚餐有鱼和葡萄酒。",
-          "english": "Dinner has fish and wine.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "我想吃甜点，比如奶酪蛋糕。",
-          "english": "I want to eat dessert, like cheesecake.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "早餐我吃羊角面包和喝咖啡。",
-          "english": "For breakfast, I eat croissant and drink coffee.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/03_foods__zh/ex5.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "These words are common foods and drinks you can order or talk about in Chinese. Use them when you want to describe meals, ask for food, or share what you like to eat and drink."
+      "publishedAt": "2026-08-27T02:56:39.220Z"
     },
     {
       "id": "04_emotions__zh",
@@ -49581,117 +49711,58 @@
         {
           "english": "happy",
           "target": "快乐",
-          "romanization": "kuài lè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "kuài lè"
         },
         {
           "english": "sad",
           "target": "难过",
-          "romanization": "nán guò",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "nán guò"
         },
         {
           "english": "angry",
           "target": "生气",
-          "romanization": "shēng qì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shēng qì"
         },
         {
           "english": "tired",
           "target": "累",
-          "romanization": "lèi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "lèi"
         },
         {
           "english": "surprised",
           "target": "惊讶",
-          "romanization": "jīng yà",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jīng yà"
         },
         {
           "english": "scared",
           "target": "害怕",
-          "romanization": "hài pà",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hài pà"
         },
         {
           "english": "proud",
           "target": "骄傲",
-          "romanization": "jiāo ào",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiāo ào"
         },
         {
           "english": "lonely",
           "target": "孤独",
-          "romanization": "gū dú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "gū dú"
         },
         {
           "english": "excited",
           "target": "兴奋",
-          "romanization": "xīng fèn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng fèn"
         },
         {
           "english": "calm",
           "target": "平静",
-          "romanization": "píng jìng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "píng jìng"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: happy, sad, angry, tired, surprised, scared…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: happy, sad, angry, tired, surprised, scared…. Save-friendly chart with pronunciation.",
       "topicSlug": "emotions",
-      "publishedAt": "2026-08-27T02:58:31.497Z",
-      "examples": [
-        {
-          "target": "我今天很快乐，因为我和朋友一起玩。",
-          "english": "I am very happy today because I played with my friends.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "他感到难过，因为他的宠物生病了。",
-          "english": "He feels sad because his pet is sick.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "她生气了，因为有人迟到了。",
-          "english": "She is angry because someone was late.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "我很累，所以我要休息。",
-          "english": "I am tired, so I want to rest.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "我们对这个消息感到惊讶。",
-          "english": "We are surprised by this news.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "他害怕黑暗，不敢一个人走路。",
-          "english": "He is scared of the dark and does not dare to walk alone.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/04_emotions__zh/ex5.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "These words describe common emotions you can feel every day. Use them to talk about how you or others feel in different situations. Listening to these words on site helps you remember their pronunciation and meaning."
+      "publishedAt": "2026-08-27T02:58:31.497Z"
     },
     {
       "id": "05_family__zh",
@@ -49704,117 +49775,58 @@
         {
           "english": "mom",
           "target": "妈妈",
-          "romanization": "mā ma",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "mā ma"
         },
         {
           "english": "dad",
           "target": "爸爸",
-          "romanization": "bà ba",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bà ba"
         },
         {
           "english": "brother",
           "target": "哥哥",
-          "romanization": "gē ge",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "gē ge"
         },
         {
           "english": "sister",
           "target": "姐姐",
-          "romanization": "jiě jie",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiě jie"
         },
         {
           "english": "grandma",
           "target": "奶奶",
-          "romanization": "nǎi nai",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "nǎi nai"
         },
         {
           "english": "grandpa",
           "target": "爷爷",
-          "romanization": "yé ye",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yé ye"
         },
         {
           "english": "baby",
           "target": "宝宝",
-          "romanization": "bǎo bao",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bǎo bao"
         },
         {
           "english": "uncle",
           "target": "叔叔",
-          "romanization": "shū shu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shū shu"
         },
         {
           "english": "aunt",
           "target": "阿姨",
-          "romanization": "ā yí",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "ā yí"
         },
         {
           "english": "cousin",
           "target": "表亲",
-          "romanization": "biǎo qīn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "biǎo qīn"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: mom, dad, brother, sister, grandma, grandpa…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: mom, dad, brother, sister, grandma, grandpa…. Save-friendly chart with pronunciation.",
       "topicSlug": "family",
-      "publishedAt": "2026-08-27T03:00:19.998Z",
-      "examples": [
-        {
-          "target": "我有一个哥哥和一个姐姐。",
-          "english": "I have one older brother and one older sister.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "妈妈和爸爸在家。",
-          "english": "Mom and dad are at home.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "奶奶喜欢宝宝。",
-          "english": "Grandma likes the baby.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "叔叔是我的表亲的爸爸。",
-          "english": "Uncle is the father of my cousin.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "爷爷每天早上散步。",
-          "english": "Grandpa takes a walk every morning.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "阿姨给宝宝买了玩具。",
-          "english": "Aunt bought a toy for the baby.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/05_family__zh/ex5.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "This vocabulary theme introduces family members in Chinese, such as mom, dad, brother, and sister. You can use these words to talk about your family or ask about someone else's family. Listening to these words on site helps you recognize how native speakers say them naturally."
+      "publishedAt": "2026-08-27T03:00:19.998Z"
     },
     {
       "id": "08_body-parts__zh",
@@ -49827,117 +49839,58 @@
         {
           "english": "head",
           "target": "头",
-          "romanization": "tóu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tóu"
         },
         {
           "english": "eye",
           "target": "眼睛",
-          "romanization": "yǎn jīng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yǎn jīng"
         },
         {
           "english": "ear",
           "target": "耳朵",
-          "romanization": "ěr duo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "ěr duo"
         },
         {
           "english": "nose",
           "target": "鼻子",
-          "romanization": "bí zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bí zi"
         },
         {
           "english": "mouth",
           "target": "嘴巴",
-          "romanization": "zuǐ ba",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zuǐ ba"
         },
         {
           "english": "hand",
           "target": "手",
-          "romanization": "shǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shǒu"
         },
         {
           "english": "foot",
           "target": "脚",
-          "romanization": "jiǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiǎo"
         },
         {
           "english": "arm",
           "target": "手臂",
-          "romanization": "shǒu bì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shǒu bì"
         },
         {
           "english": "leg",
           "target": "腿",
-          "romanization": "tuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tuǐ"
         },
         {
           "english": "heart",
           "target": "心脏",
-          "romanization": "xīn zàng",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīn zàng"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: head, eye, ear, nose, mouth, hand…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: head, eye, ear, nose, mouth, hand…. Save-friendly chart with pronunciation.",
       "topicSlug": "body-parts",
-      "publishedAt": "2026-08-27T03:02:24.044Z",
-      "examples": [
-        {
-          "target": "我的头很疼。",
-          "english": "My head hurts a lot.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "她有一双漂亮的眼睛。",
-          "english": "She has a pair of beautiful eyes.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "请用手举起来。",
-          "english": "Please raise your hand.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "他的脚很大。",
-          "english": "His foot is very big.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "我喜欢用嘴巴吃东西。",
-          "english": "I like to eat with my mouth.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "她的心脏很健康。",
-          "english": "Her heart is very healthy.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/08_body-parts__zh/ex5.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "These are common body parts in Chinese that you can use to describe yourself or others. Practice saying them in simple sentences to talk about feelings, actions, or health."
+      "publishedAt": "2026-08-27T03:02:24.044Z"
     },
     {
       "id": "09_school__zh",
@@ -49950,111 +49903,58 @@
         {
           "english": "book",
           "target": "书",
-          "romanization": "shū",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "shū"
         },
         {
           "english": "pen",
           "target": "笔",
-          "romanization": "bǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bǐ"
         },
         {
           "english": "pencil",
           "target": "铅笔",
-          "romanization": "qiānbǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "qiānbǐ"
         },
         {
           "english": "notebook",
           "target": "笔记本",
-          "romanization": "bǐjìběn",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bǐjìběn"
         },
         {
           "english": "bag",
           "target": "包",
-          "romanization": "bāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bāo"
         },
         {
           "english": "desk",
           "target": "桌子",
-          "romanization": "zhuōzi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zhuōzi"
         },
         {
           "english": "eraser",
           "target": "橡皮",
-          "romanization": "xiàngpí",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xiàngpí"
         },
         {
           "english": "ruler",
           "target": "尺子",
-          "romanization": "chǐzi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "chǐzi"
         },
         {
           "english": "scissors",
           "target": "剪刀",
-          "romanization": "jiǎndāo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiǎndāo"
         },
         {
           "english": "glue",
           "target": "胶水",
-          "romanization": "jiāoshuǐ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "jiāoshuǐ"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: book, pen, pencil, notebook, bag, desk…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: book, pen, pencil, notebook, bag, desk…. Save-friendly chart with pronunciation.",
       "topicSlug": "school",
-      "publishedAt": "2026-08-27T03:04:17.400Z",
-      "examples": [
-        {
-          "target": "我有一个蓝色的笔记本。",
-          "english": "I have a blue notebook.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "请给我一支笔。",
-          "english": "Please give me a pen.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "桌子上有书和铅笔。",
-          "english": "There are books and pencils on the desk.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "我的包里有橡皮和尺子。",
-          "english": "There is an eraser and a ruler in my bag.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "老师用剪刀和胶水做手工。",
-          "english": "The teacher uses scissors and glue for crafts.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/09_school__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "This vocabulary theme introduces common school supplies in Chinese, such as books, pens, and notebooks. You can use these words to talk about what you need for class or to describe your study space. Listening to these words on-site helps you remember their pronunciation and meaning."
+      "publishedAt": "2026-08-27T03:04:17.400Z"
     },
     {
       "id": "10_colors__zh",
@@ -50067,117 +49967,58 @@
         {
           "english": "red",
           "target": "红色",
-          "romanization": "hóng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hóng sè"
         },
         {
           "english": "blue",
           "target": "蓝色",
-          "romanization": "lán sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "lán sè"
         },
         {
           "english": "yellow",
           "target": "黄色",
-          "romanization": "huáng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "huáng sè"
         },
         {
           "english": "green",
           "target": "绿色",
-          "romanization": "lǜ sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "lǜ sè"
         },
         {
           "english": "orange",
           "target": "橙色",
-          "romanization": "chéng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "chéng sè"
         },
         {
           "english": "purple",
           "target": "紫色",
-          "romanization": "zǐ sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zǐ sè"
         },
         {
           "english": "pink",
           "target": "粉色",
-          "romanization": "fěn sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "fěn sè"
         },
         {
           "english": "brown",
           "target": "棕色",
-          "romanization": "zōng sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "zōng sè"
         },
         {
           "english": "black",
           "target": "黑色",
-          "romanization": "hēi sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hēi sè"
         },
         {
           "english": "white",
           "target": "白色",
-          "romanization": "bái sè",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "bái sè"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: red, blue, yellow, green, orange, purple…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: red, blue, yellow, green, orange, purple…. Save-friendly chart with pronunciation.",
       "topicSlug": "colors",
-      "publishedAt": "2026-08-27T03:05:59.047Z",
-      "examples": [
-        {
-          "target": "我喜欢红色的书。",
-          "english": "I like red books.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "她穿蓝色的裙子。",
-          "english": "She wears a blue dress.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "黄色的花很漂亮。",
-          "english": "The yellow flowers are very pretty.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "绿色的苹果很新鲜。",
-          "english": "The green apples are very fresh.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "这个橙色的包包很贵。",
-          "english": "This orange bag is expensive.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "黑色的猫在睡觉。",
-          "english": "The black cat is sleeping.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/10_colors__zh/ex5.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "These are basic colors in Chinese. You can use them to describe objects, clothes, or anything around you. Just say the color word before the noun to tell its color."
+      "publishedAt": "2026-08-27T03:05:59.047Z"
     },
     {
       "id": "11_weekdays__zh",
@@ -50190,90 +50031,43 @@
         {
           "english": "Monday",
           "target": "星期一",
-          "romanization": "xīng qī yī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī yī"
         },
         {
           "english": "Tuesday",
           "target": "星期二",
-          "romanization": "xīng qī èr",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī èr"
         },
         {
           "english": "Wednesday",
           "target": "星期三",
-          "romanization": "xīng qī sān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī sān"
         },
         {
           "english": "Thursday",
           "target": "星期四",
-          "romanization": "xīng qī sì",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī sì"
         },
         {
           "english": "Friday",
           "target": "星期五",
-          "romanization": "xīng qī wǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī wǔ"
         },
         {
           "english": "Saturday",
           "target": "星期六",
-          "romanization": "xīng qī liù",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī liù"
         },
         {
           "english": "Sunday",
           "target": "星期天",
-          "romanization": "xīng qī tiān",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "xīng qī tiān"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday…. Save-friendly chart with pronunciation.",
       "topicSlug": "weekdays",
-      "publishedAt": "2026-08-27T03:07:38.302Z",
-      "examples": [
-        {
-          "target": "我星期一去学校。",
-          "english": "I go to school on Monday.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "星期五我们有中文课。",
-          "english": "We have Chinese class on Friday.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "星期天我喜欢休息。",
-          "english": "I like to rest on Sunday.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "你星期三有空吗？",
-          "english": "Are you free on Wednesday?",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "星期六我和朋友一起玩。",
-          "english": "I play with friends on Saturday.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/11_weekdays__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "These words are the days of the week in Chinese. You can use them to talk about plans, schedules, or when something happens. Each day starts with 星期, followed by a number or word representing the day."
+      "publishedAt": "2026-08-27T03:07:38.302Z"
     },
     {
       "id": "12_pets__zh",
@@ -50286,117 +50080,58 @@
         {
           "english": "dog",
           "target": "狗",
-          "romanization": "gǒu",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w0.mp3",
-          "ttsProvider": "edge"
+          "romanization": "gǒu"
         },
         {
           "english": "cat",
           "target": "猫",
-          "romanization": "māo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w1.mp3",
-          "ttsProvider": "edge"
+          "romanization": "māo"
         },
         {
           "english": "bird",
           "target": "鸟",
-          "romanization": "niǎo",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w2.mp3",
-          "ttsProvider": "edge"
+          "romanization": "niǎo"
         },
         {
           "english": "fish",
           "target": "鱼",
-          "romanization": "yú",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w3.mp3",
-          "ttsProvider": "edge"
+          "romanization": "yú"
         },
         {
           "english": "rabbit",
           "target": "兔子",
-          "romanization": "tù zi",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w4.mp3",
-          "ttsProvider": "edge"
+          "romanization": "tù zi"
         },
         {
           "english": "hamster",
           "target": "仓鼠",
-          "romanization": "cāng shǔ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w5.mp3",
-          "ttsProvider": "edge"
+          "romanization": "cāng shǔ"
         },
         {
           "english": "horse",
           "target": "马",
-          "romanization": "mǎ",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w6.mp3",
-          "ttsProvider": "edge"
+          "romanization": "mǎ"
         },
         {
           "english": "turtle",
           "target": "乌龟",
-          "romanization": "wū guī",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w7.mp3",
-          "ttsProvider": "edge"
+          "romanization": "wū guī"
         },
         {
           "english": "frog",
           "target": "青蛙",
-          "romanization": "qīng wā",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w8.mp3",
-          "ttsProvider": "edge"
+          "romanization": "qīng wā"
         },
         {
           "english": "butterfly",
           "target": "蝴蝶",
-          "romanization": "hú dié",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/w9.mp3",
-          "ttsProvider": "edge"
+          "romanization": "hú dié"
         }
       ],
       "partner": "preply",
-      "description": "Learn Chinese: dog, cat, bird, fish, rabbit, hamster…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Chinese vocabulary: dog, cat, bird, fish, rabbit, hamster…. Save-friendly chart with pronunciation.",
       "topicSlug": "pets",
-      "publishedAt": "2026-08-27T03:09:19.475Z",
-      "examples": [
-        {
-          "target": "我有一只狗。",
-          "english": "I have a dog.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/ex0.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "猫在睡觉。",
-          "english": "The cat is sleeping.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/ex1.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "鸟在唱歌。",
-          "english": "The bird is singing.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/ex2.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "鱼在水里游。",
-          "english": "The fish is swimming in the water.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/ex3.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "兔子很可爱。",
-          "english": "The rabbit is very cute.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/ex4.mp3",
-          "ttsProvider": "edge"
-        },
-        {
-          "target": "乌龟走得很慢。",
-          "english": "The turtle walks very slowly.",
-          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/12_pets__zh/ex5.mp3",
-          "ttsProvider": "edge"
-        }
-      ],
-      "explanationEn": "This vocabulary theme introduces common pets and animals in Chinese. You can use these words to talk about animals you like, have at home, or see outside. Practice listening and repeating to remember their sounds and meanings."
+      "publishedAt": "2026-08-27T03:09:19.475Z"
     }
   ]
 }
