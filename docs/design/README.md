@@ -38,6 +38,8 @@ Update the **Status** column when you migrate a route group.
 | `getpronounce.net` | ✅ | [getpronounce.md](./getpronounce.md) — Chinese pronunciation for EN speakers |
 | `sound.eigopin.com` | ✅ | EigoSound — EN pronunciation charts (see `src/app/sound-site`) |
 
+**Deploy:** [vercel-multi-site-deploy.md](./vercel-multi-site-deploy.md) — filtered builds per Vercel project (one repo).
+
 ## Shared components
 
 - [`src/components/site/MarketingShell.tsx`](../../src/components/site/MarketingShell.tsx) — `MarketingPage`, `MarketingShell`, `MarketingShellBody`, `MarketingHeader`

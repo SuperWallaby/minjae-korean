@@ -26,19 +26,20 @@ Absorbs the former **global.kajakorean.com** Word Atlas. Apex is **Chinese**; ot
 
 ## Deploy
 
+See **[vercel-multi-site-deploy.md](./vercel-multi-site-deploy.md)** — one GitHub repo, **filtered builds per Vercel project** (no cross-site overwrites).
+
 Vercel project **`getpronounce`** · `vercel.getpronounce.json` · `NEXT_PUBLIC_SITE_MODE=pronounce`
 
-**Auto (recommended):** GitHub `SuperWallaby/minjae-korean` → `main` push deploys **getpronounce** production (same repo as kajakorean.com).
+**Auto:** GitHub `main` → builds **only when getpronounce paths change** (`scripts/vercel-should-build.mjs getpronounce`).
 
-- Global catalog auto-push (`auto-push-global-catalog.mjs`) commits `published.json` to `main` → **one** Vercel Git deploy on project **getpronounce** (do not also POST a deploy hook — that used to race two production builds).
-- Vercel project env: `NEXT_PUBLIC_SITE_MODE=pronounce`, `NEXT_PUBLIC_PRONOUNCE_SITE_ORIGIN=https://getpronounce.net`
-- Prefer Node **20.x** on the getpronounce project (matches `package.json` `engines`; Node 24 has broken webpack builds).
-- Optional: minjae-korean **Ignored Build Step** — skip when only `src/data/globalPins/published.json` changed (kajakorean.com does not need global catalog deploys).
+- Global catalog auto-push commits `published.json` → **getpronounce only** (minjae-korean skipped).
+- Vercel env: `NEXT_PUBLIC_SITE_MODE=pronounce`, `NEXT_PUBLIC_PRONOUNCE_SITE_ORIGIN=https://getpronounce.net`
+- Node **20.x** on getpronounce project.
 
 **Manual:**
 
 ```bash
-bash scripts/deploy-getpronounce.sh
+bash scripts/deploy-getpronounce.sh --promote
 ```
 
 ---
