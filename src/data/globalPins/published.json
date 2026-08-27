@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T04:06:59.077Z",
+  "generatedAt": "2026-08-27T04:27:04.932Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -2798,11 +2798,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: letter, stamp, mailbox, package, address, post office…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "post-mail",
-      "publishedAt": "2026-08-24T16:47:30.896Z",
-      "explanationEn": "These words help you talk about sending and receiving mail in Spanish. Use them when you write letters, send packages, or visit the post office. You can listen to the pronunciation of each word on the site to improve your speaking skills.",
       "examples": [
         {
           "target": "Voy a enviar una carta con un sello.",
@@ -2840,7 +2835,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words help you talk about sending and receiving mail in Spanish. Use them when you write letters, send packages, or visit the post office. You can listen to the pronunciation of each word on the site to improve your speaking skills.",
+      "partner": "preply",
+      "description": "Learn Spanish: letter, stamp, mailbox, package, address, post office…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "post-mail",
+      "publishedAt": "2026-08-24T16:47:30.896Z"
     },
     {
       "id": "20_laundry-care__es",
@@ -2914,11 +2914,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: washing machine, dryer, detergent, fabric softener, hanger, iron…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "laundry-care",
-      "publishedAt": "2026-08-24T16:57:44.105Z",
-      "explanationEn": "These words help you talk about doing laundry in Spanish. Use them to describe washing clothes, drying, and caring for fabrics. Listening to these words on the site will help you recognize them in everyday conversations about laundry.",
       "examples": [
         {
           "target": "La lavadora está llena de ropa sucia.",
@@ -2956,7 +2951,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "These words help you talk about doing laundry in Spanish. Use them to describe washing clothes, drying, and caring for fabrics. Listening to these words on the site will help you recognize them in everyday conversations about laundry.",
+      "partner": "preply",
+      "description": "Learn Spanish: washing machine, dryer, detergent, fabric softener, hanger, iron…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "laundry-care",
+      "publishedAt": "2026-08-24T16:57:44.105Z"
     },
     {
       "id": "20_life-stages__es",
@@ -3139,11 +3139,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: flower, tree, grass, soil, seed, watering can…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "garden-plants",
-      "publishedAt": "2026-08-24T17:08:26.170Z",
-      "explanationEn": "This vocabulary theme introduces common garden plants and tools in Spanish. Use these words to talk about plants like flowers, trees, and grass, as well as gardening items like a watering can and shovel. Listening to these words on site helps you recognize their pronunciation and use in simple sentences.",
       "examples": [
         {
           "target": "La flor es roja y bonita.",
@@ -3181,7 +3176,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "This vocabulary theme introduces common garden plants and tools in Spanish. Use these words to talk about plants like flowers, trees, and grass, as well as gardening items like a watering can and shovel. Listening to these words on site helps you recognize their pronunciation and use in simple sentences.",
+      "partner": "preply",
+      "description": "Learn Spanish: flower, tree, grass, soil, seed, watering can…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "garden-plants",
+      "publishedAt": "2026-08-24T17:08:26.170Z"
     },
     {
       "id": "21_hair-colors__es",
@@ -3473,11 +3473,6 @@
           "ttsProvider": "edge"
         }
       ],
-      "partner": "preply",
-      "description": "Learn Spanish: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
-      "topicSlug": "music-instruments",
-      "publishedAt": "2026-08-24T17:19:09.380Z",
-      "explanationEn": "This vocabulary theme introduces common musical instruments in Spanish, such as piano, guitarra, and batería. Use these words to talk about music, instruments you play, or sounds you hear. Listening to the pronunciation on the site helps you say these words clearly.",
       "examples": [
         {
           "target": "Me gusta tocar la guitarra en mi tiempo libre.",
@@ -3515,7 +3510,12 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__es/ex5.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "explanationEn": "This vocabulary theme introduces common musical instruments in Spanish, such as piano, guitarra, and batería. Use these words to talk about music, instruments you play, or sounds you hear. Listening to the pronunciation on the site helps you say these words clearly.",
+      "partner": "preply",
+      "description": "Learn Spanish: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "music-instruments",
+      "publishedAt": "2026-08-24T17:19:09.380Z"
     },
     {
       "id": "23_directions__es",
@@ -3637,53 +3637,110 @@
         {
           "english": "gift",
           "target": "regalo",
-          "romanization": "reh-GAH-loh"
+          "romanization": "reh-GAH-loh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "party",
           "target": "fiesta",
-          "romanization": "fee-EHS-tah"
+          "romanization": "fee-EHS-tah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "cake",
           "target": "pastel",
-          "romanization": "pahs-TEHL"
+          "romanization": "pahs-TEHL",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "candle",
           "target": "vela",
-          "romanization": "BEH-lah"
+          "romanization": "BEH-lah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "balloon",
           "target": "globo",
-          "romanization": "GLOH-boh"
+          "romanization": "GLOH-boh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fireworks",
           "target": "fuegos artificiales",
-          "romanization": "FWEH-gohs ahr-tee-fee-SYAH-les"
+          "romanization": "FWEH-gohs ahr-tee-fee-SYAH-les",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "decoration",
           "target": "decoración",
-          "romanization": "deh-koh-rah-SYON"
+          "romanization": "deh-koh-rah-SYON",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "invite",
           "target": "invitar",
-          "romanization": "een-bee-TAR"
+          "romanization": "een-bee-TAR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "toast",
           "target": "brindis",
-          "romanization": "BREEN-dees"
+          "romanization": "BREEN-dees",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Spanish vocabulary: gift, party, cake, candle, balloon, fireworks…. Save-friendly chart with pronunciation.",
+      "description": "Learn Spanish: gift, party, cake, candle, balloon, fireworks…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "holiday-celebrations",
-      "publishedAt": "2026-08-24T17:29:55.667Z"
+      "publishedAt": "2026-08-24T17:29:55.667Z",
+      "explanationEn": "These holiday words help you talk about celebrations in Spanish. Use them to describe parties, decorations, and special moments like giving gifts or making a toast. Practice listening to these words on the site to improve your pronunciation and understanding.",
+      "examples": [
+        {
+          "target": "Vamos a la fiesta esta noche.",
+          "english": "We are going to the party tonight.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Compré un regalo para mi amigo.",
+          "english": "I bought a gift for my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "El pastel tiene muchas velas.",
+          "english": "The cake has many candles.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Decoramos la casa con globos y decoración.",
+          "english": "We decorated the house with balloons and decorations.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Los fuegos artificiales son muy bonitos.",
+          "english": "The fireworks are very beautiful.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Quiero invitarte a mi cumpleaños para hacer un brindis.",
+          "english": "I want to invite you to my birthday to make a toast.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/23_holiday-celebrations__es/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "24_daily-routine__es",
@@ -10467,53 +10524,110 @@
         {
           "english": "stove",
           "target": "cuisinière",
-          "romanization": "kwee-zee-nyair"
+          "romanization": "kwee-zee-nyair",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "oven",
           "target": "four",
-          "romanization": "foor"
+          "romanization": "foor",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "microwave",
           "target": "micro-ondes",
-          "romanization": "mee-kroh-ond"
+          "romanization": "mee-kroh-ond",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "refrigerator",
           "target": "réfrigérateur",
-          "romanization": "ray-free-zheh-rah-teur"
+          "romanization": "ray-free-zheh-rah-teur",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "blender",
           "target": "mixeur",
-          "romanization": "meex-ur"
+          "romanization": "meex-ur",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "toaster",
           "target": "grille-pain",
-          "romanization": "gree-pahn"
+          "romanization": "gree-pahn",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "kettle",
           "target": "bouilloire",
-          "romanization": "boo-ywar"
+          "romanization": "boo-ywar",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dishwasher",
           "target": "lave-vaisselle",
-          "romanization": "lahv-vay-sel"
+          "romanization": "lahv-vay-sel",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "pan",
           "target": "poêle",
-          "romanization": "pwal"
+          "romanization": "pwal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "kitchen-appliances",
-      "publishedAt": "2026-08-24T16:07:08.962Z"
+      "publishedAt": "2026-08-24T16:07:08.962Z",
+      "explanationEn": "These kitchen appliances are common in French homes and help you prepare and store food. Use these words to talk about cooking, cleaning, and kitchen tasks. Listening to the pronunciation on the site will help you say them correctly.",
+      "examples": [
+        {
+          "target": "Je mets le gâteau dans le four.",
+          "english": "I put the cake in the oven.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le réfrigérateur est plein de légumes frais.",
+          "english": "The refrigerator is full of fresh vegetables.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Elle utilise le mixeur pour faire un smoothie.",
+          "english": "She uses the blender to make a smoothie.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le micro-ondes chauffe le repas rapidement.",
+          "english": "The microwave heats the meal quickly.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je prépare du café avec la bouilloire.",
+          "english": "I prepare coffee with the kettle.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Après le dîner, je mets les assiettes dans le lave-vaisselle.",
+          "english": "After dinner, I put the plates in the dishwasher.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/15_kitchen-appliances__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "15_skin-tones__fr",
@@ -10738,53 +10852,110 @@
         {
           "english": "desk",
           "target": "bureau",
-          "romanization": "byu-ro"
+          "romanization": "byu-ro",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "chair",
           "target": "chaise",
-          "romanization": "shez"
+          "romanization": "shez",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "computer",
           "target": "ordinateur",
-          "romanization": "or-di-na-teur"
+          "romanization": "or-di-na-teur",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "keyboard",
           "target": "clavier",
-          "romanization": "kla-vye"
+          "romanization": "kla-vye",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mouse",
           "target": "souris",
-          "romanization": "soo-ree"
+          "romanization": "soo-ree",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "monitor",
           "target": "écran",
-          "romanization": "ay-krahn"
+          "romanization": "ay-krahn",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "printer",
           "target": "imprimante",
-          "romanization": "am-pree-mant"
+          "romanization": "am-pree-mant",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stapler",
           "target": "agrafeuse",
-          "romanization": "a-gra-fuz"
+          "romanization": "a-gra-fuz",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "folder",
           "target": "dossier",
-          "romanization": "dos-syay"
+          "romanization": "dos-syay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "office-desk",
-      "publishedAt": "2026-08-24T16:18:08.185Z"
+      "publishedAt": "2026-08-24T16:18:08.185Z",
+      "explanationEn": "These words are common items you find on or near an office desk in French. Use them to describe your workspace or talk about office equipment. Listening to the pronunciation on-site will help you remember and say these words correctly.",
+      "examples": [
+        {
+          "target": "Le bureau est propre et organisé.",
+          "english": "The desk is clean and organized.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je m'assois sur une chaise confortable.",
+          "english": "I sit on a comfortable chair.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "L'ordinateur est allumé et prêt à utiliser.",
+          "english": "The computer is on and ready to use.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le clavier et la souris sont sur le bureau.",
+          "english": "The keyboard and mouse are on the desk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "L'écran affiche un document important.",
+          "english": "The monitor displays an important document.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "J'utilise l'imprimante pour imprimer des dossiers.",
+          "english": "I use the printer to print folders.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/16_office-desk__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "17_bathroom__fr",
@@ -10906,53 +11077,110 @@
         {
           "english": "reception",
           "target": "réception",
-          "romanization": "ray-sep-syon"
+          "romanization": "ray-sep-syon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "key card",
           "target": "carte-clé",
-          "romanization": "kart-klay"
+          "romanization": "kart-klay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "elevator",
           "target": "ascenseur",
-          "romanization": "as-sahn-sur"
+          "romanization": "as-sahn-sur",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "luggage",
           "target": "bagages",
-          "romanization": "ba-gazh"
+          "romanization": "ba-gazh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "towel",
           "target": "serviette",
-          "romanization": "ser-vyet"
+          "romanization": "ser-vyet",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "breakfast",
           "target": "petit déjeuner",
-          "romanization": "puh-tee day-zhuh-nay"
+          "romanization": "puh-tee day-zhuh-nay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "checkout",
           "target": "départ",
-          "romanization": "day-par"
+          "romanization": "day-par",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "room service",
           "target": "service en chambre",
-          "romanization": "ser-vees ahn shahm-br"
+          "romanization": "ser-vees ahn shahm-br",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "wifi",
           "target": "wifi",
-          "romanization": "wee-fee"
+          "romanization": "wee-fee",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn French vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
+      "description": "Learn French: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "hotel-stay",
-      "publishedAt": "2026-08-24T16:28:18.839Z"
+      "publishedAt": "2026-08-24T16:28:18.839Z",
+      "explanationEn": "These words help you talk about your hotel stay in French. Use them to ask for your room key, find the elevator, or order room service. Listening to these words on-site will make your hotel experience smoother and more comfortable.",
+      "examples": [
+        {
+          "target": "Je vais à la réception pour avoir ma carte-clé.",
+          "english": "I am going to the reception to get my key card.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "L'ascenseur est à gauche du hall.",
+          "english": "The elevator is to the left of the lobby.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Mes bagages sont lourds.",
+          "english": "My luggage is heavy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Je voudrais une serviette propre, s'il vous plaît.",
+          "english": "I would like a clean towel, please.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le petit déjeuner est servi de sept à dix heures.",
+          "english": "Breakfast is served from seven to ten o'clock.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Le départ est à midi, n'oubliez pas le checkout.",
+          "english": "Checkout is at noon, don't forget.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/17_hotel-stay__fr/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "18_banking-basics__fr",
