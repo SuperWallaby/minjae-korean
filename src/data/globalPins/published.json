@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-24T18:03:25.353Z",
+  "generatedAt": "2026-08-27T03:17:20.584Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -26,6 +26,10 @@
     {
       "code": "ja",
       "name": "Japanese"
+    },
+    {
+      "code": "zh",
+      "name": "Chinese"
     }
   ],
   "pages": [
@@ -49326,6 +49330,562 @@
       "description": "Learn Japanese: Basil, Mint, Rosemary, Cilantro, Garlic, Ginger…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "herbs-spices",
       "publishedAt": "2026-08-17T16:06:32.981Z"
+    },
+    {
+      "id": "01_eye-colors__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Eye colors in Chinese",
+      "slug": "eye-colors-in-chinese",
+      "imagePath": "/global/pins/01_eye-colors__zh.png",
+      "words": [
+        {
+          "english": "black",
+          "target": "黑色",
+          "romanization": "hēi sè"
+        },
+        {
+          "english": "brown",
+          "target": "棕色",
+          "romanization": "zōng sè"
+        },
+        {
+          "english": "hazel",
+          "target": "榛色",
+          "romanization": "zhēn sè"
+        },
+        {
+          "english": "green",
+          "target": "绿色",
+          "romanization": "lǜ sè"
+        },
+        {
+          "english": "blue",
+          "target": "蓝色",
+          "romanization": "lán sè"
+        },
+        {
+          "english": "gray",
+          "target": "灰色",
+          "romanization": "huī sè"
+        },
+        {
+          "english": "light blue",
+          "target": "浅蓝色",
+          "romanization": "qiǎn lán sè"
+        },
+        {
+          "english": "violet",
+          "target": "紫罗兰色",
+          "romanization": "zǐ luó lán sè"
+        },
+        {
+          "english": "amber",
+          "target": "琥珀色",
+          "romanization": "hǔ pò sè"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: black, brown, hazel, green, blue, gray…. Save-friendly chart with pronunciation.",
+      "topicSlug": "eye-colors",
+      "publishedAt": "2026-08-27T02:39:33.366Z"
+    },
+    {
+      "id": "03_foods__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Foods in Chinese",
+      "slug": "foods-in-chinese",
+      "imagePath": "/global/pins/03_foods__zh.png",
+      "words": [
+        {
+          "english": "bread",
+          "target": "面包",
+          "romanization": "miàn bāo"
+        },
+        {
+          "english": "cheese",
+          "target": "奶酪",
+          "romanization": "nǎi lào"
+        },
+        {
+          "english": "wine",
+          "target": "葡萄酒",
+          "romanization": "pú táo jiǔ"
+        },
+        {
+          "english": "coffee",
+          "target": "咖啡",
+          "romanization": "kā fēi"
+        },
+        {
+          "english": "croissant",
+          "target": "羊角面包",
+          "romanization": "yáng jiǎo miàn bāo"
+        },
+        {
+          "english": "soup",
+          "target": "汤",
+          "romanization": "tāng"
+        },
+        {
+          "english": "salad",
+          "target": "沙拉",
+          "romanization": "shā lā"
+        },
+        {
+          "english": "chicken",
+          "target": "鸡肉",
+          "romanization": "jī ròu"
+        },
+        {
+          "english": "fish",
+          "target": "鱼",
+          "romanization": "yú"
+        },
+        {
+          "english": "dessert",
+          "target": "甜点",
+          "romanization": "tián diǎn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: bread, cheese, wine, coffee, croissant, soup…. Save-friendly chart with pronunciation.",
+      "topicSlug": "foods",
+      "publishedAt": "2026-08-27T02:56:39.220Z"
+    },
+    {
+      "id": "04_emotions__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Emotions in Chinese",
+      "slug": "emotions-in-chinese",
+      "imagePath": "/global/pins/04_emotions__zh.png",
+      "words": [
+        {
+          "english": "happy",
+          "target": "快乐",
+          "romanization": "kuài lè"
+        },
+        {
+          "english": "sad",
+          "target": "难过",
+          "romanization": "nán guò"
+        },
+        {
+          "english": "angry",
+          "target": "生气",
+          "romanization": "shēng qì"
+        },
+        {
+          "english": "tired",
+          "target": "累",
+          "romanization": "lèi"
+        },
+        {
+          "english": "surprised",
+          "target": "惊讶",
+          "romanization": "jīng yà"
+        },
+        {
+          "english": "scared",
+          "target": "害怕",
+          "romanization": "hài pà"
+        },
+        {
+          "english": "proud",
+          "target": "骄傲",
+          "romanization": "jiāo ào"
+        },
+        {
+          "english": "lonely",
+          "target": "孤独",
+          "romanization": "gū dú"
+        },
+        {
+          "english": "excited",
+          "target": "兴奋",
+          "romanization": "xīng fèn"
+        },
+        {
+          "english": "calm",
+          "target": "平静",
+          "romanization": "píng jìng"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: happy, sad, angry, tired, surprised, scared…. Save-friendly chart with pronunciation.",
+      "topicSlug": "emotions",
+      "publishedAt": "2026-08-27T02:58:31.497Z"
+    },
+    {
+      "id": "05_family__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Family in Chinese",
+      "slug": "family-in-chinese",
+      "imagePath": "/global/pins/05_family__zh.png",
+      "words": [
+        {
+          "english": "mom",
+          "target": "妈妈",
+          "romanization": "mā ma"
+        },
+        {
+          "english": "dad",
+          "target": "爸爸",
+          "romanization": "bà ba"
+        },
+        {
+          "english": "brother",
+          "target": "哥哥",
+          "romanization": "gē ge"
+        },
+        {
+          "english": "sister",
+          "target": "姐姐",
+          "romanization": "jiě jie"
+        },
+        {
+          "english": "grandma",
+          "target": "奶奶",
+          "romanization": "nǎi nai"
+        },
+        {
+          "english": "grandpa",
+          "target": "爷爷",
+          "romanization": "yé ye"
+        },
+        {
+          "english": "baby",
+          "target": "宝宝",
+          "romanization": "bǎo bao"
+        },
+        {
+          "english": "uncle",
+          "target": "叔叔",
+          "romanization": "shū shu"
+        },
+        {
+          "english": "aunt",
+          "target": "阿姨",
+          "romanization": "ā yí"
+        },
+        {
+          "english": "cousin",
+          "target": "表亲",
+          "romanization": "biǎo qīn"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: mom, dad, brother, sister, grandma, grandpa…. Save-friendly chart with pronunciation.",
+      "topicSlug": "family",
+      "publishedAt": "2026-08-27T03:00:19.998Z"
+    },
+    {
+      "id": "08_body-parts__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Body Parts in Chinese",
+      "slug": "body-parts-in-chinese",
+      "imagePath": "/global/pins/08_body-parts__zh.png",
+      "words": [
+        {
+          "english": "head",
+          "target": "头",
+          "romanization": "tóu"
+        },
+        {
+          "english": "eye",
+          "target": "眼睛",
+          "romanization": "yǎn jīng"
+        },
+        {
+          "english": "ear",
+          "target": "耳朵",
+          "romanization": "ěr duo"
+        },
+        {
+          "english": "nose",
+          "target": "鼻子",
+          "romanization": "bí zi"
+        },
+        {
+          "english": "mouth",
+          "target": "嘴巴",
+          "romanization": "zuǐ ba"
+        },
+        {
+          "english": "hand",
+          "target": "手",
+          "romanization": "shǒu"
+        },
+        {
+          "english": "foot",
+          "target": "脚",
+          "romanization": "jiǎo"
+        },
+        {
+          "english": "arm",
+          "target": "手臂",
+          "romanization": "shǒu bì"
+        },
+        {
+          "english": "leg",
+          "target": "腿",
+          "romanization": "tuǐ"
+        },
+        {
+          "english": "heart",
+          "target": "心脏",
+          "romanization": "xīn zàng"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: head, eye, ear, nose, mouth, hand…. Save-friendly chart with pronunciation.",
+      "topicSlug": "body-parts",
+      "publishedAt": "2026-08-27T03:02:24.044Z"
+    },
+    {
+      "id": "09_school__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "School supplies in Chinese",
+      "slug": "school-supplies-in-chinese",
+      "imagePath": "/global/pins/09_school__zh.png",
+      "words": [
+        {
+          "english": "book",
+          "target": "书",
+          "romanization": "shū"
+        },
+        {
+          "english": "pen",
+          "target": "笔",
+          "romanization": "bǐ"
+        },
+        {
+          "english": "pencil",
+          "target": "铅笔",
+          "romanization": "qiānbǐ"
+        },
+        {
+          "english": "notebook",
+          "target": "笔记本",
+          "romanization": "bǐjìběn"
+        },
+        {
+          "english": "bag",
+          "target": "包",
+          "romanization": "bāo"
+        },
+        {
+          "english": "desk",
+          "target": "桌子",
+          "romanization": "zhuōzi"
+        },
+        {
+          "english": "eraser",
+          "target": "橡皮",
+          "romanization": "xiàngpí"
+        },
+        {
+          "english": "ruler",
+          "target": "尺子",
+          "romanization": "chǐzi"
+        },
+        {
+          "english": "scissors",
+          "target": "剪刀",
+          "romanization": "jiǎndāo"
+        },
+        {
+          "english": "glue",
+          "target": "胶水",
+          "romanization": "jiāoshuǐ"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: book, pen, pencil, notebook, bag, desk…. Save-friendly chart with pronunciation.",
+      "topicSlug": "school",
+      "publishedAt": "2026-08-27T03:04:17.400Z"
+    },
+    {
+      "id": "10_colors__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Basic colors in Chinese",
+      "slug": "basic-colors-in-chinese",
+      "imagePath": "/global/pins/10_colors__zh.png",
+      "words": [
+        {
+          "english": "red",
+          "target": "红色",
+          "romanization": "hóng sè"
+        },
+        {
+          "english": "blue",
+          "target": "蓝色",
+          "romanization": "lán sè"
+        },
+        {
+          "english": "yellow",
+          "target": "黄色",
+          "romanization": "huáng sè"
+        },
+        {
+          "english": "green",
+          "target": "绿色",
+          "romanization": "lǜ sè"
+        },
+        {
+          "english": "orange",
+          "target": "橙色",
+          "romanization": "chéng sè"
+        },
+        {
+          "english": "purple",
+          "target": "紫色",
+          "romanization": "zǐ sè"
+        },
+        {
+          "english": "pink",
+          "target": "粉色",
+          "romanization": "fěn sè"
+        },
+        {
+          "english": "brown",
+          "target": "棕色",
+          "romanization": "zōng sè"
+        },
+        {
+          "english": "black",
+          "target": "黑色",
+          "romanization": "hēi sè"
+        },
+        {
+          "english": "white",
+          "target": "白色",
+          "romanization": "bái sè"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: red, blue, yellow, green, orange, purple…. Save-friendly chart with pronunciation.",
+      "topicSlug": "colors",
+      "publishedAt": "2026-08-27T03:05:59.047Z"
+    },
+    {
+      "id": "11_weekdays__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Days of the Week in Chinese",
+      "slug": "days-of-the-week-in-chinese",
+      "imagePath": "/global/pins/11_weekdays__zh.png",
+      "words": [
+        {
+          "english": "Monday",
+          "target": "星期一",
+          "romanization": "xīng qī yī"
+        },
+        {
+          "english": "Tuesday",
+          "target": "星期二",
+          "romanization": "xīng qī èr"
+        },
+        {
+          "english": "Wednesday",
+          "target": "星期三",
+          "romanization": "xīng qī sān"
+        },
+        {
+          "english": "Thursday",
+          "target": "星期四",
+          "romanization": "xīng qī sì"
+        },
+        {
+          "english": "Friday",
+          "target": "星期五",
+          "romanization": "xīng qī wǔ"
+        },
+        {
+          "english": "Saturday",
+          "target": "星期六",
+          "romanization": "xīng qī liù"
+        },
+        {
+          "english": "Sunday",
+          "target": "星期天",
+          "romanization": "xīng qī tiān"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday…. Save-friendly chart with pronunciation.",
+      "topicSlug": "weekdays",
+      "publishedAt": "2026-08-27T03:07:38.302Z"
+    },
+    {
+      "id": "12_pets__zh",
+      "lang": "zh",
+      "langName": "Chinese",
+      "titleEn": "Pets & Animals in Chinese",
+      "slug": "pets-animals-in-chinese",
+      "imagePath": "/global/pins/12_pets__zh.png",
+      "words": [
+        {
+          "english": "dog",
+          "target": "狗",
+          "romanization": "gǒu"
+        },
+        {
+          "english": "cat",
+          "target": "猫",
+          "romanization": "māo"
+        },
+        {
+          "english": "bird",
+          "target": "鸟",
+          "romanization": "niǎo"
+        },
+        {
+          "english": "fish",
+          "target": "鱼",
+          "romanization": "yú"
+        },
+        {
+          "english": "rabbit",
+          "target": "兔子",
+          "romanization": "tù zi"
+        },
+        {
+          "english": "hamster",
+          "target": "仓鼠",
+          "romanization": "cāng shǔ"
+        },
+        {
+          "english": "horse",
+          "target": "马",
+          "romanization": "mǎ"
+        },
+        {
+          "english": "turtle",
+          "target": "乌龟",
+          "romanization": "wū guī"
+        },
+        {
+          "english": "frog",
+          "target": "青蛙",
+          "romanization": "qīng wā"
+        },
+        {
+          "english": "butterfly",
+          "target": "蝴蝶",
+          "romanization": "hú dié"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Chinese vocabulary: dog, cat, bird, fish, rabbit, hamster…. Save-friendly chart with pronunciation.",
+      "topicSlug": "pets",
+      "publishedAt": "2026-08-27T03:09:19.475Z"
     }
   ]
 }
