@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T13:46:42.826Z",
+  "generatedAt": "2026-08-27T14:41:54.938Z",
   "site": "https://global.kajakorean.com",
   "languages": [
     {
@@ -42,63 +42,81 @@
           "target": "negro",
           "romanization": "NEH-groh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w0-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w0-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w0-es.mp3"
         },
         {
           "english": "brown",
           "target": "marrón",
           "romanization": "mah-RON",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w1-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w1-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w1-es.mp3"
         },
         {
           "english": "hazel",
           "target": "avellana",
           "romanization": "ah-veh-YAH-nah",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w2-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w2-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w2-es.mp3"
         },
         {
           "english": "green",
           "target": "verde",
           "romanization": "BEHR-deh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w3-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w3-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w3-es.mp3"
         },
         {
           "english": "blue",
           "target": "azul",
           "romanization": "ah-SOOL",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w4-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w4-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w4-es.mp3"
         },
         {
           "english": "gray",
           "target": "gris",
           "romanization": "grees",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w5-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w5-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w5-es.mp3"
         },
         {
           "english": "light blue",
           "target": "azul claro",
           "romanization": "ah-SOOL KLAH-roh",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w6-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w6-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w6-es.mp3"
         },
         {
           "english": "violet",
           "target": "violeta",
           "romanization": "vee-oh-LEH-tah",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w7-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w7-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w7-es.mp3"
         },
         {
           "english": "amber",
           "target": "ámbar",
           "romanization": "AHM-bar",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w8-latam.mp3",
-          "ttsProvider": "edge"
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w8-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/01_eye-colors__es/w8-es.mp3"
         }
       ],
       "examples": [
