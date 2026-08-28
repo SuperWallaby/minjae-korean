@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-28T19:55:09.927Z",
+  "generatedAt": "2026-08-28T20:48:28.616Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -54281,6 +54281,357 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex3.mp3",
           "ttsProvider": "edge",
           "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_18_commute__grid_cluster__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Commute Words in Korean",
+      "slug": "commute-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_18_commute__grid_cluster__ko.png",
+      "words": [
+        {
+          "english": "subway",
+          "target": "지하철",
+          "romanization": "jihacheol",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w0-male.mp3"
+        },
+        {
+          "english": "bus",
+          "target": "버스",
+          "romanization": "beoseu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w1-male.mp3"
+        },
+        {
+          "english": "taxi",
+          "target": "택시",
+          "romanization": "taeksi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w2-male.mp3"
+        },
+        {
+          "english": "ticket",
+          "target": "표",
+          "romanization": "pyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w3-male.mp3"
+        },
+        {
+          "english": "station",
+          "target": "역",
+          "romanization": "yeok",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w4-male.mp3"
+        },
+        {
+          "english": "map",
+          "target": "지도",
+          "romanization": "jido",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w5-male.mp3"
+        },
+        {
+          "english": "transfer",
+          "target": "환승",
+          "romanization": "hwansseung",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w6-male.mp3"
+        },
+        {
+          "english": "exit",
+          "target": "출구",
+          "romanization": "chulgu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w7-male.mp3"
+        },
+        {
+          "english": "seat",
+          "target": "좌석",
+          "romanization": "jwaseok",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/w8-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Commute Words in Korean: subway, bus, taxi, ticket, station, map….",
+      "topicSlug": "commute",
+      "publishedAt": "2026-08-28T20:39:59.882Z",
+      "explanationEn": "These commute words are short and easy to say in Korean.",
+      "examples": [
+        {
+          "target": "지하철 역에서 표를 삽니다.",
+          "english": "I buy a ticket at the subway station.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex0-male.mp3"
+        },
+        {
+          "target": "버스에서 좌석이 있습니다.",
+          "english": "There is a seat on the bus.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex1-male.mp3"
+        },
+        {
+          "target": "택시를 타고 출구로 갑니다.",
+          "english": "I take a taxi and go to the exit.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex2-male.mp3"
+        },
+        {
+          "target": "지도를 보고 환승 역을 찾습니다.",
+          "english": "I look at the map and find the transfer station.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_18_commute__grid_cluster__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_19_airport__super_list__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Airport Words in Korean",
+      "slug": "airport-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_19_airport__super_list__ko.png",
+      "words": [
+        {
+          "english": "passport",
+          "target": "여권",
+          "romanization": "yeogwon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w0-male.mp3"
+        },
+        {
+          "english": "boarding pass",
+          "target": "탑승권",
+          "romanization": "tapseung-gwon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w1-male.mp3"
+        },
+        {
+          "english": "luggage",
+          "target": "수하물",
+          "romanization": "suhamul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w2-male.mp3"
+        },
+        {
+          "english": "gate",
+          "target": "게이트",
+          "romanization": "geiteu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w3-male.mp3"
+        },
+        {
+          "english": "security",
+          "target": "보안 검색",
+          "romanization": "boan geomsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w4-male.mp3"
+        },
+        {
+          "english": "delay",
+          "target": "지연",
+          "romanization": "jiyeon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w5-male.mp3"
+        },
+        {
+          "english": "arrival",
+          "target": "도착",
+          "romanization": "dochag",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w6-male.mp3"
+        },
+        {
+          "english": "departure",
+          "target": "출발",
+          "romanization": "chulbal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w7-male.mp3"
+        },
+        {
+          "english": "window seat",
+          "target": "창가 자리",
+          "romanization": "changgaji",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w8-male.mp3"
+        },
+        {
+          "english": "customs",
+          "target": "세관",
+          "romanization": "segwan",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/w9-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Airport Words in Korean: passport, boarding pass, luggage, gate, security, delay….",
+      "topicSlug": "airport",
+      "publishedAt": "2026-08-28T20:41:54.428Z",
+      "explanationEn": "These airport words sound clear and are easy to say in Korean.",
+      "examples": [
+        {
+          "target": "여권을 보여 주세요.",
+          "english": "Please show your passport.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex0-male.mp3"
+        },
+        {
+          "target": "탑승권을 잃어버렸어요.",
+          "english": "I lost my boarding pass.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex1-male.mp3"
+        },
+        {
+          "target": "수하물을 찾으러 가요.",
+          "english": "Let's go get the luggage.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex2-male.mp3"
+        },
+        {
+          "target": "보안 검색을 통과해야 해요.",
+          "english": "You have to pass security check.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_19_airport__super_list__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_20_rainy-day__phrase_stack__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Rainy Day Phrases in Korean",
+      "slug": "rainy-day-phrases-in-korean",
+      "imagePath": "/global/pins/tr_202608_20_rainy-day__phrase_stack__ko.png",
+      "words": [
+        {
+          "english": "it's raining",
+          "target": "비가 와요",
+          "romanization": "biga wayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w0-male.mp3"
+        },
+        {
+          "english": "bring an umbrella",
+          "target": "우산을 가져와요",
+          "romanization": "usaneul gajyeowayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w1-male.mp3"
+        },
+        {
+          "english": "wear a raincoat",
+          "target": "우비를 입어요",
+          "romanization": "ubireul ibeoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w2-male.mp3"
+        },
+        {
+          "english": "watch out puddle",
+          "target": "물웅덩이 조심해요",
+          "romanization": "mulungdeongi josimhaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w3-male.mp3"
+        },
+        {
+          "english": "stay dry",
+          "target": "젖지 마세요",
+          "romanization": "jeotji maseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w4-male.mp3"
+        },
+        {
+          "english": "hot tea",
+          "target": "뜨거운 차",
+          "romanization": "tteugeoun cha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w5-male.mp3"
+        },
+        {
+          "english": "cancel picnic",
+          "target": "소풍을 취소해요",
+          "romanization": "sopungeul chwisohaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w6-male.mp3"
+        },
+        {
+          "english": "cozy indoors",
+          "target": "아늑한 실내",
+          "romanization": "aneukhan silnae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/w7-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Rainy Day Phrases in Korean: it's raining, bring an umbrella, wear a raincoat, watch out puddle, stay dry, hot tea….",
+      "topicSlug": "rainy-day",
+      "publishedAt": "2026-08-28T20:43:36.811Z",
+      "explanationEn": "These phrases describe rainy weather and what to do.",
+      "examples": [
+        {
+          "target": "비가 와요. 우산을 가져와요.",
+          "english": "It's raining. Bring an umbrella.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex0-male.mp3"
+        },
+        {
+          "target": "우비를 입어요. 물웅덩이 조심해요.",
+          "english": "Wear a raincoat. Watch out for puddles.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex1-male.mp3"
+        },
+        {
+          "target": "소풍을 취소해요. 아늑한 실내에 있어요.",
+          "english": "Cancel the picnic. Stay cozy indoors.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex2-male.mp3"
+        },
+        {
+          "target": "뜨거운 차를 마시고 젖지 마세요.",
+          "english": "Drink hot tea and stay dry.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_20_rainy-day__phrase_stack__ko/ex3-male.mp3"
         }
       ]
     },
