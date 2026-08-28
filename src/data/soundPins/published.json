@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-25T11:11:10.456Z",
+  "generatedAt": "2026-08-28T14:40:06.775Z",
   "site": "https://sound.eigopin.com",
   "teaches": "en",
   "audience": "en",
@@ -139,6 +139,49 @@
       "publishedAt": "2026-08-25T06:57:52.535Z"
     },
     {
+      "id": "en_other__i-disagree",
+      "titleEn": "Other ways to say I disagree",
+      "slug": "other-ways-to-say-i-disagree",
+      "imagePath": "/sound/pins/en_other__i-disagree.png",
+      "words": [
+        {
+          "english": "I see it differently"
+        },
+        {
+          "english": "I'm not so sure"
+        },
+        {
+          "english": "I have another take"
+        },
+        {
+          "english": "I'd push back on that"
+        },
+        {
+          "english": "Not necessarily"
+        },
+        {
+          "english": "I don't buy that"
+        },
+        {
+          "english": "I'm not convinced"
+        },
+        {
+          "english": "That's debatable"
+        },
+        {
+          "english": "I take a different view"
+        },
+        {
+          "english": "Respectfully, no"
+        }
+      ],
+      "description": "Hear “Other ways to say I disagree”: I see it differently, I'm not so sure, I have another take, I'd push back on that, Not necessarily, I don't buy that, I'm not convinced, That's debatable…. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "other_ways",
+      "topicSlug": "other-ways",
+      "publishedAt": "2026-08-28T14:37:54.740Z"
+    },
+    {
       "id": "en_other__im-sorry",
       "titleEn": "Other ways to say I'm sorry",
       "slug": "other-ways-to-say-i-m-sorry",
@@ -270,6 +313,49 @@
       "format": "other_ways",
       "topicSlug": "other-ways",
       "publishedAt": "2026-08-25T06:57:52.700Z"
+    },
+    {
+      "id": "en_other__thank-you",
+      "titleEn": "Other ways to say Thank you",
+      "slug": "other-ways-to-say-thank-you",
+      "imagePath": "/sound/pins/en_other__thank-you.png",
+      "words": [
+        {
+          "english": "Thanks a lot"
+        },
+        {
+          "english": "I appreciate it"
+        },
+        {
+          "english": "Thanks so much"
+        },
+        {
+          "english": "That's kind of you"
+        },
+        {
+          "english": "Much appreciated"
+        },
+        {
+          "english": "Thanks a bunch"
+        },
+        {
+          "english": "I'm grateful"
+        },
+        {
+          "english": "Cheers"
+        },
+        {
+          "english": "You shouldn't have"
+        },
+        {
+          "english": "That means a lot"
+        }
+      ],
+      "description": "Hear “Other ways to say Thank you”: Thanks a lot, I appreciate it, Thanks so much, That's kind of you, Much appreciated, Thanks a bunch, I'm grateful, Cheers…. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "other_ways",
+      "topicSlug": "other-ways",
+      "publishedAt": "2026-08-28T14:38:30.870Z"
     },
     {
       "id": "en_other__thats-great",
@@ -405,6 +491,152 @@
       "publishedAt": "2026-08-25T06:57:52.954Z"
     },
     {
+      "id": "en_slang__cap",
+      "titleEn": "Modern English Slang: Cap",
+      "slug": "modern-english-slang-cap",
+      "imagePath": "/sound/pins/en_slang__cap.png",
+      "words": [
+        {
+          "english": "Cap",
+          "gloss": "A lie or exaggeration. \"No cap\" means \"I'm not lying.\""
+        }
+      ],
+      "description": "Hear “Modern English Slang: Cap”: Cap. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "slang_card",
+      "topicSlug": "modern-slang",
+      "publishedAt": "2026-08-28T14:38:51.270Z"
+    },
+    {
+      "id": "en_slang__delulu",
+      "titleEn": "Modern English Slang: Delulu",
+      "slug": "modern-english-slang-delulu",
+      "imagePath": "/sound/pins/en_slang__delulu.png",
+      "words": [
+        {
+          "english": "Delulu",
+          "gloss": "Being unrealistically optimistic or in denial about a situation."
+        }
+      ],
+      "description": "Hear “Modern English Slang: Delulu”: Delulu. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "slang_card",
+      "topicSlug": "modern-slang",
+      "publishedAt": "2026-08-28T14:39:17.322Z"
+    },
+    {
+      "id": "en_slang__ghosting",
+      "titleEn": "Modern English Slang: Ghosting",
+      "slug": "modern-english-slang-ghosting",
+      "imagePath": "/sound/pins/en_slang__ghosting.png",
+      "words": [
+        {
+          "english": "Ghosting",
+          "gloss": "Suddenly cutting off all contact with someone without explanation.",
+          "ipa": "ɡoʊstɪŋ",
+          "ttsProvider": "edge",
+          "ttsFemale": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__ghosting/w01.us.female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__ghosting/w01.us.female.mp3",
+          "ttsMale": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__ghosting/w01.us.male.mp3",
+          "ttsFemaleUk": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__ghosting/w01.uk.female.mp3",
+          "ttsMaleUk": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__ghosting/w01.uk.male.mp3",
+          "ttsFemaleAu": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__ghosting/w01.au.female.mp3",
+          "ttsMaleAu": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__ghosting/w01.au.male.mp3"
+        }
+      ],
+      "description": "Hear “Modern English Slang: Ghosting”: Ghosting. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "slang_card",
+      "topicSlug": "modern-slang",
+      "publishedAt": "2026-08-28T01:57:49.274Z"
+    },
+    {
+      "id": "en_slang__phubbing",
+      "titleEn": "Modern English Slang: Phubbing",
+      "slug": "modern-english-slang-phubbing",
+      "imagePath": "/sound/pins/en_slang__phubbing.png",
+      "words": [
+        {
+          "english": "Phubbing",
+          "gloss": "Ignoring someone in a social setting by looking at your phone.",
+          "ipa": "ˈfʌbɪŋ",
+          "ttsProvider": "edge",
+          "ttsFemale": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__phubbing/w01.us.female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__phubbing/w01.us.female.mp3",
+          "ttsMale": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__phubbing/w01.us.male.mp3",
+          "ttsFemaleUk": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__phubbing/w01.uk.female.mp3",
+          "ttsMaleUk": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__phubbing/w01.uk.male.mp3",
+          "ttsFemaleAu": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__phubbing/w01.au.female.mp3",
+          "ttsMaleAu": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__phubbing/w01.au.male.mp3"
+        }
+      ],
+      "description": "Hear “Modern English Slang: Phubbing”: Phubbing. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "slang_card",
+      "topicSlug": "modern-slang",
+      "publishedAt": "2026-08-28T01:58:16.846Z"
+    },
+    {
+      "id": "en_slang__rizz",
+      "titleEn": "Modern English Slang: Rizz",
+      "slug": "modern-english-slang-rizz",
+      "imagePath": "/sound/pins/en_slang__rizz.png",
+      "words": [
+        {
+          "english": "Rizz",
+          "gloss": "Charisma or skill at charming / flirting with someone.",
+          "ipa": "rɪz",
+          "ttsProvider": "edge",
+          "ttsFemale": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__rizz/w01.us.female.mp3",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__rizz/w01.us.female.mp3",
+          "ttsMale": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__rizz/w01.us.male.mp3",
+          "ttsFemaleUk": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__rizz/w01.uk.female.mp3",
+          "ttsMaleUk": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__rizz/w01.uk.male.mp3",
+          "ttsFemaleAu": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__rizz/w01.au.female.mp3",
+          "ttsMaleAu": "https://file.kajakorean.com/grammar-x/sound-en-pin-tts/en_slang__rizz/w01.au.male.mp3"
+        }
+      ],
+      "description": "Hear “Modern English Slang: Rizz”: Rizz. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "slang_card",
+      "topicSlug": "modern-slang",
+      "publishedAt": "2026-08-28T01:58:44.723Z"
+    },
+    {
+      "id": "en_slang__sus",
+      "titleEn": "Modern English Slang: Sus",
+      "slug": "modern-english-slang-sus",
+      "imagePath": "/sound/pins/en_slang__sus.png",
+      "words": [
+        {
+          "english": "Sus",
+          "gloss": "Short for suspicious — something or someone that seems shady."
+        }
+      ],
+      "description": "Hear “Modern English Slang: Sus”: Sus. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "slang_card",
+      "topicSlug": "modern-slang",
+      "publishedAt": "2026-08-28T14:39:23.797Z"
+    },
+    {
+      "id": "en_upgrade__delighted",
+      "titleEn": "Very happy → Delighted",
+      "slug": "very-happy-delighted",
+      "imagePath": "/sound/pins/en_upgrade__delighted.png",
+      "words": [
+        {
+          "english": "Delighted",
+          "gloss": "Very happy"
+        }
+      ],
+      "description": "Hear “Very happy → Delighted”: Delighted. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "simple_upgrade",
+      "topicSlug": "upgrade-adjectives",
+      "publishedAt": "2026-08-28T14:39:41.871Z"
+    },
+    {
       "id": "en_upgrade__exhausted",
       "titleEn": "Very tired → Exhausted",
       "slug": "very-tired-exhausted",
@@ -457,6 +689,23 @@
       "publishedAt": "2026-08-25T06:57:53.221Z"
     },
     {
+      "id": "en_upgrade__furious",
+      "titleEn": "Very angry → Furious",
+      "slug": "very-angry-furious",
+      "imagePath": "/sound/pins/en_upgrade__furious.png",
+      "words": [
+        {
+          "english": "Furious",
+          "gloss": "Very angry"
+        }
+      ],
+      "description": "Hear “Very angry → Furious”: Furious. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "simple_upgrade",
+      "topicSlug": "upgrade-adjectives",
+      "publishedAt": "2026-08-28T14:40:00.627Z"
+    },
+    {
       "id": "en_upgrade__starving",
       "titleEn": "Very hungry → Starving",
       "slug": "very-hungry-starving",
@@ -481,6 +730,23 @@
       "format": "simple_upgrade",
       "topicSlug": "upgrade-adjectives",
       "publishedAt": "2026-08-25T06:57:53.339Z"
+    },
+    {
+      "id": "en_upgrade__terrified",
+      "titleEn": "Very scared → Terrified",
+      "slug": "very-scared-terrified",
+      "imagePath": "/sound/pins/en_upgrade__terrified.png",
+      "words": [
+        {
+          "english": "Terrified",
+          "gloss": "Very scared"
+        }
+      ],
+      "description": "Hear “Very scared → Terrified”: Terrified. Female and male voices on EigoSound.",
+      "partner": "preply",
+      "format": "simple_upgrade",
+      "topicSlug": "upgrade-adjectives",
+      "publishedAt": "2026-08-28T14:40:06.773Z"
     }
   ]
 }
