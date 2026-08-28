@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-27T02:38:35.134Z",
+  "generatedAt": "2026-08-28T14:20:37.727Z",
   "site": "https://eigopin.com",
   "audience": "ja",
   "teaches": "en",
@@ -2903,7 +2903,8 @@
           "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_grammar__present-perfect/ex5.au.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "pinterestPinnedAt": "2026-08-28T13:52:44.815Z"
     },
     {
       "id": "mid_grammar__since-for",
@@ -2996,7 +2997,8 @@
           "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_grammar__since-for/ex3.au.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "pinterestPinnedAt": "2026-08-28T14:14:57.130Z"
     },
     {
       "id": "mid_grammar__used-to",
@@ -3201,7 +3203,8 @@
           "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_idioms__meetings/ex4.au.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "pinterestPinnedAt": "2026-08-28T14:18:03.592Z"
     },
     {
       "id": "mid_idioms__workplace",
@@ -3539,7 +3542,8 @@
           "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_phrasal__look/ex4.au.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "pinterestPinnedAt": "2026-08-28T14:18:47.664Z"
     },
     {
       "id": "mid_phrasal__put",
@@ -3660,7 +3664,8 @@
           "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_phrasal__put/ex5.au.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "pinterestPinnedAt": "2026-08-28T14:19:57.886Z"
     },
     {
       "id": "mid_phrasal__turn",
@@ -3762,7 +3767,8 @@
           "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_phrasal__turn/ex4.au.mp3",
           "ttsProvider": "edge"
         }
-      ]
+      ],
+      "pinterestPinnedAt": "2026-08-28T14:20:37.724Z"
     },
     {
       "id": "mid_quiz__consent",
