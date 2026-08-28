@@ -22,14 +22,11 @@ import { mixedBundleQueue, summarizeBundleTiers, summarizeByFormat } from "../sr
 import { auditHanjaHub, catalogHanjaImageWords } from "../src/lib/vocabInfographic/hanjaHubAudit.ts";
 import {
   IMAGE_DEPLOY,
-  LOGO_PATH,
-  FOOTER_TAGLINE,
   preparePinGeneration,
-  compositeFooter,
+  compositeListenCtaOnly,
   generateWithRetry,
   isPromptContentError,
   resolveCharacterRefPath,
-  resolveFooterLogoPath,
   sizeForFormat,
   sleep,
   JJIBARA_APPEAR_RATE,
@@ -181,7 +178,6 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
     }
   }
 
-  const logoPath = resolveFooterLogoPath(ROOT, bundle.format);
   const t0 = Date.now();
 
   // Phrase square: illustration-only gen → SVG L1/Hangul/(rom) compose (no footer band)
@@ -319,7 +315,7 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
       });
       const rawPath = join(OUT, `${bundle.id}_raw.png`);
       writeFileSync(rawPath, composed);
-      const branded = await compositeFooter(composed, logoPath);
+      const branded = await compositeListenCtaOnly(composed);
       const outPath = join(OUT, `${bundle.id}.png`);
       writeFileSync(outPath, branded);
       const sec = ((Date.now() - t0) / 1000).toFixed(1);
@@ -388,13 +384,7 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
   }
 
   // Chico watermark only when jibara/cameo was actually rolled in, or full cute_cast capybara pin.
-  const chicoCredit =
-    includeJjibara === true ||
-    (bundle.format === "cute_cast" && cuteCast === "capybara");
-  const branded = await compositeFooter(composed, logoPath, {
-    cuteCast,
-    chicoCredit,
-  });
+  const branded = await compositeListenCtaOnly(composed);
   const outPath = join(OUT, `${bundle.id}.png`);
   writeFileSync(outPath, branded);
 

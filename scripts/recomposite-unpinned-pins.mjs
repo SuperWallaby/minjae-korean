@@ -16,7 +16,7 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
-import { compositeFooter, LOGO_PATH } from "./lib/vocab-infographic-gen.mjs";
+import { compositeListenCtaOnly } from "./lib/vocab-infographic-gen.mjs";
 import { composeGrammarSpotlightPin } from "./lib/grammar_spotlight_pin.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -24,7 +24,6 @@ const OUT = join(ROOT, ".tmp", "vocab-infographic-gen");
 const PINNED = join(OUT, "pinterest-pinned.json");
 const SCHEDULED = join(OUT, "vocab-x-scheduled.json");
 const PROGRESS = join(OUT, "progress.json");
-const LOGO = join(ROOT, LOGO_PATH);
 const LOG_DIR = join(OUT, "logs");
 
 function parseArgs(argv) {
@@ -175,7 +174,6 @@ async function main() {
   const { dryRun, onlyId, prefix, concurrency, all } = parseArgs(
     process.argv.slice(2),
   );
-  if (!existsSync(LOGO)) throw new Error(`logo missing: ${LOGO}`);
   mkdirSync(LOG_DIR, { recursive: true });
 
   const scheduled = loadJson(SCHEDULED, {});
@@ -207,7 +205,7 @@ async function main() {
   );
   console.log(`    chico credit: ${withChico.length} · no-credit: ${ids.length - withChico.length}`);
   console.log(`    grammar_spotlight recompose: ${grammarN}`);
-  console.log(`    logo=${LOGO}`);
+  console.log(`    footer=Listen on website (band)`);
   console.log(`    concurrency=${concurrency} dryRun=${dryRun}`);
 
   if (!ids.length) {
@@ -236,10 +234,7 @@ async function main() {
         return;
       }
       const base = await buildBasePng(id, flags);
-      const branded = await compositeFooter(base, LOGO, {
-        cuteCast: flags.cuteCast || undefined,
-        chicoCredit: chico,
-      });
+      const branded = await compositeListenCtaOnly(base);
       writeFileSync(outPath, branded);
       ok += 1;
       if ((idx + 1) % 25 === 0 || idx === 0 || idx === ids.length - 1) {

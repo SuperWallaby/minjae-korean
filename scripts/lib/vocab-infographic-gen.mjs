@@ -7,6 +7,25 @@ export const IMAGE_DEPLOY = "gpt-image-2";
 export const LOGO_PATH = "public/brand/logo-for-footer.png";
 export const FOOTER_TAGLINE = "Kaja Korean";
 
+export const PRONOUNCE_CTA_TEXT = "Listen on the website";
+/** Global pins: shorter CTA, no logo watermark. */
+export const GLOBAL_LISTEN_CTA_TEXT = "Listen on website";
+export const WATERMARK_OPACITY = 0.2;
+/** Compact vivid listen pill — shared by Korean footer + global CTA overlay. */
+export const LISTEN_CTA_FILL = "#3b82f6";
+export const LISTEN_CTA_INK = "#ffffff";
+export const LISTEN_CTA_RING = "rgba(255,255,255,0.3)";
+export const LISTEN_CTA_STAMP_FILL = "#2563eb";
+/** Global pins — deeper blue + bolder pill so it reads on busy plates. */
+export const GLOBAL_LISTEN_CTA_FILL = "#1d4ed8";
+export const GLOBAL_LISTEN_CTA_INK = "#ffffff";
+export const GLOBAL_LISTEN_CTA_RING = "rgba(255,255,255,0.48)";
+/** Eigopin / ja-site pin overlay — rose stamp (docs/design/eigochart.md). */
+export const EIGOPIN_LISTEN_CTA_FILL = "#c7524c";
+export const EIGOPIN_LISTEN_CTA_INK = "#fffaf8";
+export const EIGOPIN_LISTEN_CTA_RING = "rgba(255,255,255,0.22)";
+export const LISTEN_FOOTER_PAD_BG = { r: 248, g: 246, b: 242, alpha: 1 };
+
 /**
  * Brand capybara from capybara-style-ref.png / AVK brand-mascots sheet —
  * lo-fi KakaoTalk sticker doodle (NOT webtoon Jack, NOT polished brown photo-capybara).
@@ -157,6 +176,197 @@ export async function compositeFooter(basePng, logoPath) {
     .png()
     .toBuffer();
 }
+
+function listenCtaLayout(
+  w,
+  imageH,
+  ctaText,
+  { bandMode = false, corner = "bottom-left", compact = false, mid = false } = {},
+) {
+  // size tiers: compact (tiny overlay) < mid (slightly larger) < full
+  const tier = bandMode ? "band" : compact ? "compact" : mid ? "mid" : "full";
+  const padMul = { band: 0.012, compact: 0.012, mid: 0.016, full: 0.022 }[tier];
+  const fontMul = { band: 0.0175, compact: 0.014, mid: 0.019, full: 0.026 }[tier];
+  const fontMin = { band: 11, compact: 12, mid: 13, full: 14 }[tier];
+  const iconMul = { band: 1.15, compact: 1.12, mid: 1.2, full: 1.28 }[tier];
+  const charMul = { band: 0.5, compact: 0.48, mid: 0.49, full: 0.5 }[tier];
+  const padXMul = { band: 0.48, compact: 0.5, mid: 0.56, full: 0.62 }[tier];
+  const padYMul = { band: 0.24, compact: 0.32, mid: 0.36, full: 0.4 }[tier];
+  const pad = Math.max(
+    tier === "full" ? 12 : 8,
+    Math.round(Math.min(w, imageH) * padMul),
+  );
+  const fontSize = Math.max(fontMin, Math.round(imageH * fontMul));
+  const iconSize = Math.round(fontSize * iconMul);
+  const cjk = /[\u3040-\u30ff\u4e00-\u9fff]/.test(ctaText);
+  const textW = Math.round(ctaText.length * fontSize * (cjk ? 1.05 : charMul));
+  const pillPadX = Math.round(fontSize * padXMul);
+  const pillPadY = Math.round(fontSize * padYMul);
+  const pillW = pillPadX * 2 + iconSize + Math.round(fontSize * 0.3) + textW;
+  const pillH = pillPadY * 2 + fontSize;
+  const bandPadY = bandMode ? Math.max(5, Math.round(pad * 0.55)) : pad;
+  const bandHeight = bandMode ? pillH + bandPadY * 2 : 0;
+
+  let pillLeft;
+  let pillTop;
+  if (corner === "top-right") {
+    pillLeft = Math.max(pad, w - pad - pillW);
+    pillTop = pad;
+  } else if (corner === "top-left") {
+    pillLeft = pad;
+    pillTop = pad;
+  } else if (corner === "bottom-right") {
+    pillLeft = Math.max(pad, w - pad - pillW);
+    pillTop = bandMode ? imageH + bandPadY : imageH - pad - pillH;
+  } else {
+    pillLeft = pad;
+    pillTop = bandMode ? imageH + bandPadY : imageH - pad - pillH;
+  }
+
+  const iconTop = pillTop + pillPadY + Math.round((fontSize - iconSize) / 2);
+  const iconLeft = pillLeft + pillPadX;
+  const textX = iconLeft + iconSize + Math.round(fontSize * 0.28);
+  const textY = pillTop + pillPadY + fontSize * 0.85;
+  const stroke = Math.max(1.2, iconSize * 0.07);
+  return {
+    pad,
+    bandPadY,
+    fontSize,
+    iconSize,
+    pillW,
+    pillH,
+    pillLeft,
+    pillTop,
+    iconTop,
+    iconLeft,
+    textX,
+    textY,
+    stroke,
+    rx: Math.round(pillH / 2),
+    bandHeight,
+    imageH,
+  };
+}
+
+async function extendWithFooterBand(basePng, bandHeight) {
+  if (!bandHeight) return basePng;
+  return sharp(basePng)
+    .extend({ bottom: bandHeight, background: LISTEN_FOOTER_PAD_BG })
+    .png()
+    .toBuffer();
+}
+
+function listenCtaPillSvg(ctaText, layout, { fill, ink, ring, ringW = 2, weight = "700", shadow = false }) {
+  const safeText = ctaText.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const {
+    fontSize,
+    iconSize,
+    pillW,
+    pillH,
+    pillLeft,
+    pillTop,
+    iconTop,
+    iconLeft,
+    textX,
+    textY,
+    stroke,
+    rx,
+  } = layout;
+  return `
+  ${
+    shadow
+      ? `<defs><filter id="ctaShadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3d3936" flood-opacity="0.35"/>
+    </filter></defs>`
+      : ""
+  }
+  <rect x="${pillLeft}" y="${pillTop}" width="${pillW}" height="${pillH}" rx="${rx}"
+    fill="${fill}" stroke="${ring}" stroke-width="${ringW}" ${shadow ? 'filter="url(#ctaShadow)"' : ""}/>
+  <g transform="translate(${iconLeft}, ${iconTop})" fill="${ink}" stroke="none">
+    <path d="M${iconSize * 0.12} ${iconSize * 0.32} H${iconSize * 0.34} L${iconSize * 0.62} ${iconSize * 0.14} V${iconSize * 0.86} L${iconSize * 0.34} ${iconSize * 0.68} H${iconSize * 0.12} Z"/>
+  </g>
+  <g transform="translate(${iconLeft}, ${iconTop})" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round">
+    <path d="M${iconSize * 0.72} ${iconSize * 0.34} a${iconSize * 0.16} ${iconSize * 0.16} 0 0 1 0 ${iconSize * 0.32}"/>
+    <path d="M${iconSize * 0.82} ${iconSize * 0.24} a${iconSize * 0.28} ${iconSize * 0.28} 0 0 1 0 ${iconSize * 0.52}"/>
+  </g>
+  <text x="${textX}" y="${textY}"
+    font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif"
+    font-size="${fontSize}" font-weight="${weight}" fill="${ink}">${safeText}</text>`;
+}
+
+/**
+ * Brand overlay: bottom-left "Listen on the website" pill, bottom-right logo watermark.
+ * @param {Buffer} basePng
+ * @param {string} logoPath
+ * @param {{ cuteCast?: string, chicoCredit?: boolean }=} _opts
+ */
+
+export async function compositeListenCtaOnly(basePng, opts = {}) {
+  const meta = await sharp(basePng).metadata();
+  const w = meta.width ?? 1024;
+  const h = meta.height ?? 1024;
+  const ctaText = String(opts.ctaText || GLOBAL_LISTEN_CTA_TEXT).trim();
+  const variant = opts.variant || "global";
+  const corner = String(opts.corner || "bottom-left").trim() || "bottom-left";
+  const overlay =
+    opts.overlay === true ||
+    variant === "eigopin" ||
+    corner === "top-right" ||
+    corner === "top-left";
+  const compact =
+    opts.compact === true ||
+    ((corner === "top-right" || corner === "top-left") && opts.mid !== true && opts.compact !== false);
+  const mid = opts.mid === true;
+  const layout = listenCtaLayout(w, h, ctaText, {
+    bandMode: !overlay,
+    corner,
+    compact: mid ? false : compact,
+    mid,
+  });
+  let fill = LISTEN_CTA_FILL;
+  let ink = LISTEN_CTA_INK;
+  let ring = LISTEN_CTA_RING;
+  let ringW = 1;
+  let weight = "600";
+  let shadow = false;
+  if (variant === "eigopin") {
+    fill = EIGOPIN_LISTEN_CTA_FILL;
+    ink = EIGOPIN_LISTEN_CTA_INK;
+    ring = EIGOPIN_LISTEN_CTA_RING;
+  } else if (variant === "stamp") {
+    fill = LISTEN_CTA_STAMP_FILL;
+  } else if (variant === "global") {
+    fill = GLOBAL_LISTEN_CTA_FILL;
+    ink = GLOBAL_LISTEN_CTA_INK;
+    ring = GLOBAL_LISTEN_CTA_RING;
+    ringW = 2;
+    weight = "700";
+    shadow = true;
+  }
+  if (opts.fill) fill = opts.fill;
+  if (opts.ink) ink = opts.ink;
+  if (opts.ring) ring = opts.ring;
+  const canvasH = overlay ? h : h + layout.bandHeight;
+  const base = overlay ? basePng : await extendWithFooterBand(basePng, layout.bandHeight);
+  const overlaySvg = `
+<svg width="${w}" height="${canvasH}" xmlns="http://www.w3.org/2000/svg">
+  ${listenCtaPillSvg(ctaText, layout, {
+    fill,
+    ink,
+    ring,
+    ringW,
+    weight,
+    shadow,
+  })}
+</svg>`;
+
+  return sharp(base)
+    .composite([{ input: Buffer.from(overlaySvg), top: 0, left: 0 }])
+    .png()
+    .toBuffer();
+}
+
+
 
 export function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
