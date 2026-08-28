@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
+import { grammarSpotlightIllustrationPrompt } from "./grammar_spotlight_pin.mjs";
 
 export const IMAGE_DEPLOY = "gpt-image-2";
 export const LOGO_PATH = "public/brand/logo-for-footer.png";
@@ -597,6 +598,18 @@ function formatQuizOptions(quiz) {
 export function buildPrompt(bundle) {
   const title = bundle.title.replace(/ in Korean$/i, "").trim();
   const upperTitle = title.toUpperCase();
+
+  // grammar_spotlight = ONE simple scene (no text). Sentences are SVG-composited later.
+  // Must NOT fall through to the default tall-list / table infographic prompt.
+  if (bundle.format === "grammar_spotlight" && bundle.grammarSpotlight) {
+    const scene =
+      String(bundle.grammarSpotlight.scene || "").trim() ||
+      `cute simple doodle scene for "${title}" — one subject only`;
+    const styleOnly = `${CAPYBARA_ART_STYLE}
+Soft cream / warm beige (#FBF3E6) background. Cute flat doodle sticker, wobbly outlines, soft fills.
+When a character is needed, use the beige doodle CAPYBARA (optional blue-hat sidekick) — no other mascot.`;
+    return grammarSpotlightIllustrationPrompt(scene, styleOnly);
+  }
 
   if (bundle.format === "compound_word" && bundle.compoundWord) {
     const cw = bundle.compoundWord;

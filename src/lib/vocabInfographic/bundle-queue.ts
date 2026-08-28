@@ -73,6 +73,8 @@ export function formatRotatedQueue(
     "topik_upgrade",
     "similar_split",
     "phrase_stack",
+    "phrase_square",
+    "idiom_card",
     "concept_rows",
     "quiz_comment",
     "super_list",

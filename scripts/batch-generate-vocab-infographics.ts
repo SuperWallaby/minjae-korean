@@ -148,15 +148,33 @@ function buildQueue(priorityFilter: string | null, progress: Progress) {
     formatIdx >= 0 && process.argv[formatIdx + 1]
       ? process.argv[formatIdx + 1].trim()
       : null;
+  const excludeIdx = process.argv.indexOf("--exclude-formats");
+  const excludeFormats = new Set(
+    (excludeIdx >= 0 && process.argv[excludeIdx + 1]
+      ? process.argv[excludeIdx + 1]
+      : ""
+    )
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
+  const limitIdx = process.argv.indexOf("--limit");
+  const limit =
+    limitIdx >= 0 && process.argv[limitIdx + 1]
+      ? Math.max(0, parseInt(process.argv[limitIdx + 1], 10) || 0)
+      : 0;
+
   let queue = ALL_VOCAB_BUNDLES.filter((b) => !DROP_IDS.has(b.id));
   if (onlyId) queue = queue.filter((b) => b.id === onlyId);
   if (onlyIds) queue = queue.filter((b) => onlyIds!.has(b.id));
   if (formatFilter) queue = queue.filter((b) => b.format === formatFilter);
+  if (excludeFormats.size) queue = queue.filter((b) => !excludeFormats.has(b.format));
   if (priorityFilter) queue = queue.filter((b) => b.priority === priorityFilter);
   queue = queue.filter((b) => !isDone(b.id) && !progress.skipped?.[b.id]);
   if (!catalogOrder && !onlyId && queue.length > 1) {
     queue = mixedBundleQueue(queue);
   }
+  if (limit > 0 && queue.length > limit) queue = queue.slice(0, limit);
   return queue;
 }
 
@@ -341,28 +359,43 @@ async function processBundle(bundle: (typeof ALL_VOCAB_BUNDLES)[0], progress: Pr
   const size = sizeForFormat(bundle.format);
   const { prompt, includeJjibara, cuteCast } = await preparePinGeneration(bundle, ROOT);
 
-  const raw = await generateWithRetry(
-    {
-      prompt,
-      size,
-      root: ROOT,
-      format: bundle.format,
-      cuteCast,
-      includeJjibara,
-    },
-    {
-      onRetry: ({ attempt, wait, error }) => {
-        if (isPromptContentError(error)) throw error;
-        log(`  ⏳ retry ${bundle.id} #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`);
-        progress.failed[bundle.id] = {
-          at: new Date().toISOString(),
-          error: error.message,
-          attempts: attempt,
-        };
-        saveProgress(progress);
+  // grammar_spotlight needs a bare scene — style-ref edits bias toward full lesson posters.
+  const prevUseRef =
+    bundle.format === "grammar_spotlight" ? process.env.VOCAB_IMAGE_USE_REF : undefined;
+  if (bundle.format === "grammar_spotlight") {
+    process.env.VOCAB_IMAGE_USE_REF = "0";
+  }
+
+  let raw;
+  try {
+    raw = await generateWithRetry(
+      {
+        prompt,
+        size,
+        root: ROOT,
+        format: bundle.format,
+        cuteCast,
+        includeJjibara,
       },
-    },
-  );
+      {
+        onRetry: ({ attempt, wait, error }) => {
+          if (isPromptContentError(error)) throw error;
+          log(`  ⏳ retry ${bundle.id} #${attempt} in ${Math.round(wait / 1000)}s — ${error.message}`);
+          progress.failed[bundle.id] = {
+            at: new Date().toISOString(),
+            error: error.message,
+            attempts: attempt,
+          };
+          saveProgress(progress);
+        },
+      },
+    );
+  } finally {
+    if (bundle.format === "grammar_spotlight") {
+      if (prevUseRef === undefined) delete process.env.VOCAB_IMAGE_USE_REF;
+      else process.env.VOCAB_IMAGE_USE_REF = prevUseRef;
+    }
+  }
 
   const rawPath = join(OUT, `${bundle.id}_raw.png`);
   writeFileSync(rawPath, raw);
@@ -453,6 +486,11 @@ async function runBatch() {
     const idx = process.argv.indexOf("--priority");
     return idx >= 0 && process.argv[idx + 1] ? process.argv[idx + 1] : null;
   })();
+  const limitIdx = process.argv.indexOf("--limit");
+  const runLimit =
+    limitIdx >= 0 && process.argv[limitIdx + 1]
+      ? Math.max(0, parseInt(process.argv[limitIdx + 1], 10) || 0)
+      : 0;
 
   mkdirSync(OUT, { recursive: true });
   // Catalog import already auto-asserts hanja allowlist; log for operators.
@@ -472,6 +510,7 @@ async function runBatch() {
       ? `style/character ref: ${styleRef} (images/edits + high fidelity)`
       : "⚠ no capybara style ref found — text-only generations",
   );
+  if (runLimit > 0) log(`run limit: ${runLimit} (single pass then exit)`);
 
   while (true) {
     const queue = buildQueue(priorityFilter, progress);
@@ -528,6 +567,11 @@ async function runBatch() {
     const remaining = buildQueue(priorityFilter, progress).length;
     log(`Pass #${progress.passes} done — ${remaining} still remaining`);
     if (remaining === 0) break;
+    // --limit: one capped pass then stop (do not keep draining the catalog).
+    if (runLimit > 0) {
+      log(`--limit ${runLimit} pass finished — exiting`);
+      break;
+    }
     log("Starting next pass in 15s…");
     await sleep(15_000);
   }

@@ -125,9 +125,16 @@ export async function composeGrammarSpotlightPin(opts) {
 export function grammarSpotlightIllustrationPrompt(scene, styleBase) {
   return `${styleBase}
 
-FORMAT: Soft cream / warm beige (#FBF3E6) portrait illustration ONLY — no Hangul, no English, no logos, no watermarks.
-Subject: ${scene}
-Style: cute flat doodle sticker, wobbly outlines, soft fills. Subject fills the middle of the frame (not tiny in a corner).
-Leave a modest clean cream margin around the subject — do NOT leave a huge empty bottom half.
-HARD BAN: any readable words, letters, UI chrome, brand marks. Tiny zzz / sparkles OK if part of the scene.`;
+FORMAT: ONE simple scene illustration ONLY (portrait). Soft cream / warm beige (#FBF3E6).
+This is the MIDDLE art for a grammar flashcard — NOT a full lesson poster.
+
+Subject (exactly this scene): ${scene}
+
+RULES:
+- One clear subject / moment. Flat doodle sticker, wobbly outlines, soft fills.
+- Subject fills the middle of the frame (not tiny in a corner).
+- Modest clean cream margin around the subject — do NOT leave a huge empty bottom half.
+- NO tables, NO columns, NO numbered rows, NO title headers, NO explanation boxes.
+- NO Hangul, NO English, NO romanization, NO labels, NO logos, NO watermarks, NO UI chrome.
+- Tiny zzz / sparkles / hearts OK only if they are part of the scene (not text).`;
 }
