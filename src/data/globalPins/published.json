@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-28T18:54:07.091Z",
+  "generatedAt": "2026-08-28T19:38:23.706Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -52475,6 +52475,1811 @@
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/14_greetings__ko/ex3.mp3",
           "ttsProvider": "edge",
           "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/14_greetings__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_01_nail-colors__super_list__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Nail Colors in Korean",
+      "slug": "nail-colors-in-korean",
+      "imagePath": "/global/pins/tr_202608_01_nail-colors__super_list__ko.png",
+      "words": [
+        {
+          "english": "red",
+          "target": "빨간색",
+          "romanization": "ppalgansaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w0-male.mp3"
+        },
+        {
+          "english": "pink",
+          "target": "분홍색",
+          "romanization": "bunhongsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w1-male.mp3"
+        },
+        {
+          "english": "nude",
+          "target": "누드색",
+          "romanization": "nudeusaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w2-male.mp3"
+        },
+        {
+          "english": "white",
+          "target": "하얀색",
+          "romanization": "hayansaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w3-male.mp3"
+        },
+        {
+          "english": "black",
+          "target": "검은색",
+          "romanization": "geomeunsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w4-male.mp3"
+        },
+        {
+          "english": "blue",
+          "target": "파란색",
+          "romanization": "paransaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w5-male.mp3"
+        },
+        {
+          "english": "green",
+          "target": "초록색",
+          "romanization": "choroksaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w6-male.mp3"
+        },
+        {
+          "english": "purple",
+          "target": "보라색",
+          "romanization": "borasaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w7-male.mp3"
+        },
+        {
+          "english": "gold",
+          "target": "금색",
+          "romanization": "geumsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w8-male.mp3"
+        },
+        {
+          "english": "silver",
+          "target": "은색",
+          "romanization": "eunsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/w9-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Nail Colors in Korean: red, pink, nude, white, black, blue….",
+      "topicSlug": "nail-colors",
+      "publishedAt": "2026-08-28T18:57:01.012Z",
+      "explanationEn": "These words name colors and end with -색 to say 'color' in Korean.",
+      "examples": [
+        {
+          "target": "내 손톱은 빨간색이에요.",
+          "english": "My nails are red.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex0-male.mp3"
+        },
+        {
+          "target": "분홍색과 하얀색을 좋아해요.",
+          "english": "I like pink and white.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex1-male.mp3"
+        },
+        {
+          "target": "검은색 네일을 해 봤어요.",
+          "english": "I tried black nails.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex2-male.mp3"
+        },
+        {
+          "target": "금색 반지가 예뻐요.",
+          "english": "The gold ring is pretty.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_01_nail-colors__super_list__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_02_school-bag__grid_cluster__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "School Bag Words in Korean",
+      "slug": "school-bag-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_02_school-bag__grid_cluster__ko.png",
+      "words": [
+        {
+          "english": "backpack",
+          "target": "배낭",
+          "romanization": "baenang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w0-male.mp3"
+        },
+        {
+          "english": "pencil",
+          "target": "연필",
+          "romanization": "yeonpil",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w1-male.mp3"
+        },
+        {
+          "english": "notebook",
+          "target": "공책",
+          "romanization": "gongchaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w2-male.mp3"
+        },
+        {
+          "english": "eraser",
+          "target": "지우개",
+          "romanization": "jiugae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w3-male.mp3"
+        },
+        {
+          "english": "ruler",
+          "target": "자",
+          "romanization": "ja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w4-male.mp3"
+        },
+        {
+          "english": "scissors",
+          "target": "가위",
+          "romanization": "gawi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w5-male.mp3"
+        },
+        {
+          "english": "glue",
+          "target": "풀",
+          "romanization": "pul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w6-male.mp3"
+        },
+        {
+          "english": "lunchbox",
+          "target": "도시락",
+          "romanization": "dosirak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w7-male.mp3"
+        },
+        {
+          "english": "water bottle",
+          "target": "물병",
+          "romanization": "mulbyeong",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/w8-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "School Bag Words in Korean: backpack, pencil, notebook, eraser, ruler, scissors….",
+      "topicSlug": "school-bag",
+      "publishedAt": "2026-08-28T18:59:03.442Z",
+      "explanationEn": "These words are common school items you say clearly in Korean.",
+      "examples": [
+        {
+          "target": "나는 배낭에 공책과 연필을 넣어요.",
+          "english": "I put a notebook and pencil in my backpack.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex0-male.mp3"
+        },
+        {
+          "target": "지우개와 자를 책상 위에 놓으세요.",
+          "english": "Please put the eraser and ruler on the desk.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex1-male.mp3"
+        },
+        {
+          "target": "가위와 풀을 사용해서 만들기를 해요.",
+          "english": "I use scissors and glue to do crafts.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex2-male.mp3"
+        },
+        {
+          "target": "도시락과 물병을 학교에 가져가요.",
+          "english": "I bring a lunchbox and water bottle to school.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_02_school-bag__grid_cluster__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_03_fall-activities__phrase_stack__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Fall Activities in Korean",
+      "slug": "fall-activities-in-korean",
+      "imagePath": "/global/pins/tr_202608_03_fall-activities__phrase_stack__ko.png",
+      "words": [
+        {
+          "english": "pick apples",
+          "target": "사과를 따다",
+          "romanization": "sagwareul ttada",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w0-male.mp3"
+        },
+        {
+          "english": "drink hot cocoa",
+          "target": "핫코코아를 마시다",
+          "romanization": "hatkokoreul masida",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w1-male.mp3"
+        },
+        {
+          "english": "wear a sweater",
+          "target": "스웨터를 입다",
+          "romanization": "seuweteoreul ipda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w2-male.mp3"
+        },
+        {
+          "english": "walk in leaves",
+          "target": "낙엽 위를 걷다",
+          "romanization": "nakyeop wireul geotda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w3-male.mp3"
+        },
+        {
+          "english": "carve a pumpkin",
+          "target": "호박을 조각하다",
+          "romanization": "hobakeul jogakhada",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w4-male.mp3"
+        },
+        {
+          "english": "watch the sunset",
+          "target": "노을을 보다",
+          "romanization": "noeureul boda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w5-male.mp3"
+        },
+        {
+          "english": "bake cookies",
+          "target": "쿠키를 굽다",
+          "romanization": "kukireul gupda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w6-male.mp3"
+        },
+        {
+          "english": "light a candle",
+          "target": "촛불을 켜다",
+          "romanization": "chotbureul kyeoda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/w7-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Fall Activities in Korean: pick apples, drink hot cocoa, wear a sweater, walk in leaves, carve a pumpkin, watch the sunset….",
+      "topicSlug": "fall-activities",
+      "publishedAt": "2026-08-28T19:00:44.230Z",
+      "explanationEn": "These words describe common fall activities you can say simply.",
+      "examples": [
+        {
+          "target": "나는 사과를 따러 갔어요.",
+          "english": "I went to pick apples.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex0-male.mp3"
+        },
+        {
+          "target": "저녁에 핫코코아를 마셔요.",
+          "english": "I drink hot cocoa in the evening.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex1-male.mp3"
+        },
+        {
+          "target": "가을에는 스웨터를 입어요.",
+          "english": "In fall, I wear a sweater.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex2-male.mp3"
+        },
+        {
+          "target": "낙엽 위를 걸으면서 노을을 봐요.",
+          "english": "I walk in leaves and watch the sunset.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_03_fall-activities__phrase_stack__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_04_halloween__cute_cast__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Halloween Words in Korean",
+      "slug": "halloween-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_04_halloween__cute_cast__ko.png",
+      "words": [
+        {
+          "english": "pumpkin",
+          "target": "호박",
+          "romanization": "hobak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w0-male.mp3"
+        },
+        {
+          "english": "candy",
+          "target": "사탕",
+          "romanization": "satang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w1-male.mp3"
+        },
+        {
+          "english": "costume",
+          "target": "의상",
+          "romanization": "uisang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w2-male.mp3"
+        },
+        {
+          "english": "ghost",
+          "target": "유령",
+          "romanization": "yuryeong",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w3-male.mp3"
+        },
+        {
+          "english": "witch",
+          "target": "마녀",
+          "romanization": "manyeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w4-male.mp3"
+        },
+        {
+          "english": "spider",
+          "target": "거미",
+          "romanization": "geomi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w5-male.mp3"
+        },
+        {
+          "english": "bat",
+          "target": "박쥐",
+          "romanization": "bakjwi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w6-male.mp3"
+        },
+        {
+          "english": "skeleton",
+          "target": "해골",
+          "romanization": "haegol",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w7-male.mp3"
+        },
+        {
+          "english": "trick or treat",
+          "target": "과자나 장난",
+          "romanization": "gwajana jangnan",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/w8-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Halloween Words in Korean: pumpkin, candy, costume, ghost, witch, spider….",
+      "topicSlug": "halloween",
+      "publishedAt": "2026-08-28T19:02:28.224Z",
+      "explanationEn": "These Halloween words sound soft and clear in Korean.",
+      "examples": [
+        {
+          "target": "호박이 크고 주황색이에요.",
+          "english": "The pumpkin is big and orange.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex0-male.mp3"
+        },
+        {
+          "target": "사탕을 주세요, 과자나 장난이에요.",
+          "english": "Please give me candy, it's trick or treat.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex1-male.mp3"
+        },
+        {
+          "target": "유령과 마녀가 무서워요.",
+          "english": "The ghost and witch are scary.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex2-male.mp3"
+        },
+        {
+          "target": "거미와 박쥐가 밤에 나와요.",
+          "english": "Spiders and bats come out at night.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_04_halloween__cute_cast__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_05_hot-cold-drinks__antonym_split__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Hot vs Cold Drinks in Korean",
+      "slug": "hot-vs-cold-drinks-in-korean",
+      "imagePath": "/global/pins/tr_202608_05_hot-cold-drinks__antonym_split__ko.png",
+      "words": [
+        {
+          "english": "hot coffee",
+          "target": "뜨거운 커피",
+          "romanization": "tteugeoun keopi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/w0-male.mp3"
+        },
+        {
+          "english": "iced coffee",
+          "target": "아이스 커피",
+          "romanization": "aiseu keopi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/w1-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Hot vs Cold Drinks in Korean: hot coffee, iced coffee.",
+      "topicSlug": "hot-cold-drinks",
+      "publishedAt": "2026-08-28T19:04:05.366Z",
+      "explanationEn": "Hot and cold drinks sound different with 뜨거운 and 아이스.",
+      "examples": [
+        {
+          "target": "저는 뜨거운 커피를 좋아해요.",
+          "english": "I like hot coffee.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex0-male.mp3"
+        },
+        {
+          "target": "아이스 커피를 마시고 싶어요.",
+          "english": "I want to drink iced coffee.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex1-male.mp3"
+        },
+        {
+          "target": "뜨거운 커피가 너무 뜨거워요.",
+          "english": "The hot coffee is very hot.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex2-male.mp3"
+        },
+        {
+          "target": "아이스 커피는 시원해요.",
+          "english": "Iced coffee is cool.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_05_hot-cold-drinks__antonym_split__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_06_thanksgiving-foods__super_list__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Thanksgiving Foods in Korean",
+      "slug": "thanksgiving-foods-in-korean",
+      "imagePath": "/global/pins/tr_202608_06_thanksgiving-foods__super_list__ko.png",
+      "words": [
+        {
+          "english": "turkey",
+          "target": "칠면조",
+          "romanization": "chil-myeon-jo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w0-male.mp3"
+        },
+        {
+          "english": "gravy",
+          "target": "그레이비 소스",
+          "romanization": "geureibi soseu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w1-male.mp3"
+        },
+        {
+          "english": "mashed potatoes",
+          "target": "으깬 감자",
+          "romanization": "eukkkaen gamja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w2-male.mp3"
+        },
+        {
+          "english": "stuffing",
+          "target": "속 재료",
+          "romanization": "sok jaeryo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w3-male.mp3"
+        },
+        {
+          "english": "cranberry",
+          "target": "크랜베리",
+          "romanization": "keuraenberi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w4-male.mp3"
+        },
+        {
+          "english": "pie",
+          "target": "파이",
+          "romanization": "pai",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w5-male.mp3"
+        },
+        {
+          "english": "corn",
+          "target": "옥수수",
+          "romanization": "oksusu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w6-male.mp3"
+        },
+        {
+          "english": "rolls",
+          "target": "롤빵",
+          "romanization": "roll-ppang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w7-male.mp3"
+        },
+        {
+          "english": "salad",
+          "target": "샐러드",
+          "romanization": "saelleodeu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w8-male.mp3"
+        },
+        {
+          "english": "sweet potato",
+          "target": "고구마",
+          "romanization": "goguma",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/w9-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Thanksgiving Foods in Korean: turkey, gravy, mashed potatoes, stuffing, cranberry, pie….",
+      "topicSlug": "thanksgiving-foods",
+      "publishedAt": "2026-08-28T19:05:48.367Z",
+      "explanationEn": "These Korean words sound soft and natural for Thanksgiving foods.",
+      "examples": [
+        {
+          "target": "칠면조에 그레이비 소스를 넣어요.",
+          "english": "Put gravy on the turkey.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex0-male.mp3"
+        },
+        {
+          "target": "으깬 감자와 고구마를 먹어요.",
+          "english": "I eat mashed potatoes and sweet potatoes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex1-male.mp3"
+        },
+        {
+          "target": "옥수수와 샐러드를 준비했어요.",
+          "english": "I prepared corn and salad.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex2-male.mp3"
+        },
+        {
+          "target": "파이와 롤빵이 맛있어요.",
+          "english": "The pie and rolls are delicious.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_06_thanksgiving-foods__super_list__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_07_christmas__grid_cluster__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Christmas Words in Korean",
+      "slug": "christmas-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_07_christmas__grid_cluster__ko.png",
+      "words": [
+        {
+          "english": "tree",
+          "target": "나무",
+          "romanization": "namu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w0-male.mp3"
+        },
+        {
+          "english": "gift",
+          "target": "선물",
+          "romanization": "seonmul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w1-male.mp3"
+        },
+        {
+          "english": "snow",
+          "target": "눈",
+          "romanization": "nun",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w2-male.mp3"
+        },
+        {
+          "english": "santa",
+          "target": "산타",
+          "romanization": "santa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w3-male.mp3"
+        },
+        {
+          "english": "stocking",
+          "target": "스타킹",
+          "romanization": "seutaking",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w4-male.mp3"
+        },
+        {
+          "english": "lights",
+          "target": "전구",
+          "romanization": "jeongu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w5-male.mp3"
+        },
+        {
+          "english": "ornament",
+          "target": "장식",
+          "romanization": "jangsik",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w6-male.mp3"
+        },
+        {
+          "english": "cookie",
+          "target": "쿠키",
+          "romanization": "kuki",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w7-male.mp3"
+        },
+        {
+          "english": "bell",
+          "target": "종",
+          "romanization": "jong",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/w8-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Christmas Words in Korean: tree, gift, snow, santa, stocking, lights….",
+      "topicSlug": "christmas",
+      "publishedAt": "2026-08-28T19:08:57.433Z",
+      "explanationEn": "These Christmas words have soft and clear sounds in Korean.",
+      "examples": [
+        {
+          "target": "산타가 선물을 가져왔어요.",
+          "english": "Santa brought gifts.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex0-male.mp3"
+        },
+        {
+          "target": "나무에 전구와 장식을 달아요.",
+          "english": "We hang lights and ornaments on the tree.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex1-male.mp3"
+        },
+        {
+          "target": "눈이 많이 와서 쿠키를 먹었어요.",
+          "english": "It snowed a lot, so I ate cookies.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex2-male.mp3"
+        },
+        {
+          "target": "스타킹에 종을 달았어요.",
+          "english": "I put a bell on the stocking.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_07_christmas__grid_cluster__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_08_cafe-drinks__phrase_stack__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Cafe Order Phrases in Korean",
+      "slug": "cafe-order-phrases-in-korean",
+      "imagePath": "/global/pins/tr_202608_08_cafe-drinks__phrase_stack__ko.png",
+      "words": [
+        {
+          "english": "latte please",
+          "target": "라떼 주세요",
+          "romanization": "latte juseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w0-male.mp3"
+        },
+        {
+          "english": "iced americano",
+          "target": "아이스 아메리카노",
+          "romanization": "aiseu amerikano",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w1-male.mp3"
+        },
+        {
+          "english": "with oat milk",
+          "target": "귀리 우유로",
+          "romanization": "gwiri uyu-ro",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w2-male.mp3"
+        },
+        {
+          "english": "less sugar",
+          "target": "설탕 적게",
+          "romanization": "seoltang jeokge",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w3-male.mp3"
+        },
+        {
+          "english": "to go",
+          "target": "포장해 주세요",
+          "romanization": "pojanghae juseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w4-male.mp3"
+        },
+        {
+          "english": "for here",
+          "target": "여기서 마실게요",
+          "romanization": "yeogiseo masilgeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w5-male.mp3"
+        },
+        {
+          "english": "extra shot",
+          "target": "샷 추가",
+          "romanization": "syat chuga",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w6-male.mp3"
+        },
+        {
+          "english": "whipped cream",
+          "target": "휘핑 크림",
+          "romanization": "hwiping keurim",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/w7-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Cafe Order Phrases in Korean: latte please, iced americano, with oat milk, less sugar, to go, for here….",
+      "topicSlug": "cafe-drinks",
+      "publishedAt": "2026-08-28T19:11:08.740Z",
+      "explanationEn": "These phrases are polite and clear for ordering drinks in cafes.",
+      "examples": [
+        {
+          "target": "아이스 아메리카노 설탕 적게 주세요.",
+          "english": "Please give me an iced americano with less sugar.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex0-male.mp3"
+        },
+        {
+          "target": "라떼 귀리 우유로 포장해 주세요.",
+          "english": "Please pack a latte with oat milk to go.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex1-male.mp3"
+        },
+        {
+          "target": "샷 추가와 휘핑 크림 주세요.",
+          "english": "Please add an extra shot and whipped cream.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex2-male.mp3"
+        },
+        {
+          "target": "여기서 마실게요.",
+          "english": "I will drink it here.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_08_cafe-drinks__phrase_stack__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_09_pottery-craft__cute_cast__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Craft Words in Korean",
+      "slug": "craft-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_09_pottery-craft__cute_cast__ko.png",
+      "words": [
+        {
+          "english": "paint",
+          "target": "물감",
+          "romanization": "mulgam",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w0-male.mp3"
+        },
+        {
+          "english": "clay",
+          "target": "점토",
+          "romanization": "jeomto",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w1-male.mp3"
+        },
+        {
+          "english": "pottery",
+          "target": "도자기",
+          "romanization": "dojagi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w2-male.mp3"
+        },
+        {
+          "english": "brush",
+          "target": "붓",
+          "romanization": "but",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w3-male.mp3"
+        },
+        {
+          "english": "color",
+          "target": "색깔",
+          "romanization": "saekkkal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w4-male.mp3"
+        },
+        {
+          "english": "glue",
+          "target": "풀",
+          "romanization": "pul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w5-male.mp3"
+        },
+        {
+          "english": "scissors",
+          "target": "가위",
+          "romanization": "gawi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w6-male.mp3"
+        },
+        {
+          "english": "paper",
+          "target": "종이",
+          "romanization": "jong-i",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w7-male.mp3"
+        },
+        {
+          "english": "studio",
+          "target": "작업실",
+          "romanization": "jageopsil",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/w8-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Craft Words in Korean: paint, clay, pottery, brush, color, glue….",
+      "topicSlug": "pottery-craft",
+      "publishedAt": "2026-08-28T19:14:04.258Z",
+      "explanationEn": "These craft words have soft sounds used when making art.",
+      "examples": [
+        {
+          "target": "나는 작업실에서 물감을 사용해요.",
+          "english": "I use paint in the studio.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex0-male.mp3"
+        },
+        {
+          "target": "종이와 가위를 준비하세요.",
+          "english": "Prepare paper and scissors.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex1-male.mp3"
+        },
+        {
+          "target": "점토로 도자기를 만들어요.",
+          "english": "I make pottery with clay.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex2-male.mp3"
+        },
+        {
+          "target": "붓과 풀로 색깔을 칠해요.",
+          "english": "I paint colors with a brush and glue.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_09_pottery-craft__cute_cast__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_10_sneakers-boots__similar_split__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Sneakers vs Boots in Korean",
+      "slug": "sneakers-vs-boots-in-korean",
+      "imagePath": "/global/pins/tr_202608_10_sneakers-boots__similar_split__ko.png",
+      "words": [
+        {
+          "english": "sneakers",
+          "target": "운동화",
+          "romanization": "undonghwa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/w0-male.mp3"
+        },
+        {
+          "english": "boots",
+          "target": "부츠",
+          "romanization": "buchu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/w1-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Sneakers vs Boots in Korean: sneakers, boots.",
+      "topicSlug": "sneakers-boots",
+      "publishedAt": "2026-08-28T19:15:39.701Z",
+      "explanationEn": "운동화 and 부츠 sound different and name different shoes.",
+      "examples": [
+        {
+          "target": "나는 운동화를 신고 학교에 가요.",
+          "english": "I wear sneakers to school.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex0-male.mp3"
+        },
+        {
+          "target": "겨울에는 부츠가 좋아요.",
+          "english": "Boots are good in winter.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex1-male.mp3"
+        },
+        {
+          "target": "운동화를 새로 샀어요.",
+          "english": "I bought new sneakers.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex2-male.mp3"
+        },
+        {
+          "target": "부츠가 조금 무거워요.",
+          "english": "Boots are a bit heavy.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_10_sneakers-boots__similar_split__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_11_breakfast-bowl__super_list__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Breakfast Bowl Words in Korean",
+      "slug": "breakfast-bowl-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_11_breakfast-bowl__super_list__ko.png",
+      "words": [
+        {
+          "english": "yogurt",
+          "target": "요거트",
+          "romanization": "yogeoteu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w0-male.mp3"
+        },
+        {
+          "english": "granola",
+          "target": "그래놀라",
+          "romanization": "geuraenolla",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w1-male.mp3"
+        },
+        {
+          "english": "honey",
+          "target": "꿀",
+          "romanization": "kkul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w2-male.mp3"
+        },
+        {
+          "english": "banana",
+          "target": "바나나",
+          "romanization": "banana",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w3-male.mp3"
+        },
+        {
+          "english": "berry",
+          "target": "베리",
+          "romanization": "beri",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w4-male.mp3"
+        },
+        {
+          "english": "oats",
+          "target": "귀리",
+          "romanization": "gwiri",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w5-male.mp3"
+        },
+        {
+          "english": "milk",
+          "target": "우유",
+          "romanization": "uyu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w6-male.mp3"
+        },
+        {
+          "english": "nut",
+          "target": "견과류",
+          "romanization": "gyeongwaryu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w7-male.mp3"
+        },
+        {
+          "english": "seed",
+          "target": "씨앗",
+          "romanization": "ssiat",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w8-male.mp3"
+        },
+        {
+          "english": "bowl",
+          "target": "그릇",
+          "romanization": "geureut",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/w9-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Breakfast Bowl Words in Korean: yogurt, granola, honey, banana, berry, oats….",
+      "topicSlug": "breakfast-bowl",
+      "publishedAt": "2026-08-28T19:17:25.968Z",
+      "explanationEn": "These words describe common breakfast ingredients in Korean.",
+      "examples": [
+        {
+          "target": "나는 요거트와 바나나를 먹어요.",
+          "english": "I eat yogurt and banana.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex0-male.mp3"
+        },
+        {
+          "target": "그래놀라와 꿀을 그릇에 넣어요.",
+          "english": "I put granola and honey in the bowl.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex1-male.mp3"
+        },
+        {
+          "target": "우유와 귀리를 같이 마셔요.",
+          "english": "I drink milk with oats.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex2-male.mp3"
+        },
+        {
+          "target": "견과류와 씨앗이 건강에 좋아요.",
+          "english": "Nuts and seeds are good for health.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_11_breakfast-bowl__super_list__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_12_fall-flowers__grid_cluster__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Fall Flower Words in Korean",
+      "slug": "fall-flower-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_12_fall-flowers__grid_cluster__ko.png",
+      "words": [
+        {
+          "english": "rose",
+          "target": "장미",
+          "romanization": "jangmi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w0-male.mp3"
+        },
+        {
+          "english": "sunflower",
+          "target": "해바라기",
+          "romanization": "haebaragi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w1-male.mp3"
+        },
+        {
+          "english": "daisy",
+          "target": "데이지",
+          "romanization": "deiji",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w2-male.mp3"
+        },
+        {
+          "english": "tulip",
+          "target": "튤립",
+          "romanization": "tyullip",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w3-male.mp3"
+        },
+        {
+          "english": "leaf",
+          "target": "잎",
+          "romanization": "ip",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w4-male.mp3"
+        },
+        {
+          "english": "vase",
+          "target": "꽃병",
+          "romanization": "kkotbyeong",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w5-male.mp3"
+        },
+        {
+          "english": "bouquet",
+          "target": "꽃다발",
+          "romanization": "kkotdabal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w6-male.mp3"
+        },
+        {
+          "english": "petal",
+          "target": "꽃잎",
+          "romanization": "kkotip",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w7-male.mp3"
+        },
+        {
+          "english": "garden",
+          "target": "정원",
+          "romanization": "jeongwon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/w8-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Fall Flower Words in Korean: rose, sunflower, daisy, tulip, leaf, vase….",
+      "topicSlug": "fall-flowers",
+      "publishedAt": "2026-08-28T19:19:41.154Z",
+      "explanationEn": "These words have soft sounds often used for flowers and nature.",
+      "examples": [
+        {
+          "target": "정원에 해바라기가 많아요.",
+          "english": "There are many sunflowers in the garden.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex0-male.mp3"
+        },
+        {
+          "target": "꽃병에 장미와 튤립이 있어요.",
+          "english": "There are roses and tulips in the vase.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex1-male.mp3"
+        },
+        {
+          "target": "꽃다발에 꽃잎이 예뻐요.",
+          "english": "The petals in the bouquet are pretty.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex2-male.mp3"
+        },
+        {
+          "target": "가을에 잎이 많이 떨어져요.",
+          "english": "Many leaves fall in autumn.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_12_fall-flowers__grid_cluster__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_13_which-drink__quiz_comment__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Which drink is this? (Korean)",
+      "slug": "which-drink-is-this-korean",
+      "imagePath": "/global/pins/tr_202608_13_which-drink__quiz_comment__ko.png",
+      "words": [
+        {
+          "english": "latte",
+          "target": "라떼",
+          "romanization": "latte",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w0-male.mp3"
+        },
+        {
+          "english": "espresso",
+          "target": "에스프레소",
+          "romanization": "eseupeureso",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w1-male.mp3"
+        },
+        {
+          "english": "matcha",
+          "target": "말차",
+          "romanization": "malcha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w2-male.mp3"
+        },
+        {
+          "english": "lemonade",
+          "target": "레모네이드",
+          "romanization": "remoneideu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/w3-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Which drink is this? (Korean): latte, espresso, matcha, lemonade.",
+      "topicSlug": "which-drink",
+      "publishedAt": "2026-08-28T19:21:17.448Z",
+      "explanationEn": "These drink words sound like their English names in Korean.",
+      "examples": [
+        {
+          "target": "나는 라떼를 좋아해요.",
+          "english": "I like latte.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex0-male.mp3"
+        },
+        {
+          "target": "에스프레소 한 잔 주세요.",
+          "english": "Please give me one espresso.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex1-male.mp3"
+        },
+        {
+          "target": "말차 차를 마셔요.",
+          "english": "I drink matcha tea.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex2-male.mp3"
+        },
+        {
+          "target": "레모네이드는 시원해요.",
+          "english": "Lemonade is refreshing.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_13_which-drink__quiz_comment__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_14_open-close-school__concept_rows__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Open vs Close at School (Korean)",
+      "slug": "open-vs-close-at-school-korean",
+      "imagePath": "/global/pins/tr_202608_14_open-close-school__concept_rows__ko.png",
+      "words": [
+        {
+          "english": "open the book",
+          "target": "책을 펴다",
+          "romanization": "chaeg-eul pyeoda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w0-male.mp3"
+        },
+        {
+          "english": "close the book",
+          "target": "책을 덮다",
+          "romanization": "chaeg-eul deopda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w1-male.mp3"
+        },
+        {
+          "english": "open the door",
+          "target": "문을 열다",
+          "romanization": "mun-eul yeolda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w2-male.mp3"
+        },
+        {
+          "english": "close the door",
+          "target": "문을 닫다",
+          "romanization": "mun-eul datda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/w3-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Open vs Close at School (Korean): open the book, close the book, open the door, close the door.",
+      "topicSlug": "open-close-school",
+      "publishedAt": "2026-08-28T19:22:54.282Z",
+      "explanationEn": "These verbs describe opening and closing books and doors.",
+      "examples": [
+        {
+          "target": "책을 펴고 공부해요.",
+          "english": "I open the book and study.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex0-male.mp3"
+        },
+        {
+          "target": "문을 열고 교실에 들어가요.",
+          "english": "I open the door and enter the classroom.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex1-male.mp3"
+        },
+        {
+          "target": "수업이 끝나면 책을 덮어요.",
+          "english": "I close the book when class ends.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex2-male.mp3"
+        },
+        {
+          "target": "수업 후에 문을 닫아요.",
+          "english": "I close the door after class.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_14_open-close-school__concept_rows__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_15_costumes__phrase_stack__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Costume Party Phrases in Korean",
+      "slug": "costume-party-phrases-in-korean",
+      "imagePath": "/global/pins/tr_202608_15_costumes__phrase_stack__ko.png",
+      "words": [
+        {
+          "english": "nice costume",
+          "target": "멋진 의상",
+          "romanization": "meotjin uisang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w0-male.mp3"
+        },
+        {
+          "english": "who are you",
+          "target": "누구세요",
+          "romanization": "nuguseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w1-male.mp3"
+        },
+        {
+          "english": "let's dance",
+          "target": "춤추자",
+          "romanization": "chumchuja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w2-male.mp3"
+        },
+        {
+          "english": "take a photo",
+          "target": "사진 찍자",
+          "romanization": "sajin jjikja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w3-male.mp3"
+        },
+        {
+          "english": "happy halloween",
+          "target": "해피 할로윈",
+          "romanization": "haepi halloween",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w4-male.mp3"
+        },
+        {
+          "english": "scary makeup",
+          "target": "무서운 분장",
+          "romanization": "museoun bunjang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w5-male.mp3"
+        },
+        {
+          "english": "candy please",
+          "target": "사탕 주세요",
+          "romanization": "satang juseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w6-male.mp3"
+        },
+        {
+          "english": "so cool",
+          "target": "정말 멋져",
+          "romanization": "jeongmal meotjyeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/w7-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Costume Party Phrases in Korean: nice costume, who are you, let's dance, take a photo, happy halloween, scary makeup….",
+      "topicSlug": "costumes",
+      "publishedAt": "2026-08-28T19:24:37.244Z",
+      "explanationEn": "These phrases sound friendly and fun for a costume party.",
+      "examples": [
+        {
+          "target": "멋진 의상이에요!",
+          "english": "You have a nice costume!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex0-male.mp3"
+        },
+        {
+          "target": "누구세요?",
+          "english": "Who are you?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex1-male.mp3"
+        },
+        {
+          "target": "사진 찍자!",
+          "english": "Let's take a photo!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex2-male.mp3"
+        },
+        {
+          "target": "사탕 주세요.",
+          "english": "Candy please.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_15_costumes__phrase_stack__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_16_snacks__cute_cast__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Snack Words in Korean",
+      "slug": "snack-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_16_snacks__cute_cast__ko.png",
+      "words": [
+        {
+          "english": "chips",
+          "target": "감자칩",
+          "romanization": "gamjachip",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w0-male.mp3"
+        },
+        {
+          "english": "popcorn",
+          "target": "팝콘",
+          "romanization": "papkon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w1-male.mp3"
+        },
+        {
+          "english": "cookie",
+          "target": "쿠키",
+          "romanization": "kuki",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w2-male.mp3"
+        },
+        {
+          "english": "candy",
+          "target": "사탕",
+          "romanization": "satang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w3-male.mp3"
+        },
+        {
+          "english": "pretzel",
+          "target": "프레첼",
+          "romanization": "peurechel",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w4-male.mp3"
+        },
+        {
+          "english": "nuts",
+          "target": "견과류",
+          "romanization": "gyeongwaryu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w5-male.mp3"
+        },
+        {
+          "english": "fruit",
+          "target": "과일",
+          "romanization": "gwail",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w6-male.mp3"
+        },
+        {
+          "english": "juice",
+          "target": "주스",
+          "romanization": "juseu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w7-male.mp3"
+        },
+        {
+          "english": "sandwich",
+          "target": "샌드위치",
+          "romanization": "saendeuwichi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/w8-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Snack Words in Korean: chips, popcorn, cookie, candy, pretzel, nuts….",
+      "topicSlug": "snacks",
+      "publishedAt": "2026-08-28T19:26:21.744Z",
+      "explanationEn": "These snack words are mostly borrowed from English and sound similar.",
+      "examples": [
+        {
+          "target": "나는 감자칩을 좋아해요.",
+          "english": "I like chips.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex0-male.mp3"
+        },
+        {
+          "target": "주스 한 잔 주세요.",
+          "english": "Please give me a glass of juice.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex1-male.mp3"
+        },
+        {
+          "target": "과일과 쿠키를 먹어요.",
+          "english": "I eat fruit and cookies.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex2-male.mp3"
+        },
+        {
+          "target": "샌드위치와 팝콘을 샀어요.",
+          "english": "I bought a sandwich and popcorn.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_16_snacks__cute_cast__ko/ex3-male.mp3"
+        }
+      ]
+    },
+    {
+      "id": "tr_202608_17_bags__super_list__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Bag Words in Korean",
+      "slug": "bag-words-in-korean",
+      "imagePath": "/global/pins/tr_202608_17_bags__super_list__ko.png",
+      "words": [
+        {
+          "english": "backpack",
+          "target": "배낭",
+          "romanization": "baenang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w0-male.mp3"
+        },
+        {
+          "english": "handbag",
+          "target": "핸드백",
+          "romanization": "haendeu-baek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w1-male.mp3"
+        },
+        {
+          "english": "tote",
+          "target": "토트백",
+          "romanization": "toteu-baek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w2-male.mp3"
+        },
+        {
+          "english": "wallet",
+          "target": "지갑",
+          "romanization": "jigap",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w3-male.mp3"
+        },
+        {
+          "english": "purse",
+          "target": "지갑",
+          "romanization": "jigap",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w4-male.mp3"
+        },
+        {
+          "english": "suitcase",
+          "target": "여행가방",
+          "romanization": "yeohaeng-gabang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w5-male.mp3"
+        },
+        {
+          "english": "duffel",
+          "target": "더플백",
+          "romanization": "deopeul-baek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w6-male.mp3"
+        },
+        {
+          "english": "pouch",
+          "target": "파우치",
+          "romanization": "pauchi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w7-male.mp3"
+        },
+        {
+          "english": "strap",
+          "target": "끈",
+          "romanization": "kkeun",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w8-male.mp3"
+        },
+        {
+          "english": "zipper",
+          "target": "지퍼",
+          "romanization": "jipeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/w9-male.mp3"
+        }
+      ],
+      "partner": "preply",
+      "description": "Bag Words in Korean: backpack, handbag, tote, wallet, purse, suitcase….",
+      "topicSlug": "bags",
+      "publishedAt": "2026-08-28T19:28:10.109Z",
+      "explanationEn": "These Korean bag words often use English sounds mixed with Korean.",
+      "examples": [
+        {
+          "target": "저는 배낭을 메고 학교에 갑니다.",
+          "english": "I carry a backpack to school.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex0-male.mp3"
+        },
+        {
+          "target": "이 핸드백은 매우 예쁩니다.",
+          "english": "This handbag is very pretty.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex1-male.mp3"
+        },
+        {
+          "target": "여행가방에 옷을 넣었어요.",
+          "english": "I put clothes in the suitcase.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex2-male.mp3"
+        },
+        {
+          "target": "지갑에 돈과 카드가 있어요.",
+          "english": "There is money and cards in the wallet.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/tr_202608_17_bags__super_list__ko/ex3-male.mp3"
         }
       ]
     },
