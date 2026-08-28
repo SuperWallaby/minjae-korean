@@ -322,10 +322,16 @@ export function middleware(request: NextRequest) {
     !isStaticAsset(pathname) &&
     !pathname.startsWith("/api")
   ) {
-    return withPublicHtmlCache(NextResponse.next());
+    const res = withPublicHtmlCache(NextResponse.next());
+    // Apex kajakorean.com is noindex — header wins over page-level robots:index.
+    res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
+    return res;
   }
 
-  return NextResponse.next();
+  const res = NextResponse.next();
+  // Main kajakorean.com (not atlas hosts above) — stop search indexing.
+  res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
+  return res;
 }
 
 export const config = {

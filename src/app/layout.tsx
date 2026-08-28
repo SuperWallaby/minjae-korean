@@ -80,7 +80,7 @@ const nanumGothic = Nanum_Gothic({
 const GLOBAL_PINTEREST_VERIFY = "86705510fceea49d9e5298e3a6f4df6d";
 const MAIN_PINTEREST_VERIFY = "7a6bc7a84bb2c6c634bf33f0618b07d7";
 const GLOBAL_IMPACT_VERIFY = "ad7f601e-1ef9-4800-b4ef-d477c480e7f4";
-const JA_IMPACT_VERIFY = "a87ceafc-d968-4565-862d-10234de628b1";
+const JA_IMPACT_VERIFY = "561a4f75-1aa2-4877-871f-52b98f10778a";
 const SOUND_IMPACT_VERIFY = "a87ceafc-d968-4565-862d-10234de628b1";
 const PRONOUNCE_IMPACT_VERIFY = "b424624e-7600-4de6-99df-310c5c41e237";
 
@@ -323,6 +323,16 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: SITE_DESCRIPTION,
     applicationName: SITE_NAME,
+    // SEO focus moved to eigopin / sound.eigopin / getpronounce — stop indexing Kaja apex.
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: {
+        index: false,
+        follow: false,
+        noimageindex: true,
+      },
+    },
     manifest: "/brand/site.webmanifest",
     icons: {
       icon: [
