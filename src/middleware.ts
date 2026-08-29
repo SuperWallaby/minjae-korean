@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { globalPathToPronounce } from "@/lib/atlasRoutes";
+import vocabKoRedirect from "@/data/vocabInfographic/redirectToGetpronounce.json";
 
 const PRONOUNCE_ORIGIN = "https://getpronounce.net";
+
+/** vocab `{bundleId}/{slug}` → getpronounce pin id. Hub `/ko/` is never a fallback. */
+const VOCAB_KO_PIN: Record<string, string> = Object.fromEntries(
+  Object.entries(
+    (vocabKoRedirect as { mappings?: Record<string, string> }).mappings || {},
+  ).map(([path, id]) => [
+    String(path).replace(/^\/+|\/+$/g, ""),
+    String(id).trim(),
+  ]),
+);
 
 const GLOBAL_HOSTS = new Set([
   "global.kajakorean.com",
@@ -316,14 +327,28 @@ export function middleware(request: NextRequest) {
     return atlasMiddleware(request, "global", "/global-site");
   }
 
-  // Kaja vocab SEO — edge-cache HTML like atlas (Pinterest → /vocab/* global traffic).
+  // Pinterest vocab → matching getpronounce chart only (never the /ko/ hub).
   if (
     pathname.startsWith("/vocab/") &&
     !isStaticAsset(pathname) &&
     !pathname.startsWith("/api")
   ) {
+    const parts = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
+    const key = parts.length >= 3 ? `${parts[1]}/${parts[2]}` : "";
+    const pinId = key ? VOCAB_KO_PIN[key] : "";
+    if (pinId) {
+      const target = new URL(
+        `/ko/pin/${encodeURIComponent(pinId)}`,
+        PRONOUNCE_ORIGIN,
+      );
+      request.nextUrl.searchParams.forEach((v, k) => {
+        target.searchParams.set(k, v);
+      });
+      const res = NextResponse.redirect(target, 301);
+      res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
+      return res;
+    }
     const res = withPublicHtmlCache(NextResponse.next());
-    // Apex kajakorean.com is noindex — header wins over page-level robots:index.
     res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
     return res;
   }
