@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-28T14:20:37.727Z",
+  "generatedAt": "2026-08-29T05:55:22.779Z",
   "site": "https://eigopin.com",
   "audience": "ja",
   "teaches": "en",
@@ -3874,6 +3874,427 @@
       "pinterestPinnedAt": "2026-08-23T07:36:49.961Z"
     },
     {
+      "id": "mid_quiz__false-friends-2",
+      "slug": "quiz",
+      "titleJa": "クイズ：テンション",
+      "titleEn": "Quiz: テンション",
+      "imagePath": "/ja/pins/mid_quiz__false-friends-2.png",
+      "words": [
+        {
+          "english": "tension",
+          "ja": "緊張",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "excitement",
+          "ja": "高揚",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "mood",
+          "ja": "気分",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "energy",
+          "ja": "エネルギー",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/w3.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "italki",
+      "description": "日本人向け英単語：tension、excitement、mood、energy。発音音声と例文つき。",
+      "topicSlug": "quiz",
+      "withCharacter": true,
+      "publishedAt": "2026-08-23T16:08:55.436Z",
+      "explanationJa": "「tension」は緊張や張り詰めた気持ちを表します。「excitement」はワクワクする気持ち、「mood」はその時の気分、「energy」は元気や活力を意味します。日常会話でよく使う言葉です。",
+      "examples": [
+        {
+          "english": "I feel tension before the test.",
+          "ja": "テストの前に緊張します。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "She has a lot of excitement today.",
+          "ja": "彼女は今日とても高揚しています。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "My mood is happy now.",
+          "ja": "今、私の気分は幸せです。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "He has energy to play soccer.",
+          "ja": "彼はサッカーをするエネルギーがあります。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex3.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Tension can make you nervous.",
+          "ja": "緊張はあなたを緊張させることがあります。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex4.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex4.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex4.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__false-friends-2/ex4.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "pinterestPinnedAt": "2026-08-29T05:52:12.350Z"
+    },
+    {
+      "id": "mid_quiz__register",
+      "slug": "quiz-workplace-no",
+      "titleJa": "クイズ：仕事の断り方",
+      "titleEn": "Quiz: workplace no",
+      "imagePath": "/ja/pins/mid_quiz__register.png",
+      "words": [
+        {
+          "english": "No.",
+          "ja": "ぶっきらぼう",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "I'm afraid I can't.",
+          "ja": "丁寧",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Whatever.",
+          "ja": "失礼",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Sure, never.",
+          "ja": "矛盾",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/w3.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "italki",
+      "description": "日本人向け英単語：No.、I'm afraid I can't.、Whatever.、Sure, never.。発音音声と例文つき。",
+      "topicSlug": "quiz",
+      "withCharacter": true,
+      "publishedAt": "2026-08-24T16:14:01.739Z",
+      "explanationJa": "仕事を断るときには、丁寧な言い方とぶっきらぼうな言い方があります。丁寧な断り方は相手に失礼にならず、良い印象を与えます。ぶっきらぼうな言い方や矛盾した表現は避けましょう。",
+      "examples": [
+        {
+          "english": "I'm afraid I can't help today.",
+          "ja": "申し訳ありませんが、今日は手伝えません。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "No, I am busy now.",
+          "ja": "いいえ、今忙しいです。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Sure, never mind.",
+          "ja": "わかりました、気にしないでください。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Whatever you say.",
+          "ja": "あなたの言う通りにします。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex3.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "I'm afraid I can't join the meeting.",
+          "ja": "申し訳ありませんが、会議に参加できません。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex4.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex4.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex4.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_quiz__register/ex4.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "pinterestPinnedAt": "2026-08-29T05:52:56.067Z"
+    },
+    {
+      "id": "mid_register__could-would",
+      "slug": "could-you-vs-would-you",
+      "titleJa": "Could you / Would you",
+      "titleEn": "Could you vs Would you",
+      "imagePath": "/ja/pins/mid_register__could-would.png",
+      "words": [
+        {
+          "english": "Could you send…?",
+          "ja": "能力＋依頼",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Would you mind…?",
+          "ja": "より遠慮",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Can you…?",
+          "ja": "カジュアル",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Would you be able to…?",
+          "ja": "丁寧な可否",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/w3.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "italki",
+      "description": "日本人向け英単語：Could you send…?、Would you mind…?、Can you…?、Would you be able to…?。発音音声と例文つき。",
+      "topicSlug": "register",
+      "withCharacter": false,
+      "publishedAt": "2026-08-24T16:19:11.088Z",
+      "explanationJa": "「Could you」や「Would you」は、相手に何かをお願いするときに使います。「Could you send…?」は能力をたずねる依頼表現です。「Would you mind…?」は遠慮した丁寧なお願いの仕方です。「Can you…?」はカジュアルな依頼で、友達に使います。「Would you be able to…?」は丁寧に相手の可能かどうかをたずねる表現です。",
+      "examples": [
+        {
+          "english": "Could you send me the email?",
+          "ja": "メールを送ってもらえますか？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Would you mind closing the window?",
+          "ja": "窓を閉めていただけますか？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Can you help me with this?",
+          "ja": "これを手伝ってくれる？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Would you be able to come tomorrow?",
+          "ja": "明日来られますか？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex3.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Could you open the door, please?",
+          "ja": "ドアを開けていただけますか？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex4.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex4.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex4.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__could-would/ex4.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "pinterestPinnedAt": "2026-08-29T05:53:27.292Z"
+    },
+    {
+      "id": "mid_register__email",
+      "slug": "email-closings",
+      "titleJa": "メールの締め",
+      "titleEn": "Email closings",
+      "imagePath": "/ja/pins/mid_register__email.png",
+      "words": [
+        {
+          "english": "Best,",
+          "ja": "無難（社内）",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Kind regards,",
+          "ja": "やや丁寧",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Thanks in advance,",
+          "ja": "先に礼（注意）",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Looking forward to…",
+          "ja": "続きを待つ",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/w3.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "italki",
+      "description": "日本人向け英単語：Best,、Kind regards,、Thanks in advance,、Looking forward to…。発音音声と例文つき。",
+      "topicSlug": "register",
+      "withCharacter": false,
+      "publishedAt": "2026-08-23T15:56:48.894Z",
+      "explanationJa": "メールの最後に使う言葉は、相手との関係や状況によって変わります。無難な言葉は「Best」です。少し丁寧にしたいときは「Kind regards」を使います。お願いするときは「Thanks in advance」が便利です。続きや返事を待つときは「Looking forward to…」を使います。",
+      "examples": [
+        {
+          "english": "Best, see you tomorrow.",
+          "ja": "無難に「Best」、また明日。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Kind regards, John.",
+          "ja": "やや丁寧に「Kind regards」、ジョンより。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Thanks in advance for your help.",
+          "ja": "先に礼を言う「Thanks in advance」、助けてくれてありがとう。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Looking forward to your reply.",
+          "ja": "返事を待つ「Looking forward to your reply」。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex3.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Best wishes for your project.",
+          "ja": "プロジェクトに無難な「Best wishes」。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex4.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex4.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex4.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex4.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Kind regards, I hope to meet you soon.",
+          "ja": "やや丁寧に「Kind regards」、すぐ会えるといいですね。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex5.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex5.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex5.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_register__email/ex5.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "pinterestPinnedAt": "2026-08-29T05:54:14.337Z"
+    },
+    {
       "id": "mid_register__would-you",
       "slug": "casual-vs-polite-at-work",
       "titleJa": "カジュアル → 丁寧（仕事）",
@@ -3994,6 +4415,221 @@
       "withCharacter": false,
       "publishedAt": "2026-08-23T07:14:49.472Z",
       "pinterestPinnedAt": "2026-08-23T07:43:49.389Z"
+    },
+    {
+      "id": "mid_similar__borrow-lend",
+      "slug": "borrow-vs-lend",
+      "titleJa": "borrow vs lend",
+      "titleEn": "borrow vs lend",
+      "imagePath": "/ja/pins/mid_similar__borrow-lend.png",
+      "words": [
+        {
+          "english": "borrow",
+          "ja": "借りる",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "lend",
+          "ja": "貸す",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Can I borrow…?",
+          "ja": "借りてもいい？",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Could you lend me…?",
+          "ja": "貸してもらえる？",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/w3.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "italki",
+      "description": "日本人向け英単語：borrow、lend、Can I borrow…?、Could you lend me…?。発音音声と例文つき。",
+      "topicSlug": "similar",
+      "withCharacter": false,
+      "publishedAt": "2026-08-23T16:02:52.841Z",
+      "explanationJa": "「borrow」は自分が誰かから物を借りるときに使います。「lend」は自分が誰かに物を貸すときに使います。例えば、「Can I borrow your pen?」は「ペンを借りてもいい？」という意味です。",
+      "examples": [
+        {
+          "english": "Can I borrow your book?",
+          "ja": "あなたの本を借りてもいいですか？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "She borrowed a pencil from me.",
+          "ja": "彼女は私から鉛筆を借りました。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Could you lend me some money?",
+          "ja": "お金を貸してもらえますか？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "I lent my friend my umbrella.",
+          "ja": "私は友達に傘を貸しました。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex3.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "He can borrow a bike from his brother.",
+          "ja": "彼は兄から自転車を借りることができます。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex4.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex4.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex4.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__borrow-lend/ex4.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "pinterestPinnedAt": "2026-08-29T05:54:55.532Z"
+    },
+    {
+      "id": "mid_similar__hear-listen",
+      "slug": "hear-vs-listen",
+      "titleJa": "hear vs listen",
+      "titleEn": "hear vs listen",
+      "imagePath": "/ja/pins/mid_similar__hear-listen.png",
+      "words": [
+        {
+          "english": "hear",
+          "ja": "聞こえる（無意志）",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "listen to",
+          "ja": "聴く（意志）",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "hear from",
+          "ja": "連絡がある",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "listen out for",
+          "ja": "耳を澄ます",
+          "kana": "",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/w3.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "italki",
+      "description": "日本人向け英単語：hear、listen to、hear from、listen out for。発音音声と例文つき。",
+      "topicSlug": "similar",
+      "withCharacter": false,
+      "publishedAt": "2026-08-24T16:29:34.586Z",
+      "explanationJa": "「hear」は自然に音が聞こえることを表します。「listen to」は意識して音や話を聴くことです。「hear from」は誰かから連絡があることを意味します。「listen out for」は特定の音を注意深く聴くことです。",
+      "examples": [
+        {
+          "english": "I hear birds in the morning.",
+          "ja": "朝に鳥の声が聞こえます。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex0.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex0.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex0.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex0.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Please listen to the music.",
+          "ja": "音楽を聴いてください。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex1.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex1.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex1.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex1.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "I heard from my friend yesterday.",
+          "ja": "昨日、友達から連絡がありました。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex2.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex2.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex2.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex2.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Listen out for the phone ring.",
+          "ja": "電話の音に耳を澄ましてください。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex3.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex3.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex3.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex3.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Can you hear the wind?",
+          "ja": "風の音が聞こえますか？",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex4.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex4.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex4.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex4.au.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "She listens to the teacher carefully.",
+          "ja": "彼女は先生の話を注意深く聴きます。",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex5.us.mp3",
+          "ttsUs": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex5.us.mp3",
+          "ttsUk": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex5.uk.mp3",
+          "ttsAu": "https://file.kajakorean.com/grammar-x/ja-en-pin-tts/mid_similar__hear-listen/ex5.au.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "pinterestPinnedAt": "2026-08-29T05:55:22.775Z"
     },
     {
       "id": "mid_similar__make-do",

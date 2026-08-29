@@ -1,4 +1,5 @@
 import catalog from "@/data/pronouncePins/published.json";
+import { pinCdnUrl } from "@/lib/mediaUrl";
 import { pronounceSiteOrigin } from "@/lib/pronounceSite/brand";
 import type { PronounceTtsFields } from "@/lib/pronounceSite/voices";
 
@@ -94,13 +95,13 @@ export function relatedPronouncePins(
 export function pronouncePinCardImagePath(imagePath: string): string {
   const path = imagePath.replace(/\.png$/i, ".card.webp");
   if (/^https?:\/\//i.test(path)) return path;
-  return path.startsWith("/") ? path : `/${path}`;
+  return pinCdnUrl(path);
 }
 
 export function pronouncePinPageImagePath(imagePath: string): string {
   const path = imagePath.replace(/\.png$/i, ".webp");
   if (/^https?:\/\//i.test(path)) return path;
-  return path.startsWith("/") ? path : `/${path}`;
+  return pinCdnUrl(path);
 }
 
 export function pronouncePinFocusTerm(pin: PronouncePinPage): string {

@@ -35,3 +35,12 @@ export function globalPinCdnOrigin(): string {
     FILE_CDN
   );
 }
+
+/** Catalog path (`/ja/pins/…`) or already-absolute URL → live CDN. */
+export function pinCdnUrl(pathOrUrl: string): string {
+  const raw = String(pathOrUrl || "").trim();
+  if (!raw) return "";
+  if (/^https?:\/\//i.test(raw)) return normalizePublicMediaUrl(raw);
+  const path = raw.startsWith("/") ? raw : `/${raw}`;
+  return `${globalPinCdnOrigin()}${path}`;
+}

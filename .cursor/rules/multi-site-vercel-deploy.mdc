@@ -1,0 +1,36 @@
+---
+description: Multi-site Vercel deploy — never overwrite sibling domains
+globs:
+  - scripts/deploy-*.sh
+  - vercel.*.json
+  - scripts/*push*catalog*
+  - scripts/eigopin-after-catalog.mjs
+  - scripts/setup-vercel-build-filters.sh
+alwaysApply: false
+---
+
+# Multi-site deploy safety (one monorepo)
+
+Three production Vercel projects share this repo. **A deploy to the wrong project overwrites the wrong domain.**
+
+| Project | Domain | How production updates |
+|---------|--------|------------------------|
+| `minjae-korean` | kajakorean.com | GitHub `main` + build filter |
+| `getpronounce` | getpronounce.net | GitHub `main` + build filter |
+| `eigopin` | eigopin.com + sound.eigopin.com | **CLI only** (`deploy-eigopin.sh` / `eigopin-after-catalog.mjs`) |
+
+## Hard rules
+
+1. **Never** enable Git auto-deploy on `eigopin`. Git push of catalogs is version control only.
+2. Deploy eigopin only via `bash scripts/deploy-eigopin.sh` or `node scripts/eigopin-after-catalog.mjs` (uses `vercel.eigopin.json` + swaps `.vercel/project.json` temporarily, then restores `minjae-korean`).
+3. **Never** run bare `vercel deploy --prod` while linked to the wrong project.
+4. After any eigopin deploy, confirm `.vercel/project.json` is `minjae-korean` again.
+5. Smoke all three after risky deploys: eigopin.com, kajakorean.com, getpronounce.net titles must stay distinct.
+
+## Pipeline
+
+- `yarn sound:publish` / `yarn ja:publish-pins` → catalog write → `eigopin-after-catalog.mjs` (push JSON + CLI deploy) unless `EIGOPIN_SKIP_AFTER_CATALOG=1`.
+- JA pin images: `yarn ja:publish-pins` then auto `upload-ja-pins-r2` (R2 `ja/pins/`). Live thumbs are `file.kajakorean.com`, not Vercel `/ja/pins`.
+- Sound pin images: `yarn sound:publish` auto-uploads (R2 `sound/pins/`). Live check: `yarn sound:verify-live` (HTML + CDN WebP).
+- Pin/audio binaries: R2 `file.kajakorean.com`. `.vercelignore` excludes `public/{global,sound,pronounce,ja}/pins` and `public/global/audio`.
+- Skip flags: `EIGOPIN_SKIP_PUSH=1`, `EIGOPIN_SKIP_DEPLOY=1`.

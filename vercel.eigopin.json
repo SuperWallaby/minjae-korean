@@ -1,5 +1,6 @@
 {
   "framework": "nextjs",
+  "regions": ["hnd1", "icn1", "sfo1"],
   "build": {
     "env": {
       "NEXT_PUBLIC_SITE_MODE": "eigopin",

@@ -49,3 +49,14 @@ data/*
 .env*.local
 blog-overrides.json
 book-preview-sample.pdf
+
+# Global pin catalog — SQLite is source of truth; JSON is the deploy snapshot.
+src/data/globalPins/catalog.sqlite
+src/data/globalPins/catalog.sqlite-*
+
+# Pin images + leftover audio staging: live = file.kajakorean.com
+/public/global/pins/
+/public/global/audio/
+/public/sound/pins/
+/public/pronounce/pins/
+/public/ja/pins/

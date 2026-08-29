@@ -6,3 +6,10 @@ coverage
 *.log
 .DS_Store
 .git
+
+# Pin/audio binaries are served from R2 (file.kajakorean.com), not Vercel.
+public/global/pins
+public/global/audio
+public/sound/pins
+public/pronounce/pins
+public/ja/pins
