@@ -12,6 +12,8 @@ export type GlobalPinWord = {
   /** Static path e.g. /global/audio/{id}/w0.mp3 (Spanish: LatAm default). */
   ttsUrl?: string;
   ttsProvider?: string;
+  /** Korean (and similar): male Edge clip alongside default female `ttsUrl`. */
+  ttsMaleUrl?: string;
   /** Spanish: Latin America (es-MX) — preferred default for US traffic. */
   ttsLatam?: string;
   /** Spanish: Spain (es-ES). */
@@ -31,6 +33,8 @@ export type GlobalPinExample = {
   english: string;
   ttsUrl?: string;
   ttsProvider?: string;
+  /** Korean male Edge clip (pairs with female `ttsUrl`). */
+  ttsMaleUrl?: string;
   ttsLatam?: string;
   ttsEs?: string;
 };

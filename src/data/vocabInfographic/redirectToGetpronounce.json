@@ -1,6 +1,6 @@
 {
   "note": "Only redirect kajakorean.com/vocab/{path} when a matching getpronounce /ko/pin/{id} exists. Never fall back to the /ko/ hub.",
-  "generatedAt": "2026-08-29T13:42:30.927Z",
+  "generatedAt": "2026-08-29T14:05:00.000Z",
   "generatedBy": "scripts/build-vocab-ko-redirects.mjs",
   "counts": {
     "mappings": 114,
