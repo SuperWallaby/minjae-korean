@@ -15,10 +15,31 @@ import {
   optimizePinterestPin,
   optimizedPinPath,
 } from "./lib/optimize-pinterest-pin.mjs";
+import {
+  auditPinnedClusters,
+} from "./lib/pin-topic-clusters.mjs";
+import {
+  buildTopicDedupContext,
+  shouldSkipBundleForTopicDupSync,
+} from "./lib/pin-topic-similarity.mjs";
+import { withListenOnWebsitePrefix } from "./lib/atlas-pin-description.mjs";
+import { pronouncePinUrl } from "./lib/atlas-pin-destination.mjs";
+import { koPinIdForVocab } from "./lib/vocab-ko-redirects.mjs";
+import {
+  isQuizWordPinId,
+  quizWordPinDescription,
+  quizWordPinLiveUrl,
+  quizWordPinTitle,
+  resolveQuizWordPinFile,
+  wordPinMeta,
+} from "./lib/quiz_word_pin.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
-const OUT = path.join(ROOT, ".tmp", "vocab-infographic-gen");
+const OUT =
+  (process.env.VOCAB_OUT || "").trim() ||
+  path.join(ROOT, ".tmp", "vocab-infographic-gen");
+const REVIEW = path.join(OUT, "pin-review.json");
 const PIN_OPT_DIR = path.join(OUT, "pin-optimized");
 const SCHEDULED = path.join(OUT, "vocab-x-scheduled.json");
 const PINNED = path.join(OUT, "pinterest-pinned.json");
@@ -46,14 +67,14 @@ const DEFAULT_BOARD = process.env.PINTEREST_BOARD_NAME || "Korean words";
 const SITE_URL = "https://kajakorean.com";
 const PREPLY =
   process.env.PINTEREST_AFFILIATE_PREPLY ||
-  "https://preply.sjv.io/c/7574725/1987575/24422";
+  "https://preply.sjv.io/GbYYkn";
 const ITALKI =
   process.env.PINTEREST_AFFILIATE_ITALKI ||
   "https://www.italki.com/en/affshare?ref=af33117569";
-/** Direct Preply/italki on pin vs SEO page (default 25%). */
+/** Site SEO page only on pin (default 0 = no Preply/italki). */
 const AFFILIATE_RATE = Math.min(
   1,
-  Math.max(0, Number(process.env.PINTEREST_AFFILIATE_RATE ?? 0.25) || 0),
+  Math.max(0, Number(process.env.PINTEREST_AFFILIATE_RATE ?? 0) || 0),
 );
 const DEFAULT_TOPIC =
   process.env.PINTEREST_TOPIC?.trim() || "Korean language";
@@ -85,26 +106,41 @@ const MAX_RETRIES = Number(process.env.PINTEREST_MAX_RETRIES || 2);
 function parseArgs(argv) {
   let count = 8;
   let id = "";
+  let ids = [];
   let prefix = "";
   let dryRun = false;
   /** Allow homepage destination (legacy escape hatch only). */
   let allowHomeLink = false;
   /** Skip live HEAD/GET of kajakorean.com /vocab/... (local catalog only). */
   let skipLiveCheck = false;
+  /** Pin only dashboard-approved rows (pin-review.json status=approved). */
+  let approvedOnly = false;
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--dry-run") dryRun = true;
     else if (a === "--allow-home-link") allowHomeLink = true;
     else if (a === "--skip-live-check") skipLiveCheck = true;
+    else if (a === "--approved-only") approvedOnly = true;
     else if (a === "--count" && argv[i + 1]) count = Math.max(1, parseInt(argv[++i], 10) || 8);
     else if (a.startsWith("--count=")) count = Math.max(1, parseInt(a.slice(8), 10) || 8);
     else if (a === "--id" && argv[i + 1]) id = argv[++i];
     else if (a.startsWith("--id=")) id = a.slice(5);
-    else if (a === "--prefix" && argv[i + 1]) prefix = argv[++i];
+    else if (a === "--ids" && argv[i + 1]) {
+      ids = argv[++i]
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    } else if (a.startsWith("--ids=")) {
+      ids = a
+        .slice(6)
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    } else if (a === "--prefix" && argv[i + 1]) prefix = argv[++i];
     else if (a.startsWith("--prefix=")) prefix = a.slice(9);
     else if (/^\d+$/.test(a)) count = Math.max(1, parseInt(a, 10) || 8);
   }
-  return { count, id, prefix, dryRun, allowHomeLink, skipLiveCheck };
+  return { count, id, ids, prefix, dryRun, allowHomeLink, skipLiveCheck, approvedOnly };
 }
 
 function loadJson(file, fallback) {
@@ -114,6 +150,33 @@ function loadJson(file, fallback) {
   } catch {
     return fallback;
   }
+}
+
+/** tr- / twin ids — same pin as catalog id. */
+function pinIdFamily(id) {
+  const raw = String(id || "").trim();
+  if (!raw) return [];
+  let base = raw;
+  if (raw.startsWith("tr-") && raw.endsWith("-tr") && raw.length > 6) {
+    base = raw.slice(3, -3);
+  } else if (raw.startsWith("tr-")) {
+    base = raw.slice(3);
+  }
+  return [...new Set([raw, base, `tr-${base}`, `tr-${base}-tr`].filter(
+    (x) => x && x !== "tr-" && x !== "tr--tr",
+  ))];
+}
+
+function isUploadBlocked(id, pinned, scheduled, topicCtx) {
+  const quizMeta = isQuizWordPinId(id) ? wordPinMeta(id) : null;
+  const title =
+    String(pinned[id]?.title || "").trim() ||
+    String(scheduled[id]?.tweetText || "").split("\n")[0].trim() ||
+    String(quizMeta?.title || "").trim() ||
+    id;
+  const gate = shouldSkipBundleForTopicDupSync(id, title, topicCtx);
+  if (gate.skip) return { blocked: true, reason: gate.reason };
+  return { blocked: false };
 }
 
 function saveJson(file, data) {
@@ -147,7 +210,8 @@ function pickAffiliateLink() {
 
 function linkForBundle(bundleId, publishedById, { allowHomeLink = false } = {}) {
   if (AFFILIATE_RATE > 0 && Math.random() < AFFILIATE_RATE) {
-    return pickAffiliateLink().url;
+    const aff = pickAffiliateLink();
+    return { url: aff.url, partner: aff.partner };
   }
   const page = publishedById.get(bundleId);
   if (!page?.slug) {
@@ -157,19 +221,40 @@ function linkForBundle(bundleId, publishedById, { allowHomeLink = false } = {}) 
       );
     }
   }
+  const koPin = page?.slug
+    ? koPinIdForVocab(ROOT, bundleId, page.slug)
+    : "";
+  if (koPin) {
+    return {
+      url: pronouncePinUrl(koPin, "ko", "vocab-pin"),
+      partner: "site",
+    };
+  }
   const pathname = page?.slug
     ? `/vocab/${encodeURIComponent(bundleId)}/${encodeURIComponent(page.slug)}`
     : "/";
   const url = new URL(pathname, `${SITE_URL}/`);
   url.searchParams.set("utm_source", "pinterest");
   url.searchParams.set("utm_campaign", "vocab-pin");
-  return url.toString();
+  return { url: url.toString(), partner: "site" };
+}
+
+/** FTC/Pinterest disclosure — affiliate destinations lead with #ad. */
+function withAdDisclosure(description, partner) {
+  const body = String(description || "").trim();
+  if (partner !== "preply" && partner !== "italki") return body;
+  if (/^#ad\b/i.test(body)) return body;
+  return body ? `#ad\n${body}` : "#ad";
 }
 
 /** Path without UTM — for deploy smoke checks. */
 function liveVocabPath(bundleId, publishedById) {
   const page = publishedById.get(bundleId);
   if (!page?.slug) return "";
+  const koPin = koPinIdForVocab(ROOT, bundleId, page.slug);
+  if (koPin) {
+    return pronouncePinUrl(koPin, "ko", "vocab-pin").split("?")[0];
+  }
   return `${SITE_URL}/vocab/${encodeURIComponent(bundleId)}/${encodeURIComponent(page.slug)}`;
 }
 
@@ -247,12 +332,6 @@ const PIN_TAG_SETS = [
   "#learnkorean #koreanlanguage #vocabulary #한국어공부",
   "#kajakorean #studykorean #koreanvocab #한국어",
   "#koreanwords #languagelearning #learnkorean #한국어단어",
-];
-/** Optional — omit sometimes so not every pin repeats the same CTA. */
-const SITE_AUDIO_LINES = [
-  "Pronunciations are on the website 🎙️",
-  "Audio + examples on the site 🎙️",
-  "Hear them on the website 🔊",
 ];
 const CHICO_DESC_CREDIT = "Charactor by @chico._.pu";
 const WORD_EMOJIS = ["🔴", "🔵", "🟢", "🟡", "🟣", "🟠", "⚫️", "⚪️"];
@@ -346,12 +425,10 @@ function descriptionFromEntry(entry, title = "", opts = {}) {
     ? CHICO_DESC_CREDIT
     : "";
   const creditBlock = credit ? `\n\n${credit}` : "";
-  const audioLine =
-    Math.random() < 0.72 ? pickOne(SITE_AUDIO_LINES) : "";
-  const audioBlock = audioLine ? `\n\n${audioLine}` : "";
+  // Listen CTA is prepended later via withListenOnWebsitePrefix (same as atlas pins).
   const budget = Math.max(
     40,
-    DESC_MAX - tags.length - creditBlock.length - audioBlock.length - 4,
+    DESC_MAX - tags.length - creditBlock.length - 60,
   );
   const titleNorm = String(title || "")
     .trim()
@@ -403,10 +480,9 @@ function descriptionFromEntry(entry, title = "", opts = {}) {
     body = parts.join("\n");
   }
 
-  const fallbackAudio = audioLine || pickOne(SITE_AUDIO_LINES);
   const text = body
-    ? `${body}${audioBlock}${creditBlock}\n\n${tags}`
-    : `${fallbackAudio}${creditBlock}\n\n${tags}`;
+    ? `${body}${creditBlock}\n\n${tags}`
+    : `${creditBlock}\n\n${tags}`.trim();
   return text.slice(0, DESC_MAX);
 }
 
@@ -568,8 +644,10 @@ function bucketFromCatalogFormat(format) {
     hanja_hub: "hanja",
     pronunciation_grid: "pronunciation",
     grammar_spotlight: "grammar",
+    idiom_card: "idiom",
     compound_word: "compound",
     phrase_square: "phrase_square",
+    quiz_word_pin: "quiz_word",
   };
   return map[f] || null;
 }
@@ -581,6 +659,7 @@ function bucketFromCatalogFormat(format) {
  */
 function formatBucket(bundleId, formatById = null) {
   const id = String(bundleId || "").toLowerCase();
+  if (isQuizWordPinId(id)) return "quiz_word";
   const fromCatalog = bucketFromCatalogFormat(formatById?.get?.(id) || formatById?.[id]);
   if (fromCatalog) return fromCatalog;
 
@@ -597,6 +676,7 @@ function formatBucket(bundleId, formatById = null) {
     if (rest.startsWith("cute-")) return "cute";
     if (rest.startsWith("cmp-") || rest.startsWith("compound-")) return "compound";
     if (rest.startsWith("gram-")) return "grammar";
+    if (rest.startsWith("idiom-")) return "idiom";
     if (rest.startsWith("hanja-")) return "hanja";
     if (rest.startsWith("topik-")) return "topik";
     if (rest.startsWith("pron-")) return "pronunciation";
@@ -613,6 +693,7 @@ function formatBucket(bundleId, formatById = null) {
   if (id.startsWith("phrase-")) return "phrase";
   if (id.startsWith("topik-")) return "topik";
   if (id.startsWith("gram-")) return "grammar";
+  if (id.startsWith("idiom-")) return "idiom";
   if (id.startsWith("cmp-") || id.startsWith("compound-")) return "compound";
   if (id.startsWith("pron-")) return "pronunciation";
   const head = id.split("-")[0] || "other";
@@ -736,15 +817,45 @@ async function uploadWithRetries(args) {
   return last;
 }
 
+function isApproved(review, bundleId) {
+  return review?.[bundleId]?.status === "approved";
+}
+
+function readyUnpinned(scheduled, pinned, publishedById, {
+  prefix = "",
+  allowHomeLink = false,
+  approvedOnly = false,
+  review = {},
+  topicCtx = null,
+} = {}) {
+  return Object.keys(scheduled)
+    .filter((k) => {
+      const block = isUploadBlocked(k, pinned, scheduled, topicCtx);
+      return !block.blocked;
+    })
+    .filter((k) => !prefix || k.startsWith(prefix))
+    .filter((k) => fs.existsSync(path.join(OUT, `${k}.png`)))
+    .filter((k) => allowHomeLink || publishedById.has(k))
+    .filter((k) => !approvedOnly || isApproved(review, k));
+}
+
 async function main() {
-  const { count, id, prefix, dryRun, allowHomeLink, skipLiveCheck } = parseArgs(
-    process.argv.slice(2),
-  );
+  const {
+    count,
+    id,
+    ids: idsArg,
+    prefix,
+    dryRun,
+    allowHomeLink,
+    skipLiveCheck,
+    approvedOnly,
+  } = parseArgs(process.argv.slice(2));
   if (!fs.existsSync(UPLOAD_PIN)) {
     throw new Error(`upload-pin.mjs not found: ${UPLOAD_PIN}`);
   }
   const scheduled = loadJson(SCHEDULED, {});
   const pinned = loadJson(PINNED, {});
+  const review = loadJson(REVIEW, {});
   const published = loadJson(PUBLISHED, { pages: [] });
   const publishedById = new Map(
     (Array.isArray(published?.pages) ? published.pages : [])
@@ -758,23 +869,106 @@ async function main() {
       .filter(([, v]) => v?.format)
       .map(([k, v]) => [k, String(v.format)]),
   );
+  const topicCtx = buildTopicDedupContext(OUT, Object.keys(scheduled));
+  const clusterDupes = auditPinnedClusters(pinned, scheduled, review);
+  if (clusterDupes.length) {
+    console.log(
+      `    topic-cluster duplicates already on Pinterest: ${clusterDupes.length} clusters`,
+    );
+    for (const row of clusterDupes.slice(0, 6)) {
+      console.log(`      ${row.cluster}: ${row.pinned.join(", ")}`);
+    }
+  }
 
   let candidates;
   if (id) {
     if (!scheduled[id]) throw new Error(`Not in vocab-x-scheduled.json: ${id}`);
+    if (approvedOnly && !isApproved(review, id)) {
+      throw new Error(`Not approved in pin-review.json: ${id}`);
+    }
     candidates = [id];
+  } else if (idsArg.length) {
+    if (approvedOnly) {
+      const notApproved = idsArg.filter((k) => !isApproved(review, k));
+      if (notApproved.length) {
+        throw new Error(
+          `Refusing to pin non-approved ids: ${notApproved.join(", ")}`,
+        );
+      }
+    }
+    candidates = idsArg.filter((k) => {
+      if (isQuizWordPinId(k)) {
+        if (!resolveQuizWordPinFile(k)) {
+          console.log(`    skip ${k} — missing quiz word pin image`);
+          return false;
+        }
+        const block = isUploadBlocked(k, pinned, scheduled, topicCtx);
+        if (block.blocked) {
+          console.log(`    skip ${k} — ${block.reason}`);
+          return false;
+        }
+        if (approvedOnly && !isApproved(review, k)) {
+          console.log(`    skip ${k} — not approved`);
+          return false;
+        }
+        return true;
+      }
+      if (!scheduled[k]) {
+        console.log(`    skip ${k} — not in vocab-x-scheduled.json`);
+        return false;
+      }
+      const block = isUploadBlocked(k, pinned, scheduled, topicCtx);
+      if (block.blocked) {
+        console.log(`    skip ${k} — ${block.reason}`);
+        return false;
+      }
+      if (!fs.existsSync(path.join(OUT, `${k}.png`))) {
+        console.log(`    skip ${k} — missing PNG`);
+        return false;
+      }
+      if (!allowHomeLink && !publishedById.has(k)) {
+        console.log(`    skip ${k} — not in published.json`);
+        return false;
+      }
+      if (approvedOnly && !isApproved(review, k)) {
+        console.log(`    skip ${k} — not approved`);
+        return false;
+      }
+      return true;
+    });
+    if (approvedOnly && candidates.length !== idsArg.filter((k) => !pinned[k]).length) {
+      const missing = idsArg.filter((k) => {
+        if (pinned[k]) return false;
+        if (isQuizWordPinId(k)) {
+          return !resolveQuizWordPinFile(k) || !isApproved(review, k);
+        }
+        return (
+          !scheduled[k] ||
+          !fs.existsSync(path.join(OUT, `${k}.png`)) ||
+          (!allowHomeLink && !publishedById.has(k))
+        );
+      });
+      if (missing.length) {
+        throw new Error(
+          `Approved wave ids not ready to pin: ${missing.join(", ")}`,
+        );
+      }
+    }
   } else {
-    const ready = Object.keys(scheduled)
-      .filter((k) => !pinned[k])
-      .filter((k) => !prefix || k.startsWith(prefix))
-      .filter((k) => fs.existsSync(path.join(OUT, `${k}.png`)))
-      .filter((k) => allowHomeLink || publishedById.has(k));
+    const ready = readyUnpinned(scheduled, pinned, publishedById, {
+      prefix,
+      allowHomeLink,
+      approvedOnly,
+      review,
+      topicCtx,
+    });
     const missingSeo = Object.keys(scheduled).filter(
       (k) =>
         !pinned[k] &&
         fs.existsSync(path.join(OUT, `${k}.png`)) &&
         !publishedById.has(k) &&
-        (!prefix || k.startsWith(prefix)),
+        (!prefix || k.startsWith(prefix)) &&
+        (!approvedOnly || isApproved(review, k)),
     );
     if (missingSeo.length && !allowHomeLink) {
       console.log(
@@ -792,7 +986,7 @@ async function main() {
       DELAY_FIXED_SEC != null && Number.isFinite(DELAY_FIXED_SEC)
         ? `${DELAY_FIXED_SEC}s fixed`
         : `${DELAY_MIN_SEC}–${DELAY_MAX_SEC}s random`
-    } timeout=${ATTEMPT_TIMEOUT_MS}ms retries=${MAX_RETRIES} dryRun=${dryRun} liveCheck=${!skipLiveCheck} allowHome=${allowHomeLink}`,
+    } timeout=${ATTEMPT_TIMEOUT_MS}ms retries=${MAX_RETRIES} dryRun=${dryRun} liveCheck=${!skipLiveCheck} allowHome=${allowHomeLink} approvedOnly=${approvedOnly}`,
   );
   if (candidates.length) {
     const mix = {};
@@ -843,24 +1037,43 @@ async function main() {
   for (let i = 0; i < candidates.length; i++) {
     // Re-read pinned each loop so resumed runs never re-upload.
     Object.assign(pinned, loadJson(PINNED, {}));
+    topicCtx.pinned = pinned;
     const bundleId = candidates[i];
+    const block = isUploadBlocked(bundleId, pinned, scheduled, topicCtx);
+    if (block.blocked) {
+      console.log(`→ [${i + 1}/${candidates.length}] ${bundleId} (${block.reason}, skip)`);
+      ok += 1;
+      continue;
+    }
     if (pinned[bundleId]) {
       console.log(`→ [${i + 1}/${candidates.length}] ${bundleId} (already pinned, skip)`);
       ok += 1;
       continue;
     }
-    const entry = scheduled[bundleId];
-    const sourcePng = path.join(OUT, `${bundleId}.png`);
-    const title = titleFromEntry(bundleId, entry);
+
+    const isQuizWord = isQuizWordPinId(bundleId);
+    const quizMeta = isQuizWord ? wordPinMeta(bundleId) : null;
+    const entry = isQuizWord
+      ? { format: "quiz_word_pin", tweetText: quizMeta?.title || bundleId }
+      : scheduled[bundleId];
+    const sourcePng = isQuizWord
+      ? resolveQuizWordPinFile(bundleId)
+      : path.join(OUT, `${bundleId}.png`);
+    const title = isQuizWord
+      ? quizWordPinTitle(quizMeta)
+      : titleFromEntry(bundleId, entry);
     const progressFlags = progressFlagsById[bundleId] || {};
-    const description = descriptionFromEntry(entry, title, {
-      bundleId,
-      castMap,
-      cuteCast: entry?.cuteCast ?? progressFlags.cuteCast ?? castMap[bundleId] ?? undefined,
-      includeJjibara:
-        entry?.includeJjibara ?? progressFlags.includeJjibara ?? undefined,
-      format: entry?.format ?? progressFlags.format ?? undefined,
-    });
+    const rawDescription = isQuizWord
+      ? quizWordPinDescription(quizMeta)
+      : descriptionFromEntry(entry, title, {
+          bundleId,
+          castMap,
+          cuteCast: entry?.cuteCast ?? progressFlags.cuteCast ?? castMap[bundleId] ?? undefined,
+          includeJjibara:
+            entry?.includeJjibara ?? progressFlags.includeJjibara ?? undefined,
+          format: entry?.format ?? progressFlags.format ?? undefined,
+        });
+    const description = withListenOnWebsitePrefix(rawDescription, DESC_MAX);
     if (
       shouldChicoDescCredit({
         bundleId,
@@ -876,18 +1089,32 @@ async function main() {
     const alt = altTextFromEntry(title, bundleId);
 
     let link;
+    let partner = "site";
     try {
-      link = linkForBundle(bundleId, publishedById, { allowHomeLink });
+      if (isQuizWord) {
+        const dest = String(quizMeta?.destination || "").trim();
+        if (!dest) throw new Error("missing how-to-say destination in word-pin ledger");
+        link = dest;
+        partner = "site";
+      } else {
+        const dest = linkForBundle(bundleId, publishedById, { allowHomeLink });
+        link = dest.url;
+        partner = dest.partner || "site";
+      }
     } catch (e) {
       console.error(`→ [${i + 1}/${candidates.length}] ${bundleId} skip: ${e.message || e}`);
       failed += 1;
       continue;
     }
 
+    const descriptionWithAd = withAdDisclosure(description, partner);
+
     const isHome =
-      !publishedById.get(bundleId)?.slug ||
-      new URL(link).pathname === "/" ||
-      new URL(link).pathname === "";
+      !isQuizWord &&
+      partner === "site" &&
+      (!publishedById.get(bundleId)?.slug ||
+        new URL(link).pathname === "/" ||
+        new URL(link).pathname === "");
     if (isHome && !allowHomeLink) {
       console.error(
         `→ [${i + 1}/${candidates.length}] ${bundleId} skip: homepage link forbidden`,
@@ -896,8 +1123,10 @@ async function main() {
       continue;
     }
 
-    if (!skipLiveCheck && !isHome) {
-      const livePath = liveVocabPath(bundleId, publishedById);
+    if (!skipLiveCheck && partner === "site" && !isHome) {
+      const livePath = isQuizWord
+        ? quizWordPinLiveUrl(quizMeta)
+        : liveVocabPath(bundleId, publishedById);
       const live = await isLiveSeoPage(livePath);
       if (!live) {
         console.error(
@@ -913,8 +1142,8 @@ async function main() {
     console.log(`   title: ${title}`);
     console.log(`   topics: ${topicList.join(" · ")}`);
     console.log(`   alt: ${alt}`);
-    console.log(`   link: ${link}`);
-    console.log(`   desc: ${description.slice(0, 120).replace(/\n/g, " / ")}…`);
+    console.log(`   link: ${link} (${partner})`);
+    console.log(`   desc: ${descriptionWithAd.slice(0, 120).replace(/\n/g, " / ")}…`);
 
     let media = sourcePng;
     try {
@@ -939,7 +1168,7 @@ async function main() {
     const result = await uploadWithRetries({
       media,
       title,
-      description,
+      description: descriptionWithAd,
       topic,
       topics: topic,
       alt,
@@ -962,13 +1191,19 @@ async function main() {
     pinned[bundleId] = {
       at: new Date().toISOString(),
       title,
-      description,
+      description: descriptionWithAd,
       topic,
       topics: topicList,
       alt,
       link,
       board: DEFAULT_BOARD,
       ...(payload.pin_id ? { pin_id: String(payload.pin_id) } : {}),
+      ...(payload.pin_id
+        ? {
+            pin_url: `https://www.pinterest.com/pin/${String(payload.pin_id)}/`,
+            analytics_url: `https://www.pinterest.com/pin/${String(payload.pin_id)}/analytics/?aggregation=last30d`,
+          }
+        : {}),
       ...(result.publishUnconfirmed || payload.publishUnconfirmed
         ? { publishUnconfirmed: true }
         : {}),

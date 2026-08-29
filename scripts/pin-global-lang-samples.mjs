@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
  * Global Pinterest (Account B / multilingual Chrome :9224).
- * Pins teach TARGET lang via English → destination:
- *   ~25% Preply/italki direct, rest → global site /pin/{id}
+ * Pins teach TARGET lang via English → destination: getpronounce.net /{lang}/pin/{id}
+ * (Listen on website CTA on the image). Direct Preply/italki only if
+ * PINTEREST_AFFILIATE_RATE > 0.
  *
  *   node scripts/pin-global-lang-samples.mjs --count 4
  *   node scripts/pin-global-lang-samples.mjs --dry-run
@@ -20,6 +21,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { LISTEN_ON_WEBSITE_LINE, withListenOnWebsitePrefix } from "./lib/atlas-pin-description.mjs";
+import { pronouncePinUrl } from "./lib/atlas-pin-destination.mjs";
 import {
   optimizePinterestPin,
   optimizedPinPath,
@@ -48,11 +51,7 @@ const BROWSER_URL =
   process.env.CHROME_PINTEREST_ML_DEBUG_URL ||
   process.env.CHROME_GLOBAL_DEBUG_URL ||
   "http://127.0.0.1:9224";
-/** Pinterest destination — never affiliate direct; hop via global site content pages. */
-// Canonical destination host (DNS may lag; pins use this ahead of time).
-const GLOBAL_SITE = (
-  process.env.GLOBAL_SITE_URL || "https://global.kajakorean.com"
-).replace(/\/+$/, "");
+/** Pinterest destination — getpronounce atlas pin pages (legacy global host 301s). */
 const PREPLY =
   process.env.PINTEREST_AFFILIATE_PREPLY ||
   "https://preply.sjv.io/c/7574725/1987575/24422";
@@ -61,7 +60,7 @@ const ITALKI =
   "https://www.italki.com/en/affshare?ref=af33117569";
 const AFFILIATE_RATE = Math.min(
   1,
-  Math.max(0, Number(process.env.PINTEREST_AFFILIATE_RATE ?? 0.25) || 0),
+  Math.max(0, Number(process.env.PINTEREST_AFFILIATE_RATE ?? 0) || 0),
 );
 
 const DELAY_MIN_SEC = Math.max(
@@ -251,18 +250,11 @@ function affiliateLink(meta) {
     };
   }
   const id = String(meta.id || "").trim();
-  if (!id) return { url: GLOBAL_SITE, partner: "site" };
-  try {
-    const u = new URL(`/pin/${encodeURIComponent(id)}`, GLOBAL_SITE);
-    u.searchParams.set("utm_source", "pinterest");
-    u.searchParams.set("utm_campaign", "global-lang-pin");
-    return { url: u.toString(), partner: "site" };
-  } catch {
-    return {
-      url: `${GLOBAL_SITE}/pin/${encodeURIComponent(id)}`,
-      partner: "site",
-    };
-  }
+  if (!id) return { url: "https://getpronounce.net/", partner: "site" };
+  return {
+    url: pronouncePinUrl(id, meta.lang, "global-lang-pin"),
+    partner: "site",
+  };
 }
 
 function pickOne(list) {
@@ -342,9 +334,14 @@ function descriptionFromMeta(meta) {
   const head = intro ? `${intro}\n` : "";
   const tail = outro ? `\n${outro}` : "";
   const tagLine = tags.join(" ");
-  const budget = DESC_MAX - head.length - tail.length - tagLine.length - 8;
+  const listen = `${LISTEN_ON_WEBSITE_LINE}\n`;
+  const budget =
+    DESC_MAX - listen.length - head.length - tail.length - tagLine.length - 8;
   if (body.length > budget) body = `${body.slice(0, Math.max(0, budget - 1)).trim()}…`;
-  return `${head}${body}${tail}\n\n${tagLine}`.slice(0, DESC_MAX);
+  return withListenOnWebsitePrefix(
+    `${head}${body}${tail}\n\n${tagLine}`,
+    DESC_MAX,
+  );
 }
 
 function titleFromMeta(meta) {

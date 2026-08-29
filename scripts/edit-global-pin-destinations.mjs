@@ -2,7 +2,7 @@
 /**
  * Edit website destinations on Account B (multilingual :9224) global pins.
  *
- * Default target: https://global.kajakorean.com/pin/{id}
+ * Default target: https://getpronounce.net/{lang}/pin/{id}
  * (25% direct Preply/italki only when --affiliate-rate > 0)
  *
  *   node scripts/edit-global-pin-destinations.mjs
@@ -27,9 +27,7 @@ const PINNED_PATH = path.join(OUT, "pinterest-pinned.json");
 const WAVE_LOG = path.join(OUT, "pin-wave-20260809-082403.log");
 const LOG_DIR = path.join(OUT, "logs");
 
-const GLOBAL_SITE = (
-  process.env.GLOBAL_SITE_URL || "https://global.kajakorean.com"
-).replace(/\/+$/, "");
+import { pronouncePinUrl } from "./lib/atlas-pin-destination.mjs";
 const PREPLY =
   process.env.PINTEREST_AFFILIATE_PREPLY ||
   "https://preply.sjv.io/c/7574725/1987575/24422";
@@ -106,12 +104,7 @@ function withUtm(url, campaign) {
 }
 
 function siteLink(id) {
-  try {
-    const u = new URL(`/pin/${encodeURIComponent(id)}`, GLOBAL_SITE);
-    return withUtm(u.toString(), "global-lang-pin");
-  } catch {
-    return withUtm(`${GLOBAL_SITE}/pin/${encodeURIComponent(id)}`, "global-lang-pin");
-  }
+  return pronouncePinUrl(id, undefined, "global-lang-pin");
 }
 
 function pickDestination(id) {

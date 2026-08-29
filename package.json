@@ -48,6 +48,7 @@
     "vocab-detail:pipeline": "npx tsx scripts/vocab-detail-pipeline.ts",
     "vocab:audit-hanja": "npx tsx scripts/audit-hanja-hubs.ts",
     "vocab:publish": "npx tsx scripts/publish-vocab-seo-pages.ts",
+    "vocab:ko-redirects": "node scripts/build-vocab-ko-redirects.mjs",
     "vocab:migrate-ascii-ids": "node scripts/migrate-non-ascii-bundle-ids.mjs",
     "list:publish": "npx tsx scripts/publish-ig-list-seo-pages.ts",
     "vocab:enrich": "npx tsx scripts/enrich-vocab-seo-pages.ts",
