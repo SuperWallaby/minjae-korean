@@ -85,6 +85,7 @@ const KAJA_PREFIXES = [
   "scripts/deploy-x-poster",
   "public/brand/",
   "public/favicon",
+  "public/ads.txt",
 ];
 
 /** getpronounce.net */
