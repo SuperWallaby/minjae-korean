@@ -11,6 +11,7 @@ import { headers } from "next/headers";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
 import { KajaMainLayoutChrome } from "@/components/site/KajaMainLayoutChrome";
+import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
 import {
   EIGOCHART_DESCRIPTION,
   EIGOCHART_NAME,
@@ -22,6 +23,7 @@ import {
 import {
   SOUND_SITE_DESCRIPTION,
   SOUND_SITE_NAME,
+  isSoundSiteDeployment,
   soundSiteHomeTitle,
   soundSiteOrigin,
   soundSiteTitleTemplate,
@@ -139,13 +141,80 @@ function isWorksheetSiteRequest(h: Headers): boolean {
   return host === "worksheet.kajakorean.com" || host.startsWith("worksheet.");
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+type AtlasFlags = {
+  isGlobalSite: boolean;
+  isSoundSite: boolean;
+  isPronounceSite: boolean;
+  isJaSite: boolean;
+  isWorksheetSite: boolean;
+};
+
+/**
+ * Dedicated Vercel projects already know the site from env. Calling
+ * `headers()` here makes on-demand SSG throw DYNAMIC_SERVER_USAGE (500)
+ * for atlas pin paths that were not prerendered at build.
+ */
+function atlasFlagsFromDedicatedEnv(): AtlasFlags | null {
+  if (isPronounceSiteDeployment()) {
+    return {
+      isGlobalSite: false,
+      isSoundSite: false,
+      isPronounceSite: true,
+      isJaSite: false,
+      isWorksheetSite: false,
+    };
+  }
+  if (isSoundSiteDeployment()) {
+    return {
+      isGlobalSite: false,
+      isSoundSite: true,
+      isPronounceSite: false,
+      isJaSite: false,
+      isWorksheetSite: false,
+    };
+  }
+  if (isJaSiteDeployment()) {
+    return {
+      isGlobalSite: false,
+      isSoundSite: false,
+      isPronounceSite: false,
+      isJaSite: true,
+      isWorksheetSite: false,
+    };
+  }
+  if (isWorksheetSiteDeployment()) {
+    return {
+      isGlobalSite: false,
+      isSoundSite: false,
+      isPronounceSite: false,
+      isJaSite: false,
+      isWorksheetSite: true,
+    };
+  }
+  return null;
+}
+
+async function resolveAtlasFlags(): Promise<AtlasFlags> {
+  const dedicated = atlasFlagsFromDedicatedEnv();
+  if (dedicated) return dedicated;
   const h = await headers();
-  const isGlobalSite = isGlobalSiteRequest(h);
-  const isSoundSite = isSoundSiteRequest(h);
-  const isPronounceSite = isPronounceSiteRequest(h);
-  const isJaSite = isJaSiteRequest(h);
-  const isWorksheetSite = isWorksheetSiteRequest(h);
+  return {
+    isGlobalSite: isGlobalSiteRequest(h),
+    isSoundSite: isSoundSiteRequest(h),
+    isPronounceSite: isPronounceSiteRequest(h),
+    isJaSite: isJaSiteRequest(h),
+    isWorksheetSite: isWorksheetSiteRequest(h),
+  };
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const {
+    isGlobalSite,
+    isSoundSite,
+    isPronounceSite,
+    isJaSite,
+    isWorksheetSite,
+  } = await resolveAtlasFlags();
 
   if (isPronounceSite) {
     const origin = pronounceSiteOrigin();
@@ -387,12 +456,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const h = await headers();
-  const isGlobalSite = isGlobalSiteRequest(h);
-  const isSoundSite = isSoundSiteRequest(h);
-  const isPronounceSite = isPronounceSiteRequest(h);
-  const isJaSite = isJaSiteRequest(h);
-  const isWorksheetSite = isWorksheetSiteRequest(h);
+  const {
+    isGlobalSite,
+    isSoundSite,
+    isPronounceSite,
+    isJaSite,
+    isWorksheetSite,
+  } = await resolveAtlasFlags();
 
   if (isGlobalSite || isJaSite || isSoundSite || isPronounceSite || isWorksheetSite) {
     return (
@@ -423,10 +493,16 @@ export default async function RootLayout({
             />
           ) : null}
           {isPronounceSite ? (
-            <meta
-              name="impact-site-verification"
-              {...{ value: PRONOUNCE_IMPACT_VERIFY }}
-            />
+            <>
+              <meta
+                name="impact-site-verification"
+                {...{ value: PRONOUNCE_IMPACT_VERIFY }}
+              />
+              <meta
+                name="partnerboostverifycode"
+                content="32dc01246faccb7f5b3cad5016dd5033"
+              />
+            </>
           ) : null}
         </head>
         <body
@@ -437,7 +513,7 @@ export default async function RootLayout({
           }
         >
           <GoogleAnalytics />
-          {children}
+          <MockSessionProvider>{children}</MockSessionProvider>
         </body>
       </html>
     );
