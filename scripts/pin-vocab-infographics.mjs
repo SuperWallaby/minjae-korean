@@ -64,7 +64,7 @@ const DRAFT_MIN_COUNT = Math.max(
   Number(process.env.PINTEREST_DRAFT_MIN_COUNT ?? 50) || 50,
 );
 const DEFAULT_BOARD = process.env.PINTEREST_BOARD_NAME || "Korean words";
-const SITE_URL = "https://kajakorean.com";
+const SITE_URL = "https://getpronounce.net";
 const PREPLY =
   process.env.PINTEREST_AFFILIATE_PREPLY ||
   "https://preply.sjv.io/GbYYkn";
@@ -213,30 +213,31 @@ function linkForBundle(bundleId, publishedById, { allowHomeLink = false } = {}) 
     const aff = pickAffiliateLink();
     return { url: aff.url, partner: aff.partner };
   }
-  const page = publishedById.get(bundleId);
-  if (!page?.slug) {
-    if (!allowHomeLink) {
-      throw new Error(
-        `no SEO page for ${bundleId} — run yarn vocab:publish + deploy before pinning`,
-      );
-    }
-  }
-  const koPin = page?.slug
-    ? koPinIdForVocab(ROOT, bundleId, page.slug)
+  const atlasKo = /__ko$/i.test(String(bundleId || ""))
+    ? String(bundleId)
     : "";
-  if (koPin) {
+  if (atlasKo) {
     return {
-      url: pronouncePinUrl(koPin, "ko", "vocab-pin"),
+      url: pronouncePinUrl(atlasKo, "ko", "vocab-pin"),
       partner: "site",
     };
   }
-  const pathname = page?.slug
-    ? `/vocab/${encodeURIComponent(bundleId)}/${encodeURIComponent(page.slug)}`
-    : "/";
-  const url = new URL(pathname, `${SITE_URL}/`);
-  url.searchParams.set("utm_source", "pinterest");
-  url.searchParams.set("utm_campaign", "vocab-pin");
-  return { url: url.toString(), partner: "site" };
+  const page = publishedById.get(bundleId);
+  if (!page?.slug) {
+    throw new Error(
+      `no SEO page for ${bundleId} — run yarn vocab:publish + deploy before pinning`,
+    );
+  }
+  const koPin = koPinIdForVocab(ROOT, bundleId, page.slug);
+  if (!koPin) {
+    throw new Error(
+      `no getpronounce /ko/pin mapping for ${bundleId} — skip kajakorean fallback`,
+    );
+  }
+  return {
+    url: pronouncePinUrl(koPin, "ko", "vocab-pin"),
+    partner: "site",
+  };
 }
 
 /** FTC/Pinterest disclosure — affiliate destinations lead with #ad. */
@@ -248,14 +249,32 @@ function withAdDisclosure(description, partner) {
 }
 
 /** Path without UTM — for deploy smoke checks. */
+function atlasKoPinId(id) {
+  const s = String(id || "").trim();
+  return /__ko$/i.test(s) ? s : "";
+}
+
+function otherAtlasLang(id) {
+  const m = String(id || "").match(/__([a-z]{2})$/i);
+  return Boolean(m && m[1].toLowerCase() !== "ko");
+}
+
+function hasGetpronounceDest(bundleId, publishedById) {
+  if (atlasKoPinId(bundleId)) return true;
+  const page = publishedById.get(bundleId);
+  if (!page?.slug) return false;
+  return Boolean(koPinIdForVocab(ROOT, bundleId, page.slug));
+}
+
 function liveVocabPath(bundleId, publishedById) {
+  if (/__ko$/i.test(String(bundleId || ""))) {
+    return pronouncePinUrl(bundleId, "ko", "vocab-pin").split("?")[0];
+  }
   const page = publishedById.get(bundleId);
   if (!page?.slug) return "";
   const koPin = koPinIdForVocab(ROOT, bundleId, page.slug);
-  if (koPin) {
-    return pronouncePinUrl(koPin, "ko", "vocab-pin").split("?")[0];
-  }
-  return `${SITE_URL}/vocab/${encodeURIComponent(bundleId)}/${encodeURIComponent(page.slug)}`;
+  if (!koPin) return "";
+  return pronouncePinUrl(koPin, "ko", "vocab-pin").split("?")[0];
 }
 
 async function isLiveSeoPage(urlPath) {
@@ -834,8 +853,10 @@ function readyUnpinned(scheduled, pinned, publishedById, {
       return !block.blocked;
     })
     .filter((k) => !prefix || k.startsWith(prefix))
+    .filter((k) => !isQuizWordPinId(k))
+    .filter((k) => !otherAtlasLang(k))
     .filter((k) => fs.existsSync(path.join(OUT, `${k}.png`)))
-    .filter((k) => allowHomeLink || publishedById.has(k))
+    .filter((k) => hasGetpronounceDest(k, publishedById))
     .filter((k) => !approvedOnly || isApproved(review, k));
 }
 
@@ -898,20 +919,12 @@ async function main() {
     }
     candidates = idsArg.filter((k) => {
       if (isQuizWordPinId(k)) {
-        if (!resolveQuizWordPinFile(k)) {
-          console.log(`    skip ${k} — missing quiz word pin image`);
-          return false;
-        }
-        const block = isUploadBlocked(k, pinned, scheduled, topicCtx);
-        if (block.blocked) {
-          console.log(`    skip ${k} — ${block.reason}`);
-          return false;
-        }
-        if (approvedOnly && !isApproved(review, k)) {
-          console.log(`    skip ${k} — not approved`);
-          return false;
-        }
-        return true;
+        console.log(`    skip ${k} — quiz word pins stay off (kajakorean how-to-say)`);
+        return false;
+      }
+      if (otherAtlasLang(k)) {
+        console.log(`    skip ${k} — not a Korean getpronounce pin`);
+        return false;
       }
       if (!scheduled[k]) {
         console.log(`    skip ${k} — not in vocab-x-scheduled.json`);
@@ -926,8 +939,8 @@ async function main() {
         console.log(`    skip ${k} — missing PNG`);
         return false;
       }
-      if (!allowHomeLink && !publishedById.has(k)) {
-        console.log(`    skip ${k} — not in published.json`);
+      if (!hasGetpronounceDest(k, publishedById)) {
+        console.log(`    skip ${k} — no getpronounce /ko/pin mapping`);
         return false;
       }
       if (approvedOnly && !isApproved(review, k)) {
@@ -939,13 +952,11 @@ async function main() {
     if (approvedOnly && candidates.length !== idsArg.filter((k) => !pinned[k]).length) {
       const missing = idsArg.filter((k) => {
         if (pinned[k]) return false;
-        if (isQuizWordPinId(k)) {
-          return !resolveQuizWordPinFile(k) || !isApproved(review, k);
-        }
+        if (isQuizWordPinId(k) || otherAtlasLang(k)) return false;
         return (
           !scheduled[k] ||
           !fs.existsSync(path.join(OUT, `${k}.png`)) ||
-          (!allowHomeLink && !publishedById.has(k))
+          !hasGetpronounceDest(k, publishedById)
         );
       });
       if (missing.length) {
@@ -965,14 +976,16 @@ async function main() {
     const missingSeo = Object.keys(scheduled).filter(
       (k) =>
         !pinned[k] &&
+        !isQuizWordPinId(k) &&
+        !otherAtlasLang(k) &&
         fs.existsSync(path.join(OUT, `${k}.png`)) &&
-        !publishedById.has(k) &&
+        !hasGetpronounceDest(k, publishedById) &&
         (!prefix || k.startsWith(prefix)) &&
         (!approvedOnly || isApproved(review, k)),
     );
-    if (missingSeo.length && !allowHomeLink) {
+    if (missingSeo.length) {
       console.log(
-        `    note: ${missingSeo.length} unpinned PNG(s) skipped — not in published.json (yarn vocab:publish + deploy first)`,
+        `    note: ${missingSeo.length} unpinned PNG(s) skipped — no getpronounce /ko/pin mapping`,
       );
     }
     candidates = pickCandidatesEvenly(ready, count, formatById);
@@ -1002,7 +1015,7 @@ async function main() {
     console.log("Nothing to pin.");
     if (!allowHomeLink && publishedById.size === 0) {
       console.error(
-        "Hint: published.json empty/stale — yarn vocab:publish then deploy kajakorean.com.",
+        "Hint: need getpronounce /ko/pin mapping (yarn vocab:publish + yarn vocab:ko-redirects).",
       );
     }
     return;
@@ -1048,6 +1061,13 @@ async function main() {
     if (pinned[bundleId]) {
       console.log(`→ [${i + 1}/${candidates.length}] ${bundleId} (already pinned, skip)`);
       ok += 1;
+      continue;
+    }
+    if (isQuizWordPinId(bundleId)) {
+      console.log(
+        `→ [${i + 1}/${candidates.length}] ${bundleId} skip: quiz word pins stay off (kajakorean how-to-say)`,
+      );
+      failed += 1;
       continue;
     }
 
@@ -1109,12 +1129,17 @@ async function main() {
 
     const descriptionWithAd = withAdDisclosure(description, partner);
 
+    const destPath = (() => {
+      try {
+        return new URL(link).pathname;
+      } catch {
+        return "";
+      }
+    })();
     const isHome =
       !isQuizWord &&
       partner === "site" &&
-      (!publishedById.get(bundleId)?.slug ||
-        new URL(link).pathname === "/" ||
-        new URL(link).pathname === "");
+      (destPath === "/" || destPath === "");
     if (isHome && !allowHomeLink) {
       console.error(
         `→ [${i + 1}/${candidates.length}] ${bundleId} skip: homepage link forbidden`,

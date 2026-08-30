@@ -133,7 +133,23 @@ async function main() {
   const quizIds = ids.filter((id) =>
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id),
   );
-  const vocabIds = ids.filter((id) => !quizIds.includes(id));
+  const atlasKoIds = ids.filter((id) => /__ko$/i.test(id));
+  const vocabIds = ids.filter(
+    (id) => !quizIds.includes(id) && !atlasKoIds.includes(id),
+  );
+  if (atlasKoIds.length) {
+    console.log(
+      `skip vocab SEO for ${atlasKoIds.length} getpronounce /ko/pin id(s)`,
+    );
+    for (const id of atlasKoIds) {
+      const url = `${PRONOUNCE_ORIGIN}${pronouncePinPath(id, "ko")}`;
+      if (!(await isLive(url))) {
+        console.error(`getpronounce not live: ${url}`);
+        process.exit(1);
+      }
+      console.log(`  already live ${id}`);
+    }
+  }
   if (quizIds.length) {
     console.log(
       `skip vocab SEO for ${quizIds.length} quiz word pin(s) — how-to-say pages already published`,
@@ -176,17 +192,15 @@ async function main() {
   const targets = vocabIds.map((id) => {
     const p = byId.get(id);
     const koPin = p?.slug ? koPinIdForVocab(ROOT, id, p.slug) : "";
-    if (koPin) {
-      return {
-        id,
-        url: `${PRONOUNCE_ORIGIN}${pronouncePinPath(koPin, "ko")}`,
-        mapped: true,
-      };
+    if (!koPin) {
+      throw new Error(
+        `no getpronounce /ko/pin mapping for ${id} — will not pin to kajakorean.com`,
+      );
     }
     return {
       id,
-      url: `${SITE}/vocab/${encodeURIComponent(id)}/${encodeURIComponent(p.slug)}`,
-      mapped: false,
+      url: `${PRONOUNCE_ORIGIN}${pronouncePinPath(koPin, "ko")}`,
+      mapped: true,
     };
   });
 

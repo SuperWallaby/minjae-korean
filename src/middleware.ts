@@ -160,11 +160,12 @@ function taggedRewrite(request: NextRequest, url: URL, site: AtlasSite) {
 }
 
 function isStaticAsset(pathname: string): boolean {
+  // Do not treat `/{lang}/pin/...` (getpronounce JA/KO/etc.) as static.
+  // `/ja/` here used to short-circuit every Japanese atlas page to 404.
   return (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/brand") ||
     pathname.startsWith("/global/") ||
-    pathname.startsWith("/ja/") ||
     pathname.startsWith("/sound/") ||
     pathname.startsWith("/pronounce/") ||
     pathname.startsWith("/favicon") ||
@@ -308,7 +309,16 @@ export function middleware(request: NextRequest) {
       const redirect = pronouncePathRedirect(request);
       if (redirect) return withAtlasCdnCache(redirect);
     }
-    return atlasMiddleware(request, "pronounce", "/pronounce-site");
+    const out = atlasMiddleware(request, "pronounce", "/pronounce-site");
+    // Korean atlas stays noindex while the catalog grows.
+    if (
+      pathname === "/ko" ||
+      pathname === "/ko/" ||
+      pathname.startsWith("/ko/")
+    ) {
+      out.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
+    }
+    return out;
   }
 
   // Sound first — subdomain of eigopin must not inherit ja rewrite.
@@ -348,9 +358,6 @@ export function middleware(request: NextRequest) {
       res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
       return res;
     }
-    const res = withPublicHtmlCache(NextResponse.next());
-    res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
-    return res;
   }
 
   const res = NextResponse.next();
