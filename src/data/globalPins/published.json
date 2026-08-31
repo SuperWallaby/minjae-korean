@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-31T13:40:39.817Z",
+  "generatedAt": "2026-08-31T14:16:29.455Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -8876,6 +8876,30 @@
       ]
     },
     {
+      "id": "gko_ant-awake-asleep__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Awake vs Asleep in Spanish",
+      "slug": "awake-vs-asleep-in-spanish",
+      "imagePath": "/global/pins/gko_ant-awake-asleep__es.png",
+      "words": [
+        {
+          "english": "Awake",
+          "target": "Despierto",
+          "romanization": "des-PYER-to"
+        },
+        {
+          "english": "Asleep",
+          "target": "Dormido",
+          "romanization": "dor-MEE-do"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: Awake, Asleep. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-awake-asleep",
+      "publishedAt": "2026-08-31T13:39:06.267Z"
+    },
+    {
       "id": "gko_concept-a-vs-the-feel__es",
       "lang": "es",
       "langName": "Spanish",
@@ -8942,6 +8966,40 @@
       "description": "Learn Spanish vocabulary: already, already (surprise), not yet, still. Save-friendly chart with pronunciation.",
       "topicSlug": "concept-already-yet",
       "publishedAt": "2026-08-31T08:16:27.135Z"
+    },
+    {
+      "id": "gko_concept-because-so-scenes__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Because / so scenes in Spanish",
+      "slug": "because-so-scenes-in-spanish",
+      "imagePath": "/global/pins/gko_concept-because-so-scenes__es.png",
+      "words": [
+        {
+          "english": "because",
+          "target": "porque",
+          "romanization": "por-KEH"
+        },
+        {
+          "english": "so / therefore",
+          "target": "entonces",
+          "romanization": "en-TON-ses"
+        },
+        {
+          "english": "that's why",
+          "target": "por eso",
+          "romanization": "por EH-so"
+        },
+        {
+          "english": "for that reason",
+          "target": "por esa razón",
+          "romanization": "por EH-sa rah-SON"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: because, so / therefore, that's why, for that reason. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-because-so-scenes",
+      "publishedAt": "2026-08-31T13:31:22.842Z"
     },
     {
       "id": "gko_cute-chat-openers__es",
@@ -9192,6 +9250,30 @@
       "description": "Learn Spanish vocabulary: Accept, Refuse. Save-friendly chart with pronunciation.",
       "topicSlug": "sim-accept-refuse",
       "publishedAt": "2026-08-31T08:12:26.216Z"
+    },
+    {
+      "id": "gko_sim-ask-question__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Ask vs Ask a question in Spanish",
+      "slug": "ask-vs-ask-a-question-in-spanish",
+      "imagePath": "/global/pins/gko_sim-ask-question__es.png",
+      "words": [
+        {
+          "english": "Ask",
+          "target": "Preguntar",
+          "romanization": "preh-GOON-tar"
+        },
+        {
+          "english": "Ask a question",
+          "target": "Hacer una pregunta",
+          "romanization": "ah-SEHR OO-nah preh-GOON-tah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: Ask, Ask a question. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-ask-question",
+      "publishedAt": "2026-08-31T13:49:19.582Z"
     },
     {
       "id": "01_eye-colors__fr",
@@ -18026,6 +18108,123 @@
       "publishedAt": "2026-08-31T11:40:22.894Z"
     },
     {
+      "id": "gko_ant-before-after__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Before vs After in French",
+      "slug": "before-vs-after-in-french",
+      "imagePath": "/global/pins/gko_ant-before-after__fr.png",
+      "words": [
+        {
+          "english": "before",
+          "target": "avant",
+          "romanization": "ah-VAHN"
+        },
+        {
+          "english": "after",
+          "target": "après",
+          "romanization": "ah-PRAY"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: before, after. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-before-after",
+      "publishedAt": "2026-08-31T13:51:30.405Z"
+    },
+    {
+      "id": "gko_concept-become-change__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Become / change in French",
+      "slug": "become-change-in-french",
+      "imagePath": "/global/pins/gko_concept-become-change__fr.png",
+      "words": [
+        {
+          "english": "become",
+          "target": "devenir",
+          "romanization": "duh-vuh-NEER"
+        },
+        {
+          "english": "change (something)",
+          "target": "changer",
+          "romanization": "shahn-ZHAY"
+        },
+        {
+          "english": "change (self)",
+          "target": "changer",
+          "romanization": "shahn-ZHAY"
+        },
+        {
+          "english": "become (result)",
+          "target": "devenir",
+          "romanization": "duh-vuh-NEER"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: become, change (something), change (self), become (result). Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-become-change",
+      "publishedAt": "2026-08-31T13:40:49.865Z"
+    },
+    {
+      "id": "gko_cute-comfort-sounds__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Comfort sounds in French",
+      "slug": "comfort-sounds-in-french",
+      "imagePath": "/global/pins/gko_cute-comfort-sounds__fr.png",
+      "words": [
+        {
+          "english": "Aww / oof",
+          "target": "Oh là là",
+          "romanization": "oh lah lah"
+        },
+        {
+          "english": "Oh dear",
+          "target": "Oh là là",
+          "romanization": "oh lah lah"
+        },
+        {
+          "english": "Oh my",
+          "target": "Oh là là",
+          "romanization": "oh lah lah"
+        },
+        {
+          "english": "Phew",
+          "target": "Ouf",
+          "romanization": "oof"
+        },
+        {
+          "english": "That's right",
+          "target": "C'est ça",
+          "romanization": "say sah"
+        },
+        {
+          "english": "Hehe",
+          "target": "Héhé",
+          "romanization": "ay-ay"
+        },
+        {
+          "english": "Nice",
+          "target": "Sympa",
+          "romanization": "sam-pah"
+        },
+        {
+          "english": "Good night",
+          "target": "Bonne nuit",
+          "romanization": "bun nwee"
+        },
+        {
+          "english": "Thank you",
+          "target": "Merci",
+          "romanization": "mehr-see"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: Aww / oof, Oh dear, Oh my, Phew, That's right, Hehe…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-comfort-sounds",
+      "publishedAt": "2026-08-31T13:33:18.520Z"
+    },
+    {
       "id": "gko_gexp-like-to__fr",
       "lang": "fr",
       "langName": "French",
@@ -18175,6 +18374,30 @@
       "description": "Learn French vocabulary: Allow, Ban. Save-friendly chart with pronunciation.",
       "topicSlug": "sim-allow-ban",
       "publishedAt": "2026-08-31T12:58:34.049Z"
+    },
+    {
+      "id": "gko_sim-borrow-lend__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Borrow vs Lend in French",
+      "slug": "borrow-vs-lend-in-french",
+      "imagePath": "/global/pins/gko_sim-borrow-lend__fr.png",
+      "words": [
+        {
+          "english": "Borrow",
+          "target": "emprunter",
+          "romanization": "ahm-pron-TAY"
+        },
+        {
+          "english": "Lend",
+          "target": "prêter",
+          "romanization": "preh-TAY"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: Borrow, Lend. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-borrow-lend",
+      "publishedAt": "2026-08-31T13:59:24.176Z"
     },
     {
       "id": "01_eye-colors__de",
@@ -26797,6 +27020,30 @@
       "publishedAt": "2026-08-31T13:00:18.521Z"
     },
     {
+      "id": "gko_ant-big-small__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Big vs Small in German",
+      "slug": "big-vs-small-in-german",
+      "imagePath": "/global/pins/gko_ant-big-small__de.png",
+      "words": [
+        {
+          "english": "Big",
+          "target": "groß",
+          "romanization": "gross"
+        },
+        {
+          "english": "Small",
+          "target": "klein",
+          "romanization": "kline"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Big, Small. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-big-small",
+      "publishedAt": "2026-08-31T14:01:24.776Z"
+    },
+    {
       "id": "gko_concept-already-yet__de",
       "lang": "de",
       "langName": "German",
@@ -26829,6 +27076,158 @@
       "description": "Learn German vocabulary: already, already (surprise), not yet, still. Save-friendly chart with pronunciation.",
       "topicSlug": "concept-already-yet",
       "publishedAt": "2026-08-31T11:42:00.395Z"
+    },
+    {
+      "id": "gko_concept-before-after-during__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Before / after / during in German",
+      "slug": "before-after-during-in-german",
+      "imagePath": "/global/pins/gko_concept-before-after-during__de.png",
+      "words": [
+        {
+          "english": "Before",
+          "target": "Vor",
+          "romanization": "for"
+        },
+        {
+          "english": "During",
+          "target": "Während",
+          "romanization": "VEHR-end"
+        },
+        {
+          "english": "After",
+          "target": "Nach",
+          "romanization": "nahkh"
+        },
+        {
+          "english": "While",
+          "target": "Während",
+          "romanization": "VEHR-end"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Before, During, After, While. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-before-after-during",
+      "publishedAt": "2026-08-31T13:53:49.408Z"
+    },
+    {
+      "id": "gko_cute-cooking-home__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Home Cooking in German",
+      "slug": "home-cooking-in-german",
+      "imagePath": "/global/pins/gko_cute-cooking-home__de.png",
+      "words": [
+        {
+          "english": "What to cook?",
+          "target": "Was kochen?",
+          "romanization": "Vahs KOH-chen?"
+        },
+        {
+          "english": "Let's chop",
+          "target": "Lass uns hacken",
+          "romanization": "Lahs oons HAH-ken"
+        },
+        {
+          "english": "Season it",
+          "target": "Würze es",
+          "romanization": "VUR-tseh ess"
+        },
+        {
+          "english": "Don't overcook",
+          "target": "Nicht zu lange kochen",
+          "romanization": "Nikt tsoo LAHN-geh KOH-chen"
+        },
+        {
+          "english": "It's done!",
+          "target": "Es ist fertig!",
+          "romanization": "Ess ist FAIR-tig!"
+        },
+        {
+          "english": "More salt",
+          "target": "Mehr Salz",
+          "romanization": "Mehr Zalts"
+        },
+        {
+          "english": "Do the dishes",
+          "target": "Spül das Geschirr",
+          "romanization": "Shpewl dahs Geh-SHEER"
+        },
+        {
+          "english": "Save some",
+          "target": "Bewahre etwas auf",
+          "romanization": "Beh-VAH-reh ET-vas owf"
+        },
+        {
+          "english": "Let's clean up",
+          "target": "Lass uns aufräumen",
+          "romanization": "Lahs oons OWF-roy-men"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: What to cook?, Let's chop, Season it, Don't overcook, It's done!, More salt…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-cooking-home",
+      "publishedAt": "2026-08-31T13:42:57.543Z"
+    },
+    {
+      "id": "gko_grid-ages-life-stages__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Life stages in German",
+      "slug": "life-stages-in-german",
+      "imagePath": "/global/pins/gko_grid-ages-life-stages__de.png",
+      "words": [
+        {
+          "english": "Baby",
+          "target": "Baby",
+          "romanization": "BAH-bee"
+        },
+        {
+          "english": "Child",
+          "target": "Kind",
+          "romanization": "kint"
+        },
+        {
+          "english": "Teenager",
+          "target": "Teenager",
+          "romanization": "TEE-nah-ger"
+        },
+        {
+          "english": "Young adult",
+          "target": "junger Erwachsener",
+          "romanization": "YOONG-er air-VAHKH-sen-er"
+        },
+        {
+          "english": "Adult",
+          "target": "Erwachsener",
+          "romanization": "air-VAHKH-sen-er"
+        },
+        {
+          "english": "Middle-aged",
+          "target": "mittleren Alters",
+          "romanization": "MITT-lair-en AL-ters"
+        },
+        {
+          "english": "Senior",
+          "target": "Senior",
+          "romanization": "ZAY-nee-or"
+        },
+        {
+          "english": "Elderly",
+          "target": "älter",
+          "romanization": "EL-ter"
+        },
+        {
+          "english": "Centenarian",
+          "target": "Hundertjähriger",
+          "romanization": "HOON-dert-YAIR-ig-er"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Baby, Child, Teenager, Young adult, Adult, Middle-aged…. Save-friendly chart with pronunciation.",
+      "topicSlug": "grid-ages-life-stages",
+      "publishedAt": "2026-08-31T13:35:37.607Z"
     },
     {
       "id": "gko_phrase-apt-neighbor-chat__de",
@@ -35552,6 +35951,84 @@
       "publishedAt": "2026-08-31T08:33:11.475Z"
     },
     {
+      "id": "gko_phrase-bank-atm__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Bank & ATM in Italian",
+      "slug": "bank-atm-in-italian",
+      "imagePath": "/global/pins/gko_phrase-bank-atm__it.png",
+      "words": [
+        {
+          "english": "I want to open an account",
+          "target": "Voglio aprire un conto",
+          "romanization": "VOHL-yoh ah-PREE-ray oon KON-toh"
+        },
+        {
+          "english": "I'd like to withdraw",
+          "target": "Vorrei prelevare",
+          "romanization": "vohr-RAY preh-leh-VAH-ray"
+        },
+        {
+          "english": "Deposit",
+          "target": "Deposito",
+          "romanization": "deh-poh-ZEE-toh"
+        },
+        {
+          "english": "Please transfer",
+          "target": "Per favore trasferisci",
+          "romanization": "pehr fah-VOH-reh trahs-feh-REE-shee"
+        },
+        {
+          "english": "Balance check",
+          "target": "Controllo saldo",
+          "romanization": "kon-TROHL-loh SAL-doh"
+        },
+        {
+          "english": "I forgot my PIN",
+          "target": "Ho dimenticato il PIN",
+          "romanization": "oh dee-men-tee-KAH-toh eel PEEN"
+        },
+        {
+          "english": "I lost my card",
+          "target": "Ho perso la carta",
+          "romanization": "oh PEHR-soh lah KAR-tah"
+        },
+        {
+          "english": "Can I exchange money?",
+          "target": "Posso cambiare soldi?",
+          "romanization": "POS-soh kahm-BYAH-ray SOL-dee"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: I want to open an account, I'd like to withdraw, Deposit, Please transfer, Balance check, I forgot my PIN…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phrase-bank-atm",
+      "publishedAt": "2026-08-31T13:47:36.416Z"
+    },
+    {
+      "id": "gko_sim-approve-reject__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Approve vs Reject in Italian",
+      "slug": "approve-vs-reject-in-italian",
+      "imagePath": "/global/pins/gko_sim-approve-reject__it.png",
+      "words": [
+        {
+          "english": "Approve",
+          "target": "approvare",
+          "romanization": "ah-proh-VAH-reh"
+        },
+        {
+          "english": "Reject",
+          "target": "rifiutare",
+          "romanization": "ree-fee-oo-TAH-reh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: Approve, Reject. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-approve-reject",
+      "publishedAt": "2026-08-31T13:27:54.106Z"
+    },
+    {
       "id": "01_eye-colors__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -44190,6 +44667,61 @@
       ]
     },
     {
+      "id": "gko_ant-attach-detach__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Attach vs Detach in Arabic",
+      "slug": "attach-vs-detach-in-arabic",
+      "imagePath": "/global/pins/gko_ant-attach-detach__ar.png",
+      "words": [
+        {
+          "english": "Attach",
+          "target": "يُلصِق",
+          "romanization": "yulsiq",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_ant-attach-detach__ar/w0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Detach",
+          "target": "يَفصِل",
+          "romanization": "yafsil",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_ant-attach-detach__ar/w1.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic: Attach, Detach. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "ant-attach-detach",
+      "publishedAt": "2026-08-31T13:29:16.545Z",
+      "explanationEn": "These words show opposite actions: يُلصِق means attach and يَفصِل means detach, focusing on how the sounds change with the verbs.",
+      "examples": [
+        {
+          "target": "يُلصِق الولد الصورة على الحائط.",
+          "english": "The boy attaches the picture to the wall.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_ant-attach-detach__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يَفصِل الرجل الورقة عن الكتاب.",
+          "english": "The man detaches the paper from the book.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_ant-attach-detach__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يُلصِق الطفل الملصق في دفتره.",
+          "english": "The child attaches the sticker in his notebook.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_ant-attach-detach__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يَفصِل المعلم الورقة عن المجموعة.",
+          "english": "The teacher detaches the paper from the group.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_ant-attach-detach__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
+    },
+    {
       "id": "gko_concept-because-so__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -44227,7 +44759,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: because, so / therefore, so (casual), that's why. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: because, so / therefore, so (casual), that's why. Save-friendly chart with pronunciation.",
       "topicSlug": "concept-because-so",
       "publishedAt": "2026-08-31T13:21:43.434Z",
       "explanationEn": "These words like لأن, لذلك, فـ, and لهذا السبب connect ideas and show cause and effect when you speak Arabic.",
@@ -44337,7 +44869,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: Right?, Isn't that so?, Let's do it together, Really, Exactly, That's it…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: Right?, Isn't that so?, Let's do it together, Really, Exactly, That's it…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-agreement-glue",
       "publishedAt": "2026-08-31T12:42:19.757Z",
       "explanationEn": "These words and phrases like أليس كذلك؟, حقاً, and بالضبط help you agree or confirm what someone says in Arabic.",
@@ -44447,7 +44979,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: Congrats, Well done, The best!, Thank you, I appreciate you, Thank you, everyone…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: Congrats, Well done, The best!, Thank you, I appreciate you, Thank you, everyone…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-celebrate-mini",
       "publishedAt": "2026-08-31T13:12:29.857Z",
       "explanationEn": "These Arabic words like مبروك, شكراً, and عيد ميلاد سعيد are cheerful and often said with excitement or gratitude.",
@@ -44549,7 +45081,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Save-friendly chart with pronunciation.",
       "topicSlug": "gexp-like-to",
       "publishedAt": "2026-08-31T11:50:32.815Z",
       "explanationEn": "These Arabic phrases show how to say 'like' with verbs like يحب and يحب أن, including examples with reading and music.",
@@ -44597,48 +45129,267 @@
         {
           "english": "Where's the gate?",
           "target": "أين البوابة؟",
-          "romanization": "ayna al-bawwaba?"
+          "romanization": "ayna al-bawwaba?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I'd like to check bags",
           "target": "أود تسجيل الحقائب",
-          "romanization": "awaddu tasjil al-haqa'ib"
+          "romanization": "awaddu tasjil al-haqa'ib",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Carry-on only",
           "target": "حمل يدوي فقط",
-          "romanization": "haml yadawi faqat"
+          "romanization": "haml yadawi faqat",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Boarding pass, please",
           "target": "بطاقة الصعود، من فضلك",
-          "romanization": "bitaqat al-su'ud, min fadlak"
+          "romanization": "bitaqat al-su'ud, min fadlak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Is it delayed?",
           "target": "هل هناك تأخير؟",
-          "romanization": "hal hunak ta'khir?"
+          "romanization": "hal hunak ta'khir?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I'm transferring",
           "target": "أنا أنتقل",
-          "romanization": "ana antakil"
+          "romanization": "ana antakil",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Where is departure immigration?",
           "target": "أين جوازات المغادرة؟",
-          "romanization": "ayna jawazat al-mughadara?"
+          "romanization": "ayna jawazat al-mughadara?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Is duty-free still open?",
           "target": "هل السوق الحرة ما زال مفتوحًا؟",
-          "romanization": "hal al-suq al-hurra ma zal maftuhan?"
+          "romanization": "hal al-suq al-hurra ma zal maftuhan?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/w7.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic vocabulary: Where's the gate?, I'd like to check bags, Carry-on only, Boarding pass, please, Is it delayed?, I'm transferring…. Save-friendly chart with pronunciation.",
+      "description": "Learn Arabic: Where's the gate?, I'd like to check bags, Carry-on only, Boarding pass, please, Is it delayed?, I'm transferring…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "phrase-airport-basics",
-      "publishedAt": "2026-08-31T12:56:44.847Z"
+      "publishedAt": "2026-08-31T12:56:44.847Z",
+      "explanationEn": "These Arabic airport phrases like أين البوابة؟ and هل هناك تأخير؟ help you ask about gates, delays, and boarding clearly.",
+      "examples": [
+        {
+          "target": "أين البوابة؟",
+          "english": "Where's the gate?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أود تسجيل الحقائب.",
+          "english": "I'd like to check bags.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "حمل يدوي فقط.",
+          "english": "Carry-on only.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "بطاقة الصعود، من فضلك.",
+          "english": "Boarding pass, please.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "هل هناك تأخير؟",
+          "english": "Is it delayed?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أين جوازات المغادرة؟",
+          "english": "Where is departure immigration?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-airport-basics__ar/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
+    },
+    {
+      "id": "gko_phrase-bank-simple__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Bank & Money in Arabic",
+      "slug": "bank-money-in-arabic",
+      "imagePath": "/global/pins/gko_phrase-bank-simple__ar.png",
+      "words": [
+        {
+          "english": "I'd like to open an account",
+          "target": "أود فتح حساب",
+          "romanization": "awad fath hisab",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "I'll transfer money",
+          "target": "سأحول المال",
+          "romanization": "sa'uhawwil al-mal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Balance check",
+          "target": "التحقق من الرصيد",
+          "romanization": "at-tahaqquq min ar-raseed",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "I forgot my PIN",
+          "target": "نسيت الرقم السري",
+          "romanization": "naseet ar-raqm as-sirri",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Card reissue",
+          "target": "إعادة إصدار البطاقة",
+          "romanization": "i'adat isdar al-bitaqa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "What's the exchange rate?",
+          "target": "ما هو سعر الصرف؟",
+          "romanization": "ma huwa si'r as-sarf?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w5.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Exchange to dollars",
+          "target": "صرف إلى دولارات",
+          "romanization": "sarf ila dolarāt",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w6.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Passbook, please",
+          "target": "دفتر الحساب، من فضلك",
+          "romanization": "daftar al-hisab, min fadlak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/w7.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic: I'd like to open an account, I'll transfer money, Balance check, I forgot my PIN, Card reissue, What's the exchange rate?…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "phrase-bank-simple",
+      "publishedAt": "2026-08-31T13:57:41.635Z",
+      "explanationEn": "These phrases like حساب, المال, and بطاقة help you talk about money and banking clearly in Arabic.",
+      "examples": [
+        {
+          "target": "أود فتح حساب في البنك.",
+          "english": "I'd like to open an account at the bank.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "سأحول المال إلى حسابي الجديد.",
+          "english": "I'll transfer money to my new account.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "ما هو سعر الصرف اليوم؟",
+          "english": "What's the exchange rate today?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "نسيت الرقم السري لبطاقتي.",
+          "english": "I forgot my PIN for my card.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "من فضلك، دفتر الحساب.",
+          "english": "Passbook, please.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أريد صرف إلى دولارات.",
+          "english": "I want to exchange to dollars.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_phrase-bank-simple__ar/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
+    },
+    {
+      "id": "gko_sim-arrive-reach__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Arrive vs Reach in Arabic",
+      "slug": "arrive-vs-reach-in-arabic",
+      "imagePath": "/global/pins/gko_sim-arrive-reach__ar.png",
+      "words": [
+        {
+          "english": "Arrive",
+          "target": "يصل",
+          "romanization": "yasil",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-arrive-reach__ar/w0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Reach",
+          "target": "يبلغ",
+          "romanization": "yablugh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-arrive-reach__ar/w1.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic: Arrive, Reach. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "sim-arrive-reach",
+      "publishedAt": "2026-08-31T13:37:22.932Z",
+      "explanationEn": "These words sound different when you say them: يصل means 'arrive' and يبلغ means 'reach'.",
+      "examples": [
+        {
+          "target": "وصلت إلى المنزل في الوقت المناسب.",
+          "english": "I arrived home on time.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-arrive-reach__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يبلغ القطار المحطة في الساعة الخامسة.",
+          "english": "The train reaches the station at five o'clock.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-arrive-reach__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "وصل الطلاب إلى المدرسة مبكراً.",
+          "english": "The students arrived at school early.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-arrive-reach__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يبلغ البريد العنوان الصحيح.",
+          "english": "The mail reaches the correct address.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-arrive-reach__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "01_eye-colors__ja",
@@ -52963,6 +53714,119 @@
       "description": "Learn Japanese vocabulary: Sorry, Really sorry, My fault, Sorry, Still sorry, Sorry, friend…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-apology-soft",
       "publishedAt": "2026-08-31T11:43:56.410Z"
+    },
+    {
+      "id": "gko_cute-date-soft__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Soft Date in Japanese",
+      "slug": "soft-date-in-japanese",
+      "imagePath": "/global/pins/gko_cute-date-soft__ja.png",
+      "words": [
+        {
+          "english": "Missed you",
+          "target": "会いたかった",
+          "romanization": "aitakatta"
+        },
+        {
+          "english": "Where shall we go?",
+          "target": "どこに行こうか？",
+          "romanization": "doko ni ikō ka?"
+        },
+        {
+          "english": "Pay for me",
+          "target": "払ってくれる？",
+          "romanization": "haratte kureru?"
+        },
+        {
+          "english": "Let's have a drink",
+          "target": "飲みに行こう",
+          "romanization": "nomi ni ikō"
+        },
+        {
+          "english": "How have you been?",
+          "target": "元気だった？",
+          "romanization": "genki datta?"
+        },
+        {
+          "english": "I'm sorry",
+          "target": "ごめんね",
+          "romanization": "gomen ne"
+        },
+        {
+          "english": "When can I see you?",
+          "target": "いつ会える？",
+          "romanization": "itsu aeru?"
+        },
+        {
+          "english": "So!",
+          "target": "それで！",
+          "romanization": "sore de!"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: Missed you, Where shall we go?, Pay for me, Let's have a drink, How have you been?, I'm sorry…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-date-soft",
+      "publishedAt": "2026-08-31T13:55:31.836Z"
+    },
+    {
+      "id": "gko_grid-agreeing-phrases__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Agreeing in Japanese",
+      "slug": "agreeing-in-japanese",
+      "imagePath": "/global/pins/gko_grid-agreeing-phrases__ja.png",
+      "words": [
+        {
+          "english": "I agree",
+          "target": "同意します",
+          "romanization": "dōi shimasu"
+        },
+        {
+          "english": "That's right",
+          "target": "その通りです",
+          "romanization": "sono tōri desu"
+        },
+        {
+          "english": "Exactly",
+          "target": "まさに",
+          "romanization": "masani"
+        },
+        {
+          "english": "I totally agree",
+          "target": "完全に同意します",
+          "romanization": "kanzen ni dōi shimasu"
+        },
+        {
+          "english": "I think so too",
+          "target": "私もそう思います",
+          "romanization": "watashi mo sō omoimasu"
+        },
+        {
+          "english": "You're right",
+          "target": "あなたは正しいです",
+          "romanization": "anata wa tadashii desu"
+        },
+        {
+          "english": "I see / That makes sense",
+          "target": "なるほど",
+          "romanization": "naruhodo"
+        },
+        {
+          "english": "I understand",
+          "target": "わかりました",
+          "romanization": "wakarimashita"
+        },
+        {
+          "english": "Absolutely",
+          "target": "絶対に",
+          "romanization": "zettai ni"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: I agree, That's right, Exactly, I totally agree, I think so too, You're right…. Save-friendly chart with pronunciation.",
+      "topicSlug": "grid-agreeing-phrases",
+      "publishedAt": "2026-08-31T13:45:53.399Z"
     },
     {
       "id": "gko_sim-apply-register__ja",
