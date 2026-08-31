@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-31T12:47:12.104Z",
+  "generatedAt": "2026-08-31T13:13:23.892Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -17854,6 +17854,55 @@
       "publishedAt": "2026-08-31T11:40:22.894Z"
     },
     {
+      "id": "gko_gexp-like-to__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "like to in French",
+      "slug": "like-to-in-french",
+      "imagePath": "/global/pins/gko_gexp-like-to__fr.png",
+      "words": [
+        {
+          "english": "like doing",
+          "target": "aimer faire",
+          "romanization": "eh-MAY fair"
+        },
+        {
+          "english": "I like reading books",
+          "target": "J'aime lire des livres",
+          "romanization": "zhem leer day leevr"
+        },
+        {
+          "english": "I like listening to music",
+          "target": "J'aime écouter de la musique",
+          "romanization": "zhem ay-koo-TAY duh lah myoo-ZEEK"
+        },
+        {
+          "english": "book (object)",
+          "target": "livre",
+          "romanization": "leevr"
+        },
+        {
+          "english": "reading (adjectival modifier)",
+          "target": "de lecture",
+          "romanization": "duh lek-TOOR"
+        },
+        {
+          "english": "object marker",
+          "target": "le",
+          "romanization": "luh"
+        },
+        {
+          "english": "to like",
+          "target": "aimer",
+          "romanization": "eh-MAY"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Save-friendly chart with pronunciation.",
+      "topicSlug": "gexp-like-to",
+      "publishedAt": "2026-08-31T12:44:39.323Z"
+    },
+    {
       "id": "gko_sim-accept-refuse__fr",
       "lang": "fr",
       "langName": "French",
@@ -17876,6 +17925,30 @@
       "description": "Learn French vocabulary: Accept, Refuse. Save-friendly chart with pronunciation.",
       "topicSlug": "sim-accept-refuse",
       "publishedAt": "2026-08-31T11:38:27.170Z"
+    },
+    {
+      "id": "gko_sim-allow-ban__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Allow vs Ban in French",
+      "slug": "allow-vs-ban-in-french",
+      "imagePath": "/global/pins/gko_sim-allow-ban__fr.png",
+      "words": [
+        {
+          "english": "Allow",
+          "target": "Permettre",
+          "romanization": "pehr-MEHTR"
+        },
+        {
+          "english": "Ban",
+          "target": "Interdire",
+          "romanization": "an-tehr-DEER"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: Allow, Ban. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-allow-ban",
+      "publishedAt": "2026-08-31T12:58:34.049Z"
     },
     {
       "id": "01_eye-colors__de",
@@ -26450,6 +26523,30 @@
       "publishedAt": "2026-08-31T11:46:05.644Z"
     },
     {
+      "id": "gko_ant-angry-calm__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Angry vs Calm in German",
+      "slug": "angry-vs-calm-in-german",
+      "imagePath": "/global/pins/gko_ant-angry-calm__de.png",
+      "words": [
+        {
+          "english": "angry",
+          "target": "wütend",
+          "romanization": "VOO-tent"
+        },
+        {
+          "english": "calm",
+          "target": "ruhig",
+          "romanization": "ROO-ig"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: angry, calm. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-angry-calm",
+      "publishedAt": "2026-08-31T12:48:35.766Z"
+    },
+    {
       "id": "gko_concept-already-yet__de",
       "lang": "de",
       "langName": "German",
@@ -26482,6 +26579,30 @@
       "description": "Learn German vocabulary: already, already (surprise), not yet, still. Save-friendly chart with pronunciation.",
       "topicSlug": "concept-already-yet",
       "publishedAt": "2026-08-31T11:42:00.395Z"
+    },
+    {
+      "id": "gko_sim-accept-refuse__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Accept vs Refuse in German",
+      "slug": "accept-vs-refuse-in-german",
+      "imagePath": "/global/pins/gko_sim-accept-refuse__de.png",
+      "words": [
+        {
+          "english": "Accept",
+          "target": "akzeptieren",
+          "romanization": "ahk-SEP-tee-ren"
+        },
+        {
+          "english": "Refuse",
+          "target": "ablehnen",
+          "romanization": "AH-bleh-nen"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Accept, Refuse. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-accept-refuse",
+      "publishedAt": "2026-08-31T12:46:55.135Z"
     },
     {
       "id": "01_eye-colors__it",
@@ -34702,6 +34823,30 @@
       ]
     },
     {
+      "id": "gko_ant-accept-reject__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Accept vs Reject in Italian",
+      "slug": "accept-vs-reject-in-italian",
+      "imagePath": "/global/pins/gko_ant-accept-reject__it.png",
+      "words": [
+        {
+          "english": "accept",
+          "target": "accettare",
+          "romanization": "ah-cheht-TAH-reh"
+        },
+        {
+          "english": "reject",
+          "target": "rifiutare",
+          "romanization": "ree-fyoo-TAH-reh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: accept, reject. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-accept-reject",
+      "publishedAt": "2026-08-31T12:40:17.906Z"
+    },
+    {
       "id": "gko_cute-agreement-glue__it",
       "lang": "it",
       "langName": "Italian",
@@ -34761,6 +34906,65 @@
       "publishedAt": "2026-08-31T11:48:11.387Z"
     },
     {
+      "id": "gko_cute-apology-soft__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Soft Apology in Italian",
+      "slug": "soft-apology-in-italian",
+      "imagePath": "/global/pins/gko_cute-apology-soft__it.png",
+      "words": [
+        {
+          "english": "Sorry",
+          "target": "Scusa",
+          "romanization": "SKOO-zah"
+        },
+        {
+          "english": "Really sorry",
+          "target": "Mi dispiace davvero",
+          "romanization": "mee dee-SPYAH-cheh dah-VEH-roh"
+        },
+        {
+          "english": "My fault",
+          "target": "Colpa mia",
+          "romanization": "KOL-pah MEE-ah"
+        },
+        {
+          "english": "Sorry",
+          "target": "Scusa",
+          "romanization": "SKOO-zah"
+        },
+        {
+          "english": "Still sorry",
+          "target": "Ancora scusa",
+          "romanization": "ahn-KOH-rah SKOO-zah"
+        },
+        {
+          "english": "Sorry, friend",
+          "target": "Scusa, amico",
+          "romanization": "SKOO-zah ah-MEE-koh"
+        },
+        {
+          "english": "I was rude",
+          "target": "Sono stato scortese",
+          "romanization": "SOH-noh STAH-toh skor-TEH-seh"
+        },
+        {
+          "english": "I was wrong to you",
+          "target": "Ti ho fatto un torto",
+          "romanization": "tee oh FAHT-toh oon TOR-toh"
+        },
+        {
+          "english": "I won’t do it again",
+          "target": "Non lo farò più",
+          "romanization": "non lo fah-ROH pyoo"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: Sorry, Really sorry, My fault, Sorry, Still sorry, Sorry, friend…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-apology-soft",
+      "publishedAt": "2026-08-31T12:52:29.500Z"
+    },
+    {
       "id": "gko_gexp-like-to__it",
       "lang": "it",
       "langName": "Italian",
@@ -34808,6 +35012,45 @@
       "description": "Learn Italian vocabulary: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Save-friendly chart with pronunciation.",
       "topicSlug": "gexp-like-to",
       "publishedAt": "2026-08-31T11:36:24.152Z"
+    },
+    {
+      "id": "gko_gexp-please-do__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "please do in Italian",
+      "slug": "please-do-in-italian",
+      "imagePath": "/global/pins/gko_gexp-please-do__it.png",
+      "words": [
+        {
+          "english": "connector",
+          "target": "connettore",
+          "romanization": "kon-NEH-toh-reh"
+        },
+        {
+          "english": "please give / do",
+          "target": "per favore",
+          "romanization": "pehr fah-VOH-reh"
+        },
+        {
+          "english": "Please help me.",
+          "target": "Per favore aiutami.",
+          "romanization": "pehr fah-VOH-reh ah-yoo-TAH-mee"
+        },
+        {
+          "english": "Please write it for me.",
+          "target": "Per favore scrivilo per me.",
+          "romanization": "pehr fah-VOH-reh SKREE-vee-loh pehr meh"
+        },
+        {
+          "english": "Please help me.",
+          "target": "Per favore aiutami.",
+          "romanization": "pehr fah-VOH-reh ah-yoo-TAH-mee"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: connector, please give / do, Please help me., Please write it for me., Please help me.. Save-friendly chart with pronunciation.",
+      "topicSlug": "gexp-please-do",
+      "publishedAt": "2026-08-31T12:54:51.116Z"
     },
     {
       "id": "gko_phrase-agree-soft__it",
@@ -36614,7 +36857,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: stove, oven, microwave, refrigerator, blender, toaster…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: stove, oven, microwave, refrigerator, blender, toaster…. Save-friendly chart with pronunciation.",
       "topicSlug": "kitchen-appliances",
       "publishedAt": "2026-08-24T16:11:12.996Z",
       "explanationEn": "These kitchen words like موقد, فرن, and ثلاجة have clear sounds to practice when you say them aloud.",
@@ -36936,7 +37179,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: desk, chair, computer, keyboard, mouse, monitor…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: desk, chair, computer, keyboard, mouse, monitor…. Save-friendly chart with pronunciation.",
       "topicSlug": "office-desk",
       "publishedAt": "2026-08-24T16:21:28.334Z",
       "explanationEn": "These words like مكتب, كرسي, and شاشة describe common office items you say when talking about your workspace.",
@@ -37161,7 +37404,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: reception, key card, elevator, luggage, towel, breakfast…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: reception, key card, elevator, luggage, towel, breakfast…. Save-friendly chart with pronunciation.",
       "topicSlug": "hotel-stay",
       "publishedAt": "2026-08-24T16:31:51.863Z",
       "explanationEn": "These words like الاستقبال, بطاقة المفتاح, and مصعد help you sound natural when talking about hotel check-in and services.",
@@ -37277,7 +37520,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: bank, account, cash, card, deposit, withdraw…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: bank, account, cash, card, deposit, withdraw…. Save-friendly chart with pronunciation.",
       "topicSlug": "banking-basics",
       "publishedAt": "2026-08-24T16:42:25.327Z",
       "explanationEn": "These words like بنك, حساب, and بطاقة sound clear and are common when talking about banks and money.",
@@ -37549,53 +37792,110 @@
         {
           "english": "letter",
           "target": "رسالة",
-          "romanization": "risāla"
+          "romanization": "risāla",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stamp",
           "target": "طابع بريد",
-          "romanization": "ṭābiʿ barīd"
+          "romanization": "ṭābiʿ barīd",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "mailbox",
           "target": "صندوق البريد",
-          "romanization": "ṣundūq al-barīd"
+          "romanization": "ṣundūq al-barīd",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "package",
           "target": "طرد",
-          "romanization": "ṭard"
+          "romanization": "ṭard",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "address",
           "target": "عنوان",
-          "romanization": "ʿunwān"
+          "romanization": "ʿunwān",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "post office",
           "target": "مكتب البريد",
-          "romanization": "maktab al-barīd"
+          "romanization": "maktab al-barīd",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "signature",
           "target": "توقيع",
-          "romanization": "tawqīʿ"
+          "romanization": "tawqīʿ",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "delivery",
           "target": "توصيل",
-          "romanization": "tawṣīl"
+          "romanization": "tawṣīl",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tracking",
           "target": "تتبع",
-          "romanization": "tatabbaʿ"
+          "romanization": "tatabbaʿ",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
+      "description": "Learn Arabic: letter, stamp, mailbox, package, address, post office…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "post-mail",
-      "publishedAt": "2026-08-24T16:52:49.854Z"
+      "publishedAt": "2026-08-24T16:52:49.854Z",
+      "explanationEn": "These words like رسالة, طابع بريد, and صندوق البريد help you talk about mail and letters in Arabic with clear pronunciation.",
+      "examples": [
+        {
+          "target": "أريد إرسال رسالة إلى صديقي.",
+          "english": "I want to send a letter to my friend.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "هل لديك طابع بريد لهذه الرسالة؟",
+          "english": "Do you have a stamp for this letter?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يرجى وضع الطرد في صندوق البريد.",
+          "english": "Please put the package in the mailbox.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "ما هو عنوان مكتب البريد؟",
+          "english": "What is the address of the post office?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يحتاج البريد إلى توقيع عند التوصيل.",
+          "english": "The mail needs a signature upon delivery.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يمكنك تتبع الطرد عبر الإنترنت.",
+          "english": "You can track the package online.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/19_post-mail__ar/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_laundry-care__ar",
@@ -37608,53 +37908,104 @@
         {
           "english": "washing machine",
           "target": "غسالة",
-          "romanization": "ghassala"
+          "romanization": "ghassala",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "dryer",
           "target": "مجفف",
-          "romanization": "mujaffif"
+          "romanization": "mujaffif",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "detergent",
           "target": "منظف",
-          "romanization": "munazzif"
+          "romanization": "munazzif",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fabric softener",
           "target": "ملطف الأقمشة",
-          "romanization": "mulattif al-aqmisah"
+          "romanization": "mulattif al-aqmisah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "hanger",
           "target": "علاقة ملابس",
-          "romanization": "ʿalaqat malabis"
+          "romanization": "ʿalaqat malabis",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "iron",
           "target": "مكواة",
-          "romanization": "mikwah"
+          "romanization": "mikwah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "lint",
           "target": "وبر",
-          "romanization": "wabar"
+          "romanization": "wabar",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "fold",
           "target": "يطوي",
-          "romanization": "yatwi"
+          "romanization": "yatwi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "stain",
           "target": "بقعة",
-          "romanization": "buqʿa"
+          "romanization": "buqʿa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
+      "description": "Learn Arabic: washing machine, dryer, detergent, fabric softener, hanger, iron…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "laundry-care",
-      "publishedAt": "2026-08-24T17:03:09.997Z"
+      "publishedAt": "2026-08-24T17:03:09.997Z",
+      "explanationEn": "These Arabic words like غسالة, مكواة, and بقعة help you talk about laundry sounds and actions clearly.",
+      "examples": [
+        {
+          "target": "أستخدم الغسالة لغسل الملابس.",
+          "english": "I use the washing machine to wash clothes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أضع المنظف في الغسالة.",
+          "english": "I put detergent in the washing machine.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "بعد الغسيل، أستخدم المكواة لكوي الملابس.",
+          "english": "After washing, I use the iron to iron the clothes.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "هناك بقعة على القميص.",
+          "english": "There is a stain on the shirt.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أطوي الملابس وأعلقها على علاقة الملابس.",
+          "english": "I fold the clothes and hang them on the hanger.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/20_laundry-care__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "20_life-stages__ar",
@@ -37776,53 +38127,104 @@
         {
           "english": "flower",
           "target": "زهرة",
-          "romanization": "zahra"
+          "romanization": "zahra",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tree",
           "target": "شجرة",
-          "romanization": "shajara"
+          "romanization": "shajara",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "grass",
           "target": "عشب",
-          "romanization": "ʿushb"
+          "romanization": "ʿushb",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "soil",
           "target": "تربة",
-          "romanization": "turba"
+          "romanization": "turba",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "seed",
           "target": "بذرة",
-          "romanization": "bidhra"
+          "romanization": "bidhra",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "watering can",
           "target": "رشاشة ماء",
-          "romanization": "rashasha ma'"
+          "romanization": "rashasha ma'",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "shovel",
           "target": "مجرفة",
-          "romanization": "majrafa"
+          "romanization": "majrafa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "pot",
           "target": "وعاء",
-          "romanization": "wi'aa'"
+          "romanization": "wi'aa'",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "leaf",
           "target": "ورقة",
-          "romanization": "waraqa"
+          "romanization": "waraqa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "description": "Learn Arabic: flower, tree, grass, soil, seed, watering can…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "garden-plants",
-      "publishedAt": "2026-08-24T17:13:40.521Z"
+      "publishedAt": "2026-08-24T17:13:40.521Z",
+      "explanationEn": "These garden words like زهرة, شجرة, and بذرة have clear sounds to practice when talking about plants and nature.",
+      "examples": [
+        {
+          "target": "أنا أزرع زهرة في الوعاء.",
+          "english": "I plant a flower in the pot.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "الشجرة كبيرة ولها أوراق كثيرة.",
+          "english": "The tree is big and has many leaves.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أحتاج إلى رشاشة ماء لري النباتات.",
+          "english": "I need a watering can to water the plants.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "البذرة في التربة تنمو بسرعة.",
+          "english": "The seed grows fast in the soil.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أستخدم المجرفة لحفر التربة.",
+          "english": "I use the shovel to dig the soil.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "21_hair-colors__ar",
@@ -38053,53 +38455,104 @@
         {
           "english": "piano",
           "target": "بيانو",
-          "romanization": "biano"
+          "romanization": "biano",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "guitar",
           "target": "قيثارة",
-          "romanization": "qithara"
+          "romanization": "qithara",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "violin",
           "target": "كمان",
-          "romanization": "kaman"
+          "romanization": "kaman",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "drums",
           "target": "طبول",
-          "romanization": "tubul"
+          "romanization": "tubul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "flute",
           "target": "ناي",
-          "romanization": "nay"
+          "romanization": "nay",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "trumpet",
           "target": "بوق",
-          "romanization": "buq"
+          "romanization": "buq",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "microphone",
           "target": "ميكروفون",
-          "romanization": "mikrofon"
+          "romanization": "mikrofon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "headphones",
           "target": "سماعات رأس",
-          "romanization": "sama'at ra's"
+          "romanization": "sama'at ra's",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "note",
           "target": "نغمة",
-          "romanization": "naghma"
+          "romanization": "naghma",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "description": "Learn Arabic: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "music-instruments",
-      "publishedAt": "2026-08-24T17:24:45.299Z"
+      "publishedAt": "2026-08-24T17:24:45.299Z",
+      "explanationEn": "These Arabic words like بيانو, كمان, and طبول sound clear and musical when you say them aloud.",
+      "examples": [
+        {
+          "target": "أنا ألعب على البيانو كل يوم.",
+          "english": "I play the piano every day.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "هل تحب سماع الموسيقى على السماعات الرأس؟",
+          "english": "Do you like listening to music on headphones?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "الناي آلة موسيقية هادئة وجميلة.",
+          "english": "The flute is a calm and beautiful musical instrument.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "الطبول تصدر صوتًا قويًا في الفرقة.",
+          "english": "The drums make a strong sound in the band.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "الميكروفون مهم في الحفلات الغنائية.",
+          "english": "The microphone is important at singing concerts.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "23_directions__ar",
@@ -43292,6 +43745,65 @@
       ]
     },
     {
+      "id": "gko_cute-agreement-glue__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Agreement Glue in Arabic",
+      "slug": "agreement-glue-in-arabic",
+      "imagePath": "/global/pins/gko_cute-agreement-glue__ar.png",
+      "words": [
+        {
+          "english": "Right?",
+          "target": "أليس كذلك؟",
+          "romanization": "alis kadhalik?"
+        },
+        {
+          "english": "Isn't that so?",
+          "target": "أليس كذلك؟",
+          "romanization": "alis kadhalik?"
+        },
+        {
+          "english": "Let's do it together",
+          "target": "لنقم بذلك معاً",
+          "romanization": "lanqum bidhālik maʿan"
+        },
+        {
+          "english": "Really",
+          "target": "حقاً",
+          "romanization": "haqqan"
+        },
+        {
+          "english": "Exactly",
+          "target": "بالضبط",
+          "romanization": "biddabt"
+        },
+        {
+          "english": "That's it",
+          "target": "هذا هو",
+          "romanization": "hādhā huwa"
+        },
+        {
+          "english": "That's appreciated",
+          "target": "هذا مقدر",
+          "romanization": "hādhā muqaddar"
+        },
+        {
+          "english": "With you",
+          "target": "معك",
+          "romanization": "maʿak"
+        },
+        {
+          "english": "So / That's why",
+          "target": "لذلك",
+          "romanization": "lidhālik"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: Right?, Isn't that so?, Let's do it together, Really, Exactly, That's it…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-agreement-glue",
+      "publishedAt": "2026-08-31T12:42:19.757Z"
+    },
+    {
       "id": "gko_gexp-like-to__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -43339,6 +43851,60 @@
       "description": "Learn Arabic vocabulary: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Save-friendly chart with pronunciation.",
       "topicSlug": "gexp-like-to",
       "publishedAt": "2026-08-31T11:50:32.815Z"
+    },
+    {
+      "id": "gko_phrase-airport-basics__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Airport basics in Arabic",
+      "slug": "airport-basics-in-arabic",
+      "imagePath": "/global/pins/gko_phrase-airport-basics__ar.png",
+      "words": [
+        {
+          "english": "Where's the gate?",
+          "target": "أين البوابة؟",
+          "romanization": "ayna al-bawwaba?"
+        },
+        {
+          "english": "I'd like to check bags",
+          "target": "أود تسجيل الحقائب",
+          "romanization": "awaddu tasjil al-haqa'ib"
+        },
+        {
+          "english": "Carry-on only",
+          "target": "حمل يدوي فقط",
+          "romanization": "haml yadawi faqat"
+        },
+        {
+          "english": "Boarding pass, please",
+          "target": "بطاقة الصعود، من فضلك",
+          "romanization": "bitaqat al-su'ud, min fadlak"
+        },
+        {
+          "english": "Is it delayed?",
+          "target": "هل هناك تأخير؟",
+          "romanization": "hal hunak ta'khir?"
+        },
+        {
+          "english": "I'm transferring",
+          "target": "أنا أنتقل",
+          "romanization": "ana antakil"
+        },
+        {
+          "english": "Where is departure immigration?",
+          "target": "أين جوازات المغادرة؟",
+          "romanization": "ayna jawazat al-mughadara?"
+        },
+        {
+          "english": "Is duty-free still open?",
+          "target": "هل السوق الحرة ما زال مفتوحًا؟",
+          "romanization": "hal al-suq al-hurra ma zal maftuhan?"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic vocabulary: Where's the gate?, I'd like to check bags, Carry-on only, Boarding pass, please, Is it delayed?, I'm transferring…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phrase-airport-basics",
+      "publishedAt": "2026-08-31T12:56:44.847Z"
     },
     {
       "id": "01_eye-colors__ja",
@@ -51477,6 +52043,40 @@
       "description": "Learn Japanese vocabulary: accept, reject. Save-friendly chart with pronunciation.",
       "topicSlug": "ant-accept-reject",
       "publishedAt": "2026-08-31T12:34:31.022Z"
+    },
+    {
+      "id": "gko_concept-already-yet__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Already vs yet in Japanese",
+      "slug": "already-vs-yet-in-japanese",
+      "imagePath": "/global/pins/gko_concept-already-yet__ja.png",
+      "words": [
+        {
+          "english": "already",
+          "target": "もう",
+          "romanization": "mō"
+        },
+        {
+          "english": "already (surprise)",
+          "target": "さっき",
+          "romanization": "sakki"
+        },
+        {
+          "english": "not yet",
+          "target": "まだ",
+          "romanization": "mada"
+        },
+        {
+          "english": "still",
+          "target": "まだ",
+          "romanization": "mada"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: already, already (surprise), not yet, still. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-already-yet",
+      "publishedAt": "2026-08-31T12:50:36.996Z"
     },
     {
       "id": "gko_cute-agreement-glue__ja",
