@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-31T13:13:23.892Z",
+  "generatedAt": "2026-08-31T13:40:39.817Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -8944,6 +8944,124 @@
       "publishedAt": "2026-08-31T08:16:27.135Z"
     },
     {
+      "id": "gko_cute-chat-openers__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Chat openers in Spanish",
+      "slug": "chat-openers-in-spanish",
+      "imagePath": "/global/pins/gko_cute-chat-openers__es.png",
+      "words": [
+        {
+          "english": "Hey (close)",
+          "target": "Hola",
+          "romanization": "OH-lah"
+        },
+        {
+          "english": "Excuse me",
+          "target": "Perdón",
+          "romanization": "pehr-DOHN"
+        },
+        {
+          "english": "What is it?",
+          "target": "¿Qué es?",
+          "romanization": "keh es"
+        },
+        {
+          "english": "How have you been?",
+          "target": "¿Cómo has estado?",
+          "romanization": "KOH-moh ahs ehs-TAH-doh"
+        },
+        {
+          "english": "Is it fun?",
+          "target": "¿Es divertido?",
+          "romanization": "es dee-vehr-TEE-doh"
+        },
+        {
+          "english": "I'm sorry",
+          "target": "Lo siento",
+          "romanization": "loh SYEN-toh"
+        },
+        {
+          "english": "Thank you",
+          "target": "Gracias",
+          "romanization": "GRAH-syahs"
+        },
+        {
+          "english": "I'm hungry",
+          "target": "Tengo hambre",
+          "romanization": "TEN-goh AHM-breh"
+        },
+        {
+          "english": "Good night",
+          "target": "Buenas noches",
+          "romanization": "BWEH-nahs NOH-ches"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: Hey (close), Excuse me, What is it?, How have you been?, Is it fun?, I'm sorry…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-chat-openers",
+      "publishedAt": "2026-08-31T13:23:25.135Z"
+    },
+    {
+      "id": "gko_grid-african-safari__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "African Safari in Spanish",
+      "slug": "african-safari-in-spanish",
+      "imagePath": "/global/pins/gko_grid-african-safari__es.png",
+      "words": [
+        {
+          "english": "Safari Jeep",
+          "target": "Jeep de safari",
+          "romanization": "heep deh sah-FAH-ree"
+        },
+        {
+          "english": "Lion",
+          "target": "León",
+          "romanization": "leh-ON"
+        },
+        {
+          "english": "Elephant",
+          "target": "Elefante",
+          "romanization": "eh-leh-FAHN-teh"
+        },
+        {
+          "english": "Giraffe",
+          "target": "Jirafa",
+          "romanization": "hee-RAH-fah"
+        },
+        {
+          "english": "Zebra",
+          "target": "Cebra",
+          "romanization": "SEH-brah"
+        },
+        {
+          "english": "Rhinoceros",
+          "target": "Rinoceronte",
+          "romanization": "ree-noh-seh-ROHN-teh"
+        },
+        {
+          "english": "Binoculars",
+          "target": "Binoculares",
+          "romanization": "bee-noh-koo-LAH-res"
+        },
+        {
+          "english": "Safari Hat",
+          "target": "Sombrero de safari",
+          "romanization": "sohm-BREH-roh deh sah-FAH-ree"
+        },
+        {
+          "english": "Sunset",
+          "target": "Atardecer",
+          "romanization": "ah-tar-deh-SEHR"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: Safari Jeep, Lion, Elephant, Giraffe, Zebra, Rhinoceros…. Save-friendly chart with pronunciation.",
+      "topicSlug": "grid-african-safari",
+      "publishedAt": "2026-08-31T13:15:02.327Z"
+    },
+    {
       "id": "gko_phrase-agree-soft__es",
       "lang": "es",
       "langName": "Spanish",
@@ -8996,6 +9114,60 @@
       "description": "Learn Spanish vocabulary: Sounds good, That works, I'll do that, I agree, That's right, Good idea…. Save-friendly chart with pronunciation.",
       "topicSlug": "phrase-agree-soft",
       "publishedAt": "2026-08-31T08:07:02.547Z"
+    },
+    {
+      "id": "gko_phrase-apartment-life__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Apartment Life in Spanish",
+      "slug": "apartment-life-in-spanish",
+      "imagePath": "/global/pins/gko_phrase-apartment-life__es.png",
+      "words": [
+        {
+          "english": "There's noise from upstairs",
+          "target": "Hay ruido arriba",
+          "romanization": "Eye ROO-ee-doh ah-REE-bah"
+        },
+        {
+          "english": "The maintenance fee came",
+          "target": "Llegó la cuota de mantenimiento",
+          "romanization": "Yeh-GOH lah KWO-tah deh mahn-teh-nee-MYEN-toh"
+        },
+        {
+          "english": "It's in the parcel locker",
+          "target": "Está en el casillero de paquetes",
+          "romanization": "Es-TAH en el kah-see-YEH-roh deh pah-KEH-tes"
+        },
+        {
+          "english": "The elevator is broken",
+          "target": "El ascensor está roto",
+          "romanization": "El ah-sen-SOR es-TAH ROH-toh"
+        },
+        {
+          "english": "It's recycling day",
+          "target": "Es día de reciclaje",
+          "romanization": "Es DEE-ah deh reh-see-KLAH-heh"
+        },
+        {
+          "english": "The boiler isn't working",
+          "target": "La caldera no funciona",
+          "romanization": "Lah kahl-DEH-rah noh foon-see-OH-nah"
+        },
+        {
+          "english": "There's no water",
+          "target": "No hay agua",
+          "romanization": "Noh eye AH-gwah"
+        },
+        {
+          "english": "I locked myself out",
+          "target": "Me quedé fuera",
+          "romanization": "Meh keh-DEH FWEH-rah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: There's noise from upstairs, The maintenance fee came, It's in the parcel locker, The elevator is broken, It's recycling day, The boiler isn't working…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phrase-apartment-life",
+      "publishedAt": "2026-08-31T13:06:19.027Z"
     },
     {
       "id": "gko_sim-accept-refuse__es",
@@ -17903,6 +18075,60 @@
       "publishedAt": "2026-08-31T12:44:39.323Z"
     },
     {
+      "id": "gko_phrase-apology-fix__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Formal Apology in French",
+      "slug": "formal-apology-in-french",
+      "imagePath": "/global/pins/gko_phrase-apology-fix__fr.png",
+      "words": [
+        {
+          "english": "I'm sorry",
+          "target": "Je suis désolé",
+          "romanization": "zhuh swee day-zo-lay"
+        },
+        {
+          "english": "I made a mistake",
+          "target": "J'ai fait une erreur",
+          "romanization": "zhay fay oon ay-rur"
+        },
+        {
+          "english": "Please understand",
+          "target": "Veuillez comprendre",
+          "romanization": "vuh-yay kom-prandr"
+        },
+        {
+          "english": "It won't happen again",
+          "target": "Cela ne se reproduira plus",
+          "romanization": "suh-lah nuh suh ruh-proh-dwee-rah ploo"
+        },
+        {
+          "english": "Sorry for the inconvenience",
+          "target": "Désolé pour le dérangement",
+          "romanization": "day-zo-lay poor luh day-rah-zh-mahn"
+        },
+        {
+          "english": "I didn't check carefully enough",
+          "target": "Je n'ai pas vérifié assez attentivement",
+          "romanization": "zhuh nay pah vay-ree-fyay ah-say ah-tahn-tee-vuh-mahn"
+        },
+        {
+          "english": "I'll fix it right away",
+          "target": "Je vais le réparer tout de suite",
+          "romanization": "zhuh vay luh ray-pah-ray too duh sweet"
+        },
+        {
+          "english": "I apologize again",
+          "target": "Je m'excuse encore",
+          "romanization": "zhuh mex-kewz ahn-kor"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: I'm sorry, I made a mistake, Please understand, It won't happen again, Sorry for the inconvenience, I didn't check carefully enough…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phrase-apology-fix",
+      "publishedAt": "2026-08-31T13:16:51.725Z"
+    },
+    {
       "id": "gko_sim-accept-refuse__fr",
       "lang": "fr",
       "langName": "French",
@@ -26547,6 +26773,30 @@
       "publishedAt": "2026-08-31T12:48:35.766Z"
     },
     {
+      "id": "gko_ant-approve-deny__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Approve vs Deny in German",
+      "slug": "approve-vs-deny-in-german",
+      "imagePath": "/global/pins/gko_ant-approve-deny__de.png",
+      "words": [
+        {
+          "english": "Approve",
+          "target": "zustimmen",
+          "romanization": "TSOOS-shtim-men"
+        },
+        {
+          "english": "Deny",
+          "target": "ablehnen",
+          "romanization": "AH-bleh-nen"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Approve, Deny. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-approve-deny",
+      "publishedAt": "2026-08-31T13:00:18.521Z"
+    },
+    {
       "id": "gko_concept-already-yet__de",
       "lang": "de",
       "langName": "German",
@@ -26581,6 +26831,60 @@
       "publishedAt": "2026-08-31T11:42:00.395Z"
     },
     {
+      "id": "gko_phrase-apt-neighbor-chat__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Apartment Neighbor in German",
+      "slug": "apartment-neighbor-in-german",
+      "imagePath": "/global/pins/gko_phrase-apt-neighbor-chat__de.png",
+      "words": [
+        {
+          "english": "Please mind the noise",
+          "target": "Bitte achten Sie auf den Lärm",
+          "romanization": "BIT-teh AHKH-ten zee owf den LERM"
+        },
+        {
+          "english": "I left a package with you",
+          "target": "Ich habe ein Paket bei Ihnen gelassen",
+          "romanization": "Ish HAH-beh ine pah-KET by EE-nen geh-LAH-sen"
+        },
+        {
+          "english": "Did you pay maintenance?",
+          "target": "Haben Sie die Hausverwaltung bezahlt?",
+          "romanization": "HAH-ben zee dee hous-fer-VAL-toong beh-TSahlt?"
+        },
+        {
+          "english": "The elevator is broken",
+          "target": "Der Aufzug ist kaputt",
+          "romanization": "Dare OWF-tsook ist kah-POOT"
+        },
+        {
+          "english": "It's recycling day",
+          "target": "Heute ist Müllabfuhrtag",
+          "romanization": "HOY-teh ist MUHL-ab-foor-tahg"
+        },
+        {
+          "english": "I changed the door code",
+          "target": "Ich habe den Türcode geändert",
+          "romanization": "Ish HAH-beh den TUER-koh-deh geh-EN-dert"
+        },
+        {
+          "english": "The water is out",
+          "target": "Das Wasser ist abgestellt",
+          "romanization": "Dahs VAH-ser ist ab-geshtellt"
+        },
+        {
+          "english": "Could you help me?",
+          "target": "Könnten Sie mir helfen?",
+          "romanization": "KURN-ten zee meer HEL-fen?"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Please mind the noise, I left a package with you, Did you pay maintenance?, The elevator is broken, It's recycling day, I changed the door code…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phrase-apt-neighbor-chat",
+      "publishedAt": "2026-08-31T13:26:07.989Z"
+    },
+    {
       "id": "gko_sim-accept-refuse__de",
       "lang": "de",
       "langName": "German",
@@ -26603,6 +26907,30 @@
       "description": "Learn German vocabulary: Accept, Refuse. Save-friendly chart with pronunciation.",
       "topicSlug": "sim-accept-refuse",
       "publishedAt": "2026-08-31T12:46:55.135Z"
+    },
+    {
+      "id": "gko_sim-announce-notify__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Announce vs Notify in German",
+      "slug": "announce-vs-notify-in-german",
+      "imagePath": "/global/pins/gko_sim-announce-notify__de.png",
+      "words": [
+        {
+          "english": "Announce",
+          "target": "ankündigen",
+          "romanization": "AHNK-kynd-ee-gen"
+        },
+        {
+          "english": "Notify",
+          "target": "benachrichtigen",
+          "romanization": "beh-NAKH-rikh-ti-gen"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Announce, Notify. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-announce-notify",
+      "publishedAt": "2026-08-31T13:08:13.521Z"
     },
     {
       "id": "01_eye-colors__it",
@@ -34847,6 +35175,64 @@
       "publishedAt": "2026-08-31T12:40:17.906Z"
     },
     {
+      "id": "gko_ant-ask-answer__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Ask vs Answer in Italian",
+      "slug": "ask-vs-answer-in-italian",
+      "imagePath": "/global/pins/gko_ant-ask-answer__it.png",
+      "words": [
+        {
+          "english": "Ask",
+          "target": "Chiedere",
+          "romanization": "kee-eh-DEH-reh"
+        },
+        {
+          "english": "Answer",
+          "target": "Rispondere",
+          "romanization": "ree-SPON-deh-reh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: Ask, Answer. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-ask-answer",
+      "publishedAt": "2026-08-31T13:20:02.540Z"
+    },
+    {
+      "id": "gko_concept-ask-politely__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Asking politely in Italian",
+      "slug": "asking-politely-in-italian",
+      "imagePath": "/global/pins/gko_concept-ask-politely__it.png",
+      "words": [
+        {
+          "english": "Do you have…?",
+          "target": "Hai…?",
+          "romanization": "eye"
+        },
+        {
+          "english": "Can you…?",
+          "target": "Puoi…?",
+          "romanization": "pwah-ee"
+        },
+        {
+          "english": "Where is…?",
+          "target": "Dov'è…?",
+          "romanization": "doh-VEH"
+        },
+        {
+          "english": "How much…?",
+          "target": "Quanto costa…?",
+          "romanization": "KWAHN-toh KOH-stah"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: Do you have…?, Can you…?, Where is…?, How much…?. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-ask-politely",
+      "publishedAt": "2026-08-31T13:10:30.006Z"
+    },
+    {
       "id": "gko_cute-agreement-glue__it",
       "lang": "it",
       "langName": "Italian",
@@ -34963,6 +35349,65 @@
       "description": "Learn Italian vocabulary: Sorry, Really sorry, My fault, Sorry, Still sorry, Sorry, friend…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-apology-soft",
       "publishedAt": "2026-08-31T12:52:29.500Z"
+    },
+    {
+      "id": "gko_cute-cafe-mood__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Café Mood in Italian",
+      "slug": "caf-mood-in-italian",
+      "imagePath": "/global/pins/gko_cute-cafe-mood__it.png",
+      "words": [
+        {
+          "english": "Sweet",
+          "target": "Dolce",
+          "romanization": "DOL-cheh"
+        },
+        {
+          "english": "Bitter",
+          "target": "Amaro",
+          "romanization": "ah-MAH-roh"
+        },
+        {
+          "english": "Delicious",
+          "target": "Delizioso",
+          "romanization": "deh-lee-TZYO-so"
+        },
+        {
+          "english": "I like it",
+          "target": "Mi piace",
+          "romanization": "mee PYA-cheh"
+        },
+        {
+          "english": "Comfortable",
+          "target": "Confortevole",
+          "romanization": "kon-for-TEH-voh-leh"
+        },
+        {
+          "english": "How",
+          "target": "Come",
+          "romanization": "KOH-meh"
+        },
+        {
+          "english": "How much",
+          "target": "Quanto",
+          "romanization": "KWAHN-toh"
+        },
+        {
+          "english": "I'm hungry",
+          "target": "Ho fame",
+          "romanization": "oh FAH-meh"
+        },
+        {
+          "english": "Goodbye",
+          "target": "Arrivederci",
+          "romanization": "ah-ree-veh-DER-chee"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: Sweet, Bitter, Delicious, I like it, Comfortable, How…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-cafe-mood",
+      "publishedAt": "2026-08-31T13:03:48.800Z"
     },
     {
       "id": "gko_gexp-like-to__it",
@@ -37854,7 +38299,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: letter, stamp, mailbox, package, address, post office…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: letter, stamp, mailbox, package, address, post office…. Save-friendly chart with pronunciation.",
       "topicSlug": "post-mail",
       "publishedAt": "2026-08-24T16:52:49.854Z",
       "explanationEn": "These words like رسالة, طابع بريد, and صندوق البريد help you talk about mail and letters in Arabic with clear pronunciation.",
@@ -37970,7 +38415,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: washing machine, dryer, detergent, fabric softener, hanger, iron…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: washing machine, dryer, detergent, fabric softener, hanger, iron…. Save-friendly chart with pronunciation.",
       "topicSlug": "laundry-care",
       "publishedAt": "2026-08-24T17:03:09.997Z",
       "explanationEn": "These Arabic words like غسالة, مكواة, and بقعة help you talk about laundry sounds and actions clearly.",
@@ -38189,7 +38634,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: flower, tree, grass, soil, seed, watering can…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
       "topicSlug": "garden-plants",
       "publishedAt": "2026-08-24T17:13:40.521Z",
       "explanationEn": "These garden words like زهرة, شجرة, and بذرة have clear sounds to practice when talking about plants and nature.",
@@ -38517,7 +38962,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
       "topicSlug": "music-instruments",
       "publishedAt": "2026-08-24T17:24:45.299Z",
       "explanationEn": "These Arabic words like بيانو, كمان, and طبول sound clear and musical when you say them aloud.",
@@ -43745,6 +44190,81 @@
       ]
     },
     {
+      "id": "gko_concept-because-so__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Because & so in Arabic",
+      "slug": "because-so-in-arabic",
+      "imagePath": "/global/pins/gko_concept-because-so__ar.png",
+      "words": [
+        {
+          "english": "because",
+          "target": "لأن",
+          "romanization": "li'anna",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/w0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "so / therefore",
+          "target": "لذلك",
+          "romanization": "lidhālik",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/w1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "so (casual)",
+          "target": "فـ",
+          "romanization": "fa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/w2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "that's why",
+          "target": "لهذا السبب",
+          "romanization": "lihādhā as-sabab",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/w3.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic: because, so / therefore, so (casual), that's why. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "concept-because-so",
+      "publishedAt": "2026-08-31T13:21:43.434Z",
+      "explanationEn": "These words like لأن, لذلك, فـ, and لهذا السبب connect ideas and show cause and effect when you speak Arabic.",
+      "examples": [
+        {
+          "target": "أنا متعب لأنني لم أنم جيدًا.",
+          "english": "I am tired because I did not sleep well.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "الطقس بارد لذلك أرتدي معطفًا.",
+          "english": "The weather is cold, so I wear a coat.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "لم أذهب إلى المدرسة فكنت مريضًا.",
+          "english": "I did not go to school, so I was sick.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "تأخرت في العمل لهذا السبب شعرت بالتعب.",
+          "english": "I was late to work; that's why I felt tired.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "هي سعيدة لأن لديها أصدقاء جيدين.",
+          "english": "She is happy because she has good friends.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
+    },
+    {
       "id": "gko_cute-agreement-glue__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -43755,53 +44275,220 @@
         {
           "english": "Right?",
           "target": "أليس كذلك؟",
-          "romanization": "alis kadhalik?"
+          "romanization": "alis kadhalik?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Isn't that so?",
           "target": "أليس كذلك؟",
-          "romanization": "alis kadhalik?"
+          "romanization": "alis kadhalik?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Let's do it together",
           "target": "لنقم بذلك معاً",
-          "romanization": "lanqum bidhālik maʿan"
+          "romanization": "lanqum bidhālik maʿan",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Really",
           "target": "حقاً",
-          "romanization": "haqqan"
+          "romanization": "haqqan",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Exactly",
           "target": "بالضبط",
-          "romanization": "biddabt"
+          "romanization": "biddabt",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "That's it",
           "target": "هذا هو",
-          "romanization": "hādhā huwa"
+          "romanization": "hādhā huwa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "That's appreciated",
           "target": "هذا مقدر",
-          "romanization": "hādhā muqaddar"
+          "romanization": "hādhā muqaddar",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "With you",
           "target": "معك",
-          "romanization": "maʿak"
+          "romanization": "maʿak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "So / That's why",
           "target": "لذلك",
-          "romanization": "lidhālik"
+          "romanization": "lidhālik",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic vocabulary: Right?, Isn't that so?, Let's do it together, Really, Exactly, That's it…. Save-friendly chart with pronunciation.",
+      "description": "Learn Arabic: Right?, Isn't that so?, Let's do it together, Really, Exactly, That's it…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "cute-agreement-glue",
-      "publishedAt": "2026-08-31T12:42:19.757Z"
+      "publishedAt": "2026-08-31T12:42:19.757Z",
+      "explanationEn": "These words and phrases like أليس كذلك؟, حقاً, and بالضبط help you agree or confirm what someone says in Arabic.",
+      "examples": [
+        {
+          "target": "أليس كذلك؟ الطقس جميل اليوم.",
+          "english": "Right? The weather is nice today.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "لنقم بذلك معاً غداً.",
+          "english": "Let's do it together tomorrow.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "حقاً، أحب هذا الفيلم.",
+          "english": "Really, I love this movie.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "بالضبط، هذا هو الحل الصحيح.",
+          "english": "Exactly, this is the right solution.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "لذلك، نحتاج إلى العمل بجد.",
+          "english": "So, we need to work hard.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
+    },
+    {
+      "id": "gko_cute-celebrate-mini__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Mini Celebration in Arabic",
+      "slug": "mini-celebration-in-arabic",
+      "imagePath": "/global/pins/gko_cute-celebrate-mini__ar.png",
+      "words": [
+        {
+          "english": "Congrats",
+          "target": "مبروك",
+          "romanization": "mabrook",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Well done",
+          "target": "أحسنت",
+          "romanization": "ahsant",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "The best!",
+          "target": "الأفضل!",
+          "romanization": "al-afdal!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Thank you",
+          "target": "شكراً",
+          "romanization": "shukran",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "I appreciate you",
+          "target": "أنا أقدرك",
+          "romanization": "ana aqdiruk",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Thank you, everyone",
+          "target": "شكراً للجميع",
+          "romanization": "shukran liljamee'",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w5.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Surprise!",
+          "target": "مفاجأة!",
+          "romanization": "mufaja'a!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w6.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Happy Birthday!",
+          "target": "عيد ميلاد سعيد!",
+          "romanization": "eid milad sa'id!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w7.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "No time to waste!",
+          "target": "لا وقت للإضاعة!",
+          "romanization": "la waqt lil-ida'a!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/w8.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic: Congrats, Well done, The best!, Thank you, I appreciate you, Thank you, everyone…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "cute-celebrate-mini",
+      "publishedAt": "2026-08-31T13:12:29.857Z",
+      "explanationEn": "These Arabic words like مبروك, شكراً, and عيد ميلاد سعيد are cheerful and often said with excitement or gratitude.",
+      "examples": [
+        {
+          "target": "مبروك على نجاحك!",
+          "english": "Congrats on your success!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "شكراً للجميع على الحضور.",
+          "english": "Thank you, everyone, for coming.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "عيد ميلاد سعيد! أتمنى لك يوماً جميلاً.",
+          "english": "Happy Birthday! I wish you a beautiful day.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أحسنت في عملك اليوم.",
+          "english": "Well done on your work today.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "مفاجأة! لقد جئت مبكراً.",
+          "english": "Surprise! You came early.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أنا أقدرك كثيراً لمساعدتك.",
+          "english": "I appreciate you a lot for your help.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__ar/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "gko_gexp-like-to__ar",
@@ -43814,43 +44501,90 @@
         {
           "english": "like doing",
           "target": "يحب أن يفعل",
-          "romanization": "yuhib an yafal"
+          "romanization": "yuhib an yafal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I like reading books",
           "target": "أحب قراءة الكتب",
-          "romanization": "uhib qira'at al-kutub"
+          "romanization": "uhib qira'at al-kutub",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I like listening to music",
           "target": "أحب الاستماع إلى الموسيقى",
-          "romanization": "uhib al-istima' ila al-musiqa"
+          "romanization": "uhib al-istima' ila al-musiqa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "book (object)",
           "target": "الكتاب",
-          "romanization": "al-kitab"
+          "romanization": "al-kitab",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "reading (adjectival modifier)",
           "target": "قارئ",
-          "romanization": "qari'"
+          "romanization": "qari'",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "object marker",
           "target": "أن",
-          "romanization": "an"
+          "romanization": "an",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "to like",
           "target": "يحب",
-          "romanization": "yuhib"
+          "romanization": "yuhib",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/w6.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic vocabulary: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Save-friendly chart with pronunciation.",
+      "description": "Learn Arabic: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "gexp-like-to",
-      "publishedAt": "2026-08-31T11:50:32.815Z"
+      "publishedAt": "2026-08-31T11:50:32.815Z",
+      "explanationEn": "These Arabic phrases show how to say 'like' with verbs like يحب and يحب أن, including examples with reading and music.",
+      "examples": [
+        {
+          "target": "أنا أحب قراءة الكتب.",
+          "english": "I like reading books.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "هي يحب أن تستمع إلى الموسيقى.",
+          "english": "She likes to listen to music.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "هو يحب أن يقرأ الكتاب.",
+          "english": "He likes to read the book.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "نحن نحب الاستماع إلى الموسيقى.",
+          "english": "We like listening to music.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أنت تحب أن تكون قارئ جيد.",
+          "english": "You like to be a good reader.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "gko_phrase-airport-basics__ar",
@@ -52079,6 +52813,40 @@
       "publishedAt": "2026-08-31T12:50:36.996Z"
     },
     {
+      "id": "gko_concept-already-yet-still__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Already / yet / still in Japanese",
+      "slug": "already-yet-still-in-japanese",
+      "imagePath": "/global/pins/gko_concept-already-yet-still__ja.png",
+      "words": [
+        {
+          "english": "already",
+          "target": "もう",
+          "romanization": "mō"
+        },
+        {
+          "english": "not yet",
+          "target": "まだ",
+          "romanization": "mada"
+        },
+        {
+          "english": "still",
+          "target": "まだ",
+          "romanization": "mada"
+        },
+        {
+          "english": "anymore",
+          "target": "もう〜ない",
+          "romanization": "mō ~ nai"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: already, not yet, still, anymore. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-already-yet-still",
+      "publishedAt": "2026-08-31T13:02:04.247Z"
+    },
+    {
       "id": "gko_cute-agreement-glue__ja",
       "lang": "ja",
       "langName": "Japanese",
@@ -52195,6 +52963,30 @@
       "description": "Learn Japanese vocabulary: Sorry, Really sorry, My fault, Sorry, Still sorry, Sorry, friend…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-apology-soft",
       "publishedAt": "2026-08-31T11:43:56.410Z"
+    },
+    {
+      "id": "gko_sim-apply-register__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Apply vs Register in Japanese",
+      "slug": "apply-vs-register-in-japanese",
+      "imagePath": "/global/pins/gko_sim-apply-register__ja.png",
+      "words": [
+        {
+          "english": "Apply",
+          "target": "申し込む",
+          "romanization": "mōshikomu"
+        },
+        {
+          "english": "Register",
+          "target": "登録する",
+          "romanization": "tōroku suru"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: Apply, Register. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-apply-register",
+      "publishedAt": "2026-08-31T13:18:30.229Z"
     },
     {
       "id": "01_eye-colors__ko",
