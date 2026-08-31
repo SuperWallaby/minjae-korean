@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-31T14:16:29.455Z",
+  "generatedAt": "2026-08-31T14:43:29.087Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -9061,6 +9061,65 @@
       "publishedAt": "2026-08-31T13:23:25.135Z"
     },
     {
+      "id": "gko_cute-emotion-soft__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Soft Emotion in Spanish",
+      "slug": "soft-emotion-in-spanish",
+      "imagePath": "/global/pins/gko_cute-emotion-soft__es.png",
+      "words": [
+        {
+          "english": "Butterflies",
+          "target": "Mariposas en el estómago",
+          "romanization": "mah-ree-POH-sahs en el es-TOH-mah-goh"
+        },
+        {
+          "english": "Getting teary",
+          "target": "Llorando a punto de llorar",
+          "romanization": "yo-RAHN-doh ah POON-toh deh yo-RAR"
+        },
+        {
+          "english": "Together",
+          "target": "Juntos",
+          "romanization": "HOON-tohs"
+        },
+        {
+          "english": "Healing",
+          "target": "Sanando",
+          "romanization": "sah-NAHN-doh"
+        },
+        {
+          "english": "Laughing",
+          "target": "Riendo",
+          "romanization": "ree-EN-doh"
+        },
+        {
+          "english": "What do I do?",
+          "target": "¿Qué hago?",
+          "romanization": "keh AH-goh"
+        },
+        {
+          "english": "Hard to say",
+          "target": "Difícil de decir",
+          "romanization": "dee-FEE-seel deh deh-SEER"
+        },
+        {
+          "english": "So much",
+          "target": "Tanto",
+          "romanization": "TAHN-toh"
+        },
+        {
+          "english": "Thinking",
+          "target": "Pensando",
+          "romanization": "pen-SAHN-doh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: Butterflies, Getting teary, Together, Healing, Laughing, What do I do?…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-emotion-soft",
+      "publishedAt": "2026-08-31T14:28:06.451Z"
+    },
+    {
       "id": "gko_grid-african-safari__es",
       "lang": "es",
       "langName": "Spanish",
@@ -9118,6 +9177,65 @@
       "description": "Learn Spanish vocabulary: Safari Jeep, Lion, Elephant, Giraffe, Zebra, Rhinoceros…. Save-friendly chart with pronunciation.",
       "topicSlug": "grid-african-safari",
       "publishedAt": "2026-08-31T13:15:02.327Z"
+    },
+    {
+      "id": "gko_grid-airport__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "How to get through the airport in Spanish",
+      "slug": "how-to-get-through-the-airport-in-spanish",
+      "imagePath": "/global/pins/gko_grid-airport__es.png",
+      "words": [
+        {
+          "english": "Airport",
+          "target": "Aeropuerto",
+          "romanization": "ah-eh-roh-PWEHR-toh"
+        },
+        {
+          "english": "Check-in",
+          "target": "Registro",
+          "romanization": "reh-HEES-troh"
+        },
+        {
+          "english": "Passport",
+          "target": "Pasaporte",
+          "romanization": "pah-sah-POR-teh"
+        },
+        {
+          "english": "Boarding Pass",
+          "target": "Tarjeta de embarque",
+          "romanization": "tar-HEH-tah dehm-BAR-keh"
+        },
+        {
+          "english": "Security Check",
+          "target": "Control de seguridad",
+          "romanization": "kohn-TROL deh seh-goo-ree-DAHD"
+        },
+        {
+          "english": "Departure",
+          "target": "Salida",
+          "romanization": "sah-LEE-dah"
+        },
+        {
+          "english": "Arrival",
+          "target": "Llegada",
+          "romanization": "yeh-GAH-dah"
+        },
+        {
+          "english": "Baggage Claim",
+          "target": "Reclamación de equipaje",
+          "romanization": "reh-klah-mah-SYON deh eh-kee-PAH-heh"
+        },
+        {
+          "english": "Currency Exchange",
+          "target": "Cambio de divisas",
+          "romanization": "KAHM-byoh deh dee-VEE-sahs"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: Airport, Check-in, Passport, Boarding Pass, Security Check, Departure…. Save-friendly chart with pronunciation.",
+      "topicSlug": "grid-airport",
+      "publishedAt": "2026-08-31T14:19:07.281Z"
     },
     {
       "id": "gko_phrase-agree-soft__es",
@@ -9226,6 +9344,60 @@
       "description": "Learn Spanish vocabulary: There's noise from upstairs, The maintenance fee came, It's in the parcel locker, The elevator is broken, It's recycling day, The boiler isn't working…. Save-friendly chart with pronunciation.",
       "topicSlug": "phrase-apartment-life",
       "publishedAt": "2026-08-31T13:06:19.027Z"
+    },
+    {
+      "id": "gko_phrase-battery-low__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Low Battery in Spanish",
+      "slug": "low-battery-in-spanish",
+      "imagePath": "/global/pins/gko_phrase-battery-low__es.png",
+      "words": [
+        {
+          "english": "Battery is almost dead",
+          "target": "La batería está casi agotada",
+          "romanization": "lah bah-TEH-ree-ah ES-tah KAH-see ah-go-TAH-dah"
+        },
+        {
+          "english": "Can I borrow a charger?",
+          "target": "¿Puedo pedir prestado un cargador?",
+          "romanization": "PWEH-doh peh-DEER pres-TAH-doh oon kar-gah-DOR"
+        },
+        {
+          "english": "Do you have a power bank?",
+          "target": "¿Tienes una batería externa?",
+          "romanization": "TYEH-nes OO-nah bah-TEH-ree-ah ex-TER-nah"
+        },
+        {
+          "english": "I'll switch to power save",
+          "target": "Cambiaré al modo de ahorro de energía",
+          "romanization": "kam-byah-REH al MOH-doh deh ah-OH-roh deh eh-NEHR-hee-ah"
+        },
+        {
+          "english": "It might turn off soon",
+          "target": "Podría apagarse pronto",
+          "romanization": "poh-DREE-ah ah-pah-GAR-seh PRON-toh"
+        },
+        {
+          "english": "I'll keep Wi‑Fi only",
+          "target": "Solo usaré Wi-Fi",
+          "romanization": "SOH-loh oo-sah-REH wee-FEE"
+        },
+        {
+          "english": "Text instead of calling",
+          "target": "Enviar un mensaje en vez de llamar",
+          "romanization": "en-bee-AR oon men-SAH-heh en BES deh yah-MAR"
+        },
+        {
+          "english": "It's charging",
+          "target": "Está cargando",
+          "romanization": "es-TAH kar-GAN-doh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: Battery is almost dead, Can I borrow a charger?, Do you have a power bank?, I'll switch to power save, It might turn off soon, I'll keep Wi‑Fi only…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phrase-battery-low",
+      "publishedAt": "2026-08-31T14:10:23.746Z"
     },
     {
       "id": "gko_sim-accept-refuse__es",
@@ -18328,6 +18500,60 @@
       "publishedAt": "2026-08-31T13:16:51.725Z"
     },
     {
+      "id": "gko_phrase-beauty-salon__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "Salon & Beauty in French",
+      "slug": "salon-beauty-in-french",
+      "imagePath": "/global/pins/gko_phrase-beauty-salon__fr.png",
+      "words": [
+        {
+          "english": "I have a reservation",
+          "target": "J'ai une réservation",
+          "romanization": "Zhay oon ray-zair-va-syon"
+        },
+        {
+          "english": "Please cut it short",
+          "target": "Coupez-le court, s'il vous plaît",
+          "romanization": "Koo-pay luh koor, seel voo play"
+        },
+        {
+          "english": "I want to dye my hair",
+          "target": "Je veux teindre mes cheveux",
+          "romanization": "Zhuh vuh tandr may shuh-vuh"
+        },
+        {
+          "english": "Can I get a perm?",
+          "target": "Puis-je avoir une permanente ?",
+          "romanization": "Pwee-zh ah-vwar oon pair-mah-nahnt"
+        },
+        {
+          "english": "Just bangs, please",
+          "target": "Juste la frange, s'il vous plaît",
+          "romanization": "Zhoost lah frahnzh, seel voo play"
+        },
+        {
+          "english": "Make it natural",
+          "target": "Faites-le naturel",
+          "romanization": "Fet luh nah-tyur-el"
+        },
+        {
+          "english": "How much is it?",
+          "target": "C'est combien ?",
+          "romanization": "Say kohm-byen"
+        },
+        {
+          "english": "Card, please",
+          "target": "Carte, s'il vous plaît",
+          "romanization": "Kart, seel voo play"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: I have a reservation, Please cut it short, I want to dye my hair, Can I get a perm?, Just bangs, please, Make it natural…. Save-friendly chart with pronunciation.",
+      "topicSlug": "phrase-beauty-salon",
+      "publishedAt": "2026-08-31T14:21:00.418Z"
+    },
+    {
       "id": "gko_sim-accept-refuse__fr",
       "lang": "fr",
       "langName": "French",
@@ -21432,53 +21658,104 @@
         {
           "english": "flower",
           "target": "Blume",
-          "romanization": "bloo-me"
+          "romanization": "bloo-me",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "tree",
           "target": "Baum",
-          "romanization": "baum"
+          "romanization": "baum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "grass",
           "target": "Gras",
-          "romanization": "grahs"
+          "romanization": "grahs",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "soil",
           "target": "Erde",
-          "romanization": "air-de"
+          "romanization": "air-de",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "seed",
           "target": "Samen",
-          "romanization": "zah-men"
+          "romanization": "zah-men",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "watering can",
           "target": "Gießkanne",
-          "romanization": "geess-kan-ne"
+          "romanization": "geess-kan-ne",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "shovel",
           "target": "Schaufel",
-          "romanization": "shau-fel"
+          "romanization": "shau-fel",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "pot",
           "target": "Topf",
-          "romanization": "topf"
+          "romanization": "topf",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "leaf",
           "target": "Blatt",
-          "romanization": "blaht"
+          "romanization": "blaht",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: flower, tree, grass, soil, seed, watering can…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: flower, tree, grass, soil, seed, watering can…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "garden-plants",
-      "publishedAt": "2026-08-24T17:11:55.070Z"
+      "publishedAt": "2026-08-24T17:11:55.070Z",
+      "explanationEn": "Listen carefully to words like Blume, Baum, and Gießkanne to hear the clear vowel and consonant sounds in German garden vocabulary.",
+      "examples": [
+        {
+          "target": "Die Blume steht im Topf.",
+          "english": "The flower is in the pot.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Baum hat viele Blätter.",
+          "english": "The tree has many leaves.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Ich gieße die Pflanzen mit der Gießkanne.",
+          "english": "I water the plants with the watering can.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Der Samen liegt in der Erde.",
+          "english": "The seed lies in the soil.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Das Gras ist grün und weich.",
+          "english": "The grass is green and soft.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/21_garden-plants__de/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "21_hair-colors__de",
@@ -21709,53 +21986,110 @@
         {
           "english": "piano",
           "target": "Klavier",
-          "romanization": "kla-vee-er"
+          "romanization": "kla-vee-er",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "guitar",
           "target": "Gitarre",
-          "romanization": "gee-tar-re"
+          "romanization": "gee-tar-re",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "violin",
           "target": "Violine",
-          "romanization": "vee-oh-lee-neh"
+          "romanization": "vee-oh-lee-neh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "drums",
           "target": "Schlagzeug",
-          "romanization": "shlahg-tsoyk"
+          "romanization": "shlahg-tsoyk",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "flute",
           "target": "Flöte",
-          "romanization": "flur-teh"
+          "romanization": "flur-teh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "trumpet",
           "target": "Trompete",
-          "romanization": "trom-peh-teh"
+          "romanization": "trom-peh-teh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "microphone",
           "target": "Mikrofon",
-          "romanization": "mee-kro-fon"
+          "romanization": "mee-kro-fon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "headphones",
           "target": "Kopfhörer",
-          "romanization": "kopf-hur-er"
+          "romanization": "kopf-hur-er",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "note",
           "target": "Note",
-          "romanization": "noh-teh"
+          "romanization": "noh-teh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
-      "description": "Learn German vocabulary: piano, guitar, violin, drums, flute, trumpet…. Save-friendly chart with pronunciation.",
+      "description": "Learn German: piano, guitar, violin, drums, flute, trumpet…. Free chart with pronunciation audio and example sentences for English speakers.",
       "topicSlug": "music-instruments",
-      "publishedAt": "2026-08-24T17:22:49.077Z"
+      "publishedAt": "2026-08-24T17:22:49.077Z",
+      "explanationEn": "These German words like Klavier, Gitarre, and Trompete have clear sounds you can hear when you say them aloud.",
+      "examples": [
+        {
+          "target": "Ich spiele gern Klavier.",
+          "english": "I like to play piano.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Die Gitarre ist mein Lieblingsinstrument.",
+          "english": "The guitar is my favorite instrument.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Er hört Musik mit Kopfhörern.",
+          "english": "He listens to music with headphones.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Die Trompete macht laute Töne.",
+          "english": "The trumpet makes loud sounds.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Wir lernen heute die Note.",
+          "english": "We are learning the note today.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "Das Mikrofon ist wichtig für den Sänger.",
+          "english": "The microphone is important for the singer.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/22_music-instruments__de/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
     },
     {
       "id": "23_directions__de",
@@ -27330,6 +27664,30 @@
       "description": "Learn German vocabulary: Announce, Notify. Save-friendly chart with pronunciation.",
       "topicSlug": "sim-announce-notify",
       "publishedAt": "2026-08-31T13:08:13.521Z"
+    },
+    {
+      "id": "gko_sim-bring-take__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Bring vs Take in German",
+      "slug": "bring-vs-take-in-german",
+      "imagePath": "/global/pins/gko_sim-bring-take__de.png",
+      "words": [
+        {
+          "english": "Bring",
+          "target": "bringen",
+          "romanization": "BRING-en"
+        },
+        {
+          "english": "Take",
+          "target": "nehmen",
+          "romanization": "NAY-men"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Bring, Take. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-bring-take",
+      "publishedAt": "2026-08-31T14:12:09.408Z"
     },
     {
       "id": "01_eye-colors__it",
@@ -35598,6 +35956,30 @@
       "publishedAt": "2026-08-31T13:20:02.540Z"
     },
     {
+      "id": "gko_ant-brave-scared__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Brave vs Scared in Italian",
+      "slug": "brave-vs-scared-in-italian",
+      "imagePath": "/global/pins/gko_ant-brave-scared__it.png",
+      "words": [
+        {
+          "english": "Brave",
+          "target": "Coraggioso",
+          "romanization": "koh-rah-JOH-soh"
+        },
+        {
+          "english": "Scared",
+          "target": "Spaventato",
+          "romanization": "spah-ven-TAH-toh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: Brave, Scared. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-brave-scared",
+      "publishedAt": "2026-08-31T14:24:36.720Z"
+    },
+    {
       "id": "gko_concept-ask-politely__it",
       "lang": "it",
       "langName": "Italian",
@@ -35630,6 +36012,40 @@
       "description": "Learn Italian vocabulary: Do you have…?, Can you…?, Where is…?, How much…?. Save-friendly chart with pronunciation.",
       "topicSlug": "concept-ask-politely",
       "publishedAt": "2026-08-31T13:10:30.006Z"
+    },
+    {
+      "id": "gko_concept-before-after2__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Before & after timing in Italian",
+      "slug": "before-after-timing-in-italian",
+      "imagePath": "/global/pins/gko_concept-before-after2__it.png",
+      "words": [
+        {
+          "english": "before",
+          "target": "prima",
+          "romanization": "PREE-mah"
+        },
+        {
+          "english": "after",
+          "target": "dopo",
+          "romanization": "DOH-poh"
+        },
+        {
+          "english": "during",
+          "target": "durante",
+          "romanization": "doo-RAHN-teh"
+        },
+        {
+          "english": "meanwhile",
+          "target": "nel frattempo",
+          "romanization": "nel frah-TEHM-poh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: before, after, during, meanwhile. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-before-after2",
+      "publishedAt": "2026-08-31T14:15:44.096Z"
     },
     {
       "id": "gko_cute-agreement-glue__it",
@@ -35807,6 +36223,65 @@
       "description": "Learn Italian vocabulary: Sweet, Bitter, Delicious, I like it, Comfortable, How…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-cafe-mood",
       "publishedAt": "2026-08-31T13:03:48.800Z"
+    },
+    {
+      "id": "gko_cute-desk-stretch__it",
+      "lang": "it",
+      "langName": "Italian",
+      "titleEn": "Desk Stretch in Italian",
+      "slug": "desk-stretch-in-italian",
+      "imagePath": "/global/pins/gko_cute-desk-stretch__it.png",
+      "words": [
+        {
+          "english": "Stretch",
+          "target": "Allungamento",
+          "romanization": "ah-LOON-gah-men-toh"
+        },
+        {
+          "english": "Spine straighten",
+          "target": "Raddrizzare la colonna vertebrale",
+          "romanization": "rah-dreet-TSAR-ray lah koh-LOHN-nah ver-teh-BRAH-leh"
+        },
+        {
+          "english": "Neck roll",
+          "target": "Rotazione del collo",
+          "romanization": "roh-tah-TSYOH-neh del KOL-lo"
+        },
+        {
+          "english": "Shoulder roll",
+          "target": "Rotazione della spalla",
+          "romanization": "roh-tah-TSYOH-neh DEL-lah SPAHL-lah"
+        },
+        {
+          "english": "Wrist stretch",
+          "target": "Allungamento del polso",
+          "romanization": "ah-LOON-gah-men-toh del POL-so"
+        },
+        {
+          "english": "Side bend",
+          "target": "Inclinazione laterale",
+          "romanization": "een-klee-nah-TSYOH-neh lah-teh-RAH-leh"
+        },
+        {
+          "english": "Back bend",
+          "target": "Inarcamento della schiena",
+          "romanization": "ee-nar-kah-MEN-toh DEL-lah SKYE-nah"
+        },
+        {
+          "english": "Forward bend",
+          "target": "Piegamento in avanti",
+          "romanization": "pyeh-gah-MEN-toh een ah-VAHN-tee"
+        },
+        {
+          "english": "Knee hug",
+          "target": "Abbraccio al ginocchio",
+          "romanization": "ahb-BRAH-choh al jee-NOK-kee-oh"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Italian vocabulary: Stretch, Spine straighten, Neck roll, Shoulder roll, Wrist stretch, Side bend…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-desk-stretch",
+      "publishedAt": "2026-08-31T14:05:19.869Z"
     },
     {
       "id": "gko_gexp-like-to__it",
@@ -44690,7 +45165,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: Attach, Detach. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: Attach, Detach. Save-friendly chart with pronunciation.",
       "topicSlug": "ant-attach-detach",
       "publishedAt": "2026-08-31T13:29:16.545Z",
       "explanationEn": "These words show opposite actions: يُلصِق means attach and يَفصِل means detach, focusing on how the sounds change with the verbs.",
@@ -44792,6 +45267,75 @@
           "target": "هي سعيدة لأن لديها أصدقاء جيدين.",
           "english": "She is happy because she has good friends.",
           "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-because-so__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
+    },
+    {
+      "id": "gko_concept-before-vs-after__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Before vs after in Arabic",
+      "slug": "before-vs-after-in-arabic",
+      "imagePath": "/global/pins/gko_concept-before-vs-after__ar.png",
+      "words": [
+        {
+          "english": "before class",
+          "target": "قبل الصف",
+          "romanization": "qabl al-saff",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/w0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "after class",
+          "target": "بعد الصف",
+          "romanization": "ba'd al-saff",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/w1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "before eating",
+          "target": "قبل الأكل",
+          "romanization": "qabl al-akl",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/w2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "after eating",
+          "target": "بعد الأكل",
+          "romanization": "ba'd al-akl",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/w3.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic: before class, after class, before eating, after eating. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "concept-before-vs-after",
+      "publishedAt": "2026-08-31T14:26:21.813Z",
+      "explanationEn": "These phrases show when something happens, using قبل (before) and بعد (after) with words like الصف (class) and الأكل (eating).",
+      "examples": [
+        {
+          "target": "أدرس قبل الصف.",
+          "english": "I study before class.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أشرب الماء بعد الأكل.",
+          "english": "I drink water after eating.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "نلعب كرة القدم بعد الصف.",
+          "english": "We play football after class.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "أغسل يدي قبل الأكل.",
+          "english": "I wash my hands before eating.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-vs-after__ar/ex3.mp3",
           "ttsProvider": "edge"
         }
       ]
@@ -45119,6 +45663,122 @@
       ]
     },
     {
+      "id": "gko_grid-airplane-cabin__ar",
+      "lang": "ar",
+      "langName": "Arabic",
+      "titleEn": "Airplane Cabin in Arabic",
+      "slug": "airplane-cabin-in-arabic",
+      "imagePath": "/global/pins/gko_grid-airplane-cabin__ar.png",
+      "words": [
+        {
+          "english": "Window",
+          "target": "نافذة",
+          "romanization": "naafitha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Seat",
+          "target": "مقعد",
+          "romanization": "maq'ad",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Tray table",
+          "target": "طاولة الطعام",
+          "romanization": "taawilat al-ta'aam",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Seat belt",
+          "target": "حزام الأمان",
+          "romanization": "hizaam al-amaan",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Overhead bin",
+          "target": "خزانة علوية",
+          "romanization": "khizaana 'ulwiyya",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Air vent",
+          "target": "فتحة التهوية",
+          "romanization": "fathat al-tahwiya",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w5.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Call button",
+          "target": "زر الاتصال",
+          "romanization": "zarr al-ittisaal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w6.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Screen",
+          "target": "شاشة",
+          "romanization": "shaasha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w7.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "english": "Headphones",
+          "target": "سماعات الرأس",
+          "romanization": "sama'aat al-raas",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/w8.mp3",
+          "ttsProvider": "edge"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Arabic: Window, Seat, Tray table, Seat belt, Overhead bin, Air vent…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "topicSlug": "grid-airplane-cabin",
+      "publishedAt": "2026-08-31T14:08:31.663Z",
+      "explanationEn": "These words like نافذة, مقعد, and حزام الأمان show common sounds you hear when talking about an airplane cabin.",
+      "examples": [
+        {
+          "target": "الطفل يجلس على المقعد بجانب النافذة.",
+          "english": "The child sits on the seat next to the window.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/ex0.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يربط المسافر حزام الأمان قبل إقلاع الطائرة.",
+          "english": "The passenger fastens the seat belt before the plane takes off.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/ex1.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "الطيار يفتح فتحة التهوية للهواء النقي.",
+          "english": "The pilot opens the air vent for fresh air.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/ex2.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "وضع الرجل سماعات الرأس ليستمع إلى الموسيقى.",
+          "english": "The man put on the headphones to listen to music.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/ex3.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "يريد الركاب وضع حقائبهم في الخزانة العلوية.",
+          "english": "The passengers want to put their bags in the overhead bin.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/ex4.mp3",
+          "ttsProvider": "edge"
+        },
+        {
+          "target": "ضغطت على زر الاتصال لطلب المساعدة من المضيفة.",
+          "english": "She pressed the call button to ask the flight attendant for help.",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-airplane-cabin__ar/ex5.mp3",
+          "ttsProvider": "edge"
+        }
+      ]
+    },
+    {
       "id": "gko_phrase-airport-basics__ar",
       "lang": "ar",
       "langName": "Arabic",
@@ -45184,7 +45844,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: Where's the gate?, I'd like to check bags, Carry-on only, Boarding pass, please, Is it delayed?, I'm transferring…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: Where's the gate?, I'd like to check bags, Carry-on only, Boarding pass, please, Is it delayed?, I'm transferring…. Save-friendly chart with pronunciation.",
       "topicSlug": "phrase-airport-basics",
       "publishedAt": "2026-08-31T12:56:44.847Z",
       "explanationEn": "These Arabic airport phrases like أين البوابة؟ and هل هناك تأخير؟ help you ask about gates, delays, and boarding clearly.",
@@ -45293,7 +45953,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: I'd like to open an account, I'll transfer money, Balance check, I forgot my PIN, Card reissue, What's the exchange rate?…. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: I'd like to open an account, I'll transfer money, Balance check, I forgot my PIN, Card reissue, What's the exchange rate?…. Save-friendly chart with pronunciation.",
       "topicSlug": "phrase-bank-simple",
       "publishedAt": "2026-08-31T13:57:41.635Z",
       "explanationEn": "These phrases like حساب, المال, and بطاقة help you talk about money and banking clearly in Arabic.",
@@ -45360,7 +46020,7 @@
         }
       ],
       "partner": "preply",
-      "description": "Learn Arabic: Arrive, Reach. Free chart with pronunciation audio and example sentences for English speakers.",
+      "description": "Learn Arabic vocabulary: Arrive, Reach. Save-friendly chart with pronunciation.",
       "topicSlug": "sim-arrive-reach",
       "publishedAt": "2026-08-31T13:37:22.932Z",
       "explanationEn": "These words sound different when you say them: يصل means 'arrive' and يبلغ means 'reach'.",
@@ -53530,6 +54190,30 @@
       "publishedAt": "2026-08-31T12:34:31.022Z"
     },
     {
+      "id": "gko_ant-borrow-lend__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Borrow vs Lend in Japanese",
+      "slug": "borrow-vs-lend-in-japanese",
+      "imagePath": "/global/pins/gko_ant-borrow-lend__ja.png",
+      "words": [
+        {
+          "english": "Borrow",
+          "target": "借りる",
+          "romanization": "kariru"
+        },
+        {
+          "english": "Lend",
+          "target": "貸す",
+          "romanization": "kasu"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: Borrow, Lend. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-borrow-lend",
+      "publishedAt": "2026-08-31T14:13:49.118Z"
+    },
+    {
       "id": "gko_concept-already-yet__ja",
       "lang": "ja",
       "langName": "Japanese",
@@ -53596,6 +54280,40 @@
       "description": "Learn Japanese vocabulary: already, not yet, still, anymore. Save-friendly chart with pronunciation.",
       "topicSlug": "concept-already-yet-still",
       "publishedAt": "2026-08-31T13:02:04.247Z"
+    },
+    {
+      "id": "gko_concept-before-after-while__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Before / after / while in Japanese",
+      "slug": "before-after-while-in-japanese",
+      "imagePath": "/global/pins/gko_concept-before-after-while__ja.png",
+      "words": [
+        {
+          "english": "before",
+          "target": "前に",
+          "romanization": "mae ni"
+        },
+        {
+          "english": "after",
+          "target": "後で",
+          "romanization": "ato de"
+        },
+        {
+          "english": "while",
+          "target": "間に",
+          "romanization": "aida ni"
+        },
+        {
+          "english": "as soon as",
+          "target": "～するとすぐに",
+          "romanization": "~suru to sugu ni"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: before, after, while, as soon as. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-before-after-while",
+      "publishedAt": "2026-08-31T14:03:23.771Z"
     },
     {
       "id": "gko_cute-agreement-glue__ja",
@@ -53851,6 +54569,30 @@
       "description": "Learn Japanese vocabulary: Apply, Register. Save-friendly chart with pronunciation.",
       "topicSlug": "sim-apply-register",
       "publishedAt": "2026-08-31T13:18:30.229Z"
+    },
+    {
+      "id": "gko_sim-buy-order__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "Buy vs Order in Japanese",
+      "slug": "buy-vs-order-in-japanese",
+      "imagePath": "/global/pins/gko_sim-buy-order__ja.png",
+      "words": [
+        {
+          "english": "Buy",
+          "target": "買う",
+          "romanization": "kau"
+        },
+        {
+          "english": "Order",
+          "target": "注文する",
+          "romanization": "chūmon suru"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: Buy, Order. Save-friendly chart with pronunciation.",
+      "topicSlug": "sim-buy-order",
+      "publishedAt": "2026-08-31T14:22:38.106Z"
     },
     {
       "id": "01_eye-colors__ko",
