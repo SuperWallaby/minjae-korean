@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T02:50:31.414Z",
+  "generatedAt": "2026-09-01T03:08:31.608Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -68045,6 +68045,60 @@
       "description": "Pron-jj-tense in Korean: salty / squeeze, stew, side / page, take (photo), short, steam / gain weight….",
       "topicSlug": "pron-jj-tense",
       "publishedAt": "2026-09-01T02:12:46.765Z"
+    },
+    {
+      "id": "vk_pron-k-sound__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Learn Korean ㅋ Words Fast! Use These When You Want To Talk About Everyday Things in Korean",
+      "slug": "learn-korean-words-fast-use-these-when-you-want-to-talk-about-everyday-things-in-korean",
+      "imagePath": "/global/pins/vk_pron-k-sound__ko.png",
+      "words": [
+        {
+          "english": "nose",
+          "target": "코",
+          "romanization": "ko"
+        },
+        {
+          "english": "camera",
+          "target": "카메라",
+          "romanization": "kamera"
+        },
+        {
+          "english": "coffee",
+          "target": "커피",
+          "romanization": "keopi"
+        },
+        {
+          "english": "coat",
+          "target": "코트",
+          "romanization": "koteu"
+        },
+        {
+          "english": "cookie",
+          "target": "쿠키",
+          "romanization": "kuki"
+        },
+        {
+          "english": "card",
+          "target": "카드",
+          "romanization": "kadeu"
+        },
+        {
+          "english": "cake",
+          "target": "케이크",
+          "romanization": "keikeu"
+        },
+        {
+          "english": "key / height",
+          "target": "키",
+          "romanization": "ki"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Korean ㅋ Words Fast! Use These When You Want To Talk About Everyday Things in Korean: nose, camera, coffee, coat, cookie, card….",
+      "topicSlug": "pron-k-sound",
+      "publishedAt": "2026-09-01T03:05:48.222Z"
     },
     {
       "id": "vk_psq-cant-sleep__ko",
