@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T04:02:38.887Z",
+  "generatedAt": "2026-09-01T04:59:08.955Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -8876,6 +8876,30 @@
       ]
     },
     {
+      "id": "gko_ant-accept-reject__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "Accept vs Reject in Spanish",
+      "slug": "accept-vs-reject-in-spanish",
+      "imagePath": "/global/pins/gko_ant-accept-reject__es.png",
+      "words": [
+        {
+          "english": "accept",
+          "target": "aceptar",
+          "romanization": "ah-sep-TAR"
+        },
+        {
+          "english": "reject",
+          "target": "rechazar",
+          "romanization": "reh-cha-ZAR"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: accept, reject. Save-friendly chart with pronunciation.",
+      "topicSlug": "ant-accept-reject",
+      "publishedAt": "2026-08-31T08:24:08.002Z"
+    },
+    {
       "id": "gko_ant-awake-asleep__es",
       "lang": "es",
       "langName": "Spanish",
@@ -9270,6 +9294,55 @@
       "description": "Learn Spanish vocabulary: Butterflies, Getting teary, Together, Healing, Laughing, What do I do?…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-emotion-soft",
       "publishedAt": "2026-08-31T14:28:06.451Z"
+    },
+    {
+      "id": "gko_gexp-like-to__es",
+      "lang": "es",
+      "langName": "Spanish",
+      "titleEn": "gexp like to in Spanish",
+      "slug": "gexp-like-to-in-spanish",
+      "imagePath": "/global/pins/gko_gexp-like-to__es.png",
+      "words": [
+        {
+          "english": "like doing",
+          "target": "gustar",
+          "romanization": "goos-tar"
+        },
+        {
+          "english": "I like reading books",
+          "target": "Me gusta leer libros",
+          "romanization": "meh goos-tah leh-ehr lee-bros"
+        },
+        {
+          "english": "I like listening to music",
+          "target": "Me gusta escuchar música",
+          "romanization": "meh goos-tah es-koo-char moo-see-kah"
+        },
+        {
+          "english": "book (object)",
+          "target": "libro",
+          "romanization": "lee-bro"
+        },
+        {
+          "english": "reading (adjectival modifier)",
+          "target": "de lectura",
+          "romanization": "deh lek-too-rah"
+        },
+        {
+          "english": "object marker",
+          "target": "a",
+          "romanization": "ah"
+        },
+        {
+          "english": "to like",
+          "target": "gustar",
+          "romanization": "goos-tar"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Spanish vocabulary: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Save-friendly chart with pronunciation.",
+      "topicSlug": "gexp-like-to",
+      "publishedAt": "2026-08-31T08:05:05.421Z"
     },
     {
       "id": "gko_grid-african-safari__es",
@@ -20802,6 +20875,40 @@
       "publishedAt": "2026-08-31T13:51:30.405Z"
     },
     {
+      "id": "gko_concept-a-vs-the-feel__fr",
+      "lang": "fr",
+      "langName": "French",
+      "titleEn": "This vs that feel in French",
+      "slug": "this-vs-that-feel-in-french",
+      "imagePath": "/global/pins/gko_concept-a-vs-the-feel__fr.png",
+      "words": [
+        {
+          "english": "this (near me)",
+          "target": "ceci",
+          "romanization": "suh-see"
+        },
+        {
+          "english": "that (near you)",
+          "target": "cela",
+          "romanization": "suh-la"
+        },
+        {
+          "english": "that (over there)",
+          "target": "ça",
+          "romanization": "sa"
+        },
+        {
+          "english": "which one?",
+          "target": "lequel ?",
+          "romanization": "luh-kel"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn French vocabulary: this (near me), that (near you), that (over there), which one?. Save-friendly chart with pronunciation.",
+      "topicSlug": "concept-a-vs-the-feel",
+      "publishedAt": "2026-08-31T08:25:55.939Z"
+    },
+    {
       "id": "gko_concept-become-change__fr",
       "lang": "fr",
       "langName": "French",
@@ -30223,6 +30330,65 @@
       "description": "Learn German vocabulary: Before, During, After, While. Save-friendly chart with pronunciation.",
       "topicSlug": "concept-before-after-during",
       "publishedAt": "2026-08-31T13:53:49.408Z"
+    },
+    {
+      "id": "gko_cute-agreement-glue__de",
+      "lang": "de",
+      "langName": "German",
+      "titleEn": "Agreement Glue in German",
+      "slug": "agreement-glue-in-german",
+      "imagePath": "/global/pins/gko_cute-agreement-glue__de.png",
+      "words": [
+        {
+          "english": "Right?",
+          "target": "Stimmt's?",
+          "romanization": "shtimt's"
+        },
+        {
+          "english": "Isn't that so?",
+          "target": "Nicht wahr?",
+          "romanization": "niHt vaːr"
+        },
+        {
+          "english": "Let's do it together",
+          "target": "Lass uns das zusammen machen",
+          "romanization": "las uns das tsuˈzamən ˈmaxən"
+        },
+        {
+          "english": "Really",
+          "target": "Wirklich",
+          "romanization": "ˈvɪʁklɪç"
+        },
+        {
+          "english": "Exactly",
+          "target": "Genau",
+          "romanization": "ɡəˈnaʊ"
+        },
+        {
+          "english": "That's it",
+          "target": "Das ist es",
+          "romanization": "das ɪst ɛs"
+        },
+        {
+          "english": "That's appreciated",
+          "target": "Das wird geschätzt",
+          "romanization": "das vɪʁt ɡəˈʃɛtst"
+        },
+        {
+          "english": "With you",
+          "target": "Mit dir",
+          "romanization": "mɪt diːɐ"
+        },
+        {
+          "english": "So / That's why",
+          "target": "Deshalb",
+          "romanization": "ˈdɛsˌhalp"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn German vocabulary: Right?, Isn't that so?, Let's do it together, Really, Exactly, That's it…. Save-friendly chart with pronunciation.",
+      "topicSlug": "cute-agreement-glue",
+      "publishedAt": "2026-08-31T08:27:53.074Z"
     },
     {
       "id": "gko_cute-cooking-home__de",
@@ -57878,6 +58044,55 @@
       "description": "Learn Japanese vocabulary: Missed you, Where shall we go?, Pay for me, Let's have a drink, How have you been?, I'm sorry…. Save-friendly chart with pronunciation.",
       "topicSlug": "cute-date-soft",
       "publishedAt": "2026-08-31T13:55:31.836Z"
+    },
+    {
+      "id": "gko_gexp-like-to__ja",
+      "lang": "ja",
+      "langName": "Japanese",
+      "titleEn": "like to in Japanese",
+      "slug": "like-to-in-japanese",
+      "imagePath": "/global/pins/gko_gexp-like-to__ja.png",
+      "words": [
+        {
+          "english": "like doing",
+          "target": "〜するのが好き",
+          "romanization": "~suru no ga suki"
+        },
+        {
+          "english": "I like reading books",
+          "target": "私は本を読むのが好きです",
+          "romanization": "Watashi wa hon o yomu no ga suki desu"
+        },
+        {
+          "english": "I like listening to music",
+          "target": "私は音楽を聴くのが好きです",
+          "romanization": "Watashi wa ongaku o kiku no ga suki desu"
+        },
+        {
+          "english": "book (object)",
+          "target": "本を",
+          "romanization": "hon o"
+        },
+        {
+          "english": "reading (adjectival modifier)",
+          "target": "読む",
+          "romanization": "yomu"
+        },
+        {
+          "english": "object marker",
+          "target": "を",
+          "romanization": "o"
+        },
+        {
+          "english": "to like",
+          "target": "好き",
+          "romanization": "suki"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn Japanese vocabulary: like doing, I like reading books, I like listening to music, book (object), reading (adjectival modifier), object marker…. Save-friendly chart with pronunciation.",
+      "topicSlug": "gexp-like-to",
+      "publishedAt": "2026-08-31T08:31:18.102Z"
     },
     {
       "id": "gko_grid-agreeing-phrases__ja",
