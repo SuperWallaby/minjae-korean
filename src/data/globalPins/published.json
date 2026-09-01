@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T11:20:00.298Z",
+  "generatedAt": "2026-09-01T11:53:32.418Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -61453,22 +61453,30 @@
         {
           "english": "before",
           "target": "前に",
-          "romanization": "mae ni"
+          "romanization": "mae ni",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-after-while__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "after",
           "target": "後で",
-          "romanization": "ato de"
+          "romanization": "ato de",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-after-while__ja/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "while",
           "target": "間に",
-          "romanization": "aida ni"
+          "romanization": "aida ni",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-after-while__ja/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "as soon as",
           "target": "～するとすぐに",
-          "romanization": "~suru to sugu ni"
+          "romanization": "~suru to sugu ni",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_concept-before-after-while__ja/w3.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61487,47 +61495,65 @@
         {
           "english": "Right?",
           "target": "そうだよね？",
-          "romanization": "sō da yo ne?"
+          "romanization": "sō da yo ne?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Isn't that so?",
           "target": "そうじゃない？",
-          "romanization": "sō ja nai?"
+          "romanization": "sō ja nai?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Let's do it together",
           "target": "一緒にやろう",
-          "romanization": "issho ni yarō"
+          "romanization": "issho ni yarō",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Really",
           "target": "本当に",
-          "romanization": "hontō ni"
+          "romanization": "hontō ni",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Exactly",
           "target": "その通り",
-          "romanization": "sono tōri"
+          "romanization": "sono tōri",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "That's it",
           "target": "それだ",
-          "romanization": "sore da"
+          "romanization": "sore da",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "That's appreciated",
           "target": "ありがたい",
-          "romanization": "arigatai"
+          "romanization": "arigatai",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "With you",
           "target": "あなたと一緒に",
-          "romanization": "anata to issho ni"
+          "romanization": "anata to issho ni",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "So / That's why",
           "target": "だから",
-          "romanization": "dakara"
+          "romanization": "dakara",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-agreement-glue__ja/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61546,47 +61572,65 @@
         {
           "english": "Sorry",
           "target": "ごめんね",
-          "romanization": "gomen ne"
+          "romanization": "gomen ne",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Really sorry",
           "target": "本当にごめんね",
-          "romanization": "hontō ni gomen ne"
+          "romanization": "hontō ni gomen ne",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "My fault",
           "target": "私のせいです",
-          "romanization": "watashi no sei desu"
+          "romanization": "watashi no sei desu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Sorry",
           "target": "すみません",
-          "romanization": "sumimasen"
+          "romanization": "sumimasen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Still sorry",
           "target": "まだごめんね",
-          "romanization": "mada gomen ne"
+          "romanization": "mada gomen ne",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Sorry, friend",
           "target": "ごめんね、友達",
-          "romanization": "gomen ne, tomodachi"
+          "romanization": "gomen ne, tomodachi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I was rude",
           "target": "失礼しました",
-          "romanization": "shitsurei shimashita"
+          "romanization": "shitsurei shimashita",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I was wrong to you",
           "target": "あなたに悪かったです",
-          "romanization": "anata ni warukatta desu"
+          "romanization": "anata ni warukatta desu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I won’t do it again",
           "target": "二度としません",
-          "romanization": "nido to shimasen"
+          "romanization": "nido to shimasen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-apology-soft__ja/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61605,42 +61649,58 @@
         {
           "english": "Missed you",
           "target": "会いたかった",
-          "romanization": "aitakatta"
+          "romanization": "aitakatta",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Where shall we go?",
           "target": "どこに行こうか？",
-          "romanization": "doko ni ikō ka?"
+          "romanization": "doko ni ikō ka?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Pay for me",
           "target": "払ってくれる？",
-          "romanization": "haratte kureru?"
+          "romanization": "haratte kureru?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Let's have a drink",
           "target": "飲みに行こう",
-          "romanization": "nomi ni ikō"
+          "romanization": "nomi ni ikō",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "How have you been?",
           "target": "元気だった？",
-          "romanization": "genki datta?"
+          "romanization": "genki datta?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I'm sorry",
           "target": "ごめんね",
-          "romanization": "gomen ne"
+          "romanization": "gomen ne",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "When can I see you?",
           "target": "いつ会える？",
-          "romanization": "itsu aeru?"
+          "romanization": "itsu aeru?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "So!",
           "target": "それで！",
-          "romanization": "sore de!"
+          "romanization": "sore de!",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-date-soft__ja/w7.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61659,37 +61719,51 @@
         {
           "english": "like doing",
           "target": "〜するのが好き",
-          "romanization": "~suru no ga suki"
+          "romanization": "~suru no ga suki",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I like reading books",
           "target": "私は本を読むのが好きです",
-          "romanization": "Watashi wa hon o yomu no ga suki desu"
+          "romanization": "Watashi wa hon o yomu no ga suki desu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ja/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I like listening to music",
           "target": "私は音楽を聴くのが好きです",
-          "romanization": "Watashi wa ongaku o kiku no ga suki desu"
+          "romanization": "Watashi wa ongaku o kiku no ga suki desu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ja/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "book (object)",
           "target": "本を",
-          "romanization": "hon o"
+          "romanization": "hon o",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ja/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "reading (adjectival modifier)",
           "target": "読む",
-          "romanization": "yomu"
+          "romanization": "yomu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ja/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "object marker",
           "target": "を",
-          "romanization": "o"
+          "romanization": "o",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ja/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "to like",
           "target": "好き",
-          "romanization": "suki"
+          "romanization": "suki",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_gexp-like-to__ja/w6.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61708,47 +61782,65 @@
         {
           "english": "I agree",
           "target": "同意します",
-          "romanization": "dōi shimasu"
+          "romanization": "dōi shimasu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "That's right",
           "target": "その通りです",
-          "romanization": "sono tōri desu"
+          "romanization": "sono tōri desu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w1.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Exactly",
           "target": "まさに",
-          "romanization": "masani"
+          "romanization": "masani",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w2.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I totally agree",
           "target": "完全に同意します",
-          "romanization": "kanzen ni dōi shimasu"
+          "romanization": "kanzen ni dōi shimasu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w3.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I think so too",
           "target": "私もそう思います",
-          "romanization": "watashi mo sō omoimasu"
+          "romanization": "watashi mo sō omoimasu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w4.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "You're right",
           "target": "あなたは正しいです",
-          "romanization": "anata wa tadashii desu"
+          "romanization": "anata wa tadashii desu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w5.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I see / That makes sense",
           "target": "なるほど",
-          "romanization": "naruhodo"
+          "romanization": "naruhodo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w6.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "I understand",
           "target": "わかりました",
-          "romanization": "wakarimashita"
+          "romanization": "wakarimashita",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w7.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Absolutely",
           "target": "絶対に",
-          "romanization": "zettai ni"
+          "romanization": "zettai ni",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_grid-agreeing-phrases__ja/w8.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61767,12 +61859,16 @@
         {
           "english": "Accept",
           "target": "受け入れる",
-          "romanization": "ukeireru"
+          "romanization": "ukeireru",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-accept-refuse__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Refuse",
           "target": "拒否する",
-          "romanization": "kyohi suru"
+          "romanization": "kyohi suru",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-accept-refuse__ja/w1.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61791,12 +61887,16 @@
         {
           "english": "Announce",
           "target": "発表する",
-          "romanization": "happyō suru"
+          "romanization": "happyō suru",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-announce-notify__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Notify",
           "target": "通知する",
-          "romanization": "tsūchi suru"
+          "romanization": "tsūchi suru",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-announce-notify__ja/w1.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61815,12 +61915,16 @@
         {
           "english": "Apply",
           "target": "申し込む",
-          "romanization": "mōshikomu"
+          "romanization": "mōshikomu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-apply-register__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Register",
           "target": "登録する",
-          "romanization": "tōroku suru"
+          "romanization": "tōroku suru",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-apply-register__ja/w1.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -61839,12 +61943,16 @@
         {
           "english": "Buy",
           "target": "買う",
-          "romanization": "kau"
+          "romanization": "kau",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-buy-order__ja/w0.mp3",
+          "ttsProvider": "edge"
         },
         {
           "english": "Order",
           "target": "注文する",
-          "romanization": "chūmon suru"
+          "romanization": "chūmon suru",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_sim-buy-order__ja/w1.mp3",
+          "ttsProvider": "edge"
         }
       ],
       "partner": "preply",
@@ -71225,27 +71333,42 @@
         {
           "english": "The weather got cold",
           "target": "날씨가 추워졌어요",
-          "romanization": "nalssiga chuwoyeosseooyo"
+          "romanization": "nalssiga chuwoyeosseooyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w0-male.mp3"
         },
         {
           "english": "My throat got sore",
           "target": "목이 아파졌어요",
-          "romanization": "mogi apayyeosseooyo"
+          "romanization": "mogi apayyeosseooyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w1-male.mp3"
         },
         {
           "english": "I got tired",
           "target": "피곤해졌어요",
-          "romanization": "pigonhaejyeosseooyo"
+          "romanization": "pigonhaejyeosseooyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w2-male.mp3"
         },
         {
           "english": "I became pretty",
           "target": "예뻐졌어요",
-          "romanization": "yeppeojyeosseooyo"
+          "romanization": "yeppeojyeosseooyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w3-male.mp3"
         },
         {
           "english": "I got rich",
           "target": "부자가 되었어요",
-          "romanization": "bujaga doeeosseooyo"
+          "romanization": "bujaga doeeosseooyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-became__ko/w4-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71264,102 +71387,162 @@
         {
           "english": "kimchi (object particle)",
           "target": "김치를",
-          "romanization": "gimchireul"
+          "romanization": "gimchireul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w0-male.mp3"
         },
         {
           "english": "make (verb stem + connector)",
           "target": "만들어",
-          "romanization": "mandeureo"
+          "romanization": "mandeureo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w1-male.mp3"
         },
         {
           "english": "have ever done?",
           "target": "본 적 있어요?",
-          "romanization": "bon jeok isseoyo?"
+          "romanization": "bon jeok isseoyo?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w2-male.mp3"
         },
         {
           "english": "to Korea",
           "target": "한국에",
-          "romanization": "hanguge"
+          "romanization": "hanguge",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w3-male.mp3"
         },
         {
           "english": "travel (verb stem + connector)",
           "target": "여행해",
-          "romanization": "yeohaenghae"
+          "romanization": "yeohaenghae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w4-male.mp3"
         },
         {
           "english": "to karaoke room",
           "target": "노래방에",
-          "romanization": "noraebange"
+          "romanization": "noraebange",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w5-male.mp3"
         },
         {
           "english": "go",
           "target": "가",
-          "romanization": "ga"
+          "romanization": "ga",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w6-male.mp3"
         },
         {
           "english": "spicy food (object particle)",
           "target": "매운 음식을",
-          "romanization": "maeun eumsigeul"
+          "romanization": "maeun eumsigeul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w7-male.mp3"
         },
         {
           "english": "eat (verb stem + connector)",
           "target": "먹어",
-          "romanization": "meogeo"
+          "romanization": "meogeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w8-male.mp3"
         },
         {
           "english": "Korean drama (object particle)",
           "target": "한국 드라마를",
-          "romanization": "hanguk deuramareul"
+          "romanization": "hanguk deuramareul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w9-male.mp3"
         },
         {
           "english": "hanbok (traditional Korean clothing) (object particle)",
           "target": "한복을",
-          "romanization": "hanbogeul"
+          "romanization": "hanbogeul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w10.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w10-male.mp3"
         },
         {
           "english": "wear (verb stem + connector)",
           "target": "입어",
-          "romanization": "ibeo"
+          "romanization": "ibeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w11.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w11-male.mp3"
         },
         {
           "english": "hiking (object particle)",
           "target": "등산을",
-          "romanization": "deungsaneul"
+          "romanization": "deungsaneul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w12.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w12-male.mp3"
         },
         {
           "english": "do (verb stem + connector)",
           "target": "해",
-          "romanization": "hae"
+          "romanization": "hae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w13.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w13-male.mp3"
         },
         {
           "english": "Korean coffee (object particle)",
           "target": "한국 커피를",
-          "romanization": "hanguk keopireul"
+          "romanization": "hanguk keopireul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w14.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w14-male.mp3"
         },
         {
           "english": "drink (verb stem + connector)",
           "target": "마셔",
-          "romanization": "mashyeo"
+          "romanization": "mashyeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w15.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w15-male.mp3"
         },
         {
           "english": "in Korean",
           "target": "한국어로",
-          "romanization": "hangugeoro"
+          "romanization": "hangugeoro",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w16.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w16-male.mp3"
         },
         {
           "english": "speak (verb stem + connector)",
           "target": "말해",
-          "romanization": "malhae"
+          "romanization": "malhae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w17.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w17-male.mp3"
         },
         {
           "english": "Hangul (Korean alphabet) (object particle)",
           "target": "한글을",
-          "romanization": "hangeureul"
+          "romanization": "hangeureul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w18.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w18-male.mp3"
         },
         {
           "english": "write (verb stem + connector)",
           "target": "써",
-          "romanization": "sseo"
+          "romanization": "sseo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w19.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-have-ever__ko/w19-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71378,82 +71561,130 @@
         {
           "english": "Happy",
           "target": "행복해요",
-          "romanization": "haengbokhaeyo"
+          "romanization": "haengbokhaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w0-male.mp3"
         },
         {
           "english": "Proud",
           "target": "자랑스러워요",
-          "romanization": "jarangseureowoyo"
+          "romanization": "jarangseureowoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w1-male.mp3"
         },
         {
           "english": "Excited",
           "target": "신나요",
-          "romanization": "sinnayo"
+          "romanization": "sinnayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w2-male.mp3"
         },
         {
           "english": "Calm",
           "target": "차분해요",
-          "romanization": "chabunhaeyo"
+          "romanization": "chabunhaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w3-male.mp3"
         },
         {
           "english": "Sad",
           "target": "슬퍼요",
-          "romanization": "seulpeoyo"
+          "romanization": "seulpeoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w4-male.mp3"
         },
         {
           "english": "Angry",
           "target": "화나요",
-          "romanization": "hwanayo"
+          "romanization": "hwanayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w5-male.mp3"
         },
         {
           "english": "Worried",
           "target": "걱정돼요",
-          "romanization": "geokjeongdwaeyo"
+          "romanization": "geokjeongdwaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w6-male.mp3"
         },
         {
           "english": "Tired",
           "target": "피곤해요",
-          "romanization": "pigonhaeyo"
+          "romanization": "pigonhaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w7-male.mp3"
         },
         {
           "english": "Loving",
           "target": "사랑해요",
-          "romanization": "saranghaeyo"
+          "romanization": "saranghaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w8-male.mp3"
         },
         {
           "english": "Thankful",
           "target": "고마워요",
-          "romanization": "gomawoyo"
+          "romanization": "gomawoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w9-male.mp3"
         },
         {
           "english": "Grateful",
           "target": "감사해요",
-          "romanization": "gamsahaeyo"
+          "romanization": "gamsahaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w10.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w10-male.mp3"
         },
         {
           "english": "Sleepy",
           "target": "졸려요",
-          "romanization": "jollyeoyo"
+          "romanization": "jollyeoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w11.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w11-male.mp3"
         },
         {
           "english": "Curious",
           "target": "궁금해요",
-          "romanization": "gunggeumhaeyo"
+          "romanization": "gunggeumhaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w12.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w12-male.mp3"
         },
         {
           "english": "Inspired",
           "target": "영감을 받아요",
-          "romanization": "yeonggameul badayo"
+          "romanization": "yeonggameul badayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w13.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w13-male.mp3"
         },
         {
           "english": "Hopeful",
           "target": "희망적이에요",
-          "romanization": "huimangjeogieyo"
+          "romanization": "huimangjeogieyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w14.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w14-male.mp3"
         },
         {
           "english": "Confident",
           "target": "자신 있어요",
-          "romanization": "jasin isseoyo"
+          "romanization": "jasin isseoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w15.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emoji-feelings-16__ko/w15-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71472,47 +71703,74 @@
         {
           "english": "happy",
           "target": "행복해요",
-          "romanization": "haengbokhaeyo"
+          "romanization": "haengbokhaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w0-male.mp3"
         },
         {
           "english": "sad",
           "target": "슬퍼요",
-          "romanization": "seulpeoyo"
+          "romanization": "seulpeoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w1-male.mp3"
         },
         {
           "english": "angry",
           "target": "화나요",
-          "romanization": "hwanayo"
+          "romanization": "hwanayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w2-male.mp3"
         },
         {
           "english": "surprised",
           "target": "놀라워요",
-          "romanization": "nollawoyo"
+          "romanization": "nollawoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w3-male.mp3"
         },
         {
           "english": "scared",
           "target": "무서워요",
-          "romanization": "museowoyo"
+          "romanization": "museowoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w4-male.mp3"
         },
         {
           "english": "shy",
           "target": "부끄러워요",
-          "romanization": "bukkeureowoyo"
+          "romanization": "bukkeureowoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w5-male.mp3"
         },
         {
           "english": "proud",
           "target": "자랑스러워요",
-          "romanization": "jarangseureowoyo"
+          "romanization": "jarangseureowoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w6-male.mp3"
         },
         {
           "english": "tired",
           "target": "피곤해요",
-          "romanization": "pigonhaeyo"
+          "romanization": "pigonhaeyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w7-male.mp3"
         },
         {
           "english": "excited",
           "target": "신나요",
-          "romanization": "sinnayo"
+          "romanization": "sinnayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_grid-emotion-faces__ko/w8-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71531,62 +71789,98 @@
         {
           "english": "red",
           "target": "빨간색",
-          "romanization": "ppalgansaek"
+          "romanization": "ppalgansaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w0-male.mp3"
         },
         {
           "english": "blue",
           "target": "파란색",
-          "romanization": "paransaek"
+          "romanization": "paransaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w1-male.mp3"
         },
         {
           "english": "yellow",
           "target": "노란색",
-          "romanization": "noransaek"
+          "romanization": "noransaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w2-male.mp3"
         },
         {
           "english": "green",
           "target": "초록색",
-          "romanization": "choroksaek"
+          "romanization": "choroksaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w3-male.mp3"
         },
         {
           "english": "orange",
           "target": "주황색",
-          "romanization": "juhwangsaek"
+          "romanization": "juhwangsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w4-male.mp3"
         },
         {
           "english": "purple",
           "target": "보라색",
-          "romanization": "borasaek"
+          "romanization": "borasaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w5-male.mp3"
         },
         {
           "english": "pink",
           "target": "분홍색",
-          "romanization": "bunhongsaek"
+          "romanization": "bunhongsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w6-male.mp3"
         },
         {
           "english": "brown",
           "target": "갈색",
-          "romanization": "galsaek"
+          "romanization": "galsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w7-male.mp3"
         },
         {
           "english": "black",
           "target": "검은색",
-          "romanization": "geomeunsaek"
+          "romanization": "geomeunsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w8-male.mp3"
         },
         {
           "english": "white",
           "target": "하얀색",
-          "romanization": "hayan saek"
+          "romanization": "hayan saek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w9-male.mp3"
         },
         {
           "english": "gray",
           "target": "회색",
-          "romanization": "hoesaek"
+          "romanization": "hoesaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w10.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w10-male.mp3"
         },
         {
           "english": "gold",
           "target": "금색",
-          "romanization": "geumsaek"
+          "romanization": "geumsaek",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w11.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-colors-pronunciation__ko/w11-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71605,62 +71899,98 @@
         {
           "english": "soy sauce",
           "target": "간장",
-          "romanization": "ganjang"
+          "romanization": "ganjang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w0-male.mp3"
         },
         {
           "english": "red chili paste",
           "target": "고추장",
-          "romanization": "gochujang"
+          "romanization": "gochujang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w1-male.mp3"
         },
         {
           "english": "sesame oil",
           "target": "참기름",
-          "romanization": "chamgireum"
+          "romanization": "chamgireum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w2-male.mp3"
         },
         {
           "english": "sugar",
           "target": "설탕",
-          "romanization": "seoltang"
+          "romanization": "seoltang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w3-male.mp3"
         },
         {
           "english": "salt",
           "target": "소금",
-          "romanization": "sogeum"
+          "romanization": "sogeum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w4-male.mp3"
         },
         {
           "english": "garlic",
           "target": "마늘",
-          "romanization": "maneul"
+          "romanization": "maneul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w5-male.mp3"
         },
         {
           "english": "ginger",
           "target": "생강",
-          "romanization": "saenggang"
+          "romanization": "saenggang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w6-male.mp3"
         },
         {
           "english": "green onion",
           "target": "파",
-          "romanization": "pa"
+          "romanization": "pa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w7-male.mp3"
         },
         {
           "english": "tofu",
           "target": "두부",
-          "romanization": "dubu"
+          "romanization": "dubu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w8-male.mp3"
         },
         {
           "english": "kimchi",
           "target": "김치",
-          "romanization": "kimchi"
+          "romanization": "kimchi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w9-male.mp3"
         },
         {
           "english": "anchovy",
           "target": "멸치",
-          "romanization": "myeolchi"
+          "romanization": "myeolchi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w10.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w10-male.mp3"
         },
         {
           "english": "rice",
           "target": "쌀",
-          "romanization": "ssal"
+          "romanization": "ssal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w11.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-list__ko/w11-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71679,52 +72009,82 @@
         {
           "english": "apple",
           "target": "사과",
-          "romanization": "sagwa"
+          "romanization": "sagwa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w0-male.mp3"
         },
         {
           "english": "banana",
           "target": "바나나",
-          "romanization": "banana"
+          "romanization": "banana",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w1-male.mp3"
         },
         {
           "english": "orange",
           "target": "오렌지",
-          "romanization": "orenji"
+          "romanization": "orenji",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w2-male.mp3"
         },
         {
           "english": "grape",
           "target": "포도",
-          "romanization": "podo"
+          "romanization": "podo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w3-male.mp3"
         },
         {
           "english": "peach",
           "target": "복숭아",
-          "romanization": "boksunga"
+          "romanization": "boksunga",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w4-male.mp3"
         },
         {
           "english": "watermelon",
           "target": "수박",
-          "romanization": "subak"
+          "romanization": "subak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w5-male.mp3"
         },
         {
           "english": "strawberry",
           "target": "딸기",
-          "romanization": "ttalgi"
+          "romanization": "ttalgi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w6-male.mp3"
         },
         {
           "english": "kiwi",
           "target": "키위",
-          "romanization": "kiwi"
+          "romanization": "kiwi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w7-male.mp3"
         },
         {
           "english": "plum",
           "target": "자두",
-          "romanization": "jadu"
+          "romanization": "jadu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w8-male.mp3"
         },
         {
           "english": "melon",
           "target": "멜론",
-          "romanization": "melon"
+          "romanization": "melon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-fruits-with-pronunciat__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71743,52 +72103,82 @@
         {
           "english": "Hello",
           "target": "안녕하세요",
-          "romanization": "annyeonghaseyo"
+          "romanization": "annyeonghaseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w0-male.mp3"
         },
         {
           "english": "Good morning",
           "target": "좋은 아침이에요",
-          "romanization": "joeun achimieyo"
+          "romanization": "joeun achimieyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w1-male.mp3"
         },
         {
           "english": "Goodbye (to someone leaving)",
           "target": "안녕히 가세요",
-          "romanization": "annyeonghi gaseyo"
+          "romanization": "annyeonghi gaseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w2-male.mp3"
         },
         {
           "english": "Goodbye (to someone staying)",
           "target": "안녕히 계세요",
-          "romanization": "annyeonghi gyeseyo"
+          "romanization": "annyeonghi gyeseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w3-male.mp3"
         },
         {
           "english": "Thank you",
           "target": "감사합니다",
-          "romanization": "gamsahamnida"
+          "romanization": "gamsahamnida",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w4-male.mp3"
         },
         {
           "english": "I'm sorry",
           "target": "죄송합니다",
-          "romanization": "joesonghamnida"
+          "romanization": "joesonghamnida",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w5-male.mp3"
         },
         {
           "english": "How are you?",
           "target": "잘 지내세요?",
-          "romanization": "jal jinaeseyo?"
+          "romanization": "jal jinaeseyo?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w6-male.mp3"
         },
         {
           "english": "Nice to meet you",
           "target": "처음 뵙겠습니다",
-          "romanization": "cheoeum boepgetseumnida"
+          "romanization": "cheoeum boepgetseumnida",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w7-male.mp3"
         },
         {
           "english": "Thank you for the meal (before eating)",
           "target": "잘 먹겠습니다",
-          "romanization": "jal meokgesseumnida"
+          "romanization": "jal meokgesseumnida",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w8-male.mp3"
         },
         {
           "english": "Thank you for the meal (after eating)",
           "target": "잘 먹었습니다",
-          "romanization": "jal meogeosseumnida"
+          "romanization": "jal meogeosseumnida",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-greetings-beginners-40__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71807,52 +72197,82 @@
         {
           "english": "desk",
           "target": "책상",
-          "romanization": "chaeksang"
+          "romanization": "chaeksang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w0-male.mp3"
         },
         {
           "english": "chair",
           "target": "의자",
-          "romanization": "uija"
+          "romanization": "uija",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w1-male.mp3"
         },
         {
           "english": "bed",
           "target": "침대",
-          "romanization": "chimdae"
+          "romanization": "chimdae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w2-male.mp3"
         },
         {
           "english": "sofa",
           "target": "소파",
-          "romanization": "sopa"
+          "romanization": "sopa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w3-male.mp3"
         },
         {
           "english": "bookshelf",
           "target": "책장",
-          "romanization": "chaekjang"
+          "romanization": "chaekjang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w4-male.mp3"
         },
         {
           "english": "clock",
           "target": "시계",
-          "romanization": "sigye"
+          "romanization": "sigye",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w5-male.mp3"
         },
         {
           "english": "lamp",
           "target": "전등",
-          "romanization": "jeondeung"
+          "romanization": "jeondeung",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w6-male.mp3"
         },
         {
           "english": "curtain",
           "target": "커튼",
-          "romanization": "keoteun"
+          "romanization": "keoteun",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w7-male.mp3"
         },
         {
           "english": "refrigerator",
           "target": "냉장고",
-          "romanization": "naengjanggo"
+          "romanization": "naengjanggo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w8-male.mp3"
         },
         {
           "english": "washing machine",
           "target": "세탁기",
-          "romanization": "setakgi"
+          "romanization": "setakgi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-household-items-3324__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71871,52 +72291,82 @@
         {
           "english": "spoon",
           "target": "숟가락",
-          "romanization": "sutgarak"
+          "romanization": "sutgarak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w0-male.mp3"
         },
         {
           "english": "chopsticks",
           "target": "젓가락",
-          "romanization": "jeotgarak"
+          "romanization": "jeotgarak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w1-male.mp3"
         },
         {
           "english": "knife",
           "target": "칼",
-          "romanization": "kal"
+          "romanization": "kal",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w2-male.mp3"
         },
         {
           "english": "cutting board",
           "target": "도마",
-          "romanization": "doma"
+          "romanization": "doma",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w3-male.mp3"
         },
         {
           "english": "pot",
           "target": "냄비",
-          "romanization": "naembi"
+          "romanization": "naembi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w4-male.mp3"
         },
         {
           "english": "frying pan",
           "target": "후라이팬",
-          "romanization": "huraipaen"
+          "romanization": "huraipaen",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w5-male.mp3"
         },
         {
           "english": "rice paddle",
           "target": "주걱",
-          "romanization": "jugeok"
+          "romanization": "jugeok",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w6-male.mp3"
         },
         {
           "english": "strainer",
           "target": "체",
-          "romanization": "che"
+          "romanization": "che",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w7-male.mp3"
         },
         {
           "english": "blender",
           "target": "믹서기",
-          "romanization": "mikseogi"
+          "romanization": "mikseogi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w8-male.mp3"
         },
         {
           "english": "ladle",
           "target": "국자",
-          "romanization": "gukja"
+          "romanization": "gukja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-kitchen-utensils-6195__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71935,52 +72385,82 @@
         {
           "english": "potato",
           "target": "감자",
-          "romanization": "gamja"
+          "romanization": "gamja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w0-male.mp3"
         },
         {
           "english": "onion",
           "target": "양파",
-          "romanization": "yangpa"
+          "romanization": "yangpa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w1-male.mp3"
         },
         {
           "english": "carrot",
           "target": "당근",
-          "romanization": "danggeun"
+          "romanization": "danggeun",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w2-male.mp3"
         },
         {
           "english": "chili pepper",
           "target": "고추",
-          "romanization": "gochu"
+          "romanization": "gochu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w3-male.mp3"
         },
         {
           "english": "cucumber",
           "target": "오이",
-          "romanization": "oi"
+          "romanization": "oi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w4-male.mp3"
         },
         {
           "english": "napa cabbage",
           "target": "배추",
-          "romanization": "baechu"
+          "romanization": "baechu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w5-male.mp3"
         },
         {
           "english": "pumpkin/squash",
           "target": "호박",
-          "romanization": "hobak"
+          "romanization": "hobak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w6-male.mp3"
         },
         {
           "english": "spinach",
           "target": "시금치",
-          "romanization": "sigeumchi"
+          "romanization": "sigeumchi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w7-male.mp3"
         },
         {
           "english": "radish",
           "target": "무",
-          "romanization": "mu"
+          "romanization": "mu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w8-male.mp3"
         },
         {
           "english": "tomato",
           "target": "토마토",
-          "romanization": "tomato"
+          "romanization": "tomato",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -71999,32 +72479,50 @@
         {
           "english": "hand",
           "target": "손",
-          "romanization": "son"
+          "romanization": "son",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w0-male.mp3"
         },
         {
           "english": "knee",
           "target": "무릎",
-          "romanization": "mureup"
+          "romanization": "mureup",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w1-male.mp3"
         },
         {
           "english": "nose",
           "target": "코",
-          "romanization": "ko"
+          "romanization": "ko",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w2-male.mp3"
         },
         {
           "english": "shoulder",
           "target": "어깨",
-          "romanization": "eokkae"
+          "romanization": "eokkae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w3-male.mp3"
         },
         {
           "english": "mouth",
           "target": "입",
-          "romanization": "ip"
+          "romanization": "ip",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w4-male.mp3"
         },
         {
           "english": "eye",
           "target": "눈",
-          "romanization": "nun"
+          "romanization": "nun",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-body__ko/w5-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72105,32 +72603,50 @@
         {
           "english": "banana",
           "target": "바나나",
-          "romanization": "banana"
+          "romanization": "banana",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w0-male.mp3"
         },
         {
           "english": "orange",
           "target": "오렌지",
-          "romanization": "orenji"
+          "romanization": "orenji",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w1-male.mp3"
         },
         {
           "english": "watermelon",
           "target": "수박",
-          "romanization": "subak"
+          "romanization": "subak",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w2-male.mp3"
         },
         {
           "english": "strawberry",
           "target": "딸기",
-          "romanization": "ttalgi"
+          "romanization": "ttalgi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w3-male.mp3"
         },
         {
           "english": "persimmon",
           "target": "감",
-          "romanization": "gam"
+          "romanization": "gam",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w4-male.mp3"
         },
         {
           "english": "peach",
           "target": "복숭아",
-          "romanization": "boksunga"
+          "romanization": "boksunga",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_match-fruit__ko/w5-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72757,7 +73273,10 @@
         {
           "english": "I can't sleep.",
           "target": "잠이 안 와",
-          "romanization": "jami an wa"
+          "romanization": "jami an wa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-cant-sleep__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-cant-sleep__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72776,7 +73295,10 @@
         {
           "english": "Don't worry.",
           "target": "걱정 마",
-          "romanization": "geokjeong ma"
+          "romanization": "geokjeong ma",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-dont-worry__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-dont-worry__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72795,7 +73317,10 @@
         {
           "english": "I miss you.",
           "target": "보고 싶어",
-          "romanization": "bogo sipeo"
+          "romanization": "bogo sipeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-i-miss-you__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-i-miss-you__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72814,7 +73339,10 @@
         {
           "english": "I'm hungry.",
           "target": "배고파",
-          "romanization": "baegopa"
+          "romanization": "baegopa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-im-hungry__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-im-hungry__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72833,7 +73361,10 @@
         {
           "english": "It's okay.",
           "target": "괜찮아요",
-          "romanization": "gwaenchanayo"
+          "romanization": "gwaenchanayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-its-okay__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-its-okay__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72852,7 +73383,10 @@
         {
           "english": "Let's go!",
           "target": "가자",
-          "romanization": "gaja"
+          "romanization": "gaja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-lets-go__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-lets-go__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72871,7 +73405,10 @@
         {
           "english": "See you later.",
           "target": "나중에 봐",
-          "romanization": "najunge bwa"
+          "romanization": "najunge bwa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-see-you__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-see-you__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72890,7 +73427,10 @@
         {
           "english": "I'm so tired.",
           "target": "너무 피곤해",
-          "romanization": "neomu pigonhae"
+          "romanization": "neomu pigonhae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-so-tired__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-so-tired__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72909,7 +73449,10 @@
         {
           "english": "Thank you.",
           "target": "고마워",
-          "romanization": "gomawo"
+          "romanization": "gomawo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-thank-you__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-thank-you__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72928,7 +73471,10 @@
         {
           "english": "Wait a second.",
           "target": "잠깐만",
-          "romanization": "jamkkanman"
+          "romanization": "jamkkanman",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-wait-a-sec__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_psq-wait-a-sec__ko/w0-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72947,22 +73493,34 @@
         {
           "english": "",
           "target": "아이디",
-          "romanization": "aidi"
+          "romanization": "aidi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w0-male.mp3"
         },
         {
           "english": "",
           "target": "비밀번호",
-          "romanization": "bimilbeonho"
+          "romanization": "bimilbeonho",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w1-male.mp3"
         },
         {
           "english": "",
           "target": "닉네임",
-          "romanization": "nikneim"
+          "romanization": "nikneim",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w2-male.mp3"
         },
         {
           "english": "",
           "target": "인증번호",
-          "romanization": "injeungbeonho"
+          "romanization": "injeungbeonho",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_quiz-password-vs-id__ko/w3-male.mp3"
         }
       ],
       "partner": "preply",
@@ -73137,52 +73695,82 @@
         {
           "english": "Gyeongbokgung Palace",
           "target": "경복궁",
-          "romanization": "Gyeongbokgung"
+          "romanization": "Gyeongbokgung",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w0-male.mp3"
         },
         {
           "english": "Namsan Seoul Tower",
           "target": "남산타워",
-          "romanization": "Namsan Tower"
+          "romanization": "Namsan Tower",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w1-male.mp3"
         },
         {
           "english": "Han River",
           "target": "한강",
-          "romanization": "Hangang"
+          "romanization": "Hangang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w2-male.mp3"
         },
         {
           "english": "Busan Port",
           "target": "부산항",
-          "romanization": "Busan Hang"
+          "romanization": "Busan Hang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w3-male.mp3"
         },
         {
           "english": "Jeju Island",
           "target": "제주도",
-          "romanization": "Jeju-do"
+          "romanization": "Jeju-do",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w4-male.mp3"
         },
         {
           "english": "Gyeongju City",
           "target": "경주",
-          "romanization": "Gyeongju"
+          "romanization": "Gyeongju",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w5-male.mp3"
         },
         {
           "english": "Insadong Street",
           "target": "인사동",
-          "romanization": "Insadong"
+          "romanization": "Insadong",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w6-male.mp3"
         },
         {
           "english": "Gwanghwamun Gate",
           "target": "광화문",
-          "romanization": "Gwanghwamun"
+          "romanization": "Gwanghwamun",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w7-male.mp3"
         },
         {
           "english": "Lotte World",
           "target": "롯데월드",
-          "romanization": "Lotte World"
+          "romanization": "Lotte World",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w8-male.mp3"
         },
         {
           "english": "Cheonggyecheon Stream",
           "target": "청계천",
-          "romanization": "Cheonggyecheon"
+          "romanization": "Cheonggyecheon",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-27369811-drinks-korean__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -73201,52 +73789,82 @@
         {
           "english": "bus",
           "target": "버스",
-          "romanization": "beoseu"
+          "romanization": "beoseu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w0-male.mp3"
         },
         {
           "english": "subway",
           "target": "지하철",
-          "romanization": "jihacheol"
+          "romanization": "jihacheol",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w1-male.mp3"
         },
         {
           "english": "taxi",
           "target": "택시",
-          "romanization": "taeksi"
+          "romanization": "taeksi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w2-male.mp3"
         },
         {
           "english": "airplane",
           "target": "비행기",
-          "romanization": "bihaenggi"
+          "romanization": "bihaenggi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w3-male.mp3"
         },
         {
           "english": "train",
           "target": "기차",
-          "romanization": "gicha"
+          "romanization": "gicha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w4-male.mp3"
         },
         {
           "english": "bicycle",
           "target": "자전거",
-          "romanization": "jajeongeo"
+          "romanization": "jajeongeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w5-male.mp3"
         },
         {
           "english": "motorcycle",
           "target": "오토바이",
-          "romanization": "otobai"
+          "romanization": "otobai",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w6-male.mp3"
         },
         {
           "english": "ship",
           "target": "배",
-          "romanization": "bae"
+          "romanization": "bae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w7-male.mp3"
         },
         {
           "english": "car",
           "target": "자동차",
-          "romanization": "jadongcha"
+          "romanization": "jadongcha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w8-male.mp3"
         },
         {
           "english": "forklift",
           "target": "지게차",
-          "romanization": "jigyecha"
+          "romanization": "jigyecha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-56197321-useful-adjectives__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -73359,52 +73977,82 @@
         {
           "english": "Hello",
           "target": "안녕하세요",
-          "romanization": "annyeonghaseyo"
+          "romanization": "annyeonghaseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w0-male.mp3"
         },
         {
           "english": "Where is the bathroom?",
           "target": "화장실 어디에요?",
-          "romanization": "hwajangsil eodieyo?"
+          "romanization": "hwajangsil eodieyo?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w1-male.mp3"
         },
         {
           "english": "How much is it?",
           "target": "얼마예요?",
-          "romanization": "eolmayeyo?"
+          "romanization": "eolmayeyo?",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w2-male.mp3"
         },
         {
           "english": "Please help me",
           "target": "도와주세요",
-          "romanization": "dowajuseyo"
+          "romanization": "dowajuseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w3-male.mp3"
         },
         {
           "english": "Please give me a receipt",
           "target": "영수증 주세요",
-          "romanization": "yeongsujeung juseyo"
+          "romanization": "yeongsujeung juseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w4-male.mp3"
         },
         {
           "english": "This is delicious",
           "target": "이거 맛있어요",
-          "romanization": "igeo masisseoyo"
+          "romanization": "igeo masisseoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w5-male.mp3"
         },
         {
           "english": "Please take a photo here",
           "target": "여기 사진 찍어 주세요",
-          "romanization": "yeogi sajin jjigeo juseyo"
+          "romanization": "yeogi sajin jjigeo juseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w6-male.mp3"
         },
         {
           "english": "Please call a taxi",
           "target": "택시 불러 주세요",
-          "romanization": "taeksi bulleo juseyo"
+          "romanization": "taeksi bulleo juseyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w7-male.mp3"
         },
         {
           "english": "I'm lost",
           "target": "길을 잃었어요",
-          "romanization": "gireul ilheosseoyo"
+          "romanization": "gireul ilheosseoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w8-male.mp3"
         },
         {
           "english": "I have arrived",
           "target": "도착했어요",
-          "romanization": "dochakhaesseoyo"
+          "romanization": "dochakhaesseoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-79593130-kitchen-korean__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
@@ -73721,42 +74369,66 @@
         {
           "english": "some / a little",
           "target": "조금",
-          "romanization": "jogeum"
+          "romanization": "jogeum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w0-male.mp3"
         },
         {
           "english": "many / much",
           "target": "많이",
-          "romanization": "manhi"
+          "romanization": "manhi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w1-male.mp3"
         },
         {
           "english": "a lot of",
           "target": "정말 많이",
-          "romanization": "jeongmal manhi"
+          "romanization": "jeongmal manhi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w2-male.mp3"
         },
         {
           "english": "a few",
           "target": "몇",
-          "romanization": "myeot"
+          "romanization": "myeot",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w3-male.mp3"
         },
         {
           "english": "few / little",
           "target": "거의 없음",
-          "romanization": "geoui eopseum"
+          "romanization": "geoui eopseum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w4-male.mp3"
         },
         {
           "english": "enough",
           "target": "충분히",
-          "romanization": "chungbunhi"
+          "romanization": "chungbunhi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w5-male.mp3"
         },
         {
           "english": "too many / too much",
           "target": "너무 많아요",
-          "romanization": "neomu manayo"
+          "romanization": "neomu manayo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w6-male.mp3"
         },
         {
           "english": "none",
           "target": "없음",
-          "romanization": "eopseum"
+          "romanization": "eopseum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_ref-quantity-words-korean__ko/w7-male.mp3"
         }
       ],
       "partner": "preply",
@@ -73775,12 +74447,18 @@
         {
           "english": "Ask (question)",
           "target": "묻다",
-          "romanization": "mutda"
+          "romanization": "mutda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-1xt0o0__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-1xt0o0__ko/w0-male.mp3"
         },
         {
           "english": "Ask a favor",
           "target": "부탁하다",
-          "romanization": "butakhada"
+          "romanization": "butakhada",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-1xt0o0__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-1xt0o0__ko/w1-male.mp3"
         }
       ],
       "partner": "preply",
@@ -73799,12 +74477,18 @@
         {
           "english": "Ask",
           "target": "묻다",
-          "romanization": "mutda"
+          "romanization": "mutda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-xrqq6w__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-xrqq6w__ko/w0-male.mp3"
         },
         {
           "english": "Ask politely",
           "target": "여쭙다",
-          "romanization": "yeojjupda"
+          "romanization": "yeojjupda",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-xrqq6w__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_sim-ask-xrqq6w__ko/w1-male.mp3"
         }
       ],
       "partner": "preply",
