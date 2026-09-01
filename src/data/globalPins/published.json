@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T12:15:06.944Z",
+  "generatedAt": "2026-09-01T12:22:24.483Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -71561,27 +71561,42 @@
         {
           "english": "let's (informal ending)",
           "target": "-자",
-          "romanization": "-ja"
+          "romanization": "-ja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w0-male.mp3"
         },
         {
           "english": "let's (formal ending)",
           "target": "-ㅂ시다",
-          "romanization": "-psida"
+          "romanization": "-psida",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w1-male.mp3"
         },
         {
           "english": "together",
           "target": "같이",
-          "romanization": "gachi"
+          "romanization": "gachi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w2-male.mp3"
         },
         {
           "english": "let's eat (informal)",
           "target": "먹자",
-          "romanization": "meokja"
+          "romanization": "meokja",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w3-male.mp3"
         },
         {
           "english": "let's eat (formal)",
           "target": "먹어요",
-          "romanization": "meog-eoyo"
+          "romanization": "meog-eoyo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_gram-lets__ko/w4-male.mp3"
         }
       ],
       "partner": "preply",
@@ -72048,62 +72063,98 @@
         {
           "english": "red chili paste",
           "target": "고추장",
-          "romanization": "gochujang"
+          "romanization": "gochujang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w0-male.mp3"
         },
         {
           "english": "soy sauce",
           "target": "간장",
-          "romanization": "ganjang"
+          "romanization": "ganjang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w1-male.mp3"
         },
         {
           "english": "sesame oil",
           "target": "참기름",
-          "romanization": "chamgireum"
+          "romanization": "chamgireum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w2-male.mp3"
         },
         {
           "english": "fermented soybean paste",
           "target": "된장",
-          "romanization": "doenjang"
+          "romanization": "doenjang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w3-male.mp3"
         },
         {
           "english": "garlic",
           "target": "마늘",
-          "romanization": "maneul"
+          "romanization": "maneul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w4-male.mp3"
         },
         {
           "english": "ginger",
           "target": "생강",
-          "romanization": "saenggang"
+          "romanization": "saenggang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w5-male.mp3"
         },
         {
           "english": "green onion",
           "target": "파",
-          "romanization": "pa"
+          "romanization": "pa",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w6-male.mp3"
         },
         {
           "english": "sugar",
           "target": "설탕",
-          "romanization": "seoltang"
+          "romanization": "seoltang",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w7-male.mp3"
         },
         {
           "english": "salt",
           "target": "소금",
-          "romanization": "sogeum"
+          "romanization": "sogeum",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w8-male.mp3"
         },
         {
           "english": "vinegar",
           "target": "식초",
-          "romanization": "sikcho"
+          "romanization": "sikcho",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w9-male.mp3"
         },
         {
           "english": "water",
           "target": "물",
-          "romanization": "mul"
+          "romanization": "mul",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w10.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w10-male.mp3"
         },
         {
           "english": "sesame seeds",
           "target": "참깨",
-          "romanization": "chamkkae"
+          "romanization": "chamkkae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w11.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko/w11-male.mp3"
         }
       ],
       "partner": "preply",
