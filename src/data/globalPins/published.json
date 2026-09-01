@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T01:39:23.717Z",
+  "generatedAt": "2026-09-01T01:57:29.320Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67664,6 +67664,80 @@
       "publishedAt": "2026-08-30T18:40:20.090Z"
     },
     {
+      "id": "vk_list-pref-common-korean-colors-pronunciation__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Colors With Pronunciation in Korean",
+      "slug": "common-korean-colors-with-pronunciation-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-colors-pronunciation__ko.png",
+      "words": [
+        {
+          "english": "red",
+          "target": "빨간색",
+          "romanization": "ppalgansaek"
+        },
+        {
+          "english": "blue",
+          "target": "파란색",
+          "romanization": "paransaek"
+        },
+        {
+          "english": "yellow",
+          "target": "노란색",
+          "romanization": "noransaek"
+        },
+        {
+          "english": "green",
+          "target": "초록색",
+          "romanization": "choroksaek"
+        },
+        {
+          "english": "orange",
+          "target": "주황색",
+          "romanization": "juhwangsaek"
+        },
+        {
+          "english": "purple",
+          "target": "보라색",
+          "romanization": "borasaek"
+        },
+        {
+          "english": "pink",
+          "target": "분홍색",
+          "romanization": "bunhongsaek"
+        },
+        {
+          "english": "brown",
+          "target": "갈색",
+          "romanization": "galsaek"
+        },
+        {
+          "english": "black",
+          "target": "검은색",
+          "romanization": "geomeunsaek"
+        },
+        {
+          "english": "white",
+          "target": "하얀색",
+          "romanization": "hayan saek"
+        },
+        {
+          "english": "gray",
+          "target": "회색",
+          "romanization": "hoesaek"
+        },
+        {
+          "english": "gold",
+          "target": "금색",
+          "romanization": "geumsaek"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Colors With Pronunciation in Korean: red, blue, yellow, green, orange, purple….",
+      "topicSlug": "list-pref-common-korean-colors-pronunciation",
+      "publishedAt": "2026-09-01T01:54:42.982Z"
+    },
+    {
       "id": "vk_list-pref-common-korean-household-items-3324__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68242,6 +68316,70 @@
       "description": "한국어 Emotions in Korean: desk, chair, bed, sofa, mirror, window….",
       "topicSlug": "ref_81994562__emotion-wordsearch",
       "publishedAt": "2026-09-01T01:18:37.427Z"
+    },
+    {
+      "id": "vk_ref-98144541-snacks-korean__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Snacks in Korean",
+      "slug": "snacks-in-korean",
+      "imagePath": "/global/pins/vk_ref-98144541-snacks-korean__ko.png",
+      "words": [
+        {
+          "english": "Gyeongbok Palace",
+          "target": "경복궁",
+          "romanization": "Gyeongbokgung"
+        },
+        {
+          "english": "Namsan Tower",
+          "target": "남산타워",
+          "romanization": "Namsan Tower"
+        },
+        {
+          "english": "Han River",
+          "target": "한강",
+          "romanization": "Hangang"
+        },
+        {
+          "english": "Busan Tower",
+          "target": "부산타워",
+          "romanization": "Busan Tower"
+        },
+        {
+          "english": "Lotte World",
+          "target": "롯데월드",
+          "romanization": "Lotte World"
+        },
+        {
+          "english": "Insadong",
+          "target": "인사동",
+          "romanization": "Insadong"
+        },
+        {
+          "english": "Changdeok Palace",
+          "target": "창덕궁",
+          "romanization": "Changdeokgung"
+        },
+        {
+          "english": "Gwanghwamun Gate",
+          "target": "광화문",
+          "romanization": "Gwanghwamun"
+        },
+        {
+          "english": "Seoul Station",
+          "target": "서울역",
+          "romanization": "Seoul Station"
+        },
+        {
+          "english": "Jeju Island",
+          "target": "제주도",
+          "romanization": "Jeju-do"
+        }
+      ],
+      "partner": "preply",
+      "description": "Snacks in Korean: Gyeongbok Palace, Namsan Tower, Han River, Busan Tower, Lotte World, Insadong….",
+      "topicSlug": "ref_98144541__snacks-korean",
+      "publishedAt": "2026-09-01T01:54:44.930Z"
     },
     {
       "id": "vk_ref-quantity-words-korean__ko",
@@ -68897,6 +69035,80 @@
       "description": "Top Male K-pop Idols — Hangul Names in Korean: Cha Eun-woo, Hyunjin, Felix, Kai, Baekhyun, Yeonjun….",
       "topicSlug": "special",
       "publishedAt": "2026-08-30T18:57:41.615Z"
+    },
+    {
+      "id": "vk_topik-money-words2__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Money Words — TOPIK Upgrade in Korean",
+      "slug": "money-words-topik-upgrade-in-korean",
+      "imagePath": "/global/pins/vk_topik-money-words2__ko.png",
+      "words": [
+        {
+          "english": "money (TOPIK I)",
+          "target": "돈",
+          "romanization": "don"
+        },
+        {
+          "english": "money (TOPIK II)",
+          "target": "현금/자금",
+          "romanization": "hyeongeum/jageum"
+        },
+        {
+          "english": "price (TOPIK I)",
+          "target": "가격",
+          "romanization": "gagyeok"
+        },
+        {
+          "english": "price (TOPIK II)",
+          "target": "요금",
+          "romanization": "yogeum"
+        },
+        {
+          "english": "pay (TOPIK I)",
+          "target": "내다",
+          "romanization": "naeda"
+        },
+        {
+          "english": "pay (TOPIK II)",
+          "target": "지불하다",
+          "romanization": "jibulhada"
+        },
+        {
+          "english": "save (TOPIK I)",
+          "target": "모으다",
+          "romanization": "moeuda"
+        },
+        {
+          "english": "save (TOPIK II)",
+          "target": "저축하다",
+          "romanization": "jeochukhada"
+        },
+        {
+          "english": "spend (TOPIK I)",
+          "target": "쓰다",
+          "romanization": "sseuda"
+        },
+        {
+          "english": "spend (TOPIK II)",
+          "target": "지출하다",
+          "romanization": "jichulhada"
+        },
+        {
+          "english": "cheap (TOPIK I)",
+          "target": "싸다",
+          "romanization": "ssada"
+        },
+        {
+          "english": "cheap (TOPIK II)",
+          "target": "저렴하다",
+          "romanization": "jeoryeomhada"
+        }
+      ],
+      "partner": "preply",
+      "description": "Money Words — TOPIK Upgrade in Korean: money (TOPIK I), money (TOPIK II), price (TOPIK I), price (TOPIK II), pay (TOPIK I), pay (TOPIK II)….",
+      "topicSlug": "topik",
+      "publishedAt": "2026-09-01T01:54:43.869Z"
     },
     {
       "id": "01_eye-colors__zh",
