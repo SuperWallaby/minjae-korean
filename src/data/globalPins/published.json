@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T01:21:45.964Z",
+  "generatedAt": "2026-09-01T01:39:23.717Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67880,6 +67880,40 @@
       "publishedAt": "2026-08-30T18:57:45.711Z"
     },
     {
+      "id": "vk_quiz-pay-vs-buy__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Quiz-pay-vs-buy in Korean",
+      "slug": "quiz-pay-vs-buy-in-korean",
+      "imagePath": "/global/pins/vk_quiz-pay-vs-buy__ko.png",
+      "words": [
+        {
+          "english": "",
+          "target": "사다",
+          "romanization": "sada"
+        },
+        {
+          "english": "",
+          "target": "내다",
+          "romanization": "naeda"
+        },
+        {
+          "english": "",
+          "target": "팔다",
+          "romanization": "palda"
+        },
+        {
+          "english": "",
+          "target": "고르다",
+          "romanization": "goreuda"
+        }
+      ],
+      "partner": "preply",
+      "description": "Quiz-pay-vs-buy in Korean: .",
+      "topicSlug": "quiz-pay-vs-buy",
+      "publishedAt": "2026-09-01T01:36:38.351Z"
+    },
+    {
       "id": "vk_ref-08161814-hangul-starter__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -67952,6 +67986,134 @@
       "description": "HANGUL STARTER in Korean: Hello (polite), Thank you, I'm sorry, How are you?, Nice to meet you, Goodbye (to person leaving)….",
       "topicSlug": "ref_08161814__hangul-starter",
       "publishedAt": "2026-09-01T01:18:35.570Z"
+    },
+    {
+      "id": "vk_ref-27369811-drinks-korean__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Drinks in Korean",
+      "slug": "drinks-in-korean",
+      "imagePath": "/global/pins/vk_ref-27369811-drinks-korean__ko.png",
+      "words": [
+        {
+          "english": "Gyeongbokgung Palace",
+          "target": "경복궁",
+          "romanization": "Gyeongbokgung"
+        },
+        {
+          "english": "Namsan Seoul Tower",
+          "target": "남산타워",
+          "romanization": "Namsan Tower"
+        },
+        {
+          "english": "Han River",
+          "target": "한강",
+          "romanization": "Hangang"
+        },
+        {
+          "english": "Busan Port",
+          "target": "부산항",
+          "romanization": "Busan Hang"
+        },
+        {
+          "english": "Jeju Island",
+          "target": "제주도",
+          "romanization": "Jeju-do"
+        },
+        {
+          "english": "Gyeongju City",
+          "target": "경주",
+          "romanization": "Gyeongju"
+        },
+        {
+          "english": "Insadong Street",
+          "target": "인사동",
+          "romanization": "Insadong"
+        },
+        {
+          "english": "Gwanghwamun Gate",
+          "target": "광화문",
+          "romanization": "Gwanghwamun"
+        },
+        {
+          "english": "Lotte World",
+          "target": "롯데월드",
+          "romanization": "Lotte World"
+        },
+        {
+          "english": "Cheonggyecheon Stream",
+          "target": "청계천",
+          "romanization": "Cheonggyecheon"
+        }
+      ],
+      "partner": "preply",
+      "description": "Drinks in Korean: Gyeongbokgung Palace, Namsan Seoul Tower, Han River, Busan Port, Jeju Island, Gyeongju City….",
+      "topicSlug": "ref_27369811__drinks-korean",
+      "publishedAt": "2026-09-01T01:36:38.952Z"
+    },
+    {
+      "id": "vk_ref-56197321-useful-adjectives__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Useful Korean Adjectives in Korean",
+      "slug": "useful-korean-adjectives-in-korean",
+      "imagePath": "/global/pins/vk_ref-56197321-useful-adjectives__ko.png",
+      "words": [
+        {
+          "english": "bus",
+          "target": "버스",
+          "romanization": "beoseu"
+        },
+        {
+          "english": "subway",
+          "target": "지하철",
+          "romanization": "jihacheol"
+        },
+        {
+          "english": "taxi",
+          "target": "택시",
+          "romanization": "taeksi"
+        },
+        {
+          "english": "airplane",
+          "target": "비행기",
+          "romanization": "bihaenggi"
+        },
+        {
+          "english": "train",
+          "target": "기차",
+          "romanization": "gicha"
+        },
+        {
+          "english": "bicycle",
+          "target": "자전거",
+          "romanization": "jajeongeo"
+        },
+        {
+          "english": "motorcycle",
+          "target": "오토바이",
+          "romanization": "otobai"
+        },
+        {
+          "english": "ship",
+          "target": "배",
+          "romanization": "bae"
+        },
+        {
+          "english": "car",
+          "target": "자동차",
+          "romanization": "jadongcha"
+        },
+        {
+          "english": "forklift",
+          "target": "지게차",
+          "romanization": "jigyecha"
+        }
+      ],
+      "partner": "preply",
+      "description": "Useful Korean Adjectives in Korean: bus, subway, taxi, airplane, train, bicycle….",
+      "topicSlug": "ref_56197321__useful-adjectives",
+      "publishedAt": "2026-09-01T01:36:37.612Z"
     },
     {
       "id": "vk_ref-79593130-kitchen-korean__ko",
