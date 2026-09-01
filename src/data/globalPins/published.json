@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T08:14:03.816Z",
+  "generatedAt": "2026-09-01T08:19:17.792Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -9129,47 +9129,83 @@
         {
           "english": "Congrats",
           "target": "¡Felicidades!",
-          "romanization": "feh-lee-see-DAH-dess"
+          "romanization": "feh-lee-see-DAH-dess",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w0-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w0-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w0-es.mp3"
         },
         {
           "english": "Well done",
           "target": "¡Bien hecho!",
-          "romanization": "byen ECH-oh"
+          "romanization": "byen ECH-oh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w1-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w1-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w1-es.mp3"
         },
         {
           "english": "The best!",
           "target": "¡El mejor!",
-          "romanization": "el meh-HOR"
+          "romanization": "el meh-HOR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w2-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w2-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w2-es.mp3"
         },
         {
           "english": "Thank you",
           "target": "Gracias",
-          "romanization": "GRAH-syahs"
+          "romanization": "GRAH-syahs",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w3-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w3-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w3-es.mp3"
         },
         {
           "english": "I appreciate you",
           "target": "Te aprecio",
-          "romanization": "teh ah-PREH-syoh"
+          "romanization": "teh ah-PREH-syoh",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w4-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w4-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w4-es.mp3"
         },
         {
           "english": "Thank you, everyone",
           "target": "Gracias a todos",
-          "romanization": "GRAH-syahs ah TOH-dohs"
+          "romanization": "GRAH-syahs ah TOH-dohs",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w5-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w5-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w5-es.mp3"
         },
         {
           "english": "Surprise!",
           "target": "¡Sorpresa!",
-          "romanization": "sor-PREH-sah"
+          "romanization": "sor-PREH-sah",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w6-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w6-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w6-es.mp3"
         },
         {
           "english": "Happy Birthday!",
           "target": "¡Feliz cumpleaños!",
-          "romanization": "feh-LEES koom-pleh-AHN-yohs"
+          "romanization": "feh-LEES koom-pleh-AHN-yohs",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w7-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w7-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w7-es.mp3"
         },
         {
           "english": "No time to waste!",
           "target": "¡No hay tiempo que perder!",
-          "romanization": "noh ay TYEM-poh keh per-DEHR"
+          "romanization": "noh ay TYEM-poh keh per-DEHR",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w8-latam.mp3",
+          "ttsProvider": "edge",
+          "ttsLatam": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w8-latam.mp3",
+          "ttsEs": "https://file.kajakorean.com/grammar-x/global-pin-tts/gko_cute-celebrate-mini__es/w8-es.mp3"
         }
       ],
       "partner": "preply",
