@@ -1,23 +1,22 @@
 import Image from "next/image";
-import { SITE_NAME } from "@/lib/siteBrand";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SITE_ORIGIN } from "@/lib/siteUrl";
+import { SITE_META_KEYWORD, SITE_NAME } from "@/lib/siteBrand";
 
 import { ArticleActionsAndComments } from "@/components/article/ArticleActionsAndComments";
 import { ArticleFeed } from "@/components/article/ArticleFeed";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import { YouTubeEmbed } from "@/components/article/YouTubeEmbed";
-import { ItalkiTutorBanner } from "@/components/site/ItalkiTutorBanner";
-import {
-  MarketingPage,
-  MarketingShell,
-  MarketingShellBody,
-} from "@/components/site/MarketingShell";
+import homeStyles from "@/components/site/home-blog.module.css";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/Button";
-import { getBlogPost, listBlogPosts } from "@/data/blogPosts";
+import {
+  getBlogPost,
+  listBlogPosts,
+  blogPostKeepsImages,
+} from "@/data/blogPosts";
 import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
 
 export const runtime = "nodejs";
@@ -33,10 +32,8 @@ function buildDescription(a: Awaited<ReturnType<typeof getBlogPost>>): string {
     const plain = firstContent.replace(/\s+/g, " ").slice(0, 155);
     return plain + (plain.length >= 155 ? "…" : "");
   }
-  return `${a.title}. Study Korean — blog post.`;
+  return `${a.title}. How to study Korean — a note by Minjae.`;
 }
-
-const META_KEYWORD = "Study Korean";
 
 export async function generateMetadata({
   params,
@@ -51,8 +48,10 @@ export async function generateMetadata({
   const description = buildDescription(a);
   const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(slug)}`;
-  const metaTitle = `${title} | ${META_KEYWORD} | Kaja Korean`;
-  const metaDescription = description.includes(META_KEYWORD) ? description : `${META_KEYWORD}. ${description}`;
+  const metaTitle = `${title} | ${SITE_META_KEYWORD} | ${SITE_NAME}`;
+  const metaDescription = description.includes(SITE_META_KEYWORD)
+    ? description
+    : `${SITE_META_KEYWORD}. ${description}`;
 
   return {
     title: { absolute: metaTitle },
@@ -99,14 +98,14 @@ export default async function BlogArticlePage({
 
   const isDev = process.env.NODE_ENV !== "production";
   const related = allPosts.filter((x) => x.slug !== a.slug).slice(0, 4);
-  const mainImage = resolveBlogCoverImage(a);
+  const keepImages = blogPostKeepsImages(a.slug);
+  const mainImage = keepImages ? resolveBlogCoverImage(a) : "";
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(a.slug)}`;
 
   const baseUrl = SITE_URL.replace(/\/+$/, "");
   const useWideContainer = a.slug === "korean-verb-endings";
-  const containerClass = useWideContainer
-    ? "max-w-4xl lg:max-w-5xl xl:max-w-6xl"
-    : "max-w-3xl lg:max-w-4xl";
+  /* Default matches .column (780px); wide only for special layouts */
+  const columnMaxWidth = useWideContainer ? "72rem" : "780px";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -158,7 +157,7 @@ export default async function BlogArticlePage({
       : null;
 
   return (
-    <MarketingPage containerClassName={containerClass}>
+    <div className={homeStyles.articleWrap}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -175,95 +174,103 @@ export default async function BlogArticlePage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       ) : null}
-      <MarketingShell>
-        <MarketingShellBody>
-        {mainImage ? (
-          <div className="md:-mx-4 mb-12 overflow-hidden rounded-2xl border border-border bg-muted/10 sm:-mx-6">
-            <div className="relative aspect-video w-full sm:aspect-vd">
-              <Image
-                src={mainImage}
-                alt={a.title}
-                fill
-                className="object-cover object-center"
-                unoptimized
-                priority
-                sizes="(max-width: 896px) 100vw, 896px"
-              />
-            </div>
-          </div>
-        ) : null}
 
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            {isDev ? (
-              <div className="mb-2">
-                <Button asChild variant="outline" size="sm">
-                  <Link
-                    href={`/blog/article/${encodeURIComponent(a.slug)}/edit`}
-                  >
-                    Edit images
-                  </Link>
-                </Button>
+      <div className={homeStyles.column} style={{ maxWidth: columnMaxWidth }}>
+        <p className="mb-4">
+          <Link href="/blog" className={homeStyles.textLink}>
+            ← All posts
+          </Link>
+        </p>
+
+        <article className={homeStyles.articleCard}>
+          {mainImage ? (
+            <div className="mb-8 overflow-hidden rounded-xl border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-[#f3f1ec]">
+              <div className="relative aspect-video w-full">
+                <Image
+                  src={mainImage}
+                  alt={a.title}
+                  fill
+                  className="object-cover object-center"
+                  unoptimized
+                  priority
+                  sizes="(max-width: 896px) 100vw, 896px"
+                />
               </div>
-            ) : null}
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-              {a.createdAt ? (
-                <span>
+            </div>
+          ) : null}
+
+          {isDev ? (
+            <div className="mb-3">
+              <Button asChild variant="outline" size="sm">
+                <Link
+                  href={`/blog/article/${encodeURIComponent(a.slug)}/edit`}
+                >
+                  Edit images
+                </Link>
+              </Button>
+            </div>
+          ) : null}
+
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span className={homeStyles.articleMeta}>Minjae</span>
+            {a.createdAt ? (
+              <>
+                <span className={homeStyles.articleMeta} aria-hidden>
+                  ·
+                </span>
+                <span className={homeStyles.articleMeta}>
                   {new Date(a.createdAt).toLocaleDateString("ko-KR", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
                   })}
                 </span>
-              ) : null}
-            </div>
-            <div className="mt-3 flex flex-wrap items-center gap-3">
-              <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-                {a.title}
-              </h1>
-              <BookmarkNavIcon />
-            </div>
+              </>
+            ) : null}
           </div>
-        </div>
 
-        <section className="mt-12 border-t border-border pt-10">
-          {a.audio ? (
-            <div className="sticky top-0 z-[9999] -mx-4 mt-6 mb-6 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-sm backdrop-blur sm:-mx-6 sm:px-6">
-              <div className="text-xs font-medium text-muted-foreground">
-                Listen
+          <div className="mt-2 flex flex-wrap items-start gap-3">
+            <h1 className={homeStyles.articleTitle}>{a.title}</h1>
+            <BookmarkNavIcon />
+          </div>
+
+          <section className={homeStyles.articleBody}>
+            {a.audio ? (
+              <div className="sticky top-0 z-[9999] mb-6 rounded-xl border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
+                <div className="text-xs font-medium text-[#6b6760]">Listen</div>
+                <audio controls src={a.audio} className="mt-1 w-full" />
               </div>
-              <audio controls src={a.audio} className="mt-1 w-full" />
-            </div>
-          ) : null}
+            ) : null}
 
-          <div className="space-y-14 text-base leading-8 sm:text-lg">
             {(a.paragraphs ?? []).length === 0 ? (
-              <p className="text-muted-foreground">No content yet.</p>
+              <p className="text-[#6b6760]">No content yet.</p>
             ) : (
               (a.paragraphs ?? []).map((p, idx) => {
-                const midIndex = Math.floor((a.paragraphs!.length - 1) / 2);
                 return (
-                  <div key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`}>
+                  <div
+                    key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`}
+                    className={homeStyles.articleBodyBlock}
+                  >
                     <div className="space-y-3">
                       {p.subtitle ? (
-                        <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                        <h2 className={homeStyles.articleSubhead}>
                           {p.subtitle}
                         </h2>
                       ) : null}
                       {p.audio ? (
-                        <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/20 px-3 py-2">
+                        <div className="flex items-center gap-2 rounded-lg border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-[#f3f1ec] px-3 py-2">
                           <audio
                             controls
                             src={p.audio}
-                            className="h-10 flex-1 min-w-0"
+                            className="h-10 min-w-0 flex-1"
                           />
                         </div>
                       ) : null}
-                      <div className="whitespace-pre-wrap text-foreground/90">
+                      <div className="whitespace-pre-wrap text-[#2f2c28]">
                         {p.content}
                       </div>
-                      {p.image ? (
-                        <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-border bg-muted/10">
+                      {keepImages && p.image ? (
+                        <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-[#f3f1ec]">
                           <div
                             className="relative w-full"
                             style={{
@@ -285,58 +292,53 @@ export default async function BlogArticlePage({
                         </div>
                       ) : null}
                       {p.youtube ? (
-                        <div className="mt-4 mb-10">
+                        <div className="mt-4 mb-6">
                           <YouTubeEmbed urlOrId={p.youtube} />
                         </div>
                       ) : null}
                     </div>
-                    {idx === midIndex ? (
-                      <ItalkiTutorBanner variant="wide" className="mt-14" />
-                    ) : null}
                   </div>
                 );
               })
             )}
-          </div>
-        </section>
+          </section>
 
-        <div className="mt-16 flex flex-col items-center gap-3 mb-12">
-          <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-muted-foreground">
-            <Logo mode="v2" className="opacity-90" />
-            <span aria-hidden="true">·</span>
-            <h6 className="font-serif font-medium"> Minjae</h6>
+          <div className="mt-12 mb-8 flex flex-col items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-[#6b6760]">
+              <Logo mode="v2" className="opacity-90" />
+              <span aria-hidden="true">·</span>
+              <span className="font-serif font-medium text-[#1c1916]">
+                Minjae
+              </span>
+            </div>
           </div>
-        </div>
 
-        <ArticleActionsAndComments
-          scope="blog"
-          slug={a.slug}
-          shareUrl={canonical}
-          shareTitle={a.title}
-        />
+          <ArticleActionsAndComments
+            scope="blog"
+            slug={a.slug}
+            shareUrl={canonical}
+            shareTitle={a.title}
+          />
+        </article>
 
         {related.length > 0 ? (
-          <section className="mt-20 border-t border-border pt-10">
-            <h2 className="font-serif text-2xl font-semibold tracking-tight">
-              Related Posts
-            </h2>
-            <div className="mt-4">
-              <ArticleFeed
-                articles={related}
-                showMajor={false}
-                basePath="/blog/article"
-              />
-            </div>
+          <section className={homeStyles.articleRelated}>
+            <h2 className={homeStyles.articleRelatedTitle}>Related posts</h2>
+            <ArticleFeed
+              articles={related}
+              showMajor={false}
+              showCovers={false}
+              basePath="/blog/article"
+            />
           </section>
         ) : null}
 
-        <div className="mt-8">
-          <Button asChild variant="primary">
-            <Link href="/blog">Back to Blog</Link>
-          </Button>
+        <div className={homeStyles.articleNav}>
+          <Link href="/blog" className={homeStyles.textLink}>
+            ← Back to Blog
+          </Link>
         </div>
-        </MarketingShellBody>
-      </MarketingShell>
-    </MarketingPage>
+      </div>
+    </div>
   );
 }

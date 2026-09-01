@@ -96,9 +96,7 @@ export const post: BlogPost = {
           But to have meaningful conversations, we need something to talk about.
           <Gap />
           That’s why I write{" "}
-          <ContentLink href="/news">daily news articles</ContentLink>, and also
-          those <ContentLink href="/drama">Drama</ContentLink> and{" "}
-          <ContentLink href="/songs">Song</ContentLink> articles.
+          <ContentLink href="/blog">notes on learning Korean</ContentLink>.
           <br />
           We will talk about the topics together.
           <Gap />

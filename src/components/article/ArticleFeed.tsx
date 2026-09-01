@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { RelativeDate } from "@/components/article/RelativeDate";
+import styles from "@/components/site/home-blog.module.css";
 import { BLOG_FALLBACK_COVER } from "@/data/blogPosts/cover";
 import {
   displayLevel,
@@ -21,6 +22,8 @@ export type ArticleFeedItem = {
   imageLarge?: string;
   level?: number;
   createdAt?: string;
+  /** Plain-text body preview (Reddit-style). */
+  excerpt?: string;
 };
 
 type ArticleFeedProps = {
@@ -31,6 +34,8 @@ type ArticleFeedProps = {
   basePath?: string;
   /** Optional fallback when a card has no image fields */
   fallbackCover?: string;
+  /** When false, render a plain title list (no covers / major hero card). */
+  showCovers?: boolean;
   /**
    * On viewports below `sm`, only the first N items render visibly;
    * the rest stay for desktop. Pair with `moreHref` for a mobile CTA.
@@ -38,6 +43,8 @@ type ArticleFeedProps = {
   mobileVisibleCount?: number;
   moreHref?: string;
   moreLabel?: string;
+  /** Tighter title + 1-line excerpt (home preview). */
+  compact?: boolean;
 };
 
 function resolveFeedCover(
@@ -56,11 +63,94 @@ export function ArticleFeed({
   showMajor = true,
   basePath = "/news/article",
   fallbackCover = BLOG_FALLBACK_COVER,
+  showCovers = true,
   mobileVisibleCount,
   moreHref,
   moreLabel = "More",
+  compact = false,
 }: ArticleFeedProps) {
   if (articles.length === 0) return null;
+
+  if (!showCovers) {
+    return (
+      <div>
+        <ul className={styles.storyList}>
+          {articles.map((p, index) => {
+            const hide =
+              typeof mobileVisibleCount === "number" &&
+              index >= mobileVisibleCount;
+            const thumb = resolveFeedCover(p, fallbackCover);
+            const hasThumb = Boolean(
+              p.imageThumb?.trim() || p.imageLarge?.trim(),
+            );
+            return (
+              <li
+                key={p.slug}
+                className={cn(styles.storyItem, hide && "max-sm:hidden")}
+              >
+                <Link
+                  href={`${basePath}/${encodeURIComponent(p.slug)}`}
+                  className={cn(
+                    styles.storyLink,
+                    hasThumb && styles.storyLinkWithThumb,
+                  )}
+                >
+                  <div className={styles.storyCopy}>
+                    <div className={styles.storyMeta}>
+                      <span>Minjae</span>
+                      <span aria-hidden>·</span>
+                      <RelativeDate iso={p.createdAt} />
+                    </div>
+                    <h3
+                      className={cn(
+                        styles.storyTitle,
+                        compact && styles.storyTitleCompact,
+                      )}
+                    >
+                      {p.title}
+                    </h3>
+                    {p.excerpt ? (
+                      <p
+                        className={cn(
+                          styles.storyExcerpt,
+                          compact
+                            ? styles.storyExcerptCompact
+                            : styles.storyExcerptFull,
+                        )}
+                      >
+                        {p.excerpt}
+                      </p>
+                    ) : null}
+                  </div>
+                  {hasThumb ? (
+                    <div className={styles.storyThumb} aria-hidden>
+                      <Image
+                        src={thumb}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="112px"
+                      />
+                    </div>
+                  ) : null}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        {moreHref &&
+        typeof mobileVisibleCount === "number" &&
+        articles.length > mobileVisibleCount ? (
+          <div className="flex justify-center pt-4 sm:hidden">
+            <Link href={moreHref} className={styles.textLink}>
+              {moreLabel}
+            </Link>
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 
   const major = showMajor ? articles[0] : null;
   const rest = showMajor ? articles.slice(1) : articles;
@@ -71,7 +161,6 @@ export function ArticleFeed({
 
   return (
     <div className="space-y-6">
-      {/* 상단 메이저 카드 */}
       {major ? (
         <Link
           href={`${basePath}/${encodeURIComponent(major.slug)}`}
@@ -112,7 +201,6 @@ export function ArticleFeed({
         </Link>
       ) : null}
 
-      {/* 하단 3단 그리드 */}
       {rest.length > 0 ? (
         <div
           className={cn(

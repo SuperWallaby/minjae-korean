@@ -100,6 +100,18 @@
   box-shadow: var(--shadow-card);
 }
 
+.portraitFrame {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid var(--quiz-border);
+  background: var(--quiz-surface);
+  box-shadow: var(--shadow-card);
+}
+
 .faqItem {
   border-bottom: 1px solid var(--quiz-border);
 }

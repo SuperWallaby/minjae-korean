@@ -7,10 +7,10 @@ import { Input } from "@/components/ui/Input";
 import type { BroadcastAccountFilter } from "@/lib/studentsRepo";
 
 const FILTERS: { value: BroadcastAccountFilter; label: string; hint: string }[] = [
-  { value: "all", label: "전체 (이메일 있는 학생)", hint: "Mongo students 전원" },
+  { value: "all", label: "전체 (이메일 있는 유저)", hint: "Mongo students 전원" },
   { value: "linked", label: "로그인 연동 회원", hint: "authUserId가 있는 계정" },
-  { value: "unlinked", label: "미연동 (이메일만)", hint: "로그인 미연동 학생 레코드" },
-  { value: "active_credits", label: "유효 크레딧 보유", hint: "남은 크레딧·만료 전" },
+  { value: "unlinked", label: "미연동 (이메일만)", hint: "로그인 미연동 레코드" },
+  { value: "active_credits", label: "유효 크레딧 보유", hint: "(레거시) 남은 크레딧·만료 전" },
 ];
 
 export default function AdminBulkBroadcastForm() {
@@ -85,7 +85,7 @@ export default function AdminBulkBroadcastForm() {
 
         <label className="grid gap-1.5">
           <span className="text-sm font-medium">제목</span>
-          <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="예: 수업 일정 변경 안내" required />
+          <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="예: 새 노트 올림 / 스터디 PDF" required />
         </label>
 
         <label className="grid gap-1.5">

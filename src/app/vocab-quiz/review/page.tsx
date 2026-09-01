@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { MarketingPage } from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
 
 import { VocabQuizReviewClient } from "./VocabQuizReviewClient";
 
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function VocabQuizReviewPage() {
   return (
-    <MarketingPage containerClassName="max-w-4xl" className="pb-8 pt-4">
+    <BlogInnerPage containerClassName="max-w-4xl" card={false}>
       <VocabQuizReviewClient />
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }

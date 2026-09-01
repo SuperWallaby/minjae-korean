@@ -8,6 +8,7 @@ import * as fs from "fs/promises";
 import * as path from "path";
 
 import { resolveBlogCoverImage } from "./cover";
+import { excerptFromBlogPost } from "./excerpt";
 import type {
   BlogPost,
   BlogPostCard,
@@ -60,6 +61,37 @@ const SLUG_LIST = [
   "jimin-busan-dialect-korean",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
+
+/**
+ * GSC (sc-domain:kajakorean.com, ~1y): only these `/blog/article/*` URLs had
+ * any impressions/clicks. Everything else stays loadable by direct URL but is
+ * hidden from `/blog` + home feeds.
+ * Order = home/blog list priority (clicks first, then impressions).
+ */
+export const BLOG_LISTED_SLUGS = [
+  "korean-verb-endings",
+  "why-koreans-cant-speak-english-after-12-years",
+  "bts-7-letters-far-future-korean-phrases",
+  "why-eun-neun-and-i-ga-feel-so-different",
+  "study-korean-what-is-arirang",
+  "2026-korean-study-method-blended-learning-flow",
+  "good-korean-teacher-2026",
+] as const satisfies readonly Slug[];
+
+/** Keep cover + in-article images only for these posts. */
+export const BLOG_KEEP_IMAGES_SLUGS = [
+  "bts-7-letters-far-future-korean-phrases",
+  "study-korean-what-is-arirang",
+  "why-koreans-cant-speak-english-after-12-years",
+] as const satisfies readonly Slug[];
+
+export function blogPostKeepsImages(slug: string): boolean {
+  return (BLOG_KEEP_IMAGES_SLUGS as readonly string[]).includes(slug);
+}
+
+const LISTED_RANK = new Map<string, number>(
+  BLOG_LISTED_SLUGS.map((slug, i) => [slug, i]),
+);
 
 const loaders: Record<
   Slug,
@@ -117,7 +149,7 @@ const loaders: Record<
 export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {
   const overrides = await readBlogOverrides();
   const results = await Promise.all(
-    SLUG_LIST.map(async (slug) => {
+    BLOG_LISTED_SLUGS.map(async (slug) => {
       const loader = loaders[slug];
       if (!loader) return null;
       const m = await loader();
@@ -137,12 +169,16 @@ export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {
         imageLarge: cover,
         level: p.level,
         createdAt: p.createdAt,
+        excerpt: excerptFromBlogPost(p),
         pinned: o?.pinned ?? false,
       } satisfies BlogPostCard;
     }),
   );
   const list = results.filter(Boolean) as BlogPostCard[];
   list.sort((a, b) => {
+    const ra = LISTED_RANK.get(a.slug) ?? 999;
+    const rb = LISTED_RANK.get(b.slug) ?? 999;
+    if (ra !== rb) return ra - rb;
     const pinA = a.pinned ? 1 : 0;
     const pinB = b.pinned ? 1 : 0;
     if (pinB !== pinA) return pinB - pinA;

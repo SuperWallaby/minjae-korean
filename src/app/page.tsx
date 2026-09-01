@@ -1,26 +1,18 @@
-import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/siteBrand";
+import { SITE_DESCRIPTION, SITE_HOME_TITLE, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 
 import { AboutMeHomeSection } from "@/components/site/AboutMeHomeSection";
 import { BookHomeSection } from "@/components/site/BookHomeSection";
-import { BuyMeCoffeeHomeSection } from "@/components/site/BuyMeCoffeeHomeSection";
-import { ExpressionCardsHomeSection } from "@/components/site/ExpressionCardsHomeSection";
-import { FindTutorHomeSection } from "@/components/site/FindTutorHomeSection";
-import { GrammarHomeSection } from "@/components/site/GrammarHomeSection";
 import { HomeRenewalSections } from "@/components/site/HomeRenewalSections";
-import { VocabHomeSection } from "@/components/site/VocabHomeSection";
-import { VocabQuizHomeSection } from "@/components/site/VocabQuizHomeSection";
-import { getExpressionCardSets } from "@/data/expressionCardSets";
-import { listArticles } from "@/lib/articlesRepo";
+import homeStyles from "@/components/site/home-blog.module.css";
 import { listBlogPosts } from "@/data/blogPosts";
-import { sampleKoreanQuizHomeCards } from "@/lib/koreanQuiz/store";
 import { SITE_ORIGIN, siteUrl } from "@/lib/siteUrl";
 
 export const runtime = "nodejs";
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = SITE_NAME;
+  const title = SITE_HOME_TITLE;
   const description = SITE_DESCRIPTION;
   const url = SITE_ORIGIN;
   return {
@@ -45,24 +37,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  let news: Awaited<ReturnType<typeof listArticles>> = [];
   let blog: Awaited<ReturnType<typeof listBlogPosts>> = [];
-  let vocabQuizCards: Awaited<ReturnType<typeof sampleKoreanQuizHomeCards>> = [];
-  try {
-    news = await listArticles(3);
-  } catch {
-    news = [];
-  }
   try {
     blog = await listBlogPosts(3);
   } catch {
     blog = [];
   }
-  try {
-    vocabQuizCards = await sampleKoreanQuizHomeCards(12);
-  } catch {
-    vocabQuizCards = [];
-  }
+
   const organizationId = siteUrl("/#organization");
   const teacherId = siteUrl("/#teacher");
   const structuredData = [
@@ -90,7 +71,8 @@ export default async function Home() {
       "@type": "Person",
       "@id": teacherId,
       name: "Minjae",
-      jobTitle: "Korean teacher",
+      jobTitle: "Writer on how to study Korean",
+      description: SITE_DESCRIPTION,
       worksFor: { "@id": organizationId },
     },
   ];
@@ -101,29 +83,10 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="space-y-10 md:space-y-14">
-        {/* 1) Hero — vocab quiz app */}
-        <VocabQuizHomeSection cards={vocabQuizCards} />
-
-        {/* 2) 1:1 tutor — higher for conversion (affiliate + coaching) */}
-        <FindTutorHomeSection />
-
-        {/* 3) Book */}
-        <BookHomeSection />
-
-        {/* 4) Support */}
-        <BuyMeCoffeeHomeSection />
-
-        {/* 5) About me */}
+      <div className={homeStyles.page}>
         <AboutMeHomeSection />
-
-        {/* 6) Expression cards — auto-video IG List (capybara carousels) */}
-        <ExpressionCardsHomeSection sets={getExpressionCardSets()} />
-
-        {/* 7+) Vocab / grammar hubs, news, blog */}
-        <VocabHomeSection />
-        <GrammarHomeSection />
-        <HomeRenewalSections news={news} blog={blog} />
+        <HomeRenewalSections blog={blog} />
+        <BookHomeSection />
       </div>
     </>
   );

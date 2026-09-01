@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Tell Tailwind exactly where to scan (path is relative to this file).
-   Without this, v4’s auto-detection can miss routes like app/news/article/[slug]/page.tsx
+   Without this, v4’s auto-detection can miss app routes
    and CSS can look like it “never updates” when cache serves an old bundle. */
 @source "../**/*.{ts,tsx,js,jsx}";
 @source "./**/*.{ts,tsx,js,jsx}";

@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import * as React from "react";
 import { MailCheck } from "lucide-react";
 
-import { MarketingPage } from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
 import { Button } from "@/components/ui/Button";
 import {
   Card,
@@ -41,7 +41,7 @@ export function LoginClient() {
   };
 
   return (
-    <MarketingPage containerClassName="max-w-xl">
+    <BlogInnerPage containerClassName="max-w-xl" card={false}>
       <Card className="relative mt-4 overflow-hidden border-[var(--quiz-border)] bg-[var(--quiz-canvas)] shadow-[var(--shadow-card)]">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(60%_60%_at_50%_0%,color-mix(in_srgb,var(--included-3)_45%,transparent),transparent)]" />
 
@@ -155,6 +155,6 @@ export function LoginClient() {
             </div>
           </CardContent>
         </Card>
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }

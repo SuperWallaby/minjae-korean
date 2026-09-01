@@ -22,23 +22,16 @@ const TeachingCmdDraw = dynamic(
     })),
   { ssr: false },
 );
-const SeoMiniQuizWidget = dynamic(
-  () =>
-    import("@/components/site/SeoMiniQuizWidget").then((m) => ({
-      default: m.SeoMiniQuizWidget,
-    })),
-  { ssr: false },
-);
-const ItalkiTutorStickyRail = dynamic(
-  () =>
-    import("@/components/site/ItalkiTutorStickyRail").then((m) => ({
-      default: m.ItalkiTutorStickyRail,
-    })),
-  { ssr: false },
-);
 const QuickNote = dynamic(
   () =>
     import("@/components/QuickNote").then((m) => ({ default: m.QuickNote })),
+  { ssr: false },
+);
+const BuyMeCoffeeFloat = dynamic(
+  () =>
+    import("@/components/site/BuyMeCoffeeFloat").then((m) => ({
+      default: m.BuyMeCoffeeFloat,
+    })),
   { ssr: false },
 );
 
@@ -50,9 +43,9 @@ export function KajaMainLayoutChrome({
   return (
     <MockSessionProvider>
       <EducationModeProvider>
-        <div className="min-h-dvh bg-background">
+        <div className="min-h-dvh bg-white">
           <NextTopLoader
-            color="#0071e3"
+            color="#1a8917"
             height={3}
             showSpinner={false}
             crawlSpeed={200}
@@ -64,8 +57,7 @@ export function KajaMainLayoutChrome({
           <SiteNavbar />
           <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
           <SiteFooter />
-          <SeoMiniQuizWidget />
-          <ItalkiTutorStickyRail />
+          <BuyMeCoffeeFloat />
           <QuickNote />
         </div>
       </EducationModeProvider>

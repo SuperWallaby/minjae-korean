@@ -1,6 +1,6 @@
 import homeStyles from "@/components/site/home-blog.module.css";
 
-export default function BlogLayout({
+export default function BookLayout({
   children,
 }: {
   children: React.ReactNode;

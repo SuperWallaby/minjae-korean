@@ -8,6 +8,7 @@ import { Modal } from "@/components/ui/Modal";
 import { cn } from "@/lib/utils";
 
 import { BookProductGallery } from "./BookProductGallery";
+import styles from "./home-blog.module.css";
 
 const coverWidth =
   "h-auto w-[300px] max-w-full sm:w-[350px] lg:w-[420px]";
@@ -20,7 +21,7 @@ export function BookHeroClickable() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group max-w-[440px] cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
+        className="group max-w-[440px] cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1a8917]"
       >
         <span className="relative mx-auto flex w-fit justify-center">
           <Image
@@ -32,7 +33,7 @@ export function BookHeroClickable() {
             className={cn("relative z-1 object-contain", coverWidth)}
           />
         </span>
-        <span className="mt-3 block text-center text-sm font-medium text-white/90 underline-offset-4 group-hover:underline">
+        <span className={styles.bookCoverHint}>
           Click for cover &amp; sample pages
         </span>
       </button>
@@ -50,8 +51,7 @@ export function BookHeroClickable() {
             slides={BOOK_GALLERY_SLIDES}
             priorityMain
             variant="modal"
-            previewFrameClassName="rounded-xl border-0 bg-transparent p-1 sm:p-2"
-            mainImageSizes="(max-width: 640px) 100vw, min(94vw, 900px)"
+            mainImageSizes="(max-width: 640px) 100vw, min(94vw, 520px)"
             mainImageQuality={95}
           />
         ) : null}

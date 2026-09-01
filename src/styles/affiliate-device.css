@@ -1,0 +1,15 @@
+/**
+ * Preply Impact cookies do not survive App Store → native app signup.
+ * Show Preply on desktop only; mobile CTAs use italki (web checkout).
+ */
+@media (max-width: 767px) {
+  .affiliate-preply-desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .affiliate-italki-mobile-only {
+    display: none !important;
+  }
+}

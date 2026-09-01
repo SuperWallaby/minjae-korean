@@ -11,7 +11,7 @@ import {
 import { SITE_ORIGIN } from "@/lib/siteUrl";
 
 import { VocabQuizClient } from "./VocabQuizClient";
-import { MarketingPage } from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
 import styles from "@/components/vocab-quiz/vocab-quiz.module.css";
 
 const SITE_URL = SITE_ORIGIN;
@@ -166,7 +166,7 @@ export default function VocabQuizPage() {
     : null;
 
   return (
-    <MarketingPage containerClassName="max-w-6xl" className="pb-8 pt-4 sm:pt-6">
+    <BlogInnerPage containerClassName="max-w-6xl" card={false} className="pb-8">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -239,6 +239,6 @@ export default function VocabQuizPage() {
           </Link>
         </p>
       </section>
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }

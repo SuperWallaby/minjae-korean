@@ -5,11 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Check, Download } from "lucide-react";
 
-import {
-  MarketingPage,
-  MarketingShell,
-  MarketingShellBody,
-} from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
 import { Button } from "@/components/ui/Button";
 import {
   LAST_STRIPE_PURCHASE_STORAGE_KEY,
@@ -135,24 +131,18 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
 
   if (state.kind === "loading") {
     return (
-      <MarketingPage containerClassName="max-w-2xl">
-        <MarketingShell>
-          <MarketingShellBody className="text-center">
-            <div className="font-serif text-lg font-medium text-[var(--quiz-text)]">
+      <BlogInnerPage containerClassName="max-w-2xl">
+            <div className="text-center font-serif text-lg font-medium text-[var(--quiz-text)]">
               One moment
             </div>
-            <p className="mt-2 text-[var(--quiz-text-sub)]">Confirming your order…</p>
-          </MarketingShellBody>
-        </MarketingShell>
-      </MarketingPage>
+            <p className="mt-2 text-center text-[var(--quiz-text-sub)]">Confirming your order…</p>
+      </BlogInnerPage>
     );
   }
 
   if (state.kind === "error") {
     return (
-      <MarketingPage containerClassName="max-w-2xl">
-        <MarketingShell>
-          <MarketingShellBody>
+      <BlogInnerPage containerClassName="max-w-2xl">
             <div className="font-serif text-2xl font-semibold tracking-tight text-[var(--quiz-text)]">
               Something went wrong
             </div>
@@ -162,9 +152,7 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
                 <Link href="/">Home</Link>
               </Button>
             </div>
-          </MarketingShellBody>
-        </MarketingShell>
-      </MarketingPage>
+      </BlogInnerPage>
     );
   }
 
@@ -173,9 +161,7 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
 
   if (isBook) {
     return (
-      <MarketingPage containerClassName="max-w-[min(100%,58rem)]" className="pt-4 sm:pt-6">
-        <MarketingShell>
-          <MarketingShellBody className="p-0 sm:p-0">
+      <BlogInnerPage containerClassName="max-w-[min(100%,58rem)]" card={false}>
           <div className="book-success-card-anim overflow-hidden rounded-[1.125rem] border border-[rgba(210,180,145,0.38)] bg-[linear-gradient(165deg,#fff8f4_0%,#fffefc_45%,#f3ebe3_100%)] shadow-[var(--shadow-card)]">
             <div className="grid items-start gap-8 p-10 sm:gap-10 sm:px-12 sm:py-12 md:px-16 md:py-14 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-16">
               <div className="book-success-cover-anim relative mx-auto w-full max-w-[300px] self-start sm:max-w-[320px] lg:mx-0">
@@ -354,16 +340,12 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
               </div>
             </div>
           </div>
-          </MarketingShellBody>
-        </MarketingShell>
-      </MarketingPage>
+      </BlogInnerPage>
     );
   }
 
   return (
-    <MarketingPage containerClassName="max-w-2xl">
-      <MarketingShell>
-        <MarketingShellBody>
+    <BlogInnerPage containerClassName="max-w-2xl">
           <div className="font-serif text-2xl font-semibold tracking-tight text-[var(--quiz-text)]">
             Payment successful
           </div>
@@ -383,17 +365,13 @@ export function PaymentSuccessView({ sessionId }: { sessionId: string }) {
           <p className="mt-6 text-xs text-[var(--quiz-text-muted)]">
             Reference: <span className="font-mono">{sessionId}</span>
           </p>
-        </MarketingShellBody>
-      </MarketingShell>
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }
 
 export function PaymentSuccessGeneric() {
   return (
-    <MarketingPage containerClassName="max-w-2xl">
-      <MarketingShell>
-        <MarketingShellBody>
+    <BlogInnerPage containerClassName="max-w-2xl">
           <div className="font-serif text-2xl font-semibold tracking-tight text-[var(--quiz-text)]">
             Payment successful
           </div>
@@ -409,8 +387,6 @@ export function PaymentSuccessGeneric() {
               <Link href="/">Home</Link>
             </Button>
           </div>
-        </MarketingShellBody>
-      </MarketingShell>
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }

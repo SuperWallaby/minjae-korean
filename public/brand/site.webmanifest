@@ -1,6 +1,7 @@
 {
-  "name": "Kaja Korean",
+  "name": "Kaja Korean · How to study Korean",
   "short_name": "Kaja",
+  "description": "Notes on how to study Korean — methods, habits, and what actually works.",
   "icons": [
     {
       "src": "/brand/android-chrome-192x192.png",

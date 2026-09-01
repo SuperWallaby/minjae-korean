@@ -6,7 +6,7 @@ import { CalendarDays, CreditCard, FileText, Bell, User } from "lucide-react";
 import { DateTime } from "luxon";
 
 import { Container } from "@/components/site/Container";
-import { MarketingPage } from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
 
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -481,7 +481,7 @@ export default function AccountPage() {
 
   if (!session.state.user) {
     return (
-      <MarketingPage containerClassName="max-w-2xl">
+      <BlogInnerPage containerClassName="max-w-2xl" card={false}>
           <Card className="border-[var(--quiz-border)] bg-[var(--quiz-canvas)]">
             <CardHeader>
               <CardTitle> Please Signin.</CardTitle>
@@ -495,12 +495,12 @@ export default function AccountPage() {
               </Button>
             </CardFooter>
           </Card>
-      </MarketingPage>
+      </BlogInnerPage>
     );
   }
 
   return (
-    <MarketingPage>
+    <BlogInnerPage card={false}>
       <Container>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -1140,6 +1140,6 @@ export default function AccountPage() {
           </aside>
         </div>
       </Container>
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }

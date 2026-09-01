@@ -1,84 +1,47 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, BookOpen, Gamepad2, Menu, UserRound, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { BookmarkNavIcon } from "@/components/article/BookmarkNavIcon";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import { Logo } from "@/components/site/Logo";
+import styles from "@/components/site/home-blog.module.css";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { useEducationMode } from "@/lib/EducationModeProvider";
-import { LIBRARY_LINKS } from "@/data/libraryLinks";
 
-type NavLinkProps = {
+function NavTextLink({
+  href,
+  label,
+  active,
+}: {
   href: string;
   label: string;
-  activeOverride?: boolean;
-  /** Optional icon before label */
-  iconSrc?: string;
-};
-
-function NavLink({ href, label, activeOverride, iconSrc }: NavLinkProps) {
-  const pathname = usePathname() ?? "";
-  let active = false;
-  // Anchor links (/#something) are controlled by activeOverride (intersection observer)
-  if (href.startsWith("/#")) {
-    // Only use scroll-based active state when we're on the main page.
-    // This avoids anchors appearing active on other routes (e.g. /booking).
-    active = pathname === "/" ? (activeOverride ?? false) : false;
-  } else {
-    // Normal page links: match exact pathname or prefix (for subpaths)
-    active =
-      activeOverride ?? (pathname === href || pathname.startsWith(href + "/"));
-  }
-
+  active?: boolean;
+}) {
   return (
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        active &&
-          "bg-[color-mix(in_srgb,var(--quiz-primary)_10%,white)] text-[var(--quiz-primary)] font-semibold",
-        {
-          "hover:bg-muted/20": !active,
-        },
+        "text-[15px] text-[#242424] transition-opacity hover:opacity-70",
+        active && "font-medium",
       )}
     >
-      {iconSrc ? (
-        <Image
-          src={iconSrc}
-          alt=""
-          width={24}
-          height={24}
-          className="size-6 shrink-0 opacity-85"
-        />
-      ) : null}
       {label}
     </Link>
   );
-}
-
-function isAssetLinkActive(pathname: string, href: string) {
-  return pathname === href || pathname.startsWith(href + "/");
 }
 
 export function SiteNavbar() {
   const { state } = useMockSession();
   const { enabled: eduMode } = useEducationMode();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [assetsOpen, setAssetsOpen] = React.useState(false);
   const [headerVisible, setHeaderVisible] = React.useState(false);
   const [navMounted, setNavMounted] = React.useState(false);
   const pathname = usePathname();
-  const isAssetsActive = LIBRARY_LINKS.some(
-    (l) => pathname === l.href || pathname.startsWith(l.href + "/"),
-  );
 
   React.useEffect(() => {
     setNavMounted(true);
@@ -112,296 +75,144 @@ export function SiteNavbar() {
   }, [eduMode]);
 
   const hideOnVocabQuiz = pathname?.startsWith("/vocab-quiz") ?? false;
-
   if (hideOnVocabQuiz) return null;
+
+  const onBlog =
+    pathname === "/blog" || (pathname?.startsWith("/blog/") ?? false);
+  const onBook = pathname?.startsWith("/book") ?? false;
+  const onHome = pathname === "/";
 
   return (
     <>
-    <header
-      className={cn(
-        "site-navbar  sticky z-40 transition-transform duration-200",
-        "top-0 mb-0 md:top-5 md:mb-5",
-        eduMode && !headerVisible && "-translate-y-[calc(100%+1.25rem)]",
-      )}
-    >
-      <div className="w-full md:container md:mx-auto md:max-w-6xl md:px-4 lg:px-8">
-        <div className="mx-auto w-full md:w-fit">
-          <div
-            className={cn(
-              " flex w-full border border-border bg-background md:bg-white px-2 py-2",
-              "rounded-none border-x-0 border-t-0 shadow-none",
-              "md:rounded-full md:border md:shadow-(--shadow-navbar) min-h-[60px] md:h-[60px]",
-            )}
-          >
-            <div className="flex w-full flex-1 items-center justify-between gap-2 pl-0 md:gap-3 md:pl-2 px-2 sm:gap-3">
-              <div className="flex items-center gap-4">
-                <Logo className="pl-2" />
-                <nav className="hidden items-center gap-1 md:flex">
-                  <NavLink
-                    href="/"
-                    label="Home"
-                    activeOverride={pathname === "/"}
-                  />
-                  <div className="relative">
-                    <button
-                      type="button"
-                      onClick={() => setAssetsOpen((v) => !v)}
-                      onBlur={() => setTimeout(() => setAssetsOpen(false), 150)}
-                      className={cn(
-                        "inline-flex group items-center gap-1 rounded-xl px-4 py-2.5 text-sm font-medium transition",
-                        "text-muted-foreground cursor-pointer",
-                        "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                        isAssetsActive && "bg-muted text-foreground",
-                        {
-                          "hover:text-foreground hover:bg-muted/20":
-                            !isAssetsActive,
-                        },
-                      )}
-                      aria-expanded={assetsOpen}
-                      aria-haspopup="true"
-                    >
-                      Library
-                      <ChevronDown
-                        className={cn(
-                          "size-5 transition mt-1 -mr-1",
-                          assetsOpen && "rotate-180",
-                        )}
-                      />
-                    </button>
-                    {assetsOpen && (
-                      <div className="absolute left-0 top-full z-50 mt-1.5 min-w-[332px] rounded-xl border border-border bg-white p-1 py-2 shadow-lg grid grid-cols-2">
-                        {LIBRARY_LINKS.map((link) => {
-                          const active = isAssetLinkActive(
-                            pathname ?? "",
-                            link.href,
-                          );
-                          return (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className={cn(
-                                "flex items-center rounded-xl px-4 py-3 mx-1.5 text-base",
-                                active
-                                  ? "bg-muted text-foreground font-medium"
-                                  : "text-muted-foreground hover:text-foreground hover:bg-muted/40",
-                                link.emphasized &&
-                                  !active &&
-                                  "bg-muted/55 font-semibold text-foreground hover:bg-muted/70",
-                              )}
-                              onClick={() => setAssetsOpen(false)}
-                            >
-                              {link.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                </nav>
-              </div>
+      <header
+        className={cn(
+          "site-navbar sticky top-0 z-40 border-b border-[#f2f2f2] bg-white",
+          eduMode && !headerVisible && "-translate-y-full transition-transform duration-200",
+        )}
+      >
+        <div
+          className={cn(
+            styles.shell,
+            "flex h-[57px] items-center justify-between gap-4",
+          )}
+        >
+          <div className="flex min-w-0 items-center gap-6 md:gap-8">
+            <Link
+              href="/"
+              className="inline-flex shrink-0 items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-[#1a8917]/40"
+              aria-label="Kaja Korean home"
+            >
+              <Image
+                src="/brand/logo.webp"
+                alt=""
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
+              <span className="font-serif text-[1.35rem] font-semibold leading-none tracking-[-0.02em] text-[#242424]">
+                Kaja Korean
+              </span>
+            </Link>
 
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <BookmarkNavIcon />
-                <button
-                  type="button"
-                  className={cn(
-                    "inline-flex md:hidden h-11 min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full border border-border bg-white text-foreground transition hover:bg-muted/40 active:bg-muted/55",
-                  )}
-                  aria-expanded={mobileOpen}
-                  aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setMobileOpen((v) => !v);
-                  }}
-                >
-                  {mobileOpen ? (
-                    <X className="size-5" strokeWidth={2} />
-                  ) : (
-                    <Menu className="size-5" strokeWidth={2} />
-                  )}
-                </button>
-                <div className="hidden items-center gap-2 lg:flex">
-                  {state.subscriptionPlan ? (
-                    <Badge variant="default">
-                      Subscription{" "}
-                      {state.subscriptionPlan === "weekly1"
-                        ? "Weekly (1)"
-                        : "Weekly (2)"}
-                    </Badge>
-                  ) : null}
-                  {state.passRemaining > 0 ? (
-                    <Badge variant="muted">{state.passRemaining} passes</Badge>
-                  ) : null}
-                </div>
+            <nav className="hidden items-center gap-6 md:flex">
+              <NavTextLink href="/" label="About" active={onHome} />
+              <NavTextLink href="/blog" label="Notes" active={onBlog} />
+              <NavTextLink
+                href="/book/korean-beyond-translation"
+                label="Book"
+                active={onBook}
+              />
+            </nav>
+          </div>
 
-                {state.user ? (
-                  <>
-                    <Button
-                      className="hidden w-auto px-4 sm:inline-flex"
-                      variant="gradient"
-                      size="sm"
-                      asChild
-                    >
-                      <Link
-                        href="/vocab-quiz"
-                        className="inline-flex items-center gap-2"
-                      >
-                        <Gamepad2 className="size-4" />
-                        Play Game
-                      </Link>
-                    </Button>
-                    <Button
-                      className="w-fit w-[101px]"
-                      variant="secondary"
-                      size="sm"
-                      asChild
-                    >
-                      <Link
-                        href="/account"
-                        className="inline-flex items-center gap-2"
-                      >
-                        <UserRound className="size-4" />
-                        Profile
-                      </Link>
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      className="hidden w-auto px-4 sm:inline-flex"
-                      variant="gradient"
-                      size="sm"
-                      asChild
-                    >
-                      <Link
-                        href="/vocab-quiz"
-                        className="inline-flex items-center gap-2"
-                      >
-                        <Gamepad2 className="size-4" />
-                        Play Game
-                      </Link>
-                    </Button>
-                    <Button
-                      className="w-auto px-4"
-                      variant="primary"
-                      size="sm"
-                      asChild
-                    >
-                      <Link
-                        href="/subscribe"
-                        className="inline-flex items-center gap-2"
-                      >
-                        <BookOpen className="size-4" />
-                        Get Free Book
-                      </Link>
-                    </Button>
-                  </>
-                )}
-              </div>
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="hidden sm:block">
+              <BookmarkNavIcon />
             </div>
+            <NavTextLink href="/vocab-quiz" label="Play Game" />
+            {state.user ? (
+              <NavTextLink href="/account" label="Account" />
+            ) : (
+              <span className="hidden md:inline">
+                <NavTextLink href="/login" label="Sign in" />
+              </span>
+            )}
+            <Link href="/subscribe" className={styles.headerCta}>
+              Get free book
+            </Link>
+            <button
+              type="button"
+              className="inline-flex size-10 items-center justify-center rounded-full text-[#242424] md:hidden"
+              aria-expanded={mobileOpen}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              {mobileOpen ? (
+                <X className="size-5" strokeWidth={2} />
+              ) : (
+                <Menu className="size-5" strokeWidth={2} />
+              )}
+            </button>
           </div>
         </div>
-      </div>
-    </header>
-    {navMounted && mobileOpen
-      ? createPortal(
-          <div
-            className="md:hidden fixed inset-0 z-200 flex flex-col bg-(--bg-canvas) shadow-2xl"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile menu"
-          >
-            <div className="flex h-14 min-h-14 shrink-0 items-center justify-between border-b border-border px-4">
-              <Logo className="text-foreground [&_span:last-child]:text-muted-foreground" />
-              <button
-                type="button"
-                onClick={() => setMobileOpen(false)}
-                className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-white text-foreground active:bg-muted/50"
-                aria-label="Close menu"
-              >
-                <X className="size-6" strokeWidth={2} />
-              </button>
-            </div>
+      </header>
 
-            <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain px-5 py-6">
-                <div className="grid gap-2">
-                  <Link
-                    href="/"
-                    onClick={() => setMobileOpen(false)}
-                    className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    href="/vocab-quiz"
-                    onClick={() => setMobileOpen(false)}
-                    className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-[#111827] to-[#0b1220] px-4 py-4 text-lg font-semibold text-white shadow-(--shadow-cta) transition-[filter,box-shadow,background-color] duration-200 hover:from-[#1f2937] hover:to-[#111827] hover:shadow-md hover:brightness-105 active:brightness-95"
-                  >
-                    <Gamepad2 className="size-5 shrink-0" />
-                    Play Game
-                  </Link>
-                  {state.user ? (
-                    <Link
-                      href="/account"
-                      onClick={() => setMobileOpen(false)}
-                      className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                    >
-                      Account
-                    </Link>
-                  ) : (
-                    <Link
-                      href="/subscribe"
-                      onClick={() => setMobileOpen(false)}
-                      className="rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold"
-                    >
-                      Get Free Book
-                    </Link>
-                  )}
-                  <span className="px-1 pt-2 text-xs font-medium text-muted-foreground">
-                    Library
-                  </span>
-                  {LIBRARY_LINKS.map((link) => {
-                    const active = isAssetLinkActive(
-                      pathname ?? "",
-                      link.href,
-                    );
-                    return (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className={cn(
-                          "flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-4 text-lg font-semibold",
-                          active && "bg-muted ring-1 ring-border",
-                          link.emphasized &&
-                            "bg-muted/40 shadow-sm shadow-black/5",
-                        )}
-                      >
-                        <Image
-                          src={link.icon}
-                          alt={link.label}
-                          width={24}
-                          height={24}
-                          className={cn(
-                            "shrink-0 opacity-80",
-                            link.emphasized ? "size-7" : "size-6",
-                          )}
-                        />
-                        {link.label}
-                      </Link>
-                    );
-                  })}
-                </div>
+      {navMounted && mobileOpen
+        ? createPortal(
+            <div
+              className="fixed inset-0 z-200 flex flex-col bg-white md:hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile menu"
+            >
+              <div className="flex h-[57px] shrink-0 items-center justify-between border-b border-[#f2f2f2] px-5">
+                <span className="font-serif text-xl font-semibold text-[#242424]">
+                  Kaja Korean
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex size-10 items-center justify-center rounded-full"
+                  aria-label="Close menu"
+                >
+                  <X className="size-5" strokeWidth={2} />
+                </button>
               </div>
-
-              <div className="shrink-0 border-t border-border px-5 py-4 text-sm text-muted-foreground">
-                Close with the button above, Escape, or open a page.
-              </div>
+              <nav className="flex flex-1 flex-col gap-1 px-5 py-6 text-lg text-[#242424]">
+                {[
+                  { href: "/", label: "About" },
+                  { href: "/blog", label: "Notes" },
+                  {
+                    href: "/book/korean-beyond-translation",
+                    label: "Book",
+                  },
+                  { href: "/vocab-quiz", label: "Play Game" },
+                  {
+                    href: state.user ? "/account" : "/login",
+                    label: state.user ? "Account" : "Sign in",
+                  },
+                ].map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-lg py-3"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link
+                  href="/subscribe"
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(styles.headerCta, "mt-4")}
+                >
+                  Get free book
+                </Link>
+              </nav>
             </div>,
-          document.body,
-        )
-      : null}
+            document.body,
+          )
+        : null}
     </>
   );
 }

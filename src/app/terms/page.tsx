@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 
-import {
-  MarketingHeader,
-  MarketingPage,
-  MarketingShell,
-  MarketingShellBody,
-} from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
+import homeStyles from "@/components/site/home-blog.module.css";
 import { siteUrl } from "@/lib/siteUrl";
 
 export const metadata: Metadata = {
@@ -16,10 +12,8 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <MarketingPage containerClassName="max-w-3xl">
-      <MarketingShell>
-        <MarketingShellBody>
-          <MarketingHeader title="Terms of Service" />
+    <BlogInnerPage containerClassName="max-w-3xl">
+          <h1 className={homeStyles.sectionTitle}>Terms of Service</h1>
 
           <div className="mt-6 space-y-4 text-sm leading-7 text-[var(--quiz-text-sub)]">
             <p>Last updated: {new Date().getFullYear()}</p>
@@ -93,8 +87,6 @@ export default function TermsPage() {
               <span className="text-[var(--quiz-text)]">minjae@kajakorean.com</span>
             </p>
           </div>
-        </MarketingShellBody>
-      </MarketingShell>
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }

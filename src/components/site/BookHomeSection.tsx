@@ -1,50 +1,39 @@
 import Link from "next/link";
 
 import { BookHeroClickable } from "@/components/site/BookHeroClickable";
-import { Container } from "@/components/site/Container";
-import { Button } from "@/components/ui/Button";
-import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+
+import styles from "./home-blog.module.css";
 
 export function BookHomeSection() {
   return (
-    <section className="py-10 sm:py-16">
-      <Container className="relative">
-        <StaggerReveal className="overflow-hidden rounded-4xl border border-black/8 bg-[#f25b43] shadow-(--shadow-float)">
-          <div className="grid gap-10 px-6 py-10 sm:px-10 sm:py-12 lg:grid-cols-[minmax(260px,420px)_1fr] lg:items-center lg:px-14">
-            <div className="flex justify-center lg:justify-start">
-              <BookHeroClickable />
-            </div>
-
-            <div className="max-w-2xl text-white">
-              <h2 className="font-serif text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
-                Korean, Beyond Translation
-              </h2>
-              <p className="mt-5 max-w-xl text-base leading-7 text-white/82 sm:text-lg">
-                <strong className="font-semibold text-white">100 words</strong>{" "}
-                that teach the Korean people actually use. Learn the{" "}
-                <strong className="font-semibold text-white">nuance</strong>{" "}
-                behind direct translation and build a more natural feel for{" "}
-                <strong className="font-semibold text-white">
-                  real conversation
-                </strong>
-                .
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Button
-                  asChild
-                  size="md"
-                  variant="light"
-                  className="w-fit px-5"
-                >
-                  <Link href="/book/korean-beyond-translation">
-                    Read sample content
-                  </Link>
-                </Button>
-              </div>
+    <RevealOnScroll
+      as="section"
+      className={`${styles.section} ${styles.bookBand}`}
+    >
+      <div className={styles.bookColumn}>
+        <div className={styles.bookGrid}>
+          <div className={styles.bookCover}>
+            <BookHeroClickable />
+          </div>
+          <div>
+            <p className={styles.sectionLabel}>Book</p>
+            <h2 className={styles.sectionTitle}>Korean, Beyond Translation</h2>
+            <p className={styles.sectionBody}>
+              For studying Korean beyond dictionary glosses — 100 words that
+              teach tone, nuance, and how the language actually lands.
+            </p>
+            <div className={styles.linkRow}>
+              <Link
+                href="/book/korean-beyond-translation"
+                className={styles.textLink}
+              >
+                Read sample content
+              </Link>
             </div>
           </div>
-        </StaggerReveal>
-      </Container>
-    </section>
+        </div>
+      </div>
+    </RevealOnScroll>
   );
 }

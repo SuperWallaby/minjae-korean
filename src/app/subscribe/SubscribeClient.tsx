@@ -6,16 +6,10 @@ import * as React from "react";
 import { BookOpen, FileText, Mail, Puzzle } from "lucide-react";
 
 import { SubscribeWelcome } from "@/components/subscribe/SubscribeWelcome";
-import {
-  MarketingHeader,
-  MarketingPage,
-  MarketingShell,
-  MarketingShellBody,
-} from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
+import homeStyles from "@/components/site/home-blog.module.css";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { StaggerReveal } from "@/components/ui/StaggerReveal";
 import { trackNewsletterSubscribe } from "@/lib/ga";
 
 export function SubscribeClient() {
@@ -57,11 +51,8 @@ export function SubscribeClient() {
   };
 
   return (
-    <MarketingPage containerClassName="max-w-2xl">
-      <RevealOnScroll>
-        <StaggerReveal>
-          <MarketingShell>
-            <MarketingShellBody className="text-center">
+    <BlogInnerPage containerClassName="max-w-2xl">
+          <div className="text-center">
               {sent ? (
                 <SubscribeWelcome
                   email={email}
@@ -76,13 +67,16 @@ export function SubscribeClient() {
                     height={72}
                     className="mx-auto rounded-full"
                   />
-                  <MarketingHeader
-                    eyebrow="Free book"
-                    title="Subscribe to Kaja Korean"
-                    lead="Join the list and we'll email you a Korean learning PDF made by Kaja Korean — plus Korean quizzes and challenges every week!"
-                    centered
-                    className="mt-5"
-                  />
+                  <p className={`${homeStyles.sectionLabel} mt-5`}>
+                    How to study Korean
+                  </p>
+                  <h1 className={homeStyles.sectionTitle}>
+                    Get a free study PDF
+                  </h1>
+                  <p className={`${homeStyles.sectionBody} mx-auto`}>
+                    Join for a Korean study PDF and short notes on how to study
+                    Korean — methods and weekly practice from Minjae.
+                  </p>
 
                   <ul className="mx-auto mt-8 grid max-w-md gap-3 text-left text-sm">
                     <li className="flex items-start gap-3 rounded-[1.125rem] border border-[color-mix(in_srgb,var(--quiz-primary)_28%,var(--quiz-border))] bg-[color-mix(in_srgb,var(--quiz-primary)_7%,var(--quiz-surface))] px-4 py-3.5 shadow-sm">
@@ -178,10 +172,7 @@ export function SubscribeClient() {
                   </p>
                 </>
               )}
-            </MarketingShellBody>
-          </MarketingShell>
-        </StaggerReveal>
-      </RevealOnScroll>
-    </MarketingPage>
+          </div>
+    </BlogInnerPage>
   );
 }

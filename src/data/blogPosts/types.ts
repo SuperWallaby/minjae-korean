@@ -56,6 +56,8 @@ export type BlogPostCard = Pick<
   BlogPost,
   "slug" | "title" | "imageThumb" | "imageLarge" | "level" | "createdAt"
 > & {
+  /** Plain-text preview for list/feeds (Reddit-style context). */
+  excerpt?: string;
   /** 목록 상단 고정 (overrides에서 설정) */
   pinned?: boolean;
 };

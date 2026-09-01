@@ -17,23 +17,14 @@ import { Container } from "@/components/site/Container";
 import { Logo } from "@/components/site/Logo";
 
 const LEARN_LINKS = [
-  { href: "/vocab-quiz", label: "Vocab quiz" },
-  { href: "/vocab/detail", label: "Vocab detail" },
-  { href: "/vocab", label: "Vocab charts" },
-  { href: "/grammar", label: "Grammar" },
-  { href: "/grammar/compare", label: "Grammar compare" },
-  { href: "/grammar/meaning", label: "Meaning guides" },
-  { href: "/grammar/usage", label: "Usage guides" },
-  { href: "/grammar/how-to-say", label: "How to say it" },
+  { href: "/blog", label: "Notes" },
+  { href: "/book/korean-beyond-translation", label: "Book" },
+  { href: "/#approach", label: "About Minjae" },
 ] as const;
 
 const EXPLORE_LINKS = [
-  { href: "/news", label: "News" },
-  { href: "/blog", label: "Blog" },
-  { href: "/expressions", label: "Expressions" },
-  { href: "/songs", label: "Songs" },
-  { href: "/drama", label: "Drama" },
-  { href: "/exams", label: "Exams" },
+  { href: "/vocab-quiz", label: "Play Game" },
+  { href: "/subscribe", label: "Get Free Book" },
 ] as const;
 
 const ACCOUNT_LINKS = [
@@ -95,12 +86,13 @@ export function SiteFooter() {
     "cursor-pointer inline-flex items-center gap-2 rounded-full border border-[var(--quiz-border)] bg-[var(--quiz-surface)] px-3 py-1.5 text-xs text-[var(--quiz-text-sub)] transition hover:bg-[var(--quiz-surface-soft)] hover:text-[var(--quiz-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--quiz-primary)]/30";
 
   return (
-    <footer className="site-footer border-t border-[var(--quiz-border)] bg-[var(--quiz-canvas)] text-[var(--quiz-text)]">
+    <footer className="site-footer border-t border-[#f2f2f2] bg-white text-[#242424]">
       <Container className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] lg:items-start">
         <div className="text-sm text-[var(--quiz-text-sub)]">
           <Logo mode="footer" />
           <div className="mt-0 max-w-sm text-xs leading-6 text-[var(--quiz-text-muted)]">
-            Learn Korean with nuance — quizzes, news, grammar, and more.
+            Notes on how to study Korean — methods, habits, and what actually
+            works.
           </div>
 
           <div className="mt-5 grid gap-1 text-xs">

@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 
-import {
-  MarketingHeader,
-  MarketingPage,
-  MarketingShell,
-  MarketingShellBody,
-} from "@/components/site/MarketingShell";
+import { BlogInnerPage } from "@/components/site/BlogInnerPage";
+import homeStyles from "@/components/site/home-blog.module.css";
 import { siteUrl } from "@/lib/siteUrl";
 
 export const metadata: Metadata = {
@@ -17,10 +13,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <MarketingPage containerClassName="max-w-3xl">
-      <MarketingShell>
-        <MarketingShellBody>
-          <MarketingHeader title="Privacy Policy" />
+    <BlogInnerPage containerClassName="max-w-3xl">
+          <h1 className={homeStyles.sectionTitle}>Privacy Policy</h1>
 
           <div className="mt-6 space-y-4 text-sm leading-7 text-[var(--quiz-text-sub)]">
             <p>Last updated: {new Date().getFullYear()}</p>
@@ -107,8 +101,6 @@ export default function PrivacyPage() {
               your privacy.
             </p>
           </div>
-        </MarketingShellBody>
-      </MarketingShell>
-    </MarketingPage>
+    </BlogInnerPage>
   );
 }

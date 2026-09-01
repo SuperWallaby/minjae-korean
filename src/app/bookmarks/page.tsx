@@ -1,29 +1,19 @@
 import {
-  MarketingHeader,
-  MarketingPage,
-  MarketingShell,
-  MarketingShellBody,
-} from "@/components/site/MarketingShell";
+  BlogInnerPage,
+} from "@/components/site/BlogInnerPage";
 import { BookmarkListClient } from "@/components/article/BookmarkListClient";
-import { Breadcrumb } from "@/components/site/Breadcrumb";
+import homeStyles from "@/components/site/home-blog.module.css";
 
 export const runtime = "nodejs";
 
 export default function BookmarksPage() {
   return (
-    <MarketingPage containerClassName="max-w-2xl">
-      <MarketingShell>
-        <MarketingShellBody>
-          <Breadcrumb items={[{ label: "Saved articles", href: "/bookmarks" }]} />
-          <MarketingHeader
-            className="mt-4"
-            title="Saved bookmarks"
-            lead="Articles you bookmarked from Blog and News."
-            titleAs="h1"
-          />
-          <BookmarkListClient className="mt-8" />
-        </MarketingShellBody>
-      </MarketingShell>
-    </MarketingPage>
+    <BlogInnerPage containerClassName="max-w-2xl">
+      <h1 className={homeStyles.sectionTitle}>Saved bookmarks</h1>
+      <p className={homeStyles.sectionBody}>
+        Articles you bookmarked from the blog.
+      </p>
+      <BookmarkListClient className="mt-8" />
+    </BlogInnerPage>
   );
 }
