@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T05:47:56.541Z",
+  "generatedAt": "2026-09-01T06:16:19.386Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -68562,6 +68562,60 @@
       "publishedAt": "2026-09-01T02:47:42.039Z"
     },
     {
+      "id": "vk_pron-eo-vowel__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Learn ㅓ (eo) Sounds With These Everyday Words! in Korean",
+      "slug": "learn-eo-sounds-with-these-everyday-words-in-korean",
+      "imagePath": "/global/pins/vk_pron-eo-vowel__ko.png",
+      "words": [
+        {
+          "english": "older sister",
+          "target": "언니",
+          "romanization": "eonni"
+        },
+        {
+          "english": "where",
+          "target": "어디",
+          "romanization": "eodi"
+        },
+        {
+          "english": "mom",
+          "target": "엄마",
+          "romanization": "eomma"
+        },
+        {
+          "english": "bus",
+          "target": "버스",
+          "romanization": "beoseu"
+        },
+        {
+          "english": "evening / dinner",
+          "target": "저녁",
+          "romanization": "jeonyeok"
+        },
+        {
+          "english": "gift",
+          "target": "선물",
+          "romanization": "seonmul"
+        },
+        {
+          "english": "winter",
+          "target": "겨울",
+          "romanization": "gyeoul"
+        },
+        {
+          "english": "letter",
+          "target": "편지",
+          "romanization": "pyeonji"
+        }
+      ],
+      "partner": "preply",
+      "description": "Learn ㅓ (eo) Sounds With These Everyday Words! in Korean: older sister, where, mom, bus, evening / dinner, gift….",
+      "topicSlug": "pron-eo-vowel",
+      "publishedAt": "2026-09-01T06:13:25.957Z"
+    },
+    {
       "id": "vk_pron-eu-vowel__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68778,6 +68832,114 @@
       "publishedAt": "2026-09-01T03:59:58.398Z"
     },
     {
+      "id": "vk_pron-pp-tense__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Master the Tense ㅃ Sound With These Useful Words! in Korean",
+      "slug": "master-the-tense-sound-with-these-useful-words-in-korean",
+      "imagePath": "/global/pins/vk_pron-pp-tense__ko.png",
+      "words": [
+        {
+          "english": "bread",
+          "target": "빵",
+          "romanization": "ppang"
+        },
+        {
+          "english": "bone",
+          "target": "뼈",
+          "romanization": "ppyeo"
+        },
+        {
+          "english": "sprinkle",
+          "target": "뿌리다",
+          "romanization": "ppurida"
+        },
+        {
+          "english": "kiss",
+          "target": "뽀뽀",
+          "romanization": "ppoppo"
+        },
+        {
+          "english": "laundry",
+          "target": "빨래",
+          "romanization": "ppallae"
+        },
+        {
+          "english": "fast",
+          "target": "빠르다",
+          "romanization": "ppareuda"
+        },
+        {
+          "english": "pull out",
+          "target": "뽑다",
+          "romanization": "ppopda"
+        },
+        {
+          "english": "bakery",
+          "target": "빵집",
+          "romanization": "ppangjip"
+        }
+      ],
+      "partner": "preply",
+      "description": "Master the Tense ㅃ Sound With These Useful Words! in Korean: bread, bone, sprinkle, kiss, laundry, fast….",
+      "topicSlug": "pron-pp-tense",
+      "publishedAt": "2026-09-01T06:13:27.033Z"
+    },
+    {
+      "id": "vk_pron-u-vowel__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Master the ㅜ Sound With These Everyday Words! in Korean",
+      "slug": "master-the-sound-with-these-everyday-words-in-korean",
+      "imagePath": "/global/pins/vk_pron-u-vowel__ko.png",
+      "words": [
+        {
+          "english": "milk",
+          "target": "우유",
+          "romanization": "uyu"
+        },
+        {
+          "english": "umbrella",
+          "target": "우산",
+          "romanization": "usan"
+        },
+        {
+          "english": "cloud",
+          "target": "구름",
+          "romanization": "gureum"
+        },
+        {
+          "english": "class",
+          "target": "수업",
+          "romanization": "sueop"
+        },
+        {
+          "english": "dress shoes",
+          "target": "구두",
+          "romanization": "gudu"
+        },
+        {
+          "english": "stamp",
+          "target": "우표",
+          "romanization": "upyo"
+        },
+        {
+          "english": "friend",
+          "target": "친구",
+          "romanization": "chingu"
+        },
+        {
+          "english": "watermelon",
+          "target": "수박",
+          "romanization": "subak"
+        }
+      ],
+      "partner": "preply",
+      "description": "Master the ㅜ Sound With These Everyday Words! in Korean: milk, umbrella, cloud, class, dress shoes, stamp….",
+      "topicSlug": "pron-u-vowel",
+      "publishedAt": "2026-09-01T06:13:25.146Z"
+    },
+    {
       "id": "vk_psq-cant-sleep__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68871,6 +69033,25 @@
       "description": "It's Okay. in Korean: It's okay..",
       "topicSlug": "psq-its-okay",
       "publishedAt": "2026-09-01T03:59:57.805Z"
+    },
+    {
+      "id": "vk_psq-lets-go__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "How To Say Let's Go in Korean",
+      "slug": "how-to-say-let-s-go-in-korean",
+      "imagePath": "/global/pins/vk_psq-lets-go__ko.png",
+      "words": [
+        {
+          "english": "Let's go!",
+          "target": "가자",
+          "romanization": "gaja"
+        }
+      ],
+      "partner": "preply",
+      "description": "How To Say Let's Go in Korean: Let's go!.",
+      "topicSlug": "psq-lets-go",
+      "publishedAt": "2026-09-01T06:12:17.899Z"
     },
     {
       "id": "vk_psq-see-you__ko",
