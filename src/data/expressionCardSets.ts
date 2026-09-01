@@ -58,11 +58,18 @@ type IgListCatalog = {
 export function getExpressionCardSets(): ExpressionCardSet[] {
   const data = catalog as IgListCatalog;
   const rows = data.pages?.length ? data.pages : data.sets ?? [];
-  return rows.map((set) => {
+  const seenTitles = new Set<string>();
+  const out: ExpressionCardSet[] = [];
+  for (const set of rows) {
     const id = String(set.setId || set.id || "").trim();
     const title = String(set.title || "").trim();
+    if (!id || !title) continue;
+    const titleKey = title.toLowerCase();
+    // Home grid: hide near-duplicate titles (same phrase, different setId).
+    if (seenTitles.has(titleKey)) continue;
+    seenTitles.add(titleKey);
     const slug = String(set.slug || "").trim() || slugifyIgListTitle(title);
-    return {
+    out.push({
       id,
       title,
       shortTitle: title,
@@ -76,6 +83,7 @@ export function getExpressionCardSets(): ExpressionCardSet[] {
         imageUrl: card.imageUrl,
         kind: card.kind ?? "body",
       })),
-    };
-  });
+    });
+  }
+  return out;
 }
