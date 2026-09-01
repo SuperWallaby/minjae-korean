@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-31T19:53:25.996Z",
+  "generatedAt": "2026-09-01T01:21:45.964Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67397,6 +67397,120 @@
       ]
     },
     {
+      "id": "vk_gram-have-ever__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "-아/어 본 적 있다 — Have Ever Done in Korean",
+      "slug": "have-ever-done-in-korean",
+      "imagePath": "/global/pins/vk_gram-have-ever__ko.png",
+      "words": [
+        {
+          "english": "kimchi (object particle)",
+          "target": "김치를",
+          "romanization": "gimchireul"
+        },
+        {
+          "english": "make (verb stem + connector)",
+          "target": "만들어",
+          "romanization": "mandeureo"
+        },
+        {
+          "english": "have ever done?",
+          "target": "본 적 있어요?",
+          "romanization": "bon jeok isseoyo?"
+        },
+        {
+          "english": "to Korea",
+          "target": "한국에",
+          "romanization": "hanguge"
+        },
+        {
+          "english": "travel (verb stem + connector)",
+          "target": "여행해",
+          "romanization": "yeohaenghae"
+        },
+        {
+          "english": "to karaoke room",
+          "target": "노래방에",
+          "romanization": "noraebange"
+        },
+        {
+          "english": "go",
+          "target": "가",
+          "romanization": "ga"
+        },
+        {
+          "english": "spicy food (object particle)",
+          "target": "매운 음식을",
+          "romanization": "maeun eumsigeul"
+        },
+        {
+          "english": "eat (verb stem + connector)",
+          "target": "먹어",
+          "romanization": "meogeo"
+        },
+        {
+          "english": "Korean drama (object particle)",
+          "target": "한국 드라마를",
+          "romanization": "hanguk deuramareul"
+        },
+        {
+          "english": "hanbok (traditional Korean clothing) (object particle)",
+          "target": "한복을",
+          "romanization": "hanbogeul"
+        },
+        {
+          "english": "wear (verb stem + connector)",
+          "target": "입어",
+          "romanization": "ibeo"
+        },
+        {
+          "english": "hiking (object particle)",
+          "target": "등산을",
+          "romanization": "deungsaneul"
+        },
+        {
+          "english": "do (verb stem + connector)",
+          "target": "해",
+          "romanization": "hae"
+        },
+        {
+          "english": "Korean coffee (object particle)",
+          "target": "한국 커피를",
+          "romanization": "hanguk keopireul"
+        },
+        {
+          "english": "drink (verb stem + connector)",
+          "target": "마셔",
+          "romanization": "mashyeo"
+        },
+        {
+          "english": "in Korean",
+          "target": "한국어로",
+          "romanization": "hangugeoro"
+        },
+        {
+          "english": "speak (verb stem + connector)",
+          "target": "말해",
+          "romanization": "malhae"
+        },
+        {
+          "english": "Hangul (Korean alphabet) (object particle)",
+          "target": "한글을",
+          "romanization": "hangeureul"
+        },
+        {
+          "english": "write (verb stem + connector)",
+          "target": "써",
+          "romanization": "sseo"
+        }
+      ],
+      "partner": "preply",
+      "description": "-아/어 본 적 있다 — Have Ever Done in Korean: kimchi (object particle), make (verb stem + connector), have ever done?, to Korea, travel (verb stem + connector), to karaoke room….",
+      "topicSlug": "grammar",
+      "publishedAt": "2026-09-01T01:18:34.395Z"
+    },
+    {
       "id": "vk_grid-emoji-feelings-16__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -67550,6 +67664,70 @@
       "publishedAt": "2026-08-30T18:40:20.090Z"
     },
     {
+      "id": "vk_list-pref-common-korean-household-items-3324__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Household Items With Pronunciation in Korean",
+      "slug": "common-korean-household-items-with-pronunciation-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-household-items-3324__ko.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "책상",
+          "romanization": "chaeksang"
+        },
+        {
+          "english": "chair",
+          "target": "의자",
+          "romanization": "uija"
+        },
+        {
+          "english": "bed",
+          "target": "침대",
+          "romanization": "chimdae"
+        },
+        {
+          "english": "sofa",
+          "target": "소파",
+          "romanization": "sopa"
+        },
+        {
+          "english": "bookshelf",
+          "target": "책장",
+          "romanization": "chaekjang"
+        },
+        {
+          "english": "clock",
+          "target": "시계",
+          "romanization": "sigye"
+        },
+        {
+          "english": "lamp",
+          "target": "전등",
+          "romanization": "jeondeung"
+        },
+        {
+          "english": "curtain",
+          "target": "커튼",
+          "romanization": "keoteun"
+        },
+        {
+          "english": "refrigerator",
+          "target": "냉장고",
+          "romanization": "naengjanggo"
+        },
+        {
+          "english": "washing machine",
+          "target": "세탁기",
+          "romanization": "setakgi"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Household Items With Pronunciation in Korean: desk, chair, bed, sofa, bookshelf, clock….",
+      "topicSlug": "list-pref-common-korean-household-items-3324",
+      "publishedAt": "2026-09-01T01:18:36.833Z"
+    },
+    {
       "id": "vk_psq-cant-sleep__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -67700,6 +67878,262 @@
       "description": "How To Say Wait a Second in Korean: Wait a second..",
       "topicSlug": "phrase",
       "publishedAt": "2026-08-30T18:57:45.711Z"
+    },
+    {
+      "id": "vk_ref-08161814-hangul-starter__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "HANGUL STARTER in Korean",
+      "slug": "hangul-starter-in-korean",
+      "imagePath": "/global/pins/vk_ref-08161814-hangul-starter__ko.png",
+      "words": [
+        {
+          "english": "Hello (polite)",
+          "target": "안녕하세요",
+          "romanization": "annyeonghaseyo"
+        },
+        {
+          "english": "Thank you",
+          "target": "감사합니다",
+          "romanization": "gamsahamnida"
+        },
+        {
+          "english": "I'm sorry",
+          "target": "죄송합니다",
+          "romanization": "joesonghamnida"
+        },
+        {
+          "english": "How are you?",
+          "target": "잘 지내세요?",
+          "romanization": "jal jinaeseyo?"
+        },
+        {
+          "english": "Nice to meet you",
+          "target": "처음 뵙겠습니다",
+          "romanization": "cheoeum boepgesseumnida"
+        },
+        {
+          "english": "Goodbye (to person leaving)",
+          "target": "안녕히 가세요",
+          "romanization": "annyeonghi gaseyo"
+        },
+        {
+          "english": "Goodbye (to person staying)",
+          "target": "안녕히 계세요",
+          "romanization": "annyeonghi gyeseyo"
+        },
+        {
+          "english": "Good morning",
+          "target": "좋은 아침이에요",
+          "romanization": "joeun achimieyo"
+        },
+        {
+          "english": "Good night",
+          "target": "잘 자요",
+          "romanization": "jal jayo"
+        },
+        {
+          "english": "Congratulations",
+          "target": "축하합니다",
+          "romanization": "chukahamnida"
+        },
+        {
+          "english": "Please help me",
+          "target": "도와주세요",
+          "romanization": "dowajuseyo"
+        },
+        {
+          "english": "Excuse me",
+          "target": "실례합니다",
+          "romanization": "sillyehamnida"
+        }
+      ],
+      "partner": "preply",
+      "description": "HANGUL STARTER in Korean: Hello (polite), Thank you, I'm sorry, How are you?, Nice to meet you, Goodbye (to person leaving)….",
+      "topicSlug": "ref_08161814__hangul-starter",
+      "publishedAt": "2026-09-01T01:18:35.570Z"
+    },
+    {
+      "id": "vk_ref-79593130-kitchen-korean__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Kitchen Korean in Korean",
+      "slug": "kitchen-korean-in-korean",
+      "imagePath": "/global/pins/vk_ref-79593130-kitchen-korean__ko.png",
+      "words": [
+        {
+          "english": "Hello",
+          "target": "안녕하세요",
+          "romanization": "annyeonghaseyo"
+        },
+        {
+          "english": "Where is the bathroom?",
+          "target": "화장실 어디에요?",
+          "romanization": "hwajangsil eodieyo?"
+        },
+        {
+          "english": "How much is it?",
+          "target": "얼마예요?",
+          "romanization": "eolmayeyo?"
+        },
+        {
+          "english": "Please help me",
+          "target": "도와주세요",
+          "romanization": "dowajuseyo"
+        },
+        {
+          "english": "Please give me a receipt",
+          "target": "영수증 주세요",
+          "romanization": "yeongsujeung juseyo"
+        },
+        {
+          "english": "This is delicious",
+          "target": "이거 맛있어요",
+          "romanization": "igeo masisseoyo"
+        },
+        {
+          "english": "Please take a photo here",
+          "target": "여기 사진 찍어 주세요",
+          "romanization": "yeogi sajin jjigeo juseyo"
+        },
+        {
+          "english": "Please call a taxi",
+          "target": "택시 불러 주세요",
+          "romanization": "taeksi bulleo juseyo"
+        },
+        {
+          "english": "I'm lost",
+          "target": "길을 잃었어요",
+          "romanization": "gireul ilheosseoyo"
+        },
+        {
+          "english": "I have arrived",
+          "target": "도착했어요",
+          "romanization": "dochakhaesseoyo"
+        }
+      ],
+      "partner": "preply",
+      "description": "Kitchen Korean in Korean: Hello, Where is the bathroom?, How much is it?, Please help me, Please give me a receipt, This is delicious….",
+      "topicSlug": "ref_79593130__kitchen-korean",
+      "publishedAt": "2026-09-01T01:18:36.219Z"
+    },
+    {
+      "id": "vk_ref-81994562-emotion-wordsearch__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "한국어 Emotions in Korean",
+      "slug": "emotions-in-korean",
+      "imagePath": "/global/pins/vk_ref-81994562-emotion-wordsearch__ko.png",
+      "words": [
+        {
+          "english": "desk",
+          "target": "책상",
+          "romanization": "chaeksang"
+        },
+        {
+          "english": "chair",
+          "target": "의자",
+          "romanization": "uija"
+        },
+        {
+          "english": "bed",
+          "target": "침대",
+          "romanization": "chimdae"
+        },
+        {
+          "english": "sofa",
+          "target": "소파",
+          "romanization": "sopa"
+        },
+        {
+          "english": "mirror",
+          "target": "거울",
+          "romanization": "geoul"
+        },
+        {
+          "english": "window",
+          "target": "창문",
+          "romanization": "changmun"
+        },
+        {
+          "english": "door",
+          "target": "문",
+          "romanization": "mun"
+        },
+        {
+          "english": "refrigerator",
+          "target": "냉장고",
+          "romanization": "naengjanggo"
+        },
+        {
+          "english": "microwave",
+          "target": "전자레인지",
+          "romanization": "jeonjareinji"
+        },
+        {
+          "english": "bookshelf",
+          "target": "책장",
+          "romanization": "chaekjang"
+        }
+      ],
+      "partner": "preply",
+      "description": "한국어 Emotions in Korean: desk, chair, bed, sofa, mirror, window….",
+      "topicSlug": "ref_81994562__emotion-wordsearch",
+      "publishedAt": "2026-09-01T01:18:37.427Z"
+    },
+    {
+      "id": "vk_ref-quantity-words-korean__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Quantity Words in Korean",
+      "slug": "quantity-words-in-korean",
+      "imagePath": "/global/pins/vk_ref-quantity-words-korean__ko.png",
+      "words": [
+        {
+          "english": "some / a little",
+          "target": "조금",
+          "romanization": "jogeum"
+        },
+        {
+          "english": "many / much",
+          "target": "많이",
+          "romanization": "manhi"
+        },
+        {
+          "english": "a lot of",
+          "target": "정말 많이",
+          "romanization": "jeongmal manhi"
+        },
+        {
+          "english": "a few",
+          "target": "몇",
+          "romanization": "myeot"
+        },
+        {
+          "english": "few / little",
+          "target": "거의 없음",
+          "romanization": "geoui eopseum"
+        },
+        {
+          "english": "enough",
+          "target": "충분히",
+          "romanization": "chungbunhi"
+        },
+        {
+          "english": "too many / too much",
+          "target": "너무 많아요",
+          "romanization": "neomu manayo"
+        },
+        {
+          "english": "none",
+          "target": "없음",
+          "romanization": "eopseum"
+        }
+      ],
+      "partner": "preply",
+      "description": "Quantity Words in Korean: some / a little, many / much, a lot of, a few, few / little, enough….",
+      "topicSlug": "ref_quantity-words__korean",
+      "publishedAt": "2026-09-01T01:18:34.993Z"
     },
     {
       "id": "vk_sim-ask-1xt0o0__ko",
