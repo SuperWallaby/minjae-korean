@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T05:14:25.052Z",
+  "generatedAt": "2026-09-01T05:20:22.206Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -68310,6 +68310,50 @@
       "description": "Common Korean Vegetables With Pronunciation in Korean: potato, onion, carrot, chili pepper, cucumber, napa cabbage….",
       "topicSlug": "list-pref-common-korean-vegetables-pronunciati-653025",
       "publishedAt": "2026-09-01T03:41:55.065Z"
+    },
+    {
+      "id": "vk_match-body__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Which Body Part Is This in Korean",
+      "slug": "which-body-part-is-this-in-korean",
+      "imagePath": "/global/pins/vk_match-body__ko.png",
+      "words": [
+        {
+          "english": "hand",
+          "target": "손",
+          "romanization": "son"
+        },
+        {
+          "english": "knee",
+          "target": "무릎",
+          "romanization": "mureup"
+        },
+        {
+          "english": "nose",
+          "target": "코",
+          "romanization": "ko"
+        },
+        {
+          "english": "shoulder",
+          "target": "어깨",
+          "romanization": "eokkae"
+        },
+        {
+          "english": "mouth",
+          "target": "입",
+          "romanization": "ip"
+        },
+        {
+          "english": "eye",
+          "target": "눈",
+          "romanization": "nun"
+        }
+      ],
+      "partner": "preply",
+      "description": "Which Body Part Is This in Korean: hand, knee, nose, shoulder, mouth, eye.",
+      "topicSlug": "match-body",
+      "publishedAt": "2026-09-01T05:17:38.847Z"
     },
     {
       "id": "vk_match-clothes__ko",
