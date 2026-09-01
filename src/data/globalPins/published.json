@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T05:20:22.206Z",
+  "generatedAt": "2026-09-01T05:47:56.541Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67992,6 +67992,80 @@
       "publishedAt": "2026-09-01T01:54:42.982Z"
     },
     {
+      "id": "vk_list-pref-common-korean-food-ingredients-list__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Food Ingredients List in Korean",
+      "slug": "common-korean-food-ingredients-list-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-food-ingredients-list__ko.png",
+      "words": [
+        {
+          "english": "soy sauce",
+          "target": "간장",
+          "romanization": "ganjang"
+        },
+        {
+          "english": "red chili paste",
+          "target": "고추장",
+          "romanization": "gochujang"
+        },
+        {
+          "english": "sesame oil",
+          "target": "참기름",
+          "romanization": "chamgireum"
+        },
+        {
+          "english": "sugar",
+          "target": "설탕",
+          "romanization": "seoltang"
+        },
+        {
+          "english": "salt",
+          "target": "소금",
+          "romanization": "sogeum"
+        },
+        {
+          "english": "garlic",
+          "target": "마늘",
+          "romanization": "maneul"
+        },
+        {
+          "english": "ginger",
+          "target": "생강",
+          "romanization": "saenggang"
+        },
+        {
+          "english": "green onion",
+          "target": "파",
+          "romanization": "pa"
+        },
+        {
+          "english": "tofu",
+          "target": "두부",
+          "romanization": "dubu"
+        },
+        {
+          "english": "kimchi",
+          "target": "김치",
+          "romanization": "kimchi"
+        },
+        {
+          "english": "anchovy",
+          "target": "멸치",
+          "romanization": "myeolchi"
+        },
+        {
+          "english": "rice",
+          "target": "쌀",
+          "romanization": "ssal"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Food Ingredients List in Korean: soy sauce, red chili paste, sesame oil, sugar, salt, garlic….",
+      "topicSlug": "list-pref-common-korean-food-ingredients-list",
+      "publishedAt": "2026-09-01T05:45:09.281Z"
+    },
+    {
       "id": "vk_list-pref-common-korean-fruits-with-pronunciat__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68873,6 +68947,40 @@
       "description": "How To Say Wait a Second in Korean: Wait a second..",
       "topicSlug": "phrase",
       "publishedAt": "2026-08-30T18:57:45.711Z"
+    },
+    {
+      "id": "vk_quiz-password-vs-id__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Quiz-password-vs-id in Korean",
+      "slug": "quiz-password-vs-id-in-korean",
+      "imagePath": "/global/pins/vk_quiz-password-vs-id__ko.png",
+      "words": [
+        {
+          "english": "",
+          "target": "아이디",
+          "romanization": "aidi"
+        },
+        {
+          "english": "",
+          "target": "비밀번호",
+          "romanization": "bimilbeonho"
+        },
+        {
+          "english": "",
+          "target": "닉네임",
+          "romanization": "nikneim"
+        },
+        {
+          "english": "",
+          "target": "인증번호",
+          "romanization": "injeungbeonho"
+        }
+      ],
+      "partner": "preply",
+      "description": "Quiz-password-vs-id in Korean: .",
+      "topicSlug": "quiz-password-vs-id",
+      "publishedAt": "2026-09-01T05:45:08.538Z"
     },
     {
       "id": "vk_quiz-pay-vs-buy__ko",
