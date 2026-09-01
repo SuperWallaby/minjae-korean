@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GlobalLangHub } from "@/components/global-site/GlobalLangHub";
-import {
-  getGlobalLang,
-  globalSiteBase,
-} from "@/lib/globalSite/catalog";
+import { getGlobalLang } from "@/lib/globalSite/langMeta";
+import { globalSiteBase } from "@/lib/globalSite/catalog";
 import { atlasLangPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
+import { atlasLangHubDescription } from "@/lib/seo/variedCopy";
+import { pronounceStaticParamsOrEmpty } from "@/lib/buildScope";
 
 type Props = { params: Promise<{ lang: string }> };
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
-  return PRONOUNCE_PREFIX_LANGS.map((lang) => ({ lang }));
+  return pronounceStaticParamsOrEmpty(
+    PRONOUNCE_PREFIX_LANGS.map((lang) => ({ lang })),
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -21,9 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!row) return { title: "Language" };
   const base = globalSiteBase();
   const url = `${base}${atlasLangPath(lang)}`;
-  const description = `Free ${row.name} vocabulary charts for English speakers — word lists with pronunciation audio, example sentences, and tutor booking.`;
+  const description = atlasLangHubDescription("pronounce", lang, row.name);
   return {
-    title: `${row.name} vocabulary charts with audio`,
+    title: `${row.name} pronunciation charts`,
     description,
     alternates: { canonical: url },
     openGraph: {

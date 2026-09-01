@@ -6,7 +6,7 @@ import {
   GLOBAL_LANG_META,
   getGlobalLang,
   globalLangMeta,
-} from "@/lib/globalSite/catalog";
+} from "@/lib/globalSite/langMeta";
 import { atlasLangPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
 import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
 import { PronounceBrandMark } from "@/components/pronounce-site/PronounceBrandMark";

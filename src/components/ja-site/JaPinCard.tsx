@@ -1,42 +1,45 @@
 import Link from "next/link";
+
 import { GlobalPinImage } from "@/components/global-site/GlobalPinImage";
-import { atlasPinPath } from "@/lib/atlasRoutes";
-import { globalLangMeta } from "@/lib/globalSite/langMeta";
-import type { GlobalPinPage } from "@/lib/globalSite/catalog";
+
+export type JaPinCardModel = {
+  id: string;
+  titleJa: string;
+  imagePath: string;
+  wordCount: number;
+};
 
 type Props = {
-  pin: GlobalPinPage;
+  pin: JaPinCardModel;
   priority?: boolean;
   meta?: string;
   heading?: "h2" | "h3";
 };
 
-export function GlobalPinCard({
+export function JaPinCard({
   pin,
   priority = false,
   meta,
-  heading = "h2",
+  heading: Heading = "h2",
 }: Props) {
-  const Heading = heading;
-  const native = globalLangMeta(pin.lang).native;
   return (
     <Link
       className="global-pin-card"
-      href={atlasPinPath(pin)}
-      data-lang={pin.lang}
+      href={`/pin/${encodeURIComponent(pin.id)}`}
+      lang="ja"
     >
       <GlobalPinImage
         imagePath={pin.imagePath}
-        alt={`${pin.titleEn} vocabulary chart`}
+        alt={`${pin.titleJa} 英単語チャート`}
         variant="card"
         priority={priority}
         width={480}
         height={720}
       />
       <div className="global-pin-card-body">
-        <Heading>{pin.titleEn}</Heading>
+        <Heading>{pin.titleJa}</Heading>
         <div className="global-pin-card-meta">
-          {meta || `${native} · ${pin.langName}`}
+          {meta || `英語 · ${pin.wordCount}語`}
         </div>
       </div>
     </Link>

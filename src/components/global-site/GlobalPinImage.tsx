@@ -1,7 +1,7 @@
 import {
   globalPinCardImagePath,
   globalPinPageImagePath,
-} from "@/lib/globalSite/catalog";
+} from "@/lib/globalSite/pinImages";
 
 type Props = {
   imagePath: string;

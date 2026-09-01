@@ -4,10 +4,10 @@ import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
 import {
   featuredHomePins,
   getGlobalCatalog,
-  globalLangMeta,
   globalSiteBase,
   listGlobalPins,
 } from "@/lib/globalSite/catalog";
+import { globalLangMeta } from "@/lib/globalSite/langMeta";
 import { atlasLangPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
 import { pronounceSiteOrigin } from "@/lib/pronounceSite/brand";
 
@@ -31,10 +31,11 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-export default function PronounceHomePage() {
-  const catalog = getGlobalCatalog();
-  const zhPins = listGlobalPins({ lang: "zh" });
-  const featured = featuredHomePins(1).filter((p) => p.lang === "zh");
+export default async function PronounceHomePage() {
+  const catalog = await getGlobalCatalog();
+  const allPins = await listGlobalPins();
+  const zhPins = allPins.filter((p) => p.lang === "zh");
+  const featured = (await featuredHomePins(1)).filter((p) => p.lang === "zh");
   const pins = zhPins.length ? zhPins : featured;
   const base = globalSiteBase();
 
@@ -79,7 +80,7 @@ export default function PronounceHomePage() {
         {PRONOUNCE_PREFIX_LANGS.map((code) => {
           const lang = catalog.languages.find((l) => l.code === code);
           if (!lang) return null;
-          const count = listGlobalPins({ lang: code }).length;
+          const count = allPins.filter((p) => p.lang === code).length;
           const meta = globalLangMeta(code);
           return (
             <Link

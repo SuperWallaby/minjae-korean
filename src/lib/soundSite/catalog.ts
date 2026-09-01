@@ -1,5 +1,5 @@
-import catalog from "@/data/soundPins/published.json";
-import { pinCdnUrl } from "@/lib/mediaUrl";
+import bundled from "@/data/soundPins/published.json";
+import { FILE_CDN, pinCdnUrl } from "@/lib/mediaUrl";
 import { soundSiteOrigin } from "@/lib/soundSite/brand";
 import type { SoundTtsFields } from "@/lib/soundSite/voices";
 
@@ -38,24 +38,76 @@ export type SoundPinCatalog = {
   pages: SoundPinPage[];
 };
 
-export function getSoundCatalog(): SoundPinCatalog {
-  return catalog as SoundPinCatalog;
+/** Live catalog on R2 — publish uploads here; pages read this at runtime. */
+export const SOUND_CATALOG_CDN_KEY = "sound/catalog/published.json";
+
+export function soundCatalogCdnUrl(): string {
+  const base =
+    process.env.NEXT_PUBLIC_SOUND_CATALOG_CDN?.trim().replace(/\/+$/, "") ||
+    FILE_CDN;
+  return `${base}/${SOUND_CATALOG_CDN_KEY}`;
+}
+
+function isCatalog(raw: unknown): raw is SoundPinCatalog {
+  return Boolean(
+    raw &&
+      typeof raw === "object" &&
+      Array.isArray((raw as SoundPinCatalog).pages),
+  );
+}
+
+/** Repo snapshot baked into the deploy — fallback if CDN is down. */
+export function getSoundCatalogBundled(): SoundPinCatalog {
+  return bundled as SoundPinCatalog;
+}
+
+/**
+ * Prefer CDN catalog (new pins without redeploy), fall back to bundled JSON.
+ * Cached ~60s via Next fetch revalidate.
+ */
+export async function getSoundCatalog(): Promise<SoundPinCatalog> {
+  try {
+    const res = await fetch(soundCatalogCdnUrl(), {
+      next: { revalidate: 60, tags: ["sound-catalog"] },
+      signal: AbortSignal.timeout(8_000),
+    });
+    if (res.ok) {
+      const json: unknown = await res.json();
+      if (isCatalog(json)) return json;
+    }
+  } catch {
+    /* CDN miss / timeout → bundled */
+  }
+  return getSoundCatalogBundled();
 }
 
 export function soundSiteBase(): string {
-  return getSoundCatalog().site?.replace(/\/+$/, "") || soundSiteOrigin();
+  return (
+    getSoundCatalogBundled().site?.replace(/\/+$/, "") || soundSiteOrigin()
+  );
 }
 
-export function listSoundPins(): SoundPinPage[] {
-  return getSoundCatalog().pages || [];
+export async function listSoundPins(): Promise<SoundPinPage[]> {
+  return (await getSoundCatalog()).pages || [];
 }
 
-export function getSoundPin(id: string): SoundPinPage | null {
+/** Home/related cards — drop TTS blobs from the RSC payload. */
+export function soundPinForCard(pin: SoundPinPage): SoundPinPage {
+  return {
+    id: pin.id,
+    titleEn: pin.titleEn,
+    slug: pin.slug,
+    imagePath: pin.imagePath,
+    format: pin.format,
+    words: (pin.words || []).map((w) => ({ english: w.english })),
+  };
+}
+
+export async function getSoundPin(id: string): Promise<SoundPinPage | null> {
   const needle = String(id || "").trim();
   if (!needle) return null;
-  return (
-    listSoundPins().find((p) => p.id === needle || p.slug === needle) || null
-  );
+  const pages = await listSoundPins();
+  return pages.find((p) => p.id === needle || p.slug === needle) || null;
 }
 
 /** Canonical listen URL on sound.eigopin.com */
@@ -72,11 +124,11 @@ export function soundPinAbsoluteUrl(
   return `${soundSiteBase()}${soundPinPath(pin)}`;
 }
 
-export function relatedSoundPins(
+export async function relatedSoundPins(
   pin: Pick<SoundPinPage, "id"> & { format?: string },
   limit = 8,
-): SoundPinPage[] {
-  const pages = listSoundPins();
+): Promise<SoundPinPage[]> {
+  const pages = await listSoundPins();
   const out: SoundPinPage[] = [];
   const seen = new Set<string>([pin.id]);
   const fmt = String(pin.format || "").trim();

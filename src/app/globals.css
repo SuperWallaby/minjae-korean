@@ -97,6 +97,12 @@
     "Liberation Mono", "Courier New", monospace;
 }
 
+/* Korean UI: system fonts only. next/font Noto KR preloads 100+ woff2 files. */
+.kaja-kr-fonts {
+  --font-noto-sans-kr: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    sans-serif;
+}
+
 @layer base {
   body {
     @apply bg-background text-foreground antialiased;

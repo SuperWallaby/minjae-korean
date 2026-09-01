@@ -2,16 +2,11 @@ import { SITE_DESCRIPTION, SITE_HOME_TITLE, SITE_NAME } from "@/lib/siteBrand";
 import type { Metadata } from "next";
 import {
   Bricolage_Grotesque,
-  Jua,
-  Nanum_Gothic,
-  Noto_Sans_KR,
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
-import { KajaMainLayoutChrome } from "@/components/site/KajaMainLayoutChrome";
-import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
 import {
   EIGOCHART_DESCRIPTION,
   EIGOCHART_NAME,
@@ -55,27 +50,6 @@ const plusJakarta = Plus_Jakarta_Sans({
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const notoSansKr = Noto_Sans_KR({
-  variable: "--font-noto-sans-kr",
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  display: "swap",
-});
-
-const jua = Jua({
-  variable: "--font-jua",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
-const nanumGothic = Nanum_Gothic({
-  variable: "--font-nanum-gothic",
-  subsets: ["latin"],
-  weight: ["400", "700", "800"],
   display: "swap",
 });
 
@@ -392,14 +366,12 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: SITE_DESCRIPTION,
     applicationName: SITE_NAME,
-    // SEO focus moved to eigopin / sound.eigopin / getpronounce — stop indexing Kaja apex.
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       googleBot: {
-        index: false,
-        follow: false,
-        noimageindex: true,
+        index: true,
+        follow: true,
       },
     },
     manifest: "/brand/site.webmanifest",
@@ -505,19 +477,17 @@ export default async function RootLayout({
             </>
           ) : null}
         </head>
-        <body
-          className={
-            isWorksheetSite
-              ? `${plusJakarta.variable} ${bricolage.variable} ${notoSansKr.variable} ${jua.variable} ${nanumGothic.variable}`
-              : `${plusJakarta.variable} ${bricolage.variable}`
-          }
-        >
+        <body className={`${plusJakarta.variable} ${bricolage.variable}`}>
           <GoogleAnalytics />
-          <MockSessionProvider>{children}</MockSessionProvider>
+          {children}
         </body>
       </html>
     );
   }
+
+  const { KajaMainLayoutChrome } = await import(
+    "@/components/site/KajaMainLayoutChrome"
+  );
 
   return (
     <html lang="en">
@@ -529,7 +499,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakarta.variable} ${bricolage.variable} min-h-dvh font-sans`}
+        className={`${plusJakarta.variable} ${bricolage.variable} kaja-kr-fonts min-h-dvh font-sans`}
         cz-shortcut-listen="true"
       >
         <GoogleAnalytics />

@@ -4,7 +4,8 @@ import {
   SOUND_SITE_NAME,
   soundSiteHomeTitle,
 } from "@/lib/soundSite/brand";
-import { listSoundPins, soundSiteBase } from "@/lib/soundSite/catalog";
+import { listSoundPins, soundPinForCard, soundSiteBase } from "@/lib/soundSite/catalog";
+import { SoundPinCard } from "@/components/sound-site/SoundPinCard";
 import { SoundTutorPair } from "@/components/sound-site/SoundTutorPair";
 import {
   SoundAccentToggle,
@@ -30,10 +31,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
-export default function SoundHomePage() {
-  const pins = listSoundPins();
+export default async function SoundHomePage() {
+  const pins = (await listSoundPins()).map(soundPinForCard);
   const base = soundSiteBase();
   const jsonLd = {
     "@context": "https://schema.org",
@@ -53,21 +54,21 @@ export default function SoundHomePage() {
 
       <section className="sound-hero">
         <div className="sound-hero-copy">
-          <p className="global-kicker">English · sound-first</p>
+          <p className="global-kicker">Slang words in English</p>
           <h1>
-            Learn English
+            Other ways
             <br />
-            by listening.
+            to say it.
           </h1>
           <p className="sound-hero-lede">
-            Vocabulary charts for English speakers — every word is meant to be
-            heard. Switch US / UK / AU, pick a voice, play slow then normal,
-            then say it back.
+            Other ways to say thank you, sorry, and I agree — plus slang words
+            in English. Listen American vs British pronunciation, or an
+            Australian accent, then say it back.
           </p>
           <ul className="sound-hero-chips">
-            <li>EN → EN</li>
-            <li>US · UK · AU</li>
-            <li>Play all · Slow → Normal</li>
+            <li>Other ways to say</li>
+            <li>Slang words in English</li>
+            <li>American vs British</li>
           </ul>
           <div
             className="sound-hero-controls"
@@ -103,40 +104,21 @@ export default function SoundHomePage() {
       <SoundTutorPair />
 
       <div className="global-section-head" id="charts">
-        <h2 className="global-section-title">Pronunciation charts</h2>
+        <h2 className="global-section-title">Other ways to say it</h2>
         <p>
           {pins.length > 0
-            ? `${pins.length} charts · audio on every word`
-            : "Charts are on the way — EN→EN sound pins aren’t published yet."}
+            ? `${pins.length} charts · slang words in English too`
+            : "Charts are on the way."}
         </p>
       </div>
 
       {pins.length > 0 ? (
         <div className="global-pin-grid">
           {pins.map((pin) => (
-            <a
-              key={pin.id}
-              className="sound-pin-card"
-              href={`/pin/${encodeURIComponent(pin.id)}`}
-            >
-              <strong>{pin.titleEn}</strong>
-              <span>{pin.words?.length || 0} words</span>
-            </a>
+            <SoundPinCard key={pin.id} pin={pin} heading="h2" />
           ))}
         </div>
-      ) : (
-        <div className="sound-empty" role="status">
-          <p className="sound-empty-title">No charts yet</p>
-          <p>
-            This site is live and ready. The first English-in-English sound
-            charts will appear here once they&apos;re generated and published.
-          </p>
-          <p className="sound-empty-meta">
-            Sibling site for Japanese speakers:{" "}
-            <a href="https://eigopin.com">eigopin.com</a>
-          </p>
-        </div>
-      )}
+      ) : null}
     </>
   );
 }
