@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T02:15:41.010Z",
+  "generatedAt": "2026-09-01T02:50:31.414Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67397,6 +67397,45 @@
       ]
     },
     {
+      "id": "vk_gram-became__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "-아/어지다 — Become / Get in Korean",
+      "slug": "become-get-in-korean",
+      "imagePath": "/global/pins/vk_gram-became__ko.png",
+      "words": [
+        {
+          "english": "The weather got cold",
+          "target": "날씨가 추워졌어요",
+          "romanization": "nalssiga chuwoyeosseooyo"
+        },
+        {
+          "english": "My throat got sore",
+          "target": "목이 아파졌어요",
+          "romanization": "mogi apayyeosseooyo"
+        },
+        {
+          "english": "I got tired",
+          "target": "피곤해졌어요",
+          "romanization": "pigonhaejyeosseooyo"
+        },
+        {
+          "english": "I became pretty",
+          "target": "예뻐졌어요",
+          "romanization": "yeppeojyeosseooyo"
+        },
+        {
+          "english": "I got rich",
+          "target": "부자가 되었어요",
+          "romanization": "bujaga doeeosseooyo"
+        }
+      ],
+      "partner": "preply",
+      "description": "-아/어지다 — Become / Get in Korean: The weather got cold, My throat got sore, I got tired, I became pretty, I got rich.",
+      "topicSlug": "grammar",
+      "publishedAt": "2026-09-01T02:32:00.307Z"
+    },
+    {
       "id": "vk_gram-have-ever__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -67910,6 +67949,50 @@
       "publishedAt": "2026-09-01T02:12:45.577Z"
     },
     {
+      "id": "vk_match-school__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "What’s This School Item In Korean? Match the Word To the Picture in Korean",
+      "slug": "what-s-this-school-item-in-korean-match-the-word-to-the-picture-in-korean",
+      "imagePath": "/global/pins/vk_match-school__ko.png",
+      "words": [
+        {
+          "english": "ruler",
+          "target": "자",
+          "romanization": "ja"
+        },
+        {
+          "english": "book",
+          "target": "책",
+          "romanization": "chaek"
+        },
+        {
+          "english": "blackboard",
+          "target": "칠판",
+          "romanization": "chilpan"
+        },
+        {
+          "english": "eraser",
+          "target": "지우개",
+          "romanization": "jiugae"
+        },
+        {
+          "english": "bag",
+          "target": "가방",
+          "romanization": "gabang"
+        },
+        {
+          "english": "pencil",
+          "target": "연필",
+          "romanization": "yeonpil"
+        }
+      ],
+      "partner": "preply",
+      "description": "What’s This School Item In Korean? Match the Word To the Picture in Korean: ruler, book, blackboard, eraser, bag, pencil.",
+      "topicSlug": "match-school",
+      "publishedAt": "2026-09-01T02:47:42.039Z"
+    },
+    {
       "id": "vk_pron-jj-tense__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68352,6 +68435,70 @@
       "publishedAt": "2026-09-01T01:36:37.612Z"
     },
     {
+      "id": "vk_ref-75380214-direction-words__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Direction Words in Korean",
+      "slug": "direction-words-in-korean",
+      "imagePath": "/global/pins/vk_ref-75380214-direction-words__ko.png",
+      "words": [
+        {
+          "english": "now",
+          "target": "지금",
+          "romanization": "jigeum"
+        },
+        {
+          "english": "today",
+          "target": "오늘",
+          "romanization": "oneul"
+        },
+        {
+          "english": "tomorrow",
+          "target": "내일",
+          "romanization": "naeil"
+        },
+        {
+          "english": "yesterday",
+          "target": "어제",
+          "romanization": "eoje"
+        },
+        {
+          "english": "morning",
+          "target": "아침",
+          "romanization": "achim"
+        },
+        {
+          "english": "afternoon/lunch",
+          "target": "점심",
+          "romanization": "jeomsim"
+        },
+        {
+          "english": "evening/dinner",
+          "target": "저녁",
+          "romanization": "jeonyeok"
+        },
+        {
+          "english": "night",
+          "target": "밤",
+          "romanization": "bam"
+        },
+        {
+          "english": "weekend",
+          "target": "주말",
+          "romanization": "jumal"
+        },
+        {
+          "english": "time",
+          "target": "시간",
+          "romanization": "sigan"
+        }
+      ],
+      "partner": "preply",
+      "description": "Direction Words in Korean: now, today, tomorrow, yesterday, morning, afternoon/lunch….",
+      "topicSlug": "ref_75380214__direction-words",
+      "publishedAt": "2026-09-01T02:32:01.216Z"
+    },
+    {
       "id": "vk_ref-79593130-kitchen-korean__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68478,6 +68625,80 @@
       "description": "한국어 Emotions in Korean: desk, chair, bed, sofa, mirror, window….",
       "topicSlug": "ref_81994562__emotion-wordsearch",
       "publishedAt": "2026-09-01T01:18:37.427Z"
+    },
+    {
+      "id": "vk_ref-94079046-body-feelings__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Body & Feelings in Korean",
+      "slug": "body-feelings-in-korean",
+      "imagePath": "/global/pins/vk_ref-94079046-body-feelings__ko.png",
+      "words": [
+        {
+          "english": "Hello",
+          "target": "안녕하세요",
+          "romanization": "Annyeonghaseyo"
+        },
+        {
+          "english": "Please help me",
+          "target": "도와주세요",
+          "romanization": "Dowajuseyo"
+        },
+        {
+          "english": "Where is the bathroom?",
+          "target": "화장실 어디에요?",
+          "romanization": "Hwajangsil eodieyo?"
+        },
+        {
+          "english": "How much is it?",
+          "target": "얼마에요?",
+          "romanization": "Eolmaeyo?"
+        },
+        {
+          "english": "I'm lost",
+          "target": "길을 잃었어요",
+          "romanization": "Gireul ilheosseoyo"
+        },
+        {
+          "english": "Please give me the menu",
+          "target": "메뉴 주세요",
+          "romanization": "Menyu juseyo"
+        },
+        {
+          "english": "Please give me the receipt",
+          "target": "영수증 주세요",
+          "romanization": "Yeongsujeung juseyo"
+        },
+        {
+          "english": "Please call a taxi",
+          "target": "택시 불러 주세요",
+          "romanization": "Taeksi bulleo juseyo"
+        },
+        {
+          "english": "Please take a photo",
+          "target": "사진 찍어 주세요",
+          "romanization": "Sajin jjigeo juseyo"
+        },
+        {
+          "english": "I have arrived",
+          "target": "도착했어요",
+          "romanization": "Dochakhaseoyo"
+        },
+        {
+          "english": "I have a reservation",
+          "target": "예약했어요",
+          "romanization": "Yeyakhaesseoyo"
+        },
+        {
+          "english": "Do you speak English?",
+          "target": "영어 할 수 있어요?",
+          "romanization": "Yeongeo hal su isseoyo?"
+        }
+      ],
+      "partner": "preply",
+      "description": "Body & Feelings in Korean: Hello, Please help me, Where is the bathroom?, How much is it?, I'm lost, Please give me the menu….",
+      "topicSlug": "ref_94079046__body-feelings",
+      "publishedAt": "2026-09-01T02:47:42.690Z"
     },
     {
       "id": "vk_ref-98144541-snacks-korean__ko",
