@@ -162,48 +162,33 @@ export async function GlobalPinDetail({ pin }: Props) {
           {reading ? null : (
           <aside className="global-tutor-panel">
             {partner === "preply" ? (
-              <>
-                <div className="global-tutor-preply affiliate-preply-desktop-only">
-                  <div className="global-tutor-preply-copy">
-                    <p className="global-tutor-kicker">50% off your first lesson</p>
-                    <h2>Practice with a {pin.langName} tutor</h2>
-                    <p>
-                      Use them lightly after study in a real conversation.
-                    </p>
-                    <a className="global-btn" href={goHref}>
-                      Get 50% Off Your First Lesson →
-                    </a>
-                  </div>
-                  <a
-                    className="global-tutor-ad"
-                    href={goHref}
-                    aria-label="Preply — 50% off your first lesson"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/brand/affiliate/preply-300x250.webp"
-                      alt="Preply — learn with a live tutor, 50% off"
-                      width={300}
-                      height={250}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </a>
-                </div>
-                <div className="affiliate-italki-mobile-only">
-                  <p className="global-tutor-kicker">$10 off your first lesson</p>
+              <div className="global-tutor-preply">
+                <div className="global-tutor-preply-copy">
+                  <p className="global-tutor-kicker">{offer}</p>
                   <h2>Practice with a {pin.langName} tutor</h2>
                   <p>
                     Use them lightly after study in a real conversation.
                   </p>
-                  <a
-                    className="global-btn"
-                    href={globalGoPath("italki", { lang: pin.lang, pin: pin.id })}
-                  >
-                    Continue · italki
+                  <a className="global-btn" href={goHref}>
+                    Get 50% Off Your First Lesson →
                   </a>
                 </div>
-              </>
+                <a
+                  className="global-tutor-ad"
+                  href={goHref}
+                  aria-label="Preply — 50% off your first lesson"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/brand/affiliate/preply-300x250.webp"
+                    alt="Preply — learn with a live tutor, 50% off"
+                    width={300}
+                    height={250}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
             ) : (
               <>
                 <p className="global-tutor-kicker">{offer}</p>

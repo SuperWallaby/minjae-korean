@@ -43,16 +43,10 @@ export async function GlobalLangHub({ code }: Props) {
           </p>
           <div className="global-cta-row">
             <a
-              className="global-btn global-btn-stamp affiliate-preply-desktop-only"
+              className="global-btn global-btn-stamp"
               href={globalGoPath("preply", { lang: code })}
             >
               Book a {lang.name} tutor · 50% off
-            </a>
-            <a
-              className="global-btn global-btn-stamp affiliate-italki-mobile-only"
-              href={globalGoPath("italki", { lang: code })}
-            >
-              Book a {lang.name} tutor · $10 off
             </a>
           </div>
         </div>

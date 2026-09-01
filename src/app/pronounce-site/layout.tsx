@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../global-site/global.css";
 import "../sound-site/sound.css";
+import "@/styles/affiliate-device.css";
 import {
   PRONOUNCE_SITE_DESCRIPTION,
   PRONOUNCE_SITE_NAME,

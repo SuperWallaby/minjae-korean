@@ -6,34 +6,35 @@ type Props = {
 
 /** Stable A/B: one partner per pin (never both). */
 function pickPartner(pinId?: string): "preply" | "italki" {
-  const seed = String(pinId || "sound-home");
+  const seed = String(pinId || "ja-home");
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) | 0;
   return (h & 1) === 0 ? "preply" : "italki";
 }
 
-export function SoundTutorPair({ pinId }: Props) {
+export function JaTutorPair({ pinId }: Props) {
   const partner = pickPartner(pinId);
-  const href = globalGoPath(partner, { lang: "en", pin: pinId });
+  const href = globalGoPath(partner, { lang: "en-ja", pin: pinId });
   const isPreply = partner === "preply";
 
   return (
     <aside
-      className="sound-tutor-pair"
+      className="ja-tutor-pair"
       id="tutors"
-      aria-labelledby="sound-tutor-heading"
+      aria-labelledby="ja-tutor-heading"
     >
-      <p className="sound-tutor-kicker">Practice out loud</p>
-      <h2 id="sound-tutor-heading">Book a 1:1 English tutor</h2>
-      <p className="sound-tutor-lede">
-        Charts train your ear. A tutor locks in your speaking — try a discounted
-        first lesson.
+      <p className="ja-tutor-pair-kicker">マンツーマン</p>
+      <h2 id="ja-tutor-heading">1対1の英語講師、必要ですか？</h2>
+      <p className="ja-tutor-pair-lede">
+        次は会話で。1対1の英語講師と練習できます。
       </p>
-      <div className="sound-tutor-grid sound-tutor-grid-single">
+      <div className="ja-tutor-pair-grid ja-tutor-pair-grid-single">
         <a
-          className="sound-tutor-banner"
+          className="ja-tutor-banner"
           href={href}
           data-affiliate={partner}
+          data-ga-event="affiliate_cta"
+          data-placement={isPreply ? "ja_tutor_banner" : "ja_tutor_italki"}
         >
           <picture>
             <source
@@ -53,8 +54,8 @@ export function SoundTutorPair({ pinId }: Props) {
               }
               alt={
                 isPreply
-                  ? "Preply — Learn a new language with a live tutor. 50% off first lesson"
-                  : "italki — Learn 150+ languages with ease. $10 off"
+                  ? "Preply — 英語のライブ講師と学ぶ。初回レッスン50% OFF"
+                  : "italki — 英語のライブ講師と学ぶ。初回 $10 OFF"
               }
               width={isPreply ? 300 : 1024}
               height={isPreply ? 250 : 924}
@@ -62,10 +63,8 @@ export function SoundTutorPair({ pinId }: Props) {
               decoding="async"
             />
           </picture>
-          <span className="sound-tutor-cta">
-            {isPreply
-              ? "Continue on Preply · 50% off"
-              : "Continue on italki · $10 off"}
+          <span className="ja-tutor-banner-caption">
+            {isPreply ? "Preply · 初回 50% OFF" : "italki · 初回 $10 OFF"}
           </span>
         </a>
       </div>

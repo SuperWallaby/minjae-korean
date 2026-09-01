@@ -59,17 +59,8 @@ export default function GlobalSiteLayout({
               <span className="global-brand-mark">Kaja</span>
               <span className="global-brand-sub">Global</span>
             </Link>
-            <a
-              className="global-header-tutor affiliate-preply-desktop-only"
-              href="/go/preply"
-            >
+            <a className="global-header-tutor" href="/go/preply">
               1:1 tutor <span>(50% off)</span>
-            </a>
-            <a
-              className="global-header-tutor affiliate-italki-mobile-only"
-              href="/go/italki"
-            >
-              1:1 tutor <span>($10 off)</span>
             </a>
           </div>
           <nav className="global-nav" aria-label="Languages">
@@ -99,12 +90,7 @@ export default function GlobalSiteLayout({
           </p>
           <p className="global-footer-meta">
             A <a href="https://kajakorean.com">kajakorean.com</a> product ·{" "}
-            <a className="affiliate-preply-desktop-only" href="/go/preply">
-              Book a tutor (50% off)
-            </a>
-            <a className="affiliate-italki-mobile-only" href="/go/italki">
-              Book a tutor ($10 off)
-            </a>
+            <a href="/go/preply">Book a tutor (50% off)</a>
           </p>
         </div>
       </footer>

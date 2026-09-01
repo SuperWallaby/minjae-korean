@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../global-site/global.css";
 import "./sound.css";
+import "@/styles/affiliate-device.css";
 import {
   SOUND_SITE_DESCRIPTION,
   SOUND_SITE_NAME,
@@ -11,6 +12,7 @@ import {
   soundSiteTitleTemplate,
 } from "@/lib/soundSite/brand";
 import { SoundPlaybackProvider } from "@/components/sound-site/SoundPlayback";
+import { AtlasScrollToTop } from "@/components/global-site/AtlasScrollToTop";
 
 const origin = soundSiteOrigin();
 
@@ -46,6 +48,7 @@ export default function SoundSiteLayout({
 }) {
   return (
     <div className="global-root sound-root" lang="en">
+      <AtlasScrollToTop />
       <header className="global-header sound-header">
         <div className="global-shell global-header-inner">
           <div className="global-header-top">
@@ -53,10 +56,7 @@ export default function SoundSiteLayout({
               <span className="sound-brand-mark" aria-hidden>
                 ◈
               </span>
-              <span className="global-brand-text">
-                <span className="global-brand-mark">{SOUND_SITE_NAME}</span>
-                <span className="global-brand-sub">sound.eigopin.com</span>
-              </span>
+              <span className="global-brand-mark">{SOUND_SITE_NAME}</span>
             </Link>
             <a className="global-header-tutor" href="#tutors">
               1:1 tutor <span>(deal)</span>
@@ -69,11 +69,10 @@ export default function SoundSiteLayout({
       </SoundPlaybackProvider>
       <footer className="global-footer">
         <div className="global-shell">
-          <p>{SOUND_SITE_NAME} — English charts that lead with sound.</p>
+          <p>{SOUND_SITE_NAME} — other ways to say it.</p>
           <p className="global-footer-meta">
-            {SOUND_SITE_TAGLINE} · <a href="/go/preply">Preply 50% off</a>
-            {" · "}
-            <a href="/go/italki">italki $10 off</a>
+            Slang words in English ·{" "}
+            <a href="/go/preply">Preply 50% off</a>
             {" · "}
             <a href="https://eigopin.com">EigoPin (日本語)</a>
           </p>
