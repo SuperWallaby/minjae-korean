@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T04:59:08.955Z",
+  "generatedAt": "2026-09-01T05:14:25.052Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67990,6 +67990,134 @@
       "description": "Common Korean Colors With Pronunciation in Korean: red, blue, yellow, green, orange, purple….",
       "topicSlug": "list-pref-common-korean-colors-pronunciation",
       "publishedAt": "2026-09-01T01:54:42.982Z"
+    },
+    {
+      "id": "vk_list-pref-common-korean-fruits-with-pronunciat__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Fruits With Pronunciation in Korean",
+      "slug": "common-korean-fruits-with-pronunciation-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-fruits-with-pronunciat__ko.png",
+      "words": [
+        {
+          "english": "apple",
+          "target": "사과",
+          "romanization": "sagwa"
+        },
+        {
+          "english": "banana",
+          "target": "바나나",
+          "romanization": "banana"
+        },
+        {
+          "english": "orange",
+          "target": "오렌지",
+          "romanization": "orenji"
+        },
+        {
+          "english": "grape",
+          "target": "포도",
+          "romanization": "podo"
+        },
+        {
+          "english": "peach",
+          "target": "복숭아",
+          "romanization": "boksunga"
+        },
+        {
+          "english": "watermelon",
+          "target": "수박",
+          "romanization": "subak"
+        },
+        {
+          "english": "strawberry",
+          "target": "딸기",
+          "romanization": "ttalgi"
+        },
+        {
+          "english": "kiwi",
+          "target": "키위",
+          "romanization": "kiwi"
+        },
+        {
+          "english": "plum",
+          "target": "자두",
+          "romanization": "jadu"
+        },
+        {
+          "english": "melon",
+          "target": "멜론",
+          "romanization": "melon"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Fruits With Pronunciation in Korean: apple, banana, orange, grape, peach, watermelon….",
+      "topicSlug": "list-pref-common-korean-fruits-with-pronunciat",
+      "publishedAt": "2026-09-01T05:09:02.732Z"
+    },
+    {
+      "id": "vk_list-pref-common-korean-greetings-beginners-40__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Greetings For Beginners in Korean",
+      "slug": "common-korean-greetings-for-beginners-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-greetings-beginners-40__ko.png",
+      "words": [
+        {
+          "english": "Hello",
+          "target": "안녕하세요",
+          "romanization": "annyeonghaseyo"
+        },
+        {
+          "english": "Good morning",
+          "target": "좋은 아침이에요",
+          "romanization": "joeun achimieyo"
+        },
+        {
+          "english": "Goodbye (to someone leaving)",
+          "target": "안녕히 가세요",
+          "romanization": "annyeonghi gaseyo"
+        },
+        {
+          "english": "Goodbye (to someone staying)",
+          "target": "안녕히 계세요",
+          "romanization": "annyeonghi gyeseyo"
+        },
+        {
+          "english": "Thank you",
+          "target": "감사합니다",
+          "romanization": "gamsahamnida"
+        },
+        {
+          "english": "I'm sorry",
+          "target": "죄송합니다",
+          "romanization": "joesonghamnida"
+        },
+        {
+          "english": "How are you?",
+          "target": "잘 지내세요?",
+          "romanization": "jal jinaeseyo?"
+        },
+        {
+          "english": "Nice to meet you",
+          "target": "처음 뵙겠습니다",
+          "romanization": "cheoeum boepgetseumnida"
+        },
+        {
+          "english": "Thank you for the meal (before eating)",
+          "target": "잘 먹겠습니다",
+          "romanization": "jal meokgesseumnida"
+        },
+        {
+          "english": "Thank you for the meal (after eating)",
+          "target": "잘 먹었습니다",
+          "romanization": "jal meogeosseumnida"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Greetings For Beginners in Korean: Hello, Good morning, Goodbye (to someone leaving), Goodbye (to someone staying), Thank you, I'm sorry….",
+      "topicSlug": "list-pref-common-korean-greetings-beginners-40",
+      "publishedAt": "2026-09-01T05:09:37.796Z"
     },
     {
       "id": "vk_list-pref-common-korean-household-items-3324__ko",
