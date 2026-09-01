@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getPronouncePin,
-  listPronouncePins,
   pronouncePinAbsoluteUrl,
   pronouncePinFocusTerm,
   pronouncePinPageImagePath,
@@ -23,26 +22,28 @@ import {
   PronounceVoiceToggle,
 } from "@/components/pronounce-site/PronouncePlayback";
 import { PronouncePinCard } from "@/components/pronounce-site/PronouncePinCard";
+import { PronounceSiteFooter } from "@/components/pronounce-site/PronounceSiteFooter";
+import { pinStaticParamsOrEmpty } from "@/lib/buildScope";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export const revalidate = 3600;
-export const dynamicParams = false;
+export const revalidate = 60;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return listPronouncePins().map((p) => ({ slug: p.slug }));
+  return pinStaticParamsOrEmpty([] as { slug: string }[]);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const pin = getPronouncePin(slug);
+  const pin = await getPronouncePin(slug);
   if (!pin) return { title: "Pronunciation" };
   return buildPronouncePinMetadata(pin);
 }
 
 export default async function PronounceWordPage({ params }: Props) {
   const { slug } = await params;
-  const pin = getPronouncePin(slug);
+  const pin = await getPronouncePin(slug);
   if (!pin) notFound();
 
   const focus = pronouncePinFocusTerm(pin);
@@ -51,7 +52,7 @@ export default async function PronounceWordPage({ params }: Props) {
   const image = pronouncePinPageImagePath(pin.imagePath);
   const seoTitle = pronouncePinSeoTitle(pin);
   const shareUrl = pronouncePinAbsoluteUrl(pin);
-  const related = relatedPronouncePins(pin, 8);
+  const related = await relatedPronouncePins(pin, 8);
 
   return (
     <>
@@ -86,7 +87,6 @@ export default async function PronounceWordPage({ params }: Props) {
           ) : null}
 
           <aside className="sound-listen-banner" aria-label="Listening controls">
-            <p className="sound-listen-kicker">Sound desk</p>
             <div className="sound-hero-controls">
               <PronounceVoiceToggle />
               <PronounceRegionToggle />
@@ -99,7 +99,8 @@ export default async function PronounceWordPage({ params }: Props) {
               ) : null}
             </div>
             <p className="sound-listen-hint">
-              CN / TW / HK × female / male — slow down until the tones click.
+              Mainland, Taiwan, or Hong Kong · female / male — slow down until
+              the tones click.
             </p>
           </aside>
 
@@ -142,6 +143,7 @@ export default async function PronounceWordPage({ params }: Props) {
           </div>
         </section>
       ) : null}
+      <PronounceSiteFooter lang="zh" />
     </>
   );
 }

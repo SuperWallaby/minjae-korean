@@ -1,32 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GlobalPinDetail } from "@/components/global-site/GlobalPinDetail";
-import {
-  getGlobalPin,
-  listGlobalPins,
-} from "@/lib/globalSite/catalog";
+import { getGlobalPin } from "@/lib/globalSite/catalog";
 import { buildPinMetadata } from "@/lib/globalSite/seo";
-import { isJaOnlyBuild } from "@/lib/buildScope";
+import { pinStaticParamsOrEmpty } from "@/lib/buildScope";
 
 type Props = { params: Promise<{ id: string }> };
 
-export const revalidate = 3600;
+export const revalidate = 60;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  if (isJaOnlyBuild()) return [];
-  return listGlobalPins().map((p) => ({ id: p.id }));
+  return pinStaticParamsOrEmpty([] as { id: string }[]);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const pin = getGlobalPin(id);
+  const pin = await getGlobalPin(id);
   if (!pin) return { title: "Chart" };
   return buildPinMetadata(pin);
 }
 
 export default async function GlobalPinPage({ params }: Props) {
   const { id } = await params;
-  const pin = getGlobalPin(id);
+  const pin = await getGlobalPin(id);
   if (!pin) notFound();
   return <GlobalPinDetail pin={pin} />;
 }

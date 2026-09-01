@@ -29,6 +29,7 @@ import { SoundShareButton } from "@/components/sound-site/SoundShareButton";
 import { SoundTtsButton } from "@/components/sound-site/SoundTtsButton";
 import { SoundTrackText } from "@/components/sound-site/SoundTrackText";
 import { SoundTutorPair } from "@/components/sound-site/SoundTutorPair";
+import { pinStaticParamsOrEmpty } from "@/lib/buildScope";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -37,11 +38,7 @@ export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  // Bundled snapshot only — avoids build-time CDN dependency.
-  const { getSoundCatalogBundled } = await import("@/lib/soundSite/catalog");
-  return getSoundCatalogBundled()
-    .pages.filter((p) => p.slug)
-    .map((p) => ({ slug: p.slug }));
+  return pinStaticParamsOrEmpty([] as { slug: string }[]);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

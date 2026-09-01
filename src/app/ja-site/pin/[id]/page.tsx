@@ -17,6 +17,7 @@ import {
 } from "@/lib/jaSite/catalog";
 import { buildJaPinMetadata, jaPinJsonLd } from "@/lib/jaSite/seo";
 import { firstSentence } from "@/lib/globalSite/copy";
+import { pinStaticParamsOrEmpty } from "@/lib/buildScope";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -24,8 +25,7 @@ export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  const { getJaCatalogBundled } = await import("@/lib/jaSite/catalog");
-  return getJaCatalogBundled().pages.map((p) => ({ id: p.id }));
+  return pinStaticParamsOrEmpty([] as { id: string }[]);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
