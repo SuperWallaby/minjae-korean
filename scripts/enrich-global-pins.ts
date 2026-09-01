@@ -1,6 +1,7 @@
 #!/usr/bin/env npx tsx
 /**
- * Enrich global pin catalog: example sentences (Azure) + Edge TTS (target lang).
+ * Enrich global pin catalog: example sentences (Azure) + TTS.
+ * Korean words and examples: Edge on this Mac (SunHi / InJoon). Not V100.
  *
  *   yarn global:enrich
  *   yarn global:enrich -- --id 01_eye-colors__es
@@ -13,7 +14,6 @@
 import {
   existsSync,
   mkdirSync,
-  readFileSync,
   writeFileSync,
 } from "node:fs";
 import path from "node:path";
@@ -22,10 +22,23 @@ import { fileURLToPath } from "node:url";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
 import { synthesizeEdgeTtsMp3 } from "../src/lib/edgeTtsServer";
-import { edgeVoiceForLang } from "../src/lib/globalSite/voices";
+import {
+  edgeMaleVoiceForLang,
+  edgeVoiceForLang,
+} from "../src/lib/globalSite/voices";
+import type { FrenchAccentId } from "../src/lib/globalSite/frenchAccents";
 import type { SpanishAccentId } from "../src/lib/globalSite/spanishAccents";
 import { azureChat, stripCodeFence } from "./lib/azure_chat.mjs";
 import { loadEnvStack } from "./lib/env_local.mjs";
+import {
+  ensureCatalogImported,
+  exportPublishedJson,
+  listPages,
+  openCatalogDb,
+  upsertPage,
+} from "./lib/global-pin-catalog-db.mjs";
+import { writeLastEnrichRound } from "./lib/last-global-enrich-round.mjs";
+import { publishEnrichedPinLive } from "./lib/publish-enriched-pin-live.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PUBLISHED = path.join(ROOT, "src/data/globalPins/published.json");
@@ -39,16 +52,26 @@ type Word = {
   romanization: string;
   ttsUrl?: string;
   ttsProvider?: string;
+  ttsMaleUrl?: string;
   ttsLatam?: string;
   ttsEs?: string;
+  ttsFr?: string;
+  ttsCa?: string;
 };
 type Example = {
   target: string;
   english: string;
   ttsUrl?: string;
   ttsProvider?: string;
+  /** Set after one SoVITS attempt so Edge fallback does not retry forever. */
+  ttsSovitsAttempted?: boolean;
+  ttsMaleUrl?: string;
+  ttsMaleProvider?: string;
+  ttsSovitsMaleAttempted?: boolean;
   ttsLatam?: string;
   ttsEs?: string;
+  ttsFr?: string;
+  ttsCa?: string;
 };
 type Page = {
   id: string;
@@ -60,13 +83,6 @@ type Page = {
   description?: string;
   explanationEn?: string;
   [k: string]: unknown;
-};
-type Catalog = {
-  version: number;
-  generatedAt: string;
-  site: string;
-  languages: { code: string; name: string }[];
-  pages: Page[];
 };
 
 function parseArgs(argv: string[]) {
@@ -104,6 +120,12 @@ function wordNeedsTts(page: Page, w: Word): boolean {
   if (page.lang === "es") {
     return !hasTts(w.ttsLatam || w.ttsUrl) || !hasTts(w.ttsEs);
   }
+  if (page.lang === "fr") {
+    return !hasTts(w.ttsFr || w.ttsUrl) || !hasTts(w.ttsCa);
+  }
+  if (page.lang === "ko") {
+    return !hasTts(w.ttsUrl) || !hasTts(w.ttsMaleUrl);
+  }
   return !hasTts(w.ttsUrl);
 }
 
@@ -112,10 +134,22 @@ function exampleNeedsTts(page: Page, ex: Example): boolean {
   if (page.lang === "es") {
     return !hasTts(ex.ttsLatam || ex.ttsUrl) || !hasTts(ex.ttsEs);
   }
+  if (page.lang === "fr") {
+    return !hasTts(ex.ttsFr || ex.ttsUrl) || !hasTts(ex.ttsCa);
+  }
+  if (page.lang === "ko") {
+    if (!hasTts(ex.ttsUrl) || !hasTts(ex.ttsMaleUrl)) return true;
+    // Replace mixed SoVITS clips so every example is SunHi / InJoon.
+    if (ex.ttsProvider === "sovits" || ex.ttsMaleProvider === "sovits") {
+      return true;
+    }
+    return false;
+  }
   return !hasTts(ex.ttsUrl);
 }
 
 function needsWork(page: Page, force: boolean, ttsOnly: boolean) {
+  if ((page as { reading?: unknown }).reading) return false;
   if (force) return true;
   const words = page.words || [];
   const ex = page.examples || [];
@@ -197,15 +231,24 @@ Return ONLY valid JSON:
 {
   "explanationEn": "ONE short sentence about this chart — how these words sound / when you say them",
   "examples": [
-    { "target": "natural short sentence IN the target language", "english": "English translation" }
+    { "target": "natural sentence IN the target language", "english": "English translation" }
   ]
 }
 Rules:
-- Provide 4-6 examples total (not one per word if that is too many; prefer natural sentences using the list words).
-- Target sentences must be correct ${page.langName}, A1–A2 level.
-- explanationEn: exactly ONE sentence (≤ ~25 words). Pronunciation / listen-first framing. Name a few words from THIS chart — no second sentence, no listicles.
+- Provide ${page.lang === "ko" ? "3-4" : "4-6"} examples total (not one per word if that is too many; prefer natural sentences using the list words).
+- Target sentences must be correct ${page.langName}, A1–A2 level.${
+    page.lang === "ko"
+      ? " Korean examples must be complete spoken sentences (subject+predicate), not 1–2 word fragments. Do not shorten Hangul just to be brief."
+      : ""
+  }
+- explanationEn: exactly ONE sentence${
+    page.lang === "ko"
+      ? " (≤ ~15 words). Ultra-light. Name 1–2 words max. No blog tone."
+      : " (≤ ~25 words). Pronunciation / listen-first framing. Name a few words from THIS chart — no second sentence, no listicles."
+  }
 - No romanization in the JSON fields.
-- No markdown.`;
+- No markdown.
+- Do NOT write a long intro, lede, or "how to learn" blurb — explanationEn is the only prose.`;
   const user = `Chart title: ${page.titleEn}
 Language code: ${page.lang} (${page.langName})
 Words:
@@ -248,14 +291,28 @@ async function writeEdgeClip(
   key: string,
   text: string,
   lang: string,
-  spanishAccent?: SpanishAccentId,
+  opts?: {
+    spanishAccent?: SpanishAccentId;
+    frenchAccent?: FrenchAccentId;
+    voiceOverride?: string;
+  },
 ) {
-  const voice = edgeVoiceForLang(lang, { spanishAccent });
+  const voice =
+    opts?.voiceOverride?.trim() ||
+    edgeVoiceForLang(lang, {
+      spanishAccent: opts?.spanishAccent,
+      frenchAccent: opts?.frenchAccent,
+    });
   const buf = await synthesizeEdgeTtsMp3(text, { voice });
   return storeMp3(`${pageId}/${key}.mp3`, buf);
 }
 
-async function writeWordTts(page: Page, word: Word, index: number) {
+async function writeWordTts(
+  page: Page,
+  word: Word,
+  index: number,
+  force = false,
+) {
   const text = word.target.trim();
   if (!text) return word;
   if (page.lang === "es") {
@@ -264,10 +321,12 @@ async function writeWordTts(page: Page, word: Word, index: number) {
       `w${index}-latam`,
       text,
       "es",
-      "latam",
+      { spanishAccent: "latam" },
     );
     await sleep(80);
-    const ttsEs = await writeEdgeClip(page.id, `w${index}-es`, text, "es", "es");
+    const ttsEs = await writeEdgeClip(page.id, `w${index}-es`, text, "es", {
+      spanishAccent: "es",
+    });
     return {
       ...word,
       ttsUrl: ttsLatam,
@@ -276,11 +335,62 @@ async function writeWordTts(page: Page, word: Word, index: number) {
       ttsProvider: "edge",
     };
   }
-  const ttsUrl = await writeEdgeClip(page.id, `w${index}`, text, page.lang);
-  return { ...word, ttsUrl, ttsProvider: "edge" };
+  if (page.lang === "fr") {
+    const existingFr = word.ttsFr || word.ttsUrl;
+    const ttsFr =
+      force || !hasTts(existingFr)
+        ? await writeEdgeClip(page.id, `w${index}-fr`, text, "fr", {
+            frenchAccent: "fr",
+          })
+        : existingFr;
+    if (force || !hasTts(existingFr)) await sleep(80);
+    const ttsCa =
+      force || !hasTts(word.ttsCa)
+        ? await writeEdgeClip(page.id, `w${index}-ca`, text, "fr", {
+            frenchAccent: "ca",
+          })
+        : word.ttsCa;
+    return {
+      ...word,
+      ttsUrl: ttsFr,
+      ttsFr,
+      ttsCa,
+      ttsProvider: "edge",
+    };
+  }
+  const needFemale = force || !hasTts(word.ttsUrl);
+  const maleVoice = edgeMaleVoiceForLang(page.lang);
+  const needMale = Boolean(maleVoice) && (force || !hasTts(word.ttsMaleUrl));
+
+  let ttsUrl = word.ttsUrl;
+  let ttsMaleUrl = word.ttsMaleUrl;
+  if (needFemale) {
+    ttsUrl = await writeEdgeClip(page.id, `w${index}`, text, page.lang);
+    await sleep(80);
+  }
+  if (needMale && maleVoice) {
+    ttsMaleUrl = await writeEdgeClip(
+      page.id,
+      `w${index}-male`,
+      text,
+      page.lang,
+      { voiceOverride: maleVoice },
+    );
+  }
+  return {
+    ...word,
+    ttsUrl,
+    ...(ttsMaleUrl ? { ttsMaleUrl } : {}),
+    ttsProvider: "edge",
+  };
 }
 
-async function writeExampleTts(page: Page, ex: Example, index: number) {
+async function writeExampleTts(
+  page: Page,
+  ex: Example,
+  index: number,
+  force = false,
+) {
   const text = ex.target.trim();
   if (!text) return ex;
   if (page.lang === "es") {
@@ -289,16 +399,12 @@ async function writeExampleTts(page: Page, ex: Example, index: number) {
       `ex${index}-latam`,
       text,
       "es",
-      "latam",
+      { spanishAccent: "latam" },
     );
     await sleep(80);
-    const ttsEs = await writeEdgeClip(
-      page.id,
-      `ex${index}-es`,
-      text,
-      "es",
-      "es",
-    );
+    const ttsEs = await writeEdgeClip(page.id, `ex${index}-es`, text, "es", {
+      spanishAccent: "es",
+    });
     return {
       ...ex,
       ttsUrl: ttsLatam,
@@ -307,8 +413,60 @@ async function writeExampleTts(page: Page, ex: Example, index: number) {
       ttsProvider: "edge",
     };
   }
-  const ttsUrl = await writeEdgeClip(page.id, `ex${index}`, text, page.lang);
-  return { ...ex, ttsUrl, ttsProvider: "edge" };
+  if (page.lang === "fr") {
+    const existingFr = ex.ttsFr || ex.ttsUrl;
+    const ttsFr =
+      force || !hasTts(existingFr)
+        ? await writeEdgeClip(page.id, `ex${index}-fr`, text, "fr", {
+            frenchAccent: "fr",
+          })
+        : existingFr;
+    if (force || !hasTts(existingFr)) await sleep(80);
+    const ttsCa =
+      force || !hasTts(ex.ttsCa)
+        ? await writeEdgeClip(page.id, `ex${index}-ca`, text, "fr", {
+            frenchAccent: "ca",
+          })
+        : ex.ttsCa;
+    return {
+      ...ex,
+      ttsUrl: ttsFr,
+      ttsFr,
+      ttsCa,
+      ttsProvider: "edge",
+    };
+  }
+  const maleVoice = edgeMaleVoiceForLang(page.lang);
+  const needKoEdgeReplace =
+    page.lang === "ko" &&
+    (ex.ttsProvider === "sovits" || ex.ttsMaleProvider === "sovits");
+  const needFemale = force || !hasTts(ex.ttsUrl) || needKoEdgeReplace;
+  const needMale =
+    Boolean(maleVoice) &&
+    (force || !hasTts(ex.ttsMaleUrl) || needKoEdgeReplace);
+
+  let ttsUrl = ex.ttsUrl;
+  let ttsMaleUrl = ex.ttsMaleUrl;
+  if (needFemale) {
+    ttsUrl = await writeEdgeClip(page.id, `ex${index}`, text, page.lang);
+    await sleep(80);
+  }
+  if (needMale && maleVoice) {
+    ttsMaleUrl = await writeEdgeClip(
+      page.id,
+      `ex${index}-male`,
+      text,
+      page.lang,
+      { voiceOverride: maleVoice },
+    );
+  }
+  return {
+    ...ex,
+    ttsUrl,
+    ...(ttsMaleUrl ? { ttsMaleUrl } : {}),
+    ttsProvider: "edge",
+    ttsMaleProvider: maleVoice ? "edge" : ex.ttsMaleProvider,
+  };
 }
 
 async function enrichPage(
@@ -327,15 +485,51 @@ async function enrichPage(
       );
       next.examples = copy.examples.map((e) => {
         const prev = prevByTarget.get(e.target);
-        return prev?.ttsUrl && hasTts(prev.ttsUrl)
-          ? { ...e, ttsUrl: prev.ttsUrl, ttsProvider: prev.ttsProvider }
-          : e;
+        if (!prev) return e;
+        return {
+          ...e,
+          ...(prev.ttsUrl && hasTts(prev.ttsUrl)
+            ? {
+                ttsUrl: prev.ttsUrl,
+                ttsProvider: prev.ttsProvider,
+                ...(prev.ttsSovitsAttempted
+                  ? { ttsSovitsAttempted: true }
+                  : {}),
+              }
+            : {}),
+          ...(prev.ttsMaleUrl && hasTts(prev.ttsMaleUrl)
+            ? {
+                ttsMaleUrl: prev.ttsMaleUrl,
+                ...(prev.ttsMaleProvider
+                  ? { ttsMaleProvider: prev.ttsMaleProvider }
+                  : {}),
+                ...(prev.ttsSovitsMaleAttempted
+                  ? { ttsSovitsMaleAttempted: true }
+                  : {}),
+              }
+            : {}),
+          ...(prev.ttsLatam && hasTts(prev.ttsLatam)
+            ? { ttsLatam: prev.ttsLatam }
+            : {}),
+          ...(prev.ttsEs && hasTts(prev.ttsEs) ? { ttsEs: prev.ttsEs } : {}),
+          ...(prev.ttsFr && hasTts(prev.ttsFr) ? { ttsFr: prev.ttsFr } : {}),
+          ...(prev.ttsCa && hasTts(prev.ttsCa) ? { ttsCa: prev.ttsCa } : {}),
+        };
       });
       const sample = next.words
         .slice(0, 6)
         .map((w) => w.english)
         .join(", ");
-      next.description = `Learn ${next.langName}: ${sample}${next.words.length > 6 ? "…" : ""}. Free chart with pronunciation audio and example sentences for English speakers.`;
+      next.description =
+        next.lang === "ko"
+          ? `${next.titleEn}: ${sample}${next.words.length > 6 ? "…" : ""}.`
+          : `Learn ${next.langName}: ${sample}${next.words.length > 6 ? "…" : ""}. Free chart with pronunciation audio and example sentences for English speakers.`;
+      if (next.lang === "ko" && next.explanationEn) {
+        const words = next.explanationEn.split(/\s+/).filter(Boolean);
+        if (words.length > 18) {
+          next.explanationEn = `${words.slice(0, 18).join(" ").replace(/[.,;:]+$/, "")}.`;
+        }
+      }
     }
   }
 
@@ -344,11 +538,7 @@ async function enrichPage(
   const wordsOut: Word[] = [];
   for (let i = 0; i < next.words.length; i++) {
     const w = next.words[i];
-    const esReady =
-      page.lang === "es" &&
-      hasTts(w.ttsLatam || w.ttsUrl) &&
-      hasTts(w.ttsEs);
-    if (!opts.force && (esReady || (page.lang !== "es" && hasTts(w.ttsUrl)))) {
+    if (!opts.force && !wordNeedsTts(next, w)) {
       wordsOut.push(w);
       continue;
     }
@@ -360,7 +550,7 @@ async function enrichPage(
       `  tts word ${i + 1}/${next.words.length}: ${w.target}… `,
     );
     try {
-      wordsOut.push(await writeWordTts(next, w, i));
+      wordsOut.push(await writeWordTts(next, w, i, opts.force));
       console.log("ok");
       await sleep(120);
     } catch (e) {
@@ -374,14 +564,7 @@ async function enrichPage(
   const exOut: Example[] = [];
   for (let i = 0; i < exIn.length; i++) {
     const ex = exIn[i];
-    const esExReady =
-      page.lang === "es" &&
-      hasTts(ex.ttsLatam || ex.ttsUrl) &&
-      hasTts(ex.ttsEs);
-    if (
-      !opts.force &&
-      (esExReady || (page.lang !== "es" && hasTts(ex.ttsUrl)))
-    ) {
+    if (!opts.force && !exampleNeedsTts(next, ex)) {
       exOut.push(ex);
       continue;
     }
@@ -389,7 +572,7 @@ async function enrichPage(
       `  tts ex ${i + 1}/${exIn.length}: ${ex.target.slice(0, 40)}… `,
     );
     try {
-      exOut.push(await writeExampleTts(next, ex, i));
+      exOut.push(await writeExampleTts(next, ex, i, opts.force));
       console.log("ok");
       await sleep(150);
     } catch (e) {
@@ -407,32 +590,47 @@ async function main() {
     console.error("missing catalog", PUBLISHED);
     process.exit(1);
   }
-  const catalog = JSON.parse(readFileSync(PUBLISHED, "utf8")) as Catalog;
-  let pages = catalog.pages || [];
-  if (args.onlyId) pages = pages.filter((p) => p.id === args.onlyId);
-  if (args.onlyLang) pages = pages.filter((p) => p.lang === args.onlyLang);
+
+  const db = openCatalogDb(ROOT);
+  // DB is source of truth — only seed from JSON when the DB is empty.
+  ensureCatalogImported(db, PUBLISHED);
+
+  let pages = listPages(db, {
+    ...(args.onlyId ? { id: args.onlyId } : {}),
+    ...(args.onlyLang ? { lang: args.onlyLang } : {}),
+  }) as Page[];
   const queue = pages.filter((p) => needsWork(p, args.force, args.ttsOnly));
   const limited = args.limit > 0 ? queue.slice(0, args.limit) : queue;
   console.log(
-    `==> global enrich queue=${limited.length}/${queue.length} force=${args.force} ttsOnly=${args.ttsOnly} r2=${r2Configured()}`,
+    `==> global enrich (SQLite) queue=${limited.length}/${queue.length} force=${args.force} ttsOnly=${args.ttsOnly} r2=${r2Configured()}`,
   );
 
-  const byId = new Map(catalog.pages.map((p) => [p.id, p]));
   let ok = 0;
   let fail = 0;
+  const done: { id: string; lang: string }[] = [];
   for (const page of limited) {
     console.log(`→ ${page.id} (${page.langName})`);
     try {
-      byId.set(page.id, await enrichPage(page, args));
-      catalog.pages = catalog.pages.map((p) => byId.get(p.id) || p);
-      catalog.generatedAt = new Date().toISOString();
-      writeFileSync(PUBLISHED, JSON.stringify(catalog, null, 2));
+      const next = await enrichPage(page, args);
+      upsertPage(db, next, { preserveTts: false });
+      exportPublishedJson(db, PUBLISHED);
       ok += 1;
+      done.push({ id: page.id, lang: page.lang });
+      writeLastEnrichRound(done, ROOT);
+      try {
+        await publishEnrichedPinLive({ id: page.id, lang: page.lang });
+      } catch (e) {
+        console.warn(
+          `  live publish ${e instanceof Error ? e.message : e}`,
+        );
+      }
     } catch (e) {
       fail += 1;
       console.error(`  FAIL ${e instanceof Error ? e.message : e}`);
     }
   }
+  if (done.length) writeLastEnrichRound(done, ROOT);
+  db.close();
   console.log(`done ok=${ok} fail=${fail}`);
   if (fail && !ok) process.exitCode = 1;
 }

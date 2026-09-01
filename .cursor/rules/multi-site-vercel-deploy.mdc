@@ -4,7 +4,7 @@ globs:
   - scripts/deploy-*.sh
   - vercel.*.json
   - scripts/*push*catalog*
-  - scripts/eigopin-after-catalog.mjs
+  - scripts/upload-*-r2.mjs
   - scripts/setup-vercel-build-filters.sh
 alwaysApply: false
 ---
@@ -16,21 +16,38 @@ Three production Vercel projects share this repo. **A deploy to the wrong projec
 | Project | Domain | How production updates |
 |---------|--------|------------------------|
 | `minjae-korean` | kajakorean.com | GitHub `main` + build filter |
-| `getpronounce` | getpronounce.net | GitHub `main` + build filter |
-| `eigopin` | eigopin.com + sound.eigopin.com | **CLI only** (`deploy-eigopin.sh` / `eigopin-after-catalog.mjs`) |
+| `getpronounce` | getpronounce.net | **CLI only** (`deploy-getpronounce.sh`) — Git ignored-build `exit 0` |
+| `eigopin` | eigopin.com + sound.eigopin.com | **CLI only** (`deploy-eigopin.sh`) |
+
+Pin/chart **content** goes live via R2 catalogs + ISR (`revalidate: 60`). Do **not** CLI-deploy after a content-only publish.
 
 ## Hard rules
 
-1. **Never** enable Git auto-deploy on `eigopin`. Git push of catalogs is version control only.
-2. Deploy eigopin only via `bash scripts/deploy-eigopin.sh` or `node scripts/eigopin-after-catalog.mjs` (uses `vercel.eigopin.json` + swaps `.vercel/project.json` temporarily, then restores `minjae-korean`).
-3. **Never** run bare `vercel deploy --prod` while linked to the wrong project.
-4. After any eigopin deploy, confirm `.vercel/project.json` is `minjae-korean` again.
-5. Smoke all three after risky deploys: eigopin.com, kajakorean.com, getpronounce.net titles must stay distinct.
+1. **Never** enable Git auto-deploy on `eigopin` or `getpronounce`. Git push alone must not move those domains.
+2. Deploy getpronounce only via `bash scripts/deploy-getpronounce.sh --promote` (pins production + writes `.tmp/getpronounce-production-deployment.url`). Content path: `auto-push-global-catalog.mjs` uploads R2 and **skips** CLI unless `--deploy` / `GLOBAL_CATALOG_FORCE_DEPLOY=1`.
+3. Deploy eigopin only via `bash scripts/deploy-eigopin.sh` (uses `vercel.eigopin.json` + swaps `.vercel/project.json` temporarily, then restores `minjae-korean`).
+4. **Never** run bare `vercel deploy --prod` while linked to the wrong project.
+5. After any CLI deploy, confirm `.vercel/project.json` is `minjae-korean` again.
+6. Smoke after risky deploys: eigopin.com, kajakorean.com, getpronounce.net — and **`/ko` + `/ko/pin/…` must be 200**.
+7. **Never** run `deploy-eigopin.sh` and `deploy-getpronounce.sh` in parallel (they share `.vercel/project.json`).
+
+## Content vs code
+
+| Path | Live how | Deploy? |
+|------|----------|---------|
+| Sound pins | R2 `sound/catalog/published.json` | skip unless `SOUND_FORCE_DEPLOY=1` |
+| JA pins | R2 `ja/catalog/published.json` | skip unless `JA_FORCE_DEPLOY=1` |
+| Global `/pin` | R2 `global/catalog/index.json` + `{lang}.json` | skip unless `--deploy` / `GLOBAL_CATALOG_FORCE_DEPLOY=1` |
+| Pronounce `/words` | R2 `pronounce/catalog/published.json` | skip (same getpronounce CLI opt-in) |
+| Kaja `/vocab` | R2 `vocab/catalog/published.json` | skip Git rebuild; `VOCAB_PUBLISH_PUSH_GIT=1` only for backup |
+| Vocab → `/ko/pin` | `ensure-vocab-seo-live.mjs` | skip unless `VOCAB_SEO_FORCE_DEPLOY=1` |
 
 ## Pipeline
 
-- `yarn sound:publish` / `yarn ja:publish-pins` → catalog write → `eigopin-after-catalog.mjs` (push JSON + CLI deploy) unless `EIGOPIN_SKIP_AFTER_CATALOG=1`.
-- JA pin images: `yarn ja:publish-pins` then auto `upload-ja-pins-r2` (R2 `ja/pins/`). Live thumbs are `file.kajakorean.com`, not Vercel `/ja/pins`.
-- Sound pin images: `yarn sound:publish` auto-uploads (R2 `sound/pins/`). Live check: `yarn sound:verify-live` (HTML + CDN WebP).
+- `yarn sound:publish` / `yarn ja:publish-pins` / `yarn pronounce:publish` → write JSON + upload R2. Daily scripts skip `deploy-eigopin` unless force flags.
+- Global catalog: each enriched pin uploads its lang shard to R2 and warms that `/pin` URL immediately (`publishEnrichedPinLive`). Round-end `auto-push-global-catalog.mjs` still syncs the full catalog + ISR warm. GitHub optional; **no** CLI by default.
+- JA pin images: `yarn ja:publish-pins` then auto `upload-ja-pins-r2` (R2 `ja/pins/`). Live thumbs are `file.kajakorean.com`.
+- Sound pin images: `yarn sound:publish` auto-uploads (R2 `sound/pins/` + catalog). Live check: `yarn sound:verify-live`.
+- Vocab SEO: `yarn vocab:publish` / `yarn vocab:enrich` upload `vocab/catalog/published.json`. Do not `gh` push catalog unless `--git`.
 - Pin/audio binaries: R2 `file.kajakorean.com`. `.vercelignore` excludes `public/{global,sound,pronounce,ja}/pins` and `public/global/audio`.
-- Skip flags: `EIGOPIN_SKIP_PUSH=1`, `EIGOPIN_SKIP_DEPLOY=1`.
+- Force flags: `SOUND_FORCE_DEPLOY=1`, `JA_FORCE_DEPLOY=1`, `GLOBAL_CATALOG_FORCE_DEPLOY=1`, `VOCAB_SEO_FORCE_DEPLOY=1`, `KAJA_FORCE_DEPLOY=1` (overnight kaja only).

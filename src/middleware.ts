@@ -67,6 +67,17 @@ type AtlasSite = "global" | "ja" | "sound" | "pronounce" | "worksheet";
 const PUBLIC_HTML_CACHE =
   "public, s-maxage=3600, stale-while-revalidate=86400";
 
+/** Pin/lang-hub HTML must follow catalog TTS within ~60s, not sit behind 1h CDN. */
+const PIN_HTML_CACHE = "public, s-maxage=60, stale-while-revalidate=300";
+
+function isPinOrLangHubPath(pathname: string): boolean {
+  const p = pathname.replace(/\/+$/, "") || "/";
+  if (/(?:^|\/)pin\/[^/]+$/.test(p)) return true;
+  if (/^\/(?:es|fr|de|it|ar|ja|ko)$/.test(p)) return true;
+  if (/^\/pronounce-site\/(?:es|fr|de|it|ar|ja|ko)$/.test(p)) return true;
+  return false;
+}
+
 /** @deprecated use PUBLIC_HTML_CACHE */
 const ATLAS_HTML_CACHE = PUBLIC_HTML_CACHE;
 
@@ -129,14 +140,17 @@ function isJaHost(host: string): boolean {
   );
 }
 
-function withPublicHtmlCache(res: NextResponse) {
-  res.headers.set("CDN-Cache-Control", PUBLIC_HTML_CACHE);
-  res.headers.set("Vercel-CDN-Cache-Control", PUBLIC_HTML_CACHE);
+function withPublicHtmlCache(res: NextResponse, pathname = "") {
+  const cache = isPinOrLangHubPath(pathname)
+    ? PIN_HTML_CACHE
+    : PUBLIC_HTML_CACHE;
+  res.headers.set("CDN-Cache-Control", cache);
+  res.headers.set("Vercel-CDN-Cache-Control", cache);
   return res;
 }
 
-function withAtlasCdnCache(res: NextResponse) {
-  return withPublicHtmlCache(res);
+function withAtlasCdnCache(res: NextResponse, pathname = "") {
+  return withPublicHtmlCache(res, pathname);
 }
 
 function taggedNext(request: NextRequest, site: AtlasSite) {
@@ -146,6 +160,7 @@ function taggedNext(request: NextRequest, site: AtlasSite) {
     NextResponse.next({
       request: { headers: requestHeaders },
     }),
+    request.nextUrl.pathname,
   );
 }
 
@@ -156,10 +171,16 @@ function taggedRewrite(request: NextRequest, url: URL, site: AtlasSite) {
     NextResponse.rewrite(url, {
       request: { headers: requestHeaders },
     }),
+    request.nextUrl.pathname,
   );
 }
 
 function isStaticAsset(pathname: string): boolean {
+  const lower = pathname.toLowerCase();
+  // Root seller / verification files must not rewrite into /pronounce-site/[lang].
+  // Do NOT blanket-match *.txt — robots.txt must rewrite to pronounce-site/robots.txt.
+  if (lower === "/ads.txt" || lower === "/app-ads.txt") return true;
+  if (/^\/pinterest-[a-z0-9]+\.html$/i.test(pathname)) return true;
   // Do not treat `/{lang}/pin/...` (getpronounce JA/KO/etc.) as static.
   // `/ja/` here used to short-circuit every Japanese atlas page to 404.
   return (
@@ -179,6 +200,18 @@ function isStaticAsset(pathname: string): boolean {
 
 function pronouncePathRedirect(request: NextRequest): NextResponse | null {
   const { pathname } = request.nextUrl;
+
+  // Case-normalize seller files (Linux FS is case-sensitive).
+  if (pathname === "/Ads.txt" || pathname === "/ADS.TXT") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/ads.txt";
+    return NextResponse.redirect(url, 301);
+  }
+  if (pathname === "/App-Ads.txt" || pathname === "/app-Ads.txt") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/app-ads.txt";
+    return NextResponse.redirect(url, 301);
+  }
 
   if (pathname === "/jp" || pathname.startsWith("/jp/")) {
     const url = request.nextUrl.clone();
@@ -309,16 +342,7 @@ export function middleware(request: NextRequest) {
       const redirect = pronouncePathRedirect(request);
       if (redirect) return withAtlasCdnCache(redirect);
     }
-    const out = atlasMiddleware(request, "pronounce", "/pronounce-site");
-    // Korean atlas stays noindex while the catalog grows.
-    if (
-      pathname === "/ko" ||
-      pathname === "/ko/" ||
-      pathname.startsWith("/ko/")
-    ) {
-      out.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
-    }
-    return out;
+    return atlasMiddleware(request, "pronounce", "/pronounce-site");
   }
 
   // Sound first — subdomain of eigopin must not inherit ja rewrite.
