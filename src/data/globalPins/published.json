@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T03:44:23.097Z",
+  "generatedAt": "2026-09-01T04:02:38.887Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -68263,6 +68263,60 @@
       "publishedAt": "2026-09-01T03:05:48.222Z"
     },
     {
+      "id": "vk_pron-o-vowel__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Master the ㅗ Vowel Sound With These Handy Words! in Korean",
+      "slug": "master-the-vowel-sound-with-these-handy-words-in-korean",
+      "imagePath": "/global/pins/vk_pron-o-vowel__ko.png",
+      "words": [
+        {
+          "english": "older brother",
+          "target": "오빠",
+          "romanization": "oppa"
+        },
+        {
+          "english": "cucumber",
+          "target": "오이",
+          "romanization": "oi"
+        },
+        {
+          "english": "hat",
+          "target": "모자",
+          "romanization": "moja"
+        },
+        {
+          "english": "grape",
+          "target": "포도",
+          "romanization": "podo"
+        },
+        {
+          "english": "cat",
+          "target": "고양이",
+          "romanization": "goyangi"
+        },
+        {
+          "english": "sunset",
+          "target": "노을",
+          "romanization": "noeul"
+        },
+        {
+          "english": "road",
+          "target": "도로",
+          "romanization": "doro"
+        },
+        {
+          "english": "sofa",
+          "target": "소파",
+          "romanization": "sopha"
+        }
+      ],
+      "partner": "preply",
+      "description": "Master the ㅗ Vowel Sound With These Handy Words! in Korean: older brother, cucumber, hat, grape, cat, sunset….",
+      "topicSlug": "pron-o-vowel",
+      "publishedAt": "2026-09-01T03:59:58.398Z"
+    },
+    {
       "id": "vk_psq-cant-sleep__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68337,6 +68391,25 @@
       "description": "How To Say I'm Hungry in Korean: I'm hungry..",
       "topicSlug": "phrase",
       "publishedAt": "2026-08-30T18:57:45.277Z"
+    },
+    {
+      "id": "vk_psq-its-okay__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "It's Okay. in Korean",
+      "slug": "it-s-okay-in-korean",
+      "imagePath": "/global/pins/vk_psq-its-okay__ko.png",
+      "words": [
+        {
+          "english": "It's okay.",
+          "target": "괜찮아요",
+          "romanization": "gwaenchanayo"
+        }
+      ],
+      "partner": "preply",
+      "description": "It's Okay. in Korean: It's okay..",
+      "topicSlug": "psq-its-okay",
+      "publishedAt": "2026-09-01T03:59:57.805Z"
     },
     {
       "id": "vk_psq-see-you__ko",
