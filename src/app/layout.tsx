@@ -7,6 +7,7 @@ import {
 import { headers } from "next/headers";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
+import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
 import {
   EIGOCHART_DESCRIPTION,
   EIGOCHART_NAME,
@@ -479,7 +480,7 @@ export default async function RootLayout({
         </head>
         <body className={`${plusJakarta.variable} ${bricolage.variable}`}>
           <GoogleAnalytics />
-          {children}
+          <MockSessionProvider>{children}</MockSessionProvider>
         </body>
       </html>
     );
