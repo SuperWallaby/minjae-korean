@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T12:10:30.900Z",
+  "generatedAt": "2026-09-01T12:15:06.944Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -71551,6 +71551,45 @@
       "publishedAt": "2026-09-01T01:18:34.395Z"
     },
     {
+      "id": "vk_gram-lets__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "-자 / -ㅂ시다 — Let's in Korean",
+      "slug": "let-s-in-korean",
+      "imagePath": "/global/pins/vk_gram-lets__ko.png",
+      "words": [
+        {
+          "english": "let's (informal ending)",
+          "target": "-자",
+          "romanization": "-ja"
+        },
+        {
+          "english": "let's (formal ending)",
+          "target": "-ㅂ시다",
+          "romanization": "-psida"
+        },
+        {
+          "english": "together",
+          "target": "같이",
+          "romanization": "gachi"
+        },
+        {
+          "english": "let's eat (informal)",
+          "target": "먹자",
+          "romanization": "meokja"
+        },
+        {
+          "english": "let's eat (formal)",
+          "target": "먹어요",
+          "romanization": "meog-eoyo"
+        }
+      ],
+      "partner": "preply",
+      "description": "-자 / -ㅂ시다 — Let's in Korean: let's (informal ending), let's (formal ending), together, let's eat (informal), let's eat (formal).",
+      "topicSlug": "grammar",
+      "publishedAt": "2026-09-01T12:14:31.303Z"
+    },
+    {
       "id": "vk_grid-emoji-feelings-16__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -71999,6 +72038,80 @@
       "publishedAt": "2026-09-01T05:45:09.281Z"
     },
     {
+      "id": "vk_list-pref-common-korean-food-ingredients-pronu-058799__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Food Ingredients With Pronunciation in Korean",
+      "slug": "common-korean-food-ingredients-with-pronunciation-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-food-ingredients-pronu-058799__ko.png",
+      "words": [
+        {
+          "english": "red chili paste",
+          "target": "고추장",
+          "romanization": "gochujang"
+        },
+        {
+          "english": "soy sauce",
+          "target": "간장",
+          "romanization": "ganjang"
+        },
+        {
+          "english": "sesame oil",
+          "target": "참기름",
+          "romanization": "chamgireum"
+        },
+        {
+          "english": "fermented soybean paste",
+          "target": "된장",
+          "romanization": "doenjang"
+        },
+        {
+          "english": "garlic",
+          "target": "마늘",
+          "romanization": "maneul"
+        },
+        {
+          "english": "ginger",
+          "target": "생강",
+          "romanization": "saenggang"
+        },
+        {
+          "english": "green onion",
+          "target": "파",
+          "romanization": "pa"
+        },
+        {
+          "english": "sugar",
+          "target": "설탕",
+          "romanization": "seoltang"
+        },
+        {
+          "english": "salt",
+          "target": "소금",
+          "romanization": "sogeum"
+        },
+        {
+          "english": "vinegar",
+          "target": "식초",
+          "romanization": "sikcho"
+        },
+        {
+          "english": "water",
+          "target": "물",
+          "romanization": "mul"
+        },
+        {
+          "english": "sesame seeds",
+          "target": "참깨",
+          "romanization": "chamkkae"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Food Ingredients With Pronunciation in Korean: red chili paste, soy sauce, sesame oil, fermented soybean paste, garlic, ginger….",
+      "topicSlug": "list-pref-common-korean-food-ingredients-pronu-058799",
+      "publishedAt": "2026-09-01T12:14:36.130Z"
+    },
+    {
       "id": "vk_list-pref-common-korean-fruits-with-pronunciat__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -72385,52 +72498,82 @@
         {
           "english": "bus",
           "target": "버스",
-          "romanization": "beoseu"
+          "romanization": "beoseu",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w0.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w0-male.mp3"
         },
         {
           "english": "subway",
           "target": "지하철",
-          "romanization": "jihacheol"
+          "romanization": "jihacheol",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w1.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w1-male.mp3"
         },
         {
           "english": "taxi",
           "target": "택시",
-          "romanization": "taeksi"
+          "romanization": "taeksi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w2.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w2-male.mp3"
         },
         {
           "english": "airplane",
           "target": "비행기",
-          "romanization": "bihaenggi"
+          "romanization": "bihaenggi",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w3.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w3-male.mp3"
         },
         {
           "english": "train",
           "target": "기차",
-          "romanization": "gicha"
+          "romanization": "gicha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w4.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w4-male.mp3"
         },
         {
           "english": "bicycle",
           "target": "자전거",
-          "romanization": "jajeongeo"
+          "romanization": "jajeongeo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w5.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w5-male.mp3"
         },
         {
           "english": "car",
           "target": "자동차",
-          "romanization": "jadongcha"
+          "romanization": "jadongcha",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w6.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w6-male.mp3"
         },
         {
           "english": "ship/boat",
           "target": "배",
-          "romanization": "bae"
+          "romanization": "bae",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w7.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w7-male.mp3"
         },
         {
           "english": "motorcycle",
           "target": "오토바이",
-          "romanization": "otobai"
+          "romanization": "otobai",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w8.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w8-male.mp3"
         },
         {
           "english": "walking",
           "target": "도보",
-          "romanization": "dobo"
+          "romanization": "dobo",
+          "ttsUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w9.mp3",
+          "ttsProvider": "edge",
+          "ttsMaleUrl": "https://file.kajakorean.com/grammar-x/global-pin-tts/vk_list-pref-common-korean-transportation-words__ko/w9-male.mp3"
         }
       ],
       "partner": "preply",
