@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T03:08:31.608Z",
+  "generatedAt": "2026-09-01T03:26:27.956Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67949,6 +67949,50 @@
       "publishedAt": "2026-09-01T02:12:45.577Z"
     },
     {
+      "id": "vk_match-fruit__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Which Fruit Is This in Korean",
+      "slug": "which-fruit-is-this-in-korean",
+      "imagePath": "/global/pins/vk_match-fruit__ko.png",
+      "words": [
+        {
+          "english": "banana",
+          "target": "바나나",
+          "romanization": "banana"
+        },
+        {
+          "english": "orange",
+          "target": "오렌지",
+          "romanization": "orenji"
+        },
+        {
+          "english": "watermelon",
+          "target": "수박",
+          "romanization": "subak"
+        },
+        {
+          "english": "strawberry",
+          "target": "딸기",
+          "romanization": "ttalgi"
+        },
+        {
+          "english": "persimmon",
+          "target": "감",
+          "romanization": "gam"
+        },
+        {
+          "english": "peach",
+          "target": "복숭아",
+          "romanization": "boksunga"
+        }
+      ],
+      "partner": "preply",
+      "description": "Which Fruit Is This in Korean: banana, orange, watermelon, strawberry, persimmon, peach.",
+      "topicSlug": "match-fruit",
+      "publishedAt": "2026-09-01T03:23:51.104Z"
+    },
+    {
       "id": "vk_match-school__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -69015,6 +69059,30 @@
       "description": "Travel Words To Know in Korean: See/watch, Sightsee.",
       "topicSlug": "sim-see-보다-구경하다",
       "publishedAt": "2026-08-30T18:57:36.849Z"
+    },
+    {
+      "id": "vk_sim-start-3322sa__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Sim-start-시작하다-출발하다 in Korean",
+      "slug": "sim-start-in-korean",
+      "imagePath": "/global/pins/vk_sim-start-3322sa__ko.png",
+      "words": [
+        {
+          "english": "Start",
+          "target": "시작하다",
+          "romanization": "sijakhada"
+        },
+        {
+          "english": "Depart",
+          "target": "출발하다",
+          "romanization": "chulbalhada"
+        }
+      ],
+      "partner": "preply",
+      "description": "Sim-start-시작하다-출발하다 in Korean: Start, Depart.",
+      "topicSlug": "sim-start-시작하다-출발하다",
+      "publishedAt": "2026-09-01T03:23:51.884Z"
     },
     {
       "id": "vk_sim-wash-3zt63l__ko",
