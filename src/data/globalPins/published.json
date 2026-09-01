@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T01:57:29.320Z",
+  "generatedAt": "2026-09-01T02:15:41.010Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67800,6 +67800,168 @@
       "description": "Common Korean Household Items With Pronunciation in Korean: desk, chair, bed, sofa, bookshelf, clock….",
       "topicSlug": "list-pref-common-korean-household-items-3324",
       "publishedAt": "2026-09-01T01:18:36.833Z"
+    },
+    {
+      "id": "vk_list-pref-common-korean-kitchen-utensils-6195__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Kitchen Utensils With Pronunciation in Korean",
+      "slug": "common-korean-kitchen-utensils-with-pronunciation-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-kitchen-utensils-6195__ko.png",
+      "words": [
+        {
+          "english": "spoon",
+          "target": "숟가락",
+          "romanization": "sutgarak"
+        },
+        {
+          "english": "chopsticks",
+          "target": "젓가락",
+          "romanization": "jeotgarak"
+        },
+        {
+          "english": "knife",
+          "target": "칼",
+          "romanization": "kal"
+        },
+        {
+          "english": "cutting board",
+          "target": "도마",
+          "romanization": "doma"
+        },
+        {
+          "english": "pot",
+          "target": "냄비",
+          "romanization": "naembi"
+        },
+        {
+          "english": "frying pan",
+          "target": "후라이팬",
+          "romanization": "huraipaen"
+        },
+        {
+          "english": "rice paddle",
+          "target": "주걱",
+          "romanization": "jugeok"
+        },
+        {
+          "english": "strainer",
+          "target": "체",
+          "romanization": "che"
+        },
+        {
+          "english": "blender",
+          "target": "믹서기",
+          "romanization": "mikseogi"
+        },
+        {
+          "english": "ladle",
+          "target": "국자",
+          "romanization": "gukja"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Kitchen Utensils With Pronunciation in Korean: spoon, chopsticks, knife, cutting board, pot, frying pan….",
+      "topicSlug": "list-pref-common-korean-kitchen-utensils-6195",
+      "publishedAt": "2026-09-01T02:12:46.213Z"
+    },
+    {
+      "id": "vk_match-clothes__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Match the Clothing Items In Korean With the Pictures! �🧣� in Korean",
+      "slug": "match-the-clothing-items-in-korean-with-the-pictures-in-korean",
+      "imagePath": "/global/pins/vk_match-clothes__ko.png",
+      "words": [
+        {
+          "english": "shoes",
+          "target": "신발",
+          "romanization": "sinbal"
+        },
+        {
+          "english": "hat",
+          "target": "모자",
+          "romanization": "moja"
+        },
+        {
+          "english": "scarf",
+          "target": "목도리",
+          "romanization": "mokdori"
+        },
+        {
+          "english": "coat",
+          "target": "코트",
+          "romanization": "koteu"
+        },
+        {
+          "english": "shirt",
+          "target": "셔츠",
+          "romanization": "syeocheu"
+        },
+        {
+          "english": "socks",
+          "target": "양말",
+          "romanization": "yangmal"
+        }
+      ],
+      "partner": "preply",
+      "description": "Match the Clothing Items In Korean With the Pictures! �🧣� in Korean: shoes, hat, scarf, coat, shirt, socks.",
+      "topicSlug": "match-clothes",
+      "publishedAt": "2026-09-01T02:12:45.577Z"
+    },
+    {
+      "id": "vk_pron-jj-tense__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Pron-jj-tense in Korean",
+      "slug": "pron-jj-tense-in-korean",
+      "imagePath": "/global/pins/vk_pron-jj-tense__ko.png",
+      "words": [
+        {
+          "english": "salty / squeeze",
+          "target": "짜다",
+          "romanization": "jjada"
+        },
+        {
+          "english": "stew",
+          "target": "찌개",
+          "romanization": "jjigae"
+        },
+        {
+          "english": "side / page",
+          "target": "쪽",
+          "romanization": "jjok"
+        },
+        {
+          "english": "take (photo)",
+          "target": "찍다",
+          "romanization": "jjikda"
+        },
+        {
+          "english": "short",
+          "target": "짧다",
+          "romanization": "jjalbda"
+        },
+        {
+          "english": "steam / gain weight",
+          "target": "찌다",
+          "romanization": "jjida"
+        },
+        {
+          "english": "pair / partner",
+          "target": "짝",
+          "romanization": "jjak"
+        },
+        {
+          "english": "steam dish",
+          "target": "찜",
+          "romanization": "jjim"
+        }
+      ],
+      "partner": "preply",
+      "description": "Pron-jj-tense in Korean: salty / squeeze, stew, side / page, take (photo), short, steam / gain weight….",
+      "topicSlug": "pron-jj-tense",
+      "publishedAt": "2026-09-01T02:12:46.765Z"
     },
     {
       "id": "vk_psq-cant-sleep__ko",
