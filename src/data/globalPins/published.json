@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T03:26:27.956Z",
+  "generatedAt": "2026-09-01T03:44:23.097Z",
   "site": "https://getpronounce.net",
   "languages": [
     {
@@ -67905,6 +67905,70 @@
       "publishedAt": "2026-09-01T02:12:46.213Z"
     },
     {
+      "id": "vk_list-pref-common-korean-vegetables-pronunciati-653025__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Common Korean Vegetables With Pronunciation in Korean",
+      "slug": "common-korean-vegetables-with-pronunciation-in-korean",
+      "imagePath": "/global/pins/vk_list-pref-common-korean-vegetables-pronunciati-653025__ko.png",
+      "words": [
+        {
+          "english": "potato",
+          "target": "감자",
+          "romanization": "gamja"
+        },
+        {
+          "english": "onion",
+          "target": "양파",
+          "romanization": "yangpa"
+        },
+        {
+          "english": "carrot",
+          "target": "당근",
+          "romanization": "danggeun"
+        },
+        {
+          "english": "chili pepper",
+          "target": "고추",
+          "romanization": "gochu"
+        },
+        {
+          "english": "cucumber",
+          "target": "오이",
+          "romanization": "oi"
+        },
+        {
+          "english": "napa cabbage",
+          "target": "배추",
+          "romanization": "baechu"
+        },
+        {
+          "english": "pumpkin/squash",
+          "target": "호박",
+          "romanization": "hobak"
+        },
+        {
+          "english": "spinach",
+          "target": "시금치",
+          "romanization": "sigeumchi"
+        },
+        {
+          "english": "radish",
+          "target": "무",
+          "romanization": "mu"
+        },
+        {
+          "english": "tomato",
+          "target": "토마토",
+          "romanization": "tomato"
+        }
+      ],
+      "partner": "preply",
+      "description": "Common Korean Vegetables With Pronunciation in Korean: potato, onion, carrot, chili pepper, cucumber, napa cabbage….",
+      "topicSlug": "list-pref-common-korean-vegetables-pronunciati-653025",
+      "publishedAt": "2026-09-01T03:41:55.065Z"
+    },
+    {
       "id": "vk_match-clothes__ko",
       "lang": "ko",
       "langName": "Korean",
@@ -68035,6 +68099,60 @@
       "description": "What’s This School Item In Korean? Match the Word To the Picture in Korean: ruler, book, blackboard, eraser, bag, pencil.",
       "topicSlug": "match-school",
       "publishedAt": "2026-09-01T02:47:42.039Z"
+    },
+    {
+      "id": "vk_pron-eu-vowel__ko",
+      "lang": "ko",
+      "langName": "Korean",
+      "titleEn": "Master the ㅡ (eu) Sound In Korean With These Useful Words! in Korean",
+      "slug": "master-the-eu-sound-in-korean-with-these-useful-words-in-korean",
+      "imagePath": "/global/pins/vk_pron-eu-vowel__ko.png",
+      "words": [
+        {
+          "english": "food",
+          "target": "음식",
+          "romanization": "eumsik"
+        },
+        {
+          "english": "name",
+          "target": "이름",
+          "romanization": "ireum"
+        },
+        {
+          "english": "music",
+          "target": "음악",
+          "romanization": "eumak"
+        },
+        {
+          "english": "feeling",
+          "target": "느낌",
+          "romanization": "neukkim"
+        },
+        {
+          "english": "picture",
+          "target": "그림",
+          "romanization": "geurim"
+        },
+        {
+          "english": "muscle",
+          "target": "근육",
+          "romanization": "geunyuk"
+        },
+        {
+          "english": "bowl",
+          "target": "그릇",
+          "romanization": "geureut"
+        },
+        {
+          "english": "twenty",
+          "target": "스무",
+          "romanization": "seumu"
+        }
+      ],
+      "partner": "preply",
+      "description": "Master the ㅡ (eu) Sound In Korean With These Useful Words! in Korean: food, name, music, feeling, picture, muscle….",
+      "topicSlug": "pron-eu-vowel",
+      "publishedAt": "2026-09-01T03:41:54.426Z"
     },
     {
       "id": "vk_pron-jj-tense__ko",
