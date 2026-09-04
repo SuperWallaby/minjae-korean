@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   GLOBAL_LANG_META,
+  getGlobalLang,
   globalLangMeta,
 } from "@/lib/globalSite/langMeta";
 import { atlasLangPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
