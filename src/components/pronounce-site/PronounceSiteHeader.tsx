@@ -2,18 +2,20 @@
 
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   GLOBAL_LANG_META,
-  getGlobalLang,
   globalLangMeta,
 } from "@/lib/globalSite/langMeta";
 import { atlasLangPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
 import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
+import { pronounceChromeCopy } from "@/lib/pronounceSite/chromeCopy";
 import { PronounceBrandMark } from "@/components/pronounce-site/PronounceBrandMark";
 
 export function PronounceSiteHeader() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const chrome = pronounceChromeCopy(usePathname());
 
   useEffect(() => {
     if (!open) return;
@@ -37,7 +39,7 @@ export function PronounceSiteHeader() {
         <div className="global-header-top">
           <Link
             className="global-brand pronounce-brand"
-            href="/"
+            href={chrome.homeHref}
             onClick={close}
             aria-label={PRONOUNCE_SITE_NAME}
           >
