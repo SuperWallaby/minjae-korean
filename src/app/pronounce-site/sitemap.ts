@@ -8,12 +8,12 @@ import {
 import { listPronouncePins } from "@/lib/pronounceSite/catalog";
 import { pronounceSiteOrigin } from "@/lib/pronounceSite/brand";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = globalSiteBase();
   const now = new Date();
-  const langs = getGlobalCatalog().languages || [];
-  const pins = listGlobalPins();
-  const words = listPronouncePins();
+  const langs = (await getGlobalCatalog()).languages || [];
+  const pins = await listGlobalPins();
+  const words = await listPronouncePins();
 
   const routes: MetadataRoute.Sitemap = [
     {
@@ -36,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "weekly" as const,
         priority: 0.85,
       })),
+    {
+      url: `${pronounceSiteOrigin()}/ko/mix-ups`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
     ...pins.map((p) => ({
       url: `${base}${atlasPinPath(p)}`,
       lastModified: p.publishedAt ? new Date(p.publishedAt) : now,

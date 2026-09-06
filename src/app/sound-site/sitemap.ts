@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { listSoundPins, soundSiteBase } from "@/lib/soundSite/catalog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = soundSiteBase();
   const now = new Date();
-  const pins = listSoundPins();
+  const pins = await listSoundPins();
 
   return [
     {

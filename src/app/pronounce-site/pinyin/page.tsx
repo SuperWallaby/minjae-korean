@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listGlobalPins } from "@/lib/globalSite/catalog";
 import { pronounceSiteOrigin } from "@/lib/pronounceSite/brand";
+import { PronounceSiteFooter } from "@/components/pronounce-site/PronounceSiteFooter";
 
 export const metadata: Metadata = {
   title: "Pinyin hub · Mandarin pronunciation",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 const TONE_ROWS = [
   { mark: "ā", name: "1st · high level", tip: "Stay high and flat" },
@@ -21,8 +22,8 @@ const TONE_ROWS = [
   { mark: "a", name: "Neutral", tip: "Light, unstressed" },
 ] as const;
 
-export default function PinyinHubPage() {
-  const zhPins = listGlobalPins({ lang: "zh" }).slice(0, 8);
+export default async function PinyinHubPage() {
+  const zhPins = (await listGlobalPins({ lang: "zh" })).slice(0, 8);
 
   return (
     <>
@@ -80,6 +81,7 @@ export default function PinyinHubPage() {
           </ul>
         </section>
       ) : null}
+      <PronounceSiteFooter lang="zh" />
     </>
   );
 }
