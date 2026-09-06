@@ -55,7 +55,8 @@ const bricolage = Bricolage_Grotesque({
 });
 
 const GLOBAL_PINTEREST_VERIFY = "86705510fceea49d9e5298e3a6f4df6d";
-const MAIN_PINTEREST_VERIFY = "7a6bc7a84bb2c6c634bf33f0618b07d7";
+/** Pinterest Support (Chin, Sep 2026) — claim kajakorean.com for pinterest.com/kajakorean */
+const MAIN_PINTEREST_VERIFY = "15f0960c9357fd32c12f37c9180fc14a";
 const GLOBAL_IMPACT_VERIFY = "ad7f601e-1ef9-4800-b4ef-d477c480e7f4";
 const JA_IMPACT_VERIFY = "561a4f75-1aa2-4877-871f-52b98f10778a";
 const SOUND_IMPACT_VERIFY = "a87ceafc-d968-4565-862d-10234de628b1";
@@ -493,6 +494,8 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Pinterest domain claim for www.pinterest.com/kajakorean (Support tag). */}
+        <meta name="p:domain_verify" content={MAIN_PINTEREST_VERIFY} />
         {/* Impact.com: exact name + value only (no content), once in <head>. */}
         <meta
           name="impact-site-verification"
