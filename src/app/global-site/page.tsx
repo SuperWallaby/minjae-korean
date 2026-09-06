@@ -33,10 +33,10 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-export default function GlobalHomePage() {
-  const catalog = getGlobalCatalog();
-  const allPins = listGlobalPins();
-  const pins = featuredHomePins(2);
+export default async function GlobalHomePage() {
+  const catalog = await getGlobalCatalog();
+  const allPins = await listGlobalPins();
+  const pins = await featuredHomePins(2);
   const poster = pins[0];
   const grid = pins.slice(1);
   const base = globalSiteBase();
