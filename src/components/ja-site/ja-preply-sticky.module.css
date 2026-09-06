@@ -1,0 +1,42 @@
+.rail {
+  position: fixed;
+  top: 50%;
+  left: max(0.5rem, calc((100vw - 72rem) / 2 - 9.75rem - 0.6rem));
+  z-index: 40;
+  width: 9.5rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.link {
+  pointer-events: auto;
+  display: block;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(27 21 17 / 12%);
+  background: #fff;
+  box-shadow: 0 12px 32px rgb(27 21 17 / 14%);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.link:hover {
+  box-shadow: 0 16px 40px rgb(27 21 17 / 18%);
+  transform: translateY(-1px);
+}
+
+.link:focus-visible {
+  outline: 2px solid #c7524c;
+  outline-offset: 3px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1399px) {
+  .rail {
+    display: none;
+  }
+}
