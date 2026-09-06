@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: process.env.OPENNEXT_CF === "1",
   },
   typescript: {
-    ignoreBuildErrors: true, // TEMP: ship Pinterest domain-verify; revert after live,
+    ignoreBuildErrors: process.env.OPENNEXT_CF === "1",
   },
   images: {
     formats: ["image/avif", "image/webp"],
