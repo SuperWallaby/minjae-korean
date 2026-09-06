@@ -5,11 +5,11 @@ import {
   listGlobalPins,
 } from "@/lib/globalSite/catalog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = globalSiteBase();
   const now = new Date();
-  const langs = getGlobalCatalog().languages || [];
-  const pins = listGlobalPins();
+  const langs = (await getGlobalCatalog()).languages || [];
+  const pins = await listGlobalPins();
 
   const routes: MetadataRoute.Sitemap = [
     {
