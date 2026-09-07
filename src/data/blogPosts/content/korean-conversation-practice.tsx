@@ -5,11 +5,7 @@ import { Gap } from "@/components/article/Gap";
 import { Quoter } from "@/components/article/Quoter";
 import type { BlogPost } from "../types";
 
-/**
- * Draft — Track B + evidence links + gpt-5.4 enhance.
- * Markdown: scripts/data/draft-korean-conversation-practice.md
- * Add slug to BLOG_LISTED_SLUGS in listed.ts to publish.
- */
+/** Published — listed in BLOG_LISTED_SLUGS. */
 export const post: BlogPost = {
   slug: "korean-conversation-practice",
   title: "How to practice Korean conversation if you're not in Korea",
@@ -21,8 +17,8 @@ export const post: BlogPost = {
     "korean listening practice",
   ],
   level: 3,
-  createdAt: "2026-09-02T00:00:00.000Z",
-  updatedAt: "2026-09-07T13:52:00.000Z",
+  createdAt: "2026-09-07T14:50:00.000Z",
+  updatedAt: "2026-09-07T14:50:00.000Z",
   paragraphs: [
     {
       subtitle: "Practice Conversation is easy.",

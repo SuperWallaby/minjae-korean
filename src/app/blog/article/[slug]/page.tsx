@@ -21,6 +21,7 @@ import {
 } from "@/data/blogPosts";
 import { NO_INDEX_METADATA } from "@/lib/noIndexMetadata";
 import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
+import { normalizePublicMediaUrl } from "@/lib/mediaUrl";
 
 export const runtime = "nodejs";
 
@@ -49,7 +50,9 @@ export async function generateMetadata({
 
   const title = a.title;
   const description = buildDescription(a);
-  const mainImage = a.imageLarge?.trim() || a.imageThumb?.trim();
+  const mainImage = normalizePublicMediaUrl(
+    a.imageLarge?.trim() || a.imageThumb?.trim() || "",
+  );
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(slug)}`;
   const metaTitle = `${title} | ${SITE_META_KEYWORD} | ${SITE_NAME}`;
   const metaDescription = description.includes(SITE_META_KEYWORD)
@@ -105,7 +108,9 @@ export default async function BlogArticlePage({
   const related = await listRelatedBlogPosts(a.slug, 4);
   const relatedCluster = blogRelatedClusterFor(a.slug);
   const keepImages = blogPostKeepsImages(a.slug);
-  const mainImage = keepImages ? resolveBlogCoverImage(a) : "";
+  const mainImage = keepImages
+    ? normalizePublicMediaUrl(resolveBlogCoverImage(a))
+    : "";
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(a.slug)}`;
 
   const baseUrl = SITE_URL.replace(/\/+$/, "");

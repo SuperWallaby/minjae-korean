@@ -9,8 +9,8 @@
  * in `index.ts`. To unpublish: remove it from this array.
  */
 export const BLOG_LISTED_SLUGS = [
-  "how-long-does-it-take-to-learn-korean",
   "korean-conversation-practice",
+  "how-long-does-it-take-to-learn-korean",
   "korean-verb-endings",
   "why-koreans-cant-speak-english-after-12-years",
   "bts-7-letters-far-future-korean-phrases",
