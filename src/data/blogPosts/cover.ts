@@ -2,7 +2,10 @@ import { parseYouTubeId } from "@/lib/youtube";
 
 import type { BlogParagraphBlock } from "./types";
 
-/** Default card cover when a post has no uploaded cover or inline media. */
+/**
+ * Opt-in only — do not use as a silent default on articles/feeds.
+ * Prefer empty: no cover is better than a fake “default” image.
+ */
 export const BLOG_FALLBACK_COVER = "/brand/news-paragraph-style-reference.png";
 
 export function youtubeThumbnail(urlOrId: string): string | null {
@@ -10,17 +13,20 @@ export function youtubeThumbnail(urlOrId: string): string | null {
   return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : null;
 }
 
+/** Real cover only. Returns "" when the post has nothing to show. */
 export function resolveBlogCoverImage(post: {
   imageThumb?: string;
   imageLarge?: string;
   paragraphs?: BlogParagraphBlock[];
 }): string {
   const explicit = post.imageLarge?.trim() || post.imageThumb?.trim();
-  if (explicit && explicit !== "/brand/og.png") return explicit;
+  if (explicit && explicit !== "/brand/og.png" && explicit !== BLOG_FALLBACK_COVER) {
+    return explicit;
+  }
 
   for (const p of post.paragraphs ?? []) {
     const image = p.image?.trim();
-    if (image) return image;
+    if (image && image !== BLOG_FALLBACK_COVER) return image;
   }
 
   for (const p of post.paragraphs ?? []) {
@@ -30,7 +36,5 @@ export function resolveBlogCoverImage(post: {
     if (thumb) return thumb;
   }
 
-  if (explicit) return explicit;
-
-  return BLOG_FALLBACK_COVER;
+  return "";
 }

@@ -65,16 +65,10 @@ Return JSON only:
   "slugSuggestion": "lowercase-english-hyphens",
   "metaDescription": "145-160 character SEO description",
   "relatedKeywords": ["4-8 related search phrases"],
-  "faq": [
-    { "question": "search-style learner question", "answer": "short direct answer, 1-3 sentences" }
-  ],
   "level": 1-5
 }
 
-FAQ rules:
-- 4-6 questions.
-- Questions must match real search or answer-engine phrasing.
-- Answers must be concise, factual, and not fluffy.
+Do not include an FAQ array. Kaja notes do not use FAQ blocks.
 
 Do not make Medium-style titles like "I Thought X..." unless they still clearly match search intent.`;
 
@@ -123,7 +117,7 @@ Rules:
 - Include practical Korean examples using [[KO: ...]] where helpful.
 - Explain what the Korean means, when to use it, and beginner mistakes.
 - Include at least one section titled "Common Mistakes".
-- Include a "FAQ" section with 4-6 learner questions and direct 1-3 sentence answers.
+- Do NOT include an FAQ section or Q&A list at the end.
 - English body; Korean snippets are allowed with [[KO: 한국어 문장]].
 - NO semicolons (;)
 - No fake personal stories.
@@ -219,11 +213,7 @@ async function writeDraft(digest, title, proposal, mode) {
 Search intent: ${proposal.searchIntent || ""}
 Direct answer to use near the top: ${proposal.directAnswer || ""}
 Meta description target: ${proposal.metaDescription || ""}
-Related keywords: ${(proposal.relatedKeywords || []).join(", ")}
-FAQ questions to cover:
-${(proposal.faq || [])
-  .map((x, i) => `${i + 1}. ${x.question} — ${x.answer}`)
-  .join("\n")}`
+Related keywords: ${(proposal.relatedKeywords || []).join(", ")}`
       : "";
   const user = `Chosen title: ${title}
 Thesis to build around: ${proposal.thesis}
@@ -319,7 +309,6 @@ async function main() {
       args.mode === "seo"
         ? [proposal.primaryKeyword, ...(proposal.relatedKeywords || [])].filter(Boolean)
         : undefined,
-    faq: args.mode === "seo" ? proposal.faq : undefined,
     level: proposal.level || 3,
     videoId: digest.videoId,
     sections: parsed.sections,

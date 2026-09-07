@@ -14,9 +14,12 @@ import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/Button";
 import {
   getBlogPost,
-  listBlogPosts,
+  listRelatedBlogPosts,
   blogPostKeepsImages,
+  blogPostIsListed,
+  blogRelatedClusterFor,
 } from "@/data/blogPosts";
+import { NO_INDEX_METADATA } from "@/lib/noIndexMetadata";
 import { resolveBlogCoverImage } from "@/data/blogPosts/cover";
 
 export const runtime = "nodejs";
@@ -53,14 +56,18 @@ export async function generateMetadata({
     ? description
     : `${SITE_META_KEYWORD}. ${description}`;
 
+  const listed = blogPostIsListed(slug);
+
   return {
     title: { absolute: metaTitle },
     description: metaDescription,
     ...(a.keywords?.length && { keywords: a.keywords }),
     alternates: { canonical },
-    ...(a.noImageIndex && {
-      robots: { index: true, follow: true, noimageindex: true },
-    }),
+    ...(!listed
+      ? { robots: NO_INDEX_METADATA.robots }
+      : a.noImageIndex
+        ? { robots: { index: true, follow: true, noimageindex: true } }
+        : {}),
     openGraph: {
       title: metaTitle,
       description: metaDescription,
@@ -90,14 +97,13 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [a, allPosts] = await Promise.all([
-    getBlogPost(slug),
-    listBlogPosts(10),
-  ]);
+  const a = await getBlogPost(slug);
   if (!a) return notFound();
 
   const isDev = process.env.NODE_ENV !== "production";
-  const related = allPosts.filter((x) => x.slug !== a.slug).slice(0, 4);
+  const listed = blogPostIsListed(a.slug);
+  const related = await listRelatedBlogPosts(a.slug, 4);
+  const relatedCluster = blogRelatedClusterFor(a.slug);
   const keepImages = blogPostKeepsImages(a.slug);
   const mainImage = keepImages ? resolveBlogCoverImage(a) : "";
   const canonical = `${SITE_URL.replace(/\/+$/, "")}/blog/article/${encodeURIComponent(a.slug)}`;
@@ -141,7 +147,7 @@ export default async function BlogArticlePage({
     ],
   };
   const faqJsonLd =
-    a.faq && a.faq.length > 0
+    listed && a.faq && a.faq.length > 0
       ? {
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -158,21 +164,25 @@ export default async function BlogArticlePage({
 
   return (
     <div className={homeStyles.articleWrap}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbListJsonLd),
-        }}
-      />
-      {faqJsonLd ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
+      {listed ? (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(breadcrumbListJsonLd),
+            }}
+          />
+          {faqJsonLd ? (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+            />
+          ) : null}
+        </>
       ) : null}
 
       <div className={homeStyles.column} style={{ maxWidth: columnMaxWidth }}>
@@ -183,6 +193,12 @@ export default async function BlogArticlePage({
         </p>
 
         <article className={homeStyles.articleCard}>
+          {!listed ? (
+            <p className="mb-6 rounded-lg border border-[#1c1916]/10 bg-[#f3f1ec] px-4 py-3 text-sm text-[#6b6760]">
+              Unpublished draft. Not on the blog list, sitemap, or search. Anyone
+              with this URL can still read it.
+            </p>
+          ) : null}
           {mainImage ? (
             <div className="mb-8 overflow-hidden rounded-xl border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-[#f3f1ec]">
               <div className="relative aspect-video w-full">
@@ -323,7 +339,16 @@ export default async function BlogArticlePage({
 
         {related.length > 0 ? (
           <section className={homeStyles.articleRelated}>
-            <h2 className={homeStyles.articleRelatedTitle}>Related posts</h2>
+            <h2 className={homeStyles.articleRelatedTitle}>Related notes</h2>
+            {relatedCluster ? (
+              <p className={homeStyles.articleRelatedLede}>
+                More in {relatedCluster.label}
+              </p>
+            ) : (
+              <p className={homeStyles.articleRelatedLede}>
+                More notes on how to study Korean
+              </p>
+            )}
             <ArticleFeed
               articles={related}
               showMajor={false}

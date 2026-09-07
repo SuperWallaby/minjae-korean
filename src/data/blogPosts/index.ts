@@ -1,6 +1,7 @@
 /**
  * Blog posts — JSON/TS 파일로 관리. content/*.ts 에서 export const post.
  * 새 글: content/your-slug.ts 추가 후 SLUG_LIST + loaders 에 등록.
+ * 공개: listed.ts 의 BLOG_LISTED_SLUGS 에 slug 추가 (피드·sitemap·index).
  * 개발 모드에서 업로드한 이미지는 blog-overrides.json 에 저장되어 병합됨.
  */
 
@@ -9,22 +10,41 @@ import * as path from "path";
 
 import { resolveBlogCoverImage } from "./cover";
 import { excerptFromBlogPost } from "./excerpt";
+import { BLOG_LISTED_SLUGS, blogPostIsListed } from "./listed";
+import { relatedBlogSlugsFor } from "./related";
+import bundledOverrides from "./overrides.json";
 import type {
   BlogPost,
   BlogPostCard,
   BlogImageOverrides,
 } from "./types";
 
+export { BLOG_LISTED_SLUGS, blogPostIsListed } from "./listed";
+export {
+  BLOG_RELATED_CLUSTERS,
+  blogRelatedClusterFor,
+  relatedBlogSlugsFor,
+} from "./related";
+
 const OVERRIDES_PATH = path.join(process.cwd(), "blog-overrides.json");
 
+/**
+ * Covers live in committed `overrides.json` (Workers have no reliable cwd fs).
+ * Local admin uploads still write `blog-overrides.json` and overlay at runtime.
+ */
 async function readBlogOverrides(): Promise<Record<string, BlogImageOverrides>> {
+  const base =
+    bundledOverrides && typeof bundledOverrides === "object"
+      ? (bundledOverrides as Record<string, BlogImageOverrides>)
+      : {};
   try {
     const raw = await fs.readFile(OVERRIDES_PATH, "utf-8");
     const data = JSON.parse(raw) as Record<string, BlogImageOverrides>;
-    return data && typeof data === "object" ? data : {};
+    if (data && typeof data === "object") return { ...base, ...data };
   } catch {
-    return {};
+    /* Workers / production: bundled only */
   }
+  return base;
 }
 
 const SLUG_LIST = [
@@ -59,30 +79,28 @@ const SLUG_LIST = [
   "is-korean-hard-to-learn",
   "celebrities-speaking-korean-pronunciation-tips",
   "jimin-busan-dialect-korean",
+  "how-long-does-it-take-to-learn-korean",
+  "korean-conversation-practice",
+  "easy-korean-reading",
+  "best-korean-textbook-for-self-study",
+  "is-duolingo-good-for-korean",
+  "anki-korean",
 ] as const;
 type Slug = (typeof SLUG_LIST)[number];
 
-/**
- * GSC (sc-domain:kajakorean.com, ~1y): only these `/blog/article/*` URLs had
- * any impressions/clicks. Everything else stays loadable by direct URL but is
- * hidden from `/blog` + home feeds.
- * Order = home/blog list priority (clicks first, then impressions).
- */
-export const BLOG_LISTED_SLUGS = [
-  "korean-verb-endings",
-  "why-koreans-cant-speak-english-after-12-years",
-  "bts-7-letters-far-future-korean-phrases",
-  "why-eun-neun-and-i-ga-feel-so-different",
-  "study-korean-what-is-arirang",
-  "2026-korean-study-method-blended-learning-flow",
-  "good-korean-teacher-2026",
-] as const satisfies readonly Slug[];
+type ListedMustBeSlug = (typeof BLOG_LISTED_SLUGS)[number] extends Slug
+  ? true
+  : never;
+const _listedCheck: ListedMustBeSlug = true;
+void _listedCheck;
 
 /** Keep cover + in-article images only for these posts. */
 export const BLOG_KEEP_IMAGES_SLUGS = [
   "bts-7-letters-far-future-korean-phrases",
   "study-korean-what-is-arirang",
   "why-koreans-cant-speak-english-after-12-years",
+  "korean-verb-endings",
+  "how-long-does-it-take-to-learn-korean",
 ] as const satisfies readonly Slug[];
 
 export function blogPostKeepsImages(slug: string): boolean {
@@ -144,6 +162,16 @@ const loaders: Record<
   "why-essential-korean-words-are-more-than-vocab": () => import("./content/why-essential-korean-words-are-more-than-vocab"),
   "balanced-practice-trumps-method-for-korean": () => import("./content/balanced-practice-trumps-method-for-korean"),
   "mastering-korean-emotions-not-just-words": () => import("./content/mastering-korean-emotions-not-just-words"),
+  "how-long-does-it-take-to-learn-korean": () =>
+    import("./content/how-long-does-it-take-to-learn-korean"),
+  "korean-conversation-practice": () =>
+    import("./content/korean-conversation-practice"),
+  "easy-korean-reading": () => import("./content/easy-korean-reading"),
+  "best-korean-textbook-for-self-study": () =>
+    import("./content/best-korean-textbook-for-self-study"),
+  "is-duolingo-good-for-korean": () =>
+    import("./content/is-duolingo-good-for-korean"),
+  "anki-korean": () => import("./content/anki-korean"),
 };  
 
 export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {
@@ -189,12 +217,76 @@ export async function listBlogPosts(limit = 100): Promise<BlogPostCard[]> {
   return list.slice(0, Math.min(limit, list.length));
 }
 
+async function blogPostCardForSlug(
+  slug: string,
+  overrides: Record<string, BlogImageOverrides>,
+): Promise<BlogPostCard | null> {
+  const loader = loaders[slug as Slug];
+  if (!loader) return null;
+  const m = await loader();
+  const p = m.post;
+  if (!p) return null;
+  const o = overrides[p.slug];
+  const merged = {
+    ...p,
+    imageThumb: o?.imageThumb ?? p.imageThumb,
+    imageLarge: o?.imageLarge ?? p.imageLarge,
+  };
+  const cover = resolveBlogCoverImage(merged);
+  return {
+    slug: p.slug,
+    title: p.title,
+    imageThumb: cover || undefined,
+    imageLarge: cover || undefined,
+    level: p.level,
+    createdAt: p.createdAt,
+    excerpt: excerptFromBlogPost(p),
+    pinned: o?.pinned ?? false,
+  };
+}
+
+/**
+ * Related notes by keyword cluster. Listed pages only link to listed peers
+ * (no draft leak). Draft pages may include unlisted cluster peers for editing.
+ */
+export async function listRelatedBlogPosts(
+  slug: string,
+  limit = 4,
+): Promise<BlogPostCard[]> {
+  const allowUnlisted = !blogPostIsListed(slug);
+  const relatedSlugs = relatedBlogSlugsFor(slug, limit, {
+    allowUnlisted,
+    listedOnly: BLOG_LISTED_SLUGS,
+  });
+  if (relatedSlugs.length === 0) return [];
+  const overrides = await readBlogOverrides();
+  const cards = await Promise.all(
+    relatedSlugs.map((s) => blogPostCardForSlug(s, overrides)),
+  );
+  return cards.filter(Boolean) as BlogPostCard[];
+}
+
+/** Drop authorHint so unpublished rewrite notes never reach HTML / JSON-LD. */
+function stripAuthorHints(post: BlogPost): BlogPost {
+  const { authorHint: _postHint, ...rest } = post;
+  void _postHint;
+  return {
+    ...rest,
+    paragraphs: post.paragraphs.map((p) => {
+      const { authorHint: _hint, ...block } = p;
+      void _hint;
+      return block;
+    }),
+  };
+}
+
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const loader = loaders[slug as Slug];
   if (!loader) return null;
   const m = await loader();
-  const post = m.post ?? null;
-  if (!post) return null;
+  const raw = m.post ?? null;
+  if (!raw) return null;
+  const post = stripAuthorHints(raw);
   const overrides = await readBlogOverrides();
   const o = overrides[slug];
   if (!o) return post;

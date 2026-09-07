@@ -43,7 +43,7 @@ URL → transcript
     → SEO/AEO/GEO brief + titles (default) OR essay thesis + titles
     → SEO/AEO/GEO guide draft OR essay draft
     → de-ai.py (5 passes)
-    → TSX (+ description/keywords/FAQ schema in SEO mode)
+    → TSX (+ description/keywords; no FAQ)
     → src/data/blogPosts/content/{slug}.tsx
     ▼
 [7] Cover (gpt-image-2) → R2 large WebP + thumb WebP → patch TSX

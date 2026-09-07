@@ -26,6 +26,10 @@ export type BlogParagraphBlock = {
    */
   imageAspect?: number;
   subtitle: string;
+  /**
+   * @deprecated Do not use on new Kaja notes. Stripped in getBlogPost if present.
+   */
+  authorHint?: string;
   content: ReactNode;
   /** YouTube URL or video ID — rendered as embed between paragraphs */
   youtube?: string;
@@ -40,7 +44,7 @@ export type BlogPost = {
   description?: string;
   /** Search keywords used for metadata and internal planning. */
   keywords?: string[];
-  /** FAQ entries for answer engines and FAQ structured data. */
+  /** @deprecated Prefer no FAQ on Kaja notes. Optional legacy field only. */
   faq?: BlogFaqItem[];
   level?: ReadingLevel;
   imageThumb?: string;
@@ -50,6 +54,10 @@ export type BlogPost = {
   noImageIndex?: boolean;
   createdAt?: string;
   updatedAt?: string;
+  /**
+   * @deprecated Do not use on new Kaja notes. Stripped in getBlogPost if present.
+   */
+  authorHint?: string;
 };
 
 export type BlogPostCard = Pick<

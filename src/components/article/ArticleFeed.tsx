@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import { RelativeDate } from "@/components/article/RelativeDate";
 import styles from "@/components/site/home-blog.module.css";
-import { BLOG_FALLBACK_COVER } from "@/data/blogPosts/cover";
 import {
   displayLevel,
   levelBadgeClass,
@@ -51,18 +50,18 @@ function resolveFeedCover(
   item: ArticleFeedItem,
   fallbackCover: string,
 ): string {
-  return normalizePublicMediaUrl(
+  const raw =
     item.imageThumb?.trim() ||
-      item.imageLarge?.trim() ||
-      fallbackCover,
-  );
+    item.imageLarge?.trim() ||
+    fallbackCover.trim();
+  return raw ? normalizePublicMediaUrl(raw) : "";
 }
 
 export function ArticleFeed({
   articles,
   showMajor = true,
   basePath = "/news/article",
-  fallbackCover = BLOG_FALLBACK_COVER,
+  fallbackCover = "",
   showCovers = true,
   mobileVisibleCount,
   moreHref,
@@ -170,14 +169,16 @@ export function ArticleFeed({
           )}
         >
           <div className="relative aspect-16/10 w-full overflow-hidden bg-muted/20 sm:aspect-2/1">
-            <Image
-              src={majorCover}
-              alt={major.title}
-              fill
-              className="object-cover transition group-hover:scale-[1.02]"
-              unoptimized={false}
-              sizes="(max-width: 1024px) 100vw, 1024px"
-            />
+            {majorCover ? (
+              <Image
+                src={majorCover}
+                alt={major.title}
+                fill
+                className="object-cover transition group-hover:scale-[1.02]"
+                unoptimized={false}
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            ) : null}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
               <span
@@ -210,6 +211,7 @@ export function ArticleFeed({
         >
           {rest.map((p, index) => {
             const absoluteIndex = showMajor ? index + 1 : index;
+            const cover = resolveFeedCover(p, fallbackCover);
             return (
               <Link
                 key={p.slug}
@@ -219,15 +221,17 @@ export function ArticleFeed({
                   hideOnMobile(absoluteIndex) && "max-sm:hidden",
                 )}
               >
-                <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted/20">
-                  <Image
-                    src={resolveFeedCover(p, fallbackCover)}
-                    alt={p.title}
-                    fill
-                    className="object-cover transition group-hover:scale-[1.02]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
+                {cover ? (
+                  <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted/20">
+                    <Image
+                      src={cover}
+                      alt={p.title}
+                      fill
+                      className="object-cover transition group-hover:scale-[1.02]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                ) : null}
                 <div className="flex min-h-0 flex-1 flex-col p-4">
                   <h4 className="font-serif font-semibold tracking-tight line-clamp-2">
                     {p.title}

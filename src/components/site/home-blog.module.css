@@ -744,6 +744,13 @@
   color: #242424;
 }
 
+.articleRelatedLede {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #6b6b6b;
+}
+
 .articleNav {
   margin-top: 1.5rem;
 }
