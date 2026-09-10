@@ -18,7 +18,7 @@ export function ContentLink({
     <Link
       href={href}
       className={cn(
-        "text-primary underline underline-offset-2 decoration-primary/70 hover:decoration-primary",
+        "text-inherit underline decoration-[#1a8917]/55 underline-offset-[3px] decoration-1 hover:decoration-[#1a8917]",
         className,
       )}
       {...props}

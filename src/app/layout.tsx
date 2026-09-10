@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import {
   Bricolage_Grotesque,
   Plus_Jakarta_Sans,
+  Source_Serif_4,
 } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
@@ -50,6 +51,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+/** Medium-like article body (source-serif-pro equivalent). */
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
   display: "swap",
 });
@@ -481,7 +489,9 @@ export default async function RootLayout({
         </head>
         <body className={`${plusJakarta.variable} ${bricolage.variable}`}>
           <GoogleAnalytics />
-          <MockSessionProvider>{children}</MockSessionProvider>
+          <MockSessionProvider skipRemoteSession>
+            {children}
+          </MockSessionProvider>
         </body>
       </html>
     );
@@ -503,7 +513,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakarta.variable} ${bricolage.variable} kaja-kr-fonts min-h-dvh font-sans`}
+        className={`${plusJakarta.variable} ${bricolage.variable} ${sourceSerif.variable} kaja-kr-fonts min-h-dvh font-sans`}
         cz-shortcut-listen="true"
       >
         <GoogleAnalytics />

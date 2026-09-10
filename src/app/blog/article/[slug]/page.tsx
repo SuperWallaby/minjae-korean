@@ -115,8 +115,8 @@ export default async function BlogArticlePage({
 
   const baseUrl = SITE_URL.replace(/\/+$/, "");
   const useWideContainer = a.slug === "korean-verb-endings";
-  /* Default matches .column (780px); wide only for special layouts */
-  const columnMaxWidth = useWideContainer ? "72rem" : "780px";
+  /* Default matches .column (Medium ~680); wide only for special layouts */
+  const columnMaxWidth = useWideContainer ? "72rem" : "680px";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -272,14 +272,14 @@ export default async function BlogArticlePage({
                     key={`${idx}-${p.subtitle}-${p.youtube ?? ""}-${p.audio ?? ""}`}
                     className={homeStyles.articleBodyBlock}
                   >
-                    <div className="space-y-3">
+                    <div>
                       {p.subtitle ? (
                         <h2 className={homeStyles.articleSubhead}>
                           {p.subtitle}
                         </h2>
                       ) : null}
                       {p.audio ? (
-                        <div className="flex items-center gap-2 rounded-lg border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-[#f3f1ec] px-3 py-2">
+                        <div className="mb-4 flex items-center gap-2 rounded-lg border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-[#f3f1ec] px-3 py-2">
                           <audio
                             controls
                             src={p.audio}
@@ -287,9 +287,7 @@ export default async function BlogArticlePage({
                           />
                         </div>
                       ) : null}
-                      <div className="whitespace-pre-wrap text-[#2f2c28]">
-                        {p.content}
-                      </div>
+                      <div className={homeStyles.articleProse}>{p.content}</div>
                       {keepImages && p.image ? (
                         <div className="mt-4 mb-4 overflow-hidden rounded-xl border border-[color-mix(in_srgb,#1c1916_10%,transparent)] bg-[#f3f1ec]">
                           <div

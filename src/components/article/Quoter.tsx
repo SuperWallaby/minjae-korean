@@ -1,24 +1,16 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
+import styles from "./Quoter.module.css";
 
 type Props = { children: ReactNode; className?: string };
 
 /**
- * 인용/강조용 띠. 블로그 본문에서 문장을 감쌀 때 사용.
+ * Medium pull-quote: large light sans, muted gray, left rule.
+ * (Not body-size serif — that reads as a random bordered paragraph.)
  */
 export function Quoter({ children, className = "" }: Props) {
   return (
-    <span
-      className={`my-4  rounded-lg flex items-center gap-3 p-4 bg-included-2/30 text-included-2-foreground leading-relaxed  ${className}`}
-    >
-      <Image
-        src="/pen-line.webp"
-        width={40}
-        height={40}
-        alt=""
-        className="w-10 opacity-80 -mt-0.5"
-      />
+    <blockquote className={`${styles.quote}${className ? ` ${className}` : ""}`}>
       {children}
-    </span>
+    </blockquote>
   );
 }
