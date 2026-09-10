@@ -10,8 +10,9 @@
  *   0 → skip this project's build
  *   1 → run the build
  *
- * Only paths listed for a site (plus shared infra) trigger that site's deploy.
- * A globalPins-only commit builds getpronounce, not kajakorean.com.
+ * Catalog-only GitHub commits must never rebuild kajakorean (paid minutes).
+ * Skip by commit message first — `git diff PREVIOUS_SHA` often fails open
+ * on Contents API commits (shallow clone / last-successful-deploy SHA).
  */
 import { execFileSync } from "node:child_process";
 
@@ -20,6 +21,32 @@ if (!SITE) {
   console.error("usage: node scripts/vercel-should-build.mjs <minjae-korean|getpronounce|eigopin>");
   process.exit(1);
 }
+
+const COMMIT_MSG = String(process.env.VERCEL_GIT_COMMIT_MESSAGE || "");
+
+function isCatalogOnlyMessage(msg) {
+  return /publish pin catalog/i.test(msg);
+}
+
+/**
+ * getpronounce.net is CLI-only (like eigopin).
+ * GitHub main must NEVER replace production — that wiped /ko in 2026-08-31.
+ * Deploy: bash scripts/deploy-getpronounce.sh --promote
+ */
+if (SITE === "getpronounce") {
+  console.log(
+    "vercel-should-build: getpronounce → SKIP (CLI-only; use scripts/deploy-getpronounce.sh)",
+  );
+  process.exit(0);
+}
+
+if (isCatalogOnlyMessage(COMMIT_MSG)) {
+  console.log(
+    `vercel-should-build: ${SITE} → SKIP (catalog commit; R2 is live)`,
+  );
+  process.exit(0);
+}
+
 
 /** Shared — any change here rebuilds every connected site. */
 const SHARED_PREFIXES = [
@@ -53,6 +80,7 @@ const KAJA_PREFIXES = [
   "src/app/expressions/",
   "src/app/news/",
   "src/app/vocab-quiz/",
+  "src/app/quiz/",
   "src/app/coaching/",
   "src/app/drama/",
   "src/app/songs/",
@@ -73,13 +101,18 @@ const KAJA_PREFIXES = [
   "src/app/api/",
   "src/app/r/",
   "src/app/q/",
+  "src/app/robots.ts",
   "src/components/site/",
   "src/lib/siteBrand",
   "src/lib/siteUrl",
   "src/lib/koreanQuiz/",
+  "src/lib/photoQuizCatalog",
   "src/data/blogPosts/",
+  "src/data/newsletter/photo-quiz-trials.json",
   "scripts/publish-vocab-seo-pages",
   "scripts/pin-vocab-infographics",
+  "scripts/pin-photo-quiz-trials",
+  "scripts/lib/korean-pin-board",
   "scripts/ensure-pinned-vocab-seo",
   "scripts/ensure-vocab-seo-live",
   "scripts/deploy-x-poster",
@@ -126,6 +159,12 @@ const EIGOPIN_PREFIXES = [
   "scripts/pin-sound-samples",
   "scripts/verify-sound-live",
 ];
+
+/** Catalog JSON lives on R2 — a Git-only bump must not rebuild kajakorean. */
+const CONTENT_ONLY_SKIP = new Set([
+  "src/data/vocabInfographic/published.json",
+  "src/data/globalPins/published.json",
+]);
 
 const SITE_PREFIXES = {
   "minjae-korean": [...SHARED_PREFIXES, ...KAJA_PREFIXES],
@@ -183,7 +222,7 @@ if (changed.length === 0) {
   process.exit(0);
 }
 
-const hits = changed.filter(fileTriggersSite);
+const hits = changed.filter(fileTriggersSite).filter((f) => !CONTENT_ONLY_SKIP.has(f));
 const shouldBuild = hits.length > 0;
 
 console.log(
