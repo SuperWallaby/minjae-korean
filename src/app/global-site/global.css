@@ -189,6 +189,32 @@
   text-underline-offset: 3px;
 }
 
+/* Beat `.global-footer a` so filled buttons keep light label on dark fill */
+.global-footer a.global-btn {
+  color: var(--g-paper);
+  text-decoration: none;
+}
+
+.global-footer a.global-btn:hover {
+  color: var(--g-ink);
+}
+
+.global-footer a.global-btn-secondary {
+  color: var(--g-ink);
+}
+
+.global-footer a.global-btn-secondary:hover {
+  color: var(--g-paper);
+}
+
+.global-footer a.global-btn-stamp {
+  color: var(--g-stamp-ink);
+}
+
+.global-footer a.global-btn-stamp:hover {
+  color: var(--g-stamp);
+}
+
 .global-footer-meta {
   margin: 0.35rem 0 0;
 }
@@ -225,10 +251,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.global-footer-tutor-actions .global-btn {
-  text-decoration: none;
 }
 
 .global-footer-subscribe {
@@ -1505,6 +1527,11 @@
   color: var(--g-stamp);
 }
 
+.global-textbook-slide-cover-wrap {
+  position: relative;
+  display: block;
+}
+
 .global-textbook-slide-cover {
   display: block;
   width: 100%;
@@ -1514,6 +1541,48 @@
   border: 1px solid var(--g-rule);
   border-radius: 2px;
   background: #0a0a0a;
+}
+
+.global-textbook-badge {
+  position: absolute;
+  left: 0.35rem;
+  top: 0.35rem;
+  z-index: 1;
+  padding: 0.18rem 0.38rem;
+  border-radius: 2px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #fffaf6;
+  background: color-mix(in srgb, var(--g-ink) 88%, transparent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}
+
+.global-textbook-badge-series {
+  background: color-mix(in srgb, var(--g-lang, var(--g-ink)) 92%, #000);
+}
+
+.global-textbook-badge-reading {
+  background: #1f5c4a;
+}
+
+.global-textbook-badge-grammar {
+  background: #5c3d1f;
+}
+
+.global-textbook-badge-vocab {
+  background: #3d3f6b;
+}
+
+.global-textbook-badge-conversation {
+  background: #7a2e2e;
+}
+
+.global-textbook-badge-course {
+  background: color-mix(in srgb, var(--g-ink) 90%, transparent);
 }
 
 .global-textbook-slide-title {

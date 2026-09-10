@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import {
+  AMAZON_TEXTBOOK_BADGE_LABEL,
   amazonAffiliateUrl,
   textbookCoverSrc,
   type AmazonTextbook,
@@ -20,6 +21,7 @@ type SlideProps = {
 function CarouselSlide({ book, onClick, theme = "quiz" }: SlideProps) {
   const [coverSrc, setCoverSrc] = React.useState(textbookCoverSrc(book));
   const isGlobal = theme === "global";
+  const badgeLabel = AMAZON_TEXTBOOK_BADGE_LABEL[book.badge];
 
   return (
     <li
@@ -30,34 +32,45 @@ function CarouselSlide({ book, onClick, theme = "quiz" }: SlideProps) {
       }
     >
       <a
-        href={amazonAffiliateUrl(book.asin)}
+        href={amazonAffiliateUrl(book.asin, book.marketplace)}
         target="_blank"
         rel="noopener noreferrer sponsored"
         title={`${book.title} — ${book.subtitle}`}
         onClick={onClick}
-        className={
-          isGlobal
-            ? "global-textbook-slide-link"
-            : "group block"
-        }
+        className={isGlobal ? "global-textbook-slide-link" : "group block"}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={coverSrc}
-          alt=""
-          width={96}
-          height={144}
-          loading="lazy"
-          decoding="async"
-          onError={() => {
-            if (coverSrc !== COVER_FALLBACK) setCoverSrc(COVER_FALLBACK);
-          }}
+        <span
           className={
-            isGlobal
-              ? "global-textbook-slide-cover"
-              : "aspect-[2/3] w-full rounded-lg border border-[var(--quiz-border)] bg-[var(--quiz-canvas)] object-cover shadow-sm transition group-hover:border-[var(--quiz-primary)]/40"
+            isGlobal ? "global-textbook-slide-cover-wrap" : "relative block"
           }
-        />
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={coverSrc}
+            alt=""
+            width={96}
+            height={144}
+            loading="lazy"
+            decoding="async"
+            onError={() => {
+              if (coverSrc !== COVER_FALLBACK) setCoverSrc(COVER_FALLBACK);
+            }}
+            className={
+              isGlobal
+                ? "global-textbook-slide-cover"
+                : "aspect-[2/3] w-full rounded-lg border border-[var(--quiz-border)] bg-[var(--quiz-canvas)] object-cover shadow-sm transition group-hover:border-[var(--quiz-primary)]/40"
+            }
+          />
+          <span
+            className={
+              isGlobal
+                ? `global-textbook-badge global-textbook-badge-${book.badge}`
+                : "absolute left-1.5 top-1.5 rounded-[3px] bg-[var(--quiz-text)] px-1.5 py-0.5 text-[0.58rem] font-bold uppercase tracking-[0.06em] text-[var(--quiz-surface)]"
+            }
+          >
+            {badgeLabel}
+          </span>
+        </span>
         <span
           className={
             isGlobal
