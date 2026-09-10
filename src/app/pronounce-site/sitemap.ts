@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import { atlasLangPath, atlasPinPath } from "@/lib/atlasRoutes";
+import { atlasLangPath, atlasPinPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
+import { mixupsPath } from "@/lib/pronounceMixups";
 import {
   getGlobalCatalog,
   globalSiteBase,
-  listGlobalPins,
+  listGlobalListings,
 } from "@/lib/globalSite/catalog";
 import { listPronouncePins } from "@/lib/pronounceSite/catalog";
 import { pronounceSiteOrigin } from "@/lib/pronounceSite/brand";
@@ -12,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = globalSiteBase();
   const now = new Date();
   const langs = (await getGlobalCatalog()).languages || [];
-  const pins = await listGlobalPins();
+  const pins = await listGlobalListings();
   const words = await listPronouncePins();
 
   const routes: MetadataRoute.Sitemap = [
@@ -36,12 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "weekly" as const,
         priority: 0.85,
       })),
-    {
-      url: `${pronounceSiteOrigin()}/ko/mix-ups`,
+    ...["zh", ...PRONOUNCE_PREFIX_LANGS].map((code) => ({
+      url: `${pronounceSiteOrigin()}${mixupsPath(code)}`,
       lastModified: now,
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.7,
-    },
+    })),
     ...pins.map((p) => ({
       url: `${base}${atlasPinPath(p)}`,
       lastModified: p.publishedAt ? new Date(p.publishedAt) : now,

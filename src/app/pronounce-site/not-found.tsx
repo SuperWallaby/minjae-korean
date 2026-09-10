@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
+import { PronounceHomeLink } from "@/components/pronounce-site/PronounceHomeLink";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -17,9 +17,9 @@ export default function PronounceNotFoundPage() {
         This chart may not be published yet, or the link may be out of date.
       </p>
       <p className="mt-6">
-        <Link href="/" className="global-text-link">
+        <PronounceHomeLink className="global-text-link">
           Back to {PRONOUNCE_SITE_NAME}
-        </Link>
+        </PronounceHomeLink>
       </p>
     </div>
   );

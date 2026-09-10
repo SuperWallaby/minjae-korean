@@ -22,12 +22,11 @@ import {
   PronounceVoiceToggle,
 } from "@/components/pronounce-site/PronouncePlayback";
 import { PronouncePinCard } from "@/components/pronounce-site/PronouncePinCard";
-import { PronounceSiteFooter } from "@/components/pronounce-site/PronounceSiteFooter";
 import { pinStaticParamsOrEmpty } from "@/lib/buildScope";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export const revalidate = 60;
+export const revalidate = 3600;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -143,7 +142,6 @@ export default async function PronounceWordPage({ params }: Props) {
           </div>
         </section>
       ) : null}
-      <PronounceSiteFooter lang="zh" />
     </>
   );
 }

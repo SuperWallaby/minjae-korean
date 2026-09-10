@@ -9,6 +9,9 @@ export const AMAZON_JP_AFFILIATE_TAG =
 export const AMAZON_ASSOCIATE_DISCLOSURE =
   "As an Amazon Associate, Kaja Korean earns from qualifying purchases.";
 
+export const AMAZON_ASSOCIATE_DISCLOSURE_PRONOUNCE =
+  "As an Amazon Associate, GetPronounce earns from qualifying purchases.";
+
 export const AMAZON_ASSOCIATE_DISCLOSURE_JA =
   "Amazonアソシエイトとして、EigoChartは適格な購入から収益を得ています。";
 
@@ -42,10 +45,90 @@ export const KOREAN_TEXTBOOKS: AmazonTextbook[] = [
     subtitle: "Second edition · integrated skills",
     coverSrc: "/brand/textbooks/elementary-korean.jpg",
   },
+  {
+    asin: "0824876199",
+    title: "Integrated Korean: Beginning 1",
+    subtitle: "Third edition · KLEAR university series",
+    coverSrc: "/brand/textbooks/integrated-korean-1.jpg",
+  },
+  {
+    asin: "B07J35QFLB",
+    title: "Easy Korean Reading For Beginners",
+    subtitle: "TTMIK · 30 short passages + audio",
+    coverSrc: "/brand/textbooks/easy-korean-reading.jpg",
+  },
+  {
+    asin: "1497445825",
+    title: "Korean Made Simple",
+    subtitle: "Billy Go · beginner Hangul + grammar",
+    coverSrc: "/brand/textbooks/korean-made-simple.jpg",
+  },
+  {
+    asin: "8959951986",
+    title: "Korean Grammar in Use: Beginning",
+    subtitle: "Darakwon · TOPIK 1–2 grammar workbook",
+    coverSrc: "/brand/textbooks/korean-grammar-in-use.jpg",
+  },
+  {
+    asin: "B076W4BKZK",
+    title: "Real-Life Korean Conversations",
+    subtitle: "TTMIK · 40 everyday dialogues + audio",
+    coverSrc: "/brand/textbooks/ttmik-conversations.jpg",
+  },
 ];
 
 /** Beginner textbooks per global atlas language (fixed list — no rotation). */
 export const GLOBAL_TEXTBOOKS_BY_LANG: Record<string, AmazonTextbook[]> = {
+  zh: [
+    {
+      asin: "1622917456",
+      title: "Integrated Chinese Volume 1",
+      subtitle: "4th edition · simplified characters",
+      coverSrc: "/brand/textbooks/integrated-chinese-1.jpg",
+    },
+    {
+      asin: "7561937091",
+      title: "HSK Standard Course 1",
+      subtitle: "Hanban · beginner HSK path",
+      coverSrc: "/brand/textbooks/hsk-standard-1.jpg",
+    },
+    {
+      asin: "7561926235",
+      title: "New Practical Chinese Reader 1",
+      subtitle: "2nd edition · textbook + English notes",
+      coverSrc: "/brand/textbooks/npcr-1.jpg",
+    },
+    {
+      asin: "0804840156",
+      title: "Basic Spoken Chinese",
+      subtitle: "Kubler · speaking + listening for beginners",
+      coverSrc: "/brand/textbooks/basic-spoken-chinese.jpg",
+    },
+    {
+      asin: "080484299X",
+      title: "Reading and Writing Chinese",
+      subtitle: "3rd edition · characters + HSK 1–6",
+      coverSrc: "/brand/textbooks/reading-writing-chinese.jpg",
+    },
+    {
+      asin: "7561937261",
+      title: "HSK Standard Course 2",
+      subtitle: "Next level after HSK 1",
+      coverSrc: "/brand/textbooks/hsk-standard-2.jpg",
+    },
+    {
+      asin: "0415434157",
+      title: "Colloquial Chinese",
+      subtitle: "Routledge · complete beginner course",
+      coverSrc: "/brand/textbooks/colloquial-chinese.jpg",
+    },
+    {
+      asin: "7561928955",
+      title: "New Practical Chinese Reader 2",
+      subtitle: "2nd edition · continue the NPCR path",
+      coverSrc: "/brand/textbooks/npcr-2.jpg",
+    },
+  ],
   es: [
     {
       asin: "0071463380",
@@ -82,6 +165,12 @@ export const GLOBAL_TEXTBOOKS_BY_LANG: Record<string, AmazonTextbook[]> = {
       title: "Easy Spanish Reader",
       subtitle: "Graded stories · build reading fluency",
       coverSrc: "/brand/textbooks/easy-spanish-reader.jpg",
+    },
+    {
+      asin: "1260462196",
+      title: "Spanish Conversation",
+      subtitle: "Practice Makes Perfect · everyday dialogues",
+      coverSrc: "/brand/textbooks/pmp-spanish-conversation.jpg",
     },
   ],
   fr: [
@@ -121,6 +210,12 @@ export const GLOBAL_TEXTBOOKS_BY_LANG: Record<string, AmazonTextbook[]> = {
       subtitle: "Graded stories · build reading fluency",
       coverSrc: "/brand/textbooks/easy-french-reader.jpg",
     },
+    {
+      asin: "1264257295",
+      title: "French Conversation",
+      subtitle: "Practice Makes Perfect · everyday dialogues",
+      coverSrc: "/brand/textbooks/pmp-french-conversation.jpg",
+    },
   ],
   de: [
     {
@@ -159,6 +254,18 @@ export const GLOBAL_TEXTBOOKS_BY_LANG: Record<string, AmazonTextbook[]> = {
       subtitle: "Practice Makes Perfect · drills + review",
       coverSrc: "/brand/textbooks/pmp-german-grammar.jpg",
     },
+    {
+      asin: "1473683378",
+      title: "Short Stories in German",
+      subtitle: "Olly Richards · graded reader A2–B1",
+      coverSrc: "/brand/textbooks/short-stories-german.jpg",
+    },
+    {
+      asin: "0071805095",
+      title: "German Verb Tenses",
+      subtitle: "Practice Makes Perfect · conjugation drills",
+      coverSrc: "/brand/textbooks/pmp-german-verbs.jpg",
+    },
   ],
   it: [
     {
@@ -190,6 +297,18 @@ export const GLOBAL_TEXTBOOKS_BY_LANG: Record<string, AmazonTextbook[]> = {
       title: "Barron's Italian Grammar",
       subtitle: "Quick study + review charts",
       coverSrc: "/brand/textbooks/barron-italian-grammar.jpg",
+    },
+    {
+      asin: "0071849831",
+      title: "Easy Italian Reader",
+      subtitle: "Graded stories · build reading fluency",
+      coverSrc: "/brand/textbooks/easy-italian-reader.jpg",
+    },
+    {
+      asin: "0071804498",
+      title: "Italian Verb Tenses",
+      subtitle: "Practice Makes Perfect · conjugation drills",
+      coverSrc: "/brand/textbooks/pmp-italian-verbs.jpg",
     },
   ],
   ja: [
@@ -229,6 +348,12 @@ export const GLOBAL_TEXTBOOKS_BY_LANG: Record<string, AmazonTextbook[]> = {
       subtitle: "Classic classroom · next level",
       coverSrc: "/brand/textbooks/minna-nihongo-2.jpg",
     },
+    {
+      asin: "1529377161",
+      title: "Short Stories in Japanese",
+      subtitle: "Olly Richards · graded reader B1–B2",
+      coverSrc: "/brand/textbooks/short-stories-japanese.jpg",
+    },
   ],
   ar: [
     {
@@ -260,6 +385,12 @@ export const GLOBAL_TEXTBOOKS_BY_LANG: Record<string, AmazonTextbook[]> = {
       title: "Arabic For Dummies",
       subtitle: "Script, phrases, and grammar basics",
       coverSrc: "/brand/textbooks/arabic-for-dummies.jpg",
+    },
+    {
+      asin: "0804843007",
+      title: "Arabic Stories for Language Learners",
+      subtitle: "Tuttle · bilingual tales + audio",
+      coverSrc: "/brand/textbooks/arabic-stories-learners.jpg",
     },
   ],
 };
@@ -360,6 +491,7 @@ export function textbookCoverSrc(book: AmazonTextbook): string {
 
 /** Fixed catalog for a language (not rotated). */
 export function pickGlobalTextbooks(lang: string): AmazonTextbook[] {
+  if (lang === "ko") return KOREAN_TEXTBOOKS;
   return GLOBAL_TEXTBOOKS_BY_LANG[lang] ?? [];
 }
 

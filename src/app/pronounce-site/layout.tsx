@@ -5,13 +5,14 @@ import "@/styles/affiliate-device.css";
 import {
   PRONOUNCE_SITE_DESCRIPTION,
   PRONOUNCE_SITE_NAME,
-  PRONOUNCE_SITE_TAGLINE,
   pronounceSiteHomeTitle,
   pronounceSiteOrigin,
   pronounceSiteTitleTemplate,
 } from "@/lib/pronounceSite/brand";
 import { PronouncePlaybackProvider } from "@/components/pronounce-site/PronouncePlayback";
 import { PronounceSiteHeader } from "@/components/pronounce-site/PronounceSiteHeader";
+import { PronounceSiteFooter } from "@/components/pronounce-site/PronounceSiteFooter";
+import { AtlasScrollToTop } from "@/components/global-site/AtlasScrollToTop";
 
 export const preferredRegion = "hnd1";
 export const revalidate = 3600;
@@ -51,19 +52,12 @@ export default function PronounceSiteLayout({
 }) {
   return (
     <div className="global-root sound-root" lang="en">
+      <AtlasScrollToTop />
       <PronounceSiteHeader />
       <PronouncePlaybackProvider>
         <main className="global-shell global-main">{children}</main>
       </PronouncePlaybackProvider>
-      <footer className="global-footer">
-        <div className="global-shell">
-          <p>
-            {PRONOUNCE_SITE_NAME} — Chinese at the root, six more languages under
-            /es/, /ja/, and friends.
-          </p>
-          <p className="global-footer-meta">{PRONOUNCE_SITE_TAGLINE}</p>
-        </div>
-      </footer>
+      <PronounceSiteFooter />
     </div>
   );
 }

@@ -7,11 +7,10 @@ import {
 } from "@/lib/globalSite/catalog";
 import { buildPinMetadata } from "@/lib/globalSite/seo";
 import { pinStaticParamsOrEmpty } from "@/lib/buildScope";
-import { PronounceSiteFooter } from "@/components/pronounce-site/PronounceSiteFooter";
 
 type Props = { params: Promise<{ id: string }> };
 
-export const revalidate = 60;
+export const revalidate = 3600;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -33,10 +32,5 @@ export default async function PronounceZhPinPage({ params }: Props) {
   if (pin.lang !== "zh") {
     redirect(atlasPinPath(pin));
   }
-  return (
-    <>
-      <GlobalPinDetail pin={pin} />
-      <PronounceSiteFooter lang="zh" />
-    </>
-  );
+  return <GlobalPinDetail pin={pin} />;
 }

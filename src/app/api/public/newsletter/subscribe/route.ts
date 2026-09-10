@@ -7,6 +7,11 @@ import {
 } from "@/lib/newsletterEmailFooter";
 import { NEWSLETTER_SUBJECT } from "@/lib/newsletterSubjects";
 import {
+  buildMixupsWelcomeEmail,
+  isMixupsSubscribe,
+} from "@/lib/mixupsWelcomeEmail";
+import { MIXUPS_LIST, resolveMixupsLang } from "@/lib/pronounceMixups";
+import {
   resolveNewsletterWelcomeBookCoverUrl,
   resolveNewsletterWelcomePdfUrl,
 } from "@/lib/newsletterWelcomePdf";
@@ -87,6 +92,19 @@ export async function POST(req: NextRequest) {
       typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
     const source =
       typeof body?.source === "string" ? body.source.trim() : "subscribe_page";
+    const mixups = isMixupsSubscribe(body || {});
+    const list =
+      typeof body?.list === "string" && body.list.trim()
+        ? body.list.trim()
+        : mixups
+          ? MIXUPS_LIST
+          : undefined;
+    const lang =
+      typeof body?.lang === "string" && body.lang.trim()
+        ? resolveMixupsLang(body.lang)
+        : mixups
+          ? resolveMixupsLang(undefined)
+          : undefined;
 
     if (!email || !isEmail(email)) {
       return new Response(JSON.stringify({ ok: false, error: "Invalid email" }), {
@@ -95,10 +113,11 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    await upsertNewsletterSubscriber({ email, source });
+    await upsertNewsletterSubscriber({ email, source, lang, list });
 
-    const pdfUrl = welcomePdfUrl();
-    const mail = buildWelcomeEmail(pdfUrl, email);
+    const mail = mixups
+      ? buildMixupsWelcomeEmail(email, lang)
+      : buildWelcomeEmail(welcomePdfUrl(), email);
     await sendResendEmail({ to: email, ...mail });
 
     return new Response(JSON.stringify({ ok: true }), {

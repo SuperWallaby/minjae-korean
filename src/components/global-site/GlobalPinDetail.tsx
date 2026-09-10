@@ -2,11 +2,11 @@ import Link from "next/link";
 import { globalLangMeta } from "@/lib/globalSite/langMeta";
 import { globalPinPageImagePath } from "@/lib/globalSite/pinImages";
 import {
+  listingCardMeta,
   relatedGlobalPins,
   type GlobalPinPage,
 } from "@/lib/globalSite/catalog";
 import { firstSentence } from "@/lib/globalSite/copy";
-import { globalGoPath, type AffiliatePartner } from "@/lib/globalSite/affiliate";
 import { pinJsonLd } from "@/lib/globalSite/seo";
 import { atlasLangPath, atlasPinPath } from "@/lib/atlasRoutes";
 import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
@@ -16,20 +16,15 @@ import { ReadingPinPlayer } from "@/components/global-site/ReadingPinPlayer";
 import { GlobalPinWordList } from "@/components/global-site/GlobalPinWordList";
 import { GlobalPinExampleList } from "@/components/global-site/GlobalPinExampleList";
 import { GlobalAmazonTextbookPanel } from "@/components/global-site/GlobalAmazonTextbookPanel";
+import { GlobalTutorPanel } from "@/components/global-site/GlobalTutorPanel";
 import { SpanishAccentProvider } from "@/components/global-site/SpanishAccentToggle";
 import { FrenchAccentProvider } from "@/components/global-site/FrenchAccentToggle";
+import { AMAZON_ASSOCIATE_DISCLOSURE_PRONOUNCE } from "@/lib/affiliateAmazon";
+import { isPronounceSiteDeployment } from "@/lib/pronounceSite/brand";
 
 type Props = { pin: GlobalPinPage };
 
 export async function GlobalPinDetail({ pin }: Props) {
-  const partner = (
-    pin.partner === "italki" ? "italki" : "preply"
-  ) as AffiliatePartner;
-  const offer =
-    partner === "italki"
-      ? "$10 off your first lesson"
-      : "50% off your first lesson";
-  const goHref = globalGoPath(partner, { lang: pin.lang, pin: pin.id });
   const related = await relatedGlobalPins(pin, 10);
   const relatedSameLang = related.filter((p) => p.lang === pin.lang);
   const relatedOtherLang = related.filter((p) => p.lang !== pin.lang);
@@ -159,50 +154,11 @@ export async function GlobalPinDetail({ pin }: Props) {
         )}
 
         <div className="global-pin-copy">
-          {reading ? null : (
-          <aside className="global-tutor-panel">
-            {partner === "preply" ? (
-              <div className="global-tutor-preply">
-                <div className="global-tutor-preply-copy">
-                  <p className="global-tutor-kicker">{offer}</p>
-                  <h2>Practice with a {pin.langName} tutor</h2>
-                  <p>
-                    Use them lightly after study in a real conversation.
-                  </p>
-                  <a className="global-btn" href={goHref}>
-                    Get 50% Off Your First Lesson →
-                  </a>
-                </div>
-                <a
-                  className="global-tutor-ad"
-                  href={goHref}
-                  aria-label="Preply — 50% off your first lesson"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/brand/affiliate/preply-300x250.webp"
-                    alt="Preply — learn with a live tutor, 50% off"
-                    width={300}
-                    height={250}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-              </div>
-            ) : (
-              <>
-                <p className="global-tutor-kicker">{offer}</p>
-                <h2>Practice with a {pin.langName} tutor</h2>
-                <p>
-                  Use them lightly after study in a real conversation.
-                </p>
-                <a className="global-btn" href={goHref}>
-                  Continue · italki
-                </a>
-              </>
-            )}
-          </aside>
-          )}
+          <GlobalTutorPanel
+            lang={pin.lang}
+            langName={pin.langName}
+            pinId={pin.id}
+          />
         </div>
       </article>
 
@@ -217,7 +173,7 @@ export async function GlobalPinDetail({ pin }: Props) {
               <ul className="global-related-links">
                 {relatedOtherLang.map((p) => (
                   <li key={p.id}>
-                    <Link href={atlasPinPath(p)} data-lang={p.lang}>
+                    <Link href={atlasPinPath(p)} data-lang={p.lang} prefetch={false}>
                       {p.titleEn}
                     </Link>
                   </li>
@@ -234,7 +190,7 @@ export async function GlobalPinDetail({ pin }: Props) {
                     key={p.id}
                     pin={p}
                     heading="h3"
-                    meta={`${p.words.length} words`}
+                    meta={listingCardMeta(p)}
                   />
                 ))}
               </div>
@@ -249,6 +205,11 @@ export async function GlobalPinDetail({ pin }: Props) {
         placement="global_pin_textbooks"
         pinId={pin.id}
         kicker="Books"
+        disclosure={
+          isPronounceSiteDeployment()
+            ? AMAZON_ASSOCIATE_DISCLOSURE_PRONOUNCE
+            : undefined
+        }
       />
     </>
   );

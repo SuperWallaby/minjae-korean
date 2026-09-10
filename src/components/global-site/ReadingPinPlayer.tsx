@@ -7,6 +7,12 @@ import {
   usePronouncePlayback,
 } from "@/components/pronounce-site/PronouncePlayback";
 
+const VOICE_ICONS: Record<string, string> = {
+  Mina: "/brand/voices/mina.png",
+  Hyuk: "/brand/voices/hyuk.png",
+  Anna: "/brand/voices/anna.png",
+};
+
 function fmt(sec: number) {
   if (!Number.isFinite(sec) || sec < 0) return "0:00";
   const m = Math.floor(sec / 60);
@@ -204,16 +210,30 @@ export function ReadingPinPlayer({ reading, children }: Props) {
           <audio ref={audioRef} preload="metadata" />
           {showVoices ? (
             <div className="reading-player-voices" role="group" aria-label="Voice">
-              {reading.tracks.map((tr) => (
-                <button
-                  key={tr.voiceId}
-                  type="button"
-                  className={tr.voiceId === track.voiceId ? "is-on" : undefined}
-                  onClick={() => setTrackId(tr.voiceId)}
-                >
-                  {tr.label}
-                </button>
-              ))}
+              {reading.tracks.map((tr) => {
+                const icon = VOICE_ICONS[tr.voiceId] || VOICE_ICONS[tr.label];
+                return (
+                  <button
+                    key={tr.voiceId}
+                    type="button"
+                    className={tr.voiceId === track.voiceId ? "is-on" : undefined}
+                    onClick={() => setTrackId(tr.voiceId)}
+                  >
+                    {icon ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        className="reading-player-voice-icon"
+                        src={icon}
+                        alt=""
+                        width={28}
+                        height={28}
+                        decoding="async"
+                      />
+                    ) : null}
+                    <span>{tr.label}</span>
+                  </button>
+                );
+              })}
             </div>
           ) : null}
           <div className="reading-player-bar">

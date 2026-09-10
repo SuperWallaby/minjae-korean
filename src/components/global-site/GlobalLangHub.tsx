@@ -1,20 +1,30 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { GlobalPinCard } from "@/components/global-site/GlobalPinCard";
 import { GlobalAmazonTextbookPanel } from "@/components/global-site/GlobalAmazonTextbookPanel";
+import { GlobalHubPager } from "@/components/global-site/GlobalHubPager";
 import { getGlobalLang, globalLangMeta } from "@/lib/globalSite/langMeta";
-import { listGlobalPins } from "@/lib/globalSite/catalog";
+import {
+  listGlobalListings,
+  listingCardMeta,
+  paginateGlobalHub,
+} from "@/lib/globalSite/catalog";
 import { atlasLangPath } from "@/lib/atlasRoutes";
 import { globalGoPath } from "@/lib/globalSite/affiliate";
 import { atlasLangHubH1 } from "@/lib/seo/variedCopy";
+import { AMAZON_ASSOCIATE_DISCLOSURE_PRONOUNCE } from "@/lib/affiliateAmazon";
+import { isPronounceSiteDeployment } from "@/lib/pronounceSite/brand";
 
-type Props = { code: string };
+type Props = { code: string; page?: number };
 
 const LEGACY_LANG_NAV = ["es", "fr", "de", "it", "ar", "ja", "ko"] as const;
 
-export async function GlobalLangHub({ code }: Props) {
+export async function GlobalLangHub({ code, page = 1 }: Props) {
   const lang = getGlobalLang(code);
   if (!lang) return null;
-  const pins = await listGlobalPins({ lang: code });
+  const listings = await listGlobalListings({ lang: code });
+  const paged = paginateGlobalHub(listings, page);
+  if (paged.outOfRange) notFound();
   const meta = globalLangMeta(code);
   const otherLangs = LEGACY_LANG_NAV.filter((c) => c !== code);
   const h1 = atlasLangHubH1(lang.name);
@@ -35,7 +45,7 @@ export async function GlobalLangHub({ code }: Props) {
               {meta.native}
             </span>
             {" · "}
-            {pins.length} charts
+            {paged.total} charts
           </p>
           <h1>{h1}</h1>
           <p className="global-hero-lede">
@@ -58,30 +68,41 @@ export async function GlobalLangHub({ code }: Props) {
         placement="global_lang_textbooks"
         kicker="Books"
         lede={`Graded readers, conversation, and workbooks for ${lang.name}.`}
+        disclosure={
+          isPronounceSiteDeployment()
+            ? AMAZON_ASSOCIATE_DISCLOSURE_PRONOUNCE
+            : undefined
+        }
       />
 
-      {pins.length === 0 ? (
+      {paged.total === 0 ? (
         <p className="global-pin-lede">More charts coming soon.</p>
       ) : (
-        <div className="global-pin-grid">
-          {pins.map((pin, i) => (
-            <GlobalPinCard
-              key={pin.id}
-              pin={pin}
-              priority={i === 0}
-              meta={`${pin.words.length} words${
-                pin.examples?.length ? " · examples" : ""
-              }${pin.words.some((w) => w.ttsUrl) ? " · audio" : ""}`}
-            />
-          ))}
-        </div>
+        <>
+          <div className="global-pin-grid">
+            {paged.items.map((pin, i) => (
+              <GlobalPinCard
+                key={pin.id}
+                pin={pin}
+                priority={i === 0}
+                meta={listingCardMeta(pin)}
+              />
+            ))}
+          </div>
+          <GlobalHubPager
+            lang={code}
+            page={paged.page}
+            totalPages={paged.totalPages}
+            total={paged.total}
+          />
+        </>
       )}
 
       <section className="global-related">
         <p className="global-related-lede">Other languages</p>
         <ul className="global-related-links">
           <li>
-            <Link href="/" lang="zh">
+            <Link href="/" lang="zh" prefetch={false}>
               中文
             </Link>
           </li>
@@ -91,7 +112,7 @@ export async function GlobalLangHub({ code }: Props) {
             if (!l) return null;
             return (
               <li key={c}>
-                <Link href={atlasLangPath(c)} lang={c} dir={m.dir}>
+                <Link href={atlasLangPath(c)} lang={c} dir={m.dir} prefetch={false}>
                   {m.native}
                 </Link>
               </li>
@@ -102,4 +123,3 @@ export async function GlobalLangHub({ code }: Props) {
     </div>
   );
 }
-
