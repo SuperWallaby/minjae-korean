@@ -96,6 +96,7 @@ void _listedCheck;
 
 /** Keep cover + in-article images only for these posts. */
 export const BLOG_KEEP_IMAGES_SLUGS = [
+  "is-korean-hard-to-learn",
   "korean-conversation-practice",
   "bts-7-letters-far-future-korean-phrases",
   "study-korean-what-is-arirang",

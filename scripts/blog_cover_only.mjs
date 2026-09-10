@@ -10,7 +10,7 @@ import { join } from "node:path";
 
 import { generateBlogCoverAssets } from "./lib/blog_cover_image.mjs";
 import { patchBlogTsxImages } from "./lib/blog_markdown_to_tsx.mjs";
-import { loadEnvLocal, ROOT } from "./lib/env_local.mjs";
+import { loadEnvStack, ROOT } from "./lib/env_local.mjs";
 
 function parseArgs(argv) {
   const val = (flag, fallback = null) => {
@@ -39,7 +39,7 @@ function readTitleFromTsx(tsxPath) {
 }
 
 async function main() {
-  loadEnvLocal();
+  loadEnvStack();
   const args = parseArgs(process.argv.slice(2));
   if (!args.slug) {
     console.error("Usage: yarn blog:cover --slug <slug> [--title ...] [--thesis ...]");

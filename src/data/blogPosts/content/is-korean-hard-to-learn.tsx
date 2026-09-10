@@ -21,6 +21,8 @@ export const post: BlogPost = {
     "how long does it take to learn korean",
   ],
   level: 3,
+  imageLarge: "https://file.kajakorean.com/articles/blog-cover-is-korean-hard-to-learn-mtvq5fbr_7ts2mm.webp",
+  imageThumb: "https://file.kajakorean.com/articles/blog-thumb-is-korean-hard-to-learn-mtvq5fbr_7ts2mm.webp",
   createdAt: "2026-09-11T00:00:00.000Z",
   updatedAt: "2026-09-11T00:00:00.000Z",
   paragraphs: [
