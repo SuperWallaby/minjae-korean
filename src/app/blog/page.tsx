@@ -51,7 +51,7 @@ export default async function BlogPage() {
             <p className={homeStyles.sectionLabel}>Notes</p>
             <h1 className={homeStyles.sectionTitle}>How to study Korean</h1>
             <p className={homeStyles.sectionBody}>
-              Methods, habits, and practice notes — not a course catalog.
+              Real experience and research on effective learning methods.
             </p>
           </div>
         </div>
