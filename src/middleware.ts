@@ -1,18 +1,54 @@
 import { NextRequest, NextResponse } from "next/server";
 import { globalPathToPronounce } from "@/lib/atlasRoutes";
+import { blogPostIsListed } from "@/data/blogPosts/listed";
 import vocabKoRedirect from "@/data/vocabInfographic/redirectToGetpronounce.json";
 
 const PRONOUNCE_ORIGIN = "https://getpronounce.net";
 
-/** vocab `{bundleId}/{slug}` → getpronounce pin id. Hub `/ko/` is never a fallback. */
-const VOCAB_KO_PIN: Record<string, string> = Object.fromEntries(
-  Object.entries(
-    (vocabKoRedirect as { mappings?: Record<string, string> }).mappings || {},
-  ).map(([path, id]) => [
-    String(path).replace(/^\/+|\/+$/g, ""),
-    String(id).trim(),
-  ]),
+/** vocab `{bundleId}`, `{bundleId}/{slug}` → getpronounce pin id (NFC-normalized keys). */
+function safeDecodePathSegment(segment: string): string {
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    return segment;
+  }
+}
+
+function normalizeVocabRedirectKey(path: string): string {
+  return safeDecodePathSegment(String(path || ""))
+    .replace(/^\/+|\/+$/g, "")
+    .normalize("NFC");
+}
+
+function buildVocabKoPinLookup(
+  raw: Record<string, string>,
+): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [path, id] of Object.entries(raw)) {
+    const pinId = String(id || "").trim();
+    if (!pinId) continue;
+    const key = normalizeVocabRedirectKey(path);
+    if (key) out[key] = pinId;
+  }
+  return out;
+}
+
+const VOCAB_KO_PIN = buildVocabKoPinLookup(
+  (vocabKoRedirect as { mappings?: Record<string, string> }).mappings || {},
 );
+
+function resolveVocabKoPinId(pathname: string): string {
+  const parts = pathname
+    .replace(/\/+$/, "")
+    .split("/")
+    .filter(Boolean)
+    .map((segment) => normalizeVocabRedirectKey(segment));
+  if (parts[0] !== "vocab" || parts.length < 2) return "";
+  const bundleId = parts[1]!;
+  if (parts.length === 2) return VOCAB_KO_PIN[bundleId] || "";
+  const slug = parts[2]!;
+  return VOCAB_KO_PIN[`${bundleId}/${slug}`] || VOCAB_KO_PIN[bundleId] || "";
+}
 
 const GLOBAL_HOSTS = new Set([
   "global.kajakorean.com",
@@ -65,24 +101,20 @@ type AtlasSite = "global" | "ja" | "sound" | "pronounce" | "worksheet";
 
 /** Edge-cache HTML for public atlas + vocab SEO (browser can still revalidate). */
 const PUBLIC_HTML_CACHE =
-  "public, s-maxage=3600, stale-while-revalidate=86400";
-
-/** Pin/lang-hub HTML must follow catalog TTS within ~60s, not sit behind 1h CDN. */
-const PIN_HTML_CACHE = "public, s-maxage=60, stale-while-revalidate=300";
-
-function isPinOrLangHubPath(pathname: string): boolean {
-  const p = pathname.replace(/\/+$/, "") || "/";
-  if (/(?:^|\/)pin\/[^/]+$/.test(p)) return true;
-  if (/^\/(?:es|fr|de|it|ar|ja|ko)$/.test(p)) return true;
-  if (/^\/pronounce-site\/(?:es|fr|de|it|ar|ja|ko)$/.test(p)) return true;
-  return false;
-}
-
-/** @deprecated use PUBLIC_HTML_CACHE */
-const ATLAS_HTML_CACHE = PUBLIC_HTML_CACHE;
+  "public, max-age=60, s-maxage=3600, stale-while-revalidate=86400";
 
 function hostname(host: string): string {
   return host.split(":")[0]?.toLowerCase() || "";
+}
+
+/** OpenNext workers.dev preview: `kaja-sound.<acct>.workers.dev`. */
+function cfPreviewSite(host: string): AtlasSite | "kaja" | null {
+  const name = hostname(host).split(".")[0] || "";
+  if (name === "kaja-sound") return "sound";
+  if (name === "kaja-eigopin") return "ja";
+  if (name === "kaja-getpronounce") return "pronounce";
+  if (name === "kaja-korean") return "kaja";
+  return null;
 }
 
 function isWorksheetSiteMode(): boolean {
@@ -104,6 +136,7 @@ function isGlobalHost(host: string): boolean {
 }
 
 function isSoundHost(host: string): boolean {
+  if (cfPreviewSite(host) === "sound") return true;
   const h = hostname(host);
   if (SOUND_HOSTS.has(host.toLowerCase()) || SOUND_HOSTS.has(h)) return true;
   return h === "sound.eigopin.com" || h.startsWith("sound.");
@@ -114,6 +147,9 @@ function isPronounceSiteMode(): boolean {
 }
 
 function isPronounceHost(host: string): boolean {
+  const preview = cfPreviewSite(host);
+  if (preview === "pronounce") return true;
+  if (preview && preview !== "kaja") return false;
   if (isPronounceSiteMode()) return true;
   const h = hostname(host);
   if (PRONOUNCE_HOSTS.has(host.toLowerCase()) || PRONOUNCE_HOSTS.has(h))
@@ -129,6 +165,9 @@ function isJaSiteMode(): boolean {
 function isJaHost(host: string): boolean {
   // Sound subdomain must never fall through to ja, even on eigopin deploy.
   if (isSoundHost(host)) return false;
+  const preview = cfPreviewSite(host);
+  if (preview === "ja") return true;
+  if (preview && preview !== "kaja") return false;
   if (isJaSiteMode()) return true;
   const h = hostname(host);
   if (JA_HOSTS.has(host.toLowerCase()) || JA_HOSTS.has(h)) return true;
@@ -141,12 +180,54 @@ function isJaHost(host: string): boolean {
 }
 
 function withPublicHtmlCache(res: NextResponse, pathname = "") {
-  const cache = isPinOrLangHubPath(pathname)
-    ? PIN_HTML_CACHE
-    : PUBLIC_HTML_CACHE;
+  if (pathname.includes("/go/")) {
+    res.headers.set("Cache-Control", "private, no-store");
+    res.headers.set("CDN-Cache-Control", "no-store");
+    res.headers.set("Cloudflare-CDN-Cache-Control", "no-store");
+    return res;
+  }
+  const cache = PUBLIC_HTML_CACHE;
+  res.headers.set("Cache-Control", cache);
   res.headers.set("CDN-Cache-Control", cache);
+  res.headers.set("Cloudflare-CDN-Cache-Control", cache);
   res.headers.set("Vercel-CDN-Cache-Control", cache);
   return res;
+}
+
+/** Public marketing HTML on kajakorean — never auth/account/API. */
+function isKajaCdnCacheablePath(pathname: string): boolean {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  if (
+    path.startsWith("/api") ||
+    path.startsWith("/admin") ||
+    path.startsWith("/account") ||
+    path.startsWith("/login") ||
+    path.startsWith("/booking") ||
+    path.startsWith("/call") ||
+    path.startsWith("/join") ||
+    path.startsWith("/payment") ||
+    path.startsWith("/en/payment") ||
+    path.startsWith("/r/") ||
+    path.startsWith("/bookmarks") ||
+    path.startsWith("/worksheet-review") ||
+    path.startsWith("/talpal")
+  ) {
+    return false;
+  }
+  if (path === "/" || path === "/blog") return true;
+  if (path.startsWith("/blog/article/")) return true;
+  if (path.startsWith("/book/")) return true;
+  if (path.startsWith("/quiz/")) return true;
+  if (path.startsWith("/vocab-quiz")) return true;
+  if (
+    path === "/subscribe" ||
+    path === "/support" ||
+    path === "/terms" ||
+    path === "/privacy"
+  ) {
+    return true;
+  }
+  return false;
 }
 
 function withAtlasCdnCache(res: NextResponse, pathname = "") {
@@ -367,9 +448,7 @@ export function middleware(request: NextRequest) {
     !isStaticAsset(pathname) &&
     !pathname.startsWith("/api")
   ) {
-    const parts = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
-    const key = parts.length >= 3 ? `${parts[1]}/${parts[2]}` : "";
-    const pinId = key ? VOCAB_KO_PIN[key] : "";
+    const pinId = resolveVocabKoPinId(pathname);
     if (pinId) {
       const target = new URL(
         `/ko/pin/${encodeURIComponent(pinId)}`,
@@ -385,9 +464,39 @@ export function middleware(request: NextRequest) {
   }
 
   const res = NextResponse.next();
-  // Main kajakorean.com (not atlas hosts above) — stop search indexing.
-  res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
+  // kajakorean.com stays noindex except the notes hub, listed articles, and book.
+  // Unlisted /blog/article/* slugs are drafts (meta robots + this header).
+  if (!isKajaIndexablePath(pathname)) {
+    res.headers.set("X-Robots-Tag", "noindex, nofollow, noimageindex");
+  }
+  if (isKajaCdnCacheablePath(pathname) && !isStaticAsset(pathname)) {
+    return withPublicHtmlCache(res, pathname);
+  }
   return res;
+}
+
+function isKajaIndexablePath(pathname: string): boolean {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  if (path === "/" || path === "/blog") return true;
+  if (path === "/free-korean-class") return true;
+  if (path.startsWith("/book")) return true;
+  if (
+    path === "/subscribe" ||
+    path === "/support" ||
+    path === "/terms" ||
+    path === "/privacy"
+  ) {
+    return true;
+  }
+  const article = path.match(/^\/blog\/article\/([^/]+)$/);
+  if (article) {
+    try {
+      return blogPostIsListed(decodeURIComponent(article[1]!));
+    } catch {
+      return false;
+    }
+  }
+  return false;
 }
 
 export const config = {
