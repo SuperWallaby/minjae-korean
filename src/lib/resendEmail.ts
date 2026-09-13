@@ -9,6 +9,7 @@ export async function sendResendEmail(args: {
   subject: string;
   html: string;
   text: string;
+  replyTo?: string;
 }) {
   const apiKey = mustEnv("RESEND_API_KEY");
   const from = mustEnv("RESEND_FROM_EMAIL");
@@ -24,6 +25,7 @@ export async function sendResendEmail(args: {
       subject: args.subject,
       html: args.html,
       text: args.text,
+      ...(args.replyTo ? { reply_to: args.replyTo } : {}),
     }),
   });
   const json = await res.json().catch(() => null);

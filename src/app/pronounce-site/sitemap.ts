@@ -29,6 +29,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${pronounceSiteOrigin()}/ko/free-korean-class`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
     ...langs
       .filter((l) => l.code !== "zh")
       .map((l) => ({

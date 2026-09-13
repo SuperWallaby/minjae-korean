@@ -7,6 +7,7 @@ import { SiteNavbar } from "@/components/site/SiteNavbar";
 import NextTopLoader from "nextjs-toploader";
 import { MockSessionProvider } from "@/lib/mock/MockSessionProvider";
 import { EducationModeProvider } from "@/lib/EducationModeProvider";
+import { MinjaeTrialBanner } from "@/components/trial/MinjaeTrialBanner";
 
 const TeachingSpotlight = dynamic(
   () =>
@@ -55,6 +56,7 @@ export function KajaMainLayoutChrome({
           <TeachingSpotlight />
           <TeachingCmdDraw />
           <SiteNavbar />
+          <MinjaeTrialBanner surface="kaja" />
           <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
           <SiteFooter />
           <BuyMeCoffeeFloat />

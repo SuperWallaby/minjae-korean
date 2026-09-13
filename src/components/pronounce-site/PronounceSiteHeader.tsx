@@ -12,6 +12,7 @@ import { atlasLangPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
 import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
 import { pronounceChromeCopy } from "@/lib/pronounceSite/chromeCopy";
 import { PronounceBrandMark } from "@/components/pronounce-site/PronounceBrandMark";
+import { MinjaeTrialBanner } from "@/components/trial/MinjaeTrialBanner";
 
 export function PronounceSiteHeader() {
   const [open, setOpen] = useState(false);
@@ -35,6 +36,7 @@ export function PronounceSiteHeader() {
   const close = () => setOpen(false);
 
   return (
+    <>
     <header className="global-header sound-header pronounce-header">
       <div className="global-shell global-header-inner">
         <div className="global-header-top">
@@ -127,5 +129,7 @@ export function PronounceSiteHeader() {
         />
       ) : null}
     </header>
+      <MinjaeTrialBanner surface="pronounce" />
+    </>
   );
 }
