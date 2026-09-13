@@ -67,7 +67,8 @@ export async function POST(req: NextRequest) {
       });
     }
     const when = new Date(slot);
-    if (Number.isNaN(when.getTime())) {
+    const opens = new Date("2026-09-17T00:00:00+09:00");
+    if (Number.isNaN(when.getTime()) || when < opens || date < "2026-09-17") {
       return new Response(JSON.stringify({ ok: false, error: "Invalid time" }), {
         status: 400,
         headers: { "Content-Type": "application/json" },

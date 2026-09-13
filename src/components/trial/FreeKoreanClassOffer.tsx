@@ -34,9 +34,12 @@ const SURVEY_BOOT = `
   const thanks = document.getElementById("trial-thanks");
   const send = document.getElementById("trial-send");
   if (!dateEl || !timeEl || !form || !thanks || !send) return;
-  dateEl.min = addDays(2);
-  dateEl.max = addDays(21);
-  if (!dateEl.value) dateEl.value = dateEl.min;
+  const OPEN = "2026-09-17";
+  const soonest = addDays(2);
+  dateEl.min = soonest > OPEN ? soonest : OPEN;
+  const latest = addDays(21);
+  dateEl.max = latest > dateEl.min ? latest : dateEl.min;
+  if (!dateEl.value || dateEl.value < dateEl.min) dateEl.value = dateEl.min;
 
   const slotsFor = (localDate) => {
     if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(localDate)) return [];
@@ -171,7 +174,8 @@ export function FreeKoreanClassOffer() {
         Let&apos;s find a time that works for you.
       </h2>
       <p className={styles.body}>
-        I&apos;m available <strong>10 AM–8 PM KST</strong>.
+        I&apos;m available <strong>10 AM–8 PM KST</strong>, starting{" "}
+        <strong>September 17</strong>.
       </p>
       <p className={styles.body}>
         Fill out the form below with your email, Korean level, and preferred
