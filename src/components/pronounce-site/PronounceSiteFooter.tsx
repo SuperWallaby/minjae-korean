@@ -6,58 +6,24 @@ import { MixupsSubscribeForm } from "@/components/pronounce-site/MixupsSubscribe
 import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
 import { pronounceChromeCopy } from "@/lib/pronounceSite/chromeCopy";
 import { mixupsCopyForLang, mixupsPath } from "@/lib/pronounceMixups";
-import { globalGoPath } from "@/lib/globalSite/affiliate";
-import { trackAffiliateClick } from "@/lib/ga";
+import { MinjaeTrialTutorCta } from "@/components/trial/MinjaeTrialTutorCta";
+import { isFreeKoreanClassPath } from "@/lib/trial/localhostOnly";
 
 export function PronounceSiteFooter() {
   const pathname = usePathname() || "";
   const copy = pronounceChromeCopy(pathname);
   const mixups = mixupsCopyForLang(copy.lang);
   const onMixupsPage = /\/mix-ups\/?$/.test(pathname);
-  const preplyHref = globalGoPath("preply", { lang: copy.lang });
-  const italkiHref = globalGoPath("italki", { lang: copy.lang });
+  const hideTutorAd = isFreeKoreanClassPath(pathname);
 
   return (
     <footer className="global-footer">
       <div className="global-shell">
-        <div className="global-footer-tutor">
-          <p className="mixups-banner-kicker">Live practice</p>
-          <h2 className="global-footer-tutor-title">
-            Practice with a {mixups.langName} tutor
-          </h2>
-          <p className="global-footer-tutor-body">
-            After you listen here, use a short lesson to say it back with a real
-            person.
-          </p>
-          <div className="global-footer-tutor-actions">
-            <a
-              className="global-btn"
-              href={preplyHref}
-              onClick={() =>
-                trackAffiliateClick({
-                  partner: "preply",
-                  placement: "pronounce_footer_tutor",
-                  lang: copy.lang,
-                })
-              }
-            >
-              Preply · 50% off first lesson
-            </a>
-            <a
-              className="global-btn global-btn-secondary"
-              href={italkiHref}
-              onClick={() =>
-                trackAffiliateClick({
-                  partner: "italki",
-                  placement: "pronounce_footer_tutor",
-                  lang: copy.lang,
-                })
-              }
-            >
-              italki · $10 off
-            </a>
+        {hideTutorAd ? null : (
+          <div className="global-footer-tutor">
+            <MinjaeTrialTutorCta />
           </div>
-        </div>
+        )}
 
         {onMixupsPage ? null : (
           <div className="global-footer-subscribe">

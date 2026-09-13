@@ -5,6 +5,8 @@ import * as React from "react";
 import { pickAffiliateTutorPartner } from "@/lib/affiliateTutor";
 import { globalGoPath, type AffiliatePartner } from "@/lib/globalSite/affiliate";
 import { trackAffiliateClick } from "@/lib/ga";
+import { MinjaeTrialTutorPanel } from "@/components/trial/MinjaeTrialTutorPanel";
+import { isPronounceSiteDeployment } from "@/lib/pronounceSite/brand";
 
 type Props = {
   lang: string;
@@ -22,6 +24,10 @@ export function GlobalTutorPanel({ lang, langName, pinId }: Props) {
   React.useEffect(() => {
     setPartner(pickAffiliateTutorPartner());
   }, []);
+
+  if (isPronounceSiteDeployment()) {
+    return <MinjaeTrialTutorPanel />;
+  }
 
   if (!partner) {
     return (

@@ -13,6 +13,7 @@ import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
 import { pronounceChromeCopy } from "@/lib/pronounceSite/chromeCopy";
 import { PronounceBrandMark } from "@/components/pronounce-site/PronounceBrandMark";
 import { MinjaeTrialBanner } from "@/components/trial/MinjaeTrialBanner";
+import { freeKoreanClassPath } from "@/lib/trial/localhostOnly";
 
 export function PronounceSiteHeader() {
   const [open, setOpen] = useState(false);
@@ -50,9 +51,12 @@ export function PronounceSiteHeader() {
             <span className="global-brand-mark">{PRONOUNCE_SITE_NAME}</span>
           </Link>
           <div className="pronounce-header-actions">
-            <a className="global-header-tutor" href="/go/preply?lang=zh">
-              Tutor <span>50% off</span>
-            </a>
+            <Link
+              className="global-header-tutor"
+              href={freeKoreanClassPath("pronounce")}
+            >
+              Free trial <span>$5 after</span>
+            </Link>
             <button
               type="button"
               className="pronounce-nav-toggle"
@@ -70,7 +74,7 @@ export function PronounceSiteHeader() {
           className="global-nav pronounce-nav-desktop"
           aria-label="Languages"
         >
-          <Link href="/" data-lang="zh" lang="zh">
+          <Link href="/" data-lang="zh" lang="zh" prefetch={false}>
             {GLOBAL_LANG_META.zh?.native ?? "中文"}
           </Link>
           {PRONOUNCE_PREFIX_LANGS.map((code) => {
@@ -82,6 +86,7 @@ export function PronounceSiteHeader() {
                 data-lang={code}
                 lang={code}
                 dir={meta.dir}
+                prefetch={false}
               >
                 {GLOBAL_LANG_META[code]?.native ?? code}
               </Link>
@@ -97,7 +102,7 @@ export function PronounceSiteHeader() {
       >
         <nav className="pronounce-nav-drawer-nav" aria-label="Languages">
           <p className="pronounce-nav-drawer-label">Languages</p>
-          <Link href="/" data-lang="zh" lang="zh" onClick={close}>
+          <Link href="/" data-lang="zh" lang="zh" prefetch={false} onClick={close}>
             {GLOBAL_LANG_META.zh?.native ?? "中文"}
             <span>Chinese</span>
           </Link>
@@ -111,6 +116,7 @@ export function PronounceSiteHeader() {
                 data-lang={code}
                 lang={code}
                 dir={meta.dir}
+                prefetch={false}
                 onClick={close}
               >
                 {GLOBAL_LANG_META[code]?.native ?? code}

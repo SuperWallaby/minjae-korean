@@ -158,13 +158,10 @@ export function FreeKoreanClassOffer() {
         <li>30-minute free trial</li>
         <li>$5 per session after the trial</li>
       </ul>
-      <p className={styles.body}>
-        After the free trial, 1-on-1 tutoring is <strong>$5 per session</strong>.
-      </p>
       <figure className={styles.figure}>
         <Image
           className={styles.art}
-          src="/brand/jjibara-phone-lesson.png?v=3"
+          src="/brand/jjibara-phone-lesson.png?v=4"
           alt="Jjibara on a phone call with a book, and the small blue-hat sidekick standing next to him"
           width={1024}
           height={1024}

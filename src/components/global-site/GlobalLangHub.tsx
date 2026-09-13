@@ -14,6 +14,7 @@ import { globalGoPath } from "@/lib/globalSite/affiliate";
 import { atlasLangHubH1 } from "@/lib/seo/variedCopy";
 import { AMAZON_ASSOCIATE_DISCLOSURE_PRONOUNCE } from "@/lib/affiliateAmazon";
 import { isPronounceSiteDeployment } from "@/lib/pronounceSite/brand";
+import { freeKoreanClassPath } from "@/lib/trial/localhostOnly";
 
 type Props = { code: string; page?: number };
 
@@ -52,12 +53,21 @@ export async function GlobalLangHub({ code, page = 1 }: Props) {
             Vocabulary charts with audio and example sentences.
           </p>
           <div className="global-cta-row">
-            <a
-              className="global-btn global-btn-stamp"
-              href={globalGoPath("preply", { lang: code })}
-            >
-              Book a {lang.name} tutor · 50% off
-            </a>
+            {isPronounceSiteDeployment() ? (
+              <Link
+                className="global-btn global-btn-stamp"
+                href={freeKoreanClassPath("pronounce")}
+              >
+                Free Korean trial with Minjae
+              </Link>
+            ) : (
+              <a
+                className="global-btn global-btn-stamp"
+                href={globalGoPath("preply", { lang: code })}
+              >
+                Book a {lang.name} tutor · 50% off
+              </a>
+            )}
           </div>
         </div>
       </section>
