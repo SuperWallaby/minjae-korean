@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 
 import { sendResendEmail } from "@/lib/resendEmail";
+import { insertTrialRequest } from "@/lib/trialRequestsRepo";
 
 export const runtime = "nodejs";
 
@@ -11,8 +12,7 @@ const LEVELS = new Set([
   "advanced",
 ]);
 
-const NOTIFY_TO =
-  process.env.TRIAL_NOTIFY_EMAIL?.trim() || "minjae@kajakorean.com";
+const NOTIFY_TO = "colton950901@gmail.com";
 
 function isEmail(s: string) {
   const v = s.trim().toLowerCase();
@@ -122,13 +122,33 @@ export async function POST(req: NextRequest) {
       </div>
     `.trim();
 
-    await sendResendEmail({
-      to: NOTIFY_TO,
-      subject,
-      html,
-      text,
-      replyTo: email,
-    });
+    let saved = false;
+    try {
+      await insertTrialRequest({
+        email,
+        level,
+        date,
+        slot: when.toISOString(),
+        slotLabel,
+        source: req.headers.get("host") || undefined,
+      });
+      saved = true;
+    } catch (e) {
+      console.error("[free-korean-class] mongo", e);
+    }
+
+    try {
+      await sendResendEmail({
+        to: NOTIFY_TO,
+        subject,
+        html,
+        text,
+        replyTo: email,
+      });
+    } catch (e) {
+      console.error("[free-korean-class] email", e);
+      if (!saved) throw e;
+    }
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
