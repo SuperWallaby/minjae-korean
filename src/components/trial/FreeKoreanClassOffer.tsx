@@ -99,8 +99,9 @@ const SURVEY_BOOT = `
       date: form.date.value,
       slot: form.slot.value,
       website: form.website ? form.website.value : "",
+      source: location.host,
     };
-    fetch("/api/public/free-korean-class", {
+    fetch("https://getpronounce.net/api/public/free-korean-class", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

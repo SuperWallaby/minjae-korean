@@ -14,6 +14,37 @@ const LEVELS = new Set([
 
 const NOTIFY_TO = "colton950901@gmail.com";
 
+const CORS_ORIGINS = new Set([
+  "https://kajakorean.com",
+  "https://www.kajakorean.com",
+  "https://getpronounce.net",
+  "https://www.getpronounce.net",
+]);
+
+function corsHeaders(req: NextRequest) {
+  const origin = req.headers.get("origin") || "";
+  if (!CORS_ORIGINS.has(origin)) return {};
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+}
+
+function json(req: NextRequest, body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+      ...corsHeaders(req),
+    },
+  });
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return new Response(null, { status: 204, headers: corsHeaders(req) });
+}
+
 function isEmail(s: string) {
   const v = s.trim().toLowerCase();
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -40,10 +71,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => null);
     const hp = typeof body?.website === "string" ? body.website.trim() : "";
     if (hp) {
-      return new Response(JSON.stringify({ ok: true }), {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      });
+      return json(req, { ok: true });
     }
 
     const email =
@@ -55,24 +83,15 @@ export async function POST(req: NextRequest) {
     const slot = typeof body?.slot === "string" ? body.slot.trim() : "";
 
     if (!email || !isEmail(email) || !LEVELS.has(level)) {
-      return new Response(JSON.stringify({ ok: false, error: "Invalid request" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+      return json(req, { ok: false, error: "Invalid request" }, 400);
     }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-      return new Response(JSON.stringify({ ok: false, error: "Invalid date" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+      return json(req, { ok: false, error: "Invalid date" }, 400);
     }
     const when = new Date(slot);
     const opens = new Date("2026-09-17T00:00:00+09:00");
     if (Number.isNaN(when.getTime()) || when < opens || date < "2026-09-17") {
-      return new Response(JSON.stringify({ ok: false, error: "Invalid time" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+      return json(req, { ok: false, error: "Invalid time" }, 400);
     }
 
     const slotLabel = new Intl.DateTimeFormat("en-US", {
@@ -130,7 +149,10 @@ export async function POST(req: NextRequest) {
         date,
         slot: when.toISOString(),
         slotLabel,
-        source: req.headers.get("host") || undefined,
+        source:
+          (typeof body?.source === "string" && body.source.trim().slice(0, 80)) ||
+          req.headers.get("host") ||
+          undefined,
       });
       saved = true;
     } catch (e) {
@@ -150,18 +172,16 @@ export async function POST(req: NextRequest) {
       if (!saved) throw e;
     }
 
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    return json(req, { ok: true });
   } catch (e) {
     console.error("[free-korean-class]", e);
-    return new Response(
-      JSON.stringify({
+    return json(
+      req,
+      {
         ok: false,
         error: e instanceof Error ? e.message : String(e),
-      }),
-      { status: 500, headers: { "Content-Type": "application/json" } },
+      },
+      500,
     );
   }
 }
