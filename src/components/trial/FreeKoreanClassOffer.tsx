@@ -131,7 +131,7 @@ const SURVEY_BOOT = `
 export function FreeKoreanClassOffer() {
   return (
     <article className={styles.page}>
-      <p className={styles.kicker}>30-minute free trial</p>
+      <p className={styles.kicker}>Free trial</p>
       <div className={styles.intro}>
         <div className={styles.profile}>
           <Image
@@ -143,21 +143,21 @@ export function FreeKoreanClassOffer() {
             priority
           />
         </div>
-        <h1 className={styles.title}>Learn Korean 1-on-1 with Minjae 🇰🇷</h1>
+        <h1 className={styles.title}>Phone Call Korean Lesson 🇰🇷</h1>
       </div>
       <p className={styles.body}>
-        Try your first <strong>30-minute Korean lesson</strong> for free.
+        Learn Korean with Minjae over the phone. First lesson is a{" "}
+        <strong>free trial</strong>.
       </p>
       <p className={styles.body}>
         Whether you&apos;re starting from scratch or already know some Korean,
         we&apos;ll tailor the lesson to your level and goals.
       </p>
       <ul className={styles.perks}>
-        <li>1-on-1 Korean lesson</li>
+        <li>Korean lesson with Minjae</li>
         <li>Textbook included</li>
-        <li>Beginner-friendly</li>
-        <li>30-minute free trial</li>
-        <li>$5 per session after the trial</li>
+        <li>Beginner friendly</li>
+        <li>Free 30 minute trial</li>
       </ul>
       <figure className={styles.figure}>
         <Image
@@ -172,7 +172,7 @@ export function FreeKoreanClassOffer() {
         Let&apos;s find a time that works for you.
       </h2>
       <p className={styles.body}>
-        I&apos;m available <strong>10 AM–8 PM KST</strong>, starting{" "}
+        I&apos;m available <strong>10 AM to 8 PM KST</strong>, starting{" "}
         <strong>September 17</strong>.
       </p>
       <p className={styles.body}>

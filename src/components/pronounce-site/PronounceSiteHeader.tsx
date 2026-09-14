@@ -55,7 +55,7 @@ export function PronounceSiteHeader() {
               className="global-header-tutor"
               href={freeKoreanClassPath("pronounce")}
             >
-              Free trial <span>$5 after</span>
+              Phone lesson
             </Link>
             <button
               type="button"

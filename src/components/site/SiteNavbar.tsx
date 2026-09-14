@@ -12,6 +12,7 @@ import styles from "@/components/site/home-blog.module.css";
 import { cn } from "@/lib/utils";
 import { useMockSession } from "@/lib/mock/MockSessionProvider";
 import { useEducationMode } from "@/lib/EducationModeProvider";
+import { freeKoreanClassPath } from "@/lib/trial/localhostOnly";
 
 function NavTextLink({
   href,
@@ -129,7 +130,9 @@ export function SiteNavbar() {
             <div className="hidden sm:block">
               <BookmarkNavIcon />
             </div>
-            <NavTextLink href="/vocab-quiz" label="Play Game" />
+            <span className="hidden md:inline">
+              <NavTextLink href="/vocab-quiz" label="Play Game" />
+            </span>
             {state.user ? (
               <NavTextLink href="/account" label="Account" />
             ) : (
@@ -137,8 +140,8 @@ export function SiteNavbar() {
                 <NavTextLink href="/login" label="Sign in" />
               </span>
             )}
-            <Link href="/subscribe" className={styles.headerCta}>
-              Get free book
+            <Link href={freeKoreanClassPath("kaja")} className={styles.headerCta}>
+              Phone lesson
             </Link>
             <button
               type="button"
@@ -202,11 +205,11 @@ export function SiteNavbar() {
                   </Link>
                 ))}
                 <Link
-                  href="/subscribe"
+                  href={freeKoreanClassPath("kaja")}
                   onClick={() => setMobileOpen(false)}
                   className={cn(styles.headerCta, "mt-4")}
                 >
-                  Get free book
+                  Phone lesson
                 </Link>
               </nav>
             </div>,

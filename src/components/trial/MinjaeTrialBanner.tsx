@@ -28,12 +28,9 @@ export function MinjaeTrialBanner({ surface }: { surface: Surface }) {
       <div className={styles.inner}>
         <div className={styles.copy}>
           <h2 id={titleId} className={styles.title}>
-            30-minute free trial
+            Phone Call Korean Lesson
           </h2>
-          <p>
-            Learn Korean 1-on-1 with Minjae. Try your first 30-minute Korean
-            lesson for free. After the trial, tutoring is $5 per session.
-          </p>
+          <p>Learn Korean with Minjae. First lesson is a free trial.</p>
         </div>
         <Link className={styles.more} href={freeKoreanClassPath(surface)}>
           Learn more

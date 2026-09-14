@@ -12,11 +12,10 @@ export function MinjaeTrialTutorCta({
 }) {
   return (
     <>
-      <p className="mixups-banner-kicker">1-on-1 Korean</p>
-      <h2 className={headingClassName}>Learn Korean 1-on-1 with Minjae</h2>
+      <p className="mixups-banner-kicker">Free trial</p>
+      <h2 className={headingClassName}>Phone Call Korean Lesson</h2>
       <p className={bodyClassName}>
-        30-minute free trial over the phone. Textbook included. Then $5 per
-        session.
+        Learn Korean with Minjae over the phone. Textbook included.
       </p>
       <div className="global-footer-tutor-actions">
         <Link className="global-btn" href={freeKoreanClassPath("pronounce")}>

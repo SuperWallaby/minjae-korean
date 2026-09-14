@@ -24,7 +24,7 @@ const LEARN_LINKS = [
 
 const EXPLORE_LINKS = [
   { href: "/vocab-quiz", label: "Play Game" },
-  { href: "/subscribe", label: "Get Free Book" },
+  { href: "/free-korean-class", label: "Phone Call Korean Lesson" },
 ] as const;
 
 const ACCOUNT_LINKS = [

@@ -79,7 +79,7 @@ export default async function PronounceHomePage() {
             Example: 你好
           </Link>
           <Link className="global-btn global-btn-stamp" href="/ko/free-korean-class">
-            Free Korean trial with Minjae
+            Phone Call Korean Lesson
           </Link>
         </div>
       </section>

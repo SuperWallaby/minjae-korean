@@ -16,9 +16,9 @@ export async function generateMetadata({
     return { title: "Free class", robots: { index: false, follow: false } };
   }
   return {
-    title: "30-minute free trial",
+    title: "Phone Call Korean Lesson",
     description:
-      "Learn Korean 1-on-1 with Minjae. Try your first 30-minute Korean lesson for free. After the trial, tutoring is $5 per session.",
+      "Learn Korean with Minjae over the phone. First lesson is a free trial.",
   };
 }
 

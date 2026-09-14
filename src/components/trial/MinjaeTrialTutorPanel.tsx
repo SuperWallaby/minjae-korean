@@ -9,9 +9,9 @@ export function MinjaeTrialTutorPanel() {
     <aside className="global-tutor-panel">
       <div className="global-tutor-preply">
         <div className="global-tutor-preply-copy">
-          <p className="global-tutor-kicker">30-minute free trial</p>
-          <h2>Learn Korean 1-on-1 with Minjae</h2>
-          <p>Phone lesson, textbook included. Then $5 per session.</p>
+          <p className="global-tutor-kicker">Free trial</p>
+          <h2>Phone Call Korean Lesson</h2>
+          <p>Learn Korean with Minjae over the phone. Textbook included.</p>
           <Link className="global-btn" href={href}>
             Book a free trial
           </Link>

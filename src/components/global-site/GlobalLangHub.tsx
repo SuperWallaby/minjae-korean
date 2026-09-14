@@ -58,7 +58,7 @@ export async function GlobalLangHub({ code, page = 1 }: Props) {
                 className="global-btn global-btn-stamp"
                 href={freeKoreanClassPath("pronounce")}
               >
-                Free Korean trial with Minjae
+                Phone Call Korean Lesson
               </Link>
             ) : (
               <a
