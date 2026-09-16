@@ -7,14 +7,18 @@ import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
 import { pronounceChromeCopy } from "@/lib/pronounceSite/chromeCopy";
 import { mixupsCopyForLang, mixupsPath } from "@/lib/pronounceMixups";
 import { MinjaeTrialTutorCta } from "@/components/trial/MinjaeTrialTutorCta";
-import { isFreeKoreanClassPath } from "@/lib/trial/localhostOnly";
+import {
+  isFreeKoreanClassPath,
+  isPronounceKoreanPath,
+} from "@/lib/trial/localhostOnly";
 
 export function PronounceSiteFooter() {
   const pathname = usePathname() || "";
   const copy = pronounceChromeCopy(pathname);
   const mixups = mixupsCopyForLang(copy.lang);
   const onMixupsPage = /\/mix-ups\/?$/.test(pathname);
-  const hideTutorAd = isFreeKoreanClassPath(pathname);
+  const hideTutorAd =
+    isFreeKoreanClassPath(pathname) || !isPronounceKoreanPath(pathname);
 
   return (
     <footer className="global-footer">

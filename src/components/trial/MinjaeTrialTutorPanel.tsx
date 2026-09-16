@@ -19,7 +19,7 @@ export function MinjaeTrialTutorPanel() {
         <Link className="global-tutor-ad" href={href} aria-label="Book a free trial">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/brand/jjibara-phone-lesson.png?v=4"
+            src="/brand/jjibara-phone-lesson.png?v=5"
             alt="Jjibara on a phone lesson"
             width={300}
             height={300}

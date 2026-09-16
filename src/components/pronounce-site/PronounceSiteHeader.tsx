@@ -13,12 +13,17 @@ import { PRONOUNCE_SITE_NAME } from "@/lib/pronounceSite/brand";
 import { pronounceChromeCopy } from "@/lib/pronounceSite/chromeCopy";
 import { PronounceBrandMark } from "@/components/pronounce-site/PronounceBrandMark";
 import { MinjaeTrialBanner } from "@/components/trial/MinjaeTrialBanner";
-import { freeKoreanClassPath } from "@/lib/trial/localhostOnly";
+import {
+  freeKoreanClassPath,
+  isPronounceKoreanPath,
+} from "@/lib/trial/localhostOnly";
 
 export function PronounceSiteHeader() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
-  const chrome = pronounceChromeCopy(usePathname());
+  const pathname = usePathname();
+  const chrome = pronounceChromeCopy(pathname);
+  const showKoreanLesson = isPronounceKoreanPath(pathname);
 
   useEffect(() => {
     if (!open) return;
@@ -51,12 +56,14 @@ export function PronounceSiteHeader() {
             <span className="global-brand-mark">{PRONOUNCE_SITE_NAME}</span>
           </Link>
           <div className="pronounce-header-actions">
-            <Link
-              className="global-header-tutor"
-              href={freeKoreanClassPath("pronounce")}
-            >
-              Phone lesson
-            </Link>
+            {showKoreanLesson ? (
+              <Link
+                className="global-header-tutor"
+                href={freeKoreanClassPath("pronounce")}
+              >
+                Phone lesson
+              </Link>
+            ) : null}
             <button
               type="button"
               className="pronounce-nav-toggle"

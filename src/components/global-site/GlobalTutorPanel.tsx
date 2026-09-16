@@ -25,7 +25,7 @@ export function GlobalTutorPanel({ lang, langName, pinId }: Props) {
     setPartner(pickAffiliateTutorPartner());
   }, []);
 
-  if (isPronounceSiteDeployment()) {
+  if (isPronounceSiteDeployment() && lang.toLowerCase() === "ko") {
     return <MinjaeTrialTutorPanel />;
   }
 

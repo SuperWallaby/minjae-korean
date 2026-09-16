@@ -53,7 +53,7 @@ export async function GlobalLangHub({ code, page = 1 }: Props) {
             Vocabulary charts with audio and example sentences.
           </p>
           <div className="global-cta-row">
-            {isPronounceSiteDeployment() ? (
+            {isPronounceSiteDeployment() && code === "ko" ? (
               <Link
                 className="global-btn global-btn-stamp"
                 href={freeKoreanClassPath("pronounce")}

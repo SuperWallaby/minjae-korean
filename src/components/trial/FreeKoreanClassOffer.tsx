@@ -162,7 +162,7 @@ export function FreeKoreanClassOffer() {
       <figure className={styles.figure}>
         <Image
           className={styles.art}
-          src="/brand/jjibara-phone-lesson.png?v=4"
+          src="/brand/jjibara-phone-lesson.png?v=5"
           alt="Jjibara on a phone call with a book, and the small blue-hat sidekick standing next to him"
           width={1024}
           height={1024}

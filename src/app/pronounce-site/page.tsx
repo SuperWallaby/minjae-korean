@@ -78,9 +78,6 @@ export default async function PronounceHomePage() {
           <Link className="global-btn global-btn-secondary" href="/words/ni-hao/">
             Example: 你好
           </Link>
-          <Link className="global-btn global-btn-stamp" href="/ko/free-korean-class">
-            Phone Call Korean Lesson
-          </Link>
         </div>
       </section>
 
