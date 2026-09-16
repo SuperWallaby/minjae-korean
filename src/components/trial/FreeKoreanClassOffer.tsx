@@ -143,7 +143,7 @@ export function FreeKoreanClassOffer() {
             priority
           />
         </div>
-        <h1 className={styles.title}>Phone Call Korean Lesson 🇰🇷</h1>
+        <h1 className={styles.title}>1:1 Korean Lesson 🇰🇷</h1>
       </div>
       <p className={styles.body}>
         Learn Korean with Minjae over the phone. First lesson is a{" "}

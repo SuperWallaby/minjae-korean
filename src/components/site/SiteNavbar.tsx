@@ -141,7 +141,7 @@ export function SiteNavbar() {
               </span>
             )}
             <Link href={freeKoreanClassPath("kaja")} className={styles.headerCta}>
-              Phone lesson
+              1:1 lesson
             </Link>
             <button
               type="button"
@@ -209,7 +209,7 @@ export function SiteNavbar() {
                   onClick={() => setMobileOpen(false)}
                   className={cn(styles.headerCta, "mt-4")}
                 >
-                  Phone lesson
+                  1:1 lesson
                 </Link>
               </nav>
             </div>,

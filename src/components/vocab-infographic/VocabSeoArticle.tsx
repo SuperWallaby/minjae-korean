@@ -139,7 +139,7 @@ export function VocabSeoArticle({ page }: { page: VocabSeoPage }) {
             href="/free-korean-class?utm_source=vocab_seo&utm_campaign=cta-strip"
             className="underline-offset-2 transition hover:text-[var(--quiz-primary)] hover:underline"
           >
-            Phone Call Korean Lesson
+            1:1 Korean Lesson
           </Link>
         </p>
       </div>

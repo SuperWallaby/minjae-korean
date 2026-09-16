@@ -28,9 +28,9 @@ export function MinjaeTrialBanner({ surface }: { surface: Surface }) {
       <div className={styles.inner}>
         <div className={styles.copy}>
           <h2 id={titleId} className={styles.title}>
-            Phone Call Korean Lesson
+            1:1 Korean Lesson
           </h2>
-          <p>Learn Korean with Minjae. First lesson is a free trial.</p>
+          <p>Free trial Korean lesson with Minjae.</p>
         </div>
         <Link className={styles.more} href={freeKoreanClassPath(surface)}>
           Learn more

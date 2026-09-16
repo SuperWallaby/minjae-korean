@@ -2,9 +2,8 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: { absolute: "Phone Call Korean Lesson" },
-  description:
-    "Learn Korean with Minjae over the phone. First lesson is a free trial.",
+  title: { absolute: "1:1 Korean Lesson" },
+  description: "Free trial Korean lesson with Minjae.",
 };
 
 export default function FreeKoreanClassLayout({

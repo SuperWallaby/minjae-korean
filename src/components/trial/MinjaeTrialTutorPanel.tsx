@@ -10,7 +10,7 @@ export function MinjaeTrialTutorPanel() {
       <div className="global-tutor-preply">
         <div className="global-tutor-preply-copy">
           <p className="global-tutor-kicker">Free trial</p>
-          <h2>Phone Call Korean Lesson</h2>
+          <h2>1:1 Korean Lesson</h2>
           <p>Learn Korean with Minjae over the phone. Textbook included.</p>
           <Link className="global-btn" href={href}>
             Book a free trial

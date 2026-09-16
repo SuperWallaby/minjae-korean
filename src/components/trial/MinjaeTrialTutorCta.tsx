@@ -13,7 +13,7 @@ export function MinjaeTrialTutorCta({
   return (
     <>
       <p className="mixups-banner-kicker">Free trial</p>
-      <h2 className={headingClassName}>Phone Call Korean Lesson</h2>
+      <h2 className={headingClassName}>1:1 Korean Lesson</h2>
       <p className={bodyClassName}>
         Learn Korean with Minjae over the phone. Textbook included.
       </p>

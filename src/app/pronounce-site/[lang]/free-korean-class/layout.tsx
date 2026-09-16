@@ -16,9 +16,8 @@ export async function generateMetadata({
     return { title: "Free class", robots: { index: false, follow: false } };
   }
   return {
-    title: "Phone Call Korean Lesson",
-    description:
-      "Learn Korean with Minjae over the phone. First lesson is a free trial.",
+    title: "1:1 Korean Lesson",
+    description: "Free trial Korean lesson with Minjae.",
   };
 }
 
