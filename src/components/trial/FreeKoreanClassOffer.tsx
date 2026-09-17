@@ -197,11 +197,6 @@ export function FreeKoreanClassOffer() {
         />
       </figure>
       <h2 className={styles.sectionTitle}>Reserve a time</h2>
-      <p className={styles.body}>
-        Available <strong>10 AM to 8 PM KST</strong>, from{" "}
-        <strong>September 17</strong>. Pick a date on the calendar, then choose
-        a time.
-      </p>
       {thanks ? (
         <p className={styles.thanks} role="status">
           Reserved. I&apos;ll write back soon.
@@ -321,32 +316,31 @@ export function FreeKoreanClassOffer() {
           </div>
           <input type="hidden" name="date" value={date} />
 
-          <label className={styles.label} htmlFor="trial-time">
-            Time
-          </label>
+          <p className={styles.label}>Time</p>
           {slots.length === 0 ? (
             <p className={styles.note}>
-              No times on this date in my hours. Try another day.
+              No times on this date. Try another day.
             </p>
           ) : (
-            <select
-              id="trial-time"
-              className={styles.input}
-              name="slot"
-              required
-              value={slot}
-              onChange={(e) => setSlot(e.target.value)}
-            >
-              <option value="" disabled>
-                Select a time
-              </option>
-              {slots.map((row) => (
-                <option key={row.value} value={row.value}>
-                  {row.label}
-                </option>
-              ))}
-            </select>
+            <div className={styles.timeGrid} role="listbox" aria-label="Time">
+              {slots.map((row) => {
+                const selected = row.value === slot;
+                return (
+                  <button
+                    key={row.value}
+                    type="button"
+                    role="option"
+                    aria-selected={selected}
+                    className={`${styles.timeSlot} ${selected ? styles.timeSlotOn : ""}`}
+                    onClick={() => setSlot(row.value)}
+                  >
+                    {row.label}
+                  </button>
+                );
+              })}
+            </div>
           )}
+          <input type="hidden" name="slot" value={slot} />
           <button className={styles.submit} type="submit" disabled={!canSend}>
             {sending ? "Reserving…" : "Reserve"}
           </button>

@@ -254,6 +254,41 @@
   background: #147312;
 }
 
+.timeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0.15rem 0 0.85rem;
+}
+
+.form .timeSlot {
+  min-height: 2.45rem;
+  margin-bottom: 0;
+  border: 1px solid #e0d4c2;
+  border-radius: 0.55rem;
+  background: #fffaf3;
+  color: #2a241c;
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.form .timeSlot:hover {
+  border-color: #d8cbb8;
+  background: #f6eee2;
+}
+
+.form .timeSlotOn {
+  border-color: #1a8917;
+  background: #1a8917;
+  color: #fff;
+}
+
+.form .timeSlotOn:hover {
+  border-color: #147312;
+  background: #147312;
+}
+
 .submit {
   width: 100%;
   border: 0;
