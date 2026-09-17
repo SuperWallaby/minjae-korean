@@ -182,7 +182,8 @@ export function FreeKoreanClassOffer() {
         we&apos;ll tailor the lesson to your level and goals.
       </p>
       <ul className={styles.perks}>
-        <li>Korean lesson with Minjae</li>
+        <li>Structured 1:1 Korean lesson A0-C1</li>
+        <li>Native Korean</li>
         <li>Textbook included</li>
         <li>Beginner friendly</li>
         <li>Free 30 minute trial</li>
