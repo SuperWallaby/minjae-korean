@@ -33,7 +33,7 @@
 
 .profileImg {
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 22%;
 }
 
 .title {
@@ -150,6 +150,108 @@
 .input:focus {
   border-color: #1a8917;
   box-shadow: 0 0 0 3px rgba(26, 137, 23, 0.16);
+}
+
+.cal {
+  margin: 0.15rem 0 0.85rem;
+  padding: 0.85rem 0.75rem 0.95rem;
+  border: 1px solid #e0d4c2;
+  border-radius: 0.85rem;
+  background: #fff;
+}
+
+.calHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.calMonth {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+  color: #1f1a14;
+}
+
+.calNav {
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid #e0d4c2;
+  border-radius: 0.5rem;
+  background: #fffaf3;
+  color: #2a241c;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.calNav:hover:not(:disabled) {
+  background: #f6eee2;
+}
+
+.calNav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.calWeek,
+.calGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.28rem;
+}
+
+.calWeek {
+  margin-bottom: 0.35rem;
+}
+
+.calWeek span {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8a7d6e;
+}
+
+.calEmpty {
+  min-height: 2.35rem;
+}
+
+.calDay {
+  min-height: 2.35rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  background: #fffaf3;
+  color: #2a241c;
+  font-size: 0.92rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.calDay:hover:not(:disabled) {
+  border-color: #d8cbb8;
+  background: #f6eee2;
+}
+
+.calDay:disabled {
+  background: transparent;
+  color: #c9bfb3;
+  cursor: not-allowed;
+}
+
+.calDayOn {
+  border-color: #1a8917;
+  background: #1a8917;
+  color: #fff;
+}
+
+.calDayOn:hover:not(:disabled) {
+  border-color: #147312;
+  background: #147312;
 }
 
 .submit {
