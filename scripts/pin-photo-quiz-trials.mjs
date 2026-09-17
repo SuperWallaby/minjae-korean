@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
  * Pin photo-quiz trial cards (Minjae face composite) to Pinterest board
- * "Korean quiz". Extra / beyond daily vocab-wave limit — call explicitly.
+ * "Korean quiz". Part of the Korean daily 24 — 1 per slot (3/day), not extra.
  *
- *   node scripts/pin-photo-quiz-trials.mjs --count 4
+ *   node scripts/pin-photo-quiz-trials.mjs --count 1
  *   node scripts/pin-photo-quiz-trials.mjs --ids A1-pay-by-card,A2-coffee-please
+ *   node scripts/pin-photo-quiz-trials.mjs --count 4 --force   # ignore daily slice
  *
  * Source: neo-project/korean-quiz/local/photo-quiz-trials/raw-safezone/
  * Destination: kajakorean.com/quiz/result/{id} (noindex SPA-style result)
@@ -48,21 +49,39 @@ function destFor(id) {
   return `${base}?utm_source=pinterest&utm_medium=pin&utm_campaign=photo-quiz-pin`;
 }
 
+async function resultPageLive(id) {
+  const url = `${SITE}/quiz/result/${encodeURIComponent(id)}`;
+  try {
+    const res = await fetch(url, {
+      method: "GET",
+      redirect: "follow",
+      signal: AbortSignal.timeout(12_000),
+      headers: { Accept: "text/html" },
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
 function parseArgs(argv) {
-  let count = 4;
+  let count = 1;
   let ids = null;
+  let force = false;
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--count" && argv[i + 1]) {
-      count = Math.max(1, Number(argv[++i]) || 4);
+      count = Math.max(1, Number(argv[++i]) || 1);
     } else if (a === "--ids" && argv[i + 1]) {
       ids = String(argv[++i])
         .split(",")
         .map((s) => s.trim())
         .filter(Boolean);
+    } else if (a === "--force") {
+      force = true;
     }
   }
-  return { count, ids };
+  return { count, ids, force };
 }
 
 function loadJson(p, fallback) {
@@ -187,7 +206,30 @@ function parseUploadPayload(out) {
 }
 
 async function main() {
-  const { count, ids } = parseArgs(process.argv.slice(2));
+  const { count: want, ids, force } = parseArgs(process.argv.slice(2));
+  let count = want;
+  if (!force && !ids?.length) {
+    const vocabPinnedPath = path.join(
+      ROOT,
+      ".tmp/vocab-infographic-gen/pinterest-pinned.json",
+    );
+    const quota = spawnSync(
+      process.execPath,
+      [
+        path.join(__dirname, "lib/photo-quiz-wave-quota.mjs"),
+        vocabPinnedPath,
+      ],
+      { encoding: "utf8", env: process.env },
+    );
+    const take = Number(String(quota.stdout || "").trim().split("|")[0]);
+    if (Number.isFinite(take)) {
+      count = Math.min(count, Math.max(0, take));
+    }
+    if (count <= 0) {
+      console.log("photo-quiz daily slice full — skip (use --force to override)");
+      return;
+    }
+  }
   if (!existsSync(CATALOG)) {
     throw new Error(`catalog missing: ${CATALOG}`);
   }
@@ -213,7 +255,16 @@ async function main() {
     const want = new Set(ids);
     candidates = candidates.filter((r) => want.has(r.id));
   }
-  candidates = candidates.slice(0, count);
+  const live = [];
+  for (const row of candidates) {
+    if (await resultPageLive(row.id)) {
+      live.push(row);
+      if (live.length >= count) break;
+      continue;
+    }
+    console.log(`skip ${row.id} — ${SITE}/quiz/result/${row.id} is not live`);
+  }
+  candidates = live;
 
   console.log(
     `==> Photo quiz Pinterest: ${candidates.length} → board="${BOARD}" dest=/quiz/result/{id}`,
