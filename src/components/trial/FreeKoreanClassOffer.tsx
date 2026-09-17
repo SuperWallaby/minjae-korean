@@ -163,7 +163,7 @@ export function FreeKoreanClassOffer() {
       <div className={styles.intro}>
         <div className={styles.profile}>
           <Image
-            src="/brand/minjae-camera.jpg?v=1"
+            src="/placeholders/minjae-desk.jpg"
             alt="Minjae"
             fill
             className={styles.profileImg}
@@ -190,10 +190,10 @@ export function FreeKoreanClassOffer() {
       <figure className={styles.figure}>
         <Image
           className={styles.art}
-          src="/brand/jjibara-phone-lesson.png?v=5"
-          alt="Jjibara on a phone call with a book, and the small blue-hat sidekick standing next to him"
+          src="/brand/minjae-phone-lesson.jpg?v=1"
+          alt="Minjae on a phone lesson"
           width={1024}
-          height={1024}
+          height={682}
         />
       </figure>
       <h2 className={styles.sectionTitle}>Reserve a time</h2>
