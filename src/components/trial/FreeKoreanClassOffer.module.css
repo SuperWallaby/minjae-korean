@@ -353,6 +353,92 @@
   color: #2f5a28;
 }
 
+.ticket {
+  margin: 0.15rem 0 0.4rem;
+  padding: 1.15rem 1.05rem 1.2rem;
+  border: 1px solid #d8ecd4;
+  border-radius: 1rem;
+  background: #f4faf3;
+}
+
+.ticketKicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a8917;
+}
+
+.ticketTitle {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 740;
+  letter-spacing: -0.03em;
+  color: #1f1a14;
+}
+
+.ticketLead {
+  margin: 0 0 0.95rem;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: #2a241c;
+}
+
+.ticketMeta {
+  margin: 0 0 1rem;
+  padding: 0.15rem 0 0.15rem;
+  border-top: 1px dashed #c9dfc4;
+  border-bottom: 1px dashed #c9dfc4;
+}
+
+.ticketMeta div {
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  gap: 0.55rem;
+  padding: 0.62rem 0;
+}
+
+.ticketMeta div + div {
+  border-top: 1px solid #e4f0e1;
+}
+
+.ticketMeta dt {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: #6b7a68;
+  padding-top: 0.12rem;
+}
+
+.ticketMeta dd {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 680;
+  line-height: 1.35;
+  color: #1f1a14;
+}
+
+.ticketMeta dd span {
+  display: block;
+  margin-top: 0.12rem;
+  font-size: 1.15rem;
+  font-weight: 740;
+}
+
+.ticketNote {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: #3d4a3b;
+}
+
+.ticketNote strong {
+  font-weight: 720;
+  color: #1f1a14;
+}
+
 .error {
   margin: 0.2rem 0 0.9rem;
   font-size: 0.95rem;

@@ -78,6 +78,23 @@ function slotsFor(localDate: string) {
   return slots;
 }
 
+function formatWhen(iso: string) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return { date: "", time: "" };
+  return {
+    date: new Intl.DateTimeFormat(undefined, {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }).format(d),
+    time: new Intl.DateTimeFormat(undefined, {
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(d),
+  };
+}
+
 function buildRange() {
   const soonest = addDaysYmd(2);
   const min = soonest > OPEN_YMD ? soonest : OPEN_YMD;
@@ -131,6 +148,10 @@ export function FreeKoreanClassOffer() {
     while (out.length % 7 !== 0) out.push({ ymd: null, day: null });
     return out;
   }, [viewMonth, viewYear]);
+
+  const booked = useMemo(() => formatWhen(slot), [slot]);
+  const levelLabel =
+    LEVELS.find((row) => row.value === level)?.label || level;
 
   const canSend =
     Boolean(name.trim() && email.trim() && level && date && slot) && !sending;
@@ -207,12 +228,42 @@ export function FreeKoreanClassOffer() {
           height={682}
         />
       </figure>
-      <h2 className={styles.sectionTitle}>Reserve a time</h2>
       {thanks ? (
-        <p className={styles.thanks} role="status">
-          Reserved. I&apos;ll write back soon.
-        </p>
+        <section className={styles.ticket} role="status">
+          <p className={styles.ticketKicker}>Reservation confirmed</p>
+          <h2 className={styles.ticketTitle}>You&apos;re booked</h2>
+          <p className={styles.ticketLead}>
+            30-minute free 1:1 Korean trial with Minjae.
+          </p>
+          <dl className={styles.ticketMeta}>
+            <div>
+              <dt>When</dt>
+              <dd>
+                {booked.date}
+                <span>{booked.time}</span>
+              </dd>
+            </div>
+            <div>
+              <dt>Name</dt>
+              <dd>{name.trim()}</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd>{email.trim()}</dd>
+            </div>
+            <div>
+              <dt>Level</dt>
+              <dd>{levelLabel}</dd>
+            </div>
+          </dl>
+          <p className={styles.ticketNote}>
+            I&apos;ll email you shortly to confirm the call. Check your inbox
+            (and spam) at <strong>{email.trim()}</strong>.
+          </p>
+        </section>
       ) : (
+        <>
+      <h2 className={styles.sectionTitle}>Reserve a time</h2>
         <form className={styles.form} onSubmit={onSubmit}>
           {error ? (
             <p className={styles.error} role="alert">
@@ -376,6 +427,7 @@ export function FreeKoreanClassOffer() {
             {sending ? "Reserving…" : "Reserve Trial"}
           </button>
         </form>
+        </>
       )}
     </article>
   );
