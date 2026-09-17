@@ -342,7 +342,7 @@ export function FreeKoreanClassOffer() {
           )}
           <input type="hidden" name="slot" value={slot} />
           <button className={styles.submit} type="submit" disabled={!canSend}>
-            {sending ? "Reserving…" : "Reserve"}
+            {sending ? "Reserving…" : "Reserve Trial"}
           </button>
         </form>
       )}
