@@ -12,6 +12,13 @@ const OPEN_YMD = "2026-09-17";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+const LEVELS = [
+  { value: "absolute-beginner", label: "Absolute beginner" },
+  { value: "beginner", label: "Beginner" },
+  { value: "intermediate", label: "Intermediate" },
+  { value: "advanced", label: "Advanced" },
+] as const;
+
 function pad(n: number) {
   return String(n).padStart(2, "0");
 }
@@ -88,6 +95,7 @@ export function FreeKoreanClassOffer() {
   const [viewMonth, setViewMonth] = useState(minDate.getMonth());
   const [date, setDate] = useState(min);
   const [slot, setSlot] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [level, setLevel] = useState("");
   const [website, setWebsite] = useState("");
@@ -124,7 +132,8 @@ export function FreeKoreanClassOffer() {
     return out;
   }, [viewMonth, viewYear]);
 
-  const canSend = Boolean(email.trim() && level && date && slot) && !sending;
+  const canSend =
+    Boolean(name.trim() && email.trim() && level && date && slot) && !sending;
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -138,6 +147,7 @@ export function FreeKoreanClassOffer() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            name: name.trim(),
             email: email.trim(),
             level,
             date,
@@ -222,6 +232,20 @@ export function FreeKoreanClassOffer() {
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
           />
+          <label className={styles.label} htmlFor="trial-name">
+            Name
+          </label>
+          <input
+            id="trial-name"
+            className={styles.input}
+            type="text"
+            name="name"
+            placeholder="Your name"
+            autoComplete="name"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <label className={styles.label} htmlFor="trial-email">
             Email
           </label>
@@ -237,25 +261,31 @@ export function FreeKoreanClassOffer() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label className={styles.label} htmlFor="trial-level">
+          <p className={styles.label} id="trial-level-label">
             Current Korean level
-          </label>
-          <select
-            id="trial-level"
-            className={styles.input}
-            name="level"
-            required
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
+          </p>
+          <div
+            className={styles.levelGrid}
+            role="radiogroup"
+            aria-labelledby="trial-level-label"
           >
-            <option value="" disabled>
-              Select your level
-            </option>
-            <option value="absolute-beginner">Absolute beginner</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
+            {LEVELS.map((row) => {
+              const selected = row.value === level;
+              return (
+                <button
+                  key={row.value}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  className={`${styles.levelTab} ${selected ? styles.levelTabOn : ""}`}
+                  onClick={() => setLevel(row.value)}
+                >
+                  {row.label}
+                </button>
+              );
+            })}
+          </div>
+          <input type="hidden" name="level" value={level} />
 
           <p className={styles.label}>Date</p>
           <div className={styles.cal}>

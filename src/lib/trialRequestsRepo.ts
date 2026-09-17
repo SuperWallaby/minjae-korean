@@ -1,6 +1,7 @@
 import { getMongoDb } from "@/lib/mongo";
 
 export type TrialRequest = {
+  name?: string;
   email: string;
   level: string;
   date: string;
@@ -30,6 +31,7 @@ export async function insertTrialRequest(
 ): Promise<TrialRequest> {
   const createdAt = row.createdAt || new Date().toISOString();
   const doc: TrialRequest = {
+    name: row.name?.trim() || undefined,
     email: row.email.trim().toLowerCase(),
     level: row.level,
     date: row.date,
@@ -47,6 +49,7 @@ export async function listTrialRequests(limit = 50): Promise<TrialRequest[]> {
   const col = await requestsCollection();
   const rows = await col.find({}).sort({ createdAt: -1 }).limit(limit).toArray();
   return rows.map((row) => ({
+    name: row.name,
     email: row.email,
     level: row.level,
     date: row.date,

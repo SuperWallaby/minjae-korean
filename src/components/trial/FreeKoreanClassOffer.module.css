@@ -254,6 +254,42 @@
   background: #147312;
 }
 
+.levelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0.15rem 0 0.85rem;
+}
+
+.form .levelTab {
+  min-height: 2.55rem;
+  margin-bottom: 0;
+  border: 1px solid #e0d4c2;
+  border-radius: 0.55rem;
+  background: #fffaf3;
+  color: #2a241c;
+  font-size: 0.86rem;
+  font-weight: 650;
+  padding: 0.45rem 0.4rem;
+  cursor: pointer;
+}
+
+.form .levelTab:hover {
+  border-color: #d8cbb8;
+  background: #f6eee2;
+}
+
+.form .levelTabOn {
+  border-color: #1a8917;
+  background: #1a8917;
+  color: #fff;
+}
+
+.form .levelTabOn:hover {
+  border-color: #147312;
+  background: #147312;
+}
+
 .timeGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

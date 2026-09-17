@@ -74,6 +74,8 @@ export async function POST(req: NextRequest) {
       return json(req, { ok: true });
     }
 
+    const name =
+      typeof body?.name === "string" ? body.name.trim().slice(0, 80) : "";
     const email =
       typeof body?.email === "string"
         ? body.email.trim().toLowerCase().slice(0, 120)
@@ -82,7 +84,7 @@ export async function POST(req: NextRequest) {
     const date = typeof body?.date === "string" ? body.date.trim() : "";
     const slot = typeof body?.slot === "string" ? body.slot.trim() : "";
 
-    if (!email || !isEmail(email) || !LEVELS.has(level)) {
+    if (!name || !email || !isEmail(email) || !LEVELS.has(level)) {
       return json(req, { ok: false, error: "Invalid request" }, 400);
     }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
@@ -104,10 +106,11 @@ export async function POST(req: NextRequest) {
       minute: "2-digit",
     }).format(when);
 
-    const subject = `Free trial request — ${email}`;
+    const subject = `Free trial request — ${name}`;
     const text = [
       "New 30-minute free trial request",
       "",
+      `Name: ${name}`,
       `Email: ${email}`,
       `Level: ${levelLabel(level)}`,
       `Preferred date: ${date}`,
@@ -120,6 +123,10 @@ export async function POST(req: NextRequest) {
       <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.55; color: #1d1d1f; max-width: 560px;">
         <h2 style="margin: 0 0 12px; font-size: 18px;">New 30-minute free trial request</h2>
         <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px;">
+          <tr>
+            <td style="padding: 6px 0; color: #6e6e73; width: 140px;">Name</td>
+            <td style="padding: 6px 0;">${esc(name)}</td>
+          </tr>
           <tr>
             <td style="padding: 6px 0; color: #6e6e73; width: 140px;">Email</td>
             <td style="padding: 6px 0;">${esc(email)}</td>
@@ -144,6 +151,7 @@ export async function POST(req: NextRequest) {
     let saved = false;
     try {
       await insertTrialRequest({
+        name,
         email,
         level,
         date,
