@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GlobalLangHub } from "@/components/global-site/GlobalLangHub";
 import { getGlobalLang } from "@/lib/globalSite/langMeta";
+import { PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
 import { globalSiteBase } from "@/lib/globalSite/catalog";
-import { atlasLangPath, PRONOUNCE_PREFIX_LANGS } from "@/lib/atlasRoutes";
-import { atlasLangHubDescription } from "@/lib/seo/variedCopy";
 import { pronounceStaticParamsOrEmpty } from "@/lib/buildScope";
 import {
   parseChartCategory,
@@ -35,26 +34,18 @@ export async function generateMetadata({
   const row = getGlobalLang(lang);
   if (!row) return { title: "Language" };
   const base = globalSiteBase();
-  const url = `${base}${atlasLangPath(lang)}`;
-  const description = atlasLangHubDescription("pronounce", lang, row.name);
+  const hub = `${base}/${lang}/`;
+  const self = `${base}/${lang}/charts/`;
   return {
-    title: `${row.name} pronunciation charts`,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      title: `${row.name} vocabulary charts · GetPronounce`,
-      description,
-      url,
-      siteName: "GetPronounce",
-      type: "website",
-    },
+    title: `${row.name} charts`,
     robots: filtered
       ? { index: false, follow: true }
       : { index: true, follow: true },
+    alternates: { canonical: filtered ? self : hub },
   };
 }
 
-export default async function PronounceLangPage({
+export default async function PronounceLangChartsIndexPage({
   params,
   searchParams,
 }: Props) {
@@ -69,5 +60,14 @@ export default async function PronounceLangPage({
   const row = getGlobalLang(lang);
   if (!row) notFound();
   const sp = await searchParams;
-  return <GlobalLangHub code={lang} cat={sp.cat} q={sp.q} routing="pronounce" />;
+  return (
+    <GlobalLangHub
+      code={lang}
+      page={1}
+      browse="charts"
+      cat={sp.cat}
+      q={sp.q}
+      routing="pronounce"
+    />
+  );
 }

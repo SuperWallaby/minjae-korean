@@ -14,6 +14,7 @@ export const PRONOUNCE_PREFIX_LANGS = [
   "it",
   "ar",
   "ja",
+  "ko",
 ] as const;
 
 export type PronouncePrefixLang = (typeof PRONOUNCE_PREFIX_LANGS)[number];
@@ -41,6 +42,28 @@ export function atlasLangPath(code: string): string {
     return `/${lang}/`;
   }
   return `/lang/${encodeURIComponent(lang)}`;
+}
+
+/** Page 1 is the lang hub; page 2+ lives under `/charts/{n}`. */
+export function atlasLangChartsPath(code: string, page: number): string {
+  const lang = normalizeAtlasLangCode(code);
+  const n = Math.max(1, Math.floor(Number(page)) || 1);
+  if (n <= 1) return atlasLangPath(lang);
+  if (isPronounceAtlasRouting()) {
+    if (lang === "zh") return `/charts/${n}/`;
+    return `/${lang}/charts/${n}/`;
+  }
+  return `/lang/${encodeURIComponent(lang)}/charts/${n}`;
+}
+
+/** Dedicated charts index (`/ko/charts/`), not the lang hub. */
+export function atlasLangChartsIndexPath(code: string): string {
+  const lang = normalizeAtlasLangCode(code);
+  if (isPronounceAtlasRouting()) {
+    if (lang === "zh") return `/charts/`;
+    return `/${lang}/charts/`;
+  }
+  return `/lang/${encodeURIComponent(lang)}/charts`;
 }
 
 export function atlasPinPath(pin: { id: string; lang: string }): string {

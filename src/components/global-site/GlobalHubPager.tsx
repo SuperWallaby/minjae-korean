@@ -1,19 +1,36 @@
 import Link from "next/link";
-import { atlasLangChartsPath } from "@/lib/atlasRoutes";
+import { atlasChartBrowsePath, type AtlasRouting } from "@/lib/globalSite/chartCategories";
 
 type Props = {
   lang: string;
   page: number;
   totalPages: number;
   total: number;
+  cat?: string;
+  q?: string;
+  page1?: "hub" | "charts";
+  routing?: AtlasRouting;
 };
 
-export function GlobalHubPager({ lang, page, totalPages, total }: Props) {
+export function GlobalHubPager({
+  lang,
+  page,
+  totalPages,
+  total,
+  cat,
+  q,
+  page1 = "hub",
+  routing,
+}: Props) {
   if (totalPages <= 1) return null;
+  const query = { cat, q };
+  const pathOpts = { page1, routing };
   return (
     <nav className="global-hub-pager" aria-label="Chart pages">
       {page > 1 ? (
-        <Link href={atlasLangChartsPath(lang, page - 1)}>← Previous</Link>
+        <Link href={atlasChartBrowsePath(lang, page - 1, query, pathOpts)}>
+          ← Previous
+        </Link>
       ) : (
         <span />
       )}
@@ -21,7 +38,9 @@ export function GlobalHubPager({ lang, page, totalPages, total }: Props) {
         Page {page} of {totalPages} ({total} charts)
       </span>
       {page < totalPages ? (
-        <Link href={atlasLangChartsPath(lang, page + 1)}>Next →</Link>
+        <Link href={atlasChartBrowsePath(lang, page + 1, query, pathOpts)}>
+          Next →
+        </Link>
       ) : (
         <span />
       )}
