@@ -1,8 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
+import {
+  KAKAO_OPEN_CHAT,
+  LESSON_COPY,
+  type LessonSurface,
+} from "@/data/lessonOffers";
+import { koreanLessonsPath } from "@/lib/trial/localhostOnly";
 import styles from "./FreeKoreanClassOffer.module.css";
 
 const KST = "Asia/Seoul";
@@ -103,7 +110,11 @@ function buildRange() {
   return { min, max };
 }
 
-export function FreeKoreanClassOffer() {
+export function FreeKoreanClassOffer({
+  surface = "kaja",
+}: {
+  surface?: LessonSurface;
+}) {
   const [{ min, max }] = useState(buildRange);
   const minDate = parseYmd(min);
   const maxDate = parseYmd(max);
@@ -188,9 +199,11 @@ export function FreeKoreanClassOffer() {
     }
   }
 
+  const pricesHref = koreanLessonsPath(surface);
+
   return (
     <article className={styles.page}>
-      <p className={styles.kicker}>Free trial</p>
+      <p className={styles.kicker}>{LESSON_COPY.kicker}</p>
       <div className={styles.intro}>
         <div className={styles.profile}>
           <Image
@@ -202,23 +215,29 @@ export function FreeKoreanClassOffer() {
             priority
           />
         </div>
-        <h1 className={styles.title}>1:1 Korean Lesson 🇰🇷</h1>
+        <h1 className={styles.title}>{LESSON_COPY.title}</h1>
       </div>
-      <p className={styles.body}>
-        Learn Korean with Minjae over the phone. First lesson is a{" "}
-        <strong>free trial</strong>.
-      </p>
-      <p className={styles.body}>
-        Whether you&apos;re starting from scratch or already know some Korean,
-        we&apos;ll tailor the lesson to your level and goals.
-      </p>
+      <p className={styles.body}>{LESSON_COPY.lead}</p>
+      <p className={styles.body}>{LESSON_COPY.saveTime}</p>
       <ul className={styles.perks}>
-        <li>Structured 1:1 Korean lesson A0-C1</li>
-        <li>Native Korean</li>
-        <li>Textbook included</li>
-        <li>Beginner friendly</li>
-        <li>Free 30 minute trial</li>
+        {LESSON_COPY.perks.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
       </ul>
+      <p className={styles.body}>
+        {LESSON_COPY.trialLine}{" "}
+        <Link className={styles.priceLink} href={pricesHref}>
+          {LESSON_COPY.priceLinkLabel}
+        </Link>
+      </p>
+      <a
+        className={styles.kakao}
+        href={KAKAO_OPEN_CHAT}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {LESSON_COPY.kakaoCta}
+      </a>
       <figure className={styles.figure}>
         <Image
           className={styles.art}
@@ -258,7 +277,12 @@ export function FreeKoreanClassOffer() {
           </dl>
           <p className={styles.ticketNote}>
             I&apos;ll email you shortly to confirm the call. Check your inbox
-            (and spam) at <strong>{email.trim()}</strong>.
+            (and spam) at <strong>{email.trim()}</strong>. Questions in the
+            meantime?{" "}
+            <a href={KAKAO_OPEN_CHAT} target="_blank" rel="noopener noreferrer">
+              Message me on KakaoTalk
+            </a>
+            .
           </p>
         </section>
       ) : (
